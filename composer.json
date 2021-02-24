@@ -1,0 +1,12 @@
+{
+    "name": "detain/interserver-api-samples",
+    "description": "sample code for the InterServer API in various languages including php, perl, python, ruby, etc.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Joe Huss",
+            "email": "detain@interserver.net"
+        }
+    ],
+    "require": {}
+}
