@@ -63,6 +63,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -73,7 +74,7 @@ This call takes the following parameters:
 
 Parameter|Type|Description
 ---------|----|-----------
-ip|string|
+ip|string|IP Address
 
 
 ### Response

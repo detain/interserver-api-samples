@@ -5,7 +5,7 @@
         "ip": {
             "name": "ip",
             "type": "string",
-            "description": "",
+            "description": "IP Address",
             "example": "66.45.228.200"
         }
     },

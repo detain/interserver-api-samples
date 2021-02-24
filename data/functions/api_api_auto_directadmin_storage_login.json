@@ -1,0 +1,40 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_api_auto_directadmin_storage_login",
+    "params": "",
+    "description": "Logs into DirectAdmin for the given backup id and returns a unique logged-in\n* url.  The status will be \"ok\" if successful, or \"error\" if there was any\n* problems status_text will contain a description of the problem if any.",
+    "function": {
+        "name": "api_api_auto_directadmin_storage_login",
+        "desc": "Logs into DirectAdmin for the given backup id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "",
+                "example": 10000
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

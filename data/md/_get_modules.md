@@ -57,6 +57,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -98,6 +99,11 @@ return|array|
 		<tr>
 			<td>
 				backups
+			</td>
+		</tr>
+		<tr>
+			<td>
+				mail
 			</td>
 		</tr>
 		<tr>

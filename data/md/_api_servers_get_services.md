@@ -88,6 +88,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -113,17 +114,15 @@ server_custid|int|Customers ID
 server_frequency|int|Billing Interval
 server_type|int|Service Type
 server_cost|float|Service Cost
+server_currency|string|
 server_order_date|string|Date the Order was Placed
 server_invoice|int|Invoice ID
 server_coupon|int|
 server_status|string|Billing Status
-server_ccname|string|
-server_exp|string|
-server_bankname|string|
-server_cc|string|
 server_root|string|
 server_dedicated_tag|string|
 server_custom_tag|string|
+server_comment|string|
 server_initial_bill|int|
 server_hardware|int|
 server_ips|int|
@@ -133,10 +132,7 @@ server_discount|float|Discount Amount
 server_rep|int|
 server_date|float|Order Date
 server_total_cost|float|Total Cost
-server_referrer|string|
 server_location|string|Server Location ID
-server_fraud|string|
-server_mb_package_id|int|
 server_hardware_ordered|int|Hardware Ordered
 server_billed|int|Server is Billed
 server_welcome_email|int|Welcome Email Sent
@@ -149,5 +145,6 @@ server_dedicated_ips|int|IP Block Size
 server_dedicated_os|int|Operating System
 server_dedicated_cp|int|Control Panel
 server_dedicated_raid|string|RAID Storage
+server_extra|string|Extra
 
 

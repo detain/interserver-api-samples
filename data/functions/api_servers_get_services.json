@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             }
         },
         "output": [
@@ -46,6 +46,11 @@
                 "description": "Service Cost"
             },
             {
+                "name": "server_currency",
+                "type": "string",
+                "description": ""
+            },
+            {
                 "name": "server_order_date",
                 "type": "string",
                 "description": "Date the Order was Placed"
@@ -66,26 +71,6 @@
                 "description": "Billing Status"
             },
             {
-                "name": "server_ccname",
-                "type": "string",
-                "description": ""
-            },
-            {
-                "name": "server_exp",
-                "type": "string",
-                "description": ""
-            },
-            {
-                "name": "server_bankname",
-                "type": "string",
-                "description": ""
-            },
-            {
-                "name": "server_cc",
-                "type": "string",
-                "description": ""
-            },
-            {
                 "name": "server_root",
                 "type": "string",
                 "description": ""
@@ -97,6 +82,11 @@
             },
             {
                 "name": "server_custom_tag",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_comment",
                 "type": "string",
                 "description": ""
             },
@@ -146,24 +136,9 @@
                 "description": "Total Cost"
             },
             {
-                "name": "server_referrer",
-                "type": "string",
-                "description": ""
-            },
-            {
                 "name": "server_location",
                 "type": "string",
                 "description": "Server Location ID"
-            },
-            {
-                "name": "server_fraud",
-                "type": "string",
-                "description": ""
-            },
-            {
-                "name": "server_mb_package_id",
-                "type": "int",
-                "description": ""
             },
             {
                 "name": "server_hardware_ordered",
@@ -224,6 +199,11 @@
                 "name": "server_dedicated_raid",
                 "type": "string",
                 "description": "RAID Storage"
+            },
+            {
+                "name": "server_extra",
+                "type": "string",
+                "description": "Extra"
             }
         ],
         "example": []

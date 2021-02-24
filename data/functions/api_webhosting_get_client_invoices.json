@@ -2,16 +2,16 @@
     "serverargv": "{$_SERVER[\"argv\"][0]}",
     "name": "api_webhosting_get_client_invoices",
     "params": "",
-    "description": "This Function Applies to the Webhosting services.\n* Gets a list of all the invoices.",
+    "description": "This Function Applies to the Web Hosting services.\n* Gets a list of all the invoices.",
     "function": {
         "name": "api_webhosting_get_client_invoices",
-        "desc": "This Function Applies to the Webhosting services.\nGets a list of all the invoices.",
+        "desc": "This Function Applies to the Web Hosting services.\nGets a list of all the invoices.",
         "input": {
             "sid": {
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             }
         },
         "output": [
@@ -58,7 +58,7 @@
             {
                 "name": "invoices_paid",
                 "type": "int",
-                "description": "Wether or not the Invoice was paid (if applicable)"
+                "description": "Whether or not the Invoice was paid (if applicable)"
             },
             {
                 "name": "invoices_module",
@@ -74,6 +74,16 @@
                 "name": "invoices_service",
                 "type": "int",
                 "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+            },
+            {
+                "name": "invoices_deleted",
+                "type": "int",
+                "description": "Deleted Flag"
+            },
+            {
+                "name": "invoices_currency",
+                "type": "string",
+                "description": ""
             }
         ],
         "example": []

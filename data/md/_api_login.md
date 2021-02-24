@@ -67,6 +67,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -102,7 +103,7 @@ return|string|
 	<tbody>
 		<tr>
 			<td>String</td>
-			<td>71048a720e78b0ee9256e9a4b193944e</td>
+			<td>434ee20ee37a5ce6a2ec4b1e6953b86f</td>
 		</tr>
 	</tbody>
 </table>

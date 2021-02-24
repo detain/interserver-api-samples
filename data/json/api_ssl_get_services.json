@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
         }
     },
     "output": [
@@ -34,6 +34,21 @@
             "name": "ssl_cost",
             "type": "float",
             "description": "Service Cost"
+        },
+        {
+            "name": "ssl_currency",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_frequency",
+            "type": "int",
+            "description": "Billing Interval"
+        },
+        {
+            "name": "ssl_order_date",
+            "type": "string",
+            "description": "Date the Order was Placed"
         },
         {
             "name": "ssl_custid",
@@ -114,6 +129,36 @@
             "name": "ssl_extra",
             "type": "string",
             "description": "SSL Additional Information"
+        },
+        {
+            "name": "ssl_approver_email",
+            "type": "string",
+            "description": "Approver Email"
+        },
+        {
+            "name": "ssl_csr",
+            "type": "string",
+            "description": "CSR Certificate Request"
+        },
+        {
+            "name": "ssl_private_key",
+            "type": "string",
+            "description": "Private Certificate"
+        },
+        {
+            "name": "ssl_x509",
+            "type": "string",
+            "description": "x590 Certificate"
+        },
+        {
+            "name": "ssl_ca_root",
+            "type": "string",
+            "description": "CA Root Certificate"
+        },
+        {
+            "name": "ssl_ca_inter",
+            "type": "string",
+            "description": "CA Intermedia Cert"
         }
     ],
     "example": []

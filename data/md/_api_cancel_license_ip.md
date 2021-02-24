@@ -93,6 +93,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -105,7 +106,7 @@ Parameter|Type|Description
 ---------|----|-----------
 sid|string|the *Session ID* you get from the [login](#login) call
 ip|string|IP Address to cancel
-type|int|Package ID. use [get_license_types](#get-license-types) to get a list of possible types.
+type|int|
 
 
 ### Response

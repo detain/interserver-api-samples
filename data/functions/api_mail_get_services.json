@@ -1,0 +1,110 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_mail_get_services",
+    "params": "",
+    "description": "This Function Applies to the Mail Services services.\n* Gets List of Services",
+    "function": {
+        "name": "api_mail_get_services",
+        "desc": "This Function Applies to the Mail Services services.\nGets List of Services",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
+            }
+        },
+        "output": [
+            {
+                "name": "mail_id",
+                "type": "int",
+                "description": "Service ID"
+            },
+            {
+                "name": "mail_server",
+                "type": "int",
+                "description": "ID of Server the mail Resides on"
+            },
+            {
+                "name": "mail_username",
+                "type": "string",
+                "description": "Username on the mail Server associated with this Order"
+            },
+            {
+                "name": "mail_type",
+                "type": "int",
+                "description": "Package ID"
+            },
+            {
+                "name": "mail_cost",
+                "type": "float",
+                "description": "Service Cost"
+            },
+            {
+                "name": "mail_currency",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "mail_frequency",
+                "type": "int",
+                "description": "Billing Interval"
+            },
+            {
+                "name": "mail_order_date",
+                "type": "string",
+                "description": "Date the Order was Placed"
+            },
+            {
+                "name": "mail_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "mail_quota",
+                "type": "int",
+                "description": "Disk Quota"
+            },
+            {
+                "name": "mail_ip",
+                "type": "string",
+                "description": "IP Address of mail"
+            },
+            {
+                "name": "mail_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "mail_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "mail_coupon",
+                "type": "int",
+                "description": "Coupon ID"
+            },
+            {
+                "name": "mail_extra",
+                "type": "string",
+                "description": "Additional mail Information"
+            },
+            {
+                "name": "mail_server_status",
+                "type": "string",
+                "description": "Server-Side status of this website"
+            },
+            {
+                "name": "mail_comment",
+                "type": "string",
+                "description": ""
+            }
+        ],
+        "example": []
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

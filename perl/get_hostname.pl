@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 # get_hostname - (c)2015 by detain@interserver.net for the MyAdmin API
 # Resolves an IP Address and returns the hostname it points to.
-# @param ip string 
+# @param ip string IP Address
 use SOAP::Lite;
 
 $ip = $ARGV[0];

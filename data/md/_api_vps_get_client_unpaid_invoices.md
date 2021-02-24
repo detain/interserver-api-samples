@@ -89,6 +89,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -116,9 +117,11 @@ invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)
 invoices_date|string|Date the Invoice was Created
 invoices_group|int|Billing Group the Invoice falls under, Not currently used
 invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.
-invoices_paid|int|Wether or not the Invoice was paid (if applicable)
+invoices_paid|int|Whether or not the Invoice was paid (if applicable)
 invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.
 invoices_due_date|string|Date the Invoice is Due
 invoices_service|int|ID of the Service/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps
+invoices_deleted|int|Deleted Flag
+invoices_currency|string|
 
 

@@ -1,0 +1,45 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_get_vps_backups",
+    "params": "",
+    "description": "Returns a list of all the current VPS backups indicating the VPS ID, the Name of\n* the backup, file size, and a download URL",
+    "function": {
+        "name": "api_get_vps_backups",
+        "desc": "Returns a list of all the current VPS backups indicating the VPS ID, the Name of the backup, file size, and a download URL",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
+            }
+        },
+        "output": [
+            {
+                "name": "id",
+                "type": "int",
+                "description": "ID of the Coupon"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "description": "Country Name in all Capitols"
+            },
+            {
+                "name": "size",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "url",
+                "type": "string",
+                "description": ""
+            }
+        ],
+        "example": []
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

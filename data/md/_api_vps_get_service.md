@@ -92,6 +92,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -113,12 +114,15 @@ This function returns an associative array with the following fields
 Field|Type|Description
 -----|----|-----------
 vps_id|int|VPS Service ID
-vps_server|int|VPS Host Server ID
-vps_vzid|string|VPS Host-Side Server ID
-vps_type|int|Package ID
-vps_cost|float|Service Cost
 vps_custid|int|Customer ID
+vps_server|int|VPS Host Server ID
 vps_ip|string|IP Address of VPS
+vps_vzid|string|VPS Host-Side Server ID
+vps_cost|float|Service Cost
+vps_currency|string|
+vps_type|int|Package ID
+vps_frequency|int|Billing Interval
+vps_order_date|string|Date the Order was Placed
 vps_status|string|Billing Status
 vps_invoice|int|Invoice ID
 vps_coupon|int|Coupon ID
@@ -126,6 +130,17 @@ vps_extra|string|Additional VPS information
 vps_hostname|string|Hostname of the VPS
 vps_server_status|string|Server Status of VPS
 vps_comment|string|Comments about the VPS
+vps_slices|int|VPS # of Slices
+vps_vnc|string|VNC Address for VPS
+vps_vnc_port|int|
+vps_rootpass|string|Encrypted Root Password for VPS
+vps_mac|string|MAC Address of VPS
+vps_os|string|OS or Template of VPS
+vps_version|string|Version of VPS or possibly OS Type
+vps_location|int|Location of the VPS
+vps_platform|string|Platform of the VPS
+vps_diskused|int|Used Disk Space
+vps_diskmax|int|Total Disk Space
 
 
 ### Example Response
@@ -143,28 +158,40 @@ vps_comment|string|Comments about the VPS
 			<td>10000</td>
 		</tr>
 		<tr>
+			<td>vps_custid</td>
+			<td>11803</td>
+		</tr>
+		<tr>
 			<td>vps_server</td>
 			<td>5</td>
+		</tr>
+		<tr>
+			<td>vps_ip</td>
+			<td>206.72.197.216</td>
 		</tr>
 		<tr>
 			<td>vps_vzid</td>
 			<td>windows10000</td>
 		</tr>
 		<tr>
-			<td>vps_type</td>
-			<td>32</td>
-		</tr>
-		<tr>
 			<td>vps_cost</td>
 			<td>22</td>
 		</tr>
 		<tr>
-			<td>vps_custid</td>
-			<td>11803</td>
+			<td>vps_currency</td>
+			<td>USD</td>
 		</tr>
 		<tr>
-			<td>vps_ip</td>
-			<td>206.72.197.216</td>
+			<td>vps_type</td>
+			<td>32</td>
+		</tr>
+		<tr>
+			<td>vps_frequency</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>vps_order_date</td>
+			<td>2012-11-06 22:22:35</td>
 		</tr>
 		<tr>
 			<td>vps_status</td>
@@ -193,6 +220,50 @@ vps_comment|string|Comments about the VPS
 		<tr>
 			<td>vps_comment</td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>vps_slices</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>vps_vnc</td>
+			<td>108.54.244.82</td>
+		</tr>
+		<tr>
+			<td>vps_vnc_port</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>vps_rootpass</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>vps_mac</td>
+			<td>52:54:00:60:52:f8</td>
+		</tr>
+		<tr>
+			<td>vps_os</td>
+			<td>windows1</td>
+		</tr>
+		<tr>
+			<td>vps_version</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>vps_location</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>vps_platform</td>
+			<td>kvm</td>
+		</tr>
+		<tr>
+			<td>vps_diskused</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>vps_diskmax</td>
+			<td>0</td>
 		</tr>
 	</tbody>
 </table>

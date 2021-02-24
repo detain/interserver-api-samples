@@ -5,7 +5,7 @@
 
 **API Function Name: api_webhosting_cancel_service**
 
-This Function Applies to the Webhosting services.
+This Function Applies to the Web Hosting services.
 * Cancels a service for the passed module matching the passed id.  Canceling a
 * service will also cancel any addons for that service at the same time.
 
@@ -92,6 +92,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 

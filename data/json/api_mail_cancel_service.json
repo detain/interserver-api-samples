@@ -1,0 +1,26 @@
+{
+    "name": "api_mail_cancel_service",
+    "desc": "This Function Applies to the Mail Services services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "ID \/ Service ID you wish to cancel",
+            "example": 10000
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "bool",
+            "description": ""
+        }
+    },
+    "example": false
+}

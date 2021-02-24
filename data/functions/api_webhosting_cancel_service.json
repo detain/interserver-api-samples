@@ -2,16 +2,16 @@
     "serverargv": "{$_SERVER[\"argv\"][0]}",
     "name": "api_webhosting_cancel_service",
     "params": "",
-    "description": "This Function Applies to the Webhosting services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
+    "description": "This Function Applies to the Web Hosting services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
     "function": {
         "name": "api_webhosting_cancel_service",
-        "desc": "This Function Applies to the Webhosting services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+        "desc": "This Function Applies to the Web Hosting services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
         "input": {
             "sid": {
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             },
             "id": {
                 "name": "id",

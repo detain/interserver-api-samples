@@ -7,7 +7,7 @@
 #
 # @param sid string the *Session ID* you get from the [login](#login) call
 # @param ip string IP Address to cancel
-# @param type int Package ID. use [get_license_types](#get-license-types) to get a list of possible types.
+# @param type int 
 #
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")

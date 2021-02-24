@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             },
             "id": {
                 "name": "id",
@@ -27,9 +27,19 @@
                 "description": "VPS Service ID"
             },
             {
+                "name": "vps_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
                 "name": "vps_server",
                 "type": "int",
                 "description": "VPS Host Server ID"
+            },
+            {
+                "name": "vps_ip",
+                "type": "string",
+                "description": "IP Address of VPS"
             },
             {
                 "name": "vps_vzid",
@@ -37,24 +47,29 @@
                 "description": "VPS Host-Side Server ID"
             },
             {
-                "name": "vps_type",
-                "type": "int",
-                "description": "Package ID"
-            },
-            {
                 "name": "vps_cost",
                 "type": "float",
                 "description": "Service Cost"
             },
             {
-                "name": "vps_custid",
-                "type": "int",
-                "description": "Customer ID"
+                "name": "vps_currency",
+                "type": "string",
+                "description": ""
             },
             {
-                "name": "vps_ip",
+                "name": "vps_type",
+                "type": "int",
+                "description": "Package ID"
+            },
+            {
+                "name": "vps_frequency",
+                "type": "int",
+                "description": "Billing Interval"
+            },
+            {
+                "name": "vps_order_date",
                 "type": "string",
-                "description": "IP Address of VPS"
+                "description": "Date the Order was Placed"
             },
             {
                 "name": "vps_status",
@@ -90,23 +105,92 @@
                 "name": "vps_comment",
                 "type": "string",
                 "description": "Comments about the VPS"
+            },
+            {
+                "name": "vps_slices",
+                "type": "int",
+                "description": "VPS # of Slices"
+            },
+            {
+                "name": "vps_vnc",
+                "type": "string",
+                "description": "VNC Address for VPS"
+            },
+            {
+                "name": "vps_vnc_port",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "vps_rootpass",
+                "type": "string",
+                "description": "Encrypted Root Password for VPS"
+            },
+            {
+                "name": "vps_mac",
+                "type": "string",
+                "description": "MAC Address of VPS"
+            },
+            {
+                "name": "vps_os",
+                "type": "string",
+                "description": "OS or Template of VPS"
+            },
+            {
+                "name": "vps_version",
+                "type": "string",
+                "description": "Version of VPS or possibly OS Type"
+            },
+            {
+                "name": "vps_location",
+                "type": "int",
+                "description": "Location of the VPS"
+            },
+            {
+                "name": "vps_platform",
+                "type": "string",
+                "description": "Platform of the VPS"
+            },
+            {
+                "name": "vps_diskused",
+                "type": "int",
+                "description": "Used Disk Space"
+            },
+            {
+                "name": "vps_diskmax",
+                "type": "int",
+                "description": "Total Disk Space"
             }
         ],
         "example": {
             "vps_id": 10000,
-            "vps_server": 5,
-            "vps_vzid": "windows10000",
-            "vps_type": 32,
-            "vps_cost": 22,
             "vps_custid": 11803,
+            "vps_server": 5,
             "vps_ip": "206.72.197.216",
+            "vps_vzid": "windows10000",
+            "vps_cost": 22,
+            "vps_currency": "USD",
+            "vps_type": 32,
+            "vps_frequency": 1,
+            "vps_order_date": "2012-11-06 22:22:35",
             "vps_status": "canceled",
             "vps_invoice": 1011318,
             "vps_coupon": 3507,
             "vps_extra": "[]",
             "vps_hostname": "windows10000",
             "vps_server_status": "deleted",
-            "vps_comment": ""
+            "vps_comment": "",
+            "vps_slices": 2,
+            "vps_vnc": "108.54.244.82",
+            "vps_vnc_port": null,
+            "vps_rootpass": "",
+            "vps_mac": "52:54:00:60:52:f8",
+            "vps_os": "windows1",
+            "vps_version": "1",
+            "vps_location": 1,
+            "vps_platform": "kvm",
+            "vps_diskused": 0,
+            "vps_diskmax": 0
         }
     },
     "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",

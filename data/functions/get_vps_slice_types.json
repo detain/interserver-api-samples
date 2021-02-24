@@ -45,7 +45,7 @@
             {
                 "name": "KVM Linux VPS Slice",
                 "type": 2,
-                "cost": 8,
+                "cost": 6,
                 "buyable": 1
             },
             {
@@ -106,6 +106,12 @@
                 "name": "SSD Virtuozzo VPS Slice",
                 "type": 13,
                 "cost": 9,
+                "buyable": 1
+            },
+            {
+                "name": "KVM Storage",
+                "type": 16,
+                "cost": 6,
                 "buyable": 1
             }
         ]

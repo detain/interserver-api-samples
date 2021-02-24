@@ -1666,5 +1666,17 @@
         "prepay_service": 0,
         "prepay_automatic_use": 1,
         "prepay_module": "domains"
+    },
+    {
+        "prepay_id": 66355,
+        "prepay_type": 0,
+        "prepay_status": "0",
+        "prepay_date": "2021-02-24 01:38:42",
+        "prepay_created": "2021-02-24 01:38:42",
+        "prepay_amount": 10,
+        "prepay_remaining": 0,
+        "prepay_service": 0,
+        "prepay_automatic_use": 1,
+        "prepay_module": "domains"
     }
 ]

@@ -96,6 +96,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -108,7 +109,7 @@ Parameter|Type|Description
 ---------|----|-----------
 sid|string|the *Session ID* you get from the [login](#login) call
 ip|string|ip address you wish to license some software on
-type|int|the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.
+type|int|
 coupon|string|an optional coupon
 
 

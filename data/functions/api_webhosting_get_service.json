@@ -2,16 +2,16 @@
     "serverargv": "{$_SERVER[\"argv\"][0]}",
     "name": "api_webhosting_get_service",
     "params": "",
-    "description": "This Function Applies to the Webhosting services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+    "description": "This Function Applies to the Web Hosting services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
     "function": {
         "name": "api_webhosting_get_service",
-        "desc": "This Function Applies to the Webhosting services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+        "desc": "This Function Applies to the Web Hosting services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
         "input": {
             "sid": {
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             },
             "id": {
                 "name": "id",
@@ -40,6 +40,21 @@
                 "name": "website_cost",
                 "type": "float",
                 "description": "Service Cost"
+            },
+            {
+                "name": "website_currency",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "website_frequency",
+                "type": "int",
+                "description": "Billing Interval"
+            },
+            {
+                "name": "website_order_date",
+                "type": "string",
+                "description": "Date the Order was Placed"
             },
             {
                 "name": "website_custid",

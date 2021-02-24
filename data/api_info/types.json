@@ -1,59 +1,165 @@
 {
-    "get_modulesRequest": {
-        "name": "get_modulesRequest",
-        "fields": []
-    },
-    "get_modulesResponse": {
-        "name": "get_modulesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "array",
-                "description": ""
-            }
-        }
-    },
-    "api_loginRequest": {
-        "name": "api_loginRequest",
-        "fields": {
-            "username": {
-                "name": "username",
-                "type": "string",
-                "description": ""
-            },
-            "password": {
-                "name": "password",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_loginResponse": {
-        "name": "api_loginResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_get_imaRequest": {
-        "name": "api_get_imaRequest",
+    "api_api_auto_cpanel_loginRequest": {
+        "name": "api_api_auto_cpanel_loginRequest",
         "fields": {
             "sid": {
                 "name": "sid",
                 "type": "string",
                 "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
             }
         }
     },
-    "api_get_imaResponse": {
-        "name": "api_get_imaResponse",
+    "api_api_auto_cpanel_loginResponse": {
+        "name": "api_api_auto_cpanel_loginResponse",
         "fields": {
             "return": {
                 "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_getTicketListRequest": {
+        "name": "api_getTicketListRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
                 "type": "string",
+                "description": ""
+            },
+            "page": {
+                "name": "page",
+                "type": "int",
+                "description": ""
+            },
+            "limit": {
+                "name": "limit",
+                "type": "int",
+                "description": ""
+            },
+            "status": {
+                "name": "status",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_getTicketListResponse": {
+        "name": "api_getTicketListResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:getTicketList_return",
+                "description": ""
+            }
+        }
+    },
+    "api_openTicketRequest": {
+        "name": "api_openTicketRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "user_email": {
+                "name": "user_email",
+                "type": "string",
+                "description": ""
+            },
+            "user_ip": {
+                "name": "user_ip",
+                "type": "string",
+                "description": ""
+            },
+            "subject": {
+                "name": "subject",
+                "type": "string",
+                "description": ""
+            },
+            "product": {
+                "name": "product",
+                "type": "string",
+                "description": ""
+            },
+            "body": {
+                "name": "body",
+                "type": "string",
+                "description": ""
+            },
+            "box_auth_value": {
+                "name": "box_auth_value",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_openTicketResponse": {
+        "name": "api_openTicketResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:openTicket_return",
+                "description": ""
+            }
+        }
+    },
+    "api_viewTicketRequest": {
+        "name": "api_viewTicketRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "ticketID": {
+                "name": "ticketID",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_viewTicketResponse": {
+        "name": "api_viewTicketResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:view_ticket_return",
+                "description": ""
+            }
+        }
+    },
+    "api_ticketPostRequest": {
+        "name": "api_ticketPostRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "ticketID": {
+                "name": "ticketID",
+                "type": "string",
+                "description": ""
+            },
+            "content": {
+                "name": "content",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_ticketPostResponse": {
+        "name": "api_ticketPostResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:ticket_post_return",
                 "description": ""
             }
         }
@@ -262,1235 +368,6 @@
             }
         }
     },
-    "api_make_paymentRequest": {
-        "name": "api_make_paymentRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "module": {
-                "name": "module",
-                "type": "string",
-                "description": ""
-            },
-            "invoice": {
-                "name": "invoice",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_make_paymentResponse": {
-        "name": "api_make_paymentResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:make_payment_return",
-                "description": ""
-            }
-        }
-    },
-    "api_get_paypal_urlRequest": {
-        "name": "api_get_paypal_urlRequest",
-        "fields": {
-            "module": {
-                "name": "module",
-                "type": "string",
-                "description": ""
-            },
-            "invoice": {
-                "name": "invoice",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_get_paypal_urlResponse": {
-        "name": "api_get_paypal_urlResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_get_prepay_remainingRequest": {
-        "name": "api_get_prepay_remainingRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "module": {
-                "name": "module",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_get_prepay_remainingResponse": {
-        "name": "api_get_prepay_remainingResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:api_return",
-                "description": ""
-            }
-        }
-    },
-    "api_add_prepayRequest": {
-        "name": "api_add_prepayRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "module": {
-                "name": "module",
-                "type": "string",
-                "description": ""
-            },
-            "amount": {
-                "name": "amount",
-                "type": "float",
-                "description": ""
-            },
-            "automatic_use": {
-                "name": "automatic_use",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_add_prepayResponse": {
-        "name": "api_add_prepayResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_get_prepay_listRequest": {
-        "name": "api_get_prepay_listRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_get_prepay_listResponse": {
-        "name": "api_get_prepay_listResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_prepays_list",
-                "description": ""
-            }
-        }
-    },
-    "api_get_prepay_paypal_fill_urlRequest": {
-        "name": "api_get_prepay_paypal_fill_urlRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "module": {
-                "name": "module",
-                "type": "string",
-                "description": ""
-            },
-            "prepay_id": {
-                "name": "prepay_id",
-                "type": "int",
-                "description": ""
-            },
-            "amount": {
-                "name": "amount",
-                "type": "float",
-                "description": ""
-            }
-        }
-    },
-    "api_get_prepay_paypal_fill_urlResponse": {
-        "name": "api_get_prepay_paypal_fill_urlResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_serviceRequest": {
-        "name": "api_domains_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_serviceResponse": {
-        "name": "api_domains_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_domains_domains",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_serviceRequest": {
-        "name": "api_vps_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_serviceResponse": {
-        "name": "api_vps_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_vps_vps",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_serviceRequest": {
-        "name": "api_backups_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_serviceResponse": {
-        "name": "api_backups_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_backups_backups",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_serviceRequest": {
-        "name": "api_licenses_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_serviceResponse": {
-        "name": "api_licenses_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_licenses_licenses",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_serviceRequest": {
-        "name": "api_ssl_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_serviceResponse": {
-        "name": "api_ssl_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_ssl_ssl_certs",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_serviceRequest": {
-        "name": "api_webhosting_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_serviceResponse": {
-        "name": "api_webhosting_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_webhosting_websites",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_serviceRequest": {
-        "name": "api_quickservers_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_serviceResponse": {
-        "name": "api_quickservers_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_quickservers_quickservers",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_serviceRequest": {
-        "name": "api_servers_get_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_serviceResponse": {
-        "name": "api_servers_get_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:sql_row_servers_servers",
-                "description": ""
-            }
-        }
-    },
-    "api_api_auto_cpanel_loginRequest": {
-        "name": "api_api_auto_cpanel_loginRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_api_auto_cpanel_loginResponse": {
-        "name": "api_api_auto_cpanel_loginResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:result_status",
-                "description": ""
-            }
-        }
-    },
-    "api_getTicketListRequest": {
-        "name": "api_getTicketListRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "page": {
-                "name": "page",
-                "type": "int",
-                "description": ""
-            },
-            "limit": {
-                "name": "limit",
-                "type": "int",
-                "description": ""
-            },
-            "status": {
-                "name": "status",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_getTicketListResponse": {
-        "name": "api_getTicketListResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:getTicketList_return",
-                "description": ""
-            }
-        }
-    },
-    "api_openTicketRequest": {
-        "name": "api_openTicketRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "user_email": {
-                "name": "user_email",
-                "type": "string",
-                "description": ""
-            },
-            "user_ip": {
-                "name": "user_ip",
-                "type": "string",
-                "description": ""
-            },
-            "subject": {
-                "name": "subject",
-                "type": "string",
-                "description": ""
-            },
-            "product": {
-                "name": "product",
-                "type": "string",
-                "description": ""
-            },
-            "body": {
-                "name": "body",
-                "type": "string",
-                "description": ""
-            },
-            "box_auth_value": {
-                "name": "box_auth_value",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_openTicketResponse": {
-        "name": "api_openTicketResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:openTicket_return",
-                "description": ""
-            }
-        }
-    },
-    "api_viewTicketRequest": {
-        "name": "api_viewTicketRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "ticketID": {
-                "name": "ticketID",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_viewTicketResponse": {
-        "name": "api_viewTicketResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:view_ticket_return",
-                "description": ""
-            }
-        }
-    },
-    "api_ticketPostRequest": {
-        "name": "api_ticketPostRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "ticketID": {
-                "name": "ticketID",
-                "type": "string",
-                "description": ""
-            },
-            "content": {
-                "name": "content",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_ticketPostResponse": {
-        "name": "api_ticketPostResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:ticket_post_return",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_servicesRequest": {
-        "name": "api_domains_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_servicesResponse": {
-        "name": "api_domains_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_domains_domains",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_servicesRequest": {
-        "name": "api_vps_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_servicesResponse": {
-        "name": "api_vps_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_vps_vps",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_servicesRequest": {
-        "name": "api_backups_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_servicesResponse": {
-        "name": "api_backups_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_backups_backups",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_servicesRequest": {
-        "name": "api_licenses_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_servicesResponse": {
-        "name": "api_licenses_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_licenses_licenses",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_servicesRequest": {
-        "name": "api_ssl_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_servicesResponse": {
-        "name": "api_ssl_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_ssl_ssl_certs",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_servicesRequest": {
-        "name": "api_webhosting_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_servicesResponse": {
-        "name": "api_webhosting_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_webhosting_websites",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_servicesRequest": {
-        "name": "api_quickservers_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_servicesResponse": {
-        "name": "api_quickservers_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_quickservers_quickservers",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_servicesRequest": {
-        "name": "api_servers_get_servicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_servicesResponse": {
-        "name": "api_servers_get_servicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_servers_servers",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_cancel_serviceRequest": {
-        "name": "api_domains_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_cancel_serviceResponse": {
-        "name": "api_domains_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_cancel_serviceRequest": {
-        "name": "api_vps_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_cancel_serviceResponse": {
-        "name": "api_vps_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_cancel_serviceRequest": {
-        "name": "api_backups_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_cancel_serviceResponse": {
-        "name": "api_backups_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_cancel_serviceRequest": {
-        "name": "api_licenses_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_cancel_serviceResponse": {
-        "name": "api_licenses_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_cancel_serviceRequest": {
-        "name": "api_ssl_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_cancel_serviceResponse": {
-        "name": "api_ssl_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_cancel_serviceRequest": {
-        "name": "api_webhosting_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_cancel_serviceResponse": {
-        "name": "api_webhosting_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_cancel_serviceRequest": {
-        "name": "api_quickservers_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_cancel_serviceResponse": {
-        "name": "api_quickservers_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_cancel_serviceRequest": {
-        "name": "api_servers_cancel_serviceRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            },
-            "id": {
-                "name": "id",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_cancel_serviceResponse": {
-        "name": "api_servers_cancel_serviceResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "bool",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_client_invoicesRequest": {
-        "name": "api_domains_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_client_invoicesResponse": {
-        "name": "api_domains_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_client_invoicesRequest": {
-        "name": "api_vps_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_client_invoicesResponse": {
-        "name": "api_vps_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_client_invoicesRequest": {
-        "name": "api_backups_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_client_invoicesResponse": {
-        "name": "api_backups_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_client_invoicesRequest": {
-        "name": "api_licenses_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_client_invoicesResponse": {
-        "name": "api_licenses_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_client_invoicesRequest": {
-        "name": "api_ssl_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_client_invoicesResponse": {
-        "name": "api_ssl_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_client_invoicesRequest": {
-        "name": "api_webhosting_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_client_invoicesResponse": {
-        "name": "api_webhosting_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_client_invoicesRequest": {
-        "name": "api_quickservers_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_client_invoicesResponse": {
-        "name": "api_quickservers_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_client_invoicesRequest": {
-        "name": "api_servers_get_client_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_client_invoicesResponse": {
-        "name": "api_servers_get_client_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_client_unpaid_invoicesRequest": {
-        "name": "api_domains_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_domains_get_client_unpaid_invoicesResponse": {
-        "name": "api_domains_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_client_unpaid_invoicesRequest": {
-        "name": "api_vps_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_vps_get_client_unpaid_invoicesResponse": {
-        "name": "api_vps_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_client_unpaid_invoicesRequest": {
-        "name": "api_backups_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_backups_get_client_unpaid_invoicesResponse": {
-        "name": "api_backups_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_client_unpaid_invoicesRequest": {
-        "name": "api_licenses_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_licenses_get_client_unpaid_invoicesResponse": {
-        "name": "api_licenses_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_client_unpaid_invoicesRequest": {
-        "name": "api_ssl_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_ssl_get_client_unpaid_invoicesResponse": {
-        "name": "api_ssl_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_client_unpaid_invoicesRequest": {
-        "name": "api_webhosting_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_webhosting_get_client_unpaid_invoicesResponse": {
-        "name": "api_webhosting_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_client_unpaid_invoicesRequest": {
-        "name": "api_quickservers_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_quickservers_get_client_unpaid_invoicesResponse": {
-        "name": "api_quickservers_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_client_unpaid_invoicesRequest": {
-        "name": "api_servers_get_client_unpaid_invoicesRequest",
-        "fields": {
-            "sid": {
-                "name": "sid",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "api_servers_get_client_unpaid_invoicesResponse": {
-        "name": "api_servers_get_client_unpaid_invoicesResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "tns:array_sql_row_invoices",
-                "description": ""
-            }
-        }
-    },
-    "get_locked_ipsRequest": {
-        "name": "get_locked_ipsRequest",
-        "fields": []
-    },
-    "get_locked_ipsResponse": {
-        "name": "get_locked_ipsResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "array",
-                "description": ""
-            }
-        }
-    },
     "api_vps_queue_stopRequest": {
         "name": "api_vps_queue_stopRequest",
         "fields": {
@@ -1511,7 +388,7 @@
         "fields": {
             "return": {
                 "name": "return",
-                "type": "tns:api_return",
+                "type": "tns:result_status",
                 "description": ""
             }
         }
@@ -1536,7 +413,7 @@
         "fields": {
             "return": {
                 "name": "return",
-                "type": "tns:api_return",
+                "type": "tns:result_status",
                 "description": ""
             }
         }
@@ -1561,7 +438,87 @@
         "fields": {
             "return": {
                 "name": "return",
-                "type": "tns:api_return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_queue_backupRequest": {
+        "name": "api_vps_queue_backupRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            },
+            "name": {
+                "name": "name",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_queue_backupResponse": {
+        "name": "api_vps_queue_backupResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_backup_deleteRequest": {
+        "name": "api_vps_backup_deleteRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            },
+            "name": {
+                "name": "name",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_backup_deleteResponse": {
+        "name": "api_vps_backup_deleteResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_get_vps_backupsRequest": {
+        "name": "api_get_vps_backupsRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_get_vps_backupsResponse": {
+        "name": "api_get_vps_backupsResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_idNameSizeUrlArray",
                 "description": ""
             }
         }
@@ -1589,7 +546,7 @@
         "fields": {
             "return": {
                 "name": "return",
-                "type": "tns:array_vps_location",
+                "type": "tns:array_idNameArray",
                 "description": ""
             }
         }
@@ -1887,26 +844,6 @@
             }
         }
     },
-    "get_hostnameRequest": {
-        "name": "get_hostnameRequest",
-        "fields": {
-            "ip": {
-                "name": "ip",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
-    "get_hostnameResponse": {
-        "name": "get_hostnameResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
     "api_get_dns_domainRequest": {
         "name": "api_get_dns_domainRequest",
         "fields": {
@@ -2147,6 +1084,160 @@
             }
         }
     },
+    "api_api_auto_directadmin_loginRequest": {
+        "name": "api_api_auto_directadmin_loginRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_api_auto_directadmin_loginResponse": {
+        "name": "api_api_auto_directadmin_loginResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_api_auto_directadmin_storage_loginRequest": {
+        "name": "api_api_auto_directadmin_storage_loginRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_api_auto_directadmin_storage_loginResponse": {
+        "name": "api_api_auto_directadmin_storage_loginResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_api_auto_zonemta_loginRequest": {
+        "name": "api_api_auto_zonemta_loginRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_api_auto_zonemta_loginResponse": {
+        "name": "api_api_auto_zonemta_loginResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_loginRequest": {
+        "name": "api_loginRequest",
+        "fields": {
+            "username": {
+                "name": "username",
+                "type": "string",
+                "description": ""
+            },
+            "password": {
+                "name": "password",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_loginResponse": {
+        "name": "api_loginResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_get_imaRequest": {
+        "name": "api_get_imaRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_get_imaResponse": {
+        "name": "api_get_imaResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "get_locked_ipsRequest": {
+        "name": "get_locked_ipsRequest",
+        "fields": []
+    },
+    "get_locked_ipsResponse": {
+        "name": "get_locked_ipsResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "array",
+                "description": ""
+            }
+        }
+    },
+    "get_hostnameRequest": {
+        "name": "get_hostnameRequest",
+        "fields": {
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "get_hostnameResponse": {
+        "name": "get_hostnameResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
     "strPixelsRequest": {
         "name": "strPixelsRequest",
         "fields": {
@@ -2163,6 +1254,1245 @@
             "return": {
                 "name": "return",
                 "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "get_modulesRequest": {
+        "name": "get_modulesRequest",
+        "fields": []
+    },
+    "get_modulesResponse": {
+        "name": "get_modulesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "array",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_serviceRequest": {
+        "name": "api_domains_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_serviceResponse": {
+        "name": "api_domains_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_domains",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_serviceRequest": {
+        "name": "api_vps_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_serviceResponse": {
+        "name": "api_vps_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_vps",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_serviceRequest": {
+        "name": "api_backups_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_serviceResponse": {
+        "name": "api_backups_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_backups",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_serviceRequest": {
+        "name": "api_mail_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_serviceResponse": {
+        "name": "api_mail_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_mail",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_serviceRequest": {
+        "name": "api_licenses_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_serviceResponse": {
+        "name": "api_licenses_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_licenses",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_serviceRequest": {
+        "name": "api_ssl_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_serviceResponse": {
+        "name": "api_ssl_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_ssl_certs",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_serviceRequest": {
+        "name": "api_webhosting_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_serviceResponse": {
+        "name": "api_webhosting_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_websites",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_serviceRequest": {
+        "name": "api_quickservers_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_serviceResponse": {
+        "name": "api_quickservers_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_quickservers",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_serviceRequest": {
+        "name": "api_servers_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_serviceResponse": {
+        "name": "api_servers_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_servers",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_servicesRequest": {
+        "name": "api_domains_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_servicesResponse": {
+        "name": "api_domains_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_domains",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_servicesRequest": {
+        "name": "api_vps_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_servicesResponse": {
+        "name": "api_vps_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_vps",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_servicesRequest": {
+        "name": "api_backups_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_servicesResponse": {
+        "name": "api_backups_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_backups",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_servicesRequest": {
+        "name": "api_mail_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_servicesResponse": {
+        "name": "api_mail_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_mail",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_servicesRequest": {
+        "name": "api_licenses_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_servicesResponse": {
+        "name": "api_licenses_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_licenses",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_servicesRequest": {
+        "name": "api_ssl_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_servicesResponse": {
+        "name": "api_ssl_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_ssl_certs",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_servicesRequest": {
+        "name": "api_webhosting_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_servicesResponse": {
+        "name": "api_webhosting_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_websites",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_servicesRequest": {
+        "name": "api_quickservers_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_servicesResponse": {
+        "name": "api_quickservers_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_quickservers",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_servicesRequest": {
+        "name": "api_servers_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_servicesResponse": {
+        "name": "api_servers_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_servers",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_cancel_serviceRequest": {
+        "name": "api_domains_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_cancel_serviceResponse": {
+        "name": "api_domains_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_cancel_serviceRequest": {
+        "name": "api_vps_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_cancel_serviceResponse": {
+        "name": "api_vps_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_cancel_serviceRequest": {
+        "name": "api_backups_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_cancel_serviceResponse": {
+        "name": "api_backups_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_cancel_serviceRequest": {
+        "name": "api_mail_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_cancel_serviceResponse": {
+        "name": "api_mail_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_cancel_serviceRequest": {
+        "name": "api_licenses_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_cancel_serviceResponse": {
+        "name": "api_licenses_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_cancel_serviceRequest": {
+        "name": "api_ssl_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_cancel_serviceResponse": {
+        "name": "api_ssl_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_cancel_serviceRequest": {
+        "name": "api_webhosting_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_cancel_serviceResponse": {
+        "name": "api_webhosting_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_cancel_serviceRequest": {
+        "name": "api_quickservers_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_cancel_serviceResponse": {
+        "name": "api_quickservers_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_cancel_serviceRequest": {
+        "name": "api_servers_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_cancel_serviceResponse": {
+        "name": "api_servers_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_make_paymentRequest": {
+        "name": "api_make_paymentRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "module": {
+                "name": "module",
+                "type": "string",
+                "description": ""
+            },
+            "invoice": {
+                "name": "invoice",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_make_paymentResponse": {
+        "name": "api_make_paymentResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:make_payment_return",
+                "description": ""
+            }
+        }
+    },
+    "api_get_paypal_urlRequest": {
+        "name": "api_get_paypal_urlRequest",
+        "fields": {
+            "module": {
+                "name": "module",
+                "type": "string",
+                "description": ""
+            },
+            "invoice": {
+                "name": "invoice",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_get_paypal_urlResponse": {
+        "name": "api_get_paypal_urlResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_get_prepay_remainingRequest": {
+        "name": "api_get_prepay_remainingRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "module": {
+                "name": "module",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_get_prepay_remainingResponse": {
+        "name": "api_get_prepay_remainingResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_add_prepayRequest": {
+        "name": "api_add_prepayRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "module": {
+                "name": "module",
+                "type": "string",
+                "description": ""
+            },
+            "amount": {
+                "name": "amount",
+                "type": "float",
+                "description": ""
+            },
+            "automatic_use": {
+                "name": "automatic_use",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_add_prepayResponse": {
+        "name": "api_add_prepayResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_get_prepay_listRequest": {
+        "name": "api_get_prepay_listRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_get_prepay_listResponse": {
+        "name": "api_get_prepay_listResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_prepays_list",
+                "description": ""
+            }
+        }
+    },
+    "api_get_prepay_paypal_fill_urlRequest": {
+        "name": "api_get_prepay_paypal_fill_urlRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "module": {
+                "name": "module",
+                "type": "string",
+                "description": ""
+            },
+            "prepay_id": {
+                "name": "prepay_id",
+                "type": "int",
+                "description": ""
+            },
+            "amount": {
+                "name": "amount",
+                "type": "float",
+                "description": ""
+            }
+        }
+    },
+    "api_get_prepay_paypal_fill_urlResponse": {
+        "name": "api_get_prepay_paypal_fill_urlResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_client_invoicesRequest": {
+        "name": "api_domains_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_client_invoicesResponse": {
+        "name": "api_domains_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_client_invoicesRequest": {
+        "name": "api_vps_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_client_invoicesResponse": {
+        "name": "api_vps_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_client_invoicesRequest": {
+        "name": "api_backups_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_client_invoicesResponse": {
+        "name": "api_backups_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_client_invoicesRequest": {
+        "name": "api_mail_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_client_invoicesResponse": {
+        "name": "api_mail_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_client_invoicesRequest": {
+        "name": "api_licenses_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_client_invoicesResponse": {
+        "name": "api_licenses_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_client_invoicesRequest": {
+        "name": "api_ssl_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_client_invoicesResponse": {
+        "name": "api_ssl_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_client_invoicesRequest": {
+        "name": "api_webhosting_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_client_invoicesResponse": {
+        "name": "api_webhosting_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_client_invoicesRequest": {
+        "name": "api_quickservers_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_client_invoicesResponse": {
+        "name": "api_quickservers_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_client_invoicesRequest": {
+        "name": "api_servers_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_client_invoicesResponse": {
+        "name": "api_servers_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_client_unpaid_invoicesRequest": {
+        "name": "api_domains_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_domains_get_client_unpaid_invoicesResponse": {
+        "name": "api_domains_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_client_unpaid_invoicesRequest": {
+        "name": "api_vps_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_vps_get_client_unpaid_invoicesResponse": {
+        "name": "api_vps_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_client_unpaid_invoicesRequest": {
+        "name": "api_backups_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_backups_get_client_unpaid_invoicesResponse": {
+        "name": "api_backups_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_client_unpaid_invoicesRequest": {
+        "name": "api_mail_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_mail_get_client_unpaid_invoicesResponse": {
+        "name": "api_mail_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_client_unpaid_invoicesRequest": {
+        "name": "api_licenses_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_licenses_get_client_unpaid_invoicesResponse": {
+        "name": "api_licenses_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_client_unpaid_invoicesRequest": {
+        "name": "api_ssl_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_ssl_get_client_unpaid_invoicesResponse": {
+        "name": "api_ssl_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_client_unpaid_invoicesRequest": {
+        "name": "api_webhosting_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_webhosting_get_client_unpaid_invoicesResponse": {
+        "name": "api_webhosting_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_client_unpaid_invoicesRequest": {
+        "name": "api_quickservers_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_quickservers_get_client_unpaid_invoicesResponse": {
+        "name": "api_quickservers_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_client_unpaid_invoicesRequest": {
+        "name": "api_servers_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_servers_get_client_unpaid_invoicesResponse": {
+        "name": "api_servers_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_send_mailRequest": {
+        "name": "api_send_mailRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "subject": {
+                "name": "subject",
+                "type": "string",
+                "description": ""
+            },
+            "body": {
+                "name": "body",
+                "type": "string",
+                "description": ""
+            },
+            "to": {
+                "name": "to",
+                "type": "string",
+                "description": ""
+            },
+            "from": {
+                "name": "from",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_send_mailResponse": {
+        "name": "api_send_mailResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:result_status",
+                "description": ""
+            }
+        }
+    },
+    "api_api_buy_mailRequest": {
+        "name": "api_api_buy_mailRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "coupon": {
+                "name": "coupon",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_api_buy_mailResponse": {
+        "name": "api_api_buy_mailResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:buy_vps_result_status",
                 "description": ""
             }
         }

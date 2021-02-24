@@ -57,6 +57,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -77,7 +78,7 @@ bits|int|
 os|string|
 version|string|
 file|string|
-title|string|
+title|string|Title
 
 
 ### Example Response
@@ -169,13 +170,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				7
+				8.0
 			</td>
 			<td>
-				centos55
+				centos8
 			</td>
 			<td>
-				CentOS 7 64bit 
+				CentOS 8.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -192,13 +193,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				6
+				7.5
 			</td>
 			<td>
-				centos5
+				centos55
 			</td>
 			<td>
-				CentOS 6 64bit 
+				CentOS 7.5 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -215,13 +216,13 @@ title|string|
 				debian
 			</td>
 			<td>
-				8
+				9
 			</td>
 			<td>
 				debian6
 			</td>
 			<td>
-				Debian 8 64bit 
+				Debian 9 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -284,6 +285,29 @@ title|string|
 				ubuntu
 			</td>
 			<td>
+				18.04 Desktop
+			</td>
+			<td>
+				ubuntudesktop
+			</td>
+			<td>
+				Ubuntu 18.04 Desktop 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				2
+			</td>
+			<td>
+				KVM Linux
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
 				16.04
 			</td>
 			<td>
@@ -307,36 +331,13 @@ title|string|
 				ubuntu
 			</td>
 			<td>
-				14.04 Desktop
+				14.04
 			</td>
 			<td>
-				ubuntudesktop
+				ubuntu14
 			</td>
 			<td>
-				Ubuntu 14.04 Desktop 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7 minimal
-			</td>
-			<td>
-				centos-7-x86_64-minimal.tar.gz
-			</td>
-			<td>
-				CentOS 7 minimal 64bit 
+				Ubuntu 14.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -376,243 +377,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				6 minimal
+				7 minimal
 			</td>
 			<td>
-				centos-6-x86_64-minimal.tar.gz
+				centos-7-x86_64-minimal.tar.gz
 			</td>
 			<td>
-				CentOS 6 minimal 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				centos-6-x86_64.tar.gz
-			</td>
-			<td>
-				CentOS 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 devel
-			</td>
-			<td>
-				centos-6-x86_64-devel.tar.gz
-			</td>
-			<td>
-				CentOS 6 devel 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 devel
-			</td>
-			<td>
-				centos-6-x86-devel.tar.gz
-			</td>
-			<td>
-				CentOS 6 devel 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 minimal
-			</td>
-			<td>
-				centos-6-x86-minimal.tar.gz
-			</td>
-			<td>
-				CentOS 6 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				centos-6-x86.tar.gz
-			</td>
-			<td>
-				CentOS 6 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5
-			</td>
-			<td>
-				centos-5-x86_64.tar.gz
-			</td>
-			<td>
-				CentOS 5 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5 devel
-			</td>
-			<td>
-				centos-5-x86_64-devel.tar.gz
-			</td>
-			<td>
-				CentOS 5 devel 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5
-			</td>
-			<td>
-				centos-5-x86.tar.gz
-			</td>
-			<td>
-				CentOS 5 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5 devel
-			</td>
-			<td>
-				centos-5-x86-devel.tar.gz
-			</td>
-			<td>
-				CentOS 5 devel 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7 nginxwordpress
-			</td>
-			<td>
-				centos-7-x86_64-nginxwordpress.tar.gz
-			</td>
-			<td>
-				CentOS 7 nginxwordpress 64bit (http:mirror.trouble-free.netmyadminopenvz)
+				CentOS 7 minimal 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -652,36 +423,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				7 breadbasket
+				7 Webuzo
 			</td>
 			<td>
 				centos-7-x86_64-breadbasket.tar.gz
 			</td>
 			<td>
-				CentOS 7 breadbasket 64bit (http:mirror.trouble-free.netmyadminopenvz)
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 webuzo
-			</td>
-			<td>
-				centos-6-x86_64-webuzo.tar.gz
-			</td>
-			<td>
-				CentOS 6 webuzo 64bit (http:mirror.trouble-free.netmyadminopenvz)
+				CentOS 7 Webuzo 64bit (http:mirror.trouble-free.netmyadminopenvz)
 			</td>
 		</tr>
 		<tr>
@@ -784,52 +532,6 @@ title|string|
 				SSD OpenVZ
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				7.0
-			</td>
-			<td>
-				debian-7.0-x86.tar.gz
-			</td>
-			<td>
-				Debian 7.0 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				7.0 minimal
-			</td>
-			<td>
-				debian-7.0-x86-minimal.tar.gz
-			</td>
-			<td>
-				Debian 7.0 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -912,190 +614,6 @@ title|string|
 			</td>
 			<td>
 				Fedora 20 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				20
-			</td>
-			<td>
-				fedora-20-x86.tar.gz
-			</td>
-			<td>
-				Fedora 20 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				scientific
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				scientific-6-x86_64.tar.gz
-			</td>
-			<td>
-				Scientific 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				scientific
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				scientific-6-x86.tar.gz
-			</td>
-			<td>
-				Scientific 6 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.2
-			</td>
-			<td>
-				suse-13.2-x86_64.tar.gz
-			</td>
-			<td>
-				SuSe 13.2 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1 minimal
-			</td>
-			<td>
-				suse-13.1-x86_64-minimal.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 minimal 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1
-			</td>
-			<td>
-				suse-13.1-x86_64.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1 minimal
-			</td>
-			<td>
-				suse-13.1-x86-minimal.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1
-			</td>
-			<td>
-				suse-13.1-x86.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 32bit 
 			</td>
 		</tr>
 		<tr>
@@ -1221,52 +739,6 @@ title|string|
 				SSD OpenVZ
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				14.04
-			</td>
-			<td>
-				ubuntu-14.04-x86.tar.gz
-			</td>
-			<td>
-				Ubuntu 14.04 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				14.04 minimal
-			</td>
-			<td>
-				ubuntu-14.04-x86-minimal.tar.gz
-			</td>
-			<td>
-				Ubuntu 14.04 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -1313,52 +785,6 @@ title|string|
 				SSD OpenVZ
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				12.04 minimal
-			</td>
-			<td>
-				ubuntu-12.04-x86-minimal.tar.gz
-			</td>
-			<td>
-				Ubuntu 12.04 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				12.04
-			</td>
-			<td>
-				ubuntu-12.04-x86.tar.gz
-			</td>
-			<td>
-				Ubuntu 12.04 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -1372,29 +798,6 @@ title|string|
 			</td>
 			<td>
 				Ubuntu 15.10 minimal 64bit (beta)
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				SSD OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				15.10
-			</td>
-			<td>
-				ubuntu-15.10-x86_64.tar.gz
-			</td>
-			<td>
-				Ubuntu 15.10 64bit (beta)
 			</td>
 		</tr>
 		<tr>
@@ -1434,29 +837,6 @@ title|string|
 				centos
 			</td>
 			<td>
-				7 minimal
-			</td>
-			<td>
-				centos-7-x86_64-minimal.tar.gz
-			</td>
-			<td>
-				CentOS 7 minimal 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
 				7
 			</td>
 			<td>
@@ -1480,243 +860,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				6 minimal
+				7 minimal
 			</td>
 			<td>
-				centos-6-x86_64-minimal.tar.gz
+				centos-7-x86_64-minimal.tar.gz
 			</td>
 			<td>
-				CentOS 6 minimal 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				centos-6-x86_64.tar.gz
-			</td>
-			<td>
-				CentOS 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 devel
-			</td>
-			<td>
-				centos-6-x86_64-devel.tar.gz
-			</td>
-			<td>
-				CentOS 6 devel 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 devel
-			</td>
-			<td>
-				centos-6-x86-devel.tar.gz
-			</td>
-			<td>
-				CentOS 6 devel 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 minimal
-			</td>
-			<td>
-				centos-6-x86-minimal.tar.gz
-			</td>
-			<td>
-				CentOS 6 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				centos-6-x86.tar.gz
-			</td>
-			<td>
-				CentOS 6 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5
-			</td>
-			<td>
-				centos-5-x86_64.tar.gz
-			</td>
-			<td>
-				CentOS 5 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5 devel
-			</td>
-			<td>
-				centos-5-x86_64-devel.tar.gz
-			</td>
-			<td>
-				CentOS 5 devel 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5
-			</td>
-			<td>
-				centos-5-x86.tar.gz
-			</td>
-			<td>
-				CentOS 5 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				5 devel
-			</td>
-			<td>
-				centos-5-x86-devel.tar.gz
-			</td>
-			<td>
-				CentOS 5 devel 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7 nginxwordpress
-			</td>
-			<td>
-				centos-7-x86_64-nginxwordpress.tar.gz
-			</td>
-			<td>
-				CentOS 7 nginxwordpress 64bit (http:mirror.trouble-free.netmyadminopenvz)
+				CentOS 7 minimal 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1756,36 +906,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				7 breadbasket
+				7 Webuzo
 			</td>
 			<td>
 				centos-7-x86_64-breadbasket.tar.gz
 			</td>
 			<td>
-				CentOS 7 breadbasket 64bit (http:mirror.trouble-free.netmyadminopenvz)
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6 webuzo
-			</td>
-			<td>
-				centos-6-x86_64-webuzo.tar.gz
-			</td>
-			<td>
-				CentOS 6 webuzo 64bit (http:mirror.trouble-free.netmyadminopenvz)
+				CentOS 7 Webuzo 64bit (http:mirror.trouble-free.netmyadminopenvz)
 			</td>
 		</tr>
 		<tr>
@@ -1888,52 +1015,6 @@ title|string|
 				OpenVZ
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				7.0
-			</td>
-			<td>
-				debian-7.0-x86.tar.gz
-			</td>
-			<td>
-				Debian 7.0 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				7.0 minimal
-			</td>
-			<td>
-				debian-7.0-x86-minimal.tar.gz
-			</td>
-			<td>
-				Debian 7.0 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -2016,190 +1097,6 @@ title|string|
 			</td>
 			<td>
 				Fedora 20 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				20
-			</td>
-			<td>
-				fedora-20-x86.tar.gz
-			</td>
-			<td>
-				Fedora 20 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				scientific
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				scientific-6-x86_64.tar.gz
-			</td>
-			<td>
-				Scientific 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				scientific
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				scientific-6-x86.tar.gz
-			</td>
-			<td>
-				Scientific 6 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.2
-			</td>
-			<td>
-				suse-13.2-x86_64.tar.gz
-			</td>
-			<td>
-				SuSe 13.2 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1 minimal
-			</td>
-			<td>
-				suse-13.1-x86_64-minimal.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 minimal 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1
-			</td>
-			<td>
-				suse-13.1-x86_64.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1 minimal
-			</td>
-			<td>
-				suse-13.1-x86-minimal.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				suse
-			</td>
-			<td>
-				13.1
-			</td>
-			<td>
-				suse-13.1-x86.tar.gz
-			</td>
-			<td>
-				SuSe 13.1 32bit 
 			</td>
 		</tr>
 		<tr>
@@ -2325,52 +1222,6 @@ title|string|
 				OpenVZ
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				14.04
-			</td>
-			<td>
-				ubuntu-14.04-x86.tar.gz
-			</td>
-			<td>
-				Ubuntu 14.04 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				14.04 minimal
-			</td>
-			<td>
-				ubuntu-14.04-x86-minimal.tar.gz
-			</td>
-			<td>
-				Ubuntu 14.04 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -2417,52 +1268,6 @@ title|string|
 				OpenVZ
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				12.04 minimal
-			</td>
-			<td>
-				ubuntu-12.04-x86-minimal.tar.gz
-			</td>
-			<td>
-				Ubuntu 12.04 minimal 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				12.04
-			</td>
-			<td>
-				ubuntu-12.04-x86.tar.gz
-			</td>
-			<td>
-				Ubuntu 12.04 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -2476,29 +1281,6 @@ title|string|
 			</td>
 			<td>
 				Ubuntu 15.10 minimal 64bit (beta)
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				OpenVZ
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				15.10
-			</td>
-			<td>
-				ubuntu-15.10-x86_64.tar.gz
-			</td>
-			<td>
-				Ubuntu 15.10 64bit (beta)
 			</td>
 		</tr>
 		<tr>
@@ -2535,361 +1317,16 @@ title|string|
 				64
 			</td>
 			<td>
-				alpine
-			</td>
-			<td>
-				3.8
-			</td>
-			<td>
-				alpine/3.8/amd64
-			</td>
-			<td>
-				Alpine 3.8 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.8
-			</td>
-			<td>
-				alpine/3.8/i386
-			</td>
-			<td>
-				Alpine 3.8 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.7
-			</td>
-			<td>
-				alpine/3.7/amd64
-			</td>
-			<td>
-				Alpine 3.7 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.7
-			</td>
-			<td>
-				alpine/3.7/i386
-			</td>
-			<td>
-				Alpine 3.7 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.6
-			</td>
-			<td>
-				alpine/3.6/amd64
-			</td>
-			<td>
-				Alpine 3.6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.6
-			</td>
-			<td>
-				alpine/3.6/i386
-			</td>
-			<td>
-				Alpine 3.6 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.5
-			</td>
-			<td>
-				alpine/3.5/amd64
-			</td>
-			<td>
-				Alpine 3.5 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.5
-			</td>
-			<td>
-				alpine/3.5/i386
-			</td>
-			<td>
-				Alpine 3.5 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.4
-			</td>
-			<td>
-				alpine/3.4/amd64
-			</td>
-			<td>
-				Alpine 3.4 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				3.4
-			</td>
-			<td>
-				alpine/3.4/i386
-			</td>
-			<td>
-				Alpine 3.4 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				edge
-			</td>
-			<td>
-				alpine/edge/amd64
-			</td>
-			<td>
-				Alpine edge 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				alpine
-			</td>
-			<td>
-				edge
-			</td>
-			<td>
-				alpine/edge/i386
-			</td>
-			<td>
-				Alpine edge 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				archlinux
-			</td>
-			<td>
-				current
-			</td>
-			<td>
-				archlinux/current/amd64
-			</td>
-			<td>
-				Archlinux current 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
 				centos
 			</td>
 			<td>
 				7
 			</td>
 			<td>
-				centos/7/amd64
+				centos/7
 			</td>
 			<td>
 				CentOS 7 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				centos/6/amd64
-			</td>
-			<td>
-				CentOS 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				centos/6/i386
-			</td>
-			<td>
-				CentOS 6 32bit 
 			</td>
 		</tr>
 		<tr>
@@ -2909,7 +1346,7 @@ title|string|
 				buster
 			</td>
 			<td>
-				debian/10/amd64
+				debian/10
 			</td>
 			<td>
 				Debian buster 64bit 
@@ -2932,7 +1369,7 @@ title|string|
 				jessie
 			</td>
 			<td>
-				debian/8/amd64
+				debian/8
 			</td>
 			<td>
 				Debian jessie 64bit 
@@ -2955,7 +1392,7 @@ title|string|
 				sid
 			</td>
 			<td>
-				debian/sid/amd64
+				debian/sid
 			</td>
 			<td>
 				Debian sid 64bit 
@@ -2978,7 +1415,7 @@ title|string|
 				stretch
 			</td>
 			<td>
-				debian/9/amd64
+				debian/9
 			</td>
 			<td>
 				Debian stretch 64bit 
@@ -3001,7 +1438,7 @@ title|string|
 				wheezy
 			</td>
 			<td>
-				debian/7/amd64
+				debian/7
 			</td>
 			<td>
 				Debian wheezy 64bit 
@@ -3015,121 +1452,6 @@ title|string|
 				LXC
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				buster
-			</td>
-			<td>
-				debian/10/i386
-			</td>
-			<td>
-				Debian buster 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				jessie
-			</td>
-			<td>
-				debian/8/i386
-			</td>
-			<td>
-				Debian jessie 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				sid
-			</td>
-			<td>
-				debian/sid/i386
-			</td>
-			<td>
-				Debian sid 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				stretch
-			</td>
-			<td>
-				debian/9/i386
-			</td>
-			<td>
-				Debian stretch 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				wheezy
-			</td>
-			<td>
-				debian/7/i386
-			</td>
-			<td>
-				Debian wheezy 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -3139,7 +1461,7 @@ title|string|
 				28
 			</td>
 			<td>
-				fedora/28/amd64
+				fedora/28
 			</td>
 			<td>
 				Fedora 28 64bit 
@@ -3153,29 +1475,6 @@ title|string|
 				LXC
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				28
-			</td>
-			<td>
-				fedora/28/i386
-			</td>
-			<td>
-				Fedora 28 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -3185,7 +1484,7 @@ title|string|
 				27
 			</td>
 			<td>
-				fedora/27/amd64
+				fedora/27
 			</td>
 			<td>
 				Fedora 27 64bit 
@@ -3199,29 +1498,6 @@ title|string|
 				LXC
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				27
-			</td>
-			<td>
-				fedora/27/i386
-			</td>
-			<td>
-				Fedora 27 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
 				64
 			</td>
 			<td>
@@ -3231,79 +1507,10 @@ title|string|
 				26
 			</td>
 			<td>
-				fedora/26/amd64
+				fedora/26
 			</td>
 			<td>
 				Fedora 26 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				26
-			</td>
-			<td>
-				fedora/26/i386
-			</td>
-			<td>
-				Fedora 26 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				gentoo
-			</td>
-			<td>
-				current
-			</td>
-			<td>
-				gentoo/current/amd64
-			</td>
-			<td>
-				Gentoo current 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				gentoo
-			</td>
-			<td>
-				current
-			</td>
-			<td>
-				gentoo/current/i386
-			</td>
-			<td>
-				Gentoo current 32bit 
 			</td>
 		</tr>
 		<tr>
@@ -3323,7 +1530,7 @@ title|string|
 				42.3
 			</td>
 			<td>
-				opensuse/42.3/amd64
+				opensuse/42.3
 			</td>
 			<td>
 				OpenSUSE 42.3 64bit 
@@ -3346,7 +1553,7 @@ title|string|
 				15.0
 			</td>
 			<td>
-				opensuse/15.0/amd64
+				opensuse/15.0
 			</td>
 			<td>
 				OpenSUSE 15.0 64bit 
@@ -3369,7 +1576,7 @@ title|string|
 				7
 			</td>
 			<td>
-				oracle/7/amd64
+				oracle/7
 			</td>
 			<td>
 				Oracle 7 64bit 
@@ -3392,7 +1599,7 @@ title|string|
 				6
 			</td>
 			<td>
-				oracle/6/amd64
+				oracle/6
 			</td>
 			<td>
 				Oracle 6 64bit 
@@ -3406,134 +1613,19 @@ title|string|
 				LXC
 			</td>
 			<td>
-				32
-			</td>
-			<td>
-				oracle
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				oracle/6/i386
-			</td>
-			<td>
-				Oracle 6 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
 				64
 			</td>
 			<td>
-				plamo
+				ubuntu
 			</td>
 			<td>
-				6.x
+				20.04
 			</td>
 			<td>
-				plamo/6.x/amd64
+				ubuntu/focal
 			</td>
 			<td>
-				Plamo 6.x 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				plamo
-			</td>
-			<td>
-				6.x
-			</td>
-			<td>
-				plamo/6.x/i386
-			</td>
-			<td>
-				Plamo 6.x 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				plamo
-			</td>
-			<td>
-				5.x
-			</td>
-			<td>
-				plamo/5.x/amd64
-			</td>
-			<td>
-				Plamo 5.x 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				plamo
-			</td>
-			<td>
-				5.x
-			</td>
-			<td>
-				plamo/5.x/i386
-			</td>
-			<td>
-				Plamo 5.x 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				sabayon
-			</td>
-			<td>
-				current
-			</td>
-			<td>
-				sabayon/current/amd64
-			</td>
-			<td>
-				Sabayon current 64bit 
+				Ubuntu 20.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3550,36 +1642,13 @@ title|string|
 				ubuntu
 			</td>
 			<td>
-				artful
+				18.10
 			</td>
 			<td>
-				ubuntu/17.10/amd64
+				ubuntu/18.10
 			</td>
 			<td>
-				Ubuntu artful 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				bionic
-			</td>
-			<td>
-				ubuntu/18.04/amd64
-			</td>
-			<td>
-				Ubuntu bionic 64bit 
+				Ubuntu 18.10 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3596,36 +1665,13 @@ title|string|
 				ubuntu
 			</td>
 			<td>
-				cosmic
+				18.04
 			</td>
 			<td>
-				ubuntu/18.10/amd64
+				ubuntu/18.04
 			</td>
 			<td>
-				Ubuntu cosmic 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				trusty
-			</td>
-			<td>
-				ubuntu/14.04/amd64
-			</td>
-			<td>
-				Ubuntu trusty 64bit 
+				Ubuntu 18.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3642,128 +1688,13 @@ title|string|
 				ubuntu
 			</td>
 			<td>
-				xenial
+				18.04 WordPress
 			</td>
 			<td>
-				ubuntu/16.04/amd64
+				wordpress
 			</td>
 			<td>
-				Ubuntu xenial 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				artful
-			</td>
-			<td>
-				ubuntu/17.10/i386
-			</td>
-			<td>
-				Ubuntu artful 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				bionic
-			</td>
-			<td>
-				ubuntu/18.04/i386
-			</td>
-			<td>
-				Ubuntu bionic 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				cosmic
-			</td>
-			<td>
-				ubuntu/18.10/i386
-			</td>
-			<td>
-				Ubuntu cosmic 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				trusty
-			</td>
-			<td>
-				ubuntu/14.04/i386
-			</td>
-			<td>
-				Ubuntu trusty 32bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				9
-			</td>
-			<td>
-				LXC
-			</td>
-			<td>
-				32
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				xenial
-			</td>
-			<td>
-				ubuntu/16.04/i386
-			</td>
-			<td>
-				Ubuntu xenial 32bit 
+				Ubuntu 18.04 WordPress 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3777,16 +1708,16 @@ title|string|
 				64
 			</td>
 			<td>
-				ubuntu-core
+				ubuntu
 			</td>
 			<td>
-				16
+				16.04
 			</td>
 			<td>
-				ubuntu-core/16/amd64
+				ubuntu/16.04
 			</td>
 			<td>
-				Ubuntu-Core 16 64bit 
+				Ubuntu 16.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3797,19 +1728,19 @@ title|string|
 				LXC
 			</td>
 			<td>
-				32
+				64
 			</td>
 			<td>
-				ubuntu-core
+				ubuntu
 			</td>
 			<td>
-				16
+				14.04
 			</td>
 			<td>
-				ubuntu-core/16/i386
+				ubuntu/14.04
 			</td>
 			<td>
-				Ubuntu-Core 16 32bit 
+				Ubuntu 14.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3849,6 +1780,29 @@ title|string|
 				windows
 			</td>
 			<td>
+				2019 Standard
+			</td>
+			<td>
+				Windows2019Standard
+			</td>
+			<td>
+				Windows 2019 Standard 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11
+			</td>
+			<td>
+				Hyper-V
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				windows
+			</td>
+			<td>
 				2016 Standard
 			</td>
 			<td>
@@ -3872,13 +1826,36 @@ title|string|
 				windows
 			</td>
 			<td>
-				2012 Standard
+				10 Professional
 			</td>
 			<td>
-				Windows2012Standard
+				Windows10Professional
 			</td>
 			<td>
-				Windows 2012 Standard 64bit 
+				Windows 10 Professional 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				8
+			</td>
+			<td>
+				centos-8-x86_64
+			</td>
+			<td>
+				CentOS 8 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3918,13 +1895,82 @@ title|string|
 				centos
 			</td>
 			<td>
-				6
+				7 Webuzo
 			</td>
 			<td>
-				centos-6-x86_64
+				centos-7-x86_64-breadbasket
 			</td>
 			<td>
-				CentOS 6 64bit 
+				CentOS 7 Webuzo 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				7 cPanel
+			</td>
+			<td>
+				centos-7-x86_64-cpanel
+			</td>
+			<td>
+				CentOS 7 cPanel 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
+				10.0
+			</td>
+			<td>
+				debian-10.0-x86_64
+			</td>
+			<td>
+				Debian 10.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
+				9.0
+			</td>
+			<td>
+				debian-9.0-x86_64
+			</td>
+			<td>
+				Debian 9.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3964,13 +2010,13 @@ title|string|
 				debian
 			</td>
 			<td>
-				8.0 minimal
+				7.0
 			</td>
 			<td>
-				debian-8.0-x86_64-minimal
+				debian-7.0-x86_64
 			</td>
 			<td>
-				Debian 8.0 minimal 64bit 
+				Debian 7.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4010,13 +2056,36 @@ title|string|
 				suse
 			</td>
 			<td>
-				42.2
+				42.3
 			</td>
 			<td>
-				suse-42.2-x86_64
+				suse-42.3-x86_64
 			</td>
 			<td>
-				OpenSUSE 42.2 64bit 
+				OpenSUSE 42.3 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				suse
+			</td>
+			<td>
+				42.1
+			</td>
+			<td>
+				suse-42.1-x86_64
+			</td>
+			<td>
+				OpenSUSE 42.1 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4033,13 +2102,36 @@ title|string|
 				ubuntu
 			</td>
 			<td>
-				16.10
+				20.04
 			</td>
 			<td>
-				ubuntu-16.10-x86_64
+				ubuntu-20.04-x86_64
 			</td>
 			<td>
-				Ubuntu 16.10 64bit 
+				Ubuntu 20.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				18.04
+			</td>
+			<td>
+				ubuntu-18.04-x86_64
+			</td>
+			<td>
+				Ubuntu 18.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4113,6 +2205,29 @@ title|string|
 		</tr>
 		<tr>
 			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				vzlinux
+			</td>
+			<td>
+				6
+			</td>
+			<td>
+				vzlinux-6-x86_64
+			</td>
+			<td>
+				VzLinux 6 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
 				13
 			</td>
 			<td>
@@ -4148,13 +2263,82 @@ title|string|
 				centos
 			</td>
 			<td>
-				6
+				7 Webuzo
 			</td>
 			<td>
-				centos-6-x86_64
+				centos-7-x86_64-breadbasket
 			</td>
 			<td>
-				CentOS 6 64bit 
+				CentOS 7 Webuzo 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				13
+			</td>
+			<td>
+				SSD Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				7 cPanel
+			</td>
+			<td>
+				centos-7-x86_64-cpanel
+			</td>
+			<td>
+				CentOS 7 cPanel 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				13
+			</td>
+			<td>
+				SSD Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
+				10.0
+			</td>
+			<td>
+				debian-10.0-x86_64
+			</td>
+			<td>
+				Debian 10.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				13
+			</td>
+			<td>
+				SSD Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
+				9.0
+			</td>
+			<td>
+				debian-9.0-x86_64
+			</td>
+			<td>
+				Debian 9.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4194,13 +2378,13 @@ title|string|
 				debian
 			</td>
 			<td>
-				8.0 minimal
+				7.0
 			</td>
 			<td>
-				debian-8.0-x86_64-minimal
+				debian-7.0-x86_64
 			</td>
 			<td>
-				Debian 8.0 minimal 64bit 
+				Debian 7.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4240,13 +2424,36 @@ title|string|
 				suse
 			</td>
 			<td>
-				42.2
+				42.3
 			</td>
 			<td>
-				suse-42.2-x86_64
+				suse-42.3-x86_64
 			</td>
 			<td>
-				OpenSUSE 42.2 64bit 
+				OpenSUSE 42.3 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				13
+			</td>
+			<td>
+				SSD Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				suse
+			</td>
+			<td>
+				42.1
+			</td>
+			<td>
+				suse-42.1-x86_64
+			</td>
+			<td>
+				OpenSUSE 42.1 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4263,13 +2470,36 @@ title|string|
 				ubuntu
 			</td>
 			<td>
-				16.10
+				20.04
 			</td>
 			<td>
-				ubuntu-16.10-x86_64
+				ubuntu-20.04-x86_64
 			</td>
 			<td>
-				Ubuntu 16.10 64bit 
+				Ubuntu 20.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				13
+			</td>
+			<td>
+				SSD Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				18.04
+			</td>
+			<td>
+				ubuntu-18.04-x86_64
+			</td>
+			<td>
+				Ubuntu 18.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4339,6 +2569,98 @@ title|string|
 			</td>
 			<td>
 				VzLinux 7 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				13
+			</td>
+			<td>
+				SSD Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				vzlinux
+			</td>
+			<td>
+				6
+			</td>
+			<td>
+				vzlinux-6-x86_64
+			</td>
+			<td>
+				VzLinux 6 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				8.0
+			</td>
+			<td>
+				centos8
+			</td>
+			<td>
+				CentOS 8.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				7.7
+			</td>
+			<td>
+				centos-7.7
+			</td>
+			<td>
+				CentOS 7.7 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				7.6
+			</td>
+			<td>
+				centos-7.6
+			</td>
+			<td>
+				CentOS 7.6 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4358,7 +2680,7 @@ title|string|
 				7.5
 			</td>
 			<td>
-				centos-7.5.qcow2
+				centos-7.5
 			</td>
 			<td>
 				CentOS 7.5 64bit 
@@ -4381,7 +2703,7 @@ title|string|
 				7.4
 			</td>
 			<td>
-				centos-7.4.qcow2
+				centos-7.4
 			</td>
 			<td>
 				CentOS 7.4 64bit 
@@ -4404,7 +2726,7 @@ title|string|
 				7.3
 			</td>
 			<td>
-				centos-7.3.qcow2
+				centos-7.3
 			</td>
 			<td>
 				CentOS 7.3 64bit 
@@ -4427,7 +2749,7 @@ title|string|
 				7.2
 			</td>
 			<td>
-				centos-7.2.qcow2
+				centos-7.2
 			</td>
 			<td>
 				CentOS 7.2 64bit 
@@ -4450,7 +2772,7 @@ title|string|
 				7.1
 			</td>
 			<td>
-				centos-7.1.qcow2
+				centos-7.1
 			</td>
 			<td>
 				CentOS 7.1 64bit 
@@ -4473,7 +2795,7 @@ title|string|
 				7.0
 			</td>
 			<td>
-				centos-7.0.qcow2
+				centos-7.0
 			</td>
 			<td>
 				CentOS 7.0 64bit 
@@ -4493,36 +2815,13 @@ title|string|
 				centos
 			</td>
 			<td>
-				6
+				7 + DirectAdmin
 			</td>
 			<td>
-				centos-6.qcow2
+				da
 			</td>
 			<td>
-				CentOS 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				cirros
-			</td>
-			<td>
-				0.3.1
-			</td>
-			<td>
-				cirros-0.3.1.qcow2
-			</td>
-			<td>
-				CirrOS 0.3.1 64bit 
+				CentOS 7 + DirectAdmin 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4536,16 +2835,16 @@ title|string|
 				64
 			</td>
 			<td>
-				cirros
+				debian
 			</td>
 			<td>
-				0.3.5
+				10
 			</td>
 			<td>
-				cirros-0.3.5.qcow2
+				debian-10
 			</td>
 			<td>
-				CirrOS 0.3.5 64bit 
+				Debian 10 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4565,7 +2864,7 @@ title|string|
 				9
 			</td>
 			<td>
-				debian-9.qcow2
+				debian-9
 			</td>
 			<td>
 				Debian 9 64bit 
@@ -4588,7 +2887,7 @@ title|string|
 				8
 			</td>
 			<td>
-				debian-8.qcow2
+				debian-8
 			</td>
 			<td>
 				Debian 8 64bit 
@@ -4611,7 +2910,7 @@ title|string|
 				7
 			</td>
 			<td>
-				debian-7.qcow2
+				debian-7
 			</td>
 			<td>
 				Debian 7 64bit 
@@ -4634,7 +2933,7 @@ title|string|
 				6
 			</td>
 			<td>
-				debian-6.qcow2
+				debian-6
 			</td>
 			<td>
 				Debian 6 64bit 
@@ -4654,10 +2953,56 @@ title|string|
 				fedora
 			</td>
 			<td>
+				30
+			</td>
+			<td>
+				fedora-30
+			</td>
+			<td>
+				Fedora 30 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				fedora
+			</td>
+			<td>
+				29
+			</td>
+			<td>
+				fedora-29
+			</td>
+			<td>
+				Fedora 29 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				fedora
+			</td>
+			<td>
 				28
 			</td>
 			<td>
-				fedora-28.qcow2
+				fedora-28
 			</td>
 			<td>
 				Fedora 28 64bit 
@@ -4680,7 +3025,7 @@ title|string|
 				27
 			</td>
 			<td>
-				fedora-27.qcow2
+				fedora-27
 			</td>
 			<td>
 				Fedora 27 64bit 
@@ -4703,7 +3048,7 @@ title|string|
 				26
 			</td>
 			<td>
-				fedora-26.qcow2
+				fedora-26
 			</td>
 			<td>
 				Fedora 26 64bit 
@@ -4720,177 +3065,16 @@ title|string|
 				64
 			</td>
 			<td>
-				fedora
+				freebsd
 			</td>
 			<td>
-				25
+				12.1
 			</td>
 			<td>
-				fedora-25.qcow2
+				FreeBSD-12.1-RELEASE-amd64
 			</td>
 			<td>
-				Fedora 25 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				24
-			</td>
-			<td>
-				fedora-24.qcow2
-			</td>
-			<td>
-				Fedora 24 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				23
-			</td>
-			<td>
-				fedora-23.qcow2
-			</td>
-			<td>
-				Fedora 23 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				22
-			</td>
-			<td>
-				fedora-22.qcow2
-			</td>
-			<td>
-				Fedora 22 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				21
-			</td>
-			<td>
-				fedora-21.qcow2
-			</td>
-			<td>
-				Fedora 21 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				20
-			</td>
-			<td>
-				fedora-20.qcow2
-			</td>
-			<td>
-				Fedora 20 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				19
-			</td>
-			<td>
-				fedora-19.qcow2
-			</td>
-			<td>
-				Fedora 19 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				18
-			</td>
-			<td>
-				fedora-18.qcow2
-			</td>
-			<td>
-				Fedora 18 64bit 
+				FreeBSD 12.1 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4910,10 +3094,33 @@ title|string|
 				11.2
 			</td>
 			<td>
-				FreeBSD-11.2-RELEASE-amd64.qcow2
+				FreeBSD-11.2-RELEASE-amd64
 			</td>
 			<td>
 				FreeBSD 11.2 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				freebsd
+			</td>
+			<td>
+				11.03
+			</td>
+			<td>
+				FreeBSD-11.3-RELEASE-amd64
+			</td>
+			<td>
+				FreeBSD 11.03 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -4933,7 +3140,7 @@ title|string|
 				10.4
 			</td>
 			<td>
-				FreeBSD-10.4-RELEASE-amd64.qcow2
+				FreeBSD-10.4-RELEASE-amd64
 			</td>
 			<td>
 				FreeBSD 10.4 64bit 
@@ -4956,7 +3163,7 @@ title|string|
 				42.1
 			</td>
 			<td>
-				opensuse-42.1.qcow2
+				opensuse-42.1
 			</td>
 			<td>
 				OpenSUSE 42.1 64bit 
@@ -4979,7 +3186,7 @@ title|string|
 				13.2
 			</td>
 			<td>
-				opensuse-13.2.qcow2
+				opensuse-13.2
 			</td>
 			<td>
 				OpenSUSE 13.2 64bit 
@@ -5002,7 +3209,7 @@ title|string|
 				13.1
 			</td>
 			<td>
-				opensuse-13.1.qcow2
+				opensuse-13.1
 			</td>
 			<td>
 				OpenSUSE 13.1 64bit 
@@ -5025,7 +3232,7 @@ title|string|
 				tumbleweed
 			</td>
 			<td>
-				opensuse-tumbleweed.qcow2
+				opensuse-tumbleweed
 			</td>
 			<td>
 				OpenSUSE tumbleweed 64bit 
@@ -5042,16 +3249,16 @@ title|string|
 				64
 			</td>
 			<td>
-				scientificlinux
+				ubuntu
 			</td>
 			<td>
-				6
+				20.04
 			</td>
 			<td>
-				scientificlinux-6.qcow2
+				ubuntu-20.04
 			</td>
 			<td>
-				ScientificLinux 6 64bit 
+				Ubuntu 20.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -5071,7 +3278,7 @@ title|string|
 				18.04
 			</td>
 			<td>
-				ubuntu-18.04.qcow2
+				ubuntu-18.04
 			</td>
 			<td>
 				Ubuntu 18.04 64bit 
@@ -5094,7 +3301,7 @@ title|string|
 				16.04
 			</td>
 			<td>
-				ubuntu-16.04.qcow2
+				ubuntu-16.04
 			</td>
 			<td>
 				Ubuntu 16.04 64bit 
@@ -5117,7 +3324,7 @@ title|string|
 				14.04
 			</td>
 			<td>
-				ubuntu-14.04.qcow2
+				ubuntu-14.04
 			</td>
 			<td>
 				Ubuntu 14.04 64bit 
@@ -5137,10 +3344,33 @@ title|string|
 				ubuntu
 			</td>
 			<td>
+				14.04 Desktop
+			</td>
+			<td>
+				ubuntudesktop
+			</td>
+			<td>
+				Ubuntu 14.04 Desktop 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
 				12.04
 			</td>
 			<td>
-				ubuntu-12.04.qcow2
+				ubuntu-12.04
 			</td>
 			<td>
 				Ubuntu 12.04 64bit 
@@ -5163,10 +3393,102 @@ title|string|
 				10.04
 			</td>
 			<td>
-				ubuntu-10.04.qcow2
+				ubuntu-10.04
 			</td>
 			<td>
 				Ubuntu 10.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				15
+			</td>
+			<td>
+				KVMv2 Windows
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				windows
+			</td>
+			<td>
+				2019
+			</td>
+			<td>
+				windows2019
+			</td>
+			<td>
+				Windows 2019 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				15
+			</td>
+			<td>
+				KVMv2 Windows
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				windows
+			</td>
+			<td>
+				2016
+			</td>
+			<td>
+				windowsr2
+			</td>
+			<td>
+				Windows 2016 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				15
+			</td>
+			<td>
+				KVMv2 Windows
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				windows
+			</td>
+			<td>
+				2012
+			</td>
+			<td>
+				windows2012
+			</td>
+			<td>
+				Windows 2012 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				20.04
+			</td>
+			<td>
+				ubuntu-20.04
+			</td>
+			<td>
+				Ubuntu 20.04 64bit 
 			</td>
 		</tr>
 	</tbody>

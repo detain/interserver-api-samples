@@ -1,0 +1,48 @@
+{
+    "name": "api_send_mail",
+    "desc": "Sends An email through one of your mail orders",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
+        },
+        "subject": {
+            "name": "subject",
+            "type": "string",
+            "description": "",
+            "example": ""
+        },
+        "body": {
+            "name": "body",
+            "type": "string",
+            "description": "",
+            "example": ""
+        },
+        "to": {
+            "name": "to",
+            "type": "string",
+            "description": "",
+            "example": ""
+        },
+        "from": {
+            "name": "from",
+            "type": "string",
+            "description": "",
+            "example": ""
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ]
+}

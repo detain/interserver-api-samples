@@ -1,7 +1,7 @@
 <?php
 /** get_hostname  -  (c)2015 detain@interserver.net InterServer Hosting
 * Resolves an IP Address and returns the hostname it points to.
-* @param ip string 
+* @param ip string IP Address
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $ip = $_SERVER['argv'][1];

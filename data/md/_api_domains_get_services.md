@@ -88,6 +88,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -113,11 +114,14 @@ domain_username|string|Username with Registrar
 domain_password|string|Password with Registrar
 domain_type|int|Package ID
 domain_cost|float|Service Cost
+domain_currency|string|
+domain_frequency|int|Billing Interval
+domain_expire_date|string|
+domain_order_date|string|Date the Order was Placed
 domain_custid|int|Customer ID
 domain_status|string|Billing Status
 domain_invoice|int|Invoice ID
 domain_coupon|int|Coupon ID
-domain_extra|string|Additional Domain Information
 domain_firstname|string|First Name
 domain_lastname|string|Last Name
 domain_email|string|Email Address
@@ -131,5 +135,6 @@ domain_country|string|Country
 domain_phone|string|Phone
 domain_fax|string|Fax
 domain_company|string|Company
+domain_extra|string|Additional Domain Information
 
 

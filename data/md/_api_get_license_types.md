@@ -57,6 +57,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -93,50 +94,6 @@ Field|Type|Description
 	<tbody>
 		<tr>
 			<td>
-				5000
-			</td>
-			<td>
-				INTERSERVER-EXTERNAL
-			</td>
-			<td>
-				34.95
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5001
-			</td>
-			<td>
-				INTERSERVER-EXTERNAL-VPS
-			</td>
-			<td>
-				15.95
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5002
-			</td>
-			<td>
-				INTERSERVER-EXTERNAL-VZZO
-			</td>
-			<td>
-				15.95
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5005
-			</td>
-			<td>
-				INTERSERVER-ENKOMP-EXTERNAL-A500
-			</td>
-			<td>
-				55
-			</td>
-		</tr>
-		<tr>
-			<td>
 				5006
 			</td>
 			<td>
@@ -155,39 +112,6 @@ Field|Type|Description
 			</td>
 			<td>
 				2
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5008
-			</td>
-			<td>
-				INTERSERVER-INTERNAL
-			</td>
-			<td>
-				25
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5009
-			</td>
-			<td>
-				INTERSERVER-INTERNAL-VZZO
-			</td>
-			<td>
-				15
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5014
-			</td>
-			<td>
-				INTERSERVER-INTERNAL-VPS
-			</td>
-			<td>
-				15
 			</td>
 		</tr>
 		<tr>
@@ -364,17 +288,6 @@ Field|Type|Description
 			</td>
 			<td>
 				10
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5033
-			</td>
-			<td>
-				CloudLinux Type2 License
-			</td>
-			<td>
-				11.95
 			</td>
 		</tr>
 		<tr>
@@ -594,7 +507,7 @@ Field|Type|Description
 				Plesk v12 Web Admin Edition for Virtual Machines
 			</td>
 			<td>
-				9
+				10
 			</td>
 		</tr>
 		<tr>
@@ -605,7 +518,7 @@ Field|Type|Description
 				Plesk v12 Web Admin Edition for Dedicated Servers
 			</td>
 			<td>
-				9
+				10
 			</td>
 		</tr>
 		<tr>
@@ -616,7 +529,7 @@ Field|Type|Description
 				Plesk v12 Web Pro Edition for Virtual Machines
 			</td>
 			<td>
-				10
+				15
 			</td>
 		</tr>
 		<tr>
@@ -627,7 +540,7 @@ Field|Type|Description
 				Plesk v12 Web Pro Edition for Dedicated Servers
 			</td>
 			<td>
-				15
+				25
 			</td>
 		</tr>
 		<tr>
@@ -638,7 +551,7 @@ Field|Type|Description
 				Plesk v12 Web Host Edition for Virtual Machines
 			</td>
 			<td>
-				15
+				25
 			</td>
 		</tr>
 		<tr>
@@ -649,7 +562,7 @@ Field|Type|Description
 				Plesk v12 Web Host Edition for Dedicated Servers
 			</td>
 			<td>
-				35
+				40
 			</td>
 		</tr>
 		<tr>
@@ -660,7 +573,7 @@ Field|Type|Description
 				Plesk v12 Web ProEdition with CloudLinux for Virtual Machines
 			</td>
 			<td>
-				20
+				25
 			</td>
 		</tr>
 		<tr>
@@ -682,7 +595,7 @@ Field|Type|Description
 				Plesk v12 Web HostEdition with CloudLinux for Virtual Machines
 			</td>
 			<td>
-				25
+				35
 			</td>
 		</tr>
 		<tr>
@@ -693,7 +606,7 @@ Field|Type|Description
 				Plesk v12 Web HostEdition with CloudLinux for Dedicated Servers
 			</td>
 			<td>
-				45
+				50
 			</td>
 		</tr>
 		<tr>
@@ -881,6 +794,1205 @@ Field|Type|Description
 			</td>
 			<td>
 				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10677
+			</td>
+			<td>
+				ImunifyAV+
+			</td>
+			<td>
+				6
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10678
+			</td>
+			<td>
+				Imunify360 single user
+			</td>
+			<td>
+				6
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10679
+			</td>
+			<td>
+				Imunify360 up to 30 users
+			</td>
+			<td>
+				11
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10680
+			</td>
+			<td>
+				Imunify360 up to 250 users
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10681
+			</td>
+			<td>
+				Imunify360 unlimited users
+			</td>
+			<td>
+				20
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10682
+			</td>
+			<td>
+				cPanel Autoscale (Internal)
+			</td>
+			<td>
+				40
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10683
+			</td>
+			<td>
+				cPanel Autoscale (External)
+			</td>
+			<td>
+				39.6
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10684
+			</td>
+			<td>
+				DirectAdmin for RedHat 7.2 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10685
+			</td>
+			<td>
+				DirectAdmin for RedHat 7.3 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10686
+			</td>
+			<td>
+				DirectAdmin for RedHat 8.0 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10687
+			</td>
+			<td>
+				DirectAdmin for RedHat 9.0 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10688
+			</td>
+			<td>
+				DirectAdmin for Fedora 1.x / 2.x VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10689
+			</td>
+			<td>
+				DirectAdmin for Fedora 3 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10690
+			</td>
+			<td>
+				DirectAdmin for Fedora 4 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10691
+			</td>
+			<td>
+				DirectAdmin for Fedora 5 / 6  VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10692
+			</td>
+			<td>
+				DirectAdmin for Fedora 7 / Fedora 8 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10693
+			</td>
+			<td>
+				DirectAdmin for Fedora 9 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10694
+			</td>
+			<td>
+				DirectAdmin for CentOS 3.x VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10695
+			</td>
+			<td>
+				DirectAdmin for CentOS 4.x (all) VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10696
+			</td>
+			<td>
+				DirectAdmin for CentOS 4.4/4.5 (only) VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10697
+			</td>
+			<td>
+				DirectAdmin for CentOS 4.1-4.4 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10698
+			</td>
+			<td>
+				DirectAdmin for CentOS 5 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10699
+			</td>
+			<td>
+				DirectAdmin for CentOS 5 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10700
+			</td>
+			<td>
+				DirectAdmin for CentOS 6 32-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10701
+			</td>
+			<td>
+				DirectAdmin for CentOS 6 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10702
+			</td>
+			<td>
+				DirectAdmin for CentOS 7 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10703
+			</td>
+			<td>
+				DirectAdmin for CentOS 8 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10704
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 4.x VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10705
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 5.x VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10706
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 5.3/5.4 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10707
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 6.x VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10708
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 7.x VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10709
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 7.x 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10710
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 8.x 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10711
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 9.x 32-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10712
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 9.x 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10713
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 11 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10714
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 12 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10715
+			</td>
+			<td>
+				DirectAdmin for Debian 4.0 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10716
+			</td>
+			<td>
+				DirectAdmin for Debian 5.0 VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10717
+			</td>
+			<td>
+				DirectAdmin for Debian 5.0 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10718
+			</td>
+			<td>
+				DirectAdmin for Debian 6.0 32-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10719
+			</td>
+			<td>
+				DirectAdmin for Debian 6.0 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10720
+			</td>
+			<td>
+				DirectAdmin for Debian 7.0 32-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10721
+			</td>
+			<td>
+				DirectAdmin for Debian 7.0 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10722
+			</td>
+			<td>
+				DirectAdmin for Debian 8.0 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10723
+			</td>
+			<td>
+				DirectAdmin for Debian 9 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10724
+			</td>
+			<td>
+				DirectAdmin for Debian 10 64-bit VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10725
+			</td>
+			<td>
+				DirectAdmin for Linux 64-bit static VPS
+			</td>
+			<td>
+				8
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10726
+			</td>
+			<td>
+				DirectAdmin for RedHat 7.2 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10727
+			</td>
+			<td>
+				DirectAdmin for RedHat 7.3 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10728
+			</td>
+			<td>
+				DirectAdmin for RedHat 8.0 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10729
+			</td>
+			<td>
+				DirectAdmin for RedHat 9.0 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10730
+			</td>
+			<td>
+				DirectAdmin for Fedora 1.x / 2.x Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10731
+			</td>
+			<td>
+				DirectAdmin for Fedora 3 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10732
+			</td>
+			<td>
+				DirectAdmin for Fedora 4 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10733
+			</td>
+			<td>
+				DirectAdmin for Fedora 5 / 6  Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10734
+			</td>
+			<td>
+				DirectAdmin for Fedora 7 / Fedora 8 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10735
+			</td>
+			<td>
+				DirectAdmin for Fedora 9 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10736
+			</td>
+			<td>
+				DirectAdmin for CentOS 3.x Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10737
+			</td>
+			<td>
+				DirectAdmin for CentOS 4.x (all) Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10738
+			</td>
+			<td>
+				DirectAdmin for CentOS 4.4/4.5 (only) Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10739
+			</td>
+			<td>
+				DirectAdmin for CentOS 4.1-4.4 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10740
+			</td>
+			<td>
+				DirectAdmin for CentOS 5 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10741
+			</td>
+			<td>
+				DirectAdmin for CentOS 5 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10742
+			</td>
+			<td>
+				DirectAdmin for CentOS 6 32-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10743
+			</td>
+			<td>
+				DirectAdmin for CentOS 6 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10744
+			</td>
+			<td>
+				DirectAdmin for CentOS 7 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10745
+			</td>
+			<td>
+				DirectAdmin for CentOS 8 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10746
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 4.x Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10747
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 5.x Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10748
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 5.3/5.4 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10749
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 6.x Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10750
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 7.x Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10751
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 7.x 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10752
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 8.x 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10753
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 9.x 32-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10754
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 9.x 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10755
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 11 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10756
+			</td>
+			<td>
+				DirectAdmin for FreeBSD 12 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10757
+			</td>
+			<td>
+				DirectAdmin for Debian 4.0 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10758
+			</td>
+			<td>
+				DirectAdmin for Debian 5.0 Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10759
+			</td>
+			<td>
+				DirectAdmin for Debian 5.0 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10760
+			</td>
+			<td>
+				DirectAdmin for Debian 6.0 32-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10761
+			</td>
+			<td>
+				DirectAdmin for Debian 6.0 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10762
+			</td>
+			<td>
+				DirectAdmin for Debian 7.0 32-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10763
+			</td>
+			<td>
+				DirectAdmin for Debian 7.0 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10764
+			</td>
+			<td>
+				DirectAdmin for Debian 8.0 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10765
+			</td>
+			<td>
+				DirectAdmin for Debian 9 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10766
+			</td>
+			<td>
+				DirectAdmin for Debian 10 64-bit Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10767
+			</td>
+			<td>
+				DirectAdmin for Linux 64-bit static Server
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10769
+			</td>
+			<td>
+				cPanel Autoscale Cloud (Internal)
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10770
+			</td>
+			<td>
+				cPanel Autoscale Cloud (External)
+			</td>
+			<td>
+				17.6
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10882
+			</td>
+			<td>
+				Free DirectAdmin for CentOS 6 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10889
+			</td>
+			<td>
+				Free DirectAdmin for CentOS 7 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10896
+			</td>
+			<td>
+				Free DirectAdmin for CentOS 8 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10903
+			</td>
+			<td>
+				Free DirectAdmin for FreeBSD 11 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10910
+			</td>
+			<td>
+				Free DirectAdmin for FreeBSD 12 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10917
+			</td>
+			<td>
+				Free DirectAdmin for Debian 8 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10924
+			</td>
+			<td>
+				Free DirectAdmin for Debian 9 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10931
+			</td>
+			<td>
+				Free DirectAdmin for Debian 10 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10938
+			</td>
+			<td>
+				Free DirectAdmin for Debian 11 64-bit VPS
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10952
+			</td>
+			<td>
+				LiteSpeed Site Owner
+			</td>
+			<td>
+				9
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10959
+			</td>
+			<td>
+				LiteSpeed Site Owner Plus
+			</td>
+			<td>
+				14.5
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10966
+			</td>
+			<td>
+				LiteSpeed Web Host Lite
+			</td>
+			<td>
+				23.5
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10973
+			</td>
+			<td>
+				LiteSpeed Web Host Essential
+			</td>
+			<td>
+				32.5
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10980
+			</td>
+			<td>
+				LiteSpeed Web Host Professional
+			</td>
+			<td>
+				41.5
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10987
+			</td>
+			<td>
+				LiteSpeed Web Host Enterprise
+			</td>
+			<td>
+				58.5
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10994
+			</td>
+			<td>
+				LiteSpeed Web Host Elite
+			</td>
+			<td>
+				83
 			</td>
 		</tr>
 	</tbody>

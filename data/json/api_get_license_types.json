@@ -5,26 +5,6 @@
     "output": "tns:license_type[]",
     "example": [
         {
-            "services_id": 5000,
-            "services_name": "INTERSERVER-EXTERNAL",
-            "services_cost": 34.95
-        },
-        {
-            "services_id": 5001,
-            "services_name": "INTERSERVER-EXTERNAL-VPS",
-            "services_cost": 15.95
-        },
-        {
-            "services_id": 5002,
-            "services_name": "INTERSERVER-EXTERNAL-VZZO",
-            "services_cost": 15.95
-        },
-        {
-            "services_id": 5005,
-            "services_name": "INTERSERVER-ENKOMP-EXTERNAL-A500",
-            "services_cost": 55
-        },
-        {
             "services_id": 5006,
             "services_name": "Softaculous",
             "services_cost": 3
@@ -33,21 +13,6 @@
             "services_id": 5007,
             "services_name": "Softaculous VPS",
             "services_cost": 2
-        },
-        {
-            "services_id": 5008,
-            "services_name": "INTERSERVER-INTERNAL",
-            "services_cost": 25
-        },
-        {
-            "services_id": 5009,
-            "services_name": "INTERSERVER-INTERNAL-VZZO",
-            "services_cost": 15
-        },
-        {
-            "services_id": 5014,
-            "services_name": "INTERSERVER-INTERNAL-VPS",
-            "services_cost": 15
         },
         {
             "services_id": 5017,
@@ -128,11 +93,6 @@
             "services_id": 5032,
             "services_name": "CloudLinux License",
             "services_cost": 10
-        },
-        {
-            "services_id": 5033,
-            "services_name": "CloudLinux Type2 License",
-            "services_cost": 11.95
         },
         {
             "services_id": 5034,
@@ -232,37 +192,37 @@
         {
             "services_id": 5053,
             "services_name": "Plesk v12 Web Admin Edition for Virtual Machines",
-            "services_cost": 9
+            "services_cost": 10
         },
         {
             "services_id": 5054,
             "services_name": "Plesk v12 Web Admin Edition for Dedicated Servers",
-            "services_cost": 9
+            "services_cost": 10
         },
         {
             "services_id": 5057,
             "services_name": "Plesk v12 Web Pro Edition for Virtual Machines",
-            "services_cost": 10
+            "services_cost": 15
         },
         {
             "services_id": 5058,
             "services_name": "Plesk v12 Web Pro Edition for Dedicated Servers",
-            "services_cost": 15
+            "services_cost": 25
         },
         {
             "services_id": 5059,
             "services_name": "Plesk v12 Web Host Edition for Virtual Machines",
-            "services_cost": 15
+            "services_cost": 25
         },
         {
             "services_id": 5060,
             "services_name": "Plesk v12 Web Host Edition for Dedicated Servers",
-            "services_cost": 35
+            "services_cost": 40
         },
         {
             "services_id": 5061,
             "services_name": "Plesk v12 Web ProEdition with CloudLinux for Virtual Machines",
-            "services_cost": 20
+            "services_cost": 25
         },
         {
             "services_id": 5062,
@@ -272,12 +232,12 @@
         {
             "services_id": 5063,
             "services_name": "Plesk v12 Web HostEdition with CloudLinux for Virtual Machines",
-            "services_cost": 25
+            "services_cost": 35
         },
         {
             "services_id": 5064,
             "services_name": "Plesk v12 Web HostEdition with CloudLinux for Dedicated Servers",
-            "services_cost": 45
+            "services_cost": 50
         },
         {
             "services_id": 5066,
@@ -363,6 +323,551 @@
             "services_id": 10614,
             "services_name": "Webuzo VPS",
             "services_cost": 0
+        },
+        {
+            "services_id": 10677,
+            "services_name": "ImunifyAV+",
+            "services_cost": 6
+        },
+        {
+            "services_id": 10678,
+            "services_name": "Imunify360 single user",
+            "services_cost": 6
+        },
+        {
+            "services_id": 10679,
+            "services_name": "Imunify360 up to 30 users",
+            "services_cost": 11
+        },
+        {
+            "services_id": 10680,
+            "services_name": "Imunify360 up to 250 users",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10681,
+            "services_name": "Imunify360 unlimited users",
+            "services_cost": 20
+        },
+        {
+            "services_id": 10682,
+            "services_name": "cPanel Autoscale (Internal)",
+            "services_cost": 40
+        },
+        {
+            "services_id": 10683,
+            "services_name": "cPanel Autoscale (External)",
+            "services_cost": 39.6
+        },
+        {
+            "services_id": 10684,
+            "services_name": "DirectAdmin for RedHat 7.2 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10685,
+            "services_name": "DirectAdmin for RedHat 7.3 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10686,
+            "services_name": "DirectAdmin for RedHat 8.0 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10687,
+            "services_name": "DirectAdmin for RedHat 9.0 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10688,
+            "services_name": "DirectAdmin for Fedora 1.x \/ 2.x VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10689,
+            "services_name": "DirectAdmin for Fedora 3 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10690,
+            "services_name": "DirectAdmin for Fedora 4 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10691,
+            "services_name": "DirectAdmin for Fedora 5 \/ 6  VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10692,
+            "services_name": "DirectAdmin for Fedora 7 \/ Fedora 8 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10693,
+            "services_name": "DirectAdmin for Fedora 9 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10694,
+            "services_name": "DirectAdmin for CentOS 3.x VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10695,
+            "services_name": "DirectAdmin for CentOS 4.x (all) VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10696,
+            "services_name": "DirectAdmin for CentOS 4.4\/4.5 (only) VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10697,
+            "services_name": "DirectAdmin for CentOS 4.1-4.4 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10698,
+            "services_name": "DirectAdmin for CentOS 5 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10699,
+            "services_name": "DirectAdmin for CentOS 5 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10700,
+            "services_name": "DirectAdmin for CentOS 6 32-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10701,
+            "services_name": "DirectAdmin for CentOS 6 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10702,
+            "services_name": "DirectAdmin for CentOS 7 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10703,
+            "services_name": "DirectAdmin for CentOS 8 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10704,
+            "services_name": "DirectAdmin for FreeBSD 4.x VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10705,
+            "services_name": "DirectAdmin for FreeBSD 5.x VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10706,
+            "services_name": "DirectAdmin for FreeBSD 5.3\/5.4 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10707,
+            "services_name": "DirectAdmin for FreeBSD 6.x VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10708,
+            "services_name": "DirectAdmin for FreeBSD 7.x VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10709,
+            "services_name": "DirectAdmin for FreeBSD 7.x 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10710,
+            "services_name": "DirectAdmin for FreeBSD 8.x 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10711,
+            "services_name": "DirectAdmin for FreeBSD 9.x 32-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10712,
+            "services_name": "DirectAdmin for FreeBSD 9.x 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10713,
+            "services_name": "DirectAdmin for FreeBSD 11 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10714,
+            "services_name": "DirectAdmin for FreeBSD 12 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10715,
+            "services_name": "DirectAdmin for Debian 4.0 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10716,
+            "services_name": "DirectAdmin for Debian 5.0 VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10717,
+            "services_name": "DirectAdmin for Debian 5.0 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10718,
+            "services_name": "DirectAdmin for Debian 6.0 32-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10719,
+            "services_name": "DirectAdmin for Debian 6.0 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10720,
+            "services_name": "DirectAdmin for Debian 7.0 32-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10721,
+            "services_name": "DirectAdmin for Debian 7.0 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10722,
+            "services_name": "DirectAdmin for Debian 8.0 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10723,
+            "services_name": "DirectAdmin for Debian 9 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10724,
+            "services_name": "DirectAdmin for Debian 10 64-bit VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10725,
+            "services_name": "DirectAdmin for Linux 64-bit static VPS",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10726,
+            "services_name": "DirectAdmin for RedHat 7.2 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10727,
+            "services_name": "DirectAdmin for RedHat 7.3 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10728,
+            "services_name": "DirectAdmin for RedHat 8.0 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10729,
+            "services_name": "DirectAdmin for RedHat 9.0 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10730,
+            "services_name": "DirectAdmin for Fedora 1.x \/ 2.x Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10731,
+            "services_name": "DirectAdmin for Fedora 3 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10732,
+            "services_name": "DirectAdmin for Fedora 4 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10733,
+            "services_name": "DirectAdmin for Fedora 5 \/ 6  Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10734,
+            "services_name": "DirectAdmin for Fedora 7 \/ Fedora 8 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10735,
+            "services_name": "DirectAdmin for Fedora 9 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10736,
+            "services_name": "DirectAdmin for CentOS 3.x Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10737,
+            "services_name": "DirectAdmin for CentOS 4.x (all) Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10738,
+            "services_name": "DirectAdmin for CentOS 4.4\/4.5 (only) Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10739,
+            "services_name": "DirectAdmin for CentOS 4.1-4.4 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10740,
+            "services_name": "DirectAdmin for CentOS 5 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10741,
+            "services_name": "DirectAdmin for CentOS 5 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10742,
+            "services_name": "DirectAdmin for CentOS 6 32-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10743,
+            "services_name": "DirectAdmin for CentOS 6 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10744,
+            "services_name": "DirectAdmin for CentOS 7 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10745,
+            "services_name": "DirectAdmin for CentOS 8 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10746,
+            "services_name": "DirectAdmin for FreeBSD 4.x Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10747,
+            "services_name": "DirectAdmin for FreeBSD 5.x Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10748,
+            "services_name": "DirectAdmin for FreeBSD 5.3\/5.4 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10749,
+            "services_name": "DirectAdmin for FreeBSD 6.x Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10750,
+            "services_name": "DirectAdmin for FreeBSD 7.x Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10751,
+            "services_name": "DirectAdmin for FreeBSD 7.x 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10752,
+            "services_name": "DirectAdmin for FreeBSD 8.x 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10753,
+            "services_name": "DirectAdmin for FreeBSD 9.x 32-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10754,
+            "services_name": "DirectAdmin for FreeBSD 9.x 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10755,
+            "services_name": "DirectAdmin for FreeBSD 11 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10756,
+            "services_name": "DirectAdmin for FreeBSD 12 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10757,
+            "services_name": "DirectAdmin for Debian 4.0 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10758,
+            "services_name": "DirectAdmin for Debian 5.0 Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10759,
+            "services_name": "DirectAdmin for Debian 5.0 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10760,
+            "services_name": "DirectAdmin for Debian 6.0 32-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10761,
+            "services_name": "DirectAdmin for Debian 6.0 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10762,
+            "services_name": "DirectAdmin for Debian 7.0 32-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10763,
+            "services_name": "DirectAdmin for Debian 7.0 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10764,
+            "services_name": "DirectAdmin for Debian 8.0 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10765,
+            "services_name": "DirectAdmin for Debian 9 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10766,
+            "services_name": "DirectAdmin for Debian 10 64-bit Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10767,
+            "services_name": "DirectAdmin for Linux 64-bit static Server",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10769,
+            "services_name": "cPanel Autoscale Cloud (Internal)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 10770,
+            "services_name": "cPanel Autoscale Cloud (External)",
+            "services_cost": 17.6
+        },
+        {
+            "services_id": 10882,
+            "services_name": "Free DirectAdmin for CentOS 6 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10889,
+            "services_name": "Free DirectAdmin for CentOS 7 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10896,
+            "services_name": "Free DirectAdmin for CentOS 8 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10903,
+            "services_name": "Free DirectAdmin for FreeBSD 11 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10910,
+            "services_name": "Free DirectAdmin for FreeBSD 12 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10917,
+            "services_name": "Free DirectAdmin for Debian 8 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10924,
+            "services_name": "Free DirectAdmin for Debian 9 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10931,
+            "services_name": "Free DirectAdmin for Debian 10 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10938,
+            "services_name": "Free DirectAdmin for Debian 11 64-bit VPS",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10952,
+            "services_name": "LiteSpeed Site Owner",
+            "services_cost": 9
+        },
+        {
+            "services_id": 10959,
+            "services_name": "LiteSpeed Site Owner Plus",
+            "services_cost": 14.5
+        },
+        {
+            "services_id": 10966,
+            "services_name": "LiteSpeed Web Host Lite",
+            "services_cost": 23.5
+        },
+        {
+            "services_id": 10973,
+            "services_name": "LiteSpeed Web Host Essential",
+            "services_cost": 32.5
+        },
+        {
+            "services_id": 10980,
+            "services_name": "LiteSpeed Web Host Professional",
+            "services_cost": 41.5
+        },
+        {
+            "services_id": 10987,
+            "services_name": "LiteSpeed Web Host Enterprise",
+            "services_cost": 58.5
+        },
+        {
+            "services_id": 10994,
+            "services_name": "LiteSpeed Web Host Elite",
+            "services_cost": 83
         }
     ]
 }

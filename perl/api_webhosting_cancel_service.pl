@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 # api_webhosting_cancel_service - (c)2015 by detain@interserver.net for the MyAdmin API
-# This Function Applies to the Webhosting services.
+# This Function Applies to the Web Hosting services.
 # Cancels a service for the passed module matching the passed id.  Canceling a
 # service will also cancel any addons for that service at the same time.
 # @param sid string the *Session ID* you get from the [login](#login) call
@@ -23,7 +23,7 @@ if ($show_help == true) {
 	die '
 api_webhosting_cancel_service
 
-This Function Applies to the Webhosting services.
+This Function Applies to the Web Hosting services.
 # Cancels a service for the passed module matching the passed id.  Canceling a
 # service will also cancel any addons for that service at the same time.
 

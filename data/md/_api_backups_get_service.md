@@ -92,6 +92,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -117,6 +118,9 @@ backup_server|int|ID of Server the Backup Resides on
 backup_username|string|Username on the Backup Server associated with this Order
 backup_type|int|Which type of Backup Server
 backup_cost|float|Service Cost
+backup_currency|string|
+backup_frequency|int|Billing Interval
+backup_order_date|string|Date the Order was Placed
 backup_custid|int|Customer ID
 backup_quota|int|Disk Quota
 backup_ip|string|IP Address of the Backup Server
@@ -125,5 +129,6 @@ backup_invoice|int|Invoice ID
 backup_coupon|int|Coupon ID
 backup_extra|string|Additional Backup Information
 backup_server_status|string|Server-Side status of this website
+backup_comment|string|
 
 

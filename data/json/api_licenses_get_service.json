@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
         },
         "id": {
             "name": "id",
@@ -32,6 +32,21 @@
             "description": "Service Cost"
         },
         {
+            "name": "license_currency",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "license_frequency",
+            "type": "int",
+            "description": "Billing Interval"
+        },
+        {
+            "name": "license_order_date",
+            "type": "string",
+            "description": "Date the Order was Placed"
+        },
+        {
             "name": "license_custid",
             "type": "int",
             "description": "Customer ID"
@@ -47,6 +62,16 @@
             "description": "Billing Status"
         },
         {
+            "name": "license_hostname",
+            "type": "string",
+            "description": "Hostname tied to License"
+        },
+        {
+            "name": "license_key",
+            "type": "string",
+            "description": ""
+        },
+        {
             "name": "license_invoice",
             "type": "int",
             "description": "Invoice ID"
@@ -60,11 +85,6 @@
             "name": "license_extra",
             "type": "string",
             "description": "Addiitional License Information"
-        },
-        {
-            "name": "license_hostname",
-            "type": "string",
-            "description": "Hostname tied to License"
         }
     ]
 }

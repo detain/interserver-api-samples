@@ -2,16 +2,16 @@
     "serverargv": "{$_SERVER[\"argv\"][0]}",
     "name": "api_add_prepay",
     "params": "",
-    "description": "Adds a PrePay into the system under the given module.    PrePays are a credit on\n* your account by prefilling  your account with funds.   These are stored in a\n* PrePay.    PrePay funds can be automatically used as needed or set to only be\n* usable by direct action",
+    "description": "Adds a PrePay into the system under the given module.    PrePays are a credit on\n* your account by prefilling  your account with funds.   These are stored in a\n* PrePay.    PrePay funds can be automatically used as needed or set to only be\n* usable by direct action.  PrePays must be at least $10.00.   A return value of 0\n* means a failure in creation.",
     "function": {
         "name": "api_add_prepay",
-        "desc": "Adds a PrePay into the system under the given module.    PrePays are a credit on your account by prefilling  your account with funds.   These are stored in a PrePay.    PrePay funds can be automatically used as needed or set to only be usable by direct action",
+        "desc": "Adds a PrePay into the system under the given module.    PrePays are a credit on your account by prefilling  your account with funds.   These are stored in a PrePay.    PrePay funds can be automatically used as needed or set to only be usable by direct action.  PrePays must be at least $10.00.   A return value of 0 means a failure in creation.",
         "input": {
             "sid": {
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             },
             "module": {
                 "name": "module",
@@ -39,7 +39,7 @@
                 "description": "the prepay id"
             }
         },
-        "example": 29581
+        "example": 66355
     },
     "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param module string the module the prepay is for. use [get_modules](#get_modules) to get a list of modules\n* @param amount float the dollar amount of prepay total\n* @param automatic_use bool whether or not the prepay will get used automatically by billing system.\n",
     "output_comment": "",

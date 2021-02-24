@@ -5,7 +5,7 @@
 
 **API Function Name: api_webhosting_get_service**
 
-This Function Applies to the Webhosting services.
+This Function Applies to the Web Hosting services.
 * Gets service info for the given ID in the given Module.   An example of this
 * would be in the "vps" module have order id
 
@@ -92,6 +92,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -116,6 +117,9 @@ website_id|int|Server ID
 website_server|int|ID of the host server this website resides on.
 website_type|int|Server Type
 website_cost|float|Service Cost
+website_currency|string|
+website_frequency|int|Billing Interval
+website_order_date|string|Date the Order was Placed
 website_custid|int|Customer ID
 website_ip|string|IP Address
 website_status|string|Billing Status

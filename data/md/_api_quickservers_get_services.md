@@ -88,6 +88,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -112,6 +113,9 @@ qs_server|int|Rapid Deploy Server Host Server ID
 qs_vzid|string|Host-Side Server ID
 qs_type|int|Server Type
 qs_cost|float|Service Cost
+qs_currency|string|
+qs_frequency|int|Billing Interval
+qs_order_date|string|Date the Order was Placed
 qs_custid|int|Customer ID
 qs_ip|string|IP Address
 qs_status|string|Billing Status
@@ -123,5 +127,12 @@ qs_server_status|string|Server Status
 qs_comment|string|Comments
 qs_slices|int|# of Slices
 qs_vnc|string|VNC Address
+qs_vnc_port|int|VNC Port
+qs_rootpass|string|Encrypted Root Password
+qs_mac|string|MAC Address
+qs_os|string|OS or Template
+qs_version|string|Version
+qs_location|int|Location
+qs_platform|string|Platform
 
 

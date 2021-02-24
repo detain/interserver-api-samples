@@ -1,0 +1,64 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_api_buy_mail",
+    "params": "",
+    "description": "Places an email order",
+    "function": {
+        "name": "api_api_buy_mail",
+        "desc": "Places an email order",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
+            },
+            "coupon": {
+                "name": "coupon",
+                "type": "string",
+                "description": "",
+                "example": ""
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "invoices",
+                "type": "string",
+                "description": {
+                    "invoices_id": "ID of the Invoice used for referencing",
+                    "invoices_description": "Description of what the Invoice was for",
+                    "invoices_amount": "Cost of the Invoice",
+                    "invoices_custid": "ID of the Customer this Invoice is for",
+                    "invoices_type": "The Type of Invoice (1 = charge, 10+ are payment types)",
+                    "invoices_date": "Date the Invoice was Created",
+                    "invoices_group": "Billing Group the Invoice falls under, Not currently used",
+                    "invoices_extra": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+                    "invoices_paid": "Whether or not the Invoice was paid (if applicable)",
+                    "invoices_module": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+                    "invoices_due_date": "Date the Invoice is Due",
+                    "invoices_service": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+                    "invoices_deleted": "Deleted Flag"
+                }
+            },
+            {
+                "name": "cost",
+                "type": "float",
+                "description": ""
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param coupon string \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

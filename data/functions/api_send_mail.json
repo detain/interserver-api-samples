@@ -1,0 +1,58 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_send_mail",
+    "params": "",
+    "description": "Sends An email through one of your mail orders",
+    "function": {
+        "name": "api_send_mail",
+        "desc": "Sends An email through one of your mail orders",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
+            },
+            "subject": {
+                "name": "subject",
+                "type": "string",
+                "description": "",
+                "example": ""
+            },
+            "body": {
+                "name": "body",
+                "type": "string",
+                "description": "",
+                "example": ""
+            },
+            "to": {
+                "name": "to",
+                "type": "string",
+                "description": "",
+                "example": ""
+            },
+            "from": {
+                "name": "from",
+                "type": "string",
+                "description": "",
+                "example": ""
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param subject string \n* @param body string \n* @param to string \n* @param from string \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

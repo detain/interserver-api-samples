@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
         }
     },
     "output": [
@@ -34,6 +34,21 @@
             "name": "backup_cost",
             "type": "float",
             "description": "Service Cost"
+        },
+        {
+            "name": "backup_currency",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "backup_frequency",
+            "type": "int",
+            "description": "Billing Interval"
+        },
+        {
+            "name": "backup_order_date",
+            "type": "string",
+            "description": "Date the Order was Placed"
         },
         {
             "name": "backup_custid",
@@ -74,6 +89,11 @@
             "name": "backup_server_status",
             "type": "string",
             "description": "Server-Side status of this website"
+        },
+        {
+            "name": "backup_comment",
+            "type": "string",
+            "description": ""
         }
     ],
     "example": []

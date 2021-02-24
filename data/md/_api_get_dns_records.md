@@ -90,6 +90,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -118,5 +119,8 @@ content|string|
 ttl|int|
 prio|int|
 change_date|int|
+disabled|int|
+ordername|string|
+auth|int|
 
 

@@ -2,16 +2,16 @@
     "serverargv": "{$_SERVER[\"argv\"][0]}",
     "name": "api_webhosting_get_services",
     "params": "",
-    "description": "This Function Applies to the Webhosting services.\n* Gets List of Services",
+    "description": "This Function Applies to the Web Hosting services.\n* Gets List of Services",
     "function": {
         "name": "api_webhosting_get_services",
-        "desc": "This Function Applies to the Webhosting services.\nGets List of Services",
+        "desc": "This Function Applies to the Web Hosting services.\nGets List of Services",
         "input": {
             "sid": {
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             }
         },
         "output": [
@@ -34,6 +34,21 @@
                 "name": "website_cost",
                 "type": "float",
                 "description": "Service Cost"
+            },
+            {
+                "name": "website_currency",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "website_frequency",
+                "type": "int",
+                "description": "Billing Interval"
+            },
+            {
+                "name": "website_order_date",
+                "type": "string",
+                "description": "Date the Order was Placed"
             },
             {
                 "name": "website_custid",

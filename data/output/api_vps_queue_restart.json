@@ -1,4 +1,4 @@
 {
     "status": "error",
-    "status_text": "You cannot send commands to the server until it is active"
+    "status_text": "You cannot send commands to the server until it is active."
 }

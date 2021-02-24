@@ -3,7 +3,7 @@
 # api_webhosting_get_client_unpaid_invoices
 #   scripted in 2015 by detain@interserver.net for the MyAdmin API
 #
-# This Function Applies to the Webhosting services.
+# This Function Applies to the Web Hosting services.
 # This function returns a list of all the unpaid invoices matching the module
 # passed..
 #

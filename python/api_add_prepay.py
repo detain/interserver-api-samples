@@ -6,7 +6,8 @@
 # Adds a PrePay into the system under the given module.    PrePays are a credit on
 # your account by prefilling  your account with funds.   These are stored in a
 # PrePay.    PrePay funds can be automatically used as needed or set to only be
-# usable by direct action
+# usable by direct action.  PrePays must be at least $10.00.   A return value of 0
+# means a failure in creation.
 #
 # @param sid string the *Session ID* you get from the [login](#login) call
 # @param module string the module the prepay is for. use [get_modules](#get_modules) to get a list of modules

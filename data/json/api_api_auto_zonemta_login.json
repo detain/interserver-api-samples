@@ -1,0 +1,30 @@
+{
+    "name": "api_api_auto_zonemta_login",
+    "desc": "Logs into ZoneMTA for the given mail id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ]
+}

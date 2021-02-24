@@ -1,0 +1,36 @@
+{
+    "name": "api_vps_backup_delete",
+    "desc": "deletes one of the vps backups",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "",
+            "example": 10000
+        },
+        "name": {
+            "name": "name",
+            "type": "string",
+            "description": "",
+            "example": ""
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ]
+}

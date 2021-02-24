@@ -88,6 +88,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -108,12 +109,15 @@ This function returns an associative array with the following fields
 Field|Type|Description
 -----|----|-----------
 vps_id|int|VPS Service ID
-vps_server|int|VPS Host Server ID
-vps_vzid|string|VPS Host-Side Server ID
-vps_type|int|Package ID
-vps_cost|float|Service Cost
 vps_custid|int|Customer ID
+vps_server|int|VPS Host Server ID
 vps_ip|string|IP Address of VPS
+vps_vzid|string|VPS Host-Side Server ID
+vps_cost|float|Service Cost
+vps_currency|string|
+vps_type|int|Package ID
+vps_frequency|int|Billing Interval
+vps_order_date|string|Date the Order was Placed
 vps_status|string|Billing Status
 vps_invoice|int|Invoice ID
 vps_coupon|int|Coupon ID
@@ -121,5 +125,16 @@ vps_extra|string|Additional VPS information
 vps_hostname|string|Hostname of the VPS
 vps_server_status|string|Server Status of VPS
 vps_comment|string|Comments about the VPS
+vps_slices|int|VPS # of Slices
+vps_vnc|string|VNC Address for VPS
+vps_vnc_port|int|
+vps_rootpass|string|Encrypted Root Password for VPS
+vps_mac|string|MAC Address of VPS
+vps_os|string|OS or Template of VPS
+vps_version|string|Version of VPS or possibly OS Type
+vps_location|int|Location of the VPS
+vps_platform|string|Platform of the VPS
+vps_diskused|int|Used Disk Space
+vps_diskmax|int|Total Disk Space
 
 

@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             },
             "ip": {
                 "name": "ip",
@@ -22,7 +22,7 @@
             "type": {
                 "name": "type",
                 "type": "int",
-                "description": "the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.",
+                "description": "",
                 "example": ""
             },
             "coupon": {
@@ -61,7 +61,7 @@
             }
         ]
     },
-    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ip string ip address you wish to license some software on\n* @param type int the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.\n* @param coupon string an optional coupon\n* @param use_prepay bool optional, whether or not to use a prepay, if specified as true will return an error if not enough prepay\n",
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ip string ip address you wish to license some software on\n* @param type int \n* @param coupon string an optional coupon\n* @param use_prepay bool optional, whether or not to use a prepay, if specified as true will return an error if not enough prepay\n",
     "output_comment": "",
     "use_sid": true,
     "hide_comment": true

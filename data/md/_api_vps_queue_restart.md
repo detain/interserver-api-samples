@@ -90,6 +90,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -130,7 +131,7 @@ status_text|string|
 		</tr>
 		<tr>
 			<td>status_text</td>
-			<td>You cannot send commands to the server until it is active</td>
+			<td>You cannot send commands to the server until it is active.</td>
 		</tr>
 	</tbody>
 </table>

@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            "example": "b279f6c6741163b9d7783f7aa6da4047"
         }
     },
     "output": [
@@ -34,6 +34,21 @@
             "name": "qs_cost",
             "type": "float",
             "description": "Service Cost"
+        },
+        {
+            "name": "qs_currency",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_frequency",
+            "type": "int",
+            "description": "Billing Interval"
+        },
+        {
+            "name": "qs_order_date",
+            "type": "string",
+            "description": "Date the Order was Placed"
         },
         {
             "name": "qs_custid",
@@ -89,6 +104,41 @@
             "name": "qs_vnc",
             "type": "string",
             "description": "VNC Address"
+        },
+        {
+            "name": "qs_vnc_port",
+            "type": "int",
+            "description": "VNC Port"
+        },
+        {
+            "name": "qs_rootpass",
+            "type": "string",
+            "description": "Encrypted Root Password"
+        },
+        {
+            "name": "qs_mac",
+            "type": "string",
+            "description": "MAC Address"
+        },
+        {
+            "name": "qs_os",
+            "type": "string",
+            "description": "OS or Template"
+        },
+        {
+            "name": "qs_version",
+            "type": "string",
+            "description": "Version"
+        },
+        {
+            "name": "qs_location",
+            "type": "int",
+            "description": "Location"
+        },
+        {
+            "name": "qs_platform",
+            "type": "string",
+            "description": "Platform"
         }
     ],
     "example": []

@@ -92,6 +92,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -117,6 +118,9 @@ ssl_hostname|string|Hostname of the SSL Certificate
 ssl_order_id|string|Order ID with the Certificate Signer
 ssl_type|int|Package ID
 ssl_cost|float|Service Cost
+ssl_currency|string|
+ssl_frequency|int|Billing Interval
+ssl_order_date|string|Date the Order was Placed
 ssl_custid|int|Customer ID
 ssl_status|string|Billing Status
 ssl_invoice|int|Invoice ID
@@ -133,5 +137,11 @@ ssl_zip|string|Zip
 ssl_country|string|Country
 ssl_department|string|Department
 ssl_extra|string|SSL Additional Information
+ssl_approver_email|string|Approver Email
+ssl_csr|string|CSR Certificate Request
+ssl_private_key|string|Private Certificate
+ssl_x509|string|x590 Certificate
+ssl_ca_root|string|CA Root Certificate
+ssl_ca_inter|string|CA Intermedia Cert
 
 

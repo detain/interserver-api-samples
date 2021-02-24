@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             }
         },
         "output": [
@@ -1729,6 +1729,18 @@
                 "prepay_status": "0",
                 "prepay_date": "2018-09-10 03:29:12",
                 "prepay_created": "2018-09-10 03:29:12",
+                "prepay_amount": 10,
+                "prepay_remaining": 0,
+                "prepay_service": 0,
+                "prepay_automatic_use": 1,
+                "prepay_module": "domains"
+            },
+            {
+                "prepay_id": 66355,
+                "prepay_type": 0,
+                "prepay_status": "0",
+                "prepay_date": "2021-02-24 01:38:42",
+                "prepay_created": "2021-02-24 01:38:42",
                 "prepay_amount": 10,
                 "prepay_remaining": 0,
                 "prepay_service": 0,

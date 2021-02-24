@@ -59,6 +59,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -135,7 +136,7 @@ buyable|int|
 				2
 			</td>
 			<td>
-				8
+				6
 			</td>
 			<td>
 				1
@@ -276,6 +277,20 @@ buyable|int|
 			</td>
 			<td>
 				9
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				KVM Storage
+			</td>
+			<td>
+				16
+			</td>
+			<td>
+				6
 			</td>
 			<td>
 				1

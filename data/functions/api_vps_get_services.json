@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+                "example": "b279f6c6741163b9d7783f7aa6da4047"
             }
         },
         "output": [
@@ -21,9 +21,19 @@
                 "description": "VPS Service ID"
             },
             {
+                "name": "vps_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
                 "name": "vps_server",
                 "type": "int",
                 "description": "VPS Host Server ID"
+            },
+            {
+                "name": "vps_ip",
+                "type": "string",
+                "description": "IP Address of VPS"
             },
             {
                 "name": "vps_vzid",
@@ -31,24 +41,29 @@
                 "description": "VPS Host-Side Server ID"
             },
             {
-                "name": "vps_type",
-                "type": "int",
-                "description": "Package ID"
-            },
-            {
                 "name": "vps_cost",
                 "type": "float",
                 "description": "Service Cost"
             },
             {
-                "name": "vps_custid",
-                "type": "int",
-                "description": "Customer ID"
+                "name": "vps_currency",
+                "type": "string",
+                "description": ""
             },
             {
-                "name": "vps_ip",
+                "name": "vps_type",
+                "type": "int",
+                "description": "Package ID"
+            },
+            {
+                "name": "vps_frequency",
+                "type": "int",
+                "description": "Billing Interval"
+            },
+            {
+                "name": "vps_order_date",
                 "type": "string",
-                "description": "IP Address of VPS"
+                "description": "Date the Order was Placed"
             },
             {
                 "name": "vps_status",
@@ -84,6 +99,61 @@
                 "name": "vps_comment",
                 "type": "string",
                 "description": "Comments about the VPS"
+            },
+            {
+                "name": "vps_slices",
+                "type": "int",
+                "description": "VPS # of Slices"
+            },
+            {
+                "name": "vps_vnc",
+                "type": "string",
+                "description": "VNC Address for VPS"
+            },
+            {
+                "name": "vps_vnc_port",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "vps_rootpass",
+                "type": "string",
+                "description": "Encrypted Root Password for VPS"
+            },
+            {
+                "name": "vps_mac",
+                "type": "string",
+                "description": "MAC Address of VPS"
+            },
+            {
+                "name": "vps_os",
+                "type": "string",
+                "description": "OS or Template of VPS"
+            },
+            {
+                "name": "vps_version",
+                "type": "string",
+                "description": "Version of VPS or possibly OS Type"
+            },
+            {
+                "name": "vps_location",
+                "type": "int",
+                "description": "Location of the VPS"
+            },
+            {
+                "name": "vps_platform",
+                "type": "string",
+                "description": "Platform of the VPS"
+            },
+            {
+                "name": "vps_diskused",
+                "type": "int",
+                "description": "Used Disk Space"
+            },
+            {
+                "name": "vps_diskmax",
+                "type": "int",
+                "description": "Total Disk Space"
             }
         ],
         "example": []

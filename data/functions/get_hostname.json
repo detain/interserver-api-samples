@@ -10,7 +10,7 @@
             "ip": {
                 "name": "ip",
                 "type": "string",
-                "description": "",
+                "description": "IP Address",
                 "example": "66.45.228.200"
             }
         },
@@ -23,7 +23,7 @@
         },
         "example": "my.interserver.net"
     },
-    "input_comment": "* @param ip string \n",
+    "input_comment": "* @param ip string IP Address\n",
     "output_comment": "",
     "use_sid": false,
     "hide_comment": true

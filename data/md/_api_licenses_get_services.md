@@ -88,6 +88,7 @@ try  {
 	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
+
 ```
 
 
@@ -110,12 +111,16 @@ Field|Type|Description
 license_id|int|Service ID
 license_type|int|Package ID
 license_cost|float|Service Cost
+license_currency|string|
+license_frequency|int|Billing Interval
+license_order_date|string|Date the Order was Placed
 license_custid|int|Customer ID
 license_ip|string|IP Address tied to License
 license_status|string|Billing Status
+license_hostname|string|Hostname tied to License
+license_key|string|
 license_invoice|int|Invoice ID
 license_coupon|int|Coupon ID
 license_extra|string|Addiitional License Information
-license_hostname|string|Hostname tied to License
 
 
