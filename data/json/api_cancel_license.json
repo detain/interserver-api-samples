@@ -1,0 +1,34 @@
+{
+    "name": "api_cancel_license",
+    "desc": "Cancel a License.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "License Order ID",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "error",
+        "status_text": "Invalid License ID"
+    }
+}

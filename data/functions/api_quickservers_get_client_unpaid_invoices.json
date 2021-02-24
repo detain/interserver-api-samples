@@ -1,0 +1,85 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_quickservers_get_client_unpaid_invoices",
+    "params": "",
+    "description": "This Function Applies to the Rapid Deploy Servers services.\n* This function returns a list of all the unpaid invoices matching the module\n* passed..",
+    "function": {
+        "name": "api_quickservers_get_client_unpaid_invoices",
+        "desc": "This Function Applies to the Rapid Deploy Servers services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            }
+        },
+        "output": [
+            {
+                "name": "invoices_id",
+                "type": "int",
+                "description": "ID of the Invoice used for referencing"
+            },
+            {
+                "name": "invoices_description",
+                "type": "string",
+                "description": "Description of what the Invoice was for"
+            },
+            {
+                "name": "invoices_amount",
+                "type": "float",
+                "description": "Cost of the Invoice"
+            },
+            {
+                "name": "invoices_custid",
+                "type": "int",
+                "description": "ID of the Customer this Invoice is for"
+            },
+            {
+                "name": "invoices_type",
+                "type": "int",
+                "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+            },
+            {
+                "name": "invoices_date",
+                "type": "string",
+                "description": "Date the Invoice was Created"
+            },
+            {
+                "name": "invoices_group",
+                "type": "int",
+                "description": "Billing Group the Invoice falls under, Not currently used"
+            },
+            {
+                "name": "invoices_extra",
+                "type": "int",
+                "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+            },
+            {
+                "name": "invoices_paid",
+                "type": "int",
+                "description": "Wether or not the Invoice was paid (if applicable)"
+            },
+            {
+                "name": "invoices_module",
+                "type": "string",
+                "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+            },
+            {
+                "name": "invoices_due_date",
+                "type": "string",
+                "description": "Date the Invoice is Due"
+            },
+            {
+                "name": "invoices_service",
+                "type": "int",
+                "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+            }
+        ],
+        "example": []
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

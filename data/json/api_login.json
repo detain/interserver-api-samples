@@ -1,0 +1,26 @@
+{
+    "name": "api_login",
+    "desc": "This function creates a session in our system which you will need to pass to most functions for authentication.",
+    "input": {
+        "username": {
+            "name": "username",
+            "type": "string",
+            "description": "the username (email address) you signed up with.",
+            "example": "abuse@interserver.net"
+        },
+        "password": {
+            "name": "password",
+            "type": "string",
+            "description": "the password you use to login to the web account, or alternatively the API key.",
+            "example": "test"
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "string",
+            "description": ""
+        }
+    },
+    "example": "71048a720e78b0ee9256e9a4b193944e"
+}

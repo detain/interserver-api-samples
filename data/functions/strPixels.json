@@ -1,0 +1,30 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "strPixels",
+    "params": "",
+    "description": "This function uses the array below to calculate the pixel width of a string of\n* characters. The widths of each character are based on a 12px Helvetica font. \n* Kerning is not taken into account so RESULTS ARE APPROXIMATE.  The purpose is to\n* return a relative size to help in formatting. For example, strPixels('I like\n* cake') == 54    strPixels('I LIKE CAKE') == 67",
+    "function": {
+        "name": "strPixels",
+        "desc": "This function uses the array below to calculate the pixel width of a string of characters. The widths of each character are based on a 12px Helvetica font.  Kerning is not taken into account so RESULTS ARE APPROXIMATE.  The purpose is to return a relative size to help in formatting. For example, strPixels('I like cake') == 54    strPixels('I LIKE CAKE') == 67",
+        "input": {
+            "string": {
+                "name": "string",
+                "type": "string",
+                "description": "characters to measure size",
+                "example": "Hello There"
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "int",
+                "description": "size in pixels."
+            }
+        },
+        "example": 64
+    },
+    "input_comment": "* @param string string characters to measure size\n",
+    "output_comment": "",
+    "use_sid": false,
+    "hide_comment": true
+}

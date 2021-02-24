@@ -1,0 +1,218 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_api_validate_buy_vps",
+    "params": "",
+    "description": "Checks if the parameters for your order pass validation and let you know if\n* there are any errors. It will also give you information on the pricing\n* breakdown.",
+    "function": {
+        "name": "api_api_validate_buy_vps",
+        "desc": "Checks if the parameters for your order pass validation and let you know if there are any errors. It will also give you information on the pricing breakdown.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "os": {
+                "name": "os",
+                "type": "string",
+                "description": "file field from [get_vps_templates](#get_vps_templates)",
+                "example": "ubuntu-15.04-x86_64.tar.gz"
+            },
+            "slices": {
+                "name": "slices",
+                "type": "int",
+                "description": "1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)",
+                "example": 1
+            },
+            "platform": {
+                "name": "platform",
+                "type": "string",
+                "description": "platform field from the [get_vps_platforms_array](#get_vps_platforms_array)",
+                "example": "openvz"
+            },
+            "controlpanel": {
+                "name": "controlpanel",
+                "type": "string",
+                "description": "none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only available with CentOS",
+                "example": "none"
+            },
+            "period": {
+                "name": "period",
+                "type": "int",
+                "description": "1-36, How frequently to be billed in months. Some discounts as given based on the period",
+                "example": 1
+            },
+            "location": {
+                "name": "location",
+                "type": "int",
+                "description": "id field from the [get_vps_locations_array](#get_vps_locations_array)",
+                "example": 1
+            },
+            "version": {
+                "name": "version",
+                "type": "string",
+                "description": "os field from [get_vps_templates](#get_vps_templates)",
+                "example": "ubuntu"
+            },
+            "hostname": {
+                "name": "hostname",
+                "type": "string",
+                "description": "Desired Hostname for the VPS",
+                "example": "myserver.mydomain.com"
+            },
+            "coupon": {
+                "name": "coupon",
+                "type": "string",
+                "description": "Optional Coupon to pass",
+                "example": ""
+            },
+            "rootpass": {
+                "name": "rootpass",
+                "type": "string",
+                "description": "Desired Root Password (unused for windows, send a blank string)",
+                "example": "sampleP4ssw0rd"
+            }
+        },
+        "output": [
+            {
+                "name": "coupon_code",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "service_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "slice_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "service_type",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "repeat_slice_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "original_slice_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "original_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "repeat_service_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "monthly_service_cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "os",
+                "type": "string",
+                "description": "file field from [get_vps_templates](#get_vps_templates)"
+            },
+            {
+                "name": "slices",
+                "type": "int",
+                "description": "1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)"
+            },
+            {
+                "name": "platform",
+                "type": "string",
+                "description": "platform field from the [get_vps_platforms_array](#get_vps_platforms_array)"
+            },
+            {
+                "name": "controlpanel",
+                "type": "string",
+                "description": "none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only available with CentOS"
+            },
+            {
+                "name": "period",
+                "type": "int",
+                "description": "1-36, How frequently to be billed in months. Some discounts as given based on the period"
+            },
+            {
+                "name": "location",
+                "type": "int",
+                "description": "id field from the [get_vps_locations_array](#get_vps_locations_array)"
+            },
+            {
+                "name": "version",
+                "type": "string",
+                "description": "os field from [get_vps_templates](#get_vps_templates)"
+            },
+            {
+                "name": "hostname",
+                "type": "string",
+                "description": "Desired Hostname for the VPS"
+            },
+            {
+                "name": "coupon",
+                "type": "string",
+                "description": "Optional Coupon to pass"
+            },
+            {
+                "name": "rootpass",
+                "type": "string",
+                "description": "Desired Root Password (unused for windows, send a blank string)"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            }
+        ],
+        "example": {
+            "coupon_code": 0,
+            "service_cost": 6,
+            "slice_cost": 6,
+            "service_type": 31,
+            "repeat_slice_cost": 6,
+            "original_slice_cost": 6,
+            "original_cost": 6,
+            "repeat_service_cost": 6,
+            "monthly_service_cost": 6,
+            "custid": 160884,
+            "os": "ubuntu-15.04-x86_64.tar.gz",
+            "slices": 1,
+            "platform": "openvz",
+            "controlpanel": "none",
+            "period": 1,
+            "location": 1,
+            "version": "ubuntu",
+            "hostname": "myserver.mydomain.com",
+            "coupon": "",
+            "rootpass": "sampleP4ssw0rd",
+            "status_text": "Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character and autogenerated password filled in it.",
+            "status": "error"
+        }
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param os string file field from [get_vps_templates](#get_vps_templates)\n* @param slices int 1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)\n* @param platform string platform field from the [get_vps_platforms_array](#get_vps_platforms_array)\n* @param controlpanel string none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only available with CentOS\n* @param period int 1-36, How frequently to be billed in months. Some discounts as given based on the period\n* @param location int id field from the [get_vps_locations_array](#get_vps_locations_array)\n* @param version string os field from [get_vps_templates](#get_vps_templates)\n* @param hostname string Desired Hostname for the VPS\n* @param coupon string Optional Coupon to pass\n* @param rootpass string Desired Root Password (unused for windows, send a blank string)\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

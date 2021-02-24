@@ -1,0 +1,135 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_ssl_get_service",
+    "params": "",
+    "description": "This Function Applies to the SSL Certificates services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+    "function": {
+        "name": "api_ssl_get_service",
+        "desc": "This Function Applies to the SSL Certificates services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "",
+                "example": 10000
+            }
+        },
+        "output": [
+            {
+                "name": "ssl_id",
+                "type": "int",
+                "description": "Service ID"
+            },
+            {
+                "name": "ssl_hostname",
+                "type": "string",
+                "description": "Hostname of the SSL Certificate"
+            },
+            {
+                "name": "ssl_order_id",
+                "type": "string",
+                "description": "Order ID with the Certificate Signer"
+            },
+            {
+                "name": "ssl_type",
+                "type": "int",
+                "description": "Package ID"
+            },
+            {
+                "name": "ssl_cost",
+                "type": "float",
+                "description": "Service Cost"
+            },
+            {
+                "name": "ssl_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "ssl_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "ssl_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "ssl_coupon",
+                "type": "int",
+                "description": "Coupon ID"
+            },
+            {
+                "name": "ssl_firstname",
+                "type": "string",
+                "description": "First Name"
+            },
+            {
+                "name": "ssl_lastname",
+                "type": "string",
+                "description": "Last Name"
+            },
+            {
+                "name": "ssl_phone",
+                "type": "string",
+                "description": "Phone Number"
+            },
+            {
+                "name": "ssl_email",
+                "type": "string",
+                "description": "Email Address"
+            },
+            {
+                "name": "ssl_company",
+                "type": "string",
+                "description": "Company"
+            },
+            {
+                "name": "ssl_address",
+                "type": "string",
+                "description": "Address"
+            },
+            {
+                "name": "ssl_city",
+                "type": "string",
+                "description": "City"
+            },
+            {
+                "name": "ssl_state",
+                "type": "string",
+                "description": "State"
+            },
+            {
+                "name": "ssl_zip",
+                "type": "string",
+                "description": "Zip"
+            },
+            {
+                "name": "ssl_country",
+                "type": "string",
+                "description": "Country"
+            },
+            {
+                "name": "ssl_department",
+                "type": "string",
+                "description": "Department"
+            },
+            {
+                "name": "ssl_extra",
+                "type": "string",
+                "description": "SSL Additional Information"
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

@@ -1,0 +1,80 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_licenses_get_service",
+    "params": "",
+    "description": "This Function Applies to the Licensing services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+    "function": {
+        "name": "api_licenses_get_service",
+        "desc": "This Function Applies to the Licensing services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "",
+                "example": 10000
+            }
+        },
+        "output": [
+            {
+                "name": "license_id",
+                "type": "int",
+                "description": "Service ID"
+            },
+            {
+                "name": "license_type",
+                "type": "int",
+                "description": "Package ID"
+            },
+            {
+                "name": "license_cost",
+                "type": "float",
+                "description": "Service Cost"
+            },
+            {
+                "name": "license_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "license_ip",
+                "type": "string",
+                "description": "IP Address tied to License"
+            },
+            {
+                "name": "license_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "license_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "license_coupon",
+                "type": "int",
+                "description": "Coupon ID"
+            },
+            {
+                "name": "license_extra",
+                "type": "string",
+                "description": "Addiitional License Information"
+            },
+            {
+                "name": "license_hostname",
+                "type": "string",
+                "description": "Hostname tied to License"
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

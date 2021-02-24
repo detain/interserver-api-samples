@@ -1,0 +1,34 @@
+{
+    "name": "api_get_prepay_remaining",
+    "desc": "Get the PrePay amount available for a given module.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "module": {
+            "name": "module",
+            "type": "string",
+            "description": "the module you want to check your prepay amounts on",
+            "example": "domains"
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "ok",
+        "status_text": "0"
+    }
+}

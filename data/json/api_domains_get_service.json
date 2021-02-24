@@ -1,0 +1,140 @@
+{
+    "name": "api_domains_get_service",
+    "desc": "This Function Applies to the Domain Registrations services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "domain_id",
+            "type": "int",
+            "description": "Service ID"
+        },
+        {
+            "name": "domain_hostname",
+            "type": "string",
+            "description": "Domain Name"
+        },
+        {
+            "name": "domain_username",
+            "type": "string",
+            "description": "Username with Registrar"
+        },
+        {
+            "name": "domain_password",
+            "type": "string",
+            "description": "Password with Registrar"
+        },
+        {
+            "name": "domain_type",
+            "type": "int",
+            "description": "Package ID"
+        },
+        {
+            "name": "domain_cost",
+            "type": "float",
+            "description": "Service Cost"
+        },
+        {
+            "name": "domain_custid",
+            "type": "int",
+            "description": "Customer ID"
+        },
+        {
+            "name": "domain_status",
+            "type": "string",
+            "description": "Billing Status"
+        },
+        {
+            "name": "domain_invoice",
+            "type": "int",
+            "description": "Invoice ID"
+        },
+        {
+            "name": "domain_coupon",
+            "type": "int",
+            "description": "Coupon ID"
+        },
+        {
+            "name": "domain_extra",
+            "type": "string",
+            "description": "Additional Domain Information"
+        },
+        {
+            "name": "domain_firstname",
+            "type": "string",
+            "description": "First Name"
+        },
+        {
+            "name": "domain_lastname",
+            "type": "string",
+            "description": "Last Name"
+        },
+        {
+            "name": "domain_email",
+            "type": "string",
+            "description": "Email Address"
+        },
+        {
+            "name": "domain_address",
+            "type": "string",
+            "description": "Address"
+        },
+        {
+            "name": "domain_address2",
+            "type": "string",
+            "description": "Address (line 2)"
+        },
+        {
+            "name": "domain_address3",
+            "type": "string",
+            "description": "Address (line 3)"
+        },
+        {
+            "name": "domain_city",
+            "type": "string",
+            "description": "City"
+        },
+        {
+            "name": "domain_state",
+            "type": "string",
+            "description": "State"
+        },
+        {
+            "name": "domain_zip",
+            "type": "string",
+            "description": "Zip"
+        },
+        {
+            "name": "domain_country",
+            "type": "string",
+            "description": "Country"
+        },
+        {
+            "name": "domain_phone",
+            "type": "string",
+            "description": "Phone"
+        },
+        {
+            "name": "domain_fax",
+            "type": "string",
+            "description": "Fax"
+        },
+        {
+            "name": "domain_company",
+            "type": "string",
+            "description": "Company"
+        }
+    ]
+}

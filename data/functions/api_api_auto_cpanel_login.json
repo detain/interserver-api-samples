@@ -1,0 +1,44 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_api_auto_cpanel_login",
+    "params": "",
+    "description": "Logs into cpanel for the given website id and returns a unique logged-in url. \n* The status will be \"ok\" if successful, or \"error\" if there was any problems\n* status_text will contain a description of the problem if any.",
+    "function": {
+        "name": "api_api_auto_cpanel_login",
+        "desc": "Logs into cpanel for the given website id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "id of website",
+                "example": 10000
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            }
+        ],
+        "example": {
+            "status": "error",
+            "status_text": "Invalid Website Passed"
+        }
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int id of website\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

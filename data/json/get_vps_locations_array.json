@@ -1,0 +1,27 @@
+{
+    "name": "get_vps_locations_array",
+    "desc": "Use this function to get a list of the Locations available for ordering. The id field in the return value is also needed to pass to the buy_vps functions.",
+    "input": [],
+    "output": [
+        {
+            "name": "id",
+            "type": "int",
+            "description": "ID of the Coupon"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": "Country Name in all Capitols"
+        }
+    ],
+    "example": [
+        {
+            "id": 1,
+            "name": "Secaucus, NJ"
+        },
+        {
+            "id": 2,
+            "name": "Los Angeles, CA"
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "name": "api_openTicket",
+    "desc": "This command creates a new ticket in our system.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "user_email": {
+            "name": "user_email",
+            "type": "string",
+            "description": "client email address",
+            "example": "me@somedomain.com"
+        },
+        "user_ip": {
+            "name": "user_ip",
+            "type": "string",
+            "description": "client ip address",
+            "example": "192.168.1.1"
+        },
+        "subject": {
+            "name": "subject",
+            "type": "string",
+            "description": "subject of the ticket",
+            "example": "Test Ticket subject"
+        },
+        "product": {
+            "name": "product",
+            "type": "string",
+            "description": "the product\/service if any this is in reference to.",
+            "example": ""
+        },
+        "body": {
+            "name": "body",
+            "type": "string",
+            "description": "full content\/description for the ticket",
+            "example": "This is a sample ticket body"
+        },
+        "box_auth_value": {
+            "name": "box_auth_value",
+            "type": "string",
+            "description": "encryption string?",
+            "example": ""
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ticket_reference_id",
+            "type": "int",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "Failed",
+        "status_text": "Invalid Email Address - Does not match your account email!",
+        "ticket_reference_id": -1
+    }
+}

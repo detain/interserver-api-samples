@@ -1,0 +1,30 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "get_hostname",
+    "params": "",
+    "description": "Resolves an IP Address and returns the hostname it points to.",
+    "function": {
+        "name": "get_hostname",
+        "desc": "Resolves an IP Address and returns the hostname it points to.",
+        "input": {
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": "",
+                "example": "66.45.228.200"
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": ""
+            }
+        },
+        "example": "my.interserver.net"
+    },
+    "input_comment": "* @param ip string \n",
+    "output_comment": "",
+    "use_sid": false,
+    "hide_comment": true
+}

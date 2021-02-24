@@ -1,0 +1,65 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_get_dns_domain",
+    "params": "",
+    "description": "Gets the DNS entry for a given Domain ID",
+    "function": {
+        "name": "api_get_dns_domain",
+        "desc": "Gets the DNS entry for a given Domain ID",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "domain_id": {
+                "name": "domain_id",
+                "type": "int",
+                "description": "The ID of the domain in question.",
+                "example": 1000
+            }
+        },
+        "output": [
+            {
+                "name": "id",
+                "type": "int",
+                "description": "ID of the Coupon"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "description": "Country Name in all Capitols"
+            },
+            {
+                "name": "master",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "last_check",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "type",
+                "type": "string",
+                "description": "Coupon Type, 1: Percentage Off   2: Fixed Amount Off  3: Specified Sale Price"
+            },
+            {
+                "name": "notified_serial",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "account",
+                "type": "string",
+                "description": ""
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param domain_id int The ID of the domain in question.\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

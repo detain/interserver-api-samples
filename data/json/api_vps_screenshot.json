@@ -1,0 +1,52 @@
+{
+    "name": "api_vps_screenshot",
+    "desc": "This command returns a link to an animated screenshot of your VPS.   Only works currently with KVM VPS servers",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "false to link to the image itself , otherwise a url",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "url",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "link",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "js",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "error",
+        "status_text": "Your VPS has no screenshots currently.",
+        "url": "",
+        "link": "",
+        "js": ""
+    }
+}

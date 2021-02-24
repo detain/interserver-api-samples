@@ -1,0 +1,18 @@
+{
+    "perl": {
+        "ext": "pl",
+        "comment": "#"
+    },
+    "python": {
+        "ext": "py",
+        "comment": "#"
+    },
+    "ruby": {
+        "ext": "rb",
+        "comment": "#"
+    },
+    "php": {
+        "ext": "php",
+        "comment": "*"
+    }
+}

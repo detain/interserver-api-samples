@@ -1,0 +1,32 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "get_modules",
+    "params": "",
+    "description": "Returns a list of all the modules available.",
+    "function": {
+        "name": "get_modules",
+        "desc": "Returns a list of all the modules available.",
+        "input": [],
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "array",
+                "description": ""
+            }
+        },
+        "example": [
+            "domains",
+            "vps",
+            "backups",
+            "licenses",
+            "ssl",
+            "webhosting",
+            "quickservers",
+            "servers"
+        ]
+    },
+    "input_comment": "",
+    "output_comment": "",
+    "use_sid": false,
+    "hide_comment": true
+}

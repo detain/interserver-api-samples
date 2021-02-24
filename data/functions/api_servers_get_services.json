@@ -1,0 +1,235 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_servers_get_services",
+    "params": "",
+    "description": "This Function Applies to the Dedicated Servers services.\n* Gets List of Services",
+    "function": {
+        "name": "api_servers_get_services",
+        "desc": "This Function Applies to the Dedicated Servers services.\nGets List of Services",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            }
+        },
+        "output": [
+            {
+                "name": "server_id",
+                "type": "int",
+                "description": "ID Of the Server Order"
+            },
+            {
+                "name": "server_hostname",
+                "type": "string",
+                "description": "Hostname"
+            },
+            {
+                "name": "server_custid",
+                "type": "int",
+                "description": "Customers ID"
+            },
+            {
+                "name": "server_frequency",
+                "type": "int",
+                "description": "Billing Interval"
+            },
+            {
+                "name": "server_type",
+                "type": "int",
+                "description": "Service Type"
+            },
+            {
+                "name": "server_cost",
+                "type": "float",
+                "description": "Service Cost"
+            },
+            {
+                "name": "server_order_date",
+                "type": "string",
+                "description": "Date the Order was Placed"
+            },
+            {
+                "name": "server_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "server_coupon",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "server_ccname",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_exp",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_bankname",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_cc",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_root",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_dedicated_tag",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_custom_tag",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_initial_bill",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_hardware",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_ips",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_monthly_bill",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_setup",
+                "type": "int",
+                "description": "Is Server Setup"
+            },
+            {
+                "name": "server_discount",
+                "type": "float",
+                "description": "Discount Amount"
+            },
+            {
+                "name": "server_rep",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_date",
+                "type": "float",
+                "description": "Order Date"
+            },
+            {
+                "name": "server_total_cost",
+                "type": "float",
+                "description": "Total Cost"
+            },
+            {
+                "name": "server_referrer",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_location",
+                "type": "string",
+                "description": "Server Location ID"
+            },
+            {
+                "name": "server_fraud",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "server_mb_package_id",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "server_hardware_ordered",
+                "type": "int",
+                "description": "Hardware Ordered"
+            },
+            {
+                "name": "server_billed",
+                "type": "int",
+                "description": "Server is Billed"
+            },
+            {
+                "name": "server_welcome_email",
+                "type": "int",
+                "description": "Welcome Email Sent"
+            },
+            {
+                "name": "server_dedicated_cpu",
+                "type": "int",
+                "description": "Processor"
+            },
+            {
+                "name": "server_dedicated_memory",
+                "type": "int",
+                "description": "System Memory"
+            },
+            {
+                "name": "server_dedicated_hd1",
+                "type": "int",
+                "description": "Primary Hard Drive"
+            },
+            {
+                "name": "server_dedicated_hd2",
+                "type": "int",
+                "description": "Secondary Hard Drive"
+            },
+            {
+                "name": "server_dedicated_bandwidth",
+                "type": "int",
+                "description": "Bandwidth Allowments"
+            },
+            {
+                "name": "server_dedicated_ips",
+                "type": "int",
+                "description": "IP Block Size"
+            },
+            {
+                "name": "server_dedicated_os",
+                "type": "int",
+                "description": "Operating System"
+            },
+            {
+                "name": "server_dedicated_cp",
+                "type": "int",
+                "description": "Control Panel"
+            },
+            {
+                "name": "server_dedicated_raid",
+                "type": "string",
+                "description": "RAID Storage"
+            }
+        ],
+        "example": []
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

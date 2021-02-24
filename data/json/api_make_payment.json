@@ -1,0 +1,40 @@
+{
+    "name": "api_make_payment",
+    "desc": "Makes a payment for an invoice on a module.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "module": {
+            "name": "module",
+            "type": "string",
+            "description": "the module of the service being paid on",
+            "example": "domains"
+        },
+        "invoice": {
+            "name": "invoice",
+            "type": "int",
+            "description": "the invoice id you want to make a payment on",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "error",
+        "status_text": "Invalid Invoice Number Passed or missing Module information."
+    }
+}

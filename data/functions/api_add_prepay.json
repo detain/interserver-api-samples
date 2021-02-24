@@ -1,0 +1,48 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_add_prepay",
+    "params": "",
+    "description": "Adds a PrePay into the system under the given module.    PrePays are a credit on\n* your account by prefilling  your account with funds.   These are stored in a\n* PrePay.    PrePay funds can be automatically used as needed or set to only be\n* usable by direct action",
+    "function": {
+        "name": "api_add_prepay",
+        "desc": "Adds a PrePay into the system under the given module.    PrePays are a credit on your account by prefilling  your account with funds.   These are stored in a PrePay.    PrePay funds can be automatically used as needed or set to only be usable by direct action",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "module": {
+                "name": "module",
+                "type": "string",
+                "description": "the module the prepay is for. use [get_modules](#get_modules) to get a list of modules",
+                "example": "domains"
+            },
+            "amount": {
+                "name": "amount",
+                "type": "float",
+                "description": "the dollar amount of prepay total",
+                "example": 10
+            },
+            "automatic_use": {
+                "name": "automatic_use",
+                "type": "bool",
+                "description": "whether or not the prepay will get used automatically by billing system.",
+                "example": true
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "int",
+                "description": "the prepay id"
+            }
+        },
+        "example": 29581
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param module string the module the prepay is for. use [get_modules](#get_modules) to get a list of modules\n* @param amount float the dollar amount of prepay total\n* @param automatic_use bool whether or not the prepay will get used automatically by billing system.\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

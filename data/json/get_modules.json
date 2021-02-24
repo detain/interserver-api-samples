@@ -1,0 +1,22 @@
+{
+    "name": "get_modules",
+    "desc": "Returns a list of all the modules available.",
+    "input": [],
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "array",
+            "description": ""
+        }
+    },
+    "example": [
+        "domains",
+        "vps",
+        "backups",
+        "licenses",
+        "ssl",
+        "webhosting",
+        "quickservers",
+        "servers"
+    ]
+}

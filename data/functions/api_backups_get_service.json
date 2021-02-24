@@ -1,0 +1,95 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_backups_get_service",
+    "params": "",
+    "description": "This Function Applies to the Backup Services services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+    "function": {
+        "name": "api_backups_get_service",
+        "desc": "This Function Applies to the Backup Services services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "",
+                "example": 10000
+            }
+        },
+        "output": [
+            {
+                "name": "backup_id",
+                "type": "int",
+                "description": "ID of the Backup Host Server"
+            },
+            {
+                "name": "backup_server",
+                "type": "int",
+                "description": "ID of Server the Backup Resides on"
+            },
+            {
+                "name": "backup_username",
+                "type": "string",
+                "description": "Username on the Backup Server associated with this Order"
+            },
+            {
+                "name": "backup_type",
+                "type": "int",
+                "description": "Which type of Backup Server"
+            },
+            {
+                "name": "backup_cost",
+                "type": "float",
+                "description": "Service Cost"
+            },
+            {
+                "name": "backup_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "backup_quota",
+                "type": "int",
+                "description": "Disk Quota"
+            },
+            {
+                "name": "backup_ip",
+                "type": "string",
+                "description": "IP Address of the Backup Server"
+            },
+            {
+                "name": "backup_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "backup_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "backup_coupon",
+                "type": "int",
+                "description": "Coupon ID"
+            },
+            {
+                "name": "backup_extra",
+                "type": "string",
+                "description": "Additional Backup Information"
+            },
+            {
+                "name": "backup_server_status",
+                "type": "string",
+                "description": "Server-Side status of this website"
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

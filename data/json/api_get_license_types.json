@@ -1,0 +1,368 @@
+{
+    "name": "api_get_license_types",
+    "desc": "Get a license of the various license types.",
+    "input": [],
+    "output": "tns:license_type[]",
+    "example": [
+        {
+            "services_id": 5000,
+            "services_name": "INTERSERVER-EXTERNAL",
+            "services_cost": 34.95
+        },
+        {
+            "services_id": 5001,
+            "services_name": "INTERSERVER-EXTERNAL-VPS",
+            "services_cost": 15.95
+        },
+        {
+            "services_id": 5002,
+            "services_name": "INTERSERVER-EXTERNAL-VZZO",
+            "services_cost": 15.95
+        },
+        {
+            "services_id": 5005,
+            "services_name": "INTERSERVER-ENKOMP-EXTERNAL-A500",
+            "services_cost": 55
+        },
+        {
+            "services_id": 5006,
+            "services_name": "Softaculous",
+            "services_cost": 3
+        },
+        {
+            "services_id": 5007,
+            "services_name": "Softaculous VPS",
+            "services_cost": 2
+        },
+        {
+            "services_id": 5008,
+            "services_name": "INTERSERVER-INTERNAL",
+            "services_cost": 25
+        },
+        {
+            "services_id": 5009,
+            "services_name": "INTERSERVER-INTERNAL-VZZO",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5014,
+            "services_name": "INTERSERVER-INTERNAL-VPS",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5017,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ 10 Domains (Inside DataCenter)",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5018,
+            "services_name": "Parallels Plesk v10+\/v11+ 10 Domains (Inside DataCenter)",
+            "services_cost": 16
+        },
+        {
+            "services_id": 5019,
+            "services_name": "Parallels Plesk v10+\/v11+ Unlimited Domains (Inside DataCenter)",
+            "services_cost": 40
+        },
+        {
+            "services_id": 5020,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ 10 Domains (Outside DataCenter)",
+            "services_cost": 12
+        },
+        {
+            "services_id": 5021,
+            "services_name": "Parallels Plesk v10+\/v11+ 10 Domains (Outside DataCenter)",
+            "services_cost": 20
+        },
+        {
+            "services_id": 5022,
+            "services_name": "Parallels Plesk v10+\/v11+ Unlimited Domains (Outside DataCenter)",
+            "services_cost": 50
+        },
+        {
+            "services_id": 5023,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ Unlimited Domains (Inside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5024,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ Unlimited Domains (Outside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5025,
+            "services_name": "LiteSpeed WebServer VPS License",
+            "services_cost": 13.95
+        },
+        {
+            "services_id": 5026,
+            "services_name": "LiteSpeed WebServer Ultra-VPS License",
+            "services_cost": 19
+        },
+        {
+            "services_id": 5027,
+            "services_name": "LiteSpeed WebServer 1-CPU License",
+            "services_cost": 30
+        },
+        {
+            "services_id": 5028,
+            "services_name": "LiteSpeed WebServer 2-CPU License",
+            "services_cost": 46
+        },
+        {
+            "services_id": 5029,
+            "services_name": "LiteSpeed WebServer 4-CPU License",
+            "services_cost": 65
+        },
+        {
+            "services_id": 5030,
+            "services_name": "LiteSpeed WebServer 8-CPU License",
+            "services_cost": 92
+        },
+        {
+            "services_id": 5031,
+            "services_name": "LiteSpeed Load Balancer",
+            "services_cost": 65
+        },
+        {
+            "services_id": 5032,
+            "services_name": "CloudLinux License",
+            "services_cost": 10
+        },
+        {
+            "services_id": 5033,
+            "services_name": "CloudLinux Type2 License",
+            "services_cost": 11.95
+        },
+        {
+            "services_id": 5034,
+            "services_name": "KernelCare License",
+            "services_cost": 2.95
+        },
+        {
+            "services_id": 5035,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows Unlimited Domains (Inside DataCenter)",
+            "services_cost": 40
+        },
+        {
+            "services_id": 5036,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows Unlimited Domains (Outside DataCenter)",
+            "services_cost": 50
+        },
+        {
+            "services_id": 5037,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows for VZ Unlimited Domains (Inside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5038,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows for VZ Unlimited Domains (Outside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5039,
+            "services_name": "Parallels Plesk v10+\/v11+ for VPS Unlimited Domains (Inside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5040,
+            "services_name": "Parallels Plesk v10+\/v11+ for VPS Unlimited Domains (Outside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5041,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows for VPS Unlimited Domains (Inside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5042,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows for VPS Unlimited Domains (Outside DataCenter)",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5043,
+            "services_name": "Parallels Plesk v10+\/v11+ for VPS 100 Domains (Inside DataCenter)",
+            "services_cost": 5
+        },
+        {
+            "services_id": 5044,
+            "services_name": "Parallels Plesk v10+\/v11+ for VPS 100 Domains (Outside DataCenter)",
+            "services_cost": 5
+        },
+        {
+            "services_id": 5045,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows 100 Domains (Inside DaCenter)",
+            "services_cost": 5
+        },
+        {
+            "services_id": 5046,
+            "services_name": "Parallels Plesk v10+\/v11+ for Windows 100 Domains (Outside DataCenter)",
+            "services_cost": 5
+        },
+        {
+            "services_id": 5047,
+            "services_name": "Parallels Plesk v10+\/v11+ 100 Domains (Inside DataCenter)",
+            "services_cost": 5
+        },
+        {
+            "services_id": 5048,
+            "services_name": "Parallels Plesk v10+\/v11+ 100 Domains (Outside DataCenter)",
+            "services_cost": 5
+        },
+        {
+            "services_id": 5049,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ 100 Domains (Inside DataCenter)",
+            "services_cost": 4
+        },
+        {
+            "services_id": 5050,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ 100 Domains (Outside DataCenter)",
+            "services_cost": 4
+        },
+        {
+            "services_id": 5051,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ 100 Domains (Inside DataCenter)",
+            "services_cost": 4
+        },
+        {
+            "services_id": 5052,
+            "services_name": "Parallels Plesk v10+\/v11+ for VZ 100 Domains (Outside DataCenter)",
+            "services_cost": 4
+        },
+        {
+            "services_id": 5053,
+            "services_name": "Plesk v12 Web Admin Edition for Virtual Machines",
+            "services_cost": 9
+        },
+        {
+            "services_id": 5054,
+            "services_name": "Plesk v12 Web Admin Edition for Dedicated Servers",
+            "services_cost": 9
+        },
+        {
+            "services_id": 5057,
+            "services_name": "Plesk v12 Web Pro Edition for Virtual Machines",
+            "services_cost": 10
+        },
+        {
+            "services_id": 5058,
+            "services_name": "Plesk v12 Web Pro Edition for Dedicated Servers",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5059,
+            "services_name": "Plesk v12 Web Host Edition for Virtual Machines",
+            "services_cost": 15
+        },
+        {
+            "services_id": 5060,
+            "services_name": "Plesk v12 Web Host Edition for Dedicated Servers",
+            "services_cost": 35
+        },
+        {
+            "services_id": 5061,
+            "services_name": "Plesk v12 Web ProEdition with CloudLinux for Virtual Machines",
+            "services_cost": 20
+        },
+        {
+            "services_id": 5062,
+            "services_name": "Plesk v12 Web ProEdition with CloudLinux for Dedicated Servers",
+            "services_cost": 25
+        },
+        {
+            "services_id": 5063,
+            "services_name": "Plesk v12 Web HostEdition with CloudLinux for Virtual Machines",
+            "services_cost": 25
+        },
+        {
+            "services_id": 5064,
+            "services_name": "Plesk v12 Web HostEdition with CloudLinux for Dedicated Servers",
+            "services_cost": 45
+        },
+        {
+            "services_id": 5066,
+            "services_name": "DirectAdmin for CentOS 5 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5067,
+            "services_name": "DirectAdmin for CentOS 6 32-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5068,
+            "services_name": "DirectAdmin for CentOS 6 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5069,
+            "services_name": "DirectAdmin for CentOS 7 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5070,
+            "services_name": "DirectAdmin for FreeBSD 8.x 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5071,
+            "services_name": "DirectAdmin for FreeBSD 9.x 32-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5072,
+            "services_name": "DirectAdmin for FreeBSD 9.x 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5073,
+            "services_name": "DirectAdmin for Debian 6.0 32-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5074,
+            "services_name": "DirectAdmin for Debian 6.0 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5075,
+            "services_name": "DirectAdmin for Debian 7.0 32-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5076,
+            "services_name": "DirectAdmin for Debian 7.0 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5077,
+            "services_name": "DirectAdmin for Debian 8.0 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5078,
+            "services_name": "DirectAdmin for Debian 5.0 32-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5079,
+            "services_name": "DirectAdmin for Debian 5.0 64-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 5080,
+            "services_name": "DirectAdmin for CentOS 5 32-bit",
+            "services_cost": 8
+        },
+        {
+            "services_id": 10613,
+            "services_name": "Webuzo",
+            "services_cost": 0
+        },
+        {
+            "services_id": 10614,
+            "services_name": "Webuzo VPS",
+            "services_cost": 0
+        }
+    ]
+}

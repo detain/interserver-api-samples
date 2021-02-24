@@ -1,0 +1,50 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_cancel_license_ip",
+    "params": "",
+    "description": "Cancel a License by IP and Type.",
+    "function": {
+        "name": "api_cancel_license_ip",
+        "desc": "Cancel a License by IP and Type.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": "IP Address to cancel",
+                "example": "66.45.228.200"
+            },
+            "type": {
+                "name": "type",
+                "type": "int",
+                "description": "Package ID. use [get_license_types](#get-license-types) to get a list of possible types.",
+                "example": 5000
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            }
+        ],
+        "example": {
+            "status": "error",
+            "status_text": "Invalid License IP\/Type"
+        }
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ip string IP Address to cancel\n* @param type int Package ID. use [get_license_types](#get-license-types) to get a list of possible types.\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

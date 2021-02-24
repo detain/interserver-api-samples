@@ -1,0 +1,66 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_add_dns_record",
+    "params": "",
+    "description": "Adds a single DNS record",
+    "function": {
+        "name": "api_add_dns_record",
+        "desc": "Adds a single DNS record",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "domain_id": {
+                "name": "domain_id",
+                "type": "int",
+                "description": "The ID of the domain in question.",
+                "example": 1000
+            },
+            "name": {
+                "name": "name",
+                "type": "string",
+                "description": "the hostname being set on the dns record.",
+                "example": "www"
+            },
+            "content": {
+                "name": "content",
+                "type": "string",
+                "description": "the value of the dns record, or what its set to.",
+                "example": "127.0.0.1"
+            },
+            "type": {
+                "name": "type",
+                "type": "string",
+                "description": "dns record type.",
+                "example": "A"
+            },
+            "ttl": {
+                "name": "ttl",
+                "type": "int",
+                "description": "dns record time to live, or update time.",
+                "example": 86400
+            },
+            "prio": {
+                "name": "prio",
+                "type": "int",
+                "description": "dns record priority",
+                "example": ""
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "int",
+                "description": ""
+            }
+        },
+        "example": null
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param domain_id int The ID of the domain in question.\n* @param name string the hostname being set on the dns record.\n* @param content string the value of the dns record, or what its set to.\n* @param type string dns record type.\n* @param ttl int dns record time to live, or update time.\n* @param prio int dns record priority\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

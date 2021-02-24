@@ -1,0 +1,34 @@
+{
+    "name": "api_vps_queue_stop",
+    "desc": "stops a vps",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "error",
+        "status_text": "You cannot send commands to the server until it is active"
+    }
+}

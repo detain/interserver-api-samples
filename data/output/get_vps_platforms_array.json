@@ -1,0 +1,14 @@
+[
+    {
+        "platform": "openvz",
+        "name": "OpenVZ"
+    },
+    {
+        "platform": "kvm",
+        "name": "KVM"
+    },
+    {
+        "platform": "cloudkvm",
+        "name": "Cloud"
+    }
+]

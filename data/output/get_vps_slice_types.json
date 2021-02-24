@@ -1,0 +1,80 @@
+[
+    {
+        "name": "OpenVZ VPS Slice",
+        "type": 6,
+        "cost": 6,
+        "buyable": 1
+    },
+    {
+        "name": "KVM Windows VPS Slice",
+        "type": 1,
+        "cost": 10,
+        "buyable": 1
+    },
+    {
+        "name": "KVM Linux VPS Slice",
+        "type": 2,
+        "cost": 8,
+        "buyable": 1
+    },
+    {
+        "name": "Cloud KVM Windows VPS Slice",
+        "type": 3,
+        "cost": 22,
+        "buyable": 1
+    },
+    {
+        "name": "Cloud KVM Linux VPS Slice",
+        "type": 4,
+        "cost": 20,
+        "buyable": 1
+    },
+    {
+        "name": "SSD OpenVZ VPS Slice",
+        "type": 5,
+        "cost": 9,
+        "buyable": 1
+    },
+    {
+        "name": "LXC VPS Slice",
+        "type": 9,
+        "cost": 6,
+        "buyable": 0
+    },
+    {
+        "name": "Xen Windows VPS Slice",
+        "type": 7,
+        "cost": 6,
+        "buyable": 0
+    },
+    {
+        "name": "Xen Linux VPS Slice",
+        "type": 8,
+        "cost": 6,
+        "buyable": 0
+    },
+    {
+        "name": "VMware VPS Slice",
+        "type": 10,
+        "cost": 10,
+        "buyable": 0
+    },
+    {
+        "name": "Hyper-V VPS Slice",
+        "type": 11,
+        "cost": 10,
+        "buyable": 1
+    },
+    {
+        "name": "Virtuozzo VPS Slice",
+        "type": 12,
+        "cost": 6,
+        "buyable": 1
+    },
+    {
+        "name": "SSD Virtuozzo VPS Slice",
+        "type": 13,
+        "cost": 9,
+        "buyable": 1
+    }
+]

@@ -1,0 +1,40 @@
+{
+    "name": "api_viewTicket",
+    "desc": "View\/Retrieve information about the given ticketID.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "ticketID": {
+            "name": "ticketID",
+            "type": "string",
+            "description": "the id of the ticket to retrieve. you can use [getTicketList](#getticketlist) to get a list of your tickets",
+            "example": 10000
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "result",
+            "type": "tns:view_ticketdetail_array",
+            "description": "Rendered Search Result"
+        }
+    ],
+    "example": {
+        "status": "Failed",
+        "status_text": "Error loading ticket details!",
+        "result": []
+    }
+}

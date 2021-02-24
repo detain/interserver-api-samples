@@ -1,0 +1,50 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_add_dns_domain",
+    "params": "",
+    "description": "Adds a new domain into our system.  The status will be \"ok\" if it added, or\n* \"error\" if there was any problems status_text will contain a description of the\n* problem if any.",
+    "function": {
+        "name": "api_add_dns_domain",
+        "desc": "Adds a new domain into our system.  The status will be \"ok\" if it added, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "domain": {
+                "name": "domain",
+                "type": "string",
+                "description": "domain name to host",
+                "example": "somedomain.com"
+            },
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": "ip address to assign it to.",
+                "example": "66.45.228.200"
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            }
+        ],
+        "example": {
+            "status": "error",
+            "status_text": "That Domain Is Already Setup On Our Servers, Try Another Or Contact support@interserver.net"
+        }
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param domain string domain name to host\n* @param ip string ip address to assign it to.\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

@@ -1,0 +1,58 @@
+{
+    "name": "api_buy_license",
+    "desc": "Purchase a License.  Returns an invoice ID.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "ip": {
+            "name": "ip",
+            "type": "string",
+            "description": "ip address you wish to license some software on",
+            "example": "4.4.4.4"
+        },
+        "type": {
+            "name": "type",
+            "type": "int",
+            "description": "the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.",
+            "example": 5000
+        },
+        "coupon": {
+            "name": "coupon",
+            "type": "string",
+            "description": "an optional coupon",
+            "example": ""
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "cost",
+            "type": "float",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "error",
+        "status_text": "That IP is already licensed in our system\nThat IP is already licensed in our system",
+        "invoice": null,
+        "cost": 34.95
+    }
+}

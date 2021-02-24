@@ -1,0 +1,62 @@
+{
+    "name": "api_update_dns_record",
+    "desc": "Updates a single DNS record",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "domain_id": {
+            "name": "domain_id",
+            "type": "int",
+            "description": "The ID of the domain in question.",
+            "example": 1000
+        },
+        "record_id": {
+            "name": "record_id",
+            "type": "int",
+            "description": "The ID of the record to update",
+            "example": 1000
+        },
+        "name": {
+            "name": "name",
+            "type": "string",
+            "description": "the hostname being set on the dns record.",
+            "example": "www"
+        },
+        "content": {
+            "name": "content",
+            "type": "string",
+            "description": "the value of the dns record, or what its set to.",
+            "example": "127.0.0.1"
+        },
+        "type": {
+            "name": "type",
+            "type": "string",
+            "description": "dns record type.",
+            "example": "A"
+        },
+        "ttl": {
+            "name": "ttl",
+            "type": "int",
+            "description": "dns record time to live, or update time.",
+            "example": 86400
+        },
+        "prio": {
+            "name": "prio",
+            "type": "int",
+            "description": "dns record priority",
+            "example": ""
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "bool",
+            "description": "True on success, False on failure."
+        }
+    },
+    "example": false
+}

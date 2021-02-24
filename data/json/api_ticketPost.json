@@ -1,0 +1,40 @@
+{
+    "name": "api_ticketPost",
+    "desc": "This commands adds the content parameter as a response\/reply to an existing ticket specified by ticketID.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "ticketID": {
+            "name": "ticketID",
+            "type": "string",
+            "description": "the id of the ticket to add a response to. you can use [getTicketList](#getticketlist) to get a list of your tickets",
+            "example": 10000
+        },
+        "content": {
+            "name": "content",
+            "type": "string",
+            "description": "the message to add to the ticket",
+            "example": "Heres an update to my ticket"
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "Failed",
+        "status_text": "Error loading ticket details!"
+    }
+}

@@ -1,0 +1,117 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "get_vps_slice_types",
+    "params": "",
+    "description": "We have several types of Servers available for use with VPS Hosting. You can get\n* a list of the types available and  there cost per slice\/unit by making a call to\n* this function",
+    "function": {
+        "name": "get_vps_slice_types",
+        "desc": "We have several types of Servers available for use with VPS Hosting. You can get a list of the types available and  there cost per slice\/unit by making a call to this function",
+        "input": [],
+        "output": [
+            {
+                "name": "name",
+                "type": "string",
+                "description": "Country Name in all Capitols"
+            },
+            {
+                "name": "type",
+                "type": "int",
+                "description": "Coupon Type, 1: Percentage Off   2: Fixed Amount Off  3: Specified Sale Price"
+            },
+            {
+                "name": "cost",
+                "type": "float",
+                "description": ""
+            },
+            {
+                "name": "buyable",
+                "type": "int",
+                "description": ""
+            }
+        ],
+        "example": [
+            {
+                "name": "OpenVZ VPS Slice",
+                "type": 6,
+                "cost": 6,
+                "buyable": 1
+            },
+            {
+                "name": "KVM Windows VPS Slice",
+                "type": 1,
+                "cost": 10,
+                "buyable": 1
+            },
+            {
+                "name": "KVM Linux VPS Slice",
+                "type": 2,
+                "cost": 8,
+                "buyable": 1
+            },
+            {
+                "name": "Cloud KVM Windows VPS Slice",
+                "type": 3,
+                "cost": 22,
+                "buyable": 1
+            },
+            {
+                "name": "Cloud KVM Linux VPS Slice",
+                "type": 4,
+                "cost": 20,
+                "buyable": 1
+            },
+            {
+                "name": "SSD OpenVZ VPS Slice",
+                "type": 5,
+                "cost": 9,
+                "buyable": 1
+            },
+            {
+                "name": "LXC VPS Slice",
+                "type": 9,
+                "cost": 6,
+                "buyable": 0
+            },
+            {
+                "name": "Xen Windows VPS Slice",
+                "type": 7,
+                "cost": 6,
+                "buyable": 0
+            },
+            {
+                "name": "Xen Linux VPS Slice",
+                "type": 8,
+                "cost": 6,
+                "buyable": 0
+            },
+            {
+                "name": "VMware VPS Slice",
+                "type": 10,
+                "cost": 10,
+                "buyable": 0
+            },
+            {
+                "name": "Hyper-V VPS Slice",
+                "type": 11,
+                "cost": 10,
+                "buyable": 1
+            },
+            {
+                "name": "Virtuozzo VPS Slice",
+                "type": 12,
+                "cost": 6,
+                "buyable": 1
+            },
+            {
+                "name": "SSD Virtuozzo VPS Slice",
+                "type": 13,
+                "cost": 9,
+                "buyable": 1
+            }
+        ]
+    },
+    "input_comment": "",
+    "output_comment": "",
+    "use_sid": false,
+    "hide_comment": true
+}

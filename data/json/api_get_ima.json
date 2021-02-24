@@ -1,0 +1,20 @@
+{
+    "name": "api_get_ima",
+    "desc": "Returns the IMA value.  This function tells you that I'm a client, or I'm a admin. This is almost always going to return client, Adminsitrators will get an admin response.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "string",
+            "description": ""
+        }
+    },
+    "example": null
+}

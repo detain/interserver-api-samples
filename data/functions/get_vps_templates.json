@@ -1,0 +1,2034 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "get_vps_templates",
+    "params": "",
+    "description": "Get the currently available VPS templates for each server type.",
+    "function": {
+        "name": "get_vps_templates",
+        "desc": "Get the currently available VPS templates for each server type.",
+        "input": [],
+        "output": [
+            {
+                "name": "type",
+                "type": "int",
+                "description": "Coupon Type, 1: Percentage Off   2: Fixed Amount Off  3: Specified Sale Price"
+            },
+            {
+                "name": "virtulization",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "bits",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "os",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "version",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "file",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "title",
+                "type": "string",
+                "description": ""
+            }
+        ],
+        "example": [
+            {
+                "type": 1,
+                "virtulization": "KVM Windows",
+                "bits": 64,
+                "os": "windows",
+                "version": "2016",
+                "file": "windowsr2",
+                "title": "Windows 2016 64bit "
+            },
+            {
+                "type": 1,
+                "virtulization": "KVM Windows",
+                "bits": 64,
+                "os": "windows",
+                "version": "2012",
+                "file": "windows2012",
+                "title": "Windows 2012 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "centos",
+                "version": "7",
+                "file": "centos55",
+                "title": "CentOS 7 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos5",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "debian",
+                "version": "8",
+                "file": "debian6",
+                "title": "Debian 8 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "freepbx",
+                "version": "6.6",
+                "file": "freepbx",
+                "title": "FreePBX 6.6 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "18.04",
+                "file": "ubuntu12",
+                "title": "Ubuntu 18.04 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.04",
+                "file": "ubuntu10",
+                "title": "Ubuntu 16.04 64bit "
+            },
+            {
+                "type": 2,
+                "virtulization": "KVM Linux",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04 Desktop",
+                "file": "ubuntudesktop",
+                "title": "Ubuntu 14.04 Desktop 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 minimal",
+                "file": "centos-7-x86_64-minimal.tar.gz",
+                "title": "CentOS 7 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7",
+                "file": "centos-7-x86_64.tar.gz",
+                "title": "CentOS 7 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6 minimal",
+                "file": "centos-6-x86_64-minimal.tar.gz",
+                "title": "CentOS 6 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6-x86_64.tar.gz",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6 devel",
+                "file": "centos-6-x86_64-devel.tar.gz",
+                "title": "CentOS 6 devel 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "6 devel",
+                "file": "centos-6-x86-devel.tar.gz",
+                "title": "CentOS 6 devel 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "6 minimal",
+                "file": "centos-6-x86-minimal.tar.gz",
+                "title": "CentOS 6 minimal 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6-x86.tar.gz",
+                "title": "CentOS 6 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "5",
+                "file": "centos-5-x86_64.tar.gz",
+                "title": "CentOS 5 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "5 devel",
+                "file": "centos-5-x86_64-devel.tar.gz",
+                "title": "CentOS 5 devel 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "5",
+                "file": "centos-5-x86.tar.gz",
+                "title": "CentOS 5 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "5 devel",
+                "file": "centos-5-x86-devel.tar.gz",
+                "title": "CentOS 5 devel 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 nginxwordpress",
+                "file": "centos-7-x86_64-nginxwordpress.tar.gz",
+                "title": "CentOS 7 nginxwordpress 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 cpanel",
+                "file": "centos-7-x86_64-cpanel.tar.gz",
+                "title": "CentOS 7 cpanel 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 breadbasket",
+                "file": "centos-7-x86_64-breadbasket.tar.gz",
+                "title": "CentOS 7 breadbasket 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6 webuzo",
+                "file": "centos-6-x86_64-webuzo.tar.gz",
+                "title": "CentOS 6 webuzo 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0 minimal",
+                "file": "debian-8.0-x86_64-minimal.tar.gz",
+                "title": "Debian 8.0 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0",
+                "file": "debian-8.0-x86_64.tar.gz",
+                "title": "Debian 8.0 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "7.0 minimal",
+                "file": "debian-7.0-x86_64-minimal.tar.gz",
+                "title": "Debian 7.0 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "7.0",
+                "file": "debian-7.0-x86_64.tar.gz",
+                "title": "Debian 7.0 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "debian",
+                "version": "7.0",
+                "file": "debian-7.0-x86.tar.gz",
+                "title": "Debian 7.0 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "debian",
+                "version": "7.0 minimal",
+                "file": "debian-7.0-x86-minimal.tar.gz",
+                "title": "Debian 7.0 minimal 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "23",
+                "file": "fedora-23-x86_64.tar.gz",
+                "title": "Fedora 23 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "22",
+                "file": "fedora-22-x86_64.tar.gz",
+                "title": "Fedora 22 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "21",
+                "file": "fedora-21-x86_64.tar.gz",
+                "title": "Fedora 21 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "20",
+                "file": "fedora-20-x86_64.tar.gz",
+                "title": "Fedora 20 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "fedora",
+                "version": "20",
+                "file": "fedora-20-x86.tar.gz",
+                "title": "Fedora 20 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "scientific",
+                "version": "6",
+                "file": "scientific-6-x86_64.tar.gz",
+                "title": "Scientific 6 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "scientific",
+                "version": "6",
+                "file": "scientific-6-x86.tar.gz",
+                "title": "Scientific 6 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "suse",
+                "version": "13.2",
+                "file": "suse-13.2-x86_64.tar.gz",
+                "title": "SuSe 13.2 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "suse",
+                "version": "13.1 minimal",
+                "file": "suse-13.1-x86_64-minimal.tar.gz",
+                "title": "SuSe 13.1 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "suse",
+                "version": "13.1",
+                "file": "suse-13.1-x86_64.tar.gz",
+                "title": "SuSe 13.1 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "suse",
+                "version": "13.1 minimal",
+                "file": "suse-13.1-x86-minimal.tar.gz",
+                "title": "SuSe 13.1 minimal 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "suse",
+                "version": "13.1",
+                "file": "suse-13.1-x86.tar.gz",
+                "title": "SuSe 13.1 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.04",
+                "file": "ubuntu-16.04-x86_64.tar.gz",
+                "title": "Ubuntu 16.04 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.04 minimal",
+                "file": "ubuntu-15.04-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 15.04 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.04",
+                "file": "ubuntu-15.04-x86_64.tar.gz",
+                "title": "Ubuntu 15.04 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04 minimal",
+                "file": "ubuntu-14.04-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 14.04 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04-x86_64.tar.gz",
+                "title": "Ubuntu 14.04 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04-x86.tar.gz",
+                "title": "Ubuntu 14.04 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "14.04 minimal",
+                "file": "ubuntu-14.04-x86-minimal.tar.gz",
+                "title": "Ubuntu 14.04 minimal 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "12.04 minimal",
+                "file": "ubuntu-12.04-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 12.04 minimal 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "12.04",
+                "file": "ubuntu-12.04-x86_64.tar.gz",
+                "title": "Ubuntu 12.04 64bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "12.04 minimal",
+                "file": "ubuntu-12.04-x86-minimal.tar.gz",
+                "title": "Ubuntu 12.04 minimal 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "12.04",
+                "file": "ubuntu-12.04-x86.tar.gz",
+                "title": "Ubuntu 12.04 32bit "
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.10 minimal",
+                "file": "ubuntu-15.10-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 15.10 minimal 64bit (beta)"
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.10",
+                "file": "ubuntu-15.10-x86_64.tar.gz",
+                "title": "Ubuntu 15.10 64bit (beta)"
+            },
+            {
+                "type": 5,
+                "virtulization": "SSD OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.04 xrdp",
+                "file": "ubuntu-15.04-x86_64-xrdp.tar.gz",
+                "title": "Ubuntu 15.04 xrdp 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 minimal",
+                "file": "centos-7-x86_64-minimal.tar.gz",
+                "title": "CentOS 7 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7",
+                "file": "centos-7-x86_64.tar.gz",
+                "title": "CentOS 7 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6 minimal",
+                "file": "centos-6-x86_64-minimal.tar.gz",
+                "title": "CentOS 6 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6-x86_64.tar.gz",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6 devel",
+                "file": "centos-6-x86_64-devel.tar.gz",
+                "title": "CentOS 6 devel 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "6 devel",
+                "file": "centos-6-x86-devel.tar.gz",
+                "title": "CentOS 6 devel 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "6 minimal",
+                "file": "centos-6-x86-minimal.tar.gz",
+                "title": "CentOS 6 minimal 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6-x86.tar.gz",
+                "title": "CentOS 6 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "5",
+                "file": "centos-5-x86_64.tar.gz",
+                "title": "CentOS 5 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "5 devel",
+                "file": "centos-5-x86_64-devel.tar.gz",
+                "title": "CentOS 5 devel 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "5",
+                "file": "centos-5-x86.tar.gz",
+                "title": "CentOS 5 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "centos",
+                "version": "5 devel",
+                "file": "centos-5-x86-devel.tar.gz",
+                "title": "CentOS 5 devel 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 nginxwordpress",
+                "file": "centos-7-x86_64-nginxwordpress.tar.gz",
+                "title": "CentOS 7 nginxwordpress 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 cpanel",
+                "file": "centos-7-x86_64-cpanel.tar.gz",
+                "title": "CentOS 7 cpanel 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "7 breadbasket",
+                "file": "centos-7-x86_64-breadbasket.tar.gz",
+                "title": "CentOS 7 breadbasket 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "centos",
+                "version": "6 webuzo",
+                "file": "centos-6-x86_64-webuzo.tar.gz",
+                "title": "CentOS 6 webuzo 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0 minimal",
+                "file": "debian-8.0-x86_64-minimal.tar.gz",
+                "title": "Debian 8.0 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0",
+                "file": "debian-8.0-x86_64.tar.gz",
+                "title": "Debian 8.0 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "7.0 minimal",
+                "file": "debian-7.0-x86_64-minimal.tar.gz",
+                "title": "Debian 7.0 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "debian",
+                "version": "7.0",
+                "file": "debian-7.0-x86_64.tar.gz",
+                "title": "Debian 7.0 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "debian",
+                "version": "7.0",
+                "file": "debian-7.0-x86.tar.gz",
+                "title": "Debian 7.0 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "debian",
+                "version": "7.0 minimal",
+                "file": "debian-7.0-x86-minimal.tar.gz",
+                "title": "Debian 7.0 minimal 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "23",
+                "file": "fedora-23-x86_64.tar.gz",
+                "title": "Fedora 23 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "22",
+                "file": "fedora-22-x86_64.tar.gz",
+                "title": "Fedora 22 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "21",
+                "file": "fedora-21-x86_64.tar.gz",
+                "title": "Fedora 21 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "fedora",
+                "version": "20",
+                "file": "fedora-20-x86_64.tar.gz",
+                "title": "Fedora 20 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "fedora",
+                "version": "20",
+                "file": "fedora-20-x86.tar.gz",
+                "title": "Fedora 20 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "scientific",
+                "version": "6",
+                "file": "scientific-6-x86_64.tar.gz",
+                "title": "Scientific 6 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "scientific",
+                "version": "6",
+                "file": "scientific-6-x86.tar.gz",
+                "title": "Scientific 6 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "suse",
+                "version": "13.2",
+                "file": "suse-13.2-x86_64.tar.gz",
+                "title": "SuSe 13.2 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "suse",
+                "version": "13.1 minimal",
+                "file": "suse-13.1-x86_64-minimal.tar.gz",
+                "title": "SuSe 13.1 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "suse",
+                "version": "13.1",
+                "file": "suse-13.1-x86_64.tar.gz",
+                "title": "SuSe 13.1 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "suse",
+                "version": "13.1 minimal",
+                "file": "suse-13.1-x86-minimal.tar.gz",
+                "title": "SuSe 13.1 minimal 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "suse",
+                "version": "13.1",
+                "file": "suse-13.1-x86.tar.gz",
+                "title": "SuSe 13.1 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.04",
+                "file": "ubuntu-16.04-x86_64.tar.gz",
+                "title": "Ubuntu 16.04 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.04 minimal",
+                "file": "ubuntu-15.04-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 15.04 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.04",
+                "file": "ubuntu-15.04-x86_64.tar.gz",
+                "title": "Ubuntu 15.04 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04 minimal",
+                "file": "ubuntu-14.04-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 14.04 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04-x86_64.tar.gz",
+                "title": "Ubuntu 14.04 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04-x86.tar.gz",
+                "title": "Ubuntu 14.04 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "14.04 minimal",
+                "file": "ubuntu-14.04-x86-minimal.tar.gz",
+                "title": "Ubuntu 14.04 minimal 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "12.04 minimal",
+                "file": "ubuntu-12.04-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 12.04 minimal 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "12.04",
+                "file": "ubuntu-12.04-x86_64.tar.gz",
+                "title": "Ubuntu 12.04 64bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "12.04 minimal",
+                "file": "ubuntu-12.04-x86-minimal.tar.gz",
+                "title": "Ubuntu 12.04 minimal 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "12.04",
+                "file": "ubuntu-12.04-x86.tar.gz",
+                "title": "Ubuntu 12.04 32bit "
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.10 minimal",
+                "file": "ubuntu-15.10-x86_64-minimal.tar.gz",
+                "title": "Ubuntu 15.10 minimal 64bit (beta)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.10",
+                "file": "ubuntu-15.10-x86_64.tar.gz",
+                "title": "Ubuntu 15.10 64bit (beta)"
+            },
+            {
+                "type": 6,
+                "virtulization": "OpenVZ",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "15.04 xrdp",
+                "file": "ubuntu-15.04-x86_64-xrdp.tar.gz",
+                "title": "Ubuntu 15.04 xrdp 64bit (http:mirror.trouble-free.netmyadminopenvz)"
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "alpine",
+                "version": "3.8",
+                "file": "alpine\/3.8\/amd64",
+                "title": "Alpine 3.8 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "alpine",
+                "version": "3.8",
+                "file": "alpine\/3.8\/i386",
+                "title": "Alpine 3.8 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "alpine",
+                "version": "3.7",
+                "file": "alpine\/3.7\/amd64",
+                "title": "Alpine 3.7 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "alpine",
+                "version": "3.7",
+                "file": "alpine\/3.7\/i386",
+                "title": "Alpine 3.7 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "alpine",
+                "version": "3.6",
+                "file": "alpine\/3.6\/amd64",
+                "title": "Alpine 3.6 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "alpine",
+                "version": "3.6",
+                "file": "alpine\/3.6\/i386",
+                "title": "Alpine 3.6 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "alpine",
+                "version": "3.5",
+                "file": "alpine\/3.5\/amd64",
+                "title": "Alpine 3.5 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "alpine",
+                "version": "3.5",
+                "file": "alpine\/3.5\/i386",
+                "title": "Alpine 3.5 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "alpine",
+                "version": "3.4",
+                "file": "alpine\/3.4\/amd64",
+                "title": "Alpine 3.4 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "alpine",
+                "version": "3.4",
+                "file": "alpine\/3.4\/i386",
+                "title": "Alpine 3.4 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "alpine",
+                "version": "edge",
+                "file": "alpine\/edge\/amd64",
+                "title": "Alpine edge 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "alpine",
+                "version": "edge",
+                "file": "alpine\/edge\/i386",
+                "title": "Alpine edge 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "archlinux",
+                "version": "current",
+                "file": "archlinux\/current\/amd64",
+                "title": "Archlinux current 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "centos",
+                "version": "7",
+                "file": "centos\/7\/amd64",
+                "title": "CentOS 7 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos\/6\/amd64",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "centos",
+                "version": "6",
+                "file": "centos\/6\/i386",
+                "title": "CentOS 6 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "debian",
+                "version": "buster",
+                "file": "debian\/10\/amd64",
+                "title": "Debian buster 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "debian",
+                "version": "jessie",
+                "file": "debian\/8\/amd64",
+                "title": "Debian jessie 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "debian",
+                "version": "sid",
+                "file": "debian\/sid\/amd64",
+                "title": "Debian sid 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "debian",
+                "version": "stretch",
+                "file": "debian\/9\/amd64",
+                "title": "Debian stretch 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "debian",
+                "version": "wheezy",
+                "file": "debian\/7\/amd64",
+                "title": "Debian wheezy 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "debian",
+                "version": "buster",
+                "file": "debian\/10\/i386",
+                "title": "Debian buster 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "debian",
+                "version": "jessie",
+                "file": "debian\/8\/i386",
+                "title": "Debian jessie 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "debian",
+                "version": "sid",
+                "file": "debian\/sid\/i386",
+                "title": "Debian sid 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "debian",
+                "version": "stretch",
+                "file": "debian\/9\/i386",
+                "title": "Debian stretch 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "debian",
+                "version": "wheezy",
+                "file": "debian\/7\/i386",
+                "title": "Debian wheezy 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "fedora",
+                "version": "28",
+                "file": "fedora\/28\/amd64",
+                "title": "Fedora 28 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "fedora",
+                "version": "28",
+                "file": "fedora\/28\/i386",
+                "title": "Fedora 28 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "fedora",
+                "version": "27",
+                "file": "fedora\/27\/amd64",
+                "title": "Fedora 27 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "fedora",
+                "version": "27",
+                "file": "fedora\/27\/i386",
+                "title": "Fedora 27 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "fedora",
+                "version": "26",
+                "file": "fedora\/26\/amd64",
+                "title": "Fedora 26 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "fedora",
+                "version": "26",
+                "file": "fedora\/26\/i386",
+                "title": "Fedora 26 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "gentoo",
+                "version": "current",
+                "file": "gentoo\/current\/amd64",
+                "title": "Gentoo current 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "gentoo",
+                "version": "current",
+                "file": "gentoo\/current\/i386",
+                "title": "Gentoo current 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "opensuse",
+                "version": "42.3",
+                "file": "opensuse\/42.3\/amd64",
+                "title": "OpenSUSE 42.3 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "opensuse",
+                "version": "15.0",
+                "file": "opensuse\/15.0\/amd64",
+                "title": "OpenSUSE 15.0 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "oracle",
+                "version": "7",
+                "file": "oracle\/7\/amd64",
+                "title": "Oracle 7 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "oracle",
+                "version": "6",
+                "file": "oracle\/6\/amd64",
+                "title": "Oracle 6 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "oracle",
+                "version": "6",
+                "file": "oracle\/6\/i386",
+                "title": "Oracle 6 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "plamo",
+                "version": "6.x",
+                "file": "plamo\/6.x\/amd64",
+                "title": "Plamo 6.x 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "plamo",
+                "version": "6.x",
+                "file": "plamo\/6.x\/i386",
+                "title": "Plamo 6.x 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "plamo",
+                "version": "5.x",
+                "file": "plamo\/5.x\/amd64",
+                "title": "Plamo 5.x 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "plamo",
+                "version": "5.x",
+                "file": "plamo\/5.x\/i386",
+                "title": "Plamo 5.x 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "sabayon",
+                "version": "current",
+                "file": "sabayon\/current\/amd64",
+                "title": "Sabayon current 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "artful",
+                "file": "ubuntu\/17.10\/amd64",
+                "title": "Ubuntu artful 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "bionic",
+                "file": "ubuntu\/18.04\/amd64",
+                "title": "Ubuntu bionic 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "cosmic",
+                "file": "ubuntu\/18.10\/amd64",
+                "title": "Ubuntu cosmic 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "trusty",
+                "file": "ubuntu\/14.04\/amd64",
+                "title": "Ubuntu trusty 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "xenial",
+                "file": "ubuntu\/16.04\/amd64",
+                "title": "Ubuntu xenial 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "artful",
+                "file": "ubuntu\/17.10\/i386",
+                "title": "Ubuntu artful 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "bionic",
+                "file": "ubuntu\/18.04\/i386",
+                "title": "Ubuntu bionic 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "cosmic",
+                "file": "ubuntu\/18.10\/i386",
+                "title": "Ubuntu cosmic 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "trusty",
+                "file": "ubuntu\/14.04\/i386",
+                "title": "Ubuntu trusty 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "ubuntu",
+                "version": "xenial",
+                "file": "ubuntu\/16.04\/i386",
+                "title": "Ubuntu xenial 32bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 64,
+                "os": "ubuntu-core",
+                "version": "16",
+                "file": "ubuntu-core\/16\/amd64",
+                "title": "Ubuntu-Core 16 64bit "
+            },
+            {
+                "type": 9,
+                "virtulization": "LXC",
+                "bits": 32,
+                "os": "ubuntu-core",
+                "version": "16",
+                "file": "ubuntu-core\/16\/i386",
+                "title": "Ubuntu-Core 16 32bit "
+            },
+            {
+                "type": 10,
+                "virtulization": "VMware",
+                "bits": 64,
+                "os": "windows",
+                "version": "2016",
+                "file": "windows2008",
+                "title": "Windows 2016 64bit "
+            },
+            {
+                "type": 11,
+                "virtulization": "Hyper-V",
+                "bits": 64,
+                "os": "windows",
+                "version": "2016 Standard",
+                "file": "Windows2016Standard",
+                "title": "Windows 2016 Standard 64bit "
+            },
+            {
+                "type": 11,
+                "virtulization": "Hyper-V",
+                "bits": 64,
+                "os": "windows",
+                "version": "2012 Standard",
+                "file": "Windows2012Standard",
+                "title": "Windows 2012 Standard 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "centos",
+                "version": "7",
+                "file": "centos-7-x86_64",
+                "title": "CentOS 7 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6-x86_64",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0",
+                "file": "debian-8.0-x86_64",
+                "title": "Debian 8.0 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0 minimal",
+                "file": "debian-8.0-x86_64-minimal",
+                "title": "Debian 8.0 minimal 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "fedora",
+                "version": "23",
+                "file": "fedora-23-x86_64",
+                "title": "Fedora 23 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "suse",
+                "version": "42.2",
+                "file": "suse-42.2-x86_64",
+                "title": "OpenSUSE 42.2 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.10",
+                "file": "ubuntu-16.10-x86_64",
+                "title": "Ubuntu 16.10 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.04",
+                "file": "ubuntu-16.04-x86_64",
+                "title": "Ubuntu 16.04 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04-x86_64",
+                "title": "Ubuntu 14.04 64bit "
+            },
+            {
+                "type": 12,
+                "virtulization": "Virtuozzo 7",
+                "bits": 64,
+                "os": "vzlinux",
+                "version": "7",
+                "file": "vzlinux-7-x86_64",
+                "title": "VzLinux 7 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "centos",
+                "version": "7",
+                "file": "centos-7-x86_64",
+                "title": "CentOS 7 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6-x86_64",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0",
+                "file": "debian-8.0-x86_64",
+                "title": "Debian 8.0 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "debian",
+                "version": "8.0 minimal",
+                "file": "debian-8.0-x86_64-minimal",
+                "title": "Debian 8.0 minimal 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "fedora",
+                "version": "23",
+                "file": "fedora-23-x86_64",
+                "title": "Fedora 23 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "suse",
+                "version": "42.2",
+                "file": "suse-42.2-x86_64",
+                "title": "OpenSUSE 42.2 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.10",
+                "file": "ubuntu-16.10-x86_64",
+                "title": "Ubuntu 16.10 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.04",
+                "file": "ubuntu-16.04-x86_64",
+                "title": "Ubuntu 16.04 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04-x86_64",
+                "title": "Ubuntu 14.04 64bit "
+            },
+            {
+                "type": 13,
+                "virtulization": "SSD Virtuozzo 7",
+                "bits": 64,
+                "os": "vzlinux",
+                "version": "7",
+                "file": "vzlinux-7-x86_64",
+                "title": "VzLinux 7 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "7.5",
+                "file": "centos-7.5.qcow2",
+                "title": "CentOS 7.5 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "7.4",
+                "file": "centos-7.4.qcow2",
+                "title": "CentOS 7.4 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "7.3",
+                "file": "centos-7.3.qcow2",
+                "title": "CentOS 7.3 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "7.2",
+                "file": "centos-7.2.qcow2",
+                "title": "CentOS 7.2 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "7.1",
+                "file": "centos-7.1.qcow2",
+                "title": "CentOS 7.1 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "7.0",
+                "file": "centos-7.0.qcow2",
+                "title": "CentOS 7.0 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "centos",
+                "version": "6",
+                "file": "centos-6.qcow2",
+                "title": "CentOS 6 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "cirros",
+                "version": "0.3.1",
+                "file": "cirros-0.3.1.qcow2",
+                "title": "CirrOS 0.3.1 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "cirros",
+                "version": "0.3.5",
+                "file": "cirros-0.3.5.qcow2",
+                "title": "CirrOS 0.3.5 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "debian",
+                "version": "9",
+                "file": "debian-9.qcow2",
+                "title": "Debian 9 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "debian",
+                "version": "8",
+                "file": "debian-8.qcow2",
+                "title": "Debian 8 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "debian",
+                "version": "7",
+                "file": "debian-7.qcow2",
+                "title": "Debian 7 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "debian",
+                "version": "6",
+                "file": "debian-6.qcow2",
+                "title": "Debian 6 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "28",
+                "file": "fedora-28.qcow2",
+                "title": "Fedora 28 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "27",
+                "file": "fedora-27.qcow2",
+                "title": "Fedora 27 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "26",
+                "file": "fedora-26.qcow2",
+                "title": "Fedora 26 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "25",
+                "file": "fedora-25.qcow2",
+                "title": "Fedora 25 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "24",
+                "file": "fedora-24.qcow2",
+                "title": "Fedora 24 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "23",
+                "file": "fedora-23.qcow2",
+                "title": "Fedora 23 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "22",
+                "file": "fedora-22.qcow2",
+                "title": "Fedora 22 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "21",
+                "file": "fedora-21.qcow2",
+                "title": "Fedora 21 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "20",
+                "file": "fedora-20.qcow2",
+                "title": "Fedora 20 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "19",
+                "file": "fedora-19.qcow2",
+                "title": "Fedora 19 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "fedora",
+                "version": "18",
+                "file": "fedora-18.qcow2",
+                "title": "Fedora 18 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "FreeBSD",
+                "version": "11.2",
+                "file": "FreeBSD-11.2-RELEASE-amd64.qcow2",
+                "title": "FreeBSD 11.2 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "FreeBSD",
+                "version": "10.4",
+                "file": "FreeBSD-10.4-RELEASE-amd64.qcow2",
+                "title": "FreeBSD 10.4 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "opensuse",
+                "version": "42.1",
+                "file": "opensuse-42.1.qcow2",
+                "title": "OpenSUSE 42.1 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "opensuse",
+                "version": "13.2",
+                "file": "opensuse-13.2.qcow2",
+                "title": "OpenSUSE 13.2 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "opensuse",
+                "version": "13.1",
+                "file": "opensuse-13.1.qcow2",
+                "title": "OpenSUSE 13.1 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "opensuse",
+                "version": "tumbleweed",
+                "file": "opensuse-tumbleweed.qcow2",
+                "title": "OpenSUSE tumbleweed 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "scientificlinux",
+                "version": "6",
+                "file": "scientificlinux-6.qcow2",
+                "title": "ScientificLinux 6 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "18.04",
+                "file": "ubuntu-18.04.qcow2",
+                "title": "Ubuntu 18.04 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "16.04",
+                "file": "ubuntu-16.04.qcow2",
+                "title": "Ubuntu 16.04 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "14.04",
+                "file": "ubuntu-14.04.qcow2",
+                "title": "Ubuntu 14.04 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "12.04",
+                "file": "ubuntu-12.04.qcow2",
+                "title": "Ubuntu 12.04 64bit "
+            },
+            {
+                "type": 14,
+                "virtulization": "KVMv2",
+                "bits": 64,
+                "os": "ubuntu",
+                "version": "10.04",
+                "file": "ubuntu-10.04.qcow2",
+                "title": "Ubuntu 10.04 64bit "
+            }
+        ]
+    },
+    "input_comment": "",
+    "output_comment": "",
+    "use_sid": false,
+    "hide_comment": true
+}

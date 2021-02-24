@@ -1,0 +1,1540 @@
+{
+    "api_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "getTicketList_ticket": [
+        {
+            "name": "ticket_reference_id",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "subject",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "lastreplier",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "statustitle",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "prioritytitle",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "replies",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "lastactivity",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "getTicketList_tickets": "tns:getTicketList_ticket[]",
+    "getTicketList_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "totalPages",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "tickets",
+            "type": "tns:getTicketList_tickets",
+            "description": ""
+        }
+    ],
+    "openTicket_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ticket_reference_id",
+            "type": "int",
+            "description": ""
+        }
+    ],
+    "postsDetail": [
+        {
+            "name": "email",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "full_name",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "dateline",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "contents",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "postsArray": "tns:postsDetail[]",
+    "view_ticketdetail_array": [
+        {
+            "name": "ticket_reference_id",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "full_name",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "email",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "subject",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "creationtime",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "statustitle",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "prioritytitle",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "lastactivity",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "posts",
+            "type": "tns:postsArray",
+            "description": ""
+        }
+    ],
+    "view_ticket_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "result",
+            "type": "tns:view_ticketdetail_array",
+            "description": ""
+        }
+    ],
+    "ticket_post_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "result_status": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "prepays_list": [
+        {
+            "name": "prepay_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "prepay_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "prepay_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "prepay_date",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "prepay_created",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "prepay_amount",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "prepay_remaining",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "prepay_service",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "prepay_automatic_use",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "prepay_module",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "vps_slice_type": [
+        {
+            "name": "name",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "buyable",
+            "type": "int",
+            "description": ""
+        }
+    ],
+    "vps_location": [
+        {
+            "name": "id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "vps_template": [
+        {
+            "name": "type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "virtulization",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "bits",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "os",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "version",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "file",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "vps_platform": [
+        {
+            "name": "platform",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "vps_screenshot_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "url",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "link",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "js",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "buy_vps_result_status": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoices",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "cost",
+            "type": "float",
+            "description": ""
+        }
+    ],
+    "validate_buy_vps_result_status": [
+        {
+            "name": "coupon_code",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "service_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "slice_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "service_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "repeat_slice_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "original_slice_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "original_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "repeat_service_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "monthly_service_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "os",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "slices",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "platform",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "controlpanel",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "period",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "location",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "version",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "coupon",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "rootpass",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_dns_domains": [
+        {
+            "name": "id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "master",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "last_check",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "notified_serial",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "account",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_dns_records": [
+        {
+            "name": "id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "domain_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "content",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ttl",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "prio",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "change_date",
+            "type": "int",
+            "description": ""
+        }
+    ],
+    "sql_row_servers_servers": [
+        {
+            "name": "server_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_frequency",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "server_order_date",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_ccname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_exp",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_bankname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_cc",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_root",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_tag",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_custom_tag",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_initial_bill",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_hardware",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_ips",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_monthly_bill",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_setup",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_discount",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "server_rep",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_date",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "server_total_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "server_referrer",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_location",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_fraud",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "server_mb_package_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_hardware_ordered",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_billed",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_welcome_email",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_cpu",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_memory",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_hd1",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_hd2",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_bandwidth",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_ips",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_os",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_cp",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "server_dedicated_raid",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_domains_domains": [
+        {
+            "name": "domain_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "domain_hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_username",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_password",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "domain_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "domain_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "domain_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "domain_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "domain_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_firstname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_lastname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_email",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_address",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_address2",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_address3",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_city",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_state",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_zip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_country",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_phone",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_fax",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "domain_company",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_ssl_ssl_certs": [
+        {
+            "name": "ssl_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "ssl_hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_order_id",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "ssl_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "ssl_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "ssl_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "ssl_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "ssl_firstname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_lastname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_phone",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_email",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_company",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_address",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_city",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_state",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_zip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_country",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_department",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ssl_extra",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_vps_vps": [
+        {
+            "name": "vps_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "vps_server",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "vps_vzid",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "vps_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "vps_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "vps_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "vps_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "vps_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "vps_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "vps_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "vps_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "vps_hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "vps_server_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "vps_comment",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_invoices": [
+        {
+            "name": "invoices_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "invoices_description",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoices_amount",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "invoices_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "invoices_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "invoices_date",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoices_group",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "invoices_extra",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "invoices_paid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "invoices_module",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoices_due_date",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoices_service",
+            "type": "int",
+            "description": ""
+        }
+    ],
+    "sql_row_backups_backups": [
+        {
+            "name": "backup_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_server",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_username",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "backup_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "backup_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_quota",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "backup_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "backup_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "backup_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "backup_server_status",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_licenses_licenses": [
+        {
+            "name": "license_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "license_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "license_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "license_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "license_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "license_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "license_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "license_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "license_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "license_hostname",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_quickservers_quickservers": [
+        {
+            "name": "qs_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_server",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_vzid",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "qs_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_server_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_comment",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_slices",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "qs_vnc",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "sql_row_webhosting_websites": [
+        {
+            "name": "website_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "website_server",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "website_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "website_cost",
+            "type": "float",
+            "description": ""
+        },
+        {
+            "name": "website_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "website_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "website_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "website_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "website_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "website_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "website_hostname",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "website_comment",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "website_username",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "website_server_status",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "array_prepays_list": "tns:prepays_list[]",
+    "array_sql_row_domains_domains": "tns:sql_row_domains_domains[]",
+    "array_sql_row_vps_vps": "tns:sql_row_vps_vps[]",
+    "array_sql_row_backups_backups": "tns:sql_row_backups_backups[]",
+    "array_sql_row_licenses_licenses": "tns:sql_row_licenses_licenses[]",
+    "array_sql_row_ssl_ssl_certs": "tns:sql_row_ssl_ssl_certs[]",
+    "array_sql_row_webhosting_websites": "tns:sql_row_webhosting_websites[]",
+    "array_sql_row_quickservers_quickservers": "tns:sql_row_quickservers_quickservers[]",
+    "array_sql_row_servers_servers": "tns:sql_row_servers_servers[]",
+    "array_sql_row_invoices": "tns:sql_row_invoices[]",
+    "array_vps_slice_type": "tns:vps_slice_type[]",
+    "array_vps_location": "tns:vps_location[]",
+    "array_vps_template": "tns:vps_template[]",
+    "array_vps_platform": "tns:vps_platform[]",
+    "array_sql_row_dns_records": "tns:sql_row_dns_records[]",
+    "license_type": [
+        {
+            "name": "services_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "services_name",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "services_cost",
+            "type": "float",
+            "description": ""
+        }
+    ],
+    "buy_license_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "cost",
+            "type": "float",
+            "description": ""
+        }
+    ],
+    "change_license_ip_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "change_license_ip_by_id_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "cancel_license_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "cancel_license_ip_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "make_payment_return": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "license_types": "tns:license_type[]"
+}

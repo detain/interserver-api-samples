@@ -1,0 +1,61 @@
+{
+    "name": "api_get_dns_records",
+    "desc": "Gets the DNS records associated with given Domain ID",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "domain_id": {
+            "name": "domain_id",
+            "type": "int",
+            "description": "The ID of the domain in question.",
+            "example": 1000
+        }
+    },
+    "output": [
+        {
+            "name": "id",
+            "type": "int",
+            "description": "ID of the Coupon"
+        },
+        {
+            "name": "domain_id",
+            "type": "int",
+            "description": "The ID of the domain in question."
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": "Country Name in all Capitols"
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "description": "Coupon Type, 1: Percentage Off   2: Fixed Amount Off  3: Specified Sale Price"
+        },
+        {
+            "name": "content",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "ttl",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "prio",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "change_date",
+            "type": "int",
+            "description": ""
+        }
+    ],
+    "example": []
+}

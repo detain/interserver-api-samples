@@ -1,0 +1,159 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_getTicketList",
+    "params": "",
+    "description": "Returns a list of any tickets in the system.",
+    "function": {
+        "name": "api_getTicketList",
+        "desc": "Returns a list of any tickets in the system.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "page": {
+                "name": "page",
+                "type": "int",
+                "description": "page number of tickets to list",
+                "example": 1
+            },
+            "limit": {
+                "name": "limit",
+                "type": "int",
+                "description": "how many tickets to show per page",
+                "example": 10
+            },
+            "status": {
+                "name": "status",
+                "type": "string",
+                "description": "null for no status limit or limit to a specific status",
+                "example": "open"
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "null for no status limit or limit to a specific status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "totalPages",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "tickets",
+                "type": "tns:getTicketList_tickets",
+                "description": ""
+            }
+        ],
+        "example": {
+            "status": "ok",
+            "status_text": "List of tickets",
+            "totalPages": "4.1",
+            "tickets": [
+                {
+                    "ticket_reference_id": "JKB-871-35126",
+                    "subject": "MASS SPAM FROM 67.211.220.254",
+                    "lastreplier": "Paul Petroff",
+                    "statustitle": "On Hold",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1533098236"
+                },
+                {
+                    "ticket_reference_id": "RPP-809-42263",
+                    "subject": "InterServer Abuse Report for 66.45.227.2",
+                    "lastreplier": "Anoop Vijayan",
+                    "statustitle": "On Hold",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1464004391"
+                },
+                {
+                    "ticket_reference_id": "OWH-854-85044",
+                    "subject": "InterServer Abuse Report for 66.45.227.2",
+                    "lastreplier": "Abuse",
+                    "statustitle": "Closed",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1463959741"
+                },
+                {
+                    "ticket_reference_id": "RDY-786-19151",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "Closed",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1445633102"
+                },
+                {
+                    "ticket_reference_id": "EVE-135-66307",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "Closed",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1445626801"
+                },
+                {
+                    "ticket_reference_id": "JOQ-510-39367",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "Closed",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1444037947"
+                },
+                {
+                    "ticket_reference_id": "HPS-632-33124",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "On Hold",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1444035450"
+                },
+                {
+                    "ticket_reference_id": "LYS-965-82123",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "Closed",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1443181051"
+                },
+                {
+                    "ticket_reference_id": "EPF-871-35939",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "On Hold",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1443166766"
+                },
+                {
+                    "ticket_reference_id": "JIM-587-56058",
+                    "subject": "Test ticket",
+                    "lastreplier": "abuse@interserver.net",
+                    "statustitle": "Closed",
+                    "prioritytitle": "Standard - 1 to 3 hour resolution",
+                    "replies": "0",
+                    "lastactivity": "1443085520"
+                }
+            ]
+        }
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param page int page number of tickets to list\n* @param limit int how many tickets to show per page\n* @param status string null for no status limit or limit to a specific status\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

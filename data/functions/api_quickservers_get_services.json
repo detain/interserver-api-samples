@@ -1,0 +1,105 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_quickservers_get_services",
+    "params": "",
+    "description": "This Function Applies to the Rapid Deploy Servers services.\n* Gets List of Services",
+    "function": {
+        "name": "api_quickservers_get_services",
+        "desc": "This Function Applies to the Rapid Deploy Servers services.\nGets List of Services",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            }
+        },
+        "output": [
+            {
+                "name": "qs_id",
+                "type": "int",
+                "description": "Server ID"
+            },
+            {
+                "name": "qs_server",
+                "type": "int",
+                "description": "Rapid Deploy Server Host Server ID"
+            },
+            {
+                "name": "qs_vzid",
+                "type": "string",
+                "description": "Host-Side Server ID"
+            },
+            {
+                "name": "qs_type",
+                "type": "int",
+                "description": "Server Type"
+            },
+            {
+                "name": "qs_cost",
+                "type": "float",
+                "description": "Service Cost"
+            },
+            {
+                "name": "qs_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "qs_ip",
+                "type": "string",
+                "description": "IP Address"
+            },
+            {
+                "name": "qs_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "qs_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "qs_coupon",
+                "type": "int",
+                "description": "Coupon ID"
+            },
+            {
+                "name": "qs_extra",
+                "type": "string",
+                "description": "Additional Rapid Deploy Server information"
+            },
+            {
+                "name": "qs_hostname",
+                "type": "string",
+                "description": "Hostname"
+            },
+            {
+                "name": "qs_server_status",
+                "type": "string",
+                "description": "Server Status"
+            },
+            {
+                "name": "qs_comment",
+                "type": "string",
+                "description": "Comments"
+            },
+            {
+                "name": "qs_slices",
+                "type": "int",
+                "description": "# of Slices"
+            },
+            {
+                "name": "qs_vnc",
+                "type": "string",
+                "description": "VNC Address"
+            }
+        ],
+        "example": []
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

@@ -1,0 +1,40 @@
+{
+    "name": "api_change_license_ip_by_id",
+    "desc": "Change the IP on an active license.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "the old ip address",
+            "example": 1000
+        },
+        "newip": {
+            "name": "newip",
+            "type": "string",
+            "description": "the new ip address",
+            "example": "4.4.4.5"
+        }
+    },
+    "output": [
+        {
+            "name": "status",
+            "type": "string",
+            "description": "Location Status"
+        },
+        {
+            "name": "status_text",
+            "type": "string",
+            "description": ""
+        }
+    ],
+    "example": {
+        "status": "error",
+        "status_text": "This License either does not exist or it is not owned by you."
+    }
+}

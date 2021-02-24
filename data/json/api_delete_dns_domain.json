@@ -1,0 +1,26 @@
+{
+    "name": "api_delete_dns_domain",
+    "desc": "Deletes a Domain from our DNS servers",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "domain_id": {
+            "name": "domain_id",
+            "type": "int",
+            "description": "The ID of the domain in question.",
+            "example": 1000
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "bool",
+            "description": "will return true if it succeeded, or false if there was some type of error."
+        }
+    },
+    "example": false
+}

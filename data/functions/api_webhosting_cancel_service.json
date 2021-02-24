@@ -1,0 +1,36 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_webhosting_cancel_service",
+    "params": "",
+    "description": "This Function Applies to the Webhosting services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
+    "function": {
+        "name": "api_webhosting_cancel_service",
+        "desc": "This Function Applies to the Webhosting services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "ID \/ Service ID you wish to cancel",
+                "example": 10000
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        },
+        "example": false
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int ID \/ Service ID you wish to cancel\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

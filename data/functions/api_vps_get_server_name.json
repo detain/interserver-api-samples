@@ -1,0 +1,36 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_vps_get_server_name",
+    "params": "",
+    "description": "Get the name of the vps master\/host server your giving the id for",
+    "function": {
+        "name": "api_vps_get_server_name",
+        "desc": "Get the name of the vps master\/host server your giving the id for",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "id of the vps master",
+                "example": 10000
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "string",
+                "description": "vps masters name"
+            }
+        },
+        "example": null
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int id of the vps master\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

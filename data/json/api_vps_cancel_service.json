@@ -1,0 +1,26 @@
+{
+    "name": "api_vps_cancel_service",
+    "desc": "This Function Applies to the VPS services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "id": {
+            "name": "id",
+            "type": "int",
+            "description": "ID \/ Service ID you wish to cancel",
+            "example": 10000
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "bool",
+            "description": ""
+        }
+    },
+    "example": true
+}

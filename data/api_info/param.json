@@ -1,0 +1,1335 @@
+{
+    "Add Prepay": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "module|string|the module the prepay is for. use [get_modules](#get_modules) to get a list of modules",
+            "amount|float|the dollar amount of prepay total",
+            "automatic_use|bool|wether or not the prepay will get used automatically by billing system."
+        ],
+        "output": [
+            "return|int|the prepay id"
+        ]
+    },
+    "Backups Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "Backups Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "Backups Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "Cancel License Ip": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "ip|string|IP Address to cancel",
+            "type|int|Package ID. use [get_license_types](#get-license-types) to get a list of possible types.",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "ip|string|IP Address to cancel",
+            "type|int|Package ID. use [get_license_types](#get-license-types) to get a list of possible types."
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "Cancel License": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|License Order ID",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|License Order ID"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "Domains Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "Domains Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "Domains Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "Get Paypal Url": {
+        "input": [
+            "module|string|the module the invoice is for. use [get_modules](#get_modules) to get a list of modules",
+            "invoice|int|the invoice id, or a comma seperated list of invoice ids to get a payment url for."
+        ],
+        "output": [
+            "return|string|the paypal payment url."
+        ]
+    },
+    "Get Prepay List": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "prepay_id|int|",
+            "prepay_type|int|",
+            "prepay_status|string|",
+            "prepay_date|string|",
+            "prepay_created|string|",
+            "prepay_amount|float|",
+            "prepay_remaining|float|",
+            "prepay_service|int|",
+            "prepay_automatic_use|int|",
+            "prepay_module|string|"
+        ]
+    },
+    "Get Prepay Paypal Fill Url": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "module|string|the module the prepay is for. use [get_modules](#get_modules) to get a list of modules",
+            "prepay_id|int|the ID of the PrePay",
+            "amount|float|the amount to pay on the prepay."
+        ],
+        "output": [
+            "return|string|a paypal payment url."
+        ]
+    },
+    "Get Prepay Remaining": {
+        "input": [
+            "module|string|the module you want to check your prepay amounts on"
+        ],
+        "output": [
+            "return|string|"
+        ]
+    },
+    "Licenses Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "Licenses Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "Licenses Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "Make Payment": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "module|string|the module of the service being paid on",
+            "invoice|int|the invoice id you want to make a payment on"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "Quickservers Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "Quickservers Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+        ]
+    },
+    "Quickservers Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+        ]
+    },
+    "SSL Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "SSL Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "SSL Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due"
+        ]
+    },
+    "VPS Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "VPS Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+        ]
+    },
+    "VPS Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+        ]
+    },
+    "Webhosting Cancel Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel",
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the Order ID \/ Service ID you wish to cancel"
+        ],
+        "output": [
+            "return|bool|",
+            "return|bool|"
+        ]
+    },
+    "Webhosting Get Client Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+        ]
+    },
+    "Webhosting Get Client Unpaid Invoices": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+            "invoices_id|int|ID of the Invoice used for referencing",
+            "invoices_description|string|Description of what the Invoice was for",
+            "invoices_amount|float|Cost of the Invoice",
+            "invoices_custid|int|ID of the Customer this Invoice is for",
+            "invoices_type|int|The Type of Invoice (1 = charge, 10+ are payment types)",
+            "invoices_date|string|Date the Invoice was Created",
+            "invoices_group|int|Billing Group the Invoice falls under, Not currently used",
+            "invoices_extra|int|If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+            "invoices_paid|int|Wether or not the Invoice was paid (if applicable)",
+            "invoices_module|string|Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+            "invoices_due_date|string|Date the Invoice is Due",
+            "invoices_service|int|ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+        ]
+    },
+    "Get Ima": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "return|string|"
+        ]
+    },
+    "Login": {
+        "input": [
+            "username|string|the username (email address) you signed up with.",
+            "password|string|the password you use to login to the web account, or alternatively the API key."
+        ],
+        "output": [
+            "return|string|"
+        ]
+    },
+    "Get Hostname": {
+        "input": [
+            "ip|string|IP Address"
+        ],
+        "output": [
+            "return|string|"
+        ]
+    },
+    "Get Locked Ips": {
+        "output": [
+            "return|array|Array of IP Addresses"
+        ]
+    },
+    "Get Modules": {
+        "output": [
+            "return|array|"
+        ]
+    },
+    "StrPixels": {
+        "input": [
+            "string|string|characters to measure size"
+        ],
+        "output": [
+            "return|int|size in pixels."
+        ]
+    },
+    "GetTicketList": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "page|int|page number of tickets to list",
+            "limit|int|how many tickets to show per page",
+            "status|string|null for no status limi t or limit to a speicifc status"
+        ],
+        "output": [
+            "status|string|null for no status limi t or limit to a speicifc status",
+            "status_text|string|",
+            "totalPages|string|",
+            "tickets|tns:getTicketList_tickets|"
+        ]
+    },
+    "OpenTicket": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "user_email|string|client email address",
+            "user_ip|string|client ip address",
+            "subject|string|subject of the ticket",
+            "product|string|the product\/service if any this is in reference to.",
+            "body|string|full content\/description for the ticket",
+            "box_auth_value|string|encryption string?"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "ticket_reference_id|int|"
+        ]
+    },
+    "TicketPost": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "ticketID|string|the id of the ticket to add a response to. you can use [getTicketList](#getticketlist) to get a list of your tickets",
+            "content|string|the message to add to the ticket"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "ViewTicket": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "ticketID|string|the id of the ticket to retrieve. you can use [getTicketList](#getticketlist) to get a list of your tickets"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "result|tns:view_ticketdetail_array|"
+        ]
+    },
+    "Buy VPS Admin": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "os|string|file field from [get_vps_templates](#get_vps_templates)",
+            "slices|int|1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)",
+            "platform|string|platform field from the [get_vps_platforms_array](#get_vps_platforms_array)",
+            "controlpanel|string|none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only availbale with CentOS",
+            "period|int|1-36, How frequently to be billed in months. Some discounts as given based on the period",
+            "location|int|id field from the [get_vps_locations_array](#get_vps_locations_array)",
+            "version|int|os field from [get_vps_templates](#get_vps_templates)",
+            "hostname|string|Desired Hostname for the VPS",
+            "coupon|string|Optional Coupon to pass",
+            "rootpass|string|Desired Root Password (unused for windows, send a blank string)",
+            "server|int|0 for auto assign otherwise the id of the vps master to put this on"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "invoices|string|Array",
+            "cost|float|"
+        ]
+    },
+    "Buy VPS": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "os|string|file field from [get_vps_templates](#get_vps_templates)",
+            "slices|int|1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)",
+            "platform|string|platform field from the [get_vps_platforms_array](#get_vps_platforms_array)",
+            "controlpanel|string|none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only availbale with CentOS",
+            "period|int|1-36, How frequently to be billed in months. Some discounts as given based on the period",
+            "location|int|id field from the [get_vps_locations_array](#get_vps_locations_array)",
+            "version|string|os field from [get_vps_templates](#get_vps_templates)",
+            "hostname|string|Desired Hostname for the VPS",
+            "coupon|string|Optional Coupon to pass",
+            "rootpass|string|Desired Root Password (unused for windows, send a blank string)"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "invoices|string|Array",
+            "cost|float|"
+        ]
+    },
+    "Validate Buy VPS": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "os|string|file field from [get_vps_templates](#get_vps_templates)",
+            "slices|int|1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)",
+            "platform|string|platform field from the [get_vps_platforms_array](#get_vps_platforms_array)",
+            "controlpanel|string|none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only availbale with CentOS",
+            "period|int|1-36, How frequently to be billed in months. Some discounts as given based on the period",
+            "location|int|id field from the [get_vps_locations_array](#get_vps_locations_array)",
+            "version|string|os field from [get_vps_templates](#get_vps_templates)",
+            "hostname|string|Desired Hostname for the VPS",
+            "coupon|string|Optional Coupon to pass",
+            "rootpass|string|Desired Root Password (unused for windows, send a blank string)"
+        ],
+        "output": [
+            "coupon_code|int|",
+            "service_cost|float|",
+            "slice_cost|float|",
+            "service_type|int|",
+            "repeat_slice_cost|float|",
+            "original_slice_cost|float|",
+            "original_cost|float|",
+            "repeat_service_cost|float|",
+            "monthly_service_cost|float|",
+            "custid|int|",
+            "os|string|file field from [get_vps_templates](#get_vps_templates)",
+            "slices|int|1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)",
+            "platform|string|platform field from the [get_vps_platforms_array](#get_vps_platforms_array)",
+            "controlpanel|string|none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only availbale with CentOS",
+            "period|int|1-36, How frequently to be billed in months. Some discounts as given based on the period",
+            "location|int|id field from the [get_vps_locations_array](#get_vps_locations_array)",
+            "version|string|os field from [get_vps_templates](#get_vps_templates)",
+            "hostname|string|Desired Hostname for the VPS",
+            "coupon|string|Optional Coupon to pass",
+            "rootpass|string|Desired Root Password (unused for windows, send a blank string)",
+            "status_text|string|",
+            "status|string|"
+        ]
+    },
+    "VPS Get Server Name": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|id of the vps master"
+        ],
+        "output": [
+            "return|string|vps masters name"
+        ]
+    },
+    "VPS Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "vps_id|int|Service ID",
+            "vps_server|int|",
+            "vps_vzid|string|",
+            "vps_type|int|Package ID",
+            "vps_cost|float|Service Cost",
+            "vps_custid|int|Customer ID",
+            "vps_ip|string|IP Address",
+            "vps_status|string|Billing Status",
+            "vps_invoice|int|Invoice ID",
+            "vps_coupon|int|Coupon ID",
+            "vps_extra|string|",
+            "vps_hostname|string|",
+            "vps_server_status|string|",
+            "vps_comment|string|"
+        ]
+    },
+    "VPS Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "vps_id|int|Service ID",
+            "vps_server|int|",
+            "vps_vzid|string|",
+            "vps_type|int|Package ID",
+            "vps_cost|float|Service Cost",
+            "vps_custid|int|Customer ID",
+            "vps_ip|string|IP Address",
+            "vps_status|string|Billing Status",
+            "vps_invoice|int|Invoice ID",
+            "vps_coupon|int|Coupon ID",
+            "vps_extra|string|",
+            "vps_hostname|string|",
+            "vps_server_status|string|",
+            "vps_comment|string|"
+        ]
+    },
+    "VPS Queue Restart": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|defaults to false, if specifeid tries usign that di instead of the one passed"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "VPS Queue Start": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|defaults to false, if specifeid tries usign that di instead of the one passed"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "VPS Queue Stop": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|defaults to false, if specifeid tries usign that di instead of the one passed"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "VPS Screenshot": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|false to link to the image itself , otherwise a url"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "url|string|",
+            "link|string|",
+            "js|string|"
+        ]
+    },
+    "Get VPS Locations Array": {
+        "output": [
+            "id|int|Internal ID",
+            "name|string|"
+        ]
+    },
+    "Get VPS Platforms Array": {
+        "output": [
+            "platform|string|",
+            "name|string|"
+        ]
+    },
+    "Get VPS Slice Types": {
+        "output": [
+            "name|string|",
+            "type|int|",
+            "cost|float|",
+            "buyable|int|"
+        ]
+    },
+    "Get VPS Templates": {
+        "output": [
+            "type|int|",
+            "virtulization|string|",
+            "bits|int|",
+            "os|string|",
+            "version|string|",
+            "file|string|",
+            "title|string|"
+        ]
+    },
+    "Webhosting Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "website_id|int|Server ID",
+            "website_server|int|",
+            "website_type|int|Server Type",
+            "website_cost|float|Service Cost",
+            "website_custid|int|Customer ID",
+            "website_ip|string|IP Address",
+            "website_status|string|Billing Status",
+            "website_invoice|int|Invoice ID",
+            "website_coupon|int|Coupon ID",
+            "website_extra|string|",
+            "website_hostname|string|",
+            "website_comment|string|",
+            "website_username|string|",
+            "website_server_status|string|"
+        ]
+    },
+    "Webhosting Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "website_id|int|Server ID",
+            "website_server|int|",
+            "website_type|int|Server Type",
+            "website_cost|float|Service Cost",
+            "website_custid|int|Customer ID",
+            "website_ip|string|IP Address",
+            "website_status|string|Billing Status",
+            "website_invoice|int|Invoice ID",
+            "website_coupon|int|Coupon ID",
+            "website_extra|string|",
+            "website_hostname|string|",
+            "website_comment|string|",
+            "website_username|string|",
+            "website_server_status|string|"
+        ]
+    },
+    "Buy License": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "ip|string|ip address you wish to license some software on",
+            "type|int|the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.",
+            "coupon|string|an optional coupon"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|",
+            "invoice|int|",
+            "cost|float|"
+        ]
+    },
+    "Change License Ip By Id": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|the license order id of the license to change the ip for",
+            "newip|string|the new ip address to associate with the license"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "Change License Ip": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "oldip|string|the old ip address",
+            "newip|string|the new ip address"
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "Get License Types": {
+        "output": [
+            "0|tns:license_type[]|"
+        ]
+    },
+    "Licenses Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "license_id|int|Service ID",
+            "license_type|int|Package ID",
+            "license_cost|float|Service Cost",
+            "license_custid|int|Customer ID",
+            "license_ip|string|",
+            "license_status|string|Billing Status",
+            "license_invoice|int|Invoice ID",
+            "license_coupon|int|Coupon ID",
+            "license_extra|string|",
+            "license_hostname|string|"
+        ]
+    },
+    "Licenses Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "license_id|int|Service ID",
+            "license_type|int|Package ID",
+            "license_cost|float|Service Cost",
+            "license_custid|int|Customer ID",
+            "license_ip|string|",
+            "license_status|string|Billing Status",
+            "license_invoice|int|Invoice ID",
+            "license_coupon|int|Coupon ID",
+            "license_extra|string|",
+            "license_hostname|string|"
+        ]
+    },
+    "Quickservers Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "qs_id|int|Server ID",
+            "qs_server|int|",
+            "qs_vzid|string|",
+            "qs_type|int|Server Type",
+            "qs_cost|float|Service Cost",
+            "qs_custid|int|Customer ID",
+            "qs_ip|string|IP Address",
+            "qs_status|string|Billing Status",
+            "qs_invoice|int|Invoice ID",
+            "qs_coupon|int|Coupon ID",
+            "qs_extra|string|",
+            "qs_hostname|string|",
+            "qs_server_status|string|",
+            "qs_comment|string|",
+            "qs_slices|int|",
+            "qs_vnc|string|"
+        ]
+    },
+    "Quickservers Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "qs_id|int|Server ID",
+            "qs_server|int|",
+            "qs_vzid|string|",
+            "qs_type|int|Server Type",
+            "qs_cost|float|Service Cost",
+            "qs_custid|int|Customer ID",
+            "qs_ip|string|IP Address",
+            "qs_status|string|Billing Status",
+            "qs_invoice|int|Invoice ID",
+            "qs_coupon|int|Coupon ID",
+            "qs_extra|string|",
+            "qs_hostname|string|",
+            "qs_server_status|string|",
+            "qs_comment|string|",
+            "qs_slices|int|",
+            "qs_vnc|string|"
+        ]
+    },
+    "Domains Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "domain_id|int|Service ID",
+            "domain_hostname|string|",
+            "domain_username|string|",
+            "domain_password|string|",
+            "domain_type|int|Package ID",
+            "domain_cost|float|Service Cost",
+            "domain_custid|int|Customer ID",
+            "domain_status|string|Billing Status",
+            "domain_invoice|int|Invoice ID",
+            "domain_coupon|int|Coupon ID",
+            "domain_extra|string|",
+            "domain_firstname|string|",
+            "domain_lastname|string|",
+            "domain_email|string|",
+            "domain_address|string|",
+            "domain_address2|string|",
+            "domain_address3|string|",
+            "domain_city|string|",
+            "domain_state|string|",
+            "domain_zip|string|",
+            "domain_country|string|",
+            "domain_phone|string|",
+            "domain_fax|string|",
+            "domain_company|string|"
+        ]
+    },
+    "Domains Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "domain_id|int|Service ID",
+            "domain_hostname|string|",
+            "domain_username|string|",
+            "domain_password|string|",
+            "domain_type|int|Package ID",
+            "domain_cost|float|Service Cost",
+            "domain_custid|int|Customer ID",
+            "domain_status|string|Billing Status",
+            "domain_invoice|int|Invoice ID",
+            "domain_coupon|int|Coupon ID",
+            "domain_extra|string|",
+            "domain_firstname|string|",
+            "domain_lastname|string|",
+            "domain_email|string|",
+            "domain_address|string|",
+            "domain_address2|string|",
+            "domain_address3|string|",
+            "domain_city|string|",
+            "domain_state|string|",
+            "domain_zip|string|",
+            "domain_country|string|",
+            "domain_phone|string|",
+            "domain_fax|string|",
+            "domain_company|string|"
+        ]
+    },
+    "SSL Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "ssl_id|int|Service ID",
+            "ssl_hostname|string|",
+            "ssl_order_id|string|",
+            "ssl_type|int|Package ID",
+            "ssl_cost|float|Service Cost",
+            "ssl_custid|int|Customer ID",
+            "ssl_status|string|Billing Status",
+            "ssl_invoice|int|Invoice ID",
+            "ssl_coupon|int|Coupon ID",
+            "ssl_firstname|string|",
+            "ssl_lastname|string|",
+            "ssl_phone|string|",
+            "ssl_email|string|",
+            "ssl_company|string|",
+            "ssl_address|string|",
+            "ssl_city|string|",
+            "ssl_state|string|",
+            "ssl_zip|string|",
+            "ssl_country|string|",
+            "ssl_department|string|",
+            "ssl_extra|string|"
+        ]
+    },
+    "SSL Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "ssl_id|int|Service ID",
+            "ssl_hostname|string|",
+            "ssl_order_id|string|",
+            "ssl_type|int|Package ID",
+            "ssl_cost|float|Service Cost",
+            "ssl_custid|int|Customer ID",
+            "ssl_status|string|Billing Status",
+            "ssl_invoice|int|Invoice ID",
+            "ssl_coupon|int|Coupon ID",
+            "ssl_firstname|string|",
+            "ssl_lastname|string|",
+            "ssl_phone|string|",
+            "ssl_email|string|",
+            "ssl_company|string|",
+            "ssl_address|string|",
+            "ssl_city|string|",
+            "ssl_state|string|",
+            "ssl_zip|string|",
+            "ssl_country|string|",
+            "ssl_department|string|",
+            "ssl_extra|string|"
+        ]
+    },
+    "Backups Get Service": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "id|int|service id, such as VPS ID"
+        ],
+        "output": [
+            "backup_id|int|Service ID",
+            "backup_server|int|",
+            "backup_username|string|",
+            "backup_type|int|Package ID",
+            "backup_cost|float|Service Cost",
+            "backup_custid|int|Customer ID",
+            "backup_quota|int|",
+            "backup_ip|string|",
+            "backup_status|string|Billing Status",
+            "backup_invoice|int|Invoice ID",
+            "backup_coupon|int|Coupon ID",
+            "backup_extra|string|",
+            "backup_server_status|string|"
+        ]
+    },
+    "Backups Get Services": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call"
+        ],
+        "output": [
+            "backup_id|int|Service ID",
+            "backup_server|int|",
+            "backup_username|string|",
+            "backup_type|int|Package ID",
+            "backup_cost|float|Service Cost",
+            "backup_custid|int|Customer ID",
+            "backup_quota|int|",
+            "backup_ip|string|",
+            "backup_status|string|Billing Status",
+            "backup_invoice|int|Invoice ID",
+            "backup_coupon|int|Coupon ID",
+            "backup_extra|string|",
+            "backup_server_status|string|"
+        ]
+    },
+    "Add Dns Domain": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain|string|domain name to host",
+            "ip|string|ip address to assign it to."
+        ],
+        "output": [
+            "status|string|",
+            "status_text|string|"
+        ]
+    },
+    "Add Dns Record": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain_id|int|The ID of the domain in question.",
+            "name|string|the hostname being set on the dns record.",
+            "content|string|the value of the dns record, or what its set to.",
+            "type|string|dns record type.",
+            "ttl|int|dns record time to live, or update time.",
+            "prio|int|dns record priority"
+        ],
+        "output": [
+            "return|int|"
+        ]
+    },
+    "Delete Dns Domain": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain_id|int|The ID of the domain in question."
+        ],
+        "output": [
+            "return|bool|will return true if it succeeded, or false if there was some type of error."
+        ]
+    },
+    "Delete Dns Record": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain_id|int|The ID of the domain in question.",
+            "record_id|int|The ID of the domains record to remove."
+        ],
+        "output": [
+            "return|bool|will return true if it succeeded, or false if there was some type of error."
+        ]
+    },
+    "Get Dns Domain": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain_id|int|The ID of the domain in question."
+        ],
+        "output": [
+            "id|int|Internal ID",
+            "name|string|",
+            "master|string|",
+            "last_check|int|",
+            "type|string|",
+            "notified_serial|int|",
+            "account|string|"
+        ]
+    },
+    "Get Dns Records": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain_id|int|The ID of the domain in question."
+        ],
+        "output": [
+            "id|int|Internal ID",
+            "domain_id|int|The ID of the domain in question.",
+            "name|string|",
+            "type|string|",
+            "content|string|",
+            "ttl|int|",
+            "prio|int|",
+            "change_date|int|"
+        ]
+    },
+    "Update Dns Record": {
+        "input": [
+            "sid|string|the *Session ID* you get from the [login](#login) call",
+            "domain_id|int|The ID of the domain in question.",
+            "record_id|int|The ID of the record to update",
+            "name|string|the hostname being set on the dns record.",
+            "content|string|the value of the dns record, or what its set to.",
+            "type|string|dns record type.",
+            "ttl|int|dns record time to live, or update time.",
+            "prio|int|dns record priority"
+        ],
+        "output": [
+            "return|bool|True on success, False on failure."
+        ]
+    }
+}

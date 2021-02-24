@@ -1,0 +1,1496 @@
+[
+    {
+        "attr": {
+            "name": "get_modules"
+        },
+        "documentation": {
+            "value": "Returns a list of all the modules available."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_modulesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_modulesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_login"
+        },
+        "documentation": {
+            "value": "This function creates a session in our system which you will need to pass to most functions for authentication."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_loginRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_loginResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_ima"
+        },
+        "documentation": {
+            "value": "Returns the IMA value.  This function tells you that I'm a client, or I'm a admin. This is almost always going to return client, Adminsitrators will get an admin response."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_imaRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_imaResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_license_types"
+        },
+        "documentation": {
+            "value": "Get a license of the various license types."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_license_typesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_license_typesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_cancel_license_ip"
+        },
+        "documentation": {
+            "value": "Cancel a License by IP and Type."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_cancel_license_ipRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_cancel_license_ipResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_cancel_license"
+        },
+        "documentation": {
+            "value": "Cancel a License."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_cancel_licenseRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_cancel_licenseResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_buy_license"
+        },
+        "documentation": {
+            "value": "Purchase a License.  Returns an invoice ID."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_buy_licenseRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_buy_licenseResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_buy_license_prepay"
+        },
+        "documentation": {
+            "value": "Purchase a License and optionally uses PrePay.  Will return an error if use_prepay is true not enough PrePay funds are available."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_buy_license_prepayRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_buy_license_prepayResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_change_license_ip"
+        },
+        "documentation": {
+            "value": "Change the IP on an active license."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_change_license_ipRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_change_license_ipResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_change_license_ip_by_id"
+        },
+        "documentation": {
+            "value": "Change the IP on an active license."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_change_license_ip_by_idRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_change_license_ip_by_idResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_make_payment"
+        },
+        "documentation": {
+            "value": "Makes a payment for an invoice on a module."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_make_paymentRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_make_paymentResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_paypal_url"
+        },
+        "documentation": {
+            "value": "Get the PayPal payment URL for an invoice on a given module."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_paypal_urlRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_paypal_urlResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_prepay_remaining"
+        },
+        "documentation": {
+            "value": "Get the PrePay amount available for a given module."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_prepay_remainingRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_prepay_remainingResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_add_prepay"
+        },
+        "documentation": {
+            "value": "Adds a PrePay into the system under the given module.    PrePays are a credit on your account by prefilling  your account with funds.   These are stored in a PrePay.    PrePay funds can be automatically used as needed or set to only be usable by direct action"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_add_prepayRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_add_prepayResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_prepay_list"
+        },
+        "documentation": {
+            "value": "Gets a list of your current prepays added into the system and how much is left on each one."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_prepay_listRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_prepay_listResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_prepay_paypal_fill_url"
+        },
+        "documentation": {
+            "value": "Gets a PayPal URL to fill a PrePay."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_prepay_paypal_fill_urlRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_prepay_paypal_fill_urlResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_domains_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Domain Registrations services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_domains_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_domains_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the VPS services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_backups_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Backup Services services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_backups_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_backups_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_licenses_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Licensing services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_licenses_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_licenses_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_ssl_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the SSL Certificates services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_ssl_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_ssl_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_webhosting_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Webhosting services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_webhosting_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_webhosting_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_quickservers_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Rapid Deploy Servers services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_quickservers_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_quickservers_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_servers_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Dedicated Servers services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_servers_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_servers_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_api_auto_cpanel_login"
+        },
+        "documentation": {
+            "value": "Logs into cpanel for the given website id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_api_auto_cpanel_loginRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_api_auto_cpanel_loginResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_getTicketList"
+        },
+        "documentation": {
+            "value": "Returns a list of any tickets in the system."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_getTicketListRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_getTicketListResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_openTicket"
+        },
+        "documentation": {
+            "value": "This command creates a new ticket in our system."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_openTicketRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_openTicketResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_viewTicket"
+        },
+        "documentation": {
+            "value": "View\/Retrieve information about the given ticketID."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_viewTicketRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_viewTicketResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_ticketPost"
+        },
+        "documentation": {
+            "value": "This commands adds the content parameter as a response\/reply to an existing ticket specified by ticketID."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_ticketPostRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_ticketPostResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_domains_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Domain Registrations services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_domains_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_domains_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the VPS services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_backups_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Backup Services services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_backups_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_backups_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_licenses_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Licensing services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_licenses_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_licenses_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_ssl_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the SSL Certificates services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_ssl_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_ssl_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_webhosting_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Webhosting services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_webhosting_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_webhosting_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_quickservers_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Rapid Deploy Servers services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_quickservers_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_quickservers_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_servers_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Dedicated Servers services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_servers_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_servers_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_domains_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Domain Registrations services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_domains_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_domains_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the VPS services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_backups_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Backup Services services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_backups_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_backups_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_licenses_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Licensing services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_licenses_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_licenses_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_ssl_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the SSL Certificates services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_ssl_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_ssl_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_webhosting_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Webhosting services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_webhosting_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_webhosting_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_quickservers_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Rapid Deploy Servers services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_quickservers_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_quickservers_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_servers_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Dedicated Servers services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_servers_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_servers_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_domains_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Domain Registrations services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_domains_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_domains_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the VPS services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_backups_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Backup Services services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_backups_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_backups_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_licenses_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Licensing services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_licenses_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_licenses_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_ssl_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the SSL Certificates services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_ssl_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_ssl_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_webhosting_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Webhosting services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_webhosting_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_webhosting_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_quickservers_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Rapid Deploy Servers services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_quickservers_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_quickservers_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_servers_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Dedicated Servers services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_servers_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_servers_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_domains_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Domain Registrations services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_domains_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_domains_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the VPS services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_backups_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Backup Services services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_backups_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_backups_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_licenses_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Licensing services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_licenses_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_licenses_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_ssl_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the SSL Certificates services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_ssl_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_ssl_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_webhosting_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Webhosting services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_webhosting_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_webhosting_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_quickservers_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Rapid Deploy Servers services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_quickservers_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_quickservers_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_servers_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Dedicated Servers services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_servers_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_servers_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "get_locked_ips"
+        },
+        "documentation": {
+            "value": "This will return a list of all IP addresses used for fraud.   Its probably of no real use to anyone, butI use it to block IP addresses and similar things. "
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_locked_ipsRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_locked_ipsResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_queue_stop"
+        },
+        "documentation": {
+            "value": "stops a vps"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_queue_stopRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_queue_stopResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_queue_start"
+        },
+        "documentation": {
+            "value": "start a vps"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_queue_startRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_queue_startResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_queue_restart"
+        },
+        "documentation": {
+            "value": "restart a vps"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_queue_restartRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_queue_restartResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "get_vps_slice_types"
+        },
+        "documentation": {
+            "value": "We have several types of Servers available for use with VPS Hosting. You can get a list of the types available and  there cost per slice\/unit by making a call to this function"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_vps_slice_typesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_vps_slice_typesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "get_vps_locations_array"
+        },
+        "documentation": {
+            "value": "Use this function to get a list of the Locations available for ordering. The id field in the return value is also needed to pass to the buy_vps functions."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_vps_locations_arrayRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_vps_locations_arrayResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "get_vps_templates"
+        },
+        "documentation": {
+            "value": "Get the currently available VPS templates for each server type."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_vps_templatesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_vps_templatesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "get_vps_platforms_array"
+        },
+        "documentation": {
+            "value": "Use this function to get a list of the various platforms available for ordering. The platform field in the return value is also needed to pass to the buy_vps functions."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_vps_platforms_arrayRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_vps_platforms_arrayResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_api_validate_buy_vps"
+        },
+        "documentation": {
+            "value": "Checks if the parameters for your order pass validation and let you know if there are any errors. It will also give you information on the pricing breakdown."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_api_validate_buy_vpsRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_api_validate_buy_vpsResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_api_buy_vps"
+        },
+        "documentation": {
+            "value": "Places a VPS order in our system. These are the same parameters as api_validate_buy_vps..   Returns a comma seperated list of invoices if any need paid."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_api_buy_vpsRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_api_buy_vpsResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_api_buy_vps_admin"
+        },
+        "documentation": {
+            "value": "Purchase a VPS (admins only).   Returns a comma seperated list of invoices if any need paid.  Same as client function but allows specifying which server to install to if there are resources available on the specified server."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_api_buy_vps_adminRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_api_buy_vps_adminResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_screenshot"
+        },
+        "documentation": {
+            "value": "This command returns a link to an animated screenshot of your VPS.   Only works currently with KVM VPS servers"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_screenshotRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_screenshotResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_vps_get_server_name"
+        },
+        "documentation": {
+            "value": "Get the name of the vps master\/host server your giving the id for"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_vps_get_server_nameRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_vps_get_server_nameResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "get_hostname"
+        },
+        "documentation": {
+            "value": "Resolves an IP Address and returns the hostname it points to."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:get_hostnameRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:get_hostnameResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_dns_domain"
+        },
+        "documentation": {
+            "value": "Gets the DNS entry for a given Domain ID"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_dns_domainRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_dns_domainResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_get_dns_records"
+        },
+        "documentation": {
+            "value": "Gets the DNS records associated with given Domain ID"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_get_dns_recordsRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_get_dns_recordsResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_delete_dns_record"
+        },
+        "documentation": {
+            "value": "Deletes a single DNS record"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_delete_dns_recordRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_delete_dns_recordResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_delete_dns_domain"
+        },
+        "documentation": {
+            "value": "Deletes a Domain from our DNS servers"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_delete_dns_domainRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_delete_dns_domainResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_add_dns_record"
+        },
+        "documentation": {
+            "value": "Adds a single DNS record"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_add_dns_recordRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_add_dns_recordResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_update_dns_record"
+        },
+        "documentation": {
+            "value": "Updates a single DNS record"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_update_dns_recordRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_update_dns_recordResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_add_dns_domain"
+        },
+        "documentation": {
+            "value": "Adds a new domain into our system.  The status will be \"ok\" if it added, or \"error\" if there was any problems status_text will contain a description of the problem if any."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_add_dns_domainRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_add_dns_domainResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "strPixels"
+        },
+        "documentation": {
+            "value": "This function uses the array below to calculate the pixel width of a string of characters. The widths of each character are based on a 12px Helvetica font.  Kerning is not taken into account so RESULTS ARE APPROXIMATE.  The purpose is to return a relative size to help in formatting. For example, strPixels('I like cake') == 54    strPixels('I LIKE CAKE') == 67"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:strPixelsRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:strPixelsResponse"
+            }
+        }
+    }
+]

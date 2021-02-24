@@ -1,0 +1,38 @@
+{
+    "name": "api_get_prepay_paypal_fill_url",
+    "desc": "Gets a PayPal URL to fill a PrePay.",
+    "input": {
+        "sid": {
+            "name": "sid",
+            "type": "string",
+            "description": "the *Session ID* you get from the [login](#login) call",
+            "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+        },
+        "module": {
+            "name": "module",
+            "type": "string",
+            "description": "the module the prepay is for. use [get_modules](#get_modules) to get a list of modules",
+            "example": "domains"
+        },
+        "prepay_id": {
+            "name": "prepay_id",
+            "type": "int",
+            "description": "the ID of the PrePay",
+            "example": 100
+        },
+        "amount": {
+            "name": "amount",
+            "type": "float",
+            "description": "the amount to pay on the prepay.",
+            "example": 10
+        }
+    },
+    "output": {
+        "return": {
+            "name": "return",
+            "type": "string",
+            "description": "a paypal payment url."
+        }
+    },
+    "example": "https:\/\/www.paypal.com\/cgi-bin\/webscr?cmd=_xclick&business=vps@interserver.net&item_name=Fill+domains+PrePay+100&custom=PREPAYdomains100&buyer_credit_promo_code=&buyer_credit_product_category=&buyer_credit_shipping_method=&buyer_credit_user_address_change=&amount=10.00&no_shipping=0&no_note=1&currency_code=USD&lc=US&bn=PP%2dBuyNowBF&charset=UTF%2d8"
+}

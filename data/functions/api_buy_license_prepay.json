@@ -1,0 +1,68 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_buy_license_prepay",
+    "params": "",
+    "description": "Purchase a License and optionally uses PrePay.  Will return an error if\n* use_prepay is true not enough PrePay funds are available.",
+    "function": {
+        "name": "api_buy_license_prepay",
+        "desc": "Purchase a License and optionally uses PrePay.  Will return an error if use_prepay is true not enough PrePay funds are available.",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "32ed3ca9119d42eaa4673c8e5c97600e"
+            },
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": "ip address you wish to license some software on",
+                "example": "66.45.228.200"
+            },
+            "type": {
+                "name": "type",
+                "type": "int",
+                "description": "the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.",
+                "example": ""
+            },
+            "coupon": {
+                "name": "coupon",
+                "type": "string",
+                "description": "an optional coupon",
+                "example": ""
+            },
+            "use_prepay": {
+                "name": "use_prepay",
+                "type": "bool",
+                "description": "optional, whether or not to use a prepay, if specified as true will return an error if not enough prepay",
+                "example": ""
+            }
+        },
+        "output": [
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Location Status"
+            },
+            {
+                "name": "status_text",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "invoice",
+                "type": "int",
+                "description": ""
+            },
+            {
+                "name": "cost",
+                "type": "float",
+                "description": ""
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ip string ip address you wish to license some software on\n* @param type int the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.\n* @param coupon string an optional coupon\n* @param use_prepay bool optional, whether or not to use a prepay, if specified as true will return an error if not enough prepay\n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}
