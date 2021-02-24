@@ -2,6 +2,12 @@
     "name": "detain/interserver-api-samples",
     "description": "sample code for the InterServer API in various languages including php, perl, python, ruby, etc.",
     "type": "library",
+    "keywords": [
+        "administration",
+        "centralized",
+        "api",
+    ],
+    "homepage": "http://my.interserver.net",
     "authors": [
         {
             "name": "Joe Huss",
