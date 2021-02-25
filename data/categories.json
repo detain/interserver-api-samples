@@ -1,461 +1,4 @@
 {
-    "backups": {
-        "name": "Storage",
-        "extra": [],
-        "functions": {
-            "api_backups_cancel_service": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_backups_cancel_service",
-                "params": "",
-                "description": "This Function Applies to the Backup Services services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
-                "function": {
-                    "name": "api_backups_cancel_service",
-                    "desc": "This Function Applies to the Backup Services services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "id": {
-                            "name": "id",
-                            "type": "int",
-                            "description": "ID \/ Service ID you wish to cancel",
-                            "example": 10000
-                        }
-                    },
-                    "output": {
-                        "return": {
-                            "name": "return",
-                            "type": "bool",
-                            "description": ""
-                        }
-                    },
-                    "example": false
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int ID \/ Service ID you wish to cancel\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_backups_get_client_invoices": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_backups_get_client_invoices",
-                "params": "",
-                "description": "This Function Applies to the Backup Services services.\n* Gets a list of all the invoices.",
-                "function": {
-                    "name": "api_backups_get_client_invoices",
-                    "desc": "This Function Applies to the Backup Services services.\nGets a list of all the invoices.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "invoices_id",
-                            "type": "int",
-                            "description": "ID of the Invoice used for referencing"
-                        },
-                        {
-                            "name": "invoices_description",
-                            "type": "string",
-                            "description": "Description of what the Invoice was for"
-                        },
-                        {
-                            "name": "invoices_amount",
-                            "type": "float",
-                            "description": "Cost of the Invoice"
-                        },
-                        {
-                            "name": "invoices_custid",
-                            "type": "int",
-                            "description": "ID of the Customer this Invoice is for"
-                        },
-                        {
-                            "name": "invoices_type",
-                            "type": "int",
-                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
-                        },
-                        {
-                            "name": "invoices_date",
-                            "type": "string",
-                            "description": "Date the Invoice was Created"
-                        },
-                        {
-                            "name": "invoices_group",
-                            "type": "int",
-                            "description": "Billing Group the Invoice falls under, Not currently used"
-                        },
-                        {
-                            "name": "invoices_extra",
-                            "type": "int",
-                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
-                        },
-                        {
-                            "name": "invoices_paid",
-                            "type": "int",
-                            "description": "Whether or not the Invoice was paid (if applicable)"
-                        },
-                        {
-                            "name": "invoices_module",
-                            "type": "string",
-                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
-                        },
-                        {
-                            "name": "invoices_due_date",
-                            "type": "string",
-                            "description": "Date the Invoice is Due"
-                        },
-                        {
-                            "name": "invoices_service",
-                            "type": "int",
-                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
-                        },
-                        {
-                            "name": "invoices_deleted",
-                            "type": "int",
-                            "description": "Deleted Flag"
-                        },
-                        {
-                            "name": "invoices_currency",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ],
-                    "example": []
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_backups_get_client_unpaid_invoices": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_backups_get_client_unpaid_invoices",
-                "params": "",
-                "description": "This Function Applies to the Backup Services services.\n* This function returns a list of all the unpaid invoices matching the module\n* passed..",
-                "function": {
-                    "name": "api_backups_get_client_unpaid_invoices",
-                    "desc": "This Function Applies to the Backup Services services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "invoices_id",
-                            "type": "int",
-                            "description": "ID of the Invoice used for referencing"
-                        },
-                        {
-                            "name": "invoices_description",
-                            "type": "string",
-                            "description": "Description of what the Invoice was for"
-                        },
-                        {
-                            "name": "invoices_amount",
-                            "type": "float",
-                            "description": "Cost of the Invoice"
-                        },
-                        {
-                            "name": "invoices_custid",
-                            "type": "int",
-                            "description": "ID of the Customer this Invoice is for"
-                        },
-                        {
-                            "name": "invoices_type",
-                            "type": "int",
-                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
-                        },
-                        {
-                            "name": "invoices_date",
-                            "type": "string",
-                            "description": "Date the Invoice was Created"
-                        },
-                        {
-                            "name": "invoices_group",
-                            "type": "int",
-                            "description": "Billing Group the Invoice falls under, Not currently used"
-                        },
-                        {
-                            "name": "invoices_extra",
-                            "type": "int",
-                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
-                        },
-                        {
-                            "name": "invoices_paid",
-                            "type": "int",
-                            "description": "Whether or not the Invoice was paid (if applicable)"
-                        },
-                        {
-                            "name": "invoices_module",
-                            "type": "string",
-                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
-                        },
-                        {
-                            "name": "invoices_due_date",
-                            "type": "string",
-                            "description": "Date the Invoice is Due"
-                        },
-                        {
-                            "name": "invoices_service",
-                            "type": "int",
-                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
-                        },
-                        {
-                            "name": "invoices_deleted",
-                            "type": "int",
-                            "description": "Deleted Flag"
-                        },
-                        {
-                            "name": "invoices_currency",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ],
-                    "example": []
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_backups_get_service": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_backups_get_service",
-                "params": "",
-                "description": "This Function Applies to the Backup Services services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
-                "function": {
-                    "name": "api_backups_get_service",
-                    "desc": "This Function Applies to the Backup Services services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "id": {
-                            "name": "id",
-                            "type": "int",
-                            "description": "",
-                            "example": 10000
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "backup_id",
-                            "type": "int",
-                            "description": "ID of the Backup Host Server"
-                        },
-                        {
-                            "name": "backup_server",
-                            "type": "int",
-                            "description": "ID of Server the Backup Resides on"
-                        },
-                        {
-                            "name": "backup_username",
-                            "type": "string",
-                            "description": "Username on the Backup Server associated with this Order"
-                        },
-                        {
-                            "name": "backup_type",
-                            "type": "int",
-                            "description": "Which type of Backup Server"
-                        },
-                        {
-                            "name": "backup_cost",
-                            "type": "float",
-                            "description": "Service Cost"
-                        },
-                        {
-                            "name": "backup_currency",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "backup_frequency",
-                            "type": "int",
-                            "description": "Billing Interval"
-                        },
-                        {
-                            "name": "backup_order_date",
-                            "type": "string",
-                            "description": "Date the Order was Placed"
-                        },
-                        {
-                            "name": "backup_custid",
-                            "type": "int",
-                            "description": "Customer ID"
-                        },
-                        {
-                            "name": "backup_quota",
-                            "type": "int",
-                            "description": "Disk Quota"
-                        },
-                        {
-                            "name": "backup_ip",
-                            "type": "string",
-                            "description": "IP Address of the Backup Server"
-                        },
-                        {
-                            "name": "backup_status",
-                            "type": "string",
-                            "description": "Billing Status"
-                        },
-                        {
-                            "name": "backup_invoice",
-                            "type": "int",
-                            "description": "Invoice ID"
-                        },
-                        {
-                            "name": "backup_coupon",
-                            "type": "int",
-                            "description": "Coupon ID"
-                        },
-                        {
-                            "name": "backup_extra",
-                            "type": "string",
-                            "description": "Additional Backup Information"
-                        },
-                        {
-                            "name": "backup_server_status",
-                            "type": "string",
-                            "description": "Server-Side status of this website"
-                        },
-                        {
-                            "name": "backup_comment",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ]
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_backups_get_services": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_backups_get_services",
-                "params": "",
-                "description": "This Function Applies to the Backup Services services.\n* Gets List of Services",
-                "function": {
-                    "name": "api_backups_get_services",
-                    "desc": "This Function Applies to the Backup Services services.\nGets List of Services",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "backup_id",
-                            "type": "int",
-                            "description": "ID of the Backup Host Server"
-                        },
-                        {
-                            "name": "backup_server",
-                            "type": "int",
-                            "description": "ID of Server the Backup Resides on"
-                        },
-                        {
-                            "name": "backup_username",
-                            "type": "string",
-                            "description": "Username on the Backup Server associated with this Order"
-                        },
-                        {
-                            "name": "backup_type",
-                            "type": "int",
-                            "description": "Which type of Backup Server"
-                        },
-                        {
-                            "name": "backup_cost",
-                            "type": "float",
-                            "description": "Service Cost"
-                        },
-                        {
-                            "name": "backup_currency",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "backup_frequency",
-                            "type": "int",
-                            "description": "Billing Interval"
-                        },
-                        {
-                            "name": "backup_order_date",
-                            "type": "string",
-                            "description": "Date the Order was Placed"
-                        },
-                        {
-                            "name": "backup_custid",
-                            "type": "int",
-                            "description": "Customer ID"
-                        },
-                        {
-                            "name": "backup_quota",
-                            "type": "int",
-                            "description": "Disk Quota"
-                        },
-                        {
-                            "name": "backup_ip",
-                            "type": "string",
-                            "description": "IP Address of the Backup Server"
-                        },
-                        {
-                            "name": "backup_status",
-                            "type": "string",
-                            "description": "Billing Status"
-                        },
-                        {
-                            "name": "backup_invoice",
-                            "type": "int",
-                            "description": "Invoice ID"
-                        },
-                        {
-                            "name": "backup_coupon",
-                            "type": "int",
-                            "description": "Coupon ID"
-                        },
-                        {
-                            "name": "backup_extra",
-                            "type": "string",
-                            "description": "Additional Backup Information"
-                        },
-                        {
-                            "name": "backup_server_status",
-                            "type": "string",
-                            "description": "Server-Side status of this website"
-                        },
-                        {
-                            "name": "backup_comment",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ],
-                    "example": []
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            }
-        }
-    },
     "billing": {
         "name": "Billing",
         "extra": [],
@@ -2867,573 +2410,6 @@
             }
         }
     },
-    "domains": {
-        "name": "Domains",
-        "extra": [],
-        "functions": {
-            "api_domains_cancel_service": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_domains_cancel_service",
-                "params": "",
-                "description": "This Function Applies to the Domain Registrations services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
-                "function": {
-                    "name": "api_domains_cancel_service",
-                    "desc": "This Function Applies to the Domain Registrations services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "id": {
-                            "name": "id",
-                            "type": "int",
-                            "description": "ID \/ Service ID you wish to cancel",
-                            "example": 10000
-                        }
-                    },
-                    "output": {
-                        "return": {
-                            "name": "return",
-                            "type": "bool",
-                            "description": ""
-                        }
-                    },
-                    "example": false
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int ID \/ Service ID you wish to cancel\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_domains_get_client_invoices": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_domains_get_client_invoices",
-                "params": "",
-                "description": "This Function Applies to the Domain Registrations services.\n* Gets a list of all the invoices.",
-                "function": {
-                    "name": "api_domains_get_client_invoices",
-                    "desc": "This Function Applies to the Domain Registrations services.\nGets a list of all the invoices.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "invoices_id",
-                            "type": "int",
-                            "description": "ID of the Invoice used for referencing"
-                        },
-                        {
-                            "name": "invoices_description",
-                            "type": "string",
-                            "description": "Description of what the Invoice was for"
-                        },
-                        {
-                            "name": "invoices_amount",
-                            "type": "float",
-                            "description": "Cost of the Invoice"
-                        },
-                        {
-                            "name": "invoices_custid",
-                            "type": "int",
-                            "description": "ID of the Customer this Invoice is for"
-                        },
-                        {
-                            "name": "invoices_type",
-                            "type": "int",
-                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
-                        },
-                        {
-                            "name": "invoices_date",
-                            "type": "string",
-                            "description": "Date the Invoice was Created"
-                        },
-                        {
-                            "name": "invoices_group",
-                            "type": "int",
-                            "description": "Billing Group the Invoice falls under, Not currently used"
-                        },
-                        {
-                            "name": "invoices_extra",
-                            "type": "int",
-                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
-                        },
-                        {
-                            "name": "invoices_paid",
-                            "type": "int",
-                            "description": "Whether or not the Invoice was paid (if applicable)"
-                        },
-                        {
-                            "name": "invoices_module",
-                            "type": "string",
-                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
-                        },
-                        {
-                            "name": "invoices_due_date",
-                            "type": "string",
-                            "description": "Date the Invoice is Due"
-                        },
-                        {
-                            "name": "invoices_service",
-                            "type": "int",
-                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
-                        },
-                        {
-                            "name": "invoices_deleted",
-                            "type": "int",
-                            "description": "Deleted Flag"
-                        },
-                        {
-                            "name": "invoices_currency",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ],
-                    "example": []
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_domains_get_client_unpaid_invoices": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_domains_get_client_unpaid_invoices",
-                "params": "",
-                "description": "This Function Applies to the Domain Registrations services.\n* This function returns a list of all the unpaid invoices matching the module\n* passed..",
-                "function": {
-                    "name": "api_domains_get_client_unpaid_invoices",
-                    "desc": "This Function Applies to the Domain Registrations services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "invoices_id",
-                            "type": "int",
-                            "description": "ID of the Invoice used for referencing"
-                        },
-                        {
-                            "name": "invoices_description",
-                            "type": "string",
-                            "description": "Description of what the Invoice was for"
-                        },
-                        {
-                            "name": "invoices_amount",
-                            "type": "float",
-                            "description": "Cost of the Invoice"
-                        },
-                        {
-                            "name": "invoices_custid",
-                            "type": "int",
-                            "description": "ID of the Customer this Invoice is for"
-                        },
-                        {
-                            "name": "invoices_type",
-                            "type": "int",
-                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
-                        },
-                        {
-                            "name": "invoices_date",
-                            "type": "string",
-                            "description": "Date the Invoice was Created"
-                        },
-                        {
-                            "name": "invoices_group",
-                            "type": "int",
-                            "description": "Billing Group the Invoice falls under, Not currently used"
-                        },
-                        {
-                            "name": "invoices_extra",
-                            "type": "int",
-                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
-                        },
-                        {
-                            "name": "invoices_paid",
-                            "type": "int",
-                            "description": "Whether or not the Invoice was paid (if applicable)"
-                        },
-                        {
-                            "name": "invoices_module",
-                            "type": "string",
-                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
-                        },
-                        {
-                            "name": "invoices_due_date",
-                            "type": "string",
-                            "description": "Date the Invoice is Due"
-                        },
-                        {
-                            "name": "invoices_service",
-                            "type": "int",
-                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
-                        },
-                        {
-                            "name": "invoices_deleted",
-                            "type": "int",
-                            "description": "Deleted Flag"
-                        },
-                        {
-                            "name": "invoices_currency",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ],
-                    "example": []
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_domains_get_service": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_domains_get_service",
-                "params": "",
-                "description": "This Function Applies to the Domain Registrations services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
-                "function": {
-                    "name": "api_domains_get_service",
-                    "desc": "This Function Applies to the Domain Registrations services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "id": {
-                            "name": "id",
-                            "type": "int",
-                            "description": "",
-                            "example": 10000
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "domain_id",
-                            "type": "int",
-                            "description": "Service ID"
-                        },
-                        {
-                            "name": "domain_hostname",
-                            "type": "string",
-                            "description": "Domain Name"
-                        },
-                        {
-                            "name": "domain_username",
-                            "type": "string",
-                            "description": "Username with Registrar"
-                        },
-                        {
-                            "name": "domain_password",
-                            "type": "string",
-                            "description": "Password with Registrar"
-                        },
-                        {
-                            "name": "domain_type",
-                            "type": "int",
-                            "description": "Package ID"
-                        },
-                        {
-                            "name": "domain_cost",
-                            "type": "float",
-                            "description": "Service Cost"
-                        },
-                        {
-                            "name": "domain_currency",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "domain_frequency",
-                            "type": "int",
-                            "description": "Billing Interval"
-                        },
-                        {
-                            "name": "domain_expire_date",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "domain_order_date",
-                            "type": "string",
-                            "description": "Date the Order was Placed"
-                        },
-                        {
-                            "name": "domain_custid",
-                            "type": "int",
-                            "description": "Customer ID"
-                        },
-                        {
-                            "name": "domain_status",
-                            "type": "string",
-                            "description": "Billing Status"
-                        },
-                        {
-                            "name": "domain_invoice",
-                            "type": "int",
-                            "description": "Invoice ID"
-                        },
-                        {
-                            "name": "domain_coupon",
-                            "type": "int",
-                            "description": "Coupon ID"
-                        },
-                        {
-                            "name": "domain_firstname",
-                            "type": "string",
-                            "description": "First Name"
-                        },
-                        {
-                            "name": "domain_lastname",
-                            "type": "string",
-                            "description": "Last Name"
-                        },
-                        {
-                            "name": "domain_email",
-                            "type": "string",
-                            "description": "Email Address"
-                        },
-                        {
-                            "name": "domain_address",
-                            "type": "string",
-                            "description": "Address"
-                        },
-                        {
-                            "name": "domain_address2",
-                            "type": "string",
-                            "description": "Address (line 2)"
-                        },
-                        {
-                            "name": "domain_address3",
-                            "type": "string",
-                            "description": "Address (line 3)"
-                        },
-                        {
-                            "name": "domain_city",
-                            "type": "string",
-                            "description": "City"
-                        },
-                        {
-                            "name": "domain_state",
-                            "type": "string",
-                            "description": "State"
-                        },
-                        {
-                            "name": "domain_zip",
-                            "type": "string",
-                            "description": "Zip"
-                        },
-                        {
-                            "name": "domain_country",
-                            "type": "string",
-                            "description": "Country"
-                        },
-                        {
-                            "name": "domain_phone",
-                            "type": "string",
-                            "description": "Phone"
-                        },
-                        {
-                            "name": "domain_fax",
-                            "type": "string",
-                            "description": "Fax"
-                        },
-                        {
-                            "name": "domain_company",
-                            "type": "string",
-                            "description": "Company"
-                        },
-                        {
-                            "name": "domain_extra",
-                            "type": "string",
-                            "description": "Additional Domain Information"
-                        }
-                    ]
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_domains_get_services": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_domains_get_services",
-                "params": "",
-                "description": "This Function Applies to the Domain Registrations services.\n* Gets List of Services",
-                "function": {
-                    "name": "api_domains_get_services",
-                    "desc": "This Function Applies to the Domain Registrations services.\nGets List of Services",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "domain_id",
-                            "type": "int",
-                            "description": "Service ID"
-                        },
-                        {
-                            "name": "domain_hostname",
-                            "type": "string",
-                            "description": "Domain Name"
-                        },
-                        {
-                            "name": "domain_username",
-                            "type": "string",
-                            "description": "Username with Registrar"
-                        },
-                        {
-                            "name": "domain_password",
-                            "type": "string",
-                            "description": "Password with Registrar"
-                        },
-                        {
-                            "name": "domain_type",
-                            "type": "int",
-                            "description": "Package ID"
-                        },
-                        {
-                            "name": "domain_cost",
-                            "type": "float",
-                            "description": "Service Cost"
-                        },
-                        {
-                            "name": "domain_currency",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "domain_frequency",
-                            "type": "int",
-                            "description": "Billing Interval"
-                        },
-                        {
-                            "name": "domain_expire_date",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "domain_order_date",
-                            "type": "string",
-                            "description": "Date the Order was Placed"
-                        },
-                        {
-                            "name": "domain_custid",
-                            "type": "int",
-                            "description": "Customer ID"
-                        },
-                        {
-                            "name": "domain_status",
-                            "type": "string",
-                            "description": "Billing Status"
-                        },
-                        {
-                            "name": "domain_invoice",
-                            "type": "int",
-                            "description": "Invoice ID"
-                        },
-                        {
-                            "name": "domain_coupon",
-                            "type": "int",
-                            "description": "Coupon ID"
-                        },
-                        {
-                            "name": "domain_firstname",
-                            "type": "string",
-                            "description": "First Name"
-                        },
-                        {
-                            "name": "domain_lastname",
-                            "type": "string",
-                            "description": "Last Name"
-                        },
-                        {
-                            "name": "domain_email",
-                            "type": "string",
-                            "description": "Email Address"
-                        },
-                        {
-                            "name": "domain_address",
-                            "type": "string",
-                            "description": "Address"
-                        },
-                        {
-                            "name": "domain_address2",
-                            "type": "string",
-                            "description": "Address (line 2)"
-                        },
-                        {
-                            "name": "domain_address3",
-                            "type": "string",
-                            "description": "Address (line 3)"
-                        },
-                        {
-                            "name": "domain_city",
-                            "type": "string",
-                            "description": "City"
-                        },
-                        {
-                            "name": "domain_state",
-                            "type": "string",
-                            "description": "State"
-                        },
-                        {
-                            "name": "domain_zip",
-                            "type": "string",
-                            "description": "Zip"
-                        },
-                        {
-                            "name": "domain_country",
-                            "type": "string",
-                            "description": "Country"
-                        },
-                        {
-                            "name": "domain_phone",
-                            "type": "string",
-                            "description": "Phone"
-                        },
-                        {
-                            "name": "domain_fax",
-                            "type": "string",
-                            "description": "Fax"
-                        },
-                        {
-                            "name": "domain_company",
-                            "type": "string",
-                            "description": "Company"
-                        },
-                        {
-                            "name": "domain_extra",
-                            "type": "string",
-                            "description": "Additional Domain Information"
-                        }
-                    ],
-                    "example": []
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            }
-        }
-    },
     "general": {
         "name": "General",
         "extra": [],
@@ -4619,6 +3595,1385 @@
                 "input_comment": "* @param string string characters to measure size\n",
                 "output_comment": "",
                 "use_sid": false,
+                "hide_comment": true
+            }
+        }
+    },
+    "support": {
+        "name": "Support",
+        "extra": [],
+        "functions": {
+            "api_getTicketList": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_getTicketList",
+                "params": "",
+                "description": "Returns a list of any tickets in the system.",
+                "function": {
+                    "name": "api_getTicketList",
+                    "desc": "Returns a list of any tickets in the system.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "page": {
+                            "name": "page",
+                            "type": "int",
+                            "description": "page number of tickets to list",
+                            "example": 1
+                        },
+                        "limit": {
+                            "name": "limit",
+                            "type": "int",
+                            "description": "how many tickets to show per page",
+                            "example": 10
+                        },
+                        "status": {
+                            "name": "status",
+                            "type": "string",
+                            "description": "null for no status limit or limit to a specific status",
+                            "example": "open"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "null for no status limit or limit to a specific status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "totalPages",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "tickets",
+                            "type": "tns:getTicketList_tickets",
+                            "description": ""
+                        }
+                    ],
+                    "example": {
+                        "status": "ok",
+                        "status_text": "List of tickets",
+                        "totalPages": "4.1",
+                        "tickets": [
+                            {
+                                "ticket_id": "536864",
+                                "ticket_reference_id": "JKB-871-35126",
+                                "subject": "MASS SPAM FROM 67.211.220.254",
+                                "lastreplier": "Paul Petroff",
+                                "statustitle": "On Hold",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1533098236"
+                            },
+                            {
+                                "ticket_id": "348689",
+                                "ticket_reference_id": "RPP-809-42263",
+                                "subject": "InterServer Abuse Report for 66.45.227.2",
+                                "lastreplier": "Anoop Vijayan",
+                                "statustitle": "On Hold",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1464004391"
+                            },
+                            {
+                                "ticket_id": "348590",
+                                "ticket_reference_id": "OWH-854-85044",
+                                "subject": "InterServer Abuse Report for 66.45.227.2",
+                                "lastreplier": "Abuse",
+                                "statustitle": "Closed",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1463959741"
+                            },
+                            {
+                                "ticket_id": "311259",
+                                "ticket_reference_id": "RDY-786-19151",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "Closed",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1445633102"
+                            },
+                            {
+                                "ticket_id": "311246",
+                                "ticket_reference_id": "EVE-135-66307",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "Closed",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1445626801"
+                            },
+                            {
+                                "ticket_id": "307981",
+                                "ticket_reference_id": "JOQ-510-39367",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "Closed",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1444037947"
+                            },
+                            {
+                                "ticket_id": "307973",
+                                "ticket_reference_id": "HPS-632-33124",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "On Hold",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1444035450"
+                            },
+                            {
+                                "ticket_id": "306428",
+                                "ticket_reference_id": "LYS-965-82123",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "Closed",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1443181051"
+                            },
+                            {
+                                "ticket_id": "306402",
+                                "ticket_reference_id": "EPF-871-35939",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "On Hold",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1443166766"
+                            },
+                            {
+                                "ticket_id": "306241",
+                                "ticket_reference_id": "JIM-587-56058",
+                                "subject": "Test ticket",
+                                "lastreplier": "abuse@interserver.net",
+                                "statustitle": "Closed",
+                                "prioritytitle": "Standard - 1 to 3 hour resolution",
+                                "replies": "0",
+                                "lastactivity": "1443085520"
+                            }
+                        ]
+                    }
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param page int page number of tickets to list\n* @param limit int how many tickets to show per page\n* @param status string null for no status limit or limit to a specific status\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_openTicket": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_openTicket",
+                "params": "",
+                "description": "This command creates a new ticket in our system.",
+                "function": {
+                    "name": "api_openTicket",
+                    "desc": "This command creates a new ticket in our system.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "user_email": {
+                            "name": "user_email",
+                            "type": "string",
+                            "description": "client email address",
+                            "example": "me@somedomain.com"
+                        },
+                        "user_ip": {
+                            "name": "user_ip",
+                            "type": "string",
+                            "description": "client ip address",
+                            "example": "192.168.1.1"
+                        },
+                        "subject": {
+                            "name": "subject",
+                            "type": "string",
+                            "description": "subject of the ticket",
+                            "example": "Test Ticket subject"
+                        },
+                        "product": {
+                            "name": "product",
+                            "type": "string",
+                            "description": "the product\/service if any this is in reference to.",
+                            "example": ""
+                        },
+                        "body": {
+                            "name": "body",
+                            "type": "string",
+                            "description": "full content\/description for the ticket",
+                            "example": "This is a sample ticket body"
+                        },
+                        "box_auth_value": {
+                            "name": "box_auth_value",
+                            "type": "string",
+                            "description": "encryption string?",
+                            "example": ""
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "ticket_reference_id",
+                            "type": "int",
+                            "description": ""
+                        }
+                    ],
+                    "example": {
+                        "status": "Failed",
+                        "status_text": "Invalid Email Address - Does not match your account email!",
+                        "ticket_reference_id": -1
+                    }
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param user_email string client email address\n* @param user_ip string client ip address\n* @param subject string subject of the ticket\n* @param product string the product\/service if any this is in reference to.\n* @param body string full content\/description for the ticket\n* @param box_auth_value string encryption string?\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_ticketPost": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_ticketPost",
+                "params": "",
+                "description": "This commands adds the content parameter as a response\/reply to an existing\n* ticket specified by ticketID.",
+                "function": {
+                    "name": "api_ticketPost",
+                    "desc": "This commands adds the content parameter as a response\/reply to an existing ticket specified by ticketID.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "ticketID": {
+                            "name": "ticketID",
+                            "type": "string",
+                            "description": "the id of the ticket to add a response to. you can use [getTicketList](#getticketlist) to get a list of your tickets",
+                            "example": 10000
+                        },
+                        "content": {
+                            "name": "content",
+                            "type": "string",
+                            "description": "the message to add to the ticket",
+                            "example": "Heres an update to my ticket"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": {
+                        "status": "Failed",
+                        "status_text": "Error loading ticket details!"
+                    }
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ticketID string the id of the ticket to add a response to. you can use [getTicketList](#getticketlist) to get a list of your tickets\n* @param content string the message to add to the ticket\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_viewTicket": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_viewTicket",
+                "params": "",
+                "description": "View\/Retrieve information about the given ticketID.",
+                "function": {
+                    "name": "api_viewTicket",
+                    "desc": "View\/Retrieve information about the given ticketID.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "ticketID": {
+                            "name": "ticketID",
+                            "type": "string",
+                            "description": "the id of the ticket to retrieve. you can use [getTicketList](#getticketlist) to get a list of your tickets",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "result",
+                            "type": "tns:view_ticketdetail_array",
+                            "description": "Rendered Search Result"
+                        }
+                    ],
+                    "example": {
+                        "status": "Failed",
+                        "status_text": "Error loading ticket details!",
+                        "result": []
+                    }
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ticketID string the id of the ticket to retrieve. you can use [getTicketList](#getticketlist) to get a list of your tickets\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            }
+        }
+    },
+    "backups": {
+        "name": "Storage",
+        "extra": [],
+        "functions": {
+            "api_backups_cancel_service": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_backups_cancel_service",
+                "params": "",
+                "description": "This Function Applies to the Backup Services services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
+                "function": {
+                    "name": "api_backups_cancel_service",
+                    "desc": "This Function Applies to the Backup Services services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "ID \/ Service ID you wish to cancel",
+                            "example": 10000
+                        }
+                    },
+                    "output": {
+                        "return": {
+                            "name": "return",
+                            "type": "bool",
+                            "description": ""
+                        }
+                    },
+                    "example": false
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int ID \/ Service ID you wish to cancel\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_backups_get_client_invoices": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_backups_get_client_invoices",
+                "params": "",
+                "description": "This Function Applies to the Backup Services services.\n* Gets a list of all the invoices.",
+                "function": {
+                    "name": "api_backups_get_client_invoices",
+                    "desc": "This Function Applies to the Backup Services services.\nGets a list of all the invoices.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "invoices_id",
+                            "type": "int",
+                            "description": "ID of the Invoice used for referencing"
+                        },
+                        {
+                            "name": "invoices_description",
+                            "type": "string",
+                            "description": "Description of what the Invoice was for"
+                        },
+                        {
+                            "name": "invoices_amount",
+                            "type": "float",
+                            "description": "Cost of the Invoice"
+                        },
+                        {
+                            "name": "invoices_custid",
+                            "type": "int",
+                            "description": "ID of the Customer this Invoice is for"
+                        },
+                        {
+                            "name": "invoices_type",
+                            "type": "int",
+                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+                        },
+                        {
+                            "name": "invoices_date",
+                            "type": "string",
+                            "description": "Date the Invoice was Created"
+                        },
+                        {
+                            "name": "invoices_group",
+                            "type": "int",
+                            "description": "Billing Group the Invoice falls under, Not currently used"
+                        },
+                        {
+                            "name": "invoices_extra",
+                            "type": "int",
+                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+                        },
+                        {
+                            "name": "invoices_paid",
+                            "type": "int",
+                            "description": "Whether or not the Invoice was paid (if applicable)"
+                        },
+                        {
+                            "name": "invoices_module",
+                            "type": "string",
+                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+                        },
+                        {
+                            "name": "invoices_due_date",
+                            "type": "string",
+                            "description": "Date the Invoice is Due"
+                        },
+                        {
+                            "name": "invoices_service",
+                            "type": "int",
+                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+                        },
+                        {
+                            "name": "invoices_deleted",
+                            "type": "int",
+                            "description": "Deleted Flag"
+                        },
+                        {
+                            "name": "invoices_currency",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_backups_get_client_unpaid_invoices": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_backups_get_client_unpaid_invoices",
+                "params": "",
+                "description": "This Function Applies to the Backup Services services.\n* This function returns a list of all the unpaid invoices matching the module\n* passed..",
+                "function": {
+                    "name": "api_backups_get_client_unpaid_invoices",
+                    "desc": "This Function Applies to the Backup Services services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "invoices_id",
+                            "type": "int",
+                            "description": "ID of the Invoice used for referencing"
+                        },
+                        {
+                            "name": "invoices_description",
+                            "type": "string",
+                            "description": "Description of what the Invoice was for"
+                        },
+                        {
+                            "name": "invoices_amount",
+                            "type": "float",
+                            "description": "Cost of the Invoice"
+                        },
+                        {
+                            "name": "invoices_custid",
+                            "type": "int",
+                            "description": "ID of the Customer this Invoice is for"
+                        },
+                        {
+                            "name": "invoices_type",
+                            "type": "int",
+                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+                        },
+                        {
+                            "name": "invoices_date",
+                            "type": "string",
+                            "description": "Date the Invoice was Created"
+                        },
+                        {
+                            "name": "invoices_group",
+                            "type": "int",
+                            "description": "Billing Group the Invoice falls under, Not currently used"
+                        },
+                        {
+                            "name": "invoices_extra",
+                            "type": "int",
+                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+                        },
+                        {
+                            "name": "invoices_paid",
+                            "type": "int",
+                            "description": "Whether or not the Invoice was paid (if applicable)"
+                        },
+                        {
+                            "name": "invoices_module",
+                            "type": "string",
+                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+                        },
+                        {
+                            "name": "invoices_due_date",
+                            "type": "string",
+                            "description": "Date the Invoice is Due"
+                        },
+                        {
+                            "name": "invoices_service",
+                            "type": "int",
+                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+                        },
+                        {
+                            "name": "invoices_deleted",
+                            "type": "int",
+                            "description": "Deleted Flag"
+                        },
+                        {
+                            "name": "invoices_currency",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_backups_get_service": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_backups_get_service",
+                "params": "",
+                "description": "This Function Applies to the Backup Services services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+                "function": {
+                    "name": "api_backups_get_service",
+                    "desc": "This Function Applies to the Backup Services services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "backup_id",
+                            "type": "int",
+                            "description": "ID of the Backup Host Server"
+                        },
+                        {
+                            "name": "backup_server",
+                            "type": "int",
+                            "description": "ID of Server the Backup Resides on"
+                        },
+                        {
+                            "name": "backup_username",
+                            "type": "string",
+                            "description": "Username on the Backup Server associated with this Order"
+                        },
+                        {
+                            "name": "backup_type",
+                            "type": "int",
+                            "description": "Which type of Backup Server"
+                        },
+                        {
+                            "name": "backup_cost",
+                            "type": "float",
+                            "description": "Service Cost"
+                        },
+                        {
+                            "name": "backup_currency",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "backup_frequency",
+                            "type": "int",
+                            "description": "Billing Interval"
+                        },
+                        {
+                            "name": "backup_order_date",
+                            "type": "string",
+                            "description": "Date the Order was Placed"
+                        },
+                        {
+                            "name": "backup_custid",
+                            "type": "int",
+                            "description": "Customer ID"
+                        },
+                        {
+                            "name": "backup_quota",
+                            "type": "int",
+                            "description": "Disk Quota"
+                        },
+                        {
+                            "name": "backup_ip",
+                            "type": "string",
+                            "description": "IP Address of the Backup Server"
+                        },
+                        {
+                            "name": "backup_status",
+                            "type": "string",
+                            "description": "Billing Status"
+                        },
+                        {
+                            "name": "backup_invoice",
+                            "type": "int",
+                            "description": "Invoice ID"
+                        },
+                        {
+                            "name": "backup_coupon",
+                            "type": "int",
+                            "description": "Coupon ID"
+                        },
+                        {
+                            "name": "backup_extra",
+                            "type": "string",
+                            "description": "Additional Backup Information"
+                        },
+                        {
+                            "name": "backup_server_status",
+                            "type": "string",
+                            "description": "Server-Side status of this website"
+                        },
+                        {
+                            "name": "backup_comment",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_backups_get_services": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_backups_get_services",
+                "params": "",
+                "description": "This Function Applies to the Backup Services services.\n* Gets List of Services",
+                "function": {
+                    "name": "api_backups_get_services",
+                    "desc": "This Function Applies to the Backup Services services.\nGets List of Services",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "backup_id",
+                            "type": "int",
+                            "description": "ID of the Backup Host Server"
+                        },
+                        {
+                            "name": "backup_server",
+                            "type": "int",
+                            "description": "ID of Server the Backup Resides on"
+                        },
+                        {
+                            "name": "backup_username",
+                            "type": "string",
+                            "description": "Username on the Backup Server associated with this Order"
+                        },
+                        {
+                            "name": "backup_type",
+                            "type": "int",
+                            "description": "Which type of Backup Server"
+                        },
+                        {
+                            "name": "backup_cost",
+                            "type": "float",
+                            "description": "Service Cost"
+                        },
+                        {
+                            "name": "backup_currency",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "backup_frequency",
+                            "type": "int",
+                            "description": "Billing Interval"
+                        },
+                        {
+                            "name": "backup_order_date",
+                            "type": "string",
+                            "description": "Date the Order was Placed"
+                        },
+                        {
+                            "name": "backup_custid",
+                            "type": "int",
+                            "description": "Customer ID"
+                        },
+                        {
+                            "name": "backup_quota",
+                            "type": "int",
+                            "description": "Disk Quota"
+                        },
+                        {
+                            "name": "backup_ip",
+                            "type": "string",
+                            "description": "IP Address of the Backup Server"
+                        },
+                        {
+                            "name": "backup_status",
+                            "type": "string",
+                            "description": "Billing Status"
+                        },
+                        {
+                            "name": "backup_invoice",
+                            "type": "int",
+                            "description": "Invoice ID"
+                        },
+                        {
+                            "name": "backup_coupon",
+                            "type": "int",
+                            "description": "Coupon ID"
+                        },
+                        {
+                            "name": "backup_extra",
+                            "type": "string",
+                            "description": "Additional Backup Information"
+                        },
+                        {
+                            "name": "backup_server_status",
+                            "type": "string",
+                            "description": "Server-Side status of this website"
+                        },
+                        {
+                            "name": "backup_comment",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            }
+        }
+    },
+    "domains": {
+        "name": "Domains",
+        "extra": [],
+        "functions": {
+            "api_domains_cancel_service": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_domains_cancel_service",
+                "params": "",
+                "description": "This Function Applies to the Domain Registrations services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
+                "function": {
+                    "name": "api_domains_cancel_service",
+                    "desc": "This Function Applies to the Domain Registrations services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "ID \/ Service ID you wish to cancel",
+                            "example": 10000
+                        }
+                    },
+                    "output": {
+                        "return": {
+                            "name": "return",
+                            "type": "bool",
+                            "description": ""
+                        }
+                    },
+                    "example": false
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int ID \/ Service ID you wish to cancel\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_domains_get_client_invoices": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_domains_get_client_invoices",
+                "params": "",
+                "description": "This Function Applies to the Domain Registrations services.\n* Gets a list of all the invoices.",
+                "function": {
+                    "name": "api_domains_get_client_invoices",
+                    "desc": "This Function Applies to the Domain Registrations services.\nGets a list of all the invoices.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "invoices_id",
+                            "type": "int",
+                            "description": "ID of the Invoice used for referencing"
+                        },
+                        {
+                            "name": "invoices_description",
+                            "type": "string",
+                            "description": "Description of what the Invoice was for"
+                        },
+                        {
+                            "name": "invoices_amount",
+                            "type": "float",
+                            "description": "Cost of the Invoice"
+                        },
+                        {
+                            "name": "invoices_custid",
+                            "type": "int",
+                            "description": "ID of the Customer this Invoice is for"
+                        },
+                        {
+                            "name": "invoices_type",
+                            "type": "int",
+                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+                        },
+                        {
+                            "name": "invoices_date",
+                            "type": "string",
+                            "description": "Date the Invoice was Created"
+                        },
+                        {
+                            "name": "invoices_group",
+                            "type": "int",
+                            "description": "Billing Group the Invoice falls under, Not currently used"
+                        },
+                        {
+                            "name": "invoices_extra",
+                            "type": "int",
+                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+                        },
+                        {
+                            "name": "invoices_paid",
+                            "type": "int",
+                            "description": "Whether or not the Invoice was paid (if applicable)"
+                        },
+                        {
+                            "name": "invoices_module",
+                            "type": "string",
+                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+                        },
+                        {
+                            "name": "invoices_due_date",
+                            "type": "string",
+                            "description": "Date the Invoice is Due"
+                        },
+                        {
+                            "name": "invoices_service",
+                            "type": "int",
+                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+                        },
+                        {
+                            "name": "invoices_deleted",
+                            "type": "int",
+                            "description": "Deleted Flag"
+                        },
+                        {
+                            "name": "invoices_currency",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_domains_get_client_unpaid_invoices": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_domains_get_client_unpaid_invoices",
+                "params": "",
+                "description": "This Function Applies to the Domain Registrations services.\n* This function returns a list of all the unpaid invoices matching the module\n* passed..",
+                "function": {
+                    "name": "api_domains_get_client_unpaid_invoices",
+                    "desc": "This Function Applies to the Domain Registrations services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "invoices_id",
+                            "type": "int",
+                            "description": "ID of the Invoice used for referencing"
+                        },
+                        {
+                            "name": "invoices_description",
+                            "type": "string",
+                            "description": "Description of what the Invoice was for"
+                        },
+                        {
+                            "name": "invoices_amount",
+                            "type": "float",
+                            "description": "Cost of the Invoice"
+                        },
+                        {
+                            "name": "invoices_custid",
+                            "type": "int",
+                            "description": "ID of the Customer this Invoice is for"
+                        },
+                        {
+                            "name": "invoices_type",
+                            "type": "int",
+                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+                        },
+                        {
+                            "name": "invoices_date",
+                            "type": "string",
+                            "description": "Date the Invoice was Created"
+                        },
+                        {
+                            "name": "invoices_group",
+                            "type": "int",
+                            "description": "Billing Group the Invoice falls under, Not currently used"
+                        },
+                        {
+                            "name": "invoices_extra",
+                            "type": "int",
+                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+                        },
+                        {
+                            "name": "invoices_paid",
+                            "type": "int",
+                            "description": "Whether or not the Invoice was paid (if applicable)"
+                        },
+                        {
+                            "name": "invoices_module",
+                            "type": "string",
+                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+                        },
+                        {
+                            "name": "invoices_due_date",
+                            "type": "string",
+                            "description": "Date the Invoice is Due"
+                        },
+                        {
+                            "name": "invoices_service",
+                            "type": "int",
+                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+                        },
+                        {
+                            "name": "invoices_deleted",
+                            "type": "int",
+                            "description": "Deleted Flag"
+                        },
+                        {
+                            "name": "invoices_currency",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_domains_get_service": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_domains_get_service",
+                "params": "",
+                "description": "This Function Applies to the Domain Registrations services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+                "function": {
+                    "name": "api_domains_get_service",
+                    "desc": "This Function Applies to the Domain Registrations services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "domain_id",
+                            "type": "int",
+                            "description": "Service ID"
+                        },
+                        {
+                            "name": "domain_hostname",
+                            "type": "string",
+                            "description": "Domain Name"
+                        },
+                        {
+                            "name": "domain_username",
+                            "type": "string",
+                            "description": "Username with Registrar"
+                        },
+                        {
+                            "name": "domain_password",
+                            "type": "string",
+                            "description": "Password with Registrar"
+                        },
+                        {
+                            "name": "domain_type",
+                            "type": "int",
+                            "description": "Package ID"
+                        },
+                        {
+                            "name": "domain_cost",
+                            "type": "float",
+                            "description": "Service Cost"
+                        },
+                        {
+                            "name": "domain_currency",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "domain_frequency",
+                            "type": "int",
+                            "description": "Billing Interval"
+                        },
+                        {
+                            "name": "domain_expire_date",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "domain_order_date",
+                            "type": "string",
+                            "description": "Date the Order was Placed"
+                        },
+                        {
+                            "name": "domain_custid",
+                            "type": "int",
+                            "description": "Customer ID"
+                        },
+                        {
+                            "name": "domain_status",
+                            "type": "string",
+                            "description": "Billing Status"
+                        },
+                        {
+                            "name": "domain_invoice",
+                            "type": "int",
+                            "description": "Invoice ID"
+                        },
+                        {
+                            "name": "domain_coupon",
+                            "type": "int",
+                            "description": "Coupon ID"
+                        },
+                        {
+                            "name": "domain_firstname",
+                            "type": "string",
+                            "description": "First Name"
+                        },
+                        {
+                            "name": "domain_lastname",
+                            "type": "string",
+                            "description": "Last Name"
+                        },
+                        {
+                            "name": "domain_email",
+                            "type": "string",
+                            "description": "Email Address"
+                        },
+                        {
+                            "name": "domain_address",
+                            "type": "string",
+                            "description": "Address"
+                        },
+                        {
+                            "name": "domain_address2",
+                            "type": "string",
+                            "description": "Address (line 2)"
+                        },
+                        {
+                            "name": "domain_address3",
+                            "type": "string",
+                            "description": "Address (line 3)"
+                        },
+                        {
+                            "name": "domain_city",
+                            "type": "string",
+                            "description": "City"
+                        },
+                        {
+                            "name": "domain_state",
+                            "type": "string",
+                            "description": "State"
+                        },
+                        {
+                            "name": "domain_zip",
+                            "type": "string",
+                            "description": "Zip"
+                        },
+                        {
+                            "name": "domain_country",
+                            "type": "string",
+                            "description": "Country"
+                        },
+                        {
+                            "name": "domain_phone",
+                            "type": "string",
+                            "description": "Phone"
+                        },
+                        {
+                            "name": "domain_fax",
+                            "type": "string",
+                            "description": "Fax"
+                        },
+                        {
+                            "name": "domain_company",
+                            "type": "string",
+                            "description": "Company"
+                        },
+                        {
+                            "name": "domain_extra",
+                            "type": "string",
+                            "description": "Additional Domain Information"
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_domains_get_services": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_domains_get_services",
+                "params": "",
+                "description": "This Function Applies to the Domain Registrations services.\n* Gets List of Services",
+                "function": {
+                    "name": "api_domains_get_services",
+                    "desc": "This Function Applies to the Domain Registrations services.\nGets List of Services",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "b279f6c6741163b9d7783f7aa6da4047"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "domain_id",
+                            "type": "int",
+                            "description": "Service ID"
+                        },
+                        {
+                            "name": "domain_hostname",
+                            "type": "string",
+                            "description": "Domain Name"
+                        },
+                        {
+                            "name": "domain_username",
+                            "type": "string",
+                            "description": "Username with Registrar"
+                        },
+                        {
+                            "name": "domain_password",
+                            "type": "string",
+                            "description": "Password with Registrar"
+                        },
+                        {
+                            "name": "domain_type",
+                            "type": "int",
+                            "description": "Package ID"
+                        },
+                        {
+                            "name": "domain_cost",
+                            "type": "float",
+                            "description": "Service Cost"
+                        },
+                        {
+                            "name": "domain_currency",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "domain_frequency",
+                            "type": "int",
+                            "description": "Billing Interval"
+                        },
+                        {
+                            "name": "domain_expire_date",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "domain_order_date",
+                            "type": "string",
+                            "description": "Date the Order was Placed"
+                        },
+                        {
+                            "name": "domain_custid",
+                            "type": "int",
+                            "description": "Customer ID"
+                        },
+                        {
+                            "name": "domain_status",
+                            "type": "string",
+                            "description": "Billing Status"
+                        },
+                        {
+                            "name": "domain_invoice",
+                            "type": "int",
+                            "description": "Invoice ID"
+                        },
+                        {
+                            "name": "domain_coupon",
+                            "type": "int",
+                            "description": "Coupon ID"
+                        },
+                        {
+                            "name": "domain_firstname",
+                            "type": "string",
+                            "description": "First Name"
+                        },
+                        {
+                            "name": "domain_lastname",
+                            "type": "string",
+                            "description": "Last Name"
+                        },
+                        {
+                            "name": "domain_email",
+                            "type": "string",
+                            "description": "Email Address"
+                        },
+                        {
+                            "name": "domain_address",
+                            "type": "string",
+                            "description": "Address"
+                        },
+                        {
+                            "name": "domain_address2",
+                            "type": "string",
+                            "description": "Address (line 2)"
+                        },
+                        {
+                            "name": "domain_address3",
+                            "type": "string",
+                            "description": "Address (line 3)"
+                        },
+                        {
+                            "name": "domain_city",
+                            "type": "string",
+                            "description": "City"
+                        },
+                        {
+                            "name": "domain_state",
+                            "type": "string",
+                            "description": "State"
+                        },
+                        {
+                            "name": "domain_zip",
+                            "type": "string",
+                            "description": "Zip"
+                        },
+                        {
+                            "name": "domain_country",
+                            "type": "string",
+                            "description": "Country"
+                        },
+                        {
+                            "name": "domain_phone",
+                            "type": "string",
+                            "description": "Phone"
+                        },
+                        {
+                            "name": "domain_fax",
+                            "type": "string",
+                            "description": "Fax"
+                        },
+                        {
+                            "name": "domain_company",
+                            "type": "string",
+                            "description": "Company"
+                        },
+                        {
+                            "name": "domain_extra",
+                            "type": "string",
+                            "description": "Additional Domain Information"
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
                 "hide_comment": true
             }
         }
@@ -6262,6 +6617,11 @@
                 "hide_comment": true
             }
         }
+    },
+    "mail": {
+        "name": "Mail",
+        "extra": [],
+        "functions": []
     },
     "quickservers": {
         "name": "Rapid Deploy Servers",
@@ -8098,361 +8458,6 @@
                     "example": []
                 },
                 "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            }
-        }
-    },
-    "support": {
-        "name": "Support",
-        "extra": [],
-        "functions": {
-            "api_getTicketList": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_getTicketList",
-                "params": "",
-                "description": "Returns a list of any tickets in the system.",
-                "function": {
-                    "name": "api_getTicketList",
-                    "desc": "Returns a list of any tickets in the system.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "page": {
-                            "name": "page",
-                            "type": "int",
-                            "description": "page number of tickets to list",
-                            "example": 1
-                        },
-                        "limit": {
-                            "name": "limit",
-                            "type": "int",
-                            "description": "how many tickets to show per page",
-                            "example": 10
-                        },
-                        "status": {
-                            "name": "status",
-                            "type": "string",
-                            "description": "null for no status limit or limit to a specific status",
-                            "example": "open"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "status",
-                            "type": "string",
-                            "description": "null for no status limit or limit to a specific status"
-                        },
-                        {
-                            "name": "status_text",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "totalPages",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "tickets",
-                            "type": "tns:getTicketList_tickets",
-                            "description": ""
-                        }
-                    ],
-                    "example": {
-                        "status": "ok",
-                        "status_text": "List of tickets",
-                        "totalPages": "4.1",
-                        "tickets": [
-                            {
-                                "ticket_id": "536864",
-                                "ticket_reference_id": "JKB-871-35126",
-                                "subject": "MASS SPAM FROM 67.211.220.254",
-                                "lastreplier": "Paul Petroff",
-                                "statustitle": "On Hold",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1533098236"
-                            },
-                            {
-                                "ticket_id": "348689",
-                                "ticket_reference_id": "RPP-809-42263",
-                                "subject": "InterServer Abuse Report for 66.45.227.2",
-                                "lastreplier": "Anoop Vijayan",
-                                "statustitle": "On Hold",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1464004391"
-                            },
-                            {
-                                "ticket_id": "348590",
-                                "ticket_reference_id": "OWH-854-85044",
-                                "subject": "InterServer Abuse Report for 66.45.227.2",
-                                "lastreplier": "Abuse",
-                                "statustitle": "Closed",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1463959741"
-                            },
-                            {
-                                "ticket_id": "311259",
-                                "ticket_reference_id": "RDY-786-19151",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "Closed",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1445633102"
-                            },
-                            {
-                                "ticket_id": "311246",
-                                "ticket_reference_id": "EVE-135-66307",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "Closed",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1445626801"
-                            },
-                            {
-                                "ticket_id": "307981",
-                                "ticket_reference_id": "JOQ-510-39367",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "Closed",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1444037947"
-                            },
-                            {
-                                "ticket_id": "307973",
-                                "ticket_reference_id": "HPS-632-33124",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "On Hold",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1444035450"
-                            },
-                            {
-                                "ticket_id": "306428",
-                                "ticket_reference_id": "LYS-965-82123",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "Closed",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1443181051"
-                            },
-                            {
-                                "ticket_id": "306402",
-                                "ticket_reference_id": "EPF-871-35939",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "On Hold",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1443166766"
-                            },
-                            {
-                                "ticket_id": "306241",
-                                "ticket_reference_id": "JIM-587-56058",
-                                "subject": "Test ticket",
-                                "lastreplier": "abuse@interserver.net",
-                                "statustitle": "Closed",
-                                "prioritytitle": "Standard - 1 to 3 hour resolution",
-                                "replies": "0",
-                                "lastactivity": "1443085520"
-                            }
-                        ]
-                    }
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param page int page number of tickets to list\n* @param limit int how many tickets to show per page\n* @param status string null for no status limit or limit to a specific status\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_openTicket": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_openTicket",
-                "params": "",
-                "description": "This command creates a new ticket in our system.",
-                "function": {
-                    "name": "api_openTicket",
-                    "desc": "This command creates a new ticket in our system.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "user_email": {
-                            "name": "user_email",
-                            "type": "string",
-                            "description": "client email address",
-                            "example": "me@somedomain.com"
-                        },
-                        "user_ip": {
-                            "name": "user_ip",
-                            "type": "string",
-                            "description": "client ip address",
-                            "example": "192.168.1.1"
-                        },
-                        "subject": {
-                            "name": "subject",
-                            "type": "string",
-                            "description": "subject of the ticket",
-                            "example": "Test Ticket subject"
-                        },
-                        "product": {
-                            "name": "product",
-                            "type": "string",
-                            "description": "the product\/service if any this is in reference to.",
-                            "example": ""
-                        },
-                        "body": {
-                            "name": "body",
-                            "type": "string",
-                            "description": "full content\/description for the ticket",
-                            "example": "This is a sample ticket body"
-                        },
-                        "box_auth_value": {
-                            "name": "box_auth_value",
-                            "type": "string",
-                            "description": "encryption string?",
-                            "example": ""
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "status",
-                            "type": "string",
-                            "description": "Location Status"
-                        },
-                        {
-                            "name": "status_text",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "ticket_reference_id",
-                            "type": "int",
-                            "description": ""
-                        }
-                    ],
-                    "example": {
-                        "status": "Failed",
-                        "status_text": "Invalid Email Address - Does not match your account email!",
-                        "ticket_reference_id": -1
-                    }
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param user_email string client email address\n* @param user_ip string client ip address\n* @param subject string subject of the ticket\n* @param product string the product\/service if any this is in reference to.\n* @param body string full content\/description for the ticket\n* @param box_auth_value string encryption string?\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_ticketPost": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_ticketPost",
-                "params": "",
-                "description": "This commands adds the content parameter as a response\/reply to an existing\n* ticket specified by ticketID.",
-                "function": {
-                    "name": "api_ticketPost",
-                    "desc": "This commands adds the content parameter as a response\/reply to an existing ticket specified by ticketID.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "ticketID": {
-                            "name": "ticketID",
-                            "type": "string",
-                            "description": "the id of the ticket to add a response to. you can use [getTicketList](#getticketlist) to get a list of your tickets",
-                            "example": 10000
-                        },
-                        "content": {
-                            "name": "content",
-                            "type": "string",
-                            "description": "the message to add to the ticket",
-                            "example": "Heres an update to my ticket"
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "status",
-                            "type": "string",
-                            "description": "Location Status"
-                        },
-                        {
-                            "name": "status_text",
-                            "type": "string",
-                            "description": ""
-                        }
-                    ],
-                    "example": {
-                        "status": "Failed",
-                        "status_text": "Error loading ticket details!"
-                    }
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ticketID string the id of the ticket to add a response to. you can use [getTicketList](#getticketlist) to get a list of your tickets\n* @param content string the message to add to the ticket\n",
-                "output_comment": "",
-                "use_sid": true,
-                "hide_comment": true
-            },
-            "api_viewTicket": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_viewTicket",
-                "params": "",
-                "description": "View\/Retrieve information about the given ticketID.",
-                "function": {
-                    "name": "api_viewTicket",
-                    "desc": "View\/Retrieve information about the given ticketID.",
-                    "input": {
-                        "sid": {
-                            "name": "sid",
-                            "type": "string",
-                            "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "b279f6c6741163b9d7783f7aa6da4047"
-                        },
-                        "ticketID": {
-                            "name": "ticketID",
-                            "type": "string",
-                            "description": "the id of the ticket to retrieve. you can use [getTicketList](#getticketlist) to get a list of your tickets",
-                            "example": 10000
-                        }
-                    },
-                    "output": [
-                        {
-                            "name": "status",
-                            "type": "string",
-                            "description": "Location Status"
-                        },
-                        {
-                            "name": "status_text",
-                            "type": "string",
-                            "description": ""
-                        },
-                        {
-                            "name": "result",
-                            "type": "tns:view_ticketdetail_array",
-                            "description": "Rendered Search Result"
-                        }
-                    ],
-                    "example": {
-                        "status": "Failed",
-                        "status_text": "Error loading ticket details!",
-                        "result": []
-                    }
-                },
-                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param ticketID string the id of the ticket to retrieve. you can use [getTicketList](#getticketlist) to get a list of your tickets\n",
                 "output_comment": "",
                 "use_sid": true,
                 "hide_comment": true
