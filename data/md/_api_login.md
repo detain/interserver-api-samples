@@ -103,7 +103,7 @@ return|string|
 	<tbody>
 		<tr>
 			<td>String</td>
-			<td>434ee20ee37a5ce6a2ec4b1e6953b86f</td>
+			<td>8ecbc118e3e53e09fc804f65d25a04ad</td>
 		</tr>
 	</tbody>
 </table>

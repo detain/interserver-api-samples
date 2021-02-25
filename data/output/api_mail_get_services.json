@@ -1,1 +1,21 @@
-[]
+[
+    {
+        "mail_id": 8556,
+        "mail_server": null,
+        "mail_username": "",
+        "mail_type": 10880,
+        "mail_cost": 1,
+        "mail_currency": "USD",
+        "mail_frequency": 1,
+        "mail_order_date": "2021-02-24 01:38:45",
+        "mail_custid": 160884,
+        "mail_quota": 0,
+        "mail_ip": "",
+        "mail_status": "pending",
+        "mail_invoice": 19156909,
+        "mail_coupon": 0,
+        "mail_extra": "[]",
+        "mail_server_status": "",
+        "mail_comment": ""
+    }
+]

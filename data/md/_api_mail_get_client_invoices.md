@@ -124,3 +124,101 @@ invoices_deleted|int|Deleted Flag
 invoices_currency|string|
 
 
+### Example Response
+
+<table>
+	<thead>
+		<tr>
+			<th>
+				Invoices Id
+			</th>
+			<th>
+				Invoices Description
+			</th>
+			<th>
+				Invoices Amount
+			</th>
+			<th>
+				Invoices Custid
+			</th>
+			<th>
+				Invoices Type
+			</th>
+			<th>
+				Invoices Date
+			</th>
+			<th>
+				Invoices Group
+			</th>
+			<th>
+				Invoices Extra
+			</th>
+			<th>
+				Invoices Paid
+			</th>
+			<th>
+				Invoices Module
+			</th>
+			<th>
+				Invoices Due Date
+			</th>
+			<th>
+				Invoices Service
+			</th>
+			<th>
+				Invoices Deleted
+			</th>
+			<th>
+				Invoices Currency
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				7514880
+			</td>
+			<td>
+				(Repeat Invoice: 19156909) MailBaby Mail
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-24 01:38:45
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				19156909
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				mail
+			</td>
+			<td>
+				2021-03-10 01:38:45
+			</td>
+			<td>
+				8556
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				USD
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+

@@ -127,3 +127,119 @@ mail_server_status|string|Server-Side status of this website
 mail_comment|string|
 
 
+### Example Response
+
+<table>
+	<thead>
+		<tr>
+			<th>
+				Mail Id
+			</th>
+			<th>
+				Mail Server
+			</th>
+			<th>
+				Mail Username
+			</th>
+			<th>
+				Mail Type
+			</th>
+			<th>
+				Mail Cost
+			</th>
+			<th>
+				Mail Currency
+			</th>
+			<th>
+				Mail Frequency
+			</th>
+			<th>
+				Mail Order Date
+			</th>
+			<th>
+				Mail Custid
+			</th>
+			<th>
+				Mail Quota
+			</th>
+			<th>
+				Mail Ip
+			</th>
+			<th>
+				Mail Status
+			</th>
+			<th>
+				Mail Invoice
+			</th>
+			<th>
+				Mail Coupon
+			</th>
+			<th>
+				Mail Extra
+			</th>
+			<th>
+				Mail Server Status
+			</th>
+			<th>
+				Mail Comment
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				8556
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-24 01:38:45
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19156909
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+

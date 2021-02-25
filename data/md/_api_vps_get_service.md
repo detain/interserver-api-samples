@@ -215,7 +215,7 @@ vps_diskmax|int|Total Disk Space
 		</tr>
 		<tr>
 			<td>vps_server_status</td>
-			<td>deleted</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>vps_comment</td>

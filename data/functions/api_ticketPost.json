@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "b279f6c6741163b9d7783f7aa6da4047"
+                "example": "5732b90b93a187dde82527c07ffac6d7"
             },
             "ticketID": {
                 "name": "ticketID",

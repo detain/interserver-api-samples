@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "b279f6c6741163b9d7783f7aa6da4047"
+            "example": "5732b90b93a187dde82527c07ffac6d7"
         }
     },
     "output": [
@@ -96,5 +96,25 @@
             "description": ""
         }
     ],
-    "example": []
+    "example": [
+        {
+            "mail_id": 8556,
+            "mail_server": null,
+            "mail_username": "",
+            "mail_type": 10880,
+            "mail_cost": 1,
+            "mail_currency": "USD",
+            "mail_frequency": 1,
+            "mail_order_date": "2021-02-24 01:38:45",
+            "mail_custid": 160884,
+            "mail_quota": 0,
+            "mail_ip": "",
+            "mail_status": "pending",
+            "mail_invoice": 19156909,
+            "mail_coupon": 0,
+            "mail_extra": "[]",
+            "mail_server_status": "",
+            "mail_comment": ""
+        }
+    ]
 }
