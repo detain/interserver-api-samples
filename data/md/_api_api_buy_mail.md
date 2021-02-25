@@ -102,7 +102,7 @@ This call takes the following parameters:
 Parameter|Type|Description
 ---------|----|-----------
 sid|string|the *Session ID* you get from the [login](#login) call
-coupon|string|
+coupon|string|coupon name
 
 
 ### Response

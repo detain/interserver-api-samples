@@ -11,12 +11,12 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "5732b90b93a187dde82527c07ffac6d7"
+                "example": "c84e7206759d92b92483e7f4869d80ce"
             },
             "coupon": {
                 "name": "coupon",
                 "type": "string",
-                "description": "",
+                "description": "coupon name",
                 "example": ""
             }
         },
@@ -57,7 +57,7 @@
             }
         ]
     },
-    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param coupon string \n",
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param coupon string coupon name\n",
     "output_comment": "",
     "use_sid": true,
     "hide_comment": true

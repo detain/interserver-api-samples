@@ -2,7 +2,7 @@
 /** api_api_buy_mail  -  (c)2015 detain@interserver.net InterServer Hosting
 * Places an email order
 * @param sid string the *Session ID* you get from the [login](#login) call
-* @param coupon string 
+* @param coupon string coupon name
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];
