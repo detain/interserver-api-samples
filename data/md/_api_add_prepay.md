@@ -138,7 +138,7 @@ return|int|the prepay id
 	<tbody>
 		<tr>
 			<td>Integer</td>
-			<td>66502</td>
+			<td>66551</td>
 		</tr>
 	</tbody>
 </table>

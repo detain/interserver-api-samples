@@ -117,3 +117,25 @@ status|string|Location Status
 status_text|string|
 
 
+### Example Response
+
+<table>
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>status</td>
+			<td>error</td>
+		</tr>
+		<tr>
+			<td>status_text</td>
+			<td>Invalid Website Passed</td>
+		</tr>
+	</tbody>
+</table>
+
+

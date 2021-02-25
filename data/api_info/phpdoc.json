@@ -10763,8 +10763,8 @@
         "params": "$coupon",
         "description": [
             "Places a mail order with our system",
-            "@param string $coupon",
-            "@return array"
+            "@param string $coupon coupon name",
+            "@return array returns an array containing the order details"
         ],
         "fieldtexts": []
     },

@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "5732b90b93a187dde82527c07ffac6d7"
+            "example": "fdc2070e727c4fb456065a97dc77c54c"
         },
         "domain": {
             "name": "domain",

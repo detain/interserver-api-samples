@@ -155,7 +155,20 @@ Field|Type|Description
 -----|----|-----------
 status|string|Location Status
 status_text|string|
-invoices|string|Array
+invoices|string|*Field* *Description*
+ | |*invoices_id* ID of the Invoice used for referencing
+ | |*invoices_description* Description of what the Invoice was for
+ | |*invoices_amount* Cost of the Invoice
+ | |*invoices_custid* ID of the Customer this Invoice is for
+ | |*invoices_type* The Type of Invoice (1 = charge, 10+ are payment types)
+ | |*invoices_date* Date the Invoice was Created
+ | |*invoices_group* Billing Group the Invoice falls under, Not currently used
+ | |*invoices_extra* If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.
+ | |*invoices_paid* Whether or not the Invoice was paid (if applicable)
+ | |*invoices_module* Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.
+ | |*invoices_due_date* Date the Invoice is Due
+ | |*invoices_service* ID of the Service/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps
+ | |*invoices_deleted* Deleted Flag
 cost|float|
 
 

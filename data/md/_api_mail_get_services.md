@@ -113,7 +113,7 @@ mail_server|int|ID of Server the mail Resides on
 mail_username|string|Username on the mail Server associated with this Order
 mail_type|int|Package ID
 mail_cost|float|Service Cost
-mail_currency|string|
+mail_currency|string|Currency
 mail_frequency|int|Billing Interval
 mail_order_date|string|Date the Order was Placed
 mail_custid|int|Customer ID
@@ -124,7 +124,7 @@ mail_invoice|int|Invoice ID
 mail_coupon|int|Coupon ID
 mail_extra|string|Additional mail Information
 mail_server_status|string|Server-Side status of this website
-mail_comment|string|
+mail_comment|string|Comments
 
 
 ### Example Response
@@ -225,6 +225,430 @@ mail_comment|string|
 			</td>
 			<td>
 				19156909
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8626
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-24 20:41:08
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19158862
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8640
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 03:47:59
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159254
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8647
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 03:53:53
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159261
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8654
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 03:58:33
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159268
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8661
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 04:12:02
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159282
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8668
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 06:25:42
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159450
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8675
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 06:30:55
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159457
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				8682
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 06:31:22
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				pending
+			</td>
+			<td>
+				19159464
 			</td>
 			<td>
 				0

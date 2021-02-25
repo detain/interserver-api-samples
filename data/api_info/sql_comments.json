@@ -716,6 +716,7 @@
         "mail_username": "Username on the mail Server associated with this Order",
         "mail_type": "Package ID",
         "mail_cost": "Service Cost",
+        "mail_currency": "Currency",
         "mail_frequency": "Billing Interval",
         "mail_order_date": "Date the Order was Placed",
         "mail_custid": "Customer ID",
@@ -725,13 +726,15 @@
         "mail_invoice": "Invoice ID",
         "mail_coupon": "Coupon ID",
         "mail_extra": "Additional mail Information",
-        "mail_server_status": "Server-Side status of this website"
+        "mail_server_status": "Server-Side status of this website",
+        "mail_comment": "Comments"
     },
     "mail_id": "Service ID",
     "mail_server": "ID of Server the mail Resides on",
     "mail_username": "Username on the mail Server associated with this Order",
     "mail_type": "Package ID",
     "mail_cost": "Service Cost",
+    "mail_currency": "Currency",
     "mail_frequency": "Billing Interval",
     "mail_order_date": "Date the Order was Placed",
     "mail_custid": "Customer ID",
@@ -742,6 +745,7 @@
     "mail_coupon": "Coupon ID",
     "mail_extra": "Additional mail Information",
     "mail_server_status": "Server-Side status of this website",
+    "mail_comment": "Comments",
     "mail_masters": {
         "mail_id": "ID of the mail Host Server",
         "mail_name": "Name of the mail Host server for quick reference",

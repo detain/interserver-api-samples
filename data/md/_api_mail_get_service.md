@@ -118,7 +118,7 @@ mail_server|int|ID of Server the mail Resides on
 mail_username|string|Username on the mail Server associated with this Order
 mail_type|int|Package ID
 mail_cost|float|Service Cost
-mail_currency|string|
+mail_currency|string|Currency
 mail_frequency|int|Billing Interval
 mail_order_date|string|Date the Order was Placed
 mail_custid|int|Customer ID
@@ -129,6 +129,6 @@ mail_invoice|int|Invoice ID
 mail_coupon|int|Coupon ID
 mail_extra|string|Additional mail Information
 mail_server_status|string|Server-Side status of this website
-mail_comment|string|
+mail_comment|string|Comments
 
 
