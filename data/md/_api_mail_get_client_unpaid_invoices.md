@@ -571,6 +571,50 @@ invoices_currency|string|
 				USD
 			</td>
 		</tr>
+		<tr>
+			<td>
+				7531540
+			</td>
+			<td>
+				(Repeat Invoice: 19159478) MailBaby Mail
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-02-25 06:33:14
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				19159478
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				mail
+			</td>
+			<td>
+				2021-03-11 06:33:14
+			</td>
+			<td>
+				8689
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				USD
+			</td>
+		</tr>
 	</tbody>
 </table>
 

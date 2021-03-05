@@ -16,7 +16,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "module": {
                             "name": "module",
@@ -44,7 +44,7 @@
                             "description": "the prepay id"
                         }
                     },
-                    "example": 66551
+                    "example": 67638
                 },
                 "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param module string the module the prepay is for. use [get_modules](#get_modules) to get a list of modules\n* @param amount float the dollar amount of prepay total\n* @param automatic_use bool whether or not the prepay will get used automatically by billing system.\n",
                 "output_comment": "",
@@ -100,7 +100,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -1859,6 +1859,18 @@
                             "prepay_service": 0,
                             "prepay_automatic_use": 1,
                             "prepay_module": "domains"
+                        },
+                        {
+                            "prepay_id": 67638,
+                            "prepay_type": 0,
+                            "prepay_status": "0",
+                            "prepay_date": "2021-03-05 13:42:21",
+                            "prepay_created": "2021-03-05 13:42:21",
+                            "prepay_amount": 10,
+                            "prepay_remaining": 0,
+                            "prepay_service": 0,
+                            "prepay_automatic_use": 1,
+                            "prepay_module": "domains"
                         }
                     ]
                 },
@@ -1880,7 +1892,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "module": {
                             "name": "module",
@@ -1928,7 +1940,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "module": {
                             "name": "module",
@@ -1972,7 +1984,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "module": {
                             "name": "module",
@@ -2028,7 +2040,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain": {
                             "name": "domain",
@@ -2078,7 +2090,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain_id": {
                             "name": "domain_id",
@@ -2144,7 +2156,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain_id": {
                             "name": "domain_id",
@@ -2180,7 +2192,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain_id": {
                             "name": "domain_id",
@@ -2222,7 +2234,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain_id": {
                             "name": "domain_id",
@@ -2287,7 +2299,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain_id": {
                             "name": "domain_id",
@@ -2373,7 +2385,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "domain_id": {
                             "name": "domain_id",
@@ -2451,7 +2463,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": {
@@ -2497,7 +2509,7 @@
                             "description": ""
                         }
                     },
-                    "example": "3af5ffdbb1c804885f4aad40310d6a4a"
+                    "example": "72418de7c934861ab01aa6590dffe587"
                 },
                 "input_comment": "* @param username string the username (email address) you signed up with.\n* @param password string the password you use to login to the web account, or alternatively the API key.\n",
                 "output_comment": "",
@@ -2896,6 +2908,51 @@
                         "117.5.130.136",
                         "42.112.233.74",
                         "42.115.177.199",
+                        "181.174.101.115",
+                        "190.14.133.157",
+                        "190.56.253.113",
+                        "190.104.126.224",
+                        "181.174.101.174",
+                        "190.14.133.224",
+                        "186.151.240.179",
+                        "190.56.253.145",
+                        "186.151.63.231",
+                        "181.209.246.143",
+                        "181.209.246.166",
+                        "201.216.157.180",
+                        "190.149.182.120",
+                        "190.148.158.36",
+                        "181.209.138.233",
+                        "186.151.240.178",
+                        "181.174.101.39",
+                        "190.56.253.169",
+                        "181.174.102.39",
+                        "190.56.10.123",
+                        "181.209.246.246",
+                        "190.143.238.169",
+                        "190.115.6.189",
+                        "190.56.253.194",
+                        "190.149.146.47",
+                        "181.114.15.210",
+                        "200.6.192.6",
+                        "181.174.102.154",
+                        "181.209.138.159",
+                        "190.106.223.148",
+                        "190.148.252.198",
+                        "181.114.5.118",
+                        "190.148.51.212",
+                        "190.148.51.216",
+                        "190.148.51.14",
+                        "190.148.209.121",
+                        "190.148.50.48",
+                        "190.148.209.100",
+                        "190.148.51.82",
+                        "190.148.209.25",
+                        "190.148.50.148",
+                        "190.148.209.83",
+                        "190.104.116.152",
+                        "190.148.87.44",
+                        "45.173.216.146",
                         "110.54.138.107",
                         "110.54.164.27",
                         "103.253.27.117",
@@ -3057,6 +3114,10 @@
                         "142.54.176.26",
                         "112.111.189.92",
                         "93.182.108.94",
+                        "81.97.138.83",
+                        "82.30.239.190",
+                        "185.225.17.36",
+                        "86.1.64.13",
                         "172.86.72.233",
                         "5.189.201.57",
                         "174.208.16.168",
@@ -3265,6 +3326,8 @@
                         "115.178.208.8",
                         "115.178.223.207",
                         "66.45.245.251",
+                        "168.81.134.232",
+                        "41.69.7.184",
                         "70.180.212.20",
                         "68.132.109.203",
                         "68.132.100.250",
@@ -3499,58 +3562,7 @@
                         "43.239.81.97",
                         "42.110.153.6",
                         "45.123.15.112",
-                        "223.176.41.4",
-                        "171.51.175.104",
-                        "103.192.62.184",
-                        "223.233.36.141",
-                        "41.140.70.248",
-                        "188.50.59.22",
-                        "129.208.21.252",
-                        "188.48.222.228",
-                        "188.247.76.80",
-                        "188.247.75.157",
-                        "188.247.75.33",
-                        "188.247.74.204",
-                        "46.32.120.244",
-                        "188.247.77.237",
-                        "39.36.190.23",
-                        "138.197.158.25",
-                        "182.73.165.90",
-                        "45.121.222.4",
-                        "117.195.177.45",
-                        "103.88.220.171",
-                        "45.121.222.9",
-                        "45.121.221.36",
-                        "117.221.193.247",
-                        "117.216.214.120",
-                        "117.216.208.5",
-                        "117.221.195.91",
-                        "117.221.194.172",
-                        "103.208.62.69",
-                        "117.195.170.54",
-                        "45.121.222.243",
-                        "117.221.197.210",
-                        "117.195.186.8",
-                        "117.195.167.21",
-                        "117.196.251.135",
-                        "118.71.158.109",
-                        "45.117.67.68",
-                        "175.101.13.66",
-                        "58.187.29.127",
-                        "183.81.75.50",
-                        "118.70.41.202",
-                        "42.114.30.170",
-                        "117.221.48.147",
-                        "42.118.55.58",
-                        "171.6.75.86",
-                        "1.55.141.108",
-                        "175.101.36.25",
-                        "42.117.157.255",
-                        "175.101.36.18",
-                        "5.13.106.175",
-                        "5.13.111.149",
-                        "89.34.96.99",
-                        "23.227.207.5"
+                        "223.176.41.4"
                     ]
                 },
                 "input_comment": "",
@@ -3640,7 +3652,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "page": {
                             "name": "page",
@@ -3809,7 +3821,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "user_email": {
                             "name": "user_email",
@@ -3889,7 +3901,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "ticketID": {
                             "name": "ticketID",
@@ -3939,7 +3951,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "ticketID": {
                             "name": "ticketID",
@@ -3995,7 +4007,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -4031,7 +4043,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -4126,7 +4138,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -4221,7 +4233,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -4323,6 +4335,46 @@
                 "use_sid": true,
                 "hide_comment": true
             },
+            "api_api_auto_directadmin_storage_login": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_api_auto_directadmin_storage_login",
+                "params": "",
+                "description": "Logs into DirectAdmin for the given backup id and returns a unique logged-in\n* url.  The status will be \"ok\" if successful, or \"error\" if there was any\n* problems status_text will contain a description of the problem if any.",
+                "function": {
+                    "name": "api_api_auto_directadmin_storage_login",
+                    "desc": "Logs into DirectAdmin for the given backup id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
             "api_backups_get_services": {
                 "serverargv": "{$_SERVER[\"argv\"][0]}",
                 "name": "api_backups_get_services",
@@ -4336,7 +4388,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -4452,7 +4504,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -4488,7 +4540,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -4583,7 +4635,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -4678,7 +4730,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -4848,7 +4900,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -5019,7 +5071,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "ip": {
                             "name": "ip",
@@ -5087,7 +5139,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "ip": {
                             "name": "ip",
@@ -5155,7 +5207,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -5199,7 +5251,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "ip": {
                             "name": "ip",
@@ -5249,7 +5301,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "oldip": {
                             "name": "oldip",
@@ -5299,7 +5351,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -6232,7 +6284,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -6268,7 +6320,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -6363,7 +6415,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -6458,7 +6510,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -6558,7 +6610,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -6645,7 +6697,1134 @@
     "mail": {
         "name": "Mail",
         "extra": [],
-        "functions": []
+        "functions": {
+            "api_send_mail": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_send_mail",
+                "params": "",
+                "description": "Sends An email through one of your mail orders",
+                "function": {
+                    "name": "api_send_mail",
+                    "desc": "Sends An email through one of your mail orders",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "subject": {
+                            "name": "subject",
+                            "type": "string",
+                            "description": "",
+                            "example": ""
+                        },
+                        "body": {
+                            "name": "body",
+                            "type": "string",
+                            "description": "",
+                            "example": ""
+                        },
+                        "to": {
+                            "name": "to",
+                            "type": "string",
+                            "description": "",
+                            "example": ""
+                        },
+                        "from": {
+                            "name": "from",
+                            "type": "string",
+                            "description": "",
+                            "example": ""
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param subject string \n* @param body string \n* @param to string \n* @param from string \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_api_buy_mail": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_api_buy_mail",
+                "params": "",
+                "description": "Places an email order",
+                "function": {
+                    "name": "api_api_buy_mail",
+                    "desc": "Places an email order",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "coupon": {
+                            "name": "coupon",
+                            "type": "string",
+                            "description": "coupon name",
+                            "example": ""
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        },
+                        {
+                            "name": "invoices",
+                            "type": "string",
+                            "description": {
+                                "invoices_id": "ID of the Invoice used for referencing",
+                                "invoices_description": "Description of what the Invoice was for",
+                                "invoices_amount": "Cost of the Invoice",
+                                "invoices_custid": "ID of the Customer this Invoice is for",
+                                "invoices_type": "The Type of Invoice (1 = charge, 10+ are payment types)",
+                                "invoices_date": "Date the Invoice was Created",
+                                "invoices_group": "Billing Group the Invoice falls under, Not currently used",
+                                "invoices_extra": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for.",
+                                "invoices_paid": "Whether or not the Invoice was paid (if applicable)",
+                                "invoices_module": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules.",
+                                "invoices_due_date": "Date the Invoice is Due",
+                                "invoices_service": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps",
+                                "invoices_deleted": "Deleted Flag"
+                            }
+                        },
+                        {
+                            "name": "cost",
+                            "type": "float",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param coupon string coupon name\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_api_auto_zonemta_login": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_api_auto_zonemta_login",
+                "params": "",
+                "description": "Logs into ZoneMTA for the given mail id and returns a unique logged-in url.  The\n* status will be \"ok\" if successful, or \"error\" if there was any problems\n* status_text will contain a description of the problem if any.",
+                "function": {
+                    "name": "api_api_auto_zonemta_login",
+                    "desc": "Logs into ZoneMTA for the given mail id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_mail_get_service": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_mail_get_service",
+                "params": "",
+                "description": "This Function Applies to the Mail Services services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+                "function": {
+                    "name": "api_mail_get_service",
+                    "desc": "This Function Applies to the Mail Services services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "mail_id",
+                            "type": "int",
+                            "description": "Service ID"
+                        },
+                        {
+                            "name": "mail_server",
+                            "type": "int",
+                            "description": "ID of Server the mail Resides on"
+                        },
+                        {
+                            "name": "mail_username",
+                            "type": "string",
+                            "description": "Username on the mail Server associated with this Order"
+                        },
+                        {
+                            "name": "mail_type",
+                            "type": "int",
+                            "description": "Package ID"
+                        },
+                        {
+                            "name": "mail_cost",
+                            "type": "float",
+                            "description": "Service Cost"
+                        },
+                        {
+                            "name": "mail_currency",
+                            "type": "string",
+                            "description": "Currency"
+                        },
+                        {
+                            "name": "mail_frequency",
+                            "type": "int",
+                            "description": "Billing Interval"
+                        },
+                        {
+                            "name": "mail_order_date",
+                            "type": "string",
+                            "description": "Date the Order was Placed"
+                        },
+                        {
+                            "name": "mail_custid",
+                            "type": "int",
+                            "description": "Customer ID"
+                        },
+                        {
+                            "name": "mail_quota",
+                            "type": "int",
+                            "description": "Disk Quota"
+                        },
+                        {
+                            "name": "mail_ip",
+                            "type": "string",
+                            "description": "IP Address of mail"
+                        },
+                        {
+                            "name": "mail_status",
+                            "type": "string",
+                            "description": "Billing Status"
+                        },
+                        {
+                            "name": "mail_invoice",
+                            "type": "int",
+                            "description": "Invoice ID"
+                        },
+                        {
+                            "name": "mail_coupon",
+                            "type": "int",
+                            "description": "Coupon ID"
+                        },
+                        {
+                            "name": "mail_extra",
+                            "type": "string",
+                            "description": "Additional mail Information"
+                        },
+                        {
+                            "name": "mail_server_status",
+                            "type": "string",
+                            "description": "Server-Side status of this website"
+                        },
+                        {
+                            "name": "mail_comment",
+                            "type": "string",
+                            "description": "Comments"
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_mail_get_services": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_mail_get_services",
+                "params": "",
+                "description": "This Function Applies to the Mail Services services.\n* Gets List of Services",
+                "function": {
+                    "name": "api_mail_get_services",
+                    "desc": "This Function Applies to the Mail Services services.\nGets List of Services",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "mail_id",
+                            "type": "int",
+                            "description": "Service ID"
+                        },
+                        {
+                            "name": "mail_server",
+                            "type": "int",
+                            "description": "ID of Server the mail Resides on"
+                        },
+                        {
+                            "name": "mail_username",
+                            "type": "string",
+                            "description": "Username on the mail Server associated with this Order"
+                        },
+                        {
+                            "name": "mail_type",
+                            "type": "int",
+                            "description": "Package ID"
+                        },
+                        {
+                            "name": "mail_cost",
+                            "type": "float",
+                            "description": "Service Cost"
+                        },
+                        {
+                            "name": "mail_currency",
+                            "type": "string",
+                            "description": "Currency"
+                        },
+                        {
+                            "name": "mail_frequency",
+                            "type": "int",
+                            "description": "Billing Interval"
+                        },
+                        {
+                            "name": "mail_order_date",
+                            "type": "string",
+                            "description": "Date the Order was Placed"
+                        },
+                        {
+                            "name": "mail_custid",
+                            "type": "int",
+                            "description": "Customer ID"
+                        },
+                        {
+                            "name": "mail_quota",
+                            "type": "int",
+                            "description": "Disk Quota"
+                        },
+                        {
+                            "name": "mail_ip",
+                            "type": "string",
+                            "description": "IP Address of mail"
+                        },
+                        {
+                            "name": "mail_status",
+                            "type": "string",
+                            "description": "Billing Status"
+                        },
+                        {
+                            "name": "mail_invoice",
+                            "type": "int",
+                            "description": "Invoice ID"
+                        },
+                        {
+                            "name": "mail_coupon",
+                            "type": "int",
+                            "description": "Coupon ID"
+                        },
+                        {
+                            "name": "mail_extra",
+                            "type": "string",
+                            "description": "Additional mail Information"
+                        },
+                        {
+                            "name": "mail_server_status",
+                            "type": "string",
+                            "description": "Server-Side status of this website"
+                        },
+                        {
+                            "name": "mail_comment",
+                            "type": "string",
+                            "description": "Comments"
+                        }
+                    ],
+                    "example": [
+                        {
+                            "mail_id": 8556,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-24 01:38:45",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19156909,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8626,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-24 20:41:08",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19158862,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8640,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 03:47:59",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159254,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8647,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 03:53:53",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159261,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8654,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 03:58:33",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159268,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8661,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 04:12:02",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159282,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8668,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 06:25:42",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159450,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8675,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 06:30:55",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159457,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8682,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 06:31:22",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159464,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        },
+                        {
+                            "mail_id": 8689,
+                            "mail_server": null,
+                            "mail_username": "",
+                            "mail_type": 10880,
+                            "mail_cost": 1,
+                            "mail_currency": "USD",
+                            "mail_frequency": 1,
+                            "mail_order_date": "2021-02-25 06:33:14",
+                            "mail_custid": 160884,
+                            "mail_quota": 0,
+                            "mail_ip": "",
+                            "mail_status": "pending",
+                            "mail_invoice": 19159478,
+                            "mail_coupon": 0,
+                            "mail_extra": "[]",
+                            "mail_server_status": "",
+                            "mail_comment": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_mail_cancel_service": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_mail_cancel_service",
+                "params": "",
+                "description": "This Function Applies to the Mail Services services.\n* Cancels a service for the passed module matching the passed id.  Canceling a\n* service will also cancel any addons for that service at the same time.",
+                "function": {
+                    "name": "api_mail_cancel_service",
+                    "desc": "This Function Applies to the Mail Services services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "ID \/ Service ID you wish to cancel",
+                            "example": 10000
+                        }
+                    },
+                    "output": {
+                        "return": {
+                            "name": "return",
+                            "type": "bool",
+                            "description": ""
+                        }
+                    },
+                    "example": false
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int ID \/ Service ID you wish to cancel\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_mail_get_client_invoices": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_mail_get_client_invoices",
+                "params": "",
+                "description": "This Function Applies to the Mail Services services.\n* Gets a list of all the invoices.",
+                "function": {
+                    "name": "api_mail_get_client_invoices",
+                    "desc": "This Function Applies to the Mail Services services.\nGets a list of all the invoices.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "invoices_id",
+                            "type": "int",
+                            "description": "ID of the Invoice used for referencing"
+                        },
+                        {
+                            "name": "invoices_description",
+                            "type": "string",
+                            "description": "Description of what the Invoice was for"
+                        },
+                        {
+                            "name": "invoices_amount",
+                            "type": "float",
+                            "description": "Cost of the Invoice"
+                        },
+                        {
+                            "name": "invoices_custid",
+                            "type": "int",
+                            "description": "ID of the Customer this Invoice is for"
+                        },
+                        {
+                            "name": "invoices_type",
+                            "type": "int",
+                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+                        },
+                        {
+                            "name": "invoices_date",
+                            "type": "string",
+                            "description": "Date the Invoice was Created"
+                        },
+                        {
+                            "name": "invoices_group",
+                            "type": "int",
+                            "description": "Billing Group the Invoice falls under, Not currently used"
+                        },
+                        {
+                            "name": "invoices_extra",
+                            "type": "int",
+                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+                        },
+                        {
+                            "name": "invoices_paid",
+                            "type": "int",
+                            "description": "Whether or not the Invoice was paid (if applicable)"
+                        },
+                        {
+                            "name": "invoices_module",
+                            "type": "string",
+                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+                        },
+                        {
+                            "name": "invoices_due_date",
+                            "type": "string",
+                            "description": "Date the Invoice is Due"
+                        },
+                        {
+                            "name": "invoices_service",
+                            "type": "int",
+                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+                        },
+                        {
+                            "name": "invoices_deleted",
+                            "type": "int",
+                            "description": "Deleted Flag"
+                        },
+                        {
+                            "name": "invoices_currency",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": [
+                        {
+                            "invoices_id": 7514880,
+                            "invoices_description": "(Repeat Invoice: 19156909) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-24 01:38:45",
+                            "invoices_group": 0,
+                            "invoices_extra": 19156909,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-10 01:38:45",
+                            "invoices_service": 8556,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7529153,
+                            "invoices_description": "(Repeat Invoice: 19158862) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-24 20:41:08",
+                            "invoices_group": 0,
+                            "invoices_extra": 19158862,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-10 20:41:08",
+                            "invoices_service": 8626,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530357,
+                            "invoices_description": "(Repeat Invoice: 19159254) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 03:47:59",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159254,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 03:47:59",
+                            "invoices_service": 8640,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530371,
+                            "invoices_description": "(Repeat Invoice: 19159261) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 03:53:53",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159261,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 03:53:53",
+                            "invoices_service": 8647,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530378,
+                            "invoices_description": "(Repeat Invoice: 19159268) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 03:58:33",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159268,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 03:58:33",
+                            "invoices_service": 8654,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530434,
+                            "invoices_description": "(Repeat Invoice: 19159282) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 04:12:02",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159282,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 04:12:02",
+                            "invoices_service": 8661,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531463,
+                            "invoices_description": "(Repeat Invoice: 19159450) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:25:42",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159450,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:25:42",
+                            "invoices_service": 8668,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531484,
+                            "invoices_description": "(Repeat Invoice: 19159457) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:30:55",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159457,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:30:55",
+                            "invoices_service": 8675,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531491,
+                            "invoices_description": "(Repeat Invoice: 19159464) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:31:22",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159464,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:31:22",
+                            "invoices_service": 8682,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531540,
+                            "invoices_description": "(Repeat Invoice: 19159478) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:33:14",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159478,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:33:14",
+                            "invoices_service": 8689,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_mail_get_client_unpaid_invoices": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_mail_get_client_unpaid_invoices",
+                "params": "",
+                "description": "This Function Applies to the Mail Services services.\n* This function returns a list of all the unpaid invoices matching the module\n* passed..",
+                "function": {
+                    "name": "api_mail_get_client_unpaid_invoices",
+                    "desc": "This Function Applies to the Mail Services services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "invoices_id",
+                            "type": "int",
+                            "description": "ID of the Invoice used for referencing"
+                        },
+                        {
+                            "name": "invoices_description",
+                            "type": "string",
+                            "description": "Description of what the Invoice was for"
+                        },
+                        {
+                            "name": "invoices_amount",
+                            "type": "float",
+                            "description": "Cost of the Invoice"
+                        },
+                        {
+                            "name": "invoices_custid",
+                            "type": "int",
+                            "description": "ID of the Customer this Invoice is for"
+                        },
+                        {
+                            "name": "invoices_type",
+                            "type": "int",
+                            "description": "The Type of Invoice (1 = charge, 10+ are payment types)"
+                        },
+                        {
+                            "name": "invoices_date",
+                            "type": "string",
+                            "description": "Date the Invoice was Created"
+                        },
+                        {
+                            "name": "invoices_group",
+                            "type": "int",
+                            "description": "Billing Group the Invoice falls under, Not currently used"
+                        },
+                        {
+                            "name": "invoices_extra",
+                            "type": "int",
+                            "description": "If type 1 invoice this points to the repeat invoice id, otherwise points to the id of the charge invoice its a payment for."
+                        },
+                        {
+                            "name": "invoices_paid",
+                            "type": "int",
+                            "description": "Whether or not the Invoice was paid (if applicable)"
+                        },
+                        {
+                            "name": "invoices_module",
+                            "type": "string",
+                            "description": "Module the Invoice was for.  You can use [get_modules](#get-modules) to get a list of available modules."
+                        },
+                        {
+                            "name": "invoices_due_date",
+                            "type": "string",
+                            "description": "Date the Invoice is Due"
+                        },
+                        {
+                            "name": "invoices_service",
+                            "type": "int",
+                            "description": "ID of the Service\/Order this Invoice is for such as 1000 if the order was vps1000 and the module was vps"
+                        },
+                        {
+                            "name": "invoices_deleted",
+                            "type": "int",
+                            "description": "Deleted Flag"
+                        },
+                        {
+                            "name": "invoices_currency",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": [
+                        {
+                            "invoices_id": 7514880,
+                            "invoices_description": "(Repeat Invoice: 19156909) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-24 01:38:45",
+                            "invoices_group": 0,
+                            "invoices_extra": 19156909,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-10 01:38:45",
+                            "invoices_service": 8556,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7529153,
+                            "invoices_description": "(Repeat Invoice: 19158862) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-24 20:41:08",
+                            "invoices_group": 0,
+                            "invoices_extra": 19158862,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-10 20:41:08",
+                            "invoices_service": 8626,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530357,
+                            "invoices_description": "(Repeat Invoice: 19159254) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 03:47:59",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159254,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 03:47:59",
+                            "invoices_service": 8640,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530371,
+                            "invoices_description": "(Repeat Invoice: 19159261) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 03:53:53",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159261,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 03:53:53",
+                            "invoices_service": 8647,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530378,
+                            "invoices_description": "(Repeat Invoice: 19159268) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 03:58:33",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159268,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 03:58:33",
+                            "invoices_service": 8654,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7530434,
+                            "invoices_description": "(Repeat Invoice: 19159282) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 04:12:02",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159282,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 04:12:02",
+                            "invoices_service": 8661,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531463,
+                            "invoices_description": "(Repeat Invoice: 19159450) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:25:42",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159450,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:25:42",
+                            "invoices_service": 8668,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531484,
+                            "invoices_description": "(Repeat Invoice: 19159457) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:30:55",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159457,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:30:55",
+                            "invoices_service": 8675,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531491,
+                            "invoices_description": "(Repeat Invoice: 19159464) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:31:22",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159464,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:31:22",
+                            "invoices_service": 8682,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        },
+                        {
+                            "invoices_id": 7531540,
+                            "invoices_description": "(Repeat Invoice: 19159478) MailBaby Mail",
+                            "invoices_amount": 1,
+                            "invoices_custid": 160884,
+                            "invoices_type": 1,
+                            "invoices_date": "2021-02-25 06:33:14",
+                            "invoices_group": 0,
+                            "invoices_extra": 19159478,
+                            "invoices_paid": 0,
+                            "invoices_module": "mail",
+                            "invoices_due_date": "2021-03-11 06:33:14",
+                            "invoices_service": 8689,
+                            "invoices_deleted": 0,
+                            "invoices_currency": "USD"
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            }
+        }
     },
     "quickservers": {
         "name": "Rapid Deploy Servers",
@@ -6664,7 +7843,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -6700,7 +7879,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -6795,7 +7974,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -6890,7 +8069,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -7050,7 +8229,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -7211,7 +8390,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -7247,7 +8426,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -7342,7 +8521,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -7437,7 +8616,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -7697,7 +8876,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -7918,7 +9097,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -7954,7 +9133,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -8049,7 +9228,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -8144,7 +9323,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -8324,7 +9503,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -8491,11 +9670,11 @@
     "vps": {
         "name": "VPS",
         "extra": {
-            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_controlling_the_vps.md": "# VPS\n\n\n\n## Controlling the VPS\n\nYou can use the API to perform basic control functions on your VPS server.   \nCurrent commands include the ability to Stop, Start, and Restart the server using the [vps_queue_stop](#vps-queue-stop), [vps_queue_start](#vps-queue-start), and [vps_queue_restart](#vps-queue-restart) function calls.\nSome VPS types also allow you to use the [vps_screenshot](#vps-screenshot) function to get a screenshot of whats currently on the VPS's screen.\n\n",
-            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_purchasing.md": "# VPS\n\n\n\n## Controlling the VPS\n\nYou can use the API to perform basic control functions on your VPS server.   \nCurrent commands include the ability to Stop, Start, and Restart the server using the [vps_queue_stop](#vps-queue-stop), [vps_queue_start](#vps-queue-start), and [vps_queue_restart](#vps-queue-restart) function calls.\nSome VPS types also allow you to use the [vps_screenshot](#vps-screenshot) function to get a screenshot of whats currently on the VPS's screen.\n\n## Purchasing a VPS\n\nThe VPS order process is broken down into 2 functions.\nAfter choosing the order parameters, you must first make a call to [validate_buy_vps](#validate-buy-vps) to check for any problems in the parameters.\nThe function will respond with an array containing an updated set of parameters (if any of them needed changed) and additional fields telling you if the order details were ok or a description of what problems there were in the order. \nIt also will return with sevral fields telling you how much it will cost initially , how much it will cost each time you are billed after the initial signup, and how often you are billed.\nWhen you get an 'ok' as the 'status' response you can pass the parameters to the [buy_vps](#buy-vps) function to place the order.   \nThis function will also return a status field with 'ok' if the order was placed properly or 'error' otherwise and a description of any problems in status_text.\n\n",
-            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_server_locations.md": "# VPS\n\n\n\n## Controlling the VPS\n\nYou can use the API to perform basic control functions on your VPS server.   \nCurrent commands include the ability to Stop, Start, and Restart the server using the [vps_queue_stop](#vps-queue-stop), [vps_queue_start](#vps-queue-start), and [vps_queue_restart](#vps-queue-restart) function calls.\nSome VPS types also allow you to use the [vps_screenshot](#vps-screenshot) function to get a screenshot of whats currently on the VPS's screen.\n\n## Purchasing a VPS\n\nThe VPS order process is broken down into 2 functions.\nAfter choosing the order parameters, you must first make a call to [validate_buy_vps](#validate-buy-vps) to check for any problems in the parameters.\nThe function will respond with an array containing an updated set of parameters (if any of them needed changed) and additional fields telling you if the order details were ok or a description of what problems there were in the order. \nIt also will return with sevral fields telling you how much it will cost initially , how much it will cost each time you are billed after the initial signup, and how often you are billed.\nWhen you get an 'ok' as the 'status' response you can pass the parameters to the [buy_vps](#buy-vps) function to place the order.   \nThis function will also return a status field with 'ok' if the order was placed properly or 'error' otherwise and a description of any problems in status_text.\n\n## VPS Server Locations\n\nOur more popular VPS types are available in multiple locations.   \nYou should probably choose the location closest to you or your clients.  \nTo get a list of the current locations use the [get_vps_locations_array](#get_vps_locations_array) function.  \nOur primary datacenter location is in Secaucus, NJ (location id 1) and is probably the best choice if unsure what to choose.  \nSome of the VPS types might only be available at that location as well.\n\n",
-            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_types_and_pricing.md": "# VPS\n\n\n\n## Controlling the VPS\n\nYou can use the API to perform basic control functions on your VPS server.   \nCurrent commands include the ability to Stop, Start, and Restart the server using the [vps_queue_stop](#vps-queue-stop), [vps_queue_start](#vps-queue-start), and [vps_queue_restart](#vps-queue-restart) function calls.\nSome VPS types also allow you to use the [vps_screenshot](#vps-screenshot) function to get a screenshot of whats currently on the VPS's screen.\n\n## Purchasing a VPS\n\nThe VPS order process is broken down into 2 functions.\nAfter choosing the order parameters, you must first make a call to [validate_buy_vps](#validate-buy-vps) to check for any problems in the parameters.\nThe function will respond with an array containing an updated set of parameters (if any of them needed changed) and additional fields telling you if the order details were ok or a description of what problems there were in the order. \nIt also will return with sevral fields telling you how much it will cost initially , how much it will cost each time you are billed after the initial signup, and how often you are billed.\nWhen you get an 'ok' as the 'status' response you can pass the parameters to the [buy_vps](#buy-vps) function to place the order.   \nThis function will also return a status field with 'ok' if the order was placed properly or 'error' otherwise and a description of any problems in status_text.\n\n## VPS Server Locations\n\nOur more popular VPS types are available in multiple locations.   \nYou should probably choose the location closest to you or your clients.  \nTo get a list of the current locations use the [get_vps_locations_array](#get_vps_locations_array) function.  \nOur primary datacenter location is in Secaucus, NJ (location id 1) and is probably the best choice if unsure what to choose.  \nSome of the VPS types might only be available at that location as well.\n\n## VPS Types and Pricing\n\nWe have several types of Servers available for use with VPS Hosting. \nYou can get a list of the types available and there cost per slice\/unit by making a call to the [get_vps_slice_types](#get_vps_slice_types) function.  \nAdditionally you can get a list of the vps platforms with the [get_vps_platforms_array](#get_vps_platforms_array) function.\n\n",
-            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_vps_details.md": "# VPS\n\n\n\n## Controlling the VPS\n\nYou can use the API to perform basic control functions on your VPS server.   \nCurrent commands include the ability to Stop, Start, and Restart the server using the [vps_queue_stop](#vps-queue-stop), [vps_queue_start](#vps-queue-start), and [vps_queue_restart](#vps-queue-restart) function calls.\nSome VPS types also allow you to use the [vps_screenshot](#vps-screenshot) function to get a screenshot of whats currently on the VPS's screen.\n\n## Purchasing a VPS\n\nThe VPS order process is broken down into 2 functions.\nAfter choosing the order parameters, you must first make a call to [validate_buy_vps](#validate-buy-vps) to check for any problems in the parameters.\nThe function will respond with an array containing an updated set of parameters (if any of them needed changed) and additional fields telling you if the order details were ok or a description of what problems there were in the order. \nIt also will return with sevral fields telling you how much it will cost initially , how much it will cost each time you are billed after the initial signup, and how often you are billed.\nWhen you get an 'ok' as the 'status' response you can pass the parameters to the [buy_vps](#buy-vps) function to place the order.   \nThis function will also return a status field with 'ok' if the order was placed properly or 'error' otherwise and a description of any problems in status_text.\n\n## VPS Server Locations\n\nOur more popular VPS types are available in multiple locations.   \nYou should probably choose the location closest to you or your clients.  \nTo get a list of the current locations use the [get_vps_locations_array](#get_vps_locations_array) function.  \nOur primary datacenter location is in Secaucus, NJ (location id 1) and is probably the best choice if unsure what to choose.  \nSome of the VPS types might only be available at that location as well.\n\n## VPS Types and Pricing\n\nWe have several types of Servers available for use with VPS Hosting. \nYou can get a list of the types available and there cost per slice\/unit by making a call to the [get_vps_slice_types](#get_vps_slice_types) function.  \nAdditionally you can get a list of the vps platforms with the [get_vps_platforms_array](#get_vps_platforms_array) function.\n\n## VPS Details\n\nTo get a list of all your current VPS's you can use the [vps_get_services](#vps-get-services) function and [vps_get_service](#vps-get-service) to get all the details for a given VPS.\n\n"
+            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_controlling_the_vps.md": "## Controlling the VPS\n\nYou can use the API to perform basic control functions on your VPS server.   \nCurrent commands include the ability to Stop, Start, and Restart the server using the [vps_queue_stop](#vps-queue-stop), [vps_queue_start](#vps-queue-start), and [vps_queue_restart](#vps-queue-restart) function calls.\nSome VPS types also allow you to use the [vps_screenshot](#vps-screenshot) function to get a screenshot of whats currently on the VPS's screen.\n\n",
+            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_purchasing.md": "## Purchasing a VPS\n\nThe VPS order process is broken down into 2 functions.\nAfter choosing the order parameters, you must first make a call to [validate_buy_vps](#validate-buy-vps) to check for any problems in the parameters.\nThe function will respond with an array containing an updated set of parameters (if any of them needed changed) and additional fields telling you if the order details were ok or a description of what problems there were in the order. \nIt also will return with sevral fields telling you how much it will cost initially , how much it will cost each time you are billed after the initial signup, and how often you are billed.\nWhen you get an 'ok' as the 'status' response you can pass the parameters to the [buy_vps](#buy-vps) function to place the order.   \nThis function will also return a status field with 'ok' if the order was placed properly or 'error' otherwise and a description of any problems in status_text.\n\n",
+            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_server_locations.md": "## VPS Server Locations\n\nOur more popular VPS types are available in multiple locations.   \nYou should probably choose the location closest to you or your clients.  \nTo get a list of the current locations use the [get_vps_locations_array](#get_vps_locations_array) function.  \nOur primary datacenter location is in Secaucus, NJ (location id 1) and is probably the best choice if unsure what to choose.  \nSome of the VPS types might only be available at that location as well.\n\n",
+            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_types_and_pricing.md": "## VPS Types and Pricing\n\nWe have several types of Servers available for use with VPS Hosting. \nYou can get a list of the types available and there cost per slice\/unit by making a call to the [get_vps_slice_types](#get_vps_slice_types) function.  \nAdditionally you can get a list of the vps platforms with the [get_vps_platforms_array](#get_vps_platforms_array) function.\n\n",
+            "\/home\/sites\/mystage\/scripts\/api\/..\/..\/include\/templates\/api\/extra\/vps\/_vps_details.md": "## VPS Details\n\nTo get a list of all your current VPS's you can use the [vps_get_services](#vps-get-services) function and [vps_get_service](#vps-get-service) to get all the details for a given VPS.\n\n"
         },
         "functions": {
             "api_api_buy_vps": {
@@ -8511,7 +9690,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "os": {
                             "name": "os",
@@ -8635,7 +9814,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "os": {
                             "name": "os",
@@ -8765,7 +9944,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "os": {
                             "name": "os",
@@ -8983,7 +10162,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9019,7 +10198,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -9114,7 +10293,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -9209,7 +10388,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9245,7 +10424,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9445,7 +10624,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -9610,7 +10789,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9654,7 +10833,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9698,7 +10877,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9742,7 +10921,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -9990,6 +11169,143 @@
                 "input_comment": "",
                 "output_comment": "",
                 "use_sid": false,
+                "hide_comment": true
+            },
+            "api_vps_queue_backup": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_vps_queue_backup",
+                "params": "",
+                "description": "initializes a backup of a vps calling the backup the name parameter or \"snap\" if\n* blank",
+                "function": {
+                    "name": "api_vps_queue_backup",
+                    "desc": "initializes a backup of a vps calling the backup the name parameter or \"snap\" if blank",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        },
+                        "name": {
+                            "name": "name",
+                            "type": "string",
+                            "description": "",
+                            "example": ""
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n* @param name string \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_vps_backup_delete": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_vps_backup_delete",
+                "params": "",
+                "description": "deletes one of the vps backups",
+                "function": {
+                    "name": "api_vps_backup_delete",
+                    "desc": "deletes one of the vps backups",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        },
+                        "name": {
+                            "name": "name",
+                            "type": "string",
+                            "description": "",
+                            "example": ""
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ]
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n* @param name string \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
+            "api_get_vps_backups": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_get_vps_backups",
+                "params": "",
+                "description": "Returns a list of all the current VPS backups indicating the VPS ID, the Name of\n* the backup, file size, and a download URL",
+                "function": {
+                    "name": "api_get_vps_backups",
+                    "desc": "Returns a list of all the current VPS backups indicating the VPS ID, the Name of the backup, file size, and a download URL",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "id",
+                            "type": "int",
+                            "description": "ID of the Coupon"
+                        },
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Country Name in all Capitols"
+                        },
+                        {
+                            "name": "size",
+                            "type": "int",
+                            "description": ""
+                        },
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": []
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n",
+                "output_comment": "",
+                "use_sid": true,
                 "hide_comment": true
             },
             "get_vps_templates": {
@@ -11388,7 +12704,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -11424,7 +12740,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -11519,7 +12835,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -11614,7 +12930,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",
@@ -11729,7 +13045,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         }
                     },
                     "output": [
@@ -11826,6 +13142,50 @@
                 "use_sid": true,
                 "hide_comment": true
             },
+            "api_api_auto_directadmin_login": {
+                "serverargv": "{$_SERVER[\"argv\"][0]}",
+                "name": "api_api_auto_directadmin_login",
+                "params": "",
+                "description": "Logs into DirectAdmin for the given website id and returns a unique logged-in\n* url.  The status will be \"ok\" if successful, or \"error\" if there was any\n* problems status_text will contain a description of the problem if any.",
+                "function": {
+                    "name": "api_api_auto_directadmin_login",
+                    "desc": "Logs into DirectAdmin for the given website id and returns a unique logged-in url.  The status will be \"ok\" if successful, or \"error\" if there was any problems status_text will contain a description of the problem if any.",
+                    "input": {
+                        "sid": {
+                            "name": "sid",
+                            "type": "string",
+                            "description": "the *Session ID* you get from the [login](#login) call",
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                        },
+                        "id": {
+                            "name": "id",
+                            "type": "int",
+                            "description": "",
+                            "example": 10000
+                        }
+                    },
+                    "output": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Location Status"
+                        },
+                        {
+                            "name": "status_text",
+                            "type": "string",
+                            "description": ""
+                        }
+                    ],
+                    "example": {
+                        "status": "error",
+                        "status_text": "Invalid Website Passed"
+                    }
+                },
+                "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+                "output_comment": "",
+                "use_sid": true,
+                "hide_comment": true
+            },
             "api_api_auto_cpanel_login": {
                 "serverargv": "{$_SERVER[\"argv\"][0]}",
                 "name": "api_api_auto_cpanel_login",
@@ -11839,7 +13199,7 @@
                             "name": "sid",
                             "type": "string",
                             "description": "the *Session ID* you get from the [login](#login) call",
-                            "example": "fdc2070e727c4fb456065a97dc77c54c"
+                            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
                         },
                         "id": {
                             "name": "id",

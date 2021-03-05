@@ -142,5 +142,21 @@
         "invoices_service": 8682,
         "invoices_deleted": 0,
         "invoices_currency": "USD"
+    },
+    {
+        "invoices_id": 7531540,
+        "invoices_description": "(Repeat Invoice: 19159478) MailBaby Mail",
+        "invoices_amount": 1,
+        "invoices_custid": 160884,
+        "invoices_type": 1,
+        "invoices_date": "2021-02-25 06:33:14",
+        "invoices_group": 0,
+        "invoices_extra": 19159478,
+        "invoices_paid": 0,
+        "invoices_module": "mail",
+        "invoices_due_date": "2021-03-11 06:33:14",
+        "invoices_service": 8689,
+        "invoices_deleted": 0,
+        "invoices_currency": "USD"
     }
 ]

@@ -169,5 +169,24 @@
         "mail_extra": "[]",
         "mail_server_status": "",
         "mail_comment": ""
+    },
+    {
+        "mail_id": 8689,
+        "mail_server": null,
+        "mail_username": "",
+        "mail_type": 10880,
+        "mail_cost": 1,
+        "mail_currency": "USD",
+        "mail_frequency": 1,
+        "mail_order_date": "2021-02-25 06:33:14",
+        "mail_custid": 160884,
+        "mail_quota": 0,
+        "mail_ip": "",
+        "mail_status": "pending",
+        "mail_invoice": 19159478,
+        "mail_coupon": 0,
+        "mail_extra": "[]",
+        "mail_server_status": "",
+        "mail_comment": ""
     }
 ]

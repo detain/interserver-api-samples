@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "fdc2070e727c4fb456065a97dc77c54c"
+                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
             },
             "oldip": {
                 "name": "oldip",
