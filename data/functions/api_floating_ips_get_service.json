@@ -1,0 +1,100 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_floating_ips_get_service",
+    "params": "",
+    "description": "This Function Applies to the Floating IPs services.\n* Gets service info for the given ID in the given Module.   An example of this\n* would be in the \"vps\" module have order id",
+    "function": {
+        "name": "api_floating_ips_get_service",
+        "desc": "This Function Applies to the Floating IPs services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "",
+                "example": 10000
+            }
+        },
+        "output": [
+            {
+                "name": "floating_ip_id",
+                "type": "int",
+                "description": "Service ID"
+            },
+            {
+                "name": "floating_ip_type",
+                "type": "int",
+                "description": "Package ID"
+            },
+            {
+                "name": "floating_ip_currency",
+                "type": "string",
+                "description": "Currency"
+            },
+            {
+                "name": "floating_ip_order_date",
+                "type": "string",
+                "description": "Date the Order was Placed"
+            },
+            {
+                "name": "floating_ip_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
+                "name": "floating_ip_quota",
+                "type": "int",
+                "description": "Disk Quota"
+            },
+            {
+                "name": "floating_ip_ip",
+                "type": "string",
+                "description": "IP Address of floating ips"
+            },
+            {
+                "name": "floating_ip_target_ip",
+                "type": "string",
+                "description": ""
+            },
+            {
+                "name": "floating_ip_status",
+                "type": "string",
+                "description": "Billing Status"
+            },
+            {
+                "name": "floating_ip_invoice",
+                "type": "int",
+                "description": "Invoice ID"
+            },
+            {
+                "name": "floating_ip_coupon",
+                "type": "int",
+                "description": "Coupon ID"
+            },
+            {
+                "name": "floating_ip_extra",
+                "type": "string",
+                "description": "Additional floating ips Information"
+            },
+            {
+                "name": "floating_ip_server_status",
+                "type": "string",
+                "description": "Server-Side status of this website"
+            },
+            {
+                "name": "floating_ip_comment",
+                "type": "string",
+                "description": "Comments"
+            }
+        ]
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}

@@ -1,0 +1,17 @@
+{
+    "backup_id": 10000,
+    "backup_server": 25,
+    "backup_username": "st10000",
+    "backup_type": 10831,
+    "backup_currency": "USD",
+    "backup_order_date": "2021-04-26 04:54:55",
+    "backup_custid": 723209,
+    "backup_quota": 0,
+    "backup_ip": "68.168.209.18",
+    "backup_status": "expired",
+    "backup_invoice": 19239357,
+    "backup_coupon": 0,
+    "backup_extra": "[]",
+    "backup_server_status": "deleted",
+    "backup_comment": ""
+}

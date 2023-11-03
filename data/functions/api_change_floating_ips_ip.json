@@ -1,0 +1,42 @@
+{
+    "serverargv": "{$_SERVER[\"argv\"][0]}",
+    "name": "api_change_floating_ips_ip",
+    "params": "",
+    "description": "Changes the IP of a floating IP order",
+    "function": {
+        "name": "api_change_floating_ips_ip",
+        "desc": "Changes the IP of a floating IP order",
+        "input": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": "the *Session ID* you get from the [login](#login) call",
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": "",
+                "example": 10000
+            },
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": "",
+                "example": "66.45.228.200"
+            }
+        },
+        "output": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        },
+        "example": true
+    },
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n* @param ip string \n",
+    "output_comment": "",
+    "use_sid": true,
+    "hide_comment": true
+}
