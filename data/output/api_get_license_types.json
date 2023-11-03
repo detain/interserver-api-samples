@@ -86,8 +86,8 @@
     },
     {
         "services_id": 5032,
-        "services_name": "CloudLinux License",
-        "services_cost": 10
+        "services_name": "CloudLinux OS Shared",
+        "services_cost": 12
     },
     {
         "services_id": 5034,
@@ -187,32 +187,32 @@
     {
         "services_id": 5053,
         "services_name": "Plesk v12 Web Admin Edition for Virtual Machines",
-        "services_cost": 10
+        "services_cost": 12
     },
     {
         "services_id": 5054,
         "services_name": "Plesk v12 Web Admin Edition for Dedicated Servers",
-        "services_cost": 10
+        "services_cost": 12
     },
     {
         "services_id": 5057,
         "services_name": "Plesk v12 Web Pro Edition for Virtual Machines",
-        "services_cost": 15
+        "services_cost": 19
     },
     {
         "services_id": 5058,
         "services_name": "Plesk v12 Web Pro Edition for Dedicated Servers",
-        "services_cost": 25
+        "services_cost": 19
     },
     {
         "services_id": 5059,
         "services_name": "Plesk v12 Web Host Edition for Virtual Machines",
-        "services_cost": 25
+        "services_cost": 29
     },
     {
         "services_id": 5060,
         "services_name": "Plesk v12 Web Host Edition for Dedicated Servers",
-        "services_cost": 40
+        "services_cost": 50
     },
     {
         "services_id": 5061,
@@ -347,7 +347,7 @@
     {
         "services_id": 10682,
         "services_name": "cPanel Autoscale (Internal)",
-        "services_cost": 40
+        "services_cost": 48
     },
     {
         "services_id": 10683,
@@ -777,7 +777,7 @@
     {
         "services_id": 10769,
         "services_name": "cPanel Autoscale Cloud (Internal)",
-        "services_cost": 15
+        "services_cost": 22
     },
     {
         "services_id": 10770,
@@ -863,5 +863,140 @@
         "services_id": 10994,
         "services_name": "LiteSpeed Web Host Elite",
         "services_cost": 83
+    },
+    {
+        "services_id": 11008,
+        "services_name": "Softaculous Remote",
+        "services_cost": 0
+    },
+    {
+        "services_id": 11181,
+        "services_name": "DirectAdmin Standard Pro for CentOS 6 32-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11188,
+        "services_name": "DirectAdmin Standard Pro for Linux 64-bit (glibc 2.12+) (CentOS6, Debian8, Ubuntu 14.04+)",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11195,
+        "services_name": "DirectAdmin Standard Pro for Linux 64-bit (glibc 2.17+) (CentOS7+, Debian9, Ubuntu 14.04+)",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11202,
+        "services_name": "DirectAdmin Standard Pro for CentOS 8 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11209,
+        "services_name": "DirectAdmin Standard Pro for FreeBSD 11 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11216,
+        "services_name": "DirectAdmin Standard Pro for FreeBSD 12 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11223,
+        "services_name": "DirectAdmin Standard Pro for Debian 8.0 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11230,
+        "services_name": "DirectAdmin Standard Pro for Debian 9 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11237,
+        "services_name": "DirectAdmin Standard Pro for Debian 10 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11244,
+        "services_name": "DirectAdmin Standard Pro for Debian 11 64-bit",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11251,
+        "services_name": "DirectAdmin Standard Pro for Ubuntu 64-bit static",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11258,
+        "services_name": "DirectAdmin Standard Pro for Linux 64-bit static",
+        "services_cost": 29
+    },
+    {
+        "services_id": 11265,
+        "services_name": "DirectAdmin Lite Pro for CentOS 6 32-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11272,
+        "services_name": "DirectAdmin Lite Pro for Linux 64-bit (glibc 2.12+) (CentOS6, Debian8, Ubuntu 14.04+)",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11279,
+        "services_name": "DirectAdmin Lite Pro for Linux 64-bit (glibc 2.17+) (CentOS7+, Debian9, Ubuntu 14.04+)",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11286,
+        "services_name": "DirectAdmin Lite Pro for CentOS 8 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11293,
+        "services_name": "DirectAdmin Lite Pro for FreeBSD 11 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11300,
+        "services_name": "DirectAdmin Lite Pro for FreeBSD 12 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11307,
+        "services_name": "DirectAdmin Lite Pro for Debian 8.0 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11314,
+        "services_name": "DirectAdmin Lite Pro for Debian 9 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11321,
+        "services_name": "DirectAdmin Lite Pro for Debian 10 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11328,
+        "services_name": "DirectAdmin Lite Pro for Debian 11 64-bit",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11335,
+        "services_name": "DirectAdmin Lite Pro for Ubuntu 64-bit static",
+        "services_cost": 15
+    },
+    {
+        "services_id": 11468,
+        "services_name": "DirectAdmin Personal PLUS",
+        "services_cost": 3.75
+    },
+    {
+        "services_id": 11475,
+        "services_name": "DirectAdmin Lite",
+        "services_cost": 11.25
+    },
+    {
+        "services_id": 11482,
+        "services_name": "DirectAdmin Standard",
+        "services_cost": 21.75
     }
 ]

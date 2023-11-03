@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             },
             "id": {
                 "name": "id",
@@ -27,11 +27,6 @@
                 "description": "Service ID"
             },
             {
-                "name": "mail_server",
-                "type": "int",
-                "description": "ID of Server the mail Resides on"
-            },
-            {
                 "name": "mail_username",
                 "type": "string",
                 "description": "Username on the mail Server associated with this Order"
@@ -42,19 +37,9 @@
                 "description": "Package ID"
             },
             {
-                "name": "mail_cost",
-                "type": "float",
-                "description": "Service Cost"
-            },
-            {
                 "name": "mail_currency",
                 "type": "string",
                 "description": "Currency"
-            },
-            {
-                "name": "mail_frequency",
-                "type": "int",
-                "description": "Billing Interval"
             },
             {
                 "name": "mail_order_date",

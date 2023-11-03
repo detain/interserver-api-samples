@@ -23,10 +23,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_getTicketList, message: { 
-		sid: ARGV[0], 
-		page: ARGV[1], 
-		limit: ARGV[2], 
-		status: ARGV[3], 
-})
+	:api_getTicketList, message: {
+		sid: ARGV[0],		page: ARGV[1],		limit: ARGV[2],		status: ARGV[3],})
 print response.body[:api_getTicketList_response][:return],"\n"

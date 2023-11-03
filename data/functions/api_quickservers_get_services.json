@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             }
         },
         "output": [
@@ -21,9 +21,24 @@
                 "description": "Server ID"
             },
             {
+                "name": "qs_custid",
+                "type": "int",
+                "description": "Customer ID"
+            },
+            {
                 "name": "qs_server",
                 "type": "int",
                 "description": "Rapid Deploy Server Host Server ID"
+            },
+            {
+                "name": "qs_ip",
+                "type": "string",
+                "description": "IP Address"
+            },
+            {
+                "name": "qs_ipv6",
+                "type": "string",
+                "description": ""
             },
             {
                 "name": "qs_vzid",
@@ -31,39 +46,19 @@
                 "description": "Host-Side Server ID"
             },
             {
-                "name": "qs_type",
-                "type": "int",
-                "description": "Server Type"
-            },
-            {
-                "name": "qs_cost",
-                "type": "float",
-                "description": "Service Cost"
-            },
-            {
                 "name": "qs_currency",
                 "type": "string",
                 "description": ""
             },
             {
-                "name": "qs_frequency",
+                "name": "qs_type",
                 "type": "int",
-                "description": "Billing Interval"
+                "description": "Server Type"
             },
             {
                 "name": "qs_order_date",
                 "type": "string",
                 "description": "Date the Order was Placed"
-            },
-            {
-                "name": "qs_custid",
-                "type": "int",
-                "description": "Customer ID"
-            },
-            {
-                "name": "qs_ip",
-                "type": "string",
-                "description": "IP Address"
             },
             {
                 "name": "qs_status",

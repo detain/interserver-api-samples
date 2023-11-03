@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_vps_get_service()
 print result
 
@@ -65,10 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_vps_get_service, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_vps_get_service, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_vps_get_service_response][:return],"\n"
 
 ```
@@ -117,11 +114,10 @@ vps_id|int|VPS Service ID
 vps_custid|int|Customer ID
 vps_server|int|VPS Host Server ID
 vps_ip|string|IP Address of VPS
+vps_ipv6|string|
 vps_vzid|string|VPS Host-Side Server ID
-vps_cost|float|Service Cost
 vps_currency|string|
 vps_type|int|Package ID
-vps_frequency|int|Billing Interval
 vps_order_date|string|Date the Order was Placed
 vps_status|string|Billing Status
 vps_invoice|int|Invoice ID
@@ -163,19 +159,19 @@ vps_diskmax|int|Total Disk Space
 		</tr>
 		<tr>
 			<td>vps_server</td>
-			<td>5</td>
+			<td>1537</td>
 		</tr>
 		<tr>
 			<td>vps_ip</td>
 			<td>206.72.197.216</td>
 		</tr>
 		<tr>
-			<td>vps_vzid</td>
-			<td>windows10000</td>
+			<td>vps_ipv6</td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>vps_cost</td>
-			<td>22</td>
+			<td>vps_vzid</td>
+			<td>windows10000</td>
 		</tr>
 		<tr>
 			<td>vps_currency</td>
@@ -184,10 +180,6 @@ vps_diskmax|int|Total Disk Space
 		<tr>
 			<td>vps_type</td>
 			<td>32</td>
-		</tr>
-		<tr>
-			<td>vps_frequency</td>
-			<td>1</td>
 		</tr>
 		<tr>
 			<td>vps_order_date</td>
@@ -215,7 +207,7 @@ vps_diskmax|int|Total Disk Space
 		</tr>
 		<tr>
 			<td>vps_server_status</td>
-			<td></td>
+			<td>deleted</td>
 		</tr>
 		<tr>
 			<td>vps_comment</td>

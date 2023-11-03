@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_backups_get_services()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_backups_get_services, message: { 
-		sid: ARGV[0], 
-})
+	:api_backups_get_services, message: {
+		sid: ARGV[0],})
 print response.body[:api_backups_get_services_response][:return],"\n"
 
 ```
@@ -112,9 +110,7 @@ backup_id|int|ID of the Backup Host Server
 backup_server|int|ID of Server the Backup Resides on
 backup_username|string|Username on the Backup Server associated with this Order
 backup_type|int|Which type of Backup Server
-backup_cost|float|Service Cost
 backup_currency|string|
-backup_frequency|int|Billing Interval
 backup_order_date|string|Date the Order was Placed
 backup_custid|int|Customer ID
 backup_quota|int|Disk Quota

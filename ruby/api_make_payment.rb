@@ -22,9 +22,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_make_payment, message: { 
-		sid: ARGV[0], 
-		module: ARGV[1], 
-		invoice: ARGV[2], 
-})
+	:api_make_payment, message: {
+		sid: ARGV[0],		module: ARGV[1],		invoice: ARGV[2],})
 print response.body[:api_make_payment_response][:return],"\n"

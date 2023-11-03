@@ -6,8 +6,8 @@
 # Deletes a single DNS record
 #
 # @param sid string the *Session ID* you get from the [login](#login) call
-# @param domain_id int The ID of the domain in question.
-# @param record_id int The ID of the domains record to remove.
+# @param domain_id int 
+# @param record_id int 
 #
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")
@@ -16,6 +16,5 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_delete_dns_record()
 print result

@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_servers_get_service()
 print result
 
@@ -65,10 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_servers_get_service, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_servers_get_service, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_servers_get_service_response][:return],"\n"
 
 ```
@@ -116,9 +113,7 @@ Field|Type|Description
 server_id|int|ID Of the Server Order
 server_hostname|string|Hostname
 server_custid|int|Customers ID
-server_frequency|int|Billing Interval
 server_type|int|Service Type
-server_cost|float|Service Cost
 server_currency|string|
 server_order_date|string|Date the Order was Placed
 server_invoice|int|Invoice ID
@@ -176,16 +171,8 @@ server_extra|string|Extra
 			<td>171614</td>
 		</tr>
 		<tr>
-			<td>server_frequency</td>
-			<td>1</td>
-		</tr>
-		<tr>
 			<td>server_type</td>
 			<td>600</td>
-		</tr>
-		<tr>
-			<td>server_cost</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td>server_currency</td>

@@ -48,7 +48,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_add_prepay()
 print result
 
@@ -69,12 +68,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_add_prepay, message: { 
-		sid: ARGV[0], 
-		module: ARGV[1], 
-		amount: ARGV[2], 
-		automatic_use: ARGV[3], 
-})
+	:api_add_prepay, message: {
+		sid: ARGV[0],		module: ARGV[1],		amount: ARGV[2],		automatic_use: ARGV[3],})
 print response.body[:api_add_prepay_response][:return],"\n"
 
 ```
@@ -138,7 +133,7 @@ return|int|the prepay id
 	<tbody>
 		<tr>
 			<td>Integer</td>
-			<td>67638</td>
+			<td>224969</td>
 		</tr>
 	</tbody>
 </table>

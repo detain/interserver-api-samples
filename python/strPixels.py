@@ -14,6 +14,5 @@
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")
 #print client ## shows detailed client info
-  
 result = client.service.strPixels()
 print result

@@ -23,9 +23,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_vps_queue_backup, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-		name: ARGV[2], 
-})
+	:api_vps_queue_backup, message: {
+		sid: ARGV[0],		id: ARGV[1],		name: ARGV[2],})
 print response.body[:api_vps_queue_backup_response][:return],"\n"

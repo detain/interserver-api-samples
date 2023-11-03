@@ -11,12 +11,12 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             },
             "id": {
                 "name": "id",
                 "type": "int",
-                "description": "",
+                "description": "id of website",
                 "example": 10000
             }
         },
@@ -37,7 +37,7 @@
             "status_text": "Invalid Website Passed"
         }
     },
-    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int \n",
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param id int id of website\n",
     "output_comment": "",
     "use_sid": true,
     "hide_comment": true

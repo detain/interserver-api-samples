@@ -45,7 +45,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_send_mail()
 print result
 
@@ -66,13 +65,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_send_mail, message: { 
-		sid: ARGV[0], 
-		subject: ARGV[1], 
-		body: ARGV[2], 
-		to: ARGV[3], 
-		from: ARGV[4], 
-})
+	:api_send_mail, message: {
+		sid: ARGV[0],		subject: ARGV[1],		body: ARGV[2],		to: ARGV[3],		from: ARGV[4],})
 print response.body[:api_send_mail_response][:return],"\n"
 
 ```

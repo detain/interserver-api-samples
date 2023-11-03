@@ -30,7 +30,6 @@ print "Response:\n",$res->result,"\n";
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")
 #print client ## shows detailed client info
-  
 result = client.service.get_hostname()
 print result
 
@@ -42,9 +41,8 @@ require 'savon'
 
 client = Savon.client(wsdl: 'https://my.interserver.net/api.php?wsdl')
 response = client.call(
-	:get_hostname, message: { 
-		ip: ARGV[0], 
-})
+	:get_hostname, message: {
+		ip: ARGV[0],})
 print response.body[:get_hostname_response][:return],"\n"
 
 ```

@@ -21,8 +21,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_cancel_license, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_cancel_license, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_cancel_license_response][:return],"\n"

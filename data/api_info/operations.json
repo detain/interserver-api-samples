@@ -883,6 +883,24 @@
     },
     {
         "attr": {
+            "name": "api_floating_ips_get_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Floating IPs services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
             "name": "api_webhosting_get_service"
         },
         "documentation": {
@@ -1040,6 +1058,24 @@
         "output": {
             "attr": {
                 "message": "tns:api_ssl_get_servicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_services"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Floating IPs services.\nGets List of Services"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_servicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_servicesResponse"
             }
         }
     },
@@ -1207,6 +1243,24 @@
     },
     {
         "attr": {
+            "name": "api_floating_ips_cancel_service"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Floating IPs services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_floating_ips_cancel_serviceRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_floating_ips_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
             "name": "api_webhosting_cancel_service"
         },
         "documentation": {
@@ -1256,6 +1310,24 @@
         "output": {
             "attr": {
                 "message": "tns:api_servers_cancel_serviceResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_change_floating_ips_ip"
+        },
+        "documentation": {
+            "value": "Changes the IP of a floating IP order"
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_change_floating_ips_ipRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_change_floating_ips_ipResponse"
             }
         }
     },
@@ -1477,6 +1549,24 @@
     },
     {
         "attr": {
+            "name": "api_floating_ips_get_client_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Floating IPs services.\nGets a list of all the invoices."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_client_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_client_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
             "name": "api_webhosting_get_client_invoices"
         },
         "documentation": {
@@ -1634,6 +1724,24 @@
         "output": {
             "attr": {
                 "message": "tns:api_ssl_get_client_unpaid_invoicesResponse"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_client_unpaid_invoices"
+        },
+        "documentation": {
+            "value": "This Function Applies to the Floating IPs services.\nThis function returns a list of all the unpaid invoices matching the module passed.."
+        },
+        "input": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_client_unpaid_invoicesRequest"
+            }
+        },
+        "output": {
+            "attr": {
+                "message": "tns:api_floating_ips_get_client_unpaid_invoicesResponse"
             }
         }
     },

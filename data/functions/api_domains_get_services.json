@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             }
         },
         "output": [
@@ -41,19 +41,9 @@
                 "description": "Package ID"
             },
             {
-                "name": "domain_cost",
-                "type": "float",
-                "description": "Service Cost"
-            },
-            {
                 "name": "domain_currency",
                 "type": "string",
                 "description": ""
-            },
-            {
-                "name": "domain_frequency",
-                "type": "int",
-                "description": "Billing Interval"
             },
             {
                 "name": "domain_expire_date",

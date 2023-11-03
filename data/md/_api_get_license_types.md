@@ -284,10 +284,10 @@ Field|Type|Description
 				5032
 			</td>
 			<td>
-				CloudLinux License
+				CloudLinux OS Shared
 			</td>
 			<td>
-				10
+				12
 			</td>
 		</tr>
 		<tr>
@@ -507,7 +507,7 @@ Field|Type|Description
 				Plesk v12 Web Admin Edition for Virtual Machines
 			</td>
 			<td>
-				10
+				12
 			</td>
 		</tr>
 		<tr>
@@ -518,7 +518,7 @@ Field|Type|Description
 				Plesk v12 Web Admin Edition for Dedicated Servers
 			</td>
 			<td>
-				10
+				12
 			</td>
 		</tr>
 		<tr>
@@ -529,7 +529,7 @@ Field|Type|Description
 				Plesk v12 Web Pro Edition for Virtual Machines
 			</td>
 			<td>
-				15
+				19
 			</td>
 		</tr>
 		<tr>
@@ -540,7 +540,7 @@ Field|Type|Description
 				Plesk v12 Web Pro Edition for Dedicated Servers
 			</td>
 			<td>
-				25
+				19
 			</td>
 		</tr>
 		<tr>
@@ -551,7 +551,7 @@ Field|Type|Description
 				Plesk v12 Web Host Edition for Virtual Machines
 			</td>
 			<td>
-				25
+				29
 			</td>
 		</tr>
 		<tr>
@@ -562,7 +562,7 @@ Field|Type|Description
 				Plesk v12 Web Host Edition for Dedicated Servers
 			</td>
 			<td>
-				40
+				50
 			</td>
 		</tr>
 		<tr>
@@ -859,7 +859,7 @@ Field|Type|Description
 				cPanel Autoscale (Internal)
 			</td>
 			<td>
-				40
+				48
 			</td>
 		</tr>
 		<tr>
@@ -1805,7 +1805,7 @@ Field|Type|Description
 				cPanel Autoscale Cloud (Internal)
 			</td>
 			<td>
-				15
+				22
 			</td>
 		</tr>
 		<tr>
@@ -1993,6 +1993,303 @@ Field|Type|Description
 			</td>
 			<td>
 				83
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11008
+			</td>
+			<td>
+				Softaculous Remote
+			</td>
+			<td>
+				0
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11181
+			</td>
+			<td>
+				DirectAdmin Standard Pro for CentOS 6 32-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11188
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Linux 64-bit (glibc 2.12+) (CentOS6, Debian8, Ubuntu 14.04+)
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11195
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Linux 64-bit (glibc 2.17+) (CentOS7+, Debian9, Ubuntu 14.04+)
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11202
+			</td>
+			<td>
+				DirectAdmin Standard Pro for CentOS 8 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11209
+			</td>
+			<td>
+				DirectAdmin Standard Pro for FreeBSD 11 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11216
+			</td>
+			<td>
+				DirectAdmin Standard Pro for FreeBSD 12 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11223
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Debian 8.0 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11230
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Debian 9 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11237
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Debian 10 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11244
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Debian 11 64-bit
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11251
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Ubuntu 64-bit static
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11258
+			</td>
+			<td>
+				DirectAdmin Standard Pro for Linux 64-bit static
+			</td>
+			<td>
+				29
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11265
+			</td>
+			<td>
+				DirectAdmin Lite Pro for CentOS 6 32-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11272
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Linux 64-bit (glibc 2.12+) (CentOS6, Debian8, Ubuntu 14.04+)
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11279
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Linux 64-bit (glibc 2.17+) (CentOS7+, Debian9, Ubuntu 14.04+)
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11286
+			</td>
+			<td>
+				DirectAdmin Lite Pro for CentOS 8 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11293
+			</td>
+			<td>
+				DirectAdmin Lite Pro for FreeBSD 11 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11300
+			</td>
+			<td>
+				DirectAdmin Lite Pro for FreeBSD 12 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11307
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Debian 8.0 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11314
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Debian 9 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11321
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Debian 10 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11328
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Debian 11 64-bit
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11335
+			</td>
+			<td>
+				DirectAdmin Lite Pro for Ubuntu 64-bit static
+			</td>
+			<td>
+				15
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11468
+			</td>
+			<td>
+				DirectAdmin Personal PLUS
+			</td>
+			<td>
+				3.75
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11475
+			</td>
+			<td>
+				DirectAdmin Lite
+			</td>
+			<td>
+				11.25
+			</td>
+		</tr>
+		<tr>
+			<td>
+				11482
+			</td>
+			<td>
+				DirectAdmin Standard
+			</td>
+			<td>
+				21.75
 			</td>
 		</tr>
 	</tbody>

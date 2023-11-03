@@ -47,7 +47,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_add_dns_record()
 print result
 
@@ -68,15 +67,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_add_dns_record, message: { 
-		sid: ARGV[0], 
-		domain_id: ARGV[1], 
-		name: ARGV[2], 
-		content: ARGV[3], 
-		type: ARGV[4], 
-		ttl: ARGV[5], 
-		prio: ARGV[6], 
-})
+	:api_add_dns_record, message: {
+		sid: ARGV[0],		domain_id: ARGV[1],		name: ARGV[2],		content: ARGV[3],		type: ARGV[4],		ttl: ARGV[5],		prio: ARGV[6],})
 print response.body[:api_add_dns_record_response][:return],"\n"
 
 ```
@@ -117,12 +109,12 @@ This call takes the following parameters:
 Parameter|Type|Description
 ---------|----|-----------
 sid|string|the *Session ID* you get from the [login](#login) call
-domain_id|int|The ID of the domain in question.
-name|string|the hostname being set on the dns record.
-content|string|the value of the dns record, or what its set to.
-type|string|dns record type.
-ttl|int|dns record time to live, or update time.
-prio|int|dns record priority
+domain_id|int|
+name|string|Specify record name
+content|string|
+type|string|Specify TYPE of record
+ttl|int|Specify TTL
+prio|int|
 
 
 ### Response
@@ -131,6 +123,6 @@ This function returns an associative array with the following fields
 
 Field|Type|Description
 -----|----|-----------
-return|int|
+return|int|$resp Response of Action. Default: Serialize
 
 

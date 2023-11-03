@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             },
             "id": {
                 "name": "id",
@@ -42,14 +42,14 @@
                 "description": "IP Address of VPS"
             },
             {
+                "name": "vps_ipv6",
+                "type": "string",
+                "description": ""
+            },
+            {
                 "name": "vps_vzid",
                 "type": "string",
                 "description": "VPS Host-Side Server ID"
-            },
-            {
-                "name": "vps_cost",
-                "type": "float",
-                "description": "Service Cost"
             },
             {
                 "name": "vps_currency",
@@ -60,11 +60,6 @@
                 "name": "vps_type",
                 "type": "int",
                 "description": "Package ID"
-            },
-            {
-                "name": "vps_frequency",
-                "type": "int",
-                "description": "Billing Interval"
             },
             {
                 "name": "vps_order_date",
@@ -165,20 +160,19 @@
         "example": {
             "vps_id": 10000,
             "vps_custid": 11803,
-            "vps_server": 5,
+            "vps_server": 1537,
             "vps_ip": "206.72.197.216",
+            "vps_ipv6": null,
             "vps_vzid": "windows10000",
-            "vps_cost": 22,
             "vps_currency": "USD",
             "vps_type": 32,
-            "vps_frequency": 1,
             "vps_order_date": "2012-11-06 22:22:35",
             "vps_status": "canceled",
             "vps_invoice": 1011318,
             "vps_coupon": 3507,
             "vps_extra": "[]",
             "vps_hostname": "windows10000",
-            "vps_server_status": "",
+            "vps_server_status": "deleted",
             "vps_comment": "",
             "vps_slices": 2,
             "vps_vnc": "108.54.244.82",

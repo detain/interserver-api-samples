@@ -23,8 +23,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_api_auto_cpanel_login, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_api_auto_cpanel_login, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_api_auto_cpanel_login_response][:return],"\n"

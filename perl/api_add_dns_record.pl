@@ -2,12 +2,12 @@
 # api_add_dns_record - (c)2015 by detain@interserver.net for the MyAdmin API
 # Adds a single DNS record
 # @param sid string the *Session ID* you get from the [login](#login) call
-# @param domain_id int The ID of the domain in question.
-# @param name string the hostname being set on the dns record.
-# @param content string the value of the dns record, or what its set to.
-# @param type string dns record type.
-# @param ttl int dns record time to live, or update time.
-# @param prio int dns record priority
+# @param domain_id int 
+# @param name string Specify record name
+# @param content string 
+# @param type string Specify TYPE of record
+# @param ttl int Specify TTL
+# @param prio int 
 use SOAP::Lite;
 
 $username = $ARGV[0];

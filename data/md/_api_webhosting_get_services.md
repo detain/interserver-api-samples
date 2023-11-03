@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_webhosting_get_services()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_webhosting_get_services, message: { 
-		sid: ARGV[0], 
-})
+	:api_webhosting_get_services, message: {
+		sid: ARGV[0],})
 print response.body[:api_webhosting_get_services_response][:return],"\n"
 
 ```
@@ -111,9 +109,7 @@ Field|Type|Description
 website_id|int|Server ID
 website_server|int|ID of the host server this website resides on.
 website_type|int|Server Type
-website_cost|float|Service Cost
 website_currency|string|
-website_frequency|int|Billing Interval
 website_order_date|string|Date the Order was Placed
 website_custid|int|Customer ID
 website_ip|string|IP Address

@@ -6,42 +6,42 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+            "example": "5f20dad4a74142bf03686e70b8027b5c"
         },
         "domain_id": {
             "name": "domain_id",
             "type": "int",
-            "description": "The ID of the domain in question.",
+            "description": "",
             "example": 1000
         },
         "name": {
             "name": "name",
             "type": "string",
-            "description": "the hostname being set on the dns record.",
+            "description": "Specify record name",
             "example": "www"
         },
         "content": {
             "name": "content",
             "type": "string",
-            "description": "the value of the dns record, or what its set to.",
+            "description": "",
             "example": "127.0.0.1"
         },
         "type": {
             "name": "type",
             "type": "string",
-            "description": "dns record type.",
+            "description": "Specify TYPE of record",
             "example": "A"
         },
         "ttl": {
             "name": "ttl",
             "type": "int",
-            "description": "dns record time to live, or update time.",
+            "description": "Specify TTL",
             "example": 86400
         },
         "prio": {
             "name": "prio",
             "type": "int",
-            "description": "dns record priority",
+            "description": "",
             "example": ""
         }
     },
@@ -49,7 +49,7 @@
         "return": {
             "name": "return",
             "type": "int",
-            "description": ""
+            "description": "$resp Response of Action. Default: Serialize"
         }
     },
     "example": null

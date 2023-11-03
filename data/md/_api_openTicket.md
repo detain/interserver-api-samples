@@ -47,7 +47,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_openTicket()
 print result
 
@@ -68,15 +67,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_openTicket, message: { 
-		sid: ARGV[0], 
-		user_email: ARGV[1], 
-		user_ip: ARGV[2], 
-		subject: ARGV[3], 
-		product: ARGV[4], 
-		body: ARGV[5], 
-		box_auth_value: ARGV[6], 
-})
+	:api_openTicket, message: {
+		sid: ARGV[0],		user_email: ARGV[1],		user_ip: ARGV[2],		subject: ARGV[3],		product: ARGV[4],		body: ARGV[5],		box_auth_value: ARGV[6],})
 print response.body[:api_openTicket_response][:return],"\n"
 
 ```

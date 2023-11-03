@@ -21,7 +21,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_get_prepay_list, message: { 
-		sid: ARGV[0], 
-})
+	:api_get_prepay_list, message: {
+		sid: ARGV[0],})
 print response.body[:api_get_prepay_list_response][:return],"\n"

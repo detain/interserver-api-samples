@@ -8,7 +8,7 @@
 # problems status_text will contain a description of the problem if any.
 #
 # @param sid string the *Session ID* you get from the [login](#login) call
-# @param id int 
+# @param id int id of website
 #
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")
@@ -17,6 +17,5 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_api_auto_directadmin_login()
 print result

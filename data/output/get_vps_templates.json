@@ -40,9 +40,27 @@
         "virtulization": "KVM Linux",
         "bits": 64,
         "os": "debian",
+        "version": "11",
+        "file": "debian-11",
+        "title": "Debian 11 64bit "
+    },
+    {
+        "type": 2,
+        "virtulization": "KVM Linux",
+        "bits": 64,
+        "os": "debian",
         "version": "9",
         "file": "debian6",
         "title": "Debian 9 64bit "
+    },
+    {
+        "type": 2,
+        "virtulization": "KVM Linux",
+        "bits": 64,
+        "os": "none",
+        "version": "1.0",
+        "file": "empty",
+        "title": "Empty Disk 1.0 64bit "
     },
     {
         "type": 2,
@@ -481,45 +499,45 @@
         "virtulization": "LXC",
         "bits": 64,
         "os": "debian",
-        "version": "buster",
+        "version": "1.0",
         "file": "debian\/10",
-        "title": "Debian buster 64bit "
+        "title": "Debian 1.0 64bit "
     },
     {
         "type": 9,
         "virtulization": "LXC",
         "bits": 64,
         "os": "debian",
-        "version": "jessie",
+        "version": "1.0",
         "file": "debian\/8",
-        "title": "Debian jessie 64bit "
+        "title": "Debian 1.0 64bit "
     },
     {
         "type": 9,
         "virtulization": "LXC",
         "bits": 64,
         "os": "debian",
-        "version": "sid",
+        "version": "1.0",
         "file": "debian\/sid",
-        "title": "Debian sid 64bit "
+        "title": "Debian 1.0 64bit "
     },
     {
         "type": 9,
         "virtulization": "LXC",
         "bits": 64,
         "os": "debian",
-        "version": "stretch",
+        "version": "1.0",
         "file": "debian\/9",
-        "title": "Debian stretch 64bit "
+        "title": "Debian 1.0 64bit "
     },
     {
         "type": 9,
         "virtulization": "LXC",
         "bits": 64,
         "os": "debian",
-        "version": "wheezy",
+        "version": "1.0",
         "file": "debian\/7",
-        "title": "Debian wheezy 64bit "
+        "title": "Debian 1.0 64bit "
     },
     {
         "type": 9,
@@ -639,13 +657,13 @@
         "title": "Ubuntu 14.04 64bit "
     },
     {
-        "type": 10,
-        "virtulization": "VMware",
+        "type": 11,
+        "virtulization": "Hyper-V",
         "bits": 64,
         "os": "windows",
-        "version": "2016",
-        "file": "windows2008",
-        "title": "Windows 2016 64bit "
+        "version": "2022",
+        "file": "Windows2022",
+        "title": "Windows 2022 64bit "
     },
     {
         "type": 11,
@@ -657,31 +675,31 @@
         "title": "Windows 2019 Standard 64bit "
     },
     {
-        "type": 11,
-        "virtulization": "Hyper-V",
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
         "bits": 64,
-        "os": "windows",
-        "version": "2016 Standard",
-        "file": "Windows2016Standard",
-        "title": "Windows 2016 Standard 64bit "
-    },
-    {
-        "type": 11,
-        "virtulization": "Hyper-V",
-        "bits": 64,
-        "os": "windows",
-        "version": "10 Professional",
-        "file": "Windows10Professional",
-        "title": "Windows 10 Professional 64bit "
+        "os": "almalinux",
+        "version": "8",
+        "file": "almalinux-8-x86_64",
+        "title": "Almalinux 8 64bit "
     },
     {
         "type": 12,
         "virtulization": "Virtuozzo 7",
         "bits": 64,
         "os": "centos",
-        "version": "8",
-        "file": "centos-8-x86_64",
-        "title": "CentOS 8 64bit "
+        "version": "9 Stream",
+        "file": "centos-stream-9-x86_64",
+        "title": "CentOS 9 Stream 64bit "
+    },
+    {
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
+        "bits": 64,
+        "os": "centos",
+        "version": "8 Stream",
+        "file": "centos-8.stream-x86_64",
+        "title": "CentOS 8 Stream 64bit "
     },
     {
         "type": 12,
@@ -715,6 +733,15 @@
         "virtulization": "Virtuozzo 7",
         "bits": 64,
         "os": "debian",
+        "version": "11.0",
+        "file": "debian-11.0-x86_64",
+        "title": "Debian 11.0 64bit "
+    },
+    {
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
+        "bits": 64,
+        "os": "debian",
         "version": "10.0",
         "file": "debian-10.0-x86_64",
         "title": "Debian 10.0 64bit "
@@ -727,15 +754,6 @@
         "version": "9.0",
         "file": "debian-9.0-x86_64",
         "title": "Debian 9.0 64bit "
-    },
-    {
-        "type": 12,
-        "virtulization": "Virtuozzo 7",
-        "bits": 64,
-        "os": "debian",
-        "version": "8.0",
-        "file": "debian-8.0-x86_64",
-        "title": "Debian 8.0 64bit "
     },
     {
         "type": 12,
@@ -778,6 +796,15 @@
         "virtulization": "Virtuozzo 7",
         "bits": 64,
         "os": "ubuntu",
+        "version": "22.04",
+        "file": "ubuntu-22.04-x86_64",
+        "title": "Ubuntu 22.04 64bit "
+    },
+    {
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
+        "bits": 64,
+        "os": "ubuntu",
         "version": "20.04",
         "file": "ubuntu-20.04-x86_64",
         "title": "Ubuntu 20.04 64bit "
@@ -808,6 +835,33 @@
         "version": "14.04",
         "file": "ubuntu-14.04-x86_64",
         "title": "Ubuntu 14.04 64bit "
+    },
+    {
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
+        "bits": 64,
+        "os": "vzlinux",
+        "version": "9 Stream",
+        "file": "vzlinux-stream-9-x86_64",
+        "title": "VzLinux 9 Stream 64bit "
+    },
+    {
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
+        "bits": 64,
+        "os": "vzlinux",
+        "version": "8",
+        "file": "vzlinux-8-x86_64",
+        "title": "VzLinux 8 64bit "
+    },
+    {
+        "type": 12,
+        "virtulization": "Virtuozzo 7",
+        "bits": 64,
+        "os": "vzlinux",
+        "version": "8 Stream",
+        "file": "vzlinux-8.stream-x86_64",
+        "title": "VzLinux 8 Stream 64bit "
     },
     {
         "type": 12,
@@ -975,10 +1029,55 @@
         "type": 14,
         "virtulization": "KVMv2",
         "bits": 64,
+        "os": "almalinux",
+        "version": "9",
+        "file": "almalinux9",
+        "title": "Almalinux 9 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "8.3",
+        "file": "almalinux-8.3",
+        "title": "Almalinux 8.3 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "8 + DirectAdmin",
+        "file": "da",
+        "title": "Almalinux 8 + DirectAdmin 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "8 + Webuzo ",
+        "file": "webuzo",
+        "title": "Almalinux 8 + Webuzo  64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "cPanel Alma 8",
+        "file": "cpanel",
+        "title": "Almalinux cPanel Alma 8 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
         "os": "centos",
-        "version": "8.0",
-        "file": "centos8",
-        "title": "CentOS 8.0 64bit "
+        "version": "8 Stream",
+        "file": "centosstream-8",
+        "title": "CentOS 8 Stream 64bit "
     },
     {
         "type": 14,
@@ -993,73 +1092,19 @@
         "type": 14,
         "virtulization": "KVMv2",
         "bits": 64,
-        "os": "centos",
-        "version": "7.6",
-        "file": "centos-7.6",
-        "title": "CentOS 7.6 64bit "
+        "os": "debian",
+        "version": "12",
+        "file": "debian12",
+        "title": "Debian 12 64bit "
     },
     {
         "type": 14,
         "virtulization": "KVMv2",
         "bits": 64,
-        "os": "centos",
-        "version": "7.5",
-        "file": "centos-7.5",
-        "title": "CentOS 7.5 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "centos",
-        "version": "7.4",
-        "file": "centos-7.4",
-        "title": "CentOS 7.4 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "centos",
-        "version": "7.3",
-        "file": "centos-7.3",
-        "title": "CentOS 7.3 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "centos",
-        "version": "7.2",
-        "file": "centos-7.2",
-        "title": "CentOS 7.2 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "centos",
-        "version": "7.1",
-        "file": "centos-7.1",
-        "title": "CentOS 7.1 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "centos",
-        "version": "7.0",
-        "file": "centos-7.0",
-        "title": "CentOS 7.0 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "centos",
-        "version": "7 + DirectAdmin",
-        "file": "da",
-        "title": "CentOS 7 + DirectAdmin 64bit "
+        "os": "debian",
+        "version": "11",
+        "file": "debian-11",
+        "title": "Debian 11 64bit "
     },
     {
         "type": 14,
@@ -1083,109 +1128,28 @@
         "type": 14,
         "virtulization": "KVMv2",
         "bits": 64,
-        "os": "debian",
-        "version": "8",
-        "file": "debian-8",
-        "title": "Debian 8 64bit "
+        "os": "none",
+        "version": "1.0",
+        "file": "empty",
+        "title": "Empty Disk 1.0 64bit "
     },
     {
         "type": 14,
         "virtulization": "KVMv2",
         "bits": 64,
-        "os": "debian",
+        "os": "fedora",
+        "version": "36",
+        "file": "fedora-36",
+        "title": "Fedora 36 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "freepbx",
         "version": "7",
-        "file": "debian-7",
-        "title": "Debian 7 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "debian",
-        "version": "6",
-        "file": "debian-6",
-        "title": "Debian 6 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "fedora",
-        "version": "30",
-        "file": "fedora-30",
-        "title": "Fedora 30 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "fedora",
-        "version": "29",
-        "file": "fedora-29",
-        "title": "Fedora 29 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "fedora",
-        "version": "28",
-        "file": "fedora-28",
-        "title": "Fedora 28 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "fedora",
-        "version": "27",
-        "file": "fedora-27",
-        "title": "Fedora 27 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "fedora",
-        "version": "26",
-        "file": "fedora-26",
-        "title": "Fedora 26 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "freebsd",
-        "version": "12.1",
-        "file": "FreeBSD-12.1-RELEASE-amd64",
-        "title": "FreeBSD 12.1 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "FreeBSD",
-        "version": "11.2",
-        "file": "FreeBSD-11.2-RELEASE-amd64",
-        "title": "FreeBSD 11.2 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "freebsd",
-        "version": "11.03",
-        "file": "FreeBSD-11.3-RELEASE-amd64",
-        "title": "FreeBSD 11.03 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "FreeBSD",
-        "version": "10.4",
-        "file": "FreeBSD-10.4-RELEASE-amd64",
-        "title": "FreeBSD 10.4 64bit "
+        "file": "freepbx",
+        "title": "FreePBX 7 64bit "
     },
     {
         "type": 14,
@@ -1219,9 +1183,27 @@
         "virtulization": "KVMv2",
         "bits": 64,
         "os": "opensuse",
-        "version": "tumbleweed",
+        "version": "1.0",
         "file": "opensuse-tumbleweed",
-        "title": "OpenSUSE tumbleweed 64bit "
+        "title": "OpenSUSE 1.0 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "ubuntu",
+        "version": "22.04",
+        "file": "ubuntu-22.04",
+        "title": "Ubuntu 22.04 64bit "
+    },
+    {
+        "type": 14,
+        "virtulization": "KVMv2",
+        "bits": 64,
+        "os": "ubuntu",
+        "version": "20.04 Desktop",
+        "file": "ubuntudesktop",
+        "title": "Ubuntu 20.04 Desktop 64bit "
     },
     {
         "type": 14,
@@ -1251,42 +1233,6 @@
         "title": "Ubuntu 16.04 64bit "
     },
     {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "ubuntu",
-        "version": "14.04",
-        "file": "ubuntu-14.04",
-        "title": "Ubuntu 14.04 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "ubuntu",
-        "version": "14.04 Desktop",
-        "file": "ubuntudesktop",
-        "title": "Ubuntu 14.04 Desktop 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "ubuntu",
-        "version": "12.04",
-        "file": "ubuntu-12.04",
-        "title": "Ubuntu 12.04 64bit "
-    },
-    {
-        "type": 14,
-        "virtulization": "KVMv2",
-        "bits": 64,
-        "os": "ubuntu",
-        "version": "10.04",
-        "file": "ubuntu-10.04",
-        "title": "Ubuntu 10.04 64bit "
-    },
-    {
         "type": 15,
         "virtulization": "KVMv2 Windows",
         "bits": 64,
@@ -1312,6 +1258,78 @@
         "version": "2012",
         "file": "windows2012",
         "title": "Windows 2012 64bit "
+    },
+    {
+        "type": 15,
+        "virtulization": "KVMv2 Windows",
+        "bits": 64,
+        "os": "windows",
+        "version": "10",
+        "file": "windows10",
+        "title": "Windows 10 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "9",
+        "file": "almalinux9",
+        "title": "Almalinux 9 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "8",
+        "file": "almalinux-8.3",
+        "title": "Almalinux 8 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "almalinux",
+        "version": "8",
+        "file": "da",
+        "title": "Almalinux 8 Directadmin 8 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "debian",
+        "version": "12",
+        "file": "debian12",
+        "title": "Debian 12 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "debian",
+        "version": "11",
+        "file": "debian-11",
+        "title": "Debian 11 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "none",
+        "version": "1.0",
+        "file": "empty",
+        "title": "Empty Disk 1.0 64bit "
+    },
+    {
+        "type": 16,
+        "virtulization": "KVMv2 Storage",
+        "bits": 64,
+        "os": "ubuntu",
+        "version": "22.04",
+        "file": "ubuntu-22.04",
+        "title": "Ubuntu 22.04 64bit "
     },
     {
         "type": 16,

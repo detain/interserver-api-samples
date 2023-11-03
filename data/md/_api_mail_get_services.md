@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_mail_get_services()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_mail_get_services, message: { 
-		sid: ARGV[0], 
-})
+	:api_mail_get_services, message: {
+		sid: ARGV[0],})
 print response.body[:api_mail_get_services_response][:return],"\n"
 
 ```
@@ -109,12 +107,9 @@ This function returns an associative array with the following fields
 Field|Type|Description
 -----|----|-----------
 mail_id|int|Service ID
-mail_server|int|ID of Server the mail Resides on
 mail_username|string|Username on the mail Server associated with this Order
 mail_type|int|Package ID
-mail_cost|float|Service Cost
 mail_currency|string|Currency
-mail_frequency|int|Billing Interval
 mail_order_date|string|Date the Order was Placed
 mail_custid|int|Customer ID
 mail_quota|int|Disk Quota
@@ -136,22 +131,13 @@ mail_comment|string|Comments
 				Mail Id
 			</th>
 			<th>
-				Mail Server
-			</th>
-			<th>
 				Mail Username
 			</th>
 			<th>
 				Mail Type
 			</th>
 			<th>
-				Mail Cost
-			</th>
-			<th>
 				Mail Currency
-			</th>
-			<th>
-				Mail Frequency
 			</th>
 			<th>
 				Mail Order Date
@@ -194,19 +180,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-24 01:38:45
@@ -221,7 +198,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19156909
@@ -247,19 +224,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-24 20:41:08
@@ -274,7 +242,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19158862
@@ -300,19 +268,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 03:47:59
@@ -327,7 +286,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159254
@@ -353,19 +312,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 03:53:53
@@ -380,7 +330,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159261
@@ -406,19 +356,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 03:58:33
@@ -433,7 +374,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159268
@@ -459,19 +400,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 04:12:02
@@ -486,7 +418,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159282
@@ -512,19 +444,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 06:25:42
@@ -539,7 +462,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159450
@@ -565,19 +488,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 06:30:55
@@ -592,7 +506,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159457
@@ -618,19 +532,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 06:31:22
@@ -645,7 +550,7 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159464
@@ -671,19 +576,10 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				
-			</td>
-			<td>
 				10880
 			</td>
 			<td>
-				1
-			</td>
-			<td>
 				USD
-			</td>
-			<td>
-				1
 			</td>
 			<td>
 				2021-02-25 06:33:14
@@ -698,10 +594,54 @@ mail_comment|string|Comments
 				
 			</td>
 			<td>
-				pending
+				expired
 			</td>
 			<td>
 				19159478
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				[]
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				9076
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				10880
+			</td>
+			<td>
+				USD
+			</td>
+			<td>
+				2021-03-05 13:42:23
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				
+			</td>
+			<td>
+				expired
+			</td>
+			<td>
+				19171275
 			</td>
 			<td>
 				0

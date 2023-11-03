@@ -43,7 +43,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_webhosting_get_client_unpaid_invoices()
 print result
 
@@ -64,9 +63,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_webhosting_get_client_unpaid_invoices, message: { 
-		sid: ARGV[0], 
-})
+	:api_webhosting_get_client_unpaid_invoices, message: {
+		sid: ARGV[0],})
 print response.body[:api_webhosting_get_client_unpaid_invoices_response][:return],"\n"
 
 ```

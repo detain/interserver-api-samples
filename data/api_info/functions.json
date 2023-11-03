@@ -294,6 +294,12 @@
         "output": "tns:api_ssl_get_serviceResponse"
     },
     {
+        "name": "api_floating_ips_get_service",
+        "desc": "This Function Applies to the Floating IPs services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
+        "input": "tns:api_floating_ips_get_serviceRequest",
+        "output": "tns:api_floating_ips_get_serviceResponse"
+    },
+    {
         "name": "api_webhosting_get_service",
         "desc": "This Function Applies to the Web Hosting services.\nGets service info for the given ID in the given Module.   An example of this would be in the \"vps\" module have order id",
         "input": "tns:api_webhosting_get_serviceRequest",
@@ -346,6 +352,12 @@
         "desc": "This Function Applies to the SSL Certificates services.\nGets List of Services",
         "input": "tns:api_ssl_get_servicesRequest",
         "output": "tns:api_ssl_get_servicesResponse"
+    },
+    {
+        "name": "api_floating_ips_get_services",
+        "desc": "This Function Applies to the Floating IPs services.\nGets List of Services",
+        "input": "tns:api_floating_ips_get_servicesRequest",
+        "output": "tns:api_floating_ips_get_servicesResponse"
     },
     {
         "name": "api_webhosting_get_services",
@@ -402,6 +414,12 @@
         "output": "tns:api_ssl_cancel_serviceResponse"
     },
     {
+        "name": "api_floating_ips_cancel_service",
+        "desc": "This Function Applies to the Floating IPs services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
+        "input": "tns:api_floating_ips_cancel_serviceRequest",
+        "output": "tns:api_floating_ips_cancel_serviceResponse"
+    },
+    {
         "name": "api_webhosting_cancel_service",
         "desc": "This Function Applies to the Web Hosting services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
         "input": "tns:api_webhosting_cancel_serviceRequest",
@@ -418,6 +436,12 @@
         "desc": "This Function Applies to the Dedicated Servers services.\nCancels a service for the passed module matching the passed id.  Canceling a service will also cancel any addons for that service at the same time.",
         "input": "tns:api_servers_cancel_serviceRequest",
         "output": "tns:api_servers_cancel_serviceResponse"
+    },
+    {
+        "name": "api_change_floating_ips_ip",
+        "desc": "Changes the IP of a floating IP order",
+        "input": "tns:api_change_floating_ips_ipRequest",
+        "output": "tns:api_change_floating_ips_ipResponse"
     },
     {
         "name": "api_make_payment",
@@ -492,6 +516,12 @@
         "output": "tns:api_ssl_get_client_invoicesResponse"
     },
     {
+        "name": "api_floating_ips_get_client_invoices",
+        "desc": "This Function Applies to the Floating IPs services.\nGets a list of all the invoices.",
+        "input": "tns:api_floating_ips_get_client_invoicesRequest",
+        "output": "tns:api_floating_ips_get_client_invoicesResponse"
+    },
+    {
         "name": "api_webhosting_get_client_invoices",
         "desc": "This Function Applies to the Web Hosting services.\nGets a list of all the invoices.",
         "input": "tns:api_webhosting_get_client_invoicesRequest",
@@ -544,6 +574,12 @@
         "desc": "This Function Applies to the SSL Certificates services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
         "input": "tns:api_ssl_get_client_unpaid_invoicesRequest",
         "output": "tns:api_ssl_get_client_unpaid_invoicesResponse"
+    },
+    {
+        "name": "api_floating_ips_get_client_unpaid_invoices",
+        "desc": "This Function Applies to the Floating IPs services.\nThis function returns a list of all the unpaid invoices matching the module passed..",
+        "input": "tns:api_floating_ips_get_client_unpaid_invoicesRequest",
+        "output": "tns:api_floating_ips_get_client_unpaid_invoicesResponse"
     },
     {
         "name": "api_webhosting_get_client_unpaid_invoices",

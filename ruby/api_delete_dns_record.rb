@@ -6,8 +6,8 @@
 # Deletes a single DNS record
 #
 # @param sid string the *Session ID* you get from the [login](#login) call
-# @param domain_id int The ID of the domain in question.
-# @param record_id int The ID of the domains record to remove.
+# @param domain_id int 
+# @param record_id int 
 #
 require 'savon'
 
@@ -22,9 +22,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_delete_dns_record, message: { 
-		sid: ARGV[0], 
-		domain_id: ARGV[1], 
-		record_id: ARGV[2], 
-})
+	:api_delete_dns_record, message: {
+		sid: ARGV[0],		domain_id: ARGV[1],		record_id: ARGV[2],})
 print response.body[:api_delete_dns_record_response][:return],"\n"

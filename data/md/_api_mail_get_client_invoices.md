@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_mail_get_client_invoices()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_mail_get_client_invoices, message: { 
-		sid: ARGV[0], 
-})
+	:api_mail_get_client_invoices, message: {
+		sid: ARGV[0],})
 print response.body[:api_mail_get_client_invoices_response][:return],"\n"
 
 ```
@@ -606,6 +604,50 @@ invoices_currency|string|
 			</td>
 			<td>
 				8689
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				USD
+			</td>
+		</tr>
+		<tr>
+			<td>
+				7680075
+			</td>
+			<td>
+				(Repeat Invoice: 19171275) MailBaby Mail
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2021-03-05 13:42:23
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				19171275
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				mail
+			</td>
+			<td>
+				2021-03-19 13:42:23
+			</td>
+			<td>
+				9076
 			</td>
 			<td>
 				0

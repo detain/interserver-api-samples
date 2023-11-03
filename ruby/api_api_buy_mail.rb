@@ -21,8 +21,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_api_buy_mail, message: { 
-		sid: ARGV[0], 
-		coupon: ARGV[1], 
-})
+	:api_api_buy_mail, message: {
+		sid: ARGV[0],		coupon: ARGV[1],})
 print response.body[:api_api_buy_mail_response][:return],"\n"

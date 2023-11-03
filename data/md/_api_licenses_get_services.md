@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_licenses_get_services()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_licenses_get_services, message: { 
-		sid: ARGV[0], 
-})
+	:api_licenses_get_services, message: {
+		sid: ARGV[0],})
 print response.body[:api_licenses_get_services_response][:return],"\n"
 
 ```
@@ -110,9 +108,7 @@ Field|Type|Description
 -----|----|-----------
 license_id|int|Service ID
 license_type|int|Package ID
-license_cost|float|Service Cost
 license_currency|string|
-license_frequency|int|Billing Interval
 license_order_date|string|Date the Order was Placed
 license_custid|int|Customer ID
 license_ip|string|IP Address tied to License

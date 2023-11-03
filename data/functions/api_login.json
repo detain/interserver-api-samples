@@ -27,7 +27,7 @@
                 "description": ""
             }
         },
-        "example": "72418de7c934861ab01aa6590dffe587"
+        "example": "f4211cc1e8df7b0302bc8592423f27f6"
     },
     "input_comment": "* @param username string the username (email address) you signed up with.\n* @param password string the password you use to login to the web account, or alternatively the API key.\n",
     "output_comment": "",

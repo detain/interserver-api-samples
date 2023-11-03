@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_ssl_get_service()
 print result
 
@@ -65,10 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_ssl_get_service, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_ssl_get_service, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_ssl_get_service_response][:return],"\n"
 
 ```
@@ -117,9 +114,7 @@ ssl_id|int|Service ID
 ssl_hostname|string|Hostname of the SSL Certificate
 ssl_order_id|string|Order ID with the Certificate Signer
 ssl_type|int|Package ID
-ssl_cost|float|Service Cost
 ssl_currency|string|
-ssl_frequency|int|Billing Interval
 ssl_order_date|string|Date the Order was Placed
 ssl_custid|int|Customer ID
 ssl_status|string|Billing Status

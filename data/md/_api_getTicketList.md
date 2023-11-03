@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_getTicketList()
 print result
 
@@ -65,12 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_getTicketList, message: { 
-		sid: ARGV[0], 
-		page: ARGV[1], 
-		limit: ARGV[2], 
-		status: ARGV[3], 
-})
+	:api_getTicketList, message: {
+		sid: ARGV[0],		page: ARGV[1],		limit: ARGV[2],		status: ARGV[3],})
 print response.body[:api_getTicketList_response][:return],"\n"
 
 ```
@@ -145,7 +140,7 @@ tickets|tns:getTicketList_tickets|
 		</tr>
 		<tr>
 			<td>totalPages</td>
-			<td>4.1</td>
+			<td>4.5</td>
 		</tr>
 		<tr>
 			<td>tickets</td>

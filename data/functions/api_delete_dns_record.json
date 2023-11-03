@@ -11,18 +11,18 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             },
             "domain_id": {
                 "name": "domain_id",
                 "type": "int",
-                "description": "The ID of the domain in question.",
+                "description": "",
                 "example": 1000
             },
             "record_id": {
                 "name": "record_id",
                 "type": "int",
-                "description": "The ID of the domains record to remove.",
+                "description": "",
                 "example": 1000
             }
         },
@@ -30,12 +30,12 @@
             "return": {
                 "name": "return",
                 "type": "bool",
-                "description": "will return true if it succeeded, or false if there was some type of error."
+                "description": "$resp Response of Actions. Default: Serialize"
             }
         },
         "example": false
     },
-    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param domain_id int The ID of the domain in question.\n* @param record_id int The ID of the domains record to remove.\n",
+    "input_comment": "* @param sid string the *Session ID* you get from the [login](#login) call\n* @param domain_id int \n* @param record_id int \n",
     "output_comment": "",
     "use_sid": true,
     "hide_comment": true

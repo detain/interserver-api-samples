@@ -48,7 +48,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_update_dns_record()
 print result
 
@@ -69,16 +68,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_update_dns_record, message: { 
-		sid: ARGV[0], 
-		domain_id: ARGV[1], 
-		record_id: ARGV[2], 
-		name: ARGV[3], 
-		content: ARGV[4], 
-		type: ARGV[5], 
-		ttl: ARGV[6], 
-		prio: ARGV[7], 
-})
+	:api_update_dns_record, message: {
+		sid: ARGV[0],		domain_id: ARGV[1],		record_id: ARGV[2],		name: ARGV[3],		content: ARGV[4],		type: ARGV[5],		ttl: ARGV[6],		prio: ARGV[7],})
 print response.body[:api_update_dns_record_response][:return],"\n"
 
 ```

@@ -216,6 +216,29 @@ title|string|Title
 				debian
 			</td>
 			<td>
+				11
+			</td>
+			<td>
+				debian-11
+			</td>
+			<td>
+				Debian 11 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				2
+			</td>
+			<td>
+				KVM Linux
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
 				9
 			</td>
 			<td>
@@ -223,6 +246,29 @@ title|string|Title
 			</td>
 			<td>
 				Debian 9 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				2
+			</td>
+			<td>
+				KVM Linux
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				none
+			</td>
+			<td>
+				1.0
+			</td>
+			<td>
+				empty
+			</td>
+			<td>
+				Empty Disk 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1343,13 +1389,13 @@ title|string|Title
 				debian
 			</td>
 			<td>
-				buster
+				1.0
 			</td>
 			<td>
 				debian/10
 			</td>
 			<td>
-				Debian buster 64bit 
+				Debian 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1366,13 +1412,13 @@ title|string|Title
 				debian
 			</td>
 			<td>
-				jessie
+				1.0
 			</td>
 			<td>
 				debian/8
 			</td>
 			<td>
-				Debian jessie 64bit 
+				Debian 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1389,13 +1435,13 @@ title|string|Title
 				debian
 			</td>
 			<td>
-				sid
+				1.0
 			</td>
 			<td>
 				debian/sid
 			</td>
 			<td>
-				Debian sid 64bit 
+				Debian 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1412,13 +1458,13 @@ title|string|Title
 				debian
 			</td>
 			<td>
-				stretch
+				1.0
 			</td>
 			<td>
 				debian/9
 			</td>
 			<td>
-				Debian stretch 64bit 
+				Debian 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1435,13 +1481,13 @@ title|string|Title
 				debian
 			</td>
 			<td>
-				wheezy
+				1.0
 			</td>
 			<td>
 				debian/7
 			</td>
 			<td>
-				Debian wheezy 64bit 
+				Debian 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1745,10 +1791,10 @@ title|string|Title
 		</tr>
 		<tr>
 			<td>
-				10
+				11
 			</td>
 			<td>
-				VMware
+				Hyper-V
 			</td>
 			<td>
 				64
@@ -1757,13 +1803,13 @@ title|string|Title
 				windows
 			</td>
 			<td>
-				2016
+				2022
 			</td>
 			<td>
-				windows2008
+				Windows2022
 			</td>
 			<td>
-				Windows 2016 64bit 
+				Windows 2022 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1791,48 +1837,25 @@ title|string|Title
 		</tr>
 		<tr>
 			<td>
-				11
+				12
 			</td>
 			<td>
-				Hyper-V
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				windows
-			</td>
-			<td>
-				2016 Standard
-			</td>
-			<td>
-				Windows2016Standard
-			</td>
-			<td>
-				Windows 2016 Standard 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				11
-			</td>
-			<td>
-				Hyper-V
+				Virtuozzo 7
 			</td>
 			<td>
 				64
 			</td>
 			<td>
-				windows
+				almalinux
 			</td>
 			<td>
-				10 Professional
+				8
 			</td>
 			<td>
-				Windows10Professional
+				almalinux-8-x86_64
 			</td>
 			<td>
-				Windows 10 Professional 64bit 
+				Almalinux 8 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1849,13 +1872,36 @@ title|string|Title
 				centos
 			</td>
 			<td>
-				8
+				9 Stream
 			</td>
 			<td>
-				centos-8-x86_64
+				centos-stream-9-x86_64
 			</td>
 			<td>
-				CentOS 8 64bit 
+				CentOS 9 Stream 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				centos
+			</td>
+			<td>
+				8 Stream
+			</td>
+			<td>
+				centos-8.stream-x86_64
+			</td>
+			<td>
+				CentOS 8 Stream 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -1941,6 +1987,29 @@ title|string|Title
 				debian
 			</td>
 			<td>
+				11.0
+			</td>
+			<td>
+				debian-11.0-x86_64
+			</td>
+			<td>
+				Debian 11.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
 				10.0
 			</td>
 			<td>
@@ -1971,29 +2040,6 @@ title|string|Title
 			</td>
 			<td>
 				Debian 9.0 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				12
-			</td>
-			<td>
-				Virtuozzo 7
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				8.0
-			</td>
-			<td>
-				debian-8.0-x86_64
-			</td>
-			<td>
-				Debian 8.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2102,6 +2148,29 @@ title|string|Title
 				ubuntu
 			</td>
 			<td>
+				22.04
+			</td>
+			<td>
+				ubuntu-22.04-x86_64
+			</td>
+			<td>
+				Ubuntu 22.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
 				20.04
 			</td>
 			<td>
@@ -2178,6 +2247,75 @@ title|string|Title
 			</td>
 			<td>
 				Ubuntu 14.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				vzlinux
+			</td>
+			<td>
+				9 Stream
+			</td>
+			<td>
+				vzlinux-stream-9-x86_64
+			</td>
+			<td>
+				VzLinux 9 Stream 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				vzlinux
+			</td>
+			<td>
+				8
+			</td>
+			<td>
+				vzlinux-8-x86_64
+			</td>
+			<td>
+				VzLinux 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				12
+			</td>
+			<td>
+				Virtuozzo 7
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				vzlinux
+			</td>
+			<td>
+				8 Stream
+			</td>
+			<td>
+				vzlinux-8.stream-x86_64
+			</td>
+			<td>
+				VzLinux 8 Stream 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2605,16 +2743,131 @@ title|string|Title
 				64
 			</td>
 			<td>
+				almalinux
+			</td>
+			<td>
+				9
+			</td>
+			<td>
+				almalinux9
+			</td>
+			<td>
+				Almalinux 9 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				8.3
+			</td>
+			<td>
+				almalinux-8.3
+			</td>
+			<td>
+				Almalinux 8.3 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				8 + DirectAdmin
+			</td>
+			<td>
+				da
+			</td>
+			<td>
+				Almalinux 8 + DirectAdmin 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				8 + Webuzo 
+			</td>
+			<td>
+				webuzo
+			</td>
+			<td>
+				Almalinux 8 + Webuzo  64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				cPanel Alma 8
+			</td>
+			<td>
+				cpanel
+			</td>
+			<td>
+				Almalinux cPanel Alma 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
 				centos
 			</td>
 			<td>
-				8.0
+				8 Stream
 			</td>
 			<td>
-				centos8
+				centosstream-8
 			</td>
 			<td>
-				CentOS 8.0 64bit 
+				CentOS 8 Stream 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2651,39 +2904,16 @@ title|string|Title
 				64
 			</td>
 			<td>
-				centos
+				debian
 			</td>
 			<td>
-				7.6
+				12
 			</td>
 			<td>
-				centos-7.6
+				debian12
 			</td>
 			<td>
-				CentOS 7.6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7.5
-			</td>
-			<td>
-				centos-7.5
-			</td>
-			<td>
-				CentOS 7.5 64bit 
+				Debian 12 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2697,131 +2927,16 @@ title|string|Title
 				64
 			</td>
 			<td>
-				centos
+				debian
 			</td>
 			<td>
-				7.4
+				11
 			</td>
 			<td>
-				centos-7.4
+				debian-11
 			</td>
 			<td>
-				CentOS 7.4 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7.3
-			</td>
-			<td>
-				centos-7.3
-			</td>
-			<td>
-				CentOS 7.3 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7.2
-			</td>
-			<td>
-				centos-7.2
-			</td>
-			<td>
-				CentOS 7.2 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7.1
-			</td>
-			<td>
-				centos-7.1
-			</td>
-			<td>
-				CentOS 7.1 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7.0
-			</td>
-			<td>
-				centos-7.0
-			</td>
-			<td>
-				CentOS 7.0 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7 + DirectAdmin
-			</td>
-			<td>
-				da
-			</td>
-			<td>
-				CentOS 7 + DirectAdmin 64bit 
+				Debian 11 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2881,16 +2996,16 @@ title|string|Title
 				64
 			</td>
 			<td>
-				debian
+				none
 			</td>
 			<td>
-				8
+				1.0
 			</td>
 			<td>
-				debian-8
+				empty
 			</td>
 			<td>
-				Debian 8 64bit 
+				Empty Disk 1.0 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2904,246 +3019,39 @@ title|string|Title
 				64
 			</td>
 			<td>
-				debian
+				fedora
+			</td>
+			<td>
+				36
+			</td>
+			<td>
+				fedora-36
+			</td>
+			<td>
+				Fedora 36 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				freepbx
 			</td>
 			<td>
 				7
 			</td>
 			<td>
-				debian-7
+				freepbx
 			</td>
 			<td>
-				Debian 7 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				6
-			</td>
-			<td>
-				debian-6
-			</td>
-			<td>
-				Debian 6 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				30
-			</td>
-			<td>
-				fedora-30
-			</td>
-			<td>
-				Fedora 30 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				29
-			</td>
-			<td>
-				fedora-29
-			</td>
-			<td>
-				Fedora 29 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				28
-			</td>
-			<td>
-				fedora-28
-			</td>
-			<td>
-				Fedora 28 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				27
-			</td>
-			<td>
-				fedora-27
-			</td>
-			<td>
-				Fedora 27 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				fedora
-			</td>
-			<td>
-				26
-			</td>
-			<td>
-				fedora-26
-			</td>
-			<td>
-				Fedora 26 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				freebsd
-			</td>
-			<td>
-				12.1
-			</td>
-			<td>
-				FreeBSD-12.1-RELEASE-amd64
-			</td>
-			<td>
-				FreeBSD 12.1 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				FreeBSD
-			</td>
-			<td>
-				11.2
-			</td>
-			<td>
-				FreeBSD-11.2-RELEASE-amd64
-			</td>
-			<td>
-				FreeBSD 11.2 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				freebsd
-			</td>
-			<td>
-				11.03
-			</td>
-			<td>
-				FreeBSD-11.3-RELEASE-amd64
-			</td>
-			<td>
-				FreeBSD 11.03 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				FreeBSD
-			</td>
-			<td>
-				10.4
-			</td>
-			<td>
-				FreeBSD-10.4-RELEASE-amd64
-			</td>
-			<td>
-				FreeBSD 10.4 64bit 
+				FreePBX 7 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3229,13 +3137,59 @@ title|string|Title
 				opensuse
 			</td>
 			<td>
-				tumbleweed
+				1.0
 			</td>
 			<td>
 				opensuse-tumbleweed
 			</td>
 			<td>
-				OpenSUSE tumbleweed 64bit 
+				OpenSUSE 1.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				22.04
+			</td>
+			<td>
+				ubuntu-22.04
+			</td>
+			<td>
+				Ubuntu 22.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				20.04 Desktop
+			</td>
+			<td>
+				ubuntudesktop
+			</td>
+			<td>
+				Ubuntu 20.04 Desktop 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3309,98 +3263,6 @@ title|string|Title
 		</tr>
 		<tr>
 			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				14.04
-			</td>
-			<td>
-				ubuntu-14.04
-			</td>
-			<td>
-				Ubuntu 14.04 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				14.04 Desktop
-			</td>
-			<td>
-				ubuntudesktop
-			</td>
-			<td>
-				Ubuntu 14.04 Desktop 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				12.04
-			</td>
-			<td>
-				ubuntu-12.04
-			</td>
-			<td>
-				Ubuntu 12.04 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				10.04
-			</td>
-			<td>
-				ubuntu-10.04
-			</td>
-			<td>
-				Ubuntu 10.04 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
 				15
 			</td>
 			<td>
@@ -3466,6 +3328,190 @@ title|string|Title
 			</td>
 			<td>
 				Windows 2012 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				15
+			</td>
+			<td>
+				KVMv2 Windows
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				windows
+			</td>
+			<td>
+				10
+			</td>
+			<td>
+				windows10
+			</td>
+			<td>
+				Windows 10 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				9
+			</td>
+			<td>
+				almalinux9
+			</td>
+			<td>
+				Almalinux 9 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				8
+			</td>
+			<td>
+				almalinux-8.3
+			</td>
+			<td>
+				Almalinux 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				8
+			</td>
+			<td>
+				da
+			</td>
+			<td>
+				Almalinux 8 Directadmin 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
+				12
+			</td>
+			<td>
+				debian12
+			</td>
+			<td>
+				Debian 12 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				debian
+			</td>
+			<td>
+				11
+			</td>
+			<td>
+				debian-11
+			</td>
+			<td>
+				Debian 11 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				none
+			</td>
+			<td>
+				1.0
+			</td>
+			<td>
+				empty
+			</td>
+			<td>
+				Empty Disk 1.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				22.04
+			</td>
+			<td>
+				ubuntu-22.04
+			</td>
+			<td>
+				Ubuntu 22.04 64bit 
 			</td>
 		</tr>
 		<tr>

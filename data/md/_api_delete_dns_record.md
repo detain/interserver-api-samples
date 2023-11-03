@@ -43,7 +43,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_delete_dns_record()
 print result
 
@@ -64,11 +63,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_delete_dns_record, message: { 
-		sid: ARGV[0], 
-		domain_id: ARGV[1], 
-		record_id: ARGV[2], 
-})
+	:api_delete_dns_record, message: {
+		sid: ARGV[0],		domain_id: ARGV[1],		record_id: ARGV[2],})
 print response.body[:api_delete_dns_record_response][:return],"\n"
 
 ```
@@ -105,8 +101,8 @@ This call takes the following parameters:
 Parameter|Type|Description
 ---------|----|-----------
 sid|string|the *Session ID* you get from the [login](#login) call
-domain_id|int|The ID of the domain in question.
-record_id|int|The ID of the domains record to remove.
+domain_id|int|
+record_id|int|
 
 
 ### Response
@@ -115,7 +111,7 @@ This function returns an associative array with the following fields
 
 Field|Type|Description
 -----|----|-----------
-return|bool|will return true if it succeeded, or false if there was some type of error.
+return|bool|$resp Response of Actions. Default: Serialize
 
 
 ### Example Response

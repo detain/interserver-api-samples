@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_ticketPost()
 print result
 
@@ -65,11 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_ticketPost, message: { 
-		sid: ARGV[0], 
-		ticketID: ARGV[1], 
-		content: ARGV[2], 
-})
+	:api_ticketPost, message: {
+		sid: ARGV[0],		ticketID: ARGV[1],		content: ARGV[2],})
 print response.body[:api_ticketPost_response][:return],"\n"
 
 ```

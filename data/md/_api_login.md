@@ -32,7 +32,6 @@ print "Response:\n",$res->result,"\n";
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")
 #print client ## shows detailed client info
-  
 result = client.service.api_login()
 print result
 
@@ -44,10 +43,8 @@ require 'savon'
 
 client = Savon.client(wsdl: 'https://my.interserver.net/api.php?wsdl')
 response = client.call(
-	:api_login, message: { 
-		username: ARGV[0], 
-		password: ARGV[1], 
-})
+	:api_login, message: {
+		username: ARGV[0],		password: ARGV[1],})
 print response.body[:api_login_response][:return],"\n"
 
 ```
@@ -103,7 +100,7 @@ return|string|
 	<tbody>
 		<tr>
 			<td>String</td>
-			<td>72418de7c934861ab01aa6590dffe587</td>
+			<td>f4211cc1e8df7b0302bc8592423f27f6</td>
 		</tr>
 	</tbody>
 </table>

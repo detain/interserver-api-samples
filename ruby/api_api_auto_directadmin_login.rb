@@ -8,7 +8,7 @@
 # problems status_text will contain a description of the problem if any.
 #
 # @param sid string the *Session ID* you get from the [login](#login) call
-# @param id int 
+# @param id int id of website
 #
 require 'savon'
 
@@ -23,8 +23,6 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_api_auto_directadmin_login, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_api_auto_directadmin_login, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_api_auto_directadmin_login_response][:return],"\n"

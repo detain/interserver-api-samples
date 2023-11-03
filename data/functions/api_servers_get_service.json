@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             },
             "id": {
                 "name": "id",
@@ -37,19 +37,9 @@
                 "description": "Customers ID"
             },
             {
-                "name": "server_frequency",
-                "type": "int",
-                "description": "Billing Interval"
-            },
-            {
                 "name": "server_type",
                 "type": "int",
                 "description": "Service Type"
-            },
-            {
-                "name": "server_cost",
-                "type": "float",
-                "description": "Service Cost"
             },
             {
                 "name": "server_currency",
@@ -216,9 +206,7 @@
             "server_id": 10000,
             "server_hostname": "server.tv.com",
             "server_custid": 171614,
-            "server_frequency": 1,
             "server_type": 600,
-            "server_cost": null,
             "server_currency": "USD",
             "server_order_date": null,
             "server_invoice": null,

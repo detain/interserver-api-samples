@@ -34,7 +34,6 @@ print "Response:\n",$res->result,"\n";
 from suds.client import Client
 client = Client("https://my.interserver.net/api.php?wsdl")
 #print client ## shows detailed client info
-  
 result = client.service.strPixels()
 print result
 
@@ -46,9 +45,8 @@ require 'savon'
 
 client = Savon.client(wsdl: 'https://my.interserver.net/api.php?wsdl')
 response = client.call(
-	:strPixels, message: { 
-		string: ARGV[0], 
-})
+	:strPixels, message: {
+		string: ARGV[0],})
 print response.body[:strPixels_response][:return],"\n"
 
 ```

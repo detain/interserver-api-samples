@@ -5,6 +5,7 @@
     "mail",
     "licenses",
     "ssl",
+    "floating_ips",
     "webhosting",
     "quickservers",
     "servers"

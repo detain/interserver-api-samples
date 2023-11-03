@@ -2,8 +2,8 @@
 # api_delete_dns_record - (c)2015 by detain@interserver.net for the MyAdmin API
 # Deletes a single DNS record
 # @param sid string the *Session ID* you get from the [login](#login) call
-# @param domain_id int The ID of the domain in question.
-# @param record_id int The ID of the domains record to remove.
+# @param domain_id int 
+# @param record_id int 
 use SOAP::Lite;
 
 $username = $ARGV[0];

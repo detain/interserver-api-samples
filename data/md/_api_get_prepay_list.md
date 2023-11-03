@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_get_prepay_list()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_get_prepay_list, message: { 
-		sid: ARGV[0], 
-})
+	:api_get_prepay_list, message: {
+		sid: ARGV[0],})
 print response.body[:api_get_prepay_list_response][:return],"\n"
 
 ```
@@ -4717,6 +4715,38 @@ prepay_module|string|Module of the PrePay
 			</td>
 			<td>
 				2021-03-05 13:42:21
+			</td>
+			<td>
+				10
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				domains
+			</td>
+		</tr>
+		<tr>
+			<td>
+				224969
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				2023-11-02 20:21:54
+			</td>
+			<td>
+				2023-11-02 20:21:54
 			</td>
 			<td>
 				10

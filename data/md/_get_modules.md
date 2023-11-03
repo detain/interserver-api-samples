@@ -118,6 +118,11 @@ return|array|
 		</tr>
 		<tr>
 			<td>
+				floating_ips
+			</td>
+		</tr>
+		<tr>
+			<td>
 				webhosting
 			</td>
 		</tr>

@@ -1695,6 +1695,36 @@
     },
     {
         "attr": {
+            "name": "api_floating_ips_get_serviceRequest"
+        },
+        "part": [
+            {
+                "attr": {
+                    "name": "sid",
+                    "type": "xsd:string"
+                }
+            },
+            {
+                "attr": {
+                    "name": "id",
+                    "type": "xsd:int"
+                }
+            }
+        ]
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_serviceResponse"
+        },
+        "part": {
+            "attr": {
+                "name": "return",
+                "type": "tns:sql_row_floating_ips"
+            }
+        }
+    },
+    {
+        "attr": {
             "name": "api_webhosting_get_serviceRequest"
         },
         "part": [
@@ -1912,6 +1942,28 @@
             "attr": {
                 "name": "return",
                 "type": "tns:array_sql_row_ssl_certs"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_servicesRequest"
+        },
+        "part": {
+            "attr": {
+                "name": "sid",
+                "type": "xsd:string"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_servicesResponse"
+        },
+        "part": {
+            "attr": {
+                "name": "return",
+                "type": "tns:array_sql_row_floating_ips"
             }
         }
     },
@@ -2163,6 +2215,36 @@
     },
     {
         "attr": {
+            "name": "api_floating_ips_cancel_serviceRequest"
+        },
+        "part": [
+            {
+                "attr": {
+                    "name": "sid",
+                    "type": "xsd:string"
+                }
+            },
+            {
+                "attr": {
+                    "name": "id",
+                    "type": "xsd:int"
+                }
+            }
+        ]
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_cancel_serviceResponse"
+        },
+        "part": {
+            "attr": {
+                "name": "return",
+                "type": "xsd:boolean"
+            }
+        }
+    },
+    {
+        "attr": {
             "name": "api_webhosting_cancel_serviceRequest"
         },
         "part": [
@@ -2243,6 +2325,42 @@
     {
         "attr": {
             "name": "api_servers_cancel_serviceResponse"
+        },
+        "part": {
+            "attr": {
+                "name": "return",
+                "type": "xsd:boolean"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_change_floating_ips_ipRequest"
+        },
+        "part": [
+            {
+                "attr": {
+                    "name": "sid",
+                    "type": "xsd:string"
+                }
+            },
+            {
+                "attr": {
+                    "name": "id",
+                    "type": "xsd:int"
+                }
+            },
+            {
+                "attr": {
+                    "name": "ip",
+                    "type": "xsd:string"
+                }
+            }
+        ]
+    },
+    {
+        "attr": {
+            "name": "api_change_floating_ips_ipResponse"
         },
         "part": {
             "attr": {
@@ -2587,6 +2705,28 @@
     },
     {
         "attr": {
+            "name": "api_floating_ips_get_client_invoicesRequest"
+        },
+        "part": {
+            "attr": {
+                "name": "sid",
+                "type": "xsd:string"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_client_invoicesResponse"
+        },
+        "part": {
+            "attr": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices"
+            }
+        }
+    },
+    {
+        "attr": {
             "name": "api_webhosting_get_client_invoicesRequest"
         },
         "part": {
@@ -2775,6 +2915,28 @@
     {
         "attr": {
             "name": "api_ssl_get_client_unpaid_invoicesResponse"
+        },
+        "part": {
+            "attr": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_client_unpaid_invoicesRequest"
+        },
+        "part": {
+            "attr": {
+                "name": "sid",
+                "type": "xsd:string"
+            }
+        }
+    },
+    {
+        "attr": {
+            "name": "api_floating_ips_get_client_unpaid_invoicesResponse"
         },
         "part": {
             "attr": {

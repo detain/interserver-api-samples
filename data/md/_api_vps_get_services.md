@@ -42,7 +42,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_vps_get_services()
 print result
 
@@ -63,9 +62,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_vps_get_services, message: { 
-		sid: ARGV[0], 
-})
+	:api_vps_get_services, message: {
+		sid: ARGV[0],})
 print response.body[:api_vps_get_services_response][:return],"\n"
 
 ```
@@ -112,11 +110,10 @@ vps_id|int|VPS Service ID
 vps_custid|int|Customer ID
 vps_server|int|VPS Host Server ID
 vps_ip|string|IP Address of VPS
+vps_ipv6|string|
 vps_vzid|string|VPS Host-Side Server ID
-vps_cost|float|Service Cost
 vps_currency|string|
 vps_type|int|Package ID
-vps_frequency|int|Billing Interval
 vps_order_date|string|Date the Order was Placed
 vps_status|string|Billing Status
 vps_invoice|int|Invoice ID

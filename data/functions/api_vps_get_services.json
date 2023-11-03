@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "3e9a37341e5f0a3df4e4b2b710ef3d33"
+                "example": "5f20dad4a74142bf03686e70b8027b5c"
             }
         },
         "output": [
@@ -36,14 +36,14 @@
                 "description": "IP Address of VPS"
             },
             {
+                "name": "vps_ipv6",
+                "type": "string",
+                "description": ""
+            },
+            {
                 "name": "vps_vzid",
                 "type": "string",
                 "description": "VPS Host-Side Server ID"
-            },
-            {
-                "name": "vps_cost",
-                "type": "float",
-                "description": "Service Cost"
             },
             {
                 "name": "vps_currency",
@@ -54,11 +54,6 @@
                 "name": "vps_type",
                 "type": "int",
                 "description": "Package ID"
-            },
-            {
-                "name": "vps_frequency",
-                "type": "int",
-                "description": "Billing Interval"
             },
             {
                 "name": "vps_order_date",

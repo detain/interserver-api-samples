@@ -346,18 +346,8 @@
             "description": ""
         },
         {
-            "name": "backup_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
             "name": "backup_currency",
             "type": "string",
-            "description": ""
-        },
-        {
-            "name": "backup_frequency",
-            "type": "int",
             "description": ""
         },
         {
@@ -485,11 +475,6 @@
             "description": ""
         },
         {
-            "name": "change_date",
-            "type": "int",
-            "description": ""
-        },
-        {
             "name": "disabled",
             "type": "int",
             "description": ""
@@ -532,18 +517,8 @@
             "description": ""
         },
         {
-            "name": "domain_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
             "name": "domain_currency",
             "type": "string",
-            "description": ""
-        },
-        {
-            "name": "domain_frequency",
-            "type": "int",
             "description": ""
         },
         {
@@ -647,6 +622,78 @@
             "description": ""
         }
     ],
+    "sql_row_floating_ips": [
+        {
+            "name": "floating_ip_id",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_type",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_currency",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_order_date",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_quota",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_target_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_invoice",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_coupon",
+            "type": "int",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_extra",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_server_status",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "floating_ip_comment",
+            "type": "string",
+            "description": ""
+        }
+    ],
     "sql_row_invoices": [
         {
             "name": "invoices_id",
@@ -731,18 +778,8 @@
             "description": ""
         },
         {
-            "name": "license_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
             "name": "license_currency",
             "type": "string",
-            "description": ""
-        },
-        {
-            "name": "license_frequency",
-            "type": "int",
             "description": ""
         },
         {
@@ -798,11 +835,6 @@
             "description": ""
         },
         {
-            "name": "mail_server",
-            "type": "int",
-            "description": ""
-        },
-        {
             "name": "mail_username",
             "type": "string",
             "description": ""
@@ -813,18 +845,8 @@
             "description": ""
         },
         {
-            "name": "mail_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
             "name": "mail_currency",
             "type": "string",
-            "description": ""
-        },
-        {
-            "name": "mail_frequency",
-            "type": "int",
             "description": ""
         },
         {
@@ -885,12 +907,32 @@
             "description": ""
         },
         {
+            "name": "qs_custid",
+            "type": "int",
+            "description": ""
+        },
+        {
             "name": "qs_server",
             "type": "int",
             "description": ""
         },
         {
+            "name": "qs_ip",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_ipv6",
+            "type": "string",
+            "description": ""
+        },
+        {
             "name": "qs_vzid",
+            "type": "string",
+            "description": ""
+        },
+        {
+            "name": "qs_currency",
             "type": "string",
             "description": ""
         },
@@ -900,32 +942,7 @@
             "description": ""
         },
         {
-            "name": "qs_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
-            "name": "qs_currency",
-            "type": "string",
-            "description": ""
-        },
-        {
-            "name": "qs_frequency",
-            "type": "int",
-            "description": ""
-        },
-        {
             "name": "qs_order_date",
-            "type": "string",
-            "description": ""
-        },
-        {
-            "name": "qs_custid",
-            "type": "int",
-            "description": ""
-        },
-        {
-            "name": "qs_ip",
             "type": "string",
             "description": ""
         },
@@ -1027,18 +1044,8 @@
             "description": ""
         },
         {
-            "name": "server_frequency",
-            "type": "int",
-            "description": ""
-        },
-        {
             "name": "server_type",
             "type": "int",
-            "description": ""
-        },
-        {
-            "name": "server_cost",
-            "type": "float",
             "description": ""
         },
         {
@@ -1224,18 +1231,8 @@
             "description": ""
         },
         {
-            "name": "ssl_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
             "name": "ssl_currency",
             "type": "string",
-            "description": ""
-        },
-        {
-            "name": "ssl_frequency",
-            "type": "int",
             "description": ""
         },
         {
@@ -1376,13 +1373,13 @@
             "description": ""
         },
         {
-            "name": "vps_vzid",
+            "name": "vps_ipv6",
             "type": "string",
             "description": ""
         },
         {
-            "name": "vps_cost",
-            "type": "float",
+            "name": "vps_vzid",
+            "type": "string",
             "description": ""
         },
         {
@@ -1392,11 +1389,6 @@
         },
         {
             "name": "vps_type",
-            "type": "int",
-            "description": ""
-        },
-        {
-            "name": "vps_frequency",
             "type": "int",
             "description": ""
         },
@@ -1513,18 +1505,8 @@
             "description": ""
         },
         {
-            "name": "website_cost",
-            "type": "float",
-            "description": ""
-        },
-        {
             "name": "website_currency",
             "type": "string",
-            "description": ""
-        },
-        {
-            "name": "website_frequency",
-            "type": "int",
             "description": ""
         },
         {
@@ -1881,6 +1863,7 @@
     "array_sql_row_mail": "tns:sql_row_mail[]",
     "array_sql_row_licenses": "tns:sql_row_licenses[]",
     "array_sql_row_ssl_certs": "tns:sql_row_ssl_certs[]",
+    "array_sql_row_floating_ips": "tns:sql_row_floating_ips[]",
     "array_sql_row_websites": "tns:sql_row_websites[]",
     "array_sql_row_quickservers": "tns:sql_row_quickservers[]",
     "array_sql_row_servers": "tns:sql_row_servers[]",

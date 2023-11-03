@@ -46,7 +46,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_buy_license_prepay()
 print result
 
@@ -67,13 +66,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_buy_license_prepay, message: { 
-		sid: ARGV[0], 
-		ip: ARGV[1], 
-		type: ARGV[2], 
-		coupon: ARGV[3], 
-		use_prepay: ARGV[4], 
-})
+	:api_buy_license_prepay, message: {
+		sid: ARGV[0],		ip: ARGV[1],		type: ARGV[2],		coupon: ARGV[3],		use_prepay: ARGV[4],})
 print response.body[:api_buy_license_prepay_response][:return],"\n"
 
 ```

@@ -1422,6 +1422,31 @@
             }
         }
     },
+    "api_floating_ips_get_serviceRequest": {
+        "name": "api_floating_ips_get_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_get_serviceResponse": {
+        "name": "api_floating_ips_get_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:sql_row_floating_ips",
+                "description": ""
+            }
+        }
+    },
     "api_webhosting_get_serviceRequest": {
         "name": "api_webhosting_get_serviceRequest",
         "fields": {
@@ -1613,6 +1638,26 @@
             "return": {
                 "name": "return",
                 "type": "tns:array_sql_row_ssl_certs",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_get_servicesRequest": {
+        "name": "api_floating_ips_get_servicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_get_servicesResponse": {
+        "name": "api_floating_ips_get_servicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_floating_ips",
                 "description": ""
             }
         }
@@ -1827,6 +1872,31 @@
             }
         }
     },
+    "api_floating_ips_cancel_serviceRequest": {
+        "name": "api_floating_ips_cancel_serviceRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_cancel_serviceResponse": {
+        "name": "api_floating_ips_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
     "api_webhosting_cancel_serviceRequest": {
         "name": "api_webhosting_cancel_serviceRequest",
         "fields": {
@@ -1894,6 +1964,36 @@
     },
     "api_servers_cancel_serviceResponse": {
         "name": "api_servers_cancel_serviceResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "bool",
+                "description": ""
+            }
+        }
+    },
+    "api_change_floating_ips_ipRequest": {
+        "name": "api_change_floating_ips_ipRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            },
+            "id": {
+                "name": "id",
+                "type": "int",
+                "description": ""
+            },
+            "ip": {
+                "name": "ip",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_change_floating_ips_ipResponse": {
+        "name": "api_change_floating_ips_ipResponse",
         "fields": {
             "return": {
                 "name": "return",
@@ -2192,6 +2292,26 @@
             }
         }
     },
+    "api_floating_ips_get_client_invoicesRequest": {
+        "name": "api_floating_ips_get_client_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_get_client_invoicesResponse": {
+        "name": "api_floating_ips_get_client_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
     "api_webhosting_get_client_invoicesRequest": {
         "name": "api_webhosting_get_client_invoicesRequest",
         "fields": {
@@ -2364,6 +2484,26 @@
     },
     "api_ssl_get_client_unpaid_invoicesResponse": {
         "name": "api_ssl_get_client_unpaid_invoicesResponse",
+        "fields": {
+            "return": {
+                "name": "return",
+                "type": "tns:array_sql_row_invoices",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_get_client_unpaid_invoicesRequest": {
+        "name": "api_floating_ips_get_client_unpaid_invoicesRequest",
+        "fields": {
+            "sid": {
+                "name": "sid",
+                "type": "string",
+                "description": ""
+            }
+        }
+    },
+    "api_floating_ips_get_client_unpaid_invoicesResponse": {
+        "name": "api_floating_ips_get_client_unpaid_invoicesResponse",
         "fields": {
             "return": {
                 "name": "return",

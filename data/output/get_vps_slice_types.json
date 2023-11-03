@@ -21,19 +21,19 @@
         "name": "Cloud KVM Windows VPS Slice",
         "type": 3,
         "cost": 22,
-        "buyable": 1
+        "buyable": 0
     },
     {
         "name": "Cloud KVM Linux VPS Slice",
         "type": 4,
         "cost": 20,
-        "buyable": 1
+        "buyable": 0
     },
     {
         "name": "SSD OpenVZ VPS Slice",
         "type": 5,
         "cost": 9,
-        "buyable": 1
+        "buyable": 0
     },
     {
         "name": "LXC VPS Slice",
@@ -75,12 +75,48 @@
         "name": "SSD Virtuozzo VPS Slice",
         "type": 13,
         "cost": 9,
-        "buyable": 1
+        "buyable": 0
     },
     {
         "name": "KVM Storage",
         "type": 16,
         "cost": 6,
+        "buyable": 1
+    },
+    {
+        "name": "OpenVZ IPv6 Only VPS Slice",
+        "type": 6,
+        "cost": 5,
+        "buyable": 1
+    },
+    {
+        "name": "KVM Windows IPv6 Only VPS Slice",
+        "type": 1,
+        "cost": 9,
+        "buyable": 1
+    },
+    {
+        "name": "KVM Linux IPv6 Only VPS Slice",
+        "type": 2,
+        "cost": 5,
+        "buyable": 1
+    },
+    {
+        "name": "Hyper-V IPv6 Only VPS Slice",
+        "type": 11,
+        "cost": 9,
+        "buyable": 1
+    },
+    {
+        "name": "Virtuozzo IPv6 Only VPS Slice",
+        "type": 12,
+        "cost": 5,
+        "buyable": 1
+    },
+    {
+        "name": "KVM IPv6 Only Storage",
+        "type": 16,
+        "cost": 5,
         "buyable": 1
     }
 ]

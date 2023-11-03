@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_backups_get_service()
 print result
 
@@ -65,10 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_backups_get_service, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_backups_get_service, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_backups_get_service_response][:return],"\n"
 
 ```
@@ -117,9 +114,7 @@ backup_id|int|ID of the Backup Host Server
 backup_server|int|ID of Server the Backup Resides on
 backup_username|string|Username on the Backup Server associated with this Order
 backup_type|int|Which type of Backup Server
-backup_cost|float|Service Cost
 backup_currency|string|
-backup_frequency|int|Billing Interval
 backup_order_date|string|Date the Order was Placed
 backup_custid|int|Customer ID
 backup_quota|int|Disk Quota
@@ -130,5 +125,79 @@ backup_coupon|int|Coupon ID
 backup_extra|string|Additional Backup Information
 backup_server_status|string|Server-Side status of this website
 backup_comment|string|
+
+
+### Example Response
+
+<table>
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>backup_id</td>
+			<td>10000</td>
+		</tr>
+		<tr>
+			<td>backup_server</td>
+			<td>25</td>
+		</tr>
+		<tr>
+			<td>backup_username</td>
+			<td>st10000</td>
+		</tr>
+		<tr>
+			<td>backup_type</td>
+			<td>10831</td>
+		</tr>
+		<tr>
+			<td>backup_currency</td>
+			<td>USD</td>
+		</tr>
+		<tr>
+			<td>backup_order_date</td>
+			<td>2021-04-26 04:54:55</td>
+		</tr>
+		<tr>
+			<td>backup_custid</td>
+			<td>723209</td>
+		</tr>
+		<tr>
+			<td>backup_quota</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>backup_ip</td>
+			<td>68.168.209.18</td>
+		</tr>
+		<tr>
+			<td>backup_status</td>
+			<td>expired</td>
+		</tr>
+		<tr>
+			<td>backup_invoice</td>
+			<td>19239357</td>
+		</tr>
+		<tr>
+			<td>backup_coupon</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>backup_extra</td>
+			<td>[]</td>
+		</tr>
+		<tr>
+			<td>backup_server_status</td>
+			<td>deleted</td>
+		</tr>
+		<tr>
+			<td>backup_comment</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 

@@ -153,7 +153,7 @@ buyable|int|
 				22
 			</td>
 			<td>
-				1
+				0
 			</td>
 		</tr>
 		<tr>
@@ -167,7 +167,7 @@ buyable|int|
 				20
 			</td>
 			<td>
-				1
+				0
 			</td>
 		</tr>
 		<tr>
@@ -181,7 +181,7 @@ buyable|int|
 				9
 			</td>
 			<td>
-				1
+				0
 			</td>
 		</tr>
 		<tr>
@@ -279,7 +279,7 @@ buyable|int|
 				9
 			</td>
 			<td>
-				1
+				0
 			</td>
 		</tr>
 		<tr>
@@ -291,6 +291,90 @@ buyable|int|
 			</td>
 			<td>
 				6
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				OpenVZ IPv6 Only VPS Slice
+			</td>
+			<td>
+				6
+			</td>
+			<td>
+				5
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				KVM Windows IPv6 Only VPS Slice
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				9
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				KVM Linux IPv6 Only VPS Slice
+			</td>
+			<td>
+				2
+			</td>
+			<td>
+				5
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Hyper-V IPv6 Only VPS Slice
+			</td>
+			<td>
+				11
+			</td>
+			<td>
+				9
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Virtuozzo IPv6 Only VPS Slice
+			</td>
+			<td>
+				12
+			</td>
+			<td>
+				5
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+		<tr>
+			<td>
+				KVM IPv6 Only Storage
+			</td>
+			<td>
+				16
+			</td>
+			<td>
+				5
 			</td>
 			<td>
 				1

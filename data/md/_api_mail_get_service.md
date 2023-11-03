@@ -44,7 +44,6 @@ sid = client.service.api_login(argv[1], argv[2])
 if (sid == '')
 	die("Got a blank session")
 print "Got Session ID "+sid+"\n"
-  
 result = client.service.api_mail_get_service()
 print result
 
@@ -65,10 +64,8 @@ if (sid == "")
 	die("Got a blank session id");
 print "got session id ",sid,"\n"
 response = client.call(
-	:api_mail_get_service, message: { 
-		sid: ARGV[0], 
-		id: ARGV[1], 
-})
+	:api_mail_get_service, message: {
+		sid: ARGV[0],		id: ARGV[1],})
 print response.body[:api_mail_get_service_response][:return],"\n"
 
 ```
@@ -114,12 +111,9 @@ This function returns an associative array with the following fields
 Field|Type|Description
 -----|----|-----------
 mail_id|int|Service ID
-mail_server|int|ID of Server the mail Resides on
 mail_username|string|Username on the mail Server associated with this Order
 mail_type|int|Package ID
-mail_cost|float|Service Cost
 mail_currency|string|Currency
-mail_frequency|int|Billing Interval
 mail_order_date|string|Date the Order was Placed
 mail_custid|int|Customer ID
 mail_quota|int|Disk Quota
