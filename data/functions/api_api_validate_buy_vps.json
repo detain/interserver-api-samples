@@ -11,7 +11,7 @@
                 "name": "sid",
                 "type": "string",
                 "description": "the *Session ID* you get from the [login](#login) call",
-                "example": "5f20dad4a74142bf03686e70b8027b5c"
+                "example": "1652a97fb0efab378cc48284adcd89d6"
             },
             "os": {
                 "name": "os",
@@ -188,14 +188,14 @@
         ],
         "example": {
             "coupon_code": 0,
-            "service_cost": 6,
-            "slice_cost": 6,
+            "service_cost": 3,
+            "slice_cost": 3,
             "service_type": 31,
-            "repeat_slice_cost": 6,
-            "original_slice_cost": 6,
-            "original_cost": 6,
-            "repeat_service_cost": 6,
-            "monthly_service_cost": 6,
+            "repeat_slice_cost": 3,
+            "original_slice_cost": 3,
+            "original_cost": 3,
+            "repeat_service_cost": 3,
+            "monthly_service_cost": 3,
             "custid": 160884,
             "os": "ubuntu-15.04-x86_64.tar.gz",
             "slices": 1,

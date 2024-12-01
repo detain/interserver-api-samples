@@ -183,7 +183,7 @@ cost|float|
 		</tr>
 		<tr>
 			<td>cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 	</tbody>
 </table>

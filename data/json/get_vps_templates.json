@@ -117,6 +117,15 @@
             "virtulization": "KVM Linux",
             "bits": 64,
             "os": "ubuntu",
+            "version": "24.04",
+            "file": "ubuntu24",
+            "title": "Ubuntu 24.04 64bit "
+        },
+        {
+            "type": 2,
+            "virtulization": "KVM Linux",
+            "bits": 64,
+            "os": "ubuntu",
             "version": "18.04",
             "file": "ubuntu12",
             "title": "Ubuntu 18.04 64bit "
@@ -1080,54 +1089,36 @@
             "virtulization": "KVMv2",
             "bits": 64,
             "os": "almalinux",
-            "version": "8.3",
-            "file": "almalinux-8.3",
-            "title": "Almalinux 8.3 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "almalinux",
-            "version": "8 + DirectAdmin",
+            "version": "8 + DirectAdmin 1 user personal license included",
             "file": "da",
-            "title": "Almalinux 8 + DirectAdmin 64bit "
+            "title": "Almalinux 8 + DirectAdmin 1 user personal license included 64bit "
         },
         {
             "type": 14,
             "virtulization": "KVMv2",
             "bits": 64,
             "os": "almalinux",
-            "version": "8 + Webuzo ",
+            "version": "8 + Webuzo 1 user personal license included",
             "file": "webuzo",
-            "title": "Almalinux 8 + Webuzo  64bit "
+            "title": "Almalinux 8 + Webuzo 1 user personal license included 64bit "
         },
         {
             "type": 14,
             "virtulization": "KVMv2",
             "bits": 64,
             "os": "almalinux",
-            "version": "cPanel Alma 8",
+            "version": "8",
+            "file": "almalinux-8.3",
+            "title": "Almalinux 8 64bit "
+        },
+        {
+            "type": 14,
+            "virtulization": "KVMv2",
+            "bits": 64,
+            "os": "almalinux",
+            "version": "cPanel Alma8 License sold separately",
             "file": "cpanel",
-            "title": "Almalinux cPanel Alma 8 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "centos",
-            "version": "8 Stream",
-            "file": "centosstream-8",
-            "title": "CentOS 8 Stream 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "centos",
-            "version": "7.7",
-            "file": "centos-7.7",
-            "title": "CentOS 7.7 64bit "
+            "title": "Almalinux cPanel Alma8 License sold separately 64bit "
         },
         {
             "type": 14,
@@ -1151,24 +1142,6 @@
             "type": 14,
             "virtulization": "KVMv2",
             "bits": 64,
-            "os": "debian",
-            "version": "10",
-            "file": "debian-10",
-            "title": "Debian 10 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "debian",
-            "version": "9",
-            "file": "debian-9",
-            "title": "Debian 9 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
             "os": "none",
             "version": "1.0",
             "file": "empty",
@@ -1178,55 +1151,19 @@
             "type": 14,
             "virtulization": "KVMv2",
             "bits": 64,
-            "os": "fedora",
-            "version": "36",
-            "file": "fedora-36",
-            "title": "Fedora 36 64bit "
+            "os": "ubuntu",
+            "version": "24.04",
+            "file": "ubuntu24",
+            "title": "Ubuntu 24.04 64bit "
         },
         {
             "type": 14,
             "virtulization": "KVMv2",
             "bits": 64,
-            "os": "freepbx",
-            "version": "7",
-            "file": "freepbx",
-            "title": "FreePBX 7 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "opensuse",
-            "version": "42.1",
-            "file": "opensuse-42.1",
-            "title": "OpenSUSE 42.1 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "opensuse",
-            "version": "13.2",
-            "file": "opensuse-13.2",
-            "title": "OpenSUSE 13.2 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "opensuse",
-            "version": "13.1",
-            "file": "opensuse-13.1",
-            "title": "OpenSUSE 13.1 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "opensuse",
-            "version": "1.0",
-            "file": "opensuse-tumbleweed",
-            "title": "OpenSUSE 1.0 64bit "
+            "os": "ubuntu",
+            "version": "22.04 Desktop",
+            "file": "ubuntudesktop",
+            "title": "Ubuntu 22.04 Desktop 64bit "
         },
         {
             "type": 14,
@@ -1242,27 +1179,9 @@
             "virtulization": "KVMv2",
             "bits": 64,
             "os": "ubuntu",
-            "version": "20.04 Desktop",
-            "file": "ubuntudesktop",
-            "title": "Ubuntu 20.04 Desktop 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "ubuntu",
             "version": "20.04",
             "file": "ubuntu-20.04",
             "title": "Ubuntu 20.04 64bit "
-        },
-        {
-            "type": 14,
-            "virtulization": "KVMv2",
-            "bits": 64,
-            "os": "ubuntu",
-            "version": "18.04",
-            "file": "ubuntu-18.04",
-            "title": "Ubuntu 18.04 64bit "
         },
         {
             "type": 14,
@@ -1314,6 +1233,24 @@
             "virtulization": "KVMv2 Storage",
             "bits": 64,
             "os": "almalinux",
+            "version": "8",
+            "file": "da",
+            "title": "8 + DirectAdmin 1 user personal license included 8 64bit "
+        },
+        {
+            "type": 16,
+            "virtulization": "KVMv2 Storage",
+            "bits": 64,
+            "os": "almalinux",
+            "version": "8",
+            "file": "webuzo",
+            "title": "8 + Webuzo 1 user personal license included 8 64bit "
+        },
+        {
+            "type": 16,
+            "virtulization": "KVMv2 Storage",
+            "bits": 64,
+            "os": "almalinux",
             "version": "9",
             "file": "almalinux9",
             "title": "Almalinux 9 64bit "
@@ -1332,9 +1269,9 @@
             "virtulization": "KVMv2 Storage",
             "bits": 64,
             "os": "almalinux",
-            "version": "8",
-            "file": "da",
-            "title": "Almalinux 8 Directadmin 8 64bit "
+            "version": "cPanel Alma8 License sold separately",
+            "file": "cpanel",
+            "title": "Almalinux cPanel Alma8 License sold separately 64bit "
         },
         {
             "type": 16,
@@ -1362,6 +1299,15 @@
             "version": "1.0",
             "file": "empty",
             "title": "Empty Disk 1.0 64bit "
+        },
+        {
+            "type": 16,
+            "virtulization": "KVMv2 Storage",
+            "bits": 64,
+            "os": "ubuntu",
+            "version": "24.04",
+            "file": "ubuntu24",
+            "title": "Ubuntu 24.04 64bit "
         },
         {
             "type": 16,

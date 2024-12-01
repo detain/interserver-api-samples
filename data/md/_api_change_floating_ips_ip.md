@@ -126,7 +126,7 @@ return|bool|
 	<tbody>
 		<tr>
 			<td>Boolean</td>
-			<td>1</td>
+			<td></td>
 		</tr>
 	</tbody>
 </table>

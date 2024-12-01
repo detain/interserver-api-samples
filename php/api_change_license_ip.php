@@ -10,16 +10,16 @@ $username = $_SERVER['argv'][1];
 $password = $_SERVER['argv'][2];
 $oldip = $_SERVER['argv'][3];
 $newip = $_SERVER['argv'][4];
-$show_help = false;
-if (in_array('--help', $_SERVER['argv'])) {
-    $show_help = true;
-    //break;
-}
-if ($_SERVER['argc'] < 5) {
-    $show_help = true;
-}
-if ($show_help == true) {
-    exit(<<<EOF
+$show_help = false; 
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	//break;
+} 
+if ($_SERVER['argc'] < 5)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_change_license_ip
 
 Change the IP on an active license.
@@ -33,17 +33,16 @@ Correct Syntax: {$_SERVER["argv"][0]}  <username> <password> <oldip> <newip>
 
 EOF
 );
-}
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
-try {
-    $sid = $client->api_login($username, $password);
-    if (strlen($sid) == 0) {
-        die("Got A Blank Session");
-    }
-    $res = $client->api_change_license_ip($sid, $oldip, $newip);
-    echo '$res = '.var_export($res, true)."\n";
-} catch (Exception $ex) {
-    echo "Exception Occurred!\n";
-    echo "Code:{$ex->faultcode}\n";
-    echo "String:{$ex->faultstring}\n";
-};
+try  { 
+	$sid = $client->api_login($username, $password);
+	if (strlen($sid) == 0)
+		die("Got A Blank Session");
+	$res = $client->api_change_license_ip($sid, $oldip, $newip);
+	echo '$res = '.var_export($res, true)."\n";
+ } catch (Exception $ex) {
+	echo "Exception Occurred!\n";
+	echo "Code:{$ex->faultcode}\n";
+	echo "String:{$ex->faultstring}\n";
+}; 
+?>

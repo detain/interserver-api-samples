@@ -175,7 +175,7 @@ backup_comment|string|
 		</tr>
 		<tr>
 			<td>backup_status</td>
-			<td>expired</td>
+			<td>canceled</td>
 		</tr>
 		<tr>
 			<td>backup_invoice</td>

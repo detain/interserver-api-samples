@@ -108,7 +108,7 @@ buyable|int|
 				6
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				1
@@ -122,7 +122,7 @@ buyable|int|
 				1
 			</td>
 			<td>
-				10
+				5
 			</td>
 			<td>
 				1
@@ -136,7 +136,7 @@ buyable|int|
 				2
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				1
@@ -150,7 +150,7 @@ buyable|int|
 				3
 			</td>
 			<td>
-				22
+				11
 			</td>
 			<td>
 				0
@@ -164,7 +164,7 @@ buyable|int|
 				4
 			</td>
 			<td>
-				20
+				10
 			</td>
 			<td>
 				0
@@ -178,7 +178,7 @@ buyable|int|
 				5
 			</td>
 			<td>
-				9
+				4.5
 			</td>
 			<td>
 				0
@@ -192,7 +192,7 @@ buyable|int|
 				9
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				0
@@ -206,7 +206,7 @@ buyable|int|
 				7
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				0
@@ -220,7 +220,7 @@ buyable|int|
 				8
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				0
@@ -234,7 +234,7 @@ buyable|int|
 				10
 			</td>
 			<td>
-				10
+				5
 			</td>
 			<td>
 				0
@@ -248,7 +248,7 @@ buyable|int|
 				11
 			</td>
 			<td>
-				10
+				5
 			</td>
 			<td>
 				1
@@ -262,7 +262,7 @@ buyable|int|
 				12
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				1
@@ -276,7 +276,7 @@ buyable|int|
 				13
 			</td>
 			<td>
-				9
+				4.5
 			</td>
 			<td>
 				0
@@ -290,7 +290,7 @@ buyable|int|
 				16
 			</td>
 			<td>
-				6
+				3
 			</td>
 			<td>
 				1
@@ -304,7 +304,7 @@ buyable|int|
 				6
 			</td>
 			<td>
-				5
+				2.5
 			</td>
 			<td>
 				1
@@ -318,7 +318,7 @@ buyable|int|
 				1
 			</td>
 			<td>
-				9
+				4.5
 			</td>
 			<td>
 				1
@@ -332,7 +332,7 @@ buyable|int|
 				2
 			</td>
 			<td>
-				5
+				2.5
 			</td>
 			<td>
 				1
@@ -346,7 +346,7 @@ buyable|int|
 				11
 			</td>
 			<td>
-				9
+				4.5
 			</td>
 			<td>
 				1
@@ -360,7 +360,7 @@ buyable|int|
 				12
 			</td>
 			<td>
-				5
+				2.5
 			</td>
 			<td>
 				1
@@ -374,7 +374,7 @@ buyable|int|
 				16
 			</td>
 			<td>
-				5
+				2.5
 			</td>
 			<td>
 				1

@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "5f20dad4a74142bf03686e70b8027b5c"
+            "example": "1652a97fb0efab378cc48284adcd89d6"
         },
         "module": {
             "name": "module",
@@ -34,5 +34,5 @@
             "description": "the prepay id"
         }
     },
-    "example": 224969
+    "example": 345642
 }

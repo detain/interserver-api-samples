@@ -112,25 +112,3 @@ status|string|Location Status
 status_text|string|
 
 
-### Example Response
-
-<table>
-	<thead>
-		<tr>
-			<th>Field</th>
-			<th>Value</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>status</td>
-			<td>ok</td>
-		</tr>
-		<tr>
-			<td>status_text</td>
-			<td>0</td>
-		</tr>
-	</tbody>
-</table>
-
-

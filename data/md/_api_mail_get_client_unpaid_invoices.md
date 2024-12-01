@@ -657,6 +657,50 @@ invoices_currency|string|
 				USD
 			</td>
 		</tr>
+		<tr>
+			<td>
+				23785939
+			</td>
+			<td>
+				(Repeat Invoice: 20555866) MailBaby Mail
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				160884
+			</td>
+			<td>
+				1
+			</td>
+			<td>
+				2023-11-02 20:21:57
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				20555866
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				mail
+			</td>
+			<td>
+				2023-11-16 20:21:57
+			</td>
+			<td>
+				50367
+			</td>
+			<td>
+				0
+			</td>
+			<td>
+				USD
+			</td>
+		</tr>
 	</tbody>
 </table>
 

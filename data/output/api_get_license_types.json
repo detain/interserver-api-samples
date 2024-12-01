@@ -187,32 +187,32 @@
     {
         "services_id": 5053,
         "services_name": "Plesk v12 Web Admin Edition for Virtual Machines",
-        "services_cost": 12
+        "services_cost": 14
     },
     {
         "services_id": 5054,
         "services_name": "Plesk v12 Web Admin Edition for Dedicated Servers",
-        "services_cost": 12
+        "services_cost": 14
     },
     {
         "services_id": 5057,
         "services_name": "Plesk v12 Web Pro Edition for Virtual Machines",
-        "services_cost": 19
+        "services_cost": 21
     },
     {
         "services_id": 5058,
         "services_name": "Plesk v12 Web Pro Edition for Dedicated Servers",
-        "services_cost": 19
+        "services_cost": 21
     },
     {
         "services_id": 5059,
         "services_name": "Plesk v12 Web Host Edition for Virtual Machines",
-        "services_cost": 29
+        "services_cost": 32
     },
     {
         "services_id": 5060,
         "services_name": "Plesk v12 Web Host Edition for Dedicated Servers",
-        "services_cost": 50
+        "services_cost": 52
     },
     {
         "services_id": 5061,
@@ -347,7 +347,7 @@
     {
         "services_id": 10682,
         "services_name": "cPanel Autoscale (Internal)",
-        "services_cost": 48
+        "services_cost": 52
     },
     {
         "services_id": 10683,
@@ -777,7 +777,7 @@
     {
         "services_id": 10769,
         "services_name": "cPanel Autoscale Cloud (Internal)",
-        "services_cost": 22
+        "services_cost": 23
     },
     {
         "services_id": 10770,

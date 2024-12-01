@@ -177,11 +177,11 @@ status|string|Location Status
 		</tr>
 		<tr>
 			<td>service_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>slice_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>service_type</td>
@@ -189,23 +189,23 @@ status|string|Location Status
 		</tr>
 		<tr>
 			<td>repeat_slice_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>original_slice_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>original_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>repeat_service_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>monthly_service_cost</td>
-			<td>6</td>
+			<td>3</td>
 		</tr>
 		<tr>
 			<td>custid</td>

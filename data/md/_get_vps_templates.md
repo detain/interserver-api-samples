@@ -308,6 +308,29 @@ title|string|Title
 				ubuntu
 			</td>
 			<td>
+				24.04
+			</td>
+			<td>
+				ubuntu24
+			</td>
+			<td>
+				Ubuntu 24.04 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				2
+			</td>
+			<td>
+				KVM Linux
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
 				18.04
 			</td>
 			<td>
@@ -2769,36 +2792,13 @@ title|string|Title
 				almalinux
 			</td>
 			<td>
-				8.3
-			</td>
-			<td>
-				almalinux-8.3
-			</td>
-			<td>
-				Almalinux 8.3 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				almalinux
-			</td>
-			<td>
-				8 + DirectAdmin
+				8 + DirectAdmin 1 user personal license included
 			</td>
 			<td>
 				da
 			</td>
 			<td>
-				Almalinux 8 + DirectAdmin 64bit 
+				Almalinux 8 + DirectAdmin 1 user personal license included 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2815,13 +2815,13 @@ title|string|Title
 				almalinux
 			</td>
 			<td>
-				8 + Webuzo 
+				8 + Webuzo 1 user personal license included
 			</td>
 			<td>
 				webuzo
 			</td>
 			<td>
-				Almalinux 8 + Webuzo  64bit 
+				Almalinux 8 + Webuzo 1 user personal license included 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2838,59 +2838,36 @@ title|string|Title
 				almalinux
 			</td>
 			<td>
-				cPanel Alma 8
+				8
+			</td>
+			<td>
+				almalinux-8.3
+			</td>
+			<td>
+				Almalinux 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				14
+			</td>
+			<td>
+				KVMv2
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				cPanel Alma8 License sold separately
 			</td>
 			<td>
 				cpanel
 			</td>
 			<td>
-				Almalinux cPanel Alma 8 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				8 Stream
-			</td>
-			<td>
-				centosstream-8
-			</td>
-			<td>
-				CentOS 8 Stream 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				centos
-			</td>
-			<td>
-				7.7
-			</td>
-			<td>
-				centos-7.7
-			</td>
-			<td>
-				CentOS 7.7 64bit 
+				Almalinux cPanel Alma8 License sold separately 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -2950,52 +2927,6 @@ title|string|Title
 				64
 			</td>
 			<td>
-				debian
-			</td>
-			<td>
-				10
-			</td>
-			<td>
-				debian-10
-			</td>
-			<td>
-				Debian 10 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				debian
-			</td>
-			<td>
-				9
-			</td>
-			<td>
-				debian-9
-			</td>
-			<td>
-				Debian 9 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
 				none
 			</td>
 			<td>
@@ -3019,39 +2950,16 @@ title|string|Title
 				64
 			</td>
 			<td>
-				fedora
+				ubuntu
 			</td>
 			<td>
-				36
+				24.04
 			</td>
 			<td>
-				fedora-36
+				ubuntu24
 			</td>
 			<td>
-				Fedora 36 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				freepbx
-			</td>
-			<td>
-				7
-			</td>
-			<td>
-				freepbx
-			</td>
-			<td>
-				FreePBX 7 64bit 
+				Ubuntu 24.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3065,85 +2973,16 @@ title|string|Title
 				64
 			</td>
 			<td>
-				opensuse
+				ubuntu
 			</td>
 			<td>
-				42.1
+				22.04 Desktop
 			</td>
 			<td>
-				opensuse-42.1
+				ubuntudesktop
 			</td>
 			<td>
-				OpenSUSE 42.1 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				opensuse
-			</td>
-			<td>
-				13.2
-			</td>
-			<td>
-				opensuse-13.2
-			</td>
-			<td>
-				OpenSUSE 13.2 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				opensuse
-			</td>
-			<td>
-				13.1
-			</td>
-			<td>
-				opensuse-13.1
-			</td>
-			<td>
-				OpenSUSE 13.1 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				opensuse
-			</td>
-			<td>
-				1.0
-			</td>
-			<td>
-				opensuse-tumbleweed
-			</td>
-			<td>
-				OpenSUSE 1.0 64bit 
+				Ubuntu 22.04 Desktop 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3183,29 +3022,6 @@ title|string|Title
 				ubuntu
 			</td>
 			<td>
-				20.04 Desktop
-			</td>
-			<td>
-				ubuntudesktop
-			</td>
-			<td>
-				Ubuntu 20.04 Desktop 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
 				20.04
 			</td>
 			<td>
@@ -3213,29 +3029,6 @@ title|string|Title
 			</td>
 			<td>
 				Ubuntu 20.04 64bit 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				14
-			</td>
-			<td>
-				KVMv2
-			</td>
-			<td>
-				64
-			</td>
-			<td>
-				ubuntu
-			</td>
-			<td>
-				18.04
-			</td>
-			<td>
-				ubuntu-18.04
-			</td>
-			<td>
-				Ubuntu 18.04 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3367,6 +3160,52 @@ title|string|Title
 				almalinux
 			</td>
 			<td>
+				8
+			</td>
+			<td>
+				da
+			</td>
+			<td>
+				8 + DirectAdmin 1 user personal license included 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
+				8
+			</td>
+			<td>
+				webuzo
+			</td>
+			<td>
+				8 + Webuzo 1 user personal license included 8 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				almalinux
+			</td>
+			<td>
 				9
 			</td>
 			<td>
@@ -3413,13 +3252,13 @@ title|string|Title
 				almalinux
 			</td>
 			<td>
-				8
+				cPanel Alma8 License sold separately
 			</td>
 			<td>
-				da
+				cpanel
 			</td>
 			<td>
-				Almalinux 8 Directadmin 8 64bit 
+				Almalinux cPanel Alma8 License sold separately 64bit 
 			</td>
 		</tr>
 		<tr>
@@ -3489,6 +3328,29 @@ title|string|Title
 			</td>
 			<td>
 				Empty Disk 1.0 64bit 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				16
+			</td>
+			<td>
+				KVMv2 Storage
+			</td>
+			<td>
+				64
+			</td>
+			<td>
+				ubuntu
+			</td>
+			<td>
+				24.04
+			</td>
+			<td>
+				ubuntu24
+			</td>
+			<td>
+				Ubuntu 24.04 64bit 
 			</td>
 		</tr>
 		<tr>

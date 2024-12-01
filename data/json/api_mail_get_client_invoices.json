@@ -6,7 +6,7 @@
             "name": "sid",
             "type": "string",
             "description": "the *Session ID* you get from the [login](#login) call",
-            "example": "5f20dad4a74142bf03686e70b8027b5c"
+            "example": "1652a97fb0efab378cc48284adcd89d6"
         }
     },
     "output": [
@@ -255,6 +255,22 @@
             "invoices_module": "mail",
             "invoices_due_date": "2021-03-19 13:42:23",
             "invoices_service": 9076,
+            "invoices_deleted": 0,
+            "invoices_currency": "USD"
+        },
+        {
+            "invoices_id": 23785939,
+            "invoices_description": "(Repeat Invoice: 20555866) MailBaby Mail",
+            "invoices_amount": 1,
+            "invoices_custid": 160884,
+            "invoices_type": 1,
+            "invoices_date": "2023-11-02 20:21:57",
+            "invoices_group": 0,
+            "invoices_extra": 20555866,
+            "invoices_paid": 0,
+            "invoices_module": "mail",
+            "invoices_due_date": "2023-11-16 20:21:57",
+            "invoices_service": 50367,
             "invoices_deleted": 0,
             "invoices_currency": "USD"
         }

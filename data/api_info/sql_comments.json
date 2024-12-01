@@ -151,6 +151,7 @@
     "affiliate_date_paid": "Date the Affiliate was paid for this.",
     "alerts": [],
     "apc": [],
+    "apc_power_readings": [],
     "apcs": [],
     "appsession": {
         "as_id": "Appsessoin ID",
@@ -174,6 +175,7 @@
     "media_asset": "The Asset this Media is for",
     "media_type": "The type of media",
     "media_filename": "The suggested\/provided filename for the given media",
+    "asset_powerstrips": [],
     "asset_racks": [],
     "asset_types": [],
     "assets": {
@@ -203,7 +205,8 @@
         "overdue": "Overdue",
         "monthly_price": "This column is used to when asset is for sale.",
         "create_timestamp": "Creation Date",
-        "update_timestamp": "Last Updated"
+        "update_timestamp": "Last Updated",
+        "mp_status_updated_at": "This column is used for MarketPlace statuses"
     },
     "order_id": "Dediated Order ID",
     "hostname": "Hostname",
@@ -232,6 +235,7 @@
     "monthly_price": "This column is used to when asset is for sale.",
     "create_timestamp": "Creation Date",
     "update_timestamp": "Last Updated",
+    "mp_status_updated_at": "This column is used for MarketPlace statuses",
     "backup_masters": {
         "backup_id": "ID of the Backup Host Server",
         "backup_name": "Name of the Backup Host server for quick reference",
@@ -289,6 +293,7 @@
     "block_value": "Blocked Data",
     "block_reason": "Reason for Block",
     "block_blocks": "Number of times Blocked",
+    "btcpay_log": [],
     "cashfree": [],
     "cc_log": {
         "cc_id": "Internal ID for storing the CC Transaction",
@@ -713,6 +718,7 @@
     "invoices_deleted": "Deleted Flag",
     "ip_locations": [],
     "ipblocks": [],
+    "ipblocks6": [],
     "ipmi_ips": {
         "ip_public": "Public Facing IP",
         "ip_ipmi": "Internal IPMI IP",
@@ -793,6 +799,8 @@
     "mail_extra": "Additional mail Information",
     "mail_server_status": "Server-Side status of this website",
     "mail_comment": "Comments",
+    "mailblocklist": [],
+    "mailinfo_log": [],
     "maxmind_output": {
         "maxmindid": "This is a unique eight character string identifying this minFraud request. Please use this ID in bug reports or support requests to MaxMind so that we can easily identify a particular request.",
         "account_id": "Account ID this lookup was for.",
@@ -1740,6 +1748,8 @@
     "stat_module": "Module",
     "stat_timestamp": "Time",
     "stat_value": "Value",
+    "suppressed_emails": [],
+    "switch_configs": [],
     "switchmanager": [],
     "switchports": [],
     "switchports_log": {
@@ -1872,24 +1882,20 @@
         "vlans_id": "VLAN ID",
         "vlans_block": "IP Block this VLAN uses",
         "vlans_networks": "IP Network(s) defined in this VLAN",
-        "vlans_ports": "Switch\/Ports that the VLAN resides on",
         "vlans_ip": "Route to IP"
     },
     "vlans_id": "VLAN ID",
     "vlans_block": "IP Block this VLAN uses",
     "vlans_networks": "IP Network(s) defined in this VLAN",
-    "vlans_ports": "Switch\/Ports that the VLAN resides on",
     "vlans_ip": "Route to IP",
     "vlans6": {
         "vlans6_id": "VLAN ID",
         "vlans6_block": "IP Block this VLAN uses",
-        "vlans6_networks": "IP Network(s) defined in this VLAN",
-        "vlans6_ports": "Switch\/Ports that the VLAN resides on"
+        "vlans6_networks": "IP Network(s) defined in this VLAN"
     },
     "vlans6_id": "VLAN ID",
     "vlans6_block": "IP Block this VLAN uses",
     "vlans6_networks": "IP Network(s) defined in this VLAN",
-    "vlans6_ports": "Switch\/Ports that the VLAN resides on",
     "vps": {
         "vps_id": "VPS Service ID",
         "vps_custid": "Customer ID",

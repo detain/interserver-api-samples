@@ -507,7 +507,7 @@ Field|Type|Description
 				Plesk v12 Web Admin Edition for Virtual Machines
 			</td>
 			<td>
-				12
+				14
 			</td>
 		</tr>
 		<tr>
@@ -518,7 +518,7 @@ Field|Type|Description
 				Plesk v12 Web Admin Edition for Dedicated Servers
 			</td>
 			<td>
-				12
+				14
 			</td>
 		</tr>
 		<tr>
@@ -529,7 +529,7 @@ Field|Type|Description
 				Plesk v12 Web Pro Edition for Virtual Machines
 			</td>
 			<td>
-				19
+				21
 			</td>
 		</tr>
 		<tr>
@@ -540,7 +540,7 @@ Field|Type|Description
 				Plesk v12 Web Pro Edition for Dedicated Servers
 			</td>
 			<td>
-				19
+				21
 			</td>
 		</tr>
 		<tr>
@@ -551,7 +551,7 @@ Field|Type|Description
 				Plesk v12 Web Host Edition for Virtual Machines
 			</td>
 			<td>
-				29
+				32
 			</td>
 		</tr>
 		<tr>
@@ -562,7 +562,7 @@ Field|Type|Description
 				Plesk v12 Web Host Edition for Dedicated Servers
 			</td>
 			<td>
-				50
+				52
 			</td>
 		</tr>
 		<tr>
@@ -859,7 +859,7 @@ Field|Type|Description
 				cPanel Autoscale (Internal)
 			</td>
 			<td>
-				48
+				52
 			</td>
 		</tr>
 		<tr>
@@ -1805,7 +1805,7 @@ Field|Type|Description
 				cPanel Autoscale Cloud (Internal)
 			</td>
 			<td>
-				22
+				23
 			</td>
 		</tr>
 		<tr>

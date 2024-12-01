@@ -163,7 +163,7 @@ vps_diskmax|int|Total Disk Space
 		</tr>
 		<tr>
 			<td>vps_ip</td>
-			<td>206.72.197.216</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>vps_ipv6</td>
@@ -215,7 +215,7 @@ vps_diskmax|int|Total Disk Space
 		</tr>
 		<tr>
 			<td>vps_slices</td>
-			<td>2</td>
+			<td>4</td>
 		</tr>
 		<tr>
 			<td>vps_vnc</td>
