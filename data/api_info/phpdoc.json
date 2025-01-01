@@ -40,7 +40,7 @@
             "the users.   Functions here should be generic enough that they dont fit in",
             "one of the other areas.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "convert_custid()",
@@ -239,7 +239,7 @@
         "description": [
             "Change Username",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Internal",
             "use MyAdmin\\Orm\\Trial;",
@@ -485,7 +485,7 @@
         "description": [
             "Update Account Information",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin\\Accounts",
             "use Punic\\Currency;",
             "Update Account Information",
@@ -537,7 +537,7 @@
             "https:\/\/my.interserver.net\/admin\/design\/UI\/Grids\/muuri_grid.html",
             "https:\/\/my.interserver.net\/admin\/home",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Menu",
             "admin_home()",
@@ -623,7 +623,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "@param bool $custid",
@@ -698,7 +698,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use MyCrud\\Crud;",
@@ -713,7 +713,7 @@
         "description": [
             "Administrative Functionality",
             "@author Mr.G <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "assign_role()",
@@ -728,7 +728,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "blocked_hostname_keywords()",
@@ -745,7 +745,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "blocked_payment_emails()",
@@ -762,7 +762,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "blocked_signup_domains()",
@@ -779,7 +779,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -791,7 +791,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -818,7 +818,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Assetic\\AssetManager;",
@@ -849,7 +849,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "@return bool",
@@ -864,7 +864,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "payum_setup()",
@@ -880,7 +880,7 @@
         "description": [
             "Plugins Management",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Plugins",
             "Search the vendor directory for plugins.",
@@ -942,7 +942,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -954,7 +954,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "coupons()",
@@ -970,7 +970,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "access_log()",
@@ -986,7 +986,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "activation_code_lookup()",
@@ -1010,7 +1010,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "communications()",
@@ -1026,7 +1026,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -1038,7 +1038,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Admin",
             "@param $service_id",
@@ -1098,7 +1098,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -1122,7 +1122,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "view_customers()"
@@ -1135,7 +1135,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "view_session()"
@@ -1148,7 +1148,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "view_sessions()",
@@ -1163,7 +1163,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "wipe_customer()",
@@ -1260,7 +1260,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Nette\\Forms\\Form;",
@@ -1276,7 +1276,7 @@
         "description": [
             "VPS Functionality",
             "@author Ganesh <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "function to get hostserver of vps or webhosting clients and email them.",
@@ -1292,7 +1292,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use MyCrud\\Crud;",
@@ -1320,7 +1320,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -1395,7 +1395,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "import_master()",
@@ -1411,7 +1411,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "@return bool|void",
@@ -1426,7 +1426,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Nette\\Forms\\Form;",
@@ -1444,7 +1444,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use MyAdmin\\billing\\Billing;",
@@ -1461,7 +1461,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Punic\\Currency;",
@@ -1478,7 +1478,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Nette\\Forms\\Form;",
@@ -1496,7 +1496,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "@return bool|void"
@@ -1511,7 +1511,7 @@
             "\\$formValues->([a-z_]*)",
             "$form['\\1']",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Nette\\Forms\\Form;",
@@ -1526,7 +1526,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "delete_invoice()"
@@ -1539,7 +1539,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "delete_repeat_invoice()"
@@ -1552,7 +1552,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Nette\\Forms\\Form;",
@@ -1568,7 +1568,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "edit_repeat_invoice()",
@@ -1582,7 +1582,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "\/\/use MyAdmin\\Orm\\Invoice;",
@@ -1605,7 +1605,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "get_renewals()",
@@ -1768,7 +1768,7 @@
         "params": "",
         "description": [
             "floating ip Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  floating_ips",
             "use Punic\\Currency;",
@@ -2112,7 +2112,7 @@
             "Get Service Links for admin & clientside",
             "@package myadmin",
             "@category services",
-            "@copyright 2021 InterServer",
+            "@copyright 2025 InterServer",
             "@author Ganesh <gane.candoit@gmail.com>",
             "class GetServiceLinks",
             "{",
@@ -2376,7 +2376,7 @@
         "name": "order_license",
         "params": "",
         "description": [
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  mail",
             "use Punic\\Currency;",
@@ -2391,7 +2391,7 @@
         "params": "",
         "description": [
             "mail Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  mail",
             "use Punic\\Currency;",
@@ -2406,7 +2406,7 @@
         "params": "",
         "description": [
             "servers Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  servers",
             "use Punic\\Currency;",
@@ -2584,7 +2584,7 @@
         "params": "",
         "description": [
             "storage Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  backup",
             "use Punic\\Currency;",
@@ -4474,7 +4474,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "pending_approval()",
@@ -4490,7 +4490,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "pending_income()",
@@ -4534,7 +4534,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -4551,7 +4551,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -4563,7 +4563,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Nette\\Forms\\Form;",
@@ -4581,7 +4581,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "service_reassign()",
@@ -4597,7 +4597,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "services_control()",
@@ -4613,7 +4613,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -4627,7 +4627,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4643,7 +4643,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -4655,7 +4655,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "annual_report_data",
@@ -4696,7 +4696,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -4708,7 +4708,7 @@
         "description": [
             "Billing",
             "@author G <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "unbilled_websites()",
@@ -4724,7 +4724,7 @@
         "description": [
             "Billing",
             "@author G <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "billing errors list()",
@@ -4740,7 +4740,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "billing_stats()",
@@ -4756,7 +4756,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "billing_stats()",
@@ -4772,7 +4772,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4789,7 +4789,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4806,7 +4806,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4821,7 +4821,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "customer_word_trends",
@@ -4864,7 +4864,7 @@
             "@author Joe Huss <detain@corpmail.interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return mixed|string|void",
             "@throws \\Exception",
@@ -4880,7 +4880,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4897,7 +4897,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4914,7 +4914,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4931,7 +4931,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4948,7 +4948,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4965,7 +4965,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -4982,7 +4982,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "use Hisune\\EchartsPHP\\ECharts;",
             "echarts moving timeline bar graph",
             "@link https:\/\/my.interserver.net\/echarts_gallery\/editor.php?c=xH1bu-gIIl",
@@ -4999,7 +4999,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -5016,7 +5016,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -5033,7 +5033,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -5048,7 +5048,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -5082,7 +5082,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -5113,7 +5113,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -5127,7 +5127,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -5144,7 +5144,7 @@
             "@author Joe Huss <detain@interserver.net>",
             "@package MyAdmin",
             "@category Scripts",
-            "@copyright 2020",
+            "@copyright 2025",
             "@param bool $return",
             "@return",
             "use Hisune\\EchartsPHP\\ECharts;",
@@ -5159,7 +5159,7 @@
         "description": [
             "Billing",
             "@author G <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "unbilled_websites()",
@@ -5175,7 +5175,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "sudo_session()"
@@ -5188,7 +5188,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "sudo_session()"
@@ -5201,7 +5201,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "sudo_session()"
@@ -5214,7 +5214,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use Monolog\\Logger;",
@@ -5239,7 +5239,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "view_host_server_clients()",
@@ -5255,7 +5255,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "view_host_server_ips()",
@@ -5271,7 +5271,7 @@
         "description": [
             "Host Server Display",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "view_host_server()",
@@ -5299,7 +5299,7 @@
             "after you fix an error, click the eye\/hide icon on the right and it will hide that entry for the remainder of your session",
             "@link https:\/\/github.com\/interserver\/my\/blob\/master\/docs\/apache_logging.md",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2022",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "WebServer Log Viewer alternate function for calling it",
@@ -5320,7 +5320,7 @@
         "description": [
             "API Billing Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category API",
             "use Detain\\Sshwitch\\Sshwitch;",
@@ -5457,7 +5457,7 @@
         "description": [
             "API Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category API",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -5557,7 +5557,7 @@
         "description": [
             "API Session Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category API",
             "Attempts to login to the system using the username and password credentials you pass.",
@@ -5583,7 +5583,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -5601,7 +5601,7 @@
             "backups Functionality",
             "@author Joe Huss <detain@interserver.net>",
             "@version $Revision: 33467 $",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category backups",
             "use Detain\\MyAdminDirectAdminWeb\\HTTPSocket;",
@@ -5625,7 +5625,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups",
             "define('NEW_BACKUP_SERVER', 14);",
@@ -5792,7 +5792,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups",
             "backup_locations()",
@@ -5808,7 +5808,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups",
             "backup_queue()",
@@ -5824,7 +5824,7 @@
         "description": [
             "Backups Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups"
         ],
@@ -5836,7 +5836,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups",
             "buy_backup1()",
@@ -5852,7 +5852,7 @@
         "description": [
             "Backup Order form",
             "@author Ganesh <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups"
         ],
@@ -5871,7 +5871,7 @@
         "params": "",
         "description": [
             "backup Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  backup",
             "use Punic\\Currency;",
@@ -5885,7 +5885,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Website",
             "@param int $coupon_code",
@@ -5911,7 +5911,7 @@
         "description": [
             "storage Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  storage",
             "@param int $custid",
@@ -5933,7 +5933,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups",
             "@param bool|int $id",
@@ -5948,7 +5948,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Backups",
             "view_backups_list()",
@@ -6123,7 +6123,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "namespace MyAdmin\\Services;",
@@ -6326,7 +6326,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "affiliate_map",
@@ -6395,7 +6395,7 @@
         "description": [
             "Affiliate Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Affiliates",
             "displays \/ handles the admin affiliates page",
@@ -6437,7 +6437,7 @@
         "description": [
             "Affiliates List Sales Functionality",
             "@author Ganesh Kumar <gane.candoit@gmail.com>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package My",
             "@category Billing - Affiliates"
         ],
@@ -6449,7 +6449,7 @@
         "description": [
             "Affiliates download returns affiliate rows based on request",
             "@author Ganesh <gane.candoit@gmail.com>",
-            "@copyright 2023 Interserver Inc",
+            "@copyright 2025 Interserver Inc",
             "@category Billing - Affiliates",
             "@return array $rows"
         ],
@@ -6461,7 +6461,7 @@
         "description": [
             "Affiliate Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Affiliates",
             "displays \/ handles the admin affiliates page",
@@ -6478,7 +6478,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Affiliates",
             "affiliate_stats",
@@ -6518,7 +6518,7 @@
         "params": "$title = false",
         "description": [
             "Affiliate Functions",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Affiliates",
             "@param bool $title",
@@ -6587,7 +6587,7 @@
         "params": "$custid = false, $limit = 20",
         "description": [
             "Affiliate Functions",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Affiliates",
             "@param bool $custid",
@@ -6604,7 +6604,7 @@
         "description": [
             "Affiliate Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Affiliates",
             "ajax affiliates interface",
@@ -6630,7 +6630,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing"
         ],
@@ -6642,7 +6642,7 @@
         "description": [
             "Billing Frequency",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing"
         ],
@@ -6654,7 +6654,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -7050,7 +7050,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "modifies the $orig_cost based on the $coupon and $module passed and returns the modified cost",
@@ -7340,7 +7340,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Punic\\Currency;",
@@ -7758,7 +7758,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -7789,7 +7789,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -7838,7 +7838,7 @@
             "Billing Services related functions.",
             "This file has the general functions used heavily both by billing related code.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Firebase\\JWT\\JWT;",
@@ -7952,7 +7952,7 @@
         "description": [
             "Manage\/Configure Payment Types",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "sets the current payment type and manage credit cards",
@@ -7968,7 +7968,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Ganesh <gane.candoit@gmail.com>",
-            "@copyright 2024",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -7989,7 +7989,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -8018,7 +8018,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -8038,7 +8038,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Detain\\MyAdminPaypal\\PayPalCheckout;",
@@ -8057,7 +8057,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Detain\\MyAdminPaypal\\PayPalCheckout;",
@@ -8076,7 +8076,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -8094,7 +8094,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -8112,7 +8112,7 @@
         "description": [
             "Billing Balance Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Punic\\Currency;",
@@ -8130,7 +8130,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -8164,7 +8164,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -8270,7 +8270,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -8289,7 +8289,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -8307,7 +8307,7 @@
         "description": [
             "Payment Processing Queue System",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2022",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use MyAdmin\\Orm\\Invoice;",
@@ -8491,7 +8491,7 @@
         "description": [
             "Pre-Pay Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PrePay",
             "pay_balance_prepay()",
@@ -8519,7 +8519,7 @@
         "description": [
             "Pre-Pay Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PrePay",
             "define('PREPAY_SERVICE_ANY', 0);",
@@ -8634,7 +8634,7 @@
         "description": [
             "Reseller Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Reseller",
             "get_reseller_price()",
@@ -8792,7 +8792,7 @@
             "Billing Services related functions.",
             "This file has the general functions used heavily both by billing related code.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2024",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Brick\\Money\\Money;",
@@ -9068,7 +9068,7 @@
         "description": [
             "CC Avenue Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category CC Avenue"
         ],
@@ -9099,7 +9099,7 @@
         "description": [
             "Coinbase Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Coinbase"
         ],
@@ -9130,7 +9130,7 @@
         "description": [
             "Payssion Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Payssion"
         ],
@@ -9161,7 +9161,7 @@
         "description": [
             "PayU Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PayU"
         ],
@@ -9196,7 +9196,7 @@
         "description": [
             "Billing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Billing",
             "@param bool $id",
@@ -9247,7 +9247,7 @@
             "cache_isset($key)",
             "cache_unset($key)",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Cache",
             "define('CACHE_ENABLE', 0);",
@@ -9412,7 +9412,7 @@
         "description": [
             "Home Page",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Menu",
             "use Punic\\Currency;",
@@ -9578,7 +9578,7 @@
         "description": [
             "Console Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Console",
             "global $console;",
@@ -9611,7 +9611,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Conversions",
             "use ForceUTF8\\Encoding;",
@@ -9805,7 +9805,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Internal",
             "returns the current date formatted the same as a MYSQL now() call",
@@ -9918,7 +9918,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Conversions",
             "Checks to see if a string is utf8 encoded checking for up to 5-Byte",
@@ -10354,7 +10354,7 @@
         "description": [
             "XML Related Code",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category XML",
             "xml2array()",
@@ -10822,7 +10822,7 @@
         "description": [
             "Domain Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "use Punic\\Currency;",
@@ -10840,7 +10840,7 @@
         "description": [
             "Domain Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "use Punic\\Currency;",
@@ -10854,7 +10854,7 @@
         "params": "",
         "description": [
             "Domain Related Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "use Punic\\Currency;",
@@ -10873,7 +10873,7 @@
             "Domain Related Functionality",
             "OpenSRS Documentation: https:\/\/opensrs.com\/docs\/apidomains\/     *",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "if (function_exists('register_event')) {",
@@ -11196,7 +11196,7 @@
         "description": [
             "Domains Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains"
         ],
@@ -11217,7 +11217,7 @@
             "Domain Related Functionality",
             "OpenSRS Documentation: https:\/\/opensrs.com\/docs\/apidomains\/",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "Returns a list of all the fields of information we need from the customer when",
@@ -11304,7 +11304,7 @@
             "Domain Related Functionality",
             "OpenSRS Documentation: https:\/\/opensrs.com\/docs\/apidomains\/",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "Validates the domain fields for registration",
@@ -11333,7 +11333,7 @@
         "description": [
             "Domain Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "view_domain2()",
@@ -11367,7 +11367,7 @@
         "description": [
             "Domain Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "view_domain()",
@@ -11383,7 +11383,7 @@
         "description": [
             "Domain Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             "view_domains_list()",
@@ -11407,7 +11407,7 @@
             "Domain Related Functionality",
             "OpenSRS Documentation: https:\/\/opensrs.com\/docs\/apidomains\/\t *",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Domains",
             " use Detain\\MyAdminOpenSRS\\OpenSRS;",
@@ -11504,7 +11504,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Events",
             "register_event()",
@@ -11554,7 +11554,7 @@
         "params": "",
         "description": [
             "floating ips Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  floating_ips",
             "use Punic\\Currency;",
@@ -11568,7 +11568,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category mail",
             "register_event('get_service_types', 'get_floating_ip_types', 'floating_ips');",
@@ -11850,7 +11850,7 @@
         "description": [
             "Mail Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Mail",
             "use Brick\\Money\\Money;",
@@ -11876,7 +11876,7 @@
         "description": [
             "Mail Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Mail",
             "@param int $custid the customer id",
@@ -11897,7 +11897,7 @@
         "description": [
             "Mail Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "use MyAdmin\\adminlte\\floating_ips\\ViewFloatingIp;",
@@ -11912,7 +11912,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "@return void"
@@ -12119,7 +12119,7 @@
         "description": [
             "jFormer \/ Form related functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Forms",
             "@param string   $label",
@@ -12267,7 +12267,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "admin tickets"
@@ -12280,7 +12280,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "list_tickets_admin()",
@@ -12298,7 +12298,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "gets a decrypted pass for a ticket and forwards it to the user",
@@ -12322,7 +12322,7 @@
         "description": [
             "Ticket Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "@return void",
@@ -12337,7 +12337,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "gets a decrypted pass for a ticket and forwards it to the user",
@@ -12847,7 +12847,7 @@
         "description": [
             "Used to grab list of tickets",
             "@author Sheikh Muhammad Umer <mo@interserver.net>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "adminTicketsListWidget()",
@@ -12863,7 +12863,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "contact()",
@@ -12880,7 +12880,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "contact()",
@@ -12896,7 +12896,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "creates a kayako ticket",
@@ -12920,7 +12920,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "creates a ticket in the system",
@@ -12938,7 +12938,7 @@
         "description": [
             "Delete Ticket CC Emails",
             "@author Mohammad Umer <mo@interserver.net>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets"
         ],
@@ -12950,7 +12950,7 @@
         "description": [
             "Delete Ticket Note",
             "@author Mohammad Umer <mo@interserver.net>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets"
         ],
@@ -12974,7 +12974,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Sheikh Muhammad Umer <mo@interserver.net>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "list_ticket_emails_widget()",
@@ -12990,7 +12990,7 @@
         "description": [
             "Ajax Request to display macro replies on admin view ticket page",
             "@author Sheikh Muhammad Umer <mo@interserver.net>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Ajax"
         ],
@@ -13002,7 +13002,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "list_ticket()",
@@ -13018,7 +13018,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "list_tickets()",
@@ -13037,7 +13037,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "list_tickets_widget()",
@@ -13053,7 +13053,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets"
         ],
@@ -13076,7 +13076,7 @@
         "description": [
             "This file contains class related to rocketchat livechat",
             "@author Ganesh <kumar.interserver@gmail.com>",
-            "@copyright 2022 Interserver Inc.",
+            "@copyright 2025 Interserver Inc.",
             "class LiveChat",
             "{",
             "    private $db;",
@@ -13156,7 +13156,7 @@
         "description": [
             "Ajax Request to save admin ticket replies as drafts",
             "@author Sheikh Muhammad Umer <mo@interserver.net>",
-            "@copyright 2023",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Ajax"
         ],
@@ -13168,7 +13168,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "gets all the ticket departments",
@@ -13182,7 +13182,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "gets all the ticket ticketprioritys",
@@ -13196,7 +13196,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets"
         ],
@@ -13219,7 +13219,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "gets all the ticket ticketstatuss",
@@ -13233,7 +13233,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets",
             "gets all the ticket tickettypes",
@@ -13247,7 +13247,7 @@
         "description": [
             "Ticket Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Tickets"
         ],
@@ -13279,7 +13279,7 @@
         "description": [
             "Home Page",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Menu",
             "home()",
@@ -13422,7 +13422,7 @@
             "Data Wizard Grid GUI",
             "Quickly build styled interactive paginated tables\/grids from an SQL query, function call, or array.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package DataWizardGridGUI",
             "@category Rendering"
         ],
@@ -13493,7 +13493,7 @@
         "description": [
             "JavaScript Related Stuff",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category JS",
             "Search the vendor directory for plugins.",
@@ -13517,7 +13517,7 @@
         "description": [
             "JavaScript Related Stuff",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  JS",
             "@param $module",
@@ -13729,7 +13729,7 @@
         "description": [
             "JavaScript Related Stuff",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  JS",
             "@param bool $js_one",
@@ -14037,7 +14037,7 @@
         "description": [
             "JavaScript Related Stuff",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category JS",
             "json_search_where()",
@@ -14560,7 +14560,7 @@
         "description": [
             "JavaScript Related Stuff",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category JS",
             "render_form()",
@@ -14577,7 +14577,7 @@
             "Softaculous remote admin functionalities",
             "@package Myadmin",
             "@author Ganesh <kumar.interserver@gmail.com>",
-            "@copyright 2021"
+            "@copyright 2025"
         ],
         "fieldtexts": []
     },
@@ -14588,7 +14588,7 @@
             "Licensing Functionality",
             "@author Ganesh <kumar.interserver@gmail.com>",
             "@version $Revision$",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licensing",
             "Automatic Softaculous Remote Login to Client Web Interface"
@@ -14601,7 +14601,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses"
         ],
@@ -14613,7 +14613,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses"
         ],
@@ -14687,7 +14687,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "changes the ip address a licenses is registered with",
@@ -14703,7 +14703,7 @@
         "description": [
             "CRUD System",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use MyCrud\\Crud;",
@@ -14727,7 +14727,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -14744,7 +14744,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -14860,7 +14860,7 @@
         "description": [
             "Licenses Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -14952,7 +14952,7 @@
             "Softaculous Remote License functions",
             "@package myadmin",
             "@author Ganesh",
-            "@copyright 2021",
+            "@copyright 2025",
             "class SoftaculousRemote",
             "{",
             "    private $endPoint = SOFTACULOUS_REMOTE_ENDPOINT;",
@@ -15026,7 +15026,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "unbilled_licenses()",
@@ -15047,7 +15047,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "view_licenses_list()",
@@ -15062,7 +15062,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "@param integer|bool $id",
@@ -15077,7 +15077,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "view_licenses()",
@@ -15093,7 +15093,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Logging",
             "Adds a session log entry after factoring in all the things that should\/should not be included",
@@ -15279,7 +15279,7 @@
         "description": [
             "Logout Function",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Sessions",
             "logs you out of the system and kills the session",
@@ -15293,7 +15293,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Lookups",
             "gets an array of the countries which use the Vat\/Registration fields, the information was",
@@ -15635,7 +15635,7 @@
         "params": "",
         "description": [
             "mail Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  mail",
             "use Punic\\Currency;",
@@ -15949,7 +15949,7 @@
         "description": [
             "Backup Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category mail",
             "define('NEW_MAIL_SERVER', 14);",
@@ -16115,7 +16115,7 @@
         "params": "$id = false",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "use MyDb\\Mysqli\\Db;",
@@ -16130,7 +16130,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "use MyDb\\Mysqli\\Db;",
@@ -16143,7 +16143,7 @@
         "params": "",
         "description": [
             "@author Ganesh <gane.candoit@gmail.com>",
-            "@copyright 2024",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "use MyDb\\Mysqli\\Db;",
@@ -16156,7 +16156,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "use MyDb\\Mysqli\\Db;",
@@ -16172,7 +16172,7 @@
             "@see http:\/\/www.dkim.org\/info\/dkim-faq.html",
             "@see https:\/\/yomotherboard.com\/how-to-setup-email-server-dkim-keys\/",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Logging",
             "namespace MyAdmin;",
@@ -16637,7 +16637,7 @@
         "description": [
             "Mail Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Mail",
             "use Brick\\Money\\Money;",
@@ -16675,7 +16675,7 @@
         "description": [
             "Mail Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Mail",
             "@param int $custid the customer id",
@@ -16694,7 +16694,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "@return void"
@@ -16706,7 +16706,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "use MyDb\\Mysqli\\Db;",
@@ -16719,7 +16719,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "@return void"
@@ -16732,7 +16732,7 @@
         "description": [
             "Mail Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Mail",
             "@param bool|int $id",
@@ -16747,7 +16747,7 @@
         "description": [
             "Menu Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Menu",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -17876,7 +17876,7 @@
         "description": [
             "My Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category My",
             "ok, this class is basically going to be my first attempt at merging the other dbs into a single",
@@ -17889,7 +17889,7 @@
             "My",
             "@package MyAdmin",
             "@author cpaneldirect",
-            "@copyright 2020",
+            "@copyright 2025",
             "@access public",
             "class My",
             "{",
@@ -20299,7 +20299,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers",
             "create table apcs (",
@@ -21134,7 +21134,7 @@
         "description": [
             "DNS Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category DNS",
             "use \\MyDb\\Mdb2\\Db as db_mdb2;",
@@ -48920,7 +48920,7 @@
             "Pre-Config Functions.   This stuff is called almost instantly",
             "so it needs to be defined before any of the rest of the program can go.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Config",
             "define('INSTALL_ROOT', dirname(__DIR__));",
@@ -48955,7 +48955,7 @@
             "the users.   Functions here should be generic enough that they dont fit in",
             "one of the other areas.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "queue_ticker()",
@@ -48983,7 +48983,7 @@
         "description": [
             "QuickServers Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category QuickServers",
             "qs_locations()",
@@ -48999,7 +48999,7 @@
         "description": [
             "quickservers Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category quickservers",
             "qs_raid_status()",
@@ -49015,7 +49015,7 @@
         "description": [
             "quickservers Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category quickservers",
             "qs_vnc_map()",
@@ -49038,7 +49038,7 @@
         "description": [
             "Quickserver Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Quickservers",
             "purchase a quickserver"
@@ -49133,7 +49133,7 @@
         "description": [
             "quickservers Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category quickservers",
             "qs_add_cpanel()",
@@ -49147,7 +49147,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category QuickServers"
         ],
@@ -49167,7 +49167,7 @@
         "description": [
             "Quickserver Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Quickservers",
             "use MyAdmin\\Services\\ServiceQueueHandler;",
@@ -49186,7 +49186,7 @@
         "description": [
             "Quickserver Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Quickservers",
             "use MyAdmin\\Services\\ServiceQueue;",
@@ -49203,7 +49203,7 @@
         "description": [
             "VPS related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -49447,7 +49447,7 @@
         "description": [
             "Quickserver Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Quickserver",
             "view_qs()",
@@ -49505,7 +49505,7 @@
         "description": [
             "quickservers Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category quickservers",
             "view_quickservers_list()"
@@ -50259,7 +50259,7 @@
         "description": [
             "PDF Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PDF",
             "define('FPDF_FONTPATH', 'include\/pdf_font\/');",
@@ -51202,7 +51202,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Sanitizers",
             "escapes html in a string in the best wa possible based on php version",
@@ -51262,7 +51262,7 @@
             "the users.   Functions here should be generic enough that they dont fit in",
             "one of the other areas.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "search_dashboard2()",
@@ -51292,7 +51292,7 @@
             "the users.   Functions here should be generic enough that they dont fit in",
             "one of the other areas.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "use Punic\\Currency;",
@@ -51324,7 +51324,7 @@
             "@package Myadmin",
             "@category Assets",
             "@author Ganesh <gane.candoit@gmail.com>",
-            "@copyright 2022 Interserver Inc",
+            "@copyright 2025 Interserver Inc",
             "@param string $status",
             "@return void\/bool"
         ],
@@ -51397,7 +51397,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use MyCrud\\Crud;",
@@ -51412,7 +51412,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "use MyCrud\\Crud;",
@@ -51435,7 +51435,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51447,7 +51447,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51459,7 +51459,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51473,7 +51473,7 @@
             "@category Assets",
             "@version 1.0.0",
             "@author Ganesh <gane.candoit@gmail.com>",
-            "@copyright 2022 Interserver Inc",
+            "@copyright 2025 Interserver Inc",
             "New Asset",
             "@return void\/bool"
         ],
@@ -51496,7 +51496,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51585,7 +51585,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51597,7 +51597,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers",
             "use MyAdmin\\Orm\\Server;",
@@ -51643,7 +51643,7 @@
         "description": [
             "Switch VLANs",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2024",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers",
             "- parse switch configurations",
@@ -51832,7 +51832,7 @@
             "@package myadmin",
             "@category servers",
             "@author Ganesh <gane.candoit@gmail.com>",
-            "@copyright 2023 Interserver Inc.",
+            "@copyright 2025 Interserver Inc.",
             "@requires Cisco class for executing switchport commands",
             "use Detain\\Sshwitch\\Sshwitch;",
             "use MyAdmin\\Orm\\Asset;",
@@ -51847,7 +51847,7 @@
         "description": [
             "Function to check any asset is for sale.",
             "@author Ganesh",
-            "@copyright 2023",
+            "@copyright 2025",
             "@return bool"
         ],
         "fieldtexts": []
@@ -51858,7 +51858,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51874,7 +51874,7 @@
             "@package MyAdmin",
             "@category servers",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020"
+            "@copyright 2025"
         ],
         "fieldtexts": []
     },
@@ -51884,7 +51884,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -51905,7 +51905,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2024",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers",
             "if (function_exists('register_event')) {",
@@ -52020,7 +52020,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers",
             "view_dedicated_server2()",
@@ -52036,7 +52036,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers",
             "@return void",
@@ -52051,7 +52051,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -52063,7 +52063,7 @@
         "description": [
             "Dedicated Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category servers"
         ],
@@ -52733,7 +52733,7 @@
         "description": [
             "SSL Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL",
             "use \\Detain\\MyAdminGlobalSign\\GlobalSign;",
@@ -52751,7 +52751,7 @@
         "description": [
             "SSL Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL",
             "place_buy_ssl()",
@@ -52773,7 +52773,7 @@
         "description": [
             "SSL Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL",
             "use \\Detain\\MyAdminGlobalSign\\GlobalSign;",
@@ -52916,7 +52916,7 @@
         "description": [
             "SSL Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL",
             "use \\Detain\\MyAdminGlobalSign\\GlobalSign;",
@@ -52932,7 +52932,7 @@
         "description": [
             "SSL Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL",
             "place_buy_ssl()",
@@ -52950,7 +52950,7 @@
         "description": [
             "SSL Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL"
         ],
@@ -52974,7 +52974,7 @@
         "description": [
             "SSL Service Details and Management Class",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category SSL",
             "view_ssl()",
@@ -53030,7 +53030,7 @@
         "params": "$function",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package Plugins",
             "loads the files needed to run the given class or function",
             "@param $function",
@@ -53304,7 +53304,7 @@
         "description": [
             "Internal Unexposed Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Validations",
             "determines if a string is a gzipped string supporting strings",
@@ -53794,7 +53794,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_change_addon_ip()",
@@ -53810,7 +53810,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_change_main_ip()",
@@ -53825,7 +53825,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General"
         ],
@@ -53837,7 +53837,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_list_free_ips()",
@@ -53851,7 +53851,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_locations()",
@@ -53866,7 +53866,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "network map w\/ toggleable view changes"
@@ -53878,7 +53878,7 @@
         "params": "$id = false",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "build a mapping of the host servers and vps's on them",
@@ -53901,7 +53901,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_raid_status()",
@@ -53917,7 +53917,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS"
         ],
@@ -53940,7 +53940,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS"
         ],
@@ -53951,7 +53951,7 @@
         "params": "",
         "description": [
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General"
         ],
@@ -53963,7 +53963,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_vnc_map()",
@@ -53977,7 +53977,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "@return void"
@@ -53990,7 +53990,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps order form"
@@ -54003,7 +54003,7 @@
         "description": [
             "VPS Functionality.",
             "@author Ganesh <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "use Punic\\Currency;",
@@ -54018,7 +54018,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "java_vnc()",
@@ -54044,7 +54044,7 @@
         "description": [
             "API VPS Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category API",
             "use Punic\\Currency;",
@@ -54113,7 +54113,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "view_vps3()",
@@ -54128,7 +54128,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "view_vps_list()"
@@ -54141,7 +54141,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  VPS",
             "@param        $serviceInfo",
@@ -54175,7 +54175,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_hdspace()",
@@ -54191,7 +54191,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS"
         ],
@@ -54216,7 +54216,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  VPS",
             "@param bool $target",
@@ -54239,7 +54239,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  VPS",
             "@param int $target vps service id",
@@ -54268,7 +54268,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS"
         ],
@@ -54280,7 +54280,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS"
         ],
@@ -54292,7 +54292,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_features()",
@@ -54308,7 +54308,7 @@
         "description": [
             "VPS related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  VPS",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -54831,7 +54831,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS"
         ],
@@ -54843,7 +54843,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_pending_list()",
@@ -54857,7 +54857,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "use MyAdmin\\Services\\ServiceQueueHandler;",
@@ -54876,7 +54876,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "use MyAdmin\\Services\\ServiceQueue;",
@@ -54902,7 +54902,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_recent_orders()",
@@ -54918,7 +54918,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "use Punic\\Currency;",
@@ -54937,7 +54937,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "Generates Graphs for any of the various vps metrics",
@@ -54972,7 +54972,7 @@
         "description": [
             "Webhosting",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "use React\\Http\\Browser;",
@@ -54999,7 +54999,7 @@
         "description": [
             "Webhosting",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "Builds up a list of all the user accounts and domains on the host webserver and returns them",
@@ -55055,7 +55055,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "website_locations()",
@@ -55071,7 +55071,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "Transfer website to another user"
@@ -55085,7 +55085,7 @@
             "Webhosting Functionality",
             "@author Joe Huss <detain@interserver.net>",
             "@version $Revision$",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "creates a cpanel session for the given website id and returns the url for it",
@@ -55118,7 +55118,7 @@
             "Webhosting Functionality",
             "@author Joe Huss <detain@interserver.net>",
             "@version $Revision$",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "use Detain\\MyAdminDirectAdminWeb\\HTTPSocket;",
@@ -55151,7 +55151,7 @@
             "Webhosting Functionality",
             "@author Joe Huss <detain@interserver.net>",
             "@version $Revision$",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "use Detain\\MyAdminPleskAutomation\\PPAConnector;",
@@ -55166,7 +55166,7 @@
             "Webhosting Functionality",
             "@author Joe Huss <detain@interserver.net>",
             "@version $Revision$",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "Automatic Plesk Login to Client Web Interface"
@@ -55187,7 +55187,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Website",
             "use Punic\\Currency;",
@@ -55204,7 +55204,7 @@
         "description": [
             "Website Functionality",
             "@author Ganesh <kumar.interserver@gmail.com>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Website",
             "use Punic\\Currency;",
@@ -55218,7 +55218,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "convert_demo_site()",
@@ -55233,7 +55233,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "extend_demo_site()",
@@ -55248,7 +55248,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Website",
             "use Brick\\Money\\Money;",
@@ -55496,7 +55496,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Website",
             "@param int $custid",
@@ -55518,7 +55518,7 @@
         "params": "$id = false",
         "description": [
             "Website Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "view_website2()",
@@ -55534,7 +55534,7 @@
         "params": "$i",
         "description": [
             "Website Functionality",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "@param $i",
@@ -55560,7 +55560,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "view_website()",
@@ -55576,7 +55576,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Website",
             "view_website_list()",
@@ -55592,7 +55592,7 @@
         "description": [
             "Webhosting related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Webhosting",
             "use Symfony\\Component\\EventDispatcher\\GenericEvent;",
@@ -55896,7 +55896,7 @@
         "description": [
             "website Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category webhosting",
             "website_ips()",
@@ -55912,7 +55912,7 @@
         "description": [
             "Webhosting Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Webhosting",
             "@param $addon",
@@ -55937,7 +55937,7 @@
         "description": [
             "Website Functionality",
             "@author Joe Huss <detain@interserver.net>@interserver.net",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  Website",
             "displays a pretty error",
@@ -55976,7 +55976,7 @@
         "description": [
             "Webhosting related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "control softaculous script installs"
@@ -55989,7 +55989,7 @@
         "description": [
             "WHM Api stuff",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category WHM",
             "Make sure to add the 2087, etc ports to \/etc\/csf\/csf.conf",
@@ -56772,7 +56772,7 @@
         "description": [
             "Widget Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Widgets"
         ],
@@ -56793,7 +56793,7 @@
         "description": [
             "Widget Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2020",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Widgets",
             "get_widget_ajax()",
@@ -57012,7 +57012,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "@return bool",
@@ -57027,7 +57027,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "abuse()",
@@ -57244,7 +57244,7 @@
         "description": [
             "Amazon Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing"
         ],
@@ -57272,7 +57272,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "Updates the account data with new cc info",
@@ -57307,7 +57307,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "authorize_cc()",
@@ -57331,7 +57331,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "disable_cc()",
@@ -57345,7 +57345,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "disable_cc_whitelist()",
@@ -57359,7 +57359,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "enable_cc()",
@@ -57373,7 +57373,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "enable_cc_whitelist()",
@@ -57387,7 +57387,7 @@
         "description": [
             "Creditcard Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing"
         ],
@@ -57431,7 +57431,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "use Punic\\Currency;",
@@ -57598,7 +57598,7 @@
         "description": [
             "Billing Related Services",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing",
             "charge_card_invoice()",
@@ -57678,7 +57678,7 @@
             "Cloudlinux Functionality",
             "API Documentation at: .. ill fill this in later from forum posts",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use Detain\\Cloudlinux\\Cloudlinux;",
@@ -57758,7 +57758,7 @@
         "description": [
             "License Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "activate_cpanel()",
@@ -57833,7 +57833,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "cpanel_kcare_addon()",
@@ -57850,7 +57850,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "cpanel_ksplice_addon()",
@@ -57866,7 +57866,7 @@
         "description": [
             "License Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses"
         ],
@@ -57878,7 +57878,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "unbilled_cpanel()",
@@ -57934,7 +57934,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "Adds CPanel to a VPS",
@@ -57948,7 +57948,7 @@
         "description": [
             "API Functions",
             "@author    Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  API",
             "Automatic CPanel Login to Client Web Interface",
@@ -59081,7 +59081,7 @@
         "description": [
             "DirectAdmin Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses"
         ],
@@ -59301,7 +59301,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "Adds DirectAdmin to a VPS",
@@ -59315,7 +59315,7 @@
         "description": [
             "API Functions",
             "@author    Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  API",
             "use Detain\\MyAdminDirectAdminWeb\\HTTPSocket;",
@@ -59332,7 +59332,7 @@
         "description": [
             "Fantastico Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use Detain\\Fantastico\\Fantastico;",
@@ -59385,7 +59385,7 @@
         "description": [
             "Fantastico Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use Detain\\Fantastico\\Fantastico;",
@@ -59402,7 +59402,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "Adds Fantastico to a VPS",
@@ -59435,7 +59435,7 @@
             "2.5 * proxyScore",
             "Note this formula is capped at 10. maxEarthArc is defined as 20037 kilometers.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "@param $value",
@@ -59944,7 +59944,7 @@
             "Billing Services related functions.",
             "This file has the general functions used heavily both by billing related code.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Billing"
         ],
@@ -59968,7 +59968,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "vps_hdspace()",
@@ -60059,7 +60059,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "function for the vps_ips addon code",
@@ -60074,7 +60074,7 @@
         "description": [
             "API Ticketing Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category API",
             "creates a new ticket in our support system",
@@ -60128,7 +60128,7 @@
             "Ksplice Functionality",
             "API Documentation at http:\/\/www.ksplice.com\/uptrack\/api",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "deactivate a ksplice license",
@@ -60234,7 +60234,7 @@
         "description": [
             "API License Functions",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category API",
             "gets a list of the possible license types available and there cost.",
@@ -60329,7 +60329,7 @@
         "description": [
             "LiteSpeed Licensing",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "@param string $ipAddress not used",
@@ -60390,7 +60390,7 @@
         "description": [
             "LiteSpeed Licensing",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "includes the litespeed.inc.php stuff",
@@ -60406,7 +60406,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin"
         ],
@@ -60437,7 +60437,7 @@
             "2.5 * proxyScore",
             "Note this formula is capped at 10. maxEarthArc is defined as 20037 kilometers.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category General",
             "use ForceUTF8\\Encoding;",
@@ -60505,7 +60505,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "view_maxmind()",
@@ -60668,7 +60668,7 @@
         "description": [
             "ModernBill Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category ModernBill",
             "get_modernbill_client_by_id()",
@@ -60749,7 +60749,7 @@
         "description": [
             "Monitoring Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Monitoring",
             "parse_monitoring_extra()",
@@ -60820,7 +60820,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "monitoring_stats",
@@ -60850,7 +60850,7 @@
         "description": [
             "Monitoring Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Monitoring"
         ],
@@ -61179,7 +61179,7 @@
         "description": [
             "Parallels Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "use \\Detain\\Parallels\\Parallels;",
@@ -61224,7 +61224,7 @@
         "description": [
             "PatchMan Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses"
         ],
@@ -61316,7 +61316,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "paypal_history()"
@@ -61339,7 +61339,7 @@
         "description": [
             "Administrative Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Admin",
             "paypal_transactions()"
@@ -61352,7 +61352,7 @@
         "description": [
             "PayPal Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PayPal"
         ],
@@ -61701,7 +61701,7 @@
         "description": [
             "PayPal Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PayPal",
             "gets the paypal fields for adaptive account ipn messages",
@@ -61888,7 +61888,7 @@
         "description": [
             "PayPal Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category PayPal",
             "Send HTTP POST Request",
@@ -62719,7 +62719,7 @@
         "description": [
             "Plugins Management",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Plugins",
             "namespace MyAdmin\\Plugins\\Command;",
@@ -62762,7 +62762,7 @@
         "description": [
             "Plugins Management",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Plugins",
             "namespace MyAdmin\\Plugins;",
@@ -62806,7 +62806,7 @@
         "description": [
             "Plugins Management",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Plugins",
             "namespace MyAdmin\\Plugins;",
@@ -62873,7 +62873,7 @@
         "description": [
             "Plugins Management",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Plugins",
             "namespace MyAdmin\\Plugins;",
@@ -63031,7 +63031,7 @@
             "Pre-Config Functions.   This stuff is called almost instantly",
             "so it needs to be defined before any of the rest of the program can go.",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Config",
             "register_module()",
@@ -63475,7 +63475,7 @@
         "description": [
             "Power DNS Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category DNS",
             "use \\MyDb\\Mdb2\\Db as db_mdb2;",
@@ -63554,7 +63554,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses",
             "activate_softaculous()",
@@ -63571,7 +63571,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses",
             "activate_webuzo()",
@@ -63588,7 +63588,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses",
             "namespace Detain\\MyAdminSoftaculous;",
@@ -63630,7 +63630,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses",
             "@param $ipAddress",
@@ -63644,7 +63644,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses",
             "@param $ipAddress",
@@ -63658,7 +63658,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses"
         ],
@@ -64333,7 +64333,7 @@
         "description": [
             "Softaculous Related Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin-Softaculous-Licensing",
             "@category Licenses"
         ],
@@ -64345,7 +64345,7 @@
         "description": [
             "VPS Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category VPS",
             "Adds Softaculous to a VPS",
@@ -64527,7 +64527,7 @@
         "description": [
             "API VPS Functions",
             "@author    Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  API",
             "Checks if the parameters for your order pass validation and let you know if there are any errors. It will also give you information on the pricing breakdown.",
@@ -64613,7 +64613,7 @@
         "description": [
             "API Functions",
             "@author    Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package   MyAdmin",
             "@category  API",
             "Places a webhosting order for a website",
@@ -65787,7 +65787,7 @@
         "description": [
             "Licensing Functionality",
             "@author Joe Huss <detain@interserver.net>",
-            "@copyright 2019",
+            "@copyright 2025",
             "@package MyAdmin",
             "@category Licenses",
             "activate_whmsonic()",
