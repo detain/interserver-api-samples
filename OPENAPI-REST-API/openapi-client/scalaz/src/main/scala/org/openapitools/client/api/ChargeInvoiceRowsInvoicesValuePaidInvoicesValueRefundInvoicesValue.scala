@@ -1,0 +1,29 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue._
+
+case class ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue (
+  invoices_id: Option[BigDecimal],
+invoices_description: Option[String],
+invoices_amount: Option[BigDecimal],
+invoices_date: Option[String],
+invoices_currency: Option[String],
+currency_symbol: Option[String],
+invoices_date_formatted: Option[String])
+
+object ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue {
+  import DateTimeCodecs._
+
+  implicit val ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValueCodecJson: CodecJson[ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue] = CodecJson.derive[ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue]
+  implicit val ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValueDecoder: EntityDecoder[ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue] = jsonOf[ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue]
+  implicit val ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValueEncoder: EntityEncoder[ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue] = jsonEncoderOf[ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue]
+}

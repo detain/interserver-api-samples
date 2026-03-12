@@ -1,0 +1,14 @@
+{
+    "packageName": {
+        "opt": "packageName",
+        "description": "Go package name (convention: lowercase).",
+        "type": "string",
+        "default": "swagger"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "string",
+        "default": "true"
+    }
+}

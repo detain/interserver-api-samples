@@ -1,0 +1,11 @@
+{
+  "sortParamsByRequiredFlag": "true",
+  "ensureUniqueParams": "true",
+  "allowUnicodeIdentifiers": "true",
+  "hideGenerationTimestamp": "true",
+  "artifactVersion": "1.0.0",
+  "packageName": "myadmin-client-csharp-dotnet2",
+  "gitUserId": "interserver",
+  "gitRepoId": "myadmin-client-csharp-dotnet2"
+}
+

@@ -1,0 +1,9 @@
+# Description: Lua package name (convention: single word).
+packageName: openapiclient
+
+# Description: Lua package version.
+packageVersion: 1.0.0-1
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+

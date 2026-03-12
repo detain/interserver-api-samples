@@ -1,0 +1,119 @@
+## TicketsApi
+
+### Create New Ticket
+## Create New Ticket
+POST https://my.interserver.net/apiv2/tickets/new
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "subject": "<string>",
+ "body": "<string>",
+ "service_id": "<number>",
+ "service_module": "<string>"
+}
+
+
+### Close Ticket
+## Close Ticket
+GET https://my.interserver.net/apiv2/tickets/{{id}}/close
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Close Ticket
+## Close Ticket
+DELETE https://my.interserver.net/apiv2/tickets/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Gets Information for creating a new ticket.
+## Gets Information for creating a new ticket.
+GET https://my.interserver.net/apiv2/tickets/new
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Ticket Information
+## Get Ticket Information
+GET https://my.interserver.net/apiv2/tickets/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Support Tickets
+## List Support Tickets
+GET https://my.interserver.net/apiv2/tickets?page={{page}}&period={{period}}&view={{view}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reply To Ticket
+## Reply To Ticket
+POST https://my.interserver.net/apiv2/tickets/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Search Support Tickets
+## Search Support Tickets
+POST https://my.interserver.net/apiv2/tickets
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Ticket
+## Update Ticket
+PUT https://my.interserver.net/apiv2/tickets/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reply Ticket
+## Reply Ticket
+POST https://my.interserver.net/apiv2/tickets/{{id}}/reply
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "content": "<string>"
+}
+
+
+### Update Ticket
+## Update Ticket
+POST https://my.interserver.net/apiv2/tickets/{{id}}/update
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "ip": "<string>",
+ "ip_address": "<string>",
+ "customer_server_access": "<string>",
+ "root_password": "<string>",
+ "sudo_username": "<string>",
+ "sudo_password": "<string>",
+ "port": "<number>"
+}
+

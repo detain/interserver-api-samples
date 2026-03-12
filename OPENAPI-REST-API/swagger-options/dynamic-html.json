@@ -1,0 +1,40 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "invokerPackage": {
+        "opt": "invokerPackage",
+        "description": "root package for generated code",
+        "type": "string"
+    },
+    "groupId": {
+        "opt": "groupId",
+        "description": "groupId in generated pom.xml",
+        "type": "string"
+    },
+    "artifactId": {
+        "opt": "artifactId",
+        "description": "artifactId in generated pom.xml",
+        "type": "string"
+    },
+    "artifactVersion": {
+        "opt": "artifactVersion",
+        "description": "artifact version in generated pom.xml",
+        "type": "string"
+    }
+}

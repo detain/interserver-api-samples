@@ -1,0 +1,7 @@
+# VpsTrafficUsageAverageResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**in** | [**VpsTrafficUsageAverageSectionResponse**](VpsTrafficUsageAverageSectionResponse.md) |  | 
+**out** | [**VpsTrafficUsageAverageSectionResponse**](VpsTrafficUsageAverageSectionResponse.md) |  | 

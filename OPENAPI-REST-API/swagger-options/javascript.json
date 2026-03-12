@@ -1,0 +1,129 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string",
+        "default": "src"
+    },
+    "localVariablePrefix": {
+        "opt": "localVariablePrefix",
+        "description": "prefix for generated code members and local variables",
+        "type": "string"
+    },
+    "invokerPackage": {
+        "opt": "invokerPackage",
+        "description": "root package for generated code",
+        "type": "string"
+    },
+    "apiPackage": {
+        "opt": "apiPackage",
+        "description": "package for generated api classes",
+        "type": "string"
+    },
+    "modelPackage": {
+        "opt": "modelPackage",
+        "description": "package for generated models",
+        "type": "string"
+    },
+    "projectName": {
+        "opt": "projectName",
+        "description": "name of the project (Default: generated from info.title or \"swagger-js-client\")",
+        "type": "string"
+    },
+    "moduleName": {
+        "opt": "moduleName",
+        "description": "module name for AMD, Node or globals (Default: generated from <projectName>)",
+        "type": "string"
+    },
+    "projectDescription": {
+        "opt": "projectDescription",
+        "description": "description of the project (Default: using info.description or \"Client library of <projectName>\")",
+        "type": "string"
+    },
+    "projectVersion": {
+        "opt": "projectVersion",
+        "description": "version of the project (Default: using info.version or \"1.0.0\")",
+        "type": "string"
+    },
+    "licenseName": {
+        "opt": "licenseName",
+        "description": "name of the license the project uses (Default: using info.license.name)",
+        "type": "string"
+    },
+    "usePromises": {
+        "opt": "usePromises",
+        "description": "use Promises as return values from the client API, instead of superagent callbacks",
+        "type": "string",
+        "default": "false"
+    },
+    "emitModelMethods": {
+        "opt": "emitModelMethods",
+        "description": "generate getters and setters for model properties",
+        "type": "string",
+        "default": "false"
+    },
+    "emitJSDoc": {
+        "opt": "emitJSDoc",
+        "description": "generate JSDoc comments",
+        "type": "string",
+        "default": "true"
+    },
+    "useInheritance": {
+        "opt": "useInheritance",
+        "description": "use JavaScript prototype chains & delegation for inheritance",
+        "type": "string",
+        "default": "true"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "string",
+        "default": "true"
+    },
+    "useES6": {
+        "opt": "useES6",
+        "description": "use JavaScript ES6 (ECMAScript 6) (beta). Default is ES5.",
+        "type": "string",
+        "default": "false"
+    },
+    "modelPropertyNaming": {
+        "opt": "modelPropertyNaming",
+        "description": "Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name",
+        "type": "string",
+        "default": "camelCase"
+    },
+    "loadTestDataFromFile": {
+        "opt": "loadTestDataFromFile",
+        "description": "Load test data from a JSON file",
+        "type": "boolean",
+        "default": "false"
+    },
+    "testDataFile": {
+        "opt": "testDataFile",
+        "description": "JSON file to contain test data",
+        "type": "string"
+    },
+    "preserveLeadingParamChar": {
+        "opt": "preserveLeadingParamChar",
+        "description": "Preserves leading $ and _ characters in parameter names.",
+        "type": "string"
+    }
+}

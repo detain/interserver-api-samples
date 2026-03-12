@@ -1,0 +1,75 @@
+{
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string",
+        "default": "src/main/kotlin"
+    },
+    "packageName": {
+        "opt": "packageName",
+        "description": "Generated artifact package name (e.g. io.swagger).",
+        "type": "string"
+    },
+    "groupId": {
+        "opt": "groupId",
+        "description": "Generated artifact package's organization (i.e. maven groupId).",
+        "type": "string",
+        "default": "io.swagger"
+    },
+    "artifactId": {
+        "opt": "artifactId",
+        "description": "Generated artifact id (name of jar).",
+        "type": "string"
+    },
+    "artifactVersion": {
+        "opt": "artifactVersion",
+        "description": "Generated artifact's package version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "enumPropertyNaming": {
+        "opt": "enumPropertyNaming",
+        "description": "Naming convention for enum properties: 'camelCase', 'PascalCase', 'snake_case', 'UPPERCASE', and 'original'",
+        "type": "string",
+        "default": "camelCase"
+    },
+    "library": {
+        "opt": "library",
+        "description": "library template (sub-template) to use",
+        "type": "string",
+        "enum": {
+            "ktor": "ktor framework"
+        },
+        "default": "ktor"
+    },
+    "featureAutoHead": {
+        "opt": "featureAutoHead",
+        "description": "Automatically provide responses to HEAD requests for existing routes that have the GET verb defined.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "featureConditionalHeaders": {
+        "opt": "featureConditionalHeaders",
+        "description": "Avoid sending content if client already has same content, by checking ETag or LastModified properties.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "featureHSTS": {
+        "opt": "featureHSTS",
+        "description": "Avoid sending content if client already has same content, by checking ETag or LastModified properties.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "featureCORS": {
+        "opt": "featureCORS",
+        "description": "Ktor by default provides an interceptor for implementing proper support for Cross-Origin Resource Sharing (CORS). See enable-cors.org.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "featureCompression": {
+        "opt": "featureCompression",
+        "description": "Adds ability to compress outgoing content using gzip, deflate or custom encoder and thus reduce size of the response.",
+        "type": "boolean",
+        "default": "true"
+    }
+}

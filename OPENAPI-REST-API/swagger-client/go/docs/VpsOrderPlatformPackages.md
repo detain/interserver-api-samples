@@ -1,0 +1,11 @@
+# VpsOrderPlatformPackages
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Kvm** | **float64** |  | [optional] [default to null]
+**Kvmstorage** | **float64** |  | [optional] [default to null]
+**Hyperv** | **float64** |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

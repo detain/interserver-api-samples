@@ -1,0 +1,421 @@
+## VPSApi
+
+### Place VPS Order
+## Place VPS Order
+POST https://my.interserver.net/apiv2/vps/order
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "osDistro": "<string>",
+ "slices": "<number>",
+ "vpsPlatform": "<string>",
+ "controlpanel": "<string>",
+ "period": "<number>",
+ "location": "<number>",
+ "osVersion": "<string>",
+ "hostname": "<string>",
+ "coupon": "<string>",
+ "rootpass": "<string>",
+ "comment": "<string>"
+}
+
+
+### Delete VPS Backup
+## Delete VPS Backup
+DELETE https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}&file={{file}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Blocks SMTP
+## Blocks SMTP
+GET https://my.interserver.net/apiv2/vps/{{id}}/block_smtp
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Disable CD Drive
+## Disable CD Drive
+GET https://my.interserver.net/apiv2/vps/{{id}}/disable_cd
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Disable Quotas
+## Disable Quotas
+GET https://my.interserver.net/apiv2/vps/{{id}}/disable_quota
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Eject CD Drive
+## Eject CD Drive
+GET https://my.interserver.net/apiv2/vps/{{id}}/eject_cd
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Enable Quotas
+## Enable Quotas
+GET https://my.interserver.net/apiv2/vps/{{id}}/enable_quota
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Restart VPS
+## Restart VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/restart
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Start VPS
+## Start VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/start
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Stop VPS
+## Stop VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/stop
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Download VPS Backup
+## Download VPS Backup
+PATCH https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "file": "<string>"
+}
+
+
+### VPS Ordering Information
+## VPS Ordering Information
+GET https://my.interserver.net/apiv2/vps/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get VPS Backups List
+## Get VPS Backups List
+GET https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### HD Space Addon Info
+## HD Space Addon Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/buy_hd_space
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Additional IP Addon Info
+## Additional IP Addon Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/buy_ip
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Timezone Info
+## Get Timezone Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/change_timezone
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get VPS Order
+## Get VPS Order
+GET https://my.interserver.net/apiv2/vps/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get VPS Invoices
+## Get VPS Invoices
+GET https://my.interserver.net/apiv2/vps/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List VPS Orders
+## List VPS Orders
+GET https://my.interserver.net/apiv2/vps
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### VPS Reinstall OS Options
+## VPS Reinstall OS Options
+GET https://my.interserver.net/apiv2/vps/{{id}}/reinstall_os
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reverse DNS Info
+## Reverse DNS Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/reverse_dns
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### VNC Setup Info
+## VNC Setup Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/setup_vnc
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Slice Upgrade Info
+## Slice Upgrade Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/slices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Traffic Usage
+## Get Traffic Usage
+GET https://my.interserver.net/apiv2/vps/{{id}}/traffic_usage
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get View Desktop Info
+## Get View Desktop Info
+GET https://my.interserver.net/apiv2/vps/{{id}}/view_desktop
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend VPS Welcome Email
+## Resend VPS Welcome Email
+GET https://my.interserver.net/apiv2/vps/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Start a VPS Backup
+## Start a VPS Backup
+GET https://my.interserver.net/apiv2/vps/{{id}}/backup
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Purchase HD Space Addon
+## Purchase HD Space Addon
+POST https://my.interserver.net/apiv2/vps/{{id}}/buy_hd_space
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Purchase Additional IP
+## Purchase Additional IP
+POST https://my.interserver.net/apiv2/vps/{{id}}/buy_ip
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update VPS Hostname
+## Update VPS Hostname
+POST https://my.interserver.net/apiv2/vps/{{id}}/change_hostname
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change VPS Root Password
+## Change VPS Root Password
+POST https://my.interserver.net/apiv2/vps/{{id}}/change_root_password
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change VPS Timezone
+## Change VPS Timezone
+POST https://my.interserver.net/apiv2/vps/{{id}}/change_timezone
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change Webuzo Password
+## Change Webuzo Password
+POST https://my.interserver.net/apiv2/vps/{{id}}/change_webuzo_password
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Insert CD in VPS
+## Insert CD in VPS
+POST https://my.interserver.net/apiv2/vps/{{id}}/insert_cd
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reinstall VPS OS
+## Reinstall VPS OS
+POST https://my.interserver.net/apiv2/vps/{{id}}/reinstall_os
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reset VPS Password
+## Reset VPS Password
+POST https://my.interserver.net/apiv2/vps/{{id}}/reset_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Restore VPS from Backup
+## Restore VPS from Backup
+POST https://my.interserver.net/apiv2/vps/{{id}}/restore
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "backup": "<string>",
+ "password": "<string>"
+}
+
+
+### Update Reverse DNS
+## Update Reverse DNS
+POST https://my.interserver.net/apiv2/vps/{{id}}/reverse_dns
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "ips": "<string>"
+}
+
+
+### Setup VNC
+## Setup VNC
+POST https://my.interserver.net/apiv2/vps/{{id}}/setup_vnc
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Purchase Slice Upgrade
+## Purchase Slice Upgrade
+POST https://my.interserver.net/apiv2/vps/{{id}}/slices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update View Desktop
+## Update View Desktop
+POST https://my.interserver.net/apiv2/vps/{{id}}/view_desktop
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Validate VPS Order
+## Validate VPS Order
+PUT https://my.interserver.net/apiv2/vps/order
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "osDistro": "<string>",
+ "slices": "<number>",
+ "vpsPlatform": "<string>",
+ "controlpanel": "<string>",
+ "period": "<number>",
+ "location": "<number>",
+ "osVersion": "<string>",
+ "hostname": "<string>",
+ "coupon": "<string>",
+ "rootpass": "<string>",
+ "comment": "<string>"
+}
+
+
+### Update VPS Order
+## Update VPS Order
+POST https://my.interserver.net/apiv2/vps/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel VPS Service
+## Cancel VPS Service
+DELETE https://my.interserver.net/apiv2/vps/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

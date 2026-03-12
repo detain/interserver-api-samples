@@ -1,0 +1,26 @@
+# openapi.model.LicenseServiceInfo
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**licenseId** | **String** | License ID | 
+**licenseType** | **String** | License type | 
+**licenseCurrency** | **String** | License currency | 
+**licenseOrderDate** | [**DateTime**](DateTime.md) | License order date | 
+**licenseCustid** | **String** | Customer ID | 
+**licenseIp** | **String** | License IP | 
+**licenseStatus** | **String** | License status | 
+**licenseInvoice** | **String** | License invoice | 
+**licenseCoupon** | **String** | License coupon | 
+**licenseHostname** | **String** | License hostname | [optional] 
+**licenseKey** | **String** | License key | [optional] 
+**licenseExtra** | **String** | Additional license information | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

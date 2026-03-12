@@ -1,0 +1,77 @@
+package io.swagger.model;
+
+import io.swagger.model.VpsIPInfo;
+import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+/**
+ * Additional informational tables displayed for a VPS service.
+ **/
+import io.swagger.annotations.*;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@Schema(description = "Additional informational tables displayed for a VPS service.")
+
+public class VpsExtraInfoTables   {
+
+  private @Valid VpsIPInfo ipInfo = null;
+
+  /**
+   **/
+  public VpsExtraInfoTables ipInfo(VpsIPInfo ipInfo) {
+    this.ipInfo = ipInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("ip_info")
+  @NotNull
+
+  public VpsIPInfo getIpInfo() {
+    return ipInfo;
+  }
+  public void setIpInfo(VpsIPInfo ipInfo) {
+    this.ipInfo = ipInfo;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VpsExtraInfoTables vpsExtraInfoTables = (VpsExtraInfoTables) o;
+    return Objects.equals(ipInfo, vpsExtraInfoTables.ipInfo);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(ipInfo);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class VpsExtraInfoTables {\n");
+    
+    sb.append("    ipInfo: ").append(toIndentedString(ipInfo)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

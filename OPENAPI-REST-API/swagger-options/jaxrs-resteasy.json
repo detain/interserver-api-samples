@@ -1,0 +1,230 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "modelPackage": {
+        "opt": "modelPackage",
+        "description": "package for generated models",
+        "type": "string"
+    },
+    "apiPackage": {
+        "opt": "apiPackage",
+        "description": "package for generated api classes",
+        "type": "string"
+    },
+    "invokerPackage": {
+        "opt": "invokerPackage",
+        "description": "root package for generated code",
+        "type": "string"
+    },
+    "groupId": {
+        "opt": "groupId",
+        "description": "groupId in generated pom.xml",
+        "type": "string"
+    },
+    "artifactId": {
+        "opt": "artifactId",
+        "description": "artifactId in generated pom.xml",
+        "type": "string"
+    },
+    "artifactVersion": {
+        "opt": "artifactVersion",
+        "description": "artifact version in generated pom.xml",
+        "type": "string"
+    },
+    "artifactUrl": {
+        "opt": "artifactUrl",
+        "description": "artifact URL in generated pom.xml",
+        "type": "string"
+    },
+    "artifactDescription": {
+        "opt": "artifactDescription",
+        "description": "artifact description in generated pom.xml",
+        "type": "string"
+    },
+    "scmConnection": {
+        "opt": "scmConnection",
+        "description": "SCM connection in generated pom.xml",
+        "type": "string"
+    },
+    "scmDeveloperConnection": {
+        "opt": "scmDeveloperConnection",
+        "description": "SCM developer connection in generated pom.xml",
+        "type": "string"
+    },
+    "scmUrl": {
+        "opt": "scmUrl",
+        "description": "SCM URL in generated pom.xml",
+        "type": "string"
+    },
+    "developerName": {
+        "opt": "developerName",
+        "description": "developer name in generated pom.xml",
+        "type": "string"
+    },
+    "developerEmail": {
+        "opt": "developerEmail",
+        "description": "developer email in generated pom.xml",
+        "type": "string"
+    },
+    "developerOrganization": {
+        "opt": "developerOrganization",
+        "description": "developer organization in generated pom.xml",
+        "type": "string"
+    },
+    "developerOrganizationUrl": {
+        "opt": "developerOrganizationUrl",
+        "description": "developer organization URL in generated pom.xml",
+        "type": "string"
+    },
+    "licenseName": {
+        "opt": "licenseName",
+        "description": "The name of the license",
+        "type": "string"
+    },
+    "licenseUrl": {
+        "opt": "licenseUrl",
+        "description": "The URL of the license",
+        "type": "string"
+    },
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string"
+    },
+    "localVariablePrefix": {
+        "opt": "localVariablePrefix",
+        "description": "prefix for generated code members and local variables",
+        "type": "string"
+    },
+    "serializableModel": {
+        "opt": "serializableModel",
+        "description": "boolean - toggle \"implements Serializable\" for generated models",
+        "type": "boolean",
+        "default": "false"
+    },
+    "bigDecimalAsString": {
+        "opt": "bigDecimalAsString",
+        "description": "Treat BigDecimal values as Strings to avoid precision loss.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "fullJavaUtil": {
+        "opt": "fullJavaUtil",
+        "description": "whether to use fully qualified name for classes under java.util. This option only works for Java API client",
+        "type": "boolean",
+        "default": "false"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "hides the timestamp when files were generated",
+        "type": "string"
+    },
+    "withXml": {
+        "opt": "withXml",
+        "description": "whether to include support for application/xml content type and include XML annotations in the model (works with libraries that provide support for JSON and XML)",
+        "type": "boolean",
+        "default": "false"
+    },
+    "dateLibrary": {
+        "opt": "dateLibrary",
+        "description": "Option. Date library to use",
+        "type": "string",
+        "enum": {
+            "java8-instant": "Java 8 using Instant",
+            "joda": "Joda (for legacy app only)",
+            "legacy": "Legacy java.util.Date (if you really have a good reason not to use threetenbp)",
+            "java8-localdatetime": "Java 8 using LocalDateTime (for legacy app only)",
+            "java8": "Java 8 native JSR310 (preferred for jdk 1.8+) - note: this also sets \"java8\" to true",
+            "threetenbp": "Backport of JSR310 (preferred for jdk < 1.8)",
+            "java11": "Java 11 native JSR384 (preferred for jdk 11+) - note: this also sets \"java11\" to true"
+        }
+    },
+    "java8": {
+        "opt": "java8",
+        "description": "Option. Use Java8 classes instead of third party equivalents",
+        "type": "string",
+        "enum": {
+            "true": "Use Java 8 classes such as Base64",
+            "false": "Various third party libraries as needed"
+        }
+    },
+    "java11": {
+        "opt": "java11",
+        "description": "Option. Use Java11 classes instead of third party equivalents",
+        "type": "string",
+        "enum": {
+            "true": "Use Java 11 classes",
+            "false": "Various third party libraries as needed"
+        }
+    },
+    "disableHtmlEscaping": {
+        "opt": "disableHtmlEscaping",
+        "description": "Disable HTML escaping of JSON strings when using gson (needed to avoid problems with byte[] fields)",
+        "type": "boolean",
+        "default": "false"
+    },
+    "checkDuplicatedModelName": {
+        "opt": "checkDuplicatedModelName",
+        "description": "Check if there are duplicated model names (ignoring case)",
+        "type": "boolean",
+        "default": "false"
+    },
+    "additionalModelTypeAnnotations": {
+        "opt": "additionalModelTypeAnnotations",
+        "description": "Additional annotations for model type(class level annotations)",
+        "type": "string"
+    },
+    "jakarta": {
+        "opt": "jakarta",
+        "description": "Use Jakarta EE (package jakarta.*) instead of Java EE (javax.*)",
+        "type": "boolean",
+        "enum": {
+            "true": "Use Jakarta EE (package jakarta.*)",
+            "false": "Use Java EE (javax.*)"
+        },
+        "default": "false"
+    },
+    "implFolder": {
+        "opt": "implFolder",
+        "description": "folder for generated implementation code",
+        "type": "string"
+    },
+    "title": {
+        "opt": "title",
+        "description": "a title describing the application",
+        "type": "string"
+    },
+    "useBeanValidation": {
+        "opt": "useBeanValidation",
+        "description": "Use BeanValidation API annotations",
+        "type": "boolean",
+        "default": "false"
+    },
+    "serverPort": {
+        "opt": "serverPort",
+        "description": "The port on which the server should be started",
+        "type": "string"
+    },
+    "generateJbossDeploymentDescriptor": {
+        "opt": "generateJbossDeploymentDescriptor",
+        "description": "Generate Jboss Deployment Descriptor",
+        "type": "boolean",
+        "default": "false"
+    }
+}

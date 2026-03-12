@@ -1,0 +1,132 @@
+## PublicApi
+
+### Get Captcha Challenge
+## Get Captcha Challenge
+GET https://my.interserver.net/apiv2/captcha
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Countries
+## Get Countries
+GET https://my.interserver.net/apiv2/account/countries?fetchBy={{fetchBy}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Server Info
+## Get Server Info
+GET https://my.interserver.net/apiv2/info
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Login Info
+## Get Login Info
+GET https://my.interserver.net/apiv2/login
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Marketplace Servers
+## List Marketplace Servers
+GET https://my.interserver.net/apiv2/buy_now_servers_list
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get OAuth Redirect URL
+## Get OAuth Redirect URL
+GET https://my.interserver.net/apiv2/oauth?provider={{provider}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Available Timezones
+## Get Available Timezones
+GET https://my.interserver.net/apiv2/account/timezones
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Complete OAuth Two-Factor Verification
+## Complete OAuth Two-Factor Verification
+PATCH https://my.interserver.net/apiv2/oauth
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "account_id": "<number>",
+ "code": "<string>"
+}
+
+
+### Ping Server
+## Ping Server
+GET https://my.interserver.net/apiv2/ping
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### OAuth Callback
+## OAuth Callback
+POST https://my.interserver.net/apiv2/oauth?provider={{provider}}
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "provider": "<string>"
+}
+
+
+### Submit Login Information
+## Submit Login Information
+POST https://my.interserver.net/apiv2/login
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Submit Signup Information
+## Submit Signup Information
+POST https://my.interserver.net/apiv2/signup
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+  "login" : "user@domain.com",
+  "passwd" : "mypassword",
+  "remember" : "true",
+  "g-recaptcha-response" : {
+    "__v_isShallow" : false,
+    "dep" : {
+      "w" : 0,
+      "n" : 0
+    },
+    "__v_isRef" : true,
+    "_rawValue" : "zzzzz",
+    "_value" : "zzzzz"
+  }
+}
+

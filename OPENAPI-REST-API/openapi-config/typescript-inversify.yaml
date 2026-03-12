@@ -1,0 +1,70 @@
+# Description: Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Description: Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+ensureUniqueParams: true
+
+# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+allowUnicodeIdentifiers: false
+
+# Description: Add form or body parameters to the beginning of the parameter list.
+prependFormOrBodyParameters: false
+
+# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
+# Available Values:
+#    true
+#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
+#    false
+#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
+legacyDiscriminatorBehavior: true
+
+# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+# Available Values:
+#    false
+#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
+#    true
+#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+disallowAdditionalPropertiesIfNotPresent: true
+
+# Description: Suffix that will be appended to all enum names.
+enumNameSuffix: Enum
+
+# Description: Naming convention for enum properties: 'camelCase', 'PascalCase', 'snake_case', 'UPPERCASE', and 'original'
+enumPropertyNaming: PascalCase
+
+# Description: Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name. Only change it if you provide your own run-time code for (de-)serialization of models
+modelPropertyNaming: original
+
+# Description: Generate code that conforms to ES6.
+supportsES6: false
+
+# Description: The name under which you want to publish generated npm package. Required to generate a full package
+# npmName: 
+
+# Description: The version of your npm package. If not provided, using the version from the OpenAPI specification file.
+npmVersion: 1.0.0
+
+# Description: When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
+snapshot: false
+
+# Description: Set to make additional properties types declare that their indexer may return undefined
+nullSafeAdditionalProps: false
+
+# Description: Use this property to set an url your private npmRepo in the package.json
+# npmRepository: 
+
+# Description: Setting this property to true will generate interfaces next to the default class implementations.
+withInterfaces: false
+
+# Description: Setting this property to use promise instead of observable inside every service.
+usePromise: false
+
+# Description: Setting this property to use rxjs 6 instead of rxjs 5.
+useRxJS6: false
+
+# Description: Use discriminators to create tagged unions instead of extending interfaces.
+taggedUnions: false
+

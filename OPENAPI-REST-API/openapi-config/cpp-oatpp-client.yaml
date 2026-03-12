@@ -1,0 +1,9 @@
+# Description: Add the Possibility to fetch and compile external Libraries needed by this Framework.
+addExternalLibs: true
+
+# Description: Prefix to prepend to reserved words in order to avoid conflicts
+reservedWordPrefix: r_
+
+# Description: Make first character of variable name uppercase (eg. value -> Value)
+variableNameFirstCharacterUppercase: true
+

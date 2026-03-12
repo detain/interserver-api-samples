@@ -1,0 +1,30 @@
+# QuickserverServiceInfo
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**qsId** | [**kotlin.String**](.md) | Quickserver ID |  [optional]
+**qsCustid** | [**kotlin.String**](.md) | Customer ID |  [optional]
+**qsServer** | [**kotlin.String**](.md) | Server information |  [optional]
+**qsIp** | [**kotlin.String**](.md) | IP address |  [optional]
+**qsIpv6** | [**kotlin.Any**](.md) | IPv6 address (null) |  [optional]
+**qsVzid** | [**kotlin.String**](.md) | VZ ID |  [optional]
+**qsCurrency** | [**kotlin.String**](.md) | Currency |  [optional]
+**qsType** | [**kotlin.String**](.md) | Type |  [optional]
+**qsOrderDate** | [**kotlin.String**](.md) | Order date |  [optional]
+**qsStatus** | [**kotlin.String**](.md) | Status |  [optional]
+**qsInvoice** | [**kotlin.String**](.md) | Invoice number |  [optional]
+**qsCoupon** | [**kotlin.String**](.md) | Coupon information |  [optional]
+**qsExtra** | [**kotlin.String**](.md) | Extra information |  [optional]
+**qsHostname** | [**kotlin.String**](.md) | Hostname |  [optional]
+**qsServerStatus** | [**kotlin.String**](.md) | Server status |  [optional]
+**qsComment** | [**kotlin.String**](.md) | Comment |  [optional]
+**qsSlices** | [**kotlin.String**](.md) | Slices information |  [optional]
+**qsVnc** | [**kotlin.String**](.md) | VNC information |  [optional]
+**qsVncPort** | [**kotlin.Any**](.md) | VNC port (null) |  [optional]
+**qsRootpass** | [**kotlin.String**](.md) | Root password |  [optional]
+**qsMac** | [**kotlin.String**](.md) | MAC address |  [optional]
+**qsOs** | [**kotlin.String**](.md) | Operating system |  [optional]
+**qsVersion** | [**kotlin.String**](.md) | OS version |  [optional]
+**qsLocation** | [**kotlin.String**](.md) | Location |  [optional]
+**qsPlatform** | [**kotlin.Any**](.md) | Platform (null) |  [optional]

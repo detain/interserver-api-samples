@@ -1,0 +1,18 @@
+# Description: package for generated api classes
+# apiPackage: 
+
+# Description: package for generated models
+# modelPackage: 
+
+# Description: Prefix that will be appended to all API names ('tags'). Default: empty string. e.g. Pet => Pet.
+# apiNamePrefix: 
+
+# Description: Iff true null-checks are performed for required parameters.
+# checkRequiredParamsNotNull: 
+
+# Description: Iff true a new copy of the given body object is transmitted. This copy only contains those properties defined in its model specification.
+# checkSuperfluousBodyProps: 
+
+# Description: Iff true a default implementation of the api executer interface is generated.
+# generateDefaultApiExecuter: 
+

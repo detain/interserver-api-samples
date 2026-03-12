@@ -1,0 +1,16 @@
+{
+  "sortParamsByRequiredFlag": "true",
+  "ensureUniqueParams": "true",
+  "allowUnicodeIdentifiers": "true",
+  "appName": "MyAdmin API",
+  "appDescription": "API interface for sending mail through the MyAdmin system.",
+  "infoUrl": "https://mail.baby/",
+  "infoEmail": "support@mail.baby",
+  "licenseInfo": "GNU GPL v3",
+  "licenseUrl": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+  "invokerPackage": "MyAdminApi",
+  "phpInvokerPackage": "Interserver\\MyAdmin",
+  "perlModuleName": "MyAdminApi",
+  "pythonPackageName": "MyAdminApi",
+  "packageName": "MyAdminApi"
+}

@@ -1,0 +1,16 @@
+# OpenAPIClient::Object::LoginErrorResponse
+
+## Load the model package
+```perl
+use OpenAPIClient::Object::LoginErrorResponse;
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**message** | **string** |  | [optional] 
+**field** | **string** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

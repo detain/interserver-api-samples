@@ -1,0 +1,18 @@
+# Description: Go package name (convention: lowercase).
+packageName: openapi
+
+# Description: Go package version.
+packageVersion: 1.0.0
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+
+# Description: Terraform provider name (e.g. 'petstore')
+providerName: example
+
+# Description: Terraform provider registry address
+providerAddress: registry.terraform.io/example/example
+
+# Description: Terraform provider version
+providerVersion: 0.1.0
+

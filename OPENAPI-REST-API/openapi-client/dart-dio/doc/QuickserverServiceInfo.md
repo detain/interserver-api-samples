@@ -1,0 +1,39 @@
+# openapi.model.QuickserverServiceInfo
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**qsId** | **String** | Quickserver ID | [optional] 
+**qsCustid** | **String** | Customer ID | [optional] 
+**qsServer** | **String** | Server information | [optional] 
+**qsIp** | **String** | IP address | [optional] 
+**qsIpv6** | [**JsonObject**](.md) | IPv6 address (null) | [optional] 
+**qsVzid** | **String** | VZ ID | [optional] 
+**qsCurrency** | **String** | Currency | [optional] 
+**qsType** | **String** | Type | [optional] 
+**qsOrderDate** | **String** | Order date | [optional] 
+**qsStatus** | **String** | Status | [optional] 
+**qsInvoice** | **String** | Invoice number | [optional] 
+**qsCoupon** | **String** | Coupon information | [optional] 
+**qsExtra** | **String** | Extra information | [optional] 
+**qsHostname** | **String** | Hostname | [optional] 
+**qsServerStatus** | **String** | Server status | [optional] 
+**qsComment** | **String** | Comment | [optional] 
+**qsSlices** | **String** | Slices information | [optional] 
+**qsVnc** | **String** | VNC information | [optional] 
+**qsVncPort** | [**JsonObject**](.md) | VNC port (null) | [optional] 
+**qsRootpass** | **String** | Root password | [optional] 
+**qsMac** | **String** | MAC address | [optional] 
+**qsOs** | **String** | Operating system | [optional] 
+**qsVersion** | **String** | OS version | [optional] 
+**qsLocation** | **String** | Location | [optional] 
+**qsPlatform** | [**JsonObject**](.md) | Platform (null) | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

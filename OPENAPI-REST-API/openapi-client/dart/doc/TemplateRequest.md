@@ -1,0 +1,17 @@
+# openapi.model.TemplateRequest
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**template** | **String** | OS Template Filename | 
+**localPassword** | **String** | Password for this account. | 
+**password** | **String** | Password for Root / Administrator Account. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,0 +1,50 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "browserClient": {
+        "opt": "browserClient",
+        "description": "Is the client browser based",
+        "type": "string"
+    },
+    "pubName": {
+        "opt": "pubName",
+        "description": "Name in generated pubspec",
+        "type": "string"
+    },
+    "pubVersion": {
+        "opt": "pubVersion",
+        "description": "Version in generated pubspec",
+        "type": "string"
+    },
+    "pubDescription": {
+        "opt": "pubDescription",
+        "description": "Description in generated pubspec",
+        "type": "string"
+    },
+    "useEnumExtension": {
+        "opt": "useEnumExtension",
+        "description": "Allow the 'x-enum-values' extension for enums",
+        "type": "string"
+    },
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string"
+    }
+}

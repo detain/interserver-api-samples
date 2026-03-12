@@ -1,0 +1,463 @@
+package io.swagger.api.impl;
+
+import io.swagger.api.*;
+import io.swagger.model.AffiliateBannerRow;
+import io.swagger.model.AffiliateDockSetup;
+import io.swagger.model.AffiliatePaymentSetup;
+import io.swagger.model.AffiliateTrafficRow;
+import java.math.BigDecimal;
+import io.swagger.model.BillingAddCcRequest;
+import io.swagger.model.BillingInvoiceDetail;
+import io.swagger.model.BillingInvoiceList;
+import io.swagger.model.BillingPaymentMethodRequest;
+import io.swagger.model.BillingPrepayRequest;
+import io.swagger.model.BillingVerifyCcRequest;
+import io.swagger.model.InlineResponse2009;
+import io.swagger.model.InlineResponse401;
+import io.swagger.model.Invoice;
+import io.swagger.model.MonthlyCounts;
+import io.swagger.model.StatusMonthlyBreakdown;
+import io.swagger.model.SuccessTextResponse;
+import io.swagger.model.TextResponse;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
+import org.apache.cxf.jaxrs.model.wadl.Description;
+import org.apache.cxf.jaxrs.model.wadl.DocTarget;
+
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+
+/**
+ * InterServer Management API
+ *
+ * <p># Overview  The InterServer Management API provides programmatic access to manage your InterServer services. Use this REST API to automate provisioning, configuration, and billing operations across your account.  The API covers the following service categories: - [Domains](https://www.interserver.net/domains/) — registration, transfers, and DNS management - [Web Hosting](https://www.interserver.net/hosting/) — shared and reseller hosting - [VPS Hosting](https://www.interserver.net/vps/) — virtual private servers - [Dedicated Servers](https://www.interserver.net/dedicated/) — bare metal and [Rapid Deploy Servers](https://www.interserver.net/dedicated/rapid-deploy.html) - [Backups](https://www.interserver.net/storage/) — storage and backup services - Licenses — control panel and software licenses - [Mail](https://www.mail.baby/) — mail delivery services - SSL — certificate provisioning - Billing — invoices, payment methods, and account management  For interactive testing, see the [API documentation](/api-docs/).  # Authentication  Most endpoints require authentication. Two methods are supported:  ## API Key (Preferred)  Generate an API key from the [Account Security](https://my.interserver.net/account_security) page on [my.interserver.net](https://my.interserver.net/). Pass it in the `X-API-KEY` request header:  ``` X-API-KEY: your-api-key-here ```  ## Session-Based Authentication  Alternatively, authenticate by creating a session:  1. **Log in** — Send a `POST` request to `/login` with your account credentials. The response includes a session identifier. 2. **Pass the session ID** — Include the session identifier in the `sessionid` header on subsequent requests:  ``` sessionid: your-session-id-here ```  API key authentication is recommended for most integrations as it does not expire and avoids the overhead of session management.  
+ *
+ */
+public class BillingApiServiceImpl implements BillingApi {
+    /**
+     * Add Credit Card to Account
+     *
+     * Adds a new credit card to the account for billing. Card details are validated and stored securely. The card may require verification before it can be used as a payment method.
+     *
+     */
+    public SuccessTextResponse addAccountCreditCard(String name, String address, String city, String state, String country, String zip, String cc, String ccExp, String ccCcv2) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Add Credit Card to Account
+     *
+     * Adds a new credit card to the account for billing. Card details are validated and stored securely. The card may require verification before it can be used as a payment method.
+     *
+     */
+    public SuccessTextResponse addAccountCreditCard(BillingAddCcRequest body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Add Credit Card for Billing
+     *
+     * Adds a new credit card to the account for use as a payment method. If the card requires verification, the response indicates the next step. Complete verification via &#x60;GET /billing/creditcards/{id}/verify&#x60; followed by &#x60;POST /billing/creditcards/{id}/verify&#x60; before the card can be used for payments.
+     *
+     */
+    public SuccessTextResponse addBillingCreditCard(BillingAddCcRequest body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Add Credit Card for Billing
+     *
+     * Adds a new credit card to the account for use as a payment method. If the card requires verification, the response indicates the next step. Complete verification via &#x60;GET /billing/creditcards/{id}/verify&#x60; followed by &#x60;POST /billing/creditcards/{id}/verify&#x60; before the card can be used for payments.
+     *
+     */
+    public SuccessTextResponse addBillingCreditCard(String name, String address, String city, String state, String country, String zip, String cc, String ccExp, String ccCcv2) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Create Prepay Deposit
+     *
+     * Creates a new prepay balance deposit and returns the invoice ID that must be paid to activate it. The prepay balance can then be used as a payment method for future orders. Use &#x60;/billing/invoices/{id}&#x60; to retrieve the generated invoice details.
+     *
+     */
+    public SuccessTextResponse addBillingPrepay(BillingPrepayRequest body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Create Prepay Deposit
+     *
+     * Creates a new prepay balance deposit and returns the invoice ID that must be paid to activate it. The prepay balance can then be used as a payment method for future orders. Use &#x60;/billing/invoices/{id}&#x60; to retrieve the generated invoice details.
+     *
+     */
+    public SuccessTextResponse addBillingPrepay(String module, BigDecimal amount, String automaticUse) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Remove Credit Card
+     *
+     * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
+     *
+     */
+    public void deleteAccountCreditCard(String id) {
+        // TODO: Implement...
+        
+        
+    }
+    
+    /**
+     * Delete Credit Card
+     *
+     * Removes the selected credit card from the account. Use &#x60;/billing/payment_method&#x60; to select a new default payment method after deleting a card.
+     *
+     */
+    public SuccessTextResponse deleteBillingCreditCard(Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Delete Invoice
+     *
+     * Deletes a pending (unpaid) invoice from the account. Only invoices with a pending payment status can be deleted. Paid invoices cannot be removed. Related service records and repeat invoices are also cleaned up.
+     *
+     */
+    public SuccessTextResponse deleteBillingInvoice(Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Delete Prepay Balance
+     *
+     * Deletes a prepay balance from the account. The balance must have remaining funds to be eligible for deletion. Use &#x60;GET /billing/prepays&#x60; to list available prepay balances and their IDs.
+     *
+     */
+    public SuccessTextResponse deleteBillingPrepay(Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * List Affiliate Banner Assets
+     *
+     * Returns the catalog of available affiliate banner images with their dimensions. Use these assets to build marketing creatives for your affiliate campaigns. Each banner includes the image filename, width, and height for layout purposes.
+     *
+     */
+    public List<AffiliateBannerRow> getAffiliateBanners() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get Affiliate Performance Report
+     *
+     * Returns a detailed affiliate performance report with commission totals, conversion rates, and traffic summary. Use this for a comprehensive overview of your affiliate program performance in a single request.
+     *
+     */
+    public TextResponse getAffiliateRichReport() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get Affiliate Sales Graph Data
+     *
+     * Returns time-series sales data for the requested number of days. Use this to render sales trend charts in an affiliate dashboard. Each data point represents aggregated sales for a time period.
+     *
+     */
+    public StatusMonthlyBreakdown getAffiliateSalesGraph(Integer days) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get Affiliate Sales Report
+     *
+     * Returns the affiliate sales report with commission amounts and order summaries. Use this for tabular sales data export or to reconcile commission payouts against individual referral orders.
+     *
+     */
+    public TextResponse getAffiliateSalesReport() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get Affiliate Traffic Graph Data
+     *
+     * Returns time-series traffic data for the requested number of days. Use this to render click and visit trend charts in an affiliate dashboard. Each data point represents aggregated traffic counts for a time period.
+     *
+     */
+    public MonthlyCounts getAffiliateTrafficGraph(Integer days) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * List Affiliate Web Traffic Entries
+     *
+     * Returns individual web traffic log entries for affiliate referrals, including visitor IP address, referral URL, and timestamp. Use this to audit traffic sources, identify top referrers, or investigate suspicious click patterns.
+     *
+     */
+    public List<AffiliateTrafficRow> getAffiliateWebTraffic() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get Shopping Cart Contents
+     *
+     * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
+     *
+     */
+    public void getBillingCart() {
+        // TODO: Implement...
+        
+        
+    }
+    
+    /**
+     * Get Credit Card Verification Requirements
+     *
+     * Retrieves the verification requirements for a newly added credit card. The response indicates whether the card requires micro-charge amount confirmation or CVV validation. Use this before presenting a verification form to the user.
+     *
+     */
+    public SuccessTextResponse getBillingCreditCardVerify(Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get Invoice Details
+     *
+     * Retrieves the full invoice information including line items, amounts, and payment status. Use this before redirecting to &#x60;/pay/{method}/{invoices}&#x60; so you can display the exact amount due and confirm the invoice is still unpaid.
+     *
+     */
+    public BillingInvoiceDetail getBillingInvoice(Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * List Account Invoices
+     *
+     * Returns the invoice list for the account with summary totals. Use the invoice IDs from the response with &#x60;/billing/invoices/{id}&#x60; to retrieve detailed line items, or with &#x60;/pay/{method}/{invoices}&#x60; to initiate payment.
+     *
+     */
+    public BillingInvoiceList getBillingInvoices() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * List Prepay Balances
+     *
+     * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
+     *
+     */
+    public void getBillingPrePays() {
+        // TODO: Implement...
+        
+        
+    }
+    
+    /**
+     * Get Invoices
+     *
+     * Returns a paginated list of invoices for the authenticated account. Each invoice includes the invoice number, date, total amount, and payment status. Use the optional &#x60;searchString&#x60; parameter to filter results and &#x60;skip&#x60;/&#x60;limit&#x60; for pagination.
+     *
+     */
+    public List<Invoice> getInvoices(String searchString, Integer skip, Integer limit) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Initiate Payment
+     *
+     * Initiates a payment for the specified invoices using the chosen payment method. The response type determines how your client should proceed: &#x60;redirect&#x60; means send the user to the provided URL, &#x60;submit&#x60; means POST a form with the provided fields, and &#x60;single&#x60; means the payment was processed immediately. Use invoice IDs obtained from order responses or &#x60;/billing/invoices&#x60;.
+     *
+     */
+    public InlineResponse2009 initiatePayment(String method, String invoices) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Submit Credit Card Verification
+     *
+     * Completes the credit card verification flow by submitting the micro-charge amounts or CVV as required by &#x60;GET /billing/creditcards/{id}/verify&#x60;. A successful response means the card is verified and can be selected as a payment method via &#x60;/billing/payment_method&#x60;.
+     *
+     */
+    public SuccessTextResponse postBillingCreditCardVerify(BillingVerifyCcRequest body, Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Submit Credit Card Verification
+     *
+     * Completes the credit card verification flow by submitting the micro-charge amounts or CVV as required by &#x60;GET /billing/creditcards/{id}/verify&#x60;. A successful response means the card is verified and can be selected as a payment method via &#x60;/billing/payment_method&#x60;.
+     *
+     */
+    public SuccessTextResponse postBillingCreditCardVerify(Integer idx, String ccCcv2, String ccAmount1, String ccAmount2, Boolean terms, Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Update Credit Card
+     *
+     * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
+     *
+     */
+    public void updateAccountCreditCard(Integer id) {
+        // TODO: Implement...
+        
+        
+    }
+    
+    /**
+     * Configure Affiliate Dock Settings
+     *
+     * Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.
+     *
+     */
+    public TextResponse updateAffiliateDockSetup(String affiliateDockTitle, String affiliateDockDescription, String referrerCoupon) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Configure Affiliate Dock Settings
+     *
+     * Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.
+     *
+     */
+    public TextResponse updateAffiliateDockSetup(AffiliateDockSetup body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Configure Affiliate Landing Page
+     *
+     * Updates the affiliate landing page configuration, including the title, description, and coupon code. Visitors who arrive through your affiliate link see this customized page. Changes are published immediately.
+     *
+     */
+    public TextResponse updateAffiliateLandingPage(String affiliateDockTitle, String affiliateDockDescription, String referrerCoupon) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Configure Affiliate Landing Page
+     *
+     * Updates the affiliate landing page configuration, including the title, description, and coupon code. Visitors who arrive through your affiliate link see this customized page. Changes are published immediately.
+     *
+     */
+    public TextResponse updateAffiliateLandingPage(AffiliateDockSetup body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Configure Affiliate Payout Preferences
+     *
+     * Updates how you receive affiliate commission payouts. Choose between prepay credit applied to your account balance or PayPal disbursement. When selecting PayPal, provide the email address linked to your PayPal account.
+     *
+     */
+    public TextResponse updateAffiliatePaymentSetup(String affiliatePaypal, String affiliatePaymentMethod) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Configure Affiliate Payout Preferences
+     *
+     * Updates how you receive affiliate commission payouts. Choose between prepay credit applied to your account balance or PayPal disbursement. When selecting PayPal, provide the email address linked to your PayPal account.
+     *
+     */
+    public TextResponse updateAffiliatePaymentSetup(AffiliatePaymentSetup body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Update Credit Card Details
+     *
+     * Updates stored credit card metadata or retrieves the masked card details. Use this to refresh card data before verification or to update billing address information associated with the card.
+     *
+     */
+    public SuccessTextResponse updateBillingCreditCard(Integer id) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Update Default Payment Method
+     *
+     * Updates the account&#x27;s default payment method, including selecting a verified credit card as the primary payment source or switching to PayPal when available.
+     *
+     */
+    public SuccessTextResponse updateBillingPaymentMethod(BillingPaymentMethodRequest body) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Update Default Payment Method
+     *
+     * Updates the account&#x27;s default payment method, including selecting a verified credit card as the primary payment source or switching to PayPal when available.
+     *
+     */
+    public SuccessTextResponse updateBillingPaymentMethod(String paymentMethod, String ccAuto) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+}
+

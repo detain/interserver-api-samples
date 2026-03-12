@@ -1,0 +1,1261 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="addDomain"></a>addDomain</h2>
+  <hr>
+  <p></p>
+  <p>Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="addDomainDnssec"></a>addDomainDnssec</h2>
+  <hr>
+  <p></p>
+  <p>Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/dnssec</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">DomainDnssecRequest(DomainDnssecRequest)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="addDomainDnssec"></a>addDomainDnssec</h2>
+  <hr>
+  <p></p>
+  <p>Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/dnssec</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">algorithm</span>
+      <span class="param-type">List(Integer)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">digest_type</span>
+      <span class="param-type">List(Integer)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">digest</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">key_tag</span>
+      <span class="param-type">List(Integer)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="addDomainNameserver"></a>addDomainNameserver</h2>
+  <hr>
+  <p></p>
+  <p>Adds a new registered nameserver (glue record) for the domain using the supplied hostname and IP address. Use &#x60;GET /domains/{id}/nameservers&#x60; to confirm that the new entry exists.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/nameservers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">DomainNameserverPostRequest(DomainNameserverPostRequest)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="addDomainNameserver"></a>addDomainNameserver</h2>
+  <hr>
+  <p></p>
+  <p>Adds a new registered nameserver (glue record) for the domain using the supplied hostname and IP address. Use &#x60;GET /domains/{id}/nameservers&#x60; to confirm that the new entry exists.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/nameservers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ipAddress</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="cancelDomain"></a>cancelDomain</h2>
+  <hr>
+  <p></p>
+  <p>Cancels the domain order in the billing system. After cancellation the service will no longer auto-renew and will transition to a &#x60;canceled&#x60; status. The domain registration itself may remain active at the registrar until its current expiration date, but no further renewals will be processed. Treat the domain as inactive in downstream automation after this call succeeds.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_2"><a href="">inline_response_200_2</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="deleteDomainDnssec"></a>deleteDomainDnssec</h2>
+  <hr>
+  <p></p>
+  <p>Removes DNSSEC DS records from the domain registration. Use this to disable DNSSEC at the registrar level.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/dnssec</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">action</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Set to &#x60;delete&#x60; to remove all DNSSEC records.</p>
+	  </li>
+  </ul>
+  <h2><a name="deleteDomainNameserver"></a>deleteDomainNameserver</h2>
+  <hr>
+  <p></p>
+  <p>Removes a registered nameserver (glue record) from the domain. Specify the zero-based &#x60;index&#x60; of the nameserver to remove as returned by &#x60;GET /domains/{id}/nameservers&#x60;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/nameservers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">index</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The index of the registered nameserver from the registered nameservers list to delete.  </p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainContact"></a>getDomainContact</h2>
+  <hr>
+  <p></p>
+  <p>Returns the current domain contact details that will be used for the registrant, admin, technical, and billing contact records. Use this response as the basis for any contact updates.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/contact</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainContactDetails"><a href="">DomainContactDetails</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainDnssec"></a>getDomainDnssec</h2>
+  <hr>
+  <p></p>
+  <p>Returns the DNSSEC DS records registered with the domain. Use the record data if you need to synchronize DNSSEC settings with another registry or to prepare an update request.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/dnssec</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainDnssecRecords"><a href="">DomainDnssecRecords</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainInfo"></a>getDomainInfo</h2>
+  <hr>
+  <p></p>
+  <p>Fetches the detailed domain service record (billing, registration, and service metadata) for the specified order ID. Use the &#x60;domain_hostname&#x60; from this response when calling &#x60;/domains/lookup/{name}&#x60; or when interacting with nameserver and DNSSEC management endpoints.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Domain"><a href="">Domain</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainInvoices"></a>getDomainInvoices</h2>
+  <hr>
+  <p></p>
+  <p>Retrieves invoice records associated with the domain order. Use this to reconcile billing or to confirm whether renewals or add-ons (such as Whois privacy) have been invoiced.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/invoices</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ChargeInvoiceRows"><a href="">ChargeInvoiceRows</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainLookup"></a>getDomainLookup</h2>
+  <hr>
+  <p></p>
+  <p>Checks a domain for availability and premium status, and returns pricing information for new, renewal, and transfer actions when possible. The response also includes the order field metadata you can pass to &#x60;/domains/order&#x60; when placing a registration or transfer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/lookup/{name}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainLookupResponse"><a href="">DomainLookupResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The full domain name to look up (for example &#x60;example.com&#x60;).</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainNameservers"></a>getDomainNameservers</h2>
+  <hr>
+  <p></p>
+  <p>Returns the registered nameserver hosts and glue IP addresses currently configured at the registrar. Use the returned list when adding, updating, or deleting individual nameserver records.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/nameservers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainNameserverGetResponse"><a href="">DomainNameserverGetResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainOrderFields"></a>getDomainOrderFields</h2>
+  <hr>
+  <p></p>
+  <p>Returns the registration-type-specific form fields required to place a domain order for the given hostname. Use the returned fields to build the POST body for &#x60;POST /domains/order&#x60;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/order/{domain}/{regType}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">domain</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The fully qualified domain name (e.g. &#x60;example.com&#x60;).</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">regType</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The registration type. Common values include &#x60;register&#x60; for new registrations and &#x60;transfer&#x60; for inbound transfers.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainOrderSearchResults"></a>getDomainOrderSearchResults</h2>
+  <hr>
+  <p></p>
+  <p>Returns order data for the specified domain hostname, including availability and pricing details. Use this to preview order information before placing a registration or transfer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/order/{domain}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">domain</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The fully qualified domain name to look up (e.g. &#x60;example.com&#x60;).</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainRenewal"></a>getDomainRenewal</h2>
+  <hr>
+  <p></p>
+  <p>Starts the domain renewal workflow for an active domain. This endpoint currently returns a status message indicating that renewal handling has been triggered.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/renew</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainSearch"></a>getDomainSearch</h2>
+  <hr>
+  <p></p>
+  <p>Queries the registrar for suggested domains and availability data. Use the returned &#x60;lookup&#x60; results to identify availability and then call &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order&#x60; to obtain pricing and order fields for the chosen domain.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/search/{name}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainSearchResponse"><a href="">DomainSearchResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The base domain name to search (for example &#x60;example&#x60; or &#x60;example.com&#x60;).</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainTransfer"></a>getDomainTransfer</h2>
+  <hr>
+  <p></p>
+  <p>Initiates the transfer workflow for a domain already in your account. Use this in coordination with &#x60;/domains/{id}/contact&#x60; to ensure registrant details are ready for the transfer request.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/transfer</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainWhoisPrivacy"></a>getDomainWhoisPrivacy</h2>
+  <hr>
+  <p></p>
+  <p>Returns status text for the Whois privacy add-on on the domain. Use this to determine whether privacy can be enabled or disabled for the current TLD before submitting updates.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/whois</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getDomainsList"></a>getDomainsList</h2>
+  <hr>
+  <p></p>
+  <p>Returns the domain services on your account, including the billing order ID, hostname, expiration date, and status. Use the &#x60;domain_id&#x60; from this response with &#x60;GET /domains/{id}&#x60; to fetch full service details, or with &#x60;/domains/{id}/nameservers&#x60;, &#x60;/domains/{id}/contact&#x60;, and &#x60;/domains/{id}/whois&#x60; to manage registration settings.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainRow"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getDomainsWelcomeEmail"></a>getDomainsWelcomeEmail</h2>
+  <hr>
+  <p></p>
+  <p>Resends the welcome email for the domain service. The email contains registration details and management instructions.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/welcome_email</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getNewDomain"></a>getNewDomain</h2>
+  <hr>
+  <p></p>
+  <p>Returns the catalog of available domain services, including TLD service IDs and base Whois privacy pricing. Use the &#x60;tldServices&#x60; map to resolve a TLD into a service ID when you build an order request for &#x60;/domains/order&#x60; (POST) or the domain-field lookup endpoints.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DomainOrder"><a href="">DomainOrder</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="patchDomains"></a>patchDomains</h2>
+  <hr>
+  <p></p>
+  <p>Returns the domain-specific field requirements for the supplied hostname and registration type. Use this to build the form data required for &#x60;/domains/order&#x60; (POST).</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="postDomainRenewal"></a>postDomainRenewal</h2>
+  <hr>
+  <p></p>
+  <p>Submits a domain renewal request for the order. Use &#x60;/domains/{id}/invoices&#x60; to identify any invoices created as part of the renewal flow.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/renew</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postDomainTransfer"></a>postDomainTransfer</h2>
+  <hr>
+  <p></p>
+  <p>Submits a transfer request for the domain order. Use &#x60;/domains/{id}/invoices&#x60; to identify any invoices generated as part of the transfer process.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/transfer</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="putDomains"></a>putDomains</h2>
+  <hr>
+  <p></p>
+  <p>Returns validation data for a domain order request (such as availability and pricing information). This is typically used as a pre-flight check before submitting a POST order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="updateDomainContact"></a>updateDomainContact</h2>
+  <hr>
+  <p></p>
+  <p>Updates the registrant/admin contact details for the domain. Submit the same fields returned by the GET response after making the desired changes. Domain updates require the service to be active and unlocked.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/contact</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">DomainContactDetails(DomainContactDetails)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateDomainContact"></a>updateDomainContact</h2>
+  <hr>
+  <p></p>
+  <p>Updates the registrant/admin contact details for the domain. Submit the same fields returned by the GET response after making the desired changes. Domain updates require the service to be active and unlocked.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/contact</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">status</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">state</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">org_name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">country</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">postal_code</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">email</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">fax</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">address2</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">address3</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">address1</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">city</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">phone</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">first_name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">last_name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateDomainInfo"></a>updateDomainInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateDomainNameservers"></a>updateDomainNameservers</h2>
+  <hr>
+  <p></p>
+  <p>Replaces the full nameserver assignment for the domain with the provided list. This is the primary method for changing which authoritative nameservers the domain delegates to.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/nameservers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">DomainNameserverPutRequest(DomainNameserverPutRequest)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateDomainNameservers"></a>updateDomainNameservers</h2>
+  <hr>
+  <p></p>
+  <p>Replaces the full nameserver assignment for the domain with the provided list. This is the primary method for changing which authoritative nameservers the domain delegates to.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/nameservers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">nameserver</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateDomainWhoisPrivacy"></a>updateDomainWhoisPrivacy</h2>
+  <hr>
+  <p></p>
+  <p>Enables or disables the Whois privacy add-on for the domain. The API may create invoices when enabling privacy; use &#x60;/domains/{id}/invoices&#x60; to track billing events.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/whois</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">DomainWhoisPrivacyRequest(DomainWhoisPrivacyRequest)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateDomainWhoisPrivacy"></a>updateDomainWhoisPrivacy</h2>
+  <hr>
+  <p></p>
+  <p>Enables or disables the Whois privacy add-on for the domain. The API may create invoices when enabling privacy; use &#x60;/domains/{id}/invoices&#x60; to track billing events.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/domains/{id}/whois</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">func</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">csrf_token</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_firstname</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_lastname</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_email</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_address</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_address2</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_address3</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_city</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_state</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_zip</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_country</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_phone</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_fax</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_company</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domain_extra</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</p>
+	  </li>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+
+
+# HomeTicketStatusView
+
+Ticket statuses with view numbers.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**`4`** | **String** | Status corresponding to view number 4. |  [optional]
+**`5`** | **String** | Status corresponding to view number 5. |  [optional]
+**`6`** | **String** | Status corresponding to view number 6. |  [optional]
+
+
+

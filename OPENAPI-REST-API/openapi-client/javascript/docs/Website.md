@@ -1,0 +1,17 @@
+# InterServerManagementApi.Website
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**serviceInfo** | [**WebsiteServiceInfo**](WebsiteServiceInfo.md) |  | [optional] 
+**client_links** | [**[WebsiteClientLink]**](WebsiteClientLink.md) |  | [optional] 
+**billingDetails** | [**WebsiteBillingDetails**](WebsiteBillingDetails.md) |  | [optional] 
+**custCurrency** | **String** | Customer&#39;s currency | [optional] 
+**custCurrencySymbol** | **String** | Customer currency symbol | [optional] 
+**serviceMaster** | [**WebsiteServiceMaster**](WebsiteServiceMaster.md) |  | [optional] 
+**_package** | **String** | Package information | [optional] 
+**serviceExtra** | **[Object]** |  | [optional] 
+**extraInfoTables** | [**WebsiteExtraInfoTables**](WebsiteExtraInfoTables.md) |  | [optional] 
+
+

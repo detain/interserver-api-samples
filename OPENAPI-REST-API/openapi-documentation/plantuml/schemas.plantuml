@@ -1,0 +1,3932 @@
+@startuml
+
+title InterServer Management API Schemas Diagram
+
+entity AccountFeatures {
+    disable_reset: Integer
+    disable_reinstall: Integer
+}
+
+entity AccountInfo {
+    custid: String
+    ima: String
+    data: AccountInfoData
+    ip: String
+    oauthproviders: AccountInfoOauthproviders
+    oauthconfig: AccountInfoOauthConfig
+    oauthadapters: List<String>
+    limits: AccountInfoLimits
+    language: String
+    countryCurrencies: AccountInfoCountryCurrencies
+    enableLocales: Boolean
+    enableCurrencies: Boolean
+    gravatar: String
+}
+
+entity AccountInfoCountryCurrencies {
+}
+
+entity AccountInfoData {
+    group: String
+    address: String
+    city: String
+    country: String
+    disable_cc: String
+    fraudrecord_score: String
+    ima: String
+    name: String
+    payment_method: String
+    phone: String
+    pin: String
+    state: String
+    status: String
+    zip: String
+    account_id: String
+    account_lid: String
+    address2: String
+    affiliate_dock_description: String
+    affiliate_dock_title: String
+    affiliate_payment_method: String
+    affiliate_paypal: String
+    cc: String
+    cc_auto: String
+    cc_exp: String
+    cc_type: String
+    cc_whitelist: String
+    ccs: AccountInfoDataCcs
+    ccs_added: String
+    company: String
+    currency: String
+    disable_reinstall: String
+    disable_reset: String
+    email: String
+    email_abuse: String
+    email_settings: AccountInfoDataEmailSettings
+    extra: AccountInfoDataExtra
+    facebook_id: String
+    facebook_url: String
+    firstname: String
+    fraudrecord: AccountInfoDataFraudrecord
+    github_id: String
+    github_url: String
+    google_id: String
+    google_url: String
+    innertell_id: String
+    lastname: String
+    locale: String
+    maxmind: AccountInfoMaxMindResponse
+    maxmind_score: String
+    mb_id: String
+    modernbill_id: String
+    picture: String
+    referrer_coupon: String
+    reseller_markup: String
+    username: String
+    ssh_key: String
+    ssh_key_wrapped: String
+    api_key: String
+    api_key_wrapped: String
+    2fa_google_key: String
+    2fa_google_enabled: Boolean
+    2fa_google: Integer
+    2fa_google_split: String
+    2fa_google_qr: String
+}
+
+entity AccountInfoDataCc {
+    cc: String
+    cc_exp: String
+    name: String
+    address: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    maxmind_riskscore: String
+    maxmind: AccountInfoMaxMindResponse
+    verified: Boolean
+}
+
+entity AccountInfoDataCcs {
+}
+
+entity AccountInfoDataEmailSettings {
+    admin/cc_bad_response: String
+    admin/mass_communications.tpl: String
+}
+
+entity AccountInfoDataExtra {
+    private_whois: String
+}
+
+entity AccountInfoDataFraudrecord {
+    score: String
+    count: String
+    reliability: String
+    code: String
+}
+
+entity AccountInfoLimits {
+}
+
+entity AccountInfoLimitsInner {
+    start: String
+    end: String
+}
+
+entity AccountInfoMaxMindResponse {
+    distance: String
+    countryMatch: String
+    countryCode: String
+    freeMail: String
+    anonymousProxy: String
+    score: String
+    binMatch: String
+    binCountry: String
+    err: String
+    proxyScore: String
+    ip_region: String
+    ip_city: String
+    ip_latitude: String
+    ip_longitude: String
+    binName: String
+    ip_isp: String
+    ip_org: String
+    binNameMatch: String
+    binPhoneMatch: String
+    binPhone: String
+    custPhoneInBillingLoc: String
+    highRiskCountry: String
+    queriesRemaining: String
+    cityPostalMatch: String
+    shipCityPostalMatch: String
+    maxmindID: String
+    ip_asnum: String
+    ip_userType: String
+    ip_countryConf: String
+    ip_regionConf: String
+    ip_cityConf: String
+    ip_postalCode: String
+    ip_postalConf: String
+    ip_accuracyRadius: String
+    ip_netSpeedCell: String
+    ip_metroCode: String
+    ip_areaCode: String
+    ip_timeZone: String
+    ip_regionName: String
+    ip_domain: String
+    ip_countryName: String
+    ip_continentCode: String
+    ip_corporateProxy: String
+    carderEmail: String
+    highRiskUsername: String
+    highRiskPassword: String
+    riskScore: AccountInfoMaxMindResponseRiskScore
+    isTransProxy: String
+    prepaid: String
+    minfraud_version: String
+    service_level: String
+    explanation: String
+    female_name: String
+}
+
+entity AccountInfoMaxMindResponseRiskScore {
+}
+
+entity AccountInfoOauthConfig {
+    * callback: String
+    * providers: AccountInfoOauthConfigProviders
+}
+
+entity AccountInfoOauthConfigProviders {
+}
+
+entity AccountInfoOauthConfigProvidersValue {
+    enabled: Boolean
+    linked: Boolean
+    account: String
+    url: String
+}
+
+entity AccountInfoOauthproviders {
+}
+
+entity AccountInfoPost {
+    * name: String
+    * address: String
+    * city: String
+    * state: String
+    * zip: String
+    * country: String
+    * phone: String
+    company: String
+    address2: String
+    locale: String
+    email_invoices: String
+    email_abuse: String
+    disable_reset: Boolean
+    disable_reinstall: Boolean
+    disable_server_notifications: Boolean
+    disable_email_notifications: Boolean
+    gstin: String
+}
+
+entity AccountSshKey {
+    ssh_key: String
+}
+
+entity AffiliateBannerRow {
+    image: String
+    width: String
+    height: String
+}
+
+entity AffiliateDockSetup {
+    affiliate_dock_title: String
+    affiliate_dock_description: String
+    referrer_coupon: String
+}
+
+entity AffiliatePaymentSetup {
+    affiliate_paypal: String
+    affiliate_payment_method: String
+}
+
+entity AffiliateTrafficRow {
+    traffic_id: String
+    traffic_ip: String
+    traffic_url: String
+    traffic_affiliate: String
+    traffic_referrer: String
+    traffic_timestamp: String
+}
+
+entity AssetServer {
+    id: Integer
+    Region: String
+    price: String
+    CPU: List<AssetServerCPUInner>
+    Memory: List<AssetServerCPUInner>
+    Bandwidth: List<AssetServerCPUInner>
+    IPs: List<AssetServerCPUInner>
+    HD: Map
+}
+
+entity AssetServerCPUInner {
+}
+
+entity Backup {
+    serviceInfo: BackupServiceInfo
+    client_links: List<BackupClientLink>
+    billingDetails: BackupBillingDetails
+    custCurrency: String
+    custCurrencySymbol: String
+    serviceMaster: BackupServiceMaster
+    package: String
+    serviceExtra: String
+    extraInfoTables: BackupExtraInfoTables
+}
+
+entity BackupBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_cost_info: String
+    service_extra: String
+    service_extra_json: String
+}
+
+entity BackupClientLink {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+    other_attr: String
+}
+
+entity BackupExtraInfoTables {
+    ip_info: BackupIPInfo
+}
+
+entity BackupIPInfo {
+    title: String
+    rows: List<BackupIPInfoRow>
+}
+
+entity BackupIPInfoRow {
+    desc: String
+    value: String
+}
+
+entity BackupLoginResponse {
+    success: Boolean
+    text: String
+}
+
+entity BackupOrderPostResponse {
+    continue: Boolean
+    errors: List<String>
+    total_cost: String
+    iid: String
+    iids: List<String>
+    real_iids: List<String>
+    serviceId: Integer
+    invoice_description: String
+    cj_params: BackupOrderPostResponseCjParams
+}
+
+entity BackupOrderPostResponseCjParams {
+    containerTagId: String
+    CID: String
+    OID: String
+    TYPE: String
+    ITEM1: String
+    AMT1: String
+    QTY1: Integer
+    CURRENCY: String
+}
+
+entity BackupOrderPutRequest {
+    validateOnly: Boolean
+    serviceType: Integer
+    coupon: String
+}
+
+entity BackupOrderPutResponse {
+    continue: Boolean
+    errors: List<String>
+    serviceType: Integer
+    serviceCost: String
+    originalCost: String
+    repeatServiceCost: String
+    hostname: String
+    password: String
+    coupon: String
+    couponCode: Integer
+}
+
+entity BackupRow {
+    backup_id: String
+    backup_name: String
+    backup_cost: String
+    backup_username: String
+    backup_status: String
+    services_name: String
+}
+
+entity BackupServiceInfo {
+    backup_id: String
+    backup_server: String
+    backup_username: String
+    backup_type: String
+    backup_currency: String
+    backup_order_date: String
+    backup_custid: String
+    backup_quota: String
+    backup_ip: String
+    backup_status: String
+    backup_invoice: String
+    backup_coupon: String
+    backup_extra: String
+    backup_server_status: String
+    backup_comment: String
+}
+
+entity BackupServiceMaster {
+    backup_id: Integer
+    backup_name: String
+    backup_ip: String
+    backup_type: Integer
+    backup_hdsize: Integer
+    backup_hdfree: Integer
+    backup_last_update: String
+    backup_available: Integer
+    backup_iowait: Integer
+    backup_order: Integer
+}
+
+entity BackupsOrder {
+    * packageCosts: BackupsOrderPackageCosts
+    * serviceTypes: BackupsOrderServiceTypes
+}
+
+entity BackupsOrderPackageCosts {
+    * 11006: Integer
+}
+
+entity BackupsOrderServiceTypes {
+    11006: BackupsOrderServiceTypes
+}
+
+entity Bandwidth {
+    id: Integer
+    short_desc: String
+    monthly_price: BigDecimal
+    monthly_price_display: String
+}
+
+entity BillingAddCcRequest {
+    name: String
+    address: String
+    city: String
+    state: String
+    country: String
+    zip: String
+    cc: String
+    cc_exp: String
+    cc_ccv2: String
+}
+
+entity BillingInvoiceDetail {
+}
+
+entity BillingInvoiceList {
+    rows: List<Object>
+    summary: Object
+}
+
+entity BillingPaymentMethodRequest {
+    payment_method: String
+    cc_auto: String
+}
+
+entity BillingPrepayRequest {
+    module: String
+    amount: BigDecimal
+    automatic_use: String
+}
+
+entity BillingVerifyCcRequest {
+    idx: Integer
+    cc_ccv2: String
+    cc_amount1: String
+    cc_amount2: String
+    terms: Boolean
+}
+
+entity BuyItNowList {
+}
+
+entity BuyItNowRow {
+    server_id: String
+    cpu: List<BuyItNowRowCpuInner>
+    memory: String
+    disk: Map
+    bandwidth: String
+    ips: String
+    location: String
+    price: Integer
+}
+
+entity BuyItNowRowCpuInner {
+    img: String
+    type: String
+    speed: String
+    num_cpus: String
+    num_cores: String
+}
+
+entity BuyItNowRowCpuInnerOneOf {
+    img: String
+    type: String
+    speed: String
+    num_cpus: String
+    num_cores: String
+}
+
+entity BuyItNowServerOrder200Response {
+    bandwidth: List<BuyItNowServerOrder200ResponseBandwidthInner>
+    ips: List<BuyItNowServerOrder200ResponseIpsInner>
+    os: List<BuyItNowServerOrder200ResponseOsInner>
+    cp: List<BuyItNowServerOrder200ResponseCpInner>
+    raid: List<BuyItNowServerOrder200ResponseRaidInner>
+}
+
+entity BuyItNowServerOrder200ResponseBandwidthInner {
+    id: String
+    short_desc: String
+    long_desc: String
+    monthly_price: String
+}
+
+entity BuyItNowServerOrder200ResponseCpInner {
+    id: String
+    short_desc: String
+    long_desc: String
+    os_type: String
+    monthly_price: String
+}
+
+entity BuyItNowServerOrder200ResponseIpsInner {
+    id: String
+    short_desc: String
+    long_desc: String
+    monthly_price: String
+}
+
+entity BuyItNowServerOrder200ResponseOsInner {
+    id: String
+    short_desc: String
+    long_desc: String
+    monthly_price: String
+}
+
+entity BuyItNowServerOrder200ResponseRaidInner {
+    id: String
+    short_desc: String
+    long_desc: String
+    monthly_price: String
+}
+
+entity CancelBackup200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity CancelDomain200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity CancelScrubIp200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity CaptchaResponse {
+    * captcha: String
+}
+
+entity ChargeInvoiceRows {
+    success: Boolean
+    invoices: Map
+}
+
+entity ChargeInvoiceRowsInvoicesValue {
+    invoices_id: BigDecimal
+    invoices_description: String
+    invoices_amount: BigDecimal
+    invoices_date: String
+    invoices_paid: BigDecimal
+    invoices_due_date: String
+    invoices_currency: String
+    currency_symbol: String
+    invoices_date_formatted: String
+    paid_invoices: Map
+}
+
+entity ChargeInvoiceRowsInvoicesValuePaidInvoicesValue {
+    invoices_id: String
+    invoices_description: String
+    invoices_amount: BigDecimal
+    invoices_date: String
+    invoices_currency: String
+    currency_symbol: String
+    invoices_date_formatted: String
+    payment_type: String
+    refund_invoices: Map
+}
+
+entity ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue {
+    invoices_id: BigDecimal
+    invoices_description: String
+    invoices_amount: BigDecimal
+    invoices_date: String
+    invoices_currency: String
+    currency_symbol: String
+    invoices_date_formatted: String
+}
+
+entity CloseTicketResponseSchema {
+    success: Boolean
+    text: String
+}
+
+entity ConfigIds {
+    memory: Integer
+    hd: Integer
+    bandwidth: Integer
+    ips: Integer
+    os: Integer
+    cp: Integer
+    raid: Integer
+}
+
+entity ConfigLists {
+    cpu_li: Map
+    memory_li: Map
+    hd_li: Map
+    bandwidth_li: Map
+    ips_li: Map
+    os_li: Map
+    cp_li: Map
+    raid_li: List<RaidOption>
+}
+
+entity ControlPanel {
+    id: Integer
+    short_desc: String
+    monthly_price: BigDecimal
+}
+
+entity Cpu {
+    id: Integer
+    short_desc: String
+    long_desc: String
+    type: String
+    speed: String
+    num_cores: String
+    num_cpus: String
+    benchmark: String
+    monthly_price: BigDecimal
+    monthly_price_display: String
+    max_ram: String
+    min_ram: String
+    max_lff: String
+    max_sff: String
+    max_nve: String
+    visible: String
+    active: String
+}
+
+entity CpuWithDefaults {
+}
+
+entity CreateFilter {
+    * filter_type: String
+    * port: Integer
+}
+
+entity CreateFilter201Response {
+    success: Boolean
+    text: String
+}
+
+entity CreateFilter400Response {
+    success: Boolean
+    text: String
+    errors: List<String>
+}
+
+entity CreateFilter500Response {
+    success: Boolean
+    text: String
+}
+
+entity CreateFirewallRule {
+    * protocol_id: Integer
+    * xdp_action: Integer
+    destination_port: Integer
+    source_ip: String
+    source_port: Integer
+}
+
+entity CreateGeoFirewallRule {
+    * xdp_action: Integer
+    destination_port: Integer
+    country_code: Integer
+    asn: Integer
+}
+
+entity CreateGeoRule400Response {
+    success: Boolean
+    text: String
+    errors: List<String>
+}
+
+entity CreateRule201Response {
+    success: Boolean
+    text: String
+}
+
+entity CreateRule400Response {
+    success: Boolean
+    text: String
+    errors: List<String>
+}
+
+entity CreateRule500Response {
+    success: Boolean
+    text: String
+}
+
+entity DeleteFilter200Response {
+    success: Boolean
+    text: String
+}
+
+entity DeleteFilter400Response {
+    success: Boolean
+    text: String
+}
+
+entity DeleteFilter500Response {
+    success: Boolean
+    text: String
+}
+
+entity DeleteFirewallRule {
+    * rule_id: Integer
+}
+
+entity DeleteGeoFirewallRule {
+    * rule_id: Integer
+}
+
+entity DenyRuleNew {
+    * type: String
+    * data: String
+    user: String
+}
+
+entity DenyRuleRecord {
+}
+
+entity DisableScrub200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity DisableScrub400Response {
+    * success: Boolean
+    * text: String
+}
+
+entity DisableScrub500Response {
+    * success: Boolean
+    * text: String
+}
+
+entity DnsListItem {
+    id: Integer
+    name: String
+    content: String
+}
+
+entity DnsNewDomain {
+    * domain: String
+    * ip: String
+}
+
+entity DnsNewRecord {
+    * name: String
+    * type: DnsRecordType
+    * content: String
+    ttl: Integer
+    prio: Integer
+}
+
+entity DnsRecord {
+    * id: String
+    * domain_id: String
+    * name: String
+    * type: DnsRecordType
+    * content: String
+    * ttl: String
+    * prio: String
+    * disabled: String
+    * ordername: String
+    * auth: String
+}
+
+entity DnsRecordType {
+}
+
+entity DnsUpdateRecord {
+    name: String
+    type: DnsRecordType
+    content: String
+    ttl: String
+    prio: String
+    disabled: String
+    ordername: String
+    auth: String
+}
+
+entity Domain {
+    serviceInfo: DomainServiceInfo
+    serviceTypes: Map
+    client_links: List<DomainClientLink>
+    billingDetails: DomainBillingDetails
+    custCurrency: String
+    custCurrencySymbol: String
+    serviceExtra: DomainBillingExtra
+    extraInfoTables: BackupExtraInfoTables
+    serviceType: DomainServiceType
+    contact_details: DomainContactDetails
+    pwarning: String
+    transfer_info: String
+    errors: Boolean
+    domain_logs: List<String>
+    allInfo: DomainAllInfo
+    registrarStatus: String
+    locked: String
+    whoisPrivacy: String
+    autoRenew: String
+}
+
+entity DomainAdminContact {
+    status: String
+    state: String
+    org_name: String
+    country: String
+    postal_code: String
+    email: String
+    fax: String
+    address2: String
+    address3: String
+    address1: String
+    city: String
+    phone: String
+    first_name: String
+    last_name: String
+}
+
+entity DomainAllInfo {
+    _OPS_version: String
+    attributes: DomainAllInfoAttributes
+    object: String
+    protocol: String
+    response_text: String
+    response_code: String
+    action: String
+    is_success: String
+}
+
+entity DomainAllInfoAttributes {
+    contact_set: DomainAllInfoAttributesContactSet
+    registry_createdate: String
+    registry_expiredate: String
+    tld_data: String
+    let_expire: String
+    auto_renew: String
+    sponsoring_rsp: String
+    gdpr_consent_status: String
+    nameserver_list: List<DomainNameServer>
+    registry_updatedate: String
+    affiliate_id: String
+    expiredate: String
+}
+
+entity DomainAllInfoAttributesContactSet {
+    owner: DomainOwnerContact
+    admin: DomainAdminContact
+    tech: DomainTechContact
+}
+
+entity DomainBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_cost_info: String
+    service_extra: DomainBillingExtra
+    service_extra_json: String
+}
+
+entity DomainBillingExtra {
+    order: DomainOrderResponse
+    order_id: String
+    domain_id: String
+    provProcessPending: DomainProvProcessPending
+    email: String
+    firstname: String
+    lastname: String
+    company: String
+    address: String
+    address2: String
+    address3: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    phone: String
+    fax: String
+}
+
+entity DomainClientLink {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+}
+
+entity DomainContactDetails {
+    status: String
+    state: String
+    org_name: String
+    country: String
+    postal_code: String
+    email: String
+    fax: String
+    address2: String
+    address3: String
+    address1: String
+    city: String
+    phone: String
+    first_name: String
+    last_name: String
+}
+
+entity DomainDnssecRecords {
+}
+
+entity DomainDnssecRecordsInner {
+    algorithm: String
+    digest_type: String
+    digest: String
+    key_tag: String
+}
+
+entity DomainDnssecRequest {
+    algorithm: List<Integer>
+    digest_type: List<Integer>
+    digest: List<String>
+    key_tag: List<Integer>
+}
+
+entity DomainLookupResponse {
+    available: Boolean
+    premium: Boolean
+    website: Boolean
+    domain_service: Boolean
+    service: Object
+    whois_privacy: Boolean
+    new: String
+    renewal: String
+    transfer: String
+    fields: Object
+    currencies: Object
+}
+
+entity DomainNameServer {
+    sortorder: String
+    name: String
+    ipaddress: String
+}
+
+entity DomainNameserverGetResponse {
+}
+
+entity DomainNameserverGetResponseInner {
+    * name: String
+    * ipaddress: String
+    * can_delete: String
+}
+
+entity DomainNameserverPostRequest {
+    * name: String
+    * ipAddress: String
+}
+
+entity DomainNameserverPutRequest {
+    * nameserver: List<String>
+}
+
+entity DomainOrder {
+    whoisPrivacyCost: String
+    services: DomainOrderServices
+    tldServices: Object
+}
+
+entity DomainOrderResponse {
+    _OPS_version: String
+    protocol: String
+    is_success: String
+    action: String
+    attributes: DomainOrderResponseAttributes
+    response_text: String
+    object: String
+    response_code: String
+}
+
+entity DomainOrderResponseAttributes {
+    id: String
+    admin_email: String
+}
+
+entity DomainOrderServices {
+    DomainOrderServices10001: DomainOrderServices10001
+}
+
+entity DomainOrderServices10001 {
+    services_id: String
+    services_name: String
+    services_cost: String
+    services_currency: String
+    services_category: String
+    services_buyable: String
+    services_type: String
+    services_field1: String
+    services_field2: String
+    services_module: String
+    services_hidden: String
+}
+
+entity DomainOrderTldServices {
+    .asia: Integer
+    .be: Integer
+    .biz: Integer
+    .ca: Integer
+}
+
+entity DomainOwnerContact {
+    postal_code: String
+    org_name: String
+    country: String
+    status: String
+    state: String
+    first_name: String
+    last_name: String
+    address3: String
+    fax: String
+    address2: String
+    email: String
+    city: String
+    phone: String
+    address1: String
+}
+
+entity DomainProvProcessPending {
+    _OPS_version: String
+    response_text: String
+    protocol: String
+    response_code: String
+    action: String
+    object: String
+    is_success: String
+    attributes: DomainProvProcessPendingAttributes
+}
+
+entity DomainProvProcessPendingAttributes {
+    id: String
+    order_id: String
+    registration expiration date: String
+    f_auto_renew: String
+}
+
+entity DomainRow {
+    domain_id: String
+    domain_hostname: String
+    domain_expire_date: String
+    cost: String
+    domain_status: String
+}
+
+entity DomainSearchResponse {
+    success: Boolean
+    response_text: String
+    response_time: String
+    lookup: List<Object>
+    suggest: List<Object>
+    tlds: List<String>
+}
+
+entity DomainServiceInfo {
+    domain_id: String
+    domain_hostname: String
+    domain_username: String
+    domain_password: String
+    domain_type: String
+    domain_currency: String
+    domain_expire_date: String
+    domain_order_date: String
+    domain_custid: String
+    domain_status: String
+    domain_invoice: String
+    domain_coupon: String
+}
+
+entity DomainServiceType {
+    services_id: String
+    services_name: String
+    services_cost: String
+    services_category: String
+    services_buyable: String
+    services_type: String
+    services_field1: String
+    services_field2: String
+    services_module: String
+}
+
+entity DomainTechContact {
+    state: String
+    status: String
+    org_name: String
+    country: String
+    postal_code: String
+    fax: String
+    email: String
+    address2: String
+    address3: String
+    address1: String
+    city: String
+    phone: String
+    first_name: String
+    last_name: String
+}
+
+entity DomainWhoisPrivacyRequest {
+    func: String
+    csrf_token: String
+    domain_firstname: String
+    domain_lastname: String
+    domain_email: String
+    domain_address: String
+    domain_address2: String
+    domain_address3: String
+    domain_city: String
+    domain_state: String
+    domain_zip: String
+    domain_country: String
+    domain_phone: String
+    domain_fax: String
+    domain_company: String
+    domain_extra: String
+}
+
+entity DownloadQsBackup200Response {
+    text: String
+    url: String
+}
+
+entity DownloadQsBackupRequest {
+    * file: String
+}
+
+entity EmailAddress {
+    email: String
+}
+
+entity EmailAddressName {
+    * email: String
+    name: String
+}
+
+entity EnableScrub200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity EnableScrub500Response {
+    * success: Boolean
+    * text: String
+}
+
+entity FieldLabel {
+    name: String
+    active: Integer
+}
+
+entity FloatingIpsCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity FormValues {
+    memory: Integer
+    bandwidth: Integer
+    ips: Integer
+    os: Integer
+    cp: Integer
+    raid: Integer
+    hd: Integer
+    region: Integer
+}
+
+entity GenericResponse {
+    * status: String
+    * text: String
+}
+
+entity GetAccountInfo401Response {
+    * code: Integer
+    * message: String
+}
+
+entity GetAccountTfaSetup200Response {
+    2fa_google_key: String
+    2fa_google_split: String
+}
+
+entity GetOauthRedirect200Response {
+    redirect_url: String
+}
+
+entity GetOrderDetail200Response {
+    packageCosts: GetOrderDetail200ResponsePackageCosts
+    serviceTypes: List<GetOrderDetail200ResponseServiceTypesInner>
+    ips: List<GetOrderDetail200ResponseIpsInner>
+}
+
+entity GetOrderDetail200ResponseIpsInner {
+    service_id: BigDecimal
+    service_module: String
+    service_hostname: String
+}
+
+entity GetOrderDetail200ResponsePackageCosts {
+    package_id: BigDecimal
+    package_cost: BigDecimal
+    currency: String
+    currencySymbol: String
+}
+
+entity GetOrderDetail200ResponseServiceTypesInner {
+    services_id: Integer
+    services_name: String
+    services_cost: Integer
+    services_field1: String
+    services_field2: String
+    services_module: String
+}
+
+entity GetScrubIpDetails200Response {
+    serviceInfo: GetScrubIpDetails200ResponseServiceInfo
+    client_links: List<GetScrubIpDetails200ResponseClientLinksInner>
+    billingDetails: GetScrubIpDetails200ResponseBillingDetails
+    custCurrency: String
+    custCurrencySymbol: String
+    package: String
+    extraInfoTables: GetScrubIpDetails200ResponseExtraInfoTables
+    filter_firewall: GetScrubIpDetails200ResponseFilterFirewall
+}
+
+entity GetScrubIpDetails200ResponseBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_cost_info: String
+}
+
+entity GetScrubIpDetails200ResponseClientLinksInner {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+    other_attr: String
+}
+
+entity GetScrubIpDetails200ResponseExtraInfoTables {
+    scrub_ips: GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
+}
+
+entity GetScrubIpDetails200ResponseExtraInfoTablesScrubIps {
+    title: String
+    rows: List<GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner>
+}
+
+entity GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner {
+    desc: String
+    value: String
+}
+
+entity GetScrubIpDetails200ResponseFilterFirewall {
+    rules: List<GetScrubIpDetails200ResponseFilterFirewallRulesInner>
+    filters: List<GetScrubIpDetails200ResponseFilterFirewallFiltersInner>
+    scrub_enabled: Integer
+}
+
+entity GetScrubIpDetails200ResponseFilterFirewallFiltersInner {
+    daddr: String
+    dest: String
+    filter_name: String
+    destination_ip: String
+    filter: String
+}
+
+entity GetScrubIpDetails200ResponseFilterFirewallRulesInner {
+    id: String
+    source_ip: String
+    destination_ip: String
+    protocol_id: String
+    source_port: String
+    destination_port: String
+    xdp_action: String
+    global_drop: String
+}
+
+entity GetScrubIpDetails200ResponseServiceInfo {
+    scrub_ip_id: String
+    scrub_ip_type: String
+    scrub_ip_custid: String
+    scrub_ip_order_date: String
+    scrub_ip_ip: String
+    scrub_ip_service_id: String
+    scrub_ip_service_module: String
+    scrub_ip_status: String
+    scrub_ip_invoice: String
+    scrub_ip_currency: String
+    scrub_ip_coupon: String
+    scrub_ip_comment: String
+}
+
+entity GetWebsiteBuyIp200Response {
+    ips: Map
+}
+
+entity HardDrive {
+    id: Integer
+    short_desc: String
+    size: String
+    drive_type: String
+    monthly_price: BigDecimal
+    monthly_price_display: String
+}
+
+entity Home {
+    * last_login_ip: String
+    * last_login: String
+    * currency: String
+    * amount: String
+    * invoice_list: Integer
+    * balance: String
+    * full_name: String
+    * email: String
+    * tickets: List<String>
+    * ticketStatus: HomeTicketStatus
+    * ticketStatusView: HomeTicketStatusView
+    * details: HomeDetails
+    * services: HomeServices
+    * AFFILIATE_AMOUNT: String
+}
+
+entity HomeDetails {
+    modules: HomeDetailsModules
+}
+
+entity HomeDetailsModules {
+    domains: HomeDetailsModulesDomains
+    webhosting: HomeDetailsModulesWebhosting
+    vps: HomeDetailsModulesVps
+    licenses: HomeDetailsModulesLicenses
+    backups: HomeDetailsModulesBackups
+    servers: HomeDetailsModulesServers
+    quickservers: HomeDetailsModulesQuickservers
+}
+
+entity HomeDetailsModulesBackups {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeDetailsModulesDomains {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeDetailsModulesLicenses {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeDetailsModulesQuickservers {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeDetailsModulesServers {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeDetailsModulesVps {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeDetailsModulesWebhosting {
+    icon: String
+    view_link: String
+    heading: String
+    buy_link: String
+    list_link: String
+}
+
+entity HomeServices {
+    domains: HomeServicesDomains
+    webhosting: HomeServicesWebhosting
+    vps: HomeServicesVps
+    licenses: HomeServicesLicenses
+    servers: HomeServicesServers
+    backups: HomeServicesBackups
+}
+
+entity HomeServicesBackups {
+    links: List<String>
+    count: Integer
+}
+
+entity HomeServicesDomains {
+    links: HomeServicesDomainsLinks
+    count: Integer
+}
+
+entity HomeServicesDomainsLinks {
+    376114: String
+    376503: String
+    592337: String
+}
+
+entity HomeServicesLicenses {
+    links: HomeServicesLicensesLinks
+    count: Integer
+}
+
+entity HomeServicesLicensesLinks {
+    386522: String
+}
+
+entity HomeServicesServers {
+    links: HomeServicesServersLinks
+    count: Integer
+}
+
+entity HomeServicesServersLinks {
+    16058: String
+}
+
+entity HomeServicesVps {
+    links: HomeServicesVpsLinks
+    count: Integer
+}
+
+entity HomeServicesVpsLinks {
+    465503: String
+    2500081: String
+    2578866: String
+}
+
+entity HomeServicesWebhosting {
+    links: HomeServicesWebhostingLinks
+    count: Integer
+}
+
+entity HomeServicesWebhostingLinks {
+    376359: String
+    376473: String
+    386218: String
+}
+
+entity HomeTicketStatus {
+    Open: Integer
+    On Hold: Integer
+}
+
+entity HomeTicketStatusView {
+    4: String
+    5: String
+    6: String
+}
+
+entity HostnameObject {
+    hostname: String
+}
+
+entity InitiatePayment200Response {
+    type: String
+    redirect: String
+    action: String
+    method: String
+    items: Object
+    text: String
+}
+
+entity InlineObject {
+    * code: String
+    * message: String
+}
+
+entity Invoice {
+    id: Long
+}
+
+entity InvoiceRow {
+}
+
+entity IpBlock {
+    id: Integer
+    short_desc: String
+    qty: String
+    monthly_price: BigDecimal
+}
+
+entity IpLimitRange {
+    * start: String
+    * end: String
+}
+
+entity IpObject {
+    * ip: String
+}
+
+entity License {
+    * serviceInfo: LicenseServiceInfo
+    * client_links: List<LicenseClientLink>
+    * billingDetails: LicenseBillingDetails
+    * custCurrency: String
+    * custCurrencySymbol: String
+    * package: String
+    * serviceExtra: List<String>
+    * extraInfoTables: LicenseExtraInfoTables
+    * service_overview_extra: String
+    * serviceType: LicenseServiceType
+    * license_key: String
+}
+
+entity LicenseBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: Date
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_coupon: String
+    service_cost_info: String
+    service_extra: List<String>
+    service_extra_json: String
+}
+
+entity LicenseClientLink {
+    * label: String
+    * link: String
+    * icon: String
+    * help_text: String
+    icon_text: String
+    other_attr: String
+}
+
+entity LicenseExtraInfoTables {
+    ip_info: LicenseIpInfo
+}
+
+entity LicenseIpInfo {
+    title: String
+    rows: List<LicenseIpInfoRow>
+}
+
+entity LicenseIpInfoRow {
+    desc: String
+    value: String
+}
+
+entity LicenseRow {
+    license_id: String
+    license_hostname: String
+    license_ip: String
+    services_name: String
+    cost: String
+    license_status: String
+    invoices_paid: String
+    invoices_date: Date
+}
+
+entity LicenseServiceInfo {
+    * license_id: String
+    * license_type: String
+    * license_currency: String
+    * license_order_date: Date
+    * license_custid: String
+    * license_ip: String
+    * license_status: String
+    * license_invoice: String
+    * license_coupon: String
+    license_hostname: String
+    license_key: String
+    license_extra: String
+}
+
+entity LicenseServiceType {
+    services_id: String
+    services_name: String
+    services_cost: String
+    services_category: String
+    services_buyable: String
+    services_type: String
+    services_field1: String
+    services_field2: String
+    services_module: String
+}
+
+entity LicensesCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity LicensesOrder {
+    serviceCategories: LicensesOrderServiceCategories
+    packageCosts: LicensesOrderPackageCosts
+    serviceTypes: LicensesOrderServiceTypes
+}
+
+entity LicensesOrderPackageCosts {
+    LicensesOrderPackageCosts11468: BigDecimal
+}
+
+entity LicensesOrderServiceCategories {
+    LicensesOrderServiceCategories509: LicensesOrderServiceCategories509
+}
+
+entity LicensesOrderServiceCategories509 {
+    category_id: String
+    category_name: String
+    category_tag: String
+    category_module: String
+}
+
+entity LicensesOrderServiceTypes {
+    LicensesOrderServiceTypes11482: LicensesOrderServiceTypes11482
+}
+
+entity LicensesOrderServiceTypes11482 {
+    services_id: String
+    services_name: String
+    services_cost: String
+    services_category: String
+    services_buyable: String
+    services_type: String
+    services_field1: String
+    services_field2: String
+    services_module: String
+}
+
+entity LoginErrorResponse {
+    message: String
+    field: String
+}
+
+entity LoginInfo {
+    * captcha: String
+    * counts: LoginServiceCounts
+    logo: String
+    language: String
+}
+
+entity LoginServiceCounts {
+    * vps: Integer
+    * websites: Integer
+    * servers: Integer
+}
+
+entity LoginSubmissionExample {
+    * login: String
+    * passwd: String
+    remember: String
+    g-recaptcha-response: LoginSubmissionExampleGRecaptchaResponse
+    tfa: String
+}
+
+entity LoginSubmissionExampleGRecaptchaResponse {
+    __v_isShallow: Boolean
+    dep: LoginSubmissionExampleGRecaptchaResponseDep
+    __v_isRef: Boolean
+    _rawValue: String
+    _value: String
+}
+
+entity LoginSubmissionExampleGRecaptchaResponseDep {
+    w: Integer
+    n: Integer
+}
+
+entity LoginSuccessResponse {
+    sessionId: String
+    account_id: Integer
+    account_lid: String
+    ima: String
+    gravatar: String
+}
+
+entity MailAlertRequest {
+    type: String
+    value: String
+    to: String
+    enabled: String
+}
+
+entity MailAlertUpdateRequest {
+    alert_id: Integer
+    type: String
+    value: String
+    to: String
+    enabled: String
+}
+
+entity MailAlertsResponse {
+}
+
+entity MailAlertsResponseInner {
+    alert_id: Integer
+    alert_type: String
+    alert_value: String
+    alert_to: String
+    alert_enabled: String
+}
+
+entity MailAttachment {
+    * filename: String
+    * data: String
+}
+
+entity MailBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_cost_info: String
+    service_extra: List<String>
+    service_extra_json: String
+}
+
+entity MailBlockClickHouse {
+    * date: Date
+    * from: String
+    * messageId: String
+    * subject: String
+    * to: String
+}
+
+entity MailBlockRspamd {
+    * from: String
+    * subject: String
+}
+
+entity MailBlocks {
+    * local: List<MailBlockClickHouse>
+    * mbtrap: List<MailBlockClickHouse>
+    * subject: List<MailBlockRspamd>
+}
+
+entity MailCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity MailClientLink {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+    other_attr: String
+}
+
+entity MailDelistRequest {
+    unblock: String
+}
+
+entity MailDelistResponse {
+    id: Integer
+    local: List<Object>
+    mbtrap: List<Object>
+    subject: List<Object>
+    manual: List<Object>
+}
+
+entity MailDeliverabilityResponse {
+    stat: Object
+    percent: BigDecimal
+    table_data: List<List>
+}
+
+entity MailExtraInfoTable {
+    title: String
+    rows: List<MailExtraInfoTableRow>
+}
+
+entity MailExtraInfoTableRow {
+    desc: String
+    value: String
+}
+
+entity MailLog {
+    * total: Integer
+    * skip: Integer
+    * limit: Integer
+    * emails: List<MailLogEntry>
+}
+
+entity MailLogEntry {
+    * _id: Integer
+    * id: String
+    * from: String
+    * to: String
+    * subject: String
+    * created: String
+    * time: Integer
+    * user: String
+    * transtype: String
+    * origin: String
+    * interface: String
+    * sendingZone: String
+    * bodySize: Integer
+    * seq: Integer
+    * recipient: String
+    * domain: String
+    * locked: Integer
+    * lockTime: Integer
+    * assigned: String
+    * queued: String
+    * mxHostname: String
+    * response: String
+    messageId: String
+}
+
+entity MailOrder {
+    * id: Integer
+    * status: String
+    * username: String
+    comment: String
+}
+
+entity MailRow {
+    mail_id: String
+    repeat_invoices_cost: String
+    mail_username: String
+    mail_status: String
+    services_name: String
+}
+
+entity MailSchema {
+    * serviceInfo: MailServiceInfo
+    * client_links: List<MailClientLink>
+    * billingDetails: MailBillingDetails
+    * custCurrency: String
+    * custCurrencySymbol: String
+    * package: String
+    * extraInfoTables: MailSchemaExtraInfoTables
+    * serviceType: MailServiceType
+    * usage_count: String
+    serviceExtra: List<String>
+}
+
+entity MailSchemaExtraInfoTables {
+    mail: MailExtraInfoTable
+    tutorials: MailTutorialsTable
+}
+
+entity MailServiceInfo {
+    * mail_id: String
+    * mail_type: String
+    * mail_currency: String
+    * mail_order_date: String
+    * mail_custid: String
+    * mail_quota: String
+    * mail_status: String
+    * mail_invoice: String
+    mail_username: String
+    mail_ip: String
+    mail_coupon: String
+    mail_extra: String
+    mail_server_status: String
+    mail_comment: String
+}
+
+entity MailServiceType {
+    services_id: String
+    services_name: String
+    services_cost: String
+    services_category: String
+    services_buyable: String
+    services_type: String
+    services_field1: String
+    services_field2: String
+    services_module: String
+}
+
+entity MailStatsType {
+    time: String
+    usage: Integer
+    currency: String
+    currencySymbol: String
+    cost: Double
+    received: Integer
+    sent: Integer
+    volume: MailStatsTypeVolume
+}
+
+entity MailStatsTypeVolume {
+    to: MailStatsTypeVolumeTo
+    from: MailStatsTypeVolumeFrom
+    ip: MailStatsTypeVolumeIp
+}
+
+entity MailStatsTypeVolumeFrom {
+    billing@somedomain.com: Integer
+    sales@somedomain.com: Integer
+}
+
+entity MailStatsTypeVolumeIp {
+    1.1.1.1: Integer
+    2.2.2.2: Integer
+    3.3.3.3: Integer
+    4.4.4.4: Integer
+}
+
+entity MailStatsTypeVolumeTo {
+    client@domain.com: Integer
+    user@site.net: Integer
+    sales@company.com: Integer
+    client@anothersite.com: Integer
+}
+
+entity MailTutorialsTable {
+    title: String
+    rows: List<MailTutorialsTableRow>
+}
+
+entity MailTutorialsTableRow {
+    desc: String
+    value: String
+}
+
+entity MemoryOption {
+    id: Integer
+    short_desc: String
+    monthly_price: BigDecimal
+    monthly_price_display: String
+}
+
+entity ModuleSettings {
+    * SERVICE_ID_OFFSET: Integer
+    * USE_REPEAT_INVOICE: Boolean
+    * USE_PACKAGES: Boolean
+    * BILLING_DAYS_OFFSET: Integer
+    * IMGNAME: String
+    * REPEAT_BILLING_METHOD: Integer
+    * DELETE_PENDING_DAYS: Integer
+    * SUSPEND_DAYS: Integer
+    * SUSPEND_WARNING_DAYS: Integer
+    * TITLE: String
+    * MENUNAME: String
+    * EMAIL_FROM: String
+    * TBLNAME: String
+    * TABLE: String
+    * TITLE_FIELD: String
+    * PREFIX: String
+    TITLE_FIELD2: String
+    TITLE_FIELD3: String
+}
+
+entity Modules {
+}
+
+entity MonthlyCounts {
+}
+
+entity OperatingSystem {
+    id: Integer
+    short_desc: String
+    monthly_price: BigDecimal
+}
+
+entity PasswordRequest {
+    * password: String
+}
+
+entity PatchOauthTwoFactor200Response {
+    login: Boolean
+}
+
+entity PatchOauthTwoFactorRequest {
+    * account_id: Integer
+    * code: String
+}
+
+entity PaymentInvoiceRows {
+}
+
+entity PlaceBuyNowServerRequest {
+    server_id: BigDecimal
+    server_hostname: String
+    server_root_password: String
+}
+
+entity PlaceScrubOrder201Response {
+    success: Boolean
+    text: String
+    order_details: PlaceScrubOrder201ResponseOrderDetails
+}
+
+entity PlaceScrubOrder201ResponseOrderDetails {
+    total_cost: Integer
+    service_id: Integer
+    invoice_id: Integer
+    invoice_description: String
+    cj_params: PlaceScrubOrder201ResponseOrderDetailsCjParams
+}
+
+entity PlaceScrubOrder201ResponseOrderDetailsCjParams {
+    containerTagId: Integer
+    CID: Integer
+    OID: String
+    TYPE: Integer
+    ITEM1: String
+    AMT1: Integer
+    QTY1: Integer
+    CURRENCY: String
+}
+
+entity PostOauthCallback200Response {
+    login: Boolean
+    signup: Boolean
+    linked: Boolean
+    account_id: Integer
+    error_code: String
+}
+
+entity PostOauthCallbackRequest {
+    provider: String
+}
+
+entity PostWebsiteBuyIp200Response {
+    message: String
+    success: Boolean
+}
+
+entity PostWebsiteBuyIpRequest {
+    ips: Map
+}
+
+entity PostWebsiteMigration200Response {
+    text: String
+    ticket: Integer
+}
+
+entity PostWebsiteMigrationRequest {
+    custPortal: String
+    regEmail: String
+    password: String
+    ctrlPanel: String
+    ftpUsername: String
+    ftpPassword: String
+    siteBusyMig: String
+    splReqMig: String
+    domainReg: String
+    dataMig: String
+    domainRegPortal: String
+    domainRegEmail: String
+    domainRegPassword: String
+}
+
+entity QueueResponse {
+    * text: String
+    * queueId: Integer
+}
+
+entity Quickserver {
+    * serviceInfo: QuickserverServiceInfo
+    * client_links: List<QuickserverClientLink>
+    * billingDetails: QuickserverBillingDetails
+    * custCurrency: String
+    * custCurrencySymbol: String
+    * serviceMaster: QuickserverServiceMaster
+    * package: String
+    * os_template: String
+    * serviceExtra: QuickserverServiceExtra
+    * extraInfoTables: QuickserverExtraInfoTables
+    * cpu_graph_data: String
+    * bandwidth_xaxis: String
+    * bandwidth_yaxis: String
+    * module: String
+    * token: String
+    * service_disk_used: String
+    * service_disk_total: String
+    * disk_percentage: BigDecimal
+    * memory: String
+    * hdd: String
+    * service_overview_extra: List<String>
+}
+
+entity QuickserverAddons {
+    title: String
+    rows: List<QuickserverAddonsRow>
+}
+
+entity QuickserverAddonsRow {
+    desc: String
+    value: String
+}
+
+entity QuickserverBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_cost_info: String
+    service_extra: QuickserverServiceExtra
+    service_extra_json: String
+}
+
+entity QuickserverClientLink {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+    other_attr: String
+}
+
+entity QuickserverExtraInfoTables {
+    ip_info: QuickserverIpInfo
+    addons: QuickserverAddons
+}
+
+entity QuickserverIpInfo {
+    title: String
+    rows: List<QuickserverIpTableRow>
+}
+
+entity QuickserverIpTableRow {
+    desc: String
+    value: String
+}
+
+entity QuickserverOrder {
+    qs_id: String
+    server_details: QuickserverOrderServerDetails
+    templates: QuickserverOrderTemplates
+    version: QuickserverOrderVersion
+    distro_sel: QuickserverOrderDistroSel
+}
+
+entity QuickserverOrderDistroSel {
+    Ubuntu: QuickserverOrderDistroSelUbuntu
+}
+
+entity QuickserverOrderDistroSelUbuntu {
+    Ubuntu: String
+}
+
+entity QuickserverOrderServerDetails {
+    381: QuickserverOrderServerDetails381
+}
+
+entity QuickserverOrderServerDetails381 {
+    cpu: String
+    ram: String
+    hd: String
+    cores: Integer
+    cost: String
+}
+
+entity QuickserverOrderTemplates {
+    Ubuntu: QuickserverOrderTemplatesUbuntu64
+}
+
+entity QuickserverOrderTemplatesUbuntu64 {
+}
+
+entity QuickserverOrderVersion {
+    centosstream-8: QuickserverOrderVersionCentosstream8
+}
+
+entity QuickserverOrderVersionCentosstream8 {
+    centosstream-8: String
+}
+
+entity QuickserverRow {
+    * qs_id: String
+    * qs_name: String
+    * cost: String
+    * qs_hostname: String
+    * qs_status: String
+    * qs_comment: String
+}
+
+entity QuickserverServiceExtra {
+    platform: String
+}
+
+entity QuickserverServiceInfo {
+    qs_id: String
+    qs_custid: String
+    qs_server: String
+    qs_ip: String
+    qs_ipv6: OasAnyTypeNotMapped
+    qs_vzid: String
+    qs_currency: String
+    qs_type: String
+    qs_order_date: String
+    qs_status: String
+    qs_invoice: String
+    qs_coupon: String
+    qs_extra: String
+    qs_hostname: String
+    qs_server_status: String
+    qs_comment: String
+    qs_slices: String
+    qs_vnc: String
+    qs_vnc_port: OasAnyTypeNotMapped
+    qs_rootpass: String
+    qs_mac: String
+    qs_os: String
+    qs_version: String
+    qs_location: String
+    qs_platform: OasAnyTypeNotMapped
+}
+
+entity QuickserverServiceMaster {
+    qs_id: String
+    qs_name: String
+    qs_ip: String
+    qs_type: String
+    qs_hdsize: String
+    qs_hdfree: String
+    qs_bits: String
+    qs_load: String
+    qs_ram: String
+    qs_cpu_model: String
+    qs_cpu_mhz: String
+    qs_location: String
+    qs_available: String
+    qs_cost: String
+    qs_last_update: String
+    qs_cores: String
+    qs_iowait: String
+    qs_raid_status: String
+    qs_drive_type: String
+    qs_order: String
+    qs_raid_building: String
+    qs_kernel: String
+    qs_ioping: String
+    qs_speed: String
+    qs_distro: String
+    qs_distro_version: String
+    qs_bytes_sec_in: String
+    qs_bytes_sec_out: String
+    qs_packets_sec_in: String
+    qs_packets_sec_out: String
+    qs_last_install_time: OasAnyTypeNotMapped
+    qs_partitions: OasAnyTypeNotMapped
+    qs_cpu_flags: String
+}
+
+entity QuickserversCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity RaidOption {
+    id: Integer
+    short_desc: String
+    monthly_price: BigDecimal
+}
+
+entity Region {
+    region_id: Integer
+    region_name: String
+}
+
+entity ReplyTicketRequest {
+    content: String
+}
+
+entity ReplyTicketResponseSchema {
+    success: Boolean
+    post_id: Integer
+}
+
+entity RestoreRequest {
+    backup: String
+    password: String
+}
+
+entity ReverseDnsEntries {
+    ips: Map
+}
+
+entity ScrubIpFilterTypes {
+    success: Boolean
+    filters: Map
+}
+
+entity ScrubIpFilterTypesFiltersValue {
+    name: String
+    desc: String
+}
+
+entity ScrubIpPlaceOrder {
+    * service_type: Integer
+    * ip: String
+}
+
+entity ScrubIpsDeleteRule200Response {
+    success: Boolean
+    text: String
+}
+
+entity ScrubIpsDeleteRule400Response {
+    success: Boolean
+    text: String
+}
+
+entity ScrubIpsDeleteRule500Response {
+    success: Boolean
+    text: String
+}
+
+entity ScrubIpsLogRowSchema {
+    date: String
+    filter: String
+    blocked_ip: String
+    target_ip: String
+    target_port: BigDecimal
+    protocol: String
+    byte_count: BigDecimal
+    xdp_action: String
+}
+
+entity ScrubIpsRowSchema {
+    scrub_ip_id: Integer
+    repeat_invoices_cost: BigDecimal
+    scrub_ip_ip: String
+    scrub_ip_status: String
+    services_name: String
+}
+
+entity SearchAutocompleteResponse {
+}
+
+entity SendMail {
+    * to: String
+    * from: String
+    * subject: String
+    * body: String
+}
+
+entity SendMailAdv {
+    * subject: String
+    * body: String
+    * from: EmailAddressName
+    * to: List<EmailAddressName>
+    replyto: List<EmailAddressName>
+    cc: List<EmailAddressName>
+    bcc: List<EmailAddressName>
+    attachments: List<MailAttachment>
+    id: Long
+}
+
+entity Server {
+    * ipmiAuth: Boolean
+    * client_links: List<ServerClientLink>
+    * billingDetails: ServerBillingDetails
+    * custCurrency: String
+    * custCurrencySymbol: String
+    * package: String
+    * serviceExtra: List<String>
+    * locations: ServerLocations
+    * networkInfo: ServerNetworkInfo
+    * extraInfoTables: ServerExtraInfoTables
+    * serviceInfo: ServerServiceInfo
+}
+
+entity ServerAsset {
+    * id: Integer
+    * order_id: String
+    * hostname: String
+    * status: String
+    * primary_ipv4: String
+    * primary_ipv6: String
+    * datacenter: String
+    * type_id: String
+    * asset_tag: String
+    * rack: String
+    * row: String
+    * col: String
+    * unit_start: String
+    * unit_end: String
+    * unit_sub: String
+    * ipmi_mac: String
+    * ipmi_ip: String
+    * ipmi_working: String
+    * company: String
+    * comments: String
+    * make: String
+    * model: String
+    * description: String
+    * customer_id: String
+    * external_id: String
+    * billing_status: String
+    * overdue: String
+    * asset_id: String
+    * asset_name: String
+    * rack_id: String
+    * rack_name: String
+    * rack_location: String
+    * rack_size: String
+    * rack_x: String
+    * rack_y: String
+    * switchports: List<Integer>
+    * vlans: List<String>
+    * vlans6: List<String>
+    * lease: ServerLease
+    mac: OasAnyTypeNotMapped
+    ipmi_admin_username: OasAnyTypeNotMapped
+    ipmi_admin_password: OasAnyTypeNotMapped
+    ipmi_client_username: OasAnyTypeNotMapped
+    ipmi_client_password: OasAnyTypeNotMapped
+    ipmi_updated: OasAnyTypeNotMapped
+    create_timestamp: OasAnyTypeNotMapped
+    update_timestamp: OasAnyTypeNotMapped
+    comment: OasAnyTypeNotMapped
+}
+
+entity ServerAssets {
+    title: String
+    size: Integer
+    type: String
+    header: List<String>
+    rows: List<List>
+}
+
+entity ServerBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_cost_info: String
+    service_extra: List<String>
+    service_extra_json: String
+}
+
+entity ServerClientLink {
+    * label: String
+    * link: String
+    icon: String
+    icon_text: String
+    help_text: String
+}
+
+entity ServerExtraInfoTables {
+    * assets: ServerAssets
+}
+
+entity ServerIpmiLiveInfo {
+    text: String
+    public_ip: String
+    allowed_ip: String
+    client_username: String
+    client_password: String
+}
+
+entity ServerIpmiLiveRequest {
+    * ip: String
+    asset: Integer
+}
+
+entity ServerIpmiPowerRequest {
+    * action: String
+    asset: Integer
+}
+
+entity ServerLease {
+    * mac: String
+    * authenticated: Boolean
+    * group: String
+}
+
+entity ServerLocation1 {
+    * location_id: Integer
+    * location_name: String
+    * location_lat: String
+    * location_long: String
+    location_description: String
+    location_ipmi_group: Integer
+}
+
+entity ServerLocations {
+    1: ServerLocation1
+}
+
+entity ServerNetworkInfo {
+    * vlans: List<String>
+    * vlans6: List<String>
+    * assets: ServerNetworkInfoAssets
+    * switchports: ServerNetworkInfoSwitchports
+}
+
+entity ServerNetworkInfoAssets {
+    * 3497: ServerAsset
+}
+
+entity ServerNetworkInfoSwitchports {
+    * 10414: ServerSwitchport
+}
+
+entity ServerOrder {
+    form_values: ServerOrderFormValues
+    config_ids: ServerOrderConfigIds
+    cpu: Integer
+    field_label: ServerOrderFieldLabels
+    cpu_li: ServerOrderCpuLi
+    memory_li: ServerOrderMemoryLi
+    bandwidth_li: ServerOrderBandwidthLi
+    ips_li: ServerOrderIpsLi
+    os_li: ServerOrderOsLi
+    cp_li: ServerOrderCpLi
+    raid_li: List<ServerOrderRAID>
+}
+
+entity ServerOrderBandwidth {
+    id: String
+    price: Integer
+    img: String
+    short_desc: String
+    long_desc: String
+    type: String
+    qty: String
+    active: String
+    monthly_price: Integer
+    price_display: String
+    monthly_price_display: String
+}
+
+entity ServerOrderBandwidthLi {
+    15: ServerOrderBandwidth
+}
+
+entity ServerOrderCPU {
+    id: String
+    price: Integer
+    img: String
+    short_desc: String
+    long_desc: String
+    location: String
+    fsb: String
+    manu: String
+    type: String
+    speed: String
+    cache: String
+    active: String
+    num_cores: String
+    num_cpus: String
+    benchmark: String
+    monthly_price: Integer
+    max_ram: String
+    min_ram: String
+    max_lff: String
+    max_sff: String
+    max_nve: String
+    visible: String
+    hd_ids: OasAnyTypeNotMapped
+    price_display: String
+    monthly_price_display: String
+}
+
+entity ServerOrderConfigIds {
+    memory: Integer
+    bandwidth: String
+    ips: String
+    os: String
+    cp: Integer
+    raid: String
+    hd: String
+}
+
+entity ServerOrderControlPanel {
+    id: String
+    price: Integer
+    img: String
+    short_desc: String
+    long_desc: String
+    os_type: String
+    monthly_price: Integer
+    types: List<String>
+    price_display: String
+    monthly_price_display: String
+}
+
+entity ServerOrderCpLi {
+    9: ServerOrderControlPanel
+}
+
+entity ServerOrderCpuLi {
+    254: ServerOrderCPU
+}
+
+entity ServerOrderFieldLabel {
+    name: String
+    active: Integer
+}
+
+entity ServerOrderFieldLabels {
+    bandwidth: ServerOrderFieldLabel
+    ips: ServerOrderFieldLabel
+    os: ServerOrderFieldLabel
+    cp: ServerOrderFieldLabel
+    raid: ServerOrderFieldLabel
+    memory: ServerOrderFieldLabel
+    hd: ServerOrderFieldLabel
+}
+
+entity ServerOrderFormValues {
+    memory: Integer
+    bandwidth: String
+    ips: String
+    os: String
+    cp: Integer
+    raid: String
+    hd: String
+}
+
+entity ServerOrderGetResponse {
+    * form_values: FormValues
+    * config_ids: ConfigIds
+    * cpu: Integer
+    * cpu_li: Map
+    * config_li: ConfigLists
+    * frequency: Integer
+    * currency: String
+    * country: String
+    * step: String
+    field_label: Map
+    cpu_cores: Map
+    currencySymbol: String
+    custid: Integer
+    ima: String
+    regions: List<Region>
+    asset_servers: List<AssetServer>
+    buy_it_servers: List<Object>
+    display_showmore: String
+    cust_discount: BigDecimal
+}
+
+entity ServerOrderIP {
+    id: String
+    price: Integer
+    img: String
+    short_desc: String
+    long_desc: String
+    qty: String
+    monthly_price: Integer
+    price_display: String
+    monthly_price_display: String
+}
+
+entity ServerOrderIpsLi {
+    9: ServerOrderIP
+}
+
+entity ServerOrderMemory {
+    id: String
+    price: String
+    img: String
+    short_desc: String
+    long_desc: String
+    manu: String
+    size: String
+    type: String
+    hidden: String
+    monthly_price: Integer
+    drive_type: String
+    monthly_price_display: String
+}
+
+entity ServerOrderMemoryLi {
+    254: ServerOrderMemoryLi254
+}
+
+entity ServerOrderMemoryLi254 {
+    65: ServerOrderMemory
+}
+
+entity ServerOrderOS {
+    id: String
+    price: Integer
+    img: String
+    short_desc: String
+    long_desc: String
+    monthly_price: Integer
+    active: String
+    price_display: String
+    monthly_price_display: String
+}
+
+entity ServerOrderOsLi {
+    51: ServerOrderOS
+}
+
+entity ServerOrderRAID {
+    id: String
+    price: Integer
+    img: String
+    short_desc: String
+    long_desc: String
+    monthly_price: Integer
+    active: String
+    price_display: String
+    monthly_price_display: String
+}
+
+entity ServerRow {
+    * server_id: String
+    * account_lid: String
+    * server_hostname: String
+    * server_status: String
+}
+
+entity ServerServiceInfo {
+    server_id: String
+    server_hostname: String
+    server_custid: String
+    server_type: String
+    server_currency: String
+    server_order_date: String
+    server_invoice: String
+    server_coupon: String
+    server_status: String
+    server_root: String
+    server_dedicated_tag: String
+    server_custom_tag: String
+    server_comment: String
+    server_initial_bill: String
+    server_hardware: String
+    server_ips: String
+    server_monthly_bill: String
+    server_setup: String
+    server_discount: OasAnyTypeNotMapped
+    server_rep: String
+    server_date: String
+    server_total_cost: String
+    server_location: OasAnyTypeNotMapped
+    server_hardware_ordered: String
+    server_billed: String
+    server_welcome_email: String
+    server_dedicated_cpu: String
+    server_dedicated_memory: String
+    server_dedicated_hd1: String
+    server_dedicated_hd2: OasAnyTypeNotMapped
+    server_dedicated_bandwidth: String
+    server_dedicated_ips: String
+    server_dedicated_os: String
+    server_dedicated_cp: OasAnyTypeNotMapped
+    server_dedicated_raid: String
+    server_extra: String
+}
+
+entity ServerSwitchport {
+    * switchport_id: Integer
+    * switch_id: String
+    * switch: String
+    * port: String
+    * blade: String
+    * justport: String
+    * graph_id: String
+    * asset_id: Integer
+    vlans: List<String>
+    vlans6: List<String>
+}
+
+entity ServersBuyNowError {
+    success: Boolean
+    text: String
+    errors: List<String>
+}
+
+entity ServersBuyNowResponse {
+    success: Boolean
+    text: String
+    order_details: ServersBuyNowResponseOrderDetails
+}
+
+entity ServersBuyNowResponseOrderDetails {
+    service_id: BigDecimal
+    invoice_id: BigDecimal
+}
+
+entity ServersCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity Service {
+    * services_id: Integer
+    * services_name: String
+    * services_cost: BigDecimal
+    * services_currency: String
+    * services_category: Integer
+    * services_buyable: Boolean
+    * services_type: Integer
+    * services_field1: String
+    * services_field2: String
+    * services_module: String
+}
+
+entity ServiceCategories {
+}
+
+entity ServiceCategory {
+    * category_id: Integer
+    * category_name: String
+    * category_tag: String
+    * category_module: String
+}
+
+entity ServiceType {
+    * st_id: Integer
+    * st_name: String
+    * st_category: Integer
+    * st_module: String
+}
+
+entity ServiceTypes {
+}
+
+entity Services {
+}
+
+entity ServicesInfo {
+    * modules: Modules
+    * services: Services
+    * serviceTypes: ServiceTypes
+    * serviceCategories: ServiceCategories
+}
+
+entity SslCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity StatusMonthlyBreakdown {
+    * default: MonthlyCounts
+    * failed: MonthlyCounts
+    * rejected: MonthlyCounts
+    * pending: MonthlyCounts
+    * locked: MonthlyCounts
+    * paid: MonthlyCounts
+}
+
+entity SuccessTextResponse {
+    * success: Boolean
+    text: String
+    action: String
+}
+
+entity TemplateRequest {
+    * template: String
+    * localPassword: String
+    password: String
+}
+
+entity TextResponse {
+    text: String
+    message: String
+}
+
+entity TicketCustomFieldDetails {
+    Customer Server Access: String
+    Ip Address: String
+    Root Password: String
+    Sudo User: String
+    Sudo Password: Integer
+    Port: Integer
+}
+
+entity TicketDetails {
+    ticketid: Integer
+    ticketmaskid: String
+    department: String
+    status: String
+    priority: String
+    subject: String
+    created_on: String
+    updated_on: String
+}
+
+entity TicketNew {
+    * subject: String
+    * body: String
+    service_id: Integer
+    service_module: String
+}
+
+entity TicketNewResponse {
+    * text: String
+    * success: Boolean
+    ticket_id: Integer
+}
+
+entity TicketPostDetails {
+}
+
+entity TicketPostDetailsInner {
+    post_id: Integer
+    date: String
+    contents: String
+    creator: String
+    creator_email: String
+    creator_name: String
+    hasattachments: Integer
+    attachment_download: String
+}
+
+entity Tickets {
+    * ima: String
+    * custid: String
+    * view: String
+    * currentPage: Integer
+    * limit: Integer
+    * sortcol: Integer
+    * sortdir: Integer
+    * rowsOffset: Integer
+    * tickets: List<TicketsRow>
+    * pages: Integer
+    * rowsTotal: Integer
+    * inboxCount: Integer
+    * countArray: TicketsCountArray
+    * viewText: String
+}
+
+entity TicketsCountArray {
+    Open: Integer
+    On Hold: Integer
+    Closed: Integer
+}
+
+entity TicketsRow {
+    * title: String
+    * ticketmaskid: String
+    * lastreplier: String
+    * status: String
+    * priority: String
+    * total_replies: Integer
+    * lastactivity: String
+    * departmenttitle: String
+    * ticketid: Integer
+    * can_close: String
+    * attachments: OasAnyTypeNotMapped
+    * status_text: String
+    * checked: Boolean
+}
+
+entity TimezoneUpdate {
+    * timezone: String
+}
+
+entity UpdateAccountTfaRequest {
+    * 2fa_google_code: String
+}
+
+entity UpdateTicket {
+    ip: String
+    ip_address: String
+    customer_server_access: String
+    root_password: String
+    sudo_username: String
+    sudo_password: String
+    port: Integer
+}
+
+entity UpdateTicketResponseSchema {
+    success: Boolean
+    message: String
+}
+
+entity UrlRequest {
+    url: String
+}
+
+entity VPSCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity VPSTrafficDataDataSectionResponse {
+}
+
+entity VPSTrafficDataDataSectionResponseInner {
+}
+
+entity ViewTicketResponse {
+    * success: Boolean
+    * ticket: TicketDetails
+    ticket_custom_fields: TicketCustomFieldDetails
+    ticket_posts: TicketPostDetails
+}
+
+entity Vps {
+    * serviceInfo: VpsServiceInfo
+    * client_links: List<VpsClientLink>
+    * billingDetails: VpsBillingDetails
+    * custCurrency: String
+    * custCurrencySymbol: String
+    * serviceMaster: VpsServiceMaster
+    * package: String
+    * serviceExtra: VpsServiceExtra
+    * extraInfoTables: VpsExtraInfoTables
+    * module: String
+    * token: String
+    * da_link: Integer
+    * sr_link: Integer
+    * cp_data: VpsCPData
+    * da_data: VpsDAData
+    * plesk12_data: VpsPlesk12Data
+    * serviceAddons: VpsServiceAddons
+    os_template: String
+    cpu_graph_data: OasAnyTypeNotMapped
+}
+
+entity VpsBackupRow {
+    * type: String
+    * service: Integer
+    * name: String
+    * size: Integer
+    * date: Integer
+}
+
+entity VpsBackupRows {
+}
+
+entity VpsBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_coupon: String
+    service_cost_info: String
+    service_extra: VpsServiceExtra
+    service_extra_json: String
+}
+
+entity VpsCPData {
+    name: String
+    cost: Integer
+}
+
+entity VpsClientLink {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+}
+
+entity VpsDAData {
+    free: VpsDALicense
+}
+
+entity VpsDALicense {
+    name: String
+    sub_name: String
+    cost: Integer
+    img_disabled: String
+    img_active: String
+}
+
+entity VpsExtraInfoTables {
+    ip_info: VpsIPInfo
+}
+
+entity VpsIPInfo {
+    title: String
+    rows: List<VpsIPInfoRow>
+}
+
+entity VpsIPInfoRow {
+    desc: String
+    value: String
+}
+
+entity VpsOrder {
+    * vpsSliceSsdOvzCost: BigDecimal
+    * vpsSliceOvzCost: BigDecimal
+    * vpsSliceSsdVirtuozzoCost: BigDecimal
+    * vpsSliceVirtuozzoCost: BigDecimal
+    * vpsSliceHypervCost: BigDecimal
+    * vpsSliceVmwareCost: BigDecimal
+    * vpsSliceLxcCost: BigDecimal
+    * vpsSliceXenCost: BigDecimal
+    * vpsSliceKvmLCost: BigDecimal
+    * vpsSliceKvmStorageCost: BigDecimal
+    * vpsNyCost: BigDecimal
+    * vpsSliceKvmWCost: BigDecimal
+    * cpanelCost: BigDecimal
+    * daCost: BigDecimal
+    * ramSlice: String
+    * hdSlice: String
+    * hdStorageSlice: String
+    * bwSlice: String
+    * bwType: String
+    * bwTotal: BigDecimal
+    * maxSlices: String
+    * platformPackages: VpsOrderPlatformPackages
+    * platformNames: VpsOrderPlatformNames
+    * packageCosts: VpsOrderPackageCosts
+    * locationStock: VpsOrderLocationStock
+    * locationNames: VpsOrderLocationNames
+    * osNames: VpsOrderOsNames
+    * templates: VpsOrderTemplates
+    * serviceTypes: VpsOrderServiceTypes
+    * currency: String
+    * currencySymbol: String
+}
+
+entity VpsOrderLocationNames {
+    3: String
+}
+
+entity VpsOrderLocationStock {
+    1: VpsOrderLocationStock1
+}
+
+entity VpsOrderLocationStock1 {
+    kvm: Boolean
+    kvmstorage: Boolean
+    hyperv: Boolean
+}
+
+entity VpsOrderOsNames {
+    opensuse: String
+    ubuntu: String
+}
+
+entity VpsOrderPackageCosts {
+    57: BigDecimal
+}
+
+entity VpsOrderPlatformNames {
+    kvm: String
+    kvmstorage: String
+    hyperv: String
+}
+
+entity VpsOrderPlatformPackages {
+    kvm: BigDecimal
+    kvmstorage: BigDecimal
+    hyperv: BigDecimal
+}
+
+entity VpsOrderPostRequest {
+    * osDistro: String
+    * slices: Integer
+    * vpsPlatform: String
+    * period: Integer
+    * location: Integer
+    * osVersion: String
+    * hostname: String
+    * rootpass: String
+    controlpanel: String
+    coupon: String
+    comment: String
+}
+
+entity VpsOrderPutRequest {
+    * osDistro: String
+    * slices: Integer
+    * vpsPlatform: String
+    * period: Integer
+    * location: Integer
+    * osVersion: String
+    * hostname: String
+    * rootpass: String
+    controlpanel: String
+    coupon: String
+    comment: String
+}
+
+entity VpsOrderPutResponse {
+    continue: Boolean
+    errors: List<OasAnyTypeNotMapped>
+    coupon_code: Integer
+    service_cost: Integer
+    slice_cost: Integer
+    service_type: Integer
+    repeat_slice_cost: Integer
+    original_slice_cost: Integer
+    original_cost: Integer
+    repeat_service_cost: Integer
+    monthly_service_cost: Integer
+    custid: String
+    os: String
+    slices: String
+    platform: String
+    controlpanel: String
+    period: Integer
+    location: Integer
+    version: String
+    hostname: String
+    coupon: String
+    rootpass: String
+}
+
+entity VpsOrderServiceTypes {
+    32: VpsOrderServiceTypes32
+}
+
+entity VpsOrderServiceTypes32 {
+    services_id: String
+    services_name: String
+    services_cost: String
+    services_category: String
+    services_buyable: String
+    services_type: String
+    services_field1: String
+    services_field2: String
+    services_module: String
+}
+
+entity VpsOrderTemplates {
+    hyperv: VpsOrderTemplatesHyperv
+}
+
+entity VpsOrderTemplatesHyperv {
+    windows: VpsOrderTemplatesHypervWindows
+}
+
+entity VpsOrderTemplatesHypervWindows {
+    Windows2019Standard: String
+    Windows2022: String
+}
+
+entity VpsPlesk12Data {
+    admin: VpsPleskLicense
+    pro: VpsPleskLicense
+    host: VpsPleskLicense
+}
+
+entity VpsPleskLicense {
+    id: Integer
+    name: String
+    sub_name: String
+    cost: Integer
+}
+
+entity VpsRow {
+    * vps_id: String
+    * vps_name: String
+    * repeat_invoices_cost: String
+    * vps_hostname: String
+    * vps_ip: String
+    * vps_status: String
+    * services_name: String
+    * vps_comment: String
+}
+
+entity VpsServiceAddons {
+    has_cpanel: Boolean
+    has_directadmin: Boolean
+    has_fantastico: Boolean
+    has_softaculous: Boolean
+    has_hdspace: Boolean
+    dedicated_ip: Boolean
+    extra_ips: List<String>
+    extra_ips6: List<String>
+    unpaid_ips: List<String>
+    ips: List<String>
+    ips6: List<String>
+    cpanel_id: Integer
+    cost: Integer
+    ids: List<String>
+    rdata: List<String>
+}
+
+entity VpsServiceExtra {
+    spice: Integer
+    snapshots: List<VpsSnapshot>
+}
+
+entity VpsServiceInfo {
+    vps_id: String
+    vps_custid: String
+    vps_server: String
+    vps_ip: String
+    vps_ipv6: OasAnyTypeNotMapped
+    vps_vzid: String
+    vps_currency: String
+    vps_type: String
+    vps_order_date: String
+    vps_status: String
+    vps_invoice: String
+    vps_coupon: String
+    vps_extra: String
+    vps_hostname: String
+    vps_server_status: String
+    vps_comment: String
+    vps_slices: String
+    vps_vnc: String
+    vps_vnc_port: String
+    vps_rootpass: String
+    vps_mac: String
+    vps_os: String
+    vps_version: String
+    vps_location: String
+    vps_platform: String
+    vps_diskused: String
+    vps_diskmax: String
+}
+
+entity VpsServiceMaster {
+    vps_id: String
+    vps_name: String
+    vps_ip: String
+    vps_type: String
+    vps_hdsize: String
+    vps_hdfree: String
+    vps_bits: String
+    vps_load: String
+    vps_ram: String
+    vps_cpu_model: String
+    vps_cpu_mhz: String
+    vps_location: String
+    vps_last_update: String
+    vps_raid_building: String
+    vps_kernel: String
+    vps_available: String
+    vps_cores: String
+    vps_iowait: String
+    vps_raid_status: String
+    vps_mounts: String
+    vps_server_max: String
+    vps_server_max_slices: String
+    vps_drive_type: String
+    vps_order: String
+}
+
+entity VpsSnapshot {
+    name: String
+    used: Integer
+    date: Integer
+}
+
+entity VpsTemplateRow {
+    template_id: String
+    template_type: String
+    template_os: String
+    template_version: String
+    template_bits: String
+    template_file: String
+    template_available: String
+    template_name: String
+    template_dir: String
+}
+
+entity VpsTemplatesList {
+    * templates: List<VpsTemplateRow>
+}
+
+entity VpsTrafficDataDataResponse {
+}
+
+entity VpsTrafficDataSectionResponse {
+    * name: String
+    * data: List<VPSTrafficDataDataSectionResponse>
+}
+
+entity VpsTrafficHistoryResponse {
+    * hour: VpsTrafficHistorySectionResponse
+    * day: VpsTrafficHistorySectionResponse
+}
+
+entity VpsTrafficHistorySectionDataResponse {
+}
+
+entity VpsTrafficHistorySectionResponse {
+    * data: List<VpsTrafficHistorySectionDataResponse>
+    * times: List<Date>
+}
+
+entity VpsTrafficResponse {
+    * name: String
+    * target: String
+    * interval: Integer
+    * history: VpsTrafficHistoryResponse
+    * last: Date
+    * times: List<Date>
+    * totals: VpsTrafficTotalsResposne
+    * usage: VpsTrafficUsageResponse
+    * data: List<VpsTrafficDataSectionResponse>
+}
+
+entity VpsTrafficTotalsResposne {
+    * day: VpsTrafficTotalsSectionResponse
+    * month: VpsTrafficTotalsSectionResponse
+    * year: VpsTrafficTotalsSectionResponse
+    * all: VpsTrafficTotalsSectionResponse
+}
+
+entity VpsTrafficTotalsSectionResponse {
+    * in: Long
+    * out: Long
+}
+
+entity VpsTrafficUsageAverageResponse {
+    * in: VpsTrafficUsageAverageSectionResponse
+    * out: VpsTrafficUsageAverageSectionResponse
+}
+
+entity VpsTrafficUsageAverageSectionResponse {
+    * total: Integer
+    * count: Integer
+    * value: Integer
+}
+
+entity VpsTrafficUsageResponse {
+    * current: VpsTrafficTotalsSectionResponse
+    * peak: VpsTrafficTotalsSectionResponse
+    * average: VpsTrafficUsageAverageResponse
+}
+
+entity WebhostingCancel200Response {
+    * success: Boolean
+    * text: String
+}
+
+entity Website {
+    serviceInfo: WebsiteServiceInfo
+    client_links: List<WebsiteClientLink>
+    billingDetails: WebsiteBillingDetails
+    custCurrency: String
+    custCurrencySymbol: String
+    serviceMaster: WebsiteServiceMaster
+    package: String
+    serviceExtra: List<Object>
+    extraInfoTables: WebsiteExtraInfoTables
+}
+
+entity WebsiteBackups {
+}
+
+entity WebsiteBackupsInner {
+    * name: String
+    size: Integer
+}
+
+entity WebsiteBillingDetails {
+    service_last_invoice_date: String
+    service_payment_status: String
+    service_frequency: String
+    next_date: String
+    service_next_invoice_date: String
+    service_currency: String
+    service_currency_symbol: String
+    service_coupon: String
+    service_cost_info: String
+    service_extra: Object
+    service_extra_json: String
+}
+
+entity WebsiteClientLink {
+    label: String
+    link: String
+    icon: String
+    icon_text: String
+    help_text: String
+    other_attr: String
+}
+
+entity WebsiteExtraInfoTables {
+    links: WebsiteTable
+    preview: WebsiteTable
+    dns: WebsiteTable
+}
+
+entity WebsiteLoginResponse {
+    type: String
+    location: String
+}
+
+entity WebsiteRow {
+    * website_id: String
+    * website_hostname: String
+    * repeat_invoices_cost: String
+    * website_status: String
+    * services_name: String
+    * website_comment: String
+}
+
+entity WebsiteServiceInfo {
+    website_id: String
+    website_server: String
+    website_type: String
+    website_currency: String
+    website_order_date: String
+    website_custid: String
+    website_ip: String
+    website_status: String
+    website_invoice: String
+    website_coupon: String
+    website_extra: String
+    website_hostname: String
+    website_comment: String
+    website_username: String
+    website_server_status: String
+}
+
+entity WebsiteServiceMaster {
+    website_id: String
+    website_name: String
+    website_ip: String
+    website_type: String
+    website_available: String
+    website_hdsize: String
+    website_hdfree: String
+    website_load: String
+    website_last_update: String
+    website_max_sites: String
+    website_order: String
+    website_partitions: String
+    website_dns1: String
+    website_dns2: String
+}
+
+entity WebsiteTable {
+    title: String
+    rows: List<WebsiteTableRow>
+}
+
+entity WebsiteTableRow {
+    desc: String
+    value: String
+}
+
+entity WebsitesOrder {
+    * step: String
+    * website: String
+    * period: Integer
+    * serviceOfferId: Integer
+    * packages: WebsitesOrderPackages
+    * enableDomainRegistering: Boolean
+    * jsonServices: WebsitesOrderJsonServices
+    * jsonServiceOffers: WebsitesOrderJsonServiceOffers
+    * serviceTypes: WebsitesOrderServiceTypes
+    * serviceOffers: WebsitesOrderServiceOffers
+    packges: WebsitesOrderPackges
+}
+
+entity WebsitesOrderJsonServiceOffers {
+    * 1026: List<WebsitesOrderJsonServiceOffersItem>
+}
+
+entity WebsitesOrderJsonServiceOffersItem {
+    service_offer_id: String
+    service_id: String
+    intro_cost: Integer
+    renewal_cost: Integer
+    intro_frequency: String
+    renewal_frequency: String
+    allow_coupon: String
+    service_module: String
+    created_at: String
+    updated_at: String
+    deleted_at: String
+    currencySymbol: String
+}
+
+entity WebsitesOrderJsonServices {
+    * 11447: String
+}
+
+entity WebsitesOrderPackages {
+    * 11447: String
+}
+
+entity WebsitesOrderPackagesInfo {
+    * services_id: String
+    * services_name: String
+    * services_cost: String
+    * services_category: String
+    * services_buyable: String
+    * services_type: String
+    * services_module: String
+    * services_description: String
+    services_field1: String
+    services_field2: String
+    services_html: String
+    services_moreinfo_url: String
+    services_hidden: String
+}
+
+entity WebsitesOrderPackges {
+    * 11440: WebsitesOrderPackagesInfo
+}
+
+entity WebsitesOrderServiceOffer {
+    * service_offer_id: String
+    * service_id: String
+    * intro_cost: String
+    * renewal_cost: String
+    * intro_frequency: String
+    * renewal_frequency: String
+    * allow_coupon: String
+    * service_module: String
+    * created_at: String
+    updated_at: String
+    deleted_at: String
+}
+
+entity WebsitesOrderServiceOffers {
+    * 1026: List<WebsitesOrderServiceOffer>
+}
+
+entity WebsitesOrderServiceTypes {
+    * 11447: WebsitesOrderServiceTypes
+}
+
+Cpu <|--- CpuWithDefaults
+DenyRuleNew <|--- DenyRuleRecord
+
+Server -- "0..*" ServerClientLink : client_links
+Server -- ServerBillingDetails : billingDetails
+Server -- ServerLocations : locations
+Server -- ServerNetworkInfo : networkInfo
+Server -- ServerExtraInfoTables : extraInfoTables
+Server -- ServerServiceInfo : serviceInfo
+MailStatsType -- MailStatsTypeVolume : volume
+ServerNetworkInfoAssets -- ServerAsset : 3497
+VpsTrafficHistoryResponse -- VpsTrafficHistorySectionResponse : hour
+VpsTrafficHistoryResponse -- VpsTrafficHistorySectionResponse : day
+BackupsOrder -- BackupsOrderPackageCosts : packageCosts
+BackupsOrder -- BackupsOrderServiceTypes : serviceTypes
+BackupsOrderServiceTypes -- BackupsOrderServiceTypes : 11006
+LoginSubmissionExample -- LoginSubmissionExampleGRecaptchaResponse : g-recaptcha-response
+GetScrubIpDetails200ResponseExtraInfoTables -- GetScrubIpDetails200ResponseExtraInfoTablesScrubIps : scrub_ips
+Website -- WebsiteServiceInfo : serviceInfo
+Website -- "0..*" WebsiteClientLink : client_links
+Website -- WebsiteBillingDetails : billingDetails
+Website -- WebsiteServiceMaster : serviceMaster
+Website -- WebsiteExtraInfoTables : extraInfoTables
+LicensesOrderServiceTypes -- LicensesOrderServiceTypes11482 : LicensesOrderServiceTypes11482
+QuickserverOrderDistroSel -- QuickserverOrderDistroSelUbuntu : Ubuntu
+GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseServiceInfo : serviceInfo
+GetScrubIpDetails200Response -- "0..*" GetScrubIpDetails200ResponseClientLinksInner : client_links
+GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseBillingDetails : billingDetails
+GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseExtraInfoTables : extraInfoTables
+GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseFilterFirewall : filter_firewall
+DomainOrder -- DomainOrderServices : services
+DomainOrderServices -- DomainOrderServices10001 : DomainOrderServices10001
+LicenseIpInfo -- "0..*" LicenseIpInfoRow : rows
+PlaceScrubOrder201ResponseOrderDetails -- PlaceScrubOrder201ResponseOrderDetailsCjParams : cj_params
+ServerNetworkInfo -- ServerNetworkInfoAssets : assets
+ServerNetworkInfo -- ServerNetworkInfoSwitchports : switchports
+VpsTemplatesList -- "0..*" VpsTemplateRow : templates
+ServerOrderFieldLabels -- ServerOrderFieldLabel : bandwidth
+ServerOrderFieldLabels -- ServerOrderFieldLabel : ips
+ServerOrderFieldLabels -- ServerOrderFieldLabel : os
+ServerOrderFieldLabels -- ServerOrderFieldLabel : cp
+ServerOrderFieldLabels -- ServerOrderFieldLabel : raid
+ServerOrderFieldLabels -- ServerOrderFieldLabel : memory
+ServerOrderFieldLabels -- ServerOrderFieldLabel : hd
+QuickserverOrderServerDetails -- QuickserverOrderServerDetails381 : 381
+AccountInfoMaxMindResponse -- AccountInfoMaxMindResponseRiskScore : riskScore
+DomainAllInfoAttributes -- DomainAllInfoAttributesContactSet : contact_set
+DomainAllInfoAttributes -- "0..*" DomainNameServer : nameserver_list
+Vps -- VpsServiceInfo : serviceInfo
+Vps -- "0..*" VpsClientLink : client_links
+Vps -- VpsBillingDetails : billingDetails
+Vps -- VpsServiceMaster : serviceMaster
+Vps -- VpsServiceExtra : serviceExtra
+Vps -- VpsExtraInfoTables : extraInfoTables
+Vps -- VpsCPData : cp_data
+Vps -- VpsDAData : da_data
+Vps -- VpsPlesk12Data : plesk12_data
+Vps -- VpsServiceAddons : serviceAddons
+Home -- HomeTicketStatus : ticketStatus
+Home -- HomeTicketStatusView : ticketStatusView
+Home -- HomeDetails : details
+Home -- HomeServices : services
+ServerLocations -- ServerLocation1 : 1
+VpsPlesk12Data -- VpsPleskLicense : admin
+VpsPlesk12Data -- VpsPleskLicense : pro
+VpsPlesk12Data -- VpsPleskLicense : host
+ServerOrderCpLi -- ServerOrderControlPanel : 9
+ServerOrder -- ServerOrderFormValues : form_values
+ServerOrder -- ServerOrderConfigIds : config_ids
+ServerOrder -- ServerOrderFieldLabels : field_label
+ServerOrder -- ServerOrderCpuLi : cpu_li
+ServerOrder -- ServerOrderMemoryLi : memory_li
+ServerOrder -- ServerOrderBandwidthLi : bandwidth_li
+ServerOrder -- ServerOrderIpsLi : ips_li
+ServerOrder -- ServerOrderOsLi : os_li
+ServerOrder -- ServerOrderCpLi : cp_li
+ServerOrder -- "0..*" ServerOrderRAID : raid_li
+AccountInfoDataCc -- AccountInfoMaxMindResponse : maxmind
+MailStatsTypeVolume -- MailStatsTypeVolumeTo : to
+MailStatsTypeVolume -- MailStatsTypeVolumeFrom : from
+MailStatsTypeVolume -- MailStatsTypeVolumeIp : ip
+License -- LicenseServiceInfo : serviceInfo
+License -- "0..*" LicenseClientLink : client_links
+License -- LicenseBillingDetails : billingDetails
+License -- LicenseExtraInfoTables : extraInfoTables
+License -- LicenseServiceType : serviceType
+ServerOrderMemoryLi254 -- ServerOrderMemory : 65
+ServerOrderOsLi -- ServerOrderOS : 51
+WebsitesOrderJsonServiceOffers -- "0..*" WebsitesOrderJsonServiceOffersItem : 1026
+VpsTrafficUsageAverageResponse -- VpsTrafficUsageAverageSectionResponse : in
+VpsTrafficUsageAverageResponse -- VpsTrafficUsageAverageSectionResponse : out
+MailLog -- "0..*" MailLogEntry : emails
+ServerNetworkInfoSwitchports -- ServerSwitchport : 10414
+WebsitesOrderServiceOffers -- "0..*" WebsitesOrderServiceOffer : 1026
+MailExtraInfoTable -- "0..*" MailExtraInfoTableRow : rows
+HomeDetails -- HomeDetailsModules : modules
+DomainProvProcessPending -- DomainProvProcessPendingAttributes : attributes
+HomeServicesVps -- HomeServicesVpsLinks : links
+MailBlocks -- "0..*" MailBlockClickHouse : local
+MailBlocks -- "0..*" MailBlockClickHouse : mbtrap
+MailBlocks -- "0..*" MailBlockRspamd : subject
+QuickserverAddons -- "0..*" QuickserverAddonsRow : rows
+MailSchema -- MailServiceInfo : serviceInfo
+MailSchema -- "0..*" MailClientLink : client_links
+MailSchema -- MailBillingDetails : billingDetails
+MailSchema -- MailSchemaExtraInfoTables : extraInfoTables
+MailSchema -- MailServiceType : serviceType
+VpsTrafficTotalsResposne -- VpsTrafficTotalsSectionResponse : day
+VpsTrafficTotalsResposne -- VpsTrafficTotalsSectionResponse : month
+VpsTrafficTotalsResposne -- VpsTrafficTotalsSectionResponse : year
+VpsTrafficTotalsResposne -- VpsTrafficTotalsSectionResponse : all
+GetOrderDetail200Response -- GetOrderDetail200ResponsePackageCosts : packageCosts
+GetOrderDetail200Response -- "0..*" GetOrderDetail200ResponseServiceTypesInner : serviceTypes
+GetOrderDetail200Response -- "0..*" GetOrderDetail200ResponseIpsInner : ips
+DomainBillingDetails -- DomainBillingExtra : service_extra
+LoginSubmissionExampleGRecaptchaResponse -- LoginSubmissionExampleGRecaptchaResponseDep : dep
+ServerAsset -- ServerLease : lease
+ServerOrderBandwidthLi -- ServerOrderBandwidth : 15
+DomainAllInfo -- DomainAllInfoAttributes : attributes
+BackupIPInfo -- "0..*" BackupIPInfoRow : rows
+HomeServicesDomains -- HomeServicesDomainsLinks : links
+LicensesOrderServiceCategories -- LicensesOrderServiceCategories509 : LicensesOrderServiceCategories509
+ViewTicketResponse -- TicketDetails : ticket
+ViewTicketResponse -- TicketCustomFieldDetails : ticket_custom_fields
+DomainAllInfoAttributesContactSet -- DomainOwnerContact : owner
+DomainAllInfoAttributesContactSet -- DomainAdminContact : admin
+DomainAllInfoAttributesContactSet -- DomainTechContact : tech
+ServerOrderCpuLi -- ServerOrderCPU : 254
+GetScrubIpDetails200ResponseFilterFirewall -- "0..*" GetScrubIpDetails200ResponseFilterFirewallRulesInner : rules
+GetScrubIpDetails200ResponseFilterFirewall -- "0..*" GetScrubIpDetails200ResponseFilterFirewallFiltersInner : filters
+ServerOrderMemoryLi -- ServerOrderMemoryLi254 : 254
+DomainBillingExtra -- DomainOrderResponse : order
+DomainBillingExtra -- DomainProvProcessPending : provProcessPending
+ConfigLists -- "0..*" RaidOption : raid_li
+WebsitesOrderServiceTypes -- WebsitesOrderServiceTypes : 11447
+QuickserverBillingDetails -- QuickserverServiceExtra : service_extra
+WebsiteExtraInfoTables -- WebsiteTable : links
+WebsiteExtraInfoTables -- WebsiteTable : preview
+WebsiteExtraInfoTables -- WebsiteTable : dns
+VpsOrderServiceTypes -- VpsOrderServiceTypes32 : 32
+WebsitesOrderPackges -- WebsitesOrderPackagesInfo : 11440
+DomainOrderResponse -- DomainOrderResponseAttributes : attributes
+ServersBuyNowResponse -- ServersBuyNowResponseOrderDetails : order_details
+ServerExtraInfoTables -- ServerAssets : assets
+MailTutorialsTable -- "0..*" MailTutorialsTableRow : rows
+VpsIPInfo -- "0..*" VpsIPInfoRow : rows
+VpsOrderTemplatesHyperv -- VpsOrderTemplatesHypervWindows : windows
+Tickets -- "0..*" TicketsRow : tickets
+Tickets -- TicketsCountArray : countArray
+LicensesOrder -- LicensesOrderServiceCategories : serviceCategories
+LicensesOrder -- LicensesOrderPackageCosts : packageCosts
+LicensesOrder -- LicensesOrderServiceTypes : serviceTypes
+ServerOrderGetResponse -- FormValues : form_values
+ServerOrderGetResponse -- ConfigIds : config_ids
+ServerOrderGetResponse -- ConfigLists : config_li
+ServerOrderGetResponse -- "0..*" Region : regions
+ServerOrderGetResponse -- "0..*" AssetServer : asset_servers
+VpsTrafficUsageResponse -- VpsTrafficTotalsSectionResponse : current
+VpsTrafficUsageResponse -- VpsTrafficTotalsSectionResponse : peak
+VpsTrafficUsageResponse -- VpsTrafficUsageAverageResponse : average
+VpsServiceExtra -- "0..*" VpsSnapshot : snapshots
+Domain -- DomainServiceInfo : serviceInfo
+Domain -- "0..*" DomainClientLink : client_links
+Domain -- DomainBillingDetails : billingDetails
+Domain -- DomainBillingExtra : serviceExtra
+Domain -- BackupExtraInfoTables : extraInfoTables
+Domain -- DomainServiceType : serviceType
+Domain -- DomainContactDetails : contact_details
+Domain -- DomainAllInfo : allInfo
+GetScrubIpDetails200ResponseExtraInfoTablesScrubIps -- "0..*" GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner : rows
+VpsOrder -- VpsOrderPlatformPackages : platformPackages
+VpsOrder -- VpsOrderPlatformNames : platformNames
+VpsOrder -- VpsOrderPackageCosts : packageCosts
+VpsOrder -- VpsOrderLocationStock : locationStock
+VpsOrder -- VpsOrderLocationNames : locationNames
+VpsOrder -- VpsOrderOsNames : osNames
+VpsOrder -- VpsOrderTemplates : templates
+VpsOrder -- VpsOrderServiceTypes : serviceTypes
+VpsOrderTemplates -- VpsOrderTemplatesHyperv : hyperv
+Quickserver -- QuickserverServiceInfo : serviceInfo
+Quickserver -- "0..*" QuickserverClientLink : client_links
+Quickserver -- QuickserverBillingDetails : billingDetails
+Quickserver -- QuickserverServiceMaster : serviceMaster
+Quickserver -- QuickserverServiceExtra : serviceExtra
+Quickserver -- QuickserverExtraInfoTables : extraInfoTables
+MailSchemaExtraInfoTables -- MailExtraInfoTable : mail
+MailSchemaExtraInfoTables -- MailTutorialsTable : tutorials
+HomeServices -- HomeServicesDomains : domains
+HomeServices -- HomeServicesWebhosting : webhosting
+HomeServices -- HomeServicesVps : vps
+HomeServices -- HomeServicesLicenses : licenses
+HomeServices -- HomeServicesServers : servers
+HomeServices -- HomeServicesBackups : backups
+AccountInfoData -- AccountInfoDataEmailSettings : email_settings
+AccountInfoData -- AccountInfoDataExtra : extra
+AccountInfoData -- AccountInfoDataFraudrecord : fraudrecord
+AccountInfoData -- AccountInfoMaxMindResponse : maxmind
+VpsTrafficResponse -- VpsTrafficHistoryResponse : history
+VpsTrafficResponse -- VpsTrafficTotalsResposne : totals
+VpsTrafficResponse -- VpsTrafficUsageResponse : usage
+VpsTrafficResponse -- "0..*" VpsTrafficDataSectionResponse : data
+VpsExtraInfoTables -- VpsIPInfo : ip_info
+WebsitesOrder -- WebsitesOrderPackages : packages
+WebsitesOrder -- WebsitesOrderJsonServices : jsonServices
+WebsitesOrder -- WebsitesOrderJsonServiceOffers : jsonServiceOffers
+WebsitesOrder -- WebsitesOrderServiceTypes : serviceTypes
+WebsitesOrder -- WebsitesOrderServiceOffers : serviceOffers
+WebsitesOrder -- WebsitesOrderPackges : packges
+QuickserverExtraInfoTables -- QuickserverIpInfo : ip_info
+QuickserverExtraInfoTables -- QuickserverAddons : addons
+LicenseExtraInfoTables -- LicenseIpInfo : ip_info
+VpsDAData -- VpsDALicense : free
+HomeServicesWebhosting -- HomeServicesWebhostingLinks : links
+WebsiteTable -- "0..*" WebsiteTableRow : rows
+AccountInfo -- AccountInfoData : data
+AccountInfo -- AccountInfoOauthproviders : oauthproviders
+AccountInfo -- AccountInfoOauthConfig : oauthconfig
+BuyItNowRow -- "0..*" BuyItNowRowCpuInner : cpu
+HomeDetailsModules -- HomeDetailsModulesDomains : domains
+HomeDetailsModules -- HomeDetailsModulesWebhosting : webhosting
+HomeDetailsModules -- HomeDetailsModulesVps : vps
+HomeDetailsModules -- HomeDetailsModulesLicenses : licenses
+HomeDetailsModules -- HomeDetailsModulesBackups : backups
+HomeDetailsModules -- HomeDetailsModulesServers : servers
+HomeDetailsModules -- HomeDetailsModulesQuickservers : quickservers
+HomeServicesLicenses -- HomeServicesLicensesLinks : links
+LoginInfo -- LoginServiceCounts : counts
+AssetServer -- "0..*" AssetServerCPUInner : CPU
+AssetServer -- "0..*" AssetServerCPUInner : Memory
+AssetServer -- "0..*" AssetServerCPUInner : Bandwidth
+AssetServer -- "0..*" AssetServerCPUInner : IPs
+PlaceScrubOrder201Response -- PlaceScrubOrder201ResponseOrderDetails : order_details
+ServerOrderIpsLi -- ServerOrderIP : 9
+VpsBillingDetails -- VpsServiceExtra : service_extra
+SendMailAdv -- EmailAddressName : from
+SendMailAdv -- "0..*" EmailAddressName : to
+SendMailAdv -- "0..*" EmailAddressName : replyto
+SendMailAdv -- "0..*" EmailAddressName : cc
+SendMailAdv -- "0..*" EmailAddressName : bcc
+SendMailAdv -- "0..*" MailAttachment : attachments
+BackupOrderPostResponse -- BackupOrderPostResponseCjParams : cj_params
+HomeServicesServers -- HomeServicesServersLinks : links
+QuickserverIpInfo -- "0..*" QuickserverIpTableRow : rows
+BackupExtraInfoTables -- BackupIPInfo : ip_info
+QuickserverOrderVersion -- QuickserverOrderVersionCentosstream8 : centosstream-8
+Backup -- BackupServiceInfo : serviceInfo
+Backup -- "0..*" BackupClientLink : client_links
+Backup -- BackupBillingDetails : billingDetails
+Backup -- BackupServiceMaster : serviceMaster
+Backup -- BackupExtraInfoTables : extraInfoTables
+QuickserverOrder -- QuickserverOrderServerDetails : server_details
+QuickserverOrder -- QuickserverOrderTemplates : templates
+QuickserverOrder -- QuickserverOrderVersion : version
+QuickserverOrder -- QuickserverOrderDistroSel : distro_sel
+BuyItNowServerOrder200Response -- "0..*" BuyItNowServerOrder200ResponseBandwidthInner : bandwidth
+BuyItNowServerOrder200Response -- "0..*" BuyItNowServerOrder200ResponseIpsInner : ips
+BuyItNowServerOrder200Response -- "0..*" BuyItNowServerOrder200ResponseOsInner : os
+BuyItNowServerOrder200Response -- "0..*" BuyItNowServerOrder200ResponseCpInner : cp
+BuyItNowServerOrder200Response -- "0..*" BuyItNowServerOrder200ResponseRaidInner : raid
+VpsOrderLocationStock -- VpsOrderLocationStock1 : 1
+
+@enduml

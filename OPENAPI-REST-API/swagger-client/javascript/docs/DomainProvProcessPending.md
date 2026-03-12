@@ -1,0 +1,13 @@
+# InterServerManagementApi.DomainProvProcessPending
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**_OPS_version** | **String** |  | [optional] 
+**response_text** | **String** |  | [optional] 
+**protocol** | **String** |  | [optional] 
+**response_code** | **String** |  | [optional] 
+**action** | **String** |  | [optional] 
+**_object** | **String** |  | [optional] 
+**is_success** | **String** |  | [optional] 
+**attributes** | [**DomainProvProcessPendingAttributes**](DomainProvProcessPendingAttributes.md) |  | [optional] 

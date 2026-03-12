@@ -1,0 +1,26 @@
+# Description: Rust package name (convention: lowercase).
+packageName: myadmin
+
+# Description: Rust package version.
+packageVersion: 1.0.0
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+
+# Description: Setting this property to true will generate functions with a single argument containing all API endpoint parameters instead of one argument per parameter.
+useSingleRequestParameter: false
+
+# Description: If set, generate async function call instead. This option is for 'reqwest' library only
+supportAsync: true
+
+# Description: If set, return type wraps an enum of all possible 2xx schemas. This option is for 'reqwest' library only
+supportMultipleResponses: false
+
+# Description: library template (sub-template) to use.
+# Available Values:
+#    hyper
+#         HTTP client: Hyper.
+#    reqwest
+#         HTTP client: Reqwest.
+library: reqwest
+

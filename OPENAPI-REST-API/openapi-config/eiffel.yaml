@@ -1,0 +1,9 @@
+# Description: Eiffel Cluster name (convention: lowercase).
+packageName: openapi
+
+# Description: Eiffel package version.
+packageVersion: 1.0.0
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+

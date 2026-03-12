@@ -1,0 +1,22 @@
+# websites_order_packages_info_t
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**services_id** | **char \*** | The ID of the package. | 
+**services_name** | **char \*** | The name of the package. | 
+**services_cost** | **char \*** | The cost of the package. | 
+**services_category** | **char \*** | The category of the package. | 
+**services_buyable** | **char \*** | Indicates if the package is buyable (1 for yes, 0 for no). | 
+**services_type** | **char \*** | The type of the package. | 
+**services_module** | **char \*** | The module of the package. | 
+**services_description** | **char \*** | Description of the package. | 
+**services_field1** | **char \*** | Additional field 1 for the package. | [optional] 
+**services_field2** | **char \*** | Additional field 2 for the package. | [optional] 
+**services_html** | **char \*** | HTML content for the package. | [optional] 
+**services_moreinfo_url** | **char \*** | URL for more information about the package. | [optional] 
+**services_hidden** | **char \*** | Indicates if the package is hidden (1 for yes, 0 for no). | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

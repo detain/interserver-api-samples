@@ -1,0 +1,52 @@
+package io.swagger.controllers;
+
+import io.swagger.oas.inflector.models.RequestContext;
+import io.swagger.oas.inflector.models.ResponseContext;
+import javax.ws.rs.core.Response.Status;
+
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import java.io.File;
+import java.util.List;
+
+import io.swagger.model.*;
+
+import io.swagger.model.LoginErrorResponse;
+import io.swagger.model.LoginInfo;
+import io.swagger.model.LoginSubmissionExample;
+import io.swagger.model.LoginSubmissionExampleGrecaptcharesponse;
+import io.swagger.model.LoginSuccessResponse;
+
+
+public class LoginController  {
+  /** 
+   * Uncomment and implement as you see fit.  These operations will map
+   * Directly to operation calls from the routing logic.  Because the inflector
+   * Code allows you to implement logic incrementally, they are disabled.
+   **/
+
+  /*
+    public ResponseContext getLoginInfo(RequestContext request ) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext submitLogin(RequestContext request ,  String login
+,  String passwd
+,  String remember
+,  LoginSubmissionExampleGrecaptcharesponse gRecaptchaResponse
+,  String tfa
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext submitLogin(RequestContext request , LoginSubmissionExample body 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+}
+

@@ -1,0 +1,58 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
+import 'package:test/test.dart';
+
+// tests for QuickserverRow
+void main() {
+  // final instance = QuickserverRow();
+
+  group('test QuickserverRow', () {
+    // The id of the qs.
+    // String qsId
+    test('to test the property `qsId`', () async {
+      // TODO
+    });
+
+    // The name of the qs.
+    // String qsName
+    test('to test the property `qsName`', () async {
+      // TODO
+    });
+
+    // The cost of the qs.
+    // String cost
+    test('to test the property `cost`', () async {
+      // TODO
+    });
+
+    // The hostname of the qs.
+    // String qsHostname
+    test('to test the property `qsHostname`', () async {
+      // TODO
+    });
+
+    // The status of the qs.
+    // String qsStatus
+    test('to test the property `qsStatus`', () async {
+      // TODO
+    });
+
+    // The comment of the qs.
+    // String qsComment
+    test('to test the property `qsComment`', () async {
+      // TODO
+    });
+
+
+  });
+
+}

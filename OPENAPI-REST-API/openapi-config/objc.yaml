@@ -1,0 +1,24 @@
+# Description: Should generate core data models
+coreData: false
+
+# Description: prefix for generated classes (convention: Abbreviation of pod name e.g. `HN` for `HackerNews`).`
+classPrefix: OAI
+
+# Description: cocoapods package name (convention: CameCase).
+podName: OpenAPIClient
+
+# Description: cocoapods package version.
+podVersion: 1.0.0
+
+# Description: Name to use in the podspec file.
+authorName: OpenAPI
+
+# Description: Email to use in the podspec file.
+authorEmail: team@openapitools.org
+
+# Description: URL for the git repo where this podspec should point to.
+gitRepoURL: https://github.com/openapitools/openapi-generator
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+

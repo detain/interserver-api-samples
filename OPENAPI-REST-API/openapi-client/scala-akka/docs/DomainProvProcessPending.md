@@ -1,0 +1,21 @@
+
+
+# DomainProvProcessPending
+
+Provisioning status data for a pending domain order.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**_OPS_version** | **String** |  |  [optional]
+**response_text** | **String** |  |  [optional]
+**protocol** | **String** |  |  [optional]
+**response_code** | **String** |  |  [optional]
+**action** | **String** |  |  [optional]
+**`object`** | **String** |  |  [optional]
+**is_success** | **String** |  |  [optional]
+**attributes** | [**DomainProvProcessPendingAttributes**](DomainProvProcessPendingAttributes.md) |  |  [optional]
+
+
+

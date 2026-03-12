@@ -1,0 +1,71 @@
+{
+    "packageName": {
+        "opt": "packageName",
+        "description": "C# package name (convention: Title.Case).",
+        "type": "string",
+        "default": "IO.Swagger"
+    },
+    "packageVersion": {
+        "opt": "packageVersion",
+        "description": "C# package version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "packageGuid": {
+        "opt": "packageGuid",
+        "description": "The GUID that will be associated with the C# project",
+        "type": "string"
+    },
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string",
+        "default": "src"
+    },
+    "aspnetCoreVersion": {
+        "opt": "aspnetCoreVersion",
+        "description": "aspnetcore version to use, current options are: 2.0, 2.1, 2.2 and 3.0 (default)",
+        "type": "string",
+        "default": "3.0"
+    },
+    "interface-only": {
+        "opt": "interface-only",
+        "description": "creates interfaces controller only",
+        "type": "string"
+    },
+    "interface-controller": {
+        "opt": "interface-controller",
+        "description": "creates interfaces and default implementation for controllers",
+        "type": "string"
+    },
+    "preserveNewlinesInComments": {
+        "opt": "preserveNewlinesInComments",
+        "description": "Preserve newlines in comments",
+        "type": "string",
+        "default": "false"
+    },
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "useDateTimeOffset": {
+        "opt": "useDateTimeOffset",
+        "description": "Use DateTimeOffset to model date-time properties",
+        "type": "boolean",
+        "default": "false"
+    },
+    "useCollection": {
+        "opt": "useCollection",
+        "description": "Deserialize array types to Collection<T> instead of List<T>.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "returnICollection": {
+        "opt": "returnICollection",
+        "description": "Return ICollection<T> instead of the concrete type.",
+        "type": "boolean",
+        "default": "false"
+    }
+}

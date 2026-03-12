@@ -1,0 +1,6 @@
+# Description: Erlang application name (convention: lowercase).
+packageName: openapi
+
+# Description: Erlang application version
+packageVersion: 1.0.0
+

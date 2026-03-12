@@ -1,0 +1,268 @@
+## BillingApi
+
+### Add Credit Card to Account
+## Add Credit Card to Account
+POST https://my.interserver.net/apiv2/account/creditcards
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Add Credit Card for Billing
+## Add Credit Card for Billing
+POST https://my.interserver.net/apiv2/billing/creditcards
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "name": "<string>",
+ "address": "<string>",
+ "city": "<string>",
+ "state": "<string>",
+ "country": "<string>",
+ "zip": "<string>",
+ "cc": "<string>",
+ "cc_exp": "<string>",
+ "cc_ccv2": "<string>"
+}
+
+
+### Create Prepay Deposit
+## Create Prepay Deposit
+POST https://my.interserver.net/apiv2/billing/prepays
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "module": "<string>",
+ "amount": "<number>",
+ "automatic_use": "<string>"
+}
+
+
+### Remove Credit Card
+## Remove Credit Card
+DELETE https://my.interserver.net/apiv2/account/creditcards/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete Credit Card
+## Delete Credit Card
+DELETE https://my.interserver.net/apiv2/billing/creditcards/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete Invoice
+## Delete Invoice
+DELETE https://my.interserver.net/apiv2/billing/invoices/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete Prepay Balance
+## Delete Prepay Balance
+DELETE https://my.interserver.net/apiv2/billing/prepays/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Affiliate Banner Assets
+## List Affiliate Banner Assets
+GET https://my.interserver.net/apiv2/affiliate/banners
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Affiliate Performance Report
+## Get Affiliate Performance Report
+GET https://my.interserver.net/apiv2/affiliate/rich_report
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Affiliate Sales Graph Data
+## Get Affiliate Sales Graph Data
+GET https://my.interserver.net/apiv2/affiliate/sales_graph?days={{days}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Affiliate Sales Report
+## Get Affiliate Sales Report
+GET https://my.interserver.net/apiv2/affiliate/sales_report
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Affiliate Traffic Graph Data
+## Get Affiliate Traffic Graph Data
+GET https://my.interserver.net/apiv2/affiliate/traffic_graph?days={{days}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Affiliate Web Traffic Entries
+## List Affiliate Web Traffic Entries
+GET https://my.interserver.net/apiv2/affiliate/web_traffic
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Shopping Cart Contents
+## Get Shopping Cart Contents
+GET https://my.interserver.net/apiv2/billing/cart
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Credit Card Verification Requirements
+## Get Credit Card Verification Requirements
+GET https://my.interserver.net/apiv2/billing/creditcards/{{id}}/verify
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Invoice Details
+## Get Invoice Details
+GET https://my.interserver.net/apiv2/billing/invoices/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Account Invoices
+## List Account Invoices
+GET https://my.interserver.net/apiv2/billing/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Prepay Balances
+## List Prepay Balances
+GET https://my.interserver.net/apiv2/billing/prepays
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Invoices
+## Get Invoices
+GET https://my.interserver.net/apiv2/invoices?searchString={{searchString}}&skip={{skip}}&limit={{limit}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Initiate Payment
+## Initiate Payment
+GET https://my.interserver.net/apiv2/pay/{{method}}/{{invoices}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Submit Credit Card Verification
+## Submit Credit Card Verification
+POST https://my.interserver.net/apiv2/billing/creditcards/{{id}}/verify
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "idx": "<number>",
+ "cc_ccv2": "<string>",
+ "cc_amount1": "<string>",
+ "cc_amount2": "<string>",
+ "terms": "<string>"
+}
+
+
+### Update Credit Card
+## Update Credit Card
+POST https://my.interserver.net/apiv2/account/creditcards/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Configure Affiliate Dock Settings
+## Configure Affiliate Dock Settings
+POST https://my.interserver.net/apiv2/affiliate/dock_setup
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Configure Affiliate Landing Page
+## Configure Affiliate Landing Page
+POST https://my.interserver.net/apiv2/affiliate/landing_pg
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Configure Affiliate Payout Preferences
+## Configure Affiliate Payout Preferences
+POST https://my.interserver.net/apiv2/affiliate/payment_setup
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Credit Card Details
+## Update Credit Card Details
+POST https://my.interserver.net/apiv2/billing/creditcards/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Default Payment Method
+## Update Default Payment Method
+POST https://my.interserver.net/apiv2/billing/payment_method
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "payment_method": "<string>",
+ "cc_auto": "<string>"
+}
+

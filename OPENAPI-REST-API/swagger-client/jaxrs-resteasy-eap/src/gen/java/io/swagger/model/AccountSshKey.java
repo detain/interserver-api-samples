@@ -1,0 +1,68 @@
+package io.swagger.model;
+
+import java.util.Objects;
+import java.util.ArrayList;
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description="SSH Keys")
+
+public class AccountSshKey   {
+  private String sshKey = null;
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("ssh_key")
+  @NotNull
+  public String getSshKey() {
+    return sshKey;
+  }
+  public void setSshKey(String sshKey) {
+    this.sshKey = sshKey;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AccountSshKey accountSshKey = (AccountSshKey) o;
+    return Objects.equals(sshKey, accountSshKey.sshKey);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(sshKey);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AccountSshKey {\n");
+    
+    sb.append("    sshKey: ").append(toIndentedString(sshKey)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

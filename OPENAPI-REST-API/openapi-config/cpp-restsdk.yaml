@@ -1,0 +1,24 @@
+# Description: C++ namespace for models (convention: name.space.model).
+modelPackage: org.openapitools.client.model
+
+# Description: C++ namespace for apis (convention: name.space.api).
+apiPackage: org.openapitools.client.api
+
+# Description: C++ package version.
+packageVersion: 1.0.0
+
+# Description: C++ preprocessor to place before the class name for handling dllexport/dllimport.
+declspec: 
+
+# Description: The default include statement that should be placed in all headers for including things like the declspec (convention: #include "Commons.h" 
+defaultInclude: 
+
+# Description: Generate Google Mock classes for APIs.
+# generateGMocksForApis: 
+
+# Description: Prefix to prepend to reserved words in order to avoid conflicts
+reservedWordPrefix: r_
+
+# Description: Make first character of variable name uppercase (eg. value -> Value)
+variableNameFirstCharacterUppercase: true
+

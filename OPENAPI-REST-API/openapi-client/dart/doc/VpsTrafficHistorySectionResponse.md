@@ -1,0 +1,16 @@
+# openapi.model.VpsTrafficHistorySectionResponse
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**data** | [**List<VpsTrafficHistorySectionDataResponse>**](VpsTrafficHistorySectionDataResponse.md) |  | [default to const []]
+**times** | [**List<DateTime>**](DateTime.md) |  | [default to const []]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

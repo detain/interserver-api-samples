@@ -1,0 +1,62 @@
+# openapi.model.ServerAsset
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** | Unique identifier for the asset. | 
+**orderId** | **String** | Order identifier for the asset. | 
+**hostname** | **String** | Hostname associated with the asset. | 
+**status** | **String** | Status of the asset. | 
+**primaryIpv4** | **String** | Primary IPv4 address of the asset. | 
+**primaryIpv6** | **String** | Primary IPv6 address of the asset. | 
+**datacenter** | **String** | Datacenter identifier for the asset. | 
+**typeId** | **String** | Type identifier for the asset. | 
+**assetTag** | **String** | Asset tag associated with the asset. | 
+**rack** | **String** | Rack identifier for the asset. | 
+**row** | **String** | Row identifier for the asset. | 
+**col** | **String** | Column identifier for the asset. | 
+**unitStart** | **String** | Starting unit identifier for the asset. | 
+**unitEnd** | **String** | Ending unit identifier for the asset. | 
+**unitSub** | **String** | Subunit identifier for the asset. | 
+**ipmiMac** | **String** | IPMI MAC address associated with the asset. | 
+**ipmiIp** | **String** | IPMI IP address associated with the asset. | 
+**ipmiWorking** | **String** | IPMI working status associated with the asset. | 
+**company** | **String** | Company associated with the asset. | 
+**comments** | **String** | Comments associated with the asset. | 
+**make** | **String** | Make of the asset. | 
+**model** | **String** | Model of the asset. | 
+**description** | **String** | Description of the asset. | 
+**customerId** | **String** | Customer identifier for the asset. | 
+**externalId** | **String** | External identifier for the asset. | 
+**billingStatus** | **String** | Billing status of the asset. | 
+**overdue** | **String** | Overdue status of the asset. | 
+**assetId** | **String** | Asset identifier for the asset. | 
+**assetName** | **String** | Name of the asset. | 
+**rackId** | **String** | Rack identifier for the asset. | 
+**rackName** | **String** | Rack name associated with the asset. | 
+**rackLocation** | **String** | Location of the rack associated with the asset. | 
+**rackSize** | **String** | Size of the rack associated with the asset. | 
+**rackX** | **String** | X-coordinate of the asset within the rack. | 
+**rackY** | **String** | Y-coordinate of the asset within the rack. | 
+**switchports** | **List<int>** | List of switchports associated with the asset. | [default to const []]
+**vlans** | **List<String>** | List of VLANs associated with the asset. | [default to const []]
+**vlans6** | **List<String>** | List of IPv6 VLANs associated with the asset. | [default to const []]
+**lease** | [**ServerLease**](ServerLease.md) |  | 
+**mac** | [**Object**](.md) | MAC address associated with the asset. | [optional] 
+**ipmiAdminUsername** | [**Object**](.md) | IPMI admin username associated with the asset. | [optional] 
+**ipmiAdminPassword** | [**Object**](.md) | IPMI admin password associated with the asset. | [optional] 
+**ipmiClientUsername** | [**Object**](.md) | IPMI client username associated with the asset. | [optional] 
+**ipmiClientPassword** | [**Object**](.md) | IPMI client password associated with the asset. | [optional] 
+**ipmiUpdated** | [**Object**](.md) | IPMI update status associated with the asset. | [optional] 
+**createTimestamp** | [**Object**](.md) | Timestamp of asset creation. | [optional] 
+**updateTimestamp** | [**Object**](.md) | Timestamp of asset update. | [optional] 
+**comment** | [**Object**](.md) | Comment associated with the asset. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

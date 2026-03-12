@@ -1,0 +1,265 @@
+package io.swagger.model;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+
+import io.swagger.annotations.*;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class TicketPostDetailsInner   {
+
+  private @Valid Integer postId = null;
+
+  private @Valid String date = null;
+
+  private @Valid String contents = null;
+
+public enum CreatorEnum {
+
+    USER(String.valueOf("User")), STAFF(String.valueOf("Staff"));
+
+
+    private String value;
+
+    CreatorEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CreatorEnum fromValue(String v) {
+        for (CreatorEnum b : CreatorEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        return null;
+    }
+}
+  private @Valid CreatorEnum creator = null;
+
+  private @Valid String creatorEmail = null;
+
+  private @Valid String creatorName = null;
+
+  private @Valid Integer hasattachments = null;
+
+  private @Valid String attachmentDownload = null;
+
+  /**
+   **/
+  public TicketPostDetailsInner postId(Integer postId) {
+    this.postId = postId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("post_id")
+  @NotNull
+
+  public Integer getPostId() {
+    return postId;
+  }
+  public void setPostId(Integer postId) {
+    this.postId = postId;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner date(String date) {
+    this.date = date;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("date")
+  @NotNull
+
+  public String getDate() {
+    return date;
+  }
+  public void setDate(String date) {
+    this.date = date;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner contents(String contents) {
+    this.contents = contents;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("contents")
+  @NotNull
+
+  public String getContents() {
+    return contents;
+  }
+  public void setContents(String contents) {
+    this.contents = contents;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner creator(CreatorEnum creator) {
+    this.creator = creator;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("creator")
+  @NotNull
+
+  public CreatorEnum getCreator() {
+    return creator;
+  }
+  public void setCreator(CreatorEnum creator) {
+    this.creator = creator;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner creatorEmail(String creatorEmail) {
+    this.creatorEmail = creatorEmail;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("creator_email")
+  @NotNull
+
+  public String getCreatorEmail() {
+    return creatorEmail;
+  }
+  public void setCreatorEmail(String creatorEmail) {
+    this.creatorEmail = creatorEmail;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner creatorName(String creatorName) {
+    this.creatorName = creatorName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("creator_name")
+  @NotNull
+
+  public String getCreatorName() {
+    return creatorName;
+  }
+  public void setCreatorName(String creatorName) {
+    this.creatorName = creatorName;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner hasattachments(Integer hasattachments) {
+    this.hasattachments = hasattachments;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("hasattachments")
+  @NotNull
+
+  public Integer getHasattachments() {
+    return hasattachments;
+  }
+  public void setHasattachments(Integer hasattachments) {
+    this.hasattachments = hasattachments;
+  }
+
+  /**
+   **/
+  public TicketPostDetailsInner attachmentDownload(String attachmentDownload) {
+    this.attachmentDownload = attachmentDownload;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attachment_download")
+  @NotNull
+
+  public String getAttachmentDownload() {
+    return attachmentDownload;
+  }
+  public void setAttachmentDownload(String attachmentDownload) {
+    this.attachmentDownload = attachmentDownload;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TicketPostDetailsInner ticketPostDetailsInner = (TicketPostDetailsInner) o;
+    return Objects.equals(postId, ticketPostDetailsInner.postId) &&
+        Objects.equals(date, ticketPostDetailsInner.date) &&
+        Objects.equals(contents, ticketPostDetailsInner.contents) &&
+        Objects.equals(creator, ticketPostDetailsInner.creator) &&
+        Objects.equals(creatorEmail, ticketPostDetailsInner.creatorEmail) &&
+        Objects.equals(creatorName, ticketPostDetailsInner.creatorName) &&
+        Objects.equals(hasattachments, ticketPostDetailsInner.hasattachments) &&
+        Objects.equals(attachmentDownload, ticketPostDetailsInner.attachmentDownload);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(postId, date, contents, creator, creatorEmail, creatorName, hasattachments, attachmentDownload);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class TicketPostDetailsInner {\n");
+    
+    sb.append("    postId: ").append(toIndentedString(postId)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
+    sb.append("    creator: ").append(toIndentedString(creator)).append("\n");
+    sb.append("    creatorEmail: ").append(toIndentedString(creatorEmail)).append("\n");
+    sb.append("    creatorName: ").append(toIndentedString(creatorName)).append("\n");
+    sb.append("    hasattachments: ").append(toIndentedString(hasattachments)).append("\n");
+    sb.append("    attachmentDownload: ").append(toIndentedString(attachmentDownload)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

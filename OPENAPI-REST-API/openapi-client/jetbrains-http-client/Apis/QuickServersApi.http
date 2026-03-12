@@ -1,0 +1,377 @@
+## QuickServersApi
+
+### Place QuickServer Order
+## Place QuickServer Order
+POST https://my.interserver.net/apiv2/qs/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete QuickServer Backup
+## Delete QuickServer Backup
+DELETE https://my.interserver.net/apiv2/qs/{{id}}/backups?all={{all}}&file={{file}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Block QuickServer SMTP
+## Block QuickServer SMTP
+GET https://my.interserver.net/apiv2/qs/{{id}}/block_smtp
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Disable CD Drive
+## Disable CD Drive
+GET https://my.interserver.net/apiv2/qs/{{id}}/disable_cd
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Disable Quotas
+## Disable Quotas
+GET https://my.interserver.net/apiv2/qs/{{id}}/disable_quota
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Eject CD Drive
+## Eject CD Drive
+GET https://my.interserver.net/apiv2/qs/{{id}}/eject_cd
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Enable Quotas
+## Enable Quotas
+GET https://my.interserver.net/apiv2/qs/{{id}}/enable_quota
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Restart QuickServer
+## Restart QuickServer
+GET https://my.interserver.net/apiv2/qs/{{id}}/restart
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Start QuickServer
+## Start QuickServer
+GET https://my.interserver.net/apiv2/qs/{{id}}/start
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Stop QuickServer
+## Stop QuickServer
+GET https://my.interserver.net/apiv2/qs/{{id}}/stop
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Download QuickServer Backup
+## Download QuickServer Backup
+PATCH https://my.interserver.net/apiv2/qs/{{id}}/backups?all={{all}}
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "file": "<string>"
+}
+
+
+### Get QuickServer Ordering Information
+## Get QuickServer Ordering Information
+GET https://my.interserver.net/apiv2/qs/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List QuickServer Backups
+## List QuickServer Backups
+GET https://my.interserver.net/apiv2/qs/{{id}}/backups?all={{all}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get QuickServer Hostname
+## Get QuickServer Hostname
+GET https://my.interserver.net/apiv2/qs/{{id}}/change_hostname
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Change Root Password Info
+## Get Change Root Password Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/change_root_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Timezone Info
+## Get Timezone Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/change_timezone
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Webuzo Change Pass Info
+## Webuzo Change Pass Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/change_webuzo_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get QuickServer Order
+## Get QuickServer Order
+GET https://my.interserver.net/apiv2/qs/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Insert CD Information
+## Insert CD Information
+GET https://my.interserver.net/apiv2/qs/{{id}}/insert_cd
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get QuickServer Invoices
+## Get QuickServer Invoices
+GET https://my.interserver.net/apiv2/qs/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List QuickServers
+## List QuickServers
+GET https://my.interserver.net/apiv2/qs
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### QuickServer Reinstall OS Options
+## QuickServer Reinstall OS Options
+GET https://my.interserver.net/apiv2/qs/{{id}}/reinstall_os
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reset QuickServer Password Info
+## Reset QuickServer Password Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/reset_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reverse DNS Info
+## Reverse DNS Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/reverse_dns
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### VNC Setup Info
+## VNC Setup Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/setup_vnc
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Traffic Usage
+## Get Traffic Usage
+GET https://my.interserver.net/apiv2/qs/{{id}}/traffic_usage
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get View Desktop Info
+## Get View Desktop Info
+GET https://my.interserver.net/apiv2/qs/{{id}}/view_desktop
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend QuickServer Welcome Email
+## Resend QuickServer Welcome Email
+GET https://my.interserver.net/apiv2/qs/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Create QuickServer Backup
+## Create QuickServer Backup
+POST https://my.interserver.net/apiv2/qs/{{id}}/backup
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update QuickServer Hostname
+## Update QuickServer Hostname
+POST https://my.interserver.net/apiv2/qs/{{id}}/change_hostname
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change Root Password
+## Change Root Password
+POST https://my.interserver.net/apiv2/qs/{{id}}/change_root_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change QuickServer Timezone
+## Change QuickServer Timezone
+POST https://my.interserver.net/apiv2/qs/{{id}}/change_timezone
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change Webuzo Password
+## Change Webuzo Password
+POST https://my.interserver.net/apiv2/qs/{{id}}/change_webuzo_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Insert CD in QuickServer
+## Insert CD in QuickServer
+POST https://my.interserver.net/apiv2/qs/{{id}}/insert_cd
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reinstall QuickServer OS
+## Reinstall QuickServer OS
+POST https://my.interserver.net/apiv2/qs/{{id}}/reinstall_os
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reset QuickServer Password
+## Reset QuickServer Password
+POST https://my.interserver.net/apiv2/qs/{{id}}/reset_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Reverse DNS
+## Update Reverse DNS
+POST https://my.interserver.net/apiv2/qs/{{id}}/reverse_dns
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "ips": "<string>"
+}
+
+
+### Setup VNC
+## Setup VNC
+POST https://my.interserver.net/apiv2/qs/{{id}}/setup_vnc
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Search Traffic Usage
+## Search Traffic Usage
+POST https://my.interserver.net/apiv2/qs/{{id}}/traffic_usage
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update View Desktop
+## Update View Desktop
+POST https://my.interserver.net/apiv2/qs/{{id}}/view_desktop
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Restore QuickServer from Backup
+## Restore QuickServer from Backup
+POST https://my.interserver.net/apiv2/qs/{{id}}/restore
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "backup": "<string>",
+ "password": "<string>"
+}
+
+
+### Validate QuickServer Order
+## Validate QuickServer Order
+PUT https://my.interserver.net/apiv2/qs/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel QuickServer Order
+## Cancel QuickServer Order
+DELETE https://my.interserver.net/apiv2/qs/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update QuickServer Order
+## Update QuickServer Order
+POST https://my.interserver.net/apiv2/qs/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

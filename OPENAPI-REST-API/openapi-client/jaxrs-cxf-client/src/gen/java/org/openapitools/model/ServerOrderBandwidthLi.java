@@ -1,0 +1,76 @@
+package org.openapitools.model;
+
+import org.openapitools.model.ServerOrderBandwidth;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Bandwidth options for the server order.
+ */
+@ApiModel(description="Bandwidth options for the server order.")
+
+public class ServerOrderBandwidthLi  {
+  
+  @ApiModelProperty(value = "")
+
+  private ServerOrderBandwidth _15;
+ /**
+   * Get _15
+   * @return _15
+  **/
+  @JsonProperty("15")
+  public ServerOrderBandwidth get15() {
+    return _15;
+  }
+
+  public void set15(ServerOrderBandwidth _15) {
+    this._15 = _15;
+  }
+
+  public ServerOrderBandwidthLi _15(ServerOrderBandwidth _15) {
+    this._15 = _15;
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ServerOrderBandwidthLi serverOrderBandwidthLi = (ServerOrderBandwidthLi) o;
+    return Objects.equals(this._15, serverOrderBandwidthLi._15);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(_15);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ServerOrderBandwidthLi {\n");
+    
+    sb.append("    _15: ").append(toIndentedString(_15)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

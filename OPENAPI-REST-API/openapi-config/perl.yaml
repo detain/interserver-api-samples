@@ -1,0 +1,18 @@
+# Description: Perl module name (convention: CamelCase or Long::Module).
+moduleName: OpenAPIClient
+
+# Description: Perl module version.
+moduleVersion: 1.0.0
+
+# Description: Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+ensureUniqueParams: true
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+
+# Description: Add form or body parameters to the beginning of the parameter list.
+prependFormOrBodyParameters: false
+

@@ -1,0 +1,30 @@
+# ServerOrderCPU
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | [**kotlin.String**](.md) | CPU ID. |  [optional]
+**price** | [**kotlin.Int**](.md) | CPU price. |  [optional]
+**img** | [**kotlin.String**](.md) | CPU image. |  [optional]
+**shortDesc** | [**kotlin.String**](.md) | Short description of the CPU. |  [optional]
+**longDesc** | [**kotlin.String**](.md) | Long description of the CPU. |  [optional]
+**location** | [**kotlin.String**](.md) | Location of the CPU. |  [optional]
+**fsb** | [**kotlin.String**](.md) | Front Side Bus information. |  [optional]
+**manu** | [**kotlin.String**](.md) | Manufacturer information. |  [optional]
+**type** | [**kotlin.String**](.md) | CPU type. |  [optional]
+**speed** | [**kotlin.String**](.md) | CPU speed. |  [optional]
+**cache** | [**kotlin.String**](.md) | Cache information. |  [optional]
+**active** | [**kotlin.String**](.md) | Active status. |  [optional]
+**numCores** | [**kotlin.String**](.md) | Number of cores. |  [optional]
+**numCpus** | [**kotlin.String**](.md) | Number of CPUs. |  [optional]
+**benchmark** | [**kotlin.String**](.md) | CPU benchmark. |  [optional]
+**monthlyPrice** | [**kotlin.Int**](.md) | Monthly price. |  [optional]
+**maxRam** | [**kotlin.String**](.md) | Maximum RAM supported. |  [optional]
+**minRam** | [**kotlin.String**](.md) | Minimum RAM required. |  [optional]
+**maxLff** | [**kotlin.String**](.md) | Maximum LFF (Large Form Factor) supported. |  [optional]
+**maxSff** | [**kotlin.String**](.md) | Maximum SFF (Small Form Factor) supported. |  [optional]
+**maxNve** | [**kotlin.String**](.md) | Maximum NVMe drives supported. |  [optional]
+**visible** | [**kotlin.String**](.md) | Visibility status. |  [optional]
+**hdIds** | [**kotlin.Any**](.md) | Hard drive IDs. |  [optional]
+**priceDisplay** | [**kotlin.String**](.md) | Display of CPU price. |  [optional]
+**monthlyPriceDisplay** | [**kotlin.String**](.md) | Display of monthly CPU price. |  [optional]

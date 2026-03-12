@@ -1,0 +1,82 @@
+# Description: C# package name (convention: Title.Case).
+packageName: Org.OpenAPITools
+
+# Description: C# package version.
+packageVersion: 1.0.0
+
+# Description: source folder for generated code
+sourceFolder: src
+
+# Description: The GUID that will be associated with the C# project
+# packageGuid: 
+
+# Description: Prefix interfaces with a community standard or widely accepted prefix.
+interfacePrefix: I
+
+# Description: The target .NET framework version.
+# Available Values:
+#    v3.5
+#         .NET Framework 3.5 compatible
+#    v4.0
+#         .NET Framework 4.0 compatible
+#    v4.5
+#         .NET Framework 4.5 compatible
+#    v4.5.2
+#         .NET Framework 4.5.2+ compatible
+#    netstandard1.3
+#         .NET Standard 1.3 compatible (DEPRECATED. Please use `csharp-netcore` generator instead)
+#    uwp
+#         Universal Windows Platform (DEPRECATED. Please use `csharp-netcore` generator instead)
+targetFramework: v4.5
+
+# Description: Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name
+modelPropertyNaming: PascalCase
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+
+# Description: Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Description: Use DateTimeOffset to model date-time properties
+useDateTimeOffset: false
+
+# Description: Deserialize array types to Collection<T> instead of List<T>.
+useCollection: false
+
+# Description: Return ICollection<T> instead of the concrete type.
+returnICollection: false
+
+# Description: C# Optional method argument, e.g. void square(int x=10) (.net 4.0+ only).
+optionalMethodArgument: true
+
+# Description: Generate AssemblyInfo.cs.
+optionalAssemblyInfo: true
+
+# Description: Set DataMember's EmitDefaultValue.
+optionalEmitDefaultValues: false
+
+# Description: Generate {PackageName}.csproj.
+optionalProjectFile: true
+
+# Description: Specifies a AssemblyDescription for the .NET Framework global assembly attributes stored in the AssemblyInfo file.
+generatePropertyChanged: false
+
+# Description: Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.
+nonPublicApi: false
+
+# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+allowUnicodeIdentifiers: false
+
+# Description: Use the new format (.NET Core) for .NET project files (.csproj).
+netCoreProjectFile: false
+
+# Description: Generates self-validatable models.
+validatable: true
+
+# Description: Use KellermanSoftware.CompareNetObjects for deep recursive object comparison. WARNING: this option incurs potential performance impact.
+useCompareNetObjects: false
+
+# Description: Make API response's headers case-insensitive
+caseInsensitiveResponseHeaders: false
+

@@ -1,0 +1,126 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class QuickserverAddons {
+  /// Returns a new [QuickserverAddons] instance.
+  QuickserverAddons({
+    this.title,
+    this.rows = const [],
+  });
+
+  /// Table title
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? title;
+
+  List<QuickserverAddonsRow> rows;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is QuickserverAddons &&
+    other.title == title &&
+    _deepEquality.equals(other.rows, rows);
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (title == null ? 0 : title!.hashCode) +
+    (rows.hashCode);
+
+  @override
+  String toString() => 'QuickserverAddons[title=$title, rows=$rows]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.title != null) {
+      json[r'title'] = this.title;
+    } else {
+      json[r'title'] = null;
+    }
+      json[r'rows'] = this.rows;
+    return json;
+  }
+
+  /// Returns a new [QuickserverAddons] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static QuickserverAddons? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "QuickserverAddons[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "QuickserverAddons[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return QuickserverAddons(
+        title: mapValueOfType<String>(json, r'title'),
+        rows: QuickserverAddonsRow.listFromJson(json[r'rows']),
+      );
+    }
+    return null;
+  }
+
+  static List<QuickserverAddons> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <QuickserverAddons>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = QuickserverAddons.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, QuickserverAddons> mapFromJson(dynamic json) {
+    final map = <String, QuickserverAddons>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = QuickserverAddons.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of QuickserverAddons-objects as value to a dart map
+  static Map<String, List<QuickserverAddons>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<QuickserverAddons>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = QuickserverAddons.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
+}
+

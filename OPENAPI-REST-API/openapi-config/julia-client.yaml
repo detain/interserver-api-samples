@@ -1,0 +1,9 @@
+# Description: Julia client package name.
+packageName: APIClient
+
+# Description: Whether to generate code to export model names.
+exportModels: false
+
+# Description: Whether to generate code to export operation names.
+exportOperations: false
+

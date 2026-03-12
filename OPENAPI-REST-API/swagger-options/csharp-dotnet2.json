@@ -1,0 +1,20 @@
+{
+    "packageName": {
+        "opt": "packageName",
+        "description": "C# package name (convention: Camel.Case).",
+        "type": "string",
+        "default": "IO.Swagger"
+    },
+    "packageVersion": {
+        "opt": "packageVersion",
+        "description": "C# package version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "clientPackage": {
+        "opt": "clientPackage",
+        "description": "C# client package name (convention: Camel.Case).",
+        "type": "string",
+        "default": "IO.Swagger.Client"
+    }
+}

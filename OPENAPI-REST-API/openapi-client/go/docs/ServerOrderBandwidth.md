@@ -1,0 +1,316 @@
+# ServerOrderBandwidth
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Bandwidth ID. | [optional] 
+**Price** | Pointer to **int32** | Bandwidth price. | [optional] 
+**Img** | Pointer to **string** | Bandwidth image. | [optional] 
+**ShortDesc** | Pointer to **string** | Short description of the bandwidth. | [optional] 
+**LongDesc** | Pointer to **string** | Long description of the bandwidth. | [optional] 
+**Type** | Pointer to **string** | Bandwidth type. | [optional] 
+**Qty** | Pointer to **string** | Quantity of bandwidth. | [optional] 
+**Active** | Pointer to **string** | Active status. | [optional] 
+**MonthlyPrice** | Pointer to **int32** | Monthly price. | [optional] 
+**PriceDisplay** | Pointer to **string** | Display of bandwidth price. | [optional] 
+**MonthlyPriceDisplay** | Pointer to **string** | Display of monthly bandwidth price. | [optional] 
+
+## Methods
+
+### NewServerOrderBandwidth
+
+`func NewServerOrderBandwidth() *ServerOrderBandwidth`
+
+NewServerOrderBandwidth instantiates a new ServerOrderBandwidth object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewServerOrderBandwidthWithDefaults
+
+`func NewServerOrderBandwidthWithDefaults() *ServerOrderBandwidth`
+
+NewServerOrderBandwidthWithDefaults instantiates a new ServerOrderBandwidth object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ServerOrderBandwidth) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ServerOrderBandwidth) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ServerOrderBandwidth) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ServerOrderBandwidth) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetPrice
+
+`func (o *ServerOrderBandwidth) GetPrice() int32`
+
+GetPrice returns the Price field if non-nil, zero value otherwise.
+
+### GetPriceOk
+
+`func (o *ServerOrderBandwidth) GetPriceOk() (*int32, bool)`
+
+GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrice
+
+`func (o *ServerOrderBandwidth) SetPrice(v int32)`
+
+SetPrice sets Price field to given value.
+
+### HasPrice
+
+`func (o *ServerOrderBandwidth) HasPrice() bool`
+
+HasPrice returns a boolean if a field has been set.
+
+### GetImg
+
+`func (o *ServerOrderBandwidth) GetImg() string`
+
+GetImg returns the Img field if non-nil, zero value otherwise.
+
+### GetImgOk
+
+`func (o *ServerOrderBandwidth) GetImgOk() (*string, bool)`
+
+GetImgOk returns a tuple with the Img field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImg
+
+`func (o *ServerOrderBandwidth) SetImg(v string)`
+
+SetImg sets Img field to given value.
+
+### HasImg
+
+`func (o *ServerOrderBandwidth) HasImg() bool`
+
+HasImg returns a boolean if a field has been set.
+
+### GetShortDesc
+
+`func (o *ServerOrderBandwidth) GetShortDesc() string`
+
+GetShortDesc returns the ShortDesc field if non-nil, zero value otherwise.
+
+### GetShortDescOk
+
+`func (o *ServerOrderBandwidth) GetShortDescOk() (*string, bool)`
+
+GetShortDescOk returns a tuple with the ShortDesc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShortDesc
+
+`func (o *ServerOrderBandwidth) SetShortDesc(v string)`
+
+SetShortDesc sets ShortDesc field to given value.
+
+### HasShortDesc
+
+`func (o *ServerOrderBandwidth) HasShortDesc() bool`
+
+HasShortDesc returns a boolean if a field has been set.
+
+### GetLongDesc
+
+`func (o *ServerOrderBandwidth) GetLongDesc() string`
+
+GetLongDesc returns the LongDesc field if non-nil, zero value otherwise.
+
+### GetLongDescOk
+
+`func (o *ServerOrderBandwidth) GetLongDescOk() (*string, bool)`
+
+GetLongDescOk returns a tuple with the LongDesc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLongDesc
+
+`func (o *ServerOrderBandwidth) SetLongDesc(v string)`
+
+SetLongDesc sets LongDesc field to given value.
+
+### HasLongDesc
+
+`func (o *ServerOrderBandwidth) HasLongDesc() bool`
+
+HasLongDesc returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *ServerOrderBandwidth) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ServerOrderBandwidth) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ServerOrderBandwidth) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ServerOrderBandwidth) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetQty
+
+`func (o *ServerOrderBandwidth) GetQty() string`
+
+GetQty returns the Qty field if non-nil, zero value otherwise.
+
+### GetQtyOk
+
+`func (o *ServerOrderBandwidth) GetQtyOk() (*string, bool)`
+
+GetQtyOk returns a tuple with the Qty field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQty
+
+`func (o *ServerOrderBandwidth) SetQty(v string)`
+
+SetQty sets Qty field to given value.
+
+### HasQty
+
+`func (o *ServerOrderBandwidth) HasQty() bool`
+
+HasQty returns a boolean if a field has been set.
+
+### GetActive
+
+`func (o *ServerOrderBandwidth) GetActive() string`
+
+GetActive returns the Active field if non-nil, zero value otherwise.
+
+### GetActiveOk
+
+`func (o *ServerOrderBandwidth) GetActiveOk() (*string, bool)`
+
+GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActive
+
+`func (o *ServerOrderBandwidth) SetActive(v string)`
+
+SetActive sets Active field to given value.
+
+### HasActive
+
+`func (o *ServerOrderBandwidth) HasActive() bool`
+
+HasActive returns a boolean if a field has been set.
+
+### GetMonthlyPrice
+
+`func (o *ServerOrderBandwidth) GetMonthlyPrice() int32`
+
+GetMonthlyPrice returns the MonthlyPrice field if non-nil, zero value otherwise.
+
+### GetMonthlyPriceOk
+
+`func (o *ServerOrderBandwidth) GetMonthlyPriceOk() (*int32, bool)`
+
+GetMonthlyPriceOk returns a tuple with the MonthlyPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMonthlyPrice
+
+`func (o *ServerOrderBandwidth) SetMonthlyPrice(v int32)`
+
+SetMonthlyPrice sets MonthlyPrice field to given value.
+
+### HasMonthlyPrice
+
+`func (o *ServerOrderBandwidth) HasMonthlyPrice() bool`
+
+HasMonthlyPrice returns a boolean if a field has been set.
+
+### GetPriceDisplay
+
+`func (o *ServerOrderBandwidth) GetPriceDisplay() string`
+
+GetPriceDisplay returns the PriceDisplay field if non-nil, zero value otherwise.
+
+### GetPriceDisplayOk
+
+`func (o *ServerOrderBandwidth) GetPriceDisplayOk() (*string, bool)`
+
+GetPriceDisplayOk returns a tuple with the PriceDisplay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriceDisplay
+
+`func (o *ServerOrderBandwidth) SetPriceDisplay(v string)`
+
+SetPriceDisplay sets PriceDisplay field to given value.
+
+### HasPriceDisplay
+
+`func (o *ServerOrderBandwidth) HasPriceDisplay() bool`
+
+HasPriceDisplay returns a boolean if a field has been set.
+
+### GetMonthlyPriceDisplay
+
+`func (o *ServerOrderBandwidth) GetMonthlyPriceDisplay() string`
+
+GetMonthlyPriceDisplay returns the MonthlyPriceDisplay field if non-nil, zero value otherwise.
+
+### GetMonthlyPriceDisplayOk
+
+`func (o *ServerOrderBandwidth) GetMonthlyPriceDisplayOk() (*string, bool)`
+
+GetMonthlyPriceDisplayOk returns a tuple with the MonthlyPriceDisplay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMonthlyPriceDisplay
+
+`func (o *ServerOrderBandwidth) SetMonthlyPriceDisplay(v string)`
+
+SetMonthlyPriceDisplay sets MonthlyPriceDisplay field to given value.
+
+### HasMonthlyPriceDisplay
+
+`func (o *ServerOrderBandwidth) HasMonthlyPriceDisplay() bool`
+
+HasMonthlyPriceDisplay returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

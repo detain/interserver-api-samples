@@ -1,0 +1,278 @@
+## MailApi
+
+### Place Mail Order
+## Place Mail Order
+POST https://my.interserver.net/apiv2/mail/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Create Deny Rule
+## Create Deny Rule
+POST https://my.interserver.net/apiv2/mail/{{id}}/rules
+Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+  "user" : "mb20682",
+  "type" : "email",
+  "data" : "domeinwo@server.guesshost.net"
+}
+
+
+### Create Mail Alert
+## Create Mail Alert
+POST https://my.interserver.net/apiv2/mail/{{id}}/alerts
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "type": "<string>",
+ "value": "<string>",
+ "to": "<string>",
+ "enabled": "<string>"
+}
+
+
+### Delete Mail Alert
+## Delete Mail Alert
+DELETE https://my.interserver.net/apiv2/mail/{{id}}/alerts?alertId={{alertId}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete Deny Rule
+## Delete Deny Rule
+DELETE https://my.interserver.net/apiv2/mail/{{id}}/rules/{{rule}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Remove Email Address from Block List
+## Remove Email Address from Block List
+POST https://my.interserver.net/apiv2/mail/{{id}}/blocks/delete
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Mail Alerts
+## List Mail Alerts
+GET https://my.interserver.net/apiv2/mail/{{id}}/alerts
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Blocked Email Addresses
+## List Blocked Email Addresses
+GET https://my.interserver.net/apiv2/mail/{{id}}/blocks
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Delist Status
+## Get Delist Status
+GET https://my.interserver.net/apiv2/mail/{{id}}/delist
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Deliverability Metrics
+## Get Deliverability Metrics
+GET https://my.interserver.net/apiv2/mail/{{id}}/deliverability
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Mail Order
+## Get Mail Order
+GET https://my.interserver.net/apiv2/mail/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Mail Invoices
+## Get Mail Invoices
+GET https://my.interserver.net/apiv2/mail/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Mail Orders
+## List Mail Orders
+GET https://my.interserver.net/apiv2/mail
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend Mail Welcome Email
+## Resend Mail Welcome Email
+GET https://my.interserver.net/apiv2/mail/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Mail Ordering Information
+## Get Mail Ordering Information
+GET https://my.interserver.net/apiv2/mail/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Deny Rules
+## List Deny Rules
+GET https://my.interserver.net/apiv2/mail/{{id}}/rules
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Mail Usage Statistics
+## Get Mail Usage Statistics
+GET https://my.interserver.net/apiv2/mail/{{id}}/stats?time={{time}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel Mail
+## Cancel Mail
+DELETE https://my.interserver.net/apiv2/mail/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delist a Blocked Sender
+## Delist a Blocked Sender
+POST https://my.interserver.net/apiv2/mail/{{id}}/delist
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "unblock": "<string>"
+}
+
+
+### Validate Mail Order
+## Validate Mail Order
+PUT https://my.interserver.net/apiv2/mail/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reset Mail Password
+## Reset Mail Password
+GET https://my.interserver.net/apiv2/mail/{{id}}/reset_password
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Send Email with Advanced Options
+## Send Email with Advanced Options
+POST https://my.interserver.net/apiv2/mail/{{id}}/advsend
+Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+  "subject" : "Welcome",
+  "body" : "Hello",
+  "from" : {
+    "email" : "user@domain.com"
+  },
+  "to" : [ {
+    "email" : "someone@client.com",
+    "name" : "Mr Client"
+  } ],
+  "attachments" : [ {
+    "filename" : "message.txt",
+    "data" : "base64_encoded_contents"
+  } ],
+  "id" : 66
+}
+
+
+### Send Email
+## Send Email
+POST https://my.interserver.net/apiv2/mail/{{id}}/send
+Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "to": "<string>",
+ "from": "<string>",
+ "subject": "<string>",
+ "body": "<string>"
+}
+
+
+### Update Mail Alert
+## Update Mail Alert
+PUT https://my.interserver.net/apiv2/mail/{{id}}/alerts
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "alert_id": "<number>",
+ "type": "<string>",
+ "value": "<string>",
+ "to": "<string>",
+ "enabled": "<string>"
+}
+
+
+### Update Mail Order
+## Update Mail Order
+POST https://my.interserver.net/apiv2/mail/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### View Mail Log
+## View Mail Log
+GET https://my.interserver.net/apiv2/mail/{{id}}/log?id2={{id2}}&origin={{origin}}&mx={{mx}}&from={{from}}&to={{to}}&subject={{subject}}&mailid={{mailid}}&skip={{skip}}&limit={{limit}}&startDate={{startDate}}&endDate={{endDate}}&delivered={{delivered}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

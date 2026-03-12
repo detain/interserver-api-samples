@@ -1,0 +1,41 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "modelPackage": {
+        "opt": "modelPackage",
+        "description": "package for generated models",
+        "type": "string"
+    },
+    "apiPackage": {
+        "opt": "apiPackage",
+        "description": "package for generated api classes",
+        "type": "string"
+    },
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string"
+    },
+    "modelPropertyNaming": {
+        "opt": "modelPropertyNaming",
+        "description": "Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name",
+        "type": "string",
+        "default": "camelCase"
+    }
+}

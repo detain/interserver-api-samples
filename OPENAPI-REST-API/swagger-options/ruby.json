@@ -1,0 +1,84 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "gemName": {
+        "opt": "gemName",
+        "description": "gem name (convention: underscore_case).",
+        "type": "string",
+        "default": "swagger_client"
+    },
+    "moduleName": {
+        "opt": "moduleName",
+        "description": "top module name (convention: CamelCase, usually corresponding to gem name).",
+        "type": "string",
+        "default": "SwaggerClient"
+    },
+    "gemVersion": {
+        "opt": "gemVersion",
+        "description": "gem version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "gemLicense": {
+        "opt": "gemLicense",
+        "description": "gem license. ",
+        "type": "string",
+        "default": "proprietary"
+    },
+    "gemRequiredRubyVersion": {
+        "opt": "gemRequiredRubyVersion",
+        "description": "gem required Ruby version. ",
+        "type": "string",
+        "default": ">= 1.9"
+    },
+    "gemHomepage": {
+        "opt": "gemHomepage",
+        "description": "gem homepage. ",
+        "type": "string",
+        "default": "http://swagger.io"
+    },
+    "gemSummary": {
+        "opt": "gemSummary",
+        "description": "gem summary. ",
+        "type": "string",
+        "default": "A ruby wrapper for the swagger APIs"
+    },
+    "gemDescription": {
+        "opt": "gemDescription",
+        "description": "gem description. ",
+        "type": "string",
+        "default": "This gem maps to a swagger API"
+    },
+    "gemAuthor": {
+        "opt": "gemAuthor",
+        "description": "gem author (only one is supported).",
+        "type": "string"
+    },
+    "gemAuthorEmail": {
+        "opt": "gemAuthorEmail",
+        "description": "gem author email (only one is supported).",
+        "type": "string"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "string",
+        "default": "true"
+    }
+}

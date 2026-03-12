@@ -1,0 +1,32 @@
+# VpsServiceInfo
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**vpsId** | [**kotlin.String**](.md) | VPS ID |  [optional]
+**vpsCustid** | [**kotlin.String**](.md) | Customer ID |  [optional]
+**vpsServer** | [**kotlin.String**](.md) | Server ID |  [optional]
+**vpsIp** | [**kotlin.String**](.md) | IP address of the VPS |  [optional]
+**vpsIpv6** | [**kotlin.Any**](.md) | IPv6 address of the VPS |  [optional]
+**vpsVzid** | [**kotlin.String**](.md) | VPS Virtuozzo ID |  [optional]
+**vpsCurrency** | [**kotlin.String**](.md) | Currency used for billing |  [optional]
+**vpsType** | [**kotlin.String**](.md) | VPS type |  [optional]
+**vpsOrderDate** | [**kotlin.String**](.md) | Date of VPS order |  [optional]
+**vpsStatus** | [**kotlin.String**](.md) | VPS status |  [optional]
+**vpsInvoice** | [**kotlin.String**](.md) | VPS invoice number |  [optional]
+**vpsCoupon** | [**kotlin.String**](.md) | VPS coupon code |  [optional]
+**vpsExtra** | [**kotlin.String**](.md) | Additional information about the VPS |  [optional]
+**vpsHostname** | [**kotlin.String**](.md) | VPS hostname |  [optional]
+**vpsServerStatus** | [**kotlin.String**](.md) | Status of the VPS server |  [optional]
+**vpsComment** | [**kotlin.String**](.md) | Comment associated with the VPS |  [optional]
+**vpsSlices** | [**kotlin.String**](.md) | Number of VPS slices |  [optional]
+**vpsVnc** | [**kotlin.String**](.md) | VNC address |  [optional]
+**vpsVncPort** | [**kotlin.String**](.md) | VNC port |  [optional]
+**vpsRootpass** | [**kotlin.String**](.md) | Root password of the VPS |  [optional]
+**vpsMac** | [**kotlin.String**](.md) | MAC address of the VPS |  [optional]
+**vpsOs** | [**kotlin.String**](.md) | Operating system of the VPS |  [optional]
+**vpsVersion** | [**kotlin.String**](.md) | Version of the operating system |  [optional]
+**vpsLocation** | [**kotlin.String**](.md) | Location of the VPS |  [optional]
+**vpsPlatform** | [**kotlin.String**](.md) | Virtualization platform |  [optional]
+**vpsDiskused** | [**kotlin.String**](.md) | Amount of disk space used |  [optional]
+**vpsDiskmax** | [**kotlin.String**](.md) | Maximum disk space available |  [optional]

@@ -1,0 +1,26 @@
+{
+    "packageName": {
+        "opt": "packageName",
+        "description": "Go package name (convention: lowercase).",
+        "type": "string",
+        "default": "swagger"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "string",
+        "default": "true"
+    },
+    "packageVersion": {
+        "opt": "packageVersion",
+        "description": "Go package version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "withXml": {
+        "opt": "withXml",
+        "description": "whether to include support for application/xml content type and include XML annotations in the model (works with libraries that provide support for JSON and XML)",
+        "type": "boolean",
+        "default": "false"
+    }
+}

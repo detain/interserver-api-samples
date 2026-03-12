@@ -1,0 +1,154 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class ServersBuyNowResponse {
+  /// Returns a new [ServersBuyNowResponse] instance.
+  ServersBuyNowResponse({
+    this.success,
+    this.text,
+    this.orderDetails,
+  });
+
+  /// Whether the order was placed successfully.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? success;
+
+  /// Human-readable status message.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? text;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ServersBuyNowResponseOrderDetails? orderDetails;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is ServersBuyNowResponse &&
+    other.success == success &&
+    other.text == text &&
+    other.orderDetails == orderDetails;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (success == null ? 0 : success!.hashCode) +
+    (text == null ? 0 : text!.hashCode) +
+    (orderDetails == null ? 0 : orderDetails!.hashCode);
+
+  @override
+  String toString() => 'ServersBuyNowResponse[success=$success, text=$text, orderDetails=$orderDetails]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.success != null) {
+      json[r'success'] = this.success;
+    } else {
+      json[r'success'] = null;
+    }
+    if (this.text != null) {
+      json[r'text'] = this.text;
+    } else {
+      json[r'text'] = null;
+    }
+    if (this.orderDetails != null) {
+      json[r'order_details'] = this.orderDetails;
+    } else {
+      json[r'order_details'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [ServersBuyNowResponse] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static ServersBuyNowResponse? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "ServersBuyNowResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ServersBuyNowResponse[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return ServersBuyNowResponse(
+        success: mapValueOfType<bool>(json, r'success'),
+        text: mapValueOfType<String>(json, r'text'),
+        orderDetails: ServersBuyNowResponseOrderDetails.fromJson(json[r'order_details']),
+      );
+    }
+    return null;
+  }
+
+  static List<ServersBuyNowResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ServersBuyNowResponse>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ServersBuyNowResponse.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, ServersBuyNowResponse> mapFromJson(dynamic json) {
+    final map = <String, ServersBuyNowResponse>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ServersBuyNowResponse.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of ServersBuyNowResponse-objects as value to a dart map
+  static Map<String, List<ServersBuyNowResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ServersBuyNowResponse>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = ServersBuyNowResponse.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
+}
+

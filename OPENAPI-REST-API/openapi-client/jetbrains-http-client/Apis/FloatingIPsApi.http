@@ -1,0 +1,83 @@
+## FloatingIPsApi
+
+### Place Floating IP Order
+## Place Floating IP Order
+POST https://my.interserver.net/apiv2/floating_ips/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel Floating IP
+## Cancel Floating IP
+DELETE https://my.interserver.net/apiv2/floating_ips/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### View Floating IP
+## View Floating IP
+GET https://my.interserver.net/apiv2/floating_ips/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Floating IP Invoices
+## Get Floating IP Invoices
+GET https://my.interserver.net/apiv2/floating_ips/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Floating IPs
+## List Floating IPs
+GET https://my.interserver.net/apiv2/floating_ips
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend Floating IPs Welcome Email
+## Resend Floating IPs Welcome Email
+GET https://my.interserver.net/apiv2/floating_ips/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Floating IP Ordering Information
+## Get Floating IP Ordering Information
+GET https://my.interserver.net/apiv2/floating_ips/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Change Floating IP Target
+## Change Floating IP Target
+POST https://my.interserver.net/apiv2/floating_ips/{{id}}/change_ip
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Validate Floating IP Order
+## Validate Floating IP Order
+PUT https://my.interserver.net/apiv2/floating_ips/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Floating IP
+## Update Floating IP
+POST https://my.interserver.net/apiv2/floating_ips/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

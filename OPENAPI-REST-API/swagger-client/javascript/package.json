@@ -1,0 +1,41 @@
+{
+  "name": "inter_server_management_api",
+  "version": "0.9.0",
+  "description": "_OverviewThe_InterServer_Management_API_provides_programmatic_access_to_manage_your_InterServer_services__Use_this_REST_API_to_automate_provisioning_configuration_and_billing_operations_across_your_account_The_API_covers_the_following_service_categories___Domains_httpswww_interserver_netdomains__registration_transfers_and_DNS_management___Web_Hosting_httpswww_interserver_nethosting__shared_and_reseller_hosting___VPS_Hosting_httpswww_interserver_netvps__virtual_private_servers___Dedicated_Servers_httpswww_interserver_netdedicated__bare_metal_and__Rapid_Deploy_Servers_httpswww_interserver_netdedicatedrapid_deploy_html___Backups_httpswww_interserver_netstorage__storage_and_backup_services__Licenses__control_panel_and_software_licenses___Mail_httpswww_mail_baby__mail_delivery_services__SSL__certificate_provisioning__Billing__invoices_payment_methods_and_account_managementFor_interactive_testing_see_the__API_documentation_api_docs__AuthenticationMost_endpoints_require_authentication__Two_methods_are_supported_API_Key__PreferredGenerate_an_API_key_from_the__Account_Security_httpsmy_interserver_netaccount_security_page_on__my_interserver_net_httpsmy_interserver_net__Pass_it_in_the_X_API_KEY_request_headerX_API_KEY_your_api_key_here_Session_Based_AuthenticationAlternatively_authenticate_by_creating_a_session1__Log_in__Send_a_POST_request_to_login_with_your_account_credentials__The_response_includes_a_session_identifier_2__Pass_the_session_ID__Include_the_session_identifier_in_the_sessionid_header_on_subsequent_requestssessionid_your_session_id_hereAPI_key_authentication_is_recommended_for_most_integrations_as_it_does_not_expire_and_avoids_the_overhead_of_session_management_",
+  "license": "MIT License",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "superagent": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^8.0.1",
+    "sinon": "^7.2.0"
+  }
+}

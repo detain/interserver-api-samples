@@ -1,0 +1,134 @@
+{
+    "packageName": {
+        "opt": "packageName",
+        "description": "C# package name (convention: Title.Case).",
+        "type": "string",
+        "default": "IO.Swagger"
+    },
+    "packageVersion": {
+        "opt": "packageVersion",
+        "description": "C# package version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "sourceFolder": {
+        "opt": "sourceFolder",
+        "description": "source folder for generated code",
+        "type": "string",
+        "default": "src"
+    },
+    "packageGuid": {
+        "opt": "packageGuid",
+        "description": "The GUID that will be associated with the C# project",
+        "type": "string"
+    },
+    "interfacePrefix": {
+        "opt": "interfacePrefix",
+        "description": "Prefix interfaces with a community standard or widely accepted prefix.",
+        "type": "string",
+        "default": "I"
+    },
+    "targetFramework": {
+        "opt": "targetFramework",
+        "description": "The target .NET framework version.",
+        "type": "string",
+        "enum": {
+            "v3.5": ".NET Framework 3.5 compatible",
+            "v4.0": ".NET Framework 4.0 compatible",
+            "v4.5": ".NET Framework 4.5+ compatible",
+            "v5.0": ".NET Standard 1.3 compatible",
+            "uwp": "Universal Windows Platform (IMPORTANT: this will be decommissioned and replaced by v5.0)"
+        },
+        "default": "v4.5"
+    },
+    "modelPropertyNaming": {
+        "opt": "modelPropertyNaming",
+        "description": "Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name",
+        "type": "string",
+        "default": "PascalCase"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "useDateTimeOffset": {
+        "opt": "useDateTimeOffset",
+        "description": "Use DateTimeOffset to model date-time properties",
+        "type": "boolean",
+        "default": "false"
+    },
+    "useCollection": {
+        "opt": "useCollection",
+        "description": "Deserialize array types to Collection<T> instead of List<T>.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "returnICollection": {
+        "opt": "returnICollection",
+        "description": "Return ICollection<T> instead of the concrete type.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "optionalMethodArgument": {
+        "opt": "optionalMethodArgument",
+        "description": "C# Optional method argument, e.g. void square(int x=10) (.net 4.0+ only).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "optionalAssemblyInfo": {
+        "opt": "optionalAssemblyInfo",
+        "description": "Generate AssemblyInfo.cs.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "optionalProjectFile": {
+        "opt": "optionalProjectFile",
+        "description": "Generate {PackageName}.csproj.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "optionalEmitDefaultValues": {
+        "opt": "optionalEmitDefaultValues",
+        "description": "Set DataMember's EmitDefaultValue.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "generatePropertyChanged": {
+        "opt": "generatePropertyChanged",
+        "description": "Specifies a AssemblyDescription for the .NET Framework global assembly attributes stored in the AssemblyInfo file.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "nonPublicApi": {
+        "opt": "nonPublicApi",
+        "description": "Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.",
+        "type": "boolean",
+        "default": "false"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "netCoreProjectFile": {
+        "opt": "netCoreProjectFile",
+        "description": "Use the new format (.NET Core) for .NET project files (.csproj).",
+        "type": "boolean",
+        "default": "false"
+    },
+    "validatable": {
+        "opt": "validatable",
+        "description": "Generates self-validatable models.",
+        "type": "boolean",
+        "default": "true"
+    }
+}

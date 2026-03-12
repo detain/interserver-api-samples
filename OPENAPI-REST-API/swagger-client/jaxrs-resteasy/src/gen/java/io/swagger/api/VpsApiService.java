@@ -1,0 +1,103 @@
+package io.swagger.api;
+
+import io.swagger.api.*;
+import io.swagger.model.*;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+
+import io.swagger.model.ChargeInvoiceRows;
+import io.swagger.model.HostnameObject;
+import io.swagger.model.IdBackupsBody2;
+import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse401;
+import io.swagger.model.PasswordRequest;
+import io.swagger.model.QueueResponse;
+import io.swagger.model.RestoreRequest;
+import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.SuccessTextResponse;
+import io.swagger.model.TemplateRequest;
+import io.swagger.model.TextResponse;
+import io.swagger.model.TimezoneUpdate;
+import io.swagger.model.UrlRequest;
+import io.swagger.model.Vps;
+import io.swagger.model.VpsBackupRows;
+import io.swagger.model.VpsOrder;
+import io.swagger.model.VpsOrderPostRequest;
+import io.swagger.model.VpsOrderPutRequest;
+import io.swagger.model.VpsOrderPutResponse;
+import io.swagger.model.VpsRow;
+import io.swagger.model.VpsTemplatesList;
+import io.swagger.model.VpsTrafficResponse;
+
+import java.util.List;
+import java.util.Map;
+import io.swagger.api.NotFoundException;
+
+import java.io.InputStream;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+
+
+public interface VpsApiService {
+      Response addVps(VpsOrderPostRequest body,SecurityContext securityContext) throws NotFoundException;
+      Response addVps(String osDistro,Integer slices,String vpsPlatform,String controlpanel,Integer period,Integer location,String osVersion,String hostname,String coupon,String rootpass,String comment,SecurityContext securityContext) throws NotFoundException;
+      Response deleteVpsBackup(Integer id,String file,String all,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsBlockSmtp(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsDisableCd(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsDisableQuota(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsEjectCd(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsEnableQuota(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsRestart(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsStart(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response doVpsStop(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response downloadVpsBackup(IdBackupsBody2 body,Integer id,String all,SecurityContext securityContext) throws NotFoundException;
+      Response downloadVpsBackup(String file,Integer id,String all,SecurityContext securityContext) throws NotFoundException;
+      Response getNewVps(SecurityContext securityContext) throws NotFoundException;
+      Response getVpsBackups(Integer id,String all,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsBuyHdSpace(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsBuyIp(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsChangeTimezone(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsInfo(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsInvoices(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsList(SecurityContext securityContext) throws NotFoundException;
+      Response getVpsReinstallOs(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsReverseDns(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsSetupVnc(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsSlices(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsTrafficUsage(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsViewDesktop(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response getVpsWelcomeEmail(String id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsBackup(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsBuyHdSpace(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsBuyIp(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeHostname(MultipartFormDataInput input,String hostname,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeHostname(MultipartFormDataInput input,HostnameObject body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeRootPassword(MultipartFormDataInput input,String password,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeRootPassword(MultipartFormDataInput input,PasswordRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeTimezone(MultipartFormDataInput input,String timezone,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeTimezone(MultipartFormDataInput input,TimezoneUpdate body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeWebuzoPassword(MultipartFormDataInput input,String password,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsChangeWebuzoPassword(MultipartFormDataInput input,PasswordRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsInsertCd(MultipartFormDataInput input,String url,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsInsertCd(MultipartFormDataInput input,UrlRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsReinstallOs(MultipartFormDataInput input,String template,String password,String localPassword,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsReinstallOs(MultipartFormDataInput input,TemplateRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsResetPassword(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsRestore(RestoreRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsRestore(String backup,String password,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsReverseDns(ReverseDnsEntries body,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsReverseDns(Map<String, Object> ips,Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsSetupVnc(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsSlices(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response postVpsViewDesktop(Integer id,SecurityContext securityContext) throws NotFoundException;
+      Response putVps(VpsOrderPutRequest body,SecurityContext securityContext) throws NotFoundException;
+      Response putVps(String osDistro,Integer slices,String vpsPlatform,String controlpanel,Integer period,Integer location,String osVersion,String hostname,String coupon,String rootpass,String comment,SecurityContext securityContext) throws NotFoundException;
+      Response updateVpsInfo(String id,SecurityContext securityContext) throws NotFoundException;
+      Response vPSCancel(Integer id,SecurityContext securityContext) throws NotFoundException;
+}

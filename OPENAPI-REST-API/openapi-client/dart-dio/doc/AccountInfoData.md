@@ -1,0 +1,78 @@
+# openapi.model.AccountInfoData
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**group** | **String** |  | [optional] 
+**address** | **String** |  | [optional] 
+**city** | **String** |  | [optional] 
+**country** | **String** |  | [optional] 
+**disableCc** | **String** |  | [optional] 
+**fraudrecordScore** | **String** |  | [optional] 
+**ima** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
+**paymentMethod** | **String** |  | [optional] 
+**phone** | **String** |  | [optional] 
+**pin** | **String** |  | [optional] 
+**state** | **String** |  | [optional] 
+**status** | **String** |  | [optional] 
+**zip** | **String** |  | [optional] 
+**accountId** | **String** |  | [optional] 
+**accountLid** | **String** |  | [optional] 
+**address2** | **String** |  | [optional] 
+**affiliateDockDescription** | **String** |  | [optional] 
+**affiliateDockTitle** | **String** |  | [optional] 
+**affiliatePaymentMethod** | **String** |  | [optional] 
+**affiliatePaypal** | **String** |  | [optional] 
+**cc** | **String** |  | [optional] 
+**ccAuto** | **String** |  | [optional] 
+**ccExp** | **String** |  | [optional] 
+**ccType** | **String** |  | [optional] 
+**ccWhitelist** | **String** |  | [optional] 
+**ccs** | [**AccountInfoDataCcs**](AccountInfoDataCcs.md) |  | [optional] 
+**ccsAdded** | **String** |  | [optional] 
+**company** | **String** |  | [optional] 
+**currency** | **String** |  | [optional] 
+**disableReinstall** | **String** |  | [optional] 
+**disableReset** | **String** |  | [optional] 
+**email** | **String** |  | [optional] 
+**emailAbuse** | **String** |  | [optional] 
+**emailSettings** | [**AccountInfoDataEmailSettings**](AccountInfoDataEmailSettings.md) |  | [optional] 
+**extra** | [**AccountInfoDataExtra**](AccountInfoDataExtra.md) |  | [optional] 
+**facebookId** | **String** |  | [optional] 
+**facebookUrl** | **String** |  | [optional] 
+**firstname** | **String** |  | [optional] 
+**fraudrecord** | [**AccountInfoDataFraudrecord**](AccountInfoDataFraudrecord.md) |  | [optional] 
+**githubId** | **String** |  | [optional] 
+**githubUrl** | **String** |  | [optional] 
+**googleId** | **String** |  | [optional] 
+**googleUrl** | **String** |  | [optional] 
+**innertellId** | **String** |  | [optional] 
+**lastname** | **String** |  | [optional] 
+**locale** | **String** |  | [optional] 
+**maxmind** | [**AccountInfoMaxMindResponse**](AccountInfoMaxMindResponse.md) |  | [optional] 
+**maxmindScore** | **String** |  | [optional] 
+**mbId** | **String** |  | [optional] 
+**modernbillId** | **String** |  | [optional] 
+**picture** | **String** |  | [optional] 
+**referrerCoupon** | **String** |  | [optional] 
+**resellerMarkup** | **String** |  | [optional] 
+**username** | **String** |  | [optional] 
+**sshKey** | **String** |  | [optional] 
+**sshKeyWrapped** | **String** |  | [optional] 
+**apiKey** | **String** |  | [optional] 
+**apiKeyWrapped** | **String** |  | [optional] 
+**n2faGoogleKey** | **String** |  | [optional] 
+**n2faGoogleEnabled** | **bool** |  | [optional] 
+**n2faGoogle** | **int** |  | [optional] 
+**n2faGoogleSplit** | **String** |  | [optional] 
+**n2faGoogleQr** | **String** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

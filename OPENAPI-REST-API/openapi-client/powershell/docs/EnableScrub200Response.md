@@ -1,0 +1,23 @@
+# EnableScrub200Response
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Success** | **Boolean** |  | 
+**Text** | **String** |  | 
+
+## Examples
+
+- Prepare the resource
+```powershell
+$EnableScrub200Response = Initialize-PSOpenAPIToolsEnableScrub200Response  -Success true `
+ -Text Scrub is enabled on your IP.
+```
+
+- Convert the resource to JSON
+```powershell
+$EnableScrub200Response | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

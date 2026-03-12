@@ -1,0 +1,112 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "projectName": {
+        "opt": "projectName",
+        "description": "Project name in Xcode",
+        "type": "string"
+    },
+    "responseAs": {
+        "opt": "responseAs",
+        "description": "Optionally use libraries to manage response.  Currently PromiseKit, RxSwift are available.",
+        "type": "string"
+    },
+    "unwrapRequired": {
+        "opt": "unwrapRequired",
+        "description": "Treat 'required' properties in response as non-optional (which would crash the app if api returns null as opposed to required option specified in json schema",
+        "type": "string"
+    },
+    "objcCompatible": {
+        "opt": "objcCompatible",
+        "description": "Add additional properties and methods for Objective-C compatibility (default: false)",
+        "type": "string"
+    },
+    "podSource": {
+        "opt": "podSource",
+        "description": "Source information used for Podspec",
+        "type": "string"
+    },
+    "podVersion": {
+        "opt": "podVersion",
+        "description": "Version used for Podspec",
+        "type": "string"
+    },
+    "podAuthors": {
+        "opt": "podAuthors",
+        "description": "Authors used for Podspec",
+        "type": "string"
+    },
+    "podSocialMediaURL": {
+        "opt": "podSocialMediaURL",
+        "description": "Social Media URL used for Podspec",
+        "type": "string"
+    },
+    "podDocsetURL": {
+        "opt": "podDocsetURL",
+        "description": "Docset URL used for Podspec",
+        "type": "string"
+    },
+    "podLicense": {
+        "opt": "podLicense",
+        "description": "License used for Podspec",
+        "type": "string"
+    },
+    "podHomepage": {
+        "opt": "podHomepage",
+        "description": "Homepage used for Podspec",
+        "type": "string"
+    },
+    "podSummary": {
+        "opt": "podSummary",
+        "description": "Summary used for Podspec",
+        "type": "string"
+    },
+    "podDescription": {
+        "opt": "podDescription",
+        "description": "Description used for Podspec",
+        "type": "string"
+    },
+    "podScreenshots": {
+        "opt": "podScreenshots",
+        "description": "Screenshots used for Podspec",
+        "type": "string"
+    },
+    "podDocumentationURL": {
+        "opt": "podDocumentationURL",
+        "description": "Documentation URL used for Podspec",
+        "type": "string"
+    },
+    "swiftUseApiNamespace": {
+        "opt": "swiftUseApiNamespace",
+        "description": "Flag to make all the API classes inner-class of {{projectName}}API",
+        "type": "string"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "string",
+        "default": "true"
+    },
+    "lenientTypeCast": {
+        "opt": "lenientTypeCast",
+        "description": "Accept and cast values for simple types (string->bool, string->int, int->string)",
+        "type": "string",
+        "default": "false"
+    }
+}

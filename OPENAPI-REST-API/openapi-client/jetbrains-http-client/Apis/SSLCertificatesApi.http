@@ -1,0 +1,73 @@
+## SSLCertificatesApi
+
+### Place SSL Cert Order
+## Place SSL Cert Order
+POST https://my.interserver.net/apiv2/ssl/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### SSL Cert Ordering Information
+## SSL Cert Ordering Information
+GET https://my.interserver.net/apiv2/ssl/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get SSL Cert Info
+## Get SSL Cert Info
+GET https://my.interserver.net/apiv2/ssl/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get SSL Cert Invoices
+## Get SSL Cert Invoices
+GET https://my.interserver.net/apiv2/ssl/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List SSL Certs
+## List SSL Certs
+GET https://my.interserver.net/apiv2/ssl
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend SSL Welcome Email
+## Resend SSL Welcome Email
+GET https://my.interserver.net/apiv2/ssl/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Validate SSL Cert Order
+## Validate SSL Cert Order
+PUT https://my.interserver.net/apiv2/ssl/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel SSL Certificate Service
+## Cancel SSL Certificate Service
+DELETE https://my.interserver.net/apiv2/ssl/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update SSL Cert Order
+## Update SSL Cert Order
+POST https://my.interserver.net/apiv2/ssl/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

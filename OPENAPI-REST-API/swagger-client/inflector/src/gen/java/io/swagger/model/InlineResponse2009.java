@@ -1,0 +1,212 @@
+package io.swagger.model;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+
+
+
+public class InlineResponse2009   {
+  /**
+   * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
+   */
+  public enum TypeEnum {
+    REDIRECT("redirect"),
+    
+    SUBMIT("submit"),
+    
+    SINGLE("single");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+  @JsonProperty("type")
+  private TypeEnum type = null;
+  @JsonProperty("redirect")
+  private String redirect = null;
+  @JsonProperty("action")
+  private String action = null;
+  @JsonProperty("method")
+  private String method = null;
+  @JsonProperty("items")
+  private Object items = null;
+  @JsonProperty("text")
+  private String text = null;
+  /**
+   * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
+   **/
+  public InlineResponse2009 type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+  
+  @Schema(description = "The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).")
+  @JsonProperty("type")
+  public TypeEnum getType() {
+    return type;
+  }
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+  /**
+   * URL to redirect the user to for payment (when type is `redirect`).
+   **/
+  public InlineResponse2009 redirect(String redirect) {
+    this.redirect = redirect;
+    return this;
+  }
+
+  
+  @Schema(description = "URL to redirect the user to for payment (when type is `redirect`).")
+  @JsonProperty("redirect")
+  public String getRedirect() {
+    return redirect;
+  }
+  public void setRedirect(String redirect) {
+    this.redirect = redirect;
+  }
+
+  /**
+   * Form action URL (when type is `submit`).
+   **/
+  public InlineResponse2009 action(String action) {
+    this.action = action;
+    return this;
+  }
+
+  
+  @Schema(description = "Form action URL (when type is `submit`).")
+  @JsonProperty("action")
+  public String getAction() {
+    return action;
+  }
+  public void setAction(String action) {
+    this.action = action;
+  }
+
+  /**
+   * HTTP method for the form submission (when type is `submit`).
+   **/
+  public InlineResponse2009 method(String method) {
+    this.method = method;
+    return this;
+  }
+
+  
+  @Schema(description = "HTTP method for the form submission (when type is `submit`).")
+  @JsonProperty("method")
+  public String getMethod() {
+    return method;
+  }
+  public void setMethod(String method) {
+    this.method = method;
+  }
+
+  /**
+   * Form field name-value pairs to submit (when type is `submit`).
+   **/
+  public InlineResponse2009 items(Object items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @Schema(description = "Form field name-value pairs to submit (when type is `submit`).")
+  @JsonProperty("items")
+  public Object getItems() {
+    return items;
+  }
+  public void setItems(Object items) {
+    this.items = items;
+  }
+
+  /**
+   * Status or result text.
+   **/
+  public InlineResponse2009 text(String text) {
+    this.text = text;
+    return this;
+  }
+
+  
+  @Schema(description = "Status or result text.")
+  @JsonProperty("text")
+  public String getText() {
+    return text;
+  }
+  public void setText(String text) {
+    this.text = text;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    InlineResponse2009 inlineResponse2009 = (InlineResponse2009) o;
+    return Objects.equals(type, inlineResponse2009.type) &&
+        Objects.equals(redirect, inlineResponse2009.redirect) &&
+        Objects.equals(action, inlineResponse2009.action) &&
+        Objects.equals(method, inlineResponse2009.method) &&
+        Objects.equals(items, inlineResponse2009.items) &&
+        Objects.equals(text, inlineResponse2009.text);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type, redirect, action, method, items, text);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class InlineResponse2009 {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
+    sb.append("    action: ").append(toIndentedString(action)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

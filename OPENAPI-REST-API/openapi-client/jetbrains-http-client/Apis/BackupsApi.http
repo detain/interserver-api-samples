@@ -1,0 +1,85 @@
+## BackupsApi
+
+### Place Backup Order
+## Place Backup Order
+POST https://my.interserver.net/apiv2/backups/order
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel Backup Service
+## Cancel Backup Service
+DELETE https://my.interserver.net/apiv2/backups/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Backup Service Details
+## Get Backup Service Details
+GET https://my.interserver.net/apiv2/backups/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Backup Order Invoices
+## Get Backup Order Invoices
+GET https://my.interserver.net/apiv2/backups/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Backup Storage Panel Login
+## Get Backup Storage Panel Login
+GET https://my.interserver.net/apiv2/backups/{{id}}/login
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Backup Services
+## List Backup Services
+GET https://my.interserver.net/apiv2/backups
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend Backup Welcome Email
+## Resend Backup Welcome Email
+GET https://my.interserver.net/apiv2/backups/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Backup Order Form Data
+## Get Backup Order Form Data
+GET https://my.interserver.net/apiv2/backups/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Backup Information
+## Update Backup Information
+POST https://my.interserver.net/apiv2/backups/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Validate Backup Order
+## Validate Backup Order
+PUT https://my.interserver.net/apiv2/backups/order
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

@@ -1,0 +1,300 @@
+## DomainsApi
+
+### Place Domain Order
+## Place Domain Order
+POST https://my.interserver.net/apiv2/domains/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Add Domain DNSSEC Records
+## Add Domain DNSSEC Records
+POST https://my.interserver.net/apiv2/domains/{{id}}/dnssec
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "algorithm": "<string>",
+ "digest_type": "<string>",
+ "digest": "<string>",
+ "key_tag": "<string>"
+}
+
+
+### Add Registered Nameserver
+## Add Registered Nameserver
+POST https://my.interserver.net/apiv2/domains/{{id}}/nameservers
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "name": "<string>",
+ "ipAddress": "<string>"
+}
+
+
+### Cancel Domain Order
+## Cancel Domain Order
+DELETE https://my.interserver.net/apiv2/domains/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Remove Domain DNSSEC Records
+## Remove Domain DNSSEC Records
+DELETE https://my.interserver.net/apiv2/domains/{{id}}/dnssec?action={{action}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete Registered Nameserver
+## Delete Registered Nameserver
+DELETE https://my.interserver.net/apiv2/domains/{{id}}/nameservers?index={{index}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain Contact Details
+## Get Domain Contact Details
+GET https://my.interserver.net/apiv2/domains/{{id}}/contact
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain DNSSEC Records
+## Get Domain DNSSEC Records
+GET https://my.interserver.net/apiv2/domains/{{id}}/dnssec
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain Order
+## Get Domain Order
+GET https://my.interserver.net/apiv2/domains/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain Invoices
+## Get Domain Invoices
+GET https://my.interserver.net/apiv2/domains/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Lookup Domain Availability and Pricing
+## Lookup Domain Availability and Pricing
+GET https://my.interserver.net/apiv2/domains/lookup/{{name}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Registered Nameservers
+## List Registered Nameservers
+GET https://my.interserver.net/apiv2/domains/{{id}}/nameservers
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain Order Fields
+## Get Domain Order Fields
+GET https://my.interserver.net/apiv2/domains/order/{{domain}}/{{regType}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain Order Search Results
+## Get Domain Order Search Results
+GET https://my.interserver.net/apiv2/domains/order/{{domain}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Start Domain Renewal Flow
+## Start Domain Renewal Flow
+GET https://my.interserver.net/apiv2/domains/{{id}}/renew
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Search Domain Suggestions
+## Search Domain Suggestions
+GET https://my.interserver.net/apiv2/domains/search/{{name}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Start Domain Transfer Flow
+## Start Domain Transfer Flow
+GET https://my.interserver.net/apiv2/domains/{{id}}/transfer
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Whois Privacy Status
+## Get Whois Privacy Status
+GET https://my.interserver.net/apiv2/domains/{{id}}/whois
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Domain Orders
+## List Domain Orders
+GET https://my.interserver.net/apiv2/domains
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend Domain Welcome Email
+## Resend Domain Welcome Email
+GET https://my.interserver.net/apiv2/domains/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Domain Ordering Information
+## Get Domain Ordering Information
+GET https://my.interserver.net/apiv2/domains/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Validate Domain Order
+## Validate Domain Order
+PATCH https://my.interserver.net/apiv2/domains/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Request Domain Renewal
+## Request Domain Renewal
+POST https://my.interserver.net/apiv2/domains/{{id}}/renew
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Request Domain Transfer
+## Request Domain Transfer
+POST https://my.interserver.net/apiv2/domains/{{id}}/transfer
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Domain Order Search
+## Domain Order Search
+PUT https://my.interserver.net/apiv2/domains/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Domain Contact Details
+## Update Domain Contact Details
+POST https://my.interserver.net/apiv2/domains/{{id}}/contact
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "status": "<string>",
+ "state": "<string>",
+ "org_name": "<string>",
+ "country": "<string>",
+ "postal_code": "<string>",
+ "email": "<string>",
+ "fax": "<string>",
+ "address2": "<string>",
+ "address3": "<string>",
+ "address1": "<string>",
+ "city": "<string>",
+ "phone": "<string>",
+ "first_name": "<string>",
+ "last_name": "<string>"
+}
+
+
+### Update Domain Order
+## Update Domain Order
+POST https://my.interserver.net/apiv2/domains/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Replace Nameserver Set
+## Replace Nameserver Set
+PUT https://my.interserver.net/apiv2/domains/{{id}}/nameservers
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "nameserver": "<string>"
+}
+
+
+### Update Whois Privacy
+## Update Whois Privacy
+POST https://my.interserver.net/apiv2/domains/{{id}}/whois
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "func": "<string>",
+ "csrf_token": "<string>",
+ "domain_firstname": "<string>",
+ "domain_lastname": "<string>",
+ "domain_email": "<string>",
+ "domain_address": "<string>",
+ "domain_address2": "<string>",
+ "domain_address3": "<string>",
+ "domain_city": "<string>",
+ "domain_state": "<string>",
+ "domain_zip": "<string>",
+ "domain_country": "<string>",
+ "domain_phone": "<string>",
+ "domain_fax": "<string>",
+ "domain_company": "<string>",
+ "domain_extra": "<string>"
+}
+

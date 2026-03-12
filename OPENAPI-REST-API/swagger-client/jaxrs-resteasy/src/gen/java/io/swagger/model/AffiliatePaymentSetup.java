@@ -1,0 +1,83 @@
+package io.swagger.model;
+
+import java.util.Objects;
+import java.util.ArrayList;
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description="Affiliate Payment Setup.  Here you can set if you want the payments to go to `prepay` or `paypal` and the PayPal email address.")
+
+public class AffiliatePaymentSetup   {
+  private String affiliatePaypal = null;  private String affiliatePaymentMethod = null;
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("affiliate_paypal")
+  @NotNull
+  public String getAffiliatePaypal() {
+    return affiliatePaypal;
+  }
+  public void setAffiliatePaypal(String affiliatePaypal) {
+    this.affiliatePaypal = affiliatePaypal;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("affiliate_payment_method")
+  @NotNull
+  public String getAffiliatePaymentMethod() {
+    return affiliatePaymentMethod;
+  }
+  public void setAffiliatePaymentMethod(String affiliatePaymentMethod) {
+    this.affiliatePaymentMethod = affiliatePaymentMethod;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AffiliatePaymentSetup affiliatePaymentSetup = (AffiliatePaymentSetup) o;
+    return Objects.equals(affiliatePaypal, affiliatePaymentSetup.affiliatePaypal) &&
+        Objects.equals(affiliatePaymentMethod, affiliatePaymentSetup.affiliatePaymentMethod);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(affiliatePaypal, affiliatePaymentMethod);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AffiliatePaymentSetup {\n");
+    
+    sb.append("    affiliatePaypal: ").append(toIndentedString(affiliatePaypal)).append("\n");
+    sb.append("    affiliatePaymentMethod: ").append(toIndentedString(affiliatePaymentMethod)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

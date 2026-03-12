@@ -1,0 +1,19 @@
+
+
+# BackupRow
+
+A result row from the `Backups` `GET` request.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**backupId** | **String** | The id of the backup. |  [optional] |
+|**backupName** | **String** | The name of the backup. |  [optional] |
+|**backupCost** | **String** | The cost of the backup. |  [optional] |
+|**backupUsername** | **String** | The username of the backup. |  [optional] |
+|**backupStatus** | **String** | The status of the backup. |  [optional] |
+|**servicesName** | **String** | The services name of the backup. |  [optional] |
+
+
+

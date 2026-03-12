@@ -1,0 +1,87 @@
+{
+    "sortParamsByRequiredFlag": {
+        "opt": "sortParamsByRequiredFlag",
+        "description": "Sort method arguments to place required parameters before optional parameters.",
+        "type": "boolean",
+        "default": "true"
+    },
+    "ensureUniqueParams": {
+        "opt": "ensureUniqueParams",
+        "description": "Whether to ensure parameter names are unique in an operation (rename parameters that are not).",
+        "type": "boolean",
+        "default": "true"
+    },
+    "allowUnicodeIdentifiers": {
+        "opt": "allowUnicodeIdentifiers",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "boolean",
+        "default": "false"
+    },
+    "modelPackage": {
+        "opt": "modelPackage",
+        "description": "package for generated models",
+        "type": "string"
+    },
+    "apiPackage": {
+        "opt": "apiPackage",
+        "description": "package for generated api classes",
+        "type": "string"
+    },
+    "variableNamingConvention": {
+        "opt": "variableNamingConvention",
+        "description": "naming convention of variable name, e.g. camelCase.",
+        "type": "string",
+        "default": "snake_case"
+    },
+    "invokerPackage": {
+        "opt": "invokerPackage",
+        "description": "The main namespace to use for all classes. e.g. Yay\\Pets",
+        "type": "string"
+    },
+    "packagePath": {
+        "opt": "packagePath",
+        "description": "The main package name for classes. e.g. GeneratedPetstore",
+        "type": "string"
+    },
+    "srcBasePath": {
+        "opt": "srcBasePath",
+        "description": "The directory under packagePath to serve as source root.",
+        "type": "string"
+    },
+    "composerVendorName": {
+        "opt": "composerVendorName",
+        "description": "The vendor name used in the composer package name. The template uses {{composerVendorName}}/{{composerProjectName}} for the composer package name. e.g. yaypets. IMPORTANT NOTE (2016/03): composerVendorName will be deprecated and replaced by gitUserId in the next swagger-codegen release",
+        "type": "string"
+    },
+    "gitUserId": {
+        "opt": "gitUserId",
+        "description": "Git user ID, e.g. swagger-api.",
+        "type": "string"
+    },
+    "composerProjectName": {
+        "opt": "composerProjectName",
+        "description": "The project name used in the composer package name. The template uses {{composerVendorName}}/{{composerProjectName}} for the composer package name. e.g. petstore-client. IMPORTANT NOTE (2016/03): composerProjectName will be deprecated and replaced by gitRepoId in the next swagger-codegen release",
+        "type": "string"
+    },
+    "gitRepoId": {
+        "opt": "gitRepoId",
+        "description": "Git repo ID, e.g. swagger-codegen.",
+        "type": "string"
+    },
+    "gitRepoBaseURL": {
+        "opt": "gitRepoBaseURL",
+        "description": "Git repo base URL, e.g. https://github.com.",
+        "type": "string"
+    },
+    "artifactVersion": {
+        "opt": "artifactVersion",
+        "description": "The version to use in the composer package version field. e.g. 1.2.3",
+        "type": "string"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "boolean, toggles whether unicode identifiers are allowed in names or not, default is false",
+        "type": "string",
+        "default": "true"
+    }
+}

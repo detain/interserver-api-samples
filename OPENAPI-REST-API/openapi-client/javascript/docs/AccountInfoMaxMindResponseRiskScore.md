@@ -1,0 +1,8 @@
+# InterServerManagementApi.AccountInfoMaxMindResponseRiskScore
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+
+

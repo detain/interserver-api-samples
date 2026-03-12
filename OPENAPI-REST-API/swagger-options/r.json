@@ -1,0 +1,20 @@
+{
+    "packageName": {
+        "opt": "packageName",
+        "description": "R package name (convention: lowercase).",
+        "type": "string",
+        "default": "swagger"
+    },
+    "packageVersion": {
+        "opt": "packageVersion",
+        "description": "R package version.",
+        "type": "string",
+        "default": "1.0.0"
+    },
+    "hideGenerationTimestamp": {
+        "opt": "hideGenerationTimestamp",
+        "description": "Hides the generation timestamp when files are generated.",
+        "type": "string",
+        "default": "true"
+    }
+}

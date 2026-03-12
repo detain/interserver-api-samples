@@ -1,0 +1,15 @@
+# openapi.model.GetWebsiteBuyIp200Response
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ips** | **BuiltMap&lt;String, String&gt;** | A map of IP addresses to their current reverse DNS hostnames. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

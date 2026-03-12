@@ -1,0 +1,164 @@
+## ServersApi
+
+### Place Server Order
+## Place Server Order
+POST https://my.interserver.net/apiv2/servers/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Buy Now Server Options
+## Get Buy Now Server Options
+GET https://my.interserver.net/apiv2/servers/order/buy_now_server
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Marketplace Servers
+## List Marketplace Servers
+GET https://my.interserver.net/apiv2/buy_now_servers_list
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Server Ordering Information
+## Server Ordering Information
+GET https://my.interserver.net/apiv2/servers/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Server Order
+## Get Server Order
+GET https://my.interserver.net/apiv2/servers/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Server Invoices
+## Get Server Invoices
+GET https://my.interserver.net/apiv2/servers/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Servers
+## List Servers
+GET https://my.interserver.net/apiv2/servers
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Reverse DNS Info
+## Reverse DNS Info
+GET https://my.interserver.net/apiv2/servers/{{id}}/reverse_dns
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend Server Welcome Email
+## Resend Server Welcome Email
+GET https://my.interserver.net/apiv2/servers/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Place Buy Now Server Order
+## Place Buy Now Server Order
+POST https://my.interserver.net/apiv2/servers/order/buy_now_server
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "server_id": "<number>",
+ "server_hostname": "<string>",
+ "server_root_password": "<string>"
+}
+
+
+### Update Reverse DNS
+## Update Reverse DNS
+POST https://my.interserver.net/apiv2/servers/{{id}}/reverse_dns
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "ips": "<string>"
+}
+
+
+### Validate Server Order
+## Validate Server Order
+PUT https://my.interserver.net/apiv2/servers/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Server IPMI Live Information
+## Server IPMI Live Information
+GET https://my.interserver.net/apiv2/servers/{{id}}/ipmi_live
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Server IPMI Live Setup
+## Server IPMI Live Setup
+POST https://my.interserver.net/apiv2/servers/{{id}}/ipmi_live
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get IPMI Power Status
+## Get IPMI Power Status
+GET https://my.interserver.net/apiv2/servers/{{id}}/ipmi_power
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Server IPMI Power
+## Server IPMI Power
+POST https://my.interserver.net/apiv2/servers/{{id}}/ipmi_power
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel Server Service
+## Cancel Server Service
+DELETE https://my.interserver.net/apiv2/servers/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Server Order
+## Update Server Order
+POST https://my.interserver.net/apiv2/servers/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

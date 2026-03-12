@@ -1,0 +1,24 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner._
+
+case class GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner (
+  desc: Option[String],
+value: Option[String])
+
+object GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner {
+  import DateTimeCodecs._
+
+  implicit val GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInnerCodecJson: CodecJson[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner] = CodecJson.derive[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner]
+  implicit val GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInnerDecoder: EntityDecoder[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner] = jsonOf[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner]
+  implicit val GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInnerEncoder: EntityEncoder[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner] = jsonEncoderOf[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner]
+}

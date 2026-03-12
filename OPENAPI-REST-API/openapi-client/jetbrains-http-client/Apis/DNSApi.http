@@ -1,0 +1,63 @@
+## DNSApi
+
+### Create DNS Domain
+## Create DNS Domain
+POST https://my.interserver.net/apiv2/dns
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Add DNS Record to Domain
+## Add DNS Record to Domain
+POST https://my.interserver.net/apiv2/dns/{{id}}
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete DNS Domain
+## Delete DNS Domain
+DELETE https://my.interserver.net/apiv2/dns/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Delete DNS Record
+## Delete DNS Record
+DELETE https://my.interserver.net/apiv2/dns/{{domainId}}/{{recordId}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Domain DNS Records
+## List Domain DNS Records
+GET https://my.interserver.net/apiv2/dns/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List DNS Domains
+## List DNS Domains
+GET https://my.interserver.net/apiv2/dns
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update DNS Record
+## Update DNS Record
+POST https://my.interserver.net/apiv2/dns/{{domainId}}/{{recordId}}
+Content-Type: multipart/form-data
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

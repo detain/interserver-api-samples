@@ -1,0 +1,181 @@
+## ScrubIpsApi
+
+### Cancel Scrub IP Service
+## Cancel Scrub IP Service
+DELETE https://my.interserver.net/apiv2/scrub_ips/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Create Traffic Filter
+## Create Traffic Filter
+POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/create_filter
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "filter_type": "<string>",
+ "port": "<number>"
+}
+
+
+### Create Geo Firewall Rule
+## Create Geo Firewall Rule
+POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/create_geo_rule
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "destination_port": "<number>",
+ "country_code": "<number>",
+ "asn": "<number>",
+ "xdp_action": "<number>"
+}
+
+
+### Create Firewall Rule
+## Create Firewall Rule
+POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/create_rule
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "destination_port": "<number>",
+ "source_ip": "<string>",
+ "source_port": "<number>",
+ "protocol_id": "<number>",
+ "xdp_action": "<number>"
+}
+
+
+### Delete Traffic Filter
+## Delete Traffic Filter
+POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/delete_filter
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "filter_type": "<string>",
+ "port": "<number>"
+}
+
+
+### Disable Scrub Protection
+## Disable Scrub Protection
+GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/disable
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Enable Scrub Protection
+## Enable Scrub Protection
+GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/enable
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Scrub IP Ordering Information
+## Get Scrub IP Ordering Information
+GET https://my.interserver.net/apiv2/scrub_ips/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Scrub IP Details
+## Get Scrub IP Details
+GET https://my.interserver.net/apiv2/scrub_ips/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Scrub Filter Types
+## List Scrub Filter Types
+GET https://my.interserver.net/apiv2/scrub_ips/filter_types
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get ScrubIp Invoices
+## Get ScrubIp Invoices
+GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Scrub IP Logs
+## Get Scrub IP Logs
+GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/logs
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List Scrub IP Services
+## List Scrub IP Services
+GET https://my.interserver.net/apiv2/scrub_ips
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Place Scrub IP Order
+## Place Scrub IP Order
+POST https://my.interserver.net/apiv2/scrub_ips/order
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "service_type": "<number>",
+ "ip": "<string>"
+}
+
+
+### Delete Geo Firewall Rule
+## Delete Geo Firewall Rule
+POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/delete_geo_rule
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "rule_id": "<number>"
+}
+
+
+### Delete Firewall Rule
+## Delete Firewall Rule
+POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/delete_rule
+Content-Type: application/json
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "rule_id": "<number>"
+}
+

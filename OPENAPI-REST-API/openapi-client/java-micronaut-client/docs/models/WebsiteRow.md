@@ -1,0 +1,26 @@
+
+
+# WebsiteRow
+
+A result row from the `Webhosting` `GET` request.
+
+The class is defined in **[WebsiteRow.java](../../src/main/java/org/openapitools/model/WebsiteRow.java)**
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**websiteId** | `String` | The id of the website. | 
+**websiteHostname** | `String` | The hostname of the website. | 
+**repeatInvoicesCost** | `String` | The repeat invoices cost of the website. | 
+**websiteStatus** | `String` | The status of the website. | 
+**servicesName** | `String` | The services name of the website. | 
+**websiteComment** | `String` | The comment of the website. | 
+
+
+
+
+
+
+
+

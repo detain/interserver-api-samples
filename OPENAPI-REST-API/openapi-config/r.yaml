@@ -1,0 +1,20 @@
+# Description: R package name (convention: lowercase).
+packageName: openapi
+
+# Description: R package version.
+packageVersion: 1.0.0
+
+# Description: Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
+
+# Description: Throw an exception on non success response codes
+returnExceptionOnFailure: false
+
+# Description: Specify the exception handling package
+# Available Values:
+#    default
+#         Use stop() for raising exceptions.
+#    rlang
+#         Use rlang package for exceptions.
+exceptionPackage: default
+

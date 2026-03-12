@@ -1,0 +1,163 @@
+## WebhostingApi
+
+### Place Website Order
+## Place Website Order
+POST https://my.interserver.net/apiv2/websites/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Website Ordering Information
+## Website Ordering Information
+GET https://my.interserver.net/apiv2/websites/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Website IP Information
+## Get Website IP Information
+GET https://my.interserver.net/apiv2/websites/{{id}}/buy_ip
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Website Order
+## Get Website Order
+GET https://my.interserver.net/apiv2/websites/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Website Invoices
+## Get Website Invoices
+GET https://my.interserver.net/apiv2/websites/{{id}}/invoices
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Website Listing
+## Get Website Listing
+GET https://my.interserver.net/apiv2/websites
+Accept: application/json
+Accept: multipart/form-data
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Website Backups
+## Get Website Backups
+GET https://my.interserver.net/apiv2/websites/{{id}}/backups
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Hosting Panel Auto Login
+## Hosting Panel Auto Login
+GET https://my.interserver.net/apiv2/websites/{{id}}/login
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend Website Welcome Email
+## Resend Website Welcome Email
+GET https://my.interserver.net/apiv2/websites/{{id}}/welcome_email
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get Website Reverse DNS
+## Get Website Reverse DNS
+GET https://my.interserver.net/apiv2/websites/{{id}}/reverse_dns
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Website IP DNS
+## Update Website IP DNS
+POST https://my.interserver.net/apiv2/websites/{{id}}/buy_ip
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "ips": "<string>"
+}
+
+
+### Request Website Migration
+## Request Website Migration
+POST https://my.interserver.net/apiv2/websites/{{id}}/migration
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "custPortal": "<string>",
+ "regEmail": "<string>",
+ "password": "<string>",
+ "ctrlPanel": "<string>",
+ "ftpUsername": "<string>",
+ "ftpPassword": "<string>",
+ "siteBusyMig": "<string>",
+ "splReqMig": "<string>",
+ "domainReg": "<string>",
+ "dataMig": "<string>",
+ "domainRegPortal": "<string>",
+ "domainRegEmail": "<string>",
+ "domainRegPassword": "<string>"
+}
+
+
+### Update Website Reverse DNS
+## Update Website Reverse DNS
+POST https://my.interserver.net/apiv2/websites/{{id}}/reverse_dns
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "ips": "<string>"
+}
+
+
+### Validate Webhosting Order
+## Validate Webhosting Order
+PUT https://my.interserver.net/apiv2/websites/order
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Update Website Order
+## Update Website Order
+POST https://my.interserver.net/apiv2/websites/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel Website
+## Cancel Website
+DELETE https://my.interserver.net/apiv2/websites/{{id}}
+Accept: application/json
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}

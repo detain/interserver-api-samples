@@ -1,0 +1,16 @@
+# OpenAPIClient::Object::TextResponse
+
+## Load the model package
+```perl
+use OpenAPIClient::Object::TextResponse;
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**text** | **string** | Response text | [optional] 
+**message** | **string** | Response message | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,0 +1,72 @@
+# DisableScrub500Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Success** | **bool** |  | 
+**Text** | **string** |  | 
+
+## Methods
+
+### NewDisableScrub500Response
+
+`func NewDisableScrub500Response(success bool, text string, ) *DisableScrub500Response`
+
+NewDisableScrub500Response instantiates a new DisableScrub500Response object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewDisableScrub500ResponseWithDefaults
+
+`func NewDisableScrub500ResponseWithDefaults() *DisableScrub500Response`
+
+NewDisableScrub500ResponseWithDefaults instantiates a new DisableScrub500Response object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetSuccess
+
+`func (o *DisableScrub500Response) GetSuccess() bool`
+
+GetSuccess returns the Success field if non-nil, zero value otherwise.
+
+### GetSuccessOk
+
+`func (o *DisableScrub500Response) GetSuccessOk() (*bool, bool)`
+
+GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuccess
+
+`func (o *DisableScrub500Response) SetSuccess(v bool)`
+
+SetSuccess sets Success field to given value.
+
+
+### GetText
+
+`func (o *DisableScrub500Response) GetText() string`
+
+GetText returns the Text field if non-nil, zero value otherwise.
+
+### GetTextOk
+
+`func (o *DisableScrub500Response) GetTextOk() (*string, bool)`
+
+GetTextOk returns a tuple with the Text field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetText
+
+`func (o *DisableScrub500Response) SetText(v string)`
+
+SetText sets Text field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

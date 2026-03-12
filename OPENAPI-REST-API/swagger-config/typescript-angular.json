@@ -1,0 +1,11 @@
+{
+  "sortParamsByRequiredFlag": "true",
+  "ensureUniqueParams": "true",
+  "allowUnicodeIdentifiers": "true",
+  "hideGenerationTimestamp": "true",
+  "artifactVersion": "1.0.0",
+  "packageName": "myadmin-client-typescript-angular",
+  "gitUserId": "interserver",
+  "gitRepoId": "myadmin-client-typescript-angular"
+}
+
