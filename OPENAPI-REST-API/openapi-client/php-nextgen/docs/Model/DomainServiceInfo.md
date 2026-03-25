@@ -1,4 +1,4 @@
-# # DomainServiceInfo
+# DomainServiceInfo
 
 ## Properties
 

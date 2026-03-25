@@ -53,7 +53,7 @@ class ScrubIpsApi : public Service {
 public:
     ScrubIpsApi() = default;
 
-    virtual ~ScrubIpsApi() = default;
+    virtual ~ScrubIpsApi();
 
     /**
     * Cancel Scrub IP Service.

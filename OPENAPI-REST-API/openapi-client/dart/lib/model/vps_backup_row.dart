@@ -76,10 +76,16 @@ class VpsBackupRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsBackupRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsBackupRow[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'type'), 'Required key "VpsBackupRow[type]" is missing from JSON.');
+        assert(json[r'type'] != null, 'Required key "VpsBackupRow[type]" has a null value in JSON.');
+        assert(json.containsKey(r'service'), 'Required key "VpsBackupRow[service]" is missing from JSON.');
+        assert(json[r'service'] != null, 'Required key "VpsBackupRow[service]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "VpsBackupRow[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "VpsBackupRow[name]" has a null value in JSON.');
+        assert(json.containsKey(r'size'), 'Required key "VpsBackupRow[size]" is missing from JSON.');
+        assert(json[r'size'] != null, 'Required key "VpsBackupRow[size]" has a null value in JSON.');
+        assert(json.containsKey(r'date'), 'Required key "VpsBackupRow[date]" is missing from JSON.');
+        assert(json[r'date'] != null, 'Required key "VpsBackupRow[date]" has a null value in JSON.');
         return true;
       }());
 

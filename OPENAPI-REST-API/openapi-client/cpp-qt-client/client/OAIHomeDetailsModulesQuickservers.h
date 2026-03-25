@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIHomeDetailsModulesQuickservers : public OAIObject {
 public:
     OAIHomeDetailsModulesQuickservers();
-    OAIHomeDetailsModulesQuickservers(QString json);
+    OAIHomeDetailsModulesQuickservers(const QString &json);
     ~OAIHomeDetailsModulesQuickservers() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getIcon() const;
     void setIcon(const QString &icon);

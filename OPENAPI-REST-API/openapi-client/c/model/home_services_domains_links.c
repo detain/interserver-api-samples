@@ -14,11 +14,11 @@ static home_services_domains_links_t *home_services_domains_links_create_interna
     if (!home_services_domains_links_local_var) {
         return NULL;
     }
+    memset(home_services_domains_links_local_var, 0, sizeof(home_services_domains_links_t));
+    home_services_domains_links_local_var->_library_owned = 1;
     home_services_domains_links_local_var->_376114 = _376114;
     home_services_domains_links_local_var->_376503 = _376503;
     home_services_domains_links_local_var->_592337 = _592337;
-
-    home_services_domains_links_local_var->_library_owned = 1;
     return home_services_domains_links_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) home_services_domains_links_t *home_services_domains
     char *_376503,
     char *_592337
     ) {
-    return home_services_domains_links_create_internal (
+    home_services_domains_links_t *result = home_services_domains_links_create_internal (
         _376114,
         _376503,
         _592337
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_services_domains_links_free(home_services_domains_links_t *home_services_domains_links) {
@@ -96,6 +99,12 @@ home_services_domains_links_t *home_services_domains_links_parseFromJSON(cJSON *
 
     home_services_domains_links_t *home_services_domains_links_local_var = NULL;
 
+    char *_376114_local_str = NULL;
+
+    char *_376503_local_str = NULL;
+
+    char *_592337_local_str = NULL;
+
     // home_services_domains_links->_376114
     cJSON *_376114 = cJSON_GetObjectItemCaseSensitive(home_services_domains_linksJSON, "376114");
     if (cJSON_IsNull(_376114)) {
@@ -133,14 +142,34 @@ home_services_domains_links_t *home_services_domains_links_parseFromJSON(cJSON *
     }
 
 
+    if (_376114 && !cJSON_IsNull(_376114)) _376114_local_str = strdup(_376114->valuestring);
+    if (_376503 && !cJSON_IsNull(_376503)) _376503_local_str = strdup(_376503->valuestring);
+    if (_592337 && !cJSON_IsNull(_592337)) _592337_local_str = strdup(_592337->valuestring);
+
     home_services_domains_links_local_var = home_services_domains_links_create_internal (
-        _376114 && !cJSON_IsNull(_376114) ? strdup(_376114->valuestring) : NULL,
-        _376503 && !cJSON_IsNull(_376503) ? strdup(_376503->valuestring) : NULL,
-        _592337 && !cJSON_IsNull(_592337) ? strdup(_592337->valuestring) : NULL
+        _376114_local_str,
+        _376503_local_str,
+        _592337_local_str
         );
+
+    if (!home_services_domains_links_local_var) {
+        goto end;
+    }
 
     return home_services_domains_links_local_var;
 end:
+    if (_376114_local_str) {
+        free(_376114_local_str);
+        _376114_local_str = NULL;
+    }
+    if (_376503_local_str) {
+        free(_376503_local_str);
+        _376503_local_str = NULL;
+    }
+    if (_592337_local_str) {
+        free(_592337_local_str);
+        _592337_local_str = NULL;
+    }
     return NULL;
 
 }

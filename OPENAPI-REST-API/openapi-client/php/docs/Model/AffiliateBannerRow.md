@@ -1,4 +1,4 @@
-# # AffiliateBannerRow
+# AffiliateBannerRow
 
 ## Properties
 

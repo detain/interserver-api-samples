@@ -1,4 +1,4 @@
-# # DnsNewDomain
+# DnsNewDomain
 
 ## Properties
 

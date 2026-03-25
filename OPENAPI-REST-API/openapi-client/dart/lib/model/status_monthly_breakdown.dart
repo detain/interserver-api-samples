@@ -77,10 +77,18 @@ class StatusMonthlyBreakdown {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StatusMonthlyBreakdown[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StatusMonthlyBreakdown[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'default'), 'Required key "StatusMonthlyBreakdown[default]" is missing from JSON.');
+        assert(json[r'default'] != null, 'Required key "StatusMonthlyBreakdown[default]" has a null value in JSON.');
+        assert(json.containsKey(r'failed'), 'Required key "StatusMonthlyBreakdown[failed]" is missing from JSON.');
+        assert(json[r'failed'] != null, 'Required key "StatusMonthlyBreakdown[failed]" has a null value in JSON.');
+        assert(json.containsKey(r'rejected'), 'Required key "StatusMonthlyBreakdown[rejected]" is missing from JSON.');
+        assert(json[r'rejected'] != null, 'Required key "StatusMonthlyBreakdown[rejected]" has a null value in JSON.');
+        assert(json.containsKey(r'pending'), 'Required key "StatusMonthlyBreakdown[pending]" is missing from JSON.');
+        assert(json[r'pending'] != null, 'Required key "StatusMonthlyBreakdown[pending]" has a null value in JSON.');
+        assert(json.containsKey(r'locked'), 'Required key "StatusMonthlyBreakdown[locked]" is missing from JSON.');
+        assert(json[r'locked'] != null, 'Required key "StatusMonthlyBreakdown[locked]" has a null value in JSON.');
+        assert(json.containsKey(r'paid'), 'Required key "StatusMonthlyBreakdown[paid]" is missing from JSON.');
+        assert(json[r'paid'] != null, 'Required key "StatusMonthlyBreakdown[paid]" has a null value in JSON.');
         return true;
       }());
 

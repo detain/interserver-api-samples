@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIVpsTrafficUsageAverageSectionResponse : public OAIObject {
 public:
     OAIVpsTrafficUsageAverageSectionResponse();
-    OAIVpsTrafficUsageAverageSectionResponse(QString json);
+    OAIVpsTrafficUsageAverageSectionResponse(const QString &json);
     ~OAIVpsTrafficUsageAverageSectionResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getTotal() const;
     void setTotal(const qint32 &total);

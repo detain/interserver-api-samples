@@ -35,7 +35,7 @@ class QuickServersApi : public Service {
 public:
     QuickServersApi() = default;
 
-    virtual ~QuickServersApi() = default;
+    virtual ~QuickServersApi();
 
     /**
     * Place QuickServer Order.

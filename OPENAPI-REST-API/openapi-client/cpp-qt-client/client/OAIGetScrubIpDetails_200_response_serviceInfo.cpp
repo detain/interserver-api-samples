@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetScrubIpDetails_200_response_serviceInfo::OAIGetScrubIpDetails_200_response_serviceInfo(QString json) {
+OAIGetScrubIpDetails_200_response_serviceInfo::OAIGetScrubIpDetails_200_response_serviceInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -71,7 +71,7 @@ void OAIGetScrubIpDetails_200_response_serviceInfo::initializeModel() {
     m_scrub_ip_comment_isValid = false;
 }
 
-void OAIGetScrubIpDetails_200_response_serviceInfo::fromJson(QString jsonString) {
+void OAIGetScrubIpDetails_200_response_serviceInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -1,4 +1,4 @@
-# # DomainOwnerContact
+# DomainOwnerContact
 
 ## Properties
 

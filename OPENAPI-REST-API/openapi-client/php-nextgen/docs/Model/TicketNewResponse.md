@@ -1,4 +1,4 @@
-# # TicketNewResponse
+# TicketNewResponse
 
 ## Properties
 

@@ -34,13 +34,13 @@ class OAIDomainOrder_services;
 class OAIDomainOrder : public OAIObject {
 public:
     OAIDomainOrder();
-    OAIDomainOrder(QString json);
+    OAIDomainOrder(const QString &json);
     ~OAIDomainOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getWhoisPrivacyCost() const;
     void setWhoisPrivacyCost(const QString &whois_privacy_cost);

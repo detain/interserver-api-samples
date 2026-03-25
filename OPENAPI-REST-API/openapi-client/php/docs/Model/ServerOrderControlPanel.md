@@ -1,4 +1,4 @@
-# # ServerOrderControlPanel
+# ServerOrderControlPanel
 
 ## Properties
 

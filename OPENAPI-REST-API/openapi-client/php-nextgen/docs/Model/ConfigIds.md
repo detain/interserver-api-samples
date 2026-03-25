@@ -1,4 +1,4 @@
-# # ConfigIds
+# ConfigIds
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # VpsDAData
+# VpsDAData
 
 ## Properties
 

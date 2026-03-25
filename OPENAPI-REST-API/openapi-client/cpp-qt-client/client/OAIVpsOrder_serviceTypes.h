@@ -32,13 +32,13 @@ class OAIVpsOrder_serviceTypes_32;
 class OAIVpsOrder_serviceTypes : public OAIObject {
 public:
     OAIVpsOrder_serviceTypes();
-    OAIVpsOrder_serviceTypes(QString json);
+    OAIVpsOrder_serviceTypes(const QString &json);
     ~OAIVpsOrder_serviceTypes() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsOrder_serviceTypes_32 getR32() const;
     void setR32(const OAIVpsOrder_serviceTypes_32 &r_32);

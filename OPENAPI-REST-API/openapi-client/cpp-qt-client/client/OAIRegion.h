@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIRegion : public OAIObject {
 public:
     OAIRegion();
-    OAIRegion(QString json);
+    OAIRegion(const QString &json);
     ~OAIRegion() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getRegionId() const;
     void setRegionId(const qint32 &region_id);

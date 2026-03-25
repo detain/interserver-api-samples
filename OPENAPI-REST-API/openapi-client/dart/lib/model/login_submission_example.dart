@@ -102,10 +102,10 @@ class LoginSubmissionExample {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LoginSubmissionExample[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LoginSubmissionExample[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'login'), 'Required key "LoginSubmissionExample[login]" is missing from JSON.');
+        assert(json[r'login'] != null, 'Required key "LoginSubmissionExample[login]" has a null value in JSON.');
+        assert(json.containsKey(r'passwd'), 'Required key "LoginSubmissionExample[passwd]" is missing from JSON.');
+        assert(json[r'passwd'] != null, 'Required key "LoginSubmissionExample[passwd]" has a null value in JSON.');
         return true;
       }());
 

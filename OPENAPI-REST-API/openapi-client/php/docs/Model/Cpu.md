@@ -1,4 +1,4 @@
-# # Cpu
+# Cpu
 
 ## Properties
 

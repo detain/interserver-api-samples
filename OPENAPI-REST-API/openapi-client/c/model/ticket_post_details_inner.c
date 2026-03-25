@@ -23,19 +23,21 @@ interserver_management_api_ticket_post_details_inner_CREATOR_e ticket_post_detai
 }
 
 static ticket_post_details_inner_t *ticket_post_details_inner_create_internal(
-    int post_id,
+    int *post_id,
     char *date,
     char *contents,
     interserver_management_api_ticket_post_details_inner_CREATOR_e creator,
     char *creator_email,
     char *creator_name,
-    int hasattachments,
+    int *hasattachments,
     char *attachment_download
     ) {
     ticket_post_details_inner_t *ticket_post_details_inner_local_var = malloc(sizeof(ticket_post_details_inner_t));
     if (!ticket_post_details_inner_local_var) {
         return NULL;
     }
+    memset(ticket_post_details_inner_local_var, 0, sizeof(ticket_post_details_inner_t));
+    ticket_post_details_inner_local_var->_library_owned = 1;
     ticket_post_details_inner_local_var->post_id = post_id;
     ticket_post_details_inner_local_var->date = date;
     ticket_post_details_inner_local_var->contents = contents;
@@ -44,31 +46,44 @@ static ticket_post_details_inner_t *ticket_post_details_inner_create_internal(
     ticket_post_details_inner_local_var->creator_name = creator_name;
     ticket_post_details_inner_local_var->hasattachments = hasattachments;
     ticket_post_details_inner_local_var->attachment_download = attachment_download;
-
-    ticket_post_details_inner_local_var->_library_owned = 1;
     return ticket_post_details_inner_local_var;
 }
 
 __attribute__((deprecated)) ticket_post_details_inner_t *ticket_post_details_inner_create(
-    int post_id,
+    int *post_id,
     char *date,
     char *contents,
     interserver_management_api_ticket_post_details_inner_CREATOR_e creator,
     char *creator_email,
     char *creator_name,
-    int hasattachments,
+    int *hasattachments,
     char *attachment_download
     ) {
-    return ticket_post_details_inner_create_internal (
-        post_id,
+    int *post_id_copy = NULL;
+    if (post_id) {
+        post_id_copy = malloc(sizeof(int));
+        if (post_id_copy) *post_id_copy = *post_id;
+    }
+    int *hasattachments_copy = NULL;
+    if (hasattachments) {
+        hasattachments_copy = malloc(sizeof(int));
+        if (hasattachments_copy) *hasattachments_copy = *hasattachments;
+    }
+    ticket_post_details_inner_t *result = ticket_post_details_inner_create_internal (
+        post_id_copy,
         date,
         contents,
         creator,
         creator_email,
         creator_name,
-        hasattachments,
+        hasattachments_copy,
         attachment_download
         );
+    if (!result) {
+        free(post_id_copy);
+        free(hasattachments_copy);
+    }
+    return result;
 }
 
 void ticket_post_details_inner_free(ticket_post_details_inner_t *ticket_post_details_inner) {
@@ -80,6 +95,10 @@ void ticket_post_details_inner_free(ticket_post_details_inner_t *ticket_post_det
         return ;
     }
     listEntry_t *listEntry;
+    if (ticket_post_details_inner->post_id) {
+        free(ticket_post_details_inner->post_id);
+        ticket_post_details_inner->post_id = NULL;
+    }
     if (ticket_post_details_inner->date) {
         free(ticket_post_details_inner->date);
         ticket_post_details_inner->date = NULL;
@@ -96,6 +115,10 @@ void ticket_post_details_inner_free(ticket_post_details_inner_t *ticket_post_det
         free(ticket_post_details_inner->creator_name);
         ticket_post_details_inner->creator_name = NULL;
     }
+    if (ticket_post_details_inner->hasattachments) {
+        free(ticket_post_details_inner->hasattachments);
+        ticket_post_details_inner->hasattachments = NULL;
+    }
     if (ticket_post_details_inner->attachment_download) {
         free(ticket_post_details_inner->attachment_download);
         ticket_post_details_inner->attachment_download = NULL;
@@ -108,7 +131,7 @@ cJSON *ticket_post_details_inner_convertToJSON(ticket_post_details_inner_t *tick
 
     // ticket_post_details_inner->post_id
     if(ticket_post_details_inner->post_id) {
-    if(cJSON_AddNumberToObject(item, "post_id", ticket_post_details_inner->post_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "post_id", *ticket_post_details_inner->post_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -157,7 +180,7 @@ cJSON *ticket_post_details_inner_convertToJSON(ticket_post_details_inner_t *tick
 
     // ticket_post_details_inner->hasattachments
     if(ticket_post_details_inner->hasattachments) {
-    if(cJSON_AddNumberToObject(item, "hasattachments", ticket_post_details_inner->hasattachments) == NULL) {
+    if(cJSON_AddNumberToObject(item, "hasattachments", *ticket_post_details_inner->hasattachments) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -182,6 +205,22 @@ ticket_post_details_inner_t *ticket_post_details_inner_parseFromJSON(cJSON *tick
 
     ticket_post_details_inner_t *ticket_post_details_inner_local_var = NULL;
 
+    // define the local variable for ticket_post_details_inner->post_id
+    int *post_id_local_var = NULL;
+
+    char *date_local_str = NULL;
+
+    char *contents_local_str = NULL;
+
+    char *creator_email_local_str = NULL;
+
+    char *creator_name_local_str = NULL;
+
+    // define the local variable for ticket_post_details_inner->hasattachments
+    int *hasattachments_local_var = NULL;
+
+    char *attachment_download_local_str = NULL;
+
     // ticket_post_details_inner->post_id
     cJSON *post_id = cJSON_GetObjectItemCaseSensitive(ticket_post_details_innerJSON, "post_id");
     if (cJSON_IsNull(post_id)) {
@@ -192,6 +231,12 @@ ticket_post_details_inner_t *ticket_post_details_inner_parseFromJSON(cJSON *tick
     {
     goto end; //Numeric
     }
+    post_id_local_var = malloc(sizeof(int));
+    if(!post_id_local_var)
+    {
+        goto end;
+    }
+    *post_id_local_var = post_id->valuedouble;
     }
 
     // ticket_post_details_inner->date
@@ -266,6 +311,12 @@ ticket_post_details_inner_t *ticket_post_details_inner_parseFromJSON(cJSON *tick
     {
     goto end; //Numeric
     }
+    hasattachments_local_var = malloc(sizeof(int));
+    if(!hasattachments_local_var)
+    {
+        goto end;
+    }
+    *hasattachments_local_var = hasattachments->valuedouble;
     }
 
     // ticket_post_details_inner->attachment_download
@@ -281,19 +332,57 @@ ticket_post_details_inner_t *ticket_post_details_inner_parseFromJSON(cJSON *tick
     }
 
 
+    if (date && !cJSON_IsNull(date)) date_local_str = strdup(date->valuestring);
+    if (contents && !cJSON_IsNull(contents)) contents_local_str = strdup(contents->valuestring);
+    if (creator_email && !cJSON_IsNull(creator_email)) creator_email_local_str = strdup(creator_email->valuestring);
+    if (creator_name && !cJSON_IsNull(creator_name)) creator_name_local_str = strdup(creator_name->valuestring);
+    if (attachment_download && !cJSON_IsNull(attachment_download)) attachment_download_local_str = strdup(attachment_download->valuestring);
+
     ticket_post_details_inner_local_var = ticket_post_details_inner_create_internal (
-        post_id ? post_id->valuedouble : 0,
-        date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
-        contents && !cJSON_IsNull(contents) ? strdup(contents->valuestring) : NULL,
+        post_id_local_var,
+        date_local_str,
+        contents_local_str,
         creator ? creatorVariable : interserver_management_api_ticket_post_details_inner_CREATOR_NULL,
-        creator_email && !cJSON_IsNull(creator_email) ? strdup(creator_email->valuestring) : NULL,
-        creator_name && !cJSON_IsNull(creator_name) ? strdup(creator_name->valuestring) : NULL,
-        hasattachments ? hasattachments->valuedouble : 0,
-        attachment_download && !cJSON_IsNull(attachment_download) ? strdup(attachment_download->valuestring) : NULL
+        creator_email_local_str,
+        creator_name_local_str,
+        hasattachments_local_var,
+        attachment_download_local_str
         );
+
+    if (!ticket_post_details_inner_local_var) {
+        goto end;
+    }
 
     return ticket_post_details_inner_local_var;
 end:
+    if (post_id_local_var) {
+        free(post_id_local_var);
+        post_id_local_var = NULL;
+    }
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
+    }
+    if (contents_local_str) {
+        free(contents_local_str);
+        contents_local_str = NULL;
+    }
+    if (creator_email_local_str) {
+        free(creator_email_local_str);
+        creator_email_local_str = NULL;
+    }
+    if (creator_name_local_str) {
+        free(creator_name_local_str);
+        creator_name_local_str = NULL;
+    }
+    if (hasattachments_local_var) {
+        free(hasattachments_local_var);
+        hasattachments_local_var = NULL;
+    }
+    if (attachment_download_local_str) {
+        free(attachment_download_local_str);
+        attachment_download_local_str = NULL;
+    }
     return NULL;
 
 }

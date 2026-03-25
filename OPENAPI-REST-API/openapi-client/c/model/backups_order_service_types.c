@@ -12,18 +12,21 @@ static backups_order_service_types_t *backups_order_service_types_create_interna
     if (!backups_order_service_types_local_var) {
         return NULL;
     }
-    backups_order_service_types_local_var->_11006 = _11006;
-
+    memset(backups_order_service_types_local_var, 0, sizeof(backups_order_service_types_t));
     backups_order_service_types_local_var->_library_owned = 1;
+    backups_order_service_types_local_var->_11006 = _11006;
     return backups_order_service_types_local_var;
 }
 
 __attribute__((deprecated)) backups_order_service_types_t *backups_order_service_types_create(
     backups_order_service_types_t *_11006
     ) {
-    return backups_order_service_types_create_internal (
+    backups_order_service_types_t *result = backups_order_service_types_create_internal (
         _11006
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backups_order_service_types_free(backups_order_service_types_t *backups_order_service_types) {
@@ -82,9 +85,14 @@ backups_order_service_types_t *backups_order_service_types_parseFromJSON(cJSON *
     }
 
 
+
     backups_order_service_types_local_var = backups_order_service_types_create_internal (
         _11006 ? _11006_local_nonprim : NULL
         );
+
+    if (!backups_order_service_types_local_var) {
+        goto end;
+    }
 
     return backups_order_service_types_local_var;
 end:

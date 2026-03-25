@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIPlaceBuyNowServer_request : public OAIObject {
 public:
     OAIPlaceBuyNowServer_request();
-    OAIPlaceBuyNowServer_request(QString json);
+    OAIPlaceBuyNowServer_request(const QString &json);
     ~OAIPlaceBuyNowServer_request() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getServerId() const;
     void setServerId(const double &server_id);

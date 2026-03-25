@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainSearchResponse::OAIDomainSearchResponse(QString json) {
+OAIDomainSearchResponse::OAIDomainSearchResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIDomainSearchResponse::initializeModel() {
     m_tlds_isValid = false;
 }
 
-void OAIDomainSearchResponse::fromJson(QString jsonString) {
+void OAIDomainSearchResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -1,4 +1,4 @@
-# # DomainNameserverGetResponse
+# DomainNameserverGetResponse
 
 ## Properties
 

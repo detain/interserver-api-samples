@@ -1,4 +1,4 @@
-# # LicenseIpInfo
+# LicenseIpInfo
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetScrubIpDetails200ResponseFilterFirewall
+# GetScrubIpDetails200ResponseFilterFirewall
 
 ## Properties
 

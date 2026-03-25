@@ -1,4 +1,4 @@
-# # DomainSearchResponse
+# DomainSearchResponse
 
 ## Properties
 

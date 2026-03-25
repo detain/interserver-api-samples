@@ -6,44 +6,59 @@
 
 
 static hard_drive_t *hard_drive_create_internal(
-    int id,
+    int *id,
     char *short_desc,
     char *size,
     char *drive_type,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display
     ) {
     hard_drive_t *hard_drive_local_var = malloc(sizeof(hard_drive_t));
     if (!hard_drive_local_var) {
         return NULL;
     }
+    memset(hard_drive_local_var, 0, sizeof(hard_drive_t));
+    hard_drive_local_var->_library_owned = 1;
     hard_drive_local_var->id = id;
     hard_drive_local_var->short_desc = short_desc;
     hard_drive_local_var->size = size;
     hard_drive_local_var->drive_type = drive_type;
     hard_drive_local_var->monthly_price = monthly_price;
     hard_drive_local_var->monthly_price_display = monthly_price_display;
-
-    hard_drive_local_var->_library_owned = 1;
     return hard_drive_local_var;
 }
 
 __attribute__((deprecated)) hard_drive_t *hard_drive_create(
-    int id,
+    int *id,
     char *short_desc,
     char *size,
     char *drive_type,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display
     ) {
-    return hard_drive_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    double *monthly_price_copy = NULL;
+    if (monthly_price) {
+        monthly_price_copy = malloc(sizeof(double));
+        if (monthly_price_copy) *monthly_price_copy = *monthly_price;
+    }
+    hard_drive_t *result = hard_drive_create_internal (
+        id_copy,
         short_desc,
         size,
         drive_type,
-        monthly_price,
+        monthly_price_copy,
         monthly_price_display
         );
+    if (!result) {
+        free(id_copy);
+        free(monthly_price_copy);
+    }
+    return result;
 }
 
 void hard_drive_free(hard_drive_t *hard_drive) {
@@ -55,6 +70,10 @@ void hard_drive_free(hard_drive_t *hard_drive) {
         return ;
     }
     listEntry_t *listEntry;
+    if (hard_drive->id) {
+        free(hard_drive->id);
+        hard_drive->id = NULL;
+    }
     if (hard_drive->short_desc) {
         free(hard_drive->short_desc);
         hard_drive->short_desc = NULL;
@@ -66,6 +85,10 @@ void hard_drive_free(hard_drive_t *hard_drive) {
     if (hard_drive->drive_type) {
         free(hard_drive->drive_type);
         hard_drive->drive_type = NULL;
+    }
+    if (hard_drive->monthly_price) {
+        free(hard_drive->monthly_price);
+        hard_drive->monthly_price = NULL;
     }
     if (hard_drive->monthly_price_display) {
         free(hard_drive->monthly_price_display);
@@ -79,7 +102,7 @@ cJSON *hard_drive_convertToJSON(hard_drive_t *hard_drive) {
 
     // hard_drive->id
     if(hard_drive->id) {
-    if(cJSON_AddNumberToObject(item, "id", hard_drive->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *hard_drive->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -111,7 +134,7 @@ cJSON *hard_drive_convertToJSON(hard_drive_t *hard_drive) {
 
     // hard_drive->monthly_price
     if(hard_drive->monthly_price) {
-    if(cJSON_AddNumberToObject(item, "monthly_price", hard_drive->monthly_price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_price", *hard_drive->monthly_price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -136,6 +159,20 @@ hard_drive_t *hard_drive_parseFromJSON(cJSON *hard_driveJSON){
 
     hard_drive_t *hard_drive_local_var = NULL;
 
+    // define the local variable for hard_drive->id
+    int *id_local_var = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    char *size_local_str = NULL;
+
+    char *drive_type_local_str = NULL;
+
+    // define the local variable for hard_drive->monthly_price
+    double *monthly_price_local_var = NULL;
+
+    char *monthly_price_display_local_str = NULL;
+
     // hard_drive->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(hard_driveJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -146,6 +183,12 @@ hard_drive_t *hard_drive_parseFromJSON(cJSON *hard_driveJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // hard_drive->short_desc
@@ -194,6 +237,12 @@ hard_drive_t *hard_drive_parseFromJSON(cJSON *hard_driveJSON){
     {
     goto end; //Numeric
     }
+    monthly_price_local_var = malloc(sizeof(double));
+    if(!monthly_price_local_var)
+    {
+        goto end;
+    }
+    *monthly_price_local_var = monthly_price->valuedouble;
     }
 
     // hard_drive->monthly_price_display
@@ -209,17 +258,50 @@ hard_drive_t *hard_drive_parseFromJSON(cJSON *hard_driveJSON){
     }
 
 
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+    if (size && !cJSON_IsNull(size)) size_local_str = strdup(size->valuestring);
+    if (drive_type && !cJSON_IsNull(drive_type)) drive_type_local_str = strdup(drive_type->valuestring);
+    if (monthly_price_display && !cJSON_IsNull(monthly_price_display)) monthly_price_display_local_str = strdup(monthly_price_display->valuestring);
+
     hard_drive_local_var = hard_drive_create_internal (
-        id ? id->valuedouble : 0,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        size && !cJSON_IsNull(size) ? strdup(size->valuestring) : NULL,
-        drive_type && !cJSON_IsNull(drive_type) ? strdup(drive_type->valuestring) : NULL,
-        monthly_price ? monthly_price->valuedouble : 0,
-        monthly_price_display && !cJSON_IsNull(monthly_price_display) ? strdup(monthly_price_display->valuestring) : NULL
+        id_local_var,
+        short_desc_local_str,
+        size_local_str,
+        drive_type_local_str,
+        monthly_price_local_var,
+        monthly_price_display_local_str
         );
+
+    if (!hard_drive_local_var) {
+        goto end;
+    }
 
     return hard_drive_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (size_local_str) {
+        free(size_local_str);
+        size_local_str = NULL;
+    }
+    if (drive_type_local_str) {
+        free(drive_type_local_str);
+        drive_type_local_str = NULL;
+    }
+    if (monthly_price_local_var) {
+        free(monthly_price_local_var);
+        monthly_price_local_var = NULL;
+    }
+    if (monthly_price_display_local_str) {
+        free(monthly_price_display_local_str);
+        monthly_price_display_local_str = NULL;
+    }
     return NULL;
 
 }

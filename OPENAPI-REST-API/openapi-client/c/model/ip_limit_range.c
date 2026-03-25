@@ -13,10 +13,10 @@ static ip_limit_range_t *ip_limit_range_create_internal(
     if (!ip_limit_range_local_var) {
         return NULL;
     }
+    memset(ip_limit_range_local_var, 0, sizeof(ip_limit_range_t));
+    ip_limit_range_local_var->_library_owned = 1;
     ip_limit_range_local_var->start = start;
     ip_limit_range_local_var->end = end;
-
-    ip_limit_range_local_var->_library_owned = 1;
     return ip_limit_range_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ip_limit_range_t *ip_limit_range_create(
     char *start,
     char *end
     ) {
-    return ip_limit_range_create_internal (
+    ip_limit_range_t *result = ip_limit_range_create_internal (
         start,
         end
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ip_limit_range_free(ip_limit_range_t *ip_limit_range) {
@@ -82,6 +85,10 @@ ip_limit_range_t *ip_limit_range_parseFromJSON(cJSON *ip_limit_rangeJSON){
 
     ip_limit_range_t *ip_limit_range_local_var = NULL;
 
+    char *start_local_str = NULL;
+
+    char *end_local_str = NULL;
+
     // ip_limit_range->start
     cJSON *start = cJSON_GetObjectItemCaseSensitive(ip_limit_rangeJSON, "start");
     if (cJSON_IsNull(start)) {
@@ -113,13 +120,28 @@ ip_limit_range_t *ip_limit_range_parseFromJSON(cJSON *ip_limit_rangeJSON){
     }
 
 
+    if (start && !cJSON_IsNull(start)) start_local_str = strdup(start->valuestring);
+    if (end && !cJSON_IsNull(end)) end_local_str = strdup(end->valuestring);
+
     ip_limit_range_local_var = ip_limit_range_create_internal (
-        strdup(start->valuestring),
-        strdup(end->valuestring)
+        start_local_str,
+        end_local_str
         );
+
+    if (!ip_limit_range_local_var) {
+        goto end;
+    }
 
     return ip_limit_range_local_var;
 end:
+    if (start_local_str) {
+        free(start_local_str);
+        start_local_str = NULL;
+    }
+    if (end_local_str) {
+        free(end_local_str);
+        end_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -35,21 +35,21 @@ interserver_management_api_create_firewall_rule_XDPACTION_e create_firewall_rule
 
 
 typedef struct create_firewall_rule_t {
-    int protocol_id; //numeric
-    int xdp_action; //numeric
-    int destination_port; //numeric
+    int *protocol_id; //numeric
+    int *xdp_action; //numeric
+    int *destination_port; //numeric
     char *source_ip; // string
-    int source_port; //numeric
+    int *source_port; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } create_firewall_rule_t;
 
 __attribute__((deprecated)) create_firewall_rule_t *create_firewall_rule_create(
-    int protocol_id,
-    int xdp_action,
-    int destination_port,
+    int *protocol_id,
+    int *xdp_action,
+    int *destination_port,
     char *source_ip,
-    int source_port
+    int *source_port
 );
 
 void create_firewall_rule_free(create_firewall_rule_t *create_firewall_rule);

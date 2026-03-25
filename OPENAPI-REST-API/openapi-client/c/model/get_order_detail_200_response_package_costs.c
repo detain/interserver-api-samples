@@ -6,8 +6,8 @@
 
 
 static get_order_detail_200_response_package_costs_t *get_order_detail_200_response_package_costs_create_internal(
-    double package_id,
-    double package_cost,
+    double *package_id,
+    double *package_cost,
     char *currency,
     char *currency_symbol
     ) {
@@ -15,27 +15,42 @@ static get_order_detail_200_response_package_costs_t *get_order_detail_200_respo
     if (!get_order_detail_200_response_package_costs_local_var) {
         return NULL;
     }
+    memset(get_order_detail_200_response_package_costs_local_var, 0, sizeof(get_order_detail_200_response_package_costs_t));
+    get_order_detail_200_response_package_costs_local_var->_library_owned = 1;
     get_order_detail_200_response_package_costs_local_var->package_id = package_id;
     get_order_detail_200_response_package_costs_local_var->package_cost = package_cost;
     get_order_detail_200_response_package_costs_local_var->currency = currency;
     get_order_detail_200_response_package_costs_local_var->currency_symbol = currency_symbol;
-
-    get_order_detail_200_response_package_costs_local_var->_library_owned = 1;
     return get_order_detail_200_response_package_costs_local_var;
 }
 
 __attribute__((deprecated)) get_order_detail_200_response_package_costs_t *get_order_detail_200_response_package_costs_create(
-    double package_id,
-    double package_cost,
+    double *package_id,
+    double *package_cost,
     char *currency,
     char *currency_symbol
     ) {
-    return get_order_detail_200_response_package_costs_create_internal (
-        package_id,
-        package_cost,
+    double *package_id_copy = NULL;
+    if (package_id) {
+        package_id_copy = malloc(sizeof(double));
+        if (package_id_copy) *package_id_copy = *package_id;
+    }
+    double *package_cost_copy = NULL;
+    if (package_cost) {
+        package_cost_copy = malloc(sizeof(double));
+        if (package_cost_copy) *package_cost_copy = *package_cost;
+    }
+    get_order_detail_200_response_package_costs_t *result = get_order_detail_200_response_package_costs_create_internal (
+        package_id_copy,
+        package_cost_copy,
         currency,
         currency_symbol
         );
+    if (!result) {
+        free(package_id_copy);
+        free(package_cost_copy);
+    }
+    return result;
 }
 
 void get_order_detail_200_response_package_costs_free(get_order_detail_200_response_package_costs_t *get_order_detail_200_response_package_costs) {
@@ -47,6 +62,14 @@ void get_order_detail_200_response_package_costs_free(get_order_detail_200_respo
         return ;
     }
     listEntry_t *listEntry;
+    if (get_order_detail_200_response_package_costs->package_id) {
+        free(get_order_detail_200_response_package_costs->package_id);
+        get_order_detail_200_response_package_costs->package_id = NULL;
+    }
+    if (get_order_detail_200_response_package_costs->package_cost) {
+        free(get_order_detail_200_response_package_costs->package_cost);
+        get_order_detail_200_response_package_costs->package_cost = NULL;
+    }
     if (get_order_detail_200_response_package_costs->currency) {
         free(get_order_detail_200_response_package_costs->currency);
         get_order_detail_200_response_package_costs->currency = NULL;
@@ -63,7 +86,7 @@ cJSON *get_order_detail_200_response_package_costs_convertToJSON(get_order_detai
 
     // get_order_detail_200_response_package_costs->package_id
     if(get_order_detail_200_response_package_costs->package_id) {
-    if(cJSON_AddNumberToObject(item, "package_id", get_order_detail_200_response_package_costs->package_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "package_id", *get_order_detail_200_response_package_costs->package_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -71,7 +94,7 @@ cJSON *get_order_detail_200_response_package_costs_convertToJSON(get_order_detai
 
     // get_order_detail_200_response_package_costs->package_cost
     if(get_order_detail_200_response_package_costs->package_cost) {
-    if(cJSON_AddNumberToObject(item, "package_cost", get_order_detail_200_response_package_costs->package_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "package_cost", *get_order_detail_200_response_package_costs->package_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -104,6 +127,16 @@ get_order_detail_200_response_package_costs_t *get_order_detail_200_response_pac
 
     get_order_detail_200_response_package_costs_t *get_order_detail_200_response_package_costs_local_var = NULL;
 
+    // define the local variable for get_order_detail_200_response_package_costs->package_id
+    double *package_id_local_var = NULL;
+
+    // define the local variable for get_order_detail_200_response_package_costs->package_cost
+    double *package_cost_local_var = NULL;
+
+    char *currency_local_str = NULL;
+
+    char *currency_symbol_local_str = NULL;
+
     // get_order_detail_200_response_package_costs->package_id
     cJSON *package_id = cJSON_GetObjectItemCaseSensitive(get_order_detail_200_response_package_costsJSON, "package_id");
     if (cJSON_IsNull(package_id)) {
@@ -114,6 +147,12 @@ get_order_detail_200_response_package_costs_t *get_order_detail_200_response_pac
     {
     goto end; //Numeric
     }
+    package_id_local_var = malloc(sizeof(double));
+    if(!package_id_local_var)
+    {
+        goto end;
+    }
+    *package_id_local_var = package_id->valuedouble;
     }
 
     // get_order_detail_200_response_package_costs->package_cost
@@ -126,6 +165,12 @@ get_order_detail_200_response_package_costs_t *get_order_detail_200_response_pac
     {
     goto end; //Numeric
     }
+    package_cost_local_var = malloc(sizeof(double));
+    if(!package_cost_local_var)
+    {
+        goto end;
+    }
+    *package_cost_local_var = package_cost->valuedouble;
     }
 
     // get_order_detail_200_response_package_costs->currency
@@ -153,15 +198,38 @@ get_order_detail_200_response_package_costs_t *get_order_detail_200_response_pac
     }
 
 
+    if (currency && !cJSON_IsNull(currency)) currency_local_str = strdup(currency->valuestring);
+    if (currency_symbol && !cJSON_IsNull(currency_symbol)) currency_symbol_local_str = strdup(currency_symbol->valuestring);
+
     get_order_detail_200_response_package_costs_local_var = get_order_detail_200_response_package_costs_create_internal (
-        package_id ? package_id->valuedouble : 0,
-        package_cost ? package_cost->valuedouble : 0,
-        currency && !cJSON_IsNull(currency) ? strdup(currency->valuestring) : NULL,
-        currency_symbol && !cJSON_IsNull(currency_symbol) ? strdup(currency_symbol->valuestring) : NULL
+        package_id_local_var,
+        package_cost_local_var,
+        currency_local_str,
+        currency_symbol_local_str
         );
+
+    if (!get_order_detail_200_response_package_costs_local_var) {
+        goto end;
+    }
 
     return get_order_detail_200_response_package_costs_local_var;
 end:
+    if (package_id_local_var) {
+        free(package_id_local_var);
+        package_id_local_var = NULL;
+    }
+    if (package_cost_local_var) {
+        free(package_cost_local_var);
+        package_cost_local_var = NULL;
+    }
+    if (currency_local_str) {
+        free(currency_local_str);
+        currency_local_str = NULL;
+    }
+    if (currency_symbol_local_str) {
+        free(currency_symbol_local_str);
+        currency_symbol_local_str = NULL;
+    }
     return NULL;
 
 }

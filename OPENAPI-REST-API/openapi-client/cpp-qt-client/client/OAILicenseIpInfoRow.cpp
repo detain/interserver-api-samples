@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILicenseIpInfoRow::OAILicenseIpInfoRow(QString json) {
+OAILicenseIpInfoRow::OAILicenseIpInfoRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAILicenseIpInfoRow::initializeModel() {
     m_value_isValid = false;
 }
 
-void OAILicenseIpInfoRow::fromJson(QString jsonString) {
+void OAILicenseIpInfoRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

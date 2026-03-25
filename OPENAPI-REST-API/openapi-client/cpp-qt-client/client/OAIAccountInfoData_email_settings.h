@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAccountInfoData_email_settings : public OAIObject {
 public:
     OAIAccountInfoData_email_settings();
-    OAIAccountInfoData_email_settings(QString json);
+    OAIAccountInfoData_email_settings(const QString &json);
     ~OAIAccountInfoData_email_settings() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getAdminCcBadResponse() const;
     void setAdminCcBadResponse(const QString &admin_cc_bad_response);

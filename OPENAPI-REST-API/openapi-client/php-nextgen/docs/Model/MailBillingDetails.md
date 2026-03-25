@@ -1,4 +1,4 @@
-# # MailBillingDetails
+# MailBillingDetails
 
 ## Properties
 

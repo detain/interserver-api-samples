@@ -20,7 +20,7 @@ typedef struct place_scrub_order_201_response_t place_scrub_order_201_response_t
 
 
 typedef struct place_scrub_order_201_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
     struct place_scrub_order_201_response_order_details_t *order_details; //model
 
@@ -28,7 +28,7 @@ typedef struct place_scrub_order_201_response_t {
 } place_scrub_order_201_response_t;
 
 __attribute__((deprecated)) place_scrub_order_201_response_t *place_scrub_order_201_response_create(
-    int success,
+    int *success,
     char *text,
     place_scrub_order_201_response_order_details_t *order_details
 );

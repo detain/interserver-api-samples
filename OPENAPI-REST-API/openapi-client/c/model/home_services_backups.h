@@ -20,14 +20,14 @@ typedef struct home_services_backups_t home_services_backups_t;
 
 typedef struct home_services_backups_t {
     list_t *links; //primitive container
-    int count; //numeric
+    int *count; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } home_services_backups_t;
 
 __attribute__((deprecated)) home_services_backups_t *home_services_backups_create(
     list_t *links,
-    int count
+    int *count
 );
 
 void home_services_backups_free(home_services_backups_t *home_services_backups);

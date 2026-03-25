@@ -1,4 +1,4 @@
-# # DenyRuleNew
+# DenyRuleNew
 
 ## Properties
 

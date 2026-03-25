@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIWebsitesOrderServiceOffer::OAIWebsitesOrderServiceOffer(QString json) {
+OAIWebsitesOrderServiceOffer::OAIWebsitesOrderServiceOffer(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -68,7 +68,7 @@ void OAIWebsitesOrderServiceOffer::initializeModel() {
     m_deleted_at_isValid = false;
 }
 
-void OAIWebsitesOrderServiceOffer::fromJson(QString jsonString) {
+void OAIWebsitesOrderServiceOffer::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -1,4 +1,4 @@
-# # DeleteFilter500Response
+# DeleteFilter500Response
 
 ## Properties
 

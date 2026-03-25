@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAITicketNew::OAITicketNew(QString json) {
+OAITicketNew::OAITicketNew(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAITicketNew::initializeModel() {
     m_service_module_isValid = false;
 }
 
-void OAITicketNew::fromJson(QString jsonString) {
+void OAITicketNew::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

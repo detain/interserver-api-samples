@@ -13,10 +13,10 @@ static vps_traffic_data_section_response_t *vps_traffic_data_section_response_cr
     if (!vps_traffic_data_section_response_local_var) {
         return NULL;
     }
+    memset(vps_traffic_data_section_response_local_var, 0, sizeof(vps_traffic_data_section_response_t));
+    vps_traffic_data_section_response_local_var->_library_owned = 1;
     vps_traffic_data_section_response_local_var->name = name;
     vps_traffic_data_section_response_local_var->data = data;
-
-    vps_traffic_data_section_response_local_var->_library_owned = 1;
     return vps_traffic_data_section_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) vps_traffic_data_section_response_t *vps_traffic_dat
     char *name,
     list_t *data
     ) {
-    return vps_traffic_data_section_response_create_internal (
+    vps_traffic_data_section_response_t *result = vps_traffic_data_section_response_create_internal (
         name,
         data
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_traffic_data_section_response_free(vps_traffic_data_section_response_t *vps_traffic_data_section_response) {
@@ -97,6 +100,8 @@ vps_traffic_data_section_response_t *vps_traffic_data_section_response_parseFrom
 
     vps_traffic_data_section_response_t *vps_traffic_data_section_response_local_var = NULL;
 
+    char *name_local_str = NULL;
+
     // define the local list for vps_traffic_data_section_response->data
     list_t *dataList = NULL;
 
@@ -143,13 +148,23 @@ vps_traffic_data_section_response_t *vps_traffic_data_section_response_parseFrom
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     vps_traffic_data_section_response_local_var = vps_traffic_data_section_response_create_internal (
-        strdup(name->valuestring),
+        name_local_str,
         dataList
         );
 
+    if (!vps_traffic_data_section_response_local_var) {
+        goto end;
+    }
+
     return vps_traffic_data_section_response_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (dataList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, dataList) {

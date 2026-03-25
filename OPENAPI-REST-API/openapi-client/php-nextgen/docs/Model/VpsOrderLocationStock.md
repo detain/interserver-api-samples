@@ -1,4 +1,4 @@
-# # VpsOrderLocationStock
+# VpsOrderLocationStock
 
 ## Properties
 

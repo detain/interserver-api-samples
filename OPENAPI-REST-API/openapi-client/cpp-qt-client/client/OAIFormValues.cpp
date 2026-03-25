@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIFormValues::OAIFormValues(QString json) {
+OAIFormValues::OAIFormValues(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIFormValues::initializeModel() {
     m_region_isValid = false;
 }
 
-void OAIFormValues::fromJson(QString jsonString) {
+void OAIFormValues::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

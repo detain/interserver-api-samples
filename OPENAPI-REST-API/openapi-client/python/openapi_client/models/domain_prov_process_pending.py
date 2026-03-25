@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from openapi_client.models.domain_prov_process_pending_attributes import DomainProvProcessPendingAttributes
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class DomainProvProcessPending(BaseModel):
     """
@@ -39,7 +40,8 @@ class DomainProvProcessPending(BaseModel):
     __properties: ClassVar[List[str]] = ["_OPS_version", "response_text", "protocol", "response_code", "action", "object", "is_success", "attributes"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,8 +53,7 @@ class DomainProvProcessPending(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

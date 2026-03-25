@@ -390,6 +390,7 @@ import UrlRequest from './model/UrlRequest';
 import VPSCancel200Response from './model/VPSCancel200Response';
 import VPSTrafficDataDataSectionResponse from './model/VPSTrafficDataDataSectionResponse';
 import VPSTrafficDataDataSectionResponseInner from './model/VPSTrafficDataDataSectionResponseInner';
+import ViewMailLogStartDateParameter from './model/ViewMailLogStartDateParameter';
 import ViewTicketResponse from './model/ViewTicketResponse';
 import Vps from './model/Vps';
 import VpsBackupRow from './model/VpsBackupRow';
@@ -2779,6 +2780,12 @@ export {
      * @property {module:model/VPSTrafficDataDataSectionResponseInner}
      */
     VPSTrafficDataDataSectionResponseInner,
+
+    /**
+     * The ViewMailLogStartDateParameter model constructor.
+     * @property {module:model/ViewMailLogStartDateParameter}
+     */
+    ViewMailLogStartDateParameter,
 
     /**
      * The ViewTicketResponse model constructor.

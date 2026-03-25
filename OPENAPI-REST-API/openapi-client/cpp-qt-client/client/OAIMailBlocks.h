@@ -35,13 +35,13 @@ class OAIMailBlockRspamd;
 class OAIMailBlocks : public OAIObject {
 public:
     OAIMailBlocks();
-    OAIMailBlocks(QString json);
+    OAIMailBlocks(const QString &json);
     ~OAIMailBlocks() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<OAIMailBlockClickHouse> getLocal() const;
     void setLocal(const QList<OAIMailBlockClickHouse> &local);

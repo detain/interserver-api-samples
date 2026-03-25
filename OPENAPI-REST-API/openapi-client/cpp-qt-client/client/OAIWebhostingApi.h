@@ -151,6 +151,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -170,7 +177,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addWebsiteCallback(OAIHttpRequestWorker *worker);
     void getNewWebsiteCallback(OAIHttpRequestWorker *worker);
@@ -226,102 +233,38 @@ Q_SIGNALS:
     void updateWebsiteInfoSignalFull(OAIHttpRequestWorker *worker);
     void webhostingCancelSignalFull(OAIHttpRequestWorker *worker, OAIWebhostingCancel_200_response summary);
 
-    Q_DECL_DEPRECATED_X("Use addWebsiteSignalError() instead")
-    void addWebsiteSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addWebsiteSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewWebsiteSignalError() instead")
-    void getNewWebsiteSignalE(OAIWebsitesOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewWebsiteSignalError(OAIWebsitesOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteBuyIpSignalError() instead")
-    void getWebsiteBuyIpSignalE(OAIGetWebsiteBuyIp_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteBuyIpSignalError(OAIGetWebsiteBuyIp_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteInfoSignalError() instead")
-    void getWebsiteInfoSignalE(OAIWebsite summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteInfoSignalError(OAIWebsite summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteInvoicesSignalError() instead")
-    void getWebsiteInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteListSignalError() instead")
-    void getWebsiteListSignalE(QList<OAIWebsiteRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteListSignalError(QList<OAIWebsiteRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsitesBackupsSignalError() instead")
-    void getWebsitesBackupsSignalE(OAIWebsiteBackups<OAIWebsiteBackups_inner> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsitesBackupsSignalError(OAIWebsiteBackups<OAIWebsiteBackups_inner> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsitesLoginSignalError() instead")
-    void getWebsitesLoginSignalE(OAIWebsiteLoginResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsitesLoginSignalError(OAIWebsiteLoginResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsitesWelcomeEmailSignalError() instead")
-    void getWebsitesWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsitesWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use gettWebsiteReverseDnsSignalError() instead")
-    void gettWebsiteReverseDnsSignalE(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, QString error_str);
     void gettWebsiteReverseDnsSignalError(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postWebsiteBuyIpSignalError() instead")
-    void postWebsiteBuyIpSignalE(OAIPostWebsiteBuyIp_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postWebsiteBuyIpSignalError(OAIPostWebsiteBuyIp_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postWebsiteMigrationSignalError() instead")
-    void postWebsiteMigrationSignalE(OAIPostWebsiteMigration_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postWebsiteMigrationSignalError(OAIPostWebsiteMigration_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postWebsitesReverseDnsSignalError() instead")
-    void postWebsitesReverseDnsSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postWebsitesReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putWebsitesSignalError() instead")
-    void putWebsitesSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putWebsitesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateWebsiteInfoSignalError() instead")
-    void updateWebsiteInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateWebsiteInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use webhostingCancelSignalError() instead")
-    void webhostingCancelSignalE(OAIWebhostingCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void webhostingCancelSignalError(OAIWebhostingCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addWebsiteSignalErrorFull() instead")
-    void addWebsiteSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addWebsiteSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewWebsiteSignalErrorFull() instead")
-    void getNewWebsiteSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewWebsiteSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteBuyIpSignalErrorFull() instead")
-    void getWebsiteBuyIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteBuyIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteInfoSignalErrorFull() instead")
-    void getWebsiteInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteInvoicesSignalErrorFull() instead")
-    void getWebsiteInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsiteListSignalErrorFull() instead")
-    void getWebsiteListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsiteListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsitesBackupsSignalErrorFull() instead")
-    void getWebsitesBackupsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsitesBackupsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsitesLoginSignalErrorFull() instead")
-    void getWebsitesLoginSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsitesLoginSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getWebsitesWelcomeEmailSignalErrorFull() instead")
-    void getWebsitesWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getWebsitesWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use gettWebsiteReverseDnsSignalErrorFull() instead")
-    void gettWebsiteReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void gettWebsiteReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postWebsiteBuyIpSignalErrorFull() instead")
-    void postWebsiteBuyIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postWebsiteBuyIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postWebsiteMigrationSignalErrorFull() instead")
-    void postWebsiteMigrationSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postWebsiteMigrationSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postWebsitesReverseDnsSignalErrorFull() instead")
-    void postWebsitesReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postWebsitesReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putWebsitesSignalErrorFull() instead")
-    void putWebsitesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putWebsitesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateWebsiteInfoSignalErrorFull() instead")
-    void updateWebsiteInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateWebsiteInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use webhostingCancelSignalErrorFull() instead")
-    void webhostingCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void webhostingCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

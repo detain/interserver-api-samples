@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsOrder_osNames : public OAIObject {
 public:
     OAIVpsOrder_osNames();
-    OAIVpsOrder_osNames(QString json);
+    OAIVpsOrder_osNames(const QString &json);
     ~OAIVpsOrder_osNames() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getOpensuse() const;
     void setOpensuse(const QString &opensuse);

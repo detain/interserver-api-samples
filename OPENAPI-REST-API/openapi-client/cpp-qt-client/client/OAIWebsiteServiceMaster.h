@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIWebsiteServiceMaster : public OAIObject {
 public:
     OAIWebsiteServiceMaster();
-    OAIWebsiteServiceMaster(QString json);
+    OAIWebsiteServiceMaster(const QString &json);
     ~OAIWebsiteServiceMaster() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getWebsiteId() const;
     void setWebsiteId(const QString &website_id);

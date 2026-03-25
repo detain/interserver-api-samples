@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIMailBlockClickHouse : public OAIObject {
 public:
     OAIMailBlockClickHouse();
-    OAIMailBlockClickHouse(QString json);
+    OAIMailBlockClickHouse(const QString &json);
     ~OAIMailBlockClickHouse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QDate getDate() const;
     void setDate(const QDate &date);

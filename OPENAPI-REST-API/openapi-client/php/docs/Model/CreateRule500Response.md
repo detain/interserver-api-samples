@@ -1,4 +1,4 @@
-# # CreateRule500Response
+# CreateRule500Response
 
 ## Properties
 

@@ -19,14 +19,14 @@ typedef struct vps_cancel_200_response_t vps_cancel_200_response_t;
 
 
 typedef struct vps_cancel_200_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_cancel_200_response_t;
 
 __attribute__((deprecated)) vps_cancel_200_response_t *vps_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
 );
 

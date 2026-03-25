@@ -1,4 +1,4 @@
-# # TextResponse
+# TextResponse
 
 ## Properties
 

@@ -17,14 +17,14 @@ static quickserver_row_t *quickserver_row_create_internal(
     if (!quickserver_row_local_var) {
         return NULL;
     }
+    memset(quickserver_row_local_var, 0, sizeof(quickserver_row_t));
+    quickserver_row_local_var->_library_owned = 1;
     quickserver_row_local_var->qs_id = qs_id;
     quickserver_row_local_var->qs_name = qs_name;
     quickserver_row_local_var->cost = cost;
     quickserver_row_local_var->qs_hostname = qs_hostname;
     quickserver_row_local_var->qs_status = qs_status;
     quickserver_row_local_var->qs_comment = qs_comment;
-
-    quickserver_row_local_var->_library_owned = 1;
     return quickserver_row_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) quickserver_row_t *quickserver_row_create(
     char *qs_status,
     char *qs_comment
     ) {
-    return quickserver_row_create_internal (
+    quickserver_row_t *result = quickserver_row_create_internal (
         qs_id,
         qs_name,
         cost,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) quickserver_row_t *quickserver_row_create(
         qs_status,
         qs_comment
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_row_free(quickserver_row_t *quickserver_row) {
@@ -150,6 +153,18 @@ quickserver_row_t *quickserver_row_parseFromJSON(cJSON *quickserver_rowJSON){
 
     quickserver_row_t *quickserver_row_local_var = NULL;
 
+    char *qs_id_local_str = NULL;
+
+    char *qs_name_local_str = NULL;
+
+    char *cost_local_str = NULL;
+
+    char *qs_hostname_local_str = NULL;
+
+    char *qs_status_local_str = NULL;
+
+    char *qs_comment_local_str = NULL;
+
     // quickserver_row->qs_id
     cJSON *qs_id = cJSON_GetObjectItemCaseSensitive(quickserver_rowJSON, "qs_id");
     if (cJSON_IsNull(qs_id)) {
@@ -241,17 +256,52 @@ quickserver_row_t *quickserver_row_parseFromJSON(cJSON *quickserver_rowJSON){
     }
 
 
+    if (qs_id && !cJSON_IsNull(qs_id)) qs_id_local_str = strdup(qs_id->valuestring);
+    if (qs_name && !cJSON_IsNull(qs_name)) qs_name_local_str = strdup(qs_name->valuestring);
+    if (cost && !cJSON_IsNull(cost)) cost_local_str = strdup(cost->valuestring);
+    if (qs_hostname && !cJSON_IsNull(qs_hostname)) qs_hostname_local_str = strdup(qs_hostname->valuestring);
+    if (qs_status && !cJSON_IsNull(qs_status)) qs_status_local_str = strdup(qs_status->valuestring);
+    if (qs_comment && !cJSON_IsNull(qs_comment)) qs_comment_local_str = strdup(qs_comment->valuestring);
+
     quickserver_row_local_var = quickserver_row_create_internal (
-        strdup(qs_id->valuestring),
-        strdup(qs_name->valuestring),
-        strdup(cost->valuestring),
-        strdup(qs_hostname->valuestring),
-        strdup(qs_status->valuestring),
-        strdup(qs_comment->valuestring)
+        qs_id_local_str,
+        qs_name_local_str,
+        cost_local_str,
+        qs_hostname_local_str,
+        qs_status_local_str,
+        qs_comment_local_str
         );
+
+    if (!quickserver_row_local_var) {
+        goto end;
+    }
 
     return quickserver_row_local_var;
 end:
+    if (qs_id_local_str) {
+        free(qs_id_local_str);
+        qs_id_local_str = NULL;
+    }
+    if (qs_name_local_str) {
+        free(qs_name_local_str);
+        qs_name_local_str = NULL;
+    }
+    if (cost_local_str) {
+        free(cost_local_str);
+        cost_local_str = NULL;
+    }
+    if (qs_hostname_local_str) {
+        free(qs_hostname_local_str);
+        qs_hostname_local_str = NULL;
+    }
+    if (qs_status_local_str) {
+        free(qs_status_local_str);
+        qs_status_local_str = NULL;
+    }
+    if (qs_comment_local_str) {
+        free(qs_comment_local_str);
+        qs_comment_local_str = NULL;
+    }
     return NULL;
 
 }

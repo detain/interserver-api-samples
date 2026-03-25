@@ -1,4 +1,4 @@
-# # VpsBillingDetails
+# VpsBillingDetails
 
 ## Properties
 

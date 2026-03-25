@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIHome_services_backups : public OAIObject {
 public:
     OAIHome_services_backups();
-    OAIHome_services_backups(QString json);
+    OAIHome_services_backups(const QString &json);
     ~OAIHome_services_backups() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<QString> getLinks() const;
     void setLinks(const QList<QString> &links);

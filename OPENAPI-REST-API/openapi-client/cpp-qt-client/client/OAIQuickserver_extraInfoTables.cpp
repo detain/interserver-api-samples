@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserver_extraInfoTables::OAIQuickserver_extraInfoTables(QString json) {
+OAIQuickserver_extraInfoTables::OAIQuickserver_extraInfoTables(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIQuickserver_extraInfoTables::initializeModel() {
     m_addons_isValid = false;
 }
 
-void OAIQuickserver_extraInfoTables::fromJson(QString jsonString) {
+void OAIQuickserver_extraInfoTables::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

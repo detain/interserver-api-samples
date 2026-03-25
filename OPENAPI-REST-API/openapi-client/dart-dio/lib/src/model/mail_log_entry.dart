@@ -8,125 +8,135 @@ import 'package:built_value/serializer.dart';
 
 part 'mail_log_entry.g.dart';
 
-/// An email record
+/// A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 ///
 /// Properties:
-/// * [id] - internal db id
-/// * [id] - mail id
-/// * [from] - from address
-/// * [to] - to address
-/// * [subject] - email subject
-/// * [created] - creation date
-/// * [time] - creation timestamp
-/// * [user] - user account
-/// * [transtype] - transaction type
-/// * [origin] - origin ip
-/// * [interface_] - interface name
-/// * [sendingZone] - sending zone
-/// * [bodySize] - email body size in bytes
-/// * [seq] - index of email in the to adderess list
-/// * [recipient] - to address this email is being sent to
-/// * [domain] - to address domain
-/// * [locked] - locked status
-/// * [lockTime] - lock timestamp
-/// * [assigned] - assigned server
-/// * [queued] - queued timestamp
-/// * [mxHostname] - mx hostname
-/// * [response] - mail delivery response
-/// * [messageId] - message id
+/// * [id] - Internal auto-increment database row ID.
+/// * [id] - The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
+/// * [from] - SMTP envelope `MAIL FROM` address.
+/// * [to] - SMTP envelope `RCPT TO` address.
+/// * [created] - Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
+/// * [time] - Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
+/// * [user] - The SMTP AUTH username used to submit the message (e.g. `mb5658`).
+/// * [transtype] - SMTP transaction type negotiated with the relay.
+/// * [origin] - IP address of the client that submitted the message to the relay.
+/// * [interface_] - Relay interface name that accepted the message.
+/// * [subject] - The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+/// * [messageId] - The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+/// * [sendingZone] - The sending zone assigned by the relay for outbound delivery.
+/// * [bodySize] - Size of the message body in bytes.
+/// * [seq] - Sequence index of this recipient in a multi-recipient message. Starts at 1.
+/// * [delivered] - Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+/// * [code] - The SMTP response code from the destination MX server (e.g. `250`).
+/// * [recipient] - The specific recipient address this delivery record is for.
+/// * [response] - The full SMTP response string received from the destination MX server.
+/// * [domain] - The destination domain for this delivery attempt.
+/// * [locked] - Whether the queue entry is currently locked for delivery processing.
+/// * [lockTime] - Millisecond-precision timestamp of the last queue lock acquisition.
+/// * [assigned] - The relay server node assigned to deliver this message.
+/// * [queued] - ISO 8601 timestamp when the message was placed into the delivery queue.
+/// * [mxHostname] - The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
 @BuiltValue()
 abstract class MailLogEntry implements Built<MailLogEntry, MailLogEntryBuilder> {
-  /// internal db id
+  /// Internal auto-increment database row ID.
   @BuiltValueField(wireName: r'_id')
   int get id;
 
-  /// mail id
+  /// The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
   @BuiltValueField(wireName: r'id')
   String get id;
 
-  /// from address
+  /// SMTP envelope `MAIL FROM` address.
   @BuiltValueField(wireName: r'from')
   String get from;
 
-  /// to address
+  /// SMTP envelope `RCPT TO` address.
   @BuiltValueField(wireName: r'to')
   String get to;
 
-  /// email subject
-  @BuiltValueField(wireName: r'subject')
-  String get subject;
-
-  /// creation date
+  /// Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
   @BuiltValueField(wireName: r'created')
   String get created;
 
-  /// creation timestamp
+  /// Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
   @BuiltValueField(wireName: r'time')
   int get time;
 
-  /// user account
+  /// The SMTP AUTH username used to submit the message (e.g. `mb5658`).
   @BuiltValueField(wireName: r'user')
   String get user;
 
-  /// transaction type
+  /// SMTP transaction type negotiated with the relay.
   @BuiltValueField(wireName: r'transtype')
   String get transtype;
 
-  /// origin ip
+  /// IP address of the client that submitted the message to the relay.
   @BuiltValueField(wireName: r'origin')
   String get origin;
 
-  /// interface name
+  /// Relay interface name that accepted the message.
   @BuiltValueField(wireName: r'interface')
   String get interface_;
 
-  /// sending zone
-  @BuiltValueField(wireName: r'sendingZone')
-  String get sendingZone;
+  /// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+  @BuiltValueField(wireName: r'subject')
+  String? get subject;
 
-  /// email body size in bytes
-  @BuiltValueField(wireName: r'bodySize')
-  int get bodySize;
-
-  /// index of email in the to adderess list
-  @BuiltValueField(wireName: r'seq')
-  int get seq;
-
-  /// to address this email is being sent to
-  @BuiltValueField(wireName: r'recipient')
-  String get recipient;
-
-  /// to address domain
-  @BuiltValueField(wireName: r'domain')
-  String get domain;
-
-  /// locked status
-  @BuiltValueField(wireName: r'locked')
-  int get locked;
-
-  /// lock timestamp
-  @BuiltValueField(wireName: r'lockTime')
-  int get lockTime;
-
-  /// assigned server
-  @BuiltValueField(wireName: r'assigned')
-  String get assigned;
-
-  /// queued timestamp
-  @BuiltValueField(wireName: r'queued')
-  String get queued;
-
-  /// mx hostname
-  @BuiltValueField(wireName: r'mxHostname')
-  String get mxHostname;
-
-  /// mail delivery response
-  @BuiltValueField(wireName: r'response')
-  String get response;
-
-  /// message id
+  /// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
   @BuiltValueField(wireName: r'messageId')
   String? get messageId;
+
+  /// The sending zone assigned by the relay for outbound delivery.
+  @BuiltValueField(wireName: r'sendingZone')
+  String? get sendingZone;
+
+  /// Size of the message body in bytes.
+  @BuiltValueField(wireName: r'bodySize')
+  int? get bodySize;
+
+  /// Sequence index of this recipient in a multi-recipient message. Starts at 1.
+  @BuiltValueField(wireName: r'seq')
+  int? get seq;
+
+  /// Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+  @BuiltValueField(wireName: r'delivered')
+  int? get delivered;
+
+  /// The SMTP response code from the destination MX server (e.g. `250`).
+  @BuiltValueField(wireName: r'code')
+  int? get code;
+
+  /// The specific recipient address this delivery record is for.
+  @BuiltValueField(wireName: r'recipient')
+  String? get recipient;
+
+  /// The full SMTP response string received from the destination MX server.
+  @BuiltValueField(wireName: r'response')
+  String? get response;
+
+  /// The destination domain for this delivery attempt.
+  @BuiltValueField(wireName: r'domain')
+  String? get domain;
+
+  /// Whether the queue entry is currently locked for delivery processing.
+  @BuiltValueField(wireName: r'locked')
+  int? get locked;
+
+  /// Millisecond-precision timestamp of the last queue lock acquisition.
+  @BuiltValueField(wireName: r'lockTime')
+  String? get lockTime;
+
+  /// The relay server node assigned to deliver this message.
+  @BuiltValueField(wireName: r'assigned')
+  String? get assigned;
+
+  /// ISO 8601 timestamp when the message was placed into the delivery queue.
+  @BuiltValueField(wireName: r'queued')
+  String? get queued;
+
+  /// The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+  @BuiltValueField(wireName: r'mxHostname')
+  String? get mxHostname;
 
   MailLogEntry._();
 
@@ -171,11 +181,6 @@ class _$MailLogEntrySerializer implements PrimitiveSerializer<MailLogEntry> {
       object.to,
       specifiedType: const FullType(String),
     );
-    yield r'subject';
-    yield serializers.serialize(
-      object.subject,
-      specifiedType: const FullType(String),
-    );
     yield r'created';
     yield serializers.serialize(
       object.created,
@@ -206,66 +211,109 @@ class _$MailLogEntrySerializer implements PrimitiveSerializer<MailLogEntry> {
       object.interface_,
       specifiedType: const FullType(String),
     );
-    yield r'sendingZone';
-    yield serializers.serialize(
-      object.sendingZone,
-      specifiedType: const FullType(String),
-    );
-    yield r'bodySize';
-    yield serializers.serialize(
-      object.bodySize,
-      specifiedType: const FullType(int),
-    );
-    yield r'seq';
-    yield serializers.serialize(
-      object.seq,
-      specifiedType: const FullType(int),
-    );
-    yield r'recipient';
-    yield serializers.serialize(
-      object.recipient,
-      specifiedType: const FullType(String),
-    );
-    yield r'domain';
-    yield serializers.serialize(
-      object.domain,
-      specifiedType: const FullType(String),
-    );
-    yield r'locked';
-    yield serializers.serialize(
-      object.locked,
-      specifiedType: const FullType(int),
-    );
-    yield r'lockTime';
-    yield serializers.serialize(
-      object.lockTime,
-      specifiedType: const FullType(int),
-    );
-    yield r'assigned';
-    yield serializers.serialize(
-      object.assigned,
-      specifiedType: const FullType(String),
-    );
-    yield r'queued';
-    yield serializers.serialize(
-      object.queued,
-      specifiedType: const FullType(String),
-    );
-    yield r'mxHostname';
-    yield serializers.serialize(
-      object.mxHostname,
-      specifiedType: const FullType(String),
-    );
-    yield r'response';
-    yield serializers.serialize(
-      object.response,
-      specifiedType: const FullType(String),
-    );
+    if (object.subject != null) {
+      yield r'subject';
+      yield serializers.serialize(
+        object.subject,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.messageId != null) {
       yield r'messageId';
       yield serializers.serialize(
         object.messageId,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.sendingZone != null) {
+      yield r'sendingZone';
+      yield serializers.serialize(
+        object.sendingZone,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.bodySize != null) {
+      yield r'bodySize';
+      yield serializers.serialize(
+        object.bodySize,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.seq != null) {
+      yield r'seq';
+      yield serializers.serialize(
+        object.seq,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.delivered != null) {
+      yield r'delivered';
+      yield serializers.serialize(
+        object.delivered,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.code != null) {
+      yield r'code';
+      yield serializers.serialize(
+        object.code,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.recipient != null) {
+      yield r'recipient';
+      yield serializers.serialize(
+        object.recipient,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.response != null) {
+      yield r'response';
+      yield serializers.serialize(
+        object.response,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.domain != null) {
+      yield r'domain';
+      yield serializers.serialize(
+        object.domain,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.locked != null) {
+      yield r'locked';
+      yield serializers.serialize(
+        object.locked,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.lockTime != null) {
+      yield r'lockTime';
+      yield serializers.serialize(
+        object.lockTime,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.assigned != null) {
+      yield r'assigned';
+      yield serializers.serialize(
+        object.assigned,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.queued != null) {
+      yield r'queued';
+      yield serializers.serialize(
+        object.queued,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.mxHostname != null) {
+      yield r'mxHostname';
+      yield serializers.serialize(
+        object.mxHostname,
+        specifiedType: const FullType.nullable(String),
       );
     }
   }
@@ -319,13 +367,6 @@ class _$MailLogEntrySerializer implements PrimitiveSerializer<MailLogEntry> {
           ) as String;
           result.to = valueDes;
           break;
-        case r'subject':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.subject = valueDes;
-          break;
         case r'created':
           final valueDes = serializers.deserialize(
             value,
@@ -368,89 +409,125 @@ class _$MailLogEntrySerializer implements PrimitiveSerializer<MailLogEntry> {
           ) as String;
           result.interface_ = valueDes;
           break;
+        case r'subject':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.subject = valueDes;
+          break;
+        case r'messageId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.messageId = valueDes;
+          break;
         case r'sendingZone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.sendingZone = valueDes;
           break;
         case r'bodySize':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.bodySize = valueDes;
           break;
         case r'seq':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.seq = valueDes;
+          break;
+        case r'delivered':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.delivered = valueDes;
+          break;
+        case r'code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.code = valueDes;
           break;
         case r'recipient':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.recipient = valueDes;
+          break;
+        case r'response':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.response = valueDes;
           break;
         case r'domain':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.domain = valueDes;
           break;
         case r'locked':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.locked = valueDes;
           break;
         case r'lockTime':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.lockTime = valueDes;
           break;
         case r'assigned':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.assigned = valueDes;
           break;
         case r'queued':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.queued = valueDes;
           break;
         case r'mxHostname':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.mxHostname = valueDes;
-          break;
-        case r'response':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.response = valueDes;
-          break;
-        case r'messageId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.messageId = valueDes;
           break;
         default:
           unhandled.add(key);

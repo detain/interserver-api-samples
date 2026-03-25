@@ -47,15 +47,15 @@ Name | Type | Description | Notes
 **vlans** | **List<String>** | List of VLANs associated with the asset. | [default to const []]
 **vlans6** | **List<String>** | List of IPv6 VLANs associated with the asset. | [default to const []]
 **lease** | [**ServerLease**](ServerLease.md) |  | 
-**mac** | [**Object**](.md) | MAC address associated with the asset. | [optional] 
-**ipmiAdminUsername** | [**Object**](.md) | IPMI admin username associated with the asset. | [optional] 
-**ipmiAdminPassword** | [**Object**](.md) | IPMI admin password associated with the asset. | [optional] 
-**ipmiClientUsername** | [**Object**](.md) | IPMI client username associated with the asset. | [optional] 
-**ipmiClientPassword** | [**Object**](.md) | IPMI client password associated with the asset. | [optional] 
-**ipmiUpdated** | [**Object**](.md) | IPMI update status associated with the asset. | [optional] 
-**createTimestamp** | [**Object**](.md) | Timestamp of asset creation. | [optional] 
-**updateTimestamp** | [**Object**](.md) | Timestamp of asset update. | [optional] 
-**comment** | [**Object**](.md) | Comment associated with the asset. | [optional] 
+**mac** | **Object** | MAC address associated with the asset. | [optional] 
+**ipmiAdminUsername** | **Object** | IPMI admin username associated with the asset. | [optional] 
+**ipmiAdminPassword** | **Object** | IPMI admin password associated with the asset. | [optional] 
+**ipmiClientUsername** | **Object** | IPMI client username associated with the asset. | [optional] 
+**ipmiClientPassword** | **Object** | IPMI client password associated with the asset. | [optional] 
+**ipmiUpdated** | **Object** | IPMI update status associated with the asset. | [optional] 
+**createTimestamp** | **Object** | Timestamp of asset creation. | [optional] 
+**updateTimestamp** | **Object** | Timestamp of asset update. | [optional] 
+**comment** | **Object** | Comment associated with the asset. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

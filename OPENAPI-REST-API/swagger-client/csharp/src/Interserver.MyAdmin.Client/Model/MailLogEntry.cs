@@ -23,7 +23,7 @@ using SwaggerDateConverter = Interserver.MyAdmin.Client.Client.SwaggerDateConver
 namespace Interserver.MyAdmin.Client.Model
 {
     /// <summary>
-    /// An email record
+    /// A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
     /// </summary>
     [DataContract]
         public partial class MailLogEntry :  IEquatable<MailLogEntry>, IValidatableObject
@@ -31,30 +31,32 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MailLogEntry" /> class.
         /// </summary>
-        /// <param name="id">internal db id (required).</param>
-        /// <param name="id">mail id (required).</param>
-        /// <param name="from">from address (required).</param>
-        /// <param name="to">to address (required).</param>
-        /// <param name="subject">email subject (required).</param>
-        /// <param name="messageId">message id.</param>
-        /// <param name="created">creation date (required).</param>
-        /// <param name="time">creation timestamp (required).</param>
-        /// <param name="user">user account (required).</param>
-        /// <param name="transtype">transaction type (required).</param>
-        /// <param name="origin">origin ip (required).</param>
-        /// <param name="_interface">interface name (required).</param>
-        /// <param name="sendingZone">sending zone (required).</param>
-        /// <param name="bodySize">email body size in bytes (required).</param>
-        /// <param name="seq">index of email in the to adderess list (required).</param>
-        /// <param name="recipient">to address this email is being sent to (required).</param>
-        /// <param name="domain">to address domain (required).</param>
-        /// <param name="locked">locked status (required).</param>
-        /// <param name="lockTime">lock timestamp (required).</param>
-        /// <param name="assigned">assigned server (required).</param>
-        /// <param name="queued">queued timestamp (required).</param>
-        /// <param name="mxHostname">mx hostname (required).</param>
-        /// <param name="response">mail delivery response (required).</param>
-        public MailLogEntry(int? id = default(int?), string id = default(string), string from = default(string), string to = default(string), string subject = default(string), string messageId = default(string), string created = default(string), int? time = default(int?), string user = default(string), string transtype = default(string), string origin = default(string), string _interface = default(string), string sendingZone = default(string), int? bodySize = default(int?), int? seq = default(int?), string recipient = default(string), string domain = default(string), int? locked = default(int?), int? lockTime = default(int?), string assigned = default(string), string queued = default(string), string mxHostname = default(string), string response = default(string))
+        /// <param name="id">Internal auto-increment database row ID. (required).</param>
+        /// <param name="id">The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints. (required).</param>
+        /// <param name="from">SMTP envelope &#x60;MAIL FROM&#x60; address. (required).</param>
+        /// <param name="to">SMTP envelope &#x60;RCPT TO&#x60; address. (required).</param>
+        /// <param name="subject">The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded..</param>
+        /// <param name="messageId">The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups..</param>
+        /// <param name="created">Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format. (required).</param>
+        /// <param name="time">Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters. (required).</param>
+        /// <param name="user">The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;). (required).</param>
+        /// <param name="transtype">SMTP transaction type negotiated with the relay. (required).</param>
+        /// <param name="origin">IP address of the client that submitted the message to the relay. (required).</param>
+        /// <param name="_interface">Relay interface name that accepted the message. (required).</param>
+        /// <param name="sendingZone">The sending zone assigned by the relay for outbound delivery..</param>
+        /// <param name="bodySize">Size of the message body in bytes..</param>
+        /// <param name="seq">Sequence index of this recipient in a multi-recipient message. Starts at 1..</param>
+        /// <param name="delivered">Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted..</param>
+        /// <param name="code">The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;)..</param>
+        /// <param name="recipient">The specific recipient address this delivery record is for..</param>
+        /// <param name="response">The full SMTP response string received from the destination MX server..</param>
+        /// <param name="domain">The destination domain for this delivery attempt..</param>
+        /// <param name="locked">Whether the queue entry is currently locked for delivery processing..</param>
+        /// <param name="lockTime">Millisecond-precision timestamp of the last queue lock acquisition..</param>
+        /// <param name="assigned">The relay server node assigned to deliver this message..</param>
+        /// <param name="queued">ISO 8601 timestamp when the message was placed into the delivery queue..</param>
+        /// <param name="mxHostname">The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter..</param>
+        public MailLogEntry(int? id = default(int?), string id = default(string), string from = default(string), string to = default(string), string subject = default(string), string messageId = default(string), string created = default(string), int? time = default(int?), string user = default(string), string transtype = default(string), string origin = default(string), string _interface = default(string), string sendingZone = default(string), int? bodySize = default(int?), int? seq = default(int?), int? delivered = default(int?), int? code = default(int?), string recipient = default(string), string response = default(string), string domain = default(string), int? locked = default(int?), string lockTime = default(string), string assigned = default(string), string queued = default(string), string mxHostname = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -91,15 +93,6 @@ namespace Interserver.MyAdmin.Client.Model
             else
             {
                 this.to = to;
-            }
-            // to ensure "subject" is required (not null)
-            if (subject == null)
-            {
-                throw new InvalidDataException("subject is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.subject = subject;
             }
             // to ensure "created" is required (not null)
             if (created == null)
@@ -155,268 +148,197 @@ namespace Interserver.MyAdmin.Client.Model
             {
                 this._interface = _interface;
             }
-            // to ensure "sendingZone" is required (not null)
-            if (sendingZone == null)
-            {
-                throw new InvalidDataException("sendingZone is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.sendingZone = sendingZone;
-            }
-            // to ensure "bodySize" is required (not null)
-            if (bodySize == null)
-            {
-                throw new InvalidDataException("bodySize is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.bodySize = bodySize;
-            }
-            // to ensure "seq" is required (not null)
-            if (seq == null)
-            {
-                throw new InvalidDataException("seq is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.seq = seq;
-            }
-            // to ensure "recipient" is required (not null)
-            if (recipient == null)
-            {
-                throw new InvalidDataException("recipient is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.recipient = recipient;
-            }
-            // to ensure "domain" is required (not null)
-            if (domain == null)
-            {
-                throw new InvalidDataException("domain is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.domain = domain;
-            }
-            // to ensure "locked" is required (not null)
-            if (locked == null)
-            {
-                throw new InvalidDataException("locked is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.locked = locked;
-            }
-            // to ensure "lockTime" is required (not null)
-            if (lockTime == null)
-            {
-                throw new InvalidDataException("lockTime is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.lockTime = lockTime;
-            }
-            // to ensure "assigned" is required (not null)
-            if (assigned == null)
-            {
-                throw new InvalidDataException("assigned is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.assigned = assigned;
-            }
-            // to ensure "queued" is required (not null)
-            if (queued == null)
-            {
-                throw new InvalidDataException("queued is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.queued = queued;
-            }
-            // to ensure "mxHostname" is required (not null)
-            if (mxHostname == null)
-            {
-                throw new InvalidDataException("mxHostname is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.mxHostname = mxHostname;
-            }
-            // to ensure "response" is required (not null)
-            if (response == null)
-            {
-                throw new InvalidDataException("response is a required property for MailLogEntry and cannot be null");
-            }
-            else
-            {
-                this.response = response;
-            }
+            this.subject = subject;
             this.messageId = messageId;
+            this.sendingZone = sendingZone;
+            this.bodySize = bodySize;
+            this.seq = seq;
+            this.delivered = delivered;
+            this.code = code;
+            this.recipient = recipient;
+            this.response = response;
+            this.domain = domain;
+            this.locked = locked;
+            this.lockTime = lockTime;
+            this.assigned = assigned;
+            this.queued = queued;
+            this.mxHostname = mxHostname;
         }
         
         /// <summary>
-        /// internal db id
+        /// Internal auto-increment database row ID.
         /// </summary>
-        /// <value>internal db id</value>
+        /// <value>Internal auto-increment database row ID.</value>
         [DataMember(Name="_id", EmitDefaultValue=false)]
         public int? _id { get; set; }
 
         /// <summary>
-        /// mail id
+        /// The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
         /// </summary>
-        /// <value>mail id</value>
+        /// <value>The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string id { get; set; }
 
         /// <summary>
-        /// from address
+        /// SMTP envelope &#x60;MAIL FROM&#x60; address.
         /// </summary>
-        /// <value>from address</value>
+        /// <value>SMTP envelope &#x60;MAIL FROM&#x60; address.</value>
         [DataMember(Name="from", EmitDefaultValue=false)]
         public string from { get; set; }
 
         /// <summary>
-        /// to address
+        /// SMTP envelope &#x60;RCPT TO&#x60; address.
         /// </summary>
-        /// <value>to address</value>
+        /// <value>SMTP envelope &#x60;RCPT TO&#x60; address.</value>
         [DataMember(Name="to", EmitDefaultValue=false)]
         public string to { get; set; }
 
         /// <summary>
-        /// email subject
+        /// The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
         /// </summary>
-        /// <value>email subject</value>
+        /// <value>The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.</value>
         [DataMember(Name="subject", EmitDefaultValue=false)]
         public string subject { get; set; }
 
         /// <summary>
-        /// message id
+        /// The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
         /// </summary>
-        /// <value>message id</value>
+        /// <value>The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.</value>
         [DataMember(Name="messageId", EmitDefaultValue=false)]
         public string messageId { get; set; }
 
         /// <summary>
-        /// creation date
+        /// Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
         /// </summary>
-        /// <value>creation date</value>
+        /// <value>Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.</value>
         [DataMember(Name="created", EmitDefaultValue=false)]
         public string created { get; set; }
 
         /// <summary>
-        /// creation timestamp
+        /// Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
         /// </summary>
-        /// <value>creation timestamp</value>
+        /// <value>Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.</value>
         [DataMember(Name="time", EmitDefaultValue=false)]
         public int? time { get; set; }
 
         /// <summary>
-        /// user account
+        /// The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
         /// </summary>
-        /// <value>user account</value>
+        /// <value>The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).</value>
         [DataMember(Name="user", EmitDefaultValue=false)]
         public string user { get; set; }
 
         /// <summary>
-        /// transaction type
+        /// SMTP transaction type negotiated with the relay.
         /// </summary>
-        /// <value>transaction type</value>
+        /// <value>SMTP transaction type negotiated with the relay.</value>
         [DataMember(Name="transtype", EmitDefaultValue=false)]
         public string transtype { get; set; }
 
         /// <summary>
-        /// origin ip
+        /// IP address of the client that submitted the message to the relay.
         /// </summary>
-        /// <value>origin ip</value>
+        /// <value>IP address of the client that submitted the message to the relay.</value>
         [DataMember(Name="origin", EmitDefaultValue=false)]
         public string origin { get; set; }
 
         /// <summary>
-        /// interface name
+        /// Relay interface name that accepted the message.
         /// </summary>
-        /// <value>interface name</value>
+        /// <value>Relay interface name that accepted the message.</value>
         [DataMember(Name="interface", EmitDefaultValue=false)]
         public string _interface { get; set; }
 
         /// <summary>
-        /// sending zone
+        /// The sending zone assigned by the relay for outbound delivery.
         /// </summary>
-        /// <value>sending zone</value>
+        /// <value>The sending zone assigned by the relay for outbound delivery.</value>
         [DataMember(Name="sendingZone", EmitDefaultValue=false)]
         public string sendingZone { get; set; }
 
         /// <summary>
-        /// email body size in bytes
+        /// Size of the message body in bytes.
         /// </summary>
-        /// <value>email body size in bytes</value>
+        /// <value>Size of the message body in bytes.</value>
         [DataMember(Name="bodySize", EmitDefaultValue=false)]
         public int? bodySize { get; set; }
 
         /// <summary>
-        /// index of email in the to adderess list
+        /// Sequence index of this recipient in a multi-recipient message. Starts at 1.
         /// </summary>
-        /// <value>index of email in the to adderess list</value>
+        /// <value>Sequence index of this recipient in a multi-recipient message. Starts at 1.</value>
         [DataMember(Name="seq", EmitDefaultValue=false)]
         public int? seq { get; set; }
 
         /// <summary>
-        /// to address this email is being sent to
+        /// Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.
         /// </summary>
-        /// <value>to address this email is being sent to</value>
+        /// <value>Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.</value>
+        [DataMember(Name="delivered", EmitDefaultValue=false)]
+        public int? delivered { get; set; }
+
+        /// <summary>
+        /// The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).
+        /// </summary>
+        /// <value>The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).</value>
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public int? code { get; set; }
+
+        /// <summary>
+        /// The specific recipient address this delivery record is for.
+        /// </summary>
+        /// <value>The specific recipient address this delivery record is for.</value>
         [DataMember(Name="recipient", EmitDefaultValue=false)]
         public string recipient { get; set; }
 
         /// <summary>
-        /// to address domain
+        /// The full SMTP response string received from the destination MX server.
         /// </summary>
-        /// <value>to address domain</value>
+        /// <value>The full SMTP response string received from the destination MX server.</value>
+        [DataMember(Name="response", EmitDefaultValue=false)]
+        public string response { get; set; }
+
+        /// <summary>
+        /// The destination domain for this delivery attempt.
+        /// </summary>
+        /// <value>The destination domain for this delivery attempt.</value>
         [DataMember(Name="domain", EmitDefaultValue=false)]
         public string domain { get; set; }
 
         /// <summary>
-        /// locked status
+        /// Whether the queue entry is currently locked for delivery processing.
         /// </summary>
-        /// <value>locked status</value>
+        /// <value>Whether the queue entry is currently locked for delivery processing.</value>
         [DataMember(Name="locked", EmitDefaultValue=false)]
         public int? locked { get; set; }
 
         /// <summary>
-        /// lock timestamp
+        /// Millisecond-precision timestamp of the last queue lock acquisition.
         /// </summary>
-        /// <value>lock timestamp</value>
+        /// <value>Millisecond-precision timestamp of the last queue lock acquisition.</value>
         [DataMember(Name="lockTime", EmitDefaultValue=false)]
-        public int? lockTime { get; set; }
+        public string lockTime { get; set; }
 
         /// <summary>
-        /// assigned server
+        /// The relay server node assigned to deliver this message.
         /// </summary>
-        /// <value>assigned server</value>
+        /// <value>The relay server node assigned to deliver this message.</value>
         [DataMember(Name="assigned", EmitDefaultValue=false)]
         public string assigned { get; set; }
 
         /// <summary>
-        /// queued timestamp
+        /// ISO 8601 timestamp when the message was placed into the delivery queue.
         /// </summary>
-        /// <value>queued timestamp</value>
+        /// <value>ISO 8601 timestamp when the message was placed into the delivery queue.</value>
         [DataMember(Name="queued", EmitDefaultValue=false)]
         public string queued { get; set; }
 
         /// <summary>
-        /// mx hostname
+        /// The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.
         /// </summary>
-        /// <value>mx hostname</value>
+        /// <value>The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.</value>
         [DataMember(Name="mxHostname", EmitDefaultValue=false)]
         public string mxHostname { get; set; }
-
-        /// <summary>
-        /// mail delivery response
-        /// </summary>
-        /// <value>mail delivery response</value>
-        [DataMember(Name="response", EmitDefaultValue=false)]
-        public string response { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -441,14 +363,16 @@ namespace Interserver.MyAdmin.Client.Model
             sb.Append("  sendingZone: ").Append(sendingZone).Append("\n");
             sb.Append("  bodySize: ").Append(bodySize).Append("\n");
             sb.Append("  seq: ").Append(seq).Append("\n");
+            sb.Append("  delivered: ").Append(delivered).Append("\n");
+            sb.Append("  code: ").Append(code).Append("\n");
             sb.Append("  recipient: ").Append(recipient).Append("\n");
+            sb.Append("  response: ").Append(response).Append("\n");
             sb.Append("  domain: ").Append(domain).Append("\n");
             sb.Append("  locked: ").Append(locked).Append("\n");
             sb.Append("  lockTime: ").Append(lockTime).Append("\n");
             sb.Append("  assigned: ").Append(assigned).Append("\n");
             sb.Append("  queued: ").Append(queued).Append("\n");
             sb.Append("  mxHostname: ").Append(mxHostname).Append("\n");
-            sb.Append("  response: ").Append(response).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -559,9 +483,24 @@ namespace Interserver.MyAdmin.Client.Model
                     this.seq.Equals(input.seq))
                 ) && 
                 (
+                    this.delivered == input.delivered ||
+                    (this.delivered != null &&
+                    this.delivered.Equals(input.delivered))
+                ) && 
+                (
+                    this.code == input.code ||
+                    (this.code != null &&
+                    this.code.Equals(input.code))
+                ) && 
+                (
                     this.recipient == input.recipient ||
                     (this.recipient != null &&
                     this.recipient.Equals(input.recipient))
+                ) && 
+                (
+                    this.response == input.response ||
+                    (this.response != null &&
+                    this.response.Equals(input.response))
                 ) && 
                 (
                     this.domain == input.domain ||
@@ -592,11 +531,6 @@ namespace Interserver.MyAdmin.Client.Model
                     this.mxHostname == input.mxHostname ||
                     (this.mxHostname != null &&
                     this.mxHostname.Equals(input.mxHostname))
-                ) && 
-                (
-                    this.response == input.response ||
-                    (this.response != null &&
-                    this.response.Equals(input.response))
                 );
         }
 
@@ -639,8 +573,14 @@ namespace Interserver.MyAdmin.Client.Model
                     hashCode = hashCode * 59 + this.bodySize.GetHashCode();
                 if (this.seq != null)
                     hashCode = hashCode * 59 + this.seq.GetHashCode();
+                if (this.delivered != null)
+                    hashCode = hashCode * 59 + this.delivered.GetHashCode();
+                if (this.code != null)
+                    hashCode = hashCode * 59 + this.code.GetHashCode();
                 if (this.recipient != null)
                     hashCode = hashCode * 59 + this.recipient.GetHashCode();
+                if (this.response != null)
+                    hashCode = hashCode * 59 + this.response.GetHashCode();
                 if (this.domain != null)
                     hashCode = hashCode * 59 + this.domain.GetHashCode();
                 if (this.locked != null)
@@ -653,8 +593,6 @@ namespace Interserver.MyAdmin.Client.Model
                     hashCode = hashCode * 59 + this.queued.GetHashCode();
                 if (this.mxHostname != null)
                     hashCode = hashCode * 59 + this.mxHostname.GetHashCode();
-                if (this.response != null)
-                    hashCode = hashCode * 59 + this.response.GetHashCode();
                 return hashCode;
             }
         }

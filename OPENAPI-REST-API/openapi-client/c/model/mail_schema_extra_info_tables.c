@@ -13,10 +13,10 @@ static mail_schema_extra_info_tables_t *mail_schema_extra_info_tables_create_int
     if (!mail_schema_extra_info_tables_local_var) {
         return NULL;
     }
+    memset(mail_schema_extra_info_tables_local_var, 0, sizeof(mail_schema_extra_info_tables_t));
+    mail_schema_extra_info_tables_local_var->_library_owned = 1;
     mail_schema_extra_info_tables_local_var->mail = mail;
     mail_schema_extra_info_tables_local_var->tutorials = tutorials;
-
-    mail_schema_extra_info_tables_local_var->_library_owned = 1;
     return mail_schema_extra_info_tables_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) mail_schema_extra_info_tables_t *mail_schema_extra_i
     mail_extra_info_table_t *mail,
     mail_tutorials_table_t *tutorials
     ) {
-    return mail_schema_extra_info_tables_create_internal (
+    mail_schema_extra_info_tables_t *result = mail_schema_extra_info_tables_create_internal (
         mail,
         tutorials
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_schema_extra_info_tables_free(mail_schema_extra_info_tables_t *mail_schema_extra_info_tables) {
@@ -115,10 +118,15 @@ mail_schema_extra_info_tables_t *mail_schema_extra_info_tables_parseFromJSON(cJS
     }
 
 
+
     mail_schema_extra_info_tables_local_var = mail_schema_extra_info_tables_create_internal (
         mail ? mail_local_nonprim : NULL,
         tutorials ? tutorials_local_nonprim : NULL
         );
+
+    if (!mail_schema_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return mail_schema_extra_info_tables_local_var;
 end:

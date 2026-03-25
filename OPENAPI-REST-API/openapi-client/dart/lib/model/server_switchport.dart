@@ -111,10 +111,22 @@ class ServerSwitchport {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerSwitchport[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerSwitchport[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'switchport_id'), 'Required key "ServerSwitchport[switchport_id]" is missing from JSON.');
+        assert(json[r'switchport_id'] != null, 'Required key "ServerSwitchport[switchport_id]" has a null value in JSON.');
+        assert(json.containsKey(r'switch_id'), 'Required key "ServerSwitchport[switch_id]" is missing from JSON.');
+        assert(json[r'switch_id'] != null, 'Required key "ServerSwitchport[switch_id]" has a null value in JSON.');
+        assert(json.containsKey(r'switch'), 'Required key "ServerSwitchport[switch]" is missing from JSON.');
+        assert(json[r'switch'] != null, 'Required key "ServerSwitchport[switch]" has a null value in JSON.');
+        assert(json.containsKey(r'port'), 'Required key "ServerSwitchport[port]" is missing from JSON.');
+        assert(json[r'port'] != null, 'Required key "ServerSwitchport[port]" has a null value in JSON.');
+        assert(json.containsKey(r'blade'), 'Required key "ServerSwitchport[blade]" is missing from JSON.');
+        assert(json[r'blade'] != null, 'Required key "ServerSwitchport[blade]" has a null value in JSON.');
+        assert(json.containsKey(r'justport'), 'Required key "ServerSwitchport[justport]" is missing from JSON.');
+        assert(json[r'justport'] != null, 'Required key "ServerSwitchport[justport]" has a null value in JSON.');
+        assert(json.containsKey(r'graph_id'), 'Required key "ServerSwitchport[graph_id]" is missing from JSON.');
+        assert(json[r'graph_id'] != null, 'Required key "ServerSwitchport[graph_id]" has a null value in JSON.');
+        assert(json.containsKey(r'asset_id'), 'Required key "ServerSwitchport[asset_id]" is missing from JSON.');
+        assert(json[r'asset_id'] != null, 'Required key "ServerSwitchport[asset_id]" has a null value in JSON.');
         return true;
       }());
 

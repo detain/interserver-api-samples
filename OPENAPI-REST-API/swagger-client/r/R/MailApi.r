@@ -890,7 +890,7 @@ MailApi <- R6::R6Class(
       }
 
     }
-    view_mail_log = function(id, id, origin, mx, from, to, subject, mailid, skip, limit, start_date, end_date, delivered, ...){
+    view_mail_log = function(id, id, origin, mx, from, to, subject, mailid, message_id, replyto, headerfrom, delivered, skip, limit, start_date, end_date, sort, dir, groupby, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -923,6 +923,22 @@ MailApi <- R6::R6Class(
         queryParams['mailid'] <- mailid
       }
 
+      if (!missing(`message_id`)) {
+        queryParams['messageId'] <- message_id
+      }
+
+      if (!missing(`replyto`)) {
+        queryParams['replyto'] <- replyto
+      }
+
+      if (!missing(`headerfrom`)) {
+        queryParams['headerfrom'] <- headerfrom
+      }
+
+      if (!missing(`delivered`)) {
+        queryParams['delivered'] <- delivered
+      }
+
       if (!missing(`skip`)) {
         queryParams['skip'] <- skip
       }
@@ -939,8 +955,16 @@ MailApi <- R6::R6Class(
         queryParams['endDate'] <- end_date
       }
 
-      if (!missing(`delivered`)) {
-        queryParams['delivered'] <- delivered
+      if (!missing(`sort`)) {
+        queryParams['sort'] <- sort
+      }
+
+      if (!missing(`dir`)) {
+        queryParams['dir'] <- dir
+      }
+
+      if (!missing(`groupby`)) {
+        queryParams['groupby'] <- groupby
       }
 
       urlPath <- "/mail/{id}/log"

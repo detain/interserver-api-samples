@@ -27,26 +27,26 @@ interserver_management_api_ticket_post_details_inner_CREATOR_e ticket_post_detai
 
 
 typedef struct ticket_post_details_inner_t {
-    int post_id; //numeric
+    int *post_id; //numeric
     char *date; // string
     char *contents; // string
     interserver_management_api_ticket_post_details_inner_CREATOR_e creator; //enum
     char *creator_email; // string
     char *creator_name; // string
-    int hasattachments; //numeric
+    int *hasattachments; //numeric
     char *attachment_download; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ticket_post_details_inner_t;
 
 __attribute__((deprecated)) ticket_post_details_inner_t *ticket_post_details_inner_create(
-    int post_id,
+    int *post_id,
     char *date,
     char *contents,
     interserver_management_api_ticket_post_details_inner_CREATOR_e creator,
     char *creator_email,
     char *creator_name,
-    int hasattachments,
+    int *hasattachments,
     char *attachment_download
 );
 

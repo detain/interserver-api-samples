@@ -1,4 +1,4 @@
-# # VpsServiceAddons
+# VpsServiceAddons
 
 ## Properties
 

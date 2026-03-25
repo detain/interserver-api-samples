@@ -35,13 +35,13 @@ class OAIGetScrubIpDetails_200_response_filter_firewall_filters_inner;
 class OAIGetScrubIpDetails_200_response_filter_firewall : public OAIObject {
 public:
     OAIGetScrubIpDetails_200_response_filter_firewall();
-    OAIGetScrubIpDetails_200_response_filter_firewall(QString json);
+    OAIGetScrubIpDetails_200_response_filter_firewall(const QString &json);
     ~OAIGetScrubIpDetails_200_response_filter_firewall() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<OAIGetScrubIpDetails_200_response_filter_firewall_rules_inner> getRules() const;
     void setRules(const QList<OAIGetScrubIpDetails_200_response_filter_firewall_rules_inner> &rules);

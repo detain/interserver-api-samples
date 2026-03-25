@@ -53,10 +53,10 @@ class VpsTrafficUsageAverageResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsTrafficUsageAverageResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsTrafficUsageAverageResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'in'), 'Required key "VpsTrafficUsageAverageResponse[in]" is missing from JSON.');
+        assert(json[r'in'] != null, 'Required key "VpsTrafficUsageAverageResponse[in]" has a null value in JSON.');
+        assert(json.containsKey(r'out'), 'Required key "VpsTrafficUsageAverageResponse[out]" is missing from JSON.');
+        assert(json[r'out'] != null, 'Required key "VpsTrafficUsageAverageResponse[out]" has a null value in JSON.');
         return true;
       }());
 

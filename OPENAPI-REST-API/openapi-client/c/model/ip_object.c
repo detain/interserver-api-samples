@@ -12,18 +12,21 @@ static ip_object_t *ip_object_create_internal(
     if (!ip_object_local_var) {
         return NULL;
     }
-    ip_object_local_var->ip = ip;
-
+    memset(ip_object_local_var, 0, sizeof(ip_object_t));
     ip_object_local_var->_library_owned = 1;
+    ip_object_local_var->ip = ip;
     return ip_object_local_var;
 }
 
 __attribute__((deprecated)) ip_object_t *ip_object_create(
     char *ip
     ) {
-    return ip_object_create_internal (
+    ip_object_t *result = ip_object_create_internal (
         ip
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ip_object_free(ip_object_t *ip_object) {
@@ -65,6 +68,8 @@ ip_object_t *ip_object_parseFromJSON(cJSON *ip_objectJSON){
 
     ip_object_t *ip_object_local_var = NULL;
 
+    char *ip_local_str = NULL;
+
     // ip_object->ip
     cJSON *ip = cJSON_GetObjectItemCaseSensitive(ip_objectJSON, "ip");
     if (cJSON_IsNull(ip)) {
@@ -81,12 +86,22 @@ ip_object_t *ip_object_parseFromJSON(cJSON *ip_objectJSON){
     }
 
 
+    if (ip && !cJSON_IsNull(ip)) ip_local_str = strdup(ip->valuestring);
+
     ip_object_local_var = ip_object_create_internal (
-        strdup(ip->valuestring)
+        ip_local_str
         );
+
+    if (!ip_object_local_var) {
+        goto end;
+    }
 
     return ip_object_local_var;
 end:
+    if (ip_local_str) {
+        free(ip_local_str);
+        ip_local_str = NULL;
+    }
     return NULL;
 
 }

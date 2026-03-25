@@ -13,10 +13,10 @@ static domain_nameserver_post_request_t *domain_nameserver_post_request_create_i
     if (!domain_nameserver_post_request_local_var) {
         return NULL;
     }
+    memset(domain_nameserver_post_request_local_var, 0, sizeof(domain_nameserver_post_request_t));
+    domain_nameserver_post_request_local_var->_library_owned = 1;
     domain_nameserver_post_request_local_var->name = name;
     domain_nameserver_post_request_local_var->ip_address = ip_address;
-
-    domain_nameserver_post_request_local_var->_library_owned = 1;
     return domain_nameserver_post_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) domain_nameserver_post_request_t *domain_nameserver_
     char *name,
     char *ip_address
     ) {
-    return domain_nameserver_post_request_create_internal (
+    domain_nameserver_post_request_t *result = domain_nameserver_post_request_create_internal (
         name,
         ip_address
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_nameserver_post_request_free(domain_nameserver_post_request_t *domain_nameserver_post_request) {
@@ -82,6 +85,10 @@ domain_nameserver_post_request_t *domain_nameserver_post_request_parseFromJSON(c
 
     domain_nameserver_post_request_t *domain_nameserver_post_request_local_var = NULL;
 
+    char *name_local_str = NULL;
+
+    char *ip_address_local_str = NULL;
+
     // domain_nameserver_post_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(domain_nameserver_post_requestJSON, "name");
     if (cJSON_IsNull(name)) {
@@ -113,13 +120,28 @@ domain_nameserver_post_request_t *domain_nameserver_post_request_parseFromJSON(c
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (ip_address && !cJSON_IsNull(ip_address)) ip_address_local_str = strdup(ip_address->valuestring);
+
     domain_nameserver_post_request_local_var = domain_nameserver_post_request_create_internal (
-        strdup(name->valuestring),
-        strdup(ip_address->valuestring)
+        name_local_str,
+        ip_address_local_str
         );
+
+    if (!domain_nameserver_post_request_local_var) {
+        goto end;
+    }
 
     return domain_nameserver_post_request_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (ip_address_local_str) {
+        free(ip_address_local_str);
+        ip_address_local_str = NULL;
+    }
     return NULL;
 
 }

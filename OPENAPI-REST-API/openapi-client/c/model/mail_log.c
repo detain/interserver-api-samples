@@ -6,36 +6,57 @@
 
 
 static mail_log_t *mail_log_create_internal(
-    int total,
-    int skip,
-    int limit,
+    int *total,
+    int *skip,
+    int *limit,
     list_t *emails
     ) {
     mail_log_t *mail_log_local_var = malloc(sizeof(mail_log_t));
     if (!mail_log_local_var) {
         return NULL;
     }
+    memset(mail_log_local_var, 0, sizeof(mail_log_t));
+    mail_log_local_var->_library_owned = 1;
     mail_log_local_var->total = total;
     mail_log_local_var->skip = skip;
     mail_log_local_var->limit = limit;
     mail_log_local_var->emails = emails;
-
-    mail_log_local_var->_library_owned = 1;
     return mail_log_local_var;
 }
 
 __attribute__((deprecated)) mail_log_t *mail_log_create(
-    int total,
-    int skip,
-    int limit,
+    int *total,
+    int *skip,
+    int *limit,
     list_t *emails
     ) {
-    return mail_log_create_internal (
-        total,
-        skip,
-        limit,
+    int *total_copy = NULL;
+    if (total) {
+        total_copy = malloc(sizeof(int));
+        if (total_copy) *total_copy = *total;
+    }
+    int *skip_copy = NULL;
+    if (skip) {
+        skip_copy = malloc(sizeof(int));
+        if (skip_copy) *skip_copy = *skip;
+    }
+    int *limit_copy = NULL;
+    if (limit) {
+        limit_copy = malloc(sizeof(int));
+        if (limit_copy) *limit_copy = *limit;
+    }
+    mail_log_t *result = mail_log_create_internal (
+        total_copy,
+        skip_copy,
+        limit_copy,
         emails
         );
+    if (!result) {
+        free(total_copy);
+        free(skip_copy);
+        free(limit_copy);
+    }
+    return result;
 }
 
 void mail_log_free(mail_log_t *mail_log) {
@@ -47,6 +68,18 @@ void mail_log_free(mail_log_t *mail_log) {
         return ;
     }
     listEntry_t *listEntry;
+    if (mail_log->total) {
+        free(mail_log->total);
+        mail_log->total = NULL;
+    }
+    if (mail_log->skip) {
+        free(mail_log->skip);
+        mail_log->skip = NULL;
+    }
+    if (mail_log->limit) {
+        free(mail_log->limit);
+        mail_log->limit = NULL;
+    }
     if (mail_log->emails) {
         list_ForEach(listEntry, mail_log->emails) {
             mail_log_entry_free(listEntry->data);
@@ -64,7 +97,7 @@ cJSON *mail_log_convertToJSON(mail_log_t *mail_log) {
     if (!mail_log->total) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "total", mail_log->total) == NULL) {
+    if(cJSON_AddNumberToObject(item, "total", *mail_log->total) == NULL) {
     goto fail; //Numeric
     }
 
@@ -73,7 +106,7 @@ cJSON *mail_log_convertToJSON(mail_log_t *mail_log) {
     if (!mail_log->skip) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "skip", mail_log->skip) == NULL) {
+    if(cJSON_AddNumberToObject(item, "skip", *mail_log->skip) == NULL) {
     goto fail; //Numeric
     }
 
@@ -82,7 +115,7 @@ cJSON *mail_log_convertToJSON(mail_log_t *mail_log) {
     if (!mail_log->limit) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "limit", mail_log->limit) == NULL) {
+    if(cJSON_AddNumberToObject(item, "limit", *mail_log->limit) == NULL) {
     goto fail; //Numeric
     }
 
@@ -119,6 +152,15 @@ mail_log_t *mail_log_parseFromJSON(cJSON *mail_logJSON){
 
     mail_log_t *mail_log_local_var = NULL;
 
+    // define the local variable for mail_log->total
+    int *total_local_var = NULL;
+
+    // define the local variable for mail_log->skip
+    int *skip_local_var = NULL;
+
+    // define the local variable for mail_log->limit
+    int *limit_local_var = NULL;
+
     // define the local list for mail_log->emails
     list_t *emailsList = NULL;
 
@@ -136,6 +178,12 @@ mail_log_t *mail_log_parseFromJSON(cJSON *mail_logJSON){
     {
     goto end; //Numeric
     }
+    total_local_var = malloc(sizeof(int));
+    if(!total_local_var)
+    {
+        goto end;
+    }
+    *total_local_var = total->valuedouble;
 
     // mail_log->skip
     cJSON *skip = cJSON_GetObjectItemCaseSensitive(mail_logJSON, "skip");
@@ -151,6 +199,12 @@ mail_log_t *mail_log_parseFromJSON(cJSON *mail_logJSON){
     {
     goto end; //Numeric
     }
+    skip_local_var = malloc(sizeof(int));
+    if(!skip_local_var)
+    {
+        goto end;
+    }
+    *skip_local_var = skip->valuedouble;
 
     // mail_log->limit
     cJSON *limit = cJSON_GetObjectItemCaseSensitive(mail_logJSON, "limit");
@@ -166,6 +220,12 @@ mail_log_t *mail_log_parseFromJSON(cJSON *mail_logJSON){
     {
     goto end; //Numeric
     }
+    limit_local_var = malloc(sizeof(int));
+    if(!limit_local_var)
+    {
+        goto end;
+    }
+    *limit_local_var = limit->valuedouble;
 
     // mail_log->emails
     cJSON *emails = cJSON_GetObjectItemCaseSensitive(mail_logJSON, "emails");
@@ -195,15 +255,32 @@ mail_log_t *mail_log_parseFromJSON(cJSON *mail_logJSON){
     }
 
 
+
     mail_log_local_var = mail_log_create_internal (
-        total->valuedouble,
-        skip->valuedouble,
-        limit->valuedouble,
+        total_local_var,
+        skip_local_var,
+        limit_local_var,
         emailsList
         );
 
+    if (!mail_log_local_var) {
+        goto end;
+    }
+
     return mail_log_local_var;
 end:
+    if (total_local_var) {
+        free(total_local_var);
+        total_local_var = NULL;
+    }
+    if (skip_local_var) {
+        free(skip_local_var);
+        skip_local_var = NULL;
+    }
+    if (limit_local_var) {
+        free(limit_local_var);
+        limit_local_var = NULL;
+    }
     if (emailsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, emailsList) {

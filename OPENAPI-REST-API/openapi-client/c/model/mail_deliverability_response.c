@@ -7,31 +7,40 @@
 
 static mail_deliverability_response_t *mail_deliverability_response_create_internal(
     object_t *stat,
-    double percent,
+    double *percent,
     list_t *table_data
     ) {
     mail_deliverability_response_t *mail_deliverability_response_local_var = malloc(sizeof(mail_deliverability_response_t));
     if (!mail_deliverability_response_local_var) {
         return NULL;
     }
+    memset(mail_deliverability_response_local_var, 0, sizeof(mail_deliverability_response_t));
+    mail_deliverability_response_local_var->_library_owned = 1;
     mail_deliverability_response_local_var->stat = stat;
     mail_deliverability_response_local_var->percent = percent;
     mail_deliverability_response_local_var->table_data = table_data;
-
-    mail_deliverability_response_local_var->_library_owned = 1;
     return mail_deliverability_response_local_var;
 }
 
 __attribute__((deprecated)) mail_deliverability_response_t *mail_deliverability_response_create(
     object_t *stat,
-    double percent,
+    double *percent,
     list_t *table_data
     ) {
-    return mail_deliverability_response_create_internal (
+    double *percent_copy = NULL;
+    if (percent) {
+        percent_copy = malloc(sizeof(double));
+        if (percent_copy) *percent_copy = *percent;
+    }
+    mail_deliverability_response_t *result = mail_deliverability_response_create_internal (
         stat,
-        percent,
+        percent_copy,
         table_data
         );
+    if (!result) {
+        free(percent_copy);
+    }
+    return result;
 }
 
 void mail_deliverability_response_free(mail_deliverability_response_t *mail_deliverability_response) {
@@ -46,6 +55,10 @@ void mail_deliverability_response_free(mail_deliverability_response_t *mail_deli
     if (mail_deliverability_response->stat) {
         object_free(mail_deliverability_response->stat);
         mail_deliverability_response->stat = NULL;
+    }
+    if (mail_deliverability_response->percent) {
+        free(mail_deliverability_response->percent);
+        mail_deliverability_response->percent = NULL;
     }
     if (mail_deliverability_response->table_data) {
         list_ForEach(listEntry, mail_deliverability_response->table_data) {
@@ -75,7 +88,7 @@ cJSON *mail_deliverability_response_convertToJSON(mail_deliverability_response_t
 
     // mail_deliverability_response->percent
     if(mail_deliverability_response->percent) {
-    if(cJSON_AddNumberToObject(item, "percent", mail_deliverability_response->percent) == NULL) {
+    if(cJSON_AddNumberToObject(item, "percent", *mail_deliverability_response->percent) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -105,6 +118,9 @@ mail_deliverability_response_t *mail_deliverability_response_parseFromJSON(cJSON
 
     mail_deliverability_response_t *mail_deliverability_response_local_var = NULL;
 
+    // define the local variable for mail_deliverability_response->percent
+    double *percent_local_var = NULL;
+
     // define the local list for mail_deliverability_response->table_data
     list_t *table_dataList = NULL;
 
@@ -128,6 +144,12 @@ mail_deliverability_response_t *mail_deliverability_response_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    percent_local_var = malloc(sizeof(double));
+    if(!percent_local_var)
+    {
+        goto end;
+    }
+    *percent_local_var = percent->valuedouble;
     }
 
     // mail_deliverability_response->table_data
@@ -148,14 +170,23 @@ mail_deliverability_response_t *mail_deliverability_response_parseFromJSON(cJSON
     }
 
 
+
     mail_deliverability_response_local_var = mail_deliverability_response_create_internal (
         stat ? stat_local_object : NULL,
-        percent ? percent->valuedouble : 0,
+        percent_local_var,
         table_data ? table_dataList : NULL
         );
 
+    if (!mail_deliverability_response_local_var) {
+        goto end;
+    }
+
     return mail_deliverability_response_local_var;
 end:
+    if (percent_local_var) {
+        free(percent_local_var);
+        percent_local_var = NULL;
+    }
     if (table_dataList) {
         list_freeList(table_dataList);
         table_dataList = NULL;

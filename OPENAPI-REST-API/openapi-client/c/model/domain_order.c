@@ -14,11 +14,11 @@ static domain_order_t *domain_order_create_internal(
     if (!domain_order_local_var) {
         return NULL;
     }
+    memset(domain_order_local_var, 0, sizeof(domain_order_t));
+    domain_order_local_var->_library_owned = 1;
     domain_order_local_var->whois_privacy_cost = whois_privacy_cost;
     domain_order_local_var->services = services;
     domain_order_local_var->tld_services = tld_services;
-
-    domain_order_local_var->_library_owned = 1;
     return domain_order_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) domain_order_t *domain_order_create(
     domain_order_services_t *services,
     object_t *tld_services
     ) {
-    return domain_order_create_internal (
+    domain_order_t *result = domain_order_create_internal (
         whois_privacy_cost,
         services,
         tld_services
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_order_free(domain_order_t *domain_order) {
@@ -106,6 +109,8 @@ domain_order_t *domain_order_parseFromJSON(cJSON *domain_orderJSON){
 
     domain_order_t *domain_order_local_var = NULL;
 
+    char *whois_privacy_cost_local_str = NULL;
+
     // define the local variable for domain_order->services
     domain_order_services_t *services_local_nonprim = NULL;
 
@@ -141,14 +146,24 @@ domain_order_t *domain_order_parseFromJSON(cJSON *domain_orderJSON){
     }
 
 
+    if (whois_privacy_cost && !cJSON_IsNull(whois_privacy_cost)) whois_privacy_cost_local_str = strdup(whois_privacy_cost->valuestring);
+
     domain_order_local_var = domain_order_create_internal (
-        whois_privacy_cost && !cJSON_IsNull(whois_privacy_cost) ? strdup(whois_privacy_cost->valuestring) : NULL,
+        whois_privacy_cost_local_str,
         services ? services_local_nonprim : NULL,
         tld_services ? tld_services_local_object : NULL
         );
 
+    if (!domain_order_local_var) {
+        goto end;
+    }
+
     return domain_order_local_var;
 end:
+    if (whois_privacy_cost_local_str) {
+        free(whois_privacy_cost_local_str);
+        whois_privacy_cost_local_str = NULL;
+    }
     if (services_local_nonprim) {
         domain_order_services_free(services_local_nonprim);
         services_local_nonprim = NULL;

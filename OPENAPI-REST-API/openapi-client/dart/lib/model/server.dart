@@ -107,10 +107,28 @@ class Server {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Server[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Server[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ipmiAuth'), 'Required key "Server[ipmiAuth]" is missing from JSON.');
+        assert(json[r'ipmiAuth'] != null, 'Required key "Server[ipmiAuth]" has a null value in JSON.');
+        assert(json.containsKey(r'client_links'), 'Required key "Server[client_links]" is missing from JSON.');
+        assert(json[r'client_links'] != null, 'Required key "Server[client_links]" has a null value in JSON.');
+        assert(json.containsKey(r'billingDetails'), 'Required key "Server[billingDetails]" is missing from JSON.');
+        assert(json[r'billingDetails'] != null, 'Required key "Server[billingDetails]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrency'), 'Required key "Server[custCurrency]" is missing from JSON.');
+        assert(json[r'custCurrency'] != null, 'Required key "Server[custCurrency]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrencySymbol'), 'Required key "Server[custCurrencySymbol]" is missing from JSON.');
+        assert(json[r'custCurrencySymbol'] != null, 'Required key "Server[custCurrencySymbol]" has a null value in JSON.');
+        assert(json.containsKey(r'package'), 'Required key "Server[package]" is missing from JSON.');
+        assert(json[r'package'] != null, 'Required key "Server[package]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceExtra'), 'Required key "Server[serviceExtra]" is missing from JSON.');
+        assert(json[r'serviceExtra'] != null, 'Required key "Server[serviceExtra]" has a null value in JSON.');
+        assert(json.containsKey(r'locations'), 'Required key "Server[locations]" is missing from JSON.');
+        assert(json[r'locations'] != null, 'Required key "Server[locations]" has a null value in JSON.');
+        assert(json.containsKey(r'networkInfo'), 'Required key "Server[networkInfo]" is missing from JSON.');
+        assert(json[r'networkInfo'] != null, 'Required key "Server[networkInfo]" has a null value in JSON.');
+        assert(json.containsKey(r'extraInfoTables'), 'Required key "Server[extraInfoTables]" is missing from JSON.');
+        assert(json[r'extraInfoTables'] != null, 'Required key "Server[extraInfoTables]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceInfo'), 'Required key "Server[serviceInfo]" is missing from JSON.');
+        assert(json[r'serviceInfo'] != null, 'Required key "Server[serviceInfo]" has a null value in JSON.');
         return true;
       }());
 

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsOrder_locationNames : public OAIObject {
 public:
     OAIVpsOrder_locationNames();
-    OAIVpsOrder_locationNames(QString json);
+    OAIVpsOrder_locationNames(const QString &json);
     ~OAIVpsOrder_locationNames() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getR3() const;
     void setR3(const QString &r_3);

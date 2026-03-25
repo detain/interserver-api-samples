@@ -1,0 +1,11 @@
+# HomeServicesWebhosting
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**links** | [**HomeServicesWebhostingLinks**](HomeServicesWebhostingLinks.md) |  | [optional] 
+**count** | **Int** | Number of web hosting services. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

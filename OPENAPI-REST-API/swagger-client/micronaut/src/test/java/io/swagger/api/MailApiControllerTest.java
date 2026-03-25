@@ -5,6 +5,7 @@ import io.swagger.model.DenyRuleNew;
 import io.swagger.model.DenyRuleRecord;
 import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
+import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse2008;
 import io.swagger.model.InlineResponse401;
@@ -23,6 +24,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 
 import io.micronaut.http.HttpResponse;
@@ -307,13 +309,19 @@ class MailApiControllerTest {
         String to = null;
         String subject = null;
         String mailid = null;
+        String messageId = null;
+        String replyto = null;
+        String headerfrom = null;
+        Integer delivered = null;
         Integer skip = null;
         Integer limit = null;
-        Long startDate = null;
-        Long endDate = null;
-        String delivered = null;
+        StartDate startDate = null;
+        EndDate endDate = null;
+        String sort = null;
+        String dir = null;
+        String groupby = null;
         try {
-            //TODO: api.viewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered).blockingGet();
+            //TODO: api.viewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

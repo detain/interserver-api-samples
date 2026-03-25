@@ -1,4 +1,5 @@
 .openapi-generator-ignore
+.scalafmt.conf
 README.md
 build.sbt
 docs/AccountApi.md
@@ -393,6 +394,7 @@ docs/VPSApi.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -468,6 +470,7 @@ docs/WebsitesOrderServiceOffers.md
 docs/WebsitesOrderServiceTypes.md
 pom.xml
 project/build.properties
+project/plugins.sbt
 src/main/resources/reference.conf
 src/main/scala/org/openapitools/client/api/AccountApi.scala
 src/main/scala/org/openapitools/client/api/BackupsApi.scala
@@ -868,6 +871,7 @@ src/main/scala/org/openapitools/client/model/UrlRequest.scala
 src/main/scala/org/openapitools/client/model/VPSCancel200Response.scala
 src/main/scala/org/openapitools/client/model/VPSTrafficDataDataSectionResponse.scala
 src/main/scala/org/openapitools/client/model/VPSTrafficDataDataSectionResponseInner.scala
+src/main/scala/org/openapitools/client/model/ViewMailLogStartDateParameter.scala
 src/main/scala/org/openapitools/client/model/ViewTicketResponse.scala
 src/main/scala/org/openapitools/client/model/Vps.scala
 src/main/scala/org/openapitools/client/model/VpsBackupRow.scala

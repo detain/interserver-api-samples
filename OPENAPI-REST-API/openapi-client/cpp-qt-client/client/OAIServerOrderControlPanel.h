@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServerOrderControlPanel : public OAIObject {
 public:
     OAIServerOrderControlPanel();
-    OAIServerOrderControlPanel(QString json);
+    OAIServerOrderControlPanel(const QString &json);
     ~OAIServerOrderControlPanel() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getId() const;
     void setId(const QString &id);

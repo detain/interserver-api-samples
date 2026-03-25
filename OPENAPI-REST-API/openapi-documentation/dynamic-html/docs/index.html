@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+  <script src="assets/js/main.js" type="text/javascript"></script>
+
+  <title>REST API Resources</title>
+</head>
+<body>
+  <div class="header">
+    <div class="top-bar">
+      <h1 id="logo"><a class="logo" href="/"><span>OpenAPI</span><span class="light">API Docs</span></a></h1>
+    </div>
+  </div>
+  <div class="model-container"></div>
+  <div class="content">
+    <div class="box clearfix">
+      <div class="sidebar">
+        <div class="section-box">
+          <div class="section-header">
+            Overview
+          </div>
+          <ul>
+            <li>Getting Started</li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/AccountApi">AccountApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/AccountApi#changeAccountUsername">changeAccountUsername</a></li>
+            <li><a href="#!/AccountApi#deleteAccountOauthName">deleteAccountOauthName</a></li>
+            <li><a href="#!/AccountApi#deleteAccountTfa">deleteAccountTfa</a></li>
+            <li><a href="#!/AccountApi#deleteIpLimit">deleteIpLimit</a></li>
+            <li><a href="#!/AccountApi#getAccountInfo">getAccountInfo</a></li>
+            <li><a href="#!/AccountApi#getAccountTfaSetup">getAccountTfaSetup</a></li>
+            <li><a href="#!/AccountApi#getHome">getHome</a></li>
+            <li><a href="#!/AccountApi#getSearch">getSearch</a></li>
+            <li><a href="#!/AccountApi#logout">logout</a></li>
+            <li><a href="#!/AccountApi#logoutAccountOauth">logoutAccountOauth</a></li>
+            <li><a href="#!/AccountApi#updateAccountApiKey">updateAccountApiKey</a></li>
+            <li><a href="#!/AccountApi#updateAccountFeatures">updateAccountFeatures</a></li>
+            <li><a href="#!/AccountApi#updateAccountInfo">updateAccountInfo</a></li>
+            <li><a href="#!/AccountApi#updateAccountIpLimits">updateAccountIpLimits</a></li>
+            <li><a href="#!/AccountApi#updateAccountPassword">updateAccountPassword</a></li>
+            <li><a href="#!/AccountApi#updateAccountSshKey">updateAccountSshKey</a></li>
+            <li><a href="#!/AccountApi#updateAccountTfa">updateAccountTfa</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/BackupsApi">BackupsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/BackupsApi#addBackup">addBackup</a></li>
+            <li><a href="#!/BackupsApi#cancelBackup">cancelBackup</a></li>
+            <li><a href="#!/BackupsApi#getBackupInfo">getBackupInfo</a></li>
+            <li><a href="#!/BackupsApi#getBackupInvoices">getBackupInvoices</a></li>
+            <li><a href="#!/BackupsApi#getBackupLogin">getBackupLogin</a></li>
+            <li><a href="#!/BackupsApi#getBackupsList">getBackupsList</a></li>
+            <li><a href="#!/BackupsApi#getBackupsWelcomeEmail">getBackupsWelcomeEmail</a></li>
+            <li><a href="#!/BackupsApi#getNewBackup">getNewBackup</a></li>
+            <li><a href="#!/BackupsApi#updateBackupInfo">updateBackupInfo</a></li>
+            <li><a href="#!/BackupsApi#validateBackupOrder">validateBackupOrder</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/BillingApi">BillingApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/BillingApi#addAccountCreditCard">addAccountCreditCard</a></li>
+            <li><a href="#!/BillingApi#addBillingCreditCard">addBillingCreditCard</a></li>
+            <li><a href="#!/BillingApi#addBillingPrepay">addBillingPrepay</a></li>
+            <li><a href="#!/BillingApi#deleteAccountCreditCard">deleteAccountCreditCard</a></li>
+            <li><a href="#!/BillingApi#deleteBillingCreditCard">deleteBillingCreditCard</a></li>
+            <li><a href="#!/BillingApi#deleteBillingInvoice">deleteBillingInvoice</a></li>
+            <li><a href="#!/BillingApi#deleteBillingPrepay">deleteBillingPrepay</a></li>
+            <li><a href="#!/BillingApi#getAffiliateBanners">getAffiliateBanners</a></li>
+            <li><a href="#!/BillingApi#getAffiliateRichReport">getAffiliateRichReport</a></li>
+            <li><a href="#!/BillingApi#getAffiliateSalesGraph">getAffiliateSalesGraph</a></li>
+            <li><a href="#!/BillingApi#getAffiliateSalesReport">getAffiliateSalesReport</a></li>
+            <li><a href="#!/BillingApi#getAffiliateTrafficGraph">getAffiliateTrafficGraph</a></li>
+            <li><a href="#!/BillingApi#getAffiliateWebTraffic">getAffiliateWebTraffic</a></li>
+            <li><a href="#!/BillingApi#getBillingCart">getBillingCart</a></li>
+            <li><a href="#!/BillingApi#getBillingCreditCardVerify">getBillingCreditCardVerify</a></li>
+            <li><a href="#!/BillingApi#getBillingInvoice">getBillingInvoice</a></li>
+            <li><a href="#!/BillingApi#getBillingInvoices">getBillingInvoices</a></li>
+            <li><a href="#!/BillingApi#getBillingPrePays">getBillingPrePays</a></li>
+            <li><a href="#!/BillingApi#getInvoices">getInvoices</a></li>
+            <li><a href="#!/BillingApi#initiatePayment">initiatePayment</a></li>
+            <li><a href="#!/BillingApi#postBillingCreditCardVerify">postBillingCreditCardVerify</a></li>
+            <li><a href="#!/BillingApi#updateAccountCreditCard">updateAccountCreditCard</a></li>
+            <li><a href="#!/BillingApi#updateAffiliateDockSetup">updateAffiliateDockSetup</a></li>
+            <li><a href="#!/BillingApi#updateAffiliateLandingPage">updateAffiliateLandingPage</a></li>
+            <li><a href="#!/BillingApi#updateAffiliatePaymentSetup">updateAffiliatePaymentSetup</a></li>
+            <li><a href="#!/BillingApi#updateBillingCreditCard">updateBillingCreditCard</a></li>
+            <li><a href="#!/BillingApi#updateBillingPaymentMethod">updateBillingPaymentMethod</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/DNSApi">DNSApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/DNSApi#addDnsDomain">addDnsDomain</a></li>
+            <li><a href="#!/DNSApi#addDnsRecord">addDnsRecord</a></li>
+            <li><a href="#!/DNSApi#deleteDnsDomain">deleteDnsDomain</a></li>
+            <li><a href="#!/DNSApi#deleteDnsRecord">deleteDnsRecord</a></li>
+            <li><a href="#!/DNSApi#getDnsDomain">getDnsDomain</a></li>
+            <li><a href="#!/DNSApi#getDnsList">getDnsList</a></li>
+            <li><a href="#!/DNSApi#updateDnsRecord">updateDnsRecord</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/DomainsApi">DomainsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/DomainsApi#addDomain">addDomain</a></li>
+            <li><a href="#!/DomainsApi#addDomainDnssec">addDomainDnssec</a></li>
+            <li><a href="#!/DomainsApi#addDomainNameserver">addDomainNameserver</a></li>
+            <li><a href="#!/DomainsApi#cancelDomain">cancelDomain</a></li>
+            <li><a href="#!/DomainsApi#deleteDomainDnssec">deleteDomainDnssec</a></li>
+            <li><a href="#!/DomainsApi#deleteDomainNameserver">deleteDomainNameserver</a></li>
+            <li><a href="#!/DomainsApi#getDomainContact">getDomainContact</a></li>
+            <li><a href="#!/DomainsApi#getDomainDnssec">getDomainDnssec</a></li>
+            <li><a href="#!/DomainsApi#getDomainInfo">getDomainInfo</a></li>
+            <li><a href="#!/DomainsApi#getDomainInvoices">getDomainInvoices</a></li>
+            <li><a href="#!/DomainsApi#getDomainLookup">getDomainLookup</a></li>
+            <li><a href="#!/DomainsApi#getDomainNameservers">getDomainNameservers</a></li>
+            <li><a href="#!/DomainsApi#getDomainOrderFields">getDomainOrderFields</a></li>
+            <li><a href="#!/DomainsApi#getDomainOrderSearchResults">getDomainOrderSearchResults</a></li>
+            <li><a href="#!/DomainsApi#getDomainRenewal">getDomainRenewal</a></li>
+            <li><a href="#!/DomainsApi#getDomainSearch">getDomainSearch</a></li>
+            <li><a href="#!/DomainsApi#getDomainTransfer">getDomainTransfer</a></li>
+            <li><a href="#!/DomainsApi#getDomainWhoisPrivacy">getDomainWhoisPrivacy</a></li>
+            <li><a href="#!/DomainsApi#getDomainsList">getDomainsList</a></li>
+            <li><a href="#!/DomainsApi#getDomainsWelcomeEmail">getDomainsWelcomeEmail</a></li>
+            <li><a href="#!/DomainsApi#getNewDomain">getNewDomain</a></li>
+            <li><a href="#!/DomainsApi#patchDomains">patchDomains</a></li>
+            <li><a href="#!/DomainsApi#postDomainRenewal">postDomainRenewal</a></li>
+            <li><a href="#!/DomainsApi#postDomainTransfer">postDomainTransfer</a></li>
+            <li><a href="#!/DomainsApi#putDomains">putDomains</a></li>
+            <li><a href="#!/DomainsApi#updateDomainContact">updateDomainContact</a></li>
+            <li><a href="#!/DomainsApi#updateDomainInfo">updateDomainInfo</a></li>
+            <li><a href="#!/DomainsApi#updateDomainNameservers">updateDomainNameservers</a></li>
+            <li><a href="#!/DomainsApi#updateDomainWhoisPrivacy">updateDomainWhoisPrivacy</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/FloatingIPsApi">FloatingIPsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/FloatingIPsApi#addFloatingIp">addFloatingIp</a></li>
+            <li><a href="#!/FloatingIPsApi#floatingIpsCancel">floatingIpsCancel</a></li>
+            <li><a href="#!/FloatingIPsApi#getFloatingIpInfo">getFloatingIpInfo</a></li>
+            <li><a href="#!/FloatingIPsApi#getFloatingIpInvoices">getFloatingIpInvoices</a></li>
+            <li><a href="#!/FloatingIPsApi#getFloatingIpsList">getFloatingIpsList</a></li>
+            <li><a href="#!/FloatingIPsApi#getFloatingIpsWelcomeEmail">getFloatingIpsWelcomeEmail</a></li>
+            <li><a href="#!/FloatingIPsApi#getNewFloatingIp">getNewFloatingIp</a></li>
+            <li><a href="#!/FloatingIPsApi#postFloatingIpsChangeIp">postFloatingIpsChangeIp</a></li>
+            <li><a href="#!/FloatingIPsApi#putFloatingIps">putFloatingIps</a></li>
+            <li><a href="#!/FloatingIPsApi#updateFloatingIpInfo">updateFloatingIpInfo</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/LicensesApi">LicensesApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/LicensesApi#addLicense">addLicense</a></li>
+            <li><a href="#!/LicensesApi#getLicenseInfo">getLicenseInfo</a></li>
+            <li><a href="#!/LicensesApi#getLicenseInvoices">getLicenseInvoices</a></li>
+            <li><a href="#!/LicensesApi#getLicenseList">getLicenseList</a></li>
+            <li><a href="#!/LicensesApi#getLicenseOrderCatTagInfo">getLicenseOrderCatTagInfo</a></li>
+            <li><a href="#!/LicensesApi#getLicensesWelcomeEmail">getLicensesWelcomeEmail</a></li>
+            <li><a href="#!/LicensesApi#getNewLicense">getNewLicense</a></li>
+            <li><a href="#!/LicensesApi#licensesCancel">licensesCancel</a></li>
+            <li><a href="#!/LicensesApi#postLicenseChangeIp">postLicenseChangeIp</a></li>
+            <li><a href="#!/LicensesApi#putLicenses">putLicenses</a></li>
+            <li><a href="#!/LicensesApi#updateLicenseInfo">updateLicenseInfo</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/MailApi">MailApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/MailApi#addMail">addMail</a></li>
+            <li><a href="#!/MailApi#addRule">addRule</a></li>
+            <li><a href="#!/MailApi#createMailAlert">createMailAlert</a></li>
+            <li><a href="#!/MailApi#deleteMailAlert">deleteMailAlert</a></li>
+            <li><a href="#!/MailApi#deleteRule">deleteRule</a></li>
+            <li><a href="#!/MailApi#delistBlock">delistBlock</a></li>
+            <li><a href="#!/MailApi#getMailAlerts">getMailAlerts</a></li>
+            <li><a href="#!/MailApi#getMailBlocks">getMailBlocks</a></li>
+            <li><a href="#!/MailApi#getMailDelist">getMailDelist</a></li>
+            <li><a href="#!/MailApi#getMailDeliverability">getMailDeliverability</a></li>
+            <li><a href="#!/MailApi#getMailInfo">getMailInfo</a></li>
+            <li><a href="#!/MailApi#getMailInvoices">getMailInvoices</a></li>
+            <li><a href="#!/MailApi#getMailList">getMailList</a></li>
+            <li><a href="#!/MailApi#getMailWelcomeEmail">getMailWelcomeEmail</a></li>
+            <li><a href="#!/MailApi#getNewMail">getNewMail</a></li>
+            <li><a href="#!/MailApi#getRules">getRules</a></li>
+            <li><a href="#!/MailApi#getStats">getStats</a></li>
+            <li><a href="#!/MailApi#mailCancel">mailCancel</a></li>
+            <li><a href="#!/MailApi#postMailDelist">postMailDelist</a></li>
+            <li><a href="#!/MailApi#putMail">putMail</a></li>
+            <li><a href="#!/MailApi#resetMailPassword">resetMailPassword</a></li>
+            <li><a href="#!/MailApi#sendAdvMail">sendAdvMail</a></li>
+            <li><a href="#!/MailApi#sendMail">sendMail</a></li>
+            <li><a href="#!/MailApi#updateMailAlert">updateMailAlert</a></li>
+            <li><a href="#!/MailApi#updateMailInfo">updateMailInfo</a></li>
+            <li><a href="#!/MailApi#viewMailLog">viewMailLog</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/PublicApi">PublicApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/PublicApi#getCaptcha">getCaptcha</a></li>
+            <li><a href="#!/PublicApi#getCountries">getCountries</a></li>
+            <li><a href="#!/PublicApi#getInfo">getInfo</a></li>
+            <li><a href="#!/PublicApi#getLoginInfo">getLoginInfo</a></li>
+            <li><a href="#!/PublicApi#getMPServers">getMPServers</a></li>
+            <li><a href="#!/PublicApi#getOauthRedirect">getOauthRedirect</a></li>
+            <li><a href="#!/PublicApi#getTimezones">getTimezones</a></li>
+            <li><a href="#!/PublicApi#patchOauthTwoFactor">patchOauthTwoFactor</a></li>
+            <li><a href="#!/PublicApi#pingServer">pingServer</a></li>
+            <li><a href="#!/PublicApi#postOauthCallback">postOauthCallback</a></li>
+            <li><a href="#!/PublicApi#submitLogin">submitLogin</a></li>
+            <li><a href="#!/PublicApi#submitSignup">submitSignup</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/QuickServersApi">QuickServersApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/QuickServersApi#addQs">addQs</a></li>
+            <li><a href="#!/QuickServersApi#deleteQsBackup">deleteQsBackup</a></li>
+            <li><a href="#!/QuickServersApi#doQsBlockSmtp">doQsBlockSmtp</a></li>
+            <li><a href="#!/QuickServersApi#doQsDisableCd">doQsDisableCd</a></li>
+            <li><a href="#!/QuickServersApi#doQsDisableQuota">doQsDisableQuota</a></li>
+            <li><a href="#!/QuickServersApi#doQsEjectCd">doQsEjectCd</a></li>
+            <li><a href="#!/QuickServersApi#doQsEnableQuota">doQsEnableQuota</a></li>
+            <li><a href="#!/QuickServersApi#doQsRestart">doQsRestart</a></li>
+            <li><a href="#!/QuickServersApi#doQsStart">doQsStart</a></li>
+            <li><a href="#!/QuickServersApi#doQsStop">doQsStop</a></li>
+            <li><a href="#!/QuickServersApi#downloadQsBackup">downloadQsBackup</a></li>
+            <li><a href="#!/QuickServersApi#getNewQs">getNewQs</a></li>
+            <li><a href="#!/QuickServersApi#getQsBackups">getQsBackups</a></li>
+            <li><a href="#!/QuickServersApi#getQsChangeHostname">getQsChangeHostname</a></li>
+            <li><a href="#!/QuickServersApi#getQsChangeRootPassword">getQsChangeRootPassword</a></li>
+            <li><a href="#!/QuickServersApi#getQsChangeTimezone">getQsChangeTimezone</a></li>
+            <li><a href="#!/QuickServersApi#getQsChangeWebuzoPassword">getQsChangeWebuzoPassword</a></li>
+            <li><a href="#!/QuickServersApi#getQsInfo">getQsInfo</a></li>
+            <li><a href="#!/QuickServersApi#getQsInsertCd">getQsInsertCd</a></li>
+            <li><a href="#!/QuickServersApi#getQsInvoices">getQsInvoices</a></li>
+            <li><a href="#!/QuickServersApi#getQsList">getQsList</a></li>
+            <li><a href="#!/QuickServersApi#getQsReinstallOs">getQsReinstallOs</a></li>
+            <li><a href="#!/QuickServersApi#getQsResetPassword">getQsResetPassword</a></li>
+            <li><a href="#!/QuickServersApi#getQsReverseDns">getQsReverseDns</a></li>
+            <li><a href="#!/QuickServersApi#getQsSetupVnc">getQsSetupVnc</a></li>
+            <li><a href="#!/QuickServersApi#getQsTrafficUsage">getQsTrafficUsage</a></li>
+            <li><a href="#!/QuickServersApi#getQsViewDesktop">getQsViewDesktop</a></li>
+            <li><a href="#!/QuickServersApi#getQsWelcomeEmail">getQsWelcomeEmail</a></li>
+            <li><a href="#!/QuickServersApi#postQsBackup">postQsBackup</a></li>
+            <li><a href="#!/QuickServersApi#postQsChangeHostname">postQsChangeHostname</a></li>
+            <li><a href="#!/QuickServersApi#postQsChangeRootPassword">postQsChangeRootPassword</a></li>
+            <li><a href="#!/QuickServersApi#postQsChangeTimezone">postQsChangeTimezone</a></li>
+            <li><a href="#!/QuickServersApi#postQsChangeWebuzoPassword">postQsChangeWebuzoPassword</a></li>
+            <li><a href="#!/QuickServersApi#postQsInsertCd">postQsInsertCd</a></li>
+            <li><a href="#!/QuickServersApi#postQsReinstallOs">postQsReinstallOs</a></li>
+            <li><a href="#!/QuickServersApi#postQsResetPassword">postQsResetPassword</a></li>
+            <li><a href="#!/QuickServersApi#postQsReverseDns">postQsReverseDns</a></li>
+            <li><a href="#!/QuickServersApi#postQsSetupVnc">postQsSetupVnc</a></li>
+            <li><a href="#!/QuickServersApi#postQsTrafficUsage">postQsTrafficUsage</a></li>
+            <li><a href="#!/QuickServersApi#postQsViewDesktop">postQsViewDesktop</a></li>
+            <li><a href="#!/QuickServersApi#postQuickServerRestore">postQuickServerRestore</a></li>
+            <li><a href="#!/QuickServersApi#putQs">putQs</a></li>
+            <li><a href="#!/QuickServersApi#quickserversCancel">quickserversCancel</a></li>
+            <li><a href="#!/QuickServersApi#updateQsInfo">updateQsInfo</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/SSLCertificatesApi">SSLCertificatesApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/SSLCertificatesApi#addSsl">addSsl</a></li>
+            <li><a href="#!/SSLCertificatesApi#getNewSsl">getNewSsl</a></li>
+            <li><a href="#!/SSLCertificatesApi#getSslInfo">getSslInfo</a></li>
+            <li><a href="#!/SSLCertificatesApi#getSslInvoices">getSslInvoices</a></li>
+            <li><a href="#!/SSLCertificatesApi#getSslList">getSslList</a></li>
+            <li><a href="#!/SSLCertificatesApi#getSslWelcomeEmail">getSslWelcomeEmail</a></li>
+            <li><a href="#!/SSLCertificatesApi#putSsl">putSsl</a></li>
+            <li><a href="#!/SSLCertificatesApi#sslCancel">sslCancel</a></li>
+            <li><a href="#!/SSLCertificatesApi#updateSslInfo">updateSslInfo</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ScrubIpsApi">ScrubIpsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ScrubIpsApi#cancelScrubIp">cancelScrubIp</a></li>
+            <li><a href="#!/ScrubIpsApi#createFilter">createFilter</a></li>
+            <li><a href="#!/ScrubIpsApi#createGeoRule">createGeoRule</a></li>
+            <li><a href="#!/ScrubIpsApi#createRule">createRule</a></li>
+            <li><a href="#!/ScrubIpsApi#deleteFilter">deleteFilter</a></li>
+            <li><a href="#!/ScrubIpsApi#disableScrub">disableScrub</a></li>
+            <li><a href="#!/ScrubIpsApi#enableScrub">enableScrub</a></li>
+            <li><a href="#!/ScrubIpsApi#getOrderDetail">getOrderDetail</a></li>
+            <li><a href="#!/ScrubIpsApi#getScrubIpDetails">getScrubIpDetails</a></li>
+            <li><a href="#!/ScrubIpsApi#getScrubIpFilterTypes">getScrubIpFilterTypes</a></li>
+            <li><a href="#!/ScrubIpsApi#getScrubIpInvoices">getScrubIpInvoices</a></li>
+            <li><a href="#!/ScrubIpsApi#getScrubIpLogs">getScrubIpLogs</a></li>
+            <li><a href="#!/ScrubIpsApi#getScrubIpsList">getScrubIpsList</a></li>
+            <li><a href="#!/ScrubIpsApi#placeScrubOrder">placeScrubOrder</a></li>
+            <li><a href="#!/ScrubIpsApi#scrubIpsDeleteGeoRule">scrubIpsDeleteGeoRule</a></li>
+            <li><a href="#!/ScrubIpsApi#scrubIpsDeleteRule">scrubIpsDeleteRule</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ServersApi">ServersApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ServersApi#addServer">addServer</a></li>
+            <li><a href="#!/ServersApi#buyItNowServerOrder">buyItNowServerOrder</a></li>
+            <li><a href="#!/ServersApi#getMPServers">getMPServers</a></li>
+            <li><a href="#!/ServersApi#getNewServer">getNewServer</a></li>
+            <li><a href="#!/ServersApi#getServerInfo">getServerInfo</a></li>
+            <li><a href="#!/ServersApi#getServerInvoices">getServerInvoices</a></li>
+            <li><a href="#!/ServersApi#getServerList">getServerList</a></li>
+            <li><a href="#!/ServersApi#getServerReverseDns">getServerReverseDns</a></li>
+            <li><a href="#!/ServersApi#getServersWelcomeEmail">getServersWelcomeEmail</a></li>
+            <li><a href="#!/ServersApi#placeBuyNowServer">placeBuyNowServer</a></li>
+            <li><a href="#!/ServersApi#postServerReverseDns">postServerReverseDns</a></li>
+            <li><a href="#!/ServersApi#putServers">putServers</a></li>
+            <li><a href="#!/ServersApi#serverIpmiLiveGet">serverIpmiLiveGet</a></li>
+            <li><a href="#!/ServersApi#serverIpmiLivePost">serverIpmiLivePost</a></li>
+            <li><a href="#!/ServersApi#serverIpmiPowerGet">serverIpmiPowerGet</a></li>
+            <li><a href="#!/ServersApi#serverIpmiPowerPost">serverIpmiPowerPost</a></li>
+            <li><a href="#!/ServersApi#serversCancel">serversCancel</a></li>
+            <li><a href="#!/ServersApi#updateServerInfo">updateServerInfo</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/TicketsApi">TicketsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/TicketsApi#addNewTicket">addNewTicket</a></li>
+            <li><a href="#!/TicketsApi#closeTicket">closeTicket</a></li>
+            <li><a href="#!/TicketsApi#deleteTicketInfo">deleteTicketInfo</a></li>
+            <li><a href="#!/TicketsApi#getNewTicket">getNewTicket</a></li>
+            <li><a href="#!/TicketsApi#getTicketInfo">getTicketInfo</a></li>
+            <li><a href="#!/TicketsApi#getTicketsList">getTicketsList</a></li>
+            <li><a href="#!/TicketsApi#postTicketInfo">postTicketInfo</a></li>
+            <li><a href="#!/TicketsApi#postTicketsList">postTicketsList</a></li>
+            <li><a href="#!/TicketsApi#putTicketInfo">putTicketInfo</a></li>
+            <li><a href="#!/TicketsApi#replyTicket">replyTicket</a></li>
+            <li><a href="#!/TicketsApi#updateTicketInfo">updateTicketInfo</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/VPSApi">VPSApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/VPSApi#addVps">addVps</a></li>
+            <li><a href="#!/VPSApi#deleteVpsBackup">deleteVpsBackup</a></li>
+            <li><a href="#!/VPSApi#doVpsBlockSmtp">doVpsBlockSmtp</a></li>
+            <li><a href="#!/VPSApi#doVpsDisableCd">doVpsDisableCd</a></li>
+            <li><a href="#!/VPSApi#doVpsDisableQuota">doVpsDisableQuota</a></li>
+            <li><a href="#!/VPSApi#doVpsEjectCd">doVpsEjectCd</a></li>
+            <li><a href="#!/VPSApi#doVpsEnableQuota">doVpsEnableQuota</a></li>
+            <li><a href="#!/VPSApi#doVpsRestart">doVpsRestart</a></li>
+            <li><a href="#!/VPSApi#doVpsStart">doVpsStart</a></li>
+            <li><a href="#!/VPSApi#doVpsStop">doVpsStop</a></li>
+            <li><a href="#!/VPSApi#downloadVpsBackup">downloadVpsBackup</a></li>
+            <li><a href="#!/VPSApi#getNewVps">getNewVps</a></li>
+            <li><a href="#!/VPSApi#getVpsBackups">getVpsBackups</a></li>
+            <li><a href="#!/VPSApi#getVpsBuyHdSpace">getVpsBuyHdSpace</a></li>
+            <li><a href="#!/VPSApi#getVpsBuyIp">getVpsBuyIp</a></li>
+            <li><a href="#!/VPSApi#getVpsChangeTimezone">getVpsChangeTimezone</a></li>
+            <li><a href="#!/VPSApi#getVpsInfo">getVpsInfo</a></li>
+            <li><a href="#!/VPSApi#getVpsInvoices">getVpsInvoices</a></li>
+            <li><a href="#!/VPSApi#getVpsList">getVpsList</a></li>
+            <li><a href="#!/VPSApi#getVpsReinstallOs">getVpsReinstallOs</a></li>
+            <li><a href="#!/VPSApi#getVpsReverseDns">getVpsReverseDns</a></li>
+            <li><a href="#!/VPSApi#getVpsSetupVnc">getVpsSetupVnc</a></li>
+            <li><a href="#!/VPSApi#getVpsSlices">getVpsSlices</a></li>
+            <li><a href="#!/VPSApi#getVpsTrafficUsage">getVpsTrafficUsage</a></li>
+            <li><a href="#!/VPSApi#getVpsViewDesktop">getVpsViewDesktop</a></li>
+            <li><a href="#!/VPSApi#getVpsWelcomeEmail">getVpsWelcomeEmail</a></li>
+            <li><a href="#!/VPSApi#postVpsBackup">postVpsBackup</a></li>
+            <li><a href="#!/VPSApi#postVpsBuyHdSpace">postVpsBuyHdSpace</a></li>
+            <li><a href="#!/VPSApi#postVpsBuyIp">postVpsBuyIp</a></li>
+            <li><a href="#!/VPSApi#postVpsChangeHostname">postVpsChangeHostname</a></li>
+            <li><a href="#!/VPSApi#postVpsChangeRootPassword">postVpsChangeRootPassword</a></li>
+            <li><a href="#!/VPSApi#postVpsChangeTimezone">postVpsChangeTimezone</a></li>
+            <li><a href="#!/VPSApi#postVpsChangeWebuzoPassword">postVpsChangeWebuzoPassword</a></li>
+            <li><a href="#!/VPSApi#postVpsInsertCd">postVpsInsertCd</a></li>
+            <li><a href="#!/VPSApi#postVpsReinstallOs">postVpsReinstallOs</a></li>
+            <li><a href="#!/VPSApi#postVpsResetPassword">postVpsResetPassword</a></li>
+            <li><a href="#!/VPSApi#postVpsRestore">postVpsRestore</a></li>
+            <li><a href="#!/VPSApi#postVpsReverseDns">postVpsReverseDns</a></li>
+            <li><a href="#!/VPSApi#postVpsSetupVnc">postVpsSetupVnc</a></li>
+            <li><a href="#!/VPSApi#postVpsSlices">postVpsSlices</a></li>
+            <li><a href="#!/VPSApi#postVpsViewDesktop">postVpsViewDesktop</a></li>
+            <li><a href="#!/VPSApi#putVps">putVps</a></li>
+            <li><a href="#!/VPSApi#updateVpsInfo">updateVpsInfo</a></li>
+            <li><a href="#!/VPSApi#vPSCancel">vPSCancel</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/WebhostingApi">WebhostingApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/WebhostingApi#addWebsite">addWebsite</a></li>
+            <li><a href="#!/WebhostingApi#getNewWebsite">getNewWebsite</a></li>
+            <li><a href="#!/WebhostingApi#getWebsiteBuyIp">getWebsiteBuyIp</a></li>
+            <li><a href="#!/WebhostingApi#getWebsiteInfo">getWebsiteInfo</a></li>
+            <li><a href="#!/WebhostingApi#getWebsiteInvoices">getWebsiteInvoices</a></li>
+            <li><a href="#!/WebhostingApi#getWebsiteList">getWebsiteList</a></li>
+            <li><a href="#!/WebhostingApi#getWebsitesBackups">getWebsitesBackups</a></li>
+            <li><a href="#!/WebhostingApi#getWebsitesLogin">getWebsitesLogin</a></li>
+            <li><a href="#!/WebhostingApi#getWebsitesWelcomeEmail">getWebsitesWelcomeEmail</a></li>
+            <li><a href="#!/WebhostingApi#gettWebsiteReverseDns">gettWebsiteReverseDns</a></li>
+            <li><a href="#!/WebhostingApi#postWebsiteBuyIp">postWebsiteBuyIp</a></li>
+            <li><a href="#!/WebhostingApi#postWebsiteMigration">postWebsiteMigration</a></li>
+            <li><a href="#!/WebhostingApi#postWebsitesReverseDns">postWebsitesReverseDns</a></li>
+            <li><a href="#!/WebhostingApi#putWebsites">putWebsites</a></li>
+            <li><a href="#!/WebhostingApi#updateWebsiteInfo">updateWebsiteInfo</a></li>
+            <li><a href="#!/WebhostingApi#webhostingCancel">webhostingCancel</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="non-sidebar">
+      <div class="main-content">
+        <h2>Getting Started</h2>
+        <p>To begin using your fancy HTTP API, follow the steps below.</p>
+        <p>You can add some helpful tips, here</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

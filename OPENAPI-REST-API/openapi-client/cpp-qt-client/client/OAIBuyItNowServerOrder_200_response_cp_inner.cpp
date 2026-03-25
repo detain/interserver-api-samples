@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBuyItNowServerOrder_200_response_cp_inner::OAIBuyItNowServerOrder_200_response_cp_inner(QString json) {
+OAIBuyItNowServerOrder_200_response_cp_inner::OAIBuyItNowServerOrder_200_response_cp_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIBuyItNowServerOrder_200_response_cp_inner::initializeModel() {
     m_monthly_price_isValid = false;
 }
 
-void OAIBuyItNowServerOrder_200_response_cp_inner::fromJson(QString jsonString) {
+void OAIBuyItNowServerOrder_200_response_cp_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

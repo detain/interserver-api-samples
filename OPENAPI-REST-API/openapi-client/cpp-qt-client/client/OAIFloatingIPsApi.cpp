@@ -283,32 +283,6 @@ void OAIFloatingIPsApi::addFloatingIpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addFloatingIpSignal();
         Q_EMIT addFloatingIpSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addFloatingIpSignalE(error_type, error_str);
-        Q_EMIT addFloatingIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addFloatingIpSignalError(error_type, error_str);
         Q_EMIT addFloatingIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -375,32 +349,6 @@ void OAIFloatingIPsApi::floatingIpsCancelCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT floatingIpsCancelSignal(output);
         Q_EMIT floatingIpsCancelSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT floatingIpsCancelSignalE(output, error_type, error_str);
-        Q_EMIT floatingIpsCancelSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT floatingIpsCancelSignalError(output, error_type, error_str);
         Q_EMIT floatingIpsCancelSignalErrorFull(worker, error_type, error_str);
     }
@@ -466,32 +414,6 @@ void OAIFloatingIPsApi::getFloatingIpInfoCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT getFloatingIpInfoSignal();
         Q_EMIT getFloatingIpInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getFloatingIpInfoSignalE(error_type, error_str);
-        Q_EMIT getFloatingIpInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getFloatingIpInfoSignalError(error_type, error_str);
         Q_EMIT getFloatingIpInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -558,32 +480,6 @@ void OAIFloatingIPsApi::getFloatingIpInvoicesCallback(OAIHttpRequestWorker *work
         Q_EMIT getFloatingIpInvoicesSignal(output);
         Q_EMIT getFloatingIpInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getFloatingIpInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getFloatingIpInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getFloatingIpInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getFloatingIpInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -635,32 +531,6 @@ void OAIFloatingIPsApi::getFloatingIpsListCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getFloatingIpsListSignal();
         Q_EMIT getFloatingIpsListSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getFloatingIpsListSignalE(error_type, error_str);
-        Q_EMIT getFloatingIpsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getFloatingIpsListSignalError(error_type, error_str);
         Q_EMIT getFloatingIpsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -727,32 +597,6 @@ void OAIFloatingIPsApi::getFloatingIpsWelcomeEmailCallback(OAIHttpRequestWorker 
         Q_EMIT getFloatingIpsWelcomeEmailSignal(output);
         Q_EMIT getFloatingIpsWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getFloatingIpsWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getFloatingIpsWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getFloatingIpsWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getFloatingIpsWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -804,32 +648,6 @@ void OAIFloatingIPsApi::getNewFloatingIpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewFloatingIpSignal();
         Q_EMIT getNewFloatingIpSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewFloatingIpSignalE(error_type, error_str);
-        Q_EMIT getNewFloatingIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewFloatingIpSignalError(error_type, error_str);
         Q_EMIT getNewFloatingIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -900,32 +718,6 @@ void OAIFloatingIPsApi::postFloatingIpsChangeIpCallback(OAIHttpRequestWorker *wo
         Q_EMIT postFloatingIpsChangeIpSignal(output);
         Q_EMIT postFloatingIpsChangeIpSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postFloatingIpsChangeIpSignalE(output, error_type, error_str);
-        Q_EMIT postFloatingIpsChangeIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postFloatingIpsChangeIpSignalError(output, error_type, error_str);
         Q_EMIT postFloatingIpsChangeIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -977,32 +769,6 @@ void OAIFloatingIPsApi::putFloatingIpsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putFloatingIpsSignal();
         Q_EMIT putFloatingIpsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putFloatingIpsSignalE(error_type, error_str);
-        Q_EMIT putFloatingIpsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putFloatingIpsSignalError(error_type, error_str);
         Q_EMIT putFloatingIpsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1068,42 +834,16 @@ void OAIFloatingIPsApi::updateFloatingIpInfoCallback(OAIHttpRequestWorker *worke
         Q_EMIT updateFloatingIpInfoSignal();
         Q_EMIT updateFloatingIpInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateFloatingIpInfoSignalE(error_type, error_str);
-        Q_EMIT updateFloatingIpInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateFloatingIpInfoSignalError(error_type, error_str);
         Q_EMIT updateFloatingIpInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIFloatingIPsApi::tokenAvailable(){
+void OAIFloatingIPsApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1113,7 +853,7 @@ void OAIFloatingIPsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1123,7 +863,7 @@ void OAIFloatingIPsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1133,7 +873,7 @@ void OAIFloatingIPsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

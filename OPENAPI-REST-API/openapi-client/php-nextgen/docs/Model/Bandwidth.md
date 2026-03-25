@@ -1,4 +1,4 @@
-# # Bandwidth
+# Bandwidth
 
 ## Properties
 

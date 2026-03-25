@@ -25,7 +25,7 @@ typedef struct vps_traffic_response_t vps_traffic_response_t;
 typedef struct vps_traffic_response_t {
     char *name; // string
     char *target; // string
-    int interval; //numeric
+    int *interval; //numeric
     struct vps_traffic_history_response_t *history; //model
     char *last; //date time
     list_t *times; //primitive container
@@ -39,7 +39,7 @@ typedef struct vps_traffic_response_t {
 __attribute__((deprecated)) vps_traffic_response_t *vps_traffic_response_create(
     char *name,
     char *target,
-    int interval,
+    int *interval,
     vps_traffic_history_response_t *history,
     char *last,
     list_t *times,

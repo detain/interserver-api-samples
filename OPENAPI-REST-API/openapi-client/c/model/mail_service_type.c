@@ -20,6 +20,8 @@ static mail_service_type_t *mail_service_type_create_internal(
     if (!mail_service_type_local_var) {
         return NULL;
     }
+    memset(mail_service_type_local_var, 0, sizeof(mail_service_type_t));
+    mail_service_type_local_var->_library_owned = 1;
     mail_service_type_local_var->services_id = services_id;
     mail_service_type_local_var->services_name = services_name;
     mail_service_type_local_var->services_cost = services_cost;
@@ -29,8 +31,6 @@ static mail_service_type_t *mail_service_type_create_internal(
     mail_service_type_local_var->services_field1 = services_field1;
     mail_service_type_local_var->services_field2 = services_field2;
     mail_service_type_local_var->services_module = services_module;
-
-    mail_service_type_local_var->_library_owned = 1;
     return mail_service_type_local_var;
 }
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) mail_service_type_t *mail_service_type_create(
     char *services_field2,
     char *services_module
     ) {
-    return mail_service_type_create_internal (
+    mail_service_type_t *result = mail_service_type_create_internal (
         services_id,
         services_name,
         services_cost,
@@ -56,6 +56,9 @@ __attribute__((deprecated)) mail_service_type_t *mail_service_type_create(
         services_field2,
         services_module
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_service_type_free(mail_service_type_t *mail_service_type) {
@@ -192,6 +195,24 @@ mail_service_type_t *mail_service_type_parseFromJSON(cJSON *mail_service_typeJSO
 
     mail_service_type_t *mail_service_type_local_var = NULL;
 
+    char *services_id_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
+    char *services_cost_local_str = NULL;
+
+    char *services_category_local_str = NULL;
+
+    char *services_buyable_local_str = NULL;
+
+    char *services_type_local_str = NULL;
+
+    char *services_field1_local_str = NULL;
+
+    char *services_field2_local_str = NULL;
+
+    char *services_module_local_str = NULL;
+
     // mail_service_type->services_id
     cJSON *services_id = cJSON_GetObjectItemCaseSensitive(mail_service_typeJSON, "services_id");
     if (cJSON_IsNull(services_id)) {
@@ -301,20 +322,70 @@ mail_service_type_t *mail_service_type_parseFromJSON(cJSON *mail_service_typeJSO
     }
 
 
+    if (services_id && !cJSON_IsNull(services_id)) services_id_local_str = strdup(services_id->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+    if (services_cost && !cJSON_IsNull(services_cost)) services_cost_local_str = strdup(services_cost->valuestring);
+    if (services_category && !cJSON_IsNull(services_category)) services_category_local_str = strdup(services_category->valuestring);
+    if (services_buyable && !cJSON_IsNull(services_buyable)) services_buyable_local_str = strdup(services_buyable->valuestring);
+    if (services_type && !cJSON_IsNull(services_type)) services_type_local_str = strdup(services_type->valuestring);
+    if (services_field1 && !cJSON_IsNull(services_field1)) services_field1_local_str = strdup(services_field1->valuestring);
+    if (services_field2 && !cJSON_IsNull(services_field2)) services_field2_local_str = strdup(services_field2->valuestring);
+    if (services_module && !cJSON_IsNull(services_module)) services_module_local_str = strdup(services_module->valuestring);
+
     mail_service_type_local_var = mail_service_type_create_internal (
-        services_id && !cJSON_IsNull(services_id) ? strdup(services_id->valuestring) : NULL,
-        services_name && !cJSON_IsNull(services_name) ? strdup(services_name->valuestring) : NULL,
-        services_cost && !cJSON_IsNull(services_cost) ? strdup(services_cost->valuestring) : NULL,
-        services_category && !cJSON_IsNull(services_category) ? strdup(services_category->valuestring) : NULL,
-        services_buyable && !cJSON_IsNull(services_buyable) ? strdup(services_buyable->valuestring) : NULL,
-        services_type && !cJSON_IsNull(services_type) ? strdup(services_type->valuestring) : NULL,
-        services_field1 && !cJSON_IsNull(services_field1) ? strdup(services_field1->valuestring) : NULL,
-        services_field2 && !cJSON_IsNull(services_field2) ? strdup(services_field2->valuestring) : NULL,
-        services_module && !cJSON_IsNull(services_module) ? strdup(services_module->valuestring) : NULL
+        services_id_local_str,
+        services_name_local_str,
+        services_cost_local_str,
+        services_category_local_str,
+        services_buyable_local_str,
+        services_type_local_str,
+        services_field1_local_str,
+        services_field2_local_str,
+        services_module_local_str
         );
+
+    if (!mail_service_type_local_var) {
+        goto end;
+    }
 
     return mail_service_type_local_var;
 end:
+    if (services_id_local_str) {
+        free(services_id_local_str);
+        services_id_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
+    if (services_cost_local_str) {
+        free(services_cost_local_str);
+        services_cost_local_str = NULL;
+    }
+    if (services_category_local_str) {
+        free(services_category_local_str);
+        services_category_local_str = NULL;
+    }
+    if (services_buyable_local_str) {
+        free(services_buyable_local_str);
+        services_buyable_local_str = NULL;
+    }
+    if (services_type_local_str) {
+        free(services_type_local_str);
+        services_type_local_str = NULL;
+    }
+    if (services_field1_local_str) {
+        free(services_field1_local_str);
+        services_field1_local_str = NULL;
+    }
+    if (services_field2_local_str) {
+        free(services_field2_local_str);
+        services_field2_local_str = NULL;
+    }
+    if (services_module_local_str) {
+        free(services_module_local_str);
+        services_module_local_str = NULL;
+    }
     return NULL;
 
 }

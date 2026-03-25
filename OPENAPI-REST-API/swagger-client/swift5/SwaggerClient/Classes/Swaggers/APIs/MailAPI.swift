@@ -1820,31 +1820,60 @@ open class MailAPI {
     /**
      * enum for parameter delivered
      */
-    public enum Delivered_viewMailLog: String { 
-        case _0 = "0"
-        case _1 = "1"
+    public enum Delivered_viewMailLog: Int { 
+        case _0 = 0
+        case _1 = 1
+    }
+
+    /**
+     * enum for parameter sort
+     */
+    public enum Sort_viewMailLog: String { 
+        case time = "time"
+    }
+
+    /**
+     * enum for parameter dir
+     */
+    public enum Dir_viewMailLog: String { 
+        case asc = "asc"
+        case desc = "desc"
+    }
+
+    /**
+     * enum for parameter groupby
+     */
+    public enum Groupby_viewMailLog: String { 
+        case message = "message"
+        case recipient = "recipient"
     }
 
     /**
      View Mail Log
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
-     - parameter _id: (query) The ID of your mail order this will be sent through. (optional)
-     - parameter origin: (query) originating ip address sending mail (optional)
-     - parameter mx: (query) mx record mail was sent to (optional)
-     - parameter from: (query) from email address (optional)
-     - parameter to: (query) to/destination email address (optional)
-     - parameter subject: (query) subject containing this string (optional)
-     - parameter mailid: (query) mail id (optional)
-     - parameter skip: (query) number of records to skip for pagination (optional, default to 0)
-     - parameter limit: (query) maximum number of records to return (optional, default to 100)
-     - parameter startDate: (query) earliest date to get emails in unix timestamp format (optional)
-     - parameter endDate: (query) Latest date to get emails in unix timestamp format. (optional)
-     - parameter delivered: (query) Filter emails by whether or not they were delivered. (optional)
+     - parameter _id: (query) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;. (optional)
+     - parameter origin: (query) Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. (optional)
+     - parameter mx: (query) Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response. (optional)
+     - parameter from: (query) Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;. (optional)
+     - parameter to: (query) Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved. (optional)
+     - parameter subject: (query) Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response. (optional)
+     - parameter mailid: (query) Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;. (optional)
+     - parameter messageId: (query) Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. (optional)
+     - parameter replyto: (query) Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set. (optional)
+     - parameter headerfrom: (query) Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address. (optional)
+     - parameter delivered: (query) Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. (optional)
+     - parameter skip: (query) Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip). (optional, default to 0)
+     - parameter limit: (query) Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages. (optional, default to 100)
+     - parameter startDate: (query) Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included. (optional)
+     - parameter endDate: (query) Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. (optional)
+     - parameter sort: (query) Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). (optional, default to time)
+     - parameter dir: (query) Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first. (optional, default to desc)
+     - parameter groupby: (query) Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode. (optional, default to recipient)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func viewMailLog(_id: Int, _id: Int64? = nil, origin: String? = nil, mx: String? = nil, from: String? = nil, to: String? = nil, subject: String? = nil, mailid: String? = nil, skip: Int? = nil, limit: Int? = nil, startDate: Int64? = nil, endDate: Int64? = nil, delivered: Delivered_viewMailLog? = nil, completion: @escaping ((_ data: MailLog?,_ error: Error?) -> Void)) {
-        viewMailLogWithRequestBuilder(_id: _id, _id: _id, origin: origin, mx: mx, from: from, to: to, subject: subject, mailid: mailid, skip: skip, limit: limit, startDate: startDate, endDate: endDate, delivered: delivered).execute { (response, error) -> Void in
+    open class func viewMailLog(_id: Int, _id: Int64? = nil, origin: String? = nil, mx: String? = nil, from: String? = nil, to: String? = nil, subject: String? = nil, mailid: String? = nil, messageId: String? = nil, replyto: String? = nil, headerfrom: String? = nil, delivered: Delivered_viewMailLog? = nil, skip: Int? = nil, limit: Int? = nil, startDate: StartDate? = nil, endDate: EndDate? = nil, sort: Sort_viewMailLog? = nil, dir: Dir_viewMailLog? = nil, groupby: Groupby_viewMailLog? = nil, completion: @escaping ((_ data: MailLog?,_ error: Error?) -> Void)) {
+        viewMailLogWithRequestBuilder(_id: _id, _id: _id, origin: origin, mx: mx, from: from, to: to, subject: subject, mailid: mailid, messageId: messageId, replyto: replyto, headerfrom: headerfrom, delivered: delivered, skip: skip, limit: limit, startDate: startDate, endDate: endDate, sort: sort, dir: dir, groupby: groupby).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1874,7 +1903,7 @@ open class MailAPI {
     "to" : "client@isp.com",
     "subject" : "sell 0.005 shares",
     "messageId" : "<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>",
-    "created" : "2021-10-14T08:50:10.000Z",
+    "created" : "2021-10-14 08:50:10",
     "time" : 1634215809,
     "user" : "mb5658",
     "transtype" : "ESMTPSA",
@@ -1883,10 +1912,12 @@ open class MailAPI {
     "sendingZone" : "interserver",
     "bodySize" : 63,
     "seq" : 1,
+    "delivered" : 1,
+    "code" : 250,
     "recipient" : "client@isp.com",
     "domain" : "interserver.net",
     "locked" : 1,
-    "lockTime" : 1634215818533,
+    "lockTime" : "1634215818533",
     "assigned" : "relay1",
     "queued" : "2021-10-14T12:50:15.487Z",
     "mxHostname" : "mx.j.is.cc",
@@ -1894,22 +1925,28 @@ open class MailAPI {
   } ]
 }}]
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
-     - parameter _id: (query) The ID of your mail order this will be sent through. (optional)
-     - parameter origin: (query) originating ip address sending mail (optional)
-     - parameter mx: (query) mx record mail was sent to (optional)
-     - parameter from: (query) from email address (optional)
-     - parameter to: (query) to/destination email address (optional)
-     - parameter subject: (query) subject containing this string (optional)
-     - parameter mailid: (query) mail id (optional)
-     - parameter skip: (query) number of records to skip for pagination (optional, default to 0)
-     - parameter limit: (query) maximum number of records to return (optional, default to 100)
-     - parameter startDate: (query) earliest date to get emails in unix timestamp format (optional)
-     - parameter endDate: (query) Latest date to get emails in unix timestamp format. (optional)
-     - parameter delivered: (query) Filter emails by whether or not they were delivered. (optional)
+     - parameter _id: (query) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;. (optional)
+     - parameter origin: (query) Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. (optional)
+     - parameter mx: (query) Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response. (optional)
+     - parameter from: (query) Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;. (optional)
+     - parameter to: (query) Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved. (optional)
+     - parameter subject: (query) Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response. (optional)
+     - parameter mailid: (query) Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;. (optional)
+     - parameter messageId: (query) Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. (optional)
+     - parameter replyto: (query) Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set. (optional)
+     - parameter headerfrom: (query) Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address. (optional)
+     - parameter delivered: (query) Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. (optional)
+     - parameter skip: (query) Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip). (optional, default to 0)
+     - parameter limit: (query) Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages. (optional, default to 100)
+     - parameter startDate: (query) Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included. (optional)
+     - parameter endDate: (query) Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. (optional)
+     - parameter sort: (query) Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). (optional, default to time)
+     - parameter dir: (query) Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first. (optional, default to desc)
+     - parameter groupby: (query) Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode. (optional, default to recipient)
 
      - returns: RequestBuilder<MailLog> 
      */
-    open class func viewMailLogWithRequestBuilder(_id: Int, _id: Int64? = nil, origin: String? = nil, mx: String? = nil, from: String? = nil, to: String? = nil, subject: String? = nil, mailid: String? = nil, skip: Int? = nil, limit: Int? = nil, startDate: Int64? = nil, endDate: Int64? = nil, delivered: Delivered_viewMailLog? = nil) -> RequestBuilder<MailLog> {
+    open class func viewMailLogWithRequestBuilder(_id: Int, _id: Int64? = nil, origin: String? = nil, mx: String? = nil, from: String? = nil, to: String? = nil, subject: String? = nil, mailid: String? = nil, messageId: String? = nil, replyto: String? = nil, headerfrom: String? = nil, delivered: Delivered_viewMailLog? = nil, skip: Int? = nil, limit: Int? = nil, startDate: StartDate? = nil, endDate: EndDate? = nil, sort: Sort_viewMailLog? = nil, dir: Dir_viewMailLog? = nil, groupby: Groupby_viewMailLog? = nil) -> RequestBuilder<MailLog> {
         var path = "/mail/{id}/log"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1925,11 +1962,17 @@ open class MailAPI {
                         "to": to, 
                         "subject": subject, 
                         "mailid": mailid, 
+                        "messageId": messageId, 
+                        "replyto": replyto, 
+                        "headerfrom": headerfrom, 
+                        "delivered": delivered?.rawValue, 
                         "skip": skip?.encodeToJSON(), 
                         "limit": limit?.encodeToJSON(), 
-                        "startDate": startDate?.encodeToJSON(), 
-                        "endDate": endDate?.encodeToJSON(), 
-                        "delivered": delivered?.rawValue
+                        "startDate": startDate, 
+                        "endDate": endDate, 
+                        "sort": sort?.rawValue, 
+                        "dir": dir?.rawValue, 
+                        "groupby": groupby?.rawValue
         ])
 
 

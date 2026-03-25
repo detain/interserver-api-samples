@@ -19,7 +19,7 @@ typedef struct mail_order_t mail_order_t;
 
 
 typedef struct mail_order_t {
-    int id; //numeric
+    int *id; //numeric
     char *status; // string
     char *username; // string
     char *comment; // string
@@ -28,7 +28,7 @@ typedef struct mail_order_t {
 } mail_order_t;
 
 __attribute__((deprecated)) mail_order_t *mail_order_create(
-    int id,
+    int *id,
     char *status,
     char *username,
     char *comment

@@ -1,4 +1,4 @@
-# # VpsServiceMaster
+# VpsServiceMaster
 
 ## Properties
 

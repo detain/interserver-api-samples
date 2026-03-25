@@ -1,4 +1,4 @@
-# # ServerBillingDetails
+# ServerBillingDetails
 
 ## Properties
 

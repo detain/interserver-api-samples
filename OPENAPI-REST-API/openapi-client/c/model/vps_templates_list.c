@@ -12,18 +12,21 @@ static vps_templates_list_t *vps_templates_list_create_internal(
     if (!vps_templates_list_local_var) {
         return NULL;
     }
-    vps_templates_list_local_var->templates = templates;
-
+    memset(vps_templates_list_local_var, 0, sizeof(vps_templates_list_t));
     vps_templates_list_local_var->_library_owned = 1;
+    vps_templates_list_local_var->templates = templates;
     return vps_templates_list_local_var;
 }
 
 __attribute__((deprecated)) vps_templates_list_t *vps_templates_list_create(
     list_t *templates
     ) {
-    return vps_templates_list_create_internal (
+    vps_templates_list_t *result = vps_templates_list_create_internal (
         templates
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_templates_list_free(vps_templates_list_t *vps_templates_list) {
@@ -111,9 +114,14 @@ vps_templates_list_t *vps_templates_list_parseFromJSON(cJSON *vps_templates_list
     }
 
 
+
     vps_templates_list_local_var = vps_templates_list_create_internal (
         templatesList
         );
+
+    if (!vps_templates_list_local_var) {
+        goto end;
+    }
 
     return vps_templates_list_local_var;
 end:

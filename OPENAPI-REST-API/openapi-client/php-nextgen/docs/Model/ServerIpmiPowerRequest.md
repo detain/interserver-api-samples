@@ -1,4 +1,4 @@
-# # ServerIpmiPowerRequest
+# ServerIpmiPowerRequest
 
 ## Properties
 

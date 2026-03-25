@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailDelistRequest::OAIMailDelistRequest(QString json) {
+OAIMailDelistRequest::OAIMailDelistRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIMailDelistRequest::initializeModel() {
     m_unblock_isValid = false;
 }
 
-void OAIMailDelistRequest::fromJson(QString jsonString) {
+void OAIMailDelistRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

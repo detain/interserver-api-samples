@@ -7,7 +7,7 @@
 
 static server_assets_t *server_assets_create_internal(
     char *title,
-    int size,
+    int *size,
     char *type,
     list_t *header,
     list_t *rows
@@ -16,30 +16,39 @@ static server_assets_t *server_assets_create_internal(
     if (!server_assets_local_var) {
         return NULL;
     }
+    memset(server_assets_local_var, 0, sizeof(server_assets_t));
+    server_assets_local_var->_library_owned = 1;
     server_assets_local_var->title = title;
     server_assets_local_var->size = size;
     server_assets_local_var->type = type;
     server_assets_local_var->header = header;
     server_assets_local_var->rows = rows;
-
-    server_assets_local_var->_library_owned = 1;
     return server_assets_local_var;
 }
 
 __attribute__((deprecated)) server_assets_t *server_assets_create(
     char *title,
-    int size,
+    int *size,
     char *type,
     list_t *header,
     list_t *rows
     ) {
-    return server_assets_create_internal (
+    int *size_copy = NULL;
+    if (size) {
+        size_copy = malloc(sizeof(int));
+        if (size_copy) *size_copy = *size;
+    }
+    server_assets_t *result = server_assets_create_internal (
         title,
-        size,
+        size_copy,
         type,
         header,
         rows
         );
+    if (!result) {
+        free(size_copy);
+    }
+    return result;
 }
 
 void server_assets_free(server_assets_t *server_assets) {
@@ -54,6 +63,10 @@ void server_assets_free(server_assets_t *server_assets) {
     if (server_assets->title) {
         free(server_assets->title);
         server_assets->title = NULL;
+    }
+    if (server_assets->size) {
+        free(server_assets->size);
+        server_assets->size = NULL;
     }
     if (server_assets->type) {
         free(server_assets->type);
@@ -89,7 +102,7 @@ cJSON *server_assets_convertToJSON(server_assets_t *server_assets) {
 
     // server_assets->size
     if(server_assets->size) {
-    if(cJSON_AddNumberToObject(item, "size", server_assets->size) == NULL) {
+    if(cJSON_AddNumberToObject(item, "size", *server_assets->size) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -144,6 +157,13 @@ server_assets_t *server_assets_parseFromJSON(cJSON *server_assetsJSON){
 
     server_assets_t *server_assets_local_var = NULL;
 
+    char *title_local_str = NULL;
+
+    // define the local variable for server_assets->size
+    int *size_local_var = NULL;
+
+    char *type_local_str = NULL;
+
     // define the local list for server_assets->header
     list_t *headerList = NULL;
 
@@ -172,6 +192,12 @@ server_assets_t *server_assets_parseFromJSON(cJSON *server_assetsJSON){
     {
     goto end; //Numeric
     }
+    size_local_var = malloc(sizeof(int));
+    if(!size_local_var)
+    {
+        goto end;
+    }
+    *size_local_var = size->valuedouble;
     }
 
     // server_assets->type
@@ -226,16 +252,35 @@ server_assets_t *server_assets_parseFromJSON(cJSON *server_assetsJSON){
     }
 
 
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+
     server_assets_local_var = server_assets_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        size ? size->valuedouble : 0,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
+        title_local_str,
+        size_local_var,
+        type_local_str,
         header ? headerList : NULL,
         rows ? rowsList : NULL
         );
 
+    if (!server_assets_local_var) {
+        goto end;
+    }
+
     return server_assets_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
+    if (size_local_var) {
+        free(size_local_var);
+        size_local_var = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
     if (headerList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, headerList) {

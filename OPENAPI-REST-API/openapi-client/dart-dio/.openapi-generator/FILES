@@ -394,6 +394,7 @@ doc/VPSApi.md
 doc/VPSCancel200Response.md
 doc/VPSTrafficDataDataSectionResponse.md
 doc/VPSTrafficDataDataSectionResponseInner.md
+doc/ViewMailLogStartDateParameter.md
 doc/ViewTicketResponse.md
 doc/Vps.md
 doc/VpsBackupRow.md
@@ -867,6 +868,7 @@ lib/src/model/update_account_tfa_request.dart
 lib/src/model/update_ticket.dart
 lib/src/model/update_ticket_response_schema.dart
 lib/src/model/url_request.dart
+lib/src/model/view_mail_log_start_date_parameter.dart
 lib/src/model/view_ticket_response.dart
 lib/src/model/vps.dart
 lib/src/model/vps_backup_row.dart
@@ -1332,6 +1334,7 @@ test/update_account_tfa_request_test.dart
 test/update_ticket_response_schema_test.dart
 test/update_ticket_test.dart
 test/url_request_test.dart
+test/view_mail_log_start_date_parameter_test.dart
 test/view_ticket_response_test.dart
 test/vps_api_test.dart
 test/vps_backup_row_test.dart

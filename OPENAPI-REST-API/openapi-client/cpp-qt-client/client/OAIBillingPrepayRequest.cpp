@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBillingPrepayRequest::OAIBillingPrepayRequest(QString json) {
+OAIBillingPrepayRequest::OAIBillingPrepayRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIBillingPrepayRequest::initializeModel() {
     m_automatic_use_isValid = false;
 }
 
-void OAIBillingPrepayRequest::fromJson(QString jsonString) {
+void OAIBillingPrepayRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

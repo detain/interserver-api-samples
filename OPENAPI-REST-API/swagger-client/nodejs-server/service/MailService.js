@@ -910,24 +910,30 @@ exports.updateMailInfo = function(id) {
 
 /**
  * View Mail Log
- * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+ * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
  *
  * id Integer The mail service ID. Use `mail_id` from `GET /mail`.
- * id Long The ID of your mail order this will be sent through. (optional)
- * origin String originating ip address sending mail (optional)
- * mx String mx record mail was sent to (optional)
- * from String from email address (optional)
- * to String to/destination email address (optional)
- * subject String subject containing this string (optional)
- * mailid String mail id (optional)
- * skip Integer number of records to skip for pagination (optional)
- * limit Integer maximum number of records to return (optional)
- * startDate Long earliest date to get emails in unix timestamp format (optional)
- * endDate Long Latest date to get emails in unix timestamp format. (optional)
- * delivered String Filter emails by whether or not they were delivered. (optional)
+ * id Long The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`. (optional)
+ * origin String Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. (optional)
+ * mx String Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response. (optional)
+ * from String Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`. (optional)
+ * to String Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved. (optional)
+ * subject String Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response. (optional)
+ * mailid String Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`. (optional)
+ * messageId String Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`. (optional)
+ * replyto String Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set. (optional)
+ * headerfrom String Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address. (optional)
+ * delivered Integer Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. (optional)
+ * skip Integer Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip). (optional)
+ * limit Integer Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages. (optional)
+ * startDate startDate Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included. (optional)
+ * endDate endDate Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included. (optional)
+ * sort String Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order). (optional)
+ * dir String Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. (optional)
+ * groupby String Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. (optional)
  * returns MailLog
  **/
-exports.viewMailLog = function(id,id,origin,mx,from,to,subject,mailid,skip,limit,startDate,endDate,delivered) {
+exports.viewMailLog = function(id,id,origin,mx,from,to,subject,mailid,messageId,replyto,headerfrom,delivered,skip,limit,startDate,endDate,sort,dir,groupby) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
@@ -941,7 +947,7 @@ exports.viewMailLog = function(id,id,origin,mx,from,to,subject,mailid,skip,limit
     "to" : "client@isp.com",
     "subject" : "sell 0.005 shares",
     "messageId" : "<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>",
-    "created" : "2021-10-14T08:50:10.000Z",
+    "created" : "2021-10-14 08:50:10",
     "time" : 1634215809,
     "user" : "mb5658",
     "transtype" : "ESMTPSA",
@@ -950,10 +956,12 @@ exports.viewMailLog = function(id,id,origin,mx,from,to,subject,mailid,skip,limit
     "sendingZone" : "interserver",
     "bodySize" : 63,
     "seq" : 1,
+    "delivered" : 1,
+    "code" : 250,
     "recipient" : "client@isp.com",
     "domain" : "interserver.net",
     "locked" : 1,
-    "lockTime" : 1634215818533,
+    "lockTime" : "1634215818533",
     "assigned" : "relay1",
     "queued" : "2021-10-14T12:50:15.487Z",
     "mxHostname" : "mx.j.is.cc",

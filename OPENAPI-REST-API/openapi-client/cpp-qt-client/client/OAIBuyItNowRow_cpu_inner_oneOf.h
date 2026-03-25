@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBuyItNowRow_cpu_inner_oneOf : public OAIObject {
 public:
     OAIBuyItNowRow_cpu_inner_oneOf();
-    OAIBuyItNowRow_cpu_inner_oneOf(QString json);
+    OAIBuyItNowRow_cpu_inner_oneOf(const QString &json);
     ~OAIBuyItNowRow_cpu_inner_oneOf() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getImg() const;
     void setImg(const QString &img);

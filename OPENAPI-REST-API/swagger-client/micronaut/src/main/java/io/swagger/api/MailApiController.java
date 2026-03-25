@@ -10,6 +10,8 @@ import io.swagger.model.EmailAddress;
 
 import io.swagger.model.EmailAddressName;
 
+import io.swagger.model.EndDate;
+
 import io.swagger.model.GenericResponse;
 
 import io.swagger.model.InlineResponse2008;
@@ -45,6 +47,8 @@ import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 
 import io.swagger.model.SendMailAdv;
+
+import io.swagger.model.StartDate;
 
 import io.swagger.model.SuccessTextResponse;
 
@@ -254,8 +258,8 @@ public class MailApiController implements MailApi {
     }
 
     @Override
-    public Single<HttpResponse<MailLog>> viewMailLog(Integer id, @Nullable Long id, @Nullable String origin, @Nullable String mx, @Nullable String from, @Nullable String to, @Nullable String subject, @Nullable String mailid, @Nullable @Min(0)Integer skip, @Nullable @Min(1) @Max(10000) Integer limit, @Nullable @Min(0L) @Max(9999999999L) Long startDate, @Nullable @Min(0L) @Max(9999999999L) Long endDate, @Nullable String delivered) {
+    public Single<HttpResponse<MailLog>> viewMailLog(Integer id, @Nullable Long id, @Nullable String origin, @Nullable String mx, @Nullable String from, @Nullable String to, @Nullable String subject, @Nullable @Size(min=18,max=19) String mailid, @Nullable String messageId, @Nullable String replyto, @Nullable String headerfrom, @Nullable Integer delivered, @Nullable @Min(0)Integer skip, @Nullable @Min(1) @Max(10000) Integer limit, @Nullable @Valid StartDate startDate, @Nullable @Valid EndDate endDate, @Nullable String sort, @Nullable String dir, @Nullable String groupby) {
         // TODO: Implement me
-        return MailApi.super.viewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered);
+        return MailApi.super.viewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby);
     }
 }

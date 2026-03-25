@@ -19,13 +19,13 @@ typedef struct service_t service_t;
 
 
 typedef struct service_t {
-    int services_id; //numeric
+    int *services_id; //numeric
     char *services_name; // string
-    double services_cost; //numeric
+    double *services_cost; //numeric
     char *services_currency; // string
-    int services_category; //numeric
-    int services_buyable; //boolean
-    int services_type; //numeric
+    int *services_category; //numeric
+    int *services_buyable; //boolean
+    int *services_type; //numeric
     char *services_field1; // string
     char *services_field2; // string
     char *services_module; // string
@@ -34,13 +34,13 @@ typedef struct service_t {
 } service_t;
 
 __attribute__((deprecated)) service_t *service_create(
-    int services_id,
+    int *services_id,
     char *services_name,
-    double services_cost,
+    double *services_cost,
     char *services_currency,
-    int services_category,
-    int services_buyable,
-    int services_type,
+    int *services_category,
+    int *services_buyable,
+    int *services_type,
     char *services_field1,
     char *services_field2,
     char *services_module

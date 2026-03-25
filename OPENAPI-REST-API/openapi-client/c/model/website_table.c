@@ -13,10 +13,10 @@ static website_table_t *website_table_create_internal(
     if (!website_table_local_var) {
         return NULL;
     }
+    memset(website_table_local_var, 0, sizeof(website_table_t));
+    website_table_local_var->_library_owned = 1;
     website_table_local_var->title = title;
     website_table_local_var->rows = rows;
-
-    website_table_local_var->_library_owned = 1;
     return website_table_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) website_table_t *website_table_create(
     char *title,
     list_t *rows
     ) {
-    return website_table_create_internal (
+    website_table_t *result = website_table_create_internal (
         title,
         rows
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_table_free(website_table_t *website_table) {
@@ -95,6 +98,8 @@ website_table_t *website_table_parseFromJSON(cJSON *website_tableJSON){
 
     website_table_t *website_table_local_var = NULL;
 
+    char *title_local_str = NULL;
+
     // define the local list for website_table->rows
     list_t *rowsList = NULL;
 
@@ -135,13 +140,23 @@ website_table_t *website_table_parseFromJSON(cJSON *website_tableJSON){
     }
 
 
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     website_table_local_var = website_table_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        title_local_str,
         rows ? rowsList : NULL
         );
 
+    if (!website_table_local_var) {
+        goto end;
+    }
+
     return website_table_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     if (rowsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, rowsList) {

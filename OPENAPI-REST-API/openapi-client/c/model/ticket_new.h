@@ -21,7 +21,7 @@ typedef struct ticket_new_t ticket_new_t;
 typedef struct ticket_new_t {
     char *subject; // string
     char *body; // string
-    int service_id; //numeric
+    int *service_id; //numeric
     char *service_module; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -30,7 +30,7 @@ typedef struct ticket_new_t {
 __attribute__((deprecated)) ticket_new_t *ticket_new_create(
     char *subject,
     char *body,
-    int service_id,
+    int *service_id,
     char *service_module
 );
 

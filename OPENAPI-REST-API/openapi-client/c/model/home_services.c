@@ -17,14 +17,14 @@ static home_services_t *home_services_create_internal(
     if (!home_services_local_var) {
         return NULL;
     }
+    memset(home_services_local_var, 0, sizeof(home_services_t));
+    home_services_local_var->_library_owned = 1;
     home_services_local_var->domains = domains;
     home_services_local_var->webhosting = webhosting;
     home_services_local_var->vps = vps;
     home_services_local_var->licenses = licenses;
     home_services_local_var->servers = servers;
     home_services_local_var->backups = backups;
-
-    home_services_local_var->_library_owned = 1;
     return home_services_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) home_services_t *home_services_create(
     home_services_servers_t *servers,
     home_services_backups_t *backups
     ) {
-    return home_services_create_internal (
+    home_services_t *result = home_services_create_internal (
         domains,
         webhosting,
         vps,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) home_services_t *home_services_create(
         servers,
         backups
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_services_free(home_services_t *home_services) {
@@ -247,6 +250,7 @@ home_services_t *home_services_parseFromJSON(cJSON *home_servicesJSON){
     }
 
 
+
     home_services_local_var = home_services_create_internal (
         domains ? domains_local_nonprim : NULL,
         webhosting ? webhosting_local_nonprim : NULL,
@@ -255,6 +259,10 @@ home_services_t *home_services_parseFromJSON(cJSON *home_servicesJSON){
         servers ? servers_local_nonprim : NULL,
         backups ? backups_local_nonprim : NULL
         );
+
+    if (!home_services_local_var) {
+        goto end;
+    }
 
     return home_services_local_var;
 end:

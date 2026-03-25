@@ -6,7 +6,7 @@
 
 
 static mail_delist_response_t *mail_delist_response_create_internal(
-    int id,
+    int *id,
     list_t *local,
     list_t *mbtrap,
     list_t *subject,
@@ -16,30 +16,39 @@ static mail_delist_response_t *mail_delist_response_create_internal(
     if (!mail_delist_response_local_var) {
         return NULL;
     }
+    memset(mail_delist_response_local_var, 0, sizeof(mail_delist_response_t));
+    mail_delist_response_local_var->_library_owned = 1;
     mail_delist_response_local_var->id = id;
     mail_delist_response_local_var->local = local;
     mail_delist_response_local_var->mbtrap = mbtrap;
     mail_delist_response_local_var->subject = subject;
     mail_delist_response_local_var->manual = manual;
-
-    mail_delist_response_local_var->_library_owned = 1;
     return mail_delist_response_local_var;
 }
 
 __attribute__((deprecated)) mail_delist_response_t *mail_delist_response_create(
-    int id,
+    int *id,
     list_t *local,
     list_t *mbtrap,
     list_t *subject,
     list_t *manual
     ) {
-    return mail_delist_response_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    mail_delist_response_t *result = mail_delist_response_create_internal (
+        id_copy,
         local,
         mbtrap,
         subject,
         manual
         );
+    if (!result) {
+        free(id_copy);
+    }
+    return result;
 }
 
 void mail_delist_response_free(mail_delist_response_t *mail_delist_response) {
@@ -51,6 +60,10 @@ void mail_delist_response_free(mail_delist_response_t *mail_delist_response) {
         return ;
     }
     listEntry_t *listEntry;
+    if (mail_delist_response->id) {
+        free(mail_delist_response->id);
+        mail_delist_response->id = NULL;
+    }
     if (mail_delist_response->local) {
         list_ForEach(listEntry, mail_delist_response->local) {
             object_free(listEntry->data);
@@ -87,7 +100,7 @@ cJSON *mail_delist_response_convertToJSON(mail_delist_response_t *mail_delist_re
 
     // mail_delist_response->id
     if(mail_delist_response->id) {
-    if(cJSON_AddNumberToObject(item, "id", mail_delist_response->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *mail_delist_response->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -184,6 +197,9 @@ mail_delist_response_t *mail_delist_response_parseFromJSON(cJSON *mail_delist_re
 
     mail_delist_response_t *mail_delist_response_local_var = NULL;
 
+    // define the local variable for mail_delist_response->id
+    int *id_local_var = NULL;
+
     // define the local list for mail_delist_response->local
     list_t *localList = NULL;
 
@@ -206,6 +222,12 @@ mail_delist_response_t *mail_delist_response_parseFromJSON(cJSON *mail_delist_re
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // mail_delist_response->local
@@ -305,16 +327,25 @@ mail_delist_response_t *mail_delist_response_parseFromJSON(cJSON *mail_delist_re
     }
 
 
+
     mail_delist_response_local_var = mail_delist_response_create_internal (
-        id ? id->valuedouble : 0,
+        id_local_var,
         local ? localList : NULL,
         mbtrap ? mbtrapList : NULL,
         subject ? subjectList : NULL,
         manual ? manualList : NULL
         );
 
+    if (!mail_delist_response_local_var) {
+        goto end;
+    }
+
     return mail_delist_response_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
     if (localList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, localList) {

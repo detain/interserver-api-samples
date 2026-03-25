@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBackupLoginResponse::OAIBackupLoginResponse(QString json) {
+OAIBackupLoginResponse::OAIBackupLoginResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIBackupLoginResponse::initializeModel() {
     m_text_isValid = false;
 }
 
-void OAIBackupLoginResponse::fromJson(QString jsonString) {
+void OAIBackupLoginResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

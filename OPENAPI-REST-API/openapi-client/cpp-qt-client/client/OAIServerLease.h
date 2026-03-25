@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIServerLease : public OAIObject {
 public:
     OAIServerLease();
-    OAIServerLease(QString json);
+    OAIServerLease(const QString &json);
     ~OAIServerLease() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getMac() const;
     void setMac(const QString &mac);

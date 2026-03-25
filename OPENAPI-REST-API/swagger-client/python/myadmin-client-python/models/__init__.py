@@ -130,6 +130,7 @@ from myadmin-client-python.models.domain_tech_contact import DomainTechContact
 from myadmin-client-python.models.domain_whois_privacy_request import DomainWhoisPrivacyRequest
 from myadmin-client-python.models.email_address import EmailAddress
 from myadmin-client-python.models.email_address_name import EmailAddressName
+from myadmin-client-python.models.end_date import EndDate
 from myadmin-client-python.models.field_label import FieldLabel
 from myadmin-client-python.models.form_values import FormValues
 from myadmin-client-python.models.generic_response import GenericResponse
@@ -391,6 +392,7 @@ from myadmin-client-python.models.service_type import ServiceType
 from myadmin-client-python.models.service_types import ServiceTypes
 from myadmin-client-python.models.services import Services
 from myadmin-client-python.models.services_info import ServicesInfo
+from myadmin-client-python.models.start_date import StartDate
 from myadmin-client-python.models.status_monthly_breakdown import StatusMonthlyBreakdown
 from myadmin-client-python.models.success_text_response import SuccessTextResponse
 from myadmin-client-python.models.template_request import TemplateRequest

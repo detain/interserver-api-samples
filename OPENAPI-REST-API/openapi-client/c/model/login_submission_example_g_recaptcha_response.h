@@ -20,9 +20,9 @@ typedef struct login_submission_example_g_recaptcha_response_t login_submission_
 
 
 typedef struct login_submission_example_g_recaptcha_response_t {
-    int __v_is_shallow; //boolean
+    int *__v_is_shallow; //boolean
     struct login_submission_example_g_recaptcha_response_dep_t *dep; //model
-    int __v_is_ref; //boolean
+    int *__v_is_ref; //boolean
     char *_raw_value; // string
     char *_value; // string
 
@@ -30,9 +30,9 @@ typedef struct login_submission_example_g_recaptcha_response_t {
 } login_submission_example_g_recaptcha_response_t;
 
 __attribute__((deprecated)) login_submission_example_g_recaptcha_response_t *login_submission_example_g_recaptcha_response_create(
-    int __v_is_shallow,
+    int *__v_is_shallow,
     login_submission_example_g_recaptcha_response_dep_t *dep,
-    int __v_is_ref,
+    int *__v_is_ref,
     char *_raw_value,
     char *_value
 );

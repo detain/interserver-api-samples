@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from openapi_client.models.server_lease import ServerLease
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ServerAsset(BaseModel):
     """
@@ -79,7 +80,8 @@ class ServerAsset(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "order_id", "hostname", "status", "primary_ipv4", "primary_ipv6", "mac", "datacenter", "type_id", "asset_tag", "rack", "row", "col", "unit_start", "unit_end", "unit_sub", "ipmi_mac", "ipmi_ip", "ipmi_admin_username", "ipmi_admin_password", "ipmi_client_username", "ipmi_client_password", "ipmi_updated", "ipmi_working", "company", "comments", "make", "model", "description", "customer_id", "external_id", "billing_status", "overdue", "create_timestamp", "update_timestamp", "asset_id", "asset_name", "rack_id", "rack_name", "rack_location", "rack_size", "rack_x", "rack_y", "comment", "switchports", "vlans", "vlans6", "lease"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -91,8 +93,7 @@ class ServerAsset(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

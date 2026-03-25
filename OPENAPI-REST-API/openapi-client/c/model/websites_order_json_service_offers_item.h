@@ -21,8 +21,8 @@ typedef struct websites_order_json_service_offers_item_t websites_order_json_ser
 typedef struct websites_order_json_service_offers_item_t {
     char *service_offer_id; // string
     char *service_id; // string
-    int intro_cost; //numeric
-    int renewal_cost; //numeric
+    int *intro_cost; //numeric
+    int *renewal_cost; //numeric
     char *intro_frequency; // string
     char *renewal_frequency; // string
     char *allow_coupon; // string
@@ -38,8 +38,8 @@ typedef struct websites_order_json_service_offers_item_t {
 __attribute__((deprecated)) websites_order_json_service_offers_item_t *websites_order_json_service_offers_item_create(
     char *service_offer_id,
     char *service_id,
-    int intro_cost,
-    int renewal_cost,
+    int *intro_cost,
+    int *renewal_cost,
     char *intro_frequency,
     char *renewal_frequency,
     char *allow_coupon,

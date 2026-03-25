@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIViewTicketResponse::OAIViewTicketResponse(QString json) {
+OAIViewTicketResponse::OAIViewTicketResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIViewTicketResponse::initializeModel() {
     m_ticket_posts_isValid = false;
 }
 
-void OAIViewTicketResponse::fromJson(QString jsonString) {
+void OAIViewTicketResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -20,11 +20,11 @@ class MAIL_LOG
 feature --Access
 
     total: INTEGER_32
-      -- total number of mail log entries
+      -- Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
     skip: INTEGER_32
-      -- number of emails skipped in listing
+      -- The `skip` value used for this page (echoed from the request).
     limit: INTEGER_32
-      -- number of emails to return
+      -- The `limit` value used for this page (echoed from the request).
     emails: detachable LIST [MAIL_LOG_ENTRY]
       
 

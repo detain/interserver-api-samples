@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetOrderDetail_200_response_packageCosts::OAIGetOrderDetail_200_response_packageCosts(QString json) {
+OAIGetOrderDetail_200_response_packageCosts::OAIGetOrderDetail_200_response_packageCosts(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIGetOrderDetail_200_response_packageCosts::initializeModel() {
     m_currency_symbol_isValid = false;
 }
 
-void OAIGetOrderDetail_200_response_packageCosts::fromJson(QString jsonString) {
+void OAIGetOrderDetail_200_response_packageCosts::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

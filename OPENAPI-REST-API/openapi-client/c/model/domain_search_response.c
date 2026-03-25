@@ -6,7 +6,7 @@
 
 
 static domain_search_response_t *domain_search_response_create_internal(
-    int success,
+    int *success,
     char *response_text,
     char *response_time,
     list_t *lookup,
@@ -17,33 +17,42 @@ static domain_search_response_t *domain_search_response_create_internal(
     if (!domain_search_response_local_var) {
         return NULL;
     }
+    memset(domain_search_response_local_var, 0, sizeof(domain_search_response_t));
+    domain_search_response_local_var->_library_owned = 1;
     domain_search_response_local_var->success = success;
     domain_search_response_local_var->response_text = response_text;
     domain_search_response_local_var->response_time = response_time;
     domain_search_response_local_var->lookup = lookup;
     domain_search_response_local_var->suggest = suggest;
     domain_search_response_local_var->tlds = tlds;
-
-    domain_search_response_local_var->_library_owned = 1;
     return domain_search_response_local_var;
 }
 
 __attribute__((deprecated)) domain_search_response_t *domain_search_response_create(
-    int success,
+    int *success,
     char *response_text,
     char *response_time,
     list_t *lookup,
     list_t *suggest,
     list_t *tlds
     ) {
-    return domain_search_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    domain_search_response_t *result = domain_search_response_create_internal (
+        success_copy,
         response_text,
         response_time,
         lookup,
         suggest,
         tlds
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void domain_search_response_free(domain_search_response_t *domain_search_response) {
@@ -55,6 +64,10 @@ void domain_search_response_free(domain_search_response_t *domain_search_respons
         return ;
     }
     listEntry_t *listEntry;
+    if (domain_search_response->success) {
+        free(domain_search_response->success);
+        domain_search_response->success = NULL;
+    }
     if (domain_search_response->response_text) {
         free(domain_search_response->response_text);
         domain_search_response->response_text = NULL;
@@ -92,7 +105,7 @@ cJSON *domain_search_response_convertToJSON(domain_search_response_t *domain_sea
 
     // domain_search_response->success
     if(domain_search_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", domain_search_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *domain_search_response->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -182,6 +195,13 @@ domain_search_response_t *domain_search_response_parseFromJSON(cJSON *domain_sea
 
     domain_search_response_t *domain_search_response_local_var = NULL;
 
+    // define the local variable for domain_search_response->success
+    int *success_local_var = NULL;
+
+    char *response_text_local_str = NULL;
+
+    char *response_time_local_str = NULL;
+
     // define the local list for domain_search_response->lookup
     list_t *lookupList = NULL;
 
@@ -201,6 +221,12 @@ domain_search_response_t *domain_search_response_parseFromJSON(cJSON *domain_sea
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // domain_search_response->response_text
@@ -298,17 +324,36 @@ domain_search_response_t *domain_search_response_parseFromJSON(cJSON *domain_sea
     }
 
 
+    if (response_text && !cJSON_IsNull(response_text)) response_text_local_str = strdup(response_text->valuestring);
+    if (response_time && !cJSON_IsNull(response_time)) response_time_local_str = strdup(response_time->valuestring);
+
     domain_search_response_local_var = domain_search_response_create_internal (
-        success ? success->valueint : 0,
-        response_text && !cJSON_IsNull(response_text) ? strdup(response_text->valuestring) : NULL,
-        response_time && !cJSON_IsNull(response_time) ? strdup(response_time->valuestring) : NULL,
+        success_local_var,
+        response_text_local_str,
+        response_time_local_str,
         lookup ? lookupList : NULL,
         suggest ? suggestList : NULL,
         tlds ? tldsList : NULL
         );
 
+    if (!domain_search_response_local_var) {
+        goto end;
+    }
+
     return domain_search_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (response_text_local_str) {
+        free(response_text_local_str);
+        response_text_local_str = NULL;
+    }
+    if (response_time_local_str) {
+        free(response_time_local_str);
+        response_time_local_str = NULL;
+    }
     if (lookupList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, lookupList) {

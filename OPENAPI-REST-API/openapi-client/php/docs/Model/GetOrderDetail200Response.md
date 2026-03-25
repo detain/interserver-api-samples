@@ -1,4 +1,4 @@
-# # GetOrderDetail200Response
+# GetOrderDetail200Response
 
 ## Properties
 

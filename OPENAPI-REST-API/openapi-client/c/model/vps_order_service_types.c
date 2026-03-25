@@ -12,18 +12,21 @@ static vps_order_service_types_t *vps_order_service_types_create_internal(
     if (!vps_order_service_types_local_var) {
         return NULL;
     }
-    vps_order_service_types_local_var->_32 = _32;
-
+    memset(vps_order_service_types_local_var, 0, sizeof(vps_order_service_types_t));
     vps_order_service_types_local_var->_library_owned = 1;
+    vps_order_service_types_local_var->_32 = _32;
     return vps_order_service_types_local_var;
 }
 
 __attribute__((deprecated)) vps_order_service_types_t *vps_order_service_types_create(
     vps_order_service_types_32_t *_32
     ) {
-    return vps_order_service_types_create_internal (
+    vps_order_service_types_t *result = vps_order_service_types_create_internal (
         _32
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_order_service_types_free(vps_order_service_types_t *vps_order_service_types) {
@@ -82,9 +85,14 @@ vps_order_service_types_t *vps_order_service_types_parseFromJSON(cJSON *vps_orde
     }
 
 
+
     vps_order_service_types_local_var = vps_order_service_types_create_internal (
         _32 ? _32_local_nonprim : NULL
         );
+
+    if (!vps_order_service_types_local_var) {
+        goto end;
+    }
 
     return vps_order_service_types_local_var;
 end:

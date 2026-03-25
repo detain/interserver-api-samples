@@ -28,11 +28,11 @@ interserver_management_api_charge_invoice_rows_invoices_value_INVOICESPAID_e cha
 
 
 typedef struct charge_invoice_rows_invoices_value_t {
-    double invoices_id; //numeric
+    double *invoices_id; //numeric
     char *invoices_description; // string
-    double invoices_amount; //numeric
+    double *invoices_amount; //numeric
     char *invoices_date; // string
-    double invoices_paid; //numeric
+    double *invoices_paid; //numeric
     char *invoices_due_date; // string
     char *invoices_currency; // string
     char *currency_symbol; // string
@@ -43,11 +43,11 @@ typedef struct charge_invoice_rows_invoices_value_t {
 } charge_invoice_rows_invoices_value_t;
 
 __attribute__((deprecated)) charge_invoice_rows_invoices_value_t *charge_invoice_rows_invoices_value_create(
-    double invoices_id,
+    double *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
-    double invoices_paid,
+    double *invoices_paid,
     char *invoices_due_date,
     char *invoices_currency,
     char *currency_symbol,

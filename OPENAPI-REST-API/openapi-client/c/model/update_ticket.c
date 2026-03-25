@@ -29,12 +29,14 @@ static update_ticket_t *update_ticket_create_internal(
     char *root_password,
     char *sudo_username,
     char *sudo_password,
-    int port
+    int *port
     ) {
     update_ticket_t *update_ticket_local_var = malloc(sizeof(update_ticket_t));
     if (!update_ticket_local_var) {
         return NULL;
     }
+    memset(update_ticket_local_var, 0, sizeof(update_ticket_t));
+    update_ticket_local_var->_library_owned = 1;
     update_ticket_local_var->ip = ip;
     update_ticket_local_var->ip_address = ip_address;
     update_ticket_local_var->customer_server_access = customer_server_access;
@@ -42,8 +44,6 @@ static update_ticket_t *update_ticket_create_internal(
     update_ticket_local_var->sudo_username = sudo_username;
     update_ticket_local_var->sudo_password = sudo_password;
     update_ticket_local_var->port = port;
-
-    update_ticket_local_var->_library_owned = 1;
     return update_ticket_local_var;
 }
 
@@ -54,17 +54,26 @@ __attribute__((deprecated)) update_ticket_t *update_ticket_create(
     char *root_password,
     char *sudo_username,
     char *sudo_password,
-    int port
+    int *port
     ) {
-    return update_ticket_create_internal (
+    int *port_copy = NULL;
+    if (port) {
+        port_copy = malloc(sizeof(int));
+        if (port_copy) *port_copy = *port;
+    }
+    update_ticket_t *result = update_ticket_create_internal (
         ip,
         ip_address,
         customer_server_access,
         root_password,
         sudo_username,
         sudo_password,
-        port
+        port_copy
         );
+    if (!result) {
+        free(port_copy);
+    }
+    return result;
 }
 
 void update_ticket_free(update_ticket_t *update_ticket) {
@@ -95,6 +104,10 @@ void update_ticket_free(update_ticket_t *update_ticket) {
     if (update_ticket->sudo_password) {
         free(update_ticket->sudo_password);
         update_ticket->sudo_password = NULL;
+    }
+    if (update_ticket->port) {
+        free(update_ticket->port);
+        update_ticket->port = NULL;
     }
     free(update_ticket);
 }
@@ -153,7 +166,7 @@ cJSON *update_ticket_convertToJSON(update_ticket_t *update_ticket) {
 
     // update_ticket->port
     if(update_ticket->port) {
-    if(cJSON_AddNumberToObject(item, "port", update_ticket->port) == NULL) {
+    if(cJSON_AddNumberToObject(item, "port", *update_ticket->port) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -169,6 +182,19 @@ fail:
 update_ticket_t *update_ticket_parseFromJSON(cJSON *update_ticketJSON){
 
     update_ticket_t *update_ticket_local_var = NULL;
+
+    char *ip_local_str = NULL;
+
+    char *ip_address_local_str = NULL;
+
+    char *root_password_local_str = NULL;
+
+    char *sudo_username_local_str = NULL;
+
+    char *sudo_password_local_str = NULL;
+
+    // define the local variable for update_ticket->port
+    int *port_local_var = NULL;
 
     // update_ticket->ip
     cJSON *ip = cJSON_GetObjectItemCaseSensitive(update_ticketJSON, "ip");
@@ -254,21 +280,61 @@ update_ticket_t *update_ticket_parseFromJSON(cJSON *update_ticketJSON){
     {
     goto end; //Numeric
     }
+    port_local_var = malloc(sizeof(int));
+    if(!port_local_var)
+    {
+        goto end;
+    }
+    *port_local_var = port->valuedouble;
     }
 
 
+    if (ip && !cJSON_IsNull(ip)) ip_local_str = strdup(ip->valuestring);
+    if (ip_address && !cJSON_IsNull(ip_address)) ip_address_local_str = strdup(ip_address->valuestring);
+    if (root_password && !cJSON_IsNull(root_password)) root_password_local_str = strdup(root_password->valuestring);
+    if (sudo_username && !cJSON_IsNull(sudo_username)) sudo_username_local_str = strdup(sudo_username->valuestring);
+    if (sudo_password && !cJSON_IsNull(sudo_password)) sudo_password_local_str = strdup(sudo_password->valuestring);
+
     update_ticket_local_var = update_ticket_create_internal (
-        ip && !cJSON_IsNull(ip) ? strdup(ip->valuestring) : NULL,
-        ip_address && !cJSON_IsNull(ip_address) ? strdup(ip_address->valuestring) : NULL,
+        ip_local_str,
+        ip_address_local_str,
         customer_server_access ? customer_server_accessVariable : interserver_management_api_update_ticket_CUSTOMERSERVERACCESS_NULL,
-        root_password && !cJSON_IsNull(root_password) ? strdup(root_password->valuestring) : NULL,
-        sudo_username && !cJSON_IsNull(sudo_username) ? strdup(sudo_username->valuestring) : NULL,
-        sudo_password && !cJSON_IsNull(sudo_password) ? strdup(sudo_password->valuestring) : NULL,
-        port ? port->valuedouble : 0
+        root_password_local_str,
+        sudo_username_local_str,
+        sudo_password_local_str,
+        port_local_var
         );
+
+    if (!update_ticket_local_var) {
+        goto end;
+    }
 
     return update_ticket_local_var;
 end:
+    if (ip_local_str) {
+        free(ip_local_str);
+        ip_local_str = NULL;
+    }
+    if (ip_address_local_str) {
+        free(ip_address_local_str);
+        ip_address_local_str = NULL;
+    }
+    if (root_password_local_str) {
+        free(root_password_local_str);
+        root_password_local_str = NULL;
+    }
+    if (sudo_username_local_str) {
+        free(sudo_username_local_str);
+        sudo_username_local_str = NULL;
+    }
+    if (sudo_password_local_str) {
+        free(sudo_password_local_str);
+        sudo_password_local_str = NULL;
+    }
+    if (port_local_var) {
+        free(port_local_var);
+        port_local_var = NULL;
+    }
     return NULL;
 
 }

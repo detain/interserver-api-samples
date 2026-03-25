@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrderPutResponse::OAIVpsOrderPutResponse(QString json) {
+OAIVpsOrderPutResponse::OAIVpsOrderPutResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -101,7 +101,7 @@ void OAIVpsOrderPutResponse::initializeModel() {
     m_rootpass_isValid = false;
 }
 
-void OAIVpsOrderPutResponse::fromJson(QString jsonString) {
+void OAIVpsOrderPutResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

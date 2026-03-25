@@ -15,12 +15,12 @@ static vps_traffic_totals_resposne_t *vps_traffic_totals_resposne_create_interna
     if (!vps_traffic_totals_resposne_local_var) {
         return NULL;
     }
+    memset(vps_traffic_totals_resposne_local_var, 0, sizeof(vps_traffic_totals_resposne_t));
+    vps_traffic_totals_resposne_local_var->_library_owned = 1;
     vps_traffic_totals_resposne_local_var->day = day;
     vps_traffic_totals_resposne_local_var->month = month;
     vps_traffic_totals_resposne_local_var->year = year;
     vps_traffic_totals_resposne_local_var->all = all;
-
-    vps_traffic_totals_resposne_local_var->_library_owned = 1;
     return vps_traffic_totals_resposne_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) vps_traffic_totals_resposne_t *vps_traffic_totals_re
     vps_traffic_totals_section_response_t *year,
     vps_traffic_totals_section_response_t *all
     ) {
-    return vps_traffic_totals_resposne_create_internal (
+    vps_traffic_totals_resposne_t *result = vps_traffic_totals_resposne_create_internal (
         day,
         month,
         year,
         all
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_traffic_totals_resposne_free(vps_traffic_totals_resposne_t *vps_traffic_totals_resposne) {
@@ -197,12 +200,17 @@ vps_traffic_totals_resposne_t *vps_traffic_totals_resposne_parseFromJSON(cJSON *
     all_local_nonprim = vps_traffic_totals_section_response_parseFromJSON(all); //nonprimitive
 
 
+
     vps_traffic_totals_resposne_local_var = vps_traffic_totals_resposne_create_internal (
         day_local_nonprim,
         month_local_nonprim,
         year_local_nonprim,
         all_local_nonprim
         );
+
+    if (!vps_traffic_totals_resposne_local_var) {
+        goto end;
+    }
 
     return vps_traffic_totals_resposne_local_var;
 end:

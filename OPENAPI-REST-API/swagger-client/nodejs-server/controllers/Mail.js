@@ -323,8 +323,8 @@ module.exports.updateMailInfo = function updateMailInfo (req, res, next, id) {
     });
 };
 
-module.exports.viewMailLog = function viewMailLog (req, res, next, id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered) {
-  Mail.viewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered)
+module.exports.viewMailLog = function viewMailLog (req, res, next, id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby) {
+  Mail.viewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby)
     .then(function (response) {
       utils.writeJson(res, response);
     })

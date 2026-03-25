@@ -1,4 +1,4 @@
-# # CreateFirewallRule
+# CreateFirewallRule
 
 ## Properties
 

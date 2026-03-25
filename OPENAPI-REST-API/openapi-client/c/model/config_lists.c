@@ -19,6 +19,8 @@ static config_lists_t *config_lists_create_internal(
     if (!config_lists_local_var) {
         return NULL;
     }
+    memset(config_lists_local_var, 0, sizeof(config_lists_t));
+    config_lists_local_var->_library_owned = 1;
     config_lists_local_var->cpu_li = cpu_li;
     config_lists_local_var->memory_li = memory_li;
     config_lists_local_var->hd_li = hd_li;
@@ -27,8 +29,6 @@ static config_lists_t *config_lists_create_internal(
     config_lists_local_var->os_li = os_li;
     config_lists_local_var->cp_li = cp_li;
     config_lists_local_var->raid_li = raid_li;
-
-    config_lists_local_var->_library_owned = 1;
     return config_lists_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) config_lists_t *config_lists_create(
     list_t* cp_li,
     list_t *raid_li
     ) {
-    return config_lists_create_internal (
+    config_lists_t *result = config_lists_create_internal (
         cpu_li,
         memory_li,
         hd_li,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) config_lists_t *config_lists_create(
         cp_li,
         raid_li
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void config_lists_free(config_lists_t *config_lists) {
@@ -439,6 +442,7 @@ config_lists_t *config_lists_parseFromJSON(cJSON *config_listsJSON){
     }
 
 
+
     config_lists_local_var = config_lists_create_internal (
         cpu_li ? cpu_liList : NULL,
         memory_li ? memory_liList : NULL,
@@ -449,6 +453,10 @@ config_lists_t *config_lists_parseFromJSON(cJSON *config_listsJSON){
         cp_li ? cp_liList : NULL,
         raid_li ? raid_liList : NULL
         );
+
+    if (!config_lists_local_var) {
+        goto end;
+    }
 
     return config_lists_local_var;
 end:

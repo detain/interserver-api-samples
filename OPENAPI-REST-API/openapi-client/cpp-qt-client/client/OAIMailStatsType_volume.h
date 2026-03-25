@@ -36,13 +36,13 @@ class OAIMailStatsType_volume_ip;
 class OAIMailStatsType_volume : public OAIObject {
 public:
     OAIMailStatsType_volume();
-    OAIMailStatsType_volume(QString json);
+    OAIMailStatsType_volume(const QString &json);
     ~OAIMailStatsType_volume() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIMailStatsType_volume_to getTo() const;
     void setTo(const OAIMailStatsType_volume_to &to);

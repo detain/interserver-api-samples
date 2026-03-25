@@ -64,6 +64,8 @@ static account_info_max_mind_response_t *account_info_max_mind_response_create_i
     if (!account_info_max_mind_response_local_var) {
         return NULL;
     }
+    memset(account_info_max_mind_response_local_var, 0, sizeof(account_info_max_mind_response_t));
+    account_info_max_mind_response_local_var->_library_owned = 1;
     account_info_max_mind_response_local_var->distance = distance;
     account_info_max_mind_response_local_var->country_match = country_match;
     account_info_max_mind_response_local_var->country_code = country_code;
@@ -117,8 +119,6 @@ static account_info_max_mind_response_t *account_info_max_mind_response_create_i
     account_info_max_mind_response_local_var->service_level = service_level;
     account_info_max_mind_response_local_var->explanation = explanation;
     account_info_max_mind_response_local_var->female_name = female_name;
-
-    account_info_max_mind_response_local_var->_library_owned = 1;
     return account_info_max_mind_response_local_var;
 }
 
@@ -177,7 +177,7 @@ __attribute__((deprecated)) account_info_max_mind_response_t *account_info_max_m
     char *explanation,
     char *female_name
     ) {
-    return account_info_max_mind_response_create_internal (
+    account_info_max_mind_response_t *result = account_info_max_mind_response_create_internal (
         distance,
         country_match,
         country_code,
@@ -232,6 +232,9 @@ __attribute__((deprecated)) account_info_max_mind_response_t *account_info_max_m
         explanation,
         female_name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_info_max_mind_response_free(account_info_max_mind_response_t *account_info_max_mind_response) {
@@ -901,8 +904,112 @@ account_info_max_mind_response_t *account_info_max_mind_response_parseFromJSON(c
 
     account_info_max_mind_response_t *account_info_max_mind_response_local_var = NULL;
 
+    char *distance_local_str = NULL;
+
+    char *country_match_local_str = NULL;
+
+    char *country_code_local_str = NULL;
+
+    char *free_mail_local_str = NULL;
+
+    char *anonymous_proxy_local_str = NULL;
+
+    char *score_local_str = NULL;
+
+    char *bin_match_local_str = NULL;
+
+    char *bin_country_local_str = NULL;
+
+    char *err_local_str = NULL;
+
+    char *proxy_score_local_str = NULL;
+
+    char *ip_region_local_str = NULL;
+
+    char *ip_city_local_str = NULL;
+
+    char *ip_latitude_local_str = NULL;
+
+    char *ip_longitude_local_str = NULL;
+
+    char *bin_name_local_str = NULL;
+
+    char *ip_isp_local_str = NULL;
+
+    char *ip_org_local_str = NULL;
+
+    char *bin_name_match_local_str = NULL;
+
+    char *bin_phone_match_local_str = NULL;
+
+    char *bin_phone_local_str = NULL;
+
+    char *cust_phone_in_billing_loc_local_str = NULL;
+
+    char *high_risk_country_local_str = NULL;
+
+    char *queries_remaining_local_str = NULL;
+
+    char *city_postal_match_local_str = NULL;
+
+    char *ship_city_postal_match_local_str = NULL;
+
+    char *maxmind_id_local_str = NULL;
+
+    char *ip_asnum_local_str = NULL;
+
+    char *ip_user_type_local_str = NULL;
+
+    char *ip_country_conf_local_str = NULL;
+
+    char *ip_region_conf_local_str = NULL;
+
+    char *ip_city_conf_local_str = NULL;
+
+    char *ip_postal_code_local_str = NULL;
+
+    char *ip_postal_conf_local_str = NULL;
+
+    char *ip_accuracy_radius_local_str = NULL;
+
+    char *ip_net_speed_cell_local_str = NULL;
+
+    char *ip_metro_code_local_str = NULL;
+
+    char *ip_area_code_local_str = NULL;
+
+    char *ip_time_zone_local_str = NULL;
+
+    char *ip_region_name_local_str = NULL;
+
+    char *ip_domain_local_str = NULL;
+
+    char *ip_country_name_local_str = NULL;
+
+    char *ip_continent_code_local_str = NULL;
+
+    char *ip_corporate_proxy_local_str = NULL;
+
+    char *carder_email_local_str = NULL;
+
+    char *high_risk_username_local_str = NULL;
+
+    char *high_risk_password_local_str = NULL;
+
     // define the local variable for account_info_max_mind_response->risk_score
     account_info_max_mind_response_risk_score_t *risk_score_local_nonprim = NULL;
+
+    char *is_trans_proxy_local_str = NULL;
+
+    char *prepaid_local_str = NULL;
+
+    char *minfraud_version_local_str = NULL;
+
+    char *service_level_local_str = NULL;
+
+    char *explanation_local_str = NULL;
+
+    char *female_name_local_str = NULL;
 
     // account_info_max_mind_response->distance
     cJSON *distance = cJSON_GetObjectItemCaseSensitive(account_info_max_mind_responseJSON, "distance");
@@ -1538,67 +1645,332 @@ account_info_max_mind_response_t *account_info_max_mind_response_parseFromJSON(c
     }
 
 
+    if (distance && !cJSON_IsNull(distance)) distance_local_str = strdup(distance->valuestring);
+    if (country_match && !cJSON_IsNull(country_match)) country_match_local_str = strdup(country_match->valuestring);
+    if (country_code && !cJSON_IsNull(country_code)) country_code_local_str = strdup(country_code->valuestring);
+    if (free_mail && !cJSON_IsNull(free_mail)) free_mail_local_str = strdup(free_mail->valuestring);
+    if (anonymous_proxy && !cJSON_IsNull(anonymous_proxy)) anonymous_proxy_local_str = strdup(anonymous_proxy->valuestring);
+    if (score && !cJSON_IsNull(score)) score_local_str = strdup(score->valuestring);
+    if (bin_match && !cJSON_IsNull(bin_match)) bin_match_local_str = strdup(bin_match->valuestring);
+    if (bin_country && !cJSON_IsNull(bin_country)) bin_country_local_str = strdup(bin_country->valuestring);
+    if (err && !cJSON_IsNull(err)) err_local_str = strdup(err->valuestring);
+    if (proxy_score && !cJSON_IsNull(proxy_score)) proxy_score_local_str = strdup(proxy_score->valuestring);
+    if (ip_region && !cJSON_IsNull(ip_region)) ip_region_local_str = strdup(ip_region->valuestring);
+    if (ip_city && !cJSON_IsNull(ip_city)) ip_city_local_str = strdup(ip_city->valuestring);
+    if (ip_latitude && !cJSON_IsNull(ip_latitude)) ip_latitude_local_str = strdup(ip_latitude->valuestring);
+    if (ip_longitude && !cJSON_IsNull(ip_longitude)) ip_longitude_local_str = strdup(ip_longitude->valuestring);
+    if (bin_name && !cJSON_IsNull(bin_name)) bin_name_local_str = strdup(bin_name->valuestring);
+    if (ip_isp && !cJSON_IsNull(ip_isp)) ip_isp_local_str = strdup(ip_isp->valuestring);
+    if (ip_org && !cJSON_IsNull(ip_org)) ip_org_local_str = strdup(ip_org->valuestring);
+    if (bin_name_match && !cJSON_IsNull(bin_name_match)) bin_name_match_local_str = strdup(bin_name_match->valuestring);
+    if (bin_phone_match && !cJSON_IsNull(bin_phone_match)) bin_phone_match_local_str = strdup(bin_phone_match->valuestring);
+    if (bin_phone && !cJSON_IsNull(bin_phone)) bin_phone_local_str = strdup(bin_phone->valuestring);
+    if (cust_phone_in_billing_loc && !cJSON_IsNull(cust_phone_in_billing_loc)) cust_phone_in_billing_loc_local_str = strdup(cust_phone_in_billing_loc->valuestring);
+    if (high_risk_country && !cJSON_IsNull(high_risk_country)) high_risk_country_local_str = strdup(high_risk_country->valuestring);
+    if (queries_remaining && !cJSON_IsNull(queries_remaining)) queries_remaining_local_str = strdup(queries_remaining->valuestring);
+    if (city_postal_match && !cJSON_IsNull(city_postal_match)) city_postal_match_local_str = strdup(city_postal_match->valuestring);
+    if (ship_city_postal_match && !cJSON_IsNull(ship_city_postal_match)) ship_city_postal_match_local_str = strdup(ship_city_postal_match->valuestring);
+    if (maxmind_id && !cJSON_IsNull(maxmind_id)) maxmind_id_local_str = strdup(maxmind_id->valuestring);
+    if (ip_asnum && !cJSON_IsNull(ip_asnum)) ip_asnum_local_str = strdup(ip_asnum->valuestring);
+    if (ip_user_type && !cJSON_IsNull(ip_user_type)) ip_user_type_local_str = strdup(ip_user_type->valuestring);
+    if (ip_country_conf && !cJSON_IsNull(ip_country_conf)) ip_country_conf_local_str = strdup(ip_country_conf->valuestring);
+    if (ip_region_conf && !cJSON_IsNull(ip_region_conf)) ip_region_conf_local_str = strdup(ip_region_conf->valuestring);
+    if (ip_city_conf && !cJSON_IsNull(ip_city_conf)) ip_city_conf_local_str = strdup(ip_city_conf->valuestring);
+    if (ip_postal_code && !cJSON_IsNull(ip_postal_code)) ip_postal_code_local_str = strdup(ip_postal_code->valuestring);
+    if (ip_postal_conf && !cJSON_IsNull(ip_postal_conf)) ip_postal_conf_local_str = strdup(ip_postal_conf->valuestring);
+    if (ip_accuracy_radius && !cJSON_IsNull(ip_accuracy_radius)) ip_accuracy_radius_local_str = strdup(ip_accuracy_radius->valuestring);
+    if (ip_net_speed_cell && !cJSON_IsNull(ip_net_speed_cell)) ip_net_speed_cell_local_str = strdup(ip_net_speed_cell->valuestring);
+    if (ip_metro_code && !cJSON_IsNull(ip_metro_code)) ip_metro_code_local_str = strdup(ip_metro_code->valuestring);
+    if (ip_area_code && !cJSON_IsNull(ip_area_code)) ip_area_code_local_str = strdup(ip_area_code->valuestring);
+    if (ip_time_zone && !cJSON_IsNull(ip_time_zone)) ip_time_zone_local_str = strdup(ip_time_zone->valuestring);
+    if (ip_region_name && !cJSON_IsNull(ip_region_name)) ip_region_name_local_str = strdup(ip_region_name->valuestring);
+    if (ip_domain && !cJSON_IsNull(ip_domain)) ip_domain_local_str = strdup(ip_domain->valuestring);
+    if (ip_country_name && !cJSON_IsNull(ip_country_name)) ip_country_name_local_str = strdup(ip_country_name->valuestring);
+    if (ip_continent_code && !cJSON_IsNull(ip_continent_code)) ip_continent_code_local_str = strdup(ip_continent_code->valuestring);
+    if (ip_corporate_proxy && !cJSON_IsNull(ip_corporate_proxy)) ip_corporate_proxy_local_str = strdup(ip_corporate_proxy->valuestring);
+    if (carder_email && !cJSON_IsNull(carder_email)) carder_email_local_str = strdup(carder_email->valuestring);
+    if (high_risk_username && !cJSON_IsNull(high_risk_username)) high_risk_username_local_str = strdup(high_risk_username->valuestring);
+    if (high_risk_password && !cJSON_IsNull(high_risk_password)) high_risk_password_local_str = strdup(high_risk_password->valuestring);
+    if (is_trans_proxy && !cJSON_IsNull(is_trans_proxy)) is_trans_proxy_local_str = strdup(is_trans_proxy->valuestring);
+    if (prepaid && !cJSON_IsNull(prepaid)) prepaid_local_str = strdup(prepaid->valuestring);
+    if (minfraud_version && !cJSON_IsNull(minfraud_version)) minfraud_version_local_str = strdup(minfraud_version->valuestring);
+    if (service_level && !cJSON_IsNull(service_level)) service_level_local_str = strdup(service_level->valuestring);
+    if (explanation && !cJSON_IsNull(explanation)) explanation_local_str = strdup(explanation->valuestring);
+    if (female_name && !cJSON_IsNull(female_name)) female_name_local_str = strdup(female_name->valuestring);
+
     account_info_max_mind_response_local_var = account_info_max_mind_response_create_internal (
-        distance && !cJSON_IsNull(distance) ? strdup(distance->valuestring) : NULL,
-        country_match && !cJSON_IsNull(country_match) ? strdup(country_match->valuestring) : NULL,
-        country_code && !cJSON_IsNull(country_code) ? strdup(country_code->valuestring) : NULL,
-        free_mail && !cJSON_IsNull(free_mail) ? strdup(free_mail->valuestring) : NULL,
-        anonymous_proxy && !cJSON_IsNull(anonymous_proxy) ? strdup(anonymous_proxy->valuestring) : NULL,
-        score && !cJSON_IsNull(score) ? strdup(score->valuestring) : NULL,
-        bin_match && !cJSON_IsNull(bin_match) ? strdup(bin_match->valuestring) : NULL,
-        bin_country && !cJSON_IsNull(bin_country) ? strdup(bin_country->valuestring) : NULL,
-        err && !cJSON_IsNull(err) ? strdup(err->valuestring) : NULL,
-        proxy_score && !cJSON_IsNull(proxy_score) ? strdup(proxy_score->valuestring) : NULL,
-        ip_region && !cJSON_IsNull(ip_region) ? strdup(ip_region->valuestring) : NULL,
-        ip_city && !cJSON_IsNull(ip_city) ? strdup(ip_city->valuestring) : NULL,
-        ip_latitude && !cJSON_IsNull(ip_latitude) ? strdup(ip_latitude->valuestring) : NULL,
-        ip_longitude && !cJSON_IsNull(ip_longitude) ? strdup(ip_longitude->valuestring) : NULL,
-        bin_name && !cJSON_IsNull(bin_name) ? strdup(bin_name->valuestring) : NULL,
-        ip_isp && !cJSON_IsNull(ip_isp) ? strdup(ip_isp->valuestring) : NULL,
-        ip_org && !cJSON_IsNull(ip_org) ? strdup(ip_org->valuestring) : NULL,
-        bin_name_match && !cJSON_IsNull(bin_name_match) ? strdup(bin_name_match->valuestring) : NULL,
-        bin_phone_match && !cJSON_IsNull(bin_phone_match) ? strdup(bin_phone_match->valuestring) : NULL,
-        bin_phone && !cJSON_IsNull(bin_phone) ? strdup(bin_phone->valuestring) : NULL,
-        cust_phone_in_billing_loc && !cJSON_IsNull(cust_phone_in_billing_loc) ? strdup(cust_phone_in_billing_loc->valuestring) : NULL,
-        high_risk_country && !cJSON_IsNull(high_risk_country) ? strdup(high_risk_country->valuestring) : NULL,
-        queries_remaining && !cJSON_IsNull(queries_remaining) ? strdup(queries_remaining->valuestring) : NULL,
-        city_postal_match && !cJSON_IsNull(city_postal_match) ? strdup(city_postal_match->valuestring) : NULL,
-        ship_city_postal_match && !cJSON_IsNull(ship_city_postal_match) ? strdup(ship_city_postal_match->valuestring) : NULL,
-        maxmind_id && !cJSON_IsNull(maxmind_id) ? strdup(maxmind_id->valuestring) : NULL,
-        ip_asnum && !cJSON_IsNull(ip_asnum) ? strdup(ip_asnum->valuestring) : NULL,
-        ip_user_type && !cJSON_IsNull(ip_user_type) ? strdup(ip_user_type->valuestring) : NULL,
-        ip_country_conf && !cJSON_IsNull(ip_country_conf) ? strdup(ip_country_conf->valuestring) : NULL,
-        ip_region_conf && !cJSON_IsNull(ip_region_conf) ? strdup(ip_region_conf->valuestring) : NULL,
-        ip_city_conf && !cJSON_IsNull(ip_city_conf) ? strdup(ip_city_conf->valuestring) : NULL,
-        ip_postal_code && !cJSON_IsNull(ip_postal_code) ? strdup(ip_postal_code->valuestring) : NULL,
-        ip_postal_conf && !cJSON_IsNull(ip_postal_conf) ? strdup(ip_postal_conf->valuestring) : NULL,
-        ip_accuracy_radius && !cJSON_IsNull(ip_accuracy_radius) ? strdup(ip_accuracy_radius->valuestring) : NULL,
-        ip_net_speed_cell && !cJSON_IsNull(ip_net_speed_cell) ? strdup(ip_net_speed_cell->valuestring) : NULL,
-        ip_metro_code && !cJSON_IsNull(ip_metro_code) ? strdup(ip_metro_code->valuestring) : NULL,
-        ip_area_code && !cJSON_IsNull(ip_area_code) ? strdup(ip_area_code->valuestring) : NULL,
-        ip_time_zone && !cJSON_IsNull(ip_time_zone) ? strdup(ip_time_zone->valuestring) : NULL,
-        ip_region_name && !cJSON_IsNull(ip_region_name) ? strdup(ip_region_name->valuestring) : NULL,
-        ip_domain && !cJSON_IsNull(ip_domain) ? strdup(ip_domain->valuestring) : NULL,
-        ip_country_name && !cJSON_IsNull(ip_country_name) ? strdup(ip_country_name->valuestring) : NULL,
-        ip_continent_code && !cJSON_IsNull(ip_continent_code) ? strdup(ip_continent_code->valuestring) : NULL,
-        ip_corporate_proxy && !cJSON_IsNull(ip_corporate_proxy) ? strdup(ip_corporate_proxy->valuestring) : NULL,
-        carder_email && !cJSON_IsNull(carder_email) ? strdup(carder_email->valuestring) : NULL,
-        high_risk_username && !cJSON_IsNull(high_risk_username) ? strdup(high_risk_username->valuestring) : NULL,
-        high_risk_password && !cJSON_IsNull(high_risk_password) ? strdup(high_risk_password->valuestring) : NULL,
+        distance_local_str,
+        country_match_local_str,
+        country_code_local_str,
+        free_mail_local_str,
+        anonymous_proxy_local_str,
+        score_local_str,
+        bin_match_local_str,
+        bin_country_local_str,
+        err_local_str,
+        proxy_score_local_str,
+        ip_region_local_str,
+        ip_city_local_str,
+        ip_latitude_local_str,
+        ip_longitude_local_str,
+        bin_name_local_str,
+        ip_isp_local_str,
+        ip_org_local_str,
+        bin_name_match_local_str,
+        bin_phone_match_local_str,
+        bin_phone_local_str,
+        cust_phone_in_billing_loc_local_str,
+        high_risk_country_local_str,
+        queries_remaining_local_str,
+        city_postal_match_local_str,
+        ship_city_postal_match_local_str,
+        maxmind_id_local_str,
+        ip_asnum_local_str,
+        ip_user_type_local_str,
+        ip_country_conf_local_str,
+        ip_region_conf_local_str,
+        ip_city_conf_local_str,
+        ip_postal_code_local_str,
+        ip_postal_conf_local_str,
+        ip_accuracy_radius_local_str,
+        ip_net_speed_cell_local_str,
+        ip_metro_code_local_str,
+        ip_area_code_local_str,
+        ip_time_zone_local_str,
+        ip_region_name_local_str,
+        ip_domain_local_str,
+        ip_country_name_local_str,
+        ip_continent_code_local_str,
+        ip_corporate_proxy_local_str,
+        carder_email_local_str,
+        high_risk_username_local_str,
+        high_risk_password_local_str,
         risk_score ? risk_score_local_nonprim : NULL,
-        is_trans_proxy && !cJSON_IsNull(is_trans_proxy) ? strdup(is_trans_proxy->valuestring) : NULL,
-        prepaid && !cJSON_IsNull(prepaid) ? strdup(prepaid->valuestring) : NULL,
-        minfraud_version && !cJSON_IsNull(minfraud_version) ? strdup(minfraud_version->valuestring) : NULL,
-        service_level && !cJSON_IsNull(service_level) ? strdup(service_level->valuestring) : NULL,
-        explanation && !cJSON_IsNull(explanation) ? strdup(explanation->valuestring) : NULL,
-        female_name && !cJSON_IsNull(female_name) ? strdup(female_name->valuestring) : NULL
+        is_trans_proxy_local_str,
+        prepaid_local_str,
+        minfraud_version_local_str,
+        service_level_local_str,
+        explanation_local_str,
+        female_name_local_str
         );
+
+    if (!account_info_max_mind_response_local_var) {
+        goto end;
+    }
 
     return account_info_max_mind_response_local_var;
 end:
+    if (distance_local_str) {
+        free(distance_local_str);
+        distance_local_str = NULL;
+    }
+    if (country_match_local_str) {
+        free(country_match_local_str);
+        country_match_local_str = NULL;
+    }
+    if (country_code_local_str) {
+        free(country_code_local_str);
+        country_code_local_str = NULL;
+    }
+    if (free_mail_local_str) {
+        free(free_mail_local_str);
+        free_mail_local_str = NULL;
+    }
+    if (anonymous_proxy_local_str) {
+        free(anonymous_proxy_local_str);
+        anonymous_proxy_local_str = NULL;
+    }
+    if (score_local_str) {
+        free(score_local_str);
+        score_local_str = NULL;
+    }
+    if (bin_match_local_str) {
+        free(bin_match_local_str);
+        bin_match_local_str = NULL;
+    }
+    if (bin_country_local_str) {
+        free(bin_country_local_str);
+        bin_country_local_str = NULL;
+    }
+    if (err_local_str) {
+        free(err_local_str);
+        err_local_str = NULL;
+    }
+    if (proxy_score_local_str) {
+        free(proxy_score_local_str);
+        proxy_score_local_str = NULL;
+    }
+    if (ip_region_local_str) {
+        free(ip_region_local_str);
+        ip_region_local_str = NULL;
+    }
+    if (ip_city_local_str) {
+        free(ip_city_local_str);
+        ip_city_local_str = NULL;
+    }
+    if (ip_latitude_local_str) {
+        free(ip_latitude_local_str);
+        ip_latitude_local_str = NULL;
+    }
+    if (ip_longitude_local_str) {
+        free(ip_longitude_local_str);
+        ip_longitude_local_str = NULL;
+    }
+    if (bin_name_local_str) {
+        free(bin_name_local_str);
+        bin_name_local_str = NULL;
+    }
+    if (ip_isp_local_str) {
+        free(ip_isp_local_str);
+        ip_isp_local_str = NULL;
+    }
+    if (ip_org_local_str) {
+        free(ip_org_local_str);
+        ip_org_local_str = NULL;
+    }
+    if (bin_name_match_local_str) {
+        free(bin_name_match_local_str);
+        bin_name_match_local_str = NULL;
+    }
+    if (bin_phone_match_local_str) {
+        free(bin_phone_match_local_str);
+        bin_phone_match_local_str = NULL;
+    }
+    if (bin_phone_local_str) {
+        free(bin_phone_local_str);
+        bin_phone_local_str = NULL;
+    }
+    if (cust_phone_in_billing_loc_local_str) {
+        free(cust_phone_in_billing_loc_local_str);
+        cust_phone_in_billing_loc_local_str = NULL;
+    }
+    if (high_risk_country_local_str) {
+        free(high_risk_country_local_str);
+        high_risk_country_local_str = NULL;
+    }
+    if (queries_remaining_local_str) {
+        free(queries_remaining_local_str);
+        queries_remaining_local_str = NULL;
+    }
+    if (city_postal_match_local_str) {
+        free(city_postal_match_local_str);
+        city_postal_match_local_str = NULL;
+    }
+    if (ship_city_postal_match_local_str) {
+        free(ship_city_postal_match_local_str);
+        ship_city_postal_match_local_str = NULL;
+    }
+    if (maxmind_id_local_str) {
+        free(maxmind_id_local_str);
+        maxmind_id_local_str = NULL;
+    }
+    if (ip_asnum_local_str) {
+        free(ip_asnum_local_str);
+        ip_asnum_local_str = NULL;
+    }
+    if (ip_user_type_local_str) {
+        free(ip_user_type_local_str);
+        ip_user_type_local_str = NULL;
+    }
+    if (ip_country_conf_local_str) {
+        free(ip_country_conf_local_str);
+        ip_country_conf_local_str = NULL;
+    }
+    if (ip_region_conf_local_str) {
+        free(ip_region_conf_local_str);
+        ip_region_conf_local_str = NULL;
+    }
+    if (ip_city_conf_local_str) {
+        free(ip_city_conf_local_str);
+        ip_city_conf_local_str = NULL;
+    }
+    if (ip_postal_code_local_str) {
+        free(ip_postal_code_local_str);
+        ip_postal_code_local_str = NULL;
+    }
+    if (ip_postal_conf_local_str) {
+        free(ip_postal_conf_local_str);
+        ip_postal_conf_local_str = NULL;
+    }
+    if (ip_accuracy_radius_local_str) {
+        free(ip_accuracy_radius_local_str);
+        ip_accuracy_radius_local_str = NULL;
+    }
+    if (ip_net_speed_cell_local_str) {
+        free(ip_net_speed_cell_local_str);
+        ip_net_speed_cell_local_str = NULL;
+    }
+    if (ip_metro_code_local_str) {
+        free(ip_metro_code_local_str);
+        ip_metro_code_local_str = NULL;
+    }
+    if (ip_area_code_local_str) {
+        free(ip_area_code_local_str);
+        ip_area_code_local_str = NULL;
+    }
+    if (ip_time_zone_local_str) {
+        free(ip_time_zone_local_str);
+        ip_time_zone_local_str = NULL;
+    }
+    if (ip_region_name_local_str) {
+        free(ip_region_name_local_str);
+        ip_region_name_local_str = NULL;
+    }
+    if (ip_domain_local_str) {
+        free(ip_domain_local_str);
+        ip_domain_local_str = NULL;
+    }
+    if (ip_country_name_local_str) {
+        free(ip_country_name_local_str);
+        ip_country_name_local_str = NULL;
+    }
+    if (ip_continent_code_local_str) {
+        free(ip_continent_code_local_str);
+        ip_continent_code_local_str = NULL;
+    }
+    if (ip_corporate_proxy_local_str) {
+        free(ip_corporate_proxy_local_str);
+        ip_corporate_proxy_local_str = NULL;
+    }
+    if (carder_email_local_str) {
+        free(carder_email_local_str);
+        carder_email_local_str = NULL;
+    }
+    if (high_risk_username_local_str) {
+        free(high_risk_username_local_str);
+        high_risk_username_local_str = NULL;
+    }
+    if (high_risk_password_local_str) {
+        free(high_risk_password_local_str);
+        high_risk_password_local_str = NULL;
+    }
     if (risk_score_local_nonprim) {
         account_info_max_mind_response_risk_score_free(risk_score_local_nonprim);
         risk_score_local_nonprim = NULL;
+    }
+    if (is_trans_proxy_local_str) {
+        free(is_trans_proxy_local_str);
+        is_trans_proxy_local_str = NULL;
+    }
+    if (prepaid_local_str) {
+        free(prepaid_local_str);
+        prepaid_local_str = NULL;
+    }
+    if (minfraud_version_local_str) {
+        free(minfraud_version_local_str);
+        minfraud_version_local_str = NULL;
+    }
+    if (service_level_local_str) {
+        free(service_level_local_str);
+        service_level_local_str = NULL;
+    }
+    if (explanation_local_str) {
+        free(explanation_local_str);
+        explanation_local_str = NULL;
+    }
+    if (female_name_local_str) {
+        free(female_name_local_str);
+        female_name_local_str = NULL;
     }
     return NULL;
 

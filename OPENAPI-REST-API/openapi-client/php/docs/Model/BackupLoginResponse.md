@@ -1,4 +1,4 @@
-# # BackupLoginResponse
+# BackupLoginResponse
 
 ## Properties
 

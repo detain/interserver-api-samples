@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerOrder_bandwidth_li::OAIServerOrder_bandwidth_li(QString json) {
+OAIServerOrder_bandwidth_li::OAIServerOrder_bandwidth_li(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIServerOrder_bandwidth_li::initializeModel() {
     m_r_15_isValid = false;
 }
 
-void OAIServerOrder_bandwidth_li::fromJson(QString jsonString) {
+void OAIServerOrder_bandwidth_li::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

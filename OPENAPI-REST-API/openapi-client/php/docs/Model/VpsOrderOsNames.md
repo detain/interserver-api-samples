@@ -1,4 +1,4 @@
-# # VpsOrderOsNames
+# VpsOrderOsNames
 
 ## Properties
 

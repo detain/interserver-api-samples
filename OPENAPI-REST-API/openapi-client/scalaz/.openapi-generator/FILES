@@ -396,6 +396,7 @@ src/main/scala/org/openapitools/client/api/VPSApi.scala
 src/main/scala/org/openapitools/client/api/VPSCancel200Response.scala
 src/main/scala/org/openapitools/client/api/VPSTrafficDataDataSectionResponse.scala
 src/main/scala/org/openapitools/client/api/VPSTrafficDataDataSectionResponseInner.scala
+src/main/scala/org/openapitools/client/api/ViewMailLogStartDateParameter.scala
 src/main/scala/org/openapitools/client/api/ViewTicketResponse.scala
 src/main/scala/org/openapitools/client/api/Vps.scala
 src/main/scala/org/openapitools/client/api/VpsBackupRow.scala

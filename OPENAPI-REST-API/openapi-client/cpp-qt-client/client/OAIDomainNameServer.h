@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainNameServer : public OAIObject {
 public:
     OAIDomainNameServer();
-    OAIDomainNameServer(QString json);
+    OAIDomainNameServer(const QString &json);
     ~OAIDomainNameServer() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getSortorder() const;
     void setSortorder(const QString &sortorder);

@@ -53,10 +53,10 @@ class EnableScrub500Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "EnableScrub500Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "EnableScrub500Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'success'), 'Required key "EnableScrub500Response[success]" is missing from JSON.');
+        assert(json[r'success'] != null, 'Required key "EnableScrub500Response[success]" has a null value in JSON.');
+        assert(json.containsKey(r'text'), 'Required key "EnableScrub500Response[text]" is missing from JSON.');
+        assert(json[r'text'] != null, 'Required key "EnableScrub500Response[text]" has a null value in JSON.');
         return true;
       }());
 

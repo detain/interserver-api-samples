@@ -130,10 +130,28 @@
         // expect(instance.seq).to.be(expectedValueLiteral);
       });
 
+      it('should have the property delivered (base name: "delivered")', function() {
+        // TODO: update the code to test the property delivered
+        expect(instance).to.have.property('delivered');
+        // expect(instance.delivered).to.be(expectedValueLiteral);
+      });
+
+      it('should have the property code (base name: "code")', function() {
+        // TODO: update the code to test the property code
+        expect(instance).to.have.property('code');
+        // expect(instance.code).to.be(expectedValueLiteral);
+      });
+
       it('should have the property recipient (base name: "recipient")', function() {
         // TODO: update the code to test the property recipient
         expect(instance).to.have.property('recipient');
         // expect(instance.recipient).to.be(expectedValueLiteral);
+      });
+
+      it('should have the property response (base name: "response")', function() {
+        // TODO: update the code to test the property response
+        expect(instance).to.have.property('response');
+        // expect(instance.response).to.be(expectedValueLiteral);
       });
 
       it('should have the property domain (base name: "domain")', function() {
@@ -170,12 +188,6 @@
         // TODO: update the code to test the property mxHostname
         expect(instance).to.have.property('mxHostname');
         // expect(instance.mxHostname).to.be(expectedValueLiteral);
-      });
-
-      it('should have the property response (base name: "response")', function() {
-        // TODO: update the code to test the property response
-        expect(instance).to.have.property('response');
-        // expect(instance.response).to.be(expectedValueLiteral);
       });
 
     });

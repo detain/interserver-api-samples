@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsTemplateRow : public OAIObject {
 public:
     OAIVpsTemplateRow();
-    OAIVpsTemplateRow(QString json);
+    OAIVpsTemplateRow(const QString &json);
     ~OAIVpsTemplateRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTemplateId() const;
     void setTemplateId(const QString &template_id);

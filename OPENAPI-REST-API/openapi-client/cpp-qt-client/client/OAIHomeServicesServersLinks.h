@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIHomeServicesServersLinks : public OAIObject {
 public:
     OAIHomeServicesServersLinks();
-    OAIHomeServicesServersLinks(QString json);
+    OAIHomeServicesServersLinks(const QString &json);
     ~OAIHomeServicesServersLinks() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getR16058() const;
     void setR16058(const QString &r_16058);

@@ -39,13 +39,13 @@ class OAIAccountInfoOauthConfig;
 class OAIAccountInfo : public OAIObject {
 public:
     OAIAccountInfo();
-    OAIAccountInfo(QString json);
+    OAIAccountInfo(const QString &json);
     ~OAIAccountInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCustid() const;
     void setCustid(const QString &custid);

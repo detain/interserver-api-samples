@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIWebsitesOrder_packges::OAIWebsitesOrder_packges(QString json) {
+OAIWebsitesOrder_packges::OAIWebsitesOrder_packges(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIWebsitesOrder_packges::initializeModel() {
     m_r_11440_isValid = false;
 }
 
-void OAIWebsitesOrder_packges::fromJson(QString jsonString) {
+void OAIWebsitesOrder_packges::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

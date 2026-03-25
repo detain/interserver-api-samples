@@ -33,13 +33,13 @@ class OAIScrubIpFilterTypes_filters_value;
 class OAIScrubIpFilterTypes : public OAIObject {
 public:
     OAIScrubIpFilterTypes();
-    OAIScrubIpFilterTypes(QString json);
+    OAIScrubIpFilterTypes(const QString &json);
     ~OAIScrubIpFilterTypes() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

@@ -6,36 +6,51 @@
 
 
 static memory_option_t *memory_option_create_internal(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display
     ) {
     memory_option_t *memory_option_local_var = malloc(sizeof(memory_option_t));
     if (!memory_option_local_var) {
         return NULL;
     }
+    memset(memory_option_local_var, 0, sizeof(memory_option_t));
+    memory_option_local_var->_library_owned = 1;
     memory_option_local_var->id = id;
     memory_option_local_var->short_desc = short_desc;
     memory_option_local_var->monthly_price = monthly_price;
     memory_option_local_var->monthly_price_display = monthly_price_display;
-
-    memory_option_local_var->_library_owned = 1;
     return memory_option_local_var;
 }
 
 __attribute__((deprecated)) memory_option_t *memory_option_create(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display
     ) {
-    return memory_option_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    double *monthly_price_copy = NULL;
+    if (monthly_price) {
+        monthly_price_copy = malloc(sizeof(double));
+        if (monthly_price_copy) *monthly_price_copy = *monthly_price;
+    }
+    memory_option_t *result = memory_option_create_internal (
+        id_copy,
         short_desc,
-        monthly_price,
+        monthly_price_copy,
         monthly_price_display
         );
+    if (!result) {
+        free(id_copy);
+        free(monthly_price_copy);
+    }
+    return result;
 }
 
 void memory_option_free(memory_option_t *memory_option) {
@@ -47,9 +62,17 @@ void memory_option_free(memory_option_t *memory_option) {
         return ;
     }
     listEntry_t *listEntry;
+    if (memory_option->id) {
+        free(memory_option->id);
+        memory_option->id = NULL;
+    }
     if (memory_option->short_desc) {
         free(memory_option->short_desc);
         memory_option->short_desc = NULL;
+    }
+    if (memory_option->monthly_price) {
+        free(memory_option->monthly_price);
+        memory_option->monthly_price = NULL;
     }
     if (memory_option->monthly_price_display) {
         free(memory_option->monthly_price_display);
@@ -63,7 +86,7 @@ cJSON *memory_option_convertToJSON(memory_option_t *memory_option) {
 
     // memory_option->id
     if(memory_option->id) {
-    if(cJSON_AddNumberToObject(item, "id", memory_option->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *memory_option->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -79,7 +102,7 @@ cJSON *memory_option_convertToJSON(memory_option_t *memory_option) {
 
     // memory_option->monthly_price
     if(memory_option->monthly_price) {
-    if(cJSON_AddNumberToObject(item, "monthly_price", memory_option->monthly_price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_price", *memory_option->monthly_price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -104,6 +127,16 @@ memory_option_t *memory_option_parseFromJSON(cJSON *memory_optionJSON){
 
     memory_option_t *memory_option_local_var = NULL;
 
+    // define the local variable for memory_option->id
+    int *id_local_var = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    // define the local variable for memory_option->monthly_price
+    double *monthly_price_local_var = NULL;
+
+    char *monthly_price_display_local_str = NULL;
+
     // memory_option->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(memory_optionJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -114,6 +147,12 @@ memory_option_t *memory_option_parseFromJSON(cJSON *memory_optionJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // memory_option->short_desc
@@ -138,6 +177,12 @@ memory_option_t *memory_option_parseFromJSON(cJSON *memory_optionJSON){
     {
     goto end; //Numeric
     }
+    monthly_price_local_var = malloc(sizeof(double));
+    if(!monthly_price_local_var)
+    {
+        goto end;
+    }
+    *monthly_price_local_var = monthly_price->valuedouble;
     }
 
     // memory_option->monthly_price_display
@@ -153,15 +198,38 @@ memory_option_t *memory_option_parseFromJSON(cJSON *memory_optionJSON){
     }
 
 
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+    if (monthly_price_display && !cJSON_IsNull(monthly_price_display)) monthly_price_display_local_str = strdup(monthly_price_display->valuestring);
+
     memory_option_local_var = memory_option_create_internal (
-        id ? id->valuedouble : 0,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        monthly_price ? monthly_price->valuedouble : 0,
-        monthly_price_display && !cJSON_IsNull(monthly_price_display) ? strdup(monthly_price_display->valuestring) : NULL
+        id_local_var,
+        short_desc_local_str,
+        monthly_price_local_var,
+        monthly_price_display_local_str
         );
+
+    if (!memory_option_local_var) {
+        goto end;
+    }
 
     return memory_option_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (monthly_price_local_var) {
+        free(monthly_price_local_var);
+        monthly_price_local_var = NULL;
+    }
+    if (monthly_price_display_local_str) {
+        free(monthly_price_display_local_str);
+        monthly_price_display_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainNameserverGetResponse_inner::OAIDomainNameserverGetResponse_inner(QString json) {
+OAIDomainNameserverGetResponse_inner::OAIDomainNameserverGetResponse_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIDomainNameserverGetResponse_inner::initializeModel() {
     m_can_delete_isValid = false;
 }
 
-void OAIDomainNameserverGetResponse_inner::fromJson(QString jsonString) {
+void OAIDomainNameserverGetResponse_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

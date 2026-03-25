@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from openapi_client.models.account_info_max_mind_response_risk_score import AccountInfoMaxMindResponseRiskScore
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AccountInfoMaxMindResponse(BaseModel):
     """
@@ -84,7 +85,8 @@ class AccountInfoMaxMindResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["distance", "countryMatch", "countryCode", "freeMail", "anonymousProxy", "score", "binMatch", "binCountry", "err", "proxyScore", "ip_region", "ip_city", "ip_latitude", "ip_longitude", "binName", "ip_isp", "ip_org", "binNameMatch", "binPhoneMatch", "binPhone", "custPhoneInBillingLoc", "highRiskCountry", "queriesRemaining", "cityPostalMatch", "shipCityPostalMatch", "maxmindID", "ip_asnum", "ip_userType", "ip_countryConf", "ip_regionConf", "ip_cityConf", "ip_postalCode", "ip_postalConf", "ip_accuracyRadius", "ip_netSpeedCell", "ip_metroCode", "ip_areaCode", "ip_timeZone", "ip_regionName", "ip_domain", "ip_countryName", "ip_continentCode", "ip_corporateProxy", "carderEmail", "highRiskUsername", "highRiskPassword", "riskScore", "isTransProxy", "prepaid", "minfraud_version", "service_level", "explanation", "female_name"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -96,8 +98,7 @@ class AccountInfoMaxMindResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -9,7 +9,7 @@
 
     
         type t = {
-                              var_11006: Backups_order_service_types.t
+                              var_11006: t
                   
                    option [@default None]
                 

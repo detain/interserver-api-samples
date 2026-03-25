@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIReverseDnsEntries::OAIReverseDnsEntries(QString json) {
+OAIReverseDnsEntries::OAIReverseDnsEntries(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIReverseDnsEntries::initializeModel() {
     m_ips_isValid = false;
 }
 
-void OAIReverseDnsEntries::fromJson(QString jsonString) {
+void OAIReverseDnsEntries::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServerAssets : public OAIObject {
 public:
     OAIServerAssets();
-    OAIServerAssets(QString json);
+    OAIServerAssets(const QString &json);
     ~OAIServerAssets() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTitle() const;
     void setTitle(const QString &title);

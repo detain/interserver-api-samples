@@ -19,13 +19,13 @@ typedef struct patch_oauth_two_factor_200_response_t patch_oauth_two_factor_200_
 
 
 typedef struct patch_oauth_two_factor_200_response_t {
-    int login; //boolean
+    int *login; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } patch_oauth_two_factor_200_response_t;
 
 __attribute__((deprecated)) patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_create(
-    int login
+    int *login
 );
 
 void patch_oauth_two_factor_200_response_free(patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response);

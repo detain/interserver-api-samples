@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoData_fraudrecord::OAIAccountInfoData_fraudrecord(QString json) {
+OAIAccountInfoData_fraudrecord::OAIAccountInfoData_fraudrecord(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIAccountInfoData_fraudrecord::initializeModel() {
     m_code_isValid = false;
 }
 
-void OAIAccountInfoData_fraudrecord::fromJson(QString jsonString) {
+void OAIAccountInfoData_fraudrecord::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

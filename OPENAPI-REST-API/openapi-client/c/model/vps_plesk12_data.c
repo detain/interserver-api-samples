@@ -14,11 +14,11 @@ static vps_plesk12_data_t *vps_plesk12_data_create_internal(
     if (!vps_plesk12_data_local_var) {
         return NULL;
     }
+    memset(vps_plesk12_data_local_var, 0, sizeof(vps_plesk12_data_t));
+    vps_plesk12_data_local_var->_library_owned = 1;
     vps_plesk12_data_local_var->admin = admin;
     vps_plesk12_data_local_var->pro = pro;
     vps_plesk12_data_local_var->host = host;
-
-    vps_plesk12_data_local_var->_library_owned = 1;
     return vps_plesk12_data_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) vps_plesk12_data_t *vps_plesk12_data_create(
     vps_plesk_license_t *pro,
     vps_plesk_license_t *host
     ) {
-    return vps_plesk12_data_create_internal (
+    vps_plesk12_data_t *result = vps_plesk12_data_create_internal (
         admin,
         pro,
         host
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_plesk12_data_free(vps_plesk12_data_t *vps_plesk12_data) {
@@ -148,11 +151,16 @@ vps_plesk12_data_t *vps_plesk12_data_parseFromJSON(cJSON *vps_plesk12_dataJSON){
     }
 
 
+
     vps_plesk12_data_local_var = vps_plesk12_data_create_internal (
         admin ? admin_local_nonprim : NULL,
         pro ? pro_local_nonprim : NULL,
         host ? host_local_nonprim : NULL
         );
+
+    if (!vps_plesk12_data_local_var) {
+        goto end;
+    }
 
     return vps_plesk12_data_local_var;
 end:

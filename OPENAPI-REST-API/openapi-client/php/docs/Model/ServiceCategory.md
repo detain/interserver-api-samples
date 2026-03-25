@@ -1,4 +1,4 @@
-# # ServiceCategory
+# ServiceCategory
 
 ## Properties
 

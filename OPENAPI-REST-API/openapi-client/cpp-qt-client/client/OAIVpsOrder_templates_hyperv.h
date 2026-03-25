@@ -32,13 +32,13 @@ class OAIVpsOrder_templates_hyperv_windows;
 class OAIVpsOrder_templates_hyperv : public OAIObject {
 public:
     OAIVpsOrder_templates_hyperv();
-    OAIVpsOrder_templates_hyperv(QString json);
+    OAIVpsOrder_templates_hyperv(const QString &json);
     ~OAIVpsOrder_templates_hyperv() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsOrder_templates_hyperv_windows getWindows() const;
     void setWindows(const OAIVpsOrder_templates_hyperv_windows &windows);

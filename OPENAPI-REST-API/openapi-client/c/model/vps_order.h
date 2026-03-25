@@ -27,26 +27,26 @@ typedef struct vps_order_t vps_order_t;
 
 
 typedef struct vps_order_t {
-    double vps_slice_ssd_ovz_cost; //numeric
-    double vps_slice_ovz_cost; //numeric
-    double vps_slice_ssd_virtuozzo_cost; //numeric
-    double vps_slice_virtuozzo_cost; //numeric
-    double vps_slice_hyperv_cost; //numeric
-    double vps_slice_vmware_cost; //numeric
-    double vps_slice_lxc_cost; //numeric
-    double vps_slice_xen_cost; //numeric
-    double vps_slice_kvm_l_cost; //numeric
-    double vps_slice_kvm_storage_cost; //numeric
-    double vps_ny_cost; //numeric
-    double vps_slice_kvm_w_cost; //numeric
-    double cpanel_cost; //numeric
-    double da_cost; //numeric
+    double *vps_slice_ssd_ovz_cost; //numeric
+    double *vps_slice_ovz_cost; //numeric
+    double *vps_slice_ssd_virtuozzo_cost; //numeric
+    double *vps_slice_virtuozzo_cost; //numeric
+    double *vps_slice_hyperv_cost; //numeric
+    double *vps_slice_vmware_cost; //numeric
+    double *vps_slice_lxc_cost; //numeric
+    double *vps_slice_xen_cost; //numeric
+    double *vps_slice_kvm_l_cost; //numeric
+    double *vps_slice_kvm_storage_cost; //numeric
+    double *vps_ny_cost; //numeric
+    double *vps_slice_kvm_w_cost; //numeric
+    double *cpanel_cost; //numeric
+    double *da_cost; //numeric
     char *ram_slice; // string
     char *hd_slice; // string
     char *hd_storage_slice; // string
     char *bw_slice; // string
     char *bw_type; // string
-    double bw_total; //numeric
+    double *bw_total; //numeric
     char *max_slices; // string
     struct vps_order_platform_packages_t *platform_packages; //model
     struct vps_order_platform_names_t *platform_names; //model
@@ -63,26 +63,26 @@ typedef struct vps_order_t {
 } vps_order_t;
 
 __attribute__((deprecated)) vps_order_t *vps_order_create(
-    double vps_slice_ssd_ovz_cost,
-    double vps_slice_ovz_cost,
-    double vps_slice_ssd_virtuozzo_cost,
-    double vps_slice_virtuozzo_cost,
-    double vps_slice_hyperv_cost,
-    double vps_slice_vmware_cost,
-    double vps_slice_lxc_cost,
-    double vps_slice_xen_cost,
-    double vps_slice_kvm_l_cost,
-    double vps_slice_kvm_storage_cost,
-    double vps_ny_cost,
-    double vps_slice_kvm_w_cost,
-    double cpanel_cost,
-    double da_cost,
+    double *vps_slice_ssd_ovz_cost,
+    double *vps_slice_ovz_cost,
+    double *vps_slice_ssd_virtuozzo_cost,
+    double *vps_slice_virtuozzo_cost,
+    double *vps_slice_hyperv_cost,
+    double *vps_slice_vmware_cost,
+    double *vps_slice_lxc_cost,
+    double *vps_slice_xen_cost,
+    double *vps_slice_kvm_l_cost,
+    double *vps_slice_kvm_storage_cost,
+    double *vps_ny_cost,
+    double *vps_slice_kvm_w_cost,
+    double *cpanel_cost,
+    double *da_cost,
     char *ram_slice,
     char *hd_slice,
     char *hd_storage_slice,
     char *bw_slice,
     char *bw_type,
-    double bw_total,
+    double *bw_total,
     char *max_slices,
     vps_order_platform_packages_t *platform_packages,
     vps_order_platform_names_t *platform_names,

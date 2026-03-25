@@ -40,13 +40,13 @@ class OAIHome_services;
 class OAIHome : public OAIObject {
 public:
     OAIHome();
-    OAIHome(QString json);
+    OAIHome(const QString &json);
     ~OAIHome() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getLastLoginIp() const;
     void setLastLoginIp(const QString &last_login_ip);

@@ -21,7 +21,7 @@ typedef struct cpu_with_defaults_t cpu_with_defaults_t;
 
 
 typedef struct cpu_with_defaults_t {
-    int id; //numeric
+    int *id; //numeric
     char *short_desc; // string
     char *long_desc; // string
     char *type; // string
@@ -29,7 +29,7 @@ typedef struct cpu_with_defaults_t {
     char *num_cores; // string
     char *num_cpus; // string
     char *benchmark; // string
-    double monthly_price; //numeric
+    double *monthly_price; //numeric
     char *monthly_price_display; // string
     char *max_ram; // string
     char *min_ram; // string
@@ -46,7 +46,7 @@ typedef struct cpu_with_defaults_t {
 } cpu_with_defaults_t;
 
 __attribute__((deprecated)) cpu_with_defaults_t *cpu_with_defaults_create(
-    int id,
+    int *id,
     char *short_desc,
     char *long_desc,
     char *type,
@@ -54,7 +54,7 @@ __attribute__((deprecated)) cpu_with_defaults_t *cpu_with_defaults_create(
     char *num_cores,
     char *num_cpus,
     char *benchmark,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display,
     char *max_ram,
     char *min_ram,

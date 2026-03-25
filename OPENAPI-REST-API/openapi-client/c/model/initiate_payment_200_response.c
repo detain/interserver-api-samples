@@ -34,14 +34,14 @@ static initiate_payment_200_response_t *initiate_payment_200_response_create_int
     if (!initiate_payment_200_response_local_var) {
         return NULL;
     }
+    memset(initiate_payment_200_response_local_var, 0, sizeof(initiate_payment_200_response_t));
+    initiate_payment_200_response_local_var->_library_owned = 1;
     initiate_payment_200_response_local_var->type = type;
     initiate_payment_200_response_local_var->redirect = redirect;
     initiate_payment_200_response_local_var->action = action;
     initiate_payment_200_response_local_var->method = method;
     initiate_payment_200_response_local_var->items = items;
     initiate_payment_200_response_local_var->text = text;
-
-    initiate_payment_200_response_local_var->_library_owned = 1;
     return initiate_payment_200_response_local_var;
 }
 
@@ -53,7 +53,7 @@ __attribute__((deprecated)) initiate_payment_200_response_t *initiate_payment_20
     object_t *items,
     char *text
     ) {
-    return initiate_payment_200_response_create_internal (
+    initiate_payment_200_response_t *result = initiate_payment_200_response_create_internal (
         type,
         redirect,
         action,
@@ -61,6 +61,9 @@ __attribute__((deprecated)) initiate_payment_200_response_t *initiate_payment_20
         items,
         text
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void initiate_payment_200_response_free(initiate_payment_200_response_t *initiate_payment_200_response) {
@@ -163,6 +166,14 @@ initiate_payment_200_response_t *initiate_payment_200_response_parseFromJSON(cJS
 
     initiate_payment_200_response_t *initiate_payment_200_response_local_var = NULL;
 
+    char *redirect_local_str = NULL;
+
+    char *action_local_str = NULL;
+
+    char *method_local_str = NULL;
+
+    char *text_local_str = NULL;
+
     // initiate_payment_200_response->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(initiate_payment_200_responseJSON, "type");
     if (cJSON_IsNull(type)) {
@@ -236,17 +247,42 @@ initiate_payment_200_response_t *initiate_payment_200_response_parseFromJSON(cJS
     }
 
 
+    if (redirect && !cJSON_IsNull(redirect)) redirect_local_str = strdup(redirect->valuestring);
+    if (action && !cJSON_IsNull(action)) action_local_str = strdup(action->valuestring);
+    if (method && !cJSON_IsNull(method)) method_local_str = strdup(method->valuestring);
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     initiate_payment_200_response_local_var = initiate_payment_200_response_create_internal (
         type ? typeVariable : interserver_management_api_initiate_payment_200_response_TYPE_NULL,
-        redirect && !cJSON_IsNull(redirect) ? strdup(redirect->valuestring) : NULL,
-        action && !cJSON_IsNull(action) ? strdup(action->valuestring) : NULL,
-        method && !cJSON_IsNull(method) ? strdup(method->valuestring) : NULL,
+        redirect_local_str,
+        action_local_str,
+        method_local_str,
         items ? items_local_object : NULL,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL
+        text_local_str
         );
+
+    if (!initiate_payment_200_response_local_var) {
+        goto end;
+    }
 
     return initiate_payment_200_response_local_var;
 end:
+    if (redirect_local_str) {
+        free(redirect_local_str);
+        redirect_local_str = NULL;
+    }
+    if (action_local_str) {
+        free(action_local_str);
+        action_local_str = NULL;
+    }
+    if (method_local_str) {
+        free(method_local_str);
+        method_local_str = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

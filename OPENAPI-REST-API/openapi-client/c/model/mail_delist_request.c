@@ -12,18 +12,21 @@ static mail_delist_request_t *mail_delist_request_create_internal(
     if (!mail_delist_request_local_var) {
         return NULL;
     }
-    mail_delist_request_local_var->unblock = unblock;
-
+    memset(mail_delist_request_local_var, 0, sizeof(mail_delist_request_t));
     mail_delist_request_local_var->_library_owned = 1;
+    mail_delist_request_local_var->unblock = unblock;
     return mail_delist_request_local_var;
 }
 
 __attribute__((deprecated)) mail_delist_request_t *mail_delist_request_create(
     char *unblock
     ) {
-    return mail_delist_request_create_internal (
+    mail_delist_request_t *result = mail_delist_request_create_internal (
         unblock
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_delist_request_free(mail_delist_request_t *mail_delist_request) {
@@ -64,6 +67,8 @@ mail_delist_request_t *mail_delist_request_parseFromJSON(cJSON *mail_delist_requ
 
     mail_delist_request_t *mail_delist_request_local_var = NULL;
 
+    char *unblock_local_str = NULL;
+
     // mail_delist_request->unblock
     cJSON *unblock = cJSON_GetObjectItemCaseSensitive(mail_delist_requestJSON, "unblock");
     if (cJSON_IsNull(unblock)) {
@@ -77,12 +82,22 @@ mail_delist_request_t *mail_delist_request_parseFromJSON(cJSON *mail_delist_requ
     }
 
 
+    if (unblock && !cJSON_IsNull(unblock)) unblock_local_str = strdup(unblock->valuestring);
+
     mail_delist_request_local_var = mail_delist_request_create_internal (
-        unblock && !cJSON_IsNull(unblock) ? strdup(unblock->valuestring) : NULL
+        unblock_local_str
         );
+
+    if (!mail_delist_request_local_var) {
+        goto end;
+    }
 
     return mail_delist_request_local_var;
 end:
+    if (unblock_local_str) {
+        free(unblock_local_str);
+        unblock_local_str = NULL;
+    }
     return NULL;
 
 }

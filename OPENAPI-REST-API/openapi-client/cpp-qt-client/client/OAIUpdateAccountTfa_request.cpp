@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIUpdateAccountTfa_request::OAIUpdateAccountTfa_request(QString json) {
+OAIUpdateAccountTfa_request::OAIUpdateAccountTfa_request(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIUpdateAccountTfa_request::initializeModel() {
     m_r_2fa_google_code_isValid = false;
 }
 
-void OAIUpdateAccountTfa_request::fromJson(QString jsonString) {
+void OAIUpdateAccountTfa_request::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

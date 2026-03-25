@@ -59,10 +59,12 @@ class MailBlocks {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailBlocks[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailBlocks[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'local'), 'Required key "MailBlocks[local]" is missing from JSON.');
+        assert(json[r'local'] != null, 'Required key "MailBlocks[local]" has a null value in JSON.');
+        assert(json.containsKey(r'mbtrap'), 'Required key "MailBlocks[mbtrap]" is missing from JSON.');
+        assert(json[r'mbtrap'] != null, 'Required key "MailBlocks[mbtrap]" has a null value in JSON.');
+        assert(json.containsKey(r'subject'), 'Required key "MailBlocks[subject]" is missing from JSON.');
+        assert(json[r'subject'] != null, 'Required key "MailBlocks[subject]" has a null value in JSON.');
         return true;
       }());
 

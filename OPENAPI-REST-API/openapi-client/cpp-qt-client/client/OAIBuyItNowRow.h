@@ -35,13 +35,13 @@ class OAIBuyItNowRow_cpu_inner;
 class OAIBuyItNowRow : public OAIObject {
 public:
     OAIBuyItNowRow();
-    OAIBuyItNowRow(QString json);
+    OAIBuyItNowRow(const QString &json);
     ~OAIBuyItNowRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getServerId() const;
     void setServerId(const QString &server_id);

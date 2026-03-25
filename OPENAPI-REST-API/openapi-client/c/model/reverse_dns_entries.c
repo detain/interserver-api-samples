@@ -12,18 +12,21 @@ static reverse_dns_entries_t *reverse_dns_entries_create_internal(
     if (!reverse_dns_entries_local_var) {
         return NULL;
     }
-    reverse_dns_entries_local_var->ips = ips;
-
+    memset(reverse_dns_entries_local_var, 0, sizeof(reverse_dns_entries_t));
     reverse_dns_entries_local_var->_library_owned = 1;
+    reverse_dns_entries_local_var->ips = ips;
     return reverse_dns_entries_local_var;
 }
 
 __attribute__((deprecated)) reverse_dns_entries_t *reverse_dns_entries_create(
     list_t* ips
     ) {
-    return reverse_dns_entries_create_internal (
+    reverse_dns_entries_t *result = reverse_dns_entries_create_internal (
         ips
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void reverse_dns_entries_free(reverse_dns_entries_t *reverse_dns_entries) {
@@ -105,9 +108,14 @@ reverse_dns_entries_t *reverse_dns_entries_parseFromJSON(cJSON *reverse_dns_entr
     }
 
 
+
     reverse_dns_entries_local_var = reverse_dns_entries_create_internal (
         ips ? ipsList : NULL
         );
+
+    if (!reverse_dns_entries_local_var) {
+        goto end;
+    }
 
     return reverse_dns_entries_local_var;
 end:

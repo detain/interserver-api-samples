@@ -1,4 +1,4 @@
-# # CreateRule201Response
+# CreateRule201Response
 
 ## Properties
 

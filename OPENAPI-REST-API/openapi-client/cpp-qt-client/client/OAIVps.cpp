@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVps::OAIVps(QString json) {
+OAIVps::OAIVps(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -92,7 +92,7 @@ void OAIVps::initializeModel() {
     m_cpu_graph_data_isValid = false;
 }
 
-void OAIVps::fromJson(QString jsonString) {
+void OAIVps::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

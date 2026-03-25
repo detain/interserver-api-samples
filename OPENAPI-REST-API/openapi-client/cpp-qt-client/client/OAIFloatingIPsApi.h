@@ -106,6 +106,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -125,7 +132,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addFloatingIpCallback(OAIHttpRequestWorker *worker);
     void floatingIpsCancelCallback(OAIHttpRequestWorker *worker);
@@ -163,66 +170,26 @@ Q_SIGNALS:
     void putFloatingIpsSignalFull(OAIHttpRequestWorker *worker);
     void updateFloatingIpInfoSignalFull(OAIHttpRequestWorker *worker);
 
-    Q_DECL_DEPRECATED_X("Use addFloatingIpSignalError() instead")
-    void addFloatingIpSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addFloatingIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use floatingIpsCancelSignalError() instead")
-    void floatingIpsCancelSignalE(OAIFloating_ipsCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void floatingIpsCancelSignalError(OAIFloating_ipsCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpInfoSignalError() instead")
-    void getFloatingIpInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpInvoicesSignalError() instead")
-    void getFloatingIpInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpsListSignalError() instead")
-    void getFloatingIpsListSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpsListSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpsWelcomeEmailSignalError() instead")
-    void getFloatingIpsWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewFloatingIpSignalError() instead")
-    void getNewFloatingIpSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getNewFloatingIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postFloatingIpsChangeIpSignalError() instead")
-    void postFloatingIpsChangeIpSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postFloatingIpsChangeIpSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putFloatingIpsSignalError() instead")
-    void putFloatingIpsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putFloatingIpsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateFloatingIpInfoSignalError() instead")
-    void updateFloatingIpInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateFloatingIpInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addFloatingIpSignalErrorFull() instead")
-    void addFloatingIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addFloatingIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use floatingIpsCancelSignalErrorFull() instead")
-    void floatingIpsCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void floatingIpsCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpInfoSignalErrorFull() instead")
-    void getFloatingIpInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpInvoicesSignalErrorFull() instead")
-    void getFloatingIpInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpsListSignalErrorFull() instead")
-    void getFloatingIpsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getFloatingIpsWelcomeEmailSignalErrorFull() instead")
-    void getFloatingIpsWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getFloatingIpsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewFloatingIpSignalErrorFull() instead")
-    void getNewFloatingIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewFloatingIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postFloatingIpsChangeIpSignalErrorFull() instead")
-    void postFloatingIpsChangeIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postFloatingIpsChangeIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putFloatingIpsSignalErrorFull() instead")
-    void putFloatingIpsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putFloatingIpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateFloatingIpInfoSignalErrorFull() instead")
-    void updateFloatingIpInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateFloatingIpInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

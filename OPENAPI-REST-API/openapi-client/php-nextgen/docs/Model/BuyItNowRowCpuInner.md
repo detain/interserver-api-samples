@@ -1,4 +1,4 @@
-# # BuyItNowRowCpuInner
+# BuyItNowRowCpuInner
 
 ## Properties
 

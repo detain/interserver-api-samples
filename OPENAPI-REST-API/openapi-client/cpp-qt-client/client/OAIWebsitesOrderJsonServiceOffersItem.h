@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIWebsitesOrderJsonServiceOffersItem : public OAIObject {
 public:
     OAIWebsitesOrderJsonServiceOffersItem();
-    OAIWebsitesOrderJsonServiceOffersItem(QString json);
+    OAIWebsitesOrderJsonServiceOffersItem(const QString &json);
     ~OAIWebsitesOrderJsonServiceOffersItem() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getServiceOfferId() const;
     void setServiceOfferId(const QString &service_offer_id);

@@ -11,15 +11,18 @@ static domain_dnssec_records_t *domain_dnssec_records_create_internal(
     if (!domain_dnssec_records_local_var) {
         return NULL;
     }
-
+    memset(domain_dnssec_records_local_var, 0, sizeof(domain_dnssec_records_t));
     domain_dnssec_records_local_var->_library_owned = 1;
     return domain_dnssec_records_local_var;
 }
 
 __attribute__((deprecated)) domain_dnssec_records_t *domain_dnssec_records_create(
     ) {
-    return domain_dnssec_records_create_internal (
+    domain_dnssec_records_t *result = domain_dnssec_records_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_dnssec_records_free(domain_dnssec_records_t *domain_dnssec_records) {
@@ -49,8 +52,13 @@ domain_dnssec_records_t *domain_dnssec_records_parseFromJSON(cJSON *domain_dnsse
     domain_dnssec_records_t *domain_dnssec_records_local_var = NULL;
 
 
+
     domain_dnssec_records_local_var = domain_dnssec_records_create_internal (
         );
+
+    if (!domain_dnssec_records_local_var) {
+        goto end;
+    }
 
     return domain_dnssec_records_local_var;
 end:

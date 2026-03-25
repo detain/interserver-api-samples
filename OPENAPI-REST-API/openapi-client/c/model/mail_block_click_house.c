@@ -16,13 +16,13 @@ static mail_block_click_house_t *mail_block_click_house_create_internal(
     if (!mail_block_click_house_local_var) {
         return NULL;
     }
+    memset(mail_block_click_house_local_var, 0, sizeof(mail_block_click_house_t));
+    mail_block_click_house_local_var->_library_owned = 1;
     mail_block_click_house_local_var->date = date;
     mail_block_click_house_local_var->from = from;
     mail_block_click_house_local_var->message_id = message_id;
     mail_block_click_house_local_var->subject = subject;
     mail_block_click_house_local_var->to = to;
-
-    mail_block_click_house_local_var->_library_owned = 1;
     return mail_block_click_house_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) mail_block_click_house_t *mail_block_click_house_cre
     char *subject,
     char *to
     ) {
-    return mail_block_click_house_create_internal (
+    mail_block_click_house_t *result = mail_block_click_house_create_internal (
         date,
         from,
         message_id,
         subject,
         to
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_block_click_house_free(mail_block_click_house_t *mail_block_click_house) {
@@ -133,6 +136,16 @@ mail_block_click_house_t *mail_block_click_house_parseFromJSON(cJSON *mail_block
 
     mail_block_click_house_t *mail_block_click_house_local_var = NULL;
 
+    char *date_local_str = NULL;
+
+    char *from_local_str = NULL;
+
+    char *message_id_local_str = NULL;
+
+    char *subject_local_str = NULL;
+
+    char *to_local_str = NULL;
+
     // mail_block_click_house->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(mail_block_click_houseJSON, "date");
     if (cJSON_IsNull(date)) {
@@ -209,16 +222,46 @@ mail_block_click_house_t *mail_block_click_house_parseFromJSON(cJSON *mail_block
     }
 
 
+    if (date) date_local_str = strdup(date->valuestring);
+    if (from && !cJSON_IsNull(from)) from_local_str = strdup(from->valuestring);
+    if (message_id && !cJSON_IsNull(message_id)) message_id_local_str = strdup(message_id->valuestring);
+    if (subject && !cJSON_IsNull(subject)) subject_local_str = strdup(subject->valuestring);
+    if (to && !cJSON_IsNull(to)) to_local_str = strdup(to->valuestring);
+
     mail_block_click_house_local_var = mail_block_click_house_create_internal (
-        strdup(date->valuestring),
-        strdup(from->valuestring),
-        strdup(message_id->valuestring),
-        strdup(subject->valuestring),
-        strdup(to->valuestring)
+        date_local_str,
+        from_local_str,
+        message_id_local_str,
+        subject_local_str,
+        to_local_str
         );
+
+    if (!mail_block_click_house_local_var) {
+        goto end;
+    }
 
     return mail_block_click_house_local_var;
 end:
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
+    }
+    if (from_local_str) {
+        free(from_local_str);
+        from_local_str = NULL;
+    }
+    if (message_id_local_str) {
+        free(message_id_local_str);
+        message_id_local_str = NULL;
+    }
+    if (subject_local_str) {
+        free(subject_local_str);
+        subject_local_str = NULL;
+    }
+    if (to_local_str) {
+        free(to_local_str);
+        to_local_str = NULL;
+    }
     return NULL;
 
 }

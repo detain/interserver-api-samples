@@ -33,13 +33,13 @@ class OAIDomainProvProcessPending_attributes;
 class OAIDomainProvProcessPending : public OAIObject {
 public:
     OAIDomainProvProcessPending();
-    OAIDomainProvProcessPending(QString json);
+    OAIDomainProvProcessPending(const QString &json);
     ~OAIDomainProvProcessPending() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getOpsVersion() const;
     void setOpsVersion(const QString &_ops_version);

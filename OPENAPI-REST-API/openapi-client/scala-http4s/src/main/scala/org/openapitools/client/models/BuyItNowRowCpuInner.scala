@@ -12,7 +12,8 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 
 /** 
@@ -22,40 +23,23 @@ import io.circe.{Decoder, Encoder}
   * @param num_cpus 
   * @param num_cores 
   */
-case class BuyItNowRowCpuInner(
-    img: Option[String] = None,
-    `type`: Option[String] = None,
-    speed: Option[String] = None,
-    num_cpus: Option[String] = None,
-    num_cores: Option[String] = None
-)
-  
+trait BuyItNowRowCpuInner
 object BuyItNowRowCpuInner {
-  given encoderBuyItNowRowCpuInner: Encoder[BuyItNowRowCpuInner] = Encoder.instance { t =>
-    Json.fromFields{
-      Seq(
-        t.img.map(v => "img" -> v.asJson),
-        t.`type`.map(v => "type" -> v.asJson),
-        t.speed.map(v => "speed" -> v.asJson),
-        t.num_cpus.map(v => "num_cpus" -> v.asJson),
-        t.num_cores.map(v => "num_cores" -> v.asJson)
-      ).flatten
-    }
+  import io.circe.{ Decoder, Encoder }
+  import io.circe.syntax.*
+  import cats.syntax.functor.*
+
+// no discriminator
+  given encoderBuyItNowRowCpuInner: Encoder[BuyItNowRowCpuInner] = Encoder.instance {
+    case obj: BuyItNowRowCpuInnerOneOf => obj.asJson
+    case obj: String => obj.asJson
   }
-  given decoderBuyItNowRowCpuInner: Decoder[BuyItNowRowCpuInner] = Decoder.instance { c =>
-    for {
-      img <- c.downField("img").as[Option[String]]
-      `type` <- c.downField("type").as[Option[String]]
-      speed <- c.downField("speed").as[Option[String]]
-      num_cpus <- c.downField("num_cpus").as[Option[String]]
-      num_cores <- c.downField("num_cores").as[Option[String]]
-    } yield BuyItNowRowCpuInner(
-      img = img,
-      `type` = `type`,
-      speed = speed,
-      num_cpus = num_cpus,
-      num_cores = num_cores
-    )
-  }
+
+  given decoderBuyItNowRowCpuInner: Decoder[BuyItNowRowCpuInner] =
+    List[Decoder[BuyItNowRowCpuInner]](
+      Decoder[BuyItNowRowCpuInnerOneOf].widen,
+      Decoder[String].widen,
+  ).reduceLeft(_ or _)
 }
+
 

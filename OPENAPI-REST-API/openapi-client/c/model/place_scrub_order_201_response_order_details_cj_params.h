@@ -19,26 +19,26 @@ typedef struct place_scrub_order_201_response_order_details_cj_params_t place_sc
 
 
 typedef struct place_scrub_order_201_response_order_details_cj_params_t {
-    int container_tag_id; //numeric
-    int cid; //numeric
+    int *container_tag_id; //numeric
+    int *cid; //numeric
     char *oid; // string
-    int type; //numeric
+    int *type; //numeric
     char *item1; // string
-    int amt1; //numeric
-    int qty1; //numeric
+    int *amt1; //numeric
+    int *qty1; //numeric
     char *currency; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } place_scrub_order_201_response_order_details_cj_params_t;
 
 __attribute__((deprecated)) place_scrub_order_201_response_order_details_cj_params_t *place_scrub_order_201_response_order_details_cj_params_create(
-    int container_tag_id,
-    int cid,
+    int *container_tag_id,
+    int *cid,
     char *oid,
-    int type,
+    int *type,
     char *item1,
-    int amt1,
-    int qty1,
+    int *amt1,
+    int *qty1,
     char *currency
 );
 

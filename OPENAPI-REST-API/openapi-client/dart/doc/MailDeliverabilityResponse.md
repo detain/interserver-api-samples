@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**stat** | [**Object**](.md) | Delivered and bounced counts. | [optional] 
+**stat** | **Object** | Delivered and bounced counts. | [optional] 
 **percent** | **num** | Bounce percentage. | [optional] 
 **tableData** | [**List<List<String>>**](List.md) | Detailed deliverability breakdown by sender or domain. | [optional] [default to const []]
 

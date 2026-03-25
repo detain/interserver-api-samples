@@ -6,32 +6,47 @@
 
 
 static raid_option_t *raid_option_create_internal(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price
+    double *monthly_price
     ) {
     raid_option_t *raid_option_local_var = malloc(sizeof(raid_option_t));
     if (!raid_option_local_var) {
         return NULL;
     }
+    memset(raid_option_local_var, 0, sizeof(raid_option_t));
+    raid_option_local_var->_library_owned = 1;
     raid_option_local_var->id = id;
     raid_option_local_var->short_desc = short_desc;
     raid_option_local_var->monthly_price = monthly_price;
-
-    raid_option_local_var->_library_owned = 1;
     return raid_option_local_var;
 }
 
 __attribute__((deprecated)) raid_option_t *raid_option_create(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price
+    double *monthly_price
     ) {
-    return raid_option_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    double *monthly_price_copy = NULL;
+    if (monthly_price) {
+        monthly_price_copy = malloc(sizeof(double));
+        if (monthly_price_copy) *monthly_price_copy = *monthly_price;
+    }
+    raid_option_t *result = raid_option_create_internal (
+        id_copy,
         short_desc,
-        monthly_price
+        monthly_price_copy
         );
+    if (!result) {
+        free(id_copy);
+        free(monthly_price_copy);
+    }
+    return result;
 }
 
 void raid_option_free(raid_option_t *raid_option) {
@@ -43,9 +58,17 @@ void raid_option_free(raid_option_t *raid_option) {
         return ;
     }
     listEntry_t *listEntry;
+    if (raid_option->id) {
+        free(raid_option->id);
+        raid_option->id = NULL;
+    }
     if (raid_option->short_desc) {
         free(raid_option->short_desc);
         raid_option->short_desc = NULL;
+    }
+    if (raid_option->monthly_price) {
+        free(raid_option->monthly_price);
+        raid_option->monthly_price = NULL;
     }
     free(raid_option);
 }
@@ -55,7 +78,7 @@ cJSON *raid_option_convertToJSON(raid_option_t *raid_option) {
 
     // raid_option->id
     if(raid_option->id) {
-    if(cJSON_AddNumberToObject(item, "id", raid_option->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *raid_option->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -71,7 +94,7 @@ cJSON *raid_option_convertToJSON(raid_option_t *raid_option) {
 
     // raid_option->monthly_price
     if(raid_option->monthly_price) {
-    if(cJSON_AddNumberToObject(item, "monthly_price", raid_option->monthly_price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_price", *raid_option->monthly_price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -88,6 +111,14 @@ raid_option_t *raid_option_parseFromJSON(cJSON *raid_optionJSON){
 
     raid_option_t *raid_option_local_var = NULL;
 
+    // define the local variable for raid_option->id
+    int *id_local_var = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    // define the local variable for raid_option->monthly_price
+    double *monthly_price_local_var = NULL;
+
     // raid_option->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(raid_optionJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -98,6 +129,12 @@ raid_option_t *raid_option_parseFromJSON(cJSON *raid_optionJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // raid_option->short_desc
@@ -122,17 +159,41 @@ raid_option_t *raid_option_parseFromJSON(cJSON *raid_optionJSON){
     {
     goto end; //Numeric
     }
+    monthly_price_local_var = malloc(sizeof(double));
+    if(!monthly_price_local_var)
+    {
+        goto end;
+    }
+    *monthly_price_local_var = monthly_price->valuedouble;
     }
 
 
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+
     raid_option_local_var = raid_option_create_internal (
-        id ? id->valuedouble : 0,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        monthly_price ? monthly_price->valuedouble : 0
+        id_local_var,
+        short_desc_local_str,
+        monthly_price_local_var
         );
+
+    if (!raid_option_local_var) {
+        goto end;
+    }
 
     return raid_option_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (monthly_price_local_var) {
+        free(monthly_price_local_var);
+        monthly_price_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -17,14 +17,14 @@ static affiliate_traffic_row_t *affiliate_traffic_row_create_internal(
     if (!affiliate_traffic_row_local_var) {
         return NULL;
     }
+    memset(affiliate_traffic_row_local_var, 0, sizeof(affiliate_traffic_row_t));
+    affiliate_traffic_row_local_var->_library_owned = 1;
     affiliate_traffic_row_local_var->traffic_id = traffic_id;
     affiliate_traffic_row_local_var->traffic_ip = traffic_ip;
     affiliate_traffic_row_local_var->traffic_url = traffic_url;
     affiliate_traffic_row_local_var->traffic_affiliate = traffic_affiliate;
     affiliate_traffic_row_local_var->traffic_referrer = traffic_referrer;
     affiliate_traffic_row_local_var->traffic_timestamp = traffic_timestamp;
-
-    affiliate_traffic_row_local_var->_library_owned = 1;
     return affiliate_traffic_row_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) affiliate_traffic_row_t *affiliate_traffic_row_creat
     char *traffic_referrer,
     char *traffic_timestamp
     ) {
-    return affiliate_traffic_row_create_internal (
+    affiliate_traffic_row_t *result = affiliate_traffic_row_create_internal (
         traffic_id,
         traffic_ip,
         traffic_url,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) affiliate_traffic_row_t *affiliate_traffic_row_creat
         traffic_referrer,
         traffic_timestamp
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void affiliate_traffic_row_free(affiliate_traffic_row_t *affiliate_traffic_row) {
@@ -144,6 +147,18 @@ affiliate_traffic_row_t *affiliate_traffic_row_parseFromJSON(cJSON *affiliate_tr
 
     affiliate_traffic_row_t *affiliate_traffic_row_local_var = NULL;
 
+    char *traffic_id_local_str = NULL;
+
+    char *traffic_ip_local_str = NULL;
+
+    char *traffic_url_local_str = NULL;
+
+    char *traffic_affiliate_local_str = NULL;
+
+    char *traffic_referrer_local_str = NULL;
+
+    char *traffic_timestamp_local_str = NULL;
+
     // affiliate_traffic_row->traffic_id
     cJSON *traffic_id = cJSON_GetObjectItemCaseSensitive(affiliate_traffic_rowJSON, "traffic_id");
     if (cJSON_IsNull(traffic_id)) {
@@ -217,17 +232,52 @@ affiliate_traffic_row_t *affiliate_traffic_row_parseFromJSON(cJSON *affiliate_tr
     }
 
 
+    if (traffic_id && !cJSON_IsNull(traffic_id)) traffic_id_local_str = strdup(traffic_id->valuestring);
+    if (traffic_ip && !cJSON_IsNull(traffic_ip)) traffic_ip_local_str = strdup(traffic_ip->valuestring);
+    if (traffic_url && !cJSON_IsNull(traffic_url)) traffic_url_local_str = strdup(traffic_url->valuestring);
+    if (traffic_affiliate && !cJSON_IsNull(traffic_affiliate)) traffic_affiliate_local_str = strdup(traffic_affiliate->valuestring);
+    if (traffic_referrer && !cJSON_IsNull(traffic_referrer)) traffic_referrer_local_str = strdup(traffic_referrer->valuestring);
+    if (traffic_timestamp && !cJSON_IsNull(traffic_timestamp)) traffic_timestamp_local_str = strdup(traffic_timestamp->valuestring);
+
     affiliate_traffic_row_local_var = affiliate_traffic_row_create_internal (
-        traffic_id && !cJSON_IsNull(traffic_id) ? strdup(traffic_id->valuestring) : NULL,
-        traffic_ip && !cJSON_IsNull(traffic_ip) ? strdup(traffic_ip->valuestring) : NULL,
-        traffic_url && !cJSON_IsNull(traffic_url) ? strdup(traffic_url->valuestring) : NULL,
-        traffic_affiliate && !cJSON_IsNull(traffic_affiliate) ? strdup(traffic_affiliate->valuestring) : NULL,
-        traffic_referrer && !cJSON_IsNull(traffic_referrer) ? strdup(traffic_referrer->valuestring) : NULL,
-        traffic_timestamp && !cJSON_IsNull(traffic_timestamp) ? strdup(traffic_timestamp->valuestring) : NULL
+        traffic_id_local_str,
+        traffic_ip_local_str,
+        traffic_url_local_str,
+        traffic_affiliate_local_str,
+        traffic_referrer_local_str,
+        traffic_timestamp_local_str
         );
+
+    if (!affiliate_traffic_row_local_var) {
+        goto end;
+    }
 
     return affiliate_traffic_row_local_var;
 end:
+    if (traffic_id_local_str) {
+        free(traffic_id_local_str);
+        traffic_id_local_str = NULL;
+    }
+    if (traffic_ip_local_str) {
+        free(traffic_ip_local_str);
+        traffic_ip_local_str = NULL;
+    }
+    if (traffic_url_local_str) {
+        free(traffic_url_local_str);
+        traffic_url_local_str = NULL;
+    }
+    if (traffic_affiliate_local_str) {
+        free(traffic_affiliate_local_str);
+        traffic_affiliate_local_str = NULL;
+    }
+    if (traffic_referrer_local_str) {
+        free(traffic_referrer_local_str);
+        traffic_referrer_local_str = NULL;
+    }
+    if (traffic_timestamp_local_str) {
+        free(traffic_timestamp_local_str);
+        traffic_timestamp_local_str = NULL;
+    }
     return NULL;
 
 }

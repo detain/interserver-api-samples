@@ -19,7 +19,7 @@ typedef struct ticket_details_t ticket_details_t;
 
 
 typedef struct ticket_details_t {
-    int ticketid; //numeric
+    int *ticketid; //numeric
     char *ticketmaskid; // string
     char *department; // string
     char *status; // string
@@ -32,7 +32,7 @@ typedef struct ticket_details_t {
 } ticket_details_t;
 
 __attribute__((deprecated)) ticket_details_t *ticket_details_create(
-    int ticketid,
+    int *ticketid,
     char *ticketmaskid,
     char *department,
     char *status,

@@ -135,10 +135,34 @@ class Home {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Home[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Home[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'last_login_ip'), 'Required key "Home[last_login_ip]" is missing from JSON.');
+        assert(json[r'last_login_ip'] != null, 'Required key "Home[last_login_ip]" has a null value in JSON.');
+        assert(json.containsKey(r'last_login'), 'Required key "Home[last_login]" is missing from JSON.');
+        assert(json[r'last_login'] != null, 'Required key "Home[last_login]" has a null value in JSON.');
+        assert(json.containsKey(r'currency'), 'Required key "Home[currency]" is missing from JSON.');
+        assert(json[r'currency'] != null, 'Required key "Home[currency]" has a null value in JSON.');
+        assert(json.containsKey(r'amount'), 'Required key "Home[amount]" is missing from JSON.');
+        assert(json[r'amount'] != null, 'Required key "Home[amount]" has a null value in JSON.');
+        assert(json.containsKey(r'invoice_list'), 'Required key "Home[invoice_list]" is missing from JSON.');
+        assert(json[r'invoice_list'] != null, 'Required key "Home[invoice_list]" has a null value in JSON.');
+        assert(json.containsKey(r'balance'), 'Required key "Home[balance]" is missing from JSON.');
+        assert(json[r'balance'] != null, 'Required key "Home[balance]" has a null value in JSON.');
+        assert(json.containsKey(r'full_name'), 'Required key "Home[full_name]" is missing from JSON.');
+        assert(json[r'full_name'] != null, 'Required key "Home[full_name]" has a null value in JSON.');
+        assert(json.containsKey(r'email'), 'Required key "Home[email]" is missing from JSON.');
+        assert(json[r'email'] != null, 'Required key "Home[email]" has a null value in JSON.');
+        assert(json.containsKey(r'tickets'), 'Required key "Home[tickets]" is missing from JSON.');
+        assert(json[r'tickets'] != null, 'Required key "Home[tickets]" has a null value in JSON.');
+        assert(json.containsKey(r'ticketStatus'), 'Required key "Home[ticketStatus]" is missing from JSON.');
+        assert(json[r'ticketStatus'] != null, 'Required key "Home[ticketStatus]" has a null value in JSON.');
+        assert(json.containsKey(r'ticketStatusView'), 'Required key "Home[ticketStatusView]" is missing from JSON.');
+        assert(json[r'ticketStatusView'] != null, 'Required key "Home[ticketStatusView]" has a null value in JSON.');
+        assert(json.containsKey(r'details'), 'Required key "Home[details]" is missing from JSON.');
+        assert(json[r'details'] != null, 'Required key "Home[details]" has a null value in JSON.');
+        assert(json.containsKey(r'services'), 'Required key "Home[services]" is missing from JSON.');
+        assert(json[r'services'] != null, 'Required key "Home[services]" has a null value in JSON.');
+        assert(json.containsKey(r'AFFILIATE_AMOUNT'), 'Required key "Home[AFFILIATE_AMOUNT]" is missing from JSON.');
+        assert(json[r'AFFILIATE_AMOUNT'] != null, 'Required key "Home[AFFILIATE_AMOUNT]" has a null value in JSON.');
         return true;
       }());
 

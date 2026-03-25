@@ -8,28 +8,30 @@
 static server_order_get_response_t *server_order_get_response_create_internal(
     form_values_t *form_values,
     config_ids_t *config_ids,
-    int cpu,
+    int *cpu,
     list_t* cpu_li,
     config_lists_t *config_li,
-    int frequency,
+    int *frequency,
     char *currency,
     char *country,
     char *step,
     list_t* field_label,
     list_t* cpu_cores,
     char *currency_symbol,
-    int custid,
+    int *custid,
     char *ima,
     list_t *regions,
     list_t *asset_servers,
     list_t *buy_it_servers,
     char *display_showmore,
-    double cust_discount
+    double *cust_discount
     ) {
     server_order_get_response_t *server_order_get_response_local_var = malloc(sizeof(server_order_get_response_t));
     if (!server_order_get_response_local_var) {
         return NULL;
     }
+    memset(server_order_get_response_local_var, 0, sizeof(server_order_get_response_t));
+    server_order_get_response_local_var->_library_owned = 1;
     server_order_get_response_local_var->form_values = form_values;
     server_order_get_response_local_var->config_ids = config_ids;
     server_order_get_response_local_var->cpu = cpu;
@@ -49,53 +51,78 @@ static server_order_get_response_t *server_order_get_response_create_internal(
     server_order_get_response_local_var->buy_it_servers = buy_it_servers;
     server_order_get_response_local_var->display_showmore = display_showmore;
     server_order_get_response_local_var->cust_discount = cust_discount;
-
-    server_order_get_response_local_var->_library_owned = 1;
     return server_order_get_response_local_var;
 }
 
 __attribute__((deprecated)) server_order_get_response_t *server_order_get_response_create(
     form_values_t *form_values,
     config_ids_t *config_ids,
-    int cpu,
+    int *cpu,
     list_t* cpu_li,
     config_lists_t *config_li,
-    int frequency,
+    int *frequency,
     char *currency,
     char *country,
     char *step,
     list_t* field_label,
     list_t* cpu_cores,
     char *currency_symbol,
-    int custid,
+    int *custid,
     char *ima,
     list_t *regions,
     list_t *asset_servers,
     list_t *buy_it_servers,
     char *display_showmore,
-    double cust_discount
+    double *cust_discount
     ) {
-    return server_order_get_response_create_internal (
+    int *cpu_copy = NULL;
+    if (cpu) {
+        cpu_copy = malloc(sizeof(int));
+        if (cpu_copy) *cpu_copy = *cpu;
+    }
+    int *frequency_copy = NULL;
+    if (frequency) {
+        frequency_copy = malloc(sizeof(int));
+        if (frequency_copy) *frequency_copy = *frequency;
+    }
+    int *custid_copy = NULL;
+    if (custid) {
+        custid_copy = malloc(sizeof(int));
+        if (custid_copy) *custid_copy = *custid;
+    }
+    double *cust_discount_copy = NULL;
+    if (cust_discount) {
+        cust_discount_copy = malloc(sizeof(double));
+        if (cust_discount_copy) *cust_discount_copy = *cust_discount;
+    }
+    server_order_get_response_t *result = server_order_get_response_create_internal (
         form_values,
         config_ids,
-        cpu,
+        cpu_copy,
         cpu_li,
         config_li,
-        frequency,
+        frequency_copy,
         currency,
         country,
         step,
         field_label,
         cpu_cores,
         currency_symbol,
-        custid,
+        custid_copy,
         ima,
         regions,
         asset_servers,
         buy_it_servers,
         display_showmore,
-        cust_discount
+        cust_discount_copy
         );
+    if (!result) {
+        free(cpu_copy);
+        free(frequency_copy);
+        free(custid_copy);
+        free(cust_discount_copy);
+    }
+    return result;
 }
 
 void server_order_get_response_free(server_order_get_response_t *server_order_get_response) {
@@ -115,6 +142,10 @@ void server_order_get_response_free(server_order_get_response_t *server_order_ge
         config_ids_free(server_order_get_response->config_ids);
         server_order_get_response->config_ids = NULL;
     }
+    if (server_order_get_response->cpu) {
+        free(server_order_get_response->cpu);
+        server_order_get_response->cpu = NULL;
+    }
     if (server_order_get_response->cpu_li) {
         list_ForEach(listEntry, server_order_get_response->cpu_li) {
             keyValuePair_t *localKeyValue = listEntry->data;
@@ -128,6 +159,10 @@ void server_order_get_response_free(server_order_get_response_t *server_order_ge
     if (server_order_get_response->config_li) {
         config_lists_free(server_order_get_response->config_li);
         server_order_get_response->config_li = NULL;
+    }
+    if (server_order_get_response->frequency) {
+        free(server_order_get_response->frequency);
+        server_order_get_response->frequency = NULL;
     }
     if (server_order_get_response->currency) {
         free(server_order_get_response->currency);
@@ -165,6 +200,10 @@ void server_order_get_response_free(server_order_get_response_t *server_order_ge
         free(server_order_get_response->currency_symbol);
         server_order_get_response->currency_symbol = NULL;
     }
+    if (server_order_get_response->custid) {
+        free(server_order_get_response->custid);
+        server_order_get_response->custid = NULL;
+    }
     if (server_order_get_response->ima) {
         free(server_order_get_response->ima);
         server_order_get_response->ima = NULL;
@@ -193,6 +232,10 @@ void server_order_get_response_free(server_order_get_response_t *server_order_ge
     if (server_order_get_response->display_showmore) {
         free(server_order_get_response->display_showmore);
         server_order_get_response->display_showmore = NULL;
+    }
+    if (server_order_get_response->cust_discount) {
+        free(server_order_get_response->cust_discount);
+        server_order_get_response->cust_discount = NULL;
     }
     free(server_order_get_response);
 }
@@ -232,7 +275,7 @@ cJSON *server_order_get_response_convertToJSON(server_order_get_response_t *serv
     if (!server_order_get_response->cpu) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "cpu", server_order_get_response->cpu) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cpu", *server_order_get_response->cpu) == NULL) {
     goto fail; //Numeric
     }
 
@@ -272,7 +315,7 @@ cJSON *server_order_get_response_convertToJSON(server_order_get_response_t *serv
     if (!server_order_get_response->frequency) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "frequency", server_order_get_response->frequency) == NULL) {
+    if(cJSON_AddNumberToObject(item, "frequency", *server_order_get_response->frequency) == NULL) {
     goto fail; //Numeric
     }
 
@@ -346,7 +389,7 @@ cJSON *server_order_get_response_convertToJSON(server_order_get_response_t *serv
 
     // server_order_get_response->custid
     if(server_order_get_response->custid) {
-    if(cJSON_AddNumberToObject(item, "custid", server_order_get_response->custid) == NULL) {
+    if(cJSON_AddNumberToObject(item, "custid", *server_order_get_response->custid) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -430,7 +473,7 @@ cJSON *server_order_get_response_convertToJSON(server_order_get_response_t *serv
 
     // server_order_get_response->cust_discount
     if(server_order_get_response->cust_discount) {
-    if(cJSON_AddNumberToObject(item, "cust_discount", server_order_get_response->cust_discount) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cust_discount", *server_order_get_response->cust_discount) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -453,17 +496,36 @@ server_order_get_response_t *server_order_get_response_parseFromJSON(cJSON *serv
     // define the local variable for server_order_get_response->config_ids
     config_ids_t *config_ids_local_nonprim = NULL;
 
+    // define the local variable for server_order_get_response->cpu
+    int *cpu_local_var = NULL;
+
     // define the local map for server_order_get_response->cpu_li
     list_t *cpu_liList = NULL;
 
     // define the local variable for server_order_get_response->config_li
     config_lists_t *config_li_local_nonprim = NULL;
 
+    // define the local variable for server_order_get_response->frequency
+    int *frequency_local_var = NULL;
+
+    char *currency_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *step_local_str = NULL;
+
     // define the local map for server_order_get_response->field_label
     list_t *field_labelList = NULL;
 
     // define the local map for server_order_get_response->cpu_cores
     list_t *cpu_coresList = NULL;
+
+    char *currency_symbol_local_str = NULL;
+
+    // define the local variable for server_order_get_response->custid
+    int *custid_local_var = NULL;
+
+    char *ima_local_str = NULL;
 
     // define the local list for server_order_get_response->regions
     list_t *regionsList = NULL;
@@ -473,6 +535,11 @@ server_order_get_response_t *server_order_get_response_parseFromJSON(cJSON *serv
 
     // define the local list for server_order_get_response->buy_it_servers
     list_t *buy_it_serversList = NULL;
+
+    char *display_showmore_local_str = NULL;
+
+    // define the local variable for server_order_get_response->cust_discount
+    double *cust_discount_local_var = NULL;
 
     // server_order_get_response->form_values
     cJSON *form_values = cJSON_GetObjectItemCaseSensitive(server_order_get_responseJSON, "form_values");
@@ -512,6 +579,12 @@ server_order_get_response_t *server_order_get_response_parseFromJSON(cJSON *serv
     {
     goto end; //Numeric
     }
+    cpu_local_var = malloc(sizeof(int));
+    if(!cpu_local_var)
+    {
+        goto end;
+    }
+    *cpu_local_var = cpu->valuedouble;
 
     // server_order_get_response->cpu_li
     cJSON *cpu_li = cJSON_GetObjectItemCaseSensitive(server_order_get_responseJSON, "cpu_li");
@@ -553,6 +626,12 @@ server_order_get_response_t *server_order_get_response_parseFromJSON(cJSON *serv
     {
     goto end; //Numeric
     }
+    frequency_local_var = malloc(sizeof(int));
+    if(!frequency_local_var)
+    {
+        goto end;
+    }
+    *frequency_local_var = frequency->valuedouble;
 
     // server_order_get_response->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(server_order_get_responseJSON, "currency");
@@ -655,6 +734,12 @@ server_order_get_response_t *server_order_get_response_parseFromJSON(cJSON *serv
     {
     goto end; //Numeric
     }
+    custid_local_var = malloc(sizeof(int));
+    if(!custid_local_var)
+    {
+        goto end;
+    }
+    *custid_local_var = custid->valuedouble;
     }
 
     // server_order_get_response->ima
@@ -763,30 +848,47 @@ server_order_get_response_t *server_order_get_response_parseFromJSON(cJSON *serv
     {
     goto end; //Numeric
     }
+    cust_discount_local_var = malloc(sizeof(double));
+    if(!cust_discount_local_var)
+    {
+        goto end;
+    }
+    *cust_discount_local_var = cust_discount->valuedouble;
     }
 
+
+    if (currency && !cJSON_IsNull(currency)) currency_local_str = strdup(currency->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (step && !cJSON_IsNull(step)) step_local_str = strdup(step->valuestring);
+    if (currency_symbol && !cJSON_IsNull(currency_symbol)) currency_symbol_local_str = strdup(currency_symbol->valuestring);
+    if (ima && !cJSON_IsNull(ima)) ima_local_str = strdup(ima->valuestring);
+    if (display_showmore && !cJSON_IsNull(display_showmore)) display_showmore_local_str = strdup(display_showmore->valuestring);
 
     server_order_get_response_local_var = server_order_get_response_create_internal (
         form_values_local_nonprim,
         config_ids_local_nonprim,
-        cpu->valuedouble,
+        cpu_local_var,
         cpu_liList,
         config_li_local_nonprim,
-        frequency->valuedouble,
-        strdup(currency->valuestring),
-        strdup(country->valuestring),
-        strdup(step->valuestring),
+        frequency_local_var,
+        currency_local_str,
+        country_local_str,
+        step_local_str,
         field_label ? field_labelList : NULL,
         cpu_cores ? cpu_coresList : NULL,
-        currency_symbol && !cJSON_IsNull(currency_symbol) ? strdup(currency_symbol->valuestring) : NULL,
-        custid ? custid->valuedouble : 0,
-        ima && !cJSON_IsNull(ima) ? strdup(ima->valuestring) : NULL,
+        currency_symbol_local_str,
+        custid_local_var,
+        ima_local_str,
         regions ? regionsList : NULL,
         asset_servers ? asset_serversList : NULL,
         buy_it_servers ? buy_it_serversList : NULL,
-        display_showmore && !cJSON_IsNull(display_showmore) ? strdup(display_showmore->valuestring) : NULL,
-        cust_discount ? cust_discount->valuedouble : 0
+        display_showmore_local_str,
+        cust_discount_local_var
         );
+
+    if (!server_order_get_response_local_var) {
+        goto end;
+    }
 
     return server_order_get_response_local_var;
 end:
@@ -798,12 +900,32 @@ end:
         config_ids_free(config_ids_local_nonprim);
         config_ids_local_nonprim = NULL;
     }
+    if (cpu_local_var) {
+        free(cpu_local_var);
+        cpu_local_var = NULL;
+    }
 
     // The data type of the elements in server_order_get_response->cpu_li is currently not supported.
 
     if (config_li_local_nonprim) {
         config_lists_free(config_li_local_nonprim);
         config_li_local_nonprim = NULL;
+    }
+    if (frequency_local_var) {
+        free(frequency_local_var);
+        frequency_local_var = NULL;
+    }
+    if (currency_local_str) {
+        free(currency_local_str);
+        currency_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (step_local_str) {
+        free(step_local_str);
+        step_local_str = NULL;
     }
 
     // The data type of the elements in server_order_get_response->field_label is currently not supported.
@@ -819,6 +941,18 @@ end:
         }
         list_freeList(cpu_coresList);
         cpu_coresList = NULL;
+    }
+    if (currency_symbol_local_str) {
+        free(currency_symbol_local_str);
+        currency_symbol_local_str = NULL;
+    }
+    if (custid_local_var) {
+        free(custid_local_var);
+        custid_local_var = NULL;
+    }
+    if (ima_local_str) {
+        free(ima_local_str);
+        ima_local_str = NULL;
     }
     if (regionsList) {
         listEntry_t *listEntry = NULL;
@@ -846,6 +980,14 @@ end:
         }
         list_freeList(buy_it_serversList);
         buy_it_serversList = NULL;
+    }
+    if (display_showmore_local_str) {
+        free(display_showmore_local_str);
+        display_showmore_local_str = NULL;
+    }
+    if (cust_discount_local_var) {
+        free(cust_discount_local_var);
+        cust_discount_local_var = NULL;
     }
     return NULL;
 

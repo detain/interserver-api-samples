@@ -1,4 +1,4 @@
-# # QuickserverOrderTemplates
+# QuickserverOrderTemplates
 
 ## Properties
 

@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIDomainOrderTldServices : public OAIObject {
 public:
     OAIDomainOrderTldServices();
-    OAIDomainOrderTldServices(QString json);
+    OAIDomainOrderTldServices(const QString &json);
     ~OAIDomainOrderTldServices() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getAsia() const;
     void setAsia(const qint32 &_asia);

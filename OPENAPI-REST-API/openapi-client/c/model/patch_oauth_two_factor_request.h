@@ -19,14 +19,14 @@ typedef struct patch_oauth_two_factor_request_t patch_oauth_two_factor_request_t
 
 
 typedef struct patch_oauth_two_factor_request_t {
-    int account_id; //numeric
+    int *account_id; //numeric
     char *code; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } patch_oauth_two_factor_request_t;
 
 __attribute__((deprecated)) patch_oauth_two_factor_request_t *patch_oauth_two_factor_request_create(
-    int account_id,
+    int *account_id,
     char *code
 );
 

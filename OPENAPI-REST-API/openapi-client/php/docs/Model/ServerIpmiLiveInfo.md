@@ -1,4 +1,4 @@
-# # ServerIpmiLiveInfo
+# ServerIpmiLiveInfo
 
 ## Properties
 

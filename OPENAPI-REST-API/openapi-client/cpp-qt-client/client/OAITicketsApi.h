@@ -124,6 +124,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -143,7 +150,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addNewTicketCallback(OAIHttpRequestWorker *worker);
     void closeTicketCallback(OAIHttpRequestWorker *worker);
@@ -184,72 +191,28 @@ Q_SIGNALS:
     void replyTicketSignalFull(OAIHttpRequestWorker *worker, OAIReplyTicketResponseSchema summary);
     void updateTicketInfoSignalFull(OAIHttpRequestWorker *worker, OAIUpdateTicketResponseSchema summary);
 
-    Q_DECL_DEPRECATED_X("Use addNewTicketSignalError() instead")
-    void addNewTicketSignalE(OAITicketNewResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addNewTicketSignalError(OAITicketNewResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use closeTicketSignalError() instead")
-    void closeTicketSignalE(OAICloseTicketResponseSchema summary, QNetworkReply::NetworkError error_type, QString error_str);
     void closeTicketSignalError(OAICloseTicketResponseSchema summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteTicketInfoSignalError() instead")
-    void deleteTicketInfoSignalE(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteTicketInfoSignalError(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewTicketSignalError() instead")
-    void getNewTicketSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getNewTicketSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getTicketInfoSignalError() instead")
-    void getTicketInfoSignalE(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getTicketInfoSignalError(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getTicketsListSignalError() instead")
-    void getTicketsListSignalE(OAITickets summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getTicketsListSignalError(OAITickets summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postTicketInfoSignalError() instead")
-    void postTicketInfoSignalE(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postTicketInfoSignalError(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postTicketsListSignalError() instead")
-    void postTicketsListSignalE(OAITickets summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postTicketsListSignalError(OAITickets summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putTicketInfoSignalError() instead")
-    void putTicketInfoSignalE(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void putTicketInfoSignalError(OAIViewTicketResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use replyTicketSignalError() instead")
-    void replyTicketSignalE(OAIReplyTicketResponseSchema summary, QNetworkReply::NetworkError error_type, QString error_str);
     void replyTicketSignalError(OAIReplyTicketResponseSchema summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateTicketInfoSignalError() instead")
-    void updateTicketInfoSignalE(OAIUpdateTicketResponseSchema summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateTicketInfoSignalError(OAIUpdateTicketResponseSchema summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addNewTicketSignalErrorFull() instead")
-    void addNewTicketSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addNewTicketSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use closeTicketSignalErrorFull() instead")
-    void closeTicketSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void closeTicketSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteTicketInfoSignalErrorFull() instead")
-    void deleteTicketInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteTicketInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewTicketSignalErrorFull() instead")
-    void getNewTicketSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewTicketSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getTicketInfoSignalErrorFull() instead")
-    void getTicketInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getTicketInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getTicketsListSignalErrorFull() instead")
-    void getTicketsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getTicketsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postTicketInfoSignalErrorFull() instead")
-    void postTicketInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postTicketInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postTicketsListSignalErrorFull() instead")
-    void postTicketsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postTicketsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putTicketInfoSignalErrorFull() instead")
-    void putTicketInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putTicketInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use replyTicketSignalErrorFull() instead")
-    void replyTicketSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void replyTicketSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateTicketInfoSignalErrorFull() instead")
-    void updateTicketInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateTicketInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

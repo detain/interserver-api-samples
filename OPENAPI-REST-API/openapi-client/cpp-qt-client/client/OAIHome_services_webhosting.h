@@ -32,13 +32,13 @@ class OAIHomeServicesWebhostingLinks;
 class OAIHome_services_webhosting : public OAIObject {
 public:
     OAIHome_services_webhosting();
-    OAIHome_services_webhosting(QString json);
+    OAIHome_services_webhosting(const QString &json);
     ~OAIHome_services_webhosting() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIHomeServicesWebhostingLinks getLinks() const;
     void setLinks(const OAIHomeServicesWebhostingLinks &links);

@@ -6,89 +6,14 @@
  *)
 
 type vpsplatform = [
-| `Kvm [@printer fun fmt _ -> Format.pp_print_string fmt "kvm"] [@name "kvm"]
 | `Hyperv [@printer fun fmt _ -> Format.pp_print_string fmt "hyperv"] [@name "hyperv"]
+| `Kvm [@printer fun fmt _ -> Format.pp_print_string fmt "kvm"] [@name "kvm"]
 | `Kvmstorage [@printer fun fmt _ -> Format.pp_print_string fmt "kvmstorage"] [@name "kvmstorage"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
 let vpsplatform_of_yojson json = vpsplatform_of_yojson (`List [json])
 let vpsplatform_to_yojson e =
     match vpsplatform_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
-type fetch_by = [
-| `Iso2 [@printer fun fmt _ -> Format.pp_print_string fmt "iso2"] [@name "iso2"]
-| `Iso3 [@printer fun fmt _ -> Format.pp_print_string fmt "iso3"] [@name "iso3"]
-| `Numcode [@printer fun fmt _ -> Format.pp_print_string fmt "numcode"] [@name "numcode"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let fetch_by_of_yojson json = fetch_by_of_yojson (`List [json])
-let fetch_by_to_yojson e =
-    match fetch_by_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
-type creator = [
-| `User [@printer fun fmt _ -> Format.pp_print_string fmt "User"] [@name "User"]
-| `Staff [@printer fun fmt _ -> Format.pp_print_string fmt "Staff"] [@name "Staff"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let creator_of_yojson json = creator_of_yojson (`List [json])
-let creator_to_yojson e =
-    match creator_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
-type period = [
-| `_30 [@printer fun fmt _ -> Format.pp_print_string fmt "30"] [@name "30"]
-| `_90 [@printer fun fmt _ -> Format.pp_print_string fmt "90"] [@name "90"]
-| `_365 [@printer fun fmt _ -> Format.pp_print_string fmt "365"] [@name "365"]
-| `_1825 [@printer fun fmt _ -> Format.pp_print_string fmt "1825"] [@name "1825"]
-| `All [@printer fun fmt _ -> Format.pp_print_string fmt "all"] [@name "all"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let period_of_yojson json = period_of_yojson (`List [json])
-let period_to_yojson e =
-    match period_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
-type controlpanel = [
-| `None [@printer fun fmt _ -> Format.pp_print_string fmt "none"] [@name "none"]
-| `Cpanel [@printer fun fmt _ -> Format.pp_print_string fmt "cpanel"] [@name "cpanel"]
-| `Da [@printer fun fmt _ -> Format.pp_print_string fmt "da"] [@name "da"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let controlpanel_of_yojson json = controlpanel_of_yojson (`List [json])
-let controlpanel_to_yojson e =
-    match controlpanel_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
-type denyrulenew_type = [
-| `Domain [@printer fun fmt _ -> Format.pp_print_string fmt "domain"] [@name "domain"]
-| `Email [@printer fun fmt _ -> Format.pp_print_string fmt "email"] [@name "email"]
-| `Startswith [@printer fun fmt _ -> Format.pp_print_string fmt "startswith"] [@name "startswith"]
-| `Destination [@printer fun fmt _ -> Format.pp_print_string fmt "destination"] [@name "destination"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let denyrulenew_type_of_yojson json = denyrulenew_type_of_yojson (`List [json])
-let denyrulenew_type_to_yojson e =
-    match denyrulenew_type_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
-type scrub_ip_status = [
-| `Active [@printer fun fmt _ -> Format.pp_print_string fmt "active"] [@name "active"]
-| `Pending [@printer fun fmt _ -> Format.pp_print_string fmt "pending"] [@name "pending"]
-| `Canceled [@printer fun fmt _ -> Format.pp_print_string fmt "canceled"] [@name "canceled"]
-| `Expired [@printer fun fmt _ -> Format.pp_print_string fmt "expired"] [@name "expired"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let scrub_ip_status_of_yojson json = scrub_ip_status_of_yojson (`List [json])
-let scrub_ip_status_to_yojson e =
-    match scrub_ip_status_to_yojson e with
     | `List [json] -> json
     | json -> json
 
@@ -114,14 +39,27 @@ let protocol_id_to_yojson e =
     | `List [json] -> json
     | json -> json
 
+type scrub_ip_status = [
+| `Active [@printer fun fmt _ -> Format.pp_print_string fmt "active"] [@name "active"]
+| `Canceled [@printer fun fmt _ -> Format.pp_print_string fmt "canceled"] [@name "canceled"]
+| `Expired [@printer fun fmt _ -> Format.pp_print_string fmt "expired"] [@name "expired"]
+| `Pending [@printer fun fmt _ -> Format.pp_print_string fmt "pending"] [@name "pending"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let scrub_ip_status_of_yojson json = scrub_ip_status_of_yojson (`List [json])
+let scrub_ip_status_to_yojson e =
+    match scrub_ip_status_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
 type time = [
+| `_1h [@printer fun fmt _ -> Format.pp_print_string fmt "1h"] [@name "1h"]
+| `_24h [@printer fun fmt _ -> Format.pp_print_string fmt "24h"] [@name "24h"]
+| `_7d [@printer fun fmt _ -> Format.pp_print_string fmt "7d"] [@name "7d"]
 | `All [@printer fun fmt _ -> Format.pp_print_string fmt "all"] [@name "all"]
 | `Billing [@printer fun fmt _ -> Format.pp_print_string fmt "billing"] [@name "billing"]
 | `Month [@printer fun fmt _ -> Format.pp_print_string fmt "month"] [@name "month"]
-| `_7d [@printer fun fmt _ -> Format.pp_print_string fmt "7d"] [@name "7d"]
-| `_24h [@printer fun fmt _ -> Format.pp_print_string fmt "24h"] [@name "24h"]
-| `_1d [@printer fun fmt _ -> Format.pp_print_string fmt "1d"] [@name "1d"]
-| `_1h [@printer fun fmt _ -> Format.pp_print_string fmt "1h"] [@name "1h"]
+| `Today [@printer fun fmt _ -> Format.pp_print_string fmt "today"] [@name "today"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
 let time_of_yojson json = time_of_yojson (`List [json])
@@ -130,25 +68,9 @@ let time_to_yojson e =
     | `List [json] -> json
     | json -> json
 
-type mailstatstype_time = [
-| `All [@printer fun fmt _ -> Format.pp_print_string fmt "all"] [@name "all"]
-| `Billing [@printer fun fmt _ -> Format.pp_print_string fmt "billing"] [@name "billing"]
-| `Month [@printer fun fmt _ -> Format.pp_print_string fmt "month"] [@name "month"]
-| `_7d [@printer fun fmt _ -> Format.pp_print_string fmt "7d"] [@name "7d"]
-| `_24h [@printer fun fmt _ -> Format.pp_print_string fmt "24h"] [@name "24h"]
-| `Today [@printer fun fmt _ -> Format.pp_print_string fmt "today"] [@name "today"]
-| `_1h [@printer fun fmt _ -> Format.pp_print_string fmt "1h"] [@name "1h"]
-] [@@deriving yojson, show { with_path = false }, eq];;
-
-let mailstatstype_time_of_yojson json = mailstatstype_time_of_yojson (`List [json])
-let mailstatstype_time_to_yojson e =
-    match mailstatstype_time_to_yojson e with
-    | `List [json] -> json
-    | json -> json
-
 type customer_server_access = [
-| `Y [@printer fun fmt _ -> Format.pp_print_string fmt "y"] [@name "y"]
 | `N [@printer fun fmt _ -> Format.pp_print_string fmt "n"] [@name "n"]
+| `Y [@printer fun fmt _ -> Format.pp_print_string fmt "y"] [@name "y"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
 let customer_server_access_of_yojson json = customer_server_access_of_yojson (`List [json])
@@ -157,29 +79,30 @@ let customer_server_access_to_yojson e =
     | `List [json] -> json
     | json -> json
 
-type view = [
-| `Open [@printer fun fmt _ -> Format.pp_print_string fmt "Open"] [@name "Open"]
-| `Closed [@printer fun fmt _ -> Format.pp_print_string fmt "Closed"] [@name "Closed"]
-| `On_Hold [@printer fun fmt _ -> Format.pp_print_string fmt "On Hold"] [@name "On Hold"]
-| `In_Progress [@printer fun fmt _ -> Format.pp_print_string fmt "In Progress"] [@name "In Progress"]
+type period = [
+| `_1825 [@printer fun fmt _ -> Format.pp_print_string fmt "1825"] [@name "1825"]
+| `_30 [@printer fun fmt _ -> Format.pp_print_string fmt "30"] [@name "30"]
+| `_365 [@printer fun fmt _ -> Format.pp_print_string fmt "365"] [@name "365"]
+| `_90 [@printer fun fmt _ -> Format.pp_print_string fmt "90"] [@name "90"]
+| `All [@printer fun fmt _ -> Format.pp_print_string fmt "all"] [@name "all"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
-let view_of_yojson json = view_of_yojson (`List [json])
-let view_to_yojson e =
-    match view_to_yojson e with
+let period_of_yojson json = period_of_yojson (`List [json])
+let period_to_yojson e =
+    match period_to_yojson e with
     | `List [json] -> json
     | json -> json
 
 type method_0 = [
+| `Btcpay [@printer fun fmt _ -> Format.pp_print_string fmt "btcpay"] [@name "btcpay"]
+| `Cashfree [@printer fun fmt _ -> Format.pp_print_string fmt "cashfree"] [@name "cashfree"]
 | `Cc [@printer fun fmt _ -> Format.pp_print_string fmt "cc"] [@name "cc"]
+| `Ccavenue [@printer fun fmt _ -> Format.pp_print_string fmt "ccavenue"] [@name "ccavenue"]
+| `Coinbase [@printer fun fmt _ -> Format.pp_print_string fmt "coinbase"] [@name "coinbase"]
 | `Paypal [@printer fun fmt _ -> Format.pp_print_string fmt "paypal"] [@name "paypal"]
-| `Prepay [@printer fun fmt _ -> Format.pp_print_string fmt "prepay"] [@name "prepay"]
 | `Payssion [@printer fun fmt _ -> Format.pp_print_string fmt "payssion"] [@name "payssion"]
 | `Payu [@printer fun fmt _ -> Format.pp_print_string fmt "payu"] [@name "payu"]
-| `Ccavenue [@printer fun fmt _ -> Format.pp_print_string fmt "ccavenue"] [@name "ccavenue"]
-| `Cashfree [@printer fun fmt _ -> Format.pp_print_string fmt "cashfree"] [@name "cashfree"]
-| `Coinbase [@printer fun fmt _ -> Format.pp_print_string fmt "coinbase"] [@name "coinbase"]
-| `Btcpay [@printer fun fmt _ -> Format.pp_print_string fmt "btcpay"] [@name "btcpay"]
+| `Prepay [@printer fun fmt _ -> Format.pp_print_string fmt "prepay"] [@name "prepay"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
 let method_0_of_yojson json = method_0_of_yojson (`List [json])
@@ -188,15 +111,128 @@ let method_0_to_yojson e =
     | `List [json] -> json
     | json -> json
 
+type fetch_by = [
+| `Iso2 [@printer fun fmt _ -> Format.pp_print_string fmt "iso2"] [@name "iso2"]
+| `Iso3 [@printer fun fmt _ -> Format.pp_print_string fmt "iso3"] [@name "iso3"]
+| `Numcode [@printer fun fmt _ -> Format.pp_print_string fmt "numcode"] [@name "numcode"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let fetch_by_of_yojson json = fetch_by_of_yojson (`List [json])
+let fetch_by_to_yojson e =
+    match fetch_by_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type groupby = [
+| `Message [@printer fun fmt _ -> Format.pp_print_string fmt "message"] [@name "message"]
+| `Recipient [@printer fun fmt _ -> Format.pp_print_string fmt "recipient"] [@name "recipient"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let groupby_of_yojson json = groupby_of_yojson (`List [json])
+let groupby_to_yojson e =
+    match groupby_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type controlpanel = [
+| `Cpanel [@printer fun fmt _ -> Format.pp_print_string fmt "cpanel"] [@name "cpanel"]
+| `Da [@printer fun fmt _ -> Format.pp_print_string fmt "da"] [@name "da"]
+| `None [@printer fun fmt _ -> Format.pp_print_string fmt "none"] [@name "none"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let controlpanel_of_yojson json = controlpanel_of_yojson (`List [json])
+let controlpanel_to_yojson e =
+    match controlpanel_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
 type initiatepayment_200_response_type = [
 | `Redirect [@printer fun fmt _ -> Format.pp_print_string fmt "redirect"] [@name "redirect"]
-| `Submit [@printer fun fmt _ -> Format.pp_print_string fmt "submit"] [@name "submit"]
 | `Single [@printer fun fmt _ -> Format.pp_print_string fmt "single"] [@name "single"]
+| `Submit [@printer fun fmt _ -> Format.pp_print_string fmt "submit"] [@name "submit"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
 let initiatepayment_200_response_type_of_yojson json = initiatepayment_200_response_type_of_yojson (`List [json])
 let initiatepayment_200_response_type_to_yojson e =
     match initiatepayment_200_response_type_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type dir = [
+| `Asc [@printer fun fmt _ -> Format.pp_print_string fmt "asc"] [@name "asc"]
+| `Desc [@printer fun fmt _ -> Format.pp_print_string fmt "desc"] [@name "desc"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let dir_of_yojson json = dir_of_yojson (`List [json])
+let dir_to_yojson e =
+    match dir_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type time_0 = [
+| `_1d [@printer fun fmt _ -> Format.pp_print_string fmt "1d"] [@name "1d"]
+| `_1h [@printer fun fmt _ -> Format.pp_print_string fmt "1h"] [@name "1h"]
+| `_24h [@printer fun fmt _ -> Format.pp_print_string fmt "24h"] [@name "24h"]
+| `_7d [@printer fun fmt _ -> Format.pp_print_string fmt "7d"] [@name "7d"]
+| `All [@printer fun fmt _ -> Format.pp_print_string fmt "all"] [@name "all"]
+| `Billing [@printer fun fmt _ -> Format.pp_print_string fmt "billing"] [@name "billing"]
+| `Month [@printer fun fmt _ -> Format.pp_print_string fmt "month"] [@name "month"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let time_0_of_yojson json = time_0_of_yojson (`List [json])
+let time_0_to_yojson e =
+    match time_0_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type action = [
+| `Cycle [@printer fun fmt _ -> Format.pp_print_string fmt "cycle"] [@name "cycle"]
+| `Off [@printer fun fmt _ -> Format.pp_print_string fmt "off"] [@name "off"]
+| `On [@printer fun fmt _ -> Format.pp_print_string fmt "on"] [@name "on"]
+| `Reset [@printer fun fmt _ -> Format.pp_print_string fmt "reset"] [@name "reset"]
+| `Soft [@printer fun fmt _ -> Format.pp_print_string fmt "soft"] [@name "soft"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let action_of_yojson json = action_of_yojson (`List [json])
+let action_to_yojson e =
+    match action_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type denyrulenew_type = [
+| `Destination [@printer fun fmt _ -> Format.pp_print_string fmt "destination"] [@name "destination"]
+| `Domain [@printer fun fmt _ -> Format.pp_print_string fmt "domain"] [@name "domain"]
+| `Email [@printer fun fmt _ -> Format.pp_print_string fmt "email"] [@name "email"]
+| `Startswith [@printer fun fmt _ -> Format.pp_print_string fmt "startswith"] [@name "startswith"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let denyrulenew_type_of_yojson json = denyrulenew_type_of_yojson (`List [json])
+let denyrulenew_type_to_yojson e =
+    match denyrulenew_type_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type view = [
+| `Closed [@printer fun fmt _ -> Format.pp_print_string fmt "Closed"] [@name "Closed"]
+| `In_Progress [@printer fun fmt _ -> Format.pp_print_string fmt "In Progress"] [@name "In Progress"]
+| `On_Hold [@printer fun fmt _ -> Format.pp_print_string fmt "On Hold"] [@name "On Hold"]
+| `Open [@printer fun fmt _ -> Format.pp_print_string fmt "Open"] [@name "Open"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let view_of_yojson json = view_of_yojson (`List [json])
+let view_to_yojson e =
+    match view_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type creator = [
+| `Staff [@printer fun fmt _ -> Format.pp_print_string fmt "Staff"] [@name "Staff"]
+| `User [@printer fun fmt _ -> Format.pp_print_string fmt "User"] [@name "User"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let creator_of_yojson json = creator_of_yojson (`List [json])
+let creator_to_yojson e =
+    match creator_to_yojson e with
     | `List [json] -> json
     | json -> json
 
@@ -213,8 +249,8 @@ type dnsrecordtype = [
 | `CNAME [@printer fun fmt _ -> Format.pp_print_string fmt "CNAME"] [@name "CNAME"]
 | `DHCID [@printer fun fmt _ -> Format.pp_print_string fmt "DHCID"] [@name "DHCID"]
 | `DLV [@printer fun fmt _ -> Format.pp_print_string fmt "DLV"] [@name "DLV"]
-| `DNSKEY [@printer fun fmt _ -> Format.pp_print_string fmt "DNSKEY"] [@name "DNSKEY"]
 | `DNAME [@printer fun fmt _ -> Format.pp_print_string fmt "DNAME"] [@name "DNAME"]
+| `DNSKEY [@printer fun fmt _ -> Format.pp_print_string fmt "DNSKEY"] [@name "DNSKEY"]
 | `DS [@printer fun fmt _ -> Format.pp_print_string fmt "DS"] [@name "DS"]
 | `EUI48 [@printer fun fmt _ -> Format.pp_print_string fmt "EUI48"] [@name "EUI48"]
 | `EUI64 [@printer fun fmt _ -> Format.pp_print_string fmt "EUI64"] [@name "EUI64"]
@@ -244,12 +280,12 @@ type dnsrecordtype = [
 | `SPF [@printer fun fmt _ -> Format.pp_print_string fmt "SPF"] [@name "SPF"]
 | `SRV [@printer fun fmt _ -> Format.pp_print_string fmt "SRV"] [@name "SRV"]
 | `SSHFP [@printer fun fmt _ -> Format.pp_print_string fmt "SSHFP"] [@name "SSHFP"]
-| `TLSA [@printer fun fmt _ -> Format.pp_print_string fmt "TLSA"] [@name "TLSA"]
 | `TKEY [@printer fun fmt _ -> Format.pp_print_string fmt "TKEY"] [@name "TKEY"]
+| `TLSA [@printer fun fmt _ -> Format.pp_print_string fmt "TLSA"] [@name "TLSA"]
 | `TSIG [@printer fun fmt _ -> Format.pp_print_string fmt "TSIG"] [@name "TSIG"]
 | `TXT [@printer fun fmt _ -> Format.pp_print_string fmt "TXT"] [@name "TXT"]
-| `WKS [@printer fun fmt _ -> Format.pp_print_string fmt "WKS"] [@name "WKS"]
 | `URI⏎ [@printer fun fmt _ -> Format.pp_print_string fmt "URI⏎"] [@name "URI⏎"]
+| `WKS [@printer fun fmt _ -> Format.pp_print_string fmt "WKS"] [@name "WKS"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
 let dnsrecordtype_of_yojson json = dnsrecordtype_of_yojson (`List [json])
@@ -258,16 +294,12 @@ let dnsrecordtype_to_yojson e =
     | `List [json] -> json
     | json -> json
 
-type action = [
-| `Cycle [@printer fun fmt _ -> Format.pp_print_string fmt "cycle"] [@name "cycle"]
-| `Reset [@printer fun fmt _ -> Format.pp_print_string fmt "reset"] [@name "reset"]
-| `On [@printer fun fmt _ -> Format.pp_print_string fmt "on"] [@name "on"]
-| `Off [@printer fun fmt _ -> Format.pp_print_string fmt "off"] [@name "off"]
-| `Soft [@printer fun fmt _ -> Format.pp_print_string fmt "soft"] [@name "soft"]
+type sort = [
+| `Time [@printer fun fmt _ -> Format.pp_print_string fmt "time"] [@name "time"]
 ] [@@deriving yojson, show { with_path = false }, eq];;
 
-let action_of_yojson json = action_of_yojson (`List [json])
-let action_to_yojson e =
-    match action_to_yojson e with
+let sort_of_yojson json = sort_of_yojson (`List [json])
+let sort_to_yojson e =
+    match sort_to_yojson e with
     | `List [json] -> json
     | json -> json

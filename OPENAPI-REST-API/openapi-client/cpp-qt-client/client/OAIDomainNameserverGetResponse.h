@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIDomainNameserverGetResponse : public OAIObject {
 public:
     OAIDomainNameserverGetResponse();
-    OAIDomainNameserverGetResponse(QString json);
+    OAIDomainNameserverGetResponse(const QString &json);
     ~OAIDomainNameserverGetResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;

@@ -19,6 +19,8 @@ static get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *get_scru
     if (!get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var, 0, sizeof(get_scrub_ip_details_200_response_filter_firewall_rules_inner_t));
+    get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->id = id;
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->source_ip = source_ip;
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->destination_ip = destination_ip;
@@ -27,8 +29,6 @@ static get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *get_scru
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->destination_port = destination_port;
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->xdp_action = xdp_action;
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->global_drop = global_drop;
-
-    get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_filter_firewall_ru
     char *xdp_action,
     char *global_drop
     ) {
-    return get_scrub_ip_details_200_response_filter_firewall_rules_inner_create_internal (
+    get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *result = get_scrub_ip_details_200_response_filter_firewall_rules_inner_create_internal (
         id,
         source_ip,
         destination_ip,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_filter_firewall_ru
         xdp_action,
         global_drop
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_filter_firewall_rules_inner_free(get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *get_scrub_ip_details_200_response_filter_firewall_rules_inner) {
@@ -176,6 +179,22 @@ get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *get_scrub_ip_de
 
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *source_ip_local_str = NULL;
+
+    char *destination_ip_local_str = NULL;
+
+    char *protocol_id_local_str = NULL;
+
+    char *source_port_local_str = NULL;
+
+    char *destination_port_local_str = NULL;
+
+    char *xdp_action_local_str = NULL;
+
+    char *global_drop_local_str = NULL;
+
     // get_scrub_ip_details_200_response_filter_firewall_rules_inner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(get_scrub_ip_details_200_response_filter_firewall_rules_innerJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -273,19 +292,64 @@ get_scrub_ip_details_200_response_filter_firewall_rules_inner_t *get_scrub_ip_de
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (source_ip && !cJSON_IsNull(source_ip)) source_ip_local_str = strdup(source_ip->valuestring);
+    if (destination_ip && !cJSON_IsNull(destination_ip)) destination_ip_local_str = strdup(destination_ip->valuestring);
+    if (protocol_id && !cJSON_IsNull(protocol_id)) protocol_id_local_str = strdup(protocol_id->valuestring);
+    if (source_port && !cJSON_IsNull(source_port)) source_port_local_str = strdup(source_port->valuestring);
+    if (destination_port && !cJSON_IsNull(destination_port)) destination_port_local_str = strdup(destination_port->valuestring);
+    if (xdp_action && !cJSON_IsNull(xdp_action)) xdp_action_local_str = strdup(xdp_action->valuestring);
+    if (global_drop && !cJSON_IsNull(global_drop)) global_drop_local_str = strdup(global_drop->valuestring);
+
     get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var = get_scrub_ip_details_200_response_filter_firewall_rules_inner_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        source_ip && !cJSON_IsNull(source_ip) ? strdup(source_ip->valuestring) : NULL,
-        destination_ip && !cJSON_IsNull(destination_ip) ? strdup(destination_ip->valuestring) : NULL,
-        protocol_id && !cJSON_IsNull(protocol_id) ? strdup(protocol_id->valuestring) : NULL,
-        source_port && !cJSON_IsNull(source_port) ? strdup(source_port->valuestring) : NULL,
-        destination_port && !cJSON_IsNull(destination_port) ? strdup(destination_port->valuestring) : NULL,
-        xdp_action && !cJSON_IsNull(xdp_action) ? strdup(xdp_action->valuestring) : NULL,
-        global_drop && !cJSON_IsNull(global_drop) ? strdup(global_drop->valuestring) : NULL
+        id_local_str,
+        source_ip_local_str,
+        destination_ip_local_str,
+        protocol_id_local_str,
+        source_port_local_str,
+        destination_port_local_str,
+        xdp_action_local_str,
+        global_drop_local_str
         );
+
+    if (!get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_filter_firewall_rules_inner_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (source_ip_local_str) {
+        free(source_ip_local_str);
+        source_ip_local_str = NULL;
+    }
+    if (destination_ip_local_str) {
+        free(destination_ip_local_str);
+        destination_ip_local_str = NULL;
+    }
+    if (protocol_id_local_str) {
+        free(protocol_id_local_str);
+        protocol_id_local_str = NULL;
+    }
+    if (source_port_local_str) {
+        free(source_port_local_str);
+        source_port_local_str = NULL;
+    }
+    if (destination_port_local_str) {
+        free(destination_port_local_str);
+        destination_port_local_str = NULL;
+    }
+    if (xdp_action_local_str) {
+        free(xdp_action_local_str);
+        xdp_action_local_str = NULL;
+    }
+    if (global_drop_local_str) {
+        free(global_drop_local_str);
+        global_drop_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -19,7 +19,7 @@ local function cast_mail_log_entry(t)
 	return setmetatable(t, mail_log_entry_mt)
 end
 
-local function new_mail_log_entry(_id, id, from, to, subject, message_id, created, time, user, transtype, origin, interface, sending_zone, body_size, seq, recipient, domain, locked, lock_time, assigned, queued, mx_hostname, response)
+local function new_mail_log_entry(_id, id, from, to, subject, message_id, created, time, user, transtype, origin, interface, sending_zone, body_size, seq, delivered, code, recipient, response, domain, locked, lock_time, assigned, queued, mx_hostname)
 	return cast_mail_log_entry({
 		["_id"] = _id;
 		["id"] = id;
@@ -36,14 +36,16 @@ local function new_mail_log_entry(_id, id, from, to, subject, message_id, create
 		["sendingZone"] = sending_zone;
 		["bodySize"] = body_size;
 		["seq"] = seq;
+		["delivered"] = delivered;
+		["code"] = code;
 		["recipient"] = recipient;
+		["response"] = response;
 		["domain"] = domain;
 		["locked"] = locked;
 		["lockTime"] = lock_time;
 		["assigned"] = assigned;
 		["queued"] = queued;
 		["mxHostname"] = mx_hostname;
-		["response"] = response;
 	})
 end
 

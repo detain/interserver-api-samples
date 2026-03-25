@@ -1,4 +1,4 @@
-# # AffiliatePaymentSetup
+# AffiliatePaymentSetup
 
 ## Properties
 

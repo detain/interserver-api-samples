@@ -1,4 +1,4 @@
-# # HomeDetailsModulesVps
+# HomeDetailsModulesVps
 
 ## Properties
 

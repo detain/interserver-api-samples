@@ -1,4 +1,4 @@
-# # DomainWhoisPrivacyRequest
+# DomainWhoisPrivacyRequest
 
 ## Properties
 

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIUpdateTicketResponseSchema::OAIUpdateTicketResponseSchema(QString json) {
+OAIUpdateTicketResponseSchema::OAIUpdateTicketResponseSchema(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIUpdateTicketResponseSchema::initializeModel() {
     m_message_isValid = false;
 }
 
-void OAIUpdateTicketResponseSchema::fromJson(QString jsonString) {
+void OAIUpdateTicketResponseSchema::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

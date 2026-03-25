@@ -1,4 +1,4 @@
-# # HomeDetailsModulesDomains
+# HomeDetailsModulesDomains
 
 ## Properties
 

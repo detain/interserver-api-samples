@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIStatusMonthlyBreakdown::OAIStatusMonthlyBreakdown(QString json) {
+OAIStatusMonthlyBreakdown::OAIStatusMonthlyBreakdown(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIStatusMonthlyBreakdown::initializeModel() {
     m_paid_isValid = false;
 }
 
-void OAIStatusMonthlyBreakdown::fromJson(QString jsonString) {
+void OAIStatusMonthlyBreakdown::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIQuickserverOrder_templates : public OAIObject {
 public:
     OAIQuickserverOrder_templates();
-    OAIQuickserverOrder_templates(QString json);
+    OAIQuickserverOrder_templates(const QString &json);
     ~OAIQuickserverOrder_templates() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIQuickserverOrderTemplatesUbuntu64<QList<QString>> getUbuntu() const;
     void setUbuntu(const OAIQuickserverOrderTemplatesUbuntu64<QList<QString>> &ubuntu);

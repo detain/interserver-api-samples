@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIGetOauthRedirect_200_response : public OAIObject {
 public:
     OAIGetOauthRedirect_200_response();
-    OAIGetOauthRedirect_200_response(QString json);
+    OAIGetOauthRedirect_200_response(const QString &json);
     ~OAIGetOauthRedirect_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getRedirectUrl() const;
     void setRedirectUrl(const QString &redirect_url);

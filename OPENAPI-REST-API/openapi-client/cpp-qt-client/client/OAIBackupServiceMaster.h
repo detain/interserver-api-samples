@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBackupServiceMaster : public OAIObject {
 public:
     OAIBackupServiceMaster();
-    OAIBackupServiceMaster(QString json);
+    OAIBackupServiceMaster(const QString &json);
     ~OAIBackupServiceMaster() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getBackupId() const;
     void setBackupId(const qint32 &backup_id);

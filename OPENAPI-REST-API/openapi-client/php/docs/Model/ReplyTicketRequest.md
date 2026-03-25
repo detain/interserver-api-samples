@@ -1,4 +1,4 @@
-# # ReplyTicketRequest
+# ReplyTicketRequest
 
 ## Properties
 

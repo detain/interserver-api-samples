@@ -19,14 +19,14 @@ typedef struct ssl_cancel_200_response_t ssl_cancel_200_response_t;
 
 
 typedef struct ssl_cancel_200_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssl_cancel_200_response_t;
 
 __attribute__((deprecated)) ssl_cancel_200_response_t *ssl_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
 );
 

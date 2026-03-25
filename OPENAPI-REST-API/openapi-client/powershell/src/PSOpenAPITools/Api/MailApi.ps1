@@ -2689,40 +2689,58 @@ No description available.
 The mail service ID. Use `mail_id` from `GET /mail`.
 
 .PARAMETER Id2
-The ID of your mail order this will be sent through.
+The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
 
 .PARAMETER Origin
-originating ip address sending mail
+Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
 
 .PARAMETER Mx
-mx record mail was sent to
+Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
 
 .PARAMETER From
-from email address
+Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
 
 .PARAMETER To
-to/destination email address
+Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
 
 .PARAMETER Subject
-subject containing this string
+Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
 
 .PARAMETER Mailid
-mail id
+Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
 
-.PARAMETER Skip
-number of records to skip for pagination
+.PARAMETER MessageId
+Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
 
-.PARAMETER Limit
-maximum number of records to return
+.PARAMETER Replyto
+Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
 
-.PARAMETER StartDate
-earliest date to get emails in unix timestamp format
-
-.PARAMETER EndDate
-Latest date to get emails in unix timestamp format.
+.PARAMETER Headerfrom
+Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
 
 .PARAMETER Delivered
-Filter emails by whether or not they were delivered.
+Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+
+.PARAMETER Skip
+Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
+
+.PARAMETER Limit
+Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
+
+.PARAMETER StartDate
+Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+
+.PARAMETER EndDate
+Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+
+.PARAMETER Sort
+Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
+
+.PARAMETER Dir
+Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
+
+.PARAMETER Groupby
+Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
 
 .PARAMETER WithHttpInfo
 
@@ -2760,21 +2778,42 @@ function Invoke-ViewMailLog {
         [String]
         ${Mailid},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${MessageId},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Replyto},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Headerfrom},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("0", "1")]
+        [System.Nullable[Int32]]
+        ${Delivered},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Skip},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[Int64]]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [PSCustomObject]
         ${StartDate},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[Int64]]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [PSCustomObject]
         ${EndDate},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("0", "1")]
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("time")]
         [String]
-        ${Delivered},
+        ${Sort},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("asc", "desc")]
+        [String]
+        ${Dir},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("message", "recipient")]
+        [String]
+        ${Groupby},
         [Switch]
         $WithHttpInfo
     )
@@ -2830,6 +2869,22 @@ function Invoke-ViewMailLog {
             $LocalVarQueryParameters['mailid'] = $Mailid
         }
 
+        if ($MessageId) {
+            $LocalVarQueryParameters['messageId'] = $MessageId
+        }
+
+        if ($Replyto) {
+            $LocalVarQueryParameters['replyto'] = $Replyto
+        }
+
+        if ($Headerfrom) {
+            $LocalVarQueryParameters['headerfrom'] = $Headerfrom
+        }
+
+        if ($Delivered) {
+            $LocalVarQueryParameters['delivered'] = $Delivered
+        }
+
         if ($Skip) {
             $LocalVarQueryParameters['skip'] = $Skip
         }
@@ -2846,8 +2901,16 @@ function Invoke-ViewMailLog {
             $LocalVarQueryParameters['endDate'] = $EndDate
         }
 
-        if ($Delivered) {
-            $LocalVarQueryParameters['delivered'] = $Delivered
+        if ($Sort) {
+            $LocalVarQueryParameters['sort'] = $Sort
+        }
+
+        if ($Dir) {
+            $LocalVarQueryParameters['dir'] = $Dir
+        }
+
+        if ($Groupby) {
+            $LocalVarQueryParameters['groupby'] = $Groupby
         }
 
         if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["sessionid"]) {

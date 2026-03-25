@@ -20,6 +20,8 @@ static billing_add_cc_request_t *billing_add_cc_request_create_internal(
     if (!billing_add_cc_request_local_var) {
         return NULL;
     }
+    memset(billing_add_cc_request_local_var, 0, sizeof(billing_add_cc_request_t));
+    billing_add_cc_request_local_var->_library_owned = 1;
     billing_add_cc_request_local_var->name = name;
     billing_add_cc_request_local_var->address = address;
     billing_add_cc_request_local_var->city = city;
@@ -29,8 +31,6 @@ static billing_add_cc_request_t *billing_add_cc_request_create_internal(
     billing_add_cc_request_local_var->cc = cc;
     billing_add_cc_request_local_var->cc_exp = cc_exp;
     billing_add_cc_request_local_var->cc_ccv2 = cc_ccv2;
-
-    billing_add_cc_request_local_var->_library_owned = 1;
     return billing_add_cc_request_local_var;
 }
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) billing_add_cc_request_t *billing_add_cc_request_cre
     char *cc_exp,
     char *cc_ccv2
     ) {
-    return billing_add_cc_request_create_internal (
+    billing_add_cc_request_t *result = billing_add_cc_request_create_internal (
         name,
         address,
         city,
@@ -56,6 +56,9 @@ __attribute__((deprecated)) billing_add_cc_request_t *billing_add_cc_request_cre
         cc_exp,
         cc_ccv2
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void billing_add_cc_request_free(billing_add_cc_request_t *billing_add_cc_request) {
@@ -192,6 +195,24 @@ billing_add_cc_request_t *billing_add_cc_request_parseFromJSON(cJSON *billing_ad
 
     billing_add_cc_request_t *billing_add_cc_request_local_var = NULL;
 
+    char *name_local_str = NULL;
+
+    char *address_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *state_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *zip_local_str = NULL;
+
+    char *cc_local_str = NULL;
+
+    char *cc_exp_local_str = NULL;
+
+    char *cc_ccv2_local_str = NULL;
+
     // billing_add_cc_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(billing_add_cc_requestJSON, "name");
     if (cJSON_IsNull(name)) {
@@ -301,20 +322,70 @@ billing_add_cc_request_t *billing_add_cc_request_parseFromJSON(cJSON *billing_ad
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (address && !cJSON_IsNull(address)) address_local_str = strdup(address->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (state && !cJSON_IsNull(state)) state_local_str = strdup(state->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (zip && !cJSON_IsNull(zip)) zip_local_str = strdup(zip->valuestring);
+    if (cc && !cJSON_IsNull(cc)) cc_local_str = strdup(cc->valuestring);
+    if (cc_exp && !cJSON_IsNull(cc_exp)) cc_exp_local_str = strdup(cc_exp->valuestring);
+    if (cc_ccv2 && !cJSON_IsNull(cc_ccv2)) cc_ccv2_local_str = strdup(cc_ccv2->valuestring);
+
     billing_add_cc_request_local_var = billing_add_cc_request_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        address && !cJSON_IsNull(address) ? strdup(address->valuestring) : NULL,
-        city && !cJSON_IsNull(city) ? strdup(city->valuestring) : NULL,
-        state && !cJSON_IsNull(state) ? strdup(state->valuestring) : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        zip && !cJSON_IsNull(zip) ? strdup(zip->valuestring) : NULL,
-        cc && !cJSON_IsNull(cc) ? strdup(cc->valuestring) : NULL,
-        cc_exp && !cJSON_IsNull(cc_exp) ? strdup(cc_exp->valuestring) : NULL,
-        cc_ccv2 && !cJSON_IsNull(cc_ccv2) ? strdup(cc_ccv2->valuestring) : NULL
+        name_local_str,
+        address_local_str,
+        city_local_str,
+        state_local_str,
+        country_local_str,
+        zip_local_str,
+        cc_local_str,
+        cc_exp_local_str,
+        cc_ccv2_local_str
         );
+
+    if (!billing_add_cc_request_local_var) {
+        goto end;
+    }
 
     return billing_add_cc_request_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (address_local_str) {
+        free(address_local_str);
+        address_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (state_local_str) {
+        free(state_local_str);
+        state_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (zip_local_str) {
+        free(zip_local_str);
+        zip_local_str = NULL;
+    }
+    if (cc_local_str) {
+        free(cc_local_str);
+        cc_local_str = NULL;
+    }
+    if (cc_exp_local_str) {
+        free(cc_exp_local_str);
+        cc_exp_local_str = NULL;
+    }
+    if (cc_ccv2_local_str) {
+        free(cc_ccv2_local_str);
+        cc_ccv2_local_str = NULL;
+    }
     return NULL;
 
 }

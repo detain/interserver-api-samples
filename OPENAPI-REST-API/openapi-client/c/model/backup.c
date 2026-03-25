@@ -20,6 +20,8 @@ static backup_t *backup_create_internal(
     if (!backup_local_var) {
         return NULL;
     }
+    memset(backup_local_var, 0, sizeof(backup_t));
+    backup_local_var->_library_owned = 1;
     backup_local_var->service_info = service_info;
     backup_local_var->client_links = client_links;
     backup_local_var->billing_details = billing_details;
@@ -29,8 +31,6 @@ static backup_t *backup_create_internal(
     backup_local_var->package = package;
     backup_local_var->service_extra = service_extra;
     backup_local_var->extra_info_tables = extra_info_tables;
-
-    backup_local_var->_library_owned = 1;
     return backup_local_var;
 }
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) backup_t *backup_create(
     char *service_extra,
     backup_extra_info_tables_t *extra_info_tables
     ) {
-    return backup_create_internal (
+    backup_t *result = backup_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -56,6 +56,9 @@ __attribute__((deprecated)) backup_t *backup_create(
         service_extra,
         extra_info_tables
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backup_free(backup_t *backup) {
@@ -236,8 +239,16 @@ backup_t *backup_parseFromJSON(cJSON *backupJSON){
     // define the local variable for backup->billing_details
     backup_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
     // define the local variable for backup->service_master
     backup_service_master_t *service_master_local_nonprim = NULL;
+
+    char *package_local_str = NULL;
+
+    char *service_extra_local_str = NULL;
 
     // define the local variable for backup->extra_info_tables
     backup_extra_info_tables_t *extra_info_tables_local_nonprim = NULL;
@@ -351,17 +362,26 @@ backup_t *backup_parseFromJSON(cJSON *backupJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+    if (service_extra && !cJSON_IsNull(service_extra)) service_extra_local_str = strdup(service_extra->valuestring);
+
     backup_local_var = backup_create_internal (
         service_info ? service_info_local_nonprim : NULL,
         client_links ? client_linksList : NULL,
         billing_details ? billing_details_local_nonprim : NULL,
-        cust_currency && !cJSON_IsNull(cust_currency) ? strdup(cust_currency->valuestring) : NULL,
-        cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol) ? strdup(cust_currency_symbol->valuestring) : NULL,
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
         service_master ? service_master_local_nonprim : NULL,
-        package && !cJSON_IsNull(package) ? strdup(package->valuestring) : NULL,
-        service_extra && !cJSON_IsNull(service_extra) ? strdup(service_extra->valuestring) : NULL,
+        package_local_str,
+        service_extra_local_str,
         extra_info_tables ? extra_info_tables_local_nonprim : NULL
         );
+
+    if (!backup_local_var) {
+        goto end;
+    }
 
     return backup_local_var;
 end:
@@ -382,9 +402,25 @@ end:
         backup_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
     if (service_master_local_nonprim) {
         backup_service_master_free(service_master_local_nonprim);
         service_master_local_nonprim = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
+    }
+    if (service_extra_local_str) {
+        free(service_extra_local_str);
+        service_extra_local_str = NULL;
     }
     if (extra_info_tables_local_nonprim) {
         backup_extra_info_tables_free(extra_info_tables_local_nonprim);

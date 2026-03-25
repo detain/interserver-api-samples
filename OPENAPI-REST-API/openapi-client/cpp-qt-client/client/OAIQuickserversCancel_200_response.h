@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIQuickserversCancel_200_response : public OAIObject {
 public:
     OAIQuickserversCancel_200_response();
-    OAIQuickserversCancel_200_response(QString json);
+    OAIQuickserversCancel_200_response(const QString &json);
     ~OAIQuickserversCancel_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

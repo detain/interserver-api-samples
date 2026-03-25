@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountSshKey::OAIAccountSshKey(QString json) {
+OAIAccountSshKey::OAIAccountSshKey(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIAccountSshKey::initializeModel() {
     m_ssh_key_isValid = false;
 }
 
-void OAIAccountSshKey::fromJson(QString jsonString) {
+void OAIAccountSshKey::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

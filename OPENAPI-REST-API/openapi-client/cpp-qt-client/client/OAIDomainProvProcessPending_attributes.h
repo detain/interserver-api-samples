@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainProvProcessPending_attributes : public OAIObject {
 public:
     OAIDomainProvProcessPending_attributes();
-    OAIDomainProvProcessPending_attributes(QString json);
+    OAIDomainProvProcessPending_attributes(const QString &json);
     ~OAIDomainProvProcessPending_attributes() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getId() const;
     void setId(const QString &id);

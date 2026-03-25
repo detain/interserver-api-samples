@@ -1,4 +1,4 @@
-# # VpsIPInfoRow
+# VpsIPInfoRow
 
 ## Properties
 

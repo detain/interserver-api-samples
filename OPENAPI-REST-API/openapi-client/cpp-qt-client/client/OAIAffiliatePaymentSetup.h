@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAffiliatePaymentSetup : public OAIObject {
 public:
     OAIAffiliatePaymentSetup();
-    OAIAffiliatePaymentSetup(QString json);
+    OAIAffiliatePaymentSetup(const QString &json);
     ~OAIAffiliatePaymentSetup() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getAffiliatePaypal() const;
     void setAffiliatePaypal(const QString &affiliate_paypal);

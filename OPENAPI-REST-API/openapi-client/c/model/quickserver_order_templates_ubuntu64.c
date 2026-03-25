@@ -11,15 +11,18 @@ static quickserver_order_templates_ubuntu64_t *quickserver_order_templates_ubunt
     if (!quickserver_order_templates_ubuntu64_local_var) {
         return NULL;
     }
-
+    memset(quickserver_order_templates_ubuntu64_local_var, 0, sizeof(quickserver_order_templates_ubuntu64_t));
     quickserver_order_templates_ubuntu64_local_var->_library_owned = 1;
     return quickserver_order_templates_ubuntu64_local_var;
 }
 
 __attribute__((deprecated)) quickserver_order_templates_ubuntu64_t *quickserver_order_templates_ubuntu64_create(
     ) {
-    return quickserver_order_templates_ubuntu64_create_internal (
+    quickserver_order_templates_ubuntu64_t *result = quickserver_order_templates_ubuntu64_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_order_templates_ubuntu64_free(quickserver_order_templates_ubuntu64_t *quickserver_order_templates_ubuntu64) {
@@ -49,8 +52,13 @@ quickserver_order_templates_ubuntu64_t *quickserver_order_templates_ubuntu64_par
     quickserver_order_templates_ubuntu64_t *quickserver_order_templates_ubuntu64_local_var = NULL;
 
 
+
     quickserver_order_templates_ubuntu64_local_var = quickserver_order_templates_ubuntu64_create_internal (
         );
+
+    if (!quickserver_order_templates_ubuntu64_local_var) {
+        goto end;
+    }
 
     return quickserver_order_templates_ubuntu64_local_var;
 end:

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserverOrder_distro_sel::OAIQuickserverOrder_distro_sel(QString json) {
+OAIQuickserverOrder_distro_sel::OAIQuickserverOrder_distro_sel(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIQuickserverOrder_distro_sel::initializeModel() {
     m_ubuntu_isValid = false;
 }
 
-void OAIQuickserverOrder_distro_sel::fromJson(QString jsonString) {
+void OAIQuickserverOrder_distro_sel::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

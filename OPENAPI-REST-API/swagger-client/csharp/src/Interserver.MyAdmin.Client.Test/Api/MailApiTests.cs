@@ -358,12 +358,18 @@ namespace Interserver.MyAdmin.Client.Test
             //string to = null;
             //string subject = null;
             //string mailid = null;
+            //string messageId = null;
+            //string replyto = null;
+            //string headerfrom = null;
+            //int? delivered = null;
             //int? skip = null;
             //int? limit = null;
-            //long? startDate = null;
-            //long? endDate = null;
-            //string delivered = null;
-            //var response = instance.ViewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered);
+            //StartDate startDate = null;
+            //EndDate endDate = null;
+            //string sort = null;
+            //string dir = null;
+            //string groupby = null;
+            //var response = instance.ViewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby);
             //Assert.IsInstanceOf<MailLog> (response, "response is MailLog");
         }
     }

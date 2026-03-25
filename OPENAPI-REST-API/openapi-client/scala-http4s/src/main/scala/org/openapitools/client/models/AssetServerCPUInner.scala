@@ -12,25 +12,29 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 
 /** 
   */
-case class AssetServerCPUInner(
-)
-  
+trait AssetServerCPUInner
 object AssetServerCPUInner {
-  given encoderAssetServerCPUInner: Encoder[AssetServerCPUInner] = Encoder.instance { t =>
-    Json.fromFields{
-      Seq(
-      ).flatten
-    }
+  import io.circe.{ Decoder, Encoder }
+  import io.circe.syntax.*
+  import cats.syntax.functor.*
+
+// no discriminator
+  given encoderAssetServerCPUInner: Encoder[AssetServerCPUInner] = Encoder.instance {
+    case obj: Json => obj.asJson
+    case obj: String => obj.asJson
   }
-  given decoderAssetServerCPUInner: Decoder[AssetServerCPUInner] = Decoder.instance { c =>
-    for {
-    } yield AssetServerCPUInner(
-    )
-  }
+
+  given decoderAssetServerCPUInner: Decoder[AssetServerCPUInner] =
+    List[Decoder[AssetServerCPUInner]](
+      Decoder[Json].widen,
+      Decoder[String].widen,
+  ).reduceLeft(_ or _)
 }
+
 

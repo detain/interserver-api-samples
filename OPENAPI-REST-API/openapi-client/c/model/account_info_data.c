@@ -66,8 +66,8 @@ static account_info_data_t *account_info_data_create_internal(
     char *api_key,
     char *api_key_wrapped,
     char *_2fa_google_key,
-    int _2fa_google_enabled,
-    int _2fa_google,
+    int *_2fa_google_enabled,
+    int *_2fa_google,
     char *_2fa_google_split,
     char *_2fa_google_qr
     ) {
@@ -75,6 +75,8 @@ static account_info_data_t *account_info_data_create_internal(
     if (!account_info_data_local_var) {
         return NULL;
     }
+    memset(account_info_data_local_var, 0, sizeof(account_info_data_t));
+    account_info_data_local_var->_library_owned = 1;
     account_info_data_local_var->group = group;
     account_info_data_local_var->address = address;
     account_info_data_local_var->city = city;
@@ -139,8 +141,6 @@ static account_info_data_t *account_info_data_create_internal(
     account_info_data_local_var->_2fa_google = _2fa_google;
     account_info_data_local_var->_2fa_google_split = _2fa_google_split;
     account_info_data_local_var->_2fa_google_qr = _2fa_google_qr;
-
-    account_info_data_local_var->_library_owned = 1;
     return account_info_data_local_var;
 }
 
@@ -205,12 +205,22 @@ __attribute__((deprecated)) account_info_data_t *account_info_data_create(
     char *api_key,
     char *api_key_wrapped,
     char *_2fa_google_key,
-    int _2fa_google_enabled,
-    int _2fa_google,
+    int *_2fa_google_enabled,
+    int *_2fa_google,
     char *_2fa_google_split,
     char *_2fa_google_qr
     ) {
-    return account_info_data_create_internal (
+    int *_2fa_google_enabled_copy = NULL;
+    if (_2fa_google_enabled) {
+        _2fa_google_enabled_copy = malloc(sizeof(int));
+        if (_2fa_google_enabled_copy) *_2fa_google_enabled_copy = *_2fa_google_enabled;
+    }
+    int *_2fa_google_copy = NULL;
+    if (_2fa_google) {
+        _2fa_google_copy = malloc(sizeof(int));
+        if (_2fa_google_copy) *_2fa_google_copy = *_2fa_google;
+    }
+    account_info_data_t *result = account_info_data_create_internal (
         group,
         address,
         city,
@@ -271,11 +281,16 @@ __attribute__((deprecated)) account_info_data_t *account_info_data_create(
         api_key,
         api_key_wrapped,
         _2fa_google_key,
-        _2fa_google_enabled,
-        _2fa_google,
+        _2fa_google_enabled_copy,
+        _2fa_google_copy,
         _2fa_google_split,
         _2fa_google_qr
         );
+    if (!result) {
+        free(_2fa_google_enabled_copy);
+        free(_2fa_google_copy);
+    }
+    return result;
 }
 
 void account_info_data_free(account_info_data_t *account_info_data) {
@@ -526,6 +541,14 @@ void account_info_data_free(account_info_data_t *account_info_data) {
     if (account_info_data->_2fa_google_key) {
         free(account_info_data->_2fa_google_key);
         account_info_data->_2fa_google_key = NULL;
+    }
+    if (account_info_data->_2fa_google_enabled) {
+        free(account_info_data->_2fa_google_enabled);
+        account_info_data->_2fa_google_enabled = NULL;
+    }
+    if (account_info_data->_2fa_google) {
+        free(account_info_data->_2fa_google);
+        account_info_data->_2fa_google = NULL;
     }
     if (account_info_data->_2fa_google_split) {
         free(account_info_data->_2fa_google_split);
@@ -1048,7 +1071,7 @@ cJSON *account_info_data_convertToJSON(account_info_data_t *account_info_data) {
 
     // account_info_data->_2fa_google_enabled
     if(account_info_data->_2fa_google_enabled) {
-    if(cJSON_AddBoolToObject(item, "2fa_google_enabled", account_info_data->_2fa_google_enabled) == NULL) {
+    if(cJSON_AddBoolToObject(item, "2fa_google_enabled", *account_info_data->_2fa_google_enabled) == NULL) {
     goto fail; //Bool
     }
     }
@@ -1056,7 +1079,7 @@ cJSON *account_info_data_convertToJSON(account_info_data_t *account_info_data) {
 
     // account_info_data->_2fa_google
     if(account_info_data->_2fa_google) {
-    if(cJSON_AddNumberToObject(item, "2fa_google", account_info_data->_2fa_google) == NULL) {
+    if(cJSON_AddNumberToObject(item, "2fa_google", *account_info_data->_2fa_google) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -1089,8 +1112,74 @@ account_info_data_t *account_info_data_parseFromJSON(cJSON *account_info_dataJSO
 
     account_info_data_t *account_info_data_local_var = NULL;
 
+    char *group_local_str = NULL;
+
+    char *address_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *disable_cc_local_str = NULL;
+
+    char *fraudrecord_score_local_str = NULL;
+
+    char *ima_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    char *payment_method_local_str = NULL;
+
+    char *phone_local_str = NULL;
+
+    char *pin_local_str = NULL;
+
+    char *state_local_str = NULL;
+
+    char *status_local_str = NULL;
+
+    char *zip_local_str = NULL;
+
+    char *account_id_local_str = NULL;
+
+    char *account_lid_local_str = NULL;
+
+    char *address2_local_str = NULL;
+
+    char *affiliate_dock_description_local_str = NULL;
+
+    char *affiliate_dock_title_local_str = NULL;
+
+    char *affiliate_payment_method_local_str = NULL;
+
+    char *affiliate_paypal_local_str = NULL;
+
+    char *cc_local_str = NULL;
+
+    char *cc_auto_local_str = NULL;
+
+    char *cc_exp_local_str = NULL;
+
+    char *cc_type_local_str = NULL;
+
+    char *cc_whitelist_local_str = NULL;
+
     // define the local variable for account_info_data->ccs
     account_info_data_ccs_t *ccs_local_nonprim = NULL;
+
+    char *ccs_added_local_str = NULL;
+
+    char *company_local_str = NULL;
+
+    char *currency_local_str = NULL;
+
+    char *disable_reinstall_local_str = NULL;
+
+    char *disable_reset_local_str = NULL;
+
+    char *email_local_str = NULL;
+
+    char *email_abuse_local_str = NULL;
 
     // define the local variable for account_info_data->email_settings
     account_info_data_email_settings_t *email_settings_local_nonprim = NULL;
@@ -1098,11 +1187,65 @@ account_info_data_t *account_info_data_parseFromJSON(cJSON *account_info_dataJSO
     // define the local variable for account_info_data->extra
     account_info_data_extra_t *extra_local_nonprim = NULL;
 
+    char *facebook_id_local_str = NULL;
+
+    char *facebook_url_local_str = NULL;
+
+    char *firstname_local_str = NULL;
+
     // define the local variable for account_info_data->fraudrecord
     account_info_data_fraudrecord_t *fraudrecord_local_nonprim = NULL;
 
+    char *github_id_local_str = NULL;
+
+    char *github_url_local_str = NULL;
+
+    char *google_id_local_str = NULL;
+
+    char *google_url_local_str = NULL;
+
+    char *innertell_id_local_str = NULL;
+
+    char *lastname_local_str = NULL;
+
+    char *locale_local_str = NULL;
+
     // define the local variable for account_info_data->maxmind
     account_info_max_mind_response_t *maxmind_local_nonprim = NULL;
+
+    char *maxmind_score_local_str = NULL;
+
+    char *mb_id_local_str = NULL;
+
+    char *modernbill_id_local_str = NULL;
+
+    char *picture_local_str = NULL;
+
+    char *referrer_coupon_local_str = NULL;
+
+    char *reseller_markup_local_str = NULL;
+
+    char *username_local_str = NULL;
+
+    char *ssh_key_local_str = NULL;
+
+    char *ssh_key_wrapped_local_str = NULL;
+
+    char *api_key_local_str = NULL;
+
+    char *api_key_wrapped_local_str = NULL;
+
+    char *_2fa_google_key_local_str = NULL;
+
+    // define the local variable for account_info_data->_2fa_google_enabled
+    int *_2fa_google_enabled_local_var = NULL;
+
+    // define the local variable for account_info_data->_2fa_google
+    int *_2fa_google_local_var = NULL;
+
+    char *_2fa_google_split_local_str = NULL;
+
+    char *_2fa_google_qr_local_str = NULL;
 
     // account_info_data->group
     cJSON *group = cJSON_GetObjectItemCaseSensitive(account_info_dataJSON, "group");
@@ -1819,6 +1962,12 @@ account_info_data_t *account_info_data_parseFromJSON(cJSON *account_info_dataJSO
     {
     goto end; //Bool
     }
+    _2fa_google_enabled_local_var = malloc(sizeof(int));
+    if(!_2fa_google_enabled_local_var)
+    {
+        goto end;
+    }
+    *_2fa_google_enabled_local_var = _2fa_google_enabled->valueint;
     }
 
     // account_info_data->_2fa_google
@@ -1831,6 +1980,12 @@ account_info_data_t *account_info_data_parseFromJSON(cJSON *account_info_dataJSO
     {
     goto end; //Numeric
     }
+    _2fa_google_local_var = malloc(sizeof(int));
+    if(!_2fa_google_local_var)
+    {
+        goto end;
+    }
+    *_2fa_google_local_var = _2fa_google->valuedouble;
     }
 
     // account_info_data->_2fa_google_split
@@ -1858,78 +2013,272 @@ account_info_data_t *account_info_data_parseFromJSON(cJSON *account_info_dataJSO
     }
 
 
+    if (group && !cJSON_IsNull(group)) group_local_str = strdup(group->valuestring);
+    if (address && !cJSON_IsNull(address)) address_local_str = strdup(address->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (disable_cc && !cJSON_IsNull(disable_cc)) disable_cc_local_str = strdup(disable_cc->valuestring);
+    if (fraudrecord_score && !cJSON_IsNull(fraudrecord_score)) fraudrecord_score_local_str = strdup(fraudrecord_score->valuestring);
+    if (ima && !cJSON_IsNull(ima)) ima_local_str = strdup(ima->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (payment_method && !cJSON_IsNull(payment_method)) payment_method_local_str = strdup(payment_method->valuestring);
+    if (phone && !cJSON_IsNull(phone)) phone_local_str = strdup(phone->valuestring);
+    if (pin && !cJSON_IsNull(pin)) pin_local_str = strdup(pin->valuestring);
+    if (state && !cJSON_IsNull(state)) state_local_str = strdup(state->valuestring);
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+    if (zip && !cJSON_IsNull(zip)) zip_local_str = strdup(zip->valuestring);
+    if (account_id && !cJSON_IsNull(account_id)) account_id_local_str = strdup(account_id->valuestring);
+    if (account_lid && !cJSON_IsNull(account_lid)) account_lid_local_str = strdup(account_lid->valuestring);
+    if (address2 && !cJSON_IsNull(address2)) address2_local_str = strdup(address2->valuestring);
+    if (affiliate_dock_description && !cJSON_IsNull(affiliate_dock_description)) affiliate_dock_description_local_str = strdup(affiliate_dock_description->valuestring);
+    if (affiliate_dock_title && !cJSON_IsNull(affiliate_dock_title)) affiliate_dock_title_local_str = strdup(affiliate_dock_title->valuestring);
+    if (affiliate_payment_method && !cJSON_IsNull(affiliate_payment_method)) affiliate_payment_method_local_str = strdup(affiliate_payment_method->valuestring);
+    if (affiliate_paypal && !cJSON_IsNull(affiliate_paypal)) affiliate_paypal_local_str = strdup(affiliate_paypal->valuestring);
+    if (cc && !cJSON_IsNull(cc)) cc_local_str = strdup(cc->valuestring);
+    if (cc_auto && !cJSON_IsNull(cc_auto)) cc_auto_local_str = strdup(cc_auto->valuestring);
+    if (cc_exp && !cJSON_IsNull(cc_exp)) cc_exp_local_str = strdup(cc_exp->valuestring);
+    if (cc_type && !cJSON_IsNull(cc_type)) cc_type_local_str = strdup(cc_type->valuestring);
+    if (cc_whitelist && !cJSON_IsNull(cc_whitelist)) cc_whitelist_local_str = strdup(cc_whitelist->valuestring);
+    if (ccs_added && !cJSON_IsNull(ccs_added)) ccs_added_local_str = strdup(ccs_added->valuestring);
+    if (company && !cJSON_IsNull(company)) company_local_str = strdup(company->valuestring);
+    if (currency && !cJSON_IsNull(currency)) currency_local_str = strdup(currency->valuestring);
+    if (disable_reinstall && !cJSON_IsNull(disable_reinstall)) disable_reinstall_local_str = strdup(disable_reinstall->valuestring);
+    if (disable_reset && !cJSON_IsNull(disable_reset)) disable_reset_local_str = strdup(disable_reset->valuestring);
+    if (email && !cJSON_IsNull(email)) email_local_str = strdup(email->valuestring);
+    if (email_abuse && !cJSON_IsNull(email_abuse)) email_abuse_local_str = strdup(email_abuse->valuestring);
+    if (facebook_id && !cJSON_IsNull(facebook_id)) facebook_id_local_str = strdup(facebook_id->valuestring);
+    if (facebook_url && !cJSON_IsNull(facebook_url)) facebook_url_local_str = strdup(facebook_url->valuestring);
+    if (firstname && !cJSON_IsNull(firstname)) firstname_local_str = strdup(firstname->valuestring);
+    if (github_id && !cJSON_IsNull(github_id)) github_id_local_str = strdup(github_id->valuestring);
+    if (github_url && !cJSON_IsNull(github_url)) github_url_local_str = strdup(github_url->valuestring);
+    if (google_id && !cJSON_IsNull(google_id)) google_id_local_str = strdup(google_id->valuestring);
+    if (google_url && !cJSON_IsNull(google_url)) google_url_local_str = strdup(google_url->valuestring);
+    if (innertell_id && !cJSON_IsNull(innertell_id)) innertell_id_local_str = strdup(innertell_id->valuestring);
+    if (lastname && !cJSON_IsNull(lastname)) lastname_local_str = strdup(lastname->valuestring);
+    if (locale && !cJSON_IsNull(locale)) locale_local_str = strdup(locale->valuestring);
+    if (maxmind_score && !cJSON_IsNull(maxmind_score)) maxmind_score_local_str = strdup(maxmind_score->valuestring);
+    if (mb_id && !cJSON_IsNull(mb_id)) mb_id_local_str = strdup(mb_id->valuestring);
+    if (modernbill_id && !cJSON_IsNull(modernbill_id)) modernbill_id_local_str = strdup(modernbill_id->valuestring);
+    if (picture && !cJSON_IsNull(picture)) picture_local_str = strdup(picture->valuestring);
+    if (referrer_coupon && !cJSON_IsNull(referrer_coupon)) referrer_coupon_local_str = strdup(referrer_coupon->valuestring);
+    if (reseller_markup && !cJSON_IsNull(reseller_markup)) reseller_markup_local_str = strdup(reseller_markup->valuestring);
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+    if (ssh_key && !cJSON_IsNull(ssh_key)) ssh_key_local_str = strdup(ssh_key->valuestring);
+    if (ssh_key_wrapped && !cJSON_IsNull(ssh_key_wrapped)) ssh_key_wrapped_local_str = strdup(ssh_key_wrapped->valuestring);
+    if (api_key && !cJSON_IsNull(api_key)) api_key_local_str = strdup(api_key->valuestring);
+    if (api_key_wrapped && !cJSON_IsNull(api_key_wrapped)) api_key_wrapped_local_str = strdup(api_key_wrapped->valuestring);
+    if (_2fa_google_key && !cJSON_IsNull(_2fa_google_key)) _2fa_google_key_local_str = strdup(_2fa_google_key->valuestring);
+    if (_2fa_google_split && !cJSON_IsNull(_2fa_google_split)) _2fa_google_split_local_str = strdup(_2fa_google_split->valuestring);
+    if (_2fa_google_qr && !cJSON_IsNull(_2fa_google_qr)) _2fa_google_qr_local_str = strdup(_2fa_google_qr->valuestring);
+
     account_info_data_local_var = account_info_data_create_internal (
-        group && !cJSON_IsNull(group) ? strdup(group->valuestring) : NULL,
-        address && !cJSON_IsNull(address) ? strdup(address->valuestring) : NULL,
-        city && !cJSON_IsNull(city) ? strdup(city->valuestring) : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        disable_cc && !cJSON_IsNull(disable_cc) ? strdup(disable_cc->valuestring) : NULL,
-        fraudrecord_score && !cJSON_IsNull(fraudrecord_score) ? strdup(fraudrecord_score->valuestring) : NULL,
-        ima && !cJSON_IsNull(ima) ? strdup(ima->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        payment_method && !cJSON_IsNull(payment_method) ? strdup(payment_method->valuestring) : NULL,
-        phone && !cJSON_IsNull(phone) ? strdup(phone->valuestring) : NULL,
-        pin && !cJSON_IsNull(pin) ? strdup(pin->valuestring) : NULL,
-        state && !cJSON_IsNull(state) ? strdup(state->valuestring) : NULL,
-        status && !cJSON_IsNull(status) ? strdup(status->valuestring) : NULL,
-        zip && !cJSON_IsNull(zip) ? strdup(zip->valuestring) : NULL,
-        account_id && !cJSON_IsNull(account_id) ? strdup(account_id->valuestring) : NULL,
-        account_lid && !cJSON_IsNull(account_lid) ? strdup(account_lid->valuestring) : NULL,
-        address2 && !cJSON_IsNull(address2) ? strdup(address2->valuestring) : NULL,
-        affiliate_dock_description && !cJSON_IsNull(affiliate_dock_description) ? strdup(affiliate_dock_description->valuestring) : NULL,
-        affiliate_dock_title && !cJSON_IsNull(affiliate_dock_title) ? strdup(affiliate_dock_title->valuestring) : NULL,
-        affiliate_payment_method && !cJSON_IsNull(affiliate_payment_method) ? strdup(affiliate_payment_method->valuestring) : NULL,
-        affiliate_paypal && !cJSON_IsNull(affiliate_paypal) ? strdup(affiliate_paypal->valuestring) : NULL,
-        cc && !cJSON_IsNull(cc) ? strdup(cc->valuestring) : NULL,
-        cc_auto && !cJSON_IsNull(cc_auto) ? strdup(cc_auto->valuestring) : NULL,
-        cc_exp && !cJSON_IsNull(cc_exp) ? strdup(cc_exp->valuestring) : NULL,
-        cc_type && !cJSON_IsNull(cc_type) ? strdup(cc_type->valuestring) : NULL,
-        cc_whitelist && !cJSON_IsNull(cc_whitelist) ? strdup(cc_whitelist->valuestring) : NULL,
+        group_local_str,
+        address_local_str,
+        city_local_str,
+        country_local_str,
+        disable_cc_local_str,
+        fraudrecord_score_local_str,
+        ima_local_str,
+        name_local_str,
+        payment_method_local_str,
+        phone_local_str,
+        pin_local_str,
+        state_local_str,
+        status_local_str,
+        zip_local_str,
+        account_id_local_str,
+        account_lid_local_str,
+        address2_local_str,
+        affiliate_dock_description_local_str,
+        affiliate_dock_title_local_str,
+        affiliate_payment_method_local_str,
+        affiliate_paypal_local_str,
+        cc_local_str,
+        cc_auto_local_str,
+        cc_exp_local_str,
+        cc_type_local_str,
+        cc_whitelist_local_str,
         ccs ? ccs_local_nonprim : NULL,
-        ccs_added && !cJSON_IsNull(ccs_added) ? strdup(ccs_added->valuestring) : NULL,
-        company && !cJSON_IsNull(company) ? strdup(company->valuestring) : NULL,
-        currency && !cJSON_IsNull(currency) ? strdup(currency->valuestring) : NULL,
-        disable_reinstall && !cJSON_IsNull(disable_reinstall) ? strdup(disable_reinstall->valuestring) : NULL,
-        disable_reset && !cJSON_IsNull(disable_reset) ? strdup(disable_reset->valuestring) : NULL,
-        email && !cJSON_IsNull(email) ? strdup(email->valuestring) : NULL,
-        email_abuse && !cJSON_IsNull(email_abuse) ? strdup(email_abuse->valuestring) : NULL,
+        ccs_added_local_str,
+        company_local_str,
+        currency_local_str,
+        disable_reinstall_local_str,
+        disable_reset_local_str,
+        email_local_str,
+        email_abuse_local_str,
         email_settings ? email_settings_local_nonprim : NULL,
         extra ? extra_local_nonprim : NULL,
-        facebook_id && !cJSON_IsNull(facebook_id) ? strdup(facebook_id->valuestring) : NULL,
-        facebook_url && !cJSON_IsNull(facebook_url) ? strdup(facebook_url->valuestring) : NULL,
-        firstname && !cJSON_IsNull(firstname) ? strdup(firstname->valuestring) : NULL,
+        facebook_id_local_str,
+        facebook_url_local_str,
+        firstname_local_str,
         fraudrecord ? fraudrecord_local_nonprim : NULL,
-        github_id && !cJSON_IsNull(github_id) ? strdup(github_id->valuestring) : NULL,
-        github_url && !cJSON_IsNull(github_url) ? strdup(github_url->valuestring) : NULL,
-        google_id && !cJSON_IsNull(google_id) ? strdup(google_id->valuestring) : NULL,
-        google_url && !cJSON_IsNull(google_url) ? strdup(google_url->valuestring) : NULL,
-        innertell_id && !cJSON_IsNull(innertell_id) ? strdup(innertell_id->valuestring) : NULL,
-        lastname && !cJSON_IsNull(lastname) ? strdup(lastname->valuestring) : NULL,
-        locale && !cJSON_IsNull(locale) ? strdup(locale->valuestring) : NULL,
+        github_id_local_str,
+        github_url_local_str,
+        google_id_local_str,
+        google_url_local_str,
+        innertell_id_local_str,
+        lastname_local_str,
+        locale_local_str,
         maxmind ? maxmind_local_nonprim : NULL,
-        maxmind_score && !cJSON_IsNull(maxmind_score) ? strdup(maxmind_score->valuestring) : NULL,
-        mb_id && !cJSON_IsNull(mb_id) ? strdup(mb_id->valuestring) : NULL,
-        modernbill_id && !cJSON_IsNull(modernbill_id) ? strdup(modernbill_id->valuestring) : NULL,
-        picture && !cJSON_IsNull(picture) ? strdup(picture->valuestring) : NULL,
-        referrer_coupon && !cJSON_IsNull(referrer_coupon) ? strdup(referrer_coupon->valuestring) : NULL,
-        reseller_markup && !cJSON_IsNull(reseller_markup) ? strdup(reseller_markup->valuestring) : NULL,
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL,
-        ssh_key && !cJSON_IsNull(ssh_key) ? strdup(ssh_key->valuestring) : NULL,
-        ssh_key_wrapped && !cJSON_IsNull(ssh_key_wrapped) ? strdup(ssh_key_wrapped->valuestring) : NULL,
-        api_key && !cJSON_IsNull(api_key) ? strdup(api_key->valuestring) : NULL,
-        api_key_wrapped && !cJSON_IsNull(api_key_wrapped) ? strdup(api_key_wrapped->valuestring) : NULL,
-        _2fa_google_key && !cJSON_IsNull(_2fa_google_key) ? strdup(_2fa_google_key->valuestring) : NULL,
-        _2fa_google_enabled ? _2fa_google_enabled->valueint : 0,
-        _2fa_google ? _2fa_google->valuedouble : 0,
-        _2fa_google_split && !cJSON_IsNull(_2fa_google_split) ? strdup(_2fa_google_split->valuestring) : NULL,
-        _2fa_google_qr && !cJSON_IsNull(_2fa_google_qr) ? strdup(_2fa_google_qr->valuestring) : NULL
+        maxmind_score_local_str,
+        mb_id_local_str,
+        modernbill_id_local_str,
+        picture_local_str,
+        referrer_coupon_local_str,
+        reseller_markup_local_str,
+        username_local_str,
+        ssh_key_local_str,
+        ssh_key_wrapped_local_str,
+        api_key_local_str,
+        api_key_wrapped_local_str,
+        _2fa_google_key_local_str,
+        _2fa_google_enabled_local_var,
+        _2fa_google_local_var,
+        _2fa_google_split_local_str,
+        _2fa_google_qr_local_str
         );
+
+    if (!account_info_data_local_var) {
+        goto end;
+    }
 
     return account_info_data_local_var;
 end:
+    if (group_local_str) {
+        free(group_local_str);
+        group_local_str = NULL;
+    }
+    if (address_local_str) {
+        free(address_local_str);
+        address_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (disable_cc_local_str) {
+        free(disable_cc_local_str);
+        disable_cc_local_str = NULL;
+    }
+    if (fraudrecord_score_local_str) {
+        free(fraudrecord_score_local_str);
+        fraudrecord_score_local_str = NULL;
+    }
+    if (ima_local_str) {
+        free(ima_local_str);
+        ima_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (payment_method_local_str) {
+        free(payment_method_local_str);
+        payment_method_local_str = NULL;
+    }
+    if (phone_local_str) {
+        free(phone_local_str);
+        phone_local_str = NULL;
+    }
+    if (pin_local_str) {
+        free(pin_local_str);
+        pin_local_str = NULL;
+    }
+    if (state_local_str) {
+        free(state_local_str);
+        state_local_str = NULL;
+    }
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
+    if (zip_local_str) {
+        free(zip_local_str);
+        zip_local_str = NULL;
+    }
+    if (account_id_local_str) {
+        free(account_id_local_str);
+        account_id_local_str = NULL;
+    }
+    if (account_lid_local_str) {
+        free(account_lid_local_str);
+        account_lid_local_str = NULL;
+    }
+    if (address2_local_str) {
+        free(address2_local_str);
+        address2_local_str = NULL;
+    }
+    if (affiliate_dock_description_local_str) {
+        free(affiliate_dock_description_local_str);
+        affiliate_dock_description_local_str = NULL;
+    }
+    if (affiliate_dock_title_local_str) {
+        free(affiliate_dock_title_local_str);
+        affiliate_dock_title_local_str = NULL;
+    }
+    if (affiliate_payment_method_local_str) {
+        free(affiliate_payment_method_local_str);
+        affiliate_payment_method_local_str = NULL;
+    }
+    if (affiliate_paypal_local_str) {
+        free(affiliate_paypal_local_str);
+        affiliate_paypal_local_str = NULL;
+    }
+    if (cc_local_str) {
+        free(cc_local_str);
+        cc_local_str = NULL;
+    }
+    if (cc_auto_local_str) {
+        free(cc_auto_local_str);
+        cc_auto_local_str = NULL;
+    }
+    if (cc_exp_local_str) {
+        free(cc_exp_local_str);
+        cc_exp_local_str = NULL;
+    }
+    if (cc_type_local_str) {
+        free(cc_type_local_str);
+        cc_type_local_str = NULL;
+    }
+    if (cc_whitelist_local_str) {
+        free(cc_whitelist_local_str);
+        cc_whitelist_local_str = NULL;
+    }
     if (ccs_local_nonprim) {
         account_info_data_ccs_free(ccs_local_nonprim);
         ccs_local_nonprim = NULL;
+    }
+    if (ccs_added_local_str) {
+        free(ccs_added_local_str);
+        ccs_added_local_str = NULL;
+    }
+    if (company_local_str) {
+        free(company_local_str);
+        company_local_str = NULL;
+    }
+    if (currency_local_str) {
+        free(currency_local_str);
+        currency_local_str = NULL;
+    }
+    if (disable_reinstall_local_str) {
+        free(disable_reinstall_local_str);
+        disable_reinstall_local_str = NULL;
+    }
+    if (disable_reset_local_str) {
+        free(disable_reset_local_str);
+        disable_reset_local_str = NULL;
+    }
+    if (email_local_str) {
+        free(email_local_str);
+        email_local_str = NULL;
+    }
+    if (email_abuse_local_str) {
+        free(email_abuse_local_str);
+        email_abuse_local_str = NULL;
     }
     if (email_settings_local_nonprim) {
         account_info_data_email_settings_free(email_settings_local_nonprim);
@@ -1939,13 +2288,117 @@ end:
         account_info_data_extra_free(extra_local_nonprim);
         extra_local_nonprim = NULL;
     }
+    if (facebook_id_local_str) {
+        free(facebook_id_local_str);
+        facebook_id_local_str = NULL;
+    }
+    if (facebook_url_local_str) {
+        free(facebook_url_local_str);
+        facebook_url_local_str = NULL;
+    }
+    if (firstname_local_str) {
+        free(firstname_local_str);
+        firstname_local_str = NULL;
+    }
     if (fraudrecord_local_nonprim) {
         account_info_data_fraudrecord_free(fraudrecord_local_nonprim);
         fraudrecord_local_nonprim = NULL;
     }
+    if (github_id_local_str) {
+        free(github_id_local_str);
+        github_id_local_str = NULL;
+    }
+    if (github_url_local_str) {
+        free(github_url_local_str);
+        github_url_local_str = NULL;
+    }
+    if (google_id_local_str) {
+        free(google_id_local_str);
+        google_id_local_str = NULL;
+    }
+    if (google_url_local_str) {
+        free(google_url_local_str);
+        google_url_local_str = NULL;
+    }
+    if (innertell_id_local_str) {
+        free(innertell_id_local_str);
+        innertell_id_local_str = NULL;
+    }
+    if (lastname_local_str) {
+        free(lastname_local_str);
+        lastname_local_str = NULL;
+    }
+    if (locale_local_str) {
+        free(locale_local_str);
+        locale_local_str = NULL;
+    }
     if (maxmind_local_nonprim) {
         account_info_max_mind_response_free(maxmind_local_nonprim);
         maxmind_local_nonprim = NULL;
+    }
+    if (maxmind_score_local_str) {
+        free(maxmind_score_local_str);
+        maxmind_score_local_str = NULL;
+    }
+    if (mb_id_local_str) {
+        free(mb_id_local_str);
+        mb_id_local_str = NULL;
+    }
+    if (modernbill_id_local_str) {
+        free(modernbill_id_local_str);
+        modernbill_id_local_str = NULL;
+    }
+    if (picture_local_str) {
+        free(picture_local_str);
+        picture_local_str = NULL;
+    }
+    if (referrer_coupon_local_str) {
+        free(referrer_coupon_local_str);
+        referrer_coupon_local_str = NULL;
+    }
+    if (reseller_markup_local_str) {
+        free(reseller_markup_local_str);
+        reseller_markup_local_str = NULL;
+    }
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
+    if (ssh_key_local_str) {
+        free(ssh_key_local_str);
+        ssh_key_local_str = NULL;
+    }
+    if (ssh_key_wrapped_local_str) {
+        free(ssh_key_wrapped_local_str);
+        ssh_key_wrapped_local_str = NULL;
+    }
+    if (api_key_local_str) {
+        free(api_key_local_str);
+        api_key_local_str = NULL;
+    }
+    if (api_key_wrapped_local_str) {
+        free(api_key_wrapped_local_str);
+        api_key_wrapped_local_str = NULL;
+    }
+    if (_2fa_google_key_local_str) {
+        free(_2fa_google_key_local_str);
+        _2fa_google_key_local_str = NULL;
+    }
+    if (_2fa_google_enabled_local_var) {
+        free(_2fa_google_enabled_local_var);
+        _2fa_google_enabled_local_var = NULL;
+    }
+    if (_2fa_google_local_var) {
+        free(_2fa_google_local_var);
+        _2fa_google_local_var = NULL;
+    }
+    if (_2fa_google_split_local_str) {
+        free(_2fa_google_split_local_str);
+        _2fa_google_split_local_str = NULL;
+    }
+    if (_2fa_google_qr_local_str) {
+        free(_2fa_google_qr_local_str);
+        _2fa_google_qr_local_str = NULL;
     }
     return NULL;
 

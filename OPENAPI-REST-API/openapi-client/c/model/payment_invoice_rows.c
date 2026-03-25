@@ -11,15 +11,18 @@ static payment_invoice_rows_t *payment_invoice_rows_create_internal(
     if (!payment_invoice_rows_local_var) {
         return NULL;
     }
-
+    memset(payment_invoice_rows_local_var, 0, sizeof(payment_invoice_rows_t));
     payment_invoice_rows_local_var->_library_owned = 1;
     return payment_invoice_rows_local_var;
 }
 
 __attribute__((deprecated)) payment_invoice_rows_t *payment_invoice_rows_create(
     ) {
-    return payment_invoice_rows_create_internal (
+    payment_invoice_rows_t *result = payment_invoice_rows_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void payment_invoice_rows_free(payment_invoice_rows_t *payment_invoice_rows) {
@@ -49,8 +52,13 @@ payment_invoice_rows_t *payment_invoice_rows_parseFromJSON(cJSON *payment_invoic
     payment_invoice_rows_t *payment_invoice_rows_local_var = NULL;
 
 
+
     payment_invoice_rows_local_var = payment_invoice_rows_create_internal (
         );
+
+    if (!payment_invoice_rows_local_var) {
+        goto end;
+    }
 
     return payment_invoice_rows_local_var;
 end:

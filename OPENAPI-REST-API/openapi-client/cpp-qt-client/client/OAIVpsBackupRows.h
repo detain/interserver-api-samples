@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIVpsBackupRows : public OAIObject {
 public:
     OAIVpsBackupRows();
-    OAIVpsBackupRows(QString json);
+    OAIVpsBackupRows(const QString &json);
     ~OAIVpsBackupRows() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;

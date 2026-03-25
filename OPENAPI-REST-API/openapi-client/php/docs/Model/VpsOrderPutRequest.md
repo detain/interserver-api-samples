@@ -1,4 +1,4 @@
-# # VpsOrderPutRequest
+# VpsOrderPutRequest
 
 ## Properties
 

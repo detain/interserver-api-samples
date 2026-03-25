@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAICpu::OAICpu(QString json) {
+OAICpu::OAICpu(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -86,7 +86,7 @@ void OAICpu::initializeModel() {
     m_active_isValid = false;
 }
 
-void OAICpu::fromJson(QString jsonString) {
+void OAICpu::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

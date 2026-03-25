@@ -1,4 +1,4 @@
-# # GetScrubIpDetails200Response
+# GetScrubIpDetails200Response
 
 ## Properties
 

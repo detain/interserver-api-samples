@@ -10,6 +10,7 @@ import io.swagger.model.DenyRuleNew;
 import io.swagger.model.DenyRuleRecord;
 import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
+import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse2008;
 import io.swagger.model.InlineResponse401;
@@ -28,6 +29,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -474,7 +476,7 @@ public interface MailApi {
 );
 
 
-    @Operation(summary = "View Mail Log", description = "Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.", security = {
+    @Operation(summary = "View Mail Log", description = "Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). ", security = {
         @SecurityRequirement(name = "apiKeyAuth"),
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Mail" })
@@ -486,23 +488,30 @@ public interface MailApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<MailLog> viewMailLog(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
-, @Parameter(in = ParameterIn.QUERY, description = "The ID of your mail order this will be sent through." ,schema=@Schema()) @Valid @RequestParam(value = "id", required = false) Long id
-, @Parameter(in = ParameterIn.QUERY, description = "originating ip address sending mail" ,schema=@Schema()) @Valid @RequestParam(value = "origin", required = false) String origin
-, @Parameter(in = ParameterIn.QUERY, description = "mx record mail was sent to" ,schema=@Schema()) @Valid @RequestParam(value = "mx", required = false) String mx
-, @Parameter(in = ParameterIn.QUERY, description = "from email address" ,schema=@Schema()) @Valid @RequestParam(value = "from", required = false) String from
-, @Parameter(in = ParameterIn.QUERY, description = "to/destination email address" ,schema=@Schema()) @Valid @RequestParam(value = "to", required = false) String to
-, @Parameter(in = ParameterIn.QUERY, description = "subject containing this string" ,schema=@Schema()) @Valid @RequestParam(value = "subject", required = false) String subject
-, @Parameter(in = ParameterIn.QUERY, description = "mail id" ,schema=@Schema()) @Valid @RequestParam(value = "mailid", required = false) String mailid
-, @Min(0)@Parameter(in = ParameterIn.QUERY, description = "number of records to skip for pagination" ,schema=@Schema(allowableValues={ "0" }
+, @Parameter(in = ParameterIn.QUERY, description = "The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`." ,schema=@Schema()) @Valid @RequestParam(value = "id", required = false) Long id
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address." ,schema=@Schema()) @Valid @RequestParam(value = "origin", required = false) String origin
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response." ,schema=@Schema()) @Valid @RequestParam(value = "mx", required = false) String mx
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`." ,schema=@Schema()) @Valid @RequestParam(value = "from", required = false) String from
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved." ,schema=@Schema()) @Valid @RequestParam(value = "to", required = false) String to
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response." ,schema=@Schema()) @Valid @RequestParam(value = "subject", required = false) String subject
+, @Size(min=18,max=19) @Parameter(in = ParameterIn.QUERY, description = "Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`." ,schema=@Schema()) @Valid @RequestParam(value = "mailid", required = false) String mailid
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`." ,schema=@Schema()) @Valid @RequestParam(value = "messageId", required = false) String messageId
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set." ,schema=@Schema()) @Valid @RequestParam(value = "replyto", required = false) String replyto
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address." ,schema=@Schema()) @Valid @RequestParam(value = "headerfrom", required = false) String headerfrom
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status." ,schema=@Schema(allowableValues={ "0", "1" }
+)) @Valid @RequestParam(value = "delivered", required = false) Integer delivered
+, @Min(0)@Parameter(in = ParameterIn.QUERY, description = "Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip)." ,schema=@Schema(allowableValues={ "0" }
 , defaultValue="0")) @Valid @RequestParam(value = "skip", required = false, defaultValue="0") Integer skip
-, @Min(1) @Max(10000) @Parameter(in = ParameterIn.QUERY, description = "maximum number of records to return" ,schema=@Schema(allowableValues={ "1", "10000" }, minimum="1", maximum="10000"
+, @Min(1) @Max(10000) @Parameter(in = ParameterIn.QUERY, description = "Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages." ,schema=@Schema(allowableValues={ "1", "10000" }, minimum="1", maximum="10000"
 , defaultValue="100")) @Valid @RequestParam(value = "limit", required = false, defaultValue="100") Integer limit
-, @Min(0L) @Max(9999999999L) @Parameter(in = ParameterIn.QUERY, description = "earliest date to get emails in unix timestamp format" ,schema=@Schema(allowableValues={ "0", "9999999999" }, maximum="9999999999"
-)) @Valid @RequestParam(value = "startDate", required = false) Long startDate
-, @Min(0L) @Max(9999999999L) @Parameter(in = ParameterIn.QUERY, description = "Latest date to get emails in unix timestamp format." ,schema=@Schema(allowableValues={ "0", "9999999999" }, maximum="9999999999"
-)) @Valid @RequestParam(value = "endDate", required = false) Long endDate
-, @Parameter(in = ParameterIn.QUERY, description = "Filter emails by whether or not they were delivered." ,schema=@Schema(allowableValues={ "0", "1" }
-)) @Valid @RequestParam(value = "delivered", required = false) String delivered
+, @Parameter(in = ParameterIn.QUERY, description = "Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "startDate", required = false) StartDate startDate
+, @Parameter(in = ParameterIn.QUERY, description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "endDate", required = false) EndDate endDate
+, @Parameter(in = ParameterIn.QUERY, description = "Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order)." ,schema=@Schema(allowableValues={ "time" }
+, defaultValue="time")) @Valid @RequestParam(value = "sort", required = false, defaultValue="time") String sort
+, @Parameter(in = ParameterIn.QUERY, description = "Sort direction.  `desc` returns newest first (default), `asc` returns oldest first." ,schema=@Schema(allowableValues={ "asc", "desc" }
+, defaultValue="desc")) @Valid @RequestParam(value = "dir", required = false, defaultValue="desc") String dir
+, @Parameter(in = ParameterIn.QUERY, description = "Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode." ,schema=@Schema(allowableValues={ "message", "recipient" }
+, defaultValue="recipient")) @Valid @RequestParam(value = "groupby", required = false, defaultValue="recipient") String groupby
 );
 
 }

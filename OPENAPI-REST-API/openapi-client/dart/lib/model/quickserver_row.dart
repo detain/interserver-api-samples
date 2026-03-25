@@ -83,10 +83,18 @@ class QuickserverRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "QuickserverRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "QuickserverRow[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'qs_id'), 'Required key "QuickserverRow[qs_id]" is missing from JSON.');
+        assert(json[r'qs_id'] != null, 'Required key "QuickserverRow[qs_id]" has a null value in JSON.');
+        assert(json.containsKey(r'qs_name'), 'Required key "QuickserverRow[qs_name]" is missing from JSON.');
+        assert(json[r'qs_name'] != null, 'Required key "QuickserverRow[qs_name]" has a null value in JSON.');
+        assert(json.containsKey(r'cost'), 'Required key "QuickserverRow[cost]" is missing from JSON.');
+        assert(json[r'cost'] != null, 'Required key "QuickserverRow[cost]" has a null value in JSON.');
+        assert(json.containsKey(r'qs_hostname'), 'Required key "QuickserverRow[qs_hostname]" is missing from JSON.');
+        assert(json[r'qs_hostname'] != null, 'Required key "QuickserverRow[qs_hostname]" has a null value in JSON.');
+        assert(json.containsKey(r'qs_status'), 'Required key "QuickserverRow[qs_status]" is missing from JSON.');
+        assert(json[r'qs_status'] != null, 'Required key "QuickserverRow[qs_status]" has a null value in JSON.');
+        assert(json.containsKey(r'qs_comment'), 'Required key "QuickserverRow[qs_comment]" is missing from JSON.');
+        assert(json[r'qs_comment'] != null, 'Required key "QuickserverRow[qs_comment]" has a null value in JSON.');
         return true;
       }());
 

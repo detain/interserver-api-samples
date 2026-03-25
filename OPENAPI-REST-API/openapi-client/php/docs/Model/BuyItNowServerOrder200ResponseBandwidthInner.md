@@ -1,4 +1,4 @@
-# # BuyItNowServerOrder200ResponseBandwidthInner
+# BuyItNowServerOrder200ResponseBandwidthInner
 
 ## Properties
 

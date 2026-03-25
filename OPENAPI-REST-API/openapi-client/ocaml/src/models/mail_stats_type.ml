@@ -10,7 +10,7 @@
 
     
         type t = {
-                      time: Enums.mailstatstype_time
+                      time: Enums.time
                            option [@default
                     Some(`_1h)
                     

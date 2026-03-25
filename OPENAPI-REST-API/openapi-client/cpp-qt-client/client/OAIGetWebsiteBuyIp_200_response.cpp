@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetWebsiteBuyIp_200_response::OAIGetWebsiteBuyIp_200_response(QString json) {
+OAIGetWebsiteBuyIp_200_response::OAIGetWebsiteBuyIp_200_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIGetWebsiteBuyIp_200_response::initializeModel() {
     m_ips_isValid = false;
 }
 
-void OAIGetWebsiteBuyIp_200_response::fromJson(QString jsonString) {
+void OAIGetWebsiteBuyIp_200_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

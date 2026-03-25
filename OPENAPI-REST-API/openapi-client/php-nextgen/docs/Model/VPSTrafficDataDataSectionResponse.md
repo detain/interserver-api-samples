@@ -1,4 +1,4 @@
-# # VPSTrafficDataDataSectionResponse
+# VPSTrafficDataDataSectionResponse
 
 ## Properties
 

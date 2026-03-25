@@ -1,4 +1,4 @@
-# # DomainRow
+# DomainRow
 
 ## Properties
 

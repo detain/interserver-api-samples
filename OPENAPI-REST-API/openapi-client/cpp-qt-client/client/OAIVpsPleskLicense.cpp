@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsPleskLicense::OAIVpsPleskLicense(QString json) {
+OAIVpsPleskLicense::OAIVpsPleskLicense(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIVpsPleskLicense::initializeModel() {
     m_cost_isValid = false;
 }
 
-void OAIVpsPleskLicense::fromJson(QString jsonString) {
+void OAIVpsPleskLicense::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

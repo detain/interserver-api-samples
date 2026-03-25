@@ -1,4 +1,4 @@
-# # TicketsRow
+# TicketsRow
 
 ## Properties
 

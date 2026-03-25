@@ -14,11 +14,11 @@ static get_order_detail_200_response_t *get_order_detail_200_response_create_int
     if (!get_order_detail_200_response_local_var) {
         return NULL;
     }
+    memset(get_order_detail_200_response_local_var, 0, sizeof(get_order_detail_200_response_t));
+    get_order_detail_200_response_local_var->_library_owned = 1;
     get_order_detail_200_response_local_var->package_costs = package_costs;
     get_order_detail_200_response_local_var->service_types = service_types;
     get_order_detail_200_response_local_var->ips = ips;
-
-    get_order_detail_200_response_local_var->_library_owned = 1;
     return get_order_detail_200_response_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) get_order_detail_200_response_t *get_order_detail_20
     list_t *service_types,
     list_t *ips
     ) {
-    return get_order_detail_200_response_create_internal (
+    get_order_detail_200_response_t *result = get_order_detail_200_response_create_internal (
         package_costs,
         service_types,
         ips
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_order_detail_200_response_free(get_order_detail_200_response_t *get_order_detail_200_response) {
@@ -198,11 +201,16 @@ get_order_detail_200_response_t *get_order_detail_200_response_parseFromJSON(cJS
     }
 
 
+
     get_order_detail_200_response_local_var = get_order_detail_200_response_create_internal (
         package_costs ? package_costs_local_nonprim : NULL,
         service_types ? service_typesList : NULL,
         ips ? ipsList : NULL
         );
+
+    if (!get_order_detail_200_response_local_var) {
+        goto end;
+    }
 
     return get_order_detail_200_response_local_var;
 end:

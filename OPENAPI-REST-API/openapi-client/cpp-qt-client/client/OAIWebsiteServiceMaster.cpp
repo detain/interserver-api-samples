@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIWebsiteServiceMaster::OAIWebsiteServiceMaster(QString json) {
+OAIWebsiteServiceMaster::OAIWebsiteServiceMaster(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -77,7 +77,7 @@ void OAIWebsiteServiceMaster::initializeModel() {
     m_website_dns2_isValid = false;
 }
 
-void OAIWebsiteServiceMaster::fromJson(QString jsonString) {
+void OAIWebsiteServiceMaster::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

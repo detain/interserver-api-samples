@@ -27,19 +27,19 @@ interserver_management_api_create_geo_firewall_rule_XDPACTION_e create_geo_firew
 
 
 typedef struct create_geo_firewall_rule_t {
-    int xdp_action; //numeric
-    int destination_port; //numeric
-    int country_code; //numeric
-    int asn; //numeric
+    int *xdp_action; //numeric
+    int *destination_port; //numeric
+    int *country_code; //numeric
+    int *asn; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } create_geo_firewall_rule_t;
 
 __attribute__((deprecated)) create_geo_firewall_rule_t *create_geo_firewall_rule_create(
-    int xdp_action,
-    int destination_port,
-    int country_code,
-    int asn
+    int *xdp_action,
+    int *destination_port,
+    int *country_code,
+    int *asn
 );
 
 void create_geo_firewall_rule_free(create_geo_firewall_rule_t *create_geo_firewall_rule);

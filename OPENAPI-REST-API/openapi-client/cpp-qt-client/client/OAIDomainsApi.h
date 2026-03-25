@@ -219,6 +219,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -238,7 +245,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addDomainCallback(OAIHttpRequestWorker *worker);
     void addDomainDnssecCallback(OAIHttpRequestWorker *worker);
@@ -333,180 +340,64 @@ Q_SIGNALS:
     void updateDomainNameserversSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void updateDomainWhoisPrivacySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    Q_DECL_DEPRECATED_X("Use addDomainSignalError() instead")
-    void addDomainSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addDomainSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addDomainDnssecSignalError() instead")
-    void addDomainDnssecSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addDomainDnssecSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addDomainNameserverSignalError() instead")
-    void addDomainNameserverSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addDomainNameserverSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use cancelDomainSignalError() instead")
-    void cancelDomainSignalE(OAICancelDomain_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void cancelDomainSignalError(OAICancelDomain_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDomainDnssecSignalError() instead")
-    void deleteDomainDnssecSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDomainDnssecSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDomainNameserverSignalError() instead")
-    void deleteDomainNameserverSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDomainNameserverSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainContactSignalError() instead")
-    void getDomainContactSignalE(OAIDomainContactDetails summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainContactSignalError(OAIDomainContactDetails summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainDnssecSignalError() instead")
-    void getDomainDnssecSignalE(OAIDomainDnssecRecords<OAIDomainDnssecRecords_inner> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainDnssecSignalError(OAIDomainDnssecRecords<OAIDomainDnssecRecords_inner> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainInfoSignalError() instead")
-    void getDomainInfoSignalE(OAIDomain summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainInfoSignalError(OAIDomain summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainInvoicesSignalError() instead")
-    void getDomainInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainLookupSignalError() instead")
-    void getDomainLookupSignalE(OAIDomainLookupResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainLookupSignalError(OAIDomainLookupResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainNameserversSignalError() instead")
-    void getDomainNameserversSignalE(OAIDomainNameserverGetResponse<OAIDomainNameserverGetResponse_inner> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainNameserversSignalError(OAIDomainNameserverGetResponse<OAIDomainNameserverGetResponse_inner> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainOrderFieldsSignalError() instead")
-    void getDomainOrderFieldsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainOrderFieldsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainOrderSearchResultsSignalError() instead")
-    void getDomainOrderSearchResultsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainOrderSearchResultsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainRenewalSignalError() instead")
-    void getDomainRenewalSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainRenewalSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainSearchSignalError() instead")
-    void getDomainSearchSignalE(OAIDomainSearchResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainSearchSignalError(OAIDomainSearchResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainTransferSignalError() instead")
-    void getDomainTransferSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainTransferSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainWhoisPrivacySignalError() instead")
-    void getDomainWhoisPrivacySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainWhoisPrivacySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainsListSignalError() instead")
-    void getDomainsListSignalE(QList<OAIDomainRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainsListSignalError(QList<OAIDomainRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainsWelcomeEmailSignalError() instead")
-    void getDomainsWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewDomainSignalError() instead")
-    void getNewDomainSignalE(OAIDomainOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewDomainSignalError(OAIDomainOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use patchDomainsSignalError() instead")
-    void patchDomainsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void patchDomainsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postDomainRenewalSignalError() instead")
-    void postDomainRenewalSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postDomainRenewalSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postDomainTransferSignalError() instead")
-    void postDomainTransferSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postDomainTransferSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putDomainsSignalError() instead")
-    void putDomainsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putDomainsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainContactSignalError() instead")
-    void updateDomainContactSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainContactSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainInfoSignalError() instead")
-    void updateDomainInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainNameserversSignalError() instead")
-    void updateDomainNameserversSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainNameserversSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainWhoisPrivacySignalError() instead")
-    void updateDomainWhoisPrivacySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainWhoisPrivacySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addDomainSignalErrorFull() instead")
-    void addDomainSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addDomainDnssecSignalErrorFull() instead")
-    void addDomainDnssecSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addDomainDnssecSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addDomainNameserverSignalErrorFull() instead")
-    void addDomainNameserverSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addDomainNameserverSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use cancelDomainSignalErrorFull() instead")
-    void cancelDomainSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void cancelDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDomainDnssecSignalErrorFull() instead")
-    void deleteDomainDnssecSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDomainDnssecSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDomainNameserverSignalErrorFull() instead")
-    void deleteDomainNameserverSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDomainNameserverSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainContactSignalErrorFull() instead")
-    void getDomainContactSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainContactSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainDnssecSignalErrorFull() instead")
-    void getDomainDnssecSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainDnssecSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainInfoSignalErrorFull() instead")
-    void getDomainInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainInvoicesSignalErrorFull() instead")
-    void getDomainInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainLookupSignalErrorFull() instead")
-    void getDomainLookupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainLookupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainNameserversSignalErrorFull() instead")
-    void getDomainNameserversSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainNameserversSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainOrderFieldsSignalErrorFull() instead")
-    void getDomainOrderFieldsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainOrderFieldsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainOrderSearchResultsSignalErrorFull() instead")
-    void getDomainOrderSearchResultsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainOrderSearchResultsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainRenewalSignalErrorFull() instead")
-    void getDomainRenewalSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainRenewalSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainSearchSignalErrorFull() instead")
-    void getDomainSearchSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainSearchSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainTransferSignalErrorFull() instead")
-    void getDomainTransferSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainTransferSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainWhoisPrivacySignalErrorFull() instead")
-    void getDomainWhoisPrivacySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainWhoisPrivacySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainsListSignalErrorFull() instead")
-    void getDomainsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDomainsWelcomeEmailSignalErrorFull() instead")
-    void getDomainsWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDomainsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewDomainSignalErrorFull() instead")
-    void getNewDomainSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use patchDomainsSignalErrorFull() instead")
-    void patchDomainsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void patchDomainsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postDomainRenewalSignalErrorFull() instead")
-    void postDomainRenewalSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postDomainRenewalSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postDomainTransferSignalErrorFull() instead")
-    void postDomainTransferSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postDomainTransferSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putDomainsSignalErrorFull() instead")
-    void putDomainsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putDomainsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainContactSignalErrorFull() instead")
-    void updateDomainContactSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainContactSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainInfoSignalErrorFull() instead")
-    void updateDomainInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainNameserversSignalErrorFull() instead")
-    void updateDomainNameserversSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainNameserversSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDomainWhoisPrivacySignalErrorFull() instead")
-    void updateDomainWhoisPrivacySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDomainWhoisPrivacySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

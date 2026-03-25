@@ -83,10 +83,18 @@ class WebsiteRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebsiteRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebsiteRow[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'website_id'), 'Required key "WebsiteRow[website_id]" is missing from JSON.');
+        assert(json[r'website_id'] != null, 'Required key "WebsiteRow[website_id]" has a null value in JSON.');
+        assert(json.containsKey(r'website_hostname'), 'Required key "WebsiteRow[website_hostname]" is missing from JSON.');
+        assert(json[r'website_hostname'] != null, 'Required key "WebsiteRow[website_hostname]" has a null value in JSON.');
+        assert(json.containsKey(r'repeat_invoices_cost'), 'Required key "WebsiteRow[repeat_invoices_cost]" is missing from JSON.');
+        assert(json[r'repeat_invoices_cost'] != null, 'Required key "WebsiteRow[repeat_invoices_cost]" has a null value in JSON.');
+        assert(json.containsKey(r'website_status'), 'Required key "WebsiteRow[website_status]" is missing from JSON.');
+        assert(json[r'website_status'] != null, 'Required key "WebsiteRow[website_status]" has a null value in JSON.');
+        assert(json.containsKey(r'services_name'), 'Required key "WebsiteRow[services_name]" is missing from JSON.');
+        assert(json[r'services_name'] != null, 'Required key "WebsiteRow[services_name]" has a null value in JSON.');
+        assert(json.containsKey(r'website_comment'), 'Required key "WebsiteRow[website_comment]" is missing from JSON.');
+        assert(json[r'website_comment'] != null, 'Required key "WebsiteRow[website_comment]" has a null value in JSON.');
         return true;
       }());
 

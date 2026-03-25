@@ -19,15 +19,15 @@ typedef struct account_features_t account_features_t;
 
 
 typedef struct account_features_t {
-    int disable_reset; //numeric
-    int disable_reinstall; //numeric
+    int *disable_reset; //numeric
+    int *disable_reinstall; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } account_features_t;
 
 __attribute__((deprecated)) account_features_t *account_features_create(
-    int disable_reset,
-    int disable_reinstall
+    int *disable_reset,
+    int *disable_reinstall
 );
 
 void account_features_free(account_features_t *account_features);

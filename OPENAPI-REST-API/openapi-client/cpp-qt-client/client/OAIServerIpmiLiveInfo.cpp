@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerIpmiLiveInfo::OAIServerIpmiLiveInfo(QString json) {
+OAIServerIpmiLiveInfo::OAIServerIpmiLiveInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIServerIpmiLiveInfo::initializeModel() {
     m_client_password_isValid = false;
 }
 
-void OAIServerIpmiLiveInfo::fromJson(QString jsonString) {
+void OAIServerIpmiLiveInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

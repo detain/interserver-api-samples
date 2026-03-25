@@ -381,6 +381,7 @@ HEADERS += \
     $${PWD}/OAIVPSCancel_200_response.h \
     $${PWD}/OAIVPSTrafficDataDataSectionResponse.h \
     $${PWD}/OAIVPSTrafficDataDataSectionResponse_inner.h \
+    $${PWD}/OAIViewMailLog_startDate_parameter.h \
     $${PWD}/OAIViewTicketResponse.h \
     $${PWD}/OAIVps.h \
     $${PWD}/OAIVpsBackupRow.h \
@@ -862,6 +863,7 @@ SOURCES += \
     $${PWD}/OAIVPSCancel_200_response.cpp \
     $${PWD}/OAIVPSTrafficDataDataSectionResponse.cpp \
     $${PWD}/OAIVPSTrafficDataDataSectionResponse_inner.cpp \
+    $${PWD}/OAIViewMailLog_startDate_parameter.cpp \
     $${PWD}/OAIViewTicketResponse.cpp \
     $${PWD}/OAIVps.cpp \
     $${PWD}/OAIVpsBackupRow.cpp \

@@ -1,4 +1,4 @@
-# # ScrubIpsDeleteRule200Response
+# ScrubIpsDeleteRule200Response
 
 ## Properties
 

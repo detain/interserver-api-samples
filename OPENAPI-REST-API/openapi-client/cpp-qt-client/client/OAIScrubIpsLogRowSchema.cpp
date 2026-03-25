@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIScrubIpsLogRowSchema::OAIScrubIpsLogRowSchema(QString json) {
+OAIScrubIpsLogRowSchema::OAIScrubIpsLogRowSchema(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIScrubIpsLogRowSchema::initializeModel() {
     m_xdp_action_isValid = false;
 }
 
-void OAIScrubIpsLogRowSchema::fromJson(QString jsonString) {
+void OAIScrubIpsLogRowSchema::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

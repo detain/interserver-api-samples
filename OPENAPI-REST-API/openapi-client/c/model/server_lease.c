@@ -7,31 +7,40 @@
 
 static server_lease_t *server_lease_create_internal(
     char *mac,
-    int authenticated,
+    int *authenticated,
     char *group
     ) {
     server_lease_t *server_lease_local_var = malloc(sizeof(server_lease_t));
     if (!server_lease_local_var) {
         return NULL;
     }
+    memset(server_lease_local_var, 0, sizeof(server_lease_t));
+    server_lease_local_var->_library_owned = 1;
     server_lease_local_var->mac = mac;
     server_lease_local_var->authenticated = authenticated;
     server_lease_local_var->group = group;
-
-    server_lease_local_var->_library_owned = 1;
     return server_lease_local_var;
 }
 
 __attribute__((deprecated)) server_lease_t *server_lease_create(
     char *mac,
-    int authenticated,
+    int *authenticated,
     char *group
     ) {
-    return server_lease_create_internal (
+    int *authenticated_copy = NULL;
+    if (authenticated) {
+        authenticated_copy = malloc(sizeof(int));
+        if (authenticated_copy) *authenticated_copy = *authenticated;
+    }
+    server_lease_t *result = server_lease_create_internal (
         mac,
-        authenticated,
+        authenticated_copy,
         group
         );
+    if (!result) {
+        free(authenticated_copy);
+    }
+    return result;
 }
 
 void server_lease_free(server_lease_t *server_lease) {
@@ -46,6 +55,10 @@ void server_lease_free(server_lease_t *server_lease) {
     if (server_lease->mac) {
         free(server_lease->mac);
         server_lease->mac = NULL;
+    }
+    if (server_lease->authenticated) {
+        free(server_lease->authenticated);
+        server_lease->authenticated = NULL;
     }
     if (server_lease->group) {
         free(server_lease->group);
@@ -70,7 +83,7 @@ cJSON *server_lease_convertToJSON(server_lease_t *server_lease) {
     if (!server_lease->authenticated) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "authenticated", server_lease->authenticated) == NULL) {
+    if(cJSON_AddBoolToObject(item, "authenticated", *server_lease->authenticated) == NULL) {
     goto fail; //Bool
     }
 
@@ -94,6 +107,13 @@ fail:
 server_lease_t *server_lease_parseFromJSON(cJSON *server_leaseJSON){
 
     server_lease_t *server_lease_local_var = NULL;
+
+    char *mac_local_str = NULL;
+
+    // define the local variable for server_lease->authenticated
+    int *authenticated_local_var = NULL;
+
+    char *group_local_str = NULL;
 
     // server_lease->mac
     cJSON *mac = cJSON_GetObjectItemCaseSensitive(server_leaseJSON, "mac");
@@ -124,6 +144,12 @@ server_lease_t *server_lease_parseFromJSON(cJSON *server_leaseJSON){
     {
     goto end; //Bool
     }
+    authenticated_local_var = malloc(sizeof(int));
+    if(!authenticated_local_var)
+    {
+        goto end;
+    }
+    *authenticated_local_var = authenticated->valueint;
 
     // server_lease->group
     cJSON *group = cJSON_GetObjectItemCaseSensitive(server_leaseJSON, "group");
@@ -141,14 +167,33 @@ server_lease_t *server_lease_parseFromJSON(cJSON *server_leaseJSON){
     }
 
 
+    if (mac && !cJSON_IsNull(mac)) mac_local_str = strdup(mac->valuestring);
+    if (group && !cJSON_IsNull(group)) group_local_str = strdup(group->valuestring);
+
     server_lease_local_var = server_lease_create_internal (
-        strdup(mac->valuestring),
-        authenticated->valueint,
-        strdup(group->valuestring)
+        mac_local_str,
+        authenticated_local_var,
+        group_local_str
         );
+
+    if (!server_lease_local_var) {
+        goto end;
+    }
 
     return server_lease_local_var;
 end:
+    if (mac_local_str) {
+        free(mac_local_str);
+        mac_local_str = NULL;
+    }
+    if (authenticated_local_var) {
+        free(authenticated_local_var);
+        authenticated_local_var = NULL;
+    }
+    if (group_local_str) {
+        free(group_local_str);
+        group_local_str = NULL;
+    }
     return NULL;
 
 }

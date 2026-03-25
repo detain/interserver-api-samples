@@ -22,6 +22,7 @@ import org.openapitools.model.MailStatsType
 import org.openapitools.model.SendMail
 import org.openapitools.model.SendMailAdv
 import org.openapitools.model.SuccessTextResponse
+import org.openapitools.model.ViewMailLogStartDateParameter
 
 class MailApi {
     String basePath = "https://my.interserver.net/apiv2"
@@ -739,7 +740,7 @@ class MailApi {
 
     }
 
-    def viewMailLog ( Integer id, Long id2, String origin, String mx, String from, String to, String subject, String mailid, Integer skip, Integer limit, Long startDate, Long endDate, String delivered, Closure onSuccess, Closure onFailure)  {
+    def viewMailLog ( Integer id, Long id2, String origin, String mx, String from, String to, String subject, String mailid, String messageId, String replyto, String headerfrom, Integer delivered, Integer skip, Integer limit, ViewMailLogStartDateParameter startDate, ViewMailLogStartDateParameter endDate, String sort, String dir, String groupby, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/mail/${id}/log"
 
         // params
@@ -775,6 +776,18 @@ class MailApi {
         if (mailid != null) {
             queryParams.put("mailid", mailid)
         }
+        if (messageId != null) {
+            queryParams.put("messageId", messageId)
+        }
+        if (replyto != null) {
+            queryParams.put("replyto", replyto)
+        }
+        if (headerfrom != null) {
+            queryParams.put("headerfrom", headerfrom)
+        }
+        if (delivered != null) {
+            queryParams.put("delivered", delivered)
+        }
         if (skip != null) {
             queryParams.put("skip", skip)
         }
@@ -787,8 +800,14 @@ class MailApi {
         if (endDate != null) {
             queryParams.put("endDate", endDate)
         }
-        if (delivered != null) {
-            queryParams.put("delivered", delivered)
+        if (sort != null) {
+            queryParams.put("sort", sort)
+        }
+        if (dir != null) {
+            queryParams.put("dir", dir)
+        }
+        if (groupby != null) {
+            queryParams.put("groupby", groupby)
         }
 
 

@@ -30,7 +30,7 @@ class TicketsApi : public Service {
 public:
     TicketsApi() = default;
 
-    virtual ~TicketsApi() = default;
+    virtual ~TicketsApi();
 
     /**
     * Create New Ticket.

@@ -36,13 +36,13 @@ class OAIDomainNameServer;
 class OAIDomainAllInfo_attributes : public OAIObject {
 public:
     OAIDomainAllInfo_attributes();
-    OAIDomainAllInfo_attributes(QString json);
+    OAIDomainAllInfo_attributes(const QString &json);
     ~OAIDomainAllInfo_attributes() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIDomainAllInfo_attributes_contact_set getContactSet() const;
     void setContactSet(const OAIDomainAllInfo_attributes_contact_set &contact_set);

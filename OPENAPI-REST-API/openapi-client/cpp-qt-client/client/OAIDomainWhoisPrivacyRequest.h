@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainWhoisPrivacyRequest : public OAIObject {
 public:
     OAIDomainWhoisPrivacyRequest();
-    OAIDomainWhoisPrivacyRequest(QString json);
+    OAIDomainWhoisPrivacyRequest(const QString &json);
     ~OAIDomainWhoisPrivacyRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getFunc() const;
     void setFunc(const QString &func);

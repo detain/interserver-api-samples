@@ -12,18 +12,21 @@ static account_info_data_extra_t *account_info_data_extra_create_internal(
     if (!account_info_data_extra_local_var) {
         return NULL;
     }
-    account_info_data_extra_local_var->private_whois = private_whois;
-
+    memset(account_info_data_extra_local_var, 0, sizeof(account_info_data_extra_t));
     account_info_data_extra_local_var->_library_owned = 1;
+    account_info_data_extra_local_var->private_whois = private_whois;
     return account_info_data_extra_local_var;
 }
 
 __attribute__((deprecated)) account_info_data_extra_t *account_info_data_extra_create(
     char *private_whois
     ) {
-    return account_info_data_extra_create_internal (
+    account_info_data_extra_t *result = account_info_data_extra_create_internal (
         private_whois
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_info_data_extra_free(account_info_data_extra_t *account_info_data_extra) {
@@ -64,6 +67,8 @@ account_info_data_extra_t *account_info_data_extra_parseFromJSON(cJSON *account_
 
     account_info_data_extra_t *account_info_data_extra_local_var = NULL;
 
+    char *private_whois_local_str = NULL;
+
     // account_info_data_extra->private_whois
     cJSON *private_whois = cJSON_GetObjectItemCaseSensitive(account_info_data_extraJSON, "private_whois");
     if (cJSON_IsNull(private_whois)) {
@@ -77,12 +82,22 @@ account_info_data_extra_t *account_info_data_extra_parseFromJSON(cJSON *account_
     }
 
 
+    if (private_whois && !cJSON_IsNull(private_whois)) private_whois_local_str = strdup(private_whois->valuestring);
+
     account_info_data_extra_local_var = account_info_data_extra_create_internal (
-        private_whois && !cJSON_IsNull(private_whois) ? strdup(private_whois->valuestring) : NULL
+        private_whois_local_str
         );
+
+    if (!account_info_data_extra_local_var) {
+        goto end;
+    }
 
     return account_info_data_extra_local_var;
 end:
+    if (private_whois_local_str) {
+        free(private_whois_local_str);
+        private_whois_local_str = NULL;
+    }
     return NULL;
 
 }

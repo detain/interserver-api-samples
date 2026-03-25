@@ -21,33 +21,33 @@ using Newtonsoft.Json;
 namespace myadmin-client-aspnetcore.Models
 {
     /// <summary>
-    /// Mail log records
+    /// Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
     /// </summary>
     [DataContract]
     public partial class MailLog : IEquatable<MailLog>
     { 
         /// <summary>
-        /// total number of mail log entries
+        /// Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.
         /// </summary>
-        /// <value>total number of mail log entries</value>
+        /// <value>Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.</value>
         [Required]
 
         [DataMember(Name="total")]
         public int? Total { get; set; }
 
         /// <summary>
-        /// number of emails skipped in listing
+        /// The &#x60;skip&#x60; value used for this page (echoed from the request).
         /// </summary>
-        /// <value>number of emails skipped in listing</value>
+        /// <value>The &#x60;skip&#x60; value used for this page (echoed from the request).</value>
         [Required]
 
         [DataMember(Name="skip")]
         public int? Skip { get; set; }
 
         /// <summary>
-        /// number of emails to return
+        /// The &#x60;limit&#x60; value used for this page (echoed from the request).
         /// </summary>
-        /// <value>number of emails to return</value>
+        /// <value>The &#x60;limit&#x60; value used for this page (echoed from the request).</value>
         [Required]
 
         [DataMember(Name="limit")]

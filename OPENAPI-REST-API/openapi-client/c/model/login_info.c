@@ -15,12 +15,12 @@ static login_info_t *login_info_create_internal(
     if (!login_info_local_var) {
         return NULL;
     }
+    memset(login_info_local_var, 0, sizeof(login_info_t));
+    login_info_local_var->_library_owned = 1;
     login_info_local_var->captcha = captcha;
     login_info_local_var->counts = counts;
     login_info_local_var->logo = logo;
     login_info_local_var->language = language;
-
-    login_info_local_var->_library_owned = 1;
     return login_info_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) login_info_t *login_info_create(
     char *logo,
     char *language
     ) {
-    return login_info_create_internal (
+    login_info_t *result = login_info_create_internal (
         captcha,
         counts,
         logo,
         language
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void login_info_free(login_info_t *login_info) {
@@ -119,8 +122,14 @@ login_info_t *login_info_parseFromJSON(cJSON *login_infoJSON){
 
     login_info_t *login_info_local_var = NULL;
 
+    char *captcha_local_str = NULL;
+
     // define the local variable for login_info->counts
     login_service_counts_t *counts_local_nonprim = NULL;
+
+    char *logo_local_str = NULL;
+
+    char *language_local_str = NULL;
 
     // login_info->captcha
     cJSON *captcha = cJSON_GetObjectItemCaseSensitive(login_infoJSON, "captcha");
@@ -174,18 +183,38 @@ login_info_t *login_info_parseFromJSON(cJSON *login_infoJSON){
     }
 
 
+    if (captcha && !cJSON_IsNull(captcha)) captcha_local_str = strdup(captcha->valuestring);
+    if (logo && !cJSON_IsNull(logo)) logo_local_str = strdup(logo->valuestring);
+    if (language && !cJSON_IsNull(language)) language_local_str = strdup(language->valuestring);
+
     login_info_local_var = login_info_create_internal (
-        strdup(captcha->valuestring),
+        captcha_local_str,
         counts_local_nonprim,
-        logo && !cJSON_IsNull(logo) ? strdup(logo->valuestring) : NULL,
-        language && !cJSON_IsNull(language) ? strdup(language->valuestring) : NULL
+        logo_local_str,
+        language_local_str
         );
+
+    if (!login_info_local_var) {
+        goto end;
+    }
 
     return login_info_local_var;
 end:
+    if (captcha_local_str) {
+        free(captcha_local_str);
+        captcha_local_str = NULL;
+    }
     if (counts_local_nonprim) {
         login_service_counts_free(counts_local_nonprim);
         counts_local_nonprim = NULL;
+    }
+    if (logo_local_str) {
+        free(logo_local_str);
+        logo_local_str = NULL;
+    }
+    if (language_local_str) {
+        free(language_local_str);
+        language_local_str = NULL;
     }
     return NULL;
 

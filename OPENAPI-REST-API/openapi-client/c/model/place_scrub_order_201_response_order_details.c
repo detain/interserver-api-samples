@@ -6,9 +6,9 @@
 
 
 static place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_order_details_create_internal(
-    int total_cost,
-    int service_id,
-    int invoice_id,
+    int *total_cost,
+    int *service_id,
+    int *invoice_id,
     char *invoice_description,
     place_scrub_order_201_response_order_details_cj_params_t *cj_params
     ) {
@@ -16,30 +16,51 @@ static place_scrub_order_201_response_order_details_t *place_scrub_order_201_res
     if (!place_scrub_order_201_response_order_details_local_var) {
         return NULL;
     }
+    memset(place_scrub_order_201_response_order_details_local_var, 0, sizeof(place_scrub_order_201_response_order_details_t));
+    place_scrub_order_201_response_order_details_local_var->_library_owned = 1;
     place_scrub_order_201_response_order_details_local_var->total_cost = total_cost;
     place_scrub_order_201_response_order_details_local_var->service_id = service_id;
     place_scrub_order_201_response_order_details_local_var->invoice_id = invoice_id;
     place_scrub_order_201_response_order_details_local_var->invoice_description = invoice_description;
     place_scrub_order_201_response_order_details_local_var->cj_params = cj_params;
-
-    place_scrub_order_201_response_order_details_local_var->_library_owned = 1;
     return place_scrub_order_201_response_order_details_local_var;
 }
 
 __attribute__((deprecated)) place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_order_details_create(
-    int total_cost,
-    int service_id,
-    int invoice_id,
+    int *total_cost,
+    int *service_id,
+    int *invoice_id,
     char *invoice_description,
     place_scrub_order_201_response_order_details_cj_params_t *cj_params
     ) {
-    return place_scrub_order_201_response_order_details_create_internal (
-        total_cost,
-        service_id,
-        invoice_id,
+    int *total_cost_copy = NULL;
+    if (total_cost) {
+        total_cost_copy = malloc(sizeof(int));
+        if (total_cost_copy) *total_cost_copy = *total_cost;
+    }
+    int *service_id_copy = NULL;
+    if (service_id) {
+        service_id_copy = malloc(sizeof(int));
+        if (service_id_copy) *service_id_copy = *service_id;
+    }
+    int *invoice_id_copy = NULL;
+    if (invoice_id) {
+        invoice_id_copy = malloc(sizeof(int));
+        if (invoice_id_copy) *invoice_id_copy = *invoice_id;
+    }
+    place_scrub_order_201_response_order_details_t *result = place_scrub_order_201_response_order_details_create_internal (
+        total_cost_copy,
+        service_id_copy,
+        invoice_id_copy,
         invoice_description,
         cj_params
         );
+    if (!result) {
+        free(total_cost_copy);
+        free(service_id_copy);
+        free(invoice_id_copy);
+    }
+    return result;
 }
 
 void place_scrub_order_201_response_order_details_free(place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_order_details) {
@@ -51,6 +72,18 @@ void place_scrub_order_201_response_order_details_free(place_scrub_order_201_res
         return ;
     }
     listEntry_t *listEntry;
+    if (place_scrub_order_201_response_order_details->total_cost) {
+        free(place_scrub_order_201_response_order_details->total_cost);
+        place_scrub_order_201_response_order_details->total_cost = NULL;
+    }
+    if (place_scrub_order_201_response_order_details->service_id) {
+        free(place_scrub_order_201_response_order_details->service_id);
+        place_scrub_order_201_response_order_details->service_id = NULL;
+    }
+    if (place_scrub_order_201_response_order_details->invoice_id) {
+        free(place_scrub_order_201_response_order_details->invoice_id);
+        place_scrub_order_201_response_order_details->invoice_id = NULL;
+    }
     if (place_scrub_order_201_response_order_details->invoice_description) {
         free(place_scrub_order_201_response_order_details->invoice_description);
         place_scrub_order_201_response_order_details->invoice_description = NULL;
@@ -67,7 +100,7 @@ cJSON *place_scrub_order_201_response_order_details_convertToJSON(place_scrub_or
 
     // place_scrub_order_201_response_order_details->total_cost
     if(place_scrub_order_201_response_order_details->total_cost) {
-    if(cJSON_AddNumberToObject(item, "total_cost", place_scrub_order_201_response_order_details->total_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "total_cost", *place_scrub_order_201_response_order_details->total_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -75,7 +108,7 @@ cJSON *place_scrub_order_201_response_order_details_convertToJSON(place_scrub_or
 
     // place_scrub_order_201_response_order_details->service_id
     if(place_scrub_order_201_response_order_details->service_id) {
-    if(cJSON_AddNumberToObject(item, "service_id", place_scrub_order_201_response_order_details->service_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "service_id", *place_scrub_order_201_response_order_details->service_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -83,7 +116,7 @@ cJSON *place_scrub_order_201_response_order_details_convertToJSON(place_scrub_or
 
     // place_scrub_order_201_response_order_details->invoice_id
     if(place_scrub_order_201_response_order_details->invoice_id) {
-    if(cJSON_AddNumberToObject(item, "invoice_id", place_scrub_order_201_response_order_details->invoice_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "invoice_id", *place_scrub_order_201_response_order_details->invoice_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -121,6 +154,17 @@ place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_o
 
     place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_order_details_local_var = NULL;
 
+    // define the local variable for place_scrub_order_201_response_order_details->total_cost
+    int *total_cost_local_var = NULL;
+
+    // define the local variable for place_scrub_order_201_response_order_details->service_id
+    int *service_id_local_var = NULL;
+
+    // define the local variable for place_scrub_order_201_response_order_details->invoice_id
+    int *invoice_id_local_var = NULL;
+
+    char *invoice_description_local_str = NULL;
+
     // define the local variable for place_scrub_order_201_response_order_details->cj_params
     place_scrub_order_201_response_order_details_cj_params_t *cj_params_local_nonprim = NULL;
 
@@ -134,6 +178,12 @@ place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_o
     {
     goto end; //Numeric
     }
+    total_cost_local_var = malloc(sizeof(int));
+    if(!total_cost_local_var)
+    {
+        goto end;
+    }
+    *total_cost_local_var = total_cost->valuedouble;
     }
 
     // place_scrub_order_201_response_order_details->service_id
@@ -146,6 +196,12 @@ place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_o
     {
     goto end; //Numeric
     }
+    service_id_local_var = malloc(sizeof(int));
+    if(!service_id_local_var)
+    {
+        goto end;
+    }
+    *service_id_local_var = service_id->valuedouble;
     }
 
     // place_scrub_order_201_response_order_details->invoice_id
@@ -158,6 +214,12 @@ place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_o
     {
     goto end; //Numeric
     }
+    invoice_id_local_var = malloc(sizeof(int));
+    if(!invoice_id_local_var)
+    {
+        goto end;
+    }
+    *invoice_id_local_var = invoice_id->valuedouble;
     }
 
     // place_scrub_order_201_response_order_details->invoice_description
@@ -182,16 +244,38 @@ place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_o
     }
 
 
+    if (invoice_description && !cJSON_IsNull(invoice_description)) invoice_description_local_str = strdup(invoice_description->valuestring);
+
     place_scrub_order_201_response_order_details_local_var = place_scrub_order_201_response_order_details_create_internal (
-        total_cost ? total_cost->valuedouble : 0,
-        service_id ? service_id->valuedouble : 0,
-        invoice_id ? invoice_id->valuedouble : 0,
-        invoice_description && !cJSON_IsNull(invoice_description) ? strdup(invoice_description->valuestring) : NULL,
+        total_cost_local_var,
+        service_id_local_var,
+        invoice_id_local_var,
+        invoice_description_local_str,
         cj_params ? cj_params_local_nonprim : NULL
         );
 
+    if (!place_scrub_order_201_response_order_details_local_var) {
+        goto end;
+    }
+
     return place_scrub_order_201_response_order_details_local_var;
 end:
+    if (total_cost_local_var) {
+        free(total_cost_local_var);
+        total_cost_local_var = NULL;
+    }
+    if (service_id_local_var) {
+        free(service_id_local_var);
+        service_id_local_var = NULL;
+    }
+    if (invoice_id_local_var) {
+        free(invoice_id_local_var);
+        invoice_id_local_var = NULL;
+    }
+    if (invoice_description_local_str) {
+        free(invoice_description_local_str);
+        invoice_description_local_str = NULL;
+    }
     if (cj_params_local_nonprim) {
         place_scrub_order_201_response_order_details_cj_params_free(cj_params_local_nonprim);
         cj_params_local_nonprim = NULL;

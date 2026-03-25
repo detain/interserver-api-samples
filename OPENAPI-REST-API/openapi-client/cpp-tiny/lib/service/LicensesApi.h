@@ -28,7 +28,7 @@ class LicensesApi : public Service {
 public:
     LicensesApi() = default;
 
-    virtual ~LicensesApi() = default;
+    virtual ~LicensesApi();
 
     /**
     * Place License Order.

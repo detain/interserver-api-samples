@@ -44,6 +44,8 @@ static quickserver_service_master_t *quickserver_service_master_create_internal(
     if (!quickserver_service_master_local_var) {
         return NULL;
     }
+    memset(quickserver_service_master_local_var, 0, sizeof(quickserver_service_master_t));
+    quickserver_service_master_local_var->_library_owned = 1;
     quickserver_service_master_local_var->qs_id = qs_id;
     quickserver_service_master_local_var->qs_name = qs_name;
     quickserver_service_master_local_var->qs_ip = qs_ip;
@@ -77,8 +79,6 @@ static quickserver_service_master_t *quickserver_service_master_create_internal(
     quickserver_service_master_local_var->qs_last_install_time = qs_last_install_time;
     quickserver_service_master_local_var->qs_partitions = qs_partitions;
     quickserver_service_master_local_var->qs_cpu_flags = qs_cpu_flags;
-
-    quickserver_service_master_local_var->_library_owned = 1;
     return quickserver_service_master_local_var;
 }
 
@@ -117,7 +117,7 @@ __attribute__((deprecated)) quickserver_service_master_t *quickserver_service_ma
     any_type_t *qs_partitions,
     char *qs_cpu_flags
     ) {
-    return quickserver_service_master_create_internal (
+    quickserver_service_master_t *result = quickserver_service_master_create_internal (
         qs_id,
         qs_name,
         qs_ip,
@@ -152,6 +152,9 @@ __attribute__((deprecated)) quickserver_service_master_t *quickserver_service_ma
         qs_partitions,
         qs_cpu_flags
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_service_master_free(quickserver_service_master_t *quickserver_service_master) {
@@ -586,11 +589,73 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
 
     quickserver_service_master_t *quickserver_service_master_local_var = NULL;
 
+    char *qs_id_local_str = NULL;
+
+    char *qs_name_local_str = NULL;
+
+    char *qs_ip_local_str = NULL;
+
+    char *qs_type_local_str = NULL;
+
+    char *qs_hdsize_local_str = NULL;
+
+    char *qs_hdfree_local_str = NULL;
+
+    char *qs_bits_local_str = NULL;
+
+    char *qs_load_local_str = NULL;
+
+    char *qs_ram_local_str = NULL;
+
+    char *qs_cpu_model_local_str = NULL;
+
+    char *qs_cpu_mhz_local_str = NULL;
+
+    char *qs_location_local_str = NULL;
+
+    char *qs_available_local_str = NULL;
+
+    char *qs_cost_local_str = NULL;
+
+    char *qs_last_update_local_str = NULL;
+
+    char *qs_cores_local_str = NULL;
+
+    char *qs_iowait_local_str = NULL;
+
+    char *qs_raid_status_local_str = NULL;
+
+    char *qs_drive_type_local_str = NULL;
+
+    char *qs_order_local_str = NULL;
+
+    char *qs_raid_building_local_str = NULL;
+
+    char *qs_kernel_local_str = NULL;
+
+    char *qs_ioping_local_str = NULL;
+
+    char *qs_speed_local_str = NULL;
+
+    char *qs_distro_local_str = NULL;
+
+    char *qs_distro_version_local_str = NULL;
+
+    char *qs_bytes_sec_in_local_str = NULL;
+
+    char *qs_bytes_sec_out_local_str = NULL;
+
+    char *qs_packets_sec_in_local_str = NULL;
+
+    char *qs_packets_sec_out_local_str = NULL;
+
     // define the local variable for quickserver_service_master->qs_last_install_time
     _t *qs_last_install_time_local_nonprim = NULL;
 
     // define the local variable for quickserver_service_master->qs_partitions
     _t *qs_partitions_local_nonprim = NULL;
+
+    char *qs_cpu_flags_local_str = NULL;
 
     // quickserver_service_master->qs_id
     cJSON *qs_id = cJSON_GetObjectItemCaseSensitive(quickserver_service_masterJSON, "qs_id");
@@ -983,44 +1048,200 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
     }
 
 
+    if (qs_id && !cJSON_IsNull(qs_id)) qs_id_local_str = strdup(qs_id->valuestring);
+    if (qs_name && !cJSON_IsNull(qs_name)) qs_name_local_str = strdup(qs_name->valuestring);
+    if (qs_ip && !cJSON_IsNull(qs_ip)) qs_ip_local_str = strdup(qs_ip->valuestring);
+    if (qs_type && !cJSON_IsNull(qs_type)) qs_type_local_str = strdup(qs_type->valuestring);
+    if (qs_hdsize && !cJSON_IsNull(qs_hdsize)) qs_hdsize_local_str = strdup(qs_hdsize->valuestring);
+    if (qs_hdfree && !cJSON_IsNull(qs_hdfree)) qs_hdfree_local_str = strdup(qs_hdfree->valuestring);
+    if (qs_bits && !cJSON_IsNull(qs_bits)) qs_bits_local_str = strdup(qs_bits->valuestring);
+    if (qs_load && !cJSON_IsNull(qs_load)) qs_load_local_str = strdup(qs_load->valuestring);
+    if (qs_ram && !cJSON_IsNull(qs_ram)) qs_ram_local_str = strdup(qs_ram->valuestring);
+    if (qs_cpu_model && !cJSON_IsNull(qs_cpu_model)) qs_cpu_model_local_str = strdup(qs_cpu_model->valuestring);
+    if (qs_cpu_mhz && !cJSON_IsNull(qs_cpu_mhz)) qs_cpu_mhz_local_str = strdup(qs_cpu_mhz->valuestring);
+    if (qs_location && !cJSON_IsNull(qs_location)) qs_location_local_str = strdup(qs_location->valuestring);
+    if (qs_available && !cJSON_IsNull(qs_available)) qs_available_local_str = strdup(qs_available->valuestring);
+    if (qs_cost && !cJSON_IsNull(qs_cost)) qs_cost_local_str = strdup(qs_cost->valuestring);
+    if (qs_last_update && !cJSON_IsNull(qs_last_update)) qs_last_update_local_str = strdup(qs_last_update->valuestring);
+    if (qs_cores && !cJSON_IsNull(qs_cores)) qs_cores_local_str = strdup(qs_cores->valuestring);
+    if (qs_iowait && !cJSON_IsNull(qs_iowait)) qs_iowait_local_str = strdup(qs_iowait->valuestring);
+    if (qs_raid_status && !cJSON_IsNull(qs_raid_status)) qs_raid_status_local_str = strdup(qs_raid_status->valuestring);
+    if (qs_drive_type && !cJSON_IsNull(qs_drive_type)) qs_drive_type_local_str = strdup(qs_drive_type->valuestring);
+    if (qs_order && !cJSON_IsNull(qs_order)) qs_order_local_str = strdup(qs_order->valuestring);
+    if (qs_raid_building && !cJSON_IsNull(qs_raid_building)) qs_raid_building_local_str = strdup(qs_raid_building->valuestring);
+    if (qs_kernel && !cJSON_IsNull(qs_kernel)) qs_kernel_local_str = strdup(qs_kernel->valuestring);
+    if (qs_ioping && !cJSON_IsNull(qs_ioping)) qs_ioping_local_str = strdup(qs_ioping->valuestring);
+    if (qs_speed && !cJSON_IsNull(qs_speed)) qs_speed_local_str = strdup(qs_speed->valuestring);
+    if (qs_distro && !cJSON_IsNull(qs_distro)) qs_distro_local_str = strdup(qs_distro->valuestring);
+    if (qs_distro_version && !cJSON_IsNull(qs_distro_version)) qs_distro_version_local_str = strdup(qs_distro_version->valuestring);
+    if (qs_bytes_sec_in && !cJSON_IsNull(qs_bytes_sec_in)) qs_bytes_sec_in_local_str = strdup(qs_bytes_sec_in->valuestring);
+    if (qs_bytes_sec_out && !cJSON_IsNull(qs_bytes_sec_out)) qs_bytes_sec_out_local_str = strdup(qs_bytes_sec_out->valuestring);
+    if (qs_packets_sec_in && !cJSON_IsNull(qs_packets_sec_in)) qs_packets_sec_in_local_str = strdup(qs_packets_sec_in->valuestring);
+    if (qs_packets_sec_out && !cJSON_IsNull(qs_packets_sec_out)) qs_packets_sec_out_local_str = strdup(qs_packets_sec_out->valuestring);
+    if (qs_cpu_flags && !cJSON_IsNull(qs_cpu_flags)) qs_cpu_flags_local_str = strdup(qs_cpu_flags->valuestring);
+
     quickserver_service_master_local_var = quickserver_service_master_create_internal (
-        qs_id && !cJSON_IsNull(qs_id) ? strdup(qs_id->valuestring) : NULL,
-        qs_name && !cJSON_IsNull(qs_name) ? strdup(qs_name->valuestring) : NULL,
-        qs_ip && !cJSON_IsNull(qs_ip) ? strdup(qs_ip->valuestring) : NULL,
-        qs_type && !cJSON_IsNull(qs_type) ? strdup(qs_type->valuestring) : NULL,
-        qs_hdsize && !cJSON_IsNull(qs_hdsize) ? strdup(qs_hdsize->valuestring) : NULL,
-        qs_hdfree && !cJSON_IsNull(qs_hdfree) ? strdup(qs_hdfree->valuestring) : NULL,
-        qs_bits && !cJSON_IsNull(qs_bits) ? strdup(qs_bits->valuestring) : NULL,
-        qs_load && !cJSON_IsNull(qs_load) ? strdup(qs_load->valuestring) : NULL,
-        qs_ram && !cJSON_IsNull(qs_ram) ? strdup(qs_ram->valuestring) : NULL,
-        qs_cpu_model && !cJSON_IsNull(qs_cpu_model) ? strdup(qs_cpu_model->valuestring) : NULL,
-        qs_cpu_mhz && !cJSON_IsNull(qs_cpu_mhz) ? strdup(qs_cpu_mhz->valuestring) : NULL,
-        qs_location && !cJSON_IsNull(qs_location) ? strdup(qs_location->valuestring) : NULL,
-        qs_available && !cJSON_IsNull(qs_available) ? strdup(qs_available->valuestring) : NULL,
-        qs_cost && !cJSON_IsNull(qs_cost) ? strdup(qs_cost->valuestring) : NULL,
-        qs_last_update && !cJSON_IsNull(qs_last_update) ? strdup(qs_last_update->valuestring) : NULL,
-        qs_cores && !cJSON_IsNull(qs_cores) ? strdup(qs_cores->valuestring) : NULL,
-        qs_iowait && !cJSON_IsNull(qs_iowait) ? strdup(qs_iowait->valuestring) : NULL,
-        qs_raid_status && !cJSON_IsNull(qs_raid_status) ? strdup(qs_raid_status->valuestring) : NULL,
-        qs_drive_type && !cJSON_IsNull(qs_drive_type) ? strdup(qs_drive_type->valuestring) : NULL,
-        qs_order && !cJSON_IsNull(qs_order) ? strdup(qs_order->valuestring) : NULL,
-        qs_raid_building && !cJSON_IsNull(qs_raid_building) ? strdup(qs_raid_building->valuestring) : NULL,
-        qs_kernel && !cJSON_IsNull(qs_kernel) ? strdup(qs_kernel->valuestring) : NULL,
-        qs_ioping && !cJSON_IsNull(qs_ioping) ? strdup(qs_ioping->valuestring) : NULL,
-        qs_speed && !cJSON_IsNull(qs_speed) ? strdup(qs_speed->valuestring) : NULL,
-        qs_distro && !cJSON_IsNull(qs_distro) ? strdup(qs_distro->valuestring) : NULL,
-        qs_distro_version && !cJSON_IsNull(qs_distro_version) ? strdup(qs_distro_version->valuestring) : NULL,
-        qs_bytes_sec_in && !cJSON_IsNull(qs_bytes_sec_in) ? strdup(qs_bytes_sec_in->valuestring) : NULL,
-        qs_bytes_sec_out && !cJSON_IsNull(qs_bytes_sec_out) ? strdup(qs_bytes_sec_out->valuestring) : NULL,
-        qs_packets_sec_in && !cJSON_IsNull(qs_packets_sec_in) ? strdup(qs_packets_sec_in->valuestring) : NULL,
-        qs_packets_sec_out && !cJSON_IsNull(qs_packets_sec_out) ? strdup(qs_packets_sec_out->valuestring) : NULL,
+        qs_id_local_str,
+        qs_name_local_str,
+        qs_ip_local_str,
+        qs_type_local_str,
+        qs_hdsize_local_str,
+        qs_hdfree_local_str,
+        qs_bits_local_str,
+        qs_load_local_str,
+        qs_ram_local_str,
+        qs_cpu_model_local_str,
+        qs_cpu_mhz_local_str,
+        qs_location_local_str,
+        qs_available_local_str,
+        qs_cost_local_str,
+        qs_last_update_local_str,
+        qs_cores_local_str,
+        qs_iowait_local_str,
+        qs_raid_status_local_str,
+        qs_drive_type_local_str,
+        qs_order_local_str,
+        qs_raid_building_local_str,
+        qs_kernel_local_str,
+        qs_ioping_local_str,
+        qs_speed_local_str,
+        qs_distro_local_str,
+        qs_distro_version_local_str,
+        qs_bytes_sec_in_local_str,
+        qs_bytes_sec_out_local_str,
+        qs_packets_sec_in_local_str,
+        qs_packets_sec_out_local_str,
         qs_last_install_time ? qs_last_install_time_local_nonprim : NULL,
         qs_partitions ? qs_partitions_local_nonprim : NULL,
-        qs_cpu_flags && !cJSON_IsNull(qs_cpu_flags) ? strdup(qs_cpu_flags->valuestring) : NULL
+        qs_cpu_flags_local_str
         );
+
+    if (!quickserver_service_master_local_var) {
+        goto end;
+    }
 
     return quickserver_service_master_local_var;
 end:
+    if (qs_id_local_str) {
+        free(qs_id_local_str);
+        qs_id_local_str = NULL;
+    }
+    if (qs_name_local_str) {
+        free(qs_name_local_str);
+        qs_name_local_str = NULL;
+    }
+    if (qs_ip_local_str) {
+        free(qs_ip_local_str);
+        qs_ip_local_str = NULL;
+    }
+    if (qs_type_local_str) {
+        free(qs_type_local_str);
+        qs_type_local_str = NULL;
+    }
+    if (qs_hdsize_local_str) {
+        free(qs_hdsize_local_str);
+        qs_hdsize_local_str = NULL;
+    }
+    if (qs_hdfree_local_str) {
+        free(qs_hdfree_local_str);
+        qs_hdfree_local_str = NULL;
+    }
+    if (qs_bits_local_str) {
+        free(qs_bits_local_str);
+        qs_bits_local_str = NULL;
+    }
+    if (qs_load_local_str) {
+        free(qs_load_local_str);
+        qs_load_local_str = NULL;
+    }
+    if (qs_ram_local_str) {
+        free(qs_ram_local_str);
+        qs_ram_local_str = NULL;
+    }
+    if (qs_cpu_model_local_str) {
+        free(qs_cpu_model_local_str);
+        qs_cpu_model_local_str = NULL;
+    }
+    if (qs_cpu_mhz_local_str) {
+        free(qs_cpu_mhz_local_str);
+        qs_cpu_mhz_local_str = NULL;
+    }
+    if (qs_location_local_str) {
+        free(qs_location_local_str);
+        qs_location_local_str = NULL;
+    }
+    if (qs_available_local_str) {
+        free(qs_available_local_str);
+        qs_available_local_str = NULL;
+    }
+    if (qs_cost_local_str) {
+        free(qs_cost_local_str);
+        qs_cost_local_str = NULL;
+    }
+    if (qs_last_update_local_str) {
+        free(qs_last_update_local_str);
+        qs_last_update_local_str = NULL;
+    }
+    if (qs_cores_local_str) {
+        free(qs_cores_local_str);
+        qs_cores_local_str = NULL;
+    }
+    if (qs_iowait_local_str) {
+        free(qs_iowait_local_str);
+        qs_iowait_local_str = NULL;
+    }
+    if (qs_raid_status_local_str) {
+        free(qs_raid_status_local_str);
+        qs_raid_status_local_str = NULL;
+    }
+    if (qs_drive_type_local_str) {
+        free(qs_drive_type_local_str);
+        qs_drive_type_local_str = NULL;
+    }
+    if (qs_order_local_str) {
+        free(qs_order_local_str);
+        qs_order_local_str = NULL;
+    }
+    if (qs_raid_building_local_str) {
+        free(qs_raid_building_local_str);
+        qs_raid_building_local_str = NULL;
+    }
+    if (qs_kernel_local_str) {
+        free(qs_kernel_local_str);
+        qs_kernel_local_str = NULL;
+    }
+    if (qs_ioping_local_str) {
+        free(qs_ioping_local_str);
+        qs_ioping_local_str = NULL;
+    }
+    if (qs_speed_local_str) {
+        free(qs_speed_local_str);
+        qs_speed_local_str = NULL;
+    }
+    if (qs_distro_local_str) {
+        free(qs_distro_local_str);
+        qs_distro_local_str = NULL;
+    }
+    if (qs_distro_version_local_str) {
+        free(qs_distro_version_local_str);
+        qs_distro_version_local_str = NULL;
+    }
+    if (qs_bytes_sec_in_local_str) {
+        free(qs_bytes_sec_in_local_str);
+        qs_bytes_sec_in_local_str = NULL;
+    }
+    if (qs_bytes_sec_out_local_str) {
+        free(qs_bytes_sec_out_local_str);
+        qs_bytes_sec_out_local_str = NULL;
+    }
+    if (qs_packets_sec_in_local_str) {
+        free(qs_packets_sec_in_local_str);
+        qs_packets_sec_in_local_str = NULL;
+    }
+    if (qs_packets_sec_out_local_str) {
+        free(qs_packets_sec_out_local_str);
+        qs_packets_sec_out_local_str = NULL;
+    }
     if (qs_last_install_time_local_nonprim) {
         _free(qs_last_install_time_local_nonprim);
         qs_last_install_time_local_nonprim = NULL;
@@ -1028,6 +1249,10 @@ end:
     if (qs_partitions_local_nonprim) {
         _free(qs_partitions_local_nonprim);
         qs_partitions_local_nonprim = NULL;
+    }
+    if (qs_cpu_flags_local_str) {
+        free(qs_cpu_flags_local_str);
+        qs_cpu_flags_local_str = NULL;
     }
     return NULL;
 

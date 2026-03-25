@@ -24,7 +24,7 @@ class DNSApi : public Service {
 public:
     DNSApi() = default;
 
-    virtual ~DNSApi() = default;
+    virtual ~DNSApi();
 
     /**
     * Create DNS Domain.

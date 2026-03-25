@@ -35,13 +35,13 @@ class OAIDomainProvProcessPending;
 class OAIDomainBillingExtra : public OAIObject {
 public:
     OAIDomainBillingExtra();
-    OAIDomainBillingExtra(QString json);
+    OAIDomainBillingExtra(const QString &json);
     ~OAIDomainBillingExtra() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIDomainOrderResponse getOrder() const;
     void setOrder(const OAIDomainOrderResponse &order);

@@ -71,10 +71,16 @@ class MailBlockClickHouse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailBlockClickHouse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailBlockClickHouse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'date'), 'Required key "MailBlockClickHouse[date]" is missing from JSON.');
+        assert(json[r'date'] != null, 'Required key "MailBlockClickHouse[date]" has a null value in JSON.');
+        assert(json.containsKey(r'from'), 'Required key "MailBlockClickHouse[from]" is missing from JSON.');
+        assert(json[r'from'] != null, 'Required key "MailBlockClickHouse[from]" has a null value in JSON.');
+        assert(json.containsKey(r'messageId'), 'Required key "MailBlockClickHouse[messageId]" is missing from JSON.');
+        assert(json[r'messageId'] != null, 'Required key "MailBlockClickHouse[messageId]" has a null value in JSON.');
+        assert(json.containsKey(r'subject'), 'Required key "MailBlockClickHouse[subject]" is missing from JSON.');
+        assert(json[r'subject'] != null, 'Required key "MailBlockClickHouse[subject]" has a null value in JSON.');
+        assert(json.containsKey(r'to'), 'Required key "MailBlockClickHouse[to]" is missing from JSON.');
+        assert(json[r'to'] != null, 'Required key "MailBlockClickHouse[to]" has a null value in JSON.');
         return true;
       }());
 

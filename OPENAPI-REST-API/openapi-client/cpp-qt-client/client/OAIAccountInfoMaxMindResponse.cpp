@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoMaxMindResponse::OAIAccountInfoMaxMindResponse(QString json) {
+OAIAccountInfoMaxMindResponse::OAIAccountInfoMaxMindResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -194,7 +194,7 @@ void OAIAccountInfoMaxMindResponse::initializeModel() {
     m_female_name_isValid = false;
 }
 
-void OAIAccountInfoMaxMindResponse::fromJson(QString jsonString) {
+void OAIAccountInfoMaxMindResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

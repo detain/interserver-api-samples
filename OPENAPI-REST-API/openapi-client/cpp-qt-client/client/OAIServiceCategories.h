@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServiceCategories : public OAIObject {
 public:
     OAIServiceCategories();
-    OAIServiceCategories(QString json);
+    OAIServiceCategories(const QString &json);
     ~OAIServiceCategories() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;

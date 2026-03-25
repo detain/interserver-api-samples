@@ -1,4 +1,4 @@
-# # DeleteFirewallRule
+# DeleteFirewallRule
 
 ## Properties
 

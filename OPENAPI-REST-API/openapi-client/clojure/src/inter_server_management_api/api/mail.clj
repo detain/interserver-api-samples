@@ -349,6 +349,7 @@
             [inter-server-management-api.specs.home-details-modules-domains :refer :all]
             [inter-server-management-api.specs.ip-limit-range :refer :all]
             [inter-server-management-api.specs.ticket-post-details :refer :all]
+            [inter-server-management-api.specs.view-mail-log-start-date-parameter :refer :all]
             [inter-server-management-api.specs.services-info :refer :all]
             [inter-server-management-api.specs.domain-order-response :refer :all]
             [inter-server-management-api.specs.server-billing-details :refer :all]
@@ -1065,14 +1066,30 @@
 
 (defn-spec view-mail-log-with-http-info any?
   "View Mail Log
-  Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status."
+  Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+
+**Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).
+
+**Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.
+
+**Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.
+
+**Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.
+
+**Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.
+
+**Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.
+
+The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.
+
+The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match)."
   ([id int?, ] (view-mail-log-with-http-info id nil))
-  ([id int?, {:keys [id2 origin mx from to subject mailid skip limit startDate endDate delivered]} (s/map-of keyword? any?)]
+  ([id int?, {:keys [id2 origin mx from to subject mailid messageId replyto headerfrom delivered skip limit startDate endDate sort dir groupby]} (s/map-of keyword? any?)]
    (check-required-params id)
    (call-api "/mail/{id}/log" :get
              {:path-params   {"id" id }
               :header-params {}
-              :query-params  {"id" id2 "origin" origin "mx" mx "from" from "to" to "subject" subject "mailid" mailid "skip" skip "limit" limit "startDate" startDate "endDate" endDate "delivered" delivered }
+              :query-params  {"id" id2 "origin" origin "mx" mx "from" from "to" to "subject" subject "mailid" mailid "messageId" messageId "replyto" replyto "headerfrom" headerfrom "delivered" delivered "skip" skip "limit" limit "startDate" startDate "endDate" endDate "sort" sort "dir" dir "groupby" groupby }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]
@@ -1080,7 +1097,23 @@
 
 (defn-spec view-mail-log mail-log-spec
   "View Mail Log
-  Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status."
+  Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+
+**Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).
+
+**Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.
+
+**Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.
+
+**Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.
+
+**Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.
+
+**Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.
+
+The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.
+
+The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match)."
   ([id int?, ] (view-mail-log id nil))
   ([id int?, optional-params any?]
    (let [res (:data (view-mail-log-with-http-info id optional-params))]

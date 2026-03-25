@@ -6,28 +6,37 @@
 
 
 static mail_cancel_200_response_t *mail_cancel_200_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     mail_cancel_200_response_t *mail_cancel_200_response_local_var = malloc(sizeof(mail_cancel_200_response_t));
     if (!mail_cancel_200_response_local_var) {
         return NULL;
     }
+    memset(mail_cancel_200_response_local_var, 0, sizeof(mail_cancel_200_response_t));
+    mail_cancel_200_response_local_var->_library_owned = 1;
     mail_cancel_200_response_local_var->success = success;
     mail_cancel_200_response_local_var->text = text;
-
-    mail_cancel_200_response_local_var->_library_owned = 1;
     return mail_cancel_200_response_local_var;
 }
 
 __attribute__((deprecated)) mail_cancel_200_response_t *mail_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return mail_cancel_200_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    mail_cancel_200_response_t *result = mail_cancel_200_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void mail_cancel_200_response_free(mail_cancel_200_response_t *mail_cancel_200_response) {
@@ -39,6 +48,10 @@ void mail_cancel_200_response_free(mail_cancel_200_response_t *mail_cancel_200_r
         return ;
     }
     listEntry_t *listEntry;
+    if (mail_cancel_200_response->success) {
+        free(mail_cancel_200_response->success);
+        mail_cancel_200_response->success = NULL;
+    }
     if (mail_cancel_200_response->text) {
         free(mail_cancel_200_response->text);
         mail_cancel_200_response->text = NULL;
@@ -53,7 +66,7 @@ cJSON *mail_cancel_200_response_convertToJSON(mail_cancel_200_response_t *mail_c
     if (!mail_cancel_200_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", mail_cancel_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *mail_cancel_200_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -78,6 +91,11 @@ mail_cancel_200_response_t *mail_cancel_200_response_parseFromJSON(cJSON *mail_c
 
     mail_cancel_200_response_t *mail_cancel_200_response_local_var = NULL;
 
+    // define the local variable for mail_cancel_200_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // mail_cancel_200_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(mail_cancel_200_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -92,6 +110,12 @@ mail_cancel_200_response_t *mail_cancel_200_response_parseFromJSON(cJSON *mail_c
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // mail_cancel_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(mail_cancel_200_responseJSON, "text");
@@ -109,13 +133,27 @@ mail_cancel_200_response_t *mail_cancel_200_response_parseFromJSON(cJSON *mail_c
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     mail_cancel_200_response_local_var = mail_cancel_200_response_create_internal (
-        success->valueint,
-        strdup(text->valuestring)
+        success_local_var,
+        text_local_str
         );
+
+    if (!mail_cancel_200_response_local_var) {
+        goto end;
+    }
 
     return mail_cancel_200_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -296,32 +296,6 @@ void OAIBackupsApi::addBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addBackupSignal(output);
         Q_EMIT addBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addBackupSignalE(output, error_type, error_str);
-        Q_EMIT addBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addBackupSignalError(output, error_type, error_str);
         Q_EMIT addBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -388,32 +362,6 @@ void OAIBackupsApi::cancelBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT cancelBackupSignal(output);
         Q_EMIT cancelBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT cancelBackupSignalE(output, error_type, error_str);
-        Q_EMIT cancelBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT cancelBackupSignalError(output, error_type, error_str);
         Q_EMIT cancelBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -480,32 +428,6 @@ void OAIBackupsApi::getBackupInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBackupInfoSignal(output);
         Q_EMIT getBackupInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBackupInfoSignalE(output, error_type, error_str);
-        Q_EMIT getBackupInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBackupInfoSignalError(output, error_type, error_str);
         Q_EMIT getBackupInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -572,32 +494,6 @@ void OAIBackupsApi::getBackupInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBackupInvoicesSignal(output);
         Q_EMIT getBackupInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBackupInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getBackupInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBackupInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getBackupInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -664,32 +560,6 @@ void OAIBackupsApi::getBackupLoginCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBackupLoginSignal(output);
         Q_EMIT getBackupLoginSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBackupLoginSignalE(output, error_type, error_str);
-        Q_EMIT getBackupLoginSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBackupLoginSignalError(output, error_type, error_str);
         Q_EMIT getBackupLoginSignalErrorFull(worker, error_type, error_str);
     }
@@ -751,32 +621,6 @@ void OAIBackupsApi::getBackupsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBackupsListSignal(output);
         Q_EMIT getBackupsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBackupsListSignalE(output, error_type, error_str);
-        Q_EMIT getBackupsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBackupsListSignalError(output, error_type, error_str);
         Q_EMIT getBackupsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -843,32 +687,6 @@ void OAIBackupsApi::getBackupsWelcomeEmailCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getBackupsWelcomeEmailSignal(output);
         Q_EMIT getBackupsWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBackupsWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getBackupsWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBackupsWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getBackupsWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -921,32 +739,6 @@ void OAIBackupsApi::getNewBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewBackupSignal(output);
         Q_EMIT getNewBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewBackupSignalE(output, error_type, error_str);
-        Q_EMIT getNewBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewBackupSignalError(output, error_type, error_str);
         Q_EMIT getNewBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -1012,32 +804,6 @@ void OAIBackupsApi::updateBackupInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateBackupInfoSignal();
         Q_EMIT updateBackupInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateBackupInfoSignalE(error_type, error_str);
-        Q_EMIT updateBackupInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateBackupInfoSignalError(error_type, error_str);
         Q_EMIT updateBackupInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -1102,42 +868,16 @@ void OAIBackupsApi::validateBackupOrderCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT validateBackupOrderSignal(output);
         Q_EMIT validateBackupOrderSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT validateBackupOrderSignalE(output, error_type, error_str);
-        Q_EMIT validateBackupOrderSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT validateBackupOrderSignalError(output, error_type, error_str);
         Q_EMIT validateBackupOrderSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIBackupsApi::tokenAvailable(){
+void OAIBackupsApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1147,7 +887,7 @@ void OAIBackupsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1157,7 +897,7 @@ void OAIBackupsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1167,7 +907,7 @@ void OAIBackupsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

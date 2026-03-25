@@ -65,10 +65,14 @@ class ServiceCategory {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServiceCategory[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServiceCategory[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'category_id'), 'Required key "ServiceCategory[category_id]" is missing from JSON.');
+        assert(json[r'category_id'] != null, 'Required key "ServiceCategory[category_id]" has a null value in JSON.');
+        assert(json.containsKey(r'category_name'), 'Required key "ServiceCategory[category_name]" is missing from JSON.');
+        assert(json[r'category_name'] != null, 'Required key "ServiceCategory[category_name]" has a null value in JSON.');
+        assert(json.containsKey(r'category_tag'), 'Required key "ServiceCategory[category_tag]" is missing from JSON.');
+        assert(json[r'category_tag'] != null, 'Required key "ServiceCategory[category_tag]" has a null value in JSON.');
+        assert(json.containsKey(r'category_module'), 'Required key "ServiceCategory[category_module]" is missing from JSON.');
+        assert(json[r'category_module'] != null, 'Required key "ServiceCategory[category_module]" has a null value in JSON.');
         return true;
       }());
 

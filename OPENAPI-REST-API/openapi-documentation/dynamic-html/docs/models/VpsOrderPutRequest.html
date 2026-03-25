@@ -1,0 +1,71 @@
+
+<h2>VpsOrderPutRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">osDistro : String
+    <br/>OS Distribution
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">slices : Integer
+    <br/>Number of slices
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">vpsPlatform : String
+    <br/>VPS Platform
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>kvm</dd>
+            <dd>hyperv</dd>
+            <dd>kvmstorage</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">period : Integer
+    <br/>Billing Period or Frequency
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">location : Integer
+    <br/>Location
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">osVersion : String
+    <br/>OS Version
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">hostname : String
+    <br/>The hostname to assign to the VPS
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rootpass : String
+    <br/>Root password to assign to the VVPS
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">controlpanel : String
+    <br/>Control Panel
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>none</dd>
+            <dd>cpanel</dd>
+            <dd>da</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">coupon : String
+    <br/>Coupon
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">comment : String
+    <br/>Order comments or notes
+  </li>
+</ul>

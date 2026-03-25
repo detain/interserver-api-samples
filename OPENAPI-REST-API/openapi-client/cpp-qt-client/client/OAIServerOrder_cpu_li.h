@@ -32,13 +32,13 @@ class OAIServerOrderCPU;
 class OAIServerOrder_cpu_li : public OAIObject {
 public:
     OAIServerOrder_cpu_li();
-    OAIServerOrder_cpu_li(QString json);
+    OAIServerOrder_cpu_li(const QString &json);
     ~OAIServerOrder_cpu_li() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderCPU getR254() const;
     void setR254(const OAIServerOrderCPU &r_254);

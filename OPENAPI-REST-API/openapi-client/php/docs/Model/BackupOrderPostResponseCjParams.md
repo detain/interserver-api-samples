@@ -1,4 +1,4 @@
-# # BackupOrderPostResponseCjParams
+# BackupOrderPostResponseCjParams
 
 ## Properties
 

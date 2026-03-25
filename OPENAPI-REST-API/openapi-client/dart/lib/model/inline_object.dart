@@ -53,10 +53,10 @@ class InlineObject {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InlineObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InlineObject[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'code'), 'Required key "InlineObject[code]" is missing from JSON.');
+        assert(json[r'code'] != null, 'Required key "InlineObject[code]" has a null value in JSON.');
+        assert(json.containsKey(r'message'), 'Required key "InlineObject[message]" is missing from JSON.');
+        assert(json[r'message'] != null, 'Required key "InlineObject[message]" has a null value in JSON.');
         return true;
       }());
 

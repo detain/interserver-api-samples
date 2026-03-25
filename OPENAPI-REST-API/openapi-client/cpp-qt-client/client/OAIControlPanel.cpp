@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIControlPanel::OAIControlPanel(QString json) {
+OAIControlPanel::OAIControlPanel(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIControlPanel::initializeModel() {
     m_monthly_price_isValid = false;
 }
 
-void OAIControlPanel::fromJson(QString jsonString) {
+void OAIControlPanel::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

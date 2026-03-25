@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBuyItNowRow::OAIBuyItNowRow(QString json) {
+OAIBuyItNowRow::OAIBuyItNowRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIBuyItNowRow::initializeModel() {
     m_price_isValid = false;
 }
 
-void OAIBuyItNowRow::fromJson(QString jsonString) {
+void OAIBuyItNowRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

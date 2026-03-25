@@ -19,14 +19,14 @@ typedef struct update_ticket_response_schema_t update_ticket_response_schema_t;
 
 
 typedef struct update_ticket_response_schema_t {
-    int success; //boolean
+    int *success; //boolean
     char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } update_ticket_response_schema_t;
 
 __attribute__((deprecated)) update_ticket_response_schema_t *update_ticket_response_schema_create(
-    int success,
+    int *success,
     char *message
 );
 

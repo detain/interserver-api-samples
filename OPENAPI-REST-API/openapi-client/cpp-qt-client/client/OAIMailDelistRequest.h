@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMailDelistRequest : public OAIObject {
 public:
     OAIMailDelistRequest();
-    OAIMailDelistRequest(QString json);
+    OAIMailDelistRequest(const QString &json);
     ~OAIMailDelistRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getUnblock() const;
     void setUnblock(const QString &unblock);

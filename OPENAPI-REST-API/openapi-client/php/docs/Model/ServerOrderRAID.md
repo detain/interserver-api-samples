@@ -1,4 +1,4 @@
-# # ServerOrderRAID
+# ServerOrderRAID
 
 ## Properties
 

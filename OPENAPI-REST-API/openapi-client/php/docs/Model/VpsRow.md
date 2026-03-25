@@ -1,4 +1,4 @@
-# # VpsRow
+# VpsRow
 
 ## Properties
 

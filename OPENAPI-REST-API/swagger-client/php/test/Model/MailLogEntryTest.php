@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * MailLogEntryTest Class Doc Comment
  *
  * @category    Class
- * @description An email record
+ * @description A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  * @package     Interserver\MyAdmin
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -183,9 +183,30 @@ class MailLogEntryTest extends TestCase
     }
 
     /**
+     * Test attribute "delivered"
+     */
+    public function testPropertyDelivered()
+    {
+    }
+
+    /**
+     * Test attribute "code"
+     */
+    public function testPropertyCode()
+    {
+    }
+
+    /**
      * Test attribute "recipient"
      */
     public function testPropertyRecipient()
+    {
+    }
+
+    /**
+     * Test attribute "response"
+     */
+    public function testPropertyResponse()
     {
     }
 
@@ -228,13 +249,6 @@ class MailLogEntryTest extends TestCase
      * Test attribute "mxHostname"
      */
     public function testPropertyMxHostname()
-    {
-    }
-
-    /**
-     * Test attribute "response"
-     */
-    public function testPropertyResponse()
     {
     }
 }

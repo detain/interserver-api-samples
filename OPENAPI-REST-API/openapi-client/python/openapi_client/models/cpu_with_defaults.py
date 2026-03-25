@@ -24,6 +24,7 @@ from openapi_client.models.hard_drive import HardDrive
 from openapi_client.models.memory_option import MemoryOption
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CpuWithDefaults(BaseModel):
     """
@@ -52,7 +53,8 @@ class CpuWithDefaults(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "short_desc", "long_desc", "type", "speed", "num_cores", "num_cpus", "benchmark", "monthly_price", "monthly_price_display", "max_ram", "min_ram", "max_lff", "max_sff", "max_nve", "visible", "active", "memory_det", "hd_det", "monthly_fee"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,8 +66,7 @@ class CpuWithDefaults(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

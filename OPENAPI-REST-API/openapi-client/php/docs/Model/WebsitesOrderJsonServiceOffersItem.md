@@ -1,4 +1,4 @@
-# # WebsitesOrderJsonServiceOffersItem
+# WebsitesOrderJsonServiceOffersItem
 
 ## Properties
 

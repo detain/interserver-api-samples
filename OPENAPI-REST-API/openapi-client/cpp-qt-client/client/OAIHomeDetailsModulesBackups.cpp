@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHomeDetailsModulesBackups::OAIHomeDetailsModulesBackups(QString json) {
+OAIHomeDetailsModulesBackups::OAIHomeDetailsModulesBackups(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIHomeDetailsModulesBackups::initializeModel() {
     m_list_link_isValid = false;
 }
 
-void OAIHomeDetailsModulesBackups::fromJson(QString jsonString) {
+void OAIHomeDetailsModulesBackups::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

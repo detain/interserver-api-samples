@@ -13,10 +13,10 @@ static affiliate_payment_setup_t *affiliate_payment_setup_create_internal(
     if (!affiliate_payment_setup_local_var) {
         return NULL;
     }
+    memset(affiliate_payment_setup_local_var, 0, sizeof(affiliate_payment_setup_t));
+    affiliate_payment_setup_local_var->_library_owned = 1;
     affiliate_payment_setup_local_var->affiliate_paypal = affiliate_paypal;
     affiliate_payment_setup_local_var->affiliate_payment_method = affiliate_payment_method;
-
-    affiliate_payment_setup_local_var->_library_owned = 1;
     return affiliate_payment_setup_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) affiliate_payment_setup_t *affiliate_payment_setup_c
     char *affiliate_paypal,
     char *affiliate_payment_method
     ) {
-    return affiliate_payment_setup_create_internal (
+    affiliate_payment_setup_t *result = affiliate_payment_setup_create_internal (
         affiliate_paypal,
         affiliate_payment_method
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void affiliate_payment_setup_free(affiliate_payment_setup_t *affiliate_payment_setup) {
@@ -80,6 +83,10 @@ affiliate_payment_setup_t *affiliate_payment_setup_parseFromJSON(cJSON *affiliat
 
     affiliate_payment_setup_t *affiliate_payment_setup_local_var = NULL;
 
+    char *affiliate_paypal_local_str = NULL;
+
+    char *affiliate_payment_method_local_str = NULL;
+
     // affiliate_payment_setup->affiliate_paypal
     cJSON *affiliate_paypal = cJSON_GetObjectItemCaseSensitive(affiliate_payment_setupJSON, "affiliate_paypal");
     if (cJSON_IsNull(affiliate_paypal)) {
@@ -105,13 +112,28 @@ affiliate_payment_setup_t *affiliate_payment_setup_parseFromJSON(cJSON *affiliat
     }
 
 
+    if (affiliate_paypal && !cJSON_IsNull(affiliate_paypal)) affiliate_paypal_local_str = strdup(affiliate_paypal->valuestring);
+    if (affiliate_payment_method && !cJSON_IsNull(affiliate_payment_method)) affiliate_payment_method_local_str = strdup(affiliate_payment_method->valuestring);
+
     affiliate_payment_setup_local_var = affiliate_payment_setup_create_internal (
-        affiliate_paypal && !cJSON_IsNull(affiliate_paypal) ? strdup(affiliate_paypal->valuestring) : NULL,
-        affiliate_payment_method && !cJSON_IsNull(affiliate_payment_method) ? strdup(affiliate_payment_method->valuestring) : NULL
+        affiliate_paypal_local_str,
+        affiliate_payment_method_local_str
         );
+
+    if (!affiliate_payment_setup_local_var) {
+        goto end;
+    }
 
     return affiliate_payment_setup_local_var;
 end:
+    if (affiliate_paypal_local_str) {
+        free(affiliate_paypal_local_str);
+        affiliate_paypal_local_str = NULL;
+    }
+    if (affiliate_payment_method_local_str) {
+        free(affiliate_payment_method_local_str);
+        affiliate_payment_method_local_str = NULL;
+    }
     return NULL;
 
 }

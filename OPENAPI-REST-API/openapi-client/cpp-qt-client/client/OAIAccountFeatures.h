@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIAccountFeatures : public OAIObject {
 public:
     OAIAccountFeatures();
-    OAIAccountFeatures(QString json);
+    OAIAccountFeatures(const QString &json);
     ~OAIAccountFeatures() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getDisableReset() const;
     void setDisableReset(const qint32 &disable_reset);

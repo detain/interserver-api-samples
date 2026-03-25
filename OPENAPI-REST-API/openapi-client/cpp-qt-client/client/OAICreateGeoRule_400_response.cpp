@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAICreateGeoRule_400_response::OAICreateGeoRule_400_response(QString json) {
+OAICreateGeoRule_400_response::OAICreateGeoRule_400_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAICreateGeoRule_400_response::initializeModel() {
     m_errors_isValid = false;
 }
 
-void OAICreateGeoRule_400_response::fromJson(QString jsonString) {
+void OAICreateGeoRule_400_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

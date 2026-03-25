@@ -23,7 +23,7 @@ static quickserver_t *quickserver_create_internal(
     char *token,
     char *service_disk_used,
     char *service_disk_total,
-    double disk_percentage,
+    double *disk_percentage,
     char *memory,
     char *hdd,
     list_t *service_overview_extra
@@ -32,6 +32,8 @@ static quickserver_t *quickserver_create_internal(
     if (!quickserver_local_var) {
         return NULL;
     }
+    memset(quickserver_local_var, 0, sizeof(quickserver_t));
+    quickserver_local_var->_library_owned = 1;
     quickserver_local_var->service_info = service_info;
     quickserver_local_var->client_links = client_links;
     quickserver_local_var->billing_details = billing_details;
@@ -53,8 +55,6 @@ static quickserver_t *quickserver_create_internal(
     quickserver_local_var->memory = memory;
     quickserver_local_var->hdd = hdd;
     quickserver_local_var->service_overview_extra = service_overview_extra;
-
-    quickserver_local_var->_library_owned = 1;
     return quickserver_local_var;
 }
 
@@ -76,12 +76,17 @@ __attribute__((deprecated)) quickserver_t *quickserver_create(
     char *token,
     char *service_disk_used,
     char *service_disk_total,
-    double disk_percentage,
+    double *disk_percentage,
     char *memory,
     char *hdd,
     list_t *service_overview_extra
     ) {
-    return quickserver_create_internal (
+    double *disk_percentage_copy = NULL;
+    if (disk_percentage) {
+        disk_percentage_copy = malloc(sizeof(double));
+        if (disk_percentage_copy) *disk_percentage_copy = *disk_percentage;
+    }
+    quickserver_t *result = quickserver_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -99,11 +104,15 @@ __attribute__((deprecated)) quickserver_t *quickserver_create(
         token,
         service_disk_used,
         service_disk_total,
-        disk_percentage,
+        disk_percentage_copy,
         memory,
         hdd,
         service_overview_extra
         );
+    if (!result) {
+        free(disk_percentage_copy);
+    }
+    return result;
 }
 
 void quickserver_free(quickserver_t *quickserver) {
@@ -185,6 +194,10 @@ void quickserver_free(quickserver_t *quickserver) {
     if (quickserver->service_disk_total) {
         free(quickserver->service_disk_total);
         quickserver->service_disk_total = NULL;
+    }
+    if (quickserver->disk_percentage) {
+        free(quickserver->disk_percentage);
+        quickserver->disk_percentage = NULL;
     }
     if (quickserver->memory) {
         free(quickserver->memory);
@@ -401,7 +414,7 @@ cJSON *quickserver_convertToJSON(quickserver_t *quickserver) {
     if (!quickserver->disk_percentage) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "disk_percentage", quickserver->disk_percentage) == NULL) {
+    if(cJSON_AddNumberToObject(item, "disk_percentage", *quickserver->disk_percentage) == NULL) {
     goto fail; //Numeric
     }
 
@@ -462,14 +475,43 @@ quickserver_t *quickserver_parseFromJSON(cJSON *quickserverJSON){
     // define the local variable for quickserver->billing_details
     quickserver_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
     // define the local variable for quickserver->service_master
     quickserver_service_master_t *service_master_local_nonprim = NULL;
+
+    char *package_local_str = NULL;
+
+    char *os_template_local_str = NULL;
 
     // define the local variable for quickserver->service_extra
     quickserver_service_extra_t *service_extra_local_nonprim = NULL;
 
     // define the local variable for quickserver->extra_info_tables
     quickserver_extra_info_tables_t *extra_info_tables_local_nonprim = NULL;
+
+    char *cpu_graph_data_local_str = NULL;
+
+    char *bandwidth_xaxis_local_str = NULL;
+
+    char *bandwidth_yaxis_local_str = NULL;
+
+    char *module_local_str = NULL;
+
+    char *token_local_str = NULL;
+
+    char *service_disk_used_local_str = NULL;
+
+    char *service_disk_total_local_str = NULL;
+
+    // define the local variable for quickserver->disk_percentage
+    double *disk_percentage_local_var = NULL;
+
+    char *memory_local_str = NULL;
+
+    char *hdd_local_str = NULL;
 
     // define the local list for quickserver->service_overview_extra
     list_t *service_overview_extraList = NULL;
@@ -740,6 +782,12 @@ quickserver_t *quickserver_parseFromJSON(cJSON *quickserverJSON){
     {
     goto end; //Numeric
     }
+    disk_percentage_local_var = malloc(sizeof(double));
+    if(!disk_percentage_local_var)
+    {
+        goto end;
+    }
+    *disk_percentage_local_var = disk_percentage->valuedouble;
 
     // quickserver->memory
     cJSON *memory = cJSON_GetObjectItemCaseSensitive(quickserverJSON, "memory");
@@ -797,29 +845,47 @@ quickserver_t *quickserver_parseFromJSON(cJSON *quickserverJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+    if (os_template && !cJSON_IsNull(os_template)) os_template_local_str = strdup(os_template->valuestring);
+    if (cpu_graph_data && !cJSON_IsNull(cpu_graph_data)) cpu_graph_data_local_str = strdup(cpu_graph_data->valuestring);
+    if (bandwidth_xaxis && !cJSON_IsNull(bandwidth_xaxis)) bandwidth_xaxis_local_str = strdup(bandwidth_xaxis->valuestring);
+    if (bandwidth_yaxis && !cJSON_IsNull(bandwidth_yaxis)) bandwidth_yaxis_local_str = strdup(bandwidth_yaxis->valuestring);
+    if (module && !cJSON_IsNull(module)) module_local_str = strdup(module->valuestring);
+    if (token && !cJSON_IsNull(token)) token_local_str = strdup(token->valuestring);
+    if (service_disk_used && !cJSON_IsNull(service_disk_used)) service_disk_used_local_str = strdup(service_disk_used->valuestring);
+    if (service_disk_total && !cJSON_IsNull(service_disk_total)) service_disk_total_local_str = strdup(service_disk_total->valuestring);
+    if (memory && !cJSON_IsNull(memory)) memory_local_str = strdup(memory->valuestring);
+    if (hdd && !cJSON_IsNull(hdd)) hdd_local_str = strdup(hdd->valuestring);
+
     quickserver_local_var = quickserver_create_internal (
         service_info_local_nonprim,
         client_linksList,
         billing_details_local_nonprim,
-        strdup(cust_currency->valuestring),
-        strdup(cust_currency_symbol->valuestring),
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
         service_master_local_nonprim,
-        strdup(package->valuestring),
-        strdup(os_template->valuestring),
+        package_local_str,
+        os_template_local_str,
         service_extra_local_nonprim,
         extra_info_tables_local_nonprim,
-        strdup(cpu_graph_data->valuestring),
-        strdup(bandwidth_xaxis->valuestring),
-        strdup(bandwidth_yaxis->valuestring),
-        strdup(module->valuestring),
-        strdup(token->valuestring),
-        strdup(service_disk_used->valuestring),
-        strdup(service_disk_total->valuestring),
-        disk_percentage->valuedouble,
-        strdup(memory->valuestring),
-        strdup(hdd->valuestring),
+        cpu_graph_data_local_str,
+        bandwidth_xaxis_local_str,
+        bandwidth_yaxis_local_str,
+        module_local_str,
+        token_local_str,
+        service_disk_used_local_str,
+        service_disk_total_local_str,
+        disk_percentage_local_var,
+        memory_local_str,
+        hdd_local_str,
         service_overview_extraList
         );
+
+    if (!quickserver_local_var) {
+        goto end;
+    }
 
     return quickserver_local_var;
 end:
@@ -840,9 +906,25 @@ end:
         quickserver_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
     if (service_master_local_nonprim) {
         quickserver_service_master_free(service_master_local_nonprim);
         service_master_local_nonprim = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
+    }
+    if (os_template_local_str) {
+        free(os_template_local_str);
+        os_template_local_str = NULL;
     }
     if (service_extra_local_nonprim) {
         quickserver_service_extra_free(service_extra_local_nonprim);
@@ -851,6 +933,46 @@ end:
     if (extra_info_tables_local_nonprim) {
         quickserver_extra_info_tables_free(extra_info_tables_local_nonprim);
         extra_info_tables_local_nonprim = NULL;
+    }
+    if (cpu_graph_data_local_str) {
+        free(cpu_graph_data_local_str);
+        cpu_graph_data_local_str = NULL;
+    }
+    if (bandwidth_xaxis_local_str) {
+        free(bandwidth_xaxis_local_str);
+        bandwidth_xaxis_local_str = NULL;
+    }
+    if (bandwidth_yaxis_local_str) {
+        free(bandwidth_yaxis_local_str);
+        bandwidth_yaxis_local_str = NULL;
+    }
+    if (module_local_str) {
+        free(module_local_str);
+        module_local_str = NULL;
+    }
+    if (token_local_str) {
+        free(token_local_str);
+        token_local_str = NULL;
+    }
+    if (service_disk_used_local_str) {
+        free(service_disk_used_local_str);
+        service_disk_used_local_str = NULL;
+    }
+    if (service_disk_total_local_str) {
+        free(service_disk_total_local_str);
+        service_disk_total_local_str = NULL;
+    }
+    if (disk_percentage_local_var) {
+        free(disk_percentage_local_var);
+        disk_percentage_local_var = NULL;
+    }
+    if (memory_local_str) {
+        free(memory_local_str);
+        memory_local_str = NULL;
+    }
+    if (hdd_local_str) {
+        free(hdd_local_str);
+        hdd_local_str = NULL;
     }
     if (service_overview_extraList) {
         listEntry_t *listEntry = NULL;

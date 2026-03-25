@@ -48,10 +48,8 @@ class UpdateAccountTfaRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UpdateAccountTfaRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UpdateAccountTfaRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'2fa_google_code'), 'Required key "UpdateAccountTfaRequest[2fa_google_code]" is missing from JSON.');
+        assert(json[r'2fa_google_code'] != null, 'Required key "UpdateAccountTfaRequest[2fa_google_code]" has a null value in JSON.');
         return true;
       }());
 

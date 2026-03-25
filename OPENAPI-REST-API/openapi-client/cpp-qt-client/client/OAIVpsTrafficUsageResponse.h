@@ -34,13 +34,13 @@ class OAIVpsTrafficUsageAverageResponse;
 class OAIVpsTrafficUsageResponse : public OAIObject {
 public:
     OAIVpsTrafficUsageResponse();
-    OAIVpsTrafficUsageResponse(QString json);
+    OAIVpsTrafficUsageResponse(const QString &json);
     ~OAIVpsTrafficUsageResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsTrafficTotalsSectionResponse getCurrent() const;
     void setCurrent(const OAIVpsTrafficTotalsSectionResponse &current);

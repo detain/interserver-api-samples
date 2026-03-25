@@ -121,8 +121,29 @@ describe("mail_log_entry", function()
     end)
   end)
 
+  -- unit tests for the property 'delivered'
+  describe("property delivered test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'code'
+  describe("property code test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'recipient'
   describe("property recipient test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'response'
+  describe("property response test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -165,13 +186,6 @@ describe("mail_log_entry", function()
 
   -- unit tests for the property 'mx_hostname'
   describe("property mx_hostname test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'response'
-  describe("property response test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

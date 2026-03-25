@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIIpObject::OAIIpObject(QString json) {
+OAIIpObject::OAIIpObject(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIIpObject::initializeModel() {
     m_ip_isValid = false;
 }
 
-void OAIIpObject::fromJson(QString jsonString) {
+void OAIIpObject::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

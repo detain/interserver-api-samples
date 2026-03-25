@@ -19,6 +19,8 @@ static license_row_t *license_row_create_internal(
     if (!license_row_local_var) {
         return NULL;
     }
+    memset(license_row_local_var, 0, sizeof(license_row_t));
+    license_row_local_var->_library_owned = 1;
     license_row_local_var->license_id = license_id;
     license_row_local_var->license_hostname = license_hostname;
     license_row_local_var->license_ip = license_ip;
@@ -27,8 +29,6 @@ static license_row_t *license_row_create_internal(
     license_row_local_var->license_status = license_status;
     license_row_local_var->invoices_paid = invoices_paid;
     license_row_local_var->invoices_date = invoices_date;
-
-    license_row_local_var->_library_owned = 1;
     return license_row_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) license_row_t *license_row_create(
     char *invoices_paid,
     char *invoices_date
     ) {
-    return license_row_create_internal (
+    license_row_t *result = license_row_create_internal (
         license_id,
         license_hostname,
         license_ip,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) license_row_t *license_row_create(
         invoices_paid,
         invoices_date
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void license_row_free(license_row_t *license_row) {
@@ -176,6 +179,22 @@ license_row_t *license_row_parseFromJSON(cJSON *license_rowJSON){
 
     license_row_t *license_row_local_var = NULL;
 
+    char *license_id_local_str = NULL;
+
+    char *license_hostname_local_str = NULL;
+
+    char *license_ip_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
+    char *cost_local_str = NULL;
+
+    char *license_status_local_str = NULL;
+
+    char *invoices_paid_local_str = NULL;
+
+    char *invoices_date_local_str = NULL;
+
     // license_row->license_id
     cJSON *license_id = cJSON_GetObjectItemCaseSensitive(license_rowJSON, "license_id");
     if (cJSON_IsNull(license_id)) {
@@ -273,19 +292,64 @@ license_row_t *license_row_parseFromJSON(cJSON *license_rowJSON){
     }
 
 
+    if (license_id && !cJSON_IsNull(license_id)) license_id_local_str = strdup(license_id->valuestring);
+    if (license_hostname && !cJSON_IsNull(license_hostname)) license_hostname_local_str = strdup(license_hostname->valuestring);
+    if (license_ip && !cJSON_IsNull(license_ip)) license_ip_local_str = strdup(license_ip->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+    if (cost && !cJSON_IsNull(cost)) cost_local_str = strdup(cost->valuestring);
+    if (license_status && !cJSON_IsNull(license_status)) license_status_local_str = strdup(license_status->valuestring);
+    if (invoices_paid && !cJSON_IsNull(invoices_paid)) invoices_paid_local_str = strdup(invoices_paid->valuestring);
+    if (invoices_date && !cJSON_IsNull(invoices_date)) invoices_date_local_str = strdup(invoices_date->valuestring);
+
     license_row_local_var = license_row_create_internal (
-        license_id && !cJSON_IsNull(license_id) ? strdup(license_id->valuestring) : NULL,
-        license_hostname && !cJSON_IsNull(license_hostname) ? strdup(license_hostname->valuestring) : NULL,
-        license_ip && !cJSON_IsNull(license_ip) ? strdup(license_ip->valuestring) : NULL,
-        services_name && !cJSON_IsNull(services_name) ? strdup(services_name->valuestring) : NULL,
-        cost && !cJSON_IsNull(cost) ? strdup(cost->valuestring) : NULL,
-        license_status && !cJSON_IsNull(license_status) ? strdup(license_status->valuestring) : NULL,
-        invoices_paid && !cJSON_IsNull(invoices_paid) ? strdup(invoices_paid->valuestring) : NULL,
-        invoices_date && !cJSON_IsNull(invoices_date) ? strdup(invoices_date->valuestring) : NULL
+        license_id_local_str,
+        license_hostname_local_str,
+        license_ip_local_str,
+        services_name_local_str,
+        cost_local_str,
+        license_status_local_str,
+        invoices_paid_local_str,
+        invoices_date_local_str
         );
+
+    if (!license_row_local_var) {
+        goto end;
+    }
 
     return license_row_local_var;
 end:
+    if (license_id_local_str) {
+        free(license_id_local_str);
+        license_id_local_str = NULL;
+    }
+    if (license_hostname_local_str) {
+        free(license_hostname_local_str);
+        license_hostname_local_str = NULL;
+    }
+    if (license_ip_local_str) {
+        free(license_ip_local_str);
+        license_ip_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
+    if (cost_local_str) {
+        free(cost_local_str);
+        cost_local_str = NULL;
+    }
+    if (license_status_local_str) {
+        free(license_status_local_str);
+        license_status_local_str = NULL;
+    }
+    if (invoices_paid_local_str) {
+        free(invoices_paid_local_str);
+        invoices_paid_local_str = NULL;
+    }
+    if (invoices_date_local_str) {
+        free(invoices_date_local_str);
+        invoices_date_local_str = NULL;
+    }
     return NULL;
 
 }

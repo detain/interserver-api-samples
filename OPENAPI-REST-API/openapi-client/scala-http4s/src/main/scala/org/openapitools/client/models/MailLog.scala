@@ -12,14 +12,15 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 import scala.collection.immutable.Seq
 
-/** Mail log records
-  * @param total total number of mail log entries
-  * @param skip number of emails skipped in listing
-  * @param limit number of emails to return
+/** Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
+  * @param total Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
+  * @param skip The `skip` value used for this page (echoed from the request).
+  * @param limit The `limit` value used for this page (echoed from the request).
   * @param emails 
   */
 case class MailLog(

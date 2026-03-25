@@ -10,6 +10,7 @@ from myadmin-client-python-flask.models.deny_rule_new import DenyRuleNew  # noqa
 from myadmin-client-python-flask.models.deny_rule_record import DenyRuleRecord  # noqa: E501
 from myadmin-client-python-flask.models.email_address import EmailAddress  # noqa: E501
 from myadmin-client-python-flask.models.email_address_name import EmailAddressName  # noqa: E501
+from myadmin-client-python-flask.models.end_date import EndDate  # noqa: E501
 from myadmin-client-python-flask.models.generic_response import GenericResponse  # noqa: E501
 from myadmin-client-python-flask.models.inline_response2008 import InlineResponse2008  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
@@ -28,6 +29,7 @@ from myadmin-client-python-flask.models.mail_schema import MailSchema  # noqa: E
 from myadmin-client-python-flask.models.mail_stats_type import MailStatsType  # noqa: E501
 from myadmin-client-python-flask.models.send_mail import SendMail  # noqa: E501
 from myadmin-client-python-flask.models.send_mail_adv import SendMailAdv  # noqa: E501
+from myadmin-client-python-flask.models.start_date import StartDate  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase
 
@@ -381,11 +383,17 @@ class TestMailController(BaseTestCase):
                         ('to', 'to_example'),
                         ('subject', 'subject_example'),
                         ('mailid', 'mailid_example'),
+                        ('message_id', 'message_id_example'),
+                        ('replyto', 'replyto_example'),
+                        ('headerfrom', 'headerfrom_example'),
+                        ('delivered', 56),
                         ('skip', 1),
                         ('limit', 10000),
-                        ('start_date', 9999999999),
-                        ('end_date', 9999999999),
-                        ('delivered', 'delivered_example')]
+                        ('start_date', StartDate()),
+                        ('end_date', EndDate()),
+                        ('sort', 'time'),
+                        ('dir', 'desc'),
+                        ('groupby', 'recipient')]
         response = self.client.open(
             '/apiv2/mail/{id}/log'.format(id=56),
             method='GET',

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBuyItNowRow_cpu_inner::OAIBuyItNowRow_cpu_inner(QString json) {
+OAIBuyItNowRow_cpu_inner::OAIBuyItNowRow_cpu_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIBuyItNowRow_cpu_inner::initializeModel() {
     m_num_cores_isValid = false;
 }
 
-void OAIBuyItNowRow_cpu_inner::fromJson(QString jsonString) {
+void OAIBuyItNowRow_cpu_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

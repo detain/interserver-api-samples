@@ -1,4 +1,4 @@
-# # BuyItNowList
+# BuyItNowList
 
 ## Properties
 

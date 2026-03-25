@@ -53,10 +53,10 @@ class GenericResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GenericResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GenericResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'status'), 'Required key "GenericResponse[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "GenericResponse[status]" has a null value in JSON.');
+        assert(json.containsKey(r'text'), 'Required key "GenericResponse[text]" is missing from JSON.');
+        assert(json[r'text'] != null, 'Required key "GenericResponse[text]" has a null value in JSON.');
         return true;
       }());
 

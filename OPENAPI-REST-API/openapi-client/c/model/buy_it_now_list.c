@@ -11,15 +11,18 @@ static buy_it_now_list_t *buy_it_now_list_create_internal(
     if (!buy_it_now_list_local_var) {
         return NULL;
     }
-
+    memset(buy_it_now_list_local_var, 0, sizeof(buy_it_now_list_t));
     buy_it_now_list_local_var->_library_owned = 1;
     return buy_it_now_list_local_var;
 }
 
 __attribute__((deprecated)) buy_it_now_list_t *buy_it_now_list_create(
     ) {
-    return buy_it_now_list_create_internal (
+    buy_it_now_list_t *result = buy_it_now_list_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void buy_it_now_list_free(buy_it_now_list_t *buy_it_now_list) {
@@ -49,8 +52,13 @@ buy_it_now_list_t *buy_it_now_list_parseFromJSON(cJSON *buy_it_now_listJSON){
     buy_it_now_list_t *buy_it_now_list_local_var = NULL;
 
 
+
     buy_it_now_list_local_var = buy_it_now_list_create_internal (
         );
+
+    if (!buy_it_now_list_local_var) {
+        goto end;
+    }
 
     return buy_it_now_list_local_var;
 end:

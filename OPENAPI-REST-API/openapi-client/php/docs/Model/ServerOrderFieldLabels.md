@@ -1,4 +1,4 @@
-# # ServerOrderFieldLabels
+# ServerOrderFieldLabels
 
 ## Properties
 

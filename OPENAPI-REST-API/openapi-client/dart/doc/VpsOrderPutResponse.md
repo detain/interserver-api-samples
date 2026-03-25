@@ -9,7 +9,7 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **continue_** | **bool** |  | [optional] 
-**errors** | [**List<Object>**](Object.md) |  | [optional] [default to const []]
+**errors** | **List<Object>** |  | [optional] [default to const []]
 **couponCode** | **int** |  | [optional] 
 **serviceCost** | **int** |  | [optional] 
 **sliceCost** | **int** |  | [optional] 

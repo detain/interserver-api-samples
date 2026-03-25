@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAITicketPostDetails_inner::OAITicketPostDetails_inner(QString json) {
+OAITicketPostDetails_inner::OAITicketPostDetails_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAITicketPostDetails_inner::initializeModel() {
     m_attachment_download_isValid = false;
 }
 
-void OAITicketPostDetails_inner::fromJson(QString jsonString) {
+void OAITicketPostDetails_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

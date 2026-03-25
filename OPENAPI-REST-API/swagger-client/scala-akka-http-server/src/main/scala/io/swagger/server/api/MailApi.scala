@@ -27,8 +27,10 @@ import io.swagger.server.model.MailStatsType
 import io.swagger.server.model.SendMail
 import io.swagger.server.model.SendMailAdv
 import io.swagger.server.model.SuccessTextResponse
+import io.swagger.server.model.endDate
 import io.swagger.server.model.inline_response_200_8
 import io.swagger.server.model.inline_response_401
+import io.swagger.server.model.startDate
 
 class MailApi(
     mailService: MailApiService,
@@ -414,12 +416,12 @@ class MailApi(
     } ~
     path() { (id) => 
       get {
-        parameters("id".as[Long].?, "origin".as[String].?, "mx".as[String].?, "from".as[String].?, "to".as[String].?, "subject".as[String].?, "mailid".as[String].?, "skip".as[Int].?, "limit".as[Int].?, "startDate".as[Long].?, "endDate".as[Long].?, "delivered".as[String].?) { (id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered) =>
+        parameters("id".as[Long].?, "origin".as[String].?, "mx".as[String].?, "from".as[String].?, "to".as[String].?, "subject".as[String].?, "mailid".as[String].?, "messageId".as[String].?, "replyto".as[String].?, "headerfrom".as[String].?, "delivered".as[Int].?, "skip".as[Int].?, "limit".as[Int].?, "startDate".as[String].?, "endDate".as[String].?, "sort".as[String].?, "dir".as[String].?, "groupby".as[String].?) { (id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby) =>
           
             
               
                 
-                  mailService.viewMailLog(id = id, id = id, origin = origin, mx = mx, from = from, to = to, subject = subject, mailid = mailid, skip = skip, limit = limit, startDate = startDate, endDate = endDate, delivered = delivered)
+                  mailService.viewMailLog(id = id, id = id, origin = origin, mx = mx, from = from, to = to, subject = subject, mailid = mailid, messageId = messageId, replyto = replyto, headerfrom = headerfrom, delivered = delivered, skip = skip, limit = limit, startDate = startDate, endDate = endDate, sort = sort, dir = dir, groupby = groupby)
                
              
            
@@ -753,7 +755,7 @@ trait MailApiService {
    * Code: 200, Message: Paginated list of mail log entries matching the specified filters., DataType: MailLog
    * Code: 400, Message: bad input parameter
    */
-  def viewMailLog(id: Int, id: Option[Long], origin: Option[String], mx: Option[String], from: Option[String], to: Option[String], subject: Option[String], mailid: Option[String], skip: Option[Int], limit: Option[Int], startDate: Option[Long], endDate: Option[Long], delivered: Option[String])
+  def viewMailLog(id: Int, id: Option[Long], origin: Option[String], mx: Option[String], from: Option[String], to: Option[String], subject: Option[String], mailid: Option[String], messageId: Option[String], replyto: Option[String], headerfrom: Option[String], delivered: Option[Int], skip: Option[Int], limit: Option[Int], startDate: Option[String], endDate: Option[String], sort: Option[String], dir: Option[String], groupby: Option[String])
       (implicit toEntityMarshallerMailLog: ToEntityMarshaller[MailLog]): Route
 
 }

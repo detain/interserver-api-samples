@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsOrder_templates_hyperv_windows : public OAIObject {
 public:
     OAIVpsOrder_templates_hyperv_windows();
-    OAIVpsOrder_templates_hyperv_windows(QString json);
+    OAIVpsOrder_templates_hyperv_windows(const QString &json);
     ~OAIVpsOrder_templates_hyperv_windows() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getWindows2019Standard() const;
     void setWindows2019Standard(const QString &windows2019_standard);

@@ -33,13 +33,13 @@ class OAILoginSubmissionExample_g_recaptcha_response;
 class OAILoginSubmissionExample : public OAIObject {
 public:
     OAILoginSubmissionExample();
-    OAILoginSubmissionExample(QString json);
+    OAILoginSubmissionExample(const QString &json);
     ~OAILoginSubmissionExample() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getLogin() const;
     void setLogin(const QString &login);

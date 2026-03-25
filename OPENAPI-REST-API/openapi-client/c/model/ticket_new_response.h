@@ -20,16 +20,16 @@ typedef struct ticket_new_response_t ticket_new_response_t;
 
 typedef struct ticket_new_response_t {
     char *text; // string
-    int success; //boolean
-    int ticket_id; //numeric
+    int *success; //boolean
+    int *ticket_id; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ticket_new_response_t;
 
 __attribute__((deprecated)) ticket_new_response_t *ticket_new_response_create(
     char *text,
-    int success,
-    int ticket_id
+    int *success,
+    int *ticket_id
 );
 
 void ticket_new_response_free(ticket_new_response_t *ticket_new_response);

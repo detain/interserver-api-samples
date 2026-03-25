@@ -19,6 +19,8 @@ static domain_all_info_t *domain_all_info_create_internal(
     if (!domain_all_info_local_var) {
         return NULL;
     }
+    memset(domain_all_info_local_var, 0, sizeof(domain_all_info_t));
+    domain_all_info_local_var->_library_owned = 1;
     domain_all_info_local_var->_ops_version = _ops_version;
     domain_all_info_local_var->attributes = attributes;
     domain_all_info_local_var->object = object;
@@ -27,8 +29,6 @@ static domain_all_info_t *domain_all_info_create_internal(
     domain_all_info_local_var->response_code = response_code;
     domain_all_info_local_var->action = action;
     domain_all_info_local_var->is_success = is_success;
-
-    domain_all_info_local_var->_library_owned = 1;
     return domain_all_info_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) domain_all_info_t *domain_all_info_create(
     char *action,
     char *is_success
     ) {
-    return domain_all_info_create_internal (
+    domain_all_info_t *result = domain_all_info_create_internal (
         _ops_version,
         attributes,
         object,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) domain_all_info_t *domain_all_info_create(
         action,
         is_success
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_all_info_free(domain_all_info_t *domain_all_info) {
@@ -181,8 +184,22 @@ domain_all_info_t *domain_all_info_parseFromJSON(cJSON *domain_all_infoJSON){
 
     domain_all_info_t *domain_all_info_local_var = NULL;
 
+    char *_ops_version_local_str = NULL;
+
     // define the local variable for domain_all_info->attributes
     domain_all_info_attributes_t *attributes_local_nonprim = NULL;
+
+    char *object_local_str = NULL;
+
+    char *protocol_local_str = NULL;
+
+    char *response_text_local_str = NULL;
+
+    char *response_code_local_str = NULL;
+
+    char *action_local_str = NULL;
+
+    char *is_success_local_str = NULL;
 
     // domain_all_info->_ops_version
     cJSON *_ops_version = cJSON_GetObjectItemCaseSensitive(domain_all_infoJSON, "_OPS_version");
@@ -278,22 +295,62 @@ domain_all_info_t *domain_all_info_parseFromJSON(cJSON *domain_all_infoJSON){
     }
 
 
+    if (_ops_version && !cJSON_IsNull(_ops_version)) _ops_version_local_str = strdup(_ops_version->valuestring);
+    if (object && !cJSON_IsNull(object)) object_local_str = strdup(object->valuestring);
+    if (protocol && !cJSON_IsNull(protocol)) protocol_local_str = strdup(protocol->valuestring);
+    if (response_text && !cJSON_IsNull(response_text)) response_text_local_str = strdup(response_text->valuestring);
+    if (response_code && !cJSON_IsNull(response_code)) response_code_local_str = strdup(response_code->valuestring);
+    if (action && !cJSON_IsNull(action)) action_local_str = strdup(action->valuestring);
+    if (is_success && !cJSON_IsNull(is_success)) is_success_local_str = strdup(is_success->valuestring);
+
     domain_all_info_local_var = domain_all_info_create_internal (
-        _ops_version && !cJSON_IsNull(_ops_version) ? strdup(_ops_version->valuestring) : NULL,
+        _ops_version_local_str,
         attributes ? attributes_local_nonprim : NULL,
-        object && !cJSON_IsNull(object) ? strdup(object->valuestring) : NULL,
-        protocol && !cJSON_IsNull(protocol) ? strdup(protocol->valuestring) : NULL,
-        response_text && !cJSON_IsNull(response_text) ? strdup(response_text->valuestring) : NULL,
-        response_code && !cJSON_IsNull(response_code) ? strdup(response_code->valuestring) : NULL,
-        action && !cJSON_IsNull(action) ? strdup(action->valuestring) : NULL,
-        is_success && !cJSON_IsNull(is_success) ? strdup(is_success->valuestring) : NULL
+        object_local_str,
+        protocol_local_str,
+        response_text_local_str,
+        response_code_local_str,
+        action_local_str,
+        is_success_local_str
         );
+
+    if (!domain_all_info_local_var) {
+        goto end;
+    }
 
     return domain_all_info_local_var;
 end:
+    if (_ops_version_local_str) {
+        free(_ops_version_local_str);
+        _ops_version_local_str = NULL;
+    }
     if (attributes_local_nonprim) {
         domain_all_info_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
+    }
+    if (object_local_str) {
+        free(object_local_str);
+        object_local_str = NULL;
+    }
+    if (protocol_local_str) {
+        free(protocol_local_str);
+        protocol_local_str = NULL;
+    }
+    if (response_text_local_str) {
+        free(response_text_local_str);
+        response_text_local_str = NULL;
+    }
+    if (response_code_local_str) {
+        free(response_code_local_str);
+        response_code_local_str = NULL;
+    }
+    if (action_local_str) {
+        free(action_local_str);
+        action_local_str = NULL;
+    }
+    if (is_success_local_str) {
+        free(is_success_local_str);
+        is_success_local_str = NULL;
     }
     return NULL;
 

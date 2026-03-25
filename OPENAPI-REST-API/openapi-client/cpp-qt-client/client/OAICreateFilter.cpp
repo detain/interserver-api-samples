@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAICreateFilter::OAICreateFilter(QString json) {
+OAICreateFilter::OAICreateFilter(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAICreateFilter::initializeModel() {
     m_port_isValid = false;
 }
 
-void OAICreateFilter::fromJson(QString jsonString) {
+void OAICreateFilter::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -1,4 +1,4 @@
-# # MailStatsType
+# MailStatsType
 
 ## Properties
 

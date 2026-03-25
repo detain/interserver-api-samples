@@ -1,4 +1,4 @@
-# # LoginSubmissionExample
+# LoginSubmissionExample
 
 ## Properties
 

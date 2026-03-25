@@ -1,4 +1,4 @@
-# # ServerOrderCPU
+# ServerOrderCPU
 
 ## Properties
 

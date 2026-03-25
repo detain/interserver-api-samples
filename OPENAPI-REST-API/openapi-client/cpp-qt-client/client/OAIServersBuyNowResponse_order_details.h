@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIServersBuyNowResponse_order_details : public OAIObject {
 public:
     OAIServersBuyNowResponse_order_details();
-    OAIServersBuyNowResponse_order_details(QString json);
+    OAIServersBuyNowResponse_order_details(const QString &json);
     ~OAIServersBuyNowResponse_order_details() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getServiceId() const;
     void setServiceId(const double &service_id);

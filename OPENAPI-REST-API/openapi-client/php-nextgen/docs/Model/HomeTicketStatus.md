@@ -1,4 +1,4 @@
-# # HomeTicketStatus
+# HomeTicketStatus
 
 ## Properties
 

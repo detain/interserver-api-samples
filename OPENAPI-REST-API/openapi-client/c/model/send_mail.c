@@ -15,12 +15,12 @@ static send_mail_t *send_mail_create_internal(
     if (!send_mail_local_var) {
         return NULL;
     }
+    memset(send_mail_local_var, 0, sizeof(send_mail_t));
+    send_mail_local_var->_library_owned = 1;
     send_mail_local_var->to = to;
     send_mail_local_var->from = from;
     send_mail_local_var->subject = subject;
     send_mail_local_var->body = body;
-
-    send_mail_local_var->_library_owned = 1;
     return send_mail_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) send_mail_t *send_mail_create(
     char *subject,
     char *body
     ) {
-    return send_mail_create_internal (
+    send_mail_t *result = send_mail_create_internal (
         to,
         from,
         subject,
         body
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void send_mail_free(send_mail_t *send_mail) {
@@ -116,6 +119,14 @@ send_mail_t *send_mail_parseFromJSON(cJSON *send_mailJSON){
 
     send_mail_t *send_mail_local_var = NULL;
 
+    char *to_local_str = NULL;
+
+    char *from_local_str = NULL;
+
+    char *subject_local_str = NULL;
+
+    char *body_local_str = NULL;
+
     // send_mail->to
     cJSON *to = cJSON_GetObjectItemCaseSensitive(send_mailJSON, "to");
     if (cJSON_IsNull(to)) {
@@ -177,15 +188,40 @@ send_mail_t *send_mail_parseFromJSON(cJSON *send_mailJSON){
     }
 
 
+    if (to && !cJSON_IsNull(to)) to_local_str = strdup(to->valuestring);
+    if (from && !cJSON_IsNull(from)) from_local_str = strdup(from->valuestring);
+    if (subject && !cJSON_IsNull(subject)) subject_local_str = strdup(subject->valuestring);
+    if (body && !cJSON_IsNull(body)) body_local_str = strdup(body->valuestring);
+
     send_mail_local_var = send_mail_create_internal (
-        strdup(to->valuestring),
-        strdup(from->valuestring),
-        strdup(subject->valuestring),
-        strdup(body->valuestring)
+        to_local_str,
+        from_local_str,
+        subject_local_str,
+        body_local_str
         );
+
+    if (!send_mail_local_var) {
+        goto end;
+    }
 
     return send_mail_local_var;
 end:
+    if (to_local_str) {
+        free(to_local_str);
+        to_local_str = NULL;
+    }
+    if (from_local_str) {
+        free(from_local_str);
+        from_local_str = NULL;
+    }
+    if (subject_local_str) {
+        free(subject_local_str);
+        subject_local_str = NULL;
+    }
+    if (body_local_str) {
+        free(body_local_str);
+        body_local_str = NULL;
+    }
     return NULL;
 
 }

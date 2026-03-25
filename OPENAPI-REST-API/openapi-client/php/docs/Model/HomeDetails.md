@@ -1,4 +1,4 @@
-# # HomeDetails
+# HomeDetails
 
 ## Properties
 

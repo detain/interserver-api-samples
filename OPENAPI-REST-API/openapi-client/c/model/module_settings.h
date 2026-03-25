@@ -19,15 +19,15 @@ typedef struct module_settings_t module_settings_t;
 
 
 typedef struct module_settings_t {
-    int service_id_offset; //numeric
-    int use_repeat_invoice; //boolean
-    int use_packages; //boolean
-    int billing_days_offset; //numeric
+    int *service_id_offset; //numeric
+    int *use_repeat_invoice; //boolean
+    int *use_packages; //boolean
+    int *billing_days_offset; //numeric
     char *imgname; // string
-    int repeat_billing_method; //numeric
-    int delete_pending_days; //numeric
-    int suspend_days; //numeric
-    int suspend_warning_days; //numeric
+    int *repeat_billing_method; //numeric
+    int *delete_pending_days; //numeric
+    int *suspend_days; //numeric
+    int *suspend_warning_days; //numeric
     char *title; // string
     char *menuname; // string
     char *email_from; // string
@@ -42,15 +42,15 @@ typedef struct module_settings_t {
 } module_settings_t;
 
 __attribute__((deprecated)) module_settings_t *module_settings_create(
-    int service_id_offset,
-    int use_repeat_invoice,
-    int use_packages,
-    int billing_days_offset,
+    int *service_id_offset,
+    int *use_repeat_invoice,
+    int *use_packages,
+    int *billing_days_offset,
     char *imgname,
-    int repeat_billing_method,
-    int delete_pending_days,
-    int suspend_days,
-    int suspend_warning_days,
+    int *repeat_billing_method,
+    int *delete_pending_days,
+    int *suspend_days,
+    int *suspend_warning_days,
     char *title,
     char *menuname,
     char *email_from,

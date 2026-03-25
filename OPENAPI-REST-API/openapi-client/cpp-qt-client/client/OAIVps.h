@@ -53,13 +53,13 @@ class OAIVpsServiceAddons;
 class OAIVps : public OAIObject {
 public:
     OAIVps();
-    OAIVps(QString json);
+    OAIVps(const QString &json);
     ~OAIVps() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsServiceInfo getServiceInfo() const;
     void setServiceInfo(const OAIVpsServiceInfo &service_info);

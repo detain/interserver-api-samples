@@ -1,4 +1,4 @@
-# # DomainNameserverPostRequest
+# DomainNameserverPostRequest
 
 ## Properties
 

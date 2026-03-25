@@ -31,8 +31,8 @@ typedef struct ticket_custom_field_details_t {
     char *ip_address; // string
     char *root_password; // string
     char *sudo_user; // string
-    int sudo_password; //numeric
-    int port; //numeric
+    int *sudo_password; //numeric
+    int *port; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ticket_custom_field_details_t;
@@ -42,8 +42,8 @@ __attribute__((deprecated)) ticket_custom_field_details_t *ticket_custom_field_d
     char *ip_address,
     char *root_password,
     char *sudo_user,
-    int sudo_password,
-    int port
+    int *sudo_password,
+    int *port
 );
 
 void ticket_custom_field_details_free(ticket_custom_field_details_t *ticket_custom_field_details);

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBuyItNowServerOrder_200_response_os_inner : public OAIObject {
 public:
     OAIBuyItNowServerOrder_200_response_os_inner();
-    OAIBuyItNowServerOrder_200_response_os_inner(QString json);
+    OAIBuyItNowServerOrder_200_response_os_inner(const QString &json);
     ~OAIBuyItNowServerOrder_200_response_os_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getId() const;
     void setId(const QString &id);

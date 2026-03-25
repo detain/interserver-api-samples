@@ -13,10 +13,10 @@ static mail_attachment_t *mail_attachment_create_internal(
     if (!mail_attachment_local_var) {
         return NULL;
     }
+    memset(mail_attachment_local_var, 0, sizeof(mail_attachment_t));
+    mail_attachment_local_var->_library_owned = 1;
     mail_attachment_local_var->filename = filename;
     mail_attachment_local_var->data = data;
-
-    mail_attachment_local_var->_library_owned = 1;
     return mail_attachment_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) mail_attachment_t *mail_attachment_create(
     char *filename,
     char *data
     ) {
-    return mail_attachment_create_internal (
+    mail_attachment_t *result = mail_attachment_create_internal (
         filename,
         data
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_attachment_free(mail_attachment_t *mail_attachment) {
@@ -82,6 +85,10 @@ mail_attachment_t *mail_attachment_parseFromJSON(cJSON *mail_attachmentJSON){
 
     mail_attachment_t *mail_attachment_local_var = NULL;
 
+    char *filename_local_str = NULL;
+
+    char *data_local_str = NULL;
+
     // mail_attachment->filename
     cJSON *filename = cJSON_GetObjectItemCaseSensitive(mail_attachmentJSON, "filename");
     if (cJSON_IsNull(filename)) {
@@ -113,13 +120,28 @@ mail_attachment_t *mail_attachment_parseFromJSON(cJSON *mail_attachmentJSON){
     }
 
 
+    if (filename && !cJSON_IsNull(filename)) filename_local_str = strdup(filename->valuestring);
+    if (data && !cJSON_IsNull(data)) data_local_str = strdup(data->valuestring);
+
     mail_attachment_local_var = mail_attachment_create_internal (
-        strdup(filename->valuestring),
-        strdup(data->valuestring)
+        filename_local_str,
+        data_local_str
         );
+
+    if (!mail_attachment_local_var) {
+        goto end;
+    }
 
     return mail_attachment_local_var;
 end:
+    if (filename_local_str) {
+        free(filename_local_str);
+        filename_local_str = NULL;
+    }
+    if (data_local_str) {
+        free(data_local_str);
+        data_local_str = NULL;
+    }
     return NULL;
 
 }

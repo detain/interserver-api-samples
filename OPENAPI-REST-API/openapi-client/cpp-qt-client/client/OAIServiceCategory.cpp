@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServiceCategory::OAIServiceCategory(QString json) {
+OAIServiceCategory::OAIServiceCategory(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIServiceCategory::initializeModel() {
     m_category_module_isValid = false;
 }
 
-void OAIServiceCategory::fromJson(QString jsonString) {
+void OAIServiceCategory::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

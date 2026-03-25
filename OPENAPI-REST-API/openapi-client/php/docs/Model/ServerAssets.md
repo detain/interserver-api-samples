@@ -1,4 +1,4 @@
-# # ServerAssets
+# ServerAssets
 
 ## Properties
 

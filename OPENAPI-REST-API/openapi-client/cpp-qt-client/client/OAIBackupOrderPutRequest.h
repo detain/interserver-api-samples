@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBackupOrderPutRequest : public OAIObject {
 public:
     OAIBackupOrderPutRequest();
-    OAIBackupOrderPutRequest(QString json);
+    OAIBackupOrderPutRequest(const QString &json);
     ~OAIBackupOrderPutRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isValidateOnly() const;
     void setValidateOnly(const bool &validate_only);

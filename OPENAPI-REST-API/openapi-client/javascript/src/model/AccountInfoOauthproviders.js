@@ -45,7 +45,7 @@ class AccountInfoOauthproviders {
         }
 
         try {
-            if (typeof instance === "AccountInfoOauthConfigProviders") {
+            if (instance instanceof AccountInfoOauthConfigProviders) {
                 this.actualInstance = instance;
             } else {
                 // plain JS object

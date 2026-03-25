@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIGetAccountTfaSetup_200_response : public OAIObject {
 public:
     OAIGetAccountTfaSetup_200_response();
-    OAIGetAccountTfaSetup_200_response(QString json);
+    OAIGetAccountTfaSetup_200_response(const QString &json);
     ~OAIGetAccountTfaSetup_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getR2faGoogleKey() const;
     void setR2faGoogleKey(const QString &r_2fa_google_key);

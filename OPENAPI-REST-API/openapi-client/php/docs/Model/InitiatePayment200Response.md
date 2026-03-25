@@ -1,4 +1,4 @@
-# # InitiatePayment200Response
+# InitiatePayment200Response
 
 ## Properties
 

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDenyRuleRecord::OAIDenyRuleRecord(QString json) {
+OAIDenyRuleRecord::OAIDenyRuleRecord(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIDenyRuleRecord::initializeModel() {
     m_user_isValid = false;
 }
 
-void OAIDenyRuleRecord::fromJson(QString jsonString) {
+void OAIDenyRuleRecord::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

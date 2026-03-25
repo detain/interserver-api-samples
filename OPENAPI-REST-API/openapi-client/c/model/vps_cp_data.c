@@ -7,27 +7,36 @@
 
 static vps_cp_data_t *vps_cp_data_create_internal(
     char *name,
-    int cost
+    int *cost
     ) {
     vps_cp_data_t *vps_cp_data_local_var = malloc(sizeof(vps_cp_data_t));
     if (!vps_cp_data_local_var) {
         return NULL;
     }
+    memset(vps_cp_data_local_var, 0, sizeof(vps_cp_data_t));
+    vps_cp_data_local_var->_library_owned = 1;
     vps_cp_data_local_var->name = name;
     vps_cp_data_local_var->cost = cost;
-
-    vps_cp_data_local_var->_library_owned = 1;
     return vps_cp_data_local_var;
 }
 
 __attribute__((deprecated)) vps_cp_data_t *vps_cp_data_create(
     char *name,
-    int cost
+    int *cost
     ) {
-    return vps_cp_data_create_internal (
+    int *cost_copy = NULL;
+    if (cost) {
+        cost_copy = malloc(sizeof(int));
+        if (cost_copy) *cost_copy = *cost;
+    }
+    vps_cp_data_t *result = vps_cp_data_create_internal (
         name,
-        cost
+        cost_copy
         );
+    if (!result) {
+        free(cost_copy);
+    }
+    return result;
 }
 
 void vps_cp_data_free(vps_cp_data_t *vps_cp_data) {
@@ -42,6 +51,10 @@ void vps_cp_data_free(vps_cp_data_t *vps_cp_data) {
     if (vps_cp_data->name) {
         free(vps_cp_data->name);
         vps_cp_data->name = NULL;
+    }
+    if (vps_cp_data->cost) {
+        free(vps_cp_data->cost);
+        vps_cp_data->cost = NULL;
     }
     free(vps_cp_data);
 }
@@ -59,7 +72,7 @@ cJSON *vps_cp_data_convertToJSON(vps_cp_data_t *vps_cp_data) {
 
     // vps_cp_data->cost
     if(vps_cp_data->cost) {
-    if(cJSON_AddNumberToObject(item, "cost", vps_cp_data->cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cost", *vps_cp_data->cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -75,6 +88,11 @@ fail:
 vps_cp_data_t *vps_cp_data_parseFromJSON(cJSON *vps_cp_dataJSON){
 
     vps_cp_data_t *vps_cp_data_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    // define the local variable for vps_cp_data->cost
+    int *cost_local_var = NULL;
 
     // vps_cp_data->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(vps_cp_dataJSON, "name");
@@ -98,16 +116,36 @@ vps_cp_data_t *vps_cp_data_parseFromJSON(cJSON *vps_cp_dataJSON){
     {
     goto end; //Numeric
     }
+    cost_local_var = malloc(sizeof(int));
+    if(!cost_local_var)
+    {
+        goto end;
+    }
+    *cost_local_var = cost->valuedouble;
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     vps_cp_data_local_var = vps_cp_data_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        cost ? cost->valuedouble : 0
+        name_local_str,
+        cost_local_var
         );
+
+    if (!vps_cp_data_local_var) {
+        goto end;
+    }
 
     return vps_cp_data_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (cost_local_var) {
+        free(cost_local_var);
+        cost_local_var = NULL;
+    }
     return NULL;
 
 }

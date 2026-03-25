@@ -30,6 +30,7 @@ from openapi_client.models.operating_system import OperatingSystem
 from openapi_client.models.raid_option import RaidOption
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ConfigLists(BaseModel):
     """
@@ -46,7 +47,8 @@ class ConfigLists(BaseModel):
     __properties: ClassVar[List[str]] = ["cpu_li", "memory_li", "hd_li", "bandwidth_li", "ips_li", "os_li", "cp_li", "raid_li"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +60,7 @@ class ConfigLists(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -91,20 +92,24 @@ class ConfigLists(BaseModel):
                 if self.cpu_li[_key_cpu_li]:
                     _field_dict[_key_cpu_li] = self.cpu_li[_key_cpu_li].to_dict()
             _dict['cpu_li'] = _field_dict
-        # override the default output from pydantic by calling `to_dict()` of each value in memory_li (dict)
-        _field_dict = {}
+        # override the default output from pydantic by calling `to_dict()` of each value in memory_li (dict of dict)
+        _field_dict_of_dict = {}
         if self.memory_li:
-            for _key_memory_li in self.memory_li:
-                if self.memory_li[_key_memory_li]:
-                    _field_dict[_key_memory_li] = self.memory_li[_key_memory_li].to_dict()
-            _dict['memory_li'] = _field_dict
-        # override the default output from pydantic by calling `to_dict()` of each value in hd_li (dict)
-        _field_dict = {}
+            for _key_memory_li, _value_memory_li in self.memory_li.items():
+                if _value_memory_li is not None:
+                    _field_dict_of_dict[_key_memory_li] = {
+                        _key: _value.to_dict() for _key, _value in _value_memory_li.items()
+                    }
+            _dict['memory_li'] = _field_dict_of_dict
+        # override the default output from pydantic by calling `to_dict()` of each value in hd_li (dict of dict)
+        _field_dict_of_dict = {}
         if self.hd_li:
-            for _key_hd_li in self.hd_li:
-                if self.hd_li[_key_hd_li]:
-                    _field_dict[_key_hd_li] = self.hd_li[_key_hd_li].to_dict()
-            _dict['hd_li'] = _field_dict
+            for _key_hd_li, _value_hd_li in self.hd_li.items():
+                if _value_hd_li is not None:
+                    _field_dict_of_dict[_key_hd_li] = {
+                        _key: _value.to_dict() for _key, _value in _value_hd_li.items()
+                    }
+            _dict['hd_li'] = _field_dict_of_dict
         # override the default output from pydantic by calling `to_dict()` of each value in bandwidth_li (dict)
         _field_dict = {}
         if self.bandwidth_li:
@@ -166,7 +171,7 @@ class ConfigLists(BaseModel):
                     if _v is not None
                     else None
                 )
-                for _k, _v in obj.get("memory_li").items()
+                for _k, _v in obj["memory_li"].items()
             )
             if obj.get("memory_li") is not None
             else None,
@@ -178,7 +183,7 @@ class ConfigLists(BaseModel):
                     if _v is not None
                     else None
                 )
-                for _k, _v in obj.get("hd_li").items()
+                for _k, _v in obj["hd_li"].items()
             )
             if obj.get("hd_li") is not None
             else None,

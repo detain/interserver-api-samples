@@ -20,14 +20,14 @@ typedef struct post_website_migration_200_response_t post_website_migration_200_
 
 typedef struct post_website_migration_200_response_t {
     char *text; // string
-    int ticket; //numeric
+    int *ticket; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } post_website_migration_200_response_t;
 
 __attribute__((deprecated)) post_website_migration_200_response_t *post_website_migration_200_response_create(
     char *text,
-    int ticket
+    int *ticket
 );
 
 void post_website_migration_200_response_free(post_website_migration_200_response_t *post_website_migration_200_response);

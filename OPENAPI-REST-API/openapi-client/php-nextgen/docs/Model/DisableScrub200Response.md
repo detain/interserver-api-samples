@@ -1,4 +1,4 @@
-# # DisableScrub200Response
+# DisableScrub200Response
 
 ## Properties
 

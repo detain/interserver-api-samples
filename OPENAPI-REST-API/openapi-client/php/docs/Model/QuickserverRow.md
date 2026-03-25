@@ -1,4 +1,4 @@
-# # QuickserverRow
+# QuickserverRow
 
 ## Properties
 

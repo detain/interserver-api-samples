@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIHome_ticketStatusView : public OAIObject {
 public:
     OAIHome_ticketStatusView();
-    OAIHome_ticketStatusView(QString json);
+    OAIHome_ticketStatusView(const QString &json);
     ~OAIHome_ticketStatusView() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getR4() const;
     void setR4(const QString &r_4);

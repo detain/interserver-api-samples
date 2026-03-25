@@ -24,12 +24,12 @@ import MailLogEntry from './MailLogEntry';
 export default class MailLog {
   /**
    * Constructs a new <code>MailLog</code>.
-   * Mail log records
+   * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
    * @alias module:model/MailLog
    * @class
-   * @param total {Number} total number of mail log entries
-   * @param skip {Number} number of emails skipped in listing
-   * @param limit {Number} number of emails to return
+   * @param total {Number} Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
+   * @param skip {Number} The `skip` value used for this page (echoed from the request).
+   * @param limit {Number} The `limit` value used for this page (echoed from the request).
    * @param emails {Array.<module:model/MailLogEntry>} 
    */
   constructor(total, skip, limit, emails) {
@@ -63,19 +63,19 @@ export default class MailLog {
 }
 
 /**
- * total number of mail log entries
+ * Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
  * @member {Number} total
  */
 MailLog.prototype.total = undefined;
 
 /**
- * number of emails skipped in listing
+ * The `skip` value used for this page (echoed from the request).
  * @member {Number} skip
  */
 MailLog.prototype.skip = undefined;
 
 /**
- * number of emails to return
+ * The `limit` value used for this page (echoed from the request).
  * @member {Number} limit
  */
 MailLog.prototype.limit = undefined;

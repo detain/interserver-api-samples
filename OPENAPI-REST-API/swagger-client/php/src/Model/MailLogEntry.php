@@ -35,7 +35,7 @@ use \Interserver\MyAdmin\ObjectSerializer;
  * MailLogEntry Class Doc Comment
  *
  * @category Class
- * @description An email record
+ * @description A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  * @package  Interserver\MyAdmin
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -72,14 +72,16 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         'sendingZone' => 'string',
         'bodySize' => 'int',
         'seq' => 'int',
+        'delivered' => 'int',
+        'code' => 'int',
         'recipient' => 'string',
+        'response' => 'string',
         'domain' => 'string',
         'locked' => 'int',
-        'lockTime' => 'int',
+        'lockTime' => 'string',
         'assigned' => 'string',
         'queued' => 'string',
-        'mxHostname' => 'string',
-        'response' => 'string'
+        'mxHostname' => 'string'
     ];
 
     /**
@@ -103,14 +105,16 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         'sendingZone' => null,
         'bodySize' => null,
         'seq' => null,
+        'delivered' => null,
+        'code' => null,
         'recipient' => null,
+        'response' => null,
         'domain' => null,
         'locked' => null,
         'lockTime' => null,
         'assigned' => null,
         'queued' => null,
-        'mxHostname' => null,
-        'response' => null
+        'mxHostname' => null
     ];
 
     /**
@@ -155,14 +159,16 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         'sendingZone' => 'sendingZone',
         'bodySize' => 'bodySize',
         'seq' => 'seq',
+        'delivered' => 'delivered',
+        'code' => 'code',
         'recipient' => 'recipient',
+        'response' => 'response',
         'domain' => 'domain',
         'locked' => 'locked',
         'lockTime' => 'lockTime',
         'assigned' => 'assigned',
         'queued' => 'queued',
-        'mxHostname' => 'mxHostname',
-        'response' => 'response'
+        'mxHostname' => 'mxHostname'
     ];
 
     /**
@@ -186,14 +192,16 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         'sendingZone' => 'setSendingZone',
         'bodySize' => 'setBodySize',
         'seq' => 'setSeq',
+        'delivered' => 'setDelivered',
+        'code' => 'setCode',
         'recipient' => 'setRecipient',
+        'response' => 'setResponse',
         'domain' => 'setDomain',
         'locked' => 'setLocked',
         'lockTime' => 'setLockTime',
         'assigned' => 'setAssigned',
         'queued' => 'setQueued',
-        'mxHostname' => 'setMxHostname',
-        'response' => 'setResponse'
+        'mxHostname' => 'setMxHostname'
     ];
 
     /**
@@ -217,14 +225,16 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         'sendingZone' => 'getSendingZone',
         'bodySize' => 'getBodySize',
         'seq' => 'getSeq',
+        'delivered' => 'getDelivered',
+        'code' => 'getCode',
         'recipient' => 'getRecipient',
+        'response' => 'getResponse',
         'domain' => 'getDomain',
         'locked' => 'getLocked',
         'lockTime' => 'getLockTime',
         'assigned' => 'getAssigned',
         'queued' => 'getQueued',
-        'mxHostname' => 'getMxHostname',
-        'response' => 'getResponse'
+        'mxHostname' => 'getMxHostname'
     ];
 
     /**
@@ -300,14 +310,16 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         $this->container['sendingZone'] = isset($data['sendingZone']) ? $data['sendingZone'] : null;
         $this->container['bodySize'] = isset($data['bodySize']) ? $data['bodySize'] : null;
         $this->container['seq'] = isset($data['seq']) ? $data['seq'] : null;
+        $this->container['delivered'] = isset($data['delivered']) ? $data['delivered'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['recipient'] = isset($data['recipient']) ? $data['recipient'] : null;
+        $this->container['response'] = isset($data['response']) ? $data['response'] : null;
         $this->container['domain'] = isset($data['domain']) ? $data['domain'] : null;
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
         $this->container['lockTime'] = isset($data['lockTime']) ? $data['lockTime'] : null;
         $this->container['assigned'] = isset($data['assigned']) ? $data['assigned'] : null;
         $this->container['queued'] = isset($data['queued']) ? $data['queued'] : null;
         $this->container['mxHostname'] = isset($data['mxHostname']) ? $data['mxHostname'] : null;
-        $this->container['response'] = isset($data['response']) ? $data['response'] : null;
     }
 
     /**
@@ -331,9 +343,6 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
         }
-        if ($this->container['subject'] === null) {
-            $invalidProperties[] = "'subject' can't be null";
-        }
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
         }
@@ -351,39 +360,6 @@ class MailLogEntry implements ModelInterface, ArrayAccess
         }
         if ($this->container['interface'] === null) {
             $invalidProperties[] = "'interface' can't be null";
-        }
-        if ($this->container['sendingZone'] === null) {
-            $invalidProperties[] = "'sendingZone' can't be null";
-        }
-        if ($this->container['bodySize'] === null) {
-            $invalidProperties[] = "'bodySize' can't be null";
-        }
-        if ($this->container['seq'] === null) {
-            $invalidProperties[] = "'seq' can't be null";
-        }
-        if ($this->container['recipient'] === null) {
-            $invalidProperties[] = "'recipient' can't be null";
-        }
-        if ($this->container['domain'] === null) {
-            $invalidProperties[] = "'domain' can't be null";
-        }
-        if ($this->container['locked'] === null) {
-            $invalidProperties[] = "'locked' can't be null";
-        }
-        if ($this->container['lockTime'] === null) {
-            $invalidProperties[] = "'lockTime' can't be null";
-        }
-        if ($this->container['assigned'] === null) {
-            $invalidProperties[] = "'assigned' can't be null";
-        }
-        if ($this->container['queued'] === null) {
-            $invalidProperties[] = "'queued' can't be null";
-        }
-        if ($this->container['mxHostname'] === null) {
-            $invalidProperties[] = "'mxHostname' can't be null";
-        }
-        if ($this->container['response'] === null) {
-            $invalidProperties[] = "'response' can't be null";
         }
         return $invalidProperties;
     }
@@ -413,7 +389,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id internal db id
+     * @param int $id Internal auto-increment database row ID.
      *
      * @return $this
      */
@@ -437,7 +413,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id mail id
+     * @param string $id The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
      *
      * @return $this
      */
@@ -461,7 +437,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets from
      *
-     * @param string $from from address
+     * @param string $from SMTP envelope `MAIL FROM` address.
      *
      * @return $this
      */
@@ -485,7 +461,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets to
      *
-     * @param string $to to address
+     * @param string $to SMTP envelope `RCPT TO` address.
      *
      * @return $this
      */
@@ -509,7 +485,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets subject
      *
-     * @param string $subject email subject
+     * @param string $subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
      *
      * @return $this
      */
@@ -533,7 +509,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets messageId
      *
-     * @param string $messageId message id
+     * @param string $messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
      *
      * @return $this
      */
@@ -557,7 +533,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets created
      *
-     * @param string $created creation date
+     * @param string $created Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
      *
      * @return $this
      */
@@ -581,7 +557,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets time
      *
-     * @param int $time creation timestamp
+     * @param int $time Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
      *
      * @return $this
      */
@@ -605,7 +581,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets user
      *
-     * @param string $user user account
+     * @param string $user The SMTP AUTH username used to submit the message (e.g. `mb5658`).
      *
      * @return $this
      */
@@ -629,7 +605,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets transtype
      *
-     * @param string $transtype transaction type
+     * @param string $transtype SMTP transaction type negotiated with the relay.
      *
      * @return $this
      */
@@ -653,7 +629,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets origin
      *
-     * @param string $origin origin ip
+     * @param string $origin IP address of the client that submitted the message to the relay.
      *
      * @return $this
      */
@@ -677,7 +653,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets interface
      *
-     * @param string $interface interface name
+     * @param string $interface Relay interface name that accepted the message.
      *
      * @return $this
      */
@@ -701,7 +677,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets sendingZone
      *
-     * @param string $sendingZone sending zone
+     * @param string $sendingZone The sending zone assigned by the relay for outbound delivery.
      *
      * @return $this
      */
@@ -725,7 +701,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets bodySize
      *
-     * @param int $bodySize email body size in bytes
+     * @param int $bodySize Size of the message body in bytes.
      *
      * @return $this
      */
@@ -749,13 +725,61 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets seq
      *
-     * @param int $seq index of email in the to adderess list
+     * @param int $seq Sequence index of this recipient in a multi-recipient message. Starts at 1.
      *
      * @return $this
      */
     public function setSeq($seq)
     {
         $this->container['seq'] = $seq;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivered
+     *
+     * @return int
+     */
+    public function getDelivered()
+    {
+        return $this->container['delivered'];
+    }
+
+    /**
+     * Sets delivered
+     *
+     * @param int $delivered Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+     *
+     * @return $this
+     */
+    public function setDelivered($delivered)
+    {
+        $this->container['delivered'] = $delivered;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return int
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param int $code The SMTP response code from the destination MX server (e.g. `250`).
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
 
         return $this;
     }
@@ -773,13 +797,37 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets recipient
      *
-     * @param string $recipient to address this email is being sent to
+     * @param string $recipient The specific recipient address this delivery record is for.
      *
      * @return $this
      */
     public function setRecipient($recipient)
     {
         $this->container['recipient'] = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Gets response
+     *
+     * @return string
+     */
+    public function getResponse()
+    {
+        return $this->container['response'];
+    }
+
+    /**
+     * Sets response
+     *
+     * @param string $response The full SMTP response string received from the destination MX server.
+     *
+     * @return $this
+     */
+    public function setResponse($response)
+    {
+        $this->container['response'] = $response;
 
         return $this;
     }
@@ -797,7 +845,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets domain
      *
-     * @param string $domain to address domain
+     * @param string $domain The destination domain for this delivery attempt.
      *
      * @return $this
      */
@@ -821,7 +869,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets locked
      *
-     * @param int $locked locked status
+     * @param int $locked Whether the queue entry is currently locked for delivery processing.
      *
      * @return $this
      */
@@ -835,7 +883,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Gets lockTime
      *
-     * @return int
+     * @return string
      */
     public function getLockTime()
     {
@@ -845,7 +893,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets lockTime
      *
-     * @param int $lockTime lock timestamp
+     * @param string $lockTime Millisecond-precision timestamp of the last queue lock acquisition.
      *
      * @return $this
      */
@@ -869,7 +917,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets assigned
      *
-     * @param string $assigned assigned server
+     * @param string $assigned The relay server node assigned to deliver this message.
      *
      * @return $this
      */
@@ -893,7 +941,7 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets queued
      *
-     * @param string $queued queued timestamp
+     * @param string $queued ISO 8601 timestamp when the message was placed into the delivery queue.
      *
      * @return $this
      */
@@ -917,37 +965,13 @@ class MailLogEntry implements ModelInterface, ArrayAccess
     /**
      * Sets mxHostname
      *
-     * @param string $mxHostname mx hostname
+     * @param string $mxHostname The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
      *
      * @return $this
      */
     public function setMxHostname($mxHostname)
     {
         $this->container['mxHostname'] = $mxHostname;
-
-        return $this;
-    }
-
-    /**
-     * Gets response
-     *
-     * @return string
-     */
-    public function getResponse()
-    {
-        return $this->container['response'];
-    }
-
-    /**
-     * Sets response
-     *
-     * @param string $response mail delivery response
-     *
-     * @return $this
-     */
-    public function setResponse($response)
-    {
-        $this->container['response'] = $response;
 
         return $this;
     }

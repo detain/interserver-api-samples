@@ -390,6 +390,7 @@ add_library(${PROJECT_NAME}
   OAIVPSCancel_200_response.h
   OAIVPSTrafficDataDataSectionResponse.h
   OAIVPSTrafficDataDataSectionResponse_inner.h
+  OAIViewMailLog_startDate_parameter.h
   OAIViewTicketResponse.h
   OAIVps.h
   OAIVpsBackupRow.h
@@ -866,6 +867,7 @@ add_library(${PROJECT_NAME}
   OAIVPSCancel_200_response.cpp
   OAIVPSTrafficDataDataSectionResponse.cpp
   OAIVPSTrafficDataDataSectionResponse_inner.cpp
+  OAIViewMailLog_startDate_parameter.cpp
   OAIViewTicketResponse.cpp
   OAIVps.cpp
   OAIVpsBackupRow.cpp

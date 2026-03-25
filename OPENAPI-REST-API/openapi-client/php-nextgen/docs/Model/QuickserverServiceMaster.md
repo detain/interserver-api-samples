@@ -1,4 +1,4 @@
-# # QuickserverServiceMaster
+# QuickserverServiceMaster
 
 ## Properties
 

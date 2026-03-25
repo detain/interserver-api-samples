@@ -354,32 +354,6 @@ void OAIBillingApi::addAccountCreditCardCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addAccountCreditCardSignal(output);
         Q_EMIT addAccountCreditCardSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addAccountCreditCardSignalE(output, error_type, error_str);
-        Q_EMIT addAccountCreditCardSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addAccountCreditCardSignalError(output, error_type, error_str);
         Q_EMIT addAccountCreditCardSignalErrorFull(worker, error_type, error_str);
     }
@@ -437,32 +411,6 @@ void OAIBillingApi::addBillingCreditCardCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addBillingCreditCardSignal(output);
         Q_EMIT addBillingCreditCardSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addBillingCreditCardSignalE(output, error_type, error_str);
-        Q_EMIT addBillingCreditCardSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addBillingCreditCardSignalError(output, error_type, error_str);
         Q_EMIT addBillingCreditCardSignalErrorFull(worker, error_type, error_str);
     }
@@ -520,32 +468,6 @@ void OAIBillingApi::addBillingPrepayCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addBillingPrepaySignal(output);
         Q_EMIT addBillingPrepaySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addBillingPrepaySignalE(output, error_type, error_str);
-        Q_EMIT addBillingPrepaySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addBillingPrepaySignalError(output, error_type, error_str);
         Q_EMIT addBillingPrepaySignalErrorFull(worker, error_type, error_str);
     }
@@ -611,32 +533,6 @@ void OAIBillingApi::deleteAccountCreditCardCallback(OAIHttpRequestWorker *worker
         Q_EMIT deleteAccountCreditCardSignal();
         Q_EMIT deleteAccountCreditCardSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteAccountCreditCardSignalE(error_type, error_str);
-        Q_EMIT deleteAccountCreditCardSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteAccountCreditCardSignalError(error_type, error_str);
         Q_EMIT deleteAccountCreditCardSignalErrorFull(worker, error_type, error_str);
     }
@@ -703,32 +599,6 @@ void OAIBillingApi::deleteBillingCreditCardCallback(OAIHttpRequestWorker *worker
         Q_EMIT deleteBillingCreditCardSignal(output);
         Q_EMIT deleteBillingCreditCardSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteBillingCreditCardSignalE(output, error_type, error_str);
-        Q_EMIT deleteBillingCreditCardSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteBillingCreditCardSignalError(output, error_type, error_str);
         Q_EMIT deleteBillingCreditCardSignalErrorFull(worker, error_type, error_str);
     }
@@ -795,32 +665,6 @@ void OAIBillingApi::deleteBillingInvoiceCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteBillingInvoiceSignal(output);
         Q_EMIT deleteBillingInvoiceSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteBillingInvoiceSignalE(output, error_type, error_str);
-        Q_EMIT deleteBillingInvoiceSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteBillingInvoiceSignalError(output, error_type, error_str);
         Q_EMIT deleteBillingInvoiceSignalErrorFull(worker, error_type, error_str);
     }
@@ -887,32 +731,6 @@ void OAIBillingApi::deleteBillingPrepayCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteBillingPrepaySignal(output);
         Q_EMIT deleteBillingPrepaySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteBillingPrepaySignalE(output, error_type, error_str);
-        Q_EMIT deleteBillingPrepaySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteBillingPrepaySignalError(output, error_type, error_str);
         Q_EMIT deleteBillingPrepaySignalErrorFull(worker, error_type, error_str);
     }
@@ -974,32 +792,6 @@ void OAIBillingApi::getAffiliateBannersCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getAffiliateBannersSignal(output);
         Q_EMIT getAffiliateBannersSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAffiliateBannersSignalE(output, error_type, error_str);
-        Q_EMIT getAffiliateBannersSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAffiliateBannersSignalError(output, error_type, error_str);
         Q_EMIT getAffiliateBannersSignalErrorFull(worker, error_type, error_str);
     }
@@ -1052,32 +844,6 @@ void OAIBillingApi::getAffiliateRichReportCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getAffiliateRichReportSignal(output);
         Q_EMIT getAffiliateRichReportSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAffiliateRichReportSignalE(output, error_type, error_str);
-        Q_EMIT getAffiliateRichReportSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAffiliateRichReportSignalError(output, error_type, error_str);
         Q_EMIT getAffiliateRichReportSignalErrorFull(worker, error_type, error_str);
     }
@@ -1146,32 +912,6 @@ void OAIBillingApi::getAffiliateSalesGraphCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getAffiliateSalesGraphSignal(output);
         Q_EMIT getAffiliateSalesGraphSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAffiliateSalesGraphSignalE(output, error_type, error_str);
-        Q_EMIT getAffiliateSalesGraphSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAffiliateSalesGraphSignalError(output, error_type, error_str);
         Q_EMIT getAffiliateSalesGraphSignalErrorFull(worker, error_type, error_str);
     }
@@ -1224,32 +964,6 @@ void OAIBillingApi::getAffiliateSalesReportCallback(OAIHttpRequestWorker *worker
         Q_EMIT getAffiliateSalesReportSignal(output);
         Q_EMIT getAffiliateSalesReportSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAffiliateSalesReportSignalE(output, error_type, error_str);
-        Q_EMIT getAffiliateSalesReportSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAffiliateSalesReportSignalError(output, error_type, error_str);
         Q_EMIT getAffiliateSalesReportSignalErrorFull(worker, error_type, error_str);
     }
@@ -1318,32 +1032,6 @@ void OAIBillingApi::getAffiliateTrafficGraphCallback(OAIHttpRequestWorker *worke
         Q_EMIT getAffiliateTrafficGraphSignal(output);
         Q_EMIT getAffiliateTrafficGraphSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAffiliateTrafficGraphSignalE(output, error_type, error_str);
-        Q_EMIT getAffiliateTrafficGraphSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAffiliateTrafficGraphSignalError(output, error_type, error_str);
         Q_EMIT getAffiliateTrafficGraphSignalErrorFull(worker, error_type, error_str);
     }
@@ -1405,32 +1093,6 @@ void OAIBillingApi::getAffiliateWebTrafficCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getAffiliateWebTrafficSignal(output);
         Q_EMIT getAffiliateWebTrafficSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAffiliateWebTrafficSignalE(output, error_type, error_str);
-        Q_EMIT getAffiliateWebTrafficSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAffiliateWebTrafficSignalError(output, error_type, error_str);
         Q_EMIT getAffiliateWebTrafficSignalErrorFull(worker, error_type, error_str);
     }
@@ -1482,32 +1144,6 @@ void OAIBillingApi::getBillingCartCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBillingCartSignal();
         Q_EMIT getBillingCartSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBillingCartSignalE(error_type, error_str);
-        Q_EMIT getBillingCartSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBillingCartSignalError(error_type, error_str);
         Q_EMIT getBillingCartSignalErrorFull(worker, error_type, error_str);
     }
@@ -1574,32 +1210,6 @@ void OAIBillingApi::getBillingCreditCardVerifyCallback(OAIHttpRequestWorker *wor
         Q_EMIT getBillingCreditCardVerifySignal(output);
         Q_EMIT getBillingCreditCardVerifySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBillingCreditCardVerifySignalE(output, error_type, error_str);
-        Q_EMIT getBillingCreditCardVerifySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBillingCreditCardVerifySignalError(output, error_type, error_str);
         Q_EMIT getBillingCreditCardVerifySignalErrorFull(worker, error_type, error_str);
     }
@@ -1666,32 +1276,6 @@ void OAIBillingApi::getBillingInvoiceCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBillingInvoiceSignal(output);
         Q_EMIT getBillingInvoiceSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBillingInvoiceSignalE(output, error_type, error_str);
-        Q_EMIT getBillingInvoiceSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBillingInvoiceSignalError(output, error_type, error_str);
         Q_EMIT getBillingInvoiceSignalErrorFull(worker, error_type, error_str);
     }
@@ -1744,32 +1328,6 @@ void OAIBillingApi::getBillingInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBillingInvoicesSignal(output);
         Q_EMIT getBillingInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBillingInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getBillingInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBillingInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getBillingInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1821,32 +1379,6 @@ void OAIBillingApi::getBillingPrePaysCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getBillingPrePaysSignal();
         Q_EMIT getBillingPrePaysSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getBillingPrePaysSignalE(error_type, error_str);
-        Q_EMIT getBillingPrePaysSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getBillingPrePaysSignalError(error_type, error_str);
         Q_EMIT getBillingPrePaysSignalErrorFull(worker, error_type, error_str);
     }
@@ -1954,32 +1486,6 @@ void OAIBillingApi::getInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getInvoicesSignal(output);
         Q_EMIT getInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -2060,32 +1566,6 @@ void OAIBillingApi::initiatePaymentCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT initiatePaymentSignal(output);
         Q_EMIT initiatePaymentSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT initiatePaymentSignalE(output, error_type, error_str);
-        Q_EMIT initiatePaymentSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT initiatePaymentSignalError(output, error_type, error_str);
         Q_EMIT initiatePaymentSignalErrorFull(worker, error_type, error_str);
     }
@@ -2157,32 +1637,6 @@ void OAIBillingApi::postBillingCreditCardVerifyCallback(OAIHttpRequestWorker *wo
         Q_EMIT postBillingCreditCardVerifySignal(output);
         Q_EMIT postBillingCreditCardVerifySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postBillingCreditCardVerifySignalE(output, error_type, error_str);
-        Q_EMIT postBillingCreditCardVerifySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postBillingCreditCardVerifySignalError(output, error_type, error_str);
         Q_EMIT postBillingCreditCardVerifySignalErrorFull(worker, error_type, error_str);
     }
@@ -2248,32 +1702,6 @@ void OAIBillingApi::updateAccountCreditCardCallback(OAIHttpRequestWorker *worker
         Q_EMIT updateAccountCreditCardSignal();
         Q_EMIT updateAccountCreditCardSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountCreditCardSignalE(error_type, error_str);
-        Q_EMIT updateAccountCreditCardSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountCreditCardSignalError(error_type, error_str);
         Q_EMIT updateAccountCreditCardSignalErrorFull(worker, error_type, error_str);
     }
@@ -2338,32 +1766,6 @@ void OAIBillingApi::updateAffiliateDockSetupCallback(OAIHttpRequestWorker *worke
         Q_EMIT updateAffiliateDockSetupSignal(output);
         Q_EMIT updateAffiliateDockSetupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAffiliateDockSetupSignalE(output, error_type, error_str);
-        Q_EMIT updateAffiliateDockSetupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAffiliateDockSetupSignalError(output, error_type, error_str);
         Q_EMIT updateAffiliateDockSetupSignalErrorFull(worker, error_type, error_str);
     }
@@ -2428,32 +1830,6 @@ void OAIBillingApi::updateAffiliateLandingPageCallback(OAIHttpRequestWorker *wor
         Q_EMIT updateAffiliateLandingPageSignal(output);
         Q_EMIT updateAffiliateLandingPageSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAffiliateLandingPageSignalE(output, error_type, error_str);
-        Q_EMIT updateAffiliateLandingPageSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAffiliateLandingPageSignalError(output, error_type, error_str);
         Q_EMIT updateAffiliateLandingPageSignalErrorFull(worker, error_type, error_str);
     }
@@ -2514,32 +1890,6 @@ void OAIBillingApi::updateAffiliatePaymentSetupCallback(OAIHttpRequestWorker *wo
         Q_EMIT updateAffiliatePaymentSetupSignal(output);
         Q_EMIT updateAffiliatePaymentSetupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAffiliatePaymentSetupSignalE(output, error_type, error_str);
-        Q_EMIT updateAffiliatePaymentSetupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAffiliatePaymentSetupSignalError(output, error_type, error_str);
         Q_EMIT updateAffiliatePaymentSetupSignalErrorFull(worker, error_type, error_str);
     }
@@ -2606,32 +1956,6 @@ void OAIBillingApi::updateBillingCreditCardCallback(OAIHttpRequestWorker *worker
         Q_EMIT updateBillingCreditCardSignal(output);
         Q_EMIT updateBillingCreditCardSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateBillingCreditCardSignalE(output, error_type, error_str);
-        Q_EMIT updateBillingCreditCardSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateBillingCreditCardSignalError(output, error_type, error_str);
         Q_EMIT updateBillingCreditCardSignalErrorFull(worker, error_type, error_str);
     }
@@ -2689,42 +2013,16 @@ void OAIBillingApi::updateBillingPaymentMethodCallback(OAIHttpRequestWorker *wor
         Q_EMIT updateBillingPaymentMethodSignal(output);
         Q_EMIT updateBillingPaymentMethodSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateBillingPaymentMethodSignalE(output, error_type, error_str);
-        Q_EMIT updateBillingPaymentMethodSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateBillingPaymentMethodSignalError(output, error_type, error_str);
         Q_EMIT updateBillingPaymentMethodSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIBillingApi::tokenAvailable(){
+void OAIBillingApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2734,7 +2032,7 @@ void OAIBillingApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2744,7 +2042,7 @@ void OAIBillingApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2754,7 +2052,7 @@ void OAIBillingApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

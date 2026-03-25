@@ -6,28 +6,37 @@
 
 
 static charge_invoice_rows_t *charge_invoice_rows_create_internal(
-    int success,
+    int *success,
     list_t* invoices
     ) {
     charge_invoice_rows_t *charge_invoice_rows_local_var = malloc(sizeof(charge_invoice_rows_t));
     if (!charge_invoice_rows_local_var) {
         return NULL;
     }
+    memset(charge_invoice_rows_local_var, 0, sizeof(charge_invoice_rows_t));
+    charge_invoice_rows_local_var->_library_owned = 1;
     charge_invoice_rows_local_var->success = success;
     charge_invoice_rows_local_var->invoices = invoices;
-
-    charge_invoice_rows_local_var->_library_owned = 1;
     return charge_invoice_rows_local_var;
 }
 
 __attribute__((deprecated)) charge_invoice_rows_t *charge_invoice_rows_create(
-    int success,
+    int *success,
     list_t* invoices
     ) {
-    return charge_invoice_rows_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    charge_invoice_rows_t *result = charge_invoice_rows_create_internal (
+        success_copy,
         invoices
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void charge_invoice_rows_free(charge_invoice_rows_t *charge_invoice_rows) {
@@ -39,6 +48,10 @@ void charge_invoice_rows_free(charge_invoice_rows_t *charge_invoice_rows) {
         return ;
     }
     listEntry_t *listEntry;
+    if (charge_invoice_rows->success) {
+        free(charge_invoice_rows->success);
+        charge_invoice_rows->success = NULL;
+    }
     if (charge_invoice_rows->invoices) {
         list_ForEach(listEntry, charge_invoice_rows->invoices) {
             keyValuePair_t *localKeyValue = listEntry->data;
@@ -57,7 +70,7 @@ cJSON *charge_invoice_rows_convertToJSON(charge_invoice_rows_t *charge_invoice_r
 
     // charge_invoice_rows->success
     if(charge_invoice_rows->success) {
-    if(cJSON_AddBoolToObject(item, "success", charge_invoice_rows->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *charge_invoice_rows->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -90,6 +103,9 @@ charge_invoice_rows_t *charge_invoice_rows_parseFromJSON(cJSON *charge_invoice_r
 
     charge_invoice_rows_t *charge_invoice_rows_local_var = NULL;
 
+    // define the local variable for charge_invoice_rows->success
+    int *success_local_var = NULL;
+
     // define the local map for charge_invoice_rows->invoices
     list_t *invoicesList = NULL;
 
@@ -103,6 +119,12 @@ charge_invoice_rows_t *charge_invoice_rows_parseFromJSON(cJSON *charge_invoice_r
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // charge_invoice_rows->invoices
@@ -117,13 +139,22 @@ charge_invoice_rows_t *charge_invoice_rows_parseFromJSON(cJSON *charge_invoice_r
     }
 
 
+
     charge_invoice_rows_local_var = charge_invoice_rows_create_internal (
-        success ? success->valueint : 0,
+        success_local_var,
         invoices ? invoicesList : NULL
         );
 
+    if (!charge_invoice_rows_local_var) {
+        goto end;
+    }
+
     return charge_invoice_rows_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
 
     // The data type of the elements in charge_invoice_rows->invoices is currently not supported.
 

@@ -19,21 +19,21 @@ typedef struct billing_verify_cc_request_t billing_verify_cc_request_t;
 
 
 typedef struct billing_verify_cc_request_t {
-    int idx; //numeric
+    int *idx; //numeric
     char *cc_ccv2; // string
     char *cc_amount1; // string
     char *cc_amount2; // string
-    int terms; //boolean
+    int *terms; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } billing_verify_cc_request_t;
 
 __attribute__((deprecated)) billing_verify_cc_request_t *billing_verify_cc_request_create(
-    int idx,
+    int *idx,
     char *cc_ccv2,
     char *cc_amount1,
     char *cc_amount2,
-    int terms
+    int *terms
 );
 
 void billing_verify_cc_request_free(billing_verify_cc_request_t *billing_verify_cc_request);

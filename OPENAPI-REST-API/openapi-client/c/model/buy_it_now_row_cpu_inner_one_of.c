@@ -16,13 +16,13 @@ static buy_it_now_row_cpu_inner_one_of_t *buy_it_now_row_cpu_inner_one_of_create
     if (!buy_it_now_row_cpu_inner_one_of_local_var) {
         return NULL;
     }
+    memset(buy_it_now_row_cpu_inner_one_of_local_var, 0, sizeof(buy_it_now_row_cpu_inner_one_of_t));
+    buy_it_now_row_cpu_inner_one_of_local_var->_library_owned = 1;
     buy_it_now_row_cpu_inner_one_of_local_var->img = img;
     buy_it_now_row_cpu_inner_one_of_local_var->type = type;
     buy_it_now_row_cpu_inner_one_of_local_var->speed = speed;
     buy_it_now_row_cpu_inner_one_of_local_var->num_cpus = num_cpus;
     buy_it_now_row_cpu_inner_one_of_local_var->num_cores = num_cores;
-
-    buy_it_now_row_cpu_inner_one_of_local_var->_library_owned = 1;
     return buy_it_now_row_cpu_inner_one_of_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) buy_it_now_row_cpu_inner_one_of_t *buy_it_now_row_cp
     char *num_cpus,
     char *num_cores
     ) {
-    return buy_it_now_row_cpu_inner_one_of_create_internal (
+    buy_it_now_row_cpu_inner_one_of_t *result = buy_it_now_row_cpu_inner_one_of_create_internal (
         img,
         type,
         speed,
         num_cpus,
         num_cores
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void buy_it_now_row_cpu_inner_one_of_free(buy_it_now_row_cpu_inner_one_of_t *buy_it_now_row_cpu_inner_one_of) {
@@ -128,6 +131,16 @@ buy_it_now_row_cpu_inner_one_of_t *buy_it_now_row_cpu_inner_one_of_parseFromJSON
 
     buy_it_now_row_cpu_inner_one_of_t *buy_it_now_row_cpu_inner_one_of_local_var = NULL;
 
+    char *img_local_str = NULL;
+
+    char *type_local_str = NULL;
+
+    char *speed_local_str = NULL;
+
+    char *num_cpus_local_str = NULL;
+
+    char *num_cores_local_str = NULL;
+
     // buy_it_now_row_cpu_inner_one_of->img
     cJSON *img = cJSON_GetObjectItemCaseSensitive(buy_it_now_row_cpu_inner_one_ofJSON, "img");
     if (cJSON_IsNull(img)) {
@@ -189,16 +202,46 @@ buy_it_now_row_cpu_inner_one_of_t *buy_it_now_row_cpu_inner_one_of_parseFromJSON
     }
 
 
+    if (img && !cJSON_IsNull(img)) img_local_str = strdup(img->valuestring);
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+    if (speed && !cJSON_IsNull(speed)) speed_local_str = strdup(speed->valuestring);
+    if (num_cpus && !cJSON_IsNull(num_cpus)) num_cpus_local_str = strdup(num_cpus->valuestring);
+    if (num_cores && !cJSON_IsNull(num_cores)) num_cores_local_str = strdup(num_cores->valuestring);
+
     buy_it_now_row_cpu_inner_one_of_local_var = buy_it_now_row_cpu_inner_one_of_create_internal (
-        img && !cJSON_IsNull(img) ? strdup(img->valuestring) : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        speed && !cJSON_IsNull(speed) ? strdup(speed->valuestring) : NULL,
-        num_cpus && !cJSON_IsNull(num_cpus) ? strdup(num_cpus->valuestring) : NULL,
-        num_cores && !cJSON_IsNull(num_cores) ? strdup(num_cores->valuestring) : NULL
+        img_local_str,
+        type_local_str,
+        speed_local_str,
+        num_cpus_local_str,
+        num_cores_local_str
         );
+
+    if (!buy_it_now_row_cpu_inner_one_of_local_var) {
+        goto end;
+    }
 
     return buy_it_now_row_cpu_inner_one_of_local_var;
 end:
+    if (img_local_str) {
+        free(img_local_str);
+        img_local_str = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
+    if (speed_local_str) {
+        free(speed_local_str);
+        speed_local_str = NULL;
+    }
+    if (num_cpus_local_str) {
+        free(num_cpus_local_str);
+        num_cpus_local_str = NULL;
+    }
+    if (num_cores_local_str) {
+        free(num_cores_local_str);
+        num_cores_local_str = NULL;
+    }
     return NULL;
 
 }

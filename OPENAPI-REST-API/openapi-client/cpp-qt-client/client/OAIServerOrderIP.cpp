@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerOrderIP::OAIServerOrderIP(QString json) {
+OAIServerOrderIP::OAIServerOrderIP(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIServerOrderIP::initializeModel() {
     m_monthly_price_display_isValid = false;
 }
 
-void OAIServerOrderIP::fromJson(QString jsonString) {
+void OAIServerOrderIP::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

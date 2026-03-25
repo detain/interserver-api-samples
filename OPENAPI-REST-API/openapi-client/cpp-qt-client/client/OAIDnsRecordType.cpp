@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDnsRecordType::OAIDnsRecordType(QString json) {
+OAIDnsRecordType::OAIDnsRecordType(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -39,7 +39,7 @@ void OAIDnsRecordType::initializeModel() {
     m_value = eOAIDnsRecordType::INVALID_VALUE_OPENAPI_GENERATED;
 }
 
-void OAIDnsRecordType::fromJson(QString jsonString) {
+void OAIDnsRecordType::fromJson(const QString &jsonString) {
     
     if ( jsonString.compare("A", Qt::CaseInsensitive) == 0) {
         m_value = eOAIDnsRecordType::A;

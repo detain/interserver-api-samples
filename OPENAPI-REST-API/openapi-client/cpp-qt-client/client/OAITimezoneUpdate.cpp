@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAITimezoneUpdate::OAITimezoneUpdate(QString json) {
+OAITimezoneUpdate::OAITimezoneUpdate(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAITimezoneUpdate::initializeModel() {
     m_timezone_isValid = false;
 }
 
-void OAITimezoneUpdate::fromJson(QString jsonString) {
+void OAITimezoneUpdate::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

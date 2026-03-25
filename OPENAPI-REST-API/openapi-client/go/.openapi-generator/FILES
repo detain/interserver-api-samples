@@ -413,6 +413,7 @@ docs/VPSAPI.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -863,6 +864,7 @@ model_update_account_tfa_request.go
 model_update_ticket.go
 model_update_ticket_response_schema.go
 model_url_request.go
+model_view_mail_log_start_date_parameter.go
 model_view_ticket_response.go
 model_vps.go
 model_vps_backup_row.go

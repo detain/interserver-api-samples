@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerNetworkInfo::OAIServerNetworkInfo(QString json) {
+OAIServerNetworkInfo::OAIServerNetworkInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIServerNetworkInfo::initializeModel() {
     m_switchports_isValid = false;
 }
 
-void OAIServerNetworkInfo::fromJson(QString jsonString) {
+void OAIServerNetworkInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

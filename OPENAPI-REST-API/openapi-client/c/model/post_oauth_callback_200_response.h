@@ -19,20 +19,20 @@ typedef struct post_oauth_callback_200_response_t post_oauth_callback_200_respon
 
 
 typedef struct post_oauth_callback_200_response_t {
-    int login; //boolean
-    int signup; //boolean
-    int linked; //boolean
-    int account_id; //numeric
+    int *login; //boolean
+    int *signup; //boolean
+    int *linked; //boolean
+    int *account_id; //numeric
     char *error_code; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } post_oauth_callback_200_response_t;
 
 __attribute__((deprecated)) post_oauth_callback_200_response_t *post_oauth_callback_200_response_create(
-    int login,
-    int signup,
-    int linked,
-    int account_id,
+    int *login,
+    int *signup,
+    int *linked,
+    int *account_id,
     char *error_code
 );
 

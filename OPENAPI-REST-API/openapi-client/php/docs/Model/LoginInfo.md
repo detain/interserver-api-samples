@@ -1,4 +1,4 @@
-# # LoginInfo
+# LoginInfo
 
 ## Properties
 

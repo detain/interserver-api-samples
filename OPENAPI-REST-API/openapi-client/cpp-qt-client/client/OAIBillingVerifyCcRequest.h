@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBillingVerifyCcRequest : public OAIObject {
 public:
     OAIBillingVerifyCcRequest();
-    OAIBillingVerifyCcRequest(QString json);
+    OAIBillingVerifyCcRequest(const QString &json);
     ~OAIBillingVerifyCcRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getIdx() const;
     void setIdx(const qint32 &idx);

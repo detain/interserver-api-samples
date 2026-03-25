@@ -1,4 +1,4 @@
-# # PlaceScrubOrder201Response
+# PlaceScrubOrder201Response
 
 ## Properties
 

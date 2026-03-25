@@ -1,4 +1,4 @@
-# # MailCancel200Response
+# MailCancel200Response
 
 ## Properties
 

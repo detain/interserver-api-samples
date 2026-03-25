@@ -20,11 +20,11 @@ typedef struct server_order_os_t server_order_os_t;
 
 typedef struct server_order_os_t {
     char *id; // string
-    int price; //numeric
+    int *price; //numeric
     char *img; // string
     char *short_desc; // string
     char *long_desc; // string
-    int monthly_price; //numeric
+    int *monthly_price; //numeric
     char *active; // string
     char *price_display; // string
     char *monthly_price_display; // string
@@ -34,11 +34,11 @@ typedef struct server_order_os_t {
 
 __attribute__((deprecated)) server_order_os_t *server_order_os_create(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
-    int monthly_price,
+    int *monthly_price,
     char *active,
     char *price_display,
     char *monthly_price_display

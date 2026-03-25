@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsIPInfoRow : public OAIObject {
 public:
     OAIVpsIPInfoRow();
-    OAIVpsIPInfoRow(QString json);
+    OAIVpsIPInfoRow(const QString &json);
     ~OAIVpsIPInfoRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getDesc() const;
     void setDesc(const QString &desc);

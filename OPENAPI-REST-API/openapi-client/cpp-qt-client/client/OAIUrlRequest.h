@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIUrlRequest : public OAIObject {
 public:
     OAIUrlRequest();
-    OAIUrlRequest(QString json);
+    OAIUrlRequest(const QString &json);
     ~OAIUrlRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getUrl() const;
     void setUrl(const QString &url);

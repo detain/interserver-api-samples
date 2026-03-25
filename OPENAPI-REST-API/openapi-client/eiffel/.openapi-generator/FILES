@@ -390,6 +390,7 @@ docs/UPDATE_ACCOUNT_TFA_REQUEST.md
 docs/UPDATE_TICKET.md
 docs/UPDATE_TICKET_RESPONSE_SCHEMA.md
 docs/URL_REQUEST.md
+docs/VIEW_MAIL_LOG_START_DATE_PARAMETER.md
 docs/VIEW_TICKET_RESPONSE.md
 docs/VPS.md
 docs/VPS_API.md
@@ -858,6 +859,7 @@ src/domain/update_account_tfa_request.e
 src/domain/update_ticket.e
 src/domain/update_ticket_response_schema.e
 src/domain/url_request.e
+src/domain/view_mail_log_start_date_parameter.e
 src/domain/view_ticket_response.e
 src/domain/vps.e
 src/domain/vps_backup_row.e

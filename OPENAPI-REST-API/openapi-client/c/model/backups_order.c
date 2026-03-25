@@ -13,10 +13,10 @@ static backups_order_t *backups_order_create_internal(
     if (!backups_order_local_var) {
         return NULL;
     }
+    memset(backups_order_local_var, 0, sizeof(backups_order_t));
+    backups_order_local_var->_library_owned = 1;
     backups_order_local_var->package_costs = package_costs;
     backups_order_local_var->service_types = service_types;
-
-    backups_order_local_var->_library_owned = 1;
     return backups_order_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) backups_order_t *backups_order_create(
     backups_order_package_costs_t *package_costs,
     backups_order_service_types_t *service_types
     ) {
-    return backups_order_create_internal (
+    backups_order_t *result = backups_order_create_internal (
         package_costs,
         service_types
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backups_order_free(backups_order_t *backups_order) {
@@ -123,10 +126,15 @@ backups_order_t *backups_order_parseFromJSON(cJSON *backups_orderJSON){
     service_types_local_nonprim = backups_order_service_types_parseFromJSON(service_types); //nonprimitive
 
 
+
     backups_order_local_var = backups_order_create_internal (
         package_costs_local_nonprim,
         service_types_local_nonprim
         );
+
+    if (!backups_order_local_var) {
+        goto end;
+    }
 
     return backups_order_local_var;
 end:

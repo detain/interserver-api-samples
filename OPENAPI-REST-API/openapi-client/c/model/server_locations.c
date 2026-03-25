@@ -12,18 +12,21 @@ static server_locations_t *server_locations_create_internal(
     if (!server_locations_local_var) {
         return NULL;
     }
-    server_locations_local_var->_1 = _1;
-
+    memset(server_locations_local_var, 0, sizeof(server_locations_t));
     server_locations_local_var->_library_owned = 1;
+    server_locations_local_var->_1 = _1;
     return server_locations_local_var;
 }
 
 __attribute__((deprecated)) server_locations_t *server_locations_create(
     server_location1_t *_1
     ) {
-    return server_locations_create_internal (
+    server_locations_t *result = server_locations_create_internal (
         _1
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_locations_free(server_locations_t *server_locations) {
@@ -82,9 +85,14 @@ server_locations_t *server_locations_parseFromJSON(cJSON *server_locationsJSON){
     }
 
 
+
     server_locations_local_var = server_locations_create_internal (
         _1 ? _1_local_nonprim : NULL
         );
+
+    if (!server_locations_local_var) {
+        goto end;
+    }
 
     return server_locations_local_var;
 end:

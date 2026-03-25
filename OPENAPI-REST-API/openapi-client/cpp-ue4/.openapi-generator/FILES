@@ -411,6 +411,7 @@ Private/OpenAPIVPSApiOperations.cpp
 Private/OpenAPIVPSCancel200Response.cpp
 Private/OpenAPIVPSTrafficDataDataSectionResponse.cpp
 Private/OpenAPIVPSTrafficDataDataSectionResponseInner.cpp
+Private/OpenAPIViewMailLogStartDateParameter.cpp
 Private/OpenAPIViewTicketResponse.cpp
 Private/OpenAPIVps.cpp
 Private/OpenAPIVpsBackupRow.cpp
@@ -894,6 +895,7 @@ Public/OpenAPIVPSApiOperations.h
 Public/OpenAPIVPSCancel200Response.h
 Public/OpenAPIVPSTrafficDataDataSectionResponse.h
 Public/OpenAPIVPSTrafficDataDataSectionResponseInner.h
+Public/OpenAPIViewMailLogStartDateParameter.h
 Public/OpenAPIViewTicketResponse.h
 Public/OpenAPIVps.h
 Public/OpenAPIVpsBackupRow.h

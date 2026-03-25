@@ -19,13 +19,13 @@ class MailLog {
     this.emails = const [],
   });
 
-  /// total number of mail log entries
+  /// Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
   int total;
 
-  /// number of emails skipped in listing
+  /// The `skip` value used for this page (echoed from the request).
   int skip;
 
-  /// number of emails to return
+  /// The `limit` value used for this page (echoed from the request).
   int limit;
 
   List<MailLogEntry> emails;
@@ -68,10 +68,14 @@ class MailLog {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailLog[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailLog[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'total'), 'Required key "MailLog[total]" is missing from JSON.');
+        assert(json[r'total'] != null, 'Required key "MailLog[total]" has a null value in JSON.');
+        assert(json.containsKey(r'skip'), 'Required key "MailLog[skip]" is missing from JSON.');
+        assert(json[r'skip'] != null, 'Required key "MailLog[skip]" has a null value in JSON.');
+        assert(json.containsKey(r'limit'), 'Required key "MailLog[limit]" is missing from JSON.');
+        assert(json[r'limit'] != null, 'Required key "MailLog[limit]" has a null value in JSON.');
+        assert(json.containsKey(r'emails'), 'Required key "MailLog[emails]" is missing from JSON.');
+        assert(json[r'emails'] != null, 'Required key "MailLog[emails]" has a null value in JSON.');
         return true;
       }());
 

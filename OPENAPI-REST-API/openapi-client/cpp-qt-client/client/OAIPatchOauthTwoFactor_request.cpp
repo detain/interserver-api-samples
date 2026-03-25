@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIPatchOauthTwoFactor_request::OAIPatchOauthTwoFactor_request(QString json) {
+OAIPatchOauthTwoFactor_request::OAIPatchOauthTwoFactor_request(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIPatchOauthTwoFactor_request::initializeModel() {
     m_code_isValid = false;
 }
 
-void OAIPatchOauthTwoFactor_request::fromJson(QString jsonString) {
+void OAIPatchOauthTwoFactor_request::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

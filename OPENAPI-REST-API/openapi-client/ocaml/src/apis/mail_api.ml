@@ -442,7 +442,7 @@ let get_stats ~id ?time () =
         
         
  id in
-    let uri = Request.maybe_add_query_param uri "time"         Enums.show_time
+    let uri = Request.maybe_add_query_param uri "time"         Enums.show_time_0
         
  time in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
@@ -685,7 +685,7 @@ let update_mail_info ~id =
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
-let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?(skip = 00l) ?(limit = 100100l) ?start_date ?end_date ?delivered () =
+let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?message_id ?replyto ?headerfrom ?delivered ?(skip = 00l) ?(limit = 100100l) ?start_date ?end_date ?(sort = `Time) ?(dir = `Desc) ?(groupby = `Recipient) () =
     let open Lwt.Infix in
     let uri = Request.build_uri "/mail/{id}/log" in
     let headers = Request.default_headers in
@@ -811,6 +811,54 @@ let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?(skip = 00l)
         
         
  mailid in
+    let uri = Request.maybe_add_query_param uri "messageId"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ message_id in
+    let uri = Request.maybe_add_query_param uri "replyto"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ replyto in
+    let uri = Request.maybe_add_query_param uri "headerfrom"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ headerfrom in
+    let uri = Request.maybe_add_query_param uri "delivered"         Enums.show_xdp_action
+        
+ delivered in
     let uri = Request.add_query_param uri "skip"     
     Int32.to_string
     
@@ -841,7 +889,7 @@ let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?(skip = 00l)
         
         
  limit in
-    let uri = Request.maybe_add_query_param uri "startDate"     Int64.to_string
+    let uri = Request.maybe_add_query_param uri "startDate"     
     
     
     
@@ -852,11 +900,9 @@ let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?(skip = 00l)
     
     
     
-    
-        
-        
+    .show
  start_date in
-    let uri = Request.maybe_add_query_param uri "endDate"     Int64.to_string
+    let uri = Request.maybe_add_query_param uri "endDate"     
     
     
     
@@ -867,13 +913,17 @@ let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?(skip = 00l)
     
     
     
-    
-        
-        
+    .show
  end_date in
-    let uri = Request.maybe_add_query_param uri "delivered"         Enums.show_xdp_action
+    let uri = Request.add_query_param uri "sort"         Enums.show_sort
         
- delivered in
+ sort in
+    let uri = Request.add_query_param uri "dir"         Enums.show_dir
+        
+ dir in
+    let uri = Request.add_query_param uri "groupby"         Enums.show_groupby
+        
+ groupby in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Mail_log.of_yojson) resp body
 

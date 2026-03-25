@@ -13,7 +13,7 @@
 /*
  * OAIMailLog.h
  *
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 
 #ifndef OAIMailLog_H
@@ -33,13 +33,13 @@ class OAIMailLogEntry;
 class OAIMailLog : public OAIObject {
 public:
     OAIMailLog();
-    OAIMailLog(QString json);
+    OAIMailLog(const QString &json);
     ~OAIMailLog() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getTotal() const;
     void setTotal(const qint32 &total);

@@ -33,13 +33,13 @@ class OAIServersBuyNowResponse_order_details;
 class OAIServersBuyNowResponse : public OAIObject {
 public:
     OAIServersBuyNowResponse();
-    OAIServersBuyNowResponse(QString json);
+    OAIServersBuyNowResponse(const QString &json);
     ~OAIServersBuyNowResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

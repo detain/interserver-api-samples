@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **ima** | **String** |  | [optional] 
 **regions** | [**List<Region>**](Region.md) |  | [optional] [default to const []]
 **assetServers** | [**List<AssetServer>**](AssetServer.md) |  | [optional] [default to const []]
-**buyItServers** | [**List<Object>**](Object.md) |  | [optional] [default to const []]
+**buyItServers** | **List<Object>** |  | [optional] [default to const []]
 **displayShowmore** | **String** |  | [optional] 
 **custDiscount** | **num** |  | [optional] 
 

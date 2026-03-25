@@ -391,6 +391,7 @@ API/Client/VPSApi.js
 API/Client/VPSCancel200Response.js
 API/Client/VPSTrafficDataDataSectionResponse.js
 API/Client/VPSTrafficDataDataSectionResponseInner.js
+API/Client/ViewMailLogStartDateParameter.js
 API/Client/ViewTicketResponse.js
 API/Client/Vps.js
 API/Client/VpsBackupRow.js

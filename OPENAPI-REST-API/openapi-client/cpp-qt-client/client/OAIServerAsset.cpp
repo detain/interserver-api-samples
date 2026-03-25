@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerAsset::OAIServerAsset(QString json) {
+OAIServerAsset::OAIServerAsset(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -179,7 +179,7 @@ void OAIServerAsset::initializeModel() {
     m_comment_isValid = false;
 }
 
-void OAIServerAsset::fromJson(QString jsonString) {
+void OAIServerAsset::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

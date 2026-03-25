@@ -6,7 +6,7 @@
 
 
 static servers_buy_now_response_t *servers_buy_now_response_create_internal(
-    int success,
+    int *success,
     char *text,
     servers_buy_now_response_order_details_t *order_details
     ) {
@@ -14,24 +14,33 @@ static servers_buy_now_response_t *servers_buy_now_response_create_internal(
     if (!servers_buy_now_response_local_var) {
         return NULL;
     }
+    memset(servers_buy_now_response_local_var, 0, sizeof(servers_buy_now_response_t));
+    servers_buy_now_response_local_var->_library_owned = 1;
     servers_buy_now_response_local_var->success = success;
     servers_buy_now_response_local_var->text = text;
     servers_buy_now_response_local_var->order_details = order_details;
-
-    servers_buy_now_response_local_var->_library_owned = 1;
     return servers_buy_now_response_local_var;
 }
 
 __attribute__((deprecated)) servers_buy_now_response_t *servers_buy_now_response_create(
-    int success,
+    int *success,
     char *text,
     servers_buy_now_response_order_details_t *order_details
     ) {
-    return servers_buy_now_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    servers_buy_now_response_t *result = servers_buy_now_response_create_internal (
+        success_copy,
         text,
         order_details
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void servers_buy_now_response_free(servers_buy_now_response_t *servers_buy_now_response) {
@@ -43,6 +52,10 @@ void servers_buy_now_response_free(servers_buy_now_response_t *servers_buy_now_r
         return ;
     }
     listEntry_t *listEntry;
+    if (servers_buy_now_response->success) {
+        free(servers_buy_now_response->success);
+        servers_buy_now_response->success = NULL;
+    }
     if (servers_buy_now_response->text) {
         free(servers_buy_now_response->text);
         servers_buy_now_response->text = NULL;
@@ -59,7 +72,7 @@ cJSON *servers_buy_now_response_convertToJSON(servers_buy_now_response_t *server
 
     // servers_buy_now_response->success
     if(servers_buy_now_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", servers_buy_now_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *servers_buy_now_response->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -97,6 +110,11 @@ servers_buy_now_response_t *servers_buy_now_response_parseFromJSON(cJSON *server
 
     servers_buy_now_response_t *servers_buy_now_response_local_var = NULL;
 
+    // define the local variable for servers_buy_now_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // define the local variable for servers_buy_now_response->order_details
     servers_buy_now_response_order_details_t *order_details_local_nonprim = NULL;
 
@@ -110,6 +128,12 @@ servers_buy_now_response_t *servers_buy_now_response_parseFromJSON(cJSON *server
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // servers_buy_now_response->text
@@ -134,14 +158,28 @@ servers_buy_now_response_t *servers_buy_now_response_parseFromJSON(cJSON *server
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     servers_buy_now_response_local_var = servers_buy_now_response_create_internal (
-        success ? success->valueint : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
+        success_local_var,
+        text_local_str,
         order_details ? order_details_local_nonprim : NULL
         );
 
+    if (!servers_buy_now_response_local_var) {
+        goto end;
+    }
+
     return servers_buy_now_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     if (order_details_local_nonprim) {
         servers_buy_now_response_order_details_free(order_details_local_nonprim);
         order_details_local_nonprim = NULL;

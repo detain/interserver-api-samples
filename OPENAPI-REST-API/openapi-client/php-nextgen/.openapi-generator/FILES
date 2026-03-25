@@ -398,6 +398,7 @@ docs/Model/UrlRequest.md
 docs/Model/VPSCancel200Response.md
 docs/Model/VPSTrafficDataDataSectionResponse.md
 docs/Model/VPSTrafficDataDataSectionResponseInner.md
+docs/Model/ViewMailLogStartDateParameter.md
 docs/Model/ViewTicketResponse.md
 docs/Model/Vps.md
 docs/Model/VpsBackupRow.md
@@ -870,6 +871,7 @@ src/Model/UrlRequest.php
 src/Model/VPSCancel200Response.php
 src/Model/VPSTrafficDataDataSectionResponse.php
 src/Model/VPSTrafficDataDataSectionResponseInner.php
+src/Model/ViewMailLogStartDateParameter.php
 src/Model/ViewTicketResponse.php
 src/Model/Vps.php
 src/Model/VpsBackupRow.php
@@ -1336,6 +1338,7 @@ tests/Model/UrlRequestTest.php
 tests/Model/VPSCancel200ResponseTest.php
 tests/Model/VPSTrafficDataDataSectionResponseInnerTest.php
 tests/Model/VPSTrafficDataDataSectionResponseTest.php
+tests/Model/ViewMailLogStartDateParameterTest.php
 tests/Model/ViewTicketResponseTest.php
 tests/Model/VpsBackupRowTest.php
 tests/Model/VpsBackupRowsTest.php

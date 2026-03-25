@@ -1619,11 +1619,11 @@ null (empty response body)
 
 <a name="viewMailLog"></a>
 # **viewMailLog**
-> MailLog viewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered)
+> MailLog viewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby)
 
 View Mail Log
 
-Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the &#x60;groupby&#x60; parameter.  By default (&#x60;groupby&#x3D;recipient&#x60;), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and &#x60;mxHostname&#x60; values.  Set &#x60;groupby&#x3D;message&#x60; to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by &#x60;skip&#x60; and &#x60;limit&#x60;.  The &#x60;total&#x60; in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60;, &#x60;last monday&#x60;, or &#x60;2024-01-01 00:00:00&#x60;.  Examples: &#x60;startDate&#x3D;1704067200&amp;endDate&#x3D;1706745599&#x60; or &#x60;startDate&#x3D;2024-01-01&amp;endDate&#x3D;2024-01-31&#x60;.  **Sorting** is controlled by &#x60;sort&#x60; and &#x60;dir&#x60;.  Currently the only sort key is &#x60;time&#x60; (default), which orders by internal row ID.  **Delivery status** can be filtered with the &#x60;delivered&#x60; parameter: &#x60;delivered&#x3D;1&#x60; returns only successfully delivered messages; &#x60;delivered&#x3D;0&#x60; returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (&#x60;from&#x60;, &#x60;to&#x60;) and message headers (&#x60;headerfrom&#x60; for the &#x60;From:&#x60; header, &#x60;replyto&#x60; for &#x60;Reply-To:&#x60;). These may differ when a message is sent on behalf of another address.  The &#x60;mailid&#x60; parameter corresponds to the &#x60;id&#x60; field in the returned &#x60;MailLogEntry&#x60; objects, **not** the &#x60;_id&#x60; field.  It also matches the transaction ID returned in the &#x60;text&#x60; field of a successful send response.  The &#x60;messageId&#x60; parameter searches the &#x60;Message-ID&#x60; email header (case-insensitive substring match). 
 
 ### Example
 ```kotlin
@@ -1633,20 +1633,26 @@ Returns a paginated log of emails sent through this mail service, with optional 
 
 val apiInstance = MailApi()
 val id : kotlin.Int = 56 // kotlin.Int | The mail service ID. Use `mail_id` from `GET /mail`.
-val id : kotlin.Long = 789 // kotlin.Long | The ID of your mail order this will be sent through.
-val origin : kotlin.String = origin_example // kotlin.String | originating ip address sending mail
-val mx : kotlin.String = mx_example // kotlin.String | mx record mail was sent to
-val from : kotlin.String = from_example // kotlin.String | from email address
-val to : kotlin.String = to_example // kotlin.String | to/destination email address
-val subject : kotlin.String = subject_example // kotlin.String | subject containing this string
-val mailid : kotlin.String = mailid_example // kotlin.String | mail id
-val skip : kotlin.Int = 56 // kotlin.Int | number of records to skip for pagination
-val limit : kotlin.Int = 56 // kotlin.Int | maximum number of records to return
-val startDate : kotlin.Long = 789 // kotlin.Long | earliest date to get emails in unix timestamp format
-val endDate : kotlin.Long = 789 // kotlin.Long | Latest date to get emails in unix timestamp format.
-val delivered : kotlin.String = delivered_example // kotlin.String | Filter emails by whether or not they were delivered.
+val id : kotlin.Long = 789 // kotlin.Long | The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
+val origin : kotlin.String = origin_example // kotlin.String | Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
+val mx : kotlin.String = mx_example // kotlin.String | Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
+val from : kotlin.String = from_example // kotlin.String | Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
+val to : kotlin.String = to_example // kotlin.String | Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
+val subject : kotlin.String = subject_example // kotlin.String | Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
+val mailid : kotlin.String = mailid_example // kotlin.String | Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
+val messageId : kotlin.String = messageId_example // kotlin.String | Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+val replyto : kotlin.String = replyto_example // kotlin.String | Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
+val headerfrom : kotlin.String = headerfrom_example // kotlin.String | Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
+val delivered : kotlin.Int = 56 // kotlin.Int | Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+val skip : kotlin.Int = 56 // kotlin.Int | Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
+val limit : kotlin.Int = 56 // kotlin.Int | Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
+val startDate : StartDate =  // StartDate | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+val endDate : EndDate =  // EndDate | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+val sort : kotlin.String = sort_example // kotlin.String | Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
+val dir : kotlin.String = dir_example // kotlin.String | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
+val groupby : kotlin.String = groupby_example // kotlin.String | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
 try {
-    val result : MailLog = apiInstance.viewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered)
+    val result : MailLog = apiInstance.viewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MailApi#viewMailLog")
@@ -1662,18 +1668,24 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **kotlin.Int**| The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. |
- **id** | **kotlin.Long**| The ID of your mail order this will be sent through. | [optional]
- **origin** | **kotlin.String**| originating ip address sending mail | [optional]
- **mx** | **kotlin.String**| mx record mail was sent to | [optional]
- **from** | **kotlin.String**| from email address | [optional]
- **to** | **kotlin.String**| to/destination email address | [optional]
- **subject** | **kotlin.String**| subject containing this string | [optional]
- **mailid** | **kotlin.String**| mail id | [optional]
- **skip** | **kotlin.Int**| number of records to skip for pagination | [optional] [default to 0] [enum: 0]
- **limit** | **kotlin.Int**| maximum number of records to return | [optional] [default to 100] [enum: 1, 10000]
- **startDate** | **kotlin.Long**| earliest date to get emails in unix timestamp format | [optional] [enum: 0, 9999999999]
- **endDate** | **kotlin.Long**| Latest date to get emails in unix timestamp format. | [optional] [enum: 0, 9999999999]
- **delivered** | **kotlin.String**| Filter emails by whether or not they were delivered. | [optional] [enum: 0, 1]
+ **id** | **kotlin.Long**| The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;. | [optional]
+ **origin** | **kotlin.String**| Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. | [optional]
+ **mx** | **kotlin.String**| Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response. | [optional]
+ **from** | **kotlin.String**| Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;. | [optional]
+ **to** | **kotlin.String**| Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved. | [optional]
+ **subject** | **kotlin.String**| Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response. | [optional]
+ **mailid** | **kotlin.String**| Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;. | [optional]
+ **messageId** | **kotlin.String**| Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. | [optional]
+ **replyto** | **kotlin.String**| Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set. | [optional]
+ **headerfrom** | **kotlin.String**| Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address. | [optional]
+ **delivered** | **kotlin.Int**| Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. | [optional] [enum: 0, 1]
+ **skip** | **kotlin.Int**| Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip). | [optional] [default to 0] [enum: 0]
+ **limit** | **kotlin.Int**| Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages. | [optional] [default to 100] [enum: 1, 10000]
+ **startDate** | [**StartDate**](.md)| Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included. | [optional]
+ **endDate** | [**EndDate**](.md)| Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. | [optional]
+ **sort** | **kotlin.String**| Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). | [optional] [default to time] [enum: time]
+ **dir** | **kotlin.String**| Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first. | [optional] [default to desc] [enum: asc, desc]
+ **groupby** | **kotlin.String**| Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode. | [optional] [default to recipient] [enum: message, recipient]
 
 ### Return type
 

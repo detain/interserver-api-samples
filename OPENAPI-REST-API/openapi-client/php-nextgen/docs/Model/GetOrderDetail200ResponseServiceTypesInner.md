@@ -1,4 +1,4 @@
-# # GetOrderDetail200ResponseServiceTypesInner
+# GetOrderDetail200ResponseServiceTypesInner
 
 ## Properties
 

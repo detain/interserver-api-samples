@@ -152,6 +152,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -171,7 +178,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void changeAccountUsernameCallback(OAIHttpRequestWorker *worker);
     void deleteAccountOauthNameCallback(OAIHttpRequestWorker *worker);
@@ -230,108 +237,40 @@ Q_SIGNALS:
     void updateAccountSshKeySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateAccountTfaSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    Q_DECL_DEPRECATED_X("Use changeAccountUsernameSignalError() instead")
-    void changeAccountUsernameSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void changeAccountUsernameSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteAccountOauthNameSignalError() instead")
-    void deleteAccountOauthNameSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteAccountOauthNameSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteAccountTfaSignalError() instead")
-    void deleteAccountTfaSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteAccountTfaSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteIpLimitSignalError() instead")
-    void deleteIpLimitSignalE(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteIpLimitSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAccountInfoSignalError() instead")
-    void getAccountInfoSignalE(OAIAccountInfo summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAccountInfoSignalError(OAIAccountInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAccountTfaSetupSignalError() instead")
-    void getAccountTfaSetupSignalE(OAIGetAccountTfaSetup_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAccountTfaSetupSignalError(OAIGetAccountTfaSetup_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getHomeSignalError() instead")
-    void getHomeSignalE(OAIHome summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getHomeSignalError(OAIHome summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getSearchSignalError() instead")
-    void getSearchSignalE(OAISearchAutocompleteResponse<QString, OAIObject> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getSearchSignalError(OAISearchAutocompleteResponse<QString, OAIObject> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use logoutSignalError() instead")
-    void logoutSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void logoutSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use logoutAccountOauthSignalError() instead")
-    void logoutAccountOauthSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void logoutAccountOauthSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountApiKeySignalError() instead")
-    void updateAccountApiKeySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountApiKeySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountFeaturesSignalError() instead")
-    void updateAccountFeaturesSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountFeaturesSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountInfoSignalError() instead")
-    void updateAccountInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountIpLimitsSignalError() instead")
-    void updateAccountIpLimitsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountIpLimitsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountPasswordSignalError() instead")
-    void updateAccountPasswordSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountPasswordSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountSshKeySignalError() instead")
-    void updateAccountSshKeySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountSshKeySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountTfaSignalError() instead")
-    void updateAccountTfaSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountTfaSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use changeAccountUsernameSignalErrorFull() instead")
-    void changeAccountUsernameSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void changeAccountUsernameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteAccountOauthNameSignalErrorFull() instead")
-    void deleteAccountOauthNameSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteAccountOauthNameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteAccountTfaSignalErrorFull() instead")
-    void deleteAccountTfaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteAccountTfaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteIpLimitSignalErrorFull() instead")
-    void deleteIpLimitSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteIpLimitSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAccountInfoSignalErrorFull() instead")
-    void getAccountInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAccountInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAccountTfaSetupSignalErrorFull() instead")
-    void getAccountTfaSetupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAccountTfaSetupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getHomeSignalErrorFull() instead")
-    void getHomeSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getHomeSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getSearchSignalErrorFull() instead")
-    void getSearchSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getSearchSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use logoutSignalErrorFull() instead")
-    void logoutSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void logoutSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use logoutAccountOauthSignalErrorFull() instead")
-    void logoutAccountOauthSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void logoutAccountOauthSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountApiKeySignalErrorFull() instead")
-    void updateAccountApiKeySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountApiKeySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountFeaturesSignalErrorFull() instead")
-    void updateAccountFeaturesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountFeaturesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountInfoSignalErrorFull() instead")
-    void updateAccountInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountIpLimitsSignalErrorFull() instead")
-    void updateAccountIpLimitsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountIpLimitsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountPasswordSignalErrorFull() instead")
-    void updateAccountPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountSshKeySignalErrorFull() instead")
-    void updateAccountSshKeySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountSshKeySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountTfaSignalErrorFull() instead")
-    void updateAccountTfaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountTfaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

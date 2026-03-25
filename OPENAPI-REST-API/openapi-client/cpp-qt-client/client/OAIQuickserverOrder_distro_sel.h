@@ -32,13 +32,13 @@ class OAIQuickserverOrderDistroSelUbuntu;
 class OAIQuickserverOrder_distro_sel : public OAIObject {
 public:
     OAIQuickserverOrder_distro_sel();
-    OAIQuickserverOrder_distro_sel(QString json);
+    OAIQuickserverOrder_distro_sel(const QString &json);
     ~OAIQuickserverOrder_distro_sel() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIQuickserverOrderDistroSelUbuntu getUbuntu() const;
     void setUbuntu(const OAIQuickserverOrderDistroSelUbuntu &ubuntu);

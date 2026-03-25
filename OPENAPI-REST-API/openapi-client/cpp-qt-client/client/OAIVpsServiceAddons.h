@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIVpsServiceAddons : public OAIObject {
 public:
     OAIVpsServiceAddons();
-    OAIVpsServiceAddons(QString json);
+    OAIVpsServiceAddons(const QString &json);
     ~OAIVpsServiceAddons() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isHasCpanel() const;
     void setHasCpanel(const bool &has_cpanel);

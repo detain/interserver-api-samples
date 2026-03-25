@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetAccountTfaSetup_200_response::OAIGetAccountTfaSetup_200_response(QString json) {
+OAIGetAccountTfaSetup_200_response::OAIGetAccountTfaSetup_200_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIGetAccountTfaSetup_200_response::initializeModel() {
     m_r_2fa_google_split_isValid = false;
 }
 
-void OAIGetAccountTfaSetup_200_response::fromJson(QString jsonString) {
+void OAIGetAccountTfaSetup_200_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

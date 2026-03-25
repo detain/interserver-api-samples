@@ -8,7 +8,7 @@
 static vps_traffic_response_t *vps_traffic_response_create_internal(
     char *name,
     char *target,
-    int interval,
+    int *interval,
     vps_traffic_history_response_t *history,
     char *last,
     list_t *times,
@@ -20,6 +20,8 @@ static vps_traffic_response_t *vps_traffic_response_create_internal(
     if (!vps_traffic_response_local_var) {
         return NULL;
     }
+    memset(vps_traffic_response_local_var, 0, sizeof(vps_traffic_response_t));
+    vps_traffic_response_local_var->_library_owned = 1;
     vps_traffic_response_local_var->name = name;
     vps_traffic_response_local_var->target = target;
     vps_traffic_response_local_var->interval = interval;
@@ -29,15 +31,13 @@ static vps_traffic_response_t *vps_traffic_response_create_internal(
     vps_traffic_response_local_var->totals = totals;
     vps_traffic_response_local_var->usage = usage;
     vps_traffic_response_local_var->data = data;
-
-    vps_traffic_response_local_var->_library_owned = 1;
     return vps_traffic_response_local_var;
 }
 
 __attribute__((deprecated)) vps_traffic_response_t *vps_traffic_response_create(
     char *name,
     char *target,
-    int interval,
+    int *interval,
     vps_traffic_history_response_t *history,
     char *last,
     list_t *times,
@@ -45,10 +45,15 @@ __attribute__((deprecated)) vps_traffic_response_t *vps_traffic_response_create(
     vps_traffic_usage_response_t *usage,
     list_t *data
     ) {
-    return vps_traffic_response_create_internal (
+    int *interval_copy = NULL;
+    if (interval) {
+        interval_copy = malloc(sizeof(int));
+        if (interval_copy) *interval_copy = *interval;
+    }
+    vps_traffic_response_t *result = vps_traffic_response_create_internal (
         name,
         target,
-        interval,
+        interval_copy,
         history,
         last,
         times,
@@ -56,6 +61,10 @@ __attribute__((deprecated)) vps_traffic_response_t *vps_traffic_response_create(
         usage,
         data
         );
+    if (!result) {
+        free(interval_copy);
+    }
+    return result;
 }
 
 void vps_traffic_response_free(vps_traffic_response_t *vps_traffic_response) {
@@ -74,6 +83,10 @@ void vps_traffic_response_free(vps_traffic_response_t *vps_traffic_response) {
     if (vps_traffic_response->target) {
         free(vps_traffic_response->target);
         vps_traffic_response->target = NULL;
+    }
+    if (vps_traffic_response->interval) {
+        free(vps_traffic_response->interval);
+        vps_traffic_response->interval = NULL;
     }
     if (vps_traffic_response->history) {
         vps_traffic_history_response_free(vps_traffic_response->history);
@@ -133,7 +146,7 @@ cJSON *vps_traffic_response_convertToJSON(vps_traffic_response_t *vps_traffic_re
     if (!vps_traffic_response->interval) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "interval", vps_traffic_response->interval) == NULL) {
+    if(cJSON_AddNumberToObject(item, "interval", *vps_traffic_response->interval) == NULL) {
     goto fail; //Numeric
     }
 
@@ -235,8 +248,17 @@ vps_traffic_response_t *vps_traffic_response_parseFromJSON(cJSON *vps_traffic_re
 
     vps_traffic_response_t *vps_traffic_response_local_var = NULL;
 
+    char *name_local_str = NULL;
+
+    char *target_local_str = NULL;
+
+    // define the local variable for vps_traffic_response->interval
+    int *interval_local_var = NULL;
+
     // define the local variable for vps_traffic_response->history
     vps_traffic_history_response_t *history_local_nonprim = NULL;
+
+    char *last_local_str = NULL;
 
     // define the local list for vps_traffic_response->times
     list_t *timesList = NULL;
@@ -294,6 +316,12 @@ vps_traffic_response_t *vps_traffic_response_parseFromJSON(cJSON *vps_traffic_re
     {
     goto end; //Numeric
     }
+    interval_local_var = malloc(sizeof(int));
+    if(!interval_local_var)
+    {
+        goto end;
+    }
+    *interval_local_var = interval->valuedouble;
 
     // vps_traffic_response->history
     cJSON *history = cJSON_GetObjectItemCaseSensitive(vps_traffic_responseJSON, "history");
@@ -394,23 +422,47 @@ vps_traffic_response_t *vps_traffic_response_parseFromJSON(cJSON *vps_traffic_re
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (target && !cJSON_IsNull(target)) target_local_str = strdup(target->valuestring);
+    if (last && !cJSON_IsNull(last)) last_local_str = strdup(last->valuestring);
+
     vps_traffic_response_local_var = vps_traffic_response_create_internal (
-        strdup(name->valuestring),
-        strdup(target->valuestring),
-        interval->valuedouble,
+        name_local_str,
+        target_local_str,
+        interval_local_var,
         history_local_nonprim,
-        strdup(last->valuestring),
+        last_local_str,
         timesList,
         totals_local_nonprim,
         usage_local_nonprim,
         dataList
         );
 
+    if (!vps_traffic_response_local_var) {
+        goto end;
+    }
+
     return vps_traffic_response_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (target_local_str) {
+        free(target_local_str);
+        target_local_str = NULL;
+    }
+    if (interval_local_var) {
+        free(interval_local_var);
+        interval_local_var = NULL;
+    }
     if (history_local_nonprim) {
         vps_traffic_history_response_free(history_local_nonprim);
         history_local_nonprim = NULL;
+    }
+    if (last_local_str) {
+        free(last_local_str);
+        last_local_str = NULL;
     }
     if (timesList) {
         list_freeList(timesList);

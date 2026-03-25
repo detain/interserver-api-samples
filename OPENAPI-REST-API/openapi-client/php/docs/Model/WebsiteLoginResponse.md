@@ -1,4 +1,4 @@
-# # WebsiteLoginResponse
+# WebsiteLoginResponse
 
 ## Properties
 

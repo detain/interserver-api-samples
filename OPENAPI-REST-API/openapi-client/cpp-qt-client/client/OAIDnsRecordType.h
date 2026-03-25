@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIDnsRecordType : public OAIEnum {
 public:
     OAIDnsRecordType();
-    OAIDnsRecordType(QString json);
+    OAIDnsRecordType(const QString &json);
     ~OAIDnsRecordType() override;
 
     QString asJson() const override;
     QJsonValue asJsonValue() const override;
     void fromJsonValue(QJsonValue json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     enum class eOAIDnsRecordType {
         INVALID_VALUE_OPENAPI_GENERATED = 0,

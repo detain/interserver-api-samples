@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAITimezoneUpdate : public OAIObject {
 public:
     OAITimezoneUpdate();
-    OAITimezoneUpdate(QString json);
+    OAITimezoneUpdate(const QString &json);
     ~OAITimezoneUpdate() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTimezone() const;
     void setTimezone(const QString &timezone);

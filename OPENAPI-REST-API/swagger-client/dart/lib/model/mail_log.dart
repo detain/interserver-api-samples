@@ -1,11 +1,11 @@
 part of swagger.api;
 
 class MailLog {
-  /* total number of mail log entries */
+  /* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
   int total = null;
-/* number of emails skipped in listing */
+/* The `skip` value used for this page (echoed from the request). */
   int skip = null;
-/* number of emails to return */
+/* The `limit` value used for this page (echoed from the request). */
   int limit = null;
 
   List<MailLogEntry> emails = [];

@@ -7,7 +7,7 @@
 
 static server_order_cpu_t *server_order_cpu_create_internal(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
@@ -21,7 +21,7 @@ static server_order_cpu_t *server_order_cpu_create_internal(
     char *num_cores,
     char *num_cpus,
     char *benchmark,
-    int monthly_price,
+    int *monthly_price,
     char *max_ram,
     char *min_ram,
     char *max_lff,
@@ -36,6 +36,8 @@ static server_order_cpu_t *server_order_cpu_create_internal(
     if (!server_order_cpu_local_var) {
         return NULL;
     }
+    memset(server_order_cpu_local_var, 0, sizeof(server_order_cpu_t));
+    server_order_cpu_local_var->_library_owned = 1;
     server_order_cpu_local_var->id = id;
     server_order_cpu_local_var->price = price;
     server_order_cpu_local_var->img = img;
@@ -61,14 +63,12 @@ static server_order_cpu_t *server_order_cpu_create_internal(
     server_order_cpu_local_var->hd_ids = hd_ids;
     server_order_cpu_local_var->price_display = price_display;
     server_order_cpu_local_var->monthly_price_display = monthly_price_display;
-
-    server_order_cpu_local_var->_library_owned = 1;
     return server_order_cpu_local_var;
 }
 
 __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
@@ -82,7 +82,7 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *num_cores,
     char *num_cpus,
     char *benchmark,
-    int monthly_price,
+    int *monthly_price,
     char *max_ram,
     char *min_ram,
     char *max_lff,
@@ -93,9 +93,19 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *price_display,
     char *monthly_price_display
     ) {
-    return server_order_cpu_create_internal (
+    int *price_copy = NULL;
+    if (price) {
+        price_copy = malloc(sizeof(int));
+        if (price_copy) *price_copy = *price;
+    }
+    int *monthly_price_copy = NULL;
+    if (monthly_price) {
+        monthly_price_copy = malloc(sizeof(int));
+        if (monthly_price_copy) *monthly_price_copy = *monthly_price;
+    }
+    server_order_cpu_t *result = server_order_cpu_create_internal (
         id,
-        price,
+        price_copy,
         img,
         short_desc,
         long_desc,
@@ -109,7 +119,7 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
         num_cores,
         num_cpus,
         benchmark,
-        monthly_price,
+        monthly_price_copy,
         max_ram,
         min_ram,
         max_lff,
@@ -120,6 +130,11 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
         price_display,
         monthly_price_display
         );
+    if (!result) {
+        free(price_copy);
+        free(monthly_price_copy);
+    }
+    return result;
 }
 
 void server_order_cpu_free(server_order_cpu_t *server_order_cpu) {
@@ -134,6 +149,10 @@ void server_order_cpu_free(server_order_cpu_t *server_order_cpu) {
     if (server_order_cpu->id) {
         free(server_order_cpu->id);
         server_order_cpu->id = NULL;
+    }
+    if (server_order_cpu->price) {
+        free(server_order_cpu->price);
+        server_order_cpu->price = NULL;
     }
     if (server_order_cpu->img) {
         free(server_order_cpu->img);
@@ -187,6 +206,10 @@ void server_order_cpu_free(server_order_cpu_t *server_order_cpu) {
         free(server_order_cpu->benchmark);
         server_order_cpu->benchmark = NULL;
     }
+    if (server_order_cpu->monthly_price) {
+        free(server_order_cpu->monthly_price);
+        server_order_cpu->monthly_price = NULL;
+    }
     if (server_order_cpu->max_ram) {
         free(server_order_cpu->max_ram);
         server_order_cpu->max_ram = NULL;
@@ -239,7 +262,7 @@ cJSON *server_order_cpu_convertToJSON(server_order_cpu_t *server_order_cpu) {
 
     // server_order_cpu->price
     if(server_order_cpu->price) {
-    if(cJSON_AddNumberToObject(item, "price", server_order_cpu->price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "price", *server_order_cpu->price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -351,7 +374,7 @@ cJSON *server_order_cpu_convertToJSON(server_order_cpu_t *server_order_cpu) {
 
     // server_order_cpu->monthly_price
     if(server_order_cpu->monthly_price) {
-    if(cJSON_AddNumberToObject(item, "monthly_price", server_order_cpu->monthly_price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_price", *server_order_cpu->monthly_price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -445,8 +468,58 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
 
     server_order_cpu_t *server_order_cpu_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    // define the local variable for server_order_cpu->price
+    int *price_local_var = NULL;
+
+    char *img_local_str = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    char *long_desc_local_str = NULL;
+
+    char *location_local_str = NULL;
+
+    char *fsb_local_str = NULL;
+
+    char *manu_local_str = NULL;
+
+    char *type_local_str = NULL;
+
+    char *speed_local_str = NULL;
+
+    char *cache_local_str = NULL;
+
+    char *active_local_str = NULL;
+
+    char *num_cores_local_str = NULL;
+
+    char *num_cpus_local_str = NULL;
+
+    char *benchmark_local_str = NULL;
+
+    // define the local variable for server_order_cpu->monthly_price
+    int *monthly_price_local_var = NULL;
+
+    char *max_ram_local_str = NULL;
+
+    char *min_ram_local_str = NULL;
+
+    char *max_lff_local_str = NULL;
+
+    char *max_sff_local_str = NULL;
+
+    char *max_nve_local_str = NULL;
+
+    char *visible_local_str = NULL;
+
     // define the local variable for server_order_cpu->hd_ids
     _t *hd_ids_local_nonprim = NULL;
+
+    char *price_display_local_str = NULL;
+
+    char *monthly_price_display_local_str = NULL;
 
     // server_order_cpu->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(server_order_cpuJSON, "id");
@@ -470,6 +543,12 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
     {
     goto end; //Numeric
     }
+    price_local_var = malloc(sizeof(int));
+    if(!price_local_var)
+    {
+        goto end;
+    }
+    *price_local_var = price->valuedouble;
     }
 
     // server_order_cpu->img
@@ -638,6 +717,12 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
     {
     goto end; //Numeric
     }
+    monthly_price_local_var = malloc(sizeof(int));
+    if(!monthly_price_local_var)
+    {
+        goto end;
+    }
+    *monthly_price_local_var = monthly_price->valuedouble;
     }
 
     // server_order_cpu->max_ram
@@ -746,39 +831,162 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (img && !cJSON_IsNull(img)) img_local_str = strdup(img->valuestring);
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+    if (long_desc && !cJSON_IsNull(long_desc)) long_desc_local_str = strdup(long_desc->valuestring);
+    if (location && !cJSON_IsNull(location)) location_local_str = strdup(location->valuestring);
+    if (fsb && !cJSON_IsNull(fsb)) fsb_local_str = strdup(fsb->valuestring);
+    if (manu && !cJSON_IsNull(manu)) manu_local_str = strdup(manu->valuestring);
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+    if (speed && !cJSON_IsNull(speed)) speed_local_str = strdup(speed->valuestring);
+    if (cache && !cJSON_IsNull(cache)) cache_local_str = strdup(cache->valuestring);
+    if (active && !cJSON_IsNull(active)) active_local_str = strdup(active->valuestring);
+    if (num_cores && !cJSON_IsNull(num_cores)) num_cores_local_str = strdup(num_cores->valuestring);
+    if (num_cpus && !cJSON_IsNull(num_cpus)) num_cpus_local_str = strdup(num_cpus->valuestring);
+    if (benchmark && !cJSON_IsNull(benchmark)) benchmark_local_str = strdup(benchmark->valuestring);
+    if (max_ram && !cJSON_IsNull(max_ram)) max_ram_local_str = strdup(max_ram->valuestring);
+    if (min_ram && !cJSON_IsNull(min_ram)) min_ram_local_str = strdup(min_ram->valuestring);
+    if (max_lff && !cJSON_IsNull(max_lff)) max_lff_local_str = strdup(max_lff->valuestring);
+    if (max_sff && !cJSON_IsNull(max_sff)) max_sff_local_str = strdup(max_sff->valuestring);
+    if (max_nve && !cJSON_IsNull(max_nve)) max_nve_local_str = strdup(max_nve->valuestring);
+    if (visible && !cJSON_IsNull(visible)) visible_local_str = strdup(visible->valuestring);
+    if (price_display && !cJSON_IsNull(price_display)) price_display_local_str = strdup(price_display->valuestring);
+    if (monthly_price_display && !cJSON_IsNull(monthly_price_display)) monthly_price_display_local_str = strdup(monthly_price_display->valuestring);
+
     server_order_cpu_local_var = server_order_cpu_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        price ? price->valuedouble : 0,
-        img && !cJSON_IsNull(img) ? strdup(img->valuestring) : NULL,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        long_desc && !cJSON_IsNull(long_desc) ? strdup(long_desc->valuestring) : NULL,
-        location && !cJSON_IsNull(location) ? strdup(location->valuestring) : NULL,
-        fsb && !cJSON_IsNull(fsb) ? strdup(fsb->valuestring) : NULL,
-        manu && !cJSON_IsNull(manu) ? strdup(manu->valuestring) : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        speed && !cJSON_IsNull(speed) ? strdup(speed->valuestring) : NULL,
-        cache && !cJSON_IsNull(cache) ? strdup(cache->valuestring) : NULL,
-        active && !cJSON_IsNull(active) ? strdup(active->valuestring) : NULL,
-        num_cores && !cJSON_IsNull(num_cores) ? strdup(num_cores->valuestring) : NULL,
-        num_cpus && !cJSON_IsNull(num_cpus) ? strdup(num_cpus->valuestring) : NULL,
-        benchmark && !cJSON_IsNull(benchmark) ? strdup(benchmark->valuestring) : NULL,
-        monthly_price ? monthly_price->valuedouble : 0,
-        max_ram && !cJSON_IsNull(max_ram) ? strdup(max_ram->valuestring) : NULL,
-        min_ram && !cJSON_IsNull(min_ram) ? strdup(min_ram->valuestring) : NULL,
-        max_lff && !cJSON_IsNull(max_lff) ? strdup(max_lff->valuestring) : NULL,
-        max_sff && !cJSON_IsNull(max_sff) ? strdup(max_sff->valuestring) : NULL,
-        max_nve && !cJSON_IsNull(max_nve) ? strdup(max_nve->valuestring) : NULL,
-        visible && !cJSON_IsNull(visible) ? strdup(visible->valuestring) : NULL,
+        id_local_str,
+        price_local_var,
+        img_local_str,
+        short_desc_local_str,
+        long_desc_local_str,
+        location_local_str,
+        fsb_local_str,
+        manu_local_str,
+        type_local_str,
+        speed_local_str,
+        cache_local_str,
+        active_local_str,
+        num_cores_local_str,
+        num_cpus_local_str,
+        benchmark_local_str,
+        monthly_price_local_var,
+        max_ram_local_str,
+        min_ram_local_str,
+        max_lff_local_str,
+        max_sff_local_str,
+        max_nve_local_str,
+        visible_local_str,
         hd_ids ? hd_ids_local_nonprim : NULL,
-        price_display && !cJSON_IsNull(price_display) ? strdup(price_display->valuestring) : NULL,
-        monthly_price_display && !cJSON_IsNull(monthly_price_display) ? strdup(monthly_price_display->valuestring) : NULL
+        price_display_local_str,
+        monthly_price_display_local_str
         );
+
+    if (!server_order_cpu_local_var) {
+        goto end;
+    }
 
     return server_order_cpu_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (price_local_var) {
+        free(price_local_var);
+        price_local_var = NULL;
+    }
+    if (img_local_str) {
+        free(img_local_str);
+        img_local_str = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (long_desc_local_str) {
+        free(long_desc_local_str);
+        long_desc_local_str = NULL;
+    }
+    if (location_local_str) {
+        free(location_local_str);
+        location_local_str = NULL;
+    }
+    if (fsb_local_str) {
+        free(fsb_local_str);
+        fsb_local_str = NULL;
+    }
+    if (manu_local_str) {
+        free(manu_local_str);
+        manu_local_str = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
+    if (speed_local_str) {
+        free(speed_local_str);
+        speed_local_str = NULL;
+    }
+    if (cache_local_str) {
+        free(cache_local_str);
+        cache_local_str = NULL;
+    }
+    if (active_local_str) {
+        free(active_local_str);
+        active_local_str = NULL;
+    }
+    if (num_cores_local_str) {
+        free(num_cores_local_str);
+        num_cores_local_str = NULL;
+    }
+    if (num_cpus_local_str) {
+        free(num_cpus_local_str);
+        num_cpus_local_str = NULL;
+    }
+    if (benchmark_local_str) {
+        free(benchmark_local_str);
+        benchmark_local_str = NULL;
+    }
+    if (monthly_price_local_var) {
+        free(monthly_price_local_var);
+        monthly_price_local_var = NULL;
+    }
+    if (max_ram_local_str) {
+        free(max_ram_local_str);
+        max_ram_local_str = NULL;
+    }
+    if (min_ram_local_str) {
+        free(min_ram_local_str);
+        min_ram_local_str = NULL;
+    }
+    if (max_lff_local_str) {
+        free(max_lff_local_str);
+        max_lff_local_str = NULL;
+    }
+    if (max_sff_local_str) {
+        free(max_sff_local_str);
+        max_sff_local_str = NULL;
+    }
+    if (max_nve_local_str) {
+        free(max_nve_local_str);
+        max_nve_local_str = NULL;
+    }
+    if (visible_local_str) {
+        free(visible_local_str);
+        visible_local_str = NULL;
+    }
     if (hd_ids_local_nonprim) {
         _free(hd_ids_local_nonprim);
         hd_ids_local_nonprim = NULL;
+    }
+    if (price_display_local_str) {
+        free(price_display_local_str);
+        price_display_local_str = NULL;
+    }
+    if (monthly_price_display_local_str) {
+        free(monthly_price_display_local_str);
+        monthly_price_display_local_str = NULL;
     }
     return NULL;
 

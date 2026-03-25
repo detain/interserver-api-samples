@@ -33,13 +33,13 @@ class OAIVpsSnapshot;
 class OAIVpsServiceExtra : public OAIObject {
 public:
     OAIVpsServiceExtra();
-    OAIVpsServiceExtra(QString json);
+    OAIVpsServiceExtra(const QString &json);
     ~OAIVpsServiceExtra() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getSpice() const;
     void setSpice(const qint32 &spice);

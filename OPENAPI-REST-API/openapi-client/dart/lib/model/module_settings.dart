@@ -169,10 +169,38 @@ class ModuleSettings {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ModuleSettings[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ModuleSettings[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'SERVICE_ID_OFFSET'), 'Required key "ModuleSettings[SERVICE_ID_OFFSET]" is missing from JSON.');
+        assert(json[r'SERVICE_ID_OFFSET'] != null, 'Required key "ModuleSettings[SERVICE_ID_OFFSET]" has a null value in JSON.');
+        assert(json.containsKey(r'USE_REPEAT_INVOICE'), 'Required key "ModuleSettings[USE_REPEAT_INVOICE]" is missing from JSON.');
+        assert(json[r'USE_REPEAT_INVOICE'] != null, 'Required key "ModuleSettings[USE_REPEAT_INVOICE]" has a null value in JSON.');
+        assert(json.containsKey(r'USE_PACKAGES'), 'Required key "ModuleSettings[USE_PACKAGES]" is missing from JSON.');
+        assert(json[r'USE_PACKAGES'] != null, 'Required key "ModuleSettings[USE_PACKAGES]" has a null value in JSON.');
+        assert(json.containsKey(r'BILLING_DAYS_OFFSET'), 'Required key "ModuleSettings[BILLING_DAYS_OFFSET]" is missing from JSON.');
+        assert(json[r'BILLING_DAYS_OFFSET'] != null, 'Required key "ModuleSettings[BILLING_DAYS_OFFSET]" has a null value in JSON.');
+        assert(json.containsKey(r'IMGNAME'), 'Required key "ModuleSettings[IMGNAME]" is missing from JSON.');
+        assert(json[r'IMGNAME'] != null, 'Required key "ModuleSettings[IMGNAME]" has a null value in JSON.');
+        assert(json.containsKey(r'REPEAT_BILLING_METHOD'), 'Required key "ModuleSettings[REPEAT_BILLING_METHOD]" is missing from JSON.');
+        assert(json[r'REPEAT_BILLING_METHOD'] != null, 'Required key "ModuleSettings[REPEAT_BILLING_METHOD]" has a null value in JSON.');
+        assert(json.containsKey(r'DELETE_PENDING_DAYS'), 'Required key "ModuleSettings[DELETE_PENDING_DAYS]" is missing from JSON.');
+        assert(json[r'DELETE_PENDING_DAYS'] != null, 'Required key "ModuleSettings[DELETE_PENDING_DAYS]" has a null value in JSON.');
+        assert(json.containsKey(r'SUSPEND_DAYS'), 'Required key "ModuleSettings[SUSPEND_DAYS]" is missing from JSON.');
+        assert(json[r'SUSPEND_DAYS'] != null, 'Required key "ModuleSettings[SUSPEND_DAYS]" has a null value in JSON.');
+        assert(json.containsKey(r'SUSPEND_WARNING_DAYS'), 'Required key "ModuleSettings[SUSPEND_WARNING_DAYS]" is missing from JSON.');
+        assert(json[r'SUSPEND_WARNING_DAYS'] != null, 'Required key "ModuleSettings[SUSPEND_WARNING_DAYS]" has a null value in JSON.');
+        assert(json.containsKey(r'TITLE'), 'Required key "ModuleSettings[TITLE]" is missing from JSON.');
+        assert(json[r'TITLE'] != null, 'Required key "ModuleSettings[TITLE]" has a null value in JSON.');
+        assert(json.containsKey(r'MENUNAME'), 'Required key "ModuleSettings[MENUNAME]" is missing from JSON.');
+        assert(json[r'MENUNAME'] != null, 'Required key "ModuleSettings[MENUNAME]" has a null value in JSON.');
+        assert(json.containsKey(r'EMAIL_FROM'), 'Required key "ModuleSettings[EMAIL_FROM]" is missing from JSON.');
+        assert(json[r'EMAIL_FROM'] != null, 'Required key "ModuleSettings[EMAIL_FROM]" has a null value in JSON.');
+        assert(json.containsKey(r'TBLNAME'), 'Required key "ModuleSettings[TBLNAME]" is missing from JSON.');
+        assert(json[r'TBLNAME'] != null, 'Required key "ModuleSettings[TBLNAME]" has a null value in JSON.');
+        assert(json.containsKey(r'TABLE'), 'Required key "ModuleSettings[TABLE]" is missing from JSON.');
+        assert(json[r'TABLE'] != null, 'Required key "ModuleSettings[TABLE]" has a null value in JSON.');
+        assert(json.containsKey(r'TITLE_FIELD'), 'Required key "ModuleSettings[TITLE_FIELD]" is missing from JSON.');
+        assert(json[r'TITLE_FIELD'] != null, 'Required key "ModuleSettings[TITLE_FIELD]" has a null value in JSON.');
+        assert(json.containsKey(r'PREFIX'), 'Required key "ModuleSettings[PREFIX]" is missing from JSON.');
+        assert(json[r'PREFIX'] != null, 'Required key "ModuleSettings[PREFIX]" has a null value in JSON.');
         return true;
       }());
 

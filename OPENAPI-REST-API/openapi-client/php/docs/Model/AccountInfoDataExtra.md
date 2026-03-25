@@ -1,4 +1,4 @@
-# # AccountInfoDataExtra
+# AccountInfoDataExtra
 
 ## Properties
 

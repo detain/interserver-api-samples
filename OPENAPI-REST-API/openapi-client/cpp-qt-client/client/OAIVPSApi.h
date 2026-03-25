@@ -309,6 +309,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -328,7 +335,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addVpsCallback(OAIHttpRequestWorker *worker);
     void deleteVpsBackupCallback(OAIHttpRequestWorker *worker);
@@ -468,270 +475,94 @@ Q_SIGNALS:
     void updateVpsInfoSignalFull(OAIHttpRequestWorker *worker);
     void vPSCancelSignalFull(OAIHttpRequestWorker *worker, OAIVPSCancel_200_response summary);
 
-    Q_DECL_DEPRECATED_X("Use addVpsSignalError() instead")
-    void addVpsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addVpsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteVpsBackupSignalError() instead")
-    void deleteVpsBackupSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteVpsBackupSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsBlockSmtpSignalError() instead")
-    void doVpsBlockSmtpSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsBlockSmtpSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsDisableCdSignalError() instead")
-    void doVpsDisableCdSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsDisableCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsDisableQuotaSignalError() instead")
-    void doVpsDisableQuotaSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsDisableQuotaSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsEjectCdSignalError() instead")
-    void doVpsEjectCdSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsEjectCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsEnableQuotaSignalError() instead")
-    void doVpsEnableQuotaSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsEnableQuotaSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsRestartSignalError() instead")
-    void doVpsRestartSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsRestartSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsStartSignalError() instead")
-    void doVpsStartSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsStartSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsStopSignalError() instead")
-    void doVpsStopSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsStopSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use downloadVpsBackupSignalError() instead")
-    void downloadVpsBackupSignalE(OAIDownloadQsBackup_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void downloadVpsBackupSignalError(OAIDownloadQsBackup_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewVpsSignalError() instead")
-    void getNewVpsSignalE(OAIVpsOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewVpsSignalError(OAIVpsOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsBackupsSignalError() instead")
-    void getVpsBackupsSignalE(OAIVpsBackupRows<OAIVpsBackupRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsBackupsSignalError(OAIVpsBackupRows<OAIVpsBackupRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsBuyHdSpaceSignalError() instead")
-    void getVpsBuyHdSpaceSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsBuyHdSpaceSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsBuyIpSignalError() instead")
-    void getVpsBuyIpSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsBuyIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsChangeTimezoneSignalError() instead")
-    void getVpsChangeTimezoneSignalE(QList<QString> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsChangeTimezoneSignalError(QList<QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsInfoSignalError() instead")
-    void getVpsInfoSignalE(OAIVps summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsInfoSignalError(OAIVps summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsInvoicesSignalError() instead")
-    void getVpsInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsListSignalError() instead")
-    void getVpsListSignalE(QList<OAIVpsRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsListSignalError(QList<OAIVpsRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsReinstallOsSignalError() instead")
-    void getVpsReinstallOsSignalE(OAIVpsTemplatesList summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsReinstallOsSignalError(OAIVpsTemplatesList summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsReverseDnsSignalError() instead")
-    void getVpsReverseDnsSignalE(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsReverseDnsSignalError(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsSetupVncSignalError() instead")
-    void getVpsSetupVncSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsSetupVncSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsSlicesSignalError() instead")
-    void getVpsSlicesSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsSlicesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsTrafficUsageSignalError() instead")
-    void getVpsTrafficUsageSignalE(OAIVpsTrafficResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsTrafficUsageSignalError(OAIVpsTrafficResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsViewDesktopSignalError() instead")
-    void getVpsViewDesktopSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsWelcomeEmailSignalError() instead")
-    void getVpsWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsBackupSignalError() instead")
-    void postVpsBackupSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsBackupSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsBuyHdSpaceSignalError() instead")
-    void postVpsBuyHdSpaceSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsBuyHdSpaceSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsBuyIpSignalError() instead")
-    void postVpsBuyIpSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsBuyIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeHostnameSignalError() instead")
-    void postVpsChangeHostnameSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeHostnameSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeRootPasswordSignalError() instead")
-    void postVpsChangeRootPasswordSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeRootPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeTimezoneSignalError() instead")
-    void postVpsChangeTimezoneSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeTimezoneSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeWebuzoPasswordSignalError() instead")
-    void postVpsChangeWebuzoPasswordSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeWebuzoPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsInsertCdSignalError() instead")
-    void postVpsInsertCdSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsInsertCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsReinstallOsSignalError() instead")
-    void postVpsReinstallOsSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsReinstallOsSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsResetPasswordSignalError() instead")
-    void postVpsResetPasswordSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsResetPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsRestoreSignalError() instead")
-    void postVpsRestoreSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsRestoreSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsReverseDnsSignalError() instead")
-    void postVpsReverseDnsSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsSetupVncSignalError() instead")
-    void postVpsSetupVncSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsSetupVncSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsSlicesSignalError() instead")
-    void postVpsSlicesSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsSlicesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsViewDesktopSignalError() instead")
-    void postVpsViewDesktopSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putVpsSignalError() instead")
-    void putVpsSignalE(OAIVpsOrderPutResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void putVpsSignalError(OAIVpsOrderPutResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateVpsInfoSignalError() instead")
-    void updateVpsInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateVpsInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use vPSCancelSignalError() instead")
-    void vPSCancelSignalE(OAIVPSCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void vPSCancelSignalError(OAIVPSCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addVpsSignalErrorFull() instead")
-    void addVpsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addVpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteVpsBackupSignalErrorFull() instead")
-    void deleteVpsBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteVpsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsBlockSmtpSignalErrorFull() instead")
-    void doVpsBlockSmtpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsBlockSmtpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsDisableCdSignalErrorFull() instead")
-    void doVpsDisableCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsDisableCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsDisableQuotaSignalErrorFull() instead")
-    void doVpsDisableQuotaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsDisableQuotaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsEjectCdSignalErrorFull() instead")
-    void doVpsEjectCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsEjectCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsEnableQuotaSignalErrorFull() instead")
-    void doVpsEnableQuotaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsEnableQuotaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsRestartSignalErrorFull() instead")
-    void doVpsRestartSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsRestartSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsStartSignalErrorFull() instead")
-    void doVpsStartSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsStartSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doVpsStopSignalErrorFull() instead")
-    void doVpsStopSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doVpsStopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use downloadVpsBackupSignalErrorFull() instead")
-    void downloadVpsBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void downloadVpsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewVpsSignalErrorFull() instead")
-    void getNewVpsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewVpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsBackupsSignalErrorFull() instead")
-    void getVpsBackupsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsBackupsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsBuyHdSpaceSignalErrorFull() instead")
-    void getVpsBuyHdSpaceSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsBuyHdSpaceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsBuyIpSignalErrorFull() instead")
-    void getVpsBuyIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsBuyIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsChangeTimezoneSignalErrorFull() instead")
-    void getVpsChangeTimezoneSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsChangeTimezoneSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsInfoSignalErrorFull() instead")
-    void getVpsInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsInvoicesSignalErrorFull() instead")
-    void getVpsInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsListSignalErrorFull() instead")
-    void getVpsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsReinstallOsSignalErrorFull() instead")
-    void getVpsReinstallOsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsReinstallOsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsReverseDnsSignalErrorFull() instead")
-    void getVpsReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsSetupVncSignalErrorFull() instead")
-    void getVpsSetupVncSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsSetupVncSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsSlicesSignalErrorFull() instead")
-    void getVpsSlicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsSlicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsTrafficUsageSignalErrorFull() instead")
-    void getVpsTrafficUsageSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsTrafficUsageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsViewDesktopSignalErrorFull() instead")
-    void getVpsViewDesktopSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getVpsWelcomeEmailSignalErrorFull() instead")
-    void getVpsWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getVpsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsBackupSignalErrorFull() instead")
-    void postVpsBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsBuyHdSpaceSignalErrorFull() instead")
-    void postVpsBuyHdSpaceSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsBuyHdSpaceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsBuyIpSignalErrorFull() instead")
-    void postVpsBuyIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsBuyIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeHostnameSignalErrorFull() instead")
-    void postVpsChangeHostnameSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeRootPasswordSignalErrorFull() instead")
-    void postVpsChangeRootPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeRootPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeTimezoneSignalErrorFull() instead")
-    void postVpsChangeTimezoneSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeTimezoneSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsChangeWebuzoPasswordSignalErrorFull() instead")
-    void postVpsChangeWebuzoPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsChangeWebuzoPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsInsertCdSignalErrorFull() instead")
-    void postVpsInsertCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsInsertCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsReinstallOsSignalErrorFull() instead")
-    void postVpsReinstallOsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsReinstallOsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsResetPasswordSignalErrorFull() instead")
-    void postVpsResetPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsResetPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsRestoreSignalErrorFull() instead")
-    void postVpsRestoreSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsRestoreSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsReverseDnsSignalErrorFull() instead")
-    void postVpsReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsSetupVncSignalErrorFull() instead")
-    void postVpsSetupVncSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsSetupVncSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsSlicesSignalErrorFull() instead")
-    void postVpsSlicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsSlicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postVpsViewDesktopSignalErrorFull() instead")
-    void postVpsViewDesktopSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postVpsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putVpsSignalErrorFull() instead")
-    void putVpsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putVpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateVpsInfoSignalErrorFull() instead")
-    void updateVpsInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateVpsInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use vPSCancelSignalErrorFull() instead")
-    void vPSCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void vPSCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

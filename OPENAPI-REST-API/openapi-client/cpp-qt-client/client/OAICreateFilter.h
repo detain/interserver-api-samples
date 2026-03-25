@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAICreateFilter : public OAIObject {
 public:
     OAICreateFilter();
-    OAICreateFilter(QString json);
+    OAICreateFilter(const QString &json);
     ~OAICreateFilter() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getFilterType() const;
     void setFilterType(const QString &filter_type);

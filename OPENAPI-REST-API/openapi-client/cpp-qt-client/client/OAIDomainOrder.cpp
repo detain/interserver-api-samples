@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainOrder::OAIDomainOrder(QString json) {
+OAIDomainOrder::OAIDomainOrder(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIDomainOrder::initializeModel() {
     m_tld_services_isValid = false;
 }
 
-void OAIDomainOrder::fromJson(QString jsonString) {
+void OAIDomainOrder::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -21,7 +21,7 @@ val get_mail_list : unit -> Mail_row.t list Lwt.t
 val get_mail_welcome_email : id:int32 -> Success_text_response.t Lwt.t
 val get_new_mail : unit -> Mail_order.t Lwt.t
 val get_rules : id:int32 -> Deny_rule_record.t list Lwt.t
-val get_stats : id:int32 -> ?time:Enums.time -> unit -> Mail_stats_type.t Lwt.t
+val get_stats : id:int32 -> ?time:Enums.time_0 -> unit -> Mail_stats_type.t Lwt.t
 val mail_cancel : id:int32 -> Mail_cancel_200_response.t Lwt.t
 val post_mail_delist : id:int32 -> mail_delist_request_t:Mail_delist_request.t -> Success_text_response.t Lwt.t
 val put_mail : unit -> unit Lwt.t
@@ -30,4 +30,4 @@ val send_adv_mail : id:int32 -> send_mail_adv_t:Send_mail_adv.t -> Generic_respo
 val send_mail : id:int32 -> send_mail_t:Send_mail.t -> Generic_response.t Lwt.t
 val update_mail_alert : id:int32 -> mail_alert_update_request_t:Mail_alert_update_request.t -> Success_text_response.t Lwt.t
 val update_mail_info : id:string -> unit Lwt.t
-val view_mail_log : id:int32 -> ?id2:int64 -> ?origin:string -> ?mx:string -> ?from:string -> ?_to:string -> ?subject:string -> ?mailid:string -> ?skip:int32 -> ?limit:int32 -> ?start_date:int64 -> ?end_date:int64 -> ?delivered:Enums.xdp_action -> unit -> Mail_log.t Lwt.t
+val view_mail_log : id:int32 -> ?id2:int64 -> ?origin:string -> ?mx:string -> ?from:string -> ?_to:string -> ?subject:string -> ?mailid:string -> ?message_id:string -> ?replyto:string -> ?headerfrom:string -> ?delivered:Enums.xdp_action -> ?skip:int32 -> ?limit:int32 -> ?start_date:View_mail_log_start_date_parameter.t -> ?end_date:View_mail_log_start_date_parameter.t -> ?sort:Enums.sort -> ?dir:Enums.dir -> ?groupby:Enums.groupby -> unit -> Mail_log.t Lwt.t

@@ -6,7 +6,7 @@
 
 
 static success_text_response_t *success_text_response_create_internal(
-    int success,
+    int *success,
     char *text,
     char *action
     ) {
@@ -14,24 +14,33 @@ static success_text_response_t *success_text_response_create_internal(
     if (!success_text_response_local_var) {
         return NULL;
     }
+    memset(success_text_response_local_var, 0, sizeof(success_text_response_t));
+    success_text_response_local_var->_library_owned = 1;
     success_text_response_local_var->success = success;
     success_text_response_local_var->text = text;
     success_text_response_local_var->action = action;
-
-    success_text_response_local_var->_library_owned = 1;
     return success_text_response_local_var;
 }
 
 __attribute__((deprecated)) success_text_response_t *success_text_response_create(
-    int success,
+    int *success,
     char *text,
     char *action
     ) {
-    return success_text_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    success_text_response_t *result = success_text_response_create_internal (
+        success_copy,
         text,
         action
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void success_text_response_free(success_text_response_t *success_text_response) {
@@ -43,6 +52,10 @@ void success_text_response_free(success_text_response_t *success_text_response) 
         return ;
     }
     listEntry_t *listEntry;
+    if (success_text_response->success) {
+        free(success_text_response->success);
+        success_text_response->success = NULL;
+    }
     if (success_text_response->text) {
         free(success_text_response->text);
         success_text_response->text = NULL;
@@ -61,7 +74,7 @@ cJSON *success_text_response_convertToJSON(success_text_response_t *success_text
     if (!success_text_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", success_text_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *success_text_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -93,6 +106,13 @@ success_text_response_t *success_text_response_parseFromJSON(cJSON *success_text
 
     success_text_response_t *success_text_response_local_var = NULL;
 
+    // define the local variable for success_text_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
+    char *action_local_str = NULL;
+
     // success_text_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(success_text_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -107,6 +127,12 @@ success_text_response_t *success_text_response_parseFromJSON(cJSON *success_text
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // success_text_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(success_text_responseJSON, "text");
@@ -133,14 +159,33 @@ success_text_response_t *success_text_response_parseFromJSON(cJSON *success_text
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+    if (action && !cJSON_IsNull(action)) action_local_str = strdup(action->valuestring);
+
     success_text_response_local_var = success_text_response_create_internal (
-        success->valueint,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
-        action && !cJSON_IsNull(action) ? strdup(action->valuestring) : NULL
+        success_local_var,
+        text_local_str,
+        action_local_str
         );
+
+    if (!success_text_response_local_var) {
+        goto end;
+    }
 
     return success_text_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (action_local_str) {
+        free(action_local_str);
+        action_local_str = NULL;
+    }
     return NULL;
 
 }

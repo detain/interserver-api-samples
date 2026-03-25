@@ -1,4 +1,4 @@
-# # BuyItNowServerOrder200ResponseCpInner
+# BuyItNowServerOrder200ResponseCpInner
 
 ## Properties
 

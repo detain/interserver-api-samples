@@ -395,6 +395,7 @@ docs/VPSApi.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -866,6 +867,7 @@ src/model/UrlRequest.js
 src/model/VPSCancel200Response.js
 src/model/VPSTrafficDataDataSectionResponse.js
 src/model/VPSTrafficDataDataSectionResponseInner.js
+src/model/ViewMailLogStartDateParameter.js
 src/model/ViewTicketResponse.js
 src/model/Vps.js
 src/model/VpsBackupRow.js
@@ -1331,6 +1333,7 @@ test/model/UrlRequest.spec.js
 test/model/VPSCancel200Response.spec.js
 test/model/VPSTrafficDataDataSectionResponse.spec.js
 test/model/VPSTrafficDataDataSectionResponseInner.spec.js
+test/model/ViewMailLogStartDateParameter.spec.js
 test/model/ViewTicketResponse.spec.js
 test/model/Vps.spec.js
 test/model/VpsBackupRow.spec.js

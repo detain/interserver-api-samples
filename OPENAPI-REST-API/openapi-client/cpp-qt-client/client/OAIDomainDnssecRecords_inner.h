@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainDnssecRecords_inner : public OAIObject {
 public:
     OAIDomainDnssecRecords_inner();
-    OAIDomainDnssecRecords_inner(QString json);
+    OAIDomainDnssecRecords_inner(const QString &json);
     ~OAIDomainDnssecRecords_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getAlgorithm() const;
     void setAlgorithm(const QString &algorithm);

@@ -1,4 +1,4 @@
-# # CancelBackup200Response
+# CancelBackup200Response
 
 ## Properties
 

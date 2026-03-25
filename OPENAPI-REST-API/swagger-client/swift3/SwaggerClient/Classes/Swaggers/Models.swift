@@ -4770,6 +4770,19 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "EmailAddressName", actual: "\(source)"))
             }
         }
+        // Decoder for [EndDate]
+        Decoders.addDecoder(clazz: [EndDate].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[EndDate]> in
+            return Decoders.decode(clazz: [EndDate].self, source: source)
+        }
+
+        // Decoder for EndDate
+        Decoders.addDecoder(clazz: EndDate.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<EndDate> in
+            if let source = source as? EndDate {
+                return .success(source)
+            } else {
+                return .failure(.typeMismatch(expected: "Typealias EndDate", actual: "\(source)"))
+            }
+        }
         // Decoder for [FieldLabel]
         Decoders.addDecoder(clazz: [FieldLabel].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[FieldLabel]> in
             return Decoders.decode(clazz: [FieldLabel].self, source: source)
@@ -8855,8 +8868,20 @@ class Decoders {
                 case let .success(value): _result.seq = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["delivered"] as AnyObject?) {
+                case let .success(value): _result.delivered = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["code"] as AnyObject?) {
+                case let .success(value): _result.code = value
+                case let .failure(error): break
+                }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["recipient"] as AnyObject?) {
                 case let .success(value): _result.recipient = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["response"] as AnyObject?) {
+                case let .success(value): _result.response = value
                 case let .failure(error): break
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["domain"] as AnyObject?) {
@@ -8867,7 +8892,7 @@ class Decoders {
                 case let .success(value): _result.locked = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["lockTime"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["lockTime"] as AnyObject?) {
                 case let .success(value): _result.lockTime = value
                 case let .failure(error): break
                 }
@@ -8881,10 +8906,6 @@ class Decoders {
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["mxHostname"] as AnyObject?) {
                 case let .success(value): _result.mxHostname = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["response"] as AnyObject?) {
-                case let .success(value): _result.response = value
                 case let .failure(error): break
                 }
                 return .success(_result)
@@ -12927,6 +12948,19 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ServicesInfo", actual: "\(source)"))
+            }
+        }
+        // Decoder for [StartDate]
+        Decoders.addDecoder(clazz: [StartDate].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[StartDate]> in
+            return Decoders.decode(clazz: [StartDate].self, source: source)
+        }
+
+        // Decoder for StartDate
+        Decoders.addDecoder(clazz: StartDate.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<StartDate> in
+            if let source = source as? StartDate {
+                return .success(source)
+            } else {
+                return .failure(.typeMismatch(expected: "Typealias StartDate", actual: "\(source)"))
             }
         }
         // Decoder for [StatusMonthlyBreakdown]

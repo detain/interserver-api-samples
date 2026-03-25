@@ -1,4 +1,4 @@
-# # ViewTicketResponse
+# ViewTicketResponse
 
 ## Properties
 

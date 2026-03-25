@@ -1,4 +1,4 @@
-# # ScrubIpsRowSchema
+# ScrubIpsRowSchema
 
 ## Properties
 

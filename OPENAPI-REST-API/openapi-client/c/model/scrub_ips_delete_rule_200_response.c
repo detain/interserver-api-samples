@@ -6,28 +6,37 @@
 
 
 static scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_local_var = malloc(sizeof(scrub_ips_delete_rule_200_response_t));
     if (!scrub_ips_delete_rule_200_response_local_var) {
         return NULL;
     }
+    memset(scrub_ips_delete_rule_200_response_local_var, 0, sizeof(scrub_ips_delete_rule_200_response_t));
+    scrub_ips_delete_rule_200_response_local_var->_library_owned = 1;
     scrub_ips_delete_rule_200_response_local_var->success = success;
     scrub_ips_delete_rule_200_response_local_var->text = text;
-
-    scrub_ips_delete_rule_200_response_local_var->_library_owned = 1;
     return scrub_ips_delete_rule_200_response_local_var;
 }
 
 __attribute__((deprecated)) scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return scrub_ips_delete_rule_200_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    scrub_ips_delete_rule_200_response_t *result = scrub_ips_delete_rule_200_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void scrub_ips_delete_rule_200_response_free(scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response) {
@@ -39,6 +48,10 @@ void scrub_ips_delete_rule_200_response_free(scrub_ips_delete_rule_200_response_
         return ;
     }
     listEntry_t *listEntry;
+    if (scrub_ips_delete_rule_200_response->success) {
+        free(scrub_ips_delete_rule_200_response->success);
+        scrub_ips_delete_rule_200_response->success = NULL;
+    }
     if (scrub_ips_delete_rule_200_response->text) {
         free(scrub_ips_delete_rule_200_response->text);
         scrub_ips_delete_rule_200_response->text = NULL;
@@ -51,7 +64,7 @@ cJSON *scrub_ips_delete_rule_200_response_convertToJSON(scrub_ips_delete_rule_20
 
     // scrub_ips_delete_rule_200_response->success
     if(scrub_ips_delete_rule_200_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", scrub_ips_delete_rule_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *scrub_ips_delete_rule_200_response->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -76,6 +89,11 @@ scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_parseFr
 
     scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_local_var = NULL;
 
+    // define the local variable for scrub_ips_delete_rule_200_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // scrub_ips_delete_rule_200_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(scrub_ips_delete_rule_200_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -86,6 +104,12 @@ scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_parseFr
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // scrub_ips_delete_rule_200_response->text
@@ -101,13 +125,27 @@ scrub_ips_delete_rule_200_response_t *scrub_ips_delete_rule_200_response_parseFr
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     scrub_ips_delete_rule_200_response_local_var = scrub_ips_delete_rule_200_response_create_internal (
-        success ? success->valueint : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL
+        success_local_var,
+        text_local_str
         );
+
+    if (!scrub_ips_delete_rule_200_response_local_var) {
+        goto end;
+    }
 
     return scrub_ips_delete_rule_200_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -32,13 +32,13 @@ class OAIHome_details_modules;
 class OAIHome_details : public OAIObject {
 public:
     OAIHome_details();
-    OAIHome_details(QString json);
+    OAIHome_details(const QString &json);
     ~OAIHome_details() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIHome_details_modules getModules() const;
     void setModules(const OAIHome_details_modules &modules);

@@ -20,14 +20,14 @@ typedef struct field_label_t field_label_t;
 
 typedef struct field_label_t {
     char *name; // string
-    int active; //numeric
+    int *active; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } field_label_t;
 
 __attribute__((deprecated)) field_label_t *field_label_create(
     char *name,
-    int active
+    int *active
 );
 
 void field_label_free(field_label_t *field_label);

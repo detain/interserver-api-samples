@@ -14,11 +14,11 @@ static home_ticket_status_view_t *home_ticket_status_view_create_internal(
     if (!home_ticket_status_view_local_var) {
         return NULL;
     }
+    memset(home_ticket_status_view_local_var, 0, sizeof(home_ticket_status_view_t));
+    home_ticket_status_view_local_var->_library_owned = 1;
     home_ticket_status_view_local_var->_4 = _4;
     home_ticket_status_view_local_var->_5 = _5;
     home_ticket_status_view_local_var->_6 = _6;
-
-    home_ticket_status_view_local_var->_library_owned = 1;
     return home_ticket_status_view_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) home_ticket_status_view_t *home_ticket_status_view_c
     char *_5,
     char *_6
     ) {
-    return home_ticket_status_view_create_internal (
+    home_ticket_status_view_t *result = home_ticket_status_view_create_internal (
         _4,
         _5,
         _6
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_ticket_status_view_free(home_ticket_status_view_t *home_ticket_status_view) {
@@ -96,6 +99,12 @@ home_ticket_status_view_t *home_ticket_status_view_parseFromJSON(cJSON *home_tic
 
     home_ticket_status_view_t *home_ticket_status_view_local_var = NULL;
 
+    char *_4_local_str = NULL;
+
+    char *_5_local_str = NULL;
+
+    char *_6_local_str = NULL;
+
     // home_ticket_status_view->_4
     cJSON *_4 = cJSON_GetObjectItemCaseSensitive(home_ticket_status_viewJSON, "4");
     if (cJSON_IsNull(_4)) {
@@ -133,14 +142,34 @@ home_ticket_status_view_t *home_ticket_status_view_parseFromJSON(cJSON *home_tic
     }
 
 
+    if (_4 && !cJSON_IsNull(_4)) _4_local_str = strdup(_4->valuestring);
+    if (_5 && !cJSON_IsNull(_5)) _5_local_str = strdup(_5->valuestring);
+    if (_6 && !cJSON_IsNull(_6)) _6_local_str = strdup(_6->valuestring);
+
     home_ticket_status_view_local_var = home_ticket_status_view_create_internal (
-        _4 && !cJSON_IsNull(_4) ? strdup(_4->valuestring) : NULL,
-        _5 && !cJSON_IsNull(_5) ? strdup(_5->valuestring) : NULL,
-        _6 && !cJSON_IsNull(_6) ? strdup(_6->valuestring) : NULL
+        _4_local_str,
+        _5_local_str,
+        _6_local_str
         );
+
+    if (!home_ticket_status_view_local_var) {
+        goto end;
+    }
 
     return home_ticket_status_view_local_var;
 end:
+    if (_4_local_str) {
+        free(_4_local_str);
+        _4_local_str = NULL;
+    }
+    if (_5_local_str) {
+        free(_5_local_str);
+        _5_local_str = NULL;
+    }
+    if (_6_local_str) {
+        free(_6_local_str);
+        _6_local_str = NULL;
+    }
     return NULL;
 
 }

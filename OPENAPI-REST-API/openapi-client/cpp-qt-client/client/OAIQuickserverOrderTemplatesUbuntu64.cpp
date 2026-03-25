@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserverOrderTemplatesUbuntu64::OAIQuickserverOrderTemplatesUbuntu64(QString json) {
+OAIQuickserverOrderTemplatesUbuntu64::OAIQuickserverOrderTemplatesUbuntu64(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIQuickserverOrderTemplatesUbuntu64::initializeModel() {
 
 }
 
-void OAIQuickserverOrderTemplatesUbuntu64::fromJson(QString jsonString) {
+void OAIQuickserverOrderTemplatesUbuntu64::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

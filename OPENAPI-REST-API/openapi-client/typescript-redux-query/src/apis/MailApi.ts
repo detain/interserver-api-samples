@@ -78,6 +78,9 @@ import {
     SuccessTextResponse,
     SuccessTextResponseFromJSON,
     SuccessTextResponseToJSON,
+    ViewMailLogStartDateParameter,
+    ViewMailLogStartDateParameterFromJSON,
+    ViewMailLogStartDateParameterToJSON,
 } from '../models';
 
 export interface AddRuleRequest {
@@ -183,11 +186,17 @@ export interface ViewMailLogRequest {
     to?: string;
     subject?: string;
     mailid?: string;
+    messageId?: string;
+    replyto?: string;
+    headerfrom?: string;
+    delivered?: ViewMailLogDeliveredEnum;
     skip?: number;
     limit?: number;
-    startDate?: number;
-    endDate?: number;
-    delivered?: ViewMailLogDeliveredEnum;
+    startDate?: ViewMailLogStartDateParameter;
+    endDate?: ViewMailLogStartDateParameter;
+    sort?: ViewMailLogSortEnum;
+    dir?: ViewMailLogDirEnum;
+    groupby?: ViewMailLogGroupbyEnum;
 }
 
 
@@ -1484,7 +1493,7 @@ export function updateMailInfo<T>(requestParameters: UpdateMailInfoRequest, requ
 }
 
 /**
- * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+ * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
  * View Mail Log
  */
 function viewMailLogRaw<T>(requestParameters: ViewMailLogRequest, requestConfig: runtime.TypedQueryConfig<T, MailLog> = {}): QueryConfig<T> {
@@ -1532,6 +1541,26 @@ function viewMailLogRaw<T>(requestParameters: ViewMailLogRequest, requestConfig:
     }
 
 
+    if (requestParameters.messageId !== undefined) {
+        queryParameters['messageId'] = requestParameters.messageId;
+    }
+
+
+    if (requestParameters.replyto !== undefined) {
+        queryParameters['replyto'] = requestParameters.replyto;
+    }
+
+
+    if (requestParameters.headerfrom !== undefined) {
+        queryParameters['headerfrom'] = requestParameters.headerfrom;
+    }
+
+
+    if (requestParameters.delivered !== undefined) {
+        queryParameters['delivered'] = requestParameters.delivered;
+    }
+
+
     if (requestParameters.skip !== undefined) {
         queryParameters['skip'] = requestParameters.skip;
     }
@@ -1552,8 +1581,18 @@ function viewMailLogRaw<T>(requestParameters: ViewMailLogRequest, requestConfig:
     }
 
 
-    if (requestParameters.delivered !== undefined) {
-        queryParameters['delivered'] = requestParameters.delivered;
+    if (requestParameters.sort !== undefined) {
+        queryParameters['sort'] = requestParameters.sort;
+    }
+
+
+    if (requestParameters.dir !== undefined) {
+        queryParameters['dir'] = requestParameters.dir;
+    }
+
+
+    if (requestParameters.groupby !== undefined) {
+        queryParameters['groupby'] = requestParameters.groupby;
     }
 
     const headerParameters : runtime.HttpHeaders = {};
@@ -1587,7 +1626,7 @@ function viewMailLogRaw<T>(requestParameters: ViewMailLogRequest, requestConfig:
 }
 
 /**
-* Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+* Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
 * View Mail Log
 */
 export function viewMailLog<T>(requestParameters: ViewMailLogRequest, requestConfig?: runtime.TypedQueryConfig<T, MailLog>): QueryConfig<T> {
@@ -1613,6 +1652,29 @@ export enum GetStatsTimeEnum {
     * @enum {string}
     */
 export enum ViewMailLogDeliveredEnum {
-    _0 = '0',
-    _1 = '1'
+    NUMBER_0 = 0,
+    NUMBER_1 = 1
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ViewMailLogSortEnum {
+    Time = 'time'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ViewMailLogDirEnum {
+    Asc = 'asc',
+    Desc = 'desc'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ViewMailLogGroupbyEnum {
+    Message = 'message',
+    Recipient = 'recipient'
 }

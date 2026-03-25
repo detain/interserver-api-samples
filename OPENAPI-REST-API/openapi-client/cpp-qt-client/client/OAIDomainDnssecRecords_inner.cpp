@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainDnssecRecords_inner::OAIDomainDnssecRecords_inner(QString json) {
+OAIDomainDnssecRecords_inner::OAIDomainDnssecRecords_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIDomainDnssecRecords_inner::initializeModel() {
     m_key_tag_isValid = false;
 }
 
-void OAIDomainDnssecRecords_inner::fromJson(QString jsonString) {
+void OAIDomainDnssecRecords_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

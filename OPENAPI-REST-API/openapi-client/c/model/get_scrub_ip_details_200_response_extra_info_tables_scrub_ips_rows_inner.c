@@ -13,10 +13,10 @@ static get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_
     if (!get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var, 0, sizeof(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_t));
+    get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var->desc = desc;
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var->value = value;
-
-    get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_extra_info_tables_
     char *desc,
     char *value
     ) {
-    return get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_create_internal (
+    get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_t *result = get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_create_internal (
         desc,
         value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_free(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_t *get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner) {
@@ -80,6 +83,10 @@ get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_t *get_
 
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_t *get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var = NULL;
 
+    char *desc_local_str = NULL;
+
+    char *value_local_str = NULL;
+
     // get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner->desc
     cJSON *desc = cJSON_GetObjectItemCaseSensitive(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_innerJSON, "desc");
     if (cJSON_IsNull(desc)) {
@@ -105,13 +112,28 @@ get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_t *get_
     }
 
 
+    if (desc && !cJSON_IsNull(desc)) desc_local_str = strdup(desc->valuestring);
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var = get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_create_internal (
-        desc && !cJSON_IsNull(desc) ? strdup(desc->valuestring) : NULL,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        desc_local_str,
+        value_local_str
         );
+
+    if (!get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner_local_var;
 end:
+    if (desc_local_str) {
+        free(desc_local_str);
+        desc_local_str = NULL;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
+    }
     return NULL;
 
 }

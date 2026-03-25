@@ -13,149 +13,161 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
  * @export
  * @interface MailLogEntry
  */
 export interface MailLogEntry  {
     /**
-     * internal db id
+     * Internal auto-increment database row ID.
      * @type {number}
      * @memberof MailLogEntry
      */
     _id: number;
     /**
-     * mail id
+     * The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
      * @type {string}
      * @memberof MailLogEntry
      */
     id: string;
     /**
-     * from address
+     * SMTP envelope `MAIL FROM` address.
      * @type {string}
      * @memberof MailLogEntry
      */
     from: string;
     /**
-     * to address
+     * SMTP envelope `RCPT TO` address.
      * @type {string}
      * @memberof MailLogEntry
      */
     to: string;
     /**
-     * email subject
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    subject: string;
-    /**
-     * creation date
+     * Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
      * @type {string}
      * @memberof MailLogEntry
      */
     created: string;
     /**
-     * creation timestamp
+     * Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
      * @type {number}
      * @memberof MailLogEntry
      */
     time: number;
     /**
-     * user account
+     * The SMTP AUTH username used to submit the message (e.g. `mb5658`).
      * @type {string}
      * @memberof MailLogEntry
      */
     user: string;
     /**
-     * transaction type
+     * SMTP transaction type negotiated with the relay.
      * @type {string}
      * @memberof MailLogEntry
      */
     transtype: string;
     /**
-     * origin ip
+     * IP address of the client that submitted the message to the relay.
      * @type {string}
      * @memberof MailLogEntry
      */
     origin: string;
     /**
-     * interface name
+     * Relay interface name that accepted the message.
      * @type {string}
      * @memberof MailLogEntry
      */
     _interface: string;
     /**
-     * sending zone
+     * The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
      * @type {string}
      * @memberof MailLogEntry
      */
-    sendingZone: string;
+    subject?: string;
     /**
-     * email body size in bytes
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    bodySize: number;
-    /**
-     * index of email in the to adderess list
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    seq: number;
-    /**
-     * to address this email is being sent to
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    recipient: string;
-    /**
-     * to address domain
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    domain: string;
-    /**
-     * locked status
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    locked: number;
-    /**
-     * lock timestamp
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    lockTime: number;
-    /**
-     * assigned server
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    assigned: string;
-    /**
-     * queued timestamp
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    queued: string;
-    /**
-     * mx hostname
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    mxHostname: string;
-    /**
-     * mail delivery response
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    response: string;
-    /**
-     * message id
+     * The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
      * @type {string}
      * @memberof MailLogEntry
      */
     messageId?: string;
+    /**
+     * The sending zone assigned by the relay for outbound delivery.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    sendingZone?: string;
+    /**
+     * Size of the message body in bytes.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    bodySize?: number;
+    /**
+     * Sequence index of this recipient in a multi-recipient message. Starts at 1.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    seq?: number;
+    /**
+     * Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    delivered?: number;
+    /**
+     * The SMTP response code from the destination MX server (e.g. `250`).
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    code?: number;
+    /**
+     * The specific recipient address this delivery record is for.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    recipient?: string;
+    /**
+     * The full SMTP response string received from the destination MX server.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    response?: string;
+    /**
+     * The destination domain for this delivery attempt.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    domain?: string;
+    /**
+     * Whether the queue entry is currently locked for delivery processing.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    locked?: number;
+    /**
+     * Millisecond-precision timestamp of the last queue lock acquisition.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    lockTime?: string;
+    /**
+     * The relay server node assigned to deliver this message.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    assigned?: string;
+    /**
+     * ISO 8601 timestamp when the message was placed into the delivery queue.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    queued?: string;
+    /**
+     * The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    mxHostname?: string;
 }
 
 export function MailLogEntryFromJSON(json: any): MailLogEntry {
@@ -164,25 +176,27 @@ export function MailLogEntryFromJSON(json: any): MailLogEntry {
         'id': json['id'],
         'from': json['from'],
         'to': json['to'],
-        'subject': json['subject'],
         'created': json['created'],
         'time': json['time'],
         'user': json['user'],
         'transtype': json['transtype'],
         'origin': json['origin'],
         '_interface': json['interface'],
-        'sendingZone': json['sendingZone'],
-        'bodySize': json['bodySize'],
-        'seq': json['seq'],
-        'recipient': json['recipient'],
-        'domain': json['domain'],
-        'locked': json['locked'],
-        'lockTime': json['lockTime'],
-        'assigned': json['assigned'],
-        'queued': json['queued'],
-        'mxHostname': json['mxHostname'],
-        'response': json['response'],
+        'subject': !exists(json, 'subject') ? undefined : json['subject'],
         'messageId': !exists(json, 'messageId') ? undefined : json['messageId'],
+        'sendingZone': !exists(json, 'sendingZone') ? undefined : json['sendingZone'],
+        'bodySize': !exists(json, 'bodySize') ? undefined : json['bodySize'],
+        'seq': !exists(json, 'seq') ? undefined : json['seq'],
+        'delivered': !exists(json, 'delivered') ? undefined : json['delivered'],
+        'code': !exists(json, 'code') ? undefined : json['code'],
+        'recipient': !exists(json, 'recipient') ? undefined : json['recipient'],
+        'response': !exists(json, 'response') ? undefined : json['response'],
+        'domain': !exists(json, 'domain') ? undefined : json['domain'],
+        'locked': !exists(json, 'locked') ? undefined : json['locked'],
+        'lockTime': !exists(json, 'lockTime') ? undefined : json['lockTime'],
+        'assigned': !exists(json, 'assigned') ? undefined : json['assigned'],
+        'queued': !exists(json, 'queued') ? undefined : json['queued'],
+        'mxHostname': !exists(json, 'mxHostname') ? undefined : json['mxHostname'],
     };
 }
 
@@ -195,25 +209,27 @@ export function MailLogEntryToJSON(value?: MailLogEntry): any {
         'id': value.id,
         'from': value.from,
         'to': value.to,
-        'subject': value.subject,
         'created': value.created,
         'time': value.time,
         'user': value.user,
         'transtype': value.transtype,
         'origin': value.origin,
         'interface': value._interface,
+        'subject': value.subject,
+        'messageId': value.messageId,
         'sendingZone': value.sendingZone,
         'bodySize': value.bodySize,
         'seq': value.seq,
+        'delivered': value.delivered,
+        'code': value.code,
         'recipient': value.recipient,
+        'response': value.response,
         'domain': value.domain,
         'locked': value.locked,
         'lockTime': value.lockTime,
         'assigned': value.assigned,
         'queued': value.queued,
         'mxHostname': value.mxHostname,
-        'response': value.response,
-        'messageId': value.messageId,
     };
 }
 

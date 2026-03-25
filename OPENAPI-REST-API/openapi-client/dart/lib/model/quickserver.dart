@@ -181,10 +181,48 @@ class Quickserver {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Quickserver[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Quickserver[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'serviceInfo'), 'Required key "Quickserver[serviceInfo]" is missing from JSON.');
+        assert(json[r'serviceInfo'] != null, 'Required key "Quickserver[serviceInfo]" has a null value in JSON.');
+        assert(json.containsKey(r'client_links'), 'Required key "Quickserver[client_links]" is missing from JSON.');
+        assert(json[r'client_links'] != null, 'Required key "Quickserver[client_links]" has a null value in JSON.');
+        assert(json.containsKey(r'billingDetails'), 'Required key "Quickserver[billingDetails]" is missing from JSON.');
+        assert(json[r'billingDetails'] != null, 'Required key "Quickserver[billingDetails]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrency'), 'Required key "Quickserver[custCurrency]" is missing from JSON.');
+        assert(json[r'custCurrency'] != null, 'Required key "Quickserver[custCurrency]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrencySymbol'), 'Required key "Quickserver[custCurrencySymbol]" is missing from JSON.');
+        assert(json[r'custCurrencySymbol'] != null, 'Required key "Quickserver[custCurrencySymbol]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceMaster'), 'Required key "Quickserver[serviceMaster]" is missing from JSON.');
+        assert(json[r'serviceMaster'] != null, 'Required key "Quickserver[serviceMaster]" has a null value in JSON.');
+        assert(json.containsKey(r'package'), 'Required key "Quickserver[package]" is missing from JSON.');
+        assert(json[r'package'] != null, 'Required key "Quickserver[package]" has a null value in JSON.');
+        assert(json.containsKey(r'os_template'), 'Required key "Quickserver[os_template]" is missing from JSON.');
+        assert(json[r'os_template'] != null, 'Required key "Quickserver[os_template]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceExtra'), 'Required key "Quickserver[serviceExtra]" is missing from JSON.');
+        assert(json[r'serviceExtra'] != null, 'Required key "Quickserver[serviceExtra]" has a null value in JSON.');
+        assert(json.containsKey(r'extraInfoTables'), 'Required key "Quickserver[extraInfoTables]" is missing from JSON.');
+        assert(json[r'extraInfoTables'] != null, 'Required key "Quickserver[extraInfoTables]" has a null value in JSON.');
+        assert(json.containsKey(r'cpu_graph_data'), 'Required key "Quickserver[cpu_graph_data]" is missing from JSON.');
+        assert(json[r'cpu_graph_data'] != null, 'Required key "Quickserver[cpu_graph_data]" has a null value in JSON.');
+        assert(json.containsKey(r'bandwidth_xaxis'), 'Required key "Quickserver[bandwidth_xaxis]" is missing from JSON.');
+        assert(json[r'bandwidth_xaxis'] != null, 'Required key "Quickserver[bandwidth_xaxis]" has a null value in JSON.');
+        assert(json.containsKey(r'bandwidth_yaxis'), 'Required key "Quickserver[bandwidth_yaxis]" is missing from JSON.');
+        assert(json[r'bandwidth_yaxis'] != null, 'Required key "Quickserver[bandwidth_yaxis]" has a null value in JSON.');
+        assert(json.containsKey(r'module'), 'Required key "Quickserver[module]" is missing from JSON.');
+        assert(json[r'module'] != null, 'Required key "Quickserver[module]" has a null value in JSON.');
+        assert(json.containsKey(r'token'), 'Required key "Quickserver[token]" is missing from JSON.');
+        assert(json[r'token'] != null, 'Required key "Quickserver[token]" has a null value in JSON.');
+        assert(json.containsKey(r'service_disk_used'), 'Required key "Quickserver[service_disk_used]" is missing from JSON.');
+        assert(json[r'service_disk_used'] != null, 'Required key "Quickserver[service_disk_used]" has a null value in JSON.');
+        assert(json.containsKey(r'service_disk_total'), 'Required key "Quickserver[service_disk_total]" is missing from JSON.');
+        assert(json[r'service_disk_total'] != null, 'Required key "Quickserver[service_disk_total]" has a null value in JSON.');
+        assert(json.containsKey(r'disk_percentage'), 'Required key "Quickserver[disk_percentage]" is missing from JSON.');
+        assert(json[r'disk_percentage'] != null, 'Required key "Quickserver[disk_percentage]" has a null value in JSON.');
+        assert(json.containsKey(r'memory'), 'Required key "Quickserver[memory]" is missing from JSON.');
+        assert(json[r'memory'] != null, 'Required key "Quickserver[memory]" has a null value in JSON.');
+        assert(json.containsKey(r'hdd'), 'Required key "Quickserver[hdd]" is missing from JSON.');
+        assert(json[r'hdd'] != null, 'Required key "Quickserver[hdd]" has a null value in JSON.');
+        assert(json.containsKey(r'service_overview_extra'), 'Required key "Quickserver[service_overview_extra]" is missing from JSON.');
+        assert(json[r'service_overview_extra'] != null, 'Required key "Quickserver[service_overview_extra]" has a null value in JSON.');
         return true;
       }());
 

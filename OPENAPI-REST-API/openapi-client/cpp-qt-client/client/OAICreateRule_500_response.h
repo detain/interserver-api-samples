@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAICreateRule_500_response : public OAIObject {
 public:
     OAICreateRule_500_response();
-    OAICreateRule_500_response(QString json);
+    OAICreateRule_500_response(const QString &json);
     ~OAICreateRule_500_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

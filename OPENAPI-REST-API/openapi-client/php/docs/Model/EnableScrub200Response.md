@@ -1,4 +1,4 @@
-# # EnableScrub200Response
+# EnableScrub200Response
 
 ## Properties
 

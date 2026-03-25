@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class QuickserverServiceMaster(BaseModel):
     """
@@ -63,7 +64,8 @@ class QuickserverServiceMaster(BaseModel):
     __properties: ClassVar[List[str]] = ["qs_id", "qs_name", "qs_ip", "qs_type", "qs_hdsize", "qs_hdfree", "qs_bits", "qs_load", "qs_ram", "qs_cpu_model", "qs_cpu_mhz", "qs_location", "qs_available", "qs_cost", "qs_last_update", "qs_cores", "qs_iowait", "qs_raid_status", "qs_drive_type", "qs_order", "qs_raid_building", "qs_kernel", "qs_ioping", "qs_speed", "qs_distro", "qs_distro_version", "qs_bytes_sec_in", "qs_bytes_sec_out", "qs_packets_sec_in", "qs_packets_sec_out", "qs_last_install_time", "qs_partitions", "qs_cpu_flags"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -75,8 +77,7 @@ class QuickserverServiceMaster(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

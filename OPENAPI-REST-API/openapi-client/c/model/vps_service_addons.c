@@ -6,19 +6,19 @@
 
 
 static vps_service_addons_t *vps_service_addons_create_internal(
-    int has_cpanel,
-    int has_directadmin,
-    int has_fantastico,
-    int has_softaculous,
-    int has_hdspace,
-    int dedicated_ip,
+    int *has_cpanel,
+    int *has_directadmin,
+    int *has_fantastico,
+    int *has_softaculous,
+    int *has_hdspace,
+    int *dedicated_ip,
     list_t *extra_ips,
     list_t *extra_ips6,
     list_t *unpaid_ips,
     list_t *ips,
     list_t *ips6,
-    int cpanel_id,
-    int cost,
+    int *cpanel_id,
+    int *cost,
     list_t *ids,
     list_t *rdata
     ) {
@@ -26,6 +26,8 @@ static vps_service_addons_t *vps_service_addons_create_internal(
     if (!vps_service_addons_local_var) {
         return NULL;
     }
+    memset(vps_service_addons_local_var, 0, sizeof(vps_service_addons_t));
+    vps_service_addons_local_var->_library_owned = 1;
     vps_service_addons_local_var->has_cpanel = has_cpanel;
     vps_service_addons_local_var->has_directadmin = has_directadmin;
     vps_service_addons_local_var->has_fantastico = has_fantastico;
@@ -41,45 +43,94 @@ static vps_service_addons_t *vps_service_addons_create_internal(
     vps_service_addons_local_var->cost = cost;
     vps_service_addons_local_var->ids = ids;
     vps_service_addons_local_var->rdata = rdata;
-
-    vps_service_addons_local_var->_library_owned = 1;
     return vps_service_addons_local_var;
 }
 
 __attribute__((deprecated)) vps_service_addons_t *vps_service_addons_create(
-    int has_cpanel,
-    int has_directadmin,
-    int has_fantastico,
-    int has_softaculous,
-    int has_hdspace,
-    int dedicated_ip,
+    int *has_cpanel,
+    int *has_directadmin,
+    int *has_fantastico,
+    int *has_softaculous,
+    int *has_hdspace,
+    int *dedicated_ip,
     list_t *extra_ips,
     list_t *extra_ips6,
     list_t *unpaid_ips,
     list_t *ips,
     list_t *ips6,
-    int cpanel_id,
-    int cost,
+    int *cpanel_id,
+    int *cost,
     list_t *ids,
     list_t *rdata
     ) {
-    return vps_service_addons_create_internal (
-        has_cpanel,
-        has_directadmin,
-        has_fantastico,
-        has_softaculous,
-        has_hdspace,
-        dedicated_ip,
+    int *has_cpanel_copy = NULL;
+    if (has_cpanel) {
+        has_cpanel_copy = malloc(sizeof(int));
+        if (has_cpanel_copy) *has_cpanel_copy = *has_cpanel;
+    }
+    int *has_directadmin_copy = NULL;
+    if (has_directadmin) {
+        has_directadmin_copy = malloc(sizeof(int));
+        if (has_directadmin_copy) *has_directadmin_copy = *has_directadmin;
+    }
+    int *has_fantastico_copy = NULL;
+    if (has_fantastico) {
+        has_fantastico_copy = malloc(sizeof(int));
+        if (has_fantastico_copy) *has_fantastico_copy = *has_fantastico;
+    }
+    int *has_softaculous_copy = NULL;
+    if (has_softaculous) {
+        has_softaculous_copy = malloc(sizeof(int));
+        if (has_softaculous_copy) *has_softaculous_copy = *has_softaculous;
+    }
+    int *has_hdspace_copy = NULL;
+    if (has_hdspace) {
+        has_hdspace_copy = malloc(sizeof(int));
+        if (has_hdspace_copy) *has_hdspace_copy = *has_hdspace;
+    }
+    int *dedicated_ip_copy = NULL;
+    if (dedicated_ip) {
+        dedicated_ip_copy = malloc(sizeof(int));
+        if (dedicated_ip_copy) *dedicated_ip_copy = *dedicated_ip;
+    }
+    int *cpanel_id_copy = NULL;
+    if (cpanel_id) {
+        cpanel_id_copy = malloc(sizeof(int));
+        if (cpanel_id_copy) *cpanel_id_copy = *cpanel_id;
+    }
+    int *cost_copy = NULL;
+    if (cost) {
+        cost_copy = malloc(sizeof(int));
+        if (cost_copy) *cost_copy = *cost;
+    }
+    vps_service_addons_t *result = vps_service_addons_create_internal (
+        has_cpanel_copy,
+        has_directadmin_copy,
+        has_fantastico_copy,
+        has_softaculous_copy,
+        has_hdspace_copy,
+        dedicated_ip_copy,
         extra_ips,
         extra_ips6,
         unpaid_ips,
         ips,
         ips6,
-        cpanel_id,
-        cost,
+        cpanel_id_copy,
+        cost_copy,
         ids,
         rdata
         );
+    if (!result) {
+        free(has_cpanel_copy);
+        free(has_directadmin_copy);
+        free(has_fantastico_copy);
+        free(has_softaculous_copy);
+        free(has_hdspace_copy);
+        free(dedicated_ip_copy);
+        free(cpanel_id_copy);
+        free(cost_copy);
+    }
+    return result;
 }
 
 void vps_service_addons_free(vps_service_addons_t *vps_service_addons) {
@@ -91,6 +142,30 @@ void vps_service_addons_free(vps_service_addons_t *vps_service_addons) {
         return ;
     }
     listEntry_t *listEntry;
+    if (vps_service_addons->has_cpanel) {
+        free(vps_service_addons->has_cpanel);
+        vps_service_addons->has_cpanel = NULL;
+    }
+    if (vps_service_addons->has_directadmin) {
+        free(vps_service_addons->has_directadmin);
+        vps_service_addons->has_directadmin = NULL;
+    }
+    if (vps_service_addons->has_fantastico) {
+        free(vps_service_addons->has_fantastico);
+        vps_service_addons->has_fantastico = NULL;
+    }
+    if (vps_service_addons->has_softaculous) {
+        free(vps_service_addons->has_softaculous);
+        vps_service_addons->has_softaculous = NULL;
+    }
+    if (vps_service_addons->has_hdspace) {
+        free(vps_service_addons->has_hdspace);
+        vps_service_addons->has_hdspace = NULL;
+    }
+    if (vps_service_addons->dedicated_ip) {
+        free(vps_service_addons->dedicated_ip);
+        vps_service_addons->dedicated_ip = NULL;
+    }
     if (vps_service_addons->extra_ips) {
         list_ForEach(listEntry, vps_service_addons->extra_ips) {
             free(listEntry->data);
@@ -126,6 +201,14 @@ void vps_service_addons_free(vps_service_addons_t *vps_service_addons) {
         list_freeList(vps_service_addons->ips6);
         vps_service_addons->ips6 = NULL;
     }
+    if (vps_service_addons->cpanel_id) {
+        free(vps_service_addons->cpanel_id);
+        vps_service_addons->cpanel_id = NULL;
+    }
+    if (vps_service_addons->cost) {
+        free(vps_service_addons->cost);
+        vps_service_addons->cost = NULL;
+    }
     if (vps_service_addons->ids) {
         list_ForEach(listEntry, vps_service_addons->ids) {
             free(listEntry->data);
@@ -148,7 +231,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->has_cpanel
     if(vps_service_addons->has_cpanel) {
-    if(cJSON_AddBoolToObject(item, "has_cpanel", vps_service_addons->has_cpanel) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_cpanel", *vps_service_addons->has_cpanel) == NULL) {
     goto fail; //Bool
     }
     }
@@ -156,7 +239,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->has_directadmin
     if(vps_service_addons->has_directadmin) {
-    if(cJSON_AddBoolToObject(item, "has_directadmin", vps_service_addons->has_directadmin) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_directadmin", *vps_service_addons->has_directadmin) == NULL) {
     goto fail; //Bool
     }
     }
@@ -164,7 +247,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->has_fantastico
     if(vps_service_addons->has_fantastico) {
-    if(cJSON_AddBoolToObject(item, "has_fantastico", vps_service_addons->has_fantastico) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_fantastico", *vps_service_addons->has_fantastico) == NULL) {
     goto fail; //Bool
     }
     }
@@ -172,7 +255,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->has_softaculous
     if(vps_service_addons->has_softaculous) {
-    if(cJSON_AddBoolToObject(item, "has_softaculous", vps_service_addons->has_softaculous) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_softaculous", *vps_service_addons->has_softaculous) == NULL) {
     goto fail; //Bool
     }
     }
@@ -180,7 +263,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->has_hdspace
     if(vps_service_addons->has_hdspace) {
-    if(cJSON_AddBoolToObject(item, "has_hdspace", vps_service_addons->has_hdspace) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_hdspace", *vps_service_addons->has_hdspace) == NULL) {
     goto fail; //Bool
     }
     }
@@ -188,7 +271,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->dedicated_ip
     if(vps_service_addons->dedicated_ip) {
-    if(cJSON_AddBoolToObject(item, "dedicated_ip", vps_service_addons->dedicated_ip) == NULL) {
+    if(cJSON_AddBoolToObject(item, "dedicated_ip", *vps_service_addons->dedicated_ip) == NULL) {
     goto fail; //Bool
     }
     }
@@ -281,7 +364,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->cpanel_id
     if(vps_service_addons->cpanel_id) {
-    if(cJSON_AddNumberToObject(item, "cpanel_id", vps_service_addons->cpanel_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cpanel_id", *vps_service_addons->cpanel_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -289,7 +372,7 @@ cJSON *vps_service_addons_convertToJSON(vps_service_addons_t *vps_service_addons
 
     // vps_service_addons->cost
     if(vps_service_addons->cost) {
-    if(cJSON_AddNumberToObject(item, "cost", vps_service_addons->cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cost", *vps_service_addons->cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -340,6 +423,24 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
 
     vps_service_addons_t *vps_service_addons_local_var = NULL;
 
+    // define the local variable for vps_service_addons->has_cpanel
+    int *has_cpanel_local_var = NULL;
+
+    // define the local variable for vps_service_addons->has_directadmin
+    int *has_directadmin_local_var = NULL;
+
+    // define the local variable for vps_service_addons->has_fantastico
+    int *has_fantastico_local_var = NULL;
+
+    // define the local variable for vps_service_addons->has_softaculous
+    int *has_softaculous_local_var = NULL;
+
+    // define the local variable for vps_service_addons->has_hdspace
+    int *has_hdspace_local_var = NULL;
+
+    // define the local variable for vps_service_addons->dedicated_ip
+    int *dedicated_ip_local_var = NULL;
+
     // define the local list for vps_service_addons->extra_ips
     list_t *extra_ipsList = NULL;
 
@@ -354,6 +455,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
 
     // define the local list for vps_service_addons->ips6
     list_t *ips6List = NULL;
+
+    // define the local variable for vps_service_addons->cpanel_id
+    int *cpanel_id_local_var = NULL;
+
+    // define the local variable for vps_service_addons->cost
+    int *cost_local_var = NULL;
 
     // define the local list for vps_service_addons->ids
     list_t *idsList = NULL;
@@ -371,6 +478,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Bool
     }
+    has_cpanel_local_var = malloc(sizeof(int));
+    if(!has_cpanel_local_var)
+    {
+        goto end;
+    }
+    *has_cpanel_local_var = has_cpanel->valueint;
     }
 
     // vps_service_addons->has_directadmin
@@ -383,6 +496,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Bool
     }
+    has_directadmin_local_var = malloc(sizeof(int));
+    if(!has_directadmin_local_var)
+    {
+        goto end;
+    }
+    *has_directadmin_local_var = has_directadmin->valueint;
     }
 
     // vps_service_addons->has_fantastico
@@ -395,6 +514,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Bool
     }
+    has_fantastico_local_var = malloc(sizeof(int));
+    if(!has_fantastico_local_var)
+    {
+        goto end;
+    }
+    *has_fantastico_local_var = has_fantastico->valueint;
     }
 
     // vps_service_addons->has_softaculous
@@ -407,6 +532,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Bool
     }
+    has_softaculous_local_var = malloc(sizeof(int));
+    if(!has_softaculous_local_var)
+    {
+        goto end;
+    }
+    *has_softaculous_local_var = has_softaculous->valueint;
     }
 
     // vps_service_addons->has_hdspace
@@ -419,6 +550,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Bool
     }
+    has_hdspace_local_var = malloc(sizeof(int));
+    if(!has_hdspace_local_var)
+    {
+        goto end;
+    }
+    *has_hdspace_local_var = has_hdspace->valueint;
     }
 
     // vps_service_addons->dedicated_ip
@@ -431,6 +568,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Bool
     }
+    dedicated_ip_local_var = malloc(sizeof(int));
+    if(!dedicated_ip_local_var)
+    {
+        goto end;
+    }
+    *dedicated_ip_local_var = dedicated_ip->valueint;
     }
 
     // vps_service_addons->extra_ips
@@ -553,6 +696,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Numeric
     }
+    cpanel_id_local_var = malloc(sizeof(int));
+    if(!cpanel_id_local_var)
+    {
+        goto end;
+    }
+    *cpanel_id_local_var = cpanel_id->valuedouble;
     }
 
     // vps_service_addons->cost
@@ -565,6 +714,12 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     {
     goto end; //Numeric
     }
+    cost_local_var = malloc(sizeof(int));
+    if(!cost_local_var)
+    {
+        goto end;
+    }
+    *cost_local_var = cost->valuedouble;
     }
 
     // vps_service_addons->ids
@@ -612,26 +767,55 @@ vps_service_addons_t *vps_service_addons_parseFromJSON(cJSON *vps_service_addons
     }
 
 
+
     vps_service_addons_local_var = vps_service_addons_create_internal (
-        has_cpanel ? has_cpanel->valueint : 0,
-        has_directadmin ? has_directadmin->valueint : 0,
-        has_fantastico ? has_fantastico->valueint : 0,
-        has_softaculous ? has_softaculous->valueint : 0,
-        has_hdspace ? has_hdspace->valueint : 0,
-        dedicated_ip ? dedicated_ip->valueint : 0,
+        has_cpanel_local_var,
+        has_directadmin_local_var,
+        has_fantastico_local_var,
+        has_softaculous_local_var,
+        has_hdspace_local_var,
+        dedicated_ip_local_var,
         extra_ips ? extra_ipsList : NULL,
         extra_ips6 ? extra_ips6List : NULL,
         unpaid_ips ? unpaid_ipsList : NULL,
         ips ? ipsList : NULL,
         ips6 ? ips6List : NULL,
-        cpanel_id ? cpanel_id->valuedouble : 0,
-        cost ? cost->valuedouble : 0,
+        cpanel_id_local_var,
+        cost_local_var,
         ids ? idsList : NULL,
         rdata ? rdataList : NULL
         );
 
+    if (!vps_service_addons_local_var) {
+        goto end;
+    }
+
     return vps_service_addons_local_var;
 end:
+    if (has_cpanel_local_var) {
+        free(has_cpanel_local_var);
+        has_cpanel_local_var = NULL;
+    }
+    if (has_directadmin_local_var) {
+        free(has_directadmin_local_var);
+        has_directadmin_local_var = NULL;
+    }
+    if (has_fantastico_local_var) {
+        free(has_fantastico_local_var);
+        has_fantastico_local_var = NULL;
+    }
+    if (has_softaculous_local_var) {
+        free(has_softaculous_local_var);
+        has_softaculous_local_var = NULL;
+    }
+    if (has_hdspace_local_var) {
+        free(has_hdspace_local_var);
+        has_hdspace_local_var = NULL;
+    }
+    if (dedicated_ip_local_var) {
+        free(dedicated_ip_local_var);
+        dedicated_ip_local_var = NULL;
+    }
     if (extra_ipsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, extra_ipsList) {
@@ -676,6 +860,14 @@ end:
         }
         list_freeList(ips6List);
         ips6List = NULL;
+    }
+    if (cpanel_id_local_var) {
+        free(cpanel_id_local_var);
+        cpanel_id_local_var = NULL;
+    }
+    if (cost_local_var) {
+        free(cost_local_var);
+        cost_local_var = NULL;
     }
     if (idsList) {
         listEntry_t *listEntry = NULL;

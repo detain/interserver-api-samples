@@ -1,4 +1,4 @@
-# # VpsBackupRow
+# VpsBackupRow
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # SslCancel200Response
+# SslCancel200Response
 
 ## Properties
 

@@ -12,18 +12,21 @@ static vps_da_data_t *vps_da_data_create_internal(
     if (!vps_da_data_local_var) {
         return NULL;
     }
-    vps_da_data_local_var->free = free;
-
+    memset(vps_da_data_local_var, 0, sizeof(vps_da_data_t));
     vps_da_data_local_var->_library_owned = 1;
+    vps_da_data_local_var->free = free;
     return vps_da_data_local_var;
 }
 
 __attribute__((deprecated)) vps_da_data_t *vps_da_data_create(
     vps_da_license_t *free
     ) {
-    return vps_da_data_create_internal (
+    vps_da_data_t *result = vps_da_data_create_internal (
         free
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_da_data_free(vps_da_data_t *vps_da_data) {
@@ -82,9 +85,14 @@ vps_da_data_t *vps_da_data_parseFromJSON(cJSON *vps_da_dataJSON){
     }
 
 
+
     vps_da_data_local_var = vps_da_data_create_internal (
         free ? free_local_nonprim : NULL
         );
+
+    if (!vps_da_data_local_var) {
+        goto end;
+    }
 
     return vps_da_data_local_var;
 end:

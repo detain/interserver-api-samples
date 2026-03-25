@@ -19,27 +19,27 @@ typedef struct form_values_t form_values_t;
 
 
 typedef struct form_values_t {
-    int memory; //numeric
-    int bandwidth; //numeric
-    int ips; //numeric
-    int os; //numeric
-    int cp; //numeric
-    int raid; //numeric
-    int hd; //numeric
-    int region; //numeric
+    int *memory; //numeric
+    int *bandwidth; //numeric
+    int *ips; //numeric
+    int *os; //numeric
+    int *cp; //numeric
+    int *raid; //numeric
+    int *hd; //numeric
+    int *region; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } form_values_t;
 
 __attribute__((deprecated)) form_values_t *form_values_create(
-    int memory,
-    int bandwidth,
-    int ips,
-    int os,
-    int cp,
-    int raid,
-    int hd,
-    int region
+    int *memory,
+    int *bandwidth,
+    int *ips,
+    int *os,
+    int *cp,
+    int *raid,
+    int *hd,
+    int *region
 );
 
 void form_values_free(form_values_t *form_values);

@@ -19,14 +19,14 @@ typedef struct server_switchport_t server_switchport_t;
 
 
 typedef struct server_switchport_t {
-    int switchport_id; //numeric
+    int *switchport_id; //numeric
     char *switch_id; // string
     char *_switch; // string
     char *port; // string
     char *blade; // string
     char *justport; // string
     char *graph_id; // string
-    int asset_id; //numeric
+    int *asset_id; //numeric
     list_t *vlans; //primitive container
     list_t *vlans6; //primitive container
 
@@ -34,14 +34,14 @@ typedef struct server_switchport_t {
 } server_switchport_t;
 
 __attribute__((deprecated)) server_switchport_t *server_switchport_create(
-    int switchport_id,
+    int *switchport_id,
     char *switch_id,
     char *_switch,
     char *port,
     char *blade,
     char *justport,
     char *graph_id,
-    int asset_id,
+    int *asset_id,
     list_t *vlans,
     list_t *vlans6
 );

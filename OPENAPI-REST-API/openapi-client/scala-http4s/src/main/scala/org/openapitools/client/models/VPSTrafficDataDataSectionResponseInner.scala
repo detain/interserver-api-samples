@@ -12,25 +12,29 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 
 /** 
   */
-case class VPSTrafficDataDataSectionResponseInner(
-)
-  
+trait VPSTrafficDataDataSectionResponseInner
 object VPSTrafficDataDataSectionResponseInner {
-  given encoderVPSTrafficDataDataSectionResponseInner: Encoder[VPSTrafficDataDataSectionResponseInner] = Encoder.instance { t =>
-    Json.fromFields{
-      Seq(
-      ).flatten
-    }
+  import io.circe.{ Decoder, Encoder }
+  import io.circe.syntax.*
+  import cats.syntax.functor.*
+
+// no discriminator
+  given encoderVPSTrafficDataDataSectionResponseInner: Encoder[VPSTrafficDataDataSectionResponseInner] = Encoder.instance {
+    case obj: Instant => obj.asJson
+    case obj: Int => obj.asJson
   }
-  given decoderVPSTrafficDataDataSectionResponseInner: Decoder[VPSTrafficDataDataSectionResponseInner] = Decoder.instance { c =>
-    for {
-    } yield VPSTrafficDataDataSectionResponseInner(
-    )
-  }
+
+  given decoderVPSTrafficDataDataSectionResponseInner: Decoder[VPSTrafficDataDataSectionResponseInner] =
+    List[Decoder[VPSTrafficDataDataSectionResponseInner]](
+      Decoder[Instant].widen,
+      Decoder[Int].widen,
+  ).reduceLeft(_ or _)
 }
+
 

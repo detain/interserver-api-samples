@@ -19,13 +19,13 @@ typedef struct delete_firewall_rule_t delete_firewall_rule_t;
 
 
 typedef struct delete_firewall_rule_t {
-    int rule_id; //numeric
+    int *rule_id; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } delete_firewall_rule_t;
 
 __attribute__((deprecated)) delete_firewall_rule_t *delete_firewall_rule_create(
-    int rule_id
+    int *rule_id
 );
 
 void delete_firewall_rule_free(delete_firewall_rule_t *delete_firewall_rule);

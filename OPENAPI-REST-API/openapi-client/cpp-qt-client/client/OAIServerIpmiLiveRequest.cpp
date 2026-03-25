@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerIpmiLiveRequest::OAIServerIpmiLiveRequest(QString json) {
+OAIServerIpmiLiveRequest::OAIServerIpmiLiveRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIServerIpmiLiveRequest::initializeModel() {
     m_asset_isValid = false;
 }
 
-void OAIServerIpmiLiveRequest::fromJson(QString jsonString) {
+void OAIServerIpmiLiveRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

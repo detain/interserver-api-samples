@@ -351,32 +351,6 @@ void OAIQuickServersApi::addQsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addQsSignal();
         Q_EMIT addQsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addQsSignalE(error_type, error_str);
-        Q_EMIT addQsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addQsSignalError(error_type, error_str);
         Q_EMIT addQsSignalErrorFull(worker, error_type, error_str);
     }
@@ -474,32 +448,6 @@ void OAIQuickServersApi::deleteQsBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteQsBackupSignal(output);
         Q_EMIT deleteQsBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteQsBackupSignalE(output, error_type, error_str);
-        Q_EMIT deleteQsBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteQsBackupSignalError(output, error_type, error_str);
         Q_EMIT deleteQsBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -566,32 +514,6 @@ void OAIQuickServersApi::doQsBlockSmtpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsBlockSmtpSignal(output);
         Q_EMIT doQsBlockSmtpSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsBlockSmtpSignalE(output, error_type, error_str);
-        Q_EMIT doQsBlockSmtpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsBlockSmtpSignalError(output, error_type, error_str);
         Q_EMIT doQsBlockSmtpSignalErrorFull(worker, error_type, error_str);
     }
@@ -658,32 +580,6 @@ void OAIQuickServersApi::doQsDisableCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsDisableCdSignal(output);
         Q_EMIT doQsDisableCdSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsDisableCdSignalE(output, error_type, error_str);
-        Q_EMIT doQsDisableCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsDisableCdSignalError(output, error_type, error_str);
         Q_EMIT doQsDisableCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -750,32 +646,6 @@ void OAIQuickServersApi::doQsDisableQuotaCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT doQsDisableQuotaSignal(output);
         Q_EMIT doQsDisableQuotaSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsDisableQuotaSignalE(output, error_type, error_str);
-        Q_EMIT doQsDisableQuotaSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsDisableQuotaSignalError(output, error_type, error_str);
         Q_EMIT doQsDisableQuotaSignalErrorFull(worker, error_type, error_str);
     }
@@ -842,32 +712,6 @@ void OAIQuickServersApi::doQsEjectCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsEjectCdSignal(output);
         Q_EMIT doQsEjectCdSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsEjectCdSignalE(output, error_type, error_str);
-        Q_EMIT doQsEjectCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsEjectCdSignalError(output, error_type, error_str);
         Q_EMIT doQsEjectCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -934,32 +778,6 @@ void OAIQuickServersApi::doQsEnableQuotaCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsEnableQuotaSignal(output);
         Q_EMIT doQsEnableQuotaSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsEnableQuotaSignalE(output, error_type, error_str);
-        Q_EMIT doQsEnableQuotaSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsEnableQuotaSignalError(output, error_type, error_str);
         Q_EMIT doQsEnableQuotaSignalErrorFull(worker, error_type, error_str);
     }
@@ -1026,32 +844,6 @@ void OAIQuickServersApi::doQsRestartCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsRestartSignal(output);
         Q_EMIT doQsRestartSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsRestartSignalE(output, error_type, error_str);
-        Q_EMIT doQsRestartSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsRestartSignalError(output, error_type, error_str);
         Q_EMIT doQsRestartSignalErrorFull(worker, error_type, error_str);
     }
@@ -1118,32 +910,6 @@ void OAIQuickServersApi::doQsStartCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsStartSignal(output);
         Q_EMIT doQsStartSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsStartSignalE(output, error_type, error_str);
-        Q_EMIT doQsStartSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsStartSignalError(output, error_type, error_str);
         Q_EMIT doQsStartSignalErrorFull(worker, error_type, error_str);
     }
@@ -1210,32 +976,6 @@ void OAIQuickServersApi::doQsStopCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doQsStopSignal(output);
         Q_EMIT doQsStopSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doQsStopSignalE(output, error_type, error_str);
-        Q_EMIT doQsStopSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doQsStopSignalError(output, error_type, error_str);
         Q_EMIT doQsStopSignalErrorFull(worker, error_type, error_str);
     }
@@ -1323,32 +1063,6 @@ void OAIQuickServersApi::downloadQsBackupCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT downloadQsBackupSignal(output);
         Q_EMIT downloadQsBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT downloadQsBackupSignalE(output, error_type, error_str);
-        Q_EMIT downloadQsBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT downloadQsBackupSignalError(output, error_type, error_str);
         Q_EMIT downloadQsBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -1401,32 +1115,6 @@ void OAIQuickServersApi::getNewQsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewQsSignal(output);
         Q_EMIT getNewQsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewQsSignalE(output, error_type, error_str);
-        Q_EMIT getNewQsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewQsSignalError(output, error_type, error_str);
         Q_EMIT getNewQsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1509,32 +1197,6 @@ void OAIQuickServersApi::getQsBackupsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsBackupsSignal(output);
         Q_EMIT getQsBackupsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsBackupsSignalE(output, error_type, error_str);
-        Q_EMIT getQsBackupsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsBackupsSignalError(output, error_type, error_str);
         Q_EMIT getQsBackupsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1600,32 +1262,6 @@ void OAIQuickServersApi::getQsChangeHostnameCallback(OAIHttpRequestWorker *worke
         Q_EMIT getQsChangeHostnameSignal();
         Q_EMIT getQsChangeHostnameSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsChangeHostnameSignalE(error_type, error_str);
-        Q_EMIT getQsChangeHostnameSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsChangeHostnameSignalError(error_type, error_str);
         Q_EMIT getQsChangeHostnameSignalErrorFull(worker, error_type, error_str);
     }
@@ -1691,32 +1327,6 @@ void OAIQuickServersApi::getQsChangeRootPasswordCallback(OAIHttpRequestWorker *w
         Q_EMIT getQsChangeRootPasswordSignal();
         Q_EMIT getQsChangeRootPasswordSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsChangeRootPasswordSignalE(error_type, error_str);
-        Q_EMIT getQsChangeRootPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsChangeRootPasswordSignalError(error_type, error_str);
         Q_EMIT getQsChangeRootPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -1792,32 +1402,6 @@ void OAIQuickServersApi::getQsChangeTimezoneCallback(OAIHttpRequestWorker *worke
         Q_EMIT getQsChangeTimezoneSignal(output);
         Q_EMIT getQsChangeTimezoneSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsChangeTimezoneSignalE(output, error_type, error_str);
-        Q_EMIT getQsChangeTimezoneSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsChangeTimezoneSignalError(output, error_type, error_str);
         Q_EMIT getQsChangeTimezoneSignalErrorFull(worker, error_type, error_str);
     }
@@ -1883,32 +1467,6 @@ void OAIQuickServersApi::getQsChangeWebuzoPasswordCallback(OAIHttpRequestWorker 
         Q_EMIT getQsChangeWebuzoPasswordSignal();
         Q_EMIT getQsChangeWebuzoPasswordSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsChangeWebuzoPasswordSignalE(error_type, error_str);
-        Q_EMIT getQsChangeWebuzoPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsChangeWebuzoPasswordSignalError(error_type, error_str);
         Q_EMIT getQsChangeWebuzoPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -1975,32 +1533,6 @@ void OAIQuickServersApi::getQsInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsInfoSignal(output);
         Q_EMIT getQsInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsInfoSignalE(output, error_type, error_str);
-        Q_EMIT getQsInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsInfoSignalError(output, error_type, error_str);
         Q_EMIT getQsInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -2066,32 +1598,6 @@ void OAIQuickServersApi::getQsInsertCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsInsertCdSignal();
         Q_EMIT getQsInsertCdSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsInsertCdSignalE(error_type, error_str);
-        Q_EMIT getQsInsertCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsInsertCdSignalError(error_type, error_str);
         Q_EMIT getQsInsertCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -2158,32 +1664,6 @@ void OAIQuickServersApi::getQsInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsInvoicesSignal(output);
         Q_EMIT getQsInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getQsInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getQsInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -2245,32 +1725,6 @@ void OAIQuickServersApi::getQsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsListSignal(output);
         Q_EMIT getQsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsListSignalE(output, error_type, error_str);
-        Q_EMIT getQsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsListSignalError(output, error_type, error_str);
         Q_EMIT getQsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -2337,32 +1791,6 @@ void OAIQuickServersApi::getQsReinstallOsCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT getQsReinstallOsSignal(output);
         Q_EMIT getQsReinstallOsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsReinstallOsSignalE(output, error_type, error_str);
-        Q_EMIT getQsReinstallOsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsReinstallOsSignalError(output, error_type, error_str);
         Q_EMIT getQsReinstallOsSignalErrorFull(worker, error_type, error_str);
     }
@@ -2428,32 +1856,6 @@ void OAIQuickServersApi::getQsResetPasswordCallback(OAIHttpRequestWorker *worker
         Q_EMIT getQsResetPasswordSignal();
         Q_EMIT getQsResetPasswordSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsResetPasswordSignalE(error_type, error_str);
-        Q_EMIT getQsResetPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsResetPasswordSignalError(error_type, error_str);
         Q_EMIT getQsResetPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -2520,32 +1922,6 @@ void OAIQuickServersApi::getQsReverseDnsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsReverseDnsSignal(output);
         Q_EMIT getQsReverseDnsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsReverseDnsSignalE(output, error_type, error_str);
-        Q_EMIT getQsReverseDnsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsReverseDnsSignalError(output, error_type, error_str);
         Q_EMIT getQsReverseDnsSignalErrorFull(worker, error_type, error_str);
     }
@@ -2611,32 +1987,6 @@ void OAIQuickServersApi::getQsSetupVncCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getQsSetupVncSignal();
         Q_EMIT getQsSetupVncSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsSetupVncSignalE(error_type, error_str);
-        Q_EMIT getQsSetupVncSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsSetupVncSignalError(error_type, error_str);
         Q_EMIT getQsSetupVncSignalErrorFull(worker, error_type, error_str);
     }
@@ -2702,32 +2052,6 @@ void OAIQuickServersApi::getQsTrafficUsageCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getQsTrafficUsageSignal();
         Q_EMIT getQsTrafficUsageSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsTrafficUsageSignalE(error_type, error_str);
-        Q_EMIT getQsTrafficUsageSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsTrafficUsageSignalError(error_type, error_str);
         Q_EMIT getQsTrafficUsageSignalErrorFull(worker, error_type, error_str);
     }
@@ -2793,32 +2117,6 @@ void OAIQuickServersApi::getQsViewDesktopCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT getQsViewDesktopSignal();
         Q_EMIT getQsViewDesktopSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsViewDesktopSignalE(error_type, error_str);
-        Q_EMIT getQsViewDesktopSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsViewDesktopSignalError(error_type, error_str);
         Q_EMIT getQsViewDesktopSignalErrorFull(worker, error_type, error_str);
     }
@@ -2885,32 +2183,6 @@ void OAIQuickServersApi::getQsWelcomeEmailCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getQsWelcomeEmailSignal(output);
         Q_EMIT getQsWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getQsWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getQsWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getQsWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getQsWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -2977,32 +2249,6 @@ void OAIQuickServersApi::postQsBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postQsBackupSignal(output);
         Q_EMIT postQsBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsBackupSignalE(output, error_type, error_str);
-        Q_EMIT postQsBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsBackupSignalError(output, error_type, error_str);
         Q_EMIT postQsBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -3069,32 +2315,6 @@ void OAIQuickServersApi::postQsChangeHostnameCallback(OAIHttpRequestWorker *work
         Q_EMIT postQsChangeHostnameSignal(output);
         Q_EMIT postQsChangeHostnameSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsChangeHostnameSignalE(output, error_type, error_str);
-        Q_EMIT postQsChangeHostnameSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsChangeHostnameSignalError(output, error_type, error_str);
         Q_EMIT postQsChangeHostnameSignalErrorFull(worker, error_type, error_str);
     }
@@ -3161,32 +2381,6 @@ void OAIQuickServersApi::postQsChangeRootPasswordCallback(OAIHttpRequestWorker *
         Q_EMIT postQsChangeRootPasswordSignal(output);
         Q_EMIT postQsChangeRootPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsChangeRootPasswordSignalE(output, error_type, error_str);
-        Q_EMIT postQsChangeRootPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsChangeRootPasswordSignalError(output, error_type, error_str);
         Q_EMIT postQsChangeRootPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -3257,32 +2451,6 @@ void OAIQuickServersApi::postQsChangeTimezoneCallback(OAIHttpRequestWorker *work
         Q_EMIT postQsChangeTimezoneSignal(output);
         Q_EMIT postQsChangeTimezoneSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsChangeTimezoneSignalE(output, error_type, error_str);
-        Q_EMIT postQsChangeTimezoneSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsChangeTimezoneSignalError(output, error_type, error_str);
         Q_EMIT postQsChangeTimezoneSignalErrorFull(worker, error_type, error_str);
     }
@@ -3349,32 +2517,6 @@ void OAIQuickServersApi::postQsChangeWebuzoPasswordCallback(OAIHttpRequestWorker
         Q_EMIT postQsChangeWebuzoPasswordSignal(output);
         Q_EMIT postQsChangeWebuzoPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsChangeWebuzoPasswordSignalE(output, error_type, error_str);
-        Q_EMIT postQsChangeWebuzoPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsChangeWebuzoPasswordSignalError(output, error_type, error_str);
         Q_EMIT postQsChangeWebuzoPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -3441,32 +2583,6 @@ void OAIQuickServersApi::postQsInsertCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postQsInsertCdSignal(output);
         Q_EMIT postQsInsertCdSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsInsertCdSignalE(output, error_type, error_str);
-        Q_EMIT postQsInsertCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsInsertCdSignalError(output, error_type, error_str);
         Q_EMIT postQsInsertCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -3533,32 +2649,6 @@ void OAIQuickServersApi::postQsReinstallOsCallback(OAIHttpRequestWorker *worker)
         Q_EMIT postQsReinstallOsSignal(output);
         Q_EMIT postQsReinstallOsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsReinstallOsSignalE(output, error_type, error_str);
-        Q_EMIT postQsReinstallOsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsReinstallOsSignalError(output, error_type, error_str);
         Q_EMIT postQsReinstallOsSignalErrorFull(worker, error_type, error_str);
     }
@@ -3625,32 +2715,6 @@ void OAIQuickServersApi::postQsResetPasswordCallback(OAIHttpRequestWorker *worke
         Q_EMIT postQsResetPasswordSignal(output);
         Q_EMIT postQsResetPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsResetPasswordSignalE(output, error_type, error_str);
-        Q_EMIT postQsResetPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsResetPasswordSignalError(output, error_type, error_str);
         Q_EMIT postQsResetPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -3722,32 +2786,6 @@ void OAIQuickServersApi::postQsReverseDnsCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT postQsReverseDnsSignal(output);
         Q_EMIT postQsReverseDnsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsReverseDnsSignalE(output, error_type, error_str);
-        Q_EMIT postQsReverseDnsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsReverseDnsSignalError(output, error_type, error_str);
         Q_EMIT postQsReverseDnsSignalErrorFull(worker, error_type, error_str);
     }
@@ -3814,32 +2852,6 @@ void OAIQuickServersApi::postQsSetupVncCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postQsSetupVncSignal(output);
         Q_EMIT postQsSetupVncSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsSetupVncSignalE(output, error_type, error_str);
-        Q_EMIT postQsSetupVncSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsSetupVncSignalError(output, error_type, error_str);
         Q_EMIT postQsSetupVncSignalErrorFull(worker, error_type, error_str);
     }
@@ -3905,32 +2917,6 @@ void OAIQuickServersApi::postQsTrafficUsageCallback(OAIHttpRequestWorker *worker
         Q_EMIT postQsTrafficUsageSignal();
         Q_EMIT postQsTrafficUsageSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsTrafficUsageSignalE(error_type, error_str);
-        Q_EMIT postQsTrafficUsageSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsTrafficUsageSignalError(error_type, error_str);
         Q_EMIT postQsTrafficUsageSignalErrorFull(worker, error_type, error_str);
     }
@@ -3996,32 +2982,6 @@ void OAIQuickServersApi::postQsViewDesktopCallback(OAIHttpRequestWorker *worker)
         Q_EMIT postQsViewDesktopSignal();
         Q_EMIT postQsViewDesktopSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQsViewDesktopSignalE(error_type, error_str);
-        Q_EMIT postQsViewDesktopSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQsViewDesktopSignalError(error_type, error_str);
         Q_EMIT postQsViewDesktopSignalErrorFull(worker, error_type, error_str);
     }
@@ -4093,32 +3053,6 @@ void OAIQuickServersApi::postQuickServerRestoreCallback(OAIHttpRequestWorker *wo
         Q_EMIT postQuickServerRestoreSignal(output);
         Q_EMIT postQuickServerRestoreSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postQuickServerRestoreSignalE(output, error_type, error_str);
-        Q_EMIT postQuickServerRestoreSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postQuickServerRestoreSignalError(output, error_type, error_str);
         Q_EMIT postQuickServerRestoreSignalErrorFull(worker, error_type, error_str);
     }
@@ -4170,32 +3104,6 @@ void OAIQuickServersApi::putQsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putQsSignal();
         Q_EMIT putQsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putQsSignalE(error_type, error_str);
-        Q_EMIT putQsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putQsSignalError(error_type, error_str);
         Q_EMIT putQsSignalErrorFull(worker, error_type, error_str);
     }
@@ -4262,32 +3170,6 @@ void OAIQuickServersApi::quickserversCancelCallback(OAIHttpRequestWorker *worker
         Q_EMIT quickserversCancelSignal(output);
         Q_EMIT quickserversCancelSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT quickserversCancelSignalE(output, error_type, error_str);
-        Q_EMIT quickserversCancelSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT quickserversCancelSignalError(output, error_type, error_str);
         Q_EMIT quickserversCancelSignalErrorFull(worker, error_type, error_str);
     }
@@ -4353,42 +3235,16 @@ void OAIQuickServersApi::updateQsInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateQsInfoSignal();
         Q_EMIT updateQsInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateQsInfoSignalE(error_type, error_str);
-        Q_EMIT updateQsInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateQsInfoSignalError(error_type, error_str);
         Q_EMIT updateQsInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIQuickServersApi::tokenAvailable(){
+void OAIQuickServersApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -4398,7 +3254,7 @@ void OAIQuickServersApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -4408,7 +3264,7 @@ void OAIQuickServersApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -4418,7 +3274,7 @@ void OAIQuickServersApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

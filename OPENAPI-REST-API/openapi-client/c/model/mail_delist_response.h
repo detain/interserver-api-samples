@@ -20,7 +20,7 @@ typedef struct mail_delist_response_t mail_delist_response_t;
 
 
 typedef struct mail_delist_response_t {
-    int id; //numeric
+    int *id; //numeric
     list_t *local; //nonprimitive container
     list_t *mbtrap; //nonprimitive container
     list_t *subject; //nonprimitive container
@@ -30,7 +30,7 @@ typedef struct mail_delist_response_t {
 } mail_delist_response_t;
 
 __attribute__((deprecated)) mail_delist_response_t *mail_delist_response_create(
-    int id,
+    int *id,
     list_t *local,
     list_t *mbtrap,
     list_t *subject,

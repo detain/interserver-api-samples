@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAICreateGeoFirewallRule : public OAIObject {
 public:
     OAICreateGeoFirewallRule();
-    OAICreateGeoFirewallRule(QString json);
+    OAICreateGeoFirewallRule(const QString &json);
     ~OAICreateGeoFirewallRule() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getXdpAction() const;
     void setXdpAction(const qint32 &xdp_action);

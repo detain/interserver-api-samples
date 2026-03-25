@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsSnapshot : public OAIObject {
 public:
     OAIVpsSnapshot();
-    OAIVpsSnapshot(QString json);
+    OAIVpsSnapshot(const QString &json);
     ~OAIVpsSnapshot() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getName() const;
     void setName(const QString &name);

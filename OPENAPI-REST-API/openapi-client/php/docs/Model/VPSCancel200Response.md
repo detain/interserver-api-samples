@@ -1,4 +1,4 @@
-# # VPSCancel200Response
+# VPSCancel200Response
 
 ## Properties
 

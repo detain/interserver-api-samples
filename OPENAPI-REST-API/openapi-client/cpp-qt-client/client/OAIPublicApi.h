@@ -127,6 +127,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -146,7 +153,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void getCaptchaCallback(OAIHttpRequestWorker *worker);
     void getCountriesCallback(OAIHttpRequestWorker *worker);
@@ -190,78 +197,30 @@ Q_SIGNALS:
     void submitLoginSignalFull(OAIHttpRequestWorker *worker, OAILoginSuccessResponse summary);
     void submitSignupSignalFull(OAIHttpRequestWorker *worker);
 
-    Q_DECL_DEPRECATED_X("Use getCaptchaSignalError() instead")
-    void getCaptchaSignalE(OAICaptchaResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getCaptchaSignalError(OAICaptchaResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getCountriesSignalError() instead")
-    void getCountriesSignalE(OAIObject summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getCountriesSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getInfoSignalError() instead")
-    void getInfoSignalE(OAIServicesInfo summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getInfoSignalError(OAIServicesInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLoginInfoSignalError() instead")
-    void getLoginInfoSignalE(OAILoginInfo summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getLoginInfoSignalError(OAILoginInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMPServersSignalError() instead")
-    void getMPServersSignalE(OAIBuyItNowList<OAIBuyItNowRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMPServersSignalError(OAIBuyItNowList<OAIBuyItNowRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getOauthRedirectSignalError() instead")
-    void getOauthRedirectSignalE(OAIGetOauthRedirect_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getOauthRedirectSignalError(OAIGetOauthRedirect_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getTimezonesSignalError() instead")
-    void getTimezonesSignalE(QList<QString> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getTimezonesSignalError(QList<QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use patchOauthTwoFactorSignalError() instead")
-    void patchOauthTwoFactorSignalE(OAIPatchOauthTwoFactor_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void patchOauthTwoFactorSignalError(OAIPatchOauthTwoFactor_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use pingServerSignalError() instead")
-    void pingServerSignalE(QString summary, QNetworkReply::NetworkError error_type, QString error_str);
     void pingServerSignalError(QString summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postOauthCallbackSignalError() instead")
-    void postOauthCallbackSignalE(OAIPostOauthCallback_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postOauthCallbackSignalError(OAIPostOauthCallback_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use submitLoginSignalError() instead")
-    void submitLoginSignalE(OAILoginSuccessResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void submitLoginSignalError(OAILoginSuccessResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use submitSignupSignalError() instead")
-    void submitSignupSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void submitSignupSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use getCaptchaSignalErrorFull() instead")
-    void getCaptchaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getCaptchaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getCountriesSignalErrorFull() instead")
-    void getCountriesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getCountriesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getInfoSignalErrorFull() instead")
-    void getInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLoginInfoSignalErrorFull() instead")
-    void getLoginInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getLoginInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMPServersSignalErrorFull() instead")
-    void getMPServersSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMPServersSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getOauthRedirectSignalErrorFull() instead")
-    void getOauthRedirectSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getOauthRedirectSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getTimezonesSignalErrorFull() instead")
-    void getTimezonesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getTimezonesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use patchOauthTwoFactorSignalErrorFull() instead")
-    void patchOauthTwoFactorSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void patchOauthTwoFactorSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use pingServerSignalErrorFull() instead")
-    void pingServerSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void pingServerSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postOauthCallbackSignalErrorFull() instead")
-    void postOauthCallbackSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postOauthCallbackSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use submitLoginSignalErrorFull() instead")
-    void submitLoginSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void submitLoginSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use submitSignupSignalErrorFull() instead")
-    void submitSignupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void submitSignupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

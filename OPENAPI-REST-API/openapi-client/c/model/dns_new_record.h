@@ -23,8 +23,8 @@ typedef struct dns_new_record_t {
     char *name; // string
     interserver_management_api_dns_record_type__e type; //referenced enum
     char *content; // string
-    int ttl; //numeric
-    int prio; //numeric
+    int *ttl; //numeric
+    int *prio; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } dns_new_record_t;
@@ -33,8 +33,8 @@ __attribute__((deprecated)) dns_new_record_t *dns_new_record_create(
     char *name,
     interserver_management_api_dns_record_type__e type,
     char *content,
-    int ttl,
-    int prio
+    int *ttl,
+    int *prio
 );
 
 void dns_new_record_free(dns_new_record_t *dns_new_record);

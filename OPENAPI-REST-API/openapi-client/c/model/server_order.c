@@ -8,7 +8,7 @@
 static server_order_t *server_order_create_internal(
     server_order_form_values_t *form_values,
     server_order_config_ids_t *config_ids,
-    int cpu,
+    int *cpu,
     server_order_field_labels_t *field_label,
     server_order_cpu_li_t *cpu_li,
     server_order_memory_li_t *memory_li,
@@ -22,6 +22,8 @@ static server_order_t *server_order_create_internal(
     if (!server_order_local_var) {
         return NULL;
     }
+    memset(server_order_local_var, 0, sizeof(server_order_t));
+    server_order_local_var->_library_owned = 1;
     server_order_local_var->form_values = form_values;
     server_order_local_var->config_ids = config_ids;
     server_order_local_var->cpu = cpu;
@@ -33,15 +35,13 @@ static server_order_t *server_order_create_internal(
     server_order_local_var->os_li = os_li;
     server_order_local_var->cp_li = cp_li;
     server_order_local_var->raid_li = raid_li;
-
-    server_order_local_var->_library_owned = 1;
     return server_order_local_var;
 }
 
 __attribute__((deprecated)) server_order_t *server_order_create(
     server_order_form_values_t *form_values,
     server_order_config_ids_t *config_ids,
-    int cpu,
+    int *cpu,
     server_order_field_labels_t *field_label,
     server_order_cpu_li_t *cpu_li,
     server_order_memory_li_t *memory_li,
@@ -51,10 +51,15 @@ __attribute__((deprecated)) server_order_t *server_order_create(
     server_order_cp_li_t *cp_li,
     list_t *raid_li
     ) {
-    return server_order_create_internal (
+    int *cpu_copy = NULL;
+    if (cpu) {
+        cpu_copy = malloc(sizeof(int));
+        if (cpu_copy) *cpu_copy = *cpu;
+    }
+    server_order_t *result = server_order_create_internal (
         form_values,
         config_ids,
-        cpu,
+        cpu_copy,
         field_label,
         cpu_li,
         memory_li,
@@ -64,6 +69,10 @@ __attribute__((deprecated)) server_order_t *server_order_create(
         cp_li,
         raid_li
         );
+    if (!result) {
+        free(cpu_copy);
+    }
+    return result;
 }
 
 void server_order_free(server_order_t *server_order) {
@@ -82,6 +91,10 @@ void server_order_free(server_order_t *server_order) {
     if (server_order->config_ids) {
         server_order_config_ids_free(server_order->config_ids);
         server_order->config_ids = NULL;
+    }
+    if (server_order->cpu) {
+        free(server_order->cpu);
+        server_order->cpu = NULL;
     }
     if (server_order->field_label) {
         server_order_field_labels_free(server_order->field_label);
@@ -152,7 +165,7 @@ cJSON *server_order_convertToJSON(server_order_t *server_order) {
 
     // server_order->cpu
     if(server_order->cpu) {
-    if(cJSON_AddNumberToObject(item, "cpu", server_order->cpu) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cpu", *server_order->cpu) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -286,6 +299,9 @@ server_order_t *server_order_parseFromJSON(cJSON *server_orderJSON){
     // define the local variable for server_order->config_ids
     server_order_config_ids_t *config_ids_local_nonprim = NULL;
 
+    // define the local variable for server_order->cpu
+    int *cpu_local_var = NULL;
+
     // define the local variable for server_order->field_label
     server_order_field_labels_t *field_label_local_nonprim = NULL;
 
@@ -338,6 +354,12 @@ server_order_t *server_order_parseFromJSON(cJSON *server_orderJSON){
     {
     goto end; //Numeric
     }
+    cpu_local_var = malloc(sizeof(int));
+    if(!cpu_local_var)
+    {
+        goto end;
+    }
+    *cpu_local_var = cpu->valuedouble;
     }
 
     // server_order->field_label
@@ -428,10 +450,11 @@ server_order_t *server_order_parseFromJSON(cJSON *server_orderJSON){
     }
 
 
+
     server_order_local_var = server_order_create_internal (
         form_values ? form_values_local_nonprim : NULL,
         config_ids ? config_ids_local_nonprim : NULL,
-        cpu ? cpu->valuedouble : 0,
+        cpu_local_var,
         field_label ? field_label_local_nonprim : NULL,
         cpu_li ? cpu_li_local_nonprim : NULL,
         memory_li ? memory_li_local_nonprim : NULL,
@@ -442,6 +465,10 @@ server_order_t *server_order_parseFromJSON(cJSON *server_orderJSON){
         raid_li ? raid_liList : NULL
         );
 
+    if (!server_order_local_var) {
+        goto end;
+    }
+
     return server_order_local_var;
 end:
     if (form_values_local_nonprim) {
@@ -451,6 +478,10 @@ end:
     if (config_ids_local_nonprim) {
         server_order_config_ids_free(config_ids_local_nonprim);
         config_ids_local_nonprim = NULL;
+    }
+    if (cpu_local_var) {
+        free(cpu_local_var);
+        cpu_local_var = NULL;
     }
     if (field_label_local_nonprim) {
         server_order_field_labels_free(field_label_local_nonprim);

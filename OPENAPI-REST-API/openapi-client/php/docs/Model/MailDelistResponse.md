@@ -1,4 +1,4 @@
-# # MailDelistResponse
+# MailDelistResponse
 
 ## Properties
 

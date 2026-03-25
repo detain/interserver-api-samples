@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIDelete_Geo_Firewall_Rule : public OAIObject {
 public:
     OAIDelete_Geo_Firewall_Rule();
-    OAIDelete_Geo_Firewall_Rule(QString json);
+    OAIDelete_Geo_Firewall_Rule(const QString &json);
     ~OAIDelete_Geo_Firewall_Rule() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getRuleId() const;
     void setRuleId(const qint32 &rule_id);

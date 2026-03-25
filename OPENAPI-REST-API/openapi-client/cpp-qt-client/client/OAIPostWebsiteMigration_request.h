@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIPostWebsiteMigration_request : public OAIObject {
 public:
     OAIPostWebsiteMigration_request();
-    OAIPostWebsiteMigration_request(QString json);
+    OAIPostWebsiteMigration_request(const QString &json);
     ~OAIPostWebsiteMigration_request() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCustPortal() const;
     void setCustPortal(const QString &cust_portal);

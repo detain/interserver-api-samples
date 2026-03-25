@@ -10058,8 +10058,24 @@ paths:
       tags:
       - Mail
       summary: View Mail Log
-      description: "Returns a paginated log of emails sent through this mail service,\
-        \ with optional filtering by sender, recipient, date range, and delivery status."
+      description: |
+        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+
+        **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).
+
+        **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.
+
+        **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.
+
+        **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.
+
+        **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.
+
+        **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.
+
+        The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.
+
+        The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match).
       operationId: viewMailLog
       parameters:
       - name: id
@@ -10072,7 +10088,9 @@ paths:
           type: integer
       - name: id
         in: query
-        description: The ID of your mail order this will be sent through.
+        description: "The numeric ID of the mail order to filter by.  When omitted,\
+          \ logs from the first active mail order are returned.  Obtain valid IDs\
+          \ from `GET /mail` or `GET /mail/{id}`."
         required: false
         style: form
         explode: true
@@ -10082,16 +10100,20 @@ paths:
         example: 2604
       - name: origin
         in: query
-        description: originating ip address sending mail
+        description: Filter by the originating IP address from which the message was
+          submitted to the relay.  Must be a valid IPv4 or IPv6 address.
         required: false
         style: form
         explode: true
         schema:
           type: string
+          format: ipv4
         example: 1.2.3.4
       - name: mx
         in: query
-        description: mx record mail was sent to
+        description: Filter by the MX hostname the relay attempted delivery to.  For
+          example `mx.google.com` would return messages destined for Gmail recipients.
+          Maps to `mxHostname` in the `MailLogEntry` response.
         required: false
         style: form
         explode: true
@@ -10100,43 +10122,106 @@ paths:
         example: mx.google.com
       - name: from
         in: query
-        description: from email address
+        description: Filter by SMTP envelope `MAIL FROM` address (exact match).  This
+          is the address the relay used for bounce handling and may differ from the
+          `From:` message header.  For header-level filtering use `headerfrom`.
         required: false
         style: form
         explode: true
         schema:
           type: string
+          format: email
         example: me@sender.com
       - name: to
         in: query
-        description: to/destination email address
+        description: Filter by SMTP envelope `RCPT TO` address (exact match).  This
+          is the delivery address used by the relay and may differ from the `To:`
+          header when BCC recipients are involved.
         required: false
         style: form
         explode: true
         schema:
           type: string
+          format: email
         example: you@receiver.com
       - name: subject
         in: query
-        description: subject containing this string
+        description: Filter by email `Subject` header (exact match).  MIME-encoded
+          subjects are decoded automatically in the response.
         required: false
         style: form
         explode: true
         schema:
           type: string
-        example: Support
+        example: Your order has shipped
       - name: mailid
         in: query
-        description: mail id
+        description: Filter by the relay-assigned mail ID string (exact match).  This
+          corresponds to the `id` field in `MailLogEntry` and to the `text` value
+          returned by the sending endpoints on success.  Format is an 18-19 character
+          hexadecimal string such as `185997065c60008840`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maxLength: 19
+          minLength: 18
+          type: string
+        example: 185997065c60008840
+      - name: messageId
+        in: query
+        description: Filter by the `Message-ID` email header using a substring (case-insensitive)
+          match.  The `Message-ID` is assigned by the sending mail client and is visible
+          in the `messageId` field of `MailLogEntry`.
         required: false
         style: form
         explode: true
         schema:
           type: string
-        example: 185997065c60008840
+        example: <abc123@yourdomain.com>
+      - name: replyto
+        in: query
+        description: Filter by the `Reply-To` message header address (exact match).  Only
+          returns messages where this header was explicitly set.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: email
+        example: replies@sender.com
+      - name: headerfrom
+        in: query
+        description: Filter by the `From` message header address (exact match).  This
+          is the human-visible sender address and may differ from the SMTP envelope
+          `from` parameter when sending on behalf of another address.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: email
+        example: newsletter@sender.com
+      - name: delivered
+        in: query
+        description: "Filter by delivery status.  `1` returns only messages that were\
+          \ successfully delivered to the destination MX.  `0` returns messages that\
+          \ are still queued, deferred, or failed.  Omit to return all messages regardless\
+          \ of delivery status."
+        required: false
+        style: form
+        explode: true
+        schema:
+          title: DeliveredStatus
+          type: integer
+          enum:
+          - 0
+          - 1
+        example: 1
       - name: skip
         in: query
-        description: number of records to skip for pagination
+        description: Number of records to skip for pagination.  Use in combination
+          with `limit` to page through large result sets.  Defaults to `0` (no skip).
         required: false
         style: form
         explode: true
@@ -10145,10 +10230,12 @@ paths:
           type: integer
           format: int32
           default: 0
-        example: 1000
+        example: 0
       - name: limit
         in: query
-        description: maximum number of records to return
+        description: Maximum number of records to return per page.  Defaults to `100`.
+          Maximum allowed value is `10000`.  The response also includes a `total`
+          field with the full matched count so you can calculate the number of pages.
         required: false
         style: form
         explode: true
@@ -10158,42 +10245,76 @@ paths:
           type: integer
           format: int32
           default: 100
-        example: 1000
+        example: 100
       - name: startDate
         in: query
-        description: earliest date to get emails in unix timestamp format
+        description: Earliest date to include.  Accepts either a Unix timestamp (integer
+          seconds since epoch) or a date string parseable by `strtotime()` such as
+          `2024-01-15` or `last monday`.  Messages with a `time` value **greater than
+          or equal to** this value will be included.
         required: false
         style: form
         explode: true
         schema:
-          maximum: 9999999999
-          minimum: 0
-          type: integer
-          format: int64
+          $ref: "#/components/schemas/startDate"
         example: 1641781008
       - name: endDate
         in: query
-        description: Latest date to get emails in unix timestamp format.
+        description: Latest date to include.  Accepts either a Unix timestamp (integer
+          seconds since epoch) or a date string parseable by `strtotime()` such as
+          `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or
+          equal to** this value will be included.
         required: false
         style: form
         explode: true
         schema:
-          maximum: 9999999999
-          minimum: 0
-          type: integer
-          format: int64
+          $ref: "#/components/schemas/endDate"
         example: 1673317008
-      - name: delivered
+      - name: sort
         in: query
-        description: Filter emails by whether or not they were delivered.
+        description: Field to sort results by.  Currently only `time` is supported
+          (sorts by internal row ID which corresponds to chronological order).
         required: false
         style: form
         explode: true
         schema:
           type: string
+          default: time
           enum:
-          - "0"
-          - "1"
+          - time
+        example: time
+      - name: dir
+        in: query
+        description: "Sort direction.  `desc` returns newest first (default), `asc`\
+          \ returns oldest first."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: desc
+          enum:
+          - asc
+          - desc
+        example: desc
+      - name: groupby
+        in: query
+        description: "Controls how results are grouped.  `recipient` (default) returns\
+          \ one row per delivery attempt — a message sent to 4 recipients produces\
+          \ 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery\
+          \ metadata.  `message` collapses to one row per unique message ID; delivery-level\
+          \ fields will reflect one arbitrary recipient per message.  The `total`\
+          \ count in the response matches the grouping mode."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: recipient
+          enum:
+          - message
+          - recipient
+        example: recipient
       responses:
         "200":
           description: Paginated list of mail log entries matching the specified filters.
@@ -10202,7 +10323,40 @@ paths:
               schema:
                 $ref: "#/components/schemas/MailLog"
               examples:
-                MailLogExample:
+                MailLogRecipientExample:
+                  summary: groupby=recipient (default) - one row per delivery attempt
+                  value:
+                    total: 4
+                    skip: 0
+                    limit: 100
+                    emails:
+                    - _id: 103172
+                      id: 17c7eda538e0005d03
+                      from: person@mysite.com
+                      to: client@isp.com
+                      subject: sell 0.005 shares
+                      messageId: <vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>
+                      created: 2021-10-14 08:50:10
+                      time: 1634215809
+                      user: mb5658
+                      transtype: ESMTPSA
+                      origin: 199.231.189.154
+                      interface: feeder
+                      sendingZone: interserver
+                      bodySize: 63
+                      seq: 1
+                      delivered: 1
+                      code: 250
+                      recipient: client@isp.com
+                      domain: interserver.net
+                      locked: 1
+                      lockTime: 1634215818533
+                      assigned: relay1
+                      queued: 2021-10-14T12:50:15.487Z
+                      mxHostname: mx.j.is.cc
+                      response: 250 2.0.0 Ok queued as C91D83E128C
+                MailLogMessageExample:
+                  summary: groupby=message - one row per message
                   value:
                     total: 1
                     skip: 0
@@ -10223,6 +10377,8 @@ paths:
                       sendingZone: interserver
                       bodySize: 63
                       seq: 1
+                      delivered: 1
+                      code: 250
                       recipient: client@isp.com
                       domain: interserver.net
                       locked: 1
@@ -19600,15 +19756,16 @@ components:
       properties:
         total:
           type: integer
-          description: total number of mail log entries
+          description: "Total number of log entries that match the supplied filters,\
+            \ regardless of `skip` and `limit`.  Reflects the `groupby` mode."
           example: 10234
         skip:
           type: integer
-          description: number of emails skipped in listing
+          description: The `skip` value used for this page (echoed from the request).
           example: 0
         limit:
           type: integer
-          description: number of emails to return
+          description: The `limit` value used for this page (echoed from the request).
           example: 100
         emails:
           type: array
@@ -19628,17 +19785,22 @@ components:
             sendingZone: interserver
             bodySize: 63
             seq: 1
+            delivered: 1
+            code: 250
             recipient: client@isp.com
             domain: interserver.net
             locked: 1
-            lockTime: 1634215818533
+            lockTime: "1634215818533"
             assigned: relay1
             queued: 2021-10-14T12:50:15.487Z
             mxHostname: mx.j.is.cc
             response: 250 2.0.0 Ok queued as C91D83E128C
           items:
             $ref: "#/components/schemas/MailLogEntry"
-      description: Mail log records
+      description: "Paginated mail log response.  Contains the full matched count\
+        \ (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the\
+        \ grouping mode: with `groupby=recipient` it counts delivery attempts, with\
+        \ `groupby=message` it counts unique messages."
       example:
         total: 1
         skip: 0
@@ -19650,7 +19812,7 @@ components:
           to: client@isp.com
           subject: sell 0.005 shares
           messageId: <vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>
-          created: 2021-10-14T08:50:10.000Z
+          created: 2021-10-14 08:50:10
           time: 1634215809
           user: mb5658
           transtype: ESMTPSA
@@ -19659,10 +19821,12 @@ components:
           sendingZone: interserver
           bodySize: 63
           seq: 1
+          delivered: 1
+          code: 250
           recipient: client@isp.com
           domain: interserver.net
           locked: 1
-          lockTime: 1634215818533
+          lockTime: "1634215818533"
           assigned: relay1
           queued: 2021-10-14T12:50:15.487Z
           mxHostname: mx.j.is.cc
@@ -19671,23 +19835,11 @@ components:
       title: MailLogEntry
       required:
       - _id
-      - assigned
-      - bodySize
       - created
-      - domain
       - from
       - id
       - interface
-      - lockTime
-      - locked
-      - mxHostname
       - origin
-      - queued
-      - recipient
-      - response
-      - sendingZone
-      - seq
-      - subject
       - time
       - to
       - transtype
@@ -19696,98 +19848,137 @@ components:
       properties:
         _id:
           type: integer
-          description: internal db id
+          description: Internal auto-increment database row ID.
           example: 103172
           x-codegen-property-name: internalId
         id:
           type: string
-          description: mail id
+          description: The relay-assigned mail ID (18-19 hex characters).  Matches
+            the `mailid` filter parameter and the `text` value returned by send endpoints.
           example: 17c7eda538e0005d03
         from:
           type: string
-          description: from address
+          description: SMTP envelope `MAIL FROM` address.
           example: person@mysite.com
         to:
           type: string
-          description: to address
+          description: SMTP envelope `RCPT TO` address.
           example: client@isp.com
         subject:
           type: string
-          description: email subject
+          description: "The `Subject` header value.  MIME-encoded subjects (UTF-8,\
+            \ ISO-8859, US-ASCII) are automatically decoded."
+          nullable: true
           example: sell 0.005 shares
         messageId:
           type: string
-          description: message id
+          description: The `Message-ID` header value.  Can be used with the `messageId`
+            filter for subsequent lookups.
+          nullable: true
           example: <vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>
         created:
           type: string
-          description: creation date
+          description: Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS`
+            format.
           example: 2021-10-14 08:50:10
         time:
           type: integer
-          description: creation timestamp
+          description: Unix timestamp of message acceptance.  Corresponds to the `startDate`
+            and `endDate` filter parameters.
           example: 1634215809
         user:
           type: string
-          description: user account
+          description: The SMTP AUTH username used to submit the message (e.g. `mb5658`).
           example: mb5658
         transtype:
           type: string
-          description: transaction type
+          description: SMTP transaction type negotiated with the relay.
           example: ESMTPSA
         origin:
           type: string
-          description: origin ip
+          description: IP address of the client that submitted the message to the
+            relay.
           example: 199.231.189.154
         interface:
           type: string
-          description: interface name
+          description: Relay interface name that accepted the message.
           example: feeder
         sendingZone:
           type: string
-          description: sending zone
+          description: The sending zone assigned by the relay for outbound delivery.
+          nullable: true
           example: interserver
         bodySize:
           type: integer
-          description: email body size in bytes
+          description: Size of the message body in bytes.
+          nullable: true
           example: 63
         seq:
           type: integer
-          description: index of email in the to adderess list
+          description: Sequence index of this recipient in a multi-recipient message.
+            Starts at 1.
+          nullable: true
           example: 1
+        delivered:
+          type: integer
+          description: "Delivery status flag.  `1` = successfully delivered to destination\
+            \ MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted."
+          nullable: true
+          example: 1
+        code:
+          type: integer
+          description: The SMTP response code from the destination MX server (e.g.
+            `250`).
+          nullable: true
+          example: 250
         recipient:
           type: string
-          description: to address this email is being sent to
+          description: The specific recipient address this delivery record is for.
+          nullable: true
           example: client@isp.com
+        response:
+          type: string
+          description: The full SMTP response string received from the destination
+            MX server.
+          nullable: true
+          example: 250 2.0.0 Ok queued as C91D83E128C
         domain:
           type: string
-          description: to address domain
+          description: The destination domain for this delivery attempt.
+          nullable: true
           example: interserver.net
         locked:
           type: integer
-          description: locked status
+          description: Whether the queue entry is currently locked for delivery processing.
+          nullable: true
           example: 1
         lockTime:
-          type: integer
-          description: lock timestamp
-          example: 1634215818533
+          type: string
+          description: Millisecond-precision timestamp of the last queue lock acquisition.
+          nullable: true
+          example: "1634215818533"
         assigned:
           type: string
-          description: assigned server
+          description: The relay server node assigned to deliver this message.
+          nullable: true
           example: relay1
         queued:
           type: string
-          description: queued timestamp
+          description: ISO 8601 timestamp when the message was placed into the delivery
+            queue.
+          nullable: true
           example: 2021-10-14T12:50:15.487Z
         mxHostname:
           type: string
-          description: mx hostname
+          description: The MX hostname the relay connected to for delivery.  Corresponds
+            to the `mx` filter parameter.
+          nullable: true
           example: mx.j.is.cc
-        response:
-          type: string
-          description: mail delivery response
-          example: 250 2.0.0 Ok queued as C91D83E128C
-      description: An email record
+      description: "A single email record in the mail log.  Combines data from the\
+        \ message store (envelope metadata), the queue release table (delivery status\
+        \ and response), and the sender delivery table (MX routing details).  When\
+        \ `groupby=recipient` each row represents one delivery attempt; when `groupby=message`\
+        \ delivery fields reflect one arbitrary recipient."
       example:
         _id: 103172
         id: 17c7eda538e0005d03
@@ -19804,10 +19995,12 @@ components:
         sendingZone: interserver
         bodySize: 63
         seq: 1
+        delivered: 1
+        code: 250
         recipient: client@isp.com
         domain: interserver.net
         locked: 1
-        lockTime: 1634215818533
+        lockTime: "1634215818533"
         assigned: relay1
         queued: 2021-10-14T12:50:15.487Z
         mxHostname: mx.j.is.cc
@@ -21733,6 +21926,20 @@ components:
           type: integer
           description: "The support ticket ID created for tracking the migration.\
             \ Use this with `/tickets/{id}` to check migration progress."
+    startDate:
+      oneOf:
+      - maximum: 9999999999
+        minimum: 0
+        type: integer
+        format: int64
+      - type: string
+    endDate:
+      oneOf:
+      - maximum: 9999999999
+        minimum: 0
+        type: integer
+        format: int64
+      - type: string
     inline_response_200_26:
       properties:
         bandwidth:

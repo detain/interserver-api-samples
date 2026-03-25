@@ -1,4 +1,4 @@
-# # PlaceBuyNowServerRequest
+# PlaceBuyNowServerRequest
 
 ## Properties
 

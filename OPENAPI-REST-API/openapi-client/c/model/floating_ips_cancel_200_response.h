@@ -19,14 +19,14 @@ typedef struct floating_ips_cancel_200_response_t floating_ips_cancel_200_respon
 
 
 typedef struct floating_ips_cancel_200_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } floating_ips_cancel_200_response_t;
 
 __attribute__((deprecated)) floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
 );
 

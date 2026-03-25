@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIWebsiteRow : public OAIObject {
 public:
     OAIWebsiteRow();
-    OAIWebsiteRow(QString json);
+    OAIWebsiteRow(const QString &json);
     ~OAIWebsiteRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getWebsiteId() const;
     void setWebsiteId(const QString &website_id);

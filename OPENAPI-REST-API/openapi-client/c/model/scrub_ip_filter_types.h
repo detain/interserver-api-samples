@@ -20,14 +20,14 @@ typedef struct scrub_ip_filter_types_t scrub_ip_filter_types_t;
 
 
 typedef struct scrub_ip_filter_types_t {
-    int success; //boolean
+    int *success; //boolean
     list_t* filters; //map
 
     int _library_owned; // Is the library responsible for freeing this object?
 } scrub_ip_filter_types_t;
 
 __attribute__((deprecated)) scrub_ip_filter_types_t *scrub_ip_filter_types_create(
-    int success,
+    int *success,
     list_t* filters
 );
 

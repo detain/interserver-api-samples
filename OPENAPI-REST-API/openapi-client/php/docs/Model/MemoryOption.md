@@ -1,4 +1,4 @@
-# # MemoryOption
+# MemoryOption
 
 ## Properties
 

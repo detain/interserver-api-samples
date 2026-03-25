@@ -53,10 +53,10 @@ class MailBlockRspamd {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailBlockRspamd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailBlockRspamd[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'from'), 'Required key "MailBlockRspamd[from]" is missing from JSON.');
+        assert(json[r'from'] != null, 'Required key "MailBlockRspamd[from]" has a null value in JSON.');
+        assert(json.containsKey(r'subject'), 'Required key "MailBlockRspamd[subject]" is missing from JSON.');
+        assert(json[r'subject'] != null, 'Required key "MailBlockRspamd[subject]" has a null value in JSON.');
         return true;
       }());
 

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILoginSubmissionExample::OAILoginSubmissionExample(QString json) {
+OAILoginSubmissionExample::OAILoginSubmissionExample(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAILoginSubmissionExample::initializeModel() {
     m_tfa_isValid = false;
 }
 
-void OAILoginSubmissionExample::fromJson(QString jsonString) {
+void OAILoginSubmissionExample::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

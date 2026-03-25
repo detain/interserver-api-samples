@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder_serviceTypes::OAIVpsOrder_serviceTypes(QString json) {
+OAIVpsOrder_serviceTypes::OAIVpsOrder_serviceTypes(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIVpsOrder_serviceTypes::initializeModel() {
     m_r_32_isValid = false;
 }
 
-void OAIVpsOrder_serviceTypes::fromJson(QString jsonString) {
+void OAIVpsOrder_serviceTypes::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

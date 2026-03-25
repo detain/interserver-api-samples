@@ -6,24 +6,33 @@
 
 
 static patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_create_internal(
-    int login
+    int *login
     ) {
     patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_local_var = malloc(sizeof(patch_oauth_two_factor_200_response_t));
     if (!patch_oauth_two_factor_200_response_local_var) {
         return NULL;
     }
-    patch_oauth_two_factor_200_response_local_var->login = login;
-
+    memset(patch_oauth_two_factor_200_response_local_var, 0, sizeof(patch_oauth_two_factor_200_response_t));
     patch_oauth_two_factor_200_response_local_var->_library_owned = 1;
+    patch_oauth_two_factor_200_response_local_var->login = login;
     return patch_oauth_two_factor_200_response_local_var;
 }
 
 __attribute__((deprecated)) patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_create(
-    int login
+    int *login
     ) {
-    return patch_oauth_two_factor_200_response_create_internal (
-        login
+    int *login_copy = NULL;
+    if (login) {
+        login_copy = malloc(sizeof(int));
+        if (login_copy) *login_copy = *login;
+    }
+    patch_oauth_two_factor_200_response_t *result = patch_oauth_two_factor_200_response_create_internal (
+        login_copy
         );
+    if (!result) {
+        free(login_copy);
+    }
+    return result;
 }
 
 void patch_oauth_two_factor_200_response_free(patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response) {
@@ -35,6 +44,10 @@ void patch_oauth_two_factor_200_response_free(patch_oauth_two_factor_200_respons
         return ;
     }
     listEntry_t *listEntry;
+    if (patch_oauth_two_factor_200_response->login) {
+        free(patch_oauth_two_factor_200_response->login);
+        patch_oauth_two_factor_200_response->login = NULL;
+    }
     free(patch_oauth_two_factor_200_response);
 }
 
@@ -43,7 +56,7 @@ cJSON *patch_oauth_two_factor_200_response_convertToJSON(patch_oauth_two_factor_
 
     // patch_oauth_two_factor_200_response->login
     if(patch_oauth_two_factor_200_response->login) {
-    if(cJSON_AddBoolToObject(item, "login", patch_oauth_two_factor_200_response->login) == NULL) {
+    if(cJSON_AddBoolToObject(item, "login", *patch_oauth_two_factor_200_response->login) == NULL) {
     goto fail; //Bool
     }
     }
@@ -60,6 +73,9 @@ patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_parse
 
     patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_local_var = NULL;
 
+    // define the local variable for patch_oauth_two_factor_200_response->login
+    int *login_local_var = NULL;
+
     // patch_oauth_two_factor_200_response->login
     cJSON *login = cJSON_GetObjectItemCaseSensitive(patch_oauth_two_factor_200_responseJSON, "login");
     if (cJSON_IsNull(login)) {
@@ -70,15 +86,30 @@ patch_oauth_two_factor_200_response_t *patch_oauth_two_factor_200_response_parse
     {
     goto end; //Bool
     }
+    login_local_var = malloc(sizeof(int));
+    if(!login_local_var)
+    {
+        goto end;
+    }
+    *login_local_var = login->valueint;
     }
 
 
+
     patch_oauth_two_factor_200_response_local_var = patch_oauth_two_factor_200_response_create_internal (
-        login ? login->valueint : 0
+        login_local_var
         );
+
+    if (!patch_oauth_two_factor_200_response_local_var) {
+        goto end;
+    }
 
     return patch_oauth_two_factor_200_response_local_var;
 end:
+    if (login_local_var) {
+        free(login_local_var);
+        login_local_var = NULL;
+    }
     return NULL;
 
 }

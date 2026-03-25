@@ -1,4 +1,4 @@
-# # VpsOrder
+# VpsOrder
 
 ## Properties
 

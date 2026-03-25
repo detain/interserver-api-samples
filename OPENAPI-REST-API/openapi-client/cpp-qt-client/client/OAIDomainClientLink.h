@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainClientLink : public OAIObject {
 public:
     OAIDomainClientLink();
-    OAIDomainClientLink(QString json);
+    OAIDomainClientLink(const QString &json);
     ~OAIDomainClientLink() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getLabel() const;
     void setLabel(const QString &label);

@@ -20,24 +20,24 @@ typedef struct vps_order_put_response_t vps_order_put_response_t;
 
 
 typedef struct vps_order_put_response_t {
-    int _continue; //boolean
+    int *_continue; //boolean
     list_t *errors; //nonprimitive container
-    int coupon_code; //numeric
-    int service_cost; //numeric
-    int slice_cost; //numeric
-    int service_type; //numeric
-    int repeat_slice_cost; //numeric
-    int original_slice_cost; //numeric
-    int original_cost; //numeric
-    int repeat_service_cost; //numeric
-    int monthly_service_cost; //numeric
+    int *coupon_code; //numeric
+    int *service_cost; //numeric
+    int *slice_cost; //numeric
+    int *service_type; //numeric
+    int *repeat_slice_cost; //numeric
+    int *original_slice_cost; //numeric
+    int *original_cost; //numeric
+    int *repeat_service_cost; //numeric
+    int *monthly_service_cost; //numeric
     char *custid; // string
     char *os; // string
     char *slices; // string
     char *platform; // string
     char *controlpanel; // string
-    int period; //numeric
-    int location; //numeric
+    int *period; //numeric
+    int *location; //numeric
     char *version; // string
     char *hostname; // string
     char *coupon; // string
@@ -47,24 +47,24 @@ typedef struct vps_order_put_response_t {
 } vps_order_put_response_t;
 
 __attribute__((deprecated)) vps_order_put_response_t *vps_order_put_response_create(
-    int _continue,
+    int *_continue,
     list_t *errors,
-    int coupon_code,
-    int service_cost,
-    int slice_cost,
-    int service_type,
-    int repeat_slice_cost,
-    int original_slice_cost,
-    int original_cost,
-    int repeat_service_cost,
-    int monthly_service_cost,
+    int *coupon_code,
+    int *service_cost,
+    int *slice_cost,
+    int *service_type,
+    int *repeat_slice_cost,
+    int *original_slice_cost,
+    int *original_cost,
+    int *repeat_service_cost,
+    int *monthly_service_cost,
     char *custid,
     char *os,
     char *slices,
     char *platform,
     char *controlpanel,
-    int period,
-    int location,
+    int *period,
+    int *location,
     char *version,
     char *hostname,
     char *coupon,

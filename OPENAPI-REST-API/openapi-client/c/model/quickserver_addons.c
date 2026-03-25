@@ -13,10 +13,10 @@ static quickserver_addons_t *quickserver_addons_create_internal(
     if (!quickserver_addons_local_var) {
         return NULL;
     }
+    memset(quickserver_addons_local_var, 0, sizeof(quickserver_addons_t));
+    quickserver_addons_local_var->_library_owned = 1;
     quickserver_addons_local_var->title = title;
     quickserver_addons_local_var->rows = rows;
-
-    quickserver_addons_local_var->_library_owned = 1;
     return quickserver_addons_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) quickserver_addons_t *quickserver_addons_create(
     char *title,
     list_t *rows
     ) {
-    return quickserver_addons_create_internal (
+    quickserver_addons_t *result = quickserver_addons_create_internal (
         title,
         rows
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_addons_free(quickserver_addons_t *quickserver_addons) {
@@ -95,6 +98,8 @@ quickserver_addons_t *quickserver_addons_parseFromJSON(cJSON *quickserver_addons
 
     quickserver_addons_t *quickserver_addons_local_var = NULL;
 
+    char *title_local_str = NULL;
+
     // define the local list for quickserver_addons->rows
     list_t *rowsList = NULL;
 
@@ -135,13 +140,23 @@ quickserver_addons_t *quickserver_addons_parseFromJSON(cJSON *quickserver_addons
     }
 
 
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     quickserver_addons_local_var = quickserver_addons_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        title_local_str,
         rows ? rowsList : NULL
         );
 
+    if (!quickserver_addons_local_var) {
+        goto end;
+    }
+
     return quickserver_addons_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     if (rowsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, rowsList) {

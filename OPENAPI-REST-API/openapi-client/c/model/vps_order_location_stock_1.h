@@ -19,17 +19,17 @@ typedef struct vps_order_location_stock_1_t vps_order_location_stock_1_t;
 
 
 typedef struct vps_order_location_stock_1_t {
-    int kvm; //boolean
-    int kvmstorage; //boolean
-    int hyperv; //boolean
+    int *kvm; //boolean
+    int *kvmstorage; //boolean
+    int *hyperv; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_order_location_stock_1_t;
 
 __attribute__((deprecated)) vps_order_location_stock_1_t *vps_order_location_stock_1_create(
-    int kvm,
-    int kvmstorage,
-    int hyperv
+    int *kvm,
+    int *kvmstorage,
+    int *hyperv
 );
 
 void vps_order_location_stock_1_free(vps_order_location_stock_1_t *vps_order_location_stock_1);

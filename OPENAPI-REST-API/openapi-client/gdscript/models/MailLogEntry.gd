@@ -8,10 +8,10 @@ class_name MailLogEntry
 # The OpenAPI Generator Community, © Public Domain, 2022
 
 # MailLogEntry Model
-# An email record
+# A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 
 
-# internal db id
+# Internal auto-increment database row ID.
 # Required: True
 # Example: 103172
 # isArray: false
@@ -21,7 +21,7 @@ class_name MailLogEntry
 		Underscoreid = value
 var __Underscoreid__was__set := false
 
-# mail id
+# The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
 # Required: True
 # Example: 17c7eda538e0005d03
 # isArray: false
@@ -31,7 +31,7 @@ var __Underscoreid__was__set := false
 		id = value
 var __id__was__set := false
 
-# from address
+# SMTP envelope `MAIL FROM` address.
 # Required: True
 # Example: person@mysite.com
 # isArray: false
@@ -41,7 +41,7 @@ var __id__was__set := false
 		from = value
 var __from__was__set := false
 
-# to address
+# SMTP envelope `RCPT TO` address.
 # Required: True
 # Example: client@isp.com
 # isArray: false
@@ -51,17 +51,7 @@ var __from__was__set := false
 		to = value
 var __to__was__set := false
 
-# email subject
-# Required: True
-# Example: sell 0.005 shares
-# isArray: false
-@export var subject: String = "":
-	set(value):
-		__subject__was__set = true
-		subject = value
-var __subject__was__set := false
-
-# creation date
+# Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
 # Required: True
 # Example: 2021-10-14 08:50:10
 # isArray: false
@@ -71,7 +61,7 @@ var __subject__was__set := false
 		created = value
 var __created__was__set := false
 
-# creation timestamp
+# Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
 # Required: True
 # Example: 1634215809
 # isArray: false
@@ -81,7 +71,7 @@ var __created__was__set := false
 		some_timenull = value
 var __some_timenull__was__set := false
 
-# user account
+# The SMTP AUTH username used to submit the message (e.g. `mb5658`).
 # Required: True
 # Example: mb5658
 # isArray: false
@@ -91,7 +81,7 @@ var __some_timenull__was__set := false
 		user = value
 var __user__was__set := false
 
-# transaction type
+# SMTP transaction type negotiated with the relay.
 # Required: True
 # Example: ESMTPSA
 # isArray: false
@@ -101,7 +91,7 @@ var __user__was__set := false
 		transtype = value
 var __transtype__was__set := false
 
-# origin ip
+# IP address of the client that submitted the message to the relay.
 # Required: True
 # Example: 199.231.189.154
 # isArray: false
@@ -111,7 +101,7 @@ var __transtype__was__set := false
 		origin = value
 var __origin__was__set := false
 
-# interface name
+# Relay interface name that accepted the message.
 # Required: True
 # Example: feeder
 # isArray: false
@@ -121,117 +111,17 @@ var __origin__was__set := false
 		interface = value
 var __interface__was__set := false
 
-# sending zone
-# Required: True
-# Example: interserver
+# The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+# Required: False
+# Example: sell 0.005 shares
 # isArray: false
-@export var sendingZone: String = "":
+@export var subject: String = "":
 	set(value):
-		__sendingZone__was__set = true
-		sendingZone = value
-var __sendingZone__was__set := false
+		__subject__was__set = true
+		subject = value
+var __subject__was__set := false
 
-# email body size in bytes
-# Required: True
-# Example: 63
-# isArray: false
-@export var bodySize: int:
-	set(value):
-		__bodySize__was__set = true
-		bodySize = value
-var __bodySize__was__set := false
-
-# index of email in the to adderess list
-# Required: True
-# Example: 1
-# isArray: false
-@export var seq: int:
-	set(value):
-		__seq__was__set = true
-		seq = value
-var __seq__was__set := false
-
-# to address this email is being sent to
-# Required: True
-# Example: client@isp.com
-# isArray: false
-@export var recipient: String = "":
-	set(value):
-		__recipient__was__set = true
-		recipient = value
-var __recipient__was__set := false
-
-# to address domain
-# Required: True
-# Example: interserver.net
-# isArray: false
-@export var domain: String = "":
-	set(value):
-		__domain__was__set = true
-		domain = value
-var __domain__was__set := false
-
-# locked status
-# Required: True
-# Example: 1
-# isArray: false
-@export var locked: int:
-	set(value):
-		__locked__was__set = true
-		locked = value
-var __locked__was__set := false
-
-# lock timestamp
-# Required: True
-# Example: 1634215818533
-# isArray: false
-@export var lockTime: int:
-	set(value):
-		__lockTime__was__set = true
-		lockTime = value
-var __lockTime__was__set := false
-
-# assigned server
-# Required: True
-# Example: relay1
-# isArray: false
-@export var assigned: String = "":
-	set(value):
-		__assigned__was__set = true
-		assigned = value
-var __assigned__was__set := false
-
-# queued timestamp
-# Required: True
-# Example: 2021-10-14T12:50:15.487Z
-# isArray: false
-@export var queued: String = "":
-	set(value):
-		__queued__was__set = true
-		queued = value
-var __queued__was__set := false
-
-# mx hostname
-# Required: True
-# Example: mx.j.is.cc
-# isArray: false
-@export var mxHostname: String = "":
-	set(value):
-		__mxHostname__was__set = true
-		mxHostname = value
-var __mxHostname__was__set := false
-
-# mail delivery response
-# Required: True
-# Example: 250 2.0.0 Ok queued as C91D83E128C
-# isArray: false
-@export var response: String = "":
-	set(value):
-		__response__was__set = true
-		response = value
-var __response__was__set := false
-
-# message id
+# The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
 # Required: False
 # Example: <vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>
 # isArray: false
@@ -240,6 +130,136 @@ var __response__was__set := false
 		__messageId__was__set = true
 		messageId = value
 var __messageId__was__set := false
+
+# The sending zone assigned by the relay for outbound delivery.
+# Required: False
+# Example: interserver
+# isArray: false
+@export var sendingZone: String = "":
+	set(value):
+		__sendingZone__was__set = true
+		sendingZone = value
+var __sendingZone__was__set := false
+
+# Size of the message body in bytes.
+# Required: False
+# Example: 63
+# isArray: false
+@export var bodySize: int:
+	set(value):
+		__bodySize__was__set = true
+		bodySize = value
+var __bodySize__was__set := false
+
+# Sequence index of this recipient in a multi-recipient message. Starts at 1.
+# Required: False
+# Example: 1
+# isArray: false
+@export var seq: int:
+	set(value):
+		__seq__was__set = true
+		seq = value
+var __seq__was__set := false
+
+# Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+# Required: False
+# Example: 1
+# isArray: false
+@export var delivered: int:
+	set(value):
+		__delivered__was__set = true
+		delivered = value
+var __delivered__was__set := false
+
+# The SMTP response code from the destination MX server (e.g. `250`).
+# Required: False
+# Example: 250
+# isArray: false
+@export var code: int:
+	set(value):
+		__code__was__set = true
+		code = value
+var __code__was__set := false
+
+# The specific recipient address this delivery record is for.
+# Required: False
+# Example: client@isp.com
+# isArray: false
+@export var recipient: String = "":
+	set(value):
+		__recipient__was__set = true
+		recipient = value
+var __recipient__was__set := false
+
+# The full SMTP response string received from the destination MX server.
+# Required: False
+# Example: 250 2.0.0 Ok queued as C91D83E128C
+# isArray: false
+@export var response: String = "":
+	set(value):
+		__response__was__set = true
+		response = value
+var __response__was__set := false
+
+# The destination domain for this delivery attempt.
+# Required: False
+# Example: interserver.net
+# isArray: false
+@export var domain: String = "":
+	set(value):
+		__domain__was__set = true
+		domain = value
+var __domain__was__set := false
+
+# Whether the queue entry is currently locked for delivery processing.
+# Required: False
+# Example: 1
+# isArray: false
+@export var locked: int:
+	set(value):
+		__locked__was__set = true
+		locked = value
+var __locked__was__set := false
+
+# Millisecond-precision timestamp of the last queue lock acquisition.
+# Required: False
+# Example: 1634215818533
+# isArray: false
+@export var lockTime: String = "":
+	set(value):
+		__lockTime__was__set = true
+		lockTime = value
+var __lockTime__was__set := false
+
+# The relay server node assigned to deliver this message.
+# Required: False
+# Example: relay1
+# isArray: false
+@export var assigned: String = "":
+	set(value):
+		__assigned__was__set = true
+		assigned = value
+var __assigned__was__set := false
+
+# ISO 8601 timestamp when the message was placed into the delivery queue.
+# Required: False
+# Example: 2021-10-14T12:50:15.487Z
+# isArray: false
+@export var queued: String = "":
+	set(value):
+		__queued__was__set = true
+		queued = value
+var __queued__was__set := false
+
+# The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+# Required: False
+# Example: mx.j.is.cc
+# isArray: false
+@export var mxHostname: String = "":
+	set(value):
+		__mxHostname__was__set = true
+		mxHostname = value
+var __mxHostname__was__set := false
 
 
 func bzz_collect_missing_properties() -> Array:
@@ -252,8 +272,6 @@ func bzz_collect_missing_properties() -> Array:
 		bzz_missing_properties.append("from")
 	if not self.__to__was__set:
 		bzz_missing_properties.append("to")
-	if not self.__subject__was__set:
-		bzz_missing_properties.append("subject")
 	if not self.__created__was__set:
 		bzz_missing_properties.append("created")
 	if not self.__some_timenull__was__set:
@@ -266,28 +284,6 @@ func bzz_collect_missing_properties() -> Array:
 		bzz_missing_properties.append("origin")
 	if not self.__interface__was__set:
 		bzz_missing_properties.append("interface")
-	if not self.__sendingZone__was__set:
-		bzz_missing_properties.append("sendingZone")
-	if not self.__bodySize__was__set:
-		bzz_missing_properties.append("bodySize")
-	if not self.__seq__was__set:
-		bzz_missing_properties.append("seq")
-	if not self.__recipient__was__set:
-		bzz_missing_properties.append("recipient")
-	if not self.__domain__was__set:
-		bzz_missing_properties.append("domain")
-	if not self.__locked__was__set:
-		bzz_missing_properties.append("locked")
-	if not self.__lockTime__was__set:
-		bzz_missing_properties.append("lockTime")
-	if not self.__assigned__was__set:
-		bzz_missing_properties.append("assigned")
-	if not self.__queued__was__set:
-		bzz_missing_properties.append("queued")
-	if not self.__mxHostname__was__set:
-		bzz_missing_properties.append("mxHostname")
-	if not self.__response__was__set:
-		bzz_missing_properties.append("response")
 	return bzz_missing_properties
 
 
@@ -301,8 +297,6 @@ func bzz_normalize() -> Dictionary:
 		bzz_dictionary["from"] = self.from
 	if self.__to__was__set:
 		bzz_dictionary["to"] = self.to
-	if self.__subject__was__set:
-		bzz_dictionary["subject"] = self.subject
 	if self.__created__was__set:
 		bzz_dictionary["created"] = self.created
 	if self.__some_timenull__was__set:
@@ -315,14 +309,24 @@ func bzz_normalize() -> Dictionary:
 		bzz_dictionary["origin"] = self.origin
 	if self.__interface__was__set:
 		bzz_dictionary["interface"] = self.interface
+	if self.__subject__was__set:
+		bzz_dictionary["subject"] = self.subject
+	if self.__messageId__was__set:
+		bzz_dictionary["messageId"] = self.messageId
 	if self.__sendingZone__was__set:
 		bzz_dictionary["sendingZone"] = self.sendingZone
 	if self.__bodySize__was__set:
 		bzz_dictionary["bodySize"] = self.bodySize
 	if self.__seq__was__set:
 		bzz_dictionary["seq"] = self.seq
+	if self.__delivered__was__set:
+		bzz_dictionary["delivered"] = self.delivered
+	if self.__code__was__set:
+		bzz_dictionary["code"] = self.code
 	if self.__recipient__was__set:
 		bzz_dictionary["recipient"] = self.recipient
+	if self.__response__was__set:
+		bzz_dictionary["response"] = self.response
 	if self.__domain__was__set:
 		bzz_dictionary["domain"] = self.domain
 	if self.__locked__was__set:
@@ -335,10 +339,6 @@ func bzz_normalize() -> Dictionary:
 		bzz_dictionary["queued"] = self.queued
 	if self.__mxHostname__was__set:
 		bzz_dictionary["mxHostname"] = self.mxHostname
-	if self.__response__was__set:
-		bzz_dictionary["response"] = self.response
-	if self.__messageId__was__set:
-		bzz_dictionary["messageId"] = self.messageId
 	return bzz_dictionary
 
 
@@ -353,8 +353,6 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 		me.from = from_dict["from"]
 	if from_dict.has("to"):
 		me.to = from_dict["to"]
-	if from_dict.has("subject"):
-		me.subject = from_dict["subject"]
 	if from_dict.has("created"):
 		me.created = from_dict["created"]
 	if from_dict.has("some_timenull"):
@@ -367,14 +365,24 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 		me.origin = from_dict["origin"]
 	if from_dict.has("interface"):
 		me.interface = from_dict["interface"]
+	if from_dict.has("subject"):
+		me.subject = from_dict["subject"]
+	if from_dict.has("messageId"):
+		me.messageId = from_dict["messageId"]
 	if from_dict.has("sendingZone"):
 		me.sendingZone = from_dict["sendingZone"]
 	if from_dict.has("bodySize"):
 		me.bodySize = from_dict["bodySize"]
 	if from_dict.has("seq"):
 		me.seq = from_dict["seq"]
+	if from_dict.has("delivered"):
+		me.delivered = from_dict["delivered"]
+	if from_dict.has("code"):
+		me.code = from_dict["code"]
 	if from_dict.has("recipient"):
 		me.recipient = from_dict["recipient"]
+	if from_dict.has("response"):
+		me.response = from_dict["response"]
 	if from_dict.has("domain"):
 		me.domain = from_dict["domain"]
 	if from_dict.has("locked"):
@@ -387,10 +395,6 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 		me.queued = from_dict["queued"]
 	if from_dict.has("mxHostname"):
 		me.mxHostname = from_dict["mxHostname"]
-	if from_dict.has("response"):
-		me.response = from_dict["response"]
-	if from_dict.has("messageId"):
-		me.messageId = from_dict["messageId"]
 	return me
 
 

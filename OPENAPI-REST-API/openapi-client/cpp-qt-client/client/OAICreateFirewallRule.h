@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAICreateFirewallRule : public OAIObject {
 public:
     OAICreateFirewallRule();
-    OAICreateFirewallRule(QString json);
+    OAICreateFirewallRule(const QString &json);
     ~OAICreateFirewallRule() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getProtocolId() const;
     void setProtocolId(const qint32 &protocol_id);

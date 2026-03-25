@@ -1,4 +1,4 @@
-# # BackupBillingDetails
+# BackupBillingDetails
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AccountInfoDataFraudrecord
+# AccountInfoDataFraudrecord
 
 ## Properties
 

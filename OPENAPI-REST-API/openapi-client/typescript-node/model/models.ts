@@ -377,6 +377,7 @@ export * from './urlRequest';
 export * from './vPSCancel200Response';
 export * from './vPSTrafficDataDataSectionResponse';
 export * from './vPSTrafficDataDataSectionResponseInner';
+export * from './viewMailLogStartDateParameter';
 export * from './viewTicketResponse';
 export * from './vps';
 export * from './vpsBackupRow';
@@ -840,6 +841,7 @@ import { UrlRequest } from './urlRequest';
 import { VPSCancel200Response } from './vPSCancel200Response';
 import { VPSTrafficDataDataSectionResponse } from './vPSTrafficDataDataSectionResponse';
 import { VPSTrafficDataDataSectionResponseInner } from './vPSTrafficDataDataSectionResponseInner';
+import { ViewMailLogStartDateParameter } from './viewMailLogStartDateParameter';
 import { ViewTicketResponse } from './viewTicketResponse';
 import { Vps } from './vps';
 import { VpsBackupRow } from './vpsBackupRow';
@@ -1324,6 +1326,7 @@ let typeMap: {[index: string]: any} = {
     "VPSCancel200Response": VPSCancel200Response,
     "VPSTrafficDataDataSectionResponse": VPSTrafficDataDataSectionResponse,
     "VPSTrafficDataDataSectionResponseInner": VPSTrafficDataDataSectionResponseInner,
+    "ViewMailLogStartDateParameter": ViewMailLogStartDateParameter,
     "ViewTicketResponse": ViewTicketResponse,
     "Vps": Vps,
     "VpsBackupRow": VpsBackupRow,

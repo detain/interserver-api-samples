@@ -1,4 +1,4 @@
-# # DenyRuleRecord
+# DenyRuleRecord
 
 ## Properties
 

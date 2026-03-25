@@ -34,13 +34,13 @@ class OAIQuickserverIpTableRow;
 class OAIQuickserverIpInfo : public OAIObject {
 public:
     OAIQuickserverIpInfo();
-    OAIQuickserverIpInfo(QString json);
+    OAIQuickserverIpInfo(const QString &json);
     ~OAIQuickserverIpInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTitle() const;
     void setTitle(const QString &title);

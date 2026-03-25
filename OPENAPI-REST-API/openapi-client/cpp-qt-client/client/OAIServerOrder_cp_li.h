@@ -32,13 +32,13 @@ class OAIServerOrderControlPanel;
 class OAIServerOrder_cp_li : public OAIObject {
 public:
     OAIServerOrder_cp_li();
-    OAIServerOrder_cp_li(QString json);
+    OAIServerOrder_cp_li(const QString &json);
     ~OAIServerOrder_cp_li() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderControlPanel getR9() const;
     void setR9(const OAIServerOrderControlPanel &r_9);

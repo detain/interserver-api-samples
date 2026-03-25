@@ -1,4 +1,4 @@
-# # ReplyTicketResponseSchema
+# ReplyTicketResponseSchema
 
 ## Properties
 

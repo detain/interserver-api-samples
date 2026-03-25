@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.jackson.nullable.JsonNullable;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -52,14 +53,6 @@ public class MailLogEntryTest {
     }
 
     /**
-     * Test the property 'subject'
-     */
-    @Test
-    public void subjectTest() {
-        // TODO: test subject
-    }
-
-    /**
      * Test the property 'created'
      */
     @Test
@@ -108,6 +101,22 @@ public class MailLogEntryTest {
     }
 
     /**
+     * Test the property 'subject'
+     */
+    @Test
+    public void subjectTest() {
+        // TODO: test subject
+    }
+
+    /**
+     * Test the property 'messageId'
+     */
+    @Test
+    public void messageIdTest() {
+        // TODO: test messageId
+    }
+
+    /**
      * Test the property 'sendingZone'
      */
     @Test
@@ -132,11 +141,35 @@ public class MailLogEntryTest {
     }
 
     /**
+     * Test the property 'delivered'
+     */
+    @Test
+    public void deliveredTest() {
+        // TODO: test delivered
+    }
+
+    /**
+     * Test the property 'code'
+     */
+    @Test
+    public void codeTest() {
+        // TODO: test code
+    }
+
+    /**
      * Test the property 'recipient'
      */
     @Test
     public void recipientTest() {
         // TODO: test recipient
+    }
+
+    /**
+     * Test the property 'response'
+     */
+    @Test
+    public void responseTest() {
+        // TODO: test response
     }
 
     /**
@@ -185,22 +218,6 @@ public class MailLogEntryTest {
     @Test
     public void mxHostnameTest() {
         // TODO: test mxHostname
-    }
-
-    /**
-     * Test the property 'response'
-     */
-    @Test
-    public void responseTest() {
-        // TODO: test response
-    }
-
-    /**
-     * Test the property 'messageId'
-     */
-    @Test
-    public void messageIdTest() {
-        // TODO: test messageId
     }
 
 }

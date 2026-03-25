@@ -86,10 +86,14 @@ class DenyRuleRecord {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DenyRuleRecord[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DenyRuleRecord[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'type'), 'Required key "DenyRuleRecord[type]" is missing from JSON.');
+        assert(json[r'type'] != null, 'Required key "DenyRuleRecord[type]" has a null value in JSON.');
+        assert(json.containsKey(r'data'), 'Required key "DenyRuleRecord[data]" is missing from JSON.');
+        assert(json[r'data'] != null, 'Required key "DenyRuleRecord[data]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "DenyRuleRecord[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "DenyRuleRecord[id]" has a null value in JSON.');
+        assert(json.containsKey(r'created'), 'Required key "DenyRuleRecord[created]" is missing from JSON.');
+        assert(json[r'created'] != null, 'Required key "DenyRuleRecord[created]" has a null value in JSON.');
         return true;
       }());
 

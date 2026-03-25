@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsTemplateRow::OAIVpsTemplateRow(QString json) {
+OAIVpsTemplateRow::OAIVpsTemplateRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIVpsTemplateRow::initializeModel() {
     m_template_dir_isValid = false;
 }
 
-void OAIVpsTemplateRow::fromJson(QString jsonString) {
+void OAIVpsTemplateRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

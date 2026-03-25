@@ -25,6 +25,8 @@ static domain_tech_contact_t *domain_tech_contact_create_internal(
     if (!domain_tech_contact_local_var) {
         return NULL;
     }
+    memset(domain_tech_contact_local_var, 0, sizeof(domain_tech_contact_t));
+    domain_tech_contact_local_var->_library_owned = 1;
     domain_tech_contact_local_var->state = state;
     domain_tech_contact_local_var->status = status;
     domain_tech_contact_local_var->org_name = org_name;
@@ -39,8 +41,6 @@ static domain_tech_contact_t *domain_tech_contact_create_internal(
     domain_tech_contact_local_var->phone = phone;
     domain_tech_contact_local_var->first_name = first_name;
     domain_tech_contact_local_var->last_name = last_name;
-
-    domain_tech_contact_local_var->_library_owned = 1;
     return domain_tech_contact_local_var;
 }
 
@@ -60,7 +60,7 @@ __attribute__((deprecated)) domain_tech_contact_t *domain_tech_contact_create(
     char *first_name,
     char *last_name
     ) {
-    return domain_tech_contact_create_internal (
+    domain_tech_contact_t *result = domain_tech_contact_create_internal (
         state,
         status,
         org_name,
@@ -76,6 +76,9 @@ __attribute__((deprecated)) domain_tech_contact_t *domain_tech_contact_create(
         first_name,
         last_name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_tech_contact_free(domain_tech_contact_t *domain_tech_contact) {
@@ -272,6 +275,34 @@ domain_tech_contact_t *domain_tech_contact_parseFromJSON(cJSON *domain_tech_cont
 
     domain_tech_contact_t *domain_tech_contact_local_var = NULL;
 
+    char *state_local_str = NULL;
+
+    char *status_local_str = NULL;
+
+    char *org_name_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *postal_code_local_str = NULL;
+
+    char *fax_local_str = NULL;
+
+    char *email_local_str = NULL;
+
+    char *address2_local_str = NULL;
+
+    char *address3_local_str = NULL;
+
+    char *address1_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *phone_local_str = NULL;
+
+    char *first_name_local_str = NULL;
+
+    char *last_name_local_str = NULL;
+
     // domain_tech_contact->state
     cJSON *state = cJSON_GetObjectItemCaseSensitive(domain_tech_contactJSON, "state");
     if (cJSON_IsNull(state)) {
@@ -441,25 +472,100 @@ domain_tech_contact_t *domain_tech_contact_parseFromJSON(cJSON *domain_tech_cont
     }
 
 
+    if (state && !cJSON_IsNull(state)) state_local_str = strdup(state->valuestring);
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+    if (org_name && !cJSON_IsNull(org_name)) org_name_local_str = strdup(org_name->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (postal_code && !cJSON_IsNull(postal_code)) postal_code_local_str = strdup(postal_code->valuestring);
+    if (fax && !cJSON_IsNull(fax)) fax_local_str = strdup(fax->valuestring);
+    if (email && !cJSON_IsNull(email)) email_local_str = strdup(email->valuestring);
+    if (address2 && !cJSON_IsNull(address2)) address2_local_str = strdup(address2->valuestring);
+    if (address3 && !cJSON_IsNull(address3)) address3_local_str = strdup(address3->valuestring);
+    if (address1 && !cJSON_IsNull(address1)) address1_local_str = strdup(address1->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (phone && !cJSON_IsNull(phone)) phone_local_str = strdup(phone->valuestring);
+    if (first_name && !cJSON_IsNull(first_name)) first_name_local_str = strdup(first_name->valuestring);
+    if (last_name && !cJSON_IsNull(last_name)) last_name_local_str = strdup(last_name->valuestring);
+
     domain_tech_contact_local_var = domain_tech_contact_create_internal (
-        state && !cJSON_IsNull(state) ? strdup(state->valuestring) : NULL,
-        status && !cJSON_IsNull(status) ? strdup(status->valuestring) : NULL,
-        org_name && !cJSON_IsNull(org_name) ? strdup(org_name->valuestring) : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        postal_code && !cJSON_IsNull(postal_code) ? strdup(postal_code->valuestring) : NULL,
-        fax && !cJSON_IsNull(fax) ? strdup(fax->valuestring) : NULL,
-        email && !cJSON_IsNull(email) ? strdup(email->valuestring) : NULL,
-        address2 && !cJSON_IsNull(address2) ? strdup(address2->valuestring) : NULL,
-        address3 && !cJSON_IsNull(address3) ? strdup(address3->valuestring) : NULL,
-        address1 && !cJSON_IsNull(address1) ? strdup(address1->valuestring) : NULL,
-        city && !cJSON_IsNull(city) ? strdup(city->valuestring) : NULL,
-        phone && !cJSON_IsNull(phone) ? strdup(phone->valuestring) : NULL,
-        first_name && !cJSON_IsNull(first_name) ? strdup(first_name->valuestring) : NULL,
-        last_name && !cJSON_IsNull(last_name) ? strdup(last_name->valuestring) : NULL
+        state_local_str,
+        status_local_str,
+        org_name_local_str,
+        country_local_str,
+        postal_code_local_str,
+        fax_local_str,
+        email_local_str,
+        address2_local_str,
+        address3_local_str,
+        address1_local_str,
+        city_local_str,
+        phone_local_str,
+        first_name_local_str,
+        last_name_local_str
         );
+
+    if (!domain_tech_contact_local_var) {
+        goto end;
+    }
 
     return domain_tech_contact_local_var;
 end:
+    if (state_local_str) {
+        free(state_local_str);
+        state_local_str = NULL;
+    }
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
+    if (org_name_local_str) {
+        free(org_name_local_str);
+        org_name_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (postal_code_local_str) {
+        free(postal_code_local_str);
+        postal_code_local_str = NULL;
+    }
+    if (fax_local_str) {
+        free(fax_local_str);
+        fax_local_str = NULL;
+    }
+    if (email_local_str) {
+        free(email_local_str);
+        email_local_str = NULL;
+    }
+    if (address2_local_str) {
+        free(address2_local_str);
+        address2_local_str = NULL;
+    }
+    if (address3_local_str) {
+        free(address3_local_str);
+        address3_local_str = NULL;
+    }
+    if (address1_local_str) {
+        free(address1_local_str);
+        address1_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (phone_local_str) {
+        free(phone_local_str);
+        phone_local_str = NULL;
+    }
+    if (first_name_local_str) {
+        free(first_name_local_str);
+        first_name_local_str = NULL;
+    }
+    if (last_name_local_str) {
+        free(last_name_local_str);
+        last_name_local_str = NULL;
+    }
     return NULL;
 
 }

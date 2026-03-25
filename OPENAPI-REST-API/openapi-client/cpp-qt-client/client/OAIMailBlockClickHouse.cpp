@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailBlockClickHouse::OAIMailBlockClickHouse(QString json) {
+OAIMailBlockClickHouse::OAIMailBlockClickHouse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIMailBlockClickHouse::initializeModel() {
     m_to_isValid = false;
 }
 
-void OAIMailBlockClickHouse::fromJson(QString jsonString) {
+void OAIMailBlockClickHouse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

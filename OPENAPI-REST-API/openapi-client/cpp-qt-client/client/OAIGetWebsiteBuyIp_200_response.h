@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIGetWebsiteBuyIp_200_response : public OAIObject {
 public:
     OAIGetWebsiteBuyIp_200_response();
-    OAIGetWebsiteBuyIp_200_response(QString json);
+    OAIGetWebsiteBuyIp_200_response(const QString &json);
     ~OAIGetWebsiteBuyIp_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QMap<QString, QString> getIps() const;
     void setIps(const QMap<QString, QString> &ips);

@@ -119,6 +119,7 @@ from myadmin-client-python-flask.models.domain_tech_contact import DomainTechCon
 from myadmin-client-python-flask.models.domain_whois_privacy_request import DomainWhoisPrivacyRequest
 from myadmin-client-python-flask.models.email_address import EmailAddress
 from myadmin-client-python-flask.models.email_address_name import EmailAddressName
+from myadmin-client-python-flask.models.end_date import EndDate
 from myadmin-client-python-flask.models.field_label import FieldLabel
 from myadmin-client-python-flask.models.form_values import FormValues
 from myadmin-client-python-flask.models.generic_response import GenericResponse
@@ -380,6 +381,7 @@ from myadmin-client-python-flask.models.service_type import ServiceType
 from myadmin-client-python-flask.models.service_types import ServiceTypes
 from myadmin-client-python-flask.models.services import Services
 from myadmin-client-python-flask.models.services_info import ServicesInfo
+from myadmin-client-python-flask.models.start_date import StartDate
 from myadmin-client-python-flask.models.status_monthly_breakdown import StatusMonthlyBreakdown
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse
 from myadmin-client-python-flask.models.template_request import TemplateRequest

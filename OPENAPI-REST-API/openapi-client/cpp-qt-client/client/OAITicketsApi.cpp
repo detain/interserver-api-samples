@@ -291,32 +291,6 @@ void OAITicketsApi::addNewTicketCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addNewTicketSignal(output);
         Q_EMIT addNewTicketSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addNewTicketSignalE(output, error_type, error_str);
-        Q_EMIT addNewTicketSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addNewTicketSignalError(output, error_type, error_str);
         Q_EMIT addNewTicketSignalErrorFull(worker, error_type, error_str);
     }
@@ -383,32 +357,6 @@ void OAITicketsApi::closeTicketCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT closeTicketSignal(output);
         Q_EMIT closeTicketSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT closeTicketSignalE(output, error_type, error_str);
-        Q_EMIT closeTicketSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT closeTicketSignalError(output, error_type, error_str);
         Q_EMIT closeTicketSignalErrorFull(worker, error_type, error_str);
     }
@@ -475,32 +423,6 @@ void OAITicketsApi::deleteTicketInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteTicketInfoSignal(output);
         Q_EMIT deleteTicketInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteTicketInfoSignalE(output, error_type, error_str);
-        Q_EMIT deleteTicketInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteTicketInfoSignalError(output, error_type, error_str);
         Q_EMIT deleteTicketInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -552,32 +474,6 @@ void OAITicketsApi::getNewTicketCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewTicketSignal();
         Q_EMIT getNewTicketSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewTicketSignalE(error_type, error_str);
-        Q_EMIT getNewTicketSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewTicketSignalError(error_type, error_str);
         Q_EMIT getNewTicketSignalErrorFull(worker, error_type, error_str);
     }
@@ -644,32 +540,6 @@ void OAITicketsApi::getTicketInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getTicketInfoSignal(output);
         Q_EMIT getTicketInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getTicketInfoSignalE(output, error_type, error_str);
-        Q_EMIT getTicketInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getTicketInfoSignalError(output, error_type, error_str);
         Q_EMIT getTicketInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -768,32 +638,6 @@ void OAITicketsApi::getTicketsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getTicketsListSignal(output);
         Q_EMIT getTicketsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getTicketsListSignalE(output, error_type, error_str);
-        Q_EMIT getTicketsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getTicketsListSignalError(output, error_type, error_str);
         Q_EMIT getTicketsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -860,32 +704,6 @@ void OAITicketsApi::postTicketInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postTicketInfoSignal(output);
         Q_EMIT postTicketInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postTicketInfoSignalE(output, error_type, error_str);
-        Q_EMIT postTicketInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postTicketInfoSignalError(output, error_type, error_str);
         Q_EMIT postTicketInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -938,32 +756,6 @@ void OAITicketsApi::postTicketsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postTicketsListSignal(output);
         Q_EMIT postTicketsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postTicketsListSignalE(output, error_type, error_str);
-        Q_EMIT postTicketsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postTicketsListSignalError(output, error_type, error_str);
         Q_EMIT postTicketsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -1030,32 +822,6 @@ void OAITicketsApi::putTicketInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putTicketInfoSignal(output);
         Q_EMIT putTicketInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putTicketInfoSignalE(output, error_type, error_str);
-        Q_EMIT putTicketInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putTicketInfoSignalError(output, error_type, error_str);
         Q_EMIT putTicketInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -1127,32 +893,6 @@ void OAITicketsApi::replyTicketCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT replyTicketSignal(output);
         Q_EMIT replyTicketSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT replyTicketSignalE(output, error_type, error_str);
-        Q_EMIT replyTicketSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT replyTicketSignalError(output, error_type, error_str);
         Q_EMIT replyTicketSignalErrorFull(worker, error_type, error_str);
     }
@@ -1224,42 +964,16 @@ void OAITicketsApi::updateTicketInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateTicketInfoSignal(output);
         Q_EMIT updateTicketInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateTicketInfoSignalE(output, error_type, error_str);
-        Q_EMIT updateTicketInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateTicketInfoSignalError(output, error_type, error_str);
         Q_EMIT updateTicketInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAITicketsApi::tokenAvailable(){
+void OAITicketsApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1269,7 +983,7 @@ void OAITicketsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1279,7 +993,7 @@ void OAITicketsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1289,7 +1003,7 @@ void OAITicketsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

@@ -12,18 +12,21 @@ static domain_nameserver_put_request_t *domain_nameserver_put_request_create_int
     if (!domain_nameserver_put_request_local_var) {
         return NULL;
     }
-    domain_nameserver_put_request_local_var->nameserver = nameserver;
-
+    memset(domain_nameserver_put_request_local_var, 0, sizeof(domain_nameserver_put_request_t));
     domain_nameserver_put_request_local_var->_library_owned = 1;
+    domain_nameserver_put_request_local_var->nameserver = nameserver;
     return domain_nameserver_put_request_local_var;
 }
 
 __attribute__((deprecated)) domain_nameserver_put_request_t *domain_nameserver_put_request_create(
     list_t *nameserver
     ) {
-    return domain_nameserver_put_request_create_internal (
+    domain_nameserver_put_request_t *result = domain_nameserver_put_request_create_internal (
         nameserver
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_nameserver_put_request_free(domain_nameserver_put_request_t *domain_nameserver_put_request) {
@@ -106,9 +109,14 @@ domain_nameserver_put_request_t *domain_nameserver_put_request_parseFromJSON(cJS
     }
 
 
+
     domain_nameserver_put_request_local_var = domain_nameserver_put_request_create_internal (
         nameserverList
         );
+
+    if (!domain_nameserver_put_request_local_var) {
+        goto end;
+    }
 
     return domain_nameserver_put_request_local_var;
 end:

@@ -49,13 +49,13 @@ class OAIDomainAllInfo;
 class OAIDomain : public OAIObject {
 public:
     OAIDomain();
-    OAIDomain(QString json);
+    OAIDomain(const QString &json);
     ~OAIDomain() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIDomainServiceInfo getServiceInfo() const;
     void setServiceInfo(const OAIDomainServiceInfo &service_info);

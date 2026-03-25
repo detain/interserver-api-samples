@@ -7,7 +7,7 @@
 
 static login_success_response_t *login_success_response_create_internal(
     char *session_id,
-    int account_id,
+    int *account_id,
     char *account_lid,
     char *ima,
     char *gravatar
@@ -16,30 +16,39 @@ static login_success_response_t *login_success_response_create_internal(
     if (!login_success_response_local_var) {
         return NULL;
     }
+    memset(login_success_response_local_var, 0, sizeof(login_success_response_t));
+    login_success_response_local_var->_library_owned = 1;
     login_success_response_local_var->session_id = session_id;
     login_success_response_local_var->account_id = account_id;
     login_success_response_local_var->account_lid = account_lid;
     login_success_response_local_var->ima = ima;
     login_success_response_local_var->gravatar = gravatar;
-
-    login_success_response_local_var->_library_owned = 1;
     return login_success_response_local_var;
 }
 
 __attribute__((deprecated)) login_success_response_t *login_success_response_create(
     char *session_id,
-    int account_id,
+    int *account_id,
     char *account_lid,
     char *ima,
     char *gravatar
     ) {
-    return login_success_response_create_internal (
+    int *account_id_copy = NULL;
+    if (account_id) {
+        account_id_copy = malloc(sizeof(int));
+        if (account_id_copy) *account_id_copy = *account_id;
+    }
+    login_success_response_t *result = login_success_response_create_internal (
         session_id,
-        account_id,
+        account_id_copy,
         account_lid,
         ima,
         gravatar
         );
+    if (!result) {
+        free(account_id_copy);
+    }
+    return result;
 }
 
 void login_success_response_free(login_success_response_t *login_success_response) {
@@ -54,6 +63,10 @@ void login_success_response_free(login_success_response_t *login_success_respons
     if (login_success_response->session_id) {
         free(login_success_response->session_id);
         login_success_response->session_id = NULL;
+    }
+    if (login_success_response->account_id) {
+        free(login_success_response->account_id);
+        login_success_response->account_id = NULL;
     }
     if (login_success_response->account_lid) {
         free(login_success_response->account_lid);
@@ -83,7 +96,7 @@ cJSON *login_success_response_convertToJSON(login_success_response_t *login_succ
 
     // login_success_response->account_id
     if(login_success_response->account_id) {
-    if(cJSON_AddNumberToObject(item, "account_id", login_success_response->account_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "account_id", *login_success_response->account_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -124,6 +137,17 @@ login_success_response_t *login_success_response_parseFromJSON(cJSON *login_succ
 
     login_success_response_t *login_success_response_local_var = NULL;
 
+    char *session_id_local_str = NULL;
+
+    // define the local variable for login_success_response->account_id
+    int *account_id_local_var = NULL;
+
+    char *account_lid_local_str = NULL;
+
+    char *ima_local_str = NULL;
+
+    char *gravatar_local_str = NULL;
+
     // login_success_response->session_id
     cJSON *session_id = cJSON_GetObjectItemCaseSensitive(login_success_responseJSON, "sessionId");
     if (cJSON_IsNull(session_id)) {
@@ -146,6 +170,12 @@ login_success_response_t *login_success_response_parseFromJSON(cJSON *login_succ
     {
     goto end; //Numeric
     }
+    account_id_local_var = malloc(sizeof(int));
+    if(!account_id_local_var)
+    {
+        goto end;
+    }
+    *account_id_local_var = account_id->valuedouble;
     }
 
     // login_success_response->account_lid
@@ -185,16 +215,45 @@ login_success_response_t *login_success_response_parseFromJSON(cJSON *login_succ
     }
 
 
+    if (session_id && !cJSON_IsNull(session_id)) session_id_local_str = strdup(session_id->valuestring);
+    if (account_lid && !cJSON_IsNull(account_lid)) account_lid_local_str = strdup(account_lid->valuestring);
+    if (ima && !cJSON_IsNull(ima)) ima_local_str = strdup(ima->valuestring);
+    if (gravatar && !cJSON_IsNull(gravatar)) gravatar_local_str = strdup(gravatar->valuestring);
+
     login_success_response_local_var = login_success_response_create_internal (
-        session_id && !cJSON_IsNull(session_id) ? strdup(session_id->valuestring) : NULL,
-        account_id ? account_id->valuedouble : 0,
-        account_lid && !cJSON_IsNull(account_lid) ? strdup(account_lid->valuestring) : NULL,
-        ima && !cJSON_IsNull(ima) ? strdup(ima->valuestring) : NULL,
-        gravatar && !cJSON_IsNull(gravatar) ? strdup(gravatar->valuestring) : NULL
+        session_id_local_str,
+        account_id_local_var,
+        account_lid_local_str,
+        ima_local_str,
+        gravatar_local_str
         );
+
+    if (!login_success_response_local_var) {
+        goto end;
+    }
 
     return login_success_response_local_var;
 end:
+    if (session_id_local_str) {
+        free(session_id_local_str);
+        session_id_local_str = NULL;
+    }
+    if (account_id_local_var) {
+        free(account_id_local_var);
+        account_id_local_var = NULL;
+    }
+    if (account_lid_local_str) {
+        free(account_lid_local_str);
+        account_lid_local_str = NULL;
+    }
+    if (ima_local_str) {
+        free(ima_local_str);
+        ima_local_str = NULL;
+    }
+    if (gravatar_local_str) {
+        free(gravatar_local_str);
+        gravatar_local_str = NULL;
+    }
     return NULL;
 
 }

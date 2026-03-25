@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMailAttachment : public OAIObject {
 public:
     OAIMailAttachment();
-    OAIMailAttachment(QString json);
+    OAIMailAttachment(const QString &json);
     ~OAIMailAttachment() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getFilename() const;
     void setFilename(const QString &filename);

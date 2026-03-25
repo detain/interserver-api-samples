@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIWebsiteBackups_inner : public OAIObject {
 public:
     OAIWebsiteBackups_inner();
-    OAIWebsiteBackups_inner(QString json);
+    OAIWebsiteBackups_inner(const QString &json);
     ~OAIWebsiteBackups_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getName() const;
     void setName(const QString &name);

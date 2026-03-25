@@ -75,10 +75,12 @@ class DnsNewRecord {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DnsNewRecord[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DnsNewRecord[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "DnsNewRecord[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "DnsNewRecord[name]" has a null value in JSON.');
+        assert(json.containsKey(r'type'), 'Required key "DnsNewRecord[type]" is missing from JSON.');
+        assert(json[r'type'] != null, 'Required key "DnsNewRecord[type]" has a null value in JSON.');
+        assert(json.containsKey(r'content'), 'Required key "DnsNewRecord[content]" is missing from JSON.');
+        assert(json[r'content'] != null, 'Required key "DnsNewRecord[content]" has a null value in JSON.');
         return true;
       }());
 

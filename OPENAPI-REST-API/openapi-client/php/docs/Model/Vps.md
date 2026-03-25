@@ -1,4 +1,4 @@
-# # Vps
+# Vps
 
 ## Properties
 

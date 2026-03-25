@@ -1,4 +1,4 @@
-# # DomainAdminContact
+# DomainAdminContact
 
 ## Properties
 

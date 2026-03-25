@@ -42,13 +42,13 @@ class OAILicenseServiceType;
 class OAILicense : public OAIObject {
 public:
     OAILicense();
-    OAILicense(QString json);
+    OAILicense(const QString &json);
     ~OAILicense() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAILicenseServiceInfo getServiceInfo() const;
     void setServiceInfo(const OAILicenseServiceInfo &service_info);

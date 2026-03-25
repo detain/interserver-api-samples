@@ -43,13 +43,13 @@ class OAIWebsitesOrder_packges;
 class OAIWebsitesOrder : public OAIObject {
 public:
     OAIWebsitesOrder();
-    OAIWebsitesOrder(QString json);
+    OAIWebsitesOrder(const QString &json);
     ~OAIWebsitesOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getStep() const;
     void setStep(const QString &step);

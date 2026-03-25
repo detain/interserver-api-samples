@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIPatchOauthTwoFactor_200_response : public OAIObject {
 public:
     OAIPatchOauthTwoFactor_200_response();
-    OAIPatchOauthTwoFactor_200_response(QString json);
+    OAIPatchOauthTwoFactor_200_response(const QString &json);
     ~OAIPatchOauthTwoFactor_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isLogin() const;
     void setLogin(const bool &login);

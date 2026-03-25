@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIPostOauthCallback_request : public OAIObject {
 public:
     OAIPostOauthCallback_request();
-    OAIPostOauthCallback_request(QString json);
+    OAIPostOauthCallback_request(const QString &json);
     ~OAIPostOauthCallback_request() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getProvider() const;
     void setProvider(const QString &provider);

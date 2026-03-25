@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailServiceType::OAIMailServiceType(QString json) {
+OAIMailServiceType::OAIMailServiceType(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIMailServiceType::initializeModel() {
     m_services_module_isValid = false;
 }
 
-void OAIMailServiceType::fromJson(QString jsonString) {
+void OAIMailServiceType::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

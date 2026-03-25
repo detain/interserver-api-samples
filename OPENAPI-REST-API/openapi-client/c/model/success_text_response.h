@@ -19,7 +19,7 @@ typedef struct success_text_response_t success_text_response_t;
 
 
 typedef struct success_text_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
     char *action; // string
 
@@ -27,7 +27,7 @@ typedef struct success_text_response_t {
 } success_text_response_t;
 
 __attribute__((deprecated)) success_text_response_t *success_text_response_create(
-    int success,
+    int *success,
     char *text,
     char *action
 );

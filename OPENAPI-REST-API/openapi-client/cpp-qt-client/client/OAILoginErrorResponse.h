@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAILoginErrorResponse : public OAIObject {
 public:
     OAILoginErrorResponse();
-    OAILoginErrorResponse(QString json);
+    OAILoginErrorResponse(const QString &json);
     ~OAILoginErrorResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getMessage() const;
     void setMessage(const QString &message);

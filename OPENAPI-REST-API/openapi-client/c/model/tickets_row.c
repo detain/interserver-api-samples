@@ -11,19 +11,21 @@ static tickets_row_t *tickets_row_create_internal(
     char *lastreplier,
     char *status,
     char *priority,
-    int total_replies,
+    int *total_replies,
     char *lastactivity,
     char *departmenttitle,
-    int ticketid,
+    int *ticketid,
     char *can_close,
     any_type_t *attachments,
     char *status_text,
-    int checked
+    int *checked
     ) {
     tickets_row_t *tickets_row_local_var = malloc(sizeof(tickets_row_t));
     if (!tickets_row_local_var) {
         return NULL;
     }
+    memset(tickets_row_local_var, 0, sizeof(tickets_row_t));
+    tickets_row_local_var->_library_owned = 1;
     tickets_row_local_var->title = title;
     tickets_row_local_var->ticketmaskid = ticketmaskid;
     tickets_row_local_var->lastreplier = lastreplier;
@@ -37,8 +39,6 @@ static tickets_row_t *tickets_row_create_internal(
     tickets_row_local_var->attachments = attachments;
     tickets_row_local_var->status_text = status_text;
     tickets_row_local_var->checked = checked;
-
-    tickets_row_local_var->_library_owned = 1;
     return tickets_row_local_var;
 }
 
@@ -48,30 +48,51 @@ __attribute__((deprecated)) tickets_row_t *tickets_row_create(
     char *lastreplier,
     char *status,
     char *priority,
-    int total_replies,
+    int *total_replies,
     char *lastactivity,
     char *departmenttitle,
-    int ticketid,
+    int *ticketid,
     char *can_close,
     any_type_t *attachments,
     char *status_text,
-    int checked
+    int *checked
     ) {
-    return tickets_row_create_internal (
+    int *total_replies_copy = NULL;
+    if (total_replies) {
+        total_replies_copy = malloc(sizeof(int));
+        if (total_replies_copy) *total_replies_copy = *total_replies;
+    }
+    int *ticketid_copy = NULL;
+    if (ticketid) {
+        ticketid_copy = malloc(sizeof(int));
+        if (ticketid_copy) *ticketid_copy = *ticketid;
+    }
+    int *checked_copy = NULL;
+    if (checked) {
+        checked_copy = malloc(sizeof(int));
+        if (checked_copy) *checked_copy = *checked;
+    }
+    tickets_row_t *result = tickets_row_create_internal (
         title,
         ticketmaskid,
         lastreplier,
         status,
         priority,
-        total_replies,
+        total_replies_copy,
         lastactivity,
         departmenttitle,
-        ticketid,
+        ticketid_copy,
         can_close,
         attachments,
         status_text,
-        checked
+        checked_copy
         );
+    if (!result) {
+        free(total_replies_copy);
+        free(ticketid_copy);
+        free(checked_copy);
+    }
+    return result;
 }
 
 void tickets_row_free(tickets_row_t *tickets_row) {
@@ -103,6 +124,10 @@ void tickets_row_free(tickets_row_t *tickets_row) {
         free(tickets_row->priority);
         tickets_row->priority = NULL;
     }
+    if (tickets_row->total_replies) {
+        free(tickets_row->total_replies);
+        tickets_row->total_replies = NULL;
+    }
     if (tickets_row->lastactivity) {
         free(tickets_row->lastactivity);
         tickets_row->lastactivity = NULL;
@@ -110,6 +135,10 @@ void tickets_row_free(tickets_row_t *tickets_row) {
     if (tickets_row->departmenttitle) {
         free(tickets_row->departmenttitle);
         tickets_row->departmenttitle = NULL;
+    }
+    if (tickets_row->ticketid) {
+        free(tickets_row->ticketid);
+        tickets_row->ticketid = NULL;
     }
     if (tickets_row->can_close) {
         free(tickets_row->can_close);
@@ -122,6 +151,10 @@ void tickets_row_free(tickets_row_t *tickets_row) {
     if (tickets_row->status_text) {
         free(tickets_row->status_text);
         tickets_row->status_text = NULL;
+    }
+    if (tickets_row->checked) {
+        free(tickets_row->checked);
+        tickets_row->checked = NULL;
     }
     free(tickets_row);
 }
@@ -178,7 +211,7 @@ cJSON *tickets_row_convertToJSON(tickets_row_t *tickets_row) {
     if (!tickets_row->total_replies) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "total_replies", tickets_row->total_replies) == NULL) {
+    if(cJSON_AddNumberToObject(item, "total_replies", *tickets_row->total_replies) == NULL) {
     goto fail; //Numeric
     }
 
@@ -205,7 +238,7 @@ cJSON *tickets_row_convertToJSON(tickets_row_t *tickets_row) {
     if (!tickets_row->ticketid) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "ticketid", tickets_row->ticketid) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ticketid", *tickets_row->ticketid) == NULL) {
     goto fail; //Numeric
     }
 
@@ -246,7 +279,7 @@ cJSON *tickets_row_convertToJSON(tickets_row_t *tickets_row) {
     if (!tickets_row->checked) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "checked", tickets_row->checked) == NULL) {
+    if(cJSON_AddBoolToObject(item, "checked", *tickets_row->checked) == NULL) {
     goto fail; //Bool
     }
 
@@ -262,8 +295,35 @@ tickets_row_t *tickets_row_parseFromJSON(cJSON *tickets_rowJSON){
 
     tickets_row_t *tickets_row_local_var = NULL;
 
+    char *title_local_str = NULL;
+
+    char *ticketmaskid_local_str = NULL;
+
+    char *lastreplier_local_str = NULL;
+
+    char *status_local_str = NULL;
+
+    char *priority_local_str = NULL;
+
+    // define the local variable for tickets_row->total_replies
+    int *total_replies_local_var = NULL;
+
+    char *lastactivity_local_str = NULL;
+
+    char *departmenttitle_local_str = NULL;
+
+    // define the local variable for tickets_row->ticketid
+    int *ticketid_local_var = NULL;
+
+    char *can_close_local_str = NULL;
+
     // define the local variable for tickets_row->attachments
     _t *attachments_local_nonprim = NULL;
+
+    char *status_text_local_str = NULL;
+
+    // define the local variable for tickets_row->checked
+    int *checked_local_var = NULL;
 
     // tickets_row->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(tickets_rowJSON, "title");
@@ -354,6 +414,12 @@ tickets_row_t *tickets_row_parseFromJSON(cJSON *tickets_rowJSON){
     {
     goto end; //Numeric
     }
+    total_replies_local_var = malloc(sizeof(int));
+    if(!total_replies_local_var)
+    {
+        goto end;
+    }
+    *total_replies_local_var = total_replies->valuedouble;
 
     // tickets_row->lastactivity
     cJSON *lastactivity = cJSON_GetObjectItemCaseSensitive(tickets_rowJSON, "lastactivity");
@@ -399,6 +465,12 @@ tickets_row_t *tickets_row_parseFromJSON(cJSON *tickets_rowJSON){
     {
     goto end; //Numeric
     }
+    ticketid_local_var = malloc(sizeof(int));
+    if(!ticketid_local_var)
+    {
+        goto end;
+    }
+    *ticketid_local_var = ticketid->valuedouble;
 
     // tickets_row->can_close
     cJSON *can_close = cJSON_GetObjectItemCaseSensitive(tickets_rowJSON, "can_close");
@@ -456,29 +528,97 @@ tickets_row_t *tickets_row_parseFromJSON(cJSON *tickets_rowJSON){
     {
     goto end; //Bool
     }
+    checked_local_var = malloc(sizeof(int));
+    if(!checked_local_var)
+    {
+        goto end;
+    }
+    *checked_local_var = checked->valueint;
 
+
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+    if (ticketmaskid && !cJSON_IsNull(ticketmaskid)) ticketmaskid_local_str = strdup(ticketmaskid->valuestring);
+    if (lastreplier && !cJSON_IsNull(lastreplier)) lastreplier_local_str = strdup(lastreplier->valuestring);
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+    if (priority && !cJSON_IsNull(priority)) priority_local_str = strdup(priority->valuestring);
+    if (lastactivity && !cJSON_IsNull(lastactivity)) lastactivity_local_str = strdup(lastactivity->valuestring);
+    if (departmenttitle && !cJSON_IsNull(departmenttitle)) departmenttitle_local_str = strdup(departmenttitle->valuestring);
+    if (can_close && !cJSON_IsNull(can_close)) can_close_local_str = strdup(can_close->valuestring);
+    if (status_text && !cJSON_IsNull(status_text)) status_text_local_str = strdup(status_text->valuestring);
 
     tickets_row_local_var = tickets_row_create_internal (
-        strdup(title->valuestring),
-        strdup(ticketmaskid->valuestring),
-        strdup(lastreplier->valuestring),
-        strdup(status->valuestring),
-        strdup(priority->valuestring),
-        total_replies->valuedouble,
-        strdup(lastactivity->valuestring),
-        strdup(departmenttitle->valuestring),
-        ticketid->valuedouble,
-        strdup(can_close->valuestring),
+        title_local_str,
+        ticketmaskid_local_str,
+        lastreplier_local_str,
+        status_local_str,
+        priority_local_str,
+        total_replies_local_var,
+        lastactivity_local_str,
+        departmenttitle_local_str,
+        ticketid_local_var,
+        can_close_local_str,
         attachments_local_nonprim,
-        strdup(status_text->valuestring),
-        checked->valueint
+        status_text_local_str,
+        checked_local_var
         );
+
+    if (!tickets_row_local_var) {
+        goto end;
+    }
 
     return tickets_row_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
+    if (ticketmaskid_local_str) {
+        free(ticketmaskid_local_str);
+        ticketmaskid_local_str = NULL;
+    }
+    if (lastreplier_local_str) {
+        free(lastreplier_local_str);
+        lastreplier_local_str = NULL;
+    }
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
+    if (priority_local_str) {
+        free(priority_local_str);
+        priority_local_str = NULL;
+    }
+    if (total_replies_local_var) {
+        free(total_replies_local_var);
+        total_replies_local_var = NULL;
+    }
+    if (lastactivity_local_str) {
+        free(lastactivity_local_str);
+        lastactivity_local_str = NULL;
+    }
+    if (departmenttitle_local_str) {
+        free(departmenttitle_local_str);
+        departmenttitle_local_str = NULL;
+    }
+    if (ticketid_local_var) {
+        free(ticketid_local_var);
+        ticketid_local_var = NULL;
+    }
+    if (can_close_local_str) {
+        free(can_close_local_str);
+        can_close_local_str = NULL;
+    }
     if (attachments_local_nonprim) {
         _free(attachments_local_nonprim);
         attachments_local_nonprim = NULL;
+    }
+    if (status_text_local_str) {
+        free(status_text_local_str);
+        status_text_local_str = NULL;
+    }
+    if (checked_local_var) {
+        free(checked_local_var);
+        checked_local_var = NULL;
     }
     return NULL;
 

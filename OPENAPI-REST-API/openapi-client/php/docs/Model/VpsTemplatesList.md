@@ -1,4 +1,4 @@
-# # VpsTemplatesList
+# VpsTemplatesList
 
 ## Properties
 

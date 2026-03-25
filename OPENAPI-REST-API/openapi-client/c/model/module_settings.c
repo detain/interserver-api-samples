@@ -6,15 +6,15 @@
 
 
 static module_settings_t *module_settings_create_internal(
-    int service_id_offset,
-    int use_repeat_invoice,
-    int use_packages,
-    int billing_days_offset,
+    int *service_id_offset,
+    int *use_repeat_invoice,
+    int *use_packages,
+    int *billing_days_offset,
     char *imgname,
-    int repeat_billing_method,
-    int delete_pending_days,
-    int suspend_days,
-    int suspend_warning_days,
+    int *repeat_billing_method,
+    int *delete_pending_days,
+    int *suspend_days,
+    int *suspend_warning_days,
     char *title,
     char *menuname,
     char *email_from,
@@ -29,6 +29,8 @@ static module_settings_t *module_settings_create_internal(
     if (!module_settings_local_var) {
         return NULL;
     }
+    memset(module_settings_local_var, 0, sizeof(module_settings_t));
+    module_settings_local_var->_library_owned = 1;
     module_settings_local_var->service_id_offset = service_id_offset;
     module_settings_local_var->use_repeat_invoice = use_repeat_invoice;
     module_settings_local_var->use_packages = use_packages;
@@ -47,21 +49,19 @@ static module_settings_t *module_settings_create_internal(
     module_settings_local_var->prefix = prefix;
     module_settings_local_var->title_field2 = title_field2;
     module_settings_local_var->title_field3 = title_field3;
-
-    module_settings_local_var->_library_owned = 1;
     return module_settings_local_var;
 }
 
 __attribute__((deprecated)) module_settings_t *module_settings_create(
-    int service_id_offset,
-    int use_repeat_invoice,
-    int use_packages,
-    int billing_days_offset,
+    int *service_id_offset,
+    int *use_repeat_invoice,
+    int *use_packages,
+    int *billing_days_offset,
     char *imgname,
-    int repeat_billing_method,
-    int delete_pending_days,
-    int suspend_days,
-    int suspend_warning_days,
+    int *repeat_billing_method,
+    int *delete_pending_days,
+    int *suspend_days,
+    int *suspend_warning_days,
     char *title,
     char *menuname,
     char *email_from,
@@ -72,16 +72,56 @@ __attribute__((deprecated)) module_settings_t *module_settings_create(
     char *title_field2,
     char *title_field3
     ) {
-    return module_settings_create_internal (
-        service_id_offset,
-        use_repeat_invoice,
-        use_packages,
-        billing_days_offset,
+    int *service_id_offset_copy = NULL;
+    if (service_id_offset) {
+        service_id_offset_copy = malloc(sizeof(int));
+        if (service_id_offset_copy) *service_id_offset_copy = *service_id_offset;
+    }
+    int *use_repeat_invoice_copy = NULL;
+    if (use_repeat_invoice) {
+        use_repeat_invoice_copy = malloc(sizeof(int));
+        if (use_repeat_invoice_copy) *use_repeat_invoice_copy = *use_repeat_invoice;
+    }
+    int *use_packages_copy = NULL;
+    if (use_packages) {
+        use_packages_copy = malloc(sizeof(int));
+        if (use_packages_copy) *use_packages_copy = *use_packages;
+    }
+    int *billing_days_offset_copy = NULL;
+    if (billing_days_offset) {
+        billing_days_offset_copy = malloc(sizeof(int));
+        if (billing_days_offset_copy) *billing_days_offset_copy = *billing_days_offset;
+    }
+    int *repeat_billing_method_copy = NULL;
+    if (repeat_billing_method) {
+        repeat_billing_method_copy = malloc(sizeof(int));
+        if (repeat_billing_method_copy) *repeat_billing_method_copy = *repeat_billing_method;
+    }
+    int *delete_pending_days_copy = NULL;
+    if (delete_pending_days) {
+        delete_pending_days_copy = malloc(sizeof(int));
+        if (delete_pending_days_copy) *delete_pending_days_copy = *delete_pending_days;
+    }
+    int *suspend_days_copy = NULL;
+    if (suspend_days) {
+        suspend_days_copy = malloc(sizeof(int));
+        if (suspend_days_copy) *suspend_days_copy = *suspend_days;
+    }
+    int *suspend_warning_days_copy = NULL;
+    if (suspend_warning_days) {
+        suspend_warning_days_copy = malloc(sizeof(int));
+        if (suspend_warning_days_copy) *suspend_warning_days_copy = *suspend_warning_days;
+    }
+    module_settings_t *result = module_settings_create_internal (
+        service_id_offset_copy,
+        use_repeat_invoice_copy,
+        use_packages_copy,
+        billing_days_offset_copy,
         imgname,
-        repeat_billing_method,
-        delete_pending_days,
-        suspend_days,
-        suspend_warning_days,
+        repeat_billing_method_copy,
+        delete_pending_days_copy,
+        suspend_days_copy,
+        suspend_warning_days_copy,
         title,
         menuname,
         email_from,
@@ -92,6 +132,17 @@ __attribute__((deprecated)) module_settings_t *module_settings_create(
         title_field2,
         title_field3
         );
+    if (!result) {
+        free(service_id_offset_copy);
+        free(use_repeat_invoice_copy);
+        free(use_packages_copy);
+        free(billing_days_offset_copy);
+        free(repeat_billing_method_copy);
+        free(delete_pending_days_copy);
+        free(suspend_days_copy);
+        free(suspend_warning_days_copy);
+    }
+    return result;
 }
 
 void module_settings_free(module_settings_t *module_settings) {
@@ -103,9 +154,41 @@ void module_settings_free(module_settings_t *module_settings) {
         return ;
     }
     listEntry_t *listEntry;
+    if (module_settings->service_id_offset) {
+        free(module_settings->service_id_offset);
+        module_settings->service_id_offset = NULL;
+    }
+    if (module_settings->use_repeat_invoice) {
+        free(module_settings->use_repeat_invoice);
+        module_settings->use_repeat_invoice = NULL;
+    }
+    if (module_settings->use_packages) {
+        free(module_settings->use_packages);
+        module_settings->use_packages = NULL;
+    }
+    if (module_settings->billing_days_offset) {
+        free(module_settings->billing_days_offset);
+        module_settings->billing_days_offset = NULL;
+    }
     if (module_settings->imgname) {
         free(module_settings->imgname);
         module_settings->imgname = NULL;
+    }
+    if (module_settings->repeat_billing_method) {
+        free(module_settings->repeat_billing_method);
+        module_settings->repeat_billing_method = NULL;
+    }
+    if (module_settings->delete_pending_days) {
+        free(module_settings->delete_pending_days);
+        module_settings->delete_pending_days = NULL;
+    }
+    if (module_settings->suspend_days) {
+        free(module_settings->suspend_days);
+        module_settings->suspend_days = NULL;
+    }
+    if (module_settings->suspend_warning_days) {
+        free(module_settings->suspend_warning_days);
+        module_settings->suspend_warning_days = NULL;
     }
     if (module_settings->title) {
         free(module_settings->title);
@@ -153,7 +236,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->service_id_offset) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "SERVICE_ID_OFFSET", module_settings->service_id_offset) == NULL) {
+    if(cJSON_AddNumberToObject(item, "SERVICE_ID_OFFSET", *module_settings->service_id_offset) == NULL) {
     goto fail; //Numeric
     }
 
@@ -162,7 +245,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->use_repeat_invoice) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "USE_REPEAT_INVOICE", module_settings->use_repeat_invoice) == NULL) {
+    if(cJSON_AddBoolToObject(item, "USE_REPEAT_INVOICE", *module_settings->use_repeat_invoice) == NULL) {
     goto fail; //Bool
     }
 
@@ -171,7 +254,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->use_packages) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "USE_PACKAGES", module_settings->use_packages) == NULL) {
+    if(cJSON_AddBoolToObject(item, "USE_PACKAGES", *module_settings->use_packages) == NULL) {
     goto fail; //Bool
     }
 
@@ -180,7 +263,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->billing_days_offset) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "BILLING_DAYS_OFFSET", module_settings->billing_days_offset) == NULL) {
+    if(cJSON_AddNumberToObject(item, "BILLING_DAYS_OFFSET", *module_settings->billing_days_offset) == NULL) {
     goto fail; //Numeric
     }
 
@@ -198,7 +281,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->repeat_billing_method) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "REPEAT_BILLING_METHOD", module_settings->repeat_billing_method) == NULL) {
+    if(cJSON_AddNumberToObject(item, "REPEAT_BILLING_METHOD", *module_settings->repeat_billing_method) == NULL) {
     goto fail; //Numeric
     }
 
@@ -207,7 +290,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->delete_pending_days) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "DELETE_PENDING_DAYS", module_settings->delete_pending_days) == NULL) {
+    if(cJSON_AddNumberToObject(item, "DELETE_PENDING_DAYS", *module_settings->delete_pending_days) == NULL) {
     goto fail; //Numeric
     }
 
@@ -216,7 +299,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->suspend_days) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "SUSPEND_DAYS", module_settings->suspend_days) == NULL) {
+    if(cJSON_AddNumberToObject(item, "SUSPEND_DAYS", *module_settings->suspend_days) == NULL) {
     goto fail; //Numeric
     }
 
@@ -225,7 +308,7 @@ cJSON *module_settings_convertToJSON(module_settings_t *module_settings) {
     if (!module_settings->suspend_warning_days) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "SUSPEND_WARNING_DAYS", module_settings->suspend_warning_days) == NULL) {
+    if(cJSON_AddNumberToObject(item, "SUSPEND_WARNING_DAYS", *module_settings->suspend_warning_days) == NULL) {
     goto fail; //Numeric
     }
 
@@ -320,6 +403,50 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
 
     module_settings_t *module_settings_local_var = NULL;
 
+    // define the local variable for module_settings->service_id_offset
+    int *service_id_offset_local_var = NULL;
+
+    // define the local variable for module_settings->use_repeat_invoice
+    int *use_repeat_invoice_local_var = NULL;
+
+    // define the local variable for module_settings->use_packages
+    int *use_packages_local_var = NULL;
+
+    // define the local variable for module_settings->billing_days_offset
+    int *billing_days_offset_local_var = NULL;
+
+    char *imgname_local_str = NULL;
+
+    // define the local variable for module_settings->repeat_billing_method
+    int *repeat_billing_method_local_var = NULL;
+
+    // define the local variable for module_settings->delete_pending_days
+    int *delete_pending_days_local_var = NULL;
+
+    // define the local variable for module_settings->suspend_days
+    int *suspend_days_local_var = NULL;
+
+    // define the local variable for module_settings->suspend_warning_days
+    int *suspend_warning_days_local_var = NULL;
+
+    char *title_local_str = NULL;
+
+    char *menuname_local_str = NULL;
+
+    char *email_from_local_str = NULL;
+
+    char *tblname_local_str = NULL;
+
+    char *table_local_str = NULL;
+
+    char *title_field_local_str = NULL;
+
+    char *prefix_local_str = NULL;
+
+    char *title_field2_local_str = NULL;
+
+    char *title_field3_local_str = NULL;
+
     // module_settings->service_id_offset
     cJSON *service_id_offset = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "SERVICE_ID_OFFSET");
     if (cJSON_IsNull(service_id_offset)) {
@@ -334,6 +461,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Numeric
     }
+    service_id_offset_local_var = malloc(sizeof(int));
+    if(!service_id_offset_local_var)
+    {
+        goto end;
+    }
+    *service_id_offset_local_var = service_id_offset->valuedouble;
 
     // module_settings->use_repeat_invoice
     cJSON *use_repeat_invoice = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "USE_REPEAT_INVOICE");
@@ -349,6 +482,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Bool
     }
+    use_repeat_invoice_local_var = malloc(sizeof(int));
+    if(!use_repeat_invoice_local_var)
+    {
+        goto end;
+    }
+    *use_repeat_invoice_local_var = use_repeat_invoice->valueint;
 
     // module_settings->use_packages
     cJSON *use_packages = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "USE_PACKAGES");
@@ -364,6 +503,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Bool
     }
+    use_packages_local_var = malloc(sizeof(int));
+    if(!use_packages_local_var)
+    {
+        goto end;
+    }
+    *use_packages_local_var = use_packages->valueint;
 
     // module_settings->billing_days_offset
     cJSON *billing_days_offset = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "BILLING_DAYS_OFFSET");
@@ -379,6 +524,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Numeric
     }
+    billing_days_offset_local_var = malloc(sizeof(int));
+    if(!billing_days_offset_local_var)
+    {
+        goto end;
+    }
+    *billing_days_offset_local_var = billing_days_offset->valuedouble;
 
     // module_settings->imgname
     cJSON *imgname = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "IMGNAME");
@@ -409,6 +560,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Numeric
     }
+    repeat_billing_method_local_var = malloc(sizeof(int));
+    if(!repeat_billing_method_local_var)
+    {
+        goto end;
+    }
+    *repeat_billing_method_local_var = repeat_billing_method->valuedouble;
 
     // module_settings->delete_pending_days
     cJSON *delete_pending_days = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "DELETE_PENDING_DAYS");
@@ -424,6 +581,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Numeric
     }
+    delete_pending_days_local_var = malloc(sizeof(int));
+    if(!delete_pending_days_local_var)
+    {
+        goto end;
+    }
+    *delete_pending_days_local_var = delete_pending_days->valuedouble;
 
     // module_settings->suspend_days
     cJSON *suspend_days = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "SUSPEND_DAYS");
@@ -439,6 +602,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Numeric
     }
+    suspend_days_local_var = malloc(sizeof(int));
+    if(!suspend_days_local_var)
+    {
+        goto end;
+    }
+    *suspend_days_local_var = suspend_days->valuedouble;
 
     // module_settings->suspend_warning_days
     cJSON *suspend_warning_days = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "SUSPEND_WARNING_DAYS");
@@ -454,6 +623,12 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     {
     goto end; //Numeric
     }
+    suspend_warning_days_local_var = malloc(sizeof(int));
+    if(!suspend_warning_days_local_var)
+    {
+        goto end;
+    }
+    *suspend_warning_days_local_var = suspend_warning_days->valuedouble;
 
     // module_settings->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(module_settingsJSON, "TITLE");
@@ -585,29 +760,116 @@ module_settings_t *module_settings_parseFromJSON(cJSON *module_settingsJSON){
     }
 
 
+    if (imgname && !cJSON_IsNull(imgname)) imgname_local_str = strdup(imgname->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+    if (menuname && !cJSON_IsNull(menuname)) menuname_local_str = strdup(menuname->valuestring);
+    if (email_from && !cJSON_IsNull(email_from)) email_from_local_str = strdup(email_from->valuestring);
+    if (tblname && !cJSON_IsNull(tblname)) tblname_local_str = strdup(tblname->valuestring);
+    if (table && !cJSON_IsNull(table)) table_local_str = strdup(table->valuestring);
+    if (title_field && !cJSON_IsNull(title_field)) title_field_local_str = strdup(title_field->valuestring);
+    if (prefix && !cJSON_IsNull(prefix)) prefix_local_str = strdup(prefix->valuestring);
+    if (title_field2 && !cJSON_IsNull(title_field2)) title_field2_local_str = strdup(title_field2->valuestring);
+    if (title_field3 && !cJSON_IsNull(title_field3)) title_field3_local_str = strdup(title_field3->valuestring);
+
     module_settings_local_var = module_settings_create_internal (
-        service_id_offset->valuedouble,
-        use_repeat_invoice->valueint,
-        use_packages->valueint,
-        billing_days_offset->valuedouble,
-        strdup(imgname->valuestring),
-        repeat_billing_method->valuedouble,
-        delete_pending_days->valuedouble,
-        suspend_days->valuedouble,
-        suspend_warning_days->valuedouble,
-        strdup(title->valuestring),
-        strdup(menuname->valuestring),
-        strdup(email_from->valuestring),
-        strdup(tblname->valuestring),
-        strdup(table->valuestring),
-        strdup(title_field->valuestring),
-        strdup(prefix->valuestring),
-        title_field2 && !cJSON_IsNull(title_field2) ? strdup(title_field2->valuestring) : NULL,
-        title_field3 && !cJSON_IsNull(title_field3) ? strdup(title_field3->valuestring) : NULL
+        service_id_offset_local_var,
+        use_repeat_invoice_local_var,
+        use_packages_local_var,
+        billing_days_offset_local_var,
+        imgname_local_str,
+        repeat_billing_method_local_var,
+        delete_pending_days_local_var,
+        suspend_days_local_var,
+        suspend_warning_days_local_var,
+        title_local_str,
+        menuname_local_str,
+        email_from_local_str,
+        tblname_local_str,
+        table_local_str,
+        title_field_local_str,
+        prefix_local_str,
+        title_field2_local_str,
+        title_field3_local_str
         );
+
+    if (!module_settings_local_var) {
+        goto end;
+    }
 
     return module_settings_local_var;
 end:
+    if (service_id_offset_local_var) {
+        free(service_id_offset_local_var);
+        service_id_offset_local_var = NULL;
+    }
+    if (use_repeat_invoice_local_var) {
+        free(use_repeat_invoice_local_var);
+        use_repeat_invoice_local_var = NULL;
+    }
+    if (use_packages_local_var) {
+        free(use_packages_local_var);
+        use_packages_local_var = NULL;
+    }
+    if (billing_days_offset_local_var) {
+        free(billing_days_offset_local_var);
+        billing_days_offset_local_var = NULL;
+    }
+    if (imgname_local_str) {
+        free(imgname_local_str);
+        imgname_local_str = NULL;
+    }
+    if (repeat_billing_method_local_var) {
+        free(repeat_billing_method_local_var);
+        repeat_billing_method_local_var = NULL;
+    }
+    if (delete_pending_days_local_var) {
+        free(delete_pending_days_local_var);
+        delete_pending_days_local_var = NULL;
+    }
+    if (suspend_days_local_var) {
+        free(suspend_days_local_var);
+        suspend_days_local_var = NULL;
+    }
+    if (suspend_warning_days_local_var) {
+        free(suspend_warning_days_local_var);
+        suspend_warning_days_local_var = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
+    if (menuname_local_str) {
+        free(menuname_local_str);
+        menuname_local_str = NULL;
+    }
+    if (email_from_local_str) {
+        free(email_from_local_str);
+        email_from_local_str = NULL;
+    }
+    if (tblname_local_str) {
+        free(tblname_local_str);
+        tblname_local_str = NULL;
+    }
+    if (table_local_str) {
+        free(table_local_str);
+        table_local_str = NULL;
+    }
+    if (title_field_local_str) {
+        free(title_field_local_str);
+        title_field_local_str = NULL;
+    }
+    if (prefix_local_str) {
+        free(prefix_local_str);
+        prefix_local_str = NULL;
+    }
+    if (title_field2_local_str) {
+        free(title_field2_local_str);
+        title_field2_local_str = NULL;
+    }
+    if (title_field3_local_str) {
+        free(title_field3_local_str);
+        title_field3_local_str = NULL;
+    }
     return NULL;
 
 }

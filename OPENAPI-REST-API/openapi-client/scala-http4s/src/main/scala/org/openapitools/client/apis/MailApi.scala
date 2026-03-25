@@ -15,11 +15,11 @@ import io.circe.Encoder
 import org.http4s.Uri
 import org.http4s.client.Client as Http4sClient
 import org.openapitools.client.models.ChargeInvoiceRows
+import org.openapitools.client.models.DeliveredStatus
 import org.openapitools.client.models.DenyRuleNew
 import org.openapitools.client.models.DenyRuleRecord
 import org.openapitools.client.models.GenericResponse
 import org.openapitools.client.models.GetAccountInfo401Response
-import org.openapitools.client.models.GetQsBackupsAllParameter
 import org.openapitools.client.models.GetStatsTimeParameter
 import org.openapitools.client.models.MailAlertRequest
 import org.openapitools.client.models.MailAlertUpdateRequest
@@ -38,6 +38,10 @@ import org.openapitools.client.models.SendMail
 import org.openapitools.client.models.SendMailAdv
 import scala.collection.immutable.Seq
 import org.openapitools.client.models.SuccessTextResponse
+import org.openapitools.client.models.ViewMailLogDirParameter
+import org.openapitools.client.models.ViewMailLogGroupbyParameter
+import org.openapitools.client.models.ViewMailLogSortParameter
+import org.openapitools.client.models.ViewMailLogStartDateParameter
 import org.openapitools.client.models.*
 
 trait MailApiEndpoints[F[*]] {
@@ -67,7 +71,7 @@ trait MailApiEndpoints[F[*]] {
   def sendMail(id: Int, sendMail: SendMail)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def updateMailAlert(id: Int, mailAlertUpdateRequest: MailAlertUpdateRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateMailInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
-  def viewMailLog(id: Int, id2: Option[Long] = None, origin: Option[String] = None, mx: Option[String] = None, from: Option[String] = None, to: Option[String] = None, subject: Option[String] = None, mailid: Option[String] = None, skip: Option[Int] = None, limit: Option[Int] = None, startDate: Option[Long] = None, endDate: Option[Long] = None, delivered: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[MailLog]
+  def viewMailLog(id: Int, id2: Option[Long] = None, origin: Option[String] = None, mx: Option[String] = None, from: Option[String] = None, to: Option[String] = None, subject: Option[String] = None, mailid: Option[String] = None, messageId: Option[String] = None, replyto: Option[String] = None, headerfrom: Option[String] = None, delivered: Option[DeliveredStatus] = None, skip: Option[Int] = None, limit: Option[Int] = None, startDate: Option[ViewMailLogStartDateParameter] = None, endDate: Option[ViewMailLogStartDateParameter] = None, sort: Option[ViewMailLogSortParameter] = None, dir: Option[ViewMailLogDirParameter] = None, groupby: Option[ViewMailLogGroupbyParameter] = None)(using auth: _Authorization.ApiKey): F[MailLog]
 
 }
 
@@ -578,7 +582,7 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def viewMailLog(id: Int, id2: Option[Long] = None, origin: Option[String] = None, mx: Option[String] = None, from: Option[String] = None, to: Option[String] = None, subject: Option[String] = None, mailid: Option[String] = None, skip: Option[Int] = None, limit: Option[Int] = None, startDate: Option[Long] = None, endDate: Option[Long] = None, delivered: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[MailLog] = {
+  override def viewMailLog(id: Int, id2: Option[Long] = None, origin: Option[String] = None, mx: Option[String] = None, from: Option[String] = None, to: Option[String] = None, subject: Option[String] = None, mailid: Option[String] = None, messageId: Option[String] = None, replyto: Option[String] = None, headerfrom: Option[String] = None, delivered: Option[DeliveredStatus] = None, skip: Option[Int] = None, limit: Option[Int] = None, startDate: Option[ViewMailLogStartDateParameter] = None, endDate: Option[ViewMailLogStartDateParameter] = None, sort: Option[ViewMailLogSortParameter] = None, dir: Option[ViewMailLogDirParameter] = None, groupby: Option[ViewMailLogGroupbyParameter] = None)(using auth: _Authorization.ApiKey): F[MailLog] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
@@ -590,11 +594,17 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
       to.map("to" -> _).map(Seq(_)) ++ 
       subject.map("subject" -> _).map(Seq(_)) ++ 
       mailid.map("mailid" -> _).map(Seq(_)) ++ 
+      messageId.map("messageId" -> _).map(Seq(_)) ++ 
+      replyto.map("replyto" -> _).map(Seq(_)) ++ 
+      headerfrom.map("headerfrom" -> _).map(Seq(_)) ++ 
+      delivered.map("delivered" -> _).map(Seq(_)) ++ 
       skip.map("skip" -> _).map(Seq(_)) ++ 
       limit.map("limit" -> _).map(Seq(_)) ++ 
       startDate.map("startDate" -> _).map(Seq(_)) ++ 
       endDate.map("endDate" -> _).map(Seq(_)) ++ 
-      delivered.map("delivered" -> _).map(Seq(_))
+      sort.map("sort" -> _).map(Seq(_)) ++ 
+      dir.map("dir" -> _).map(Seq(_)) ++ 
+      groupby.map("groupby" -> _).map(Seq(_))
     ).toSeq.flatten
 
     _executeRequest[Unit, MailLog](

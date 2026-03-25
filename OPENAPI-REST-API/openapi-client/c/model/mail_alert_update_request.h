@@ -19,7 +19,7 @@ typedef struct mail_alert_update_request_t mail_alert_update_request_t;
 
 
 typedef struct mail_alert_update_request_t {
-    int alert_id; //numeric
+    int *alert_id; //numeric
     char *type; // string
     char *value; // string
     char *to; // string
@@ -29,7 +29,7 @@ typedef struct mail_alert_update_request_t {
 } mail_alert_update_request_t;
 
 __attribute__((deprecated)) mail_alert_update_request_t *mail_alert_update_request_create(
-    int alert_id,
+    int *alert_id,
     char *type,
     char *value,
     char *to,

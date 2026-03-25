@@ -12,18 +12,21 @@ static home_services_servers_links_t *home_services_servers_links_create_interna
     if (!home_services_servers_links_local_var) {
         return NULL;
     }
-    home_services_servers_links_local_var->_16058 = _16058;
-
+    memset(home_services_servers_links_local_var, 0, sizeof(home_services_servers_links_t));
     home_services_servers_links_local_var->_library_owned = 1;
+    home_services_servers_links_local_var->_16058 = _16058;
     return home_services_servers_links_local_var;
 }
 
 __attribute__((deprecated)) home_services_servers_links_t *home_services_servers_links_create(
     char *_16058
     ) {
-    return home_services_servers_links_create_internal (
+    home_services_servers_links_t *result = home_services_servers_links_create_internal (
         _16058
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_services_servers_links_free(home_services_servers_links_t *home_services_servers_links) {
@@ -64,6 +67,8 @@ home_services_servers_links_t *home_services_servers_links_parseFromJSON(cJSON *
 
     home_services_servers_links_t *home_services_servers_links_local_var = NULL;
 
+    char *_16058_local_str = NULL;
+
     // home_services_servers_links->_16058
     cJSON *_16058 = cJSON_GetObjectItemCaseSensitive(home_services_servers_linksJSON, "16058");
     if (cJSON_IsNull(_16058)) {
@@ -77,12 +82,22 @@ home_services_servers_links_t *home_services_servers_links_parseFromJSON(cJSON *
     }
 
 
+    if (_16058 && !cJSON_IsNull(_16058)) _16058_local_str = strdup(_16058->valuestring);
+
     home_services_servers_links_local_var = home_services_servers_links_create_internal (
-        _16058 && !cJSON_IsNull(_16058) ? strdup(_16058->valuestring) : NULL
+        _16058_local_str
         );
+
+    if (!home_services_servers_links_local_var) {
+        goto end;
+    }
 
     return home_services_servers_links_local_var;
 end:
+    if (_16058_local_str) {
+        free(_16058_local_str);
+        _16058_local_str = NULL;
+    }
     return NULL;
 
 }

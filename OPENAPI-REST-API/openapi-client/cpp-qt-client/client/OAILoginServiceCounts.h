@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAILoginServiceCounts : public OAIObject {
 public:
     OAILoginServiceCounts();
-    OAILoginServiceCounts(QString json);
+    OAILoginServiceCounts(const QString &json);
     ~OAILoginServiceCounts() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getVps() const;
     void setVps(const qint32 &vps);

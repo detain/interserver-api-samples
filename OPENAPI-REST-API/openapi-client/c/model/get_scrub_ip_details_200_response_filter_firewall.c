@@ -8,30 +8,39 @@
 static get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_response_filter_firewall_create_internal(
     list_t *rules,
     list_t *filters,
-    int scrub_enabled
+    int *scrub_enabled
     ) {
     get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_response_filter_firewall_local_var = malloc(sizeof(get_scrub_ip_details_200_response_filter_firewall_t));
     if (!get_scrub_ip_details_200_response_filter_firewall_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_filter_firewall_local_var, 0, sizeof(get_scrub_ip_details_200_response_filter_firewall_t));
+    get_scrub_ip_details_200_response_filter_firewall_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_filter_firewall_local_var->rules = rules;
     get_scrub_ip_details_200_response_filter_firewall_local_var->filters = filters;
     get_scrub_ip_details_200_response_filter_firewall_local_var->scrub_enabled = scrub_enabled;
-
-    get_scrub_ip_details_200_response_filter_firewall_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_filter_firewall_local_var;
 }
 
 __attribute__((deprecated)) get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_response_filter_firewall_create(
     list_t *rules,
     list_t *filters,
-    int scrub_enabled
+    int *scrub_enabled
     ) {
-    return get_scrub_ip_details_200_response_filter_firewall_create_internal (
+    int *scrub_enabled_copy = NULL;
+    if (scrub_enabled) {
+        scrub_enabled_copy = malloc(sizeof(int));
+        if (scrub_enabled_copy) *scrub_enabled_copy = *scrub_enabled;
+    }
+    get_scrub_ip_details_200_response_filter_firewall_t *result = get_scrub_ip_details_200_response_filter_firewall_create_internal (
         rules,
         filters,
-        scrub_enabled
+        scrub_enabled_copy
         );
+    if (!result) {
+        free(scrub_enabled_copy);
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_filter_firewall_free(get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_response_filter_firewall) {
@@ -56,6 +65,10 @@ void get_scrub_ip_details_200_response_filter_firewall_free(get_scrub_ip_details
         }
         list_freeList(get_scrub_ip_details_200_response_filter_firewall->filters);
         get_scrub_ip_details_200_response_filter_firewall->filters = NULL;
+    }
+    if (get_scrub_ip_details_200_response_filter_firewall->scrub_enabled) {
+        free(get_scrub_ip_details_200_response_filter_firewall->scrub_enabled);
+        get_scrub_ip_details_200_response_filter_firewall->scrub_enabled = NULL;
     }
     free(get_scrub_ip_details_200_response_filter_firewall);
 }
@@ -105,7 +118,7 @@ cJSON *get_scrub_ip_details_200_response_filter_firewall_convertToJSON(get_scrub
 
     // get_scrub_ip_details_200_response_filter_firewall->scrub_enabled
     if(get_scrub_ip_details_200_response_filter_firewall->scrub_enabled) {
-    if(cJSON_AddNumberToObject(item, "scrub_enabled", get_scrub_ip_details_200_response_filter_firewall->scrub_enabled) == NULL) {
+    if(cJSON_AddNumberToObject(item, "scrub_enabled", *get_scrub_ip_details_200_response_filter_firewall->scrub_enabled) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -127,6 +140,9 @@ get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_re
 
     // define the local list for get_scrub_ip_details_200_response_filter_firewall->filters
     list_t *filtersList = NULL;
+
+    // define the local variable for get_scrub_ip_details_200_response_filter_firewall->scrub_enabled
+    int *scrub_enabled_local_var = NULL;
 
     // get_scrub_ip_details_200_response_filter_firewall->rules
     cJSON *rules = cJSON_GetObjectItemCaseSensitive(get_scrub_ip_details_200_response_filter_firewallJSON, "rules");
@@ -186,14 +202,25 @@ get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_re
     {
     goto end; //Numeric
     }
+    scrub_enabled_local_var = malloc(sizeof(int));
+    if(!scrub_enabled_local_var)
+    {
+        goto end;
     }
+    *scrub_enabled_local_var = scrub_enabled->valuedouble;
+    }
+
 
 
     get_scrub_ip_details_200_response_filter_firewall_local_var = get_scrub_ip_details_200_response_filter_firewall_create_internal (
         rules ? rulesList : NULL,
         filters ? filtersList : NULL,
-        scrub_enabled ? scrub_enabled->valuedouble : 0
+        scrub_enabled_local_var
         );
+
+    if (!get_scrub_ip_details_200_response_filter_firewall_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_filter_firewall_local_var;
 end:
@@ -214,6 +241,10 @@ end:
         }
         list_freeList(filtersList);
         filtersList = NULL;
+    }
+    if (scrub_enabled_local_var) {
+        free(scrub_enabled_local_var);
+        scrub_enabled_local_var = NULL;
     }
     return NULL;
 

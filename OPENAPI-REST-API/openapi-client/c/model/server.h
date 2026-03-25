@@ -25,7 +25,7 @@ typedef struct server_t server_t;
 
 
 typedef struct server_t {
-    int ipmi_auth; //boolean
+    int *ipmi_auth; //boolean
     list_t *client_links; //nonprimitive container
     struct server_billing_details_t *billing_details; //model
     char *cust_currency; // string
@@ -41,7 +41,7 @@ typedef struct server_t {
 } server_t;
 
 __attribute__((deprecated)) server_t *server_create(
-    int ipmi_auth,
+    int *ipmi_auth,
     list_t *client_links,
     server_billing_details_t *billing_details,
     char *cust_currency,

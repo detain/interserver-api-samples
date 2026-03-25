@@ -12,18 +12,21 @@ static get_oauth_redirect_200_response_t *get_oauth_redirect_200_response_create
     if (!get_oauth_redirect_200_response_local_var) {
         return NULL;
     }
-    get_oauth_redirect_200_response_local_var->redirect_url = redirect_url;
-
+    memset(get_oauth_redirect_200_response_local_var, 0, sizeof(get_oauth_redirect_200_response_t));
     get_oauth_redirect_200_response_local_var->_library_owned = 1;
+    get_oauth_redirect_200_response_local_var->redirect_url = redirect_url;
     return get_oauth_redirect_200_response_local_var;
 }
 
 __attribute__((deprecated)) get_oauth_redirect_200_response_t *get_oauth_redirect_200_response_create(
     char *redirect_url
     ) {
-    return get_oauth_redirect_200_response_create_internal (
+    get_oauth_redirect_200_response_t *result = get_oauth_redirect_200_response_create_internal (
         redirect_url
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_oauth_redirect_200_response_free(get_oauth_redirect_200_response_t *get_oauth_redirect_200_response) {
@@ -64,6 +67,8 @@ get_oauth_redirect_200_response_t *get_oauth_redirect_200_response_parseFromJSON
 
     get_oauth_redirect_200_response_t *get_oauth_redirect_200_response_local_var = NULL;
 
+    char *redirect_url_local_str = NULL;
+
     // get_oauth_redirect_200_response->redirect_url
     cJSON *redirect_url = cJSON_GetObjectItemCaseSensitive(get_oauth_redirect_200_responseJSON, "redirect_url");
     if (cJSON_IsNull(redirect_url)) {
@@ -77,12 +82,22 @@ get_oauth_redirect_200_response_t *get_oauth_redirect_200_response_parseFromJSON
     }
 
 
+    if (redirect_url && !cJSON_IsNull(redirect_url)) redirect_url_local_str = strdup(redirect_url->valuestring);
+
     get_oauth_redirect_200_response_local_var = get_oauth_redirect_200_response_create_internal (
-        redirect_url && !cJSON_IsNull(redirect_url) ? strdup(redirect_url->valuestring) : NULL
+        redirect_url_local_str
         );
+
+    if (!get_oauth_redirect_200_response_local_var) {
+        goto end;
+    }
 
     return get_oauth_redirect_200_response_local_var;
 end:
+    if (redirect_url_local_str) {
+        free(redirect_url_local_str);
+        redirect_url_local_str = NULL;
+    }
     return NULL;
 
 }

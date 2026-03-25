@@ -1,4 +1,4 @@
-# # MailTutorialsTableRow
+# MailTutorialsTableRow
 
 ## Properties
 

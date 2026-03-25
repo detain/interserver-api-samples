@@ -1,4 +1,4 @@
-# # CreateGeoFirewallRule
+# CreateGeoFirewallRule
 
 ## Properties
 

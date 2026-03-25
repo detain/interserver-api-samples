@@ -10,7 +10,7 @@
 # !
 # ! Based on: https://github.com/Valodim/zsh-curl-completion/blob/master/_curl
 # !
-# ! Generator version: 7.20.0
+# ! Generator version: 7.21.0
 # !
 # !
 # ! Installation:
@@ -1511,18 +1511,24 @@ case $state in
         local -a _op_arguments
         _op_arguments=(
           "id=:[PATH] The mail service ID. Use &#39;mail_id&#39; from &#39;GET /mail&#39;."
-          "id=:[QUERY] The ID of your mail order this will be sent through."
-"origin=:[QUERY] originating ip address sending mail"
-"mx=:[QUERY] mx record mail was sent to"
-"from=:[QUERY] from email address"
-"to=:[QUERY] to/destination email address"
-"subject=:[QUERY] subject containing this string"
-"mailid=:[QUERY] mail id"
-"skip=:[QUERY] number of records to skip for pagination"
-"limit=:[QUERY] maximum number of records to return"
-"startDate=:[QUERY] earliest date to get emails in unix timestamp format"
-"endDate=:[QUERY] Latest date to get emails in unix timestamp format."
-"delivered=:[QUERY] Filter emails by whether or not they were delivered."
+          "id=:[QUERY] The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#39;GET /mail&#39; or &#39;GET /mail/{id}&#39;."
+"origin=:[QUERY] Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address."
+"mx=:[QUERY] Filter by the MX hostname the relay attempted delivery to.  For example &#39;mx.google.com&#39; would return messages destined for Gmail recipients. Maps to &#39;mxHostname&#39; in the &#39;MailLogEntry&#39; response."
+"from=:[QUERY] Filter by SMTP envelope &#39;MAIL FROM&#39; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#39;From:&#39; message header.  For header-level filtering use &#39;headerfrom&#39;."
+"to=:[QUERY] Filter by SMTP envelope &#39;RCPT TO&#39; address (exact match).  This is the delivery address used by the relay and may differ from the &#39;To:&#39; header when BCC recipients are involved."
+"subject=:[QUERY] Filter by email &#39;Subject&#39; header (exact match).  MIME-encoded subjects are decoded automatically in the response."
+"mailid=:[QUERY] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#39;id&#39; field in &#39;MailLogEntry&#39; and to the &#39;text&#39; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#39;185997065c60008840&#39;."
+"messageId=:[QUERY] Filter by the &#39;Message-ID&#39; email header using a substring (case-insensitive) match.  The &#39;Message-ID&#39; is assigned by the sending mail client and is visible in the &#39;messageId&#39; field of &#39;MailLogEntry&#39;."
+"replyto=:[QUERY] Filter by the &#39;Reply-To&#39; message header address (exact match).  Only returns messages where this header was explicitly set."
+"headerfrom=:[QUERY] Filter by the &#39;From&#39; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#39;from&#39; parameter when sending on behalf of another address."
+"delivered=:[QUERY] Filter by delivery status.  &#39;1&#39; returns only messages that were successfully delivered to the destination MX.  &#39;0&#39; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status."
+"skip=:[QUERY] Number of records to skip for pagination.  Use in combination with &#39;limit&#39; to page through large result sets.  Defaults to &#39;0&#39; (no skip)."
+"limit=:[QUERY] Maximum number of records to return per page.  Defaults to &#39;100&#39;. Maximum allowed value is &#39;10000&#39;.  The response also includes a &#39;total&#39; field with the full matched count so you can calculate the number of pages."
+"startDate=:[QUERY] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#39;strtotime()&#39; such as &#39;2024-01-15&#39; or &#39;last monday&#39;.  Messages with a &#39;time&#39; value **greater than or equal to** this value will be included."
+"endDate=:[QUERY] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#39;strtotime()&#39; such as &#39;2024-01-31&#39; or &#39;yesterday&#39;.  Messages with a &#39;time&#39; value **less than or equal to** this value will be included."
+"sort=:[QUERY] Field to sort results by.  Currently only &#39;time&#39; is supported (sorts by internal row ID which corresponds to chronological order)."
+"dir=:[QUERY] Sort direction.  &#39;desc&#39; returns newest first (default), &#39;asc&#39; returns oldest first."
+"groupby=:[QUERY] Controls how results are grouped.  &#39;recipient&#39; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#39;recipient&#39;, &#39;delivered&#39;, &#39;response&#39;, and delivery metadata.  &#39;message&#39; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#39;total&#39; count in the response matches the grouping mode."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;

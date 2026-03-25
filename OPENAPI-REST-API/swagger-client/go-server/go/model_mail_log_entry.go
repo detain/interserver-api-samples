@@ -9,52 +9,56 @@
  */
 package myadmin-client-go-server
 
-// An email record
+// A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 type MailLogEntry struct {
-	// internal db id
+	// Internal auto-increment database row ID.
 	Id int32 `json:"_id"`
-	// mail id
+	// The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
 	Id string `json:"id"`
-	// from address
+	// SMTP envelope `MAIL FROM` address.
 	From string `json:"from"`
-	// to address
+	// SMTP envelope `RCPT TO` address.
 	To string `json:"to"`
-	// email subject
-	Subject string `json:"subject"`
-	// message id
+	// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+	Subject string `json:"subject,omitempty"`
+	// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
 	MessageId string `json:"messageId,omitempty"`
-	// creation date
+	// Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
 	Created string `json:"created"`
-	// creation timestamp
+	// Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
 	Time int32 `json:"time"`
-	// user account
+	// The SMTP AUTH username used to submit the message (e.g. `mb5658`).
 	User string `json:"user"`
-	// transaction type
+	// SMTP transaction type negotiated with the relay.
 	Transtype string `json:"transtype"`
-	// origin ip
+	// IP address of the client that submitted the message to the relay.
 	Origin string `json:"origin"`
-	// interface name
+	// Relay interface name that accepted the message.
 	Interface_ string `json:"interface"`
-	// sending zone
-	SendingZone string `json:"sendingZone"`
-	// email body size in bytes
-	BodySize int32 `json:"bodySize"`
-	// index of email in the to adderess list
-	Seq int32 `json:"seq"`
-	// to address this email is being sent to
-	Recipient string `json:"recipient"`
-	// to address domain
-	Domain string `json:"domain"`
-	// locked status
-	Locked int32 `json:"locked"`
-	// lock timestamp
-	LockTime int32 `json:"lockTime"`
-	// assigned server
-	Assigned string `json:"assigned"`
-	// queued timestamp
-	Queued string `json:"queued"`
-	// mx hostname
-	MxHostname string `json:"mxHostname"`
-	// mail delivery response
-	Response string `json:"response"`
+	// The sending zone assigned by the relay for outbound delivery.
+	SendingZone string `json:"sendingZone,omitempty"`
+	// Size of the message body in bytes.
+	BodySize int32 `json:"bodySize,omitempty"`
+	// Sequence index of this recipient in a multi-recipient message. Starts at 1.
+	Seq int32 `json:"seq,omitempty"`
+	// Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+	Delivered int32 `json:"delivered,omitempty"`
+	// The SMTP response code from the destination MX server (e.g. `250`).
+	Code int32 `json:"code,omitempty"`
+	// The specific recipient address this delivery record is for.
+	Recipient string `json:"recipient,omitempty"`
+	// The full SMTP response string received from the destination MX server.
+	Response string `json:"response,omitempty"`
+	// The destination domain for this delivery attempt.
+	Domain string `json:"domain,omitempty"`
+	// Whether the queue entry is currently locked for delivery processing.
+	Locked int32 `json:"locked,omitempty"`
+	// Millisecond-precision timestamp of the last queue lock acquisition.
+	LockTime string `json:"lockTime,omitempty"`
+	// The relay server node assigned to deliver this message.
+	Assigned string `json:"assigned,omitempty"`
+	// ISO 8601 timestamp when the message was placed into the delivery queue.
+	Queued string `json:"queued,omitempty"`
+	// The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+	MxHostname string `json:"mxHostname,omitempty"`
 }

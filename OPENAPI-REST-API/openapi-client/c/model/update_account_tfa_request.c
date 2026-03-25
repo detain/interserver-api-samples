@@ -12,18 +12,21 @@ static update_account_tfa_request_t *update_account_tfa_request_create_internal(
     if (!update_account_tfa_request_local_var) {
         return NULL;
     }
-    update_account_tfa_request_local_var->_2fa_google_code = _2fa_google_code;
-
+    memset(update_account_tfa_request_local_var, 0, sizeof(update_account_tfa_request_t));
     update_account_tfa_request_local_var->_library_owned = 1;
+    update_account_tfa_request_local_var->_2fa_google_code = _2fa_google_code;
     return update_account_tfa_request_local_var;
 }
 
 __attribute__((deprecated)) update_account_tfa_request_t *update_account_tfa_request_create(
     char *_2fa_google_code
     ) {
-    return update_account_tfa_request_create_internal (
+    update_account_tfa_request_t *result = update_account_tfa_request_create_internal (
         _2fa_google_code
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void update_account_tfa_request_free(update_account_tfa_request_t *update_account_tfa_request) {
@@ -65,6 +68,8 @@ update_account_tfa_request_t *update_account_tfa_request_parseFromJSON(cJSON *up
 
     update_account_tfa_request_t *update_account_tfa_request_local_var = NULL;
 
+    char *_2fa_google_code_local_str = NULL;
+
     // update_account_tfa_request->_2fa_google_code
     cJSON *_2fa_google_code = cJSON_GetObjectItemCaseSensitive(update_account_tfa_requestJSON, "2fa_google_code");
     if (cJSON_IsNull(_2fa_google_code)) {
@@ -81,12 +86,22 @@ update_account_tfa_request_t *update_account_tfa_request_parseFromJSON(cJSON *up
     }
 
 
+    if (_2fa_google_code && !cJSON_IsNull(_2fa_google_code)) _2fa_google_code_local_str = strdup(_2fa_google_code->valuestring);
+
     update_account_tfa_request_local_var = update_account_tfa_request_create_internal (
-        strdup(_2fa_google_code->valuestring)
+        _2fa_google_code_local_str
         );
+
+    if (!update_account_tfa_request_local_var) {
+        goto end;
+    }
 
     return update_account_tfa_request_local_var;
 end:
+    if (_2fa_google_code_local_str) {
+        free(_2fa_google_code_local_str);
+        _2fa_google_code_local_str = NULL;
+    }
     return NULL;
 
 }

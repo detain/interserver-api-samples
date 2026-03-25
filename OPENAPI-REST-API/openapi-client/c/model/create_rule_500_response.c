@@ -6,28 +6,37 @@
 
 
 static create_rule_500_response_t *create_rule_500_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     create_rule_500_response_t *create_rule_500_response_local_var = malloc(sizeof(create_rule_500_response_t));
     if (!create_rule_500_response_local_var) {
         return NULL;
     }
+    memset(create_rule_500_response_local_var, 0, sizeof(create_rule_500_response_t));
+    create_rule_500_response_local_var->_library_owned = 1;
     create_rule_500_response_local_var->success = success;
     create_rule_500_response_local_var->text = text;
-
-    create_rule_500_response_local_var->_library_owned = 1;
     return create_rule_500_response_local_var;
 }
 
 __attribute__((deprecated)) create_rule_500_response_t *create_rule_500_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return create_rule_500_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    create_rule_500_response_t *result = create_rule_500_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void create_rule_500_response_free(create_rule_500_response_t *create_rule_500_response) {
@@ -39,6 +48,10 @@ void create_rule_500_response_free(create_rule_500_response_t *create_rule_500_r
         return ;
     }
     listEntry_t *listEntry;
+    if (create_rule_500_response->success) {
+        free(create_rule_500_response->success);
+        create_rule_500_response->success = NULL;
+    }
     if (create_rule_500_response->text) {
         free(create_rule_500_response->text);
         create_rule_500_response->text = NULL;
@@ -51,7 +64,7 @@ cJSON *create_rule_500_response_convertToJSON(create_rule_500_response_t *create
 
     // create_rule_500_response->success
     if(create_rule_500_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", create_rule_500_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *create_rule_500_response->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -76,6 +89,11 @@ create_rule_500_response_t *create_rule_500_response_parseFromJSON(cJSON *create
 
     create_rule_500_response_t *create_rule_500_response_local_var = NULL;
 
+    // define the local variable for create_rule_500_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // create_rule_500_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(create_rule_500_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -86,6 +104,12 @@ create_rule_500_response_t *create_rule_500_response_parseFromJSON(cJSON *create
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // create_rule_500_response->text
@@ -101,13 +125,27 @@ create_rule_500_response_t *create_rule_500_response_parseFromJSON(cJSON *create
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     create_rule_500_response_local_var = create_rule_500_response_create_internal (
-        success ? success->valueint : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL
+        success_local_var,
+        text_local_str
         );
+
+    if (!create_rule_500_response_local_var) {
+        goto end;
+    }
 
     return create_rule_500_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

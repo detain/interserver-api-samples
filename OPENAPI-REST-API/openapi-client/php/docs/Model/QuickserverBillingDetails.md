@@ -1,4 +1,4 @@
-# # QuickserverBillingDetails
+# QuickserverBillingDetails
 
 ## Properties
 

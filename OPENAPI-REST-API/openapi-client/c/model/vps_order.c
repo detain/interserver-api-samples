@@ -6,26 +6,26 @@
 
 
 static vps_order_t *vps_order_create_internal(
-    double vps_slice_ssd_ovz_cost,
-    double vps_slice_ovz_cost,
-    double vps_slice_ssd_virtuozzo_cost,
-    double vps_slice_virtuozzo_cost,
-    double vps_slice_hyperv_cost,
-    double vps_slice_vmware_cost,
-    double vps_slice_lxc_cost,
-    double vps_slice_xen_cost,
-    double vps_slice_kvm_l_cost,
-    double vps_slice_kvm_storage_cost,
-    double vps_ny_cost,
-    double vps_slice_kvm_w_cost,
-    double cpanel_cost,
-    double da_cost,
+    double *vps_slice_ssd_ovz_cost,
+    double *vps_slice_ovz_cost,
+    double *vps_slice_ssd_virtuozzo_cost,
+    double *vps_slice_virtuozzo_cost,
+    double *vps_slice_hyperv_cost,
+    double *vps_slice_vmware_cost,
+    double *vps_slice_lxc_cost,
+    double *vps_slice_xen_cost,
+    double *vps_slice_kvm_l_cost,
+    double *vps_slice_kvm_storage_cost,
+    double *vps_ny_cost,
+    double *vps_slice_kvm_w_cost,
+    double *cpanel_cost,
+    double *da_cost,
     char *ram_slice,
     char *hd_slice,
     char *hd_storage_slice,
     char *bw_slice,
     char *bw_type,
-    double bw_total,
+    double *bw_total,
     char *max_slices,
     vps_order_platform_packages_t *platform_packages,
     vps_order_platform_names_t *platform_names,
@@ -42,6 +42,8 @@ static vps_order_t *vps_order_create_internal(
     if (!vps_order_local_var) {
         return NULL;
     }
+    memset(vps_order_local_var, 0, sizeof(vps_order_t));
+    vps_order_local_var->_library_owned = 1;
     vps_order_local_var->vps_slice_ssd_ovz_cost = vps_slice_ssd_ovz_cost;
     vps_order_local_var->vps_slice_ovz_cost = vps_slice_ovz_cost;
     vps_order_local_var->vps_slice_ssd_virtuozzo_cost = vps_slice_ssd_virtuozzo_cost;
@@ -73,32 +75,30 @@ static vps_order_t *vps_order_create_internal(
     vps_order_local_var->service_types = service_types;
     vps_order_local_var->currency = currency;
     vps_order_local_var->currency_symbol = currency_symbol;
-
-    vps_order_local_var->_library_owned = 1;
     return vps_order_local_var;
 }
 
 __attribute__((deprecated)) vps_order_t *vps_order_create(
-    double vps_slice_ssd_ovz_cost,
-    double vps_slice_ovz_cost,
-    double vps_slice_ssd_virtuozzo_cost,
-    double vps_slice_virtuozzo_cost,
-    double vps_slice_hyperv_cost,
-    double vps_slice_vmware_cost,
-    double vps_slice_lxc_cost,
-    double vps_slice_xen_cost,
-    double vps_slice_kvm_l_cost,
-    double vps_slice_kvm_storage_cost,
-    double vps_ny_cost,
-    double vps_slice_kvm_w_cost,
-    double cpanel_cost,
-    double da_cost,
+    double *vps_slice_ssd_ovz_cost,
+    double *vps_slice_ovz_cost,
+    double *vps_slice_ssd_virtuozzo_cost,
+    double *vps_slice_virtuozzo_cost,
+    double *vps_slice_hyperv_cost,
+    double *vps_slice_vmware_cost,
+    double *vps_slice_lxc_cost,
+    double *vps_slice_xen_cost,
+    double *vps_slice_kvm_l_cost,
+    double *vps_slice_kvm_storage_cost,
+    double *vps_ny_cost,
+    double *vps_slice_kvm_w_cost,
+    double *cpanel_cost,
+    double *da_cost,
     char *ram_slice,
     char *hd_slice,
     char *hd_storage_slice,
     char *bw_slice,
     char *bw_type,
-    double bw_total,
+    double *bw_total,
     char *max_slices,
     vps_order_platform_packages_t *platform_packages,
     vps_order_platform_names_t *platform_names,
@@ -111,27 +111,102 @@ __attribute__((deprecated)) vps_order_t *vps_order_create(
     char *currency,
     char *currency_symbol
     ) {
-    return vps_order_create_internal (
-        vps_slice_ssd_ovz_cost,
-        vps_slice_ovz_cost,
-        vps_slice_ssd_virtuozzo_cost,
-        vps_slice_virtuozzo_cost,
-        vps_slice_hyperv_cost,
-        vps_slice_vmware_cost,
-        vps_slice_lxc_cost,
-        vps_slice_xen_cost,
-        vps_slice_kvm_l_cost,
-        vps_slice_kvm_storage_cost,
-        vps_ny_cost,
-        vps_slice_kvm_w_cost,
-        cpanel_cost,
-        da_cost,
+    double *vps_slice_ssd_ovz_cost_copy = NULL;
+    if (vps_slice_ssd_ovz_cost) {
+        vps_slice_ssd_ovz_cost_copy = malloc(sizeof(double));
+        if (vps_slice_ssd_ovz_cost_copy) *vps_slice_ssd_ovz_cost_copy = *vps_slice_ssd_ovz_cost;
+    }
+    double *vps_slice_ovz_cost_copy = NULL;
+    if (vps_slice_ovz_cost) {
+        vps_slice_ovz_cost_copy = malloc(sizeof(double));
+        if (vps_slice_ovz_cost_copy) *vps_slice_ovz_cost_copy = *vps_slice_ovz_cost;
+    }
+    double *vps_slice_ssd_virtuozzo_cost_copy = NULL;
+    if (vps_slice_ssd_virtuozzo_cost) {
+        vps_slice_ssd_virtuozzo_cost_copy = malloc(sizeof(double));
+        if (vps_slice_ssd_virtuozzo_cost_copy) *vps_slice_ssd_virtuozzo_cost_copy = *vps_slice_ssd_virtuozzo_cost;
+    }
+    double *vps_slice_virtuozzo_cost_copy = NULL;
+    if (vps_slice_virtuozzo_cost) {
+        vps_slice_virtuozzo_cost_copy = malloc(sizeof(double));
+        if (vps_slice_virtuozzo_cost_copy) *vps_slice_virtuozzo_cost_copy = *vps_slice_virtuozzo_cost;
+    }
+    double *vps_slice_hyperv_cost_copy = NULL;
+    if (vps_slice_hyperv_cost) {
+        vps_slice_hyperv_cost_copy = malloc(sizeof(double));
+        if (vps_slice_hyperv_cost_copy) *vps_slice_hyperv_cost_copy = *vps_slice_hyperv_cost;
+    }
+    double *vps_slice_vmware_cost_copy = NULL;
+    if (vps_slice_vmware_cost) {
+        vps_slice_vmware_cost_copy = malloc(sizeof(double));
+        if (vps_slice_vmware_cost_copy) *vps_slice_vmware_cost_copy = *vps_slice_vmware_cost;
+    }
+    double *vps_slice_lxc_cost_copy = NULL;
+    if (vps_slice_lxc_cost) {
+        vps_slice_lxc_cost_copy = malloc(sizeof(double));
+        if (vps_slice_lxc_cost_copy) *vps_slice_lxc_cost_copy = *vps_slice_lxc_cost;
+    }
+    double *vps_slice_xen_cost_copy = NULL;
+    if (vps_slice_xen_cost) {
+        vps_slice_xen_cost_copy = malloc(sizeof(double));
+        if (vps_slice_xen_cost_copy) *vps_slice_xen_cost_copy = *vps_slice_xen_cost;
+    }
+    double *vps_slice_kvm_l_cost_copy = NULL;
+    if (vps_slice_kvm_l_cost) {
+        vps_slice_kvm_l_cost_copy = malloc(sizeof(double));
+        if (vps_slice_kvm_l_cost_copy) *vps_slice_kvm_l_cost_copy = *vps_slice_kvm_l_cost;
+    }
+    double *vps_slice_kvm_storage_cost_copy = NULL;
+    if (vps_slice_kvm_storage_cost) {
+        vps_slice_kvm_storage_cost_copy = malloc(sizeof(double));
+        if (vps_slice_kvm_storage_cost_copy) *vps_slice_kvm_storage_cost_copy = *vps_slice_kvm_storage_cost;
+    }
+    double *vps_ny_cost_copy = NULL;
+    if (vps_ny_cost) {
+        vps_ny_cost_copy = malloc(sizeof(double));
+        if (vps_ny_cost_copy) *vps_ny_cost_copy = *vps_ny_cost;
+    }
+    double *vps_slice_kvm_w_cost_copy = NULL;
+    if (vps_slice_kvm_w_cost) {
+        vps_slice_kvm_w_cost_copy = malloc(sizeof(double));
+        if (vps_slice_kvm_w_cost_copy) *vps_slice_kvm_w_cost_copy = *vps_slice_kvm_w_cost;
+    }
+    double *cpanel_cost_copy = NULL;
+    if (cpanel_cost) {
+        cpanel_cost_copy = malloc(sizeof(double));
+        if (cpanel_cost_copy) *cpanel_cost_copy = *cpanel_cost;
+    }
+    double *da_cost_copy = NULL;
+    if (da_cost) {
+        da_cost_copy = malloc(sizeof(double));
+        if (da_cost_copy) *da_cost_copy = *da_cost;
+    }
+    double *bw_total_copy = NULL;
+    if (bw_total) {
+        bw_total_copy = malloc(sizeof(double));
+        if (bw_total_copy) *bw_total_copy = *bw_total;
+    }
+    vps_order_t *result = vps_order_create_internal (
+        vps_slice_ssd_ovz_cost_copy,
+        vps_slice_ovz_cost_copy,
+        vps_slice_ssd_virtuozzo_cost_copy,
+        vps_slice_virtuozzo_cost_copy,
+        vps_slice_hyperv_cost_copy,
+        vps_slice_vmware_cost_copy,
+        vps_slice_lxc_cost_copy,
+        vps_slice_xen_cost_copy,
+        vps_slice_kvm_l_cost_copy,
+        vps_slice_kvm_storage_cost_copy,
+        vps_ny_cost_copy,
+        vps_slice_kvm_w_cost_copy,
+        cpanel_cost_copy,
+        da_cost_copy,
         ram_slice,
         hd_slice,
         hd_storage_slice,
         bw_slice,
         bw_type,
-        bw_total,
+        bw_total_copy,
         max_slices,
         platform_packages,
         platform_names,
@@ -144,6 +219,24 @@ __attribute__((deprecated)) vps_order_t *vps_order_create(
         currency,
         currency_symbol
         );
+    if (!result) {
+        free(vps_slice_ssd_ovz_cost_copy);
+        free(vps_slice_ovz_cost_copy);
+        free(vps_slice_ssd_virtuozzo_cost_copy);
+        free(vps_slice_virtuozzo_cost_copy);
+        free(vps_slice_hyperv_cost_copy);
+        free(vps_slice_vmware_cost_copy);
+        free(vps_slice_lxc_cost_copy);
+        free(vps_slice_xen_cost_copy);
+        free(vps_slice_kvm_l_cost_copy);
+        free(vps_slice_kvm_storage_cost_copy);
+        free(vps_ny_cost_copy);
+        free(vps_slice_kvm_w_cost_copy);
+        free(cpanel_cost_copy);
+        free(da_cost_copy);
+        free(bw_total_copy);
+    }
+    return result;
 }
 
 void vps_order_free(vps_order_t *vps_order) {
@@ -155,6 +248,62 @@ void vps_order_free(vps_order_t *vps_order) {
         return ;
     }
     listEntry_t *listEntry;
+    if (vps_order->vps_slice_ssd_ovz_cost) {
+        free(vps_order->vps_slice_ssd_ovz_cost);
+        vps_order->vps_slice_ssd_ovz_cost = NULL;
+    }
+    if (vps_order->vps_slice_ovz_cost) {
+        free(vps_order->vps_slice_ovz_cost);
+        vps_order->vps_slice_ovz_cost = NULL;
+    }
+    if (vps_order->vps_slice_ssd_virtuozzo_cost) {
+        free(vps_order->vps_slice_ssd_virtuozzo_cost);
+        vps_order->vps_slice_ssd_virtuozzo_cost = NULL;
+    }
+    if (vps_order->vps_slice_virtuozzo_cost) {
+        free(vps_order->vps_slice_virtuozzo_cost);
+        vps_order->vps_slice_virtuozzo_cost = NULL;
+    }
+    if (vps_order->vps_slice_hyperv_cost) {
+        free(vps_order->vps_slice_hyperv_cost);
+        vps_order->vps_slice_hyperv_cost = NULL;
+    }
+    if (vps_order->vps_slice_vmware_cost) {
+        free(vps_order->vps_slice_vmware_cost);
+        vps_order->vps_slice_vmware_cost = NULL;
+    }
+    if (vps_order->vps_slice_lxc_cost) {
+        free(vps_order->vps_slice_lxc_cost);
+        vps_order->vps_slice_lxc_cost = NULL;
+    }
+    if (vps_order->vps_slice_xen_cost) {
+        free(vps_order->vps_slice_xen_cost);
+        vps_order->vps_slice_xen_cost = NULL;
+    }
+    if (vps_order->vps_slice_kvm_l_cost) {
+        free(vps_order->vps_slice_kvm_l_cost);
+        vps_order->vps_slice_kvm_l_cost = NULL;
+    }
+    if (vps_order->vps_slice_kvm_storage_cost) {
+        free(vps_order->vps_slice_kvm_storage_cost);
+        vps_order->vps_slice_kvm_storage_cost = NULL;
+    }
+    if (vps_order->vps_ny_cost) {
+        free(vps_order->vps_ny_cost);
+        vps_order->vps_ny_cost = NULL;
+    }
+    if (vps_order->vps_slice_kvm_w_cost) {
+        free(vps_order->vps_slice_kvm_w_cost);
+        vps_order->vps_slice_kvm_w_cost = NULL;
+    }
+    if (vps_order->cpanel_cost) {
+        free(vps_order->cpanel_cost);
+        vps_order->cpanel_cost = NULL;
+    }
+    if (vps_order->da_cost) {
+        free(vps_order->da_cost);
+        vps_order->da_cost = NULL;
+    }
     if (vps_order->ram_slice) {
         free(vps_order->ram_slice);
         vps_order->ram_slice = NULL;
@@ -174,6 +323,10 @@ void vps_order_free(vps_order_t *vps_order) {
     if (vps_order->bw_type) {
         free(vps_order->bw_type);
         vps_order->bw_type = NULL;
+    }
+    if (vps_order->bw_total) {
+        free(vps_order->bw_total);
+        vps_order->bw_total = NULL;
     }
     if (vps_order->max_slices) {
         free(vps_order->max_slices);
@@ -229,7 +382,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_ssd_ovz_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceSsdOvzCost", vps_order->vps_slice_ssd_ovz_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceSsdOvzCost", *vps_order->vps_slice_ssd_ovz_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -238,7 +391,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_ovz_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceOvzCost", vps_order->vps_slice_ovz_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceOvzCost", *vps_order->vps_slice_ovz_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -247,7 +400,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_ssd_virtuozzo_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceSsdVirtuozzoCost", vps_order->vps_slice_ssd_virtuozzo_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceSsdVirtuozzoCost", *vps_order->vps_slice_ssd_virtuozzo_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -256,7 +409,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_virtuozzo_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceVirtuozzoCost", vps_order->vps_slice_virtuozzo_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceVirtuozzoCost", *vps_order->vps_slice_virtuozzo_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -265,7 +418,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_hyperv_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceHypervCost", vps_order->vps_slice_hyperv_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceHypervCost", *vps_order->vps_slice_hyperv_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -274,7 +427,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_vmware_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceVmwareCost", vps_order->vps_slice_vmware_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceVmwareCost", *vps_order->vps_slice_vmware_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -283,7 +436,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_lxc_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceLxcCost", vps_order->vps_slice_lxc_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceLxcCost", *vps_order->vps_slice_lxc_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -292,7 +445,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_xen_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceXenCost", vps_order->vps_slice_xen_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceXenCost", *vps_order->vps_slice_xen_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -301,7 +454,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_kvm_l_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceKvmLCost", vps_order->vps_slice_kvm_l_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceKvmLCost", *vps_order->vps_slice_kvm_l_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -310,7 +463,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_kvm_storage_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceKvmStorageCost", vps_order->vps_slice_kvm_storage_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceKvmStorageCost", *vps_order->vps_slice_kvm_storage_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -319,7 +472,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_ny_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsNyCost", vps_order->vps_ny_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsNyCost", *vps_order->vps_ny_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -328,7 +481,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->vps_slice_kvm_w_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "vpsSliceKvmWCost", vps_order->vps_slice_kvm_w_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "vpsSliceKvmWCost", *vps_order->vps_slice_kvm_w_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -337,7 +490,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->cpanel_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "cpanelCost", vps_order->cpanel_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cpanelCost", *vps_order->cpanel_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -346,7 +499,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->da_cost) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "daCost", vps_order->da_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "daCost", *vps_order->da_cost) == NULL) {
     goto fail; //Numeric
     }
 
@@ -400,7 +553,7 @@ cJSON *vps_order_convertToJSON(vps_order_t *vps_order) {
     if (!vps_order->bw_total) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "bwTotal", vps_order->bw_total) == NULL) {
+    if(cJSON_AddNumberToObject(item, "bwTotal", *vps_order->bw_total) == NULL) {
     goto fail; //Numeric
     }
 
@@ -555,6 +708,63 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
 
     vps_order_t *vps_order_local_var = NULL;
 
+    // define the local variable for vps_order->vps_slice_ssd_ovz_cost
+    double *vps_slice_ssd_ovz_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_ovz_cost
+    double *vps_slice_ovz_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_ssd_virtuozzo_cost
+    double *vps_slice_ssd_virtuozzo_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_virtuozzo_cost
+    double *vps_slice_virtuozzo_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_hyperv_cost
+    double *vps_slice_hyperv_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_vmware_cost
+    double *vps_slice_vmware_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_lxc_cost
+    double *vps_slice_lxc_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_xen_cost
+    double *vps_slice_xen_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_kvm_l_cost
+    double *vps_slice_kvm_l_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_kvm_storage_cost
+    double *vps_slice_kvm_storage_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_ny_cost
+    double *vps_ny_cost_local_var = NULL;
+
+    // define the local variable for vps_order->vps_slice_kvm_w_cost
+    double *vps_slice_kvm_w_cost_local_var = NULL;
+
+    // define the local variable for vps_order->cpanel_cost
+    double *cpanel_cost_local_var = NULL;
+
+    // define the local variable for vps_order->da_cost
+    double *da_cost_local_var = NULL;
+
+    char *ram_slice_local_str = NULL;
+
+    char *hd_slice_local_str = NULL;
+
+    char *hd_storage_slice_local_str = NULL;
+
+    char *bw_slice_local_str = NULL;
+
+    char *bw_type_local_str = NULL;
+
+    // define the local variable for vps_order->bw_total
+    double *bw_total_local_var = NULL;
+
+    char *max_slices_local_str = NULL;
+
     // define the local variable for vps_order->platform_packages
     vps_order_platform_packages_t *platform_packages_local_nonprim = NULL;
 
@@ -579,6 +789,10 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     // define the local variable for vps_order->service_types
     vps_order_service_types_t *service_types_local_nonprim = NULL;
 
+    char *currency_local_str = NULL;
+
+    char *currency_symbol_local_str = NULL;
+
     // vps_order->vps_slice_ssd_ovz_cost
     cJSON *vps_slice_ssd_ovz_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceSsdOvzCost");
     if (cJSON_IsNull(vps_slice_ssd_ovz_cost)) {
@@ -593,6 +807,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_ssd_ovz_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_ssd_ovz_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_ssd_ovz_cost_local_var = vps_slice_ssd_ovz_cost->valuedouble;
 
     // vps_order->vps_slice_ovz_cost
     cJSON *vps_slice_ovz_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceOvzCost");
@@ -608,6 +828,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_ovz_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_ovz_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_ovz_cost_local_var = vps_slice_ovz_cost->valuedouble;
 
     // vps_order->vps_slice_ssd_virtuozzo_cost
     cJSON *vps_slice_ssd_virtuozzo_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceSsdVirtuozzoCost");
@@ -623,6 +849,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_ssd_virtuozzo_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_ssd_virtuozzo_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_ssd_virtuozzo_cost_local_var = vps_slice_ssd_virtuozzo_cost->valuedouble;
 
     // vps_order->vps_slice_virtuozzo_cost
     cJSON *vps_slice_virtuozzo_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceVirtuozzoCost");
@@ -638,6 +870,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_virtuozzo_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_virtuozzo_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_virtuozzo_cost_local_var = vps_slice_virtuozzo_cost->valuedouble;
 
     // vps_order->vps_slice_hyperv_cost
     cJSON *vps_slice_hyperv_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceHypervCost");
@@ -653,6 +891,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_hyperv_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_hyperv_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_hyperv_cost_local_var = vps_slice_hyperv_cost->valuedouble;
 
     // vps_order->vps_slice_vmware_cost
     cJSON *vps_slice_vmware_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceVmwareCost");
@@ -668,6 +912,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_vmware_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_vmware_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_vmware_cost_local_var = vps_slice_vmware_cost->valuedouble;
 
     // vps_order->vps_slice_lxc_cost
     cJSON *vps_slice_lxc_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceLxcCost");
@@ -683,6 +933,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_lxc_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_lxc_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_lxc_cost_local_var = vps_slice_lxc_cost->valuedouble;
 
     // vps_order->vps_slice_xen_cost
     cJSON *vps_slice_xen_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceXenCost");
@@ -698,6 +954,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_xen_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_xen_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_xen_cost_local_var = vps_slice_xen_cost->valuedouble;
 
     // vps_order->vps_slice_kvm_l_cost
     cJSON *vps_slice_kvm_l_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceKvmLCost");
@@ -713,6 +975,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_kvm_l_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_kvm_l_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_kvm_l_cost_local_var = vps_slice_kvm_l_cost->valuedouble;
 
     // vps_order->vps_slice_kvm_storage_cost
     cJSON *vps_slice_kvm_storage_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceKvmStorageCost");
@@ -728,6 +996,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_kvm_storage_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_kvm_storage_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_kvm_storage_cost_local_var = vps_slice_kvm_storage_cost->valuedouble;
 
     // vps_order->vps_ny_cost
     cJSON *vps_ny_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsNyCost");
@@ -743,6 +1017,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_ny_cost_local_var = malloc(sizeof(double));
+    if(!vps_ny_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_ny_cost_local_var = vps_ny_cost->valuedouble;
 
     // vps_order->vps_slice_kvm_w_cost
     cJSON *vps_slice_kvm_w_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "vpsSliceKvmWCost");
@@ -758,6 +1038,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    vps_slice_kvm_w_cost_local_var = malloc(sizeof(double));
+    if(!vps_slice_kvm_w_cost_local_var)
+    {
+        goto end;
+    }
+    *vps_slice_kvm_w_cost_local_var = vps_slice_kvm_w_cost->valuedouble;
 
     // vps_order->cpanel_cost
     cJSON *cpanel_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "cpanelCost");
@@ -773,6 +1059,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    cpanel_cost_local_var = malloc(sizeof(double));
+    if(!cpanel_cost_local_var)
+    {
+        goto end;
+    }
+    *cpanel_cost_local_var = cpanel_cost->valuedouble;
 
     // vps_order->da_cost
     cJSON *da_cost = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "daCost");
@@ -788,6 +1080,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    da_cost_local_var = malloc(sizeof(double));
+    if(!da_cost_local_var)
+    {
+        goto end;
+    }
+    *da_cost_local_var = da_cost->valuedouble;
 
     // vps_order->ram_slice
     cJSON *ram_slice = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "ramSlice");
@@ -878,6 +1176,12 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     {
     goto end; //Numeric
     }
+    bw_total_local_var = malloc(sizeof(double));
+    if(!bw_total_local_var)
+    {
+        goto end;
+    }
+    *bw_total_local_var = bw_total->valuedouble;
 
     // vps_order->max_slices
     cJSON *max_slices = cJSON_GetObjectItemCaseSensitive(vps_orderJSON, "maxSlices");
@@ -1021,28 +1325,37 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
     }
 
 
+    if (ram_slice && !cJSON_IsNull(ram_slice)) ram_slice_local_str = strdup(ram_slice->valuestring);
+    if (hd_slice && !cJSON_IsNull(hd_slice)) hd_slice_local_str = strdup(hd_slice->valuestring);
+    if (hd_storage_slice && !cJSON_IsNull(hd_storage_slice)) hd_storage_slice_local_str = strdup(hd_storage_slice->valuestring);
+    if (bw_slice && !cJSON_IsNull(bw_slice)) bw_slice_local_str = strdup(bw_slice->valuestring);
+    if (bw_type && !cJSON_IsNull(bw_type)) bw_type_local_str = strdup(bw_type->valuestring);
+    if (max_slices && !cJSON_IsNull(max_slices)) max_slices_local_str = strdup(max_slices->valuestring);
+    if (currency && !cJSON_IsNull(currency)) currency_local_str = strdup(currency->valuestring);
+    if (currency_symbol && !cJSON_IsNull(currency_symbol)) currency_symbol_local_str = strdup(currency_symbol->valuestring);
+
     vps_order_local_var = vps_order_create_internal (
-        vps_slice_ssd_ovz_cost->valuedouble,
-        vps_slice_ovz_cost->valuedouble,
-        vps_slice_ssd_virtuozzo_cost->valuedouble,
-        vps_slice_virtuozzo_cost->valuedouble,
-        vps_slice_hyperv_cost->valuedouble,
-        vps_slice_vmware_cost->valuedouble,
-        vps_slice_lxc_cost->valuedouble,
-        vps_slice_xen_cost->valuedouble,
-        vps_slice_kvm_l_cost->valuedouble,
-        vps_slice_kvm_storage_cost->valuedouble,
-        vps_ny_cost->valuedouble,
-        vps_slice_kvm_w_cost->valuedouble,
-        cpanel_cost->valuedouble,
-        da_cost->valuedouble,
-        strdup(ram_slice->valuestring),
-        strdup(hd_slice->valuestring),
-        strdup(hd_storage_slice->valuestring),
-        strdup(bw_slice->valuestring),
-        strdup(bw_type->valuestring),
-        bw_total->valuedouble,
-        strdup(max_slices->valuestring),
+        vps_slice_ssd_ovz_cost_local_var,
+        vps_slice_ovz_cost_local_var,
+        vps_slice_ssd_virtuozzo_cost_local_var,
+        vps_slice_virtuozzo_cost_local_var,
+        vps_slice_hyperv_cost_local_var,
+        vps_slice_vmware_cost_local_var,
+        vps_slice_lxc_cost_local_var,
+        vps_slice_xen_cost_local_var,
+        vps_slice_kvm_l_cost_local_var,
+        vps_slice_kvm_storage_cost_local_var,
+        vps_ny_cost_local_var,
+        vps_slice_kvm_w_cost_local_var,
+        cpanel_cost_local_var,
+        da_cost_local_var,
+        ram_slice_local_str,
+        hd_slice_local_str,
+        hd_storage_slice_local_str,
+        bw_slice_local_str,
+        bw_type_local_str,
+        bw_total_local_var,
+        max_slices_local_str,
         platform_packages_local_nonprim,
         platform_names_local_nonprim,
         package_costs_local_nonprim,
@@ -1051,12 +1364,100 @@ vps_order_t *vps_order_parseFromJSON(cJSON *vps_orderJSON){
         os_names_local_nonprim,
         templates_local_nonprim,
         service_types_local_nonprim,
-        strdup(currency->valuestring),
-        strdup(currency_symbol->valuestring)
+        currency_local_str,
+        currency_symbol_local_str
         );
+
+    if (!vps_order_local_var) {
+        goto end;
+    }
 
     return vps_order_local_var;
 end:
+    if (vps_slice_ssd_ovz_cost_local_var) {
+        free(vps_slice_ssd_ovz_cost_local_var);
+        vps_slice_ssd_ovz_cost_local_var = NULL;
+    }
+    if (vps_slice_ovz_cost_local_var) {
+        free(vps_slice_ovz_cost_local_var);
+        vps_slice_ovz_cost_local_var = NULL;
+    }
+    if (vps_slice_ssd_virtuozzo_cost_local_var) {
+        free(vps_slice_ssd_virtuozzo_cost_local_var);
+        vps_slice_ssd_virtuozzo_cost_local_var = NULL;
+    }
+    if (vps_slice_virtuozzo_cost_local_var) {
+        free(vps_slice_virtuozzo_cost_local_var);
+        vps_slice_virtuozzo_cost_local_var = NULL;
+    }
+    if (vps_slice_hyperv_cost_local_var) {
+        free(vps_slice_hyperv_cost_local_var);
+        vps_slice_hyperv_cost_local_var = NULL;
+    }
+    if (vps_slice_vmware_cost_local_var) {
+        free(vps_slice_vmware_cost_local_var);
+        vps_slice_vmware_cost_local_var = NULL;
+    }
+    if (vps_slice_lxc_cost_local_var) {
+        free(vps_slice_lxc_cost_local_var);
+        vps_slice_lxc_cost_local_var = NULL;
+    }
+    if (vps_slice_xen_cost_local_var) {
+        free(vps_slice_xen_cost_local_var);
+        vps_slice_xen_cost_local_var = NULL;
+    }
+    if (vps_slice_kvm_l_cost_local_var) {
+        free(vps_slice_kvm_l_cost_local_var);
+        vps_slice_kvm_l_cost_local_var = NULL;
+    }
+    if (vps_slice_kvm_storage_cost_local_var) {
+        free(vps_slice_kvm_storage_cost_local_var);
+        vps_slice_kvm_storage_cost_local_var = NULL;
+    }
+    if (vps_ny_cost_local_var) {
+        free(vps_ny_cost_local_var);
+        vps_ny_cost_local_var = NULL;
+    }
+    if (vps_slice_kvm_w_cost_local_var) {
+        free(vps_slice_kvm_w_cost_local_var);
+        vps_slice_kvm_w_cost_local_var = NULL;
+    }
+    if (cpanel_cost_local_var) {
+        free(cpanel_cost_local_var);
+        cpanel_cost_local_var = NULL;
+    }
+    if (da_cost_local_var) {
+        free(da_cost_local_var);
+        da_cost_local_var = NULL;
+    }
+    if (ram_slice_local_str) {
+        free(ram_slice_local_str);
+        ram_slice_local_str = NULL;
+    }
+    if (hd_slice_local_str) {
+        free(hd_slice_local_str);
+        hd_slice_local_str = NULL;
+    }
+    if (hd_storage_slice_local_str) {
+        free(hd_storage_slice_local_str);
+        hd_storage_slice_local_str = NULL;
+    }
+    if (bw_slice_local_str) {
+        free(bw_slice_local_str);
+        bw_slice_local_str = NULL;
+    }
+    if (bw_type_local_str) {
+        free(bw_type_local_str);
+        bw_type_local_str = NULL;
+    }
+    if (bw_total_local_var) {
+        free(bw_total_local_var);
+        bw_total_local_var = NULL;
+    }
+    if (max_slices_local_str) {
+        free(max_slices_local_str);
+        max_slices_local_str = NULL;
+    }
     if (platform_packages_local_nonprim) {
         vps_order_platform_packages_free(platform_packages_local_nonprim);
         platform_packages_local_nonprim = NULL;
@@ -1088,6 +1489,14 @@ end:
     if (service_types_local_nonprim) {
         vps_order_service_types_free(service_types_local_nonprim);
         service_types_local_nonprim = NULL;
+    }
+    if (currency_local_str) {
+        free(currency_local_str);
+        currency_local_str = NULL;
+    }
+    if (currency_symbol_local_str) {
+        free(currency_symbol_local_str);
+        currency_symbol_local_str = NULL;
     }
     return NULL;
 

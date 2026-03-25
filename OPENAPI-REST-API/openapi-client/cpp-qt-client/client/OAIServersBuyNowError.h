@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServersBuyNowError : public OAIObject {
 public:
     OAIServersBuyNowError();
-    OAIServersBuyNowError(QString json);
+    OAIServersBuyNowError(const QString &json);
     ~OAIServersBuyNowError() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

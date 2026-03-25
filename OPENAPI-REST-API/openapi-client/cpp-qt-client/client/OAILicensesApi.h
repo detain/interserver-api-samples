@@ -115,6 +115,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -134,7 +141,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addLicenseCallback(OAIHttpRequestWorker *worker);
     void getLicenseInfoCallback(OAIHttpRequestWorker *worker);
@@ -175,72 +182,28 @@ Q_SIGNALS:
     void putLicensesSignalFull(OAIHttpRequestWorker *worker);
     void updateLicenseInfoSignalFull(OAIHttpRequestWorker *worker);
 
-    Q_DECL_DEPRECATED_X("Use addLicenseSignalError() instead")
-    void addLicenseSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addLicenseSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseInfoSignalError() instead")
-    void getLicenseInfoSignalE(OAILicense summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseInfoSignalError(OAILicense summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseInvoicesSignalError() instead")
-    void getLicenseInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseListSignalError() instead")
-    void getLicenseListSignalE(QList<OAILicenseRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseListSignalError(QList<OAILicenseRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseOrderCatTagInfoSignalError() instead")
-    void getLicenseOrderCatTagInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseOrderCatTagInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicensesWelcomeEmailSignalError() instead")
-    void getLicensesWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicensesWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewLicenseSignalError() instead")
-    void getNewLicenseSignalE(OAILicensesOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewLicenseSignalError(OAILicensesOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use licensesCancelSignalError() instead")
-    void licensesCancelSignalE(OAILicensesCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void licensesCancelSignalError(OAILicensesCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postLicenseChangeIpSignalError() instead")
-    void postLicenseChangeIpSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postLicenseChangeIpSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putLicensesSignalError() instead")
-    void putLicensesSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putLicensesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateLicenseInfoSignalError() instead")
-    void updateLicenseInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateLicenseInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addLicenseSignalErrorFull() instead")
-    void addLicenseSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addLicenseSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseInfoSignalErrorFull() instead")
-    void getLicenseInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseInvoicesSignalErrorFull() instead")
-    void getLicenseInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseListSignalErrorFull() instead")
-    void getLicenseListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicenseOrderCatTagInfoSignalErrorFull() instead")
-    void getLicenseOrderCatTagInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicenseOrderCatTagInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getLicensesWelcomeEmailSignalErrorFull() instead")
-    void getLicensesWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getLicensesWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewLicenseSignalErrorFull() instead")
-    void getNewLicenseSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewLicenseSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use licensesCancelSignalErrorFull() instead")
-    void licensesCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void licensesCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postLicenseChangeIpSignalErrorFull() instead")
-    void postLicenseChangeIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postLicenseChangeIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putLicensesSignalErrorFull() instead")
-    void putLicensesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putLicensesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateLicenseInfoSignalErrorFull() instead")
-    void updateLicenseInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateLicenseInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

@@ -13,10 +13,10 @@ static account_info_oauth_config_t *account_info_oauth_config_create_internal(
     if (!account_info_oauth_config_local_var) {
         return NULL;
     }
+    memset(account_info_oauth_config_local_var, 0, sizeof(account_info_oauth_config_t));
+    account_info_oauth_config_local_var->_library_owned = 1;
     account_info_oauth_config_local_var->callback = callback;
     account_info_oauth_config_local_var->providers = providers;
-
-    account_info_oauth_config_local_var->_library_owned = 1;
     return account_info_oauth_config_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) account_info_oauth_config_t *account_info_oauth_conf
     char *callback,
     account_info_oauth_config_providers_t *providers
     ) {
-    return account_info_oauth_config_create_internal (
+    account_info_oauth_config_t *result = account_info_oauth_config_create_internal (
         callback,
         providers
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_info_oauth_config_free(account_info_oauth_config_t *account_info_oauth_config) {
@@ -87,6 +90,8 @@ account_info_oauth_config_t *account_info_oauth_config_parseFromJSON(cJSON *acco
 
     account_info_oauth_config_t *account_info_oauth_config_local_var = NULL;
 
+    char *callback_local_str = NULL;
+
     // define the local variable for account_info_oauth_config->providers
     account_info_oauth_config_providers_t *providers_local_nonprim = NULL;
 
@@ -118,13 +123,23 @@ account_info_oauth_config_t *account_info_oauth_config_parseFromJSON(cJSON *acco
     providers_local_nonprim = account_info_oauth_config_providers_parseFromJSON(providers); //custom
 
 
+    if (callback && !cJSON_IsNull(callback)) callback_local_str = strdup(callback->valuestring);
+
     account_info_oauth_config_local_var = account_info_oauth_config_create_internal (
-        strdup(callback->valuestring),
+        callback_local_str,
         providers_local_nonprim
         );
 
+    if (!account_info_oauth_config_local_var) {
+        goto end;
+    }
+
     return account_info_oauth_config_local_var;
 end:
+    if (callback_local_str) {
+        free(callback_local_str);
+        callback_local_str = NULL;
+    }
     if (providers_local_nonprim) {
         account_info_oauth_config_providers_free(providers_local_nonprim);
         providers_local_nonprim = NULL;

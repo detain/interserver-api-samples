@@ -1,4 +1,4 @@
-# # DomainProvProcessPendingAttributes
+# DomainProvProcessPendingAttributes
 
 ## Properties
 

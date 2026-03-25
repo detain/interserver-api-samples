@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder_packageCosts::OAIVpsOrder_packageCosts(QString json) {
+OAIVpsOrder_packageCosts::OAIVpsOrder_packageCosts(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIVpsOrder_packageCosts::initializeModel() {
     m_r_57_isValid = false;
 }
 
-void OAIVpsOrder_packageCosts::fromJson(QString jsonString) {
+void OAIVpsOrder_packageCosts::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

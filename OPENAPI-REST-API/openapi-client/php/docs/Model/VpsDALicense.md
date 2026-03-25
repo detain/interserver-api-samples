@@ -1,4 +1,4 @@
-# # VpsDALicense
+# VpsDALicense
 
 ## Properties
 

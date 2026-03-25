@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,9 +47,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-12T01:47:30.549169014-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T16:38:48.461562589-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class MailLogEntry {
   public static final String SERIALIZED_NAME_ID = "_id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -69,11 +70,6 @@ public class MailLogEntry {
   @SerializedName(SERIALIZED_NAME_TO)
   @javax.annotation.Nonnull
   private String to;
-
-  public static final String SERIALIZED_NAME_SUBJECT = "subject";
-  @SerializedName(SERIALIZED_NAME_SUBJECT)
-  @javax.annotation.Nonnull
-  private String subject;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -105,65 +101,80 @@ public class MailLogEntry {
   @javax.annotation.Nonnull
   private String _interface;
 
-  public static final String SERIALIZED_NAME_SENDING_ZONE = "sendingZone";
-  @SerializedName(SERIALIZED_NAME_SENDING_ZONE)
-  @javax.annotation.Nonnull
-  private String sendingZone;
-
-  public static final String SERIALIZED_NAME_BODY_SIZE = "bodySize";
-  @SerializedName(SERIALIZED_NAME_BODY_SIZE)
-  @javax.annotation.Nonnull
-  private Integer bodySize;
-
-  public static final String SERIALIZED_NAME_SEQ = "seq";
-  @SerializedName(SERIALIZED_NAME_SEQ)
-  @javax.annotation.Nonnull
-  private Integer seq;
-
-  public static final String SERIALIZED_NAME_RECIPIENT = "recipient";
-  @SerializedName(SERIALIZED_NAME_RECIPIENT)
-  @javax.annotation.Nonnull
-  private String recipient;
-
-  public static final String SERIALIZED_NAME_DOMAIN = "domain";
-  @SerializedName(SERIALIZED_NAME_DOMAIN)
-  @javax.annotation.Nonnull
-  private String domain;
-
-  public static final String SERIALIZED_NAME_LOCKED = "locked";
-  @SerializedName(SERIALIZED_NAME_LOCKED)
-  @javax.annotation.Nonnull
-  private Integer locked;
-
-  public static final String SERIALIZED_NAME_LOCK_TIME = "lockTime";
-  @SerializedName(SERIALIZED_NAME_LOCK_TIME)
-  @javax.annotation.Nonnull
-  private Integer lockTime;
-
-  public static final String SERIALIZED_NAME_ASSIGNED = "assigned";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED)
-  @javax.annotation.Nonnull
-  private String assigned;
-
-  public static final String SERIALIZED_NAME_QUEUED = "queued";
-  @SerializedName(SERIALIZED_NAME_QUEUED)
-  @javax.annotation.Nonnull
-  private String queued;
-
-  public static final String SERIALIZED_NAME_MX_HOSTNAME = "mxHostname";
-  @SerializedName(SERIALIZED_NAME_MX_HOSTNAME)
-  @javax.annotation.Nonnull
-  private String mxHostname;
-
-  public static final String SERIALIZED_NAME_RESPONSE = "response";
-  @SerializedName(SERIALIZED_NAME_RESPONSE)
-  @javax.annotation.Nonnull
-  private String response;
+  public static final String SERIALIZED_NAME_SUBJECT = "subject";
+  @SerializedName(SERIALIZED_NAME_SUBJECT)
+  @javax.annotation.Nullable
+  private String subject;
 
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
   @javax.annotation.Nullable
   private String messageId;
+
+  public static final String SERIALIZED_NAME_SENDING_ZONE = "sendingZone";
+  @SerializedName(SERIALIZED_NAME_SENDING_ZONE)
+  @javax.annotation.Nullable
+  private String sendingZone;
+
+  public static final String SERIALIZED_NAME_BODY_SIZE = "bodySize";
+  @SerializedName(SERIALIZED_NAME_BODY_SIZE)
+  @javax.annotation.Nullable
+  private Integer bodySize;
+
+  public static final String SERIALIZED_NAME_SEQ = "seq";
+  @SerializedName(SERIALIZED_NAME_SEQ)
+  @javax.annotation.Nullable
+  private Integer seq;
+
+  public static final String SERIALIZED_NAME_DELIVERED = "delivered";
+  @SerializedName(SERIALIZED_NAME_DELIVERED)
+  @javax.annotation.Nullable
+  private Integer delivered;
+
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
+  private Integer code;
+
+  public static final String SERIALIZED_NAME_RECIPIENT = "recipient";
+  @SerializedName(SERIALIZED_NAME_RECIPIENT)
+  @javax.annotation.Nullable
+  private String recipient;
+
+  public static final String SERIALIZED_NAME_RESPONSE = "response";
+  @SerializedName(SERIALIZED_NAME_RESPONSE)
+  @javax.annotation.Nullable
+  private String response;
+
+  public static final String SERIALIZED_NAME_DOMAIN = "domain";
+  @SerializedName(SERIALIZED_NAME_DOMAIN)
+  @javax.annotation.Nullable
+  private String domain;
+
+  public static final String SERIALIZED_NAME_LOCKED = "locked";
+  @SerializedName(SERIALIZED_NAME_LOCKED)
+  @javax.annotation.Nullable
+  private Integer locked;
+
+  public static final String SERIALIZED_NAME_LOCK_TIME = "lockTime";
+  @SerializedName(SERIALIZED_NAME_LOCK_TIME)
+  @javax.annotation.Nullable
+  private String lockTime;
+
+  public static final String SERIALIZED_NAME_ASSIGNED = "assigned";
+  @SerializedName(SERIALIZED_NAME_ASSIGNED)
+  @javax.annotation.Nullable
+  private String assigned;
+
+  public static final String SERIALIZED_NAME_QUEUED = "queued";
+  @SerializedName(SERIALIZED_NAME_QUEUED)
+  @javax.annotation.Nullable
+  private String queued;
+
+  public static final String SERIALIZED_NAME_MX_HOSTNAME = "mxHostname";
+  @SerializedName(SERIALIZED_NAME_MX_HOSTNAME)
+  @javax.annotation.Nullable
+  private String mxHostname;
 
   public MailLogEntry() {
   }
@@ -174,7 +185,7 @@ public class MailLogEntry {
   }
 
   /**
-   * internal db id
+   * Internal auto-increment database row ID.
    * @return id
    */
   @javax.annotation.Nonnull
@@ -193,7 +204,7 @@ public class MailLogEntry {
   }
 
   /**
-   * mail id
+   * The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
    * @return id
    */
   @javax.annotation.Nonnull
@@ -212,7 +223,7 @@ public class MailLogEntry {
   }
 
   /**
-   * from address
+   * SMTP envelope &#x60;MAIL FROM&#x60; address.
    * @return from
    */
   @javax.annotation.Nonnull
@@ -231,7 +242,7 @@ public class MailLogEntry {
   }
 
   /**
-   * to address
+   * SMTP envelope &#x60;RCPT TO&#x60; address.
    * @return to
    */
   @javax.annotation.Nonnull
@@ -244,32 +255,13 @@ public class MailLogEntry {
   }
 
 
-  public MailLogEntry subject(@javax.annotation.Nonnull String subject) {
-    this.subject = subject;
-    return this;
-  }
-
-  /**
-   * email subject
-   * @return subject
-   */
-  @javax.annotation.Nonnull
-  public String getSubject() {
-    return subject;
-  }
-
-  public void setSubject(@javax.annotation.Nonnull String subject) {
-    this.subject = subject;
-  }
-
-
   public MailLogEntry created(@javax.annotation.Nonnull String created) {
     this.created = created;
     return this;
   }
 
   /**
-   * creation date
+   * Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
    * @return created
    */
   @javax.annotation.Nonnull
@@ -288,7 +280,7 @@ public class MailLogEntry {
   }
 
   /**
-   * creation timestamp
+   * Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
    * @return time
    */
   @javax.annotation.Nonnull
@@ -307,7 +299,7 @@ public class MailLogEntry {
   }
 
   /**
-   * user account
+   * The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
    * @return user
    */
   @javax.annotation.Nonnull
@@ -326,7 +318,7 @@ public class MailLogEntry {
   }
 
   /**
-   * transaction type
+   * SMTP transaction type negotiated with the relay.
    * @return transtype
    */
   @javax.annotation.Nonnull
@@ -345,7 +337,7 @@ public class MailLogEntry {
   }
 
   /**
-   * origin ip
+   * IP address of the client that submitted the message to the relay.
    * @return origin
    */
   @javax.annotation.Nonnull
@@ -364,7 +356,7 @@ public class MailLogEntry {
   }
 
   /**
-   * interface name
+   * Relay interface name that accepted the message.
    * @return _interface
    */
   @javax.annotation.Nonnull
@@ -377,212 +369,22 @@ public class MailLogEntry {
   }
 
 
-  public MailLogEntry sendingZone(@javax.annotation.Nonnull String sendingZone) {
-    this.sendingZone = sendingZone;
+  public MailLogEntry subject(@javax.annotation.Nullable String subject) {
+    this.subject = subject;
     return this;
   }
 
   /**
-   * sending zone
-   * @return sendingZone
+   * The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+   * @return subject
    */
-  @javax.annotation.Nonnull
-  public String getSendingZone() {
-    return sendingZone;
+  @javax.annotation.Nullable
+  public String getSubject() {
+    return subject;
   }
 
-  public void setSendingZone(@javax.annotation.Nonnull String sendingZone) {
-    this.sendingZone = sendingZone;
-  }
-
-
-  public MailLogEntry bodySize(@javax.annotation.Nonnull Integer bodySize) {
-    this.bodySize = bodySize;
-    return this;
-  }
-
-  /**
-   * email body size in bytes
-   * @return bodySize
-   */
-  @javax.annotation.Nonnull
-  public Integer getBodySize() {
-    return bodySize;
-  }
-
-  public void setBodySize(@javax.annotation.Nonnull Integer bodySize) {
-    this.bodySize = bodySize;
-  }
-
-
-  public MailLogEntry seq(@javax.annotation.Nonnull Integer seq) {
-    this.seq = seq;
-    return this;
-  }
-
-  /**
-   * index of email in the to adderess list
-   * @return seq
-   */
-  @javax.annotation.Nonnull
-  public Integer getSeq() {
-    return seq;
-  }
-
-  public void setSeq(@javax.annotation.Nonnull Integer seq) {
-    this.seq = seq;
-  }
-
-
-  public MailLogEntry recipient(@javax.annotation.Nonnull String recipient) {
-    this.recipient = recipient;
-    return this;
-  }
-
-  /**
-   * to address this email is being sent to
-   * @return recipient
-   */
-  @javax.annotation.Nonnull
-  public String getRecipient() {
-    return recipient;
-  }
-
-  public void setRecipient(@javax.annotation.Nonnull String recipient) {
-    this.recipient = recipient;
-  }
-
-
-  public MailLogEntry domain(@javax.annotation.Nonnull String domain) {
-    this.domain = domain;
-    return this;
-  }
-
-  /**
-   * to address domain
-   * @return domain
-   */
-  @javax.annotation.Nonnull
-  public String getDomain() {
-    return domain;
-  }
-
-  public void setDomain(@javax.annotation.Nonnull String domain) {
-    this.domain = domain;
-  }
-
-
-  public MailLogEntry locked(@javax.annotation.Nonnull Integer locked) {
-    this.locked = locked;
-    return this;
-  }
-
-  /**
-   * locked status
-   * @return locked
-   */
-  @javax.annotation.Nonnull
-  public Integer getLocked() {
-    return locked;
-  }
-
-  public void setLocked(@javax.annotation.Nonnull Integer locked) {
-    this.locked = locked;
-  }
-
-
-  public MailLogEntry lockTime(@javax.annotation.Nonnull Integer lockTime) {
-    this.lockTime = lockTime;
-    return this;
-  }
-
-  /**
-   * lock timestamp
-   * @return lockTime
-   */
-  @javax.annotation.Nonnull
-  public Integer getLockTime() {
-    return lockTime;
-  }
-
-  public void setLockTime(@javax.annotation.Nonnull Integer lockTime) {
-    this.lockTime = lockTime;
-  }
-
-
-  public MailLogEntry assigned(@javax.annotation.Nonnull String assigned) {
-    this.assigned = assigned;
-    return this;
-  }
-
-  /**
-   * assigned server
-   * @return assigned
-   */
-  @javax.annotation.Nonnull
-  public String getAssigned() {
-    return assigned;
-  }
-
-  public void setAssigned(@javax.annotation.Nonnull String assigned) {
-    this.assigned = assigned;
-  }
-
-
-  public MailLogEntry queued(@javax.annotation.Nonnull String queued) {
-    this.queued = queued;
-    return this;
-  }
-
-  /**
-   * queued timestamp
-   * @return queued
-   */
-  @javax.annotation.Nonnull
-  public String getQueued() {
-    return queued;
-  }
-
-  public void setQueued(@javax.annotation.Nonnull String queued) {
-    this.queued = queued;
-  }
-
-
-  public MailLogEntry mxHostname(@javax.annotation.Nonnull String mxHostname) {
-    this.mxHostname = mxHostname;
-    return this;
-  }
-
-  /**
-   * mx hostname
-   * @return mxHostname
-   */
-  @javax.annotation.Nonnull
-  public String getMxHostname() {
-    return mxHostname;
-  }
-
-  public void setMxHostname(@javax.annotation.Nonnull String mxHostname) {
-    this.mxHostname = mxHostname;
-  }
-
-
-  public MailLogEntry response(@javax.annotation.Nonnull String response) {
-    this.response = response;
-    return this;
-  }
-
-  /**
-   * mail delivery response
-   * @return response
-   */
-  @javax.annotation.Nonnull
-  public String getResponse() {
-    return response;
-  }
-
-  public void setResponse(@javax.annotation.Nonnull String response) {
-    this.response = response;
+  public void setSubject(@javax.annotation.Nullable String subject) {
+    this.subject = subject;
   }
 
 
@@ -592,7 +394,7 @@ public class MailLogEntry {
   }
 
   /**
-   * message id
+   * The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
    * @return messageId
    */
   @javax.annotation.Nullable
@@ -602,6 +404,253 @@ public class MailLogEntry {
 
   public void setMessageId(@javax.annotation.Nullable String messageId) {
     this.messageId = messageId;
+  }
+
+
+  public MailLogEntry sendingZone(@javax.annotation.Nullable String sendingZone) {
+    this.sendingZone = sendingZone;
+    return this;
+  }
+
+  /**
+   * The sending zone assigned by the relay for outbound delivery.
+   * @return sendingZone
+   */
+  @javax.annotation.Nullable
+  public String getSendingZone() {
+    return sendingZone;
+  }
+
+  public void setSendingZone(@javax.annotation.Nullable String sendingZone) {
+    this.sendingZone = sendingZone;
+  }
+
+
+  public MailLogEntry bodySize(@javax.annotation.Nullable Integer bodySize) {
+    this.bodySize = bodySize;
+    return this;
+  }
+
+  /**
+   * Size of the message body in bytes.
+   * @return bodySize
+   */
+  @javax.annotation.Nullable
+  public Integer getBodySize() {
+    return bodySize;
+  }
+
+  public void setBodySize(@javax.annotation.Nullable Integer bodySize) {
+    this.bodySize = bodySize;
+  }
+
+
+  public MailLogEntry seq(@javax.annotation.Nullable Integer seq) {
+    this.seq = seq;
+    return this;
+  }
+
+  /**
+   * Sequence index of this recipient in a multi-recipient message. Starts at 1.
+   * @return seq
+   */
+  @javax.annotation.Nullable
+  public Integer getSeq() {
+    return seq;
+  }
+
+  public void setSeq(@javax.annotation.Nullable Integer seq) {
+    this.seq = seq;
+  }
+
+
+  public MailLogEntry delivered(@javax.annotation.Nullable Integer delivered) {
+    this.delivered = delivered;
+    return this;
+  }
+
+  /**
+   * Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.
+   * @return delivered
+   */
+  @javax.annotation.Nullable
+  public Integer getDelivered() {
+    return delivered;
+  }
+
+  public void setDelivered(@javax.annotation.Nullable Integer delivered) {
+    this.delivered = delivered;
+  }
+
+
+  public MailLogEntry code(@javax.annotation.Nullable Integer code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).
+   * @return code
+   */
+  @javax.annotation.Nullable
+  public Integer getCode() {
+    return code;
+  }
+
+  public void setCode(@javax.annotation.Nullable Integer code) {
+    this.code = code;
+  }
+
+
+  public MailLogEntry recipient(@javax.annotation.Nullable String recipient) {
+    this.recipient = recipient;
+    return this;
+  }
+
+  /**
+   * The specific recipient address this delivery record is for.
+   * @return recipient
+   */
+  @javax.annotation.Nullable
+  public String getRecipient() {
+    return recipient;
+  }
+
+  public void setRecipient(@javax.annotation.Nullable String recipient) {
+    this.recipient = recipient;
+  }
+
+
+  public MailLogEntry response(@javax.annotation.Nullable String response) {
+    this.response = response;
+    return this;
+  }
+
+  /**
+   * The full SMTP response string received from the destination MX server.
+   * @return response
+   */
+  @javax.annotation.Nullable
+  public String getResponse() {
+    return response;
+  }
+
+  public void setResponse(@javax.annotation.Nullable String response) {
+    this.response = response;
+  }
+
+
+  public MailLogEntry domain(@javax.annotation.Nullable String domain) {
+    this.domain = domain;
+    return this;
+  }
+
+  /**
+   * The destination domain for this delivery attempt.
+   * @return domain
+   */
+  @javax.annotation.Nullable
+  public String getDomain() {
+    return domain;
+  }
+
+  public void setDomain(@javax.annotation.Nullable String domain) {
+    this.domain = domain;
+  }
+
+
+  public MailLogEntry locked(@javax.annotation.Nullable Integer locked) {
+    this.locked = locked;
+    return this;
+  }
+
+  /**
+   * Whether the queue entry is currently locked for delivery processing.
+   * @return locked
+   */
+  @javax.annotation.Nullable
+  public Integer getLocked() {
+    return locked;
+  }
+
+  public void setLocked(@javax.annotation.Nullable Integer locked) {
+    this.locked = locked;
+  }
+
+
+  public MailLogEntry lockTime(@javax.annotation.Nullable String lockTime) {
+    this.lockTime = lockTime;
+    return this;
+  }
+
+  /**
+   * Millisecond-precision timestamp of the last queue lock acquisition.
+   * @return lockTime
+   */
+  @javax.annotation.Nullable
+  public String getLockTime() {
+    return lockTime;
+  }
+
+  public void setLockTime(@javax.annotation.Nullable String lockTime) {
+    this.lockTime = lockTime;
+  }
+
+
+  public MailLogEntry assigned(@javax.annotation.Nullable String assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * The relay server node assigned to deliver this message.
+   * @return assigned
+   */
+  @javax.annotation.Nullable
+  public String getAssigned() {
+    return assigned;
+  }
+
+  public void setAssigned(@javax.annotation.Nullable String assigned) {
+    this.assigned = assigned;
+  }
+
+
+  public MailLogEntry queued(@javax.annotation.Nullable String queued) {
+    this.queued = queued;
+    return this;
+  }
+
+  /**
+   * ISO 8601 timestamp when the message was placed into the delivery queue.
+   * @return queued
+   */
+  @javax.annotation.Nullable
+  public String getQueued() {
+    return queued;
+  }
+
+  public void setQueued(@javax.annotation.Nullable String queued) {
+    this.queued = queued;
+  }
+
+
+  public MailLogEntry mxHostname(@javax.annotation.Nullable String mxHostname) {
+    this.mxHostname = mxHostname;
+    return this;
+  }
+
+  /**
+   * The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.
+   * @return mxHostname
+   */
+  @javax.annotation.Nullable
+  public String getMxHostname() {
+    return mxHostname;
+  }
+
+  public void setMxHostname(@javax.annotation.Nullable String mxHostname) {
+    this.mxHostname = mxHostname;
   }
 
 
@@ -619,30 +668,43 @@ public class MailLogEntry {
         Objects.equals(this.id, mailLogEntry.id) &&
         Objects.equals(this.from, mailLogEntry.from) &&
         Objects.equals(this.to, mailLogEntry.to) &&
-        Objects.equals(this.subject, mailLogEntry.subject) &&
         Objects.equals(this.created, mailLogEntry.created) &&
         Objects.equals(this.time, mailLogEntry.time) &&
         Objects.equals(this.user, mailLogEntry.user) &&
         Objects.equals(this.transtype, mailLogEntry.transtype) &&
         Objects.equals(this.origin, mailLogEntry.origin) &&
         Objects.equals(this._interface, mailLogEntry._interface) &&
+        Objects.equals(this.subject, mailLogEntry.subject) &&
+        Objects.equals(this.messageId, mailLogEntry.messageId) &&
         Objects.equals(this.sendingZone, mailLogEntry.sendingZone) &&
         Objects.equals(this.bodySize, mailLogEntry.bodySize) &&
         Objects.equals(this.seq, mailLogEntry.seq) &&
+        Objects.equals(this.delivered, mailLogEntry.delivered) &&
+        Objects.equals(this.code, mailLogEntry.code) &&
         Objects.equals(this.recipient, mailLogEntry.recipient) &&
+        Objects.equals(this.response, mailLogEntry.response) &&
         Objects.equals(this.domain, mailLogEntry.domain) &&
         Objects.equals(this.locked, mailLogEntry.locked) &&
         Objects.equals(this.lockTime, mailLogEntry.lockTime) &&
         Objects.equals(this.assigned, mailLogEntry.assigned) &&
         Objects.equals(this.queued, mailLogEntry.queued) &&
-        Objects.equals(this.mxHostname, mailLogEntry.mxHostname) &&
-        Objects.equals(this.response, mailLogEntry.response) &&
-        Objects.equals(this.messageId, mailLogEntry.messageId);
+        Objects.equals(this.mxHostname, mailLogEntry.mxHostname);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, id, from, to, subject, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, recipient, domain, locked, lockTime, assigned, queued, mxHostname, response, messageId);
+    return Objects.hash(id, id, from, to, created, time, user, transtype, origin, _interface, subject, messageId, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -653,25 +715,27 @@ public class MailLogEntry {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    transtype: ").append(toIndentedString(transtype)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    _interface: ").append(toIndentedString(_interface)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+    sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
     sb.append("    sendingZone: ").append(toIndentedString(sendingZone)).append("\n");
     sb.append("    bodySize: ").append(toIndentedString(bodySize)).append("\n");
     sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
+    sb.append("    delivered: ").append(toIndentedString(delivered)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    recipient: ").append(toIndentedString(recipient)).append("\n");
+    sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    lockTime: ").append(toIndentedString(lockTime)).append("\n");
     sb.append("    assigned: ").append(toIndentedString(assigned)).append("\n");
     sb.append("    queued: ").append(toIndentedString(queued)).append("\n");
     sb.append("    mxHostname: ").append(toIndentedString(mxHostname)).append("\n");
-    sb.append("    response: ").append(toIndentedString(response)).append("\n");
-    sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -681,10 +745,7 @@ public class MailLogEntry {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -693,10 +754,10 @@ public class MailLogEntry {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("_id", "id", "from", "to", "subject", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "recipient", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname", "response", "messageId"));
+    openapiFields = new HashSet<String>(Arrays.asList("_id", "id", "from", "to", "created", "time", "user", "transtype", "origin", "interface", "subject", "messageId", "sendingZone", "bodySize", "seq", "delivered", "code", "recipient", "response", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("_id", "id", "from", "to", "subject", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "recipient", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname", "response"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("_id", "id", "from", "to", "created", "time", "user", "transtype", "origin", "interface"));
   }
 
   /**
@@ -736,9 +797,6 @@ public class MailLogEntry {
       if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if (!jsonObj.get("subject").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `subject` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject").toString()));
-      }
       if (!jsonObj.get("created").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
       }
@@ -754,29 +812,35 @@ public class MailLogEntry {
       if (!jsonObj.get("interface").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `interface` to be a primitive type in the JSON string but got `%s`", jsonObj.get("interface").toString()));
       }
-      if (!jsonObj.get("sendingZone").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `sendingZone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sendingZone").toString()));
-      }
-      if (!jsonObj.get("recipient").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `recipient` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recipient").toString()));
-      }
-      if (!jsonObj.get("domain").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domain").toString()));
-      }
-      if (!jsonObj.get("assigned").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `assigned` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assigned").toString()));
-      }
-      if (!jsonObj.get("queued").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `queued` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queued").toString()));
-      }
-      if (!jsonObj.get("mxHostname").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `mxHostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mxHostname").toString()));
-      }
-      if (!jsonObj.get("response").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `response` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response").toString()));
+      if ((jsonObj.get("subject") != null && !jsonObj.get("subject").isJsonNull()) && !jsonObj.get("subject").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `subject` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject").toString()));
       }
       if ((jsonObj.get("messageId") != null && !jsonObj.get("messageId").isJsonNull()) && !jsonObj.get("messageId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `messageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageId").toString()));
+      }
+      if ((jsonObj.get("sendingZone") != null && !jsonObj.get("sendingZone").isJsonNull()) && !jsonObj.get("sendingZone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `sendingZone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sendingZone").toString()));
+      }
+      if ((jsonObj.get("recipient") != null && !jsonObj.get("recipient").isJsonNull()) && !jsonObj.get("recipient").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `recipient` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recipient").toString()));
+      }
+      if ((jsonObj.get("response") != null && !jsonObj.get("response").isJsonNull()) && !jsonObj.get("response").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `response` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response").toString()));
+      }
+      if ((jsonObj.get("domain") != null && !jsonObj.get("domain").isJsonNull()) && !jsonObj.get("domain").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domain").toString()));
+      }
+      if ((jsonObj.get("lockTime") != null && !jsonObj.get("lockTime").isJsonNull()) && !jsonObj.get("lockTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `lockTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lockTime").toString()));
+      }
+      if ((jsonObj.get("assigned") != null && !jsonObj.get("assigned").isJsonNull()) && !jsonObj.get("assigned").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `assigned` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assigned").toString()));
+      }
+      if ((jsonObj.get("queued") != null && !jsonObj.get("queued").isJsonNull()) && !jsonObj.get("queued").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `queued` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queued").toString()));
+      }
+      if ((jsonObj.get("mxHostname") != null && !jsonObj.get("mxHostname").isJsonNull()) && !jsonObj.get("mxHostname").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `mxHostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mxHostname").toString()));
       }
   }
 

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainWhoisPrivacyRequest::OAIDomainWhoisPrivacyRequest(QString json) {
+OAIDomainWhoisPrivacyRequest::OAIDomainWhoisPrivacyRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -83,7 +83,7 @@ void OAIDomainWhoisPrivacyRequest::initializeModel() {
     m_domain_extra_isValid = false;
 }
 
-void OAIDomainWhoisPrivacyRequest::fromJson(QString jsonString) {
+void OAIDomainWhoisPrivacyRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

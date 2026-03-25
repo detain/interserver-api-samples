@@ -11,38 +11,38 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
  */
-@ApiModel(description="Mail log records")
+@ApiModel(description="Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.")
 
 public class MailLog  {
   
  /**
-  * total number of mail log entries
+  * Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
   */
-  @ApiModelProperty(example = "10234", required = true, value = "total number of mail log entries")
+  @ApiModelProperty(example = "10234", required = true, value = "Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.")
 
   private Integer total;
 
  /**
-  * number of emails skipped in listing
+  * The `skip` value used for this page (echoed from the request).
   */
-  @ApiModelProperty(example = "0", required = true, value = "number of emails skipped in listing")
+  @ApiModelProperty(example = "0", required = true, value = "The `skip` value used for this page (echoed from the request).")
 
   private Integer skip;
 
  /**
-  * number of emails to return
+  * The `limit` value used for this page (echoed from the request).
   */
-  @ApiModelProperty(example = "100", required = true, value = "number of emails to return")
+  @ApiModelProperty(example = "100", required = true, value = "The `limit` value used for this page (echoed from the request).")
 
   private Integer limit;
 
-  @ApiModelProperty(example = "[{\"_id\":103172,\"id\":\"17c7eda538e0005d03\",\"from\":\"person@mysite.com\",\"to\":\"client@isp.com\",\"subject\":\"sell 0.005 shares\",\"messageId\":\"<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>\",\"created\":\"2021-10-14 08:50:10\",\"time\":1634215809,\"user\":\"mb5658\",\"transtype\":\"ESMTPSA\",\"origin\":\"199.231.189.154\",\"interface\":\"feeder\",\"sendingZone\":\"interserver\",\"bodySize\":63,\"seq\":1,\"recipient\":\"client@isp.com\",\"domain\":\"interserver.net\",\"locked\":1,\"lockTime\":1634215818533,\"assigned\":\"relay1\",\"queued\":\"2021-10-14T12:50:15.487Z\",\"mxHostname\":\"mx.j.is.cc\",\"response\":\"250 2.0.0 Ok queued as C91D83E128C\"}]", required = true, value = "")
+  @ApiModelProperty(example = "[{\"_id\":103172,\"id\":\"17c7eda538e0005d03\",\"from\":\"person@mysite.com\",\"to\":\"client@isp.com\",\"subject\":\"sell 0.005 shares\",\"messageId\":\"<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>\",\"created\":\"2021-10-14 08:50:10\",\"time\":1634215809,\"user\":\"mb5658\",\"transtype\":\"ESMTPSA\",\"origin\":\"199.231.189.154\",\"interface\":\"feeder\",\"sendingZone\":\"interserver\",\"bodySize\":63,\"seq\":1,\"delivered\":1,\"code\":250,\"recipient\":\"client@isp.com\",\"domain\":\"interserver.net\",\"locked\":1,\"lockTime\":\"1634215818533\",\"assigned\":\"relay1\",\"queued\":\"2021-10-14T12:50:15.487Z\",\"mxHostname\":\"mx.j.is.cc\",\"response\":\"250 2.0.0 Ok queued as C91D83E128C\"}]", required = true, value = "")
 
   private List<MailLogEntry> emails = new ArrayList<>();
  /**
-   * total number of mail log entries
+   * Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.
    * @return total
   **/
   @JsonProperty("total")
@@ -60,7 +60,7 @@ public class MailLog  {
   }
 
  /**
-   * number of emails skipped in listing
+   * The &#x60;skip&#x60; value used for this page (echoed from the request).
    * @return skip
   **/
   @JsonProperty("skip")
@@ -78,7 +78,7 @@ public class MailLog  {
   }
 
  /**
-   * number of emails to return
+   * The &#x60;limit&#x60; value used for this page (echoed from the request).
    * @return limit
   **/
   @JsonProperty("limit")
@@ -156,10 +156,7 @@ public class MailLog  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

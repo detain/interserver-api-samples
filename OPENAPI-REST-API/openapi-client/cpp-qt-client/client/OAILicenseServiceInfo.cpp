@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILicenseServiceInfo::OAILicenseServiceInfo(QString json) {
+OAILicenseServiceInfo::OAILicenseServiceInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -71,7 +71,7 @@ void OAILicenseServiceInfo::initializeModel() {
     m_license_extra_isValid = false;
 }
 
-void OAILicenseServiceInfo::fromJson(QString jsonString) {
+void OAILicenseServiceInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

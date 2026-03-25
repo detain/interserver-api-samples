@@ -20,14 +20,14 @@ typedef struct website_backups_inner_t website_backups_inner_t;
 
 typedef struct website_backups_inner_t {
     char *name; // string
-    int size; //numeric
+    int *size; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } website_backups_inner_t;
 
 __attribute__((deprecated)) website_backups_inner_t *website_backups_inner_create(
     char *name,
-    int size
+    int *size
 );
 
 void website_backups_inner_free(website_backups_inner_t *website_backups_inner);

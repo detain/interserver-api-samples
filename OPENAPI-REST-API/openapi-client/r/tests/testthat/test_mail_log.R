@@ -7,7 +7,7 @@ model_instance <- MailLog$new()
 
 test_that("total", {
   # tests for the property `total` (integer)
-  # total number of mail log entries
+  # Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`total`, "EXPECTED_RESULT")
@@ -15,7 +15,7 @@ test_that("total", {
 
 test_that("skip", {
   # tests for the property `skip` (integer)
-  # number of emails skipped in listing
+  # The &#x60;skip&#x60; value used for this page (echoed from the request).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`skip`, "EXPECTED_RESULT")
@@ -23,7 +23,7 @@ test_that("skip", {
 
 test_that("limit", {
   # tests for the property `limit` (integer)
-  # number of emails to return
+  # The &#x60;limit&#x60; value used for this page (echoed from the request).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`limit`, "EXPECTED_RESULT")

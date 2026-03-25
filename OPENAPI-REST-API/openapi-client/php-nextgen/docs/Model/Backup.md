@@ -1,4 +1,4 @@
-# # Backup
+# Backup
 
 ## Properties
 

@@ -35,6 +35,8 @@ static vps_service_master_t *vps_service_master_create_internal(
     if (!vps_service_master_local_var) {
         return NULL;
     }
+    memset(vps_service_master_local_var, 0, sizeof(vps_service_master_t));
+    vps_service_master_local_var->_library_owned = 1;
     vps_service_master_local_var->vps_id = vps_id;
     vps_service_master_local_var->vps_name = vps_name;
     vps_service_master_local_var->vps_ip = vps_ip;
@@ -59,8 +61,6 @@ static vps_service_master_t *vps_service_master_create_internal(
     vps_service_master_local_var->vps_server_max_slices = vps_server_max_slices;
     vps_service_master_local_var->vps_drive_type = vps_drive_type;
     vps_service_master_local_var->vps_order = vps_order;
-
-    vps_service_master_local_var->_library_owned = 1;
     return vps_service_master_local_var;
 }
 
@@ -90,7 +90,7 @@ __attribute__((deprecated)) vps_service_master_t *vps_service_master_create(
     char *vps_drive_type,
     char *vps_order
     ) {
-    return vps_service_master_create_internal (
+    vps_service_master_t *result = vps_service_master_create_internal (
         vps_id,
         vps_name,
         vps_ip,
@@ -116,6 +116,9 @@ __attribute__((deprecated)) vps_service_master_t *vps_service_master_create(
         vps_drive_type,
         vps_order
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_service_master_free(vps_service_master_t *vps_service_master) {
@@ -432,6 +435,54 @@ vps_service_master_t *vps_service_master_parseFromJSON(cJSON *vps_service_master
 
     vps_service_master_t *vps_service_master_local_var = NULL;
 
+    char *vps_id_local_str = NULL;
+
+    char *vps_name_local_str = NULL;
+
+    char *vps_ip_local_str = NULL;
+
+    char *vps_type_local_str = NULL;
+
+    char *vps_hdsize_local_str = NULL;
+
+    char *vps_hdfree_local_str = NULL;
+
+    char *vps_bits_local_str = NULL;
+
+    char *vps_load_local_str = NULL;
+
+    char *vps_ram_local_str = NULL;
+
+    char *vps_cpu_model_local_str = NULL;
+
+    char *vps_cpu_mhz_local_str = NULL;
+
+    char *vps_location_local_str = NULL;
+
+    char *vps_last_update_local_str = NULL;
+
+    char *vps_raid_building_local_str = NULL;
+
+    char *vps_kernel_local_str = NULL;
+
+    char *vps_available_local_str = NULL;
+
+    char *vps_cores_local_str = NULL;
+
+    char *vps_iowait_local_str = NULL;
+
+    char *vps_raid_status_local_str = NULL;
+
+    char *vps_mounts_local_str = NULL;
+
+    char *vps_server_max_local_str = NULL;
+
+    char *vps_server_max_slices_local_str = NULL;
+
+    char *vps_drive_type_local_str = NULL;
+
+    char *vps_order_local_str = NULL;
+
     // vps_service_master->vps_id
     cJSON *vps_id = cJSON_GetObjectItemCaseSensitive(vps_service_masterJSON, "vps_id");
     if (cJSON_IsNull(vps_id)) {
@@ -721,35 +772,160 @@ vps_service_master_t *vps_service_master_parseFromJSON(cJSON *vps_service_master
     }
 
 
+    if (vps_id && !cJSON_IsNull(vps_id)) vps_id_local_str = strdup(vps_id->valuestring);
+    if (vps_name && !cJSON_IsNull(vps_name)) vps_name_local_str = strdup(vps_name->valuestring);
+    if (vps_ip && !cJSON_IsNull(vps_ip)) vps_ip_local_str = strdup(vps_ip->valuestring);
+    if (vps_type && !cJSON_IsNull(vps_type)) vps_type_local_str = strdup(vps_type->valuestring);
+    if (vps_hdsize && !cJSON_IsNull(vps_hdsize)) vps_hdsize_local_str = strdup(vps_hdsize->valuestring);
+    if (vps_hdfree && !cJSON_IsNull(vps_hdfree)) vps_hdfree_local_str = strdup(vps_hdfree->valuestring);
+    if (vps_bits && !cJSON_IsNull(vps_bits)) vps_bits_local_str = strdup(vps_bits->valuestring);
+    if (vps_load && !cJSON_IsNull(vps_load)) vps_load_local_str = strdup(vps_load->valuestring);
+    if (vps_ram && !cJSON_IsNull(vps_ram)) vps_ram_local_str = strdup(vps_ram->valuestring);
+    if (vps_cpu_model && !cJSON_IsNull(vps_cpu_model)) vps_cpu_model_local_str = strdup(vps_cpu_model->valuestring);
+    if (vps_cpu_mhz && !cJSON_IsNull(vps_cpu_mhz)) vps_cpu_mhz_local_str = strdup(vps_cpu_mhz->valuestring);
+    if (vps_location && !cJSON_IsNull(vps_location)) vps_location_local_str = strdup(vps_location->valuestring);
+    if (vps_last_update && !cJSON_IsNull(vps_last_update)) vps_last_update_local_str = strdup(vps_last_update->valuestring);
+    if (vps_raid_building && !cJSON_IsNull(vps_raid_building)) vps_raid_building_local_str = strdup(vps_raid_building->valuestring);
+    if (vps_kernel && !cJSON_IsNull(vps_kernel)) vps_kernel_local_str = strdup(vps_kernel->valuestring);
+    if (vps_available && !cJSON_IsNull(vps_available)) vps_available_local_str = strdup(vps_available->valuestring);
+    if (vps_cores && !cJSON_IsNull(vps_cores)) vps_cores_local_str = strdup(vps_cores->valuestring);
+    if (vps_iowait && !cJSON_IsNull(vps_iowait)) vps_iowait_local_str = strdup(vps_iowait->valuestring);
+    if (vps_raid_status && !cJSON_IsNull(vps_raid_status)) vps_raid_status_local_str = strdup(vps_raid_status->valuestring);
+    if (vps_mounts && !cJSON_IsNull(vps_mounts)) vps_mounts_local_str = strdup(vps_mounts->valuestring);
+    if (vps_server_max && !cJSON_IsNull(vps_server_max)) vps_server_max_local_str = strdup(vps_server_max->valuestring);
+    if (vps_server_max_slices && !cJSON_IsNull(vps_server_max_slices)) vps_server_max_slices_local_str = strdup(vps_server_max_slices->valuestring);
+    if (vps_drive_type && !cJSON_IsNull(vps_drive_type)) vps_drive_type_local_str = strdup(vps_drive_type->valuestring);
+    if (vps_order && !cJSON_IsNull(vps_order)) vps_order_local_str = strdup(vps_order->valuestring);
+
     vps_service_master_local_var = vps_service_master_create_internal (
-        vps_id && !cJSON_IsNull(vps_id) ? strdup(vps_id->valuestring) : NULL,
-        vps_name && !cJSON_IsNull(vps_name) ? strdup(vps_name->valuestring) : NULL,
-        vps_ip && !cJSON_IsNull(vps_ip) ? strdup(vps_ip->valuestring) : NULL,
-        vps_type && !cJSON_IsNull(vps_type) ? strdup(vps_type->valuestring) : NULL,
-        vps_hdsize && !cJSON_IsNull(vps_hdsize) ? strdup(vps_hdsize->valuestring) : NULL,
-        vps_hdfree && !cJSON_IsNull(vps_hdfree) ? strdup(vps_hdfree->valuestring) : NULL,
-        vps_bits && !cJSON_IsNull(vps_bits) ? strdup(vps_bits->valuestring) : NULL,
-        vps_load && !cJSON_IsNull(vps_load) ? strdup(vps_load->valuestring) : NULL,
-        vps_ram && !cJSON_IsNull(vps_ram) ? strdup(vps_ram->valuestring) : NULL,
-        vps_cpu_model && !cJSON_IsNull(vps_cpu_model) ? strdup(vps_cpu_model->valuestring) : NULL,
-        vps_cpu_mhz && !cJSON_IsNull(vps_cpu_mhz) ? strdup(vps_cpu_mhz->valuestring) : NULL,
-        vps_location && !cJSON_IsNull(vps_location) ? strdup(vps_location->valuestring) : NULL,
-        vps_last_update && !cJSON_IsNull(vps_last_update) ? strdup(vps_last_update->valuestring) : NULL,
-        vps_raid_building && !cJSON_IsNull(vps_raid_building) ? strdup(vps_raid_building->valuestring) : NULL,
-        vps_kernel && !cJSON_IsNull(vps_kernel) ? strdup(vps_kernel->valuestring) : NULL,
-        vps_available && !cJSON_IsNull(vps_available) ? strdup(vps_available->valuestring) : NULL,
-        vps_cores && !cJSON_IsNull(vps_cores) ? strdup(vps_cores->valuestring) : NULL,
-        vps_iowait && !cJSON_IsNull(vps_iowait) ? strdup(vps_iowait->valuestring) : NULL,
-        vps_raid_status && !cJSON_IsNull(vps_raid_status) ? strdup(vps_raid_status->valuestring) : NULL,
-        vps_mounts && !cJSON_IsNull(vps_mounts) ? strdup(vps_mounts->valuestring) : NULL,
-        vps_server_max && !cJSON_IsNull(vps_server_max) ? strdup(vps_server_max->valuestring) : NULL,
-        vps_server_max_slices && !cJSON_IsNull(vps_server_max_slices) ? strdup(vps_server_max_slices->valuestring) : NULL,
-        vps_drive_type && !cJSON_IsNull(vps_drive_type) ? strdup(vps_drive_type->valuestring) : NULL,
-        vps_order && !cJSON_IsNull(vps_order) ? strdup(vps_order->valuestring) : NULL
+        vps_id_local_str,
+        vps_name_local_str,
+        vps_ip_local_str,
+        vps_type_local_str,
+        vps_hdsize_local_str,
+        vps_hdfree_local_str,
+        vps_bits_local_str,
+        vps_load_local_str,
+        vps_ram_local_str,
+        vps_cpu_model_local_str,
+        vps_cpu_mhz_local_str,
+        vps_location_local_str,
+        vps_last_update_local_str,
+        vps_raid_building_local_str,
+        vps_kernel_local_str,
+        vps_available_local_str,
+        vps_cores_local_str,
+        vps_iowait_local_str,
+        vps_raid_status_local_str,
+        vps_mounts_local_str,
+        vps_server_max_local_str,
+        vps_server_max_slices_local_str,
+        vps_drive_type_local_str,
+        vps_order_local_str
         );
+
+    if (!vps_service_master_local_var) {
+        goto end;
+    }
 
     return vps_service_master_local_var;
 end:
+    if (vps_id_local_str) {
+        free(vps_id_local_str);
+        vps_id_local_str = NULL;
+    }
+    if (vps_name_local_str) {
+        free(vps_name_local_str);
+        vps_name_local_str = NULL;
+    }
+    if (vps_ip_local_str) {
+        free(vps_ip_local_str);
+        vps_ip_local_str = NULL;
+    }
+    if (vps_type_local_str) {
+        free(vps_type_local_str);
+        vps_type_local_str = NULL;
+    }
+    if (vps_hdsize_local_str) {
+        free(vps_hdsize_local_str);
+        vps_hdsize_local_str = NULL;
+    }
+    if (vps_hdfree_local_str) {
+        free(vps_hdfree_local_str);
+        vps_hdfree_local_str = NULL;
+    }
+    if (vps_bits_local_str) {
+        free(vps_bits_local_str);
+        vps_bits_local_str = NULL;
+    }
+    if (vps_load_local_str) {
+        free(vps_load_local_str);
+        vps_load_local_str = NULL;
+    }
+    if (vps_ram_local_str) {
+        free(vps_ram_local_str);
+        vps_ram_local_str = NULL;
+    }
+    if (vps_cpu_model_local_str) {
+        free(vps_cpu_model_local_str);
+        vps_cpu_model_local_str = NULL;
+    }
+    if (vps_cpu_mhz_local_str) {
+        free(vps_cpu_mhz_local_str);
+        vps_cpu_mhz_local_str = NULL;
+    }
+    if (vps_location_local_str) {
+        free(vps_location_local_str);
+        vps_location_local_str = NULL;
+    }
+    if (vps_last_update_local_str) {
+        free(vps_last_update_local_str);
+        vps_last_update_local_str = NULL;
+    }
+    if (vps_raid_building_local_str) {
+        free(vps_raid_building_local_str);
+        vps_raid_building_local_str = NULL;
+    }
+    if (vps_kernel_local_str) {
+        free(vps_kernel_local_str);
+        vps_kernel_local_str = NULL;
+    }
+    if (vps_available_local_str) {
+        free(vps_available_local_str);
+        vps_available_local_str = NULL;
+    }
+    if (vps_cores_local_str) {
+        free(vps_cores_local_str);
+        vps_cores_local_str = NULL;
+    }
+    if (vps_iowait_local_str) {
+        free(vps_iowait_local_str);
+        vps_iowait_local_str = NULL;
+    }
+    if (vps_raid_status_local_str) {
+        free(vps_raid_status_local_str);
+        vps_raid_status_local_str = NULL;
+    }
+    if (vps_mounts_local_str) {
+        free(vps_mounts_local_str);
+        vps_mounts_local_str = NULL;
+    }
+    if (vps_server_max_local_str) {
+        free(vps_server_max_local_str);
+        vps_server_max_local_str = NULL;
+    }
+    if (vps_server_max_slices_local_str) {
+        free(vps_server_max_slices_local_str);
+        vps_server_max_slices_local_str = NULL;
+    }
+    if (vps_drive_type_local_str) {
+        free(vps_drive_type_local_str);
+        vps_drive_type_local_str = NULL;
+    }
+    if (vps_order_local_str) {
+        free(vps_order_local_str);
+        vps_order_local_str = NULL;
+    }
     return NULL;
 
 }

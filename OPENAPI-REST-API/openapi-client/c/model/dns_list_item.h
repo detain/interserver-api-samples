@@ -19,7 +19,7 @@ typedef struct dns_list_item_t dns_list_item_t;
 
 
 typedef struct dns_list_item_t {
-    int id; //numeric
+    int *id; //numeric
     char *name; // string
     char *content; // string
 
@@ -27,7 +27,7 @@ typedef struct dns_list_item_t {
 } dns_list_item_t;
 
 __attribute__((deprecated)) dns_list_item_t *dns_list_item_create(
-    int id,
+    int *id,
     char *name,
     char *content
 );

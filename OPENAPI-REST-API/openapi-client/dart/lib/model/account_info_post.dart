@@ -260,10 +260,20 @@ class AccountInfoPost {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AccountInfoPost[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AccountInfoPost[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "AccountInfoPost[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "AccountInfoPost[name]" has a null value in JSON.');
+        assert(json.containsKey(r'address'), 'Required key "AccountInfoPost[address]" is missing from JSON.');
+        assert(json[r'address'] != null, 'Required key "AccountInfoPost[address]" has a null value in JSON.');
+        assert(json.containsKey(r'city'), 'Required key "AccountInfoPost[city]" is missing from JSON.');
+        assert(json[r'city'] != null, 'Required key "AccountInfoPost[city]" has a null value in JSON.');
+        assert(json.containsKey(r'state'), 'Required key "AccountInfoPost[state]" is missing from JSON.');
+        assert(json[r'state'] != null, 'Required key "AccountInfoPost[state]" has a null value in JSON.');
+        assert(json.containsKey(r'zip'), 'Required key "AccountInfoPost[zip]" is missing from JSON.');
+        assert(json[r'zip'] != null, 'Required key "AccountInfoPost[zip]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "AccountInfoPost[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "AccountInfoPost[country]" has a null value in JSON.');
+        assert(json.containsKey(r'phone'), 'Required key "AccountInfoPost[phone]" is missing from JSON.');
+        assert(json[r'phone'] != null, 'Required key "AccountInfoPost[phone]" has a null value in JSON.');
         return true;
       }());
 

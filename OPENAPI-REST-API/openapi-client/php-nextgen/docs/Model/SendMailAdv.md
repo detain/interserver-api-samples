@@ -1,4 +1,4 @@
-# # SendMailAdv
+# SendMailAdv
 
 ## Properties
 

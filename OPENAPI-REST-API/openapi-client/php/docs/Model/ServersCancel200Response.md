@@ -1,4 +1,4 @@
-# # ServersCancel200Response
+# ServersCancel200Response
 
 ## Properties
 

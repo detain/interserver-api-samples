@@ -32,13 +32,13 @@ class OAIWebsitesOrderServiceTypes;
 class OAIWebsitesOrder_serviceTypes : public OAIObject {
 public:
     OAIWebsitesOrder_serviceTypes();
-    OAIWebsitesOrder_serviceTypes(QString json);
+    OAIWebsitesOrder_serviceTypes(const QString &json);
     ~OAIWebsitesOrder_serviceTypes() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIWebsitesOrderServiceTypes getR11447() const;
     void setR11447(const OAIWebsitesOrderServiceTypes &r_11447);

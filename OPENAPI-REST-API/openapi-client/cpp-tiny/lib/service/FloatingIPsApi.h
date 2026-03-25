@@ -24,7 +24,7 @@ class FloatingIPsApi : public Service {
 public:
     FloatingIPsApi() = default;
 
-    virtual ~FloatingIPsApi() = default;
+    virtual ~FloatingIPsApi();
 
     /**
     * Place Floating IP Order.

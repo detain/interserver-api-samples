@@ -1,4 +1,4 @@
-# # VpsTrafficTotalsResposne
+# VpsTrafficTotalsResposne
 
 ## Properties
 

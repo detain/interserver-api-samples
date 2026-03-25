@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetOrderDetail_200_response_serviceTypes_inner::OAIGetOrderDetail_200_response_serviceTypes_inner(QString json) {
+OAIGetOrderDetail_200_response_serviceTypes_inner::OAIGetOrderDetail_200_response_serviceTypes_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIGetOrderDetail_200_response_serviceTypes_inner::initializeModel() {
     m_services_module_isValid = false;
 }
 
-void OAIGetOrderDetail_200_response_serviceTypes_inner::fromJson(QString jsonString) {
+void OAIGetOrderDetail_200_response_serviceTypes_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

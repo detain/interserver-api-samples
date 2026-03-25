@@ -757,6 +757,8 @@
 
 #include "VPSTrafficDataDataSectionResponse_innerTest.cpp"
 
+#include "ViewMailLog_startDate_parameterTest.cpp"
+
 #include "ViewTicketResponseTest.cpp"
 
 #include "VpsTest.cpp"
@@ -4357,9 +4359,6 @@ void runTests(){
     RUN_TEST(test_MailLogEntry_to_is_assigned_from_json);
     
     
-    RUN_TEST(test_MailLogEntry_subject_is_assigned_from_json);
-    
-    
     RUN_TEST(test_MailLogEntry_created_is_assigned_from_json);
     
     
@@ -4378,6 +4377,12 @@ void runTests(){
     RUN_TEST(test_MailLogEntry_interface_is_assigned_from_json);
     
     
+    RUN_TEST(test_MailLogEntry_subject_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_MailLogEntry_messageId_is_assigned_from_json);
+    
+    
     RUN_TEST(test_MailLogEntry_sendingZone_is_assigned_from_json);
     
     
@@ -4387,7 +4392,16 @@ void runTests(){
     RUN_TEST(test_MailLogEntry_seq_is_assigned_from_json);
     
     
+    RUN_TEST(test_MailLogEntry_delivered_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_MailLogEntry_code_is_assigned_from_json);
+    
+    
     RUN_TEST(test_MailLogEntry_recipient_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_MailLogEntry_response_is_assigned_from_json);
     
     
     RUN_TEST(test_MailLogEntry_domain_is_assigned_from_json);
@@ -4406,12 +4420,6 @@ void runTests(){
     
     
     RUN_TEST(test_MailLogEntry_mxHostname_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_MailLogEntry_response_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_MailLogEntry_messageId_is_assigned_from_json);
     
     
     
@@ -6516,6 +6524,7 @@ void runTests(){
     
     
     RUN_TEST(test_VPSCancel_200_response_text_is_assigned_from_json);
+    
     
     
     
@@ -11142,9 +11151,6 @@ void runTests(){
     RUN_TEST(test_MailLogEntry_to_is_converted_to_json);
     
     
-    RUN_TEST(test_MailLogEntry_subject_is_converted_to_json);
-    
-    
     RUN_TEST(test_MailLogEntry_created_is_converted_to_json);
     
     
@@ -11163,6 +11169,12 @@ void runTests(){
     RUN_TEST(test_MailLogEntry_interface_is_converted_to_json);
     
     
+    RUN_TEST(test_MailLogEntry_subject_is_converted_to_json);
+    
+    
+    RUN_TEST(test_MailLogEntry_messageId_is_converted_to_json);
+    
+    
     RUN_TEST(test_MailLogEntry_sendingZone_is_converted_to_json);
     
     
@@ -11172,7 +11184,16 @@ void runTests(){
     RUN_TEST(test_MailLogEntry_seq_is_converted_to_json);
     
     
+    RUN_TEST(test_MailLogEntry_delivered_is_converted_to_json);
+    
+    
+    RUN_TEST(test_MailLogEntry_code_is_converted_to_json);
+    
+    
     RUN_TEST(test_MailLogEntry_recipient_is_converted_to_json);
+    
+    
+    RUN_TEST(test_MailLogEntry_response_is_converted_to_json);
     
     
     RUN_TEST(test_MailLogEntry_domain_is_converted_to_json);
@@ -11191,12 +11212,6 @@ void runTests(){
     
     
     RUN_TEST(test_MailLogEntry_mxHostname_is_converted_to_json);
-    
-    
-    RUN_TEST(test_MailLogEntry_response_is_converted_to_json);
-    
-    
-    RUN_TEST(test_MailLogEntry_messageId_is_converted_to_json);
     
     
     
@@ -13301,6 +13316,7 @@ void runTests(){
     
     
     RUN_TEST(test_VPSCancel_200_response_text_is_converted_to_json);
+    
     
     
     

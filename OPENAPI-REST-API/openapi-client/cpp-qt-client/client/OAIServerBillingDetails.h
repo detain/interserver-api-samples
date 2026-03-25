@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServerBillingDetails : public OAIObject {
 public:
     OAIServerBillingDetails();
-    OAIServerBillingDetails(QString json);
+    OAIServerBillingDetails(const QString &json);
     ~OAIServerBillingDetails() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getServiceLastInvoiceDate() const;
     void setServiceLastInvoiceDate(const QString &service_last_invoice_date);

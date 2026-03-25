@@ -22,7 +22,7 @@ typedef struct view_ticket_response_t view_ticket_response_t;
 
 
 typedef struct view_ticket_response_t {
-    int success; //boolean
+    int *success; //boolean
     struct ticket_details_t *ticket; //model
     struct ticket_custom_field_details_t *ticket_custom_fields; //model
     ticket_post_details_t *ticket_posts; // custom
@@ -31,7 +31,7 @@ typedef struct view_ticket_response_t {
 } view_ticket_response_t;
 
 __attribute__((deprecated)) view_ticket_response_t *view_ticket_response_create(
-    int success,
+    int *success,
     ticket_details_t *ticket,
     ticket_custom_field_details_t *ticket_custom_fields,
     ticket_post_details_t *ticket_posts

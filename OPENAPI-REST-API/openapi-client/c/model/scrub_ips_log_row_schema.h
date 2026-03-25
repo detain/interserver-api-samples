@@ -23,9 +23,9 @@ typedef struct scrub_ips_log_row_schema_t {
     char *filter; // string
     char *blocked_ip; // string
     char *target_ip; // string
-    double target_port; //numeric
+    double *target_port; //numeric
     char *protocol; // string
-    double byte_count; //numeric
+    double *byte_count; //numeric
     char *xdp_action; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -36,9 +36,9 @@ __attribute__((deprecated)) scrub_ips_log_row_schema_t *scrub_ips_log_row_schema
     char *filter,
     char *blocked_ip,
     char *target_ip,
-    double target_port,
+    double *target_port,
     char *protocol,
-    double byte_count,
+    double *byte_count,
     char *xdp_action
 );
 

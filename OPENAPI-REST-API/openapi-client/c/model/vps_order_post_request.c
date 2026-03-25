@@ -41,10 +41,10 @@ interserver_management_api_vps_order_post_request_CONTROLPANEL_e vps_order_post_
 
 static vps_order_post_request_t *vps_order_post_request_create_internal(
     char *os_distro,
-    int slices,
+    int *slices,
     interserver_management_api_vps_order_post_request_VPSPLATFORM_e vps_platform,
-    int period,
-    int location,
+    int *period,
+    int *location,
     char *os_version,
     char *hostname,
     char *rootpass,
@@ -56,6 +56,8 @@ static vps_order_post_request_t *vps_order_post_request_create_internal(
     if (!vps_order_post_request_local_var) {
         return NULL;
     }
+    memset(vps_order_post_request_local_var, 0, sizeof(vps_order_post_request_t));
+    vps_order_post_request_local_var->_library_owned = 1;
     vps_order_post_request_local_var->os_distro = os_distro;
     vps_order_post_request_local_var->slices = slices;
     vps_order_post_request_local_var->vps_platform = vps_platform;
@@ -67,17 +69,15 @@ static vps_order_post_request_t *vps_order_post_request_create_internal(
     vps_order_post_request_local_var->controlpanel = controlpanel;
     vps_order_post_request_local_var->coupon = coupon;
     vps_order_post_request_local_var->comment = comment;
-
-    vps_order_post_request_local_var->_library_owned = 1;
     return vps_order_post_request_local_var;
 }
 
 __attribute__((deprecated)) vps_order_post_request_t *vps_order_post_request_create(
     char *os_distro,
-    int slices,
+    int *slices,
     interserver_management_api_vps_order_post_request_VPSPLATFORM_e vps_platform,
-    int period,
-    int location,
+    int *period,
+    int *location,
     char *os_version,
     char *hostname,
     char *rootpass,
@@ -85,12 +85,27 @@ __attribute__((deprecated)) vps_order_post_request_t *vps_order_post_request_cre
     char *coupon,
     char *comment
     ) {
-    return vps_order_post_request_create_internal (
+    int *slices_copy = NULL;
+    if (slices) {
+        slices_copy = malloc(sizeof(int));
+        if (slices_copy) *slices_copy = *slices;
+    }
+    int *period_copy = NULL;
+    if (period) {
+        period_copy = malloc(sizeof(int));
+        if (period_copy) *period_copy = *period;
+    }
+    int *location_copy = NULL;
+    if (location) {
+        location_copy = malloc(sizeof(int));
+        if (location_copy) *location_copy = *location;
+    }
+    vps_order_post_request_t *result = vps_order_post_request_create_internal (
         os_distro,
-        slices,
+        slices_copy,
         vps_platform,
-        period,
-        location,
+        period_copy,
+        location_copy,
         os_version,
         hostname,
         rootpass,
@@ -98,6 +113,12 @@ __attribute__((deprecated)) vps_order_post_request_t *vps_order_post_request_cre
         coupon,
         comment
         );
+    if (!result) {
+        free(slices_copy);
+        free(period_copy);
+        free(location_copy);
+    }
+    return result;
 }
 
 void vps_order_post_request_free(vps_order_post_request_t *vps_order_post_request) {
@@ -112,6 +133,18 @@ void vps_order_post_request_free(vps_order_post_request_t *vps_order_post_reques
     if (vps_order_post_request->os_distro) {
         free(vps_order_post_request->os_distro);
         vps_order_post_request->os_distro = NULL;
+    }
+    if (vps_order_post_request->slices) {
+        free(vps_order_post_request->slices);
+        vps_order_post_request->slices = NULL;
+    }
+    if (vps_order_post_request->period) {
+        free(vps_order_post_request->period);
+        vps_order_post_request->period = NULL;
+    }
+    if (vps_order_post_request->location) {
+        free(vps_order_post_request->location);
+        vps_order_post_request->location = NULL;
     }
     if (vps_order_post_request->os_version) {
         free(vps_order_post_request->os_version);
@@ -152,7 +185,7 @@ cJSON *vps_order_post_request_convertToJSON(vps_order_post_request_t *vps_order_
     if (!vps_order_post_request->slices) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "slices", vps_order_post_request->slices) == NULL) {
+    if(cJSON_AddNumberToObject(item, "slices", *vps_order_post_request->slices) == NULL) {
     goto fail; //Numeric
     }
 
@@ -171,7 +204,7 @@ cJSON *vps_order_post_request_convertToJSON(vps_order_post_request_t *vps_order_
     if (!vps_order_post_request->period) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "period", vps_order_post_request->period) == NULL) {
+    if(cJSON_AddNumberToObject(item, "period", *vps_order_post_request->period) == NULL) {
     goto fail; //Numeric
     }
 
@@ -180,7 +213,7 @@ cJSON *vps_order_post_request_convertToJSON(vps_order_post_request_t *vps_order_
     if (!vps_order_post_request->location) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "location", vps_order_post_request->location) == NULL) {
+    if(cJSON_AddNumberToObject(item, "location", *vps_order_post_request->location) == NULL) {
     goto fail; //Numeric
     }
 
@@ -248,6 +281,27 @@ vps_order_post_request_t *vps_order_post_request_parseFromJSON(cJSON *vps_order_
 
     vps_order_post_request_t *vps_order_post_request_local_var = NULL;
 
+    char *os_distro_local_str = NULL;
+
+    // define the local variable for vps_order_post_request->slices
+    int *slices_local_var = NULL;
+
+    // define the local variable for vps_order_post_request->period
+    int *period_local_var = NULL;
+
+    // define the local variable for vps_order_post_request->location
+    int *location_local_var = NULL;
+
+    char *os_version_local_str = NULL;
+
+    char *hostname_local_str = NULL;
+
+    char *rootpass_local_str = NULL;
+
+    char *coupon_local_str = NULL;
+
+    char *comment_local_str = NULL;
+
     // vps_order_post_request->os_distro
     cJSON *os_distro = cJSON_GetObjectItemCaseSensitive(vps_order_post_requestJSON, "osDistro");
     if (cJSON_IsNull(os_distro)) {
@@ -277,6 +331,12 @@ vps_order_post_request_t *vps_order_post_request_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    slices_local_var = malloc(sizeof(int));
+    if(!slices_local_var)
+    {
+        goto end;
+    }
+    *slices_local_var = slices->valuedouble;
 
     // vps_order_post_request->vps_platform
     cJSON *vps_platform = cJSON_GetObjectItemCaseSensitive(vps_order_post_requestJSON, "vpsPlatform");
@@ -309,6 +369,12 @@ vps_order_post_request_t *vps_order_post_request_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    period_local_var = malloc(sizeof(int));
+    if(!period_local_var)
+    {
+        goto end;
+    }
+    *period_local_var = period->valuedouble;
 
     // vps_order_post_request->location
     cJSON *location = cJSON_GetObjectItemCaseSensitive(vps_order_post_requestJSON, "location");
@@ -324,6 +390,12 @@ vps_order_post_request_t *vps_order_post_request_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    location_local_var = malloc(sizeof(int));
+    if(!location_local_var)
+    {
+        goto end;
+    }
+    *location_local_var = location->valuedouble;
 
     // vps_order_post_request->os_version
     cJSON *os_version = cJSON_GetObjectItemCaseSensitive(vps_order_post_requestJSON, "osVersion");
@@ -409,22 +481,69 @@ vps_order_post_request_t *vps_order_post_request_parseFromJSON(cJSON *vps_order_
     }
 
 
+    if (os_distro && !cJSON_IsNull(os_distro)) os_distro_local_str = strdup(os_distro->valuestring);
+    if (os_version && !cJSON_IsNull(os_version)) os_version_local_str = strdup(os_version->valuestring);
+    if (hostname && !cJSON_IsNull(hostname)) hostname_local_str = strdup(hostname->valuestring);
+    if (rootpass && !cJSON_IsNull(rootpass)) rootpass_local_str = strdup(rootpass->valuestring);
+    if (coupon && !cJSON_IsNull(coupon)) coupon_local_str = strdup(coupon->valuestring);
+    if (comment && !cJSON_IsNull(comment)) comment_local_str = strdup(comment->valuestring);
+
     vps_order_post_request_local_var = vps_order_post_request_create_internal (
-        strdup(os_distro->valuestring),
-        slices->valuedouble,
+        os_distro_local_str,
+        slices_local_var,
         vps_platformVariable,
-        period->valuedouble,
-        location->valuedouble,
-        strdup(os_version->valuestring),
-        strdup(hostname->valuestring),
-        strdup(rootpass->valuestring),
+        period_local_var,
+        location_local_var,
+        os_version_local_str,
+        hostname_local_str,
+        rootpass_local_str,
         controlpanel ? controlpanelVariable : interserver_management_api_vps_order_post_request_CONTROLPANEL_NULL,
-        coupon && !cJSON_IsNull(coupon) ? strdup(coupon->valuestring) : NULL,
-        comment && !cJSON_IsNull(comment) ? strdup(comment->valuestring) : NULL
+        coupon_local_str,
+        comment_local_str
         );
+
+    if (!vps_order_post_request_local_var) {
+        goto end;
+    }
 
     return vps_order_post_request_local_var;
 end:
+    if (os_distro_local_str) {
+        free(os_distro_local_str);
+        os_distro_local_str = NULL;
+    }
+    if (slices_local_var) {
+        free(slices_local_var);
+        slices_local_var = NULL;
+    }
+    if (period_local_var) {
+        free(period_local_var);
+        period_local_var = NULL;
+    }
+    if (location_local_var) {
+        free(location_local_var);
+        location_local_var = NULL;
+    }
+    if (os_version_local_str) {
+        free(os_version_local_str);
+        os_version_local_str = NULL;
+    }
+    if (hostname_local_str) {
+        free(hostname_local_str);
+        hostname_local_str = NULL;
+    }
+    if (rootpass_local_str) {
+        free(rootpass_local_str);
+        rootpass_local_str = NULL;
+    }
+    if (coupon_local_str) {
+        free(coupon_local_str);
+        coupon_local_str = NULL;
+    }
+    if (comment_local_str) {
+        free(comment_local_str);
+        comment_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -29,7 +29,7 @@ typedef struct send_mail_adv_t {
     list_t *cc; //nonprimitive container
     list_t *bcc; //nonprimitive container
     list_t *attachments; //nonprimitive container
-    long id; //numeric
+    long *id; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } send_mail_adv_t;
@@ -43,7 +43,7 @@ __attribute__((deprecated)) send_mail_adv_t *send_mail_adv_create(
     list_t *cc,
     list_t *bcc,
     list_t *attachments,
-    long id
+    long *id
 );
 
 void send_mail_adv_free(send_mail_adv_t *send_mail_adv);

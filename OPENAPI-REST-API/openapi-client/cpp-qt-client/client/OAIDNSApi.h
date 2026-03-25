@@ -112,6 +112,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -131,7 +138,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addDnsDomainCallback(OAIHttpRequestWorker *worker);
     void addDnsRecordCallback(OAIHttpRequestWorker *worker);
@@ -160,48 +167,20 @@ Q_SIGNALS:
     void getDnsListSignalFull(OAIHttpRequestWorker *worker, QList<OAIDnsListItem> summary);
     void updateDnsRecordSignalFull(OAIHttpRequestWorker *worker);
 
-    Q_DECL_DEPRECATED_X("Use addDnsDomainSignalError() instead")
-    void addDnsDomainSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addDnsDomainSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addDnsRecordSignalError() instead")
-    void addDnsRecordSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addDnsRecordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDnsDomainSignalError() instead")
-    void deleteDnsDomainSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDnsDomainSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDnsRecordSignalError() instead")
-    void deleteDnsRecordSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDnsRecordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDnsDomainSignalError() instead")
-    void getDnsDomainSignalE(QList<OAIDnsRecord> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDnsDomainSignalError(QList<OAIDnsRecord> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDnsListSignalError() instead")
-    void getDnsListSignalE(QList<OAIDnsListItem> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getDnsListSignalError(QList<OAIDnsListItem> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDnsRecordSignalError() instead")
-    void updateDnsRecordSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateDnsRecordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addDnsDomainSignalErrorFull() instead")
-    void addDnsDomainSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addDnsDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addDnsRecordSignalErrorFull() instead")
-    void addDnsRecordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addDnsRecordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDnsDomainSignalErrorFull() instead")
-    void deleteDnsDomainSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDnsDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteDnsRecordSignalErrorFull() instead")
-    void deleteDnsRecordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteDnsRecordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDnsDomainSignalErrorFull() instead")
-    void getDnsDomainSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDnsDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getDnsListSignalErrorFull() instead")
-    void getDnsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getDnsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateDnsRecordSignalErrorFull() instead")
-    void updateDnsRecordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateDnsRecordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

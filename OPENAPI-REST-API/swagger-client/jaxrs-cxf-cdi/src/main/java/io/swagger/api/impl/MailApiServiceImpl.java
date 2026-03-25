@@ -10,6 +10,7 @@ import io.swagger.model.DenyRuleNew;
 import io.swagger.model.DenyRuleRecord;
 import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
+import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse2008;
 import io.swagger.model.InlineResponse401;
@@ -28,6 +29,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 
 import java.util.List;
@@ -202,7 +204,7 @@ public class MailApiServiceImpl implements MailApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response viewMailLog(Integer id, Long id, String origin, String mx, String from, String to, String subject, String mailid, Integer skip, Integer limit, Long startDate, Long endDate, String delivered, SecurityContext securityContext) {
+      public Response viewMailLog(Integer id, Long id, String origin, String mx, String from, String to, String subject, String mailid, String messageId, String replyto, String headerfrom, Integer delivered, Integer skip, Integer limit, StartDate startDate, EndDate endDate, String sort, String dir, String groupby, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

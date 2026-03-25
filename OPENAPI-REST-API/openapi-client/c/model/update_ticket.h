@@ -33,7 +33,7 @@ typedef struct update_ticket_t {
     char *root_password; // string
     char *sudo_username; // string
     char *sudo_password; // string
-    int port; //numeric
+    int *port; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } update_ticket_t;
@@ -45,7 +45,7 @@ __attribute__((deprecated)) update_ticket_t *update_ticket_create(
     char *root_password,
     char *sudo_username,
     char *sudo_password,
-    int port
+    int *port
 );
 
 void update_ticket_free(update_ticket_t *update_ticket);

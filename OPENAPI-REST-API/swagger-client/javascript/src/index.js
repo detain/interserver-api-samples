@@ -130,6 +130,7 @@ import DomainTechContact from './model/DomainTechContact';
 import DomainWhoisPrivacyRequest from './model/DomainWhoisPrivacyRequest';
 import EmailAddress from './model/EmailAddress';
 import EmailAddressName from './model/EmailAddressName';
+import EndDate from './model/EndDate';
 import FieldLabel from './model/FieldLabel';
 import FormValues from './model/FormValues';
 import GenericResponse from './model/GenericResponse';
@@ -391,6 +392,7 @@ import ServiceType from './model/ServiceType';
 import ServiceTypes from './model/ServiceTypes';
 import Services from './model/Services';
 import ServicesInfo from './model/ServicesInfo';
+import StartDate from './model/StartDate';
 import StatusMonthlyBreakdown from './model/StatusMonthlyBreakdown';
 import SuccessTextResponse from './model/SuccessTextResponse';
 import TemplateRequest from './model/TemplateRequest';
@@ -1231,6 +1233,12 @@ export {
      * @property {module:model/EmailAddressName}
      */
     EmailAddressName,
+
+    /**
+     * The EndDate model constructor.
+     * @property {module:model/EndDate}
+     */
+    EndDate,
 
     /**
      * The FieldLabel model constructor.
@@ -2797,6 +2805,12 @@ export {
      * @property {module:model/ServicesInfo}
      */
     ServicesInfo,
+
+    /**
+     * The StartDate model constructor.
+     * @property {module:model/StartDate}
+     */
+    StartDate,
 
     /**
      * The StatusMonthlyBreakdown model constructor.

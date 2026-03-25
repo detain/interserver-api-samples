@@ -1,4 +1,4 @@
-# # AccountInfoMaxMindResponse
+# AccountInfoMaxMindResponse
 
 ## Properties
 

@@ -6,8 +6,8 @@
 
 
 static scrub_ips_row_schema_t *scrub_ips_row_schema_create_internal(
-    int scrub_ip_id,
-    double repeat_invoices_cost,
+    int *scrub_ip_id,
+    double *repeat_invoices_cost,
     char *scrub_ip_ip,
     char *scrub_ip_status,
     char *services_name
@@ -16,30 +16,45 @@ static scrub_ips_row_schema_t *scrub_ips_row_schema_create_internal(
     if (!scrub_ips_row_schema_local_var) {
         return NULL;
     }
+    memset(scrub_ips_row_schema_local_var, 0, sizeof(scrub_ips_row_schema_t));
+    scrub_ips_row_schema_local_var->_library_owned = 1;
     scrub_ips_row_schema_local_var->scrub_ip_id = scrub_ip_id;
     scrub_ips_row_schema_local_var->repeat_invoices_cost = repeat_invoices_cost;
     scrub_ips_row_schema_local_var->scrub_ip_ip = scrub_ip_ip;
     scrub_ips_row_schema_local_var->scrub_ip_status = scrub_ip_status;
     scrub_ips_row_schema_local_var->services_name = services_name;
-
-    scrub_ips_row_schema_local_var->_library_owned = 1;
     return scrub_ips_row_schema_local_var;
 }
 
 __attribute__((deprecated)) scrub_ips_row_schema_t *scrub_ips_row_schema_create(
-    int scrub_ip_id,
-    double repeat_invoices_cost,
+    int *scrub_ip_id,
+    double *repeat_invoices_cost,
     char *scrub_ip_ip,
     char *scrub_ip_status,
     char *services_name
     ) {
-    return scrub_ips_row_schema_create_internal (
-        scrub_ip_id,
-        repeat_invoices_cost,
+    int *scrub_ip_id_copy = NULL;
+    if (scrub_ip_id) {
+        scrub_ip_id_copy = malloc(sizeof(int));
+        if (scrub_ip_id_copy) *scrub_ip_id_copy = *scrub_ip_id;
+    }
+    double *repeat_invoices_cost_copy = NULL;
+    if (repeat_invoices_cost) {
+        repeat_invoices_cost_copy = malloc(sizeof(double));
+        if (repeat_invoices_cost_copy) *repeat_invoices_cost_copy = *repeat_invoices_cost;
+    }
+    scrub_ips_row_schema_t *result = scrub_ips_row_schema_create_internal (
+        scrub_ip_id_copy,
+        repeat_invoices_cost_copy,
         scrub_ip_ip,
         scrub_ip_status,
         services_name
         );
+    if (!result) {
+        free(scrub_ip_id_copy);
+        free(repeat_invoices_cost_copy);
+    }
+    return result;
 }
 
 void scrub_ips_row_schema_free(scrub_ips_row_schema_t *scrub_ips_row_schema) {
@@ -51,6 +66,14 @@ void scrub_ips_row_schema_free(scrub_ips_row_schema_t *scrub_ips_row_schema) {
         return ;
     }
     listEntry_t *listEntry;
+    if (scrub_ips_row_schema->scrub_ip_id) {
+        free(scrub_ips_row_schema->scrub_ip_id);
+        scrub_ips_row_schema->scrub_ip_id = NULL;
+    }
+    if (scrub_ips_row_schema->repeat_invoices_cost) {
+        free(scrub_ips_row_schema->repeat_invoices_cost);
+        scrub_ips_row_schema->repeat_invoices_cost = NULL;
+    }
     if (scrub_ips_row_schema->scrub_ip_ip) {
         free(scrub_ips_row_schema->scrub_ip_ip);
         scrub_ips_row_schema->scrub_ip_ip = NULL;
@@ -71,7 +94,7 @@ cJSON *scrub_ips_row_schema_convertToJSON(scrub_ips_row_schema_t *scrub_ips_row_
 
     // scrub_ips_row_schema->scrub_ip_id
     if(scrub_ips_row_schema->scrub_ip_id) {
-    if(cJSON_AddNumberToObject(item, "scrub_ip_id", scrub_ips_row_schema->scrub_ip_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "scrub_ip_id", *scrub_ips_row_schema->scrub_ip_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -79,7 +102,7 @@ cJSON *scrub_ips_row_schema_convertToJSON(scrub_ips_row_schema_t *scrub_ips_row_
 
     // scrub_ips_row_schema->repeat_invoices_cost
     if(scrub_ips_row_schema->repeat_invoices_cost) {
-    if(cJSON_AddNumberToObject(item, "repeat_invoices_cost", scrub_ips_row_schema->repeat_invoices_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "repeat_invoices_cost", *scrub_ips_row_schema->repeat_invoices_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -120,6 +143,18 @@ scrub_ips_row_schema_t *scrub_ips_row_schema_parseFromJSON(cJSON *scrub_ips_row_
 
     scrub_ips_row_schema_t *scrub_ips_row_schema_local_var = NULL;
 
+    // define the local variable for scrub_ips_row_schema->scrub_ip_id
+    int *scrub_ip_id_local_var = NULL;
+
+    // define the local variable for scrub_ips_row_schema->repeat_invoices_cost
+    double *repeat_invoices_cost_local_var = NULL;
+
+    char *scrub_ip_ip_local_str = NULL;
+
+    char *scrub_ip_status_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
     // scrub_ips_row_schema->scrub_ip_id
     cJSON *scrub_ip_id = cJSON_GetObjectItemCaseSensitive(scrub_ips_row_schemaJSON, "scrub_ip_id");
     if (cJSON_IsNull(scrub_ip_id)) {
@@ -130,6 +165,12 @@ scrub_ips_row_schema_t *scrub_ips_row_schema_parseFromJSON(cJSON *scrub_ips_row_
     {
     goto end; //Numeric
     }
+    scrub_ip_id_local_var = malloc(sizeof(int));
+    if(!scrub_ip_id_local_var)
+    {
+        goto end;
+    }
+    *scrub_ip_id_local_var = scrub_ip_id->valuedouble;
     }
 
     // scrub_ips_row_schema->repeat_invoices_cost
@@ -142,6 +183,12 @@ scrub_ips_row_schema_t *scrub_ips_row_schema_parseFromJSON(cJSON *scrub_ips_row_
     {
     goto end; //Numeric
     }
+    repeat_invoices_cost_local_var = malloc(sizeof(double));
+    if(!repeat_invoices_cost_local_var)
+    {
+        goto end;
+    }
+    *repeat_invoices_cost_local_var = repeat_invoices_cost->valuedouble;
     }
 
     // scrub_ips_row_schema->scrub_ip_ip
@@ -181,16 +228,44 @@ scrub_ips_row_schema_t *scrub_ips_row_schema_parseFromJSON(cJSON *scrub_ips_row_
     }
 
 
+    if (scrub_ip_ip && !cJSON_IsNull(scrub_ip_ip)) scrub_ip_ip_local_str = strdup(scrub_ip_ip->valuestring);
+    if (scrub_ip_status && !cJSON_IsNull(scrub_ip_status)) scrub_ip_status_local_str = strdup(scrub_ip_status->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+
     scrub_ips_row_schema_local_var = scrub_ips_row_schema_create_internal (
-        scrub_ip_id ? scrub_ip_id->valuedouble : 0,
-        repeat_invoices_cost ? repeat_invoices_cost->valuedouble : 0,
-        scrub_ip_ip && !cJSON_IsNull(scrub_ip_ip) ? strdup(scrub_ip_ip->valuestring) : NULL,
-        scrub_ip_status && !cJSON_IsNull(scrub_ip_status) ? strdup(scrub_ip_status->valuestring) : NULL,
-        services_name && !cJSON_IsNull(services_name) ? strdup(services_name->valuestring) : NULL
+        scrub_ip_id_local_var,
+        repeat_invoices_cost_local_var,
+        scrub_ip_ip_local_str,
+        scrub_ip_status_local_str,
+        services_name_local_str
         );
+
+    if (!scrub_ips_row_schema_local_var) {
+        goto end;
+    }
 
     return scrub_ips_row_schema_local_var;
 end:
+    if (scrub_ip_id_local_var) {
+        free(scrub_ip_id_local_var);
+        scrub_ip_id_local_var = NULL;
+    }
+    if (repeat_invoices_cost_local_var) {
+        free(repeat_invoices_cost_local_var);
+        repeat_invoices_cost_local_var = NULL;
+    }
+    if (scrub_ip_ip_local_str) {
+        free(scrub_ip_ip_local_str);
+        scrub_ip_ip_local_str = NULL;
+    }
+    if (scrub_ip_status_local_str) {
+        free(scrub_ip_status_local_str);
+        scrub_ip_status_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
     return NULL;
 
 }

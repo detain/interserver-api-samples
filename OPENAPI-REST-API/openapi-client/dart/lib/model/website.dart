@@ -168,10 +168,6 @@ class Website {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Website[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Website[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -183,7 +179,9 @@ class Website {
         custCurrencySymbol: mapValueOfType<String>(json, r'custCurrencySymbol'),
         serviceMaster: WebsiteServiceMaster.fromJson(json[r'serviceMaster']),
         package: mapValueOfType<String>(json, r'package'),
-        serviceExtra: Object.listFromJson(json[r'serviceExtra']),
+        serviceExtra: json[r'serviceExtra'] is Iterable
+            ? (json[r'serviceExtra'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
         extraInfoTables: WebsiteExtraInfoTables.fromJson(json[r'extraInfoTables']),
       );
     }

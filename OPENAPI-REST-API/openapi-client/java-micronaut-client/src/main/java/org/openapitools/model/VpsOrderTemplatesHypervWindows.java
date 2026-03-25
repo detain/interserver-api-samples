@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   VpsOrderTemplatesHypervWindows.JSON_PROPERTY_WINDOWS2022
 })
 @JsonTypeName("VpsOrder_templates_hyperv_windows")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class VpsOrderTemplatesHypervWindows {
     public static final String JSON_PROPERTY_WINDOWS2019_STANDARD = "Windows2019Standard";
@@ -119,10 +119,7 @@ public class VpsOrderTemplatesHypervWindows {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

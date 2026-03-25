@@ -1,4 +1,4 @@
-# # ServiceTypes
+# ServiceTypes
 
 ## Properties
 

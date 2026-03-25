@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHardDrive::OAIHardDrive(QString json) {
+OAIHardDrive::OAIHardDrive(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIHardDrive::initializeModel() {
     m_monthly_price_display_isValid = false;
 }
 
-void OAIHardDrive::fromJson(QString jsonString) {
+void OAIHardDrive::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

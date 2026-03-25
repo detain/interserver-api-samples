@@ -1,4 +1,4 @@
-# # MailAlertsResponseInner
+# MailAlertsResponseInner
 
 ## Properties
 

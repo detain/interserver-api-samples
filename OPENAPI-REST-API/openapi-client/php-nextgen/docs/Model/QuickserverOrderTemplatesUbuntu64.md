@@ -1,4 +1,4 @@
-# # QuickserverOrderTemplatesUbuntu64
+# QuickserverOrderTemplatesUbuntu64
 
 ## Properties
 

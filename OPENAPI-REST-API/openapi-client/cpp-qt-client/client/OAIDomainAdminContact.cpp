@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainAdminContact::OAIDomainAdminContact(QString json) {
+OAIDomainAdminContact::OAIDomainAdminContact(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -77,7 +77,7 @@ void OAIDomainAdminContact::initializeModel() {
     m_last_name_isValid = false;
 }
 
-void OAIDomainAdminContact::fromJson(QString jsonString) {
+void OAIDomainAdminContact::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

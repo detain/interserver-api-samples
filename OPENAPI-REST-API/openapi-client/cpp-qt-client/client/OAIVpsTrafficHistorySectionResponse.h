@@ -33,13 +33,13 @@ namespace OpenAPI {
 class OAIVpsTrafficHistorySectionResponse : public OAIObject {
 public:
     OAIVpsTrafficHistorySectionResponse();
-    OAIVpsTrafficHistorySectionResponse(QString json);
+    OAIVpsTrafficHistorySectionResponse(const QString &json);
     ~OAIVpsTrafficHistorySectionResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<OAIVpsTrafficHistorySectionDataResponse<OAIVPSTrafficDataDataSectionResponse_inner>> getData() const;
     void setData(const QList<OAIVpsTrafficHistorySectionDataResponse<OAIVPSTrafficDataDataSectionResponse_inner>> &data);

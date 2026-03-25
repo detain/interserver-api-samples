@@ -1,4 +1,4 @@
-# # DomainNameServer
+# DomainNameServer
 
 ## Properties
 

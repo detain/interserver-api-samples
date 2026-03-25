@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerLocation1::OAIServerLocation1(QString json) {
+OAIServerLocation1::OAIServerLocation1(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIServerLocation1::initializeModel() {
     m_location_ipmi_group_isValid = false;
 }
 
-void OAIServerLocation1::fromJson(QString jsonString) {
+void OAIServerLocation1::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -396,6 +396,7 @@ docs/VPSApi.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -858,6 +859,7 @@ lib/OpenAPIClient/Object/UrlRequest.pm
 lib/OpenAPIClient/Object/VPSCancel200Response.pm
 lib/OpenAPIClient/Object/VPSTrafficDataDataSectionResponse.pm
 lib/OpenAPIClient/Object/VPSTrafficDataDataSectionResponseInner.pm
+lib/OpenAPIClient/Object/ViewMailLogStartDateParameter.pm
 lib/OpenAPIClient/Object/ViewTicketResponse.pm
 lib/OpenAPIClient/Object/Vps.pm
 lib/OpenAPIClient/Object/VpsBackupRow.pm
@@ -1332,6 +1334,7 @@ t/VPSApiTest.t
 t/VPSCancel200ResponseTest.t
 t/VPSTrafficDataDataSectionResponseInnerTest.t
 t/VPSTrafficDataDataSectionResponseTest.t
+t/ViewMailLogStartDateParameterTest.t
 t/ViewTicketResponseTest.t
 t/VpsBackupRowTest.t
 t/VpsBackupRowsTest.t

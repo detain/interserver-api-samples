@@ -1,4 +1,4 @@
-# # DomainOrderResponse
+# DomainOrderResponse
 
 ## Properties
 

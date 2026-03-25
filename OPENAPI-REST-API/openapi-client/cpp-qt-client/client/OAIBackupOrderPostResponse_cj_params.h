@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBackupOrderPostResponse_cj_params : public OAIObject {
 public:
     OAIBackupOrderPostResponse_cj_params();
-    OAIBackupOrderPostResponse_cj_params(QString json);
+    OAIBackupOrderPostResponse_cj_params(const QString &json);
     ~OAIBackupOrderPostResponse_cj_params() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getContainerTagId() const;
     void setContainerTagId(const QString &container_tag_id);

@@ -12,58 +12,63 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 
-/** An email record
-  * @param _id internal db id
-  * @param id mail id
-  * @param from from address
-  * @param to to address
-  * @param subject email subject
-  * @param created creation date
-  * @param time creation timestamp
-  * @param user user account
-  * @param transtype transaction type
-  * @param origin origin ip
-  * @param `interface` interface name
-  * @param sendingZone sending zone
-  * @param bodySize email body size in bytes
-  * @param seq index of email in the to adderess list
-  * @param recipient to address this email is being sent to
-  * @param domain to address domain
-  * @param locked locked status
-  * @param lockTime lock timestamp
-  * @param assigned assigned server
-  * @param queued queued timestamp
-  * @param mxHostname mx hostname
-  * @param response mail delivery response
-  * @param messageId message id
+/** A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
+  * @param _id Internal auto-increment database row ID.
+  * @param id The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
+  * @param from SMTP envelope `MAIL FROM` address.
+  * @param to SMTP envelope `RCPT TO` address.
+  * @param created Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
+  * @param time Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
+  * @param user The SMTP AUTH username used to submit the message (e.g. `mb5658`).
+  * @param transtype SMTP transaction type negotiated with the relay.
+  * @param origin IP address of the client that submitted the message to the relay.
+  * @param `interface` Relay interface name that accepted the message.
+  * @param subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+  * @param messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+  * @param sendingZone The sending zone assigned by the relay for outbound delivery.
+  * @param bodySize Size of the message body in bytes.
+  * @param seq Sequence index of this recipient in a multi-recipient message. Starts at 1.
+  * @param delivered Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+  * @param code The SMTP response code from the destination MX server (e.g. `250`).
+  * @param recipient The specific recipient address this delivery record is for.
+  * @param response The full SMTP response string received from the destination MX server.
+  * @param domain The destination domain for this delivery attempt.
+  * @param locked Whether the queue entry is currently locked for delivery processing.
+  * @param lockTime Millisecond-precision timestamp of the last queue lock acquisition.
+  * @param assigned The relay server node assigned to deliver this message.
+  * @param queued ISO 8601 timestamp when the message was placed into the delivery queue.
+  * @param mxHostname The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
   */
 case class MailLogEntry(
     _id: Int,
     id: String,
     from: String,
     to: String,
-    subject: String,
     created: String,
     time: Int,
     user: String,
     transtype: String,
     origin: String,
     `interface`: String,
-    sendingZone: String,
-    bodySize: Int,
-    seq: Int,
-    recipient: String,
-    domain: String,
-    locked: Int,
-    lockTime: Int,
-    assigned: String,
-    queued: String,
-    mxHostname: String,
-    response: String,
-    messageId: Option[String] = None
+    subject: Option[String] = None,
+    messageId: Option[String] = None,
+    sendingZone: Option[String] = None,
+    bodySize: Option[Int] = None,
+    seq: Option[Int] = None,
+    delivered: Option[Int] = None,
+    code: Option[Int] = None,
+    recipient: Option[String] = None,
+    response: Option[String] = None,
+    domain: Option[String] = None,
+    locked: Option[Int] = None,
+    lockTime: Option[String] = None,
+    assigned: Option[String] = None,
+    queued: Option[String] = None,
+    mxHostname: Option[String] = None
 )
   
 object MailLogEntry {
@@ -74,25 +79,27 @@ object MailLogEntry {
         Some("id" -> t.id.asJson),
         Some("from" -> t.from.asJson),
         Some("to" -> t.to.asJson),
-        Some("subject" -> t.subject.asJson),
         Some("created" -> t.created.asJson),
         Some("time" -> t.time.asJson),
         Some("user" -> t.user.asJson),
         Some("transtype" -> t.transtype.asJson),
         Some("origin" -> t.origin.asJson),
         Some("interface" -> t.`interface`.asJson),
-        Some("sendingZone" -> t.sendingZone.asJson),
-        Some("bodySize" -> t.bodySize.asJson),
-        Some("seq" -> t.seq.asJson),
-        Some("recipient" -> t.recipient.asJson),
-        Some("domain" -> t.domain.asJson),
-        Some("locked" -> t.locked.asJson),
-        Some("lockTime" -> t.lockTime.asJson),
-        Some("assigned" -> t.assigned.asJson),
-        Some("queued" -> t.queued.asJson),
-        Some("mxHostname" -> t.mxHostname.asJson),
-        Some("response" -> t.response.asJson),
-        t.messageId.map(v => "messageId" -> v.asJson)
+        t.subject.map(v => "subject" -> v.asJson),
+        t.messageId.map(v => "messageId" -> v.asJson),
+        t.sendingZone.map(v => "sendingZone" -> v.asJson),
+        t.bodySize.map(v => "bodySize" -> v.asJson),
+        t.seq.map(v => "seq" -> v.asJson),
+        t.delivered.map(v => "delivered" -> v.asJson),
+        t.code.map(v => "code" -> v.asJson),
+        t.recipient.map(v => "recipient" -> v.asJson),
+        t.response.map(v => "response" -> v.asJson),
+        t.domain.map(v => "domain" -> v.asJson),
+        t.locked.map(v => "locked" -> v.asJson),
+        t.lockTime.map(v => "lockTime" -> v.asJson),
+        t.assigned.map(v => "assigned" -> v.asJson),
+        t.queued.map(v => "queued" -> v.asJson),
+        t.mxHostname.map(v => "mxHostname" -> v.asJson)
       ).flatten
     }
   }
@@ -102,49 +109,53 @@ object MailLogEntry {
       id <- c.downField("id").as[String]
       from <- c.downField("from").as[String]
       to <- c.downField("to").as[String]
-      subject <- c.downField("subject").as[String]
       created <- c.downField("created").as[String]
       time <- c.downField("time").as[Int]
       user <- c.downField("user").as[String]
       transtype <- c.downField("transtype").as[String]
       origin <- c.downField("origin").as[String]
       `interface` <- c.downField("interface").as[String]
-      sendingZone <- c.downField("sendingZone").as[String]
-      bodySize <- c.downField("bodySize").as[Int]
-      seq <- c.downField("seq").as[Int]
-      recipient <- c.downField("recipient").as[String]
-      domain <- c.downField("domain").as[String]
-      locked <- c.downField("locked").as[Int]
-      lockTime <- c.downField("lockTime").as[Int]
-      assigned <- c.downField("assigned").as[String]
-      queued <- c.downField("queued").as[String]
-      mxHostname <- c.downField("mxHostname").as[String]
-      response <- c.downField("response").as[String]
+      subject <- c.downField("subject").as[Option[String]]
       messageId <- c.downField("messageId").as[Option[String]]
+      sendingZone <- c.downField("sendingZone").as[Option[String]]
+      bodySize <- c.downField("bodySize").as[Option[Int]]
+      seq <- c.downField("seq").as[Option[Int]]
+      delivered <- c.downField("delivered").as[Option[Int]]
+      code <- c.downField("code").as[Option[Int]]
+      recipient <- c.downField("recipient").as[Option[String]]
+      response <- c.downField("response").as[Option[String]]
+      domain <- c.downField("domain").as[Option[String]]
+      locked <- c.downField("locked").as[Option[Int]]
+      lockTime <- c.downField("lockTime").as[Option[String]]
+      assigned <- c.downField("assigned").as[Option[String]]
+      queued <- c.downField("queued").as[Option[String]]
+      mxHostname <- c.downField("mxHostname").as[Option[String]]
     } yield MailLogEntry(
       _id = _id,
       id = id,
       from = from,
       to = to,
-      subject = subject,
       created = created,
       time = time,
       user = user,
       transtype = transtype,
       origin = origin,
       `interface` = `interface`,
+      subject = subject,
+      messageId = messageId,
       sendingZone = sendingZone,
       bodySize = bodySize,
       seq = seq,
+      delivered = delivered,
+      code = code,
       recipient = recipient,
+      response = response,
       domain = domain,
       locked = locked,
       lockTime = lockTime,
       assigned = assigned,
       queued = queued,
-      mxHostname = mxHostname,
-      response = response,
-      messageId = messageId
+      mxHostname = mxHostname
     )
   }
 }

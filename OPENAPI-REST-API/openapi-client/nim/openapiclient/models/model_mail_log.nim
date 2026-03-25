@@ -15,10 +15,10 @@ import options
 import model_mail_log_entry
 
 type MailLog* = object
-  ## Mail log records
-  total*: int ## total number of mail log entries
-  skip*: int ## number of emails skipped in listing
-  limit*: int ## number of emails to return
+  ## Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
+  total*: int ## Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
+  skip*: int ## The `skip` value used for this page (echoed from the request).
+  limit*: int ## The `limit` value used for this page (echoed from the request).
   emails*: seq[MailLogEntry]
 
 

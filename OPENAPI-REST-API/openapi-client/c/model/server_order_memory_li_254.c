@@ -12,18 +12,21 @@ static server_order_memory_li_254_t *server_order_memory_li_254_create_internal(
     if (!server_order_memory_li_254_local_var) {
         return NULL;
     }
-    server_order_memory_li_254_local_var->_65 = _65;
-
+    memset(server_order_memory_li_254_local_var, 0, sizeof(server_order_memory_li_254_t));
     server_order_memory_li_254_local_var->_library_owned = 1;
+    server_order_memory_li_254_local_var->_65 = _65;
     return server_order_memory_li_254_local_var;
 }
 
 __attribute__((deprecated)) server_order_memory_li_254_t *server_order_memory_li_254_create(
     server_order_memory_t *_65
     ) {
-    return server_order_memory_li_254_create_internal (
+    server_order_memory_li_254_t *result = server_order_memory_li_254_create_internal (
         _65
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_order_memory_li_254_free(server_order_memory_li_254_t *server_order_memory_li_254) {
@@ -82,9 +85,14 @@ server_order_memory_li_254_t *server_order_memory_li_254_parseFromJSON(cJSON *se
     }
 
 
+
     server_order_memory_li_254_local_var = server_order_memory_li_254_create_internal (
         _65 ? _65_local_nonprim : NULL
         );
+
+    if (!server_order_memory_li_254_local_var) {
+        goto end;
+    }
 
     return server_order_memory_li_254_local_var;
 end:

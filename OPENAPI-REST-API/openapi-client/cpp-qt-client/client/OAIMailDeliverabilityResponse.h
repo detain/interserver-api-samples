@@ -33,13 +33,13 @@ namespace OpenAPI {
 class OAIMailDeliverabilityResponse : public OAIObject {
 public:
     OAIMailDeliverabilityResponse();
-    OAIMailDeliverabilityResponse(QString json);
+    OAIMailDeliverabilityResponse(const QString &json);
     ~OAIMailDeliverabilityResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIObject getStat() const;
     void setStat(const OAIObject &stat);

@@ -32,13 +32,13 @@ class OAILicensesOrderServiceCategories509;
 class OAILicensesOrder_serviceCategories : public OAIObject {
 public:
     OAILicensesOrder_serviceCategories();
-    OAILicensesOrder_serviceCategories(QString json);
+    OAILicensesOrder_serviceCategories(const QString &json);
     ~OAILicensesOrder_serviceCategories() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAILicensesOrderServiceCategories509 getLicensesOrderServiceCategories509() const;
     void setLicensesOrderServiceCategories509(const OAILicensesOrderServiceCategories509 &licenses_order_service_categories509);

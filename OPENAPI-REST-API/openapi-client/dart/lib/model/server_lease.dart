@@ -62,10 +62,12 @@ class ServerLease {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerLease[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerLease[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'mac'), 'Required key "ServerLease[mac]" is missing from JSON.');
+        assert(json[r'mac'] != null, 'Required key "ServerLease[mac]" has a null value in JSON.');
+        assert(json.containsKey(r'authenticated'), 'Required key "ServerLease[authenticated]" is missing from JSON.');
+        assert(json[r'authenticated'] != null, 'Required key "ServerLease[authenticated]" has a null value in JSON.');
+        assert(json.containsKey(r'group'), 'Required key "ServerLease[group]" is missing from JSON.');
+        assert(json[r'group'] != null, 'Required key "ServerLease[group]" has a null value in JSON.');
         return true;
       }());
 

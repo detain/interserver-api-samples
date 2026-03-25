@@ -1,4 +1,4 @@
-# # QuickserverExtraInfoTables
+# QuickserverExtraInfoTables
 
 ## Properties
 

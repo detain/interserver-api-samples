@@ -47,13 +47,13 @@ class OAIVpsOrder_serviceTypes;
 class OAIVpsOrder : public OAIObject {
 public:
     OAIVpsOrder();
-    OAIVpsOrder(QString json);
+    OAIVpsOrder(const QString &json);
     ~OAIVpsOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getVpsSliceSsdOvzCost() const;
     void setVpsSliceSsdOvzCost(const double &vps_slice_ssd_ovz_cost);

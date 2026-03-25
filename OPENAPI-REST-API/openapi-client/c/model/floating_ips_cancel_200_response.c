@@ -6,28 +6,37 @@
 
 
 static floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_local_var = malloc(sizeof(floating_ips_cancel_200_response_t));
     if (!floating_ips_cancel_200_response_local_var) {
         return NULL;
     }
+    memset(floating_ips_cancel_200_response_local_var, 0, sizeof(floating_ips_cancel_200_response_t));
+    floating_ips_cancel_200_response_local_var->_library_owned = 1;
     floating_ips_cancel_200_response_local_var->success = success;
     floating_ips_cancel_200_response_local_var->text = text;
-
-    floating_ips_cancel_200_response_local_var->_library_owned = 1;
     return floating_ips_cancel_200_response_local_var;
 }
 
 __attribute__((deprecated)) floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return floating_ips_cancel_200_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    floating_ips_cancel_200_response_t *result = floating_ips_cancel_200_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void floating_ips_cancel_200_response_free(floating_ips_cancel_200_response_t *floating_ips_cancel_200_response) {
@@ -39,6 +48,10 @@ void floating_ips_cancel_200_response_free(floating_ips_cancel_200_response_t *f
         return ;
     }
     listEntry_t *listEntry;
+    if (floating_ips_cancel_200_response->success) {
+        free(floating_ips_cancel_200_response->success);
+        floating_ips_cancel_200_response->success = NULL;
+    }
     if (floating_ips_cancel_200_response->text) {
         free(floating_ips_cancel_200_response->text);
         floating_ips_cancel_200_response->text = NULL;
@@ -53,7 +66,7 @@ cJSON *floating_ips_cancel_200_response_convertToJSON(floating_ips_cancel_200_re
     if (!floating_ips_cancel_200_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", floating_ips_cancel_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *floating_ips_cancel_200_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -78,6 +91,11 @@ floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_parseFromJS
 
     floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_local_var = NULL;
 
+    // define the local variable for floating_ips_cancel_200_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // floating_ips_cancel_200_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(floating_ips_cancel_200_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -92,6 +110,12 @@ floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_parseFromJS
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // floating_ips_cancel_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(floating_ips_cancel_200_responseJSON, "text");
@@ -109,13 +133,27 @@ floating_ips_cancel_200_response_t *floating_ips_cancel_200_response_parseFromJS
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     floating_ips_cancel_200_response_local_var = floating_ips_cancel_200_response_create_internal (
-        success->valueint,
-        strdup(text->valuestring)
+        success_local_var,
+        text_local_str
         );
+
+    if (!floating_ips_cancel_200_response_local_var) {
+        goto end;
+    }
 
     return floating_ips_cancel_200_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -6,32 +6,47 @@
 
 
 static control_panel_t *control_panel_create_internal(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price
+    double *monthly_price
     ) {
     control_panel_t *control_panel_local_var = malloc(sizeof(control_panel_t));
     if (!control_panel_local_var) {
         return NULL;
     }
+    memset(control_panel_local_var, 0, sizeof(control_panel_t));
+    control_panel_local_var->_library_owned = 1;
     control_panel_local_var->id = id;
     control_panel_local_var->short_desc = short_desc;
     control_panel_local_var->monthly_price = monthly_price;
-
-    control_panel_local_var->_library_owned = 1;
     return control_panel_local_var;
 }
 
 __attribute__((deprecated)) control_panel_t *control_panel_create(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price
+    double *monthly_price
     ) {
-    return control_panel_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    double *monthly_price_copy = NULL;
+    if (monthly_price) {
+        monthly_price_copy = malloc(sizeof(double));
+        if (monthly_price_copy) *monthly_price_copy = *monthly_price;
+    }
+    control_panel_t *result = control_panel_create_internal (
+        id_copy,
         short_desc,
-        monthly_price
+        monthly_price_copy
         );
+    if (!result) {
+        free(id_copy);
+        free(monthly_price_copy);
+    }
+    return result;
 }
 
 void control_panel_free(control_panel_t *control_panel) {
@@ -43,9 +58,17 @@ void control_panel_free(control_panel_t *control_panel) {
         return ;
     }
     listEntry_t *listEntry;
+    if (control_panel->id) {
+        free(control_panel->id);
+        control_panel->id = NULL;
+    }
     if (control_panel->short_desc) {
         free(control_panel->short_desc);
         control_panel->short_desc = NULL;
+    }
+    if (control_panel->monthly_price) {
+        free(control_panel->monthly_price);
+        control_panel->monthly_price = NULL;
     }
     free(control_panel);
 }
@@ -55,7 +78,7 @@ cJSON *control_panel_convertToJSON(control_panel_t *control_panel) {
 
     // control_panel->id
     if(control_panel->id) {
-    if(cJSON_AddNumberToObject(item, "id", control_panel->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *control_panel->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -71,7 +94,7 @@ cJSON *control_panel_convertToJSON(control_panel_t *control_panel) {
 
     // control_panel->monthly_price
     if(control_panel->monthly_price) {
-    if(cJSON_AddNumberToObject(item, "monthly_price", control_panel->monthly_price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_price", *control_panel->monthly_price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -88,6 +111,14 @@ control_panel_t *control_panel_parseFromJSON(cJSON *control_panelJSON){
 
     control_panel_t *control_panel_local_var = NULL;
 
+    // define the local variable for control_panel->id
+    int *id_local_var = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    // define the local variable for control_panel->monthly_price
+    double *monthly_price_local_var = NULL;
+
     // control_panel->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(control_panelJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -98,6 +129,12 @@ control_panel_t *control_panel_parseFromJSON(cJSON *control_panelJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // control_panel->short_desc
@@ -122,17 +159,41 @@ control_panel_t *control_panel_parseFromJSON(cJSON *control_panelJSON){
     {
     goto end; //Numeric
     }
+    monthly_price_local_var = malloc(sizeof(double));
+    if(!monthly_price_local_var)
+    {
+        goto end;
+    }
+    *monthly_price_local_var = monthly_price->valuedouble;
     }
 
 
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+
     control_panel_local_var = control_panel_create_internal (
-        id ? id->valuedouble : 0,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        monthly_price ? monthly_price->valuedouble : 0
+        id_local_var,
+        short_desc_local_str,
+        monthly_price_local_var
         );
+
+    if (!control_panel_local_var) {
+        goto end;
+    }
 
     return control_panel_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (monthly_price_local_var) {
+        free(monthly_price_local_var);
+        monthly_price_local_var = NULL;
+    }
     return NULL;
 
 }

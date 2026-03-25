@@ -20,7 +20,7 @@ typedef struct billing_prepay_request_t billing_prepay_request_t;
 
 typedef struct billing_prepay_request_t {
     char *module; // string
-    double amount; //numeric
+    double *amount; //numeric
     char *automatic_use; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -28,7 +28,7 @@ typedef struct billing_prepay_request_t {
 
 __attribute__((deprecated)) billing_prepay_request_t *billing_prepay_request_create(
     char *module,
-    double amount,
+    double *amount,
     char *automatic_use
 );
 

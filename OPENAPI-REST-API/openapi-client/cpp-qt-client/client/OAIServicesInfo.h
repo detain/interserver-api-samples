@@ -34,13 +34,13 @@ namespace OpenAPI {
 class OAIServicesInfo : public OAIObject {
 public:
     OAIServicesInfo();
-    OAIServicesInfo(QString json);
+    OAIServicesInfo(const QString &json);
     ~OAIServicesInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIModules<QString, OAIModuleSettings> getModules() const;
     void setModules(const OAIModules<QString, OAIModuleSettings> &modules);

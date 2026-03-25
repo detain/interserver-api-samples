@@ -12,18 +12,21 @@ static licenses_order_service_categories_t *licenses_order_service_categories_cr
     if (!licenses_order_service_categories_local_var) {
         return NULL;
     }
-    licenses_order_service_categories_local_var->licenses_order_service_categories509 = licenses_order_service_categories509;
-
+    memset(licenses_order_service_categories_local_var, 0, sizeof(licenses_order_service_categories_t));
     licenses_order_service_categories_local_var->_library_owned = 1;
+    licenses_order_service_categories_local_var->licenses_order_service_categories509 = licenses_order_service_categories509;
     return licenses_order_service_categories_local_var;
 }
 
 __attribute__((deprecated)) licenses_order_service_categories_t *licenses_order_service_categories_create(
     licenses_order_service_categories509_t *licenses_order_service_categories509
     ) {
-    return licenses_order_service_categories_create_internal (
+    licenses_order_service_categories_t *result = licenses_order_service_categories_create_internal (
         licenses_order_service_categories509
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void licenses_order_service_categories_free(licenses_order_service_categories_t *licenses_order_service_categories) {
@@ -82,9 +85,14 @@ licenses_order_service_categories_t *licenses_order_service_categories_parseFrom
     }
 
 
+
     licenses_order_service_categories_local_var = licenses_order_service_categories_create_internal (
         licenses_order_service_categories509 ? licenses_order_service_categories509_local_nonprim : NULL
         );
+
+    if (!licenses_order_service_categories_local_var) {
+        goto end;
+    }
 
     return licenses_order_service_categories_local_var;
 end:

@@ -321,32 +321,6 @@ void OAIDomainsApi::addDomainCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addDomainSignal();
         Q_EMIT addDomainSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addDomainSignalE(error_type, error_str);
-        Q_EMIT addDomainSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addDomainSignalError(error_type, error_str);
         Q_EMIT addDomainSignalErrorFull(worker, error_type, error_str);
     }
@@ -418,32 +392,6 @@ void OAIDomainsApi::addDomainDnssecCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addDomainDnssecSignal(output);
         Q_EMIT addDomainDnssecSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addDomainDnssecSignalE(output, error_type, error_str);
-        Q_EMIT addDomainDnssecSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addDomainDnssecSignalError(output, error_type, error_str);
         Q_EMIT addDomainDnssecSignalErrorFull(worker, error_type, error_str);
     }
@@ -515,32 +463,6 @@ void OAIDomainsApi::addDomainNameserverCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addDomainNameserverSignal(output);
         Q_EMIT addDomainNameserverSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addDomainNameserverSignalE(output, error_type, error_str);
-        Q_EMIT addDomainNameserverSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addDomainNameserverSignalError(output, error_type, error_str);
         Q_EMIT addDomainNameserverSignalErrorFull(worker, error_type, error_str);
     }
@@ -607,32 +529,6 @@ void OAIDomainsApi::cancelDomainCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT cancelDomainSignal(output);
         Q_EMIT cancelDomainSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT cancelDomainSignalE(output, error_type, error_str);
-        Q_EMIT cancelDomainSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT cancelDomainSignalError(output, error_type, error_str);
         Q_EMIT cancelDomainSignalErrorFull(worker, error_type, error_str);
     }
@@ -715,32 +611,6 @@ void OAIDomainsApi::deleteDomainDnssecCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteDomainDnssecSignal(output);
         Q_EMIT deleteDomainDnssecSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteDomainDnssecSignalE(output, error_type, error_str);
-        Q_EMIT deleteDomainDnssecSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteDomainDnssecSignalError(output, error_type, error_str);
         Q_EMIT deleteDomainDnssecSignalErrorFull(worker, error_type, error_str);
     }
@@ -823,32 +693,6 @@ void OAIDomainsApi::deleteDomainNameserverCallback(OAIHttpRequestWorker *worker)
         Q_EMIT deleteDomainNameserverSignal(output);
         Q_EMIT deleteDomainNameserverSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteDomainNameserverSignalE(output, error_type, error_str);
-        Q_EMIT deleteDomainNameserverSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteDomainNameserverSignalError(output, error_type, error_str);
         Q_EMIT deleteDomainNameserverSignalErrorFull(worker, error_type, error_str);
     }
@@ -915,32 +759,6 @@ void OAIDomainsApi::getDomainContactCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainContactSignal(output);
         Q_EMIT getDomainContactSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainContactSignalE(output, error_type, error_str);
-        Q_EMIT getDomainContactSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainContactSignalError(output, error_type, error_str);
         Q_EMIT getDomainContactSignalErrorFull(worker, error_type, error_str);
     }
@@ -1007,32 +825,6 @@ void OAIDomainsApi::getDomainDnssecCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainDnssecSignal(output);
         Q_EMIT getDomainDnssecSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainDnssecSignalE(output, error_type, error_str);
-        Q_EMIT getDomainDnssecSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainDnssecSignalError(output, error_type, error_str);
         Q_EMIT getDomainDnssecSignalErrorFull(worker, error_type, error_str);
     }
@@ -1099,32 +891,6 @@ void OAIDomainsApi::getDomainInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainInfoSignal(output);
         Q_EMIT getDomainInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainInfoSignalE(output, error_type, error_str);
-        Q_EMIT getDomainInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainInfoSignalError(output, error_type, error_str);
         Q_EMIT getDomainInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -1191,32 +957,6 @@ void OAIDomainsApi::getDomainInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainInvoicesSignal(output);
         Q_EMIT getDomainInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getDomainInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getDomainInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1283,32 +1023,6 @@ void OAIDomainsApi::getDomainLookupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainLookupSignal(output);
         Q_EMIT getDomainLookupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainLookupSignalE(output, error_type, error_str);
-        Q_EMIT getDomainLookupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainLookupSignalError(output, error_type, error_str);
         Q_EMIT getDomainLookupSignalErrorFull(worker, error_type, error_str);
     }
@@ -1375,32 +1089,6 @@ void OAIDomainsApi::getDomainNameserversCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainNameserversSignal(output);
         Q_EMIT getDomainNameserversSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainNameserversSignalE(output, error_type, error_str);
-        Q_EMIT getDomainNameserversSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainNameserversSignalError(output, error_type, error_str);
         Q_EMIT getDomainNameserversSignalErrorFull(worker, error_type, error_str);
     }
@@ -1480,32 +1168,6 @@ void OAIDomainsApi::getDomainOrderFieldsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainOrderFieldsSignal();
         Q_EMIT getDomainOrderFieldsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainOrderFieldsSignalE(error_type, error_str);
-        Q_EMIT getDomainOrderFieldsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainOrderFieldsSignalError(error_type, error_str);
         Q_EMIT getDomainOrderFieldsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1571,32 +1233,6 @@ void OAIDomainsApi::getDomainOrderSearchResultsCallback(OAIHttpRequestWorker *wo
         Q_EMIT getDomainOrderSearchResultsSignal();
         Q_EMIT getDomainOrderSearchResultsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainOrderSearchResultsSignalE(error_type, error_str);
-        Q_EMIT getDomainOrderSearchResultsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainOrderSearchResultsSignalError(error_type, error_str);
         Q_EMIT getDomainOrderSearchResultsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1663,32 +1299,6 @@ void OAIDomainsApi::getDomainRenewalCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainRenewalSignal(output);
         Q_EMIT getDomainRenewalSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainRenewalSignalE(output, error_type, error_str);
-        Q_EMIT getDomainRenewalSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainRenewalSignalError(output, error_type, error_str);
         Q_EMIT getDomainRenewalSignalErrorFull(worker, error_type, error_str);
     }
@@ -1755,32 +1365,6 @@ void OAIDomainsApi::getDomainSearchCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainSearchSignal(output);
         Q_EMIT getDomainSearchSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainSearchSignalE(output, error_type, error_str);
-        Q_EMIT getDomainSearchSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainSearchSignalError(output, error_type, error_str);
         Q_EMIT getDomainSearchSignalErrorFull(worker, error_type, error_str);
     }
@@ -1847,32 +1431,6 @@ void OAIDomainsApi::getDomainTransferCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainTransferSignal(output);
         Q_EMIT getDomainTransferSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainTransferSignalE(output, error_type, error_str);
-        Q_EMIT getDomainTransferSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainTransferSignalError(output, error_type, error_str);
         Q_EMIT getDomainTransferSignalErrorFull(worker, error_type, error_str);
     }
@@ -1939,32 +1497,6 @@ void OAIDomainsApi::getDomainWhoisPrivacyCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT getDomainWhoisPrivacySignal(output);
         Q_EMIT getDomainWhoisPrivacySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainWhoisPrivacySignalE(output, error_type, error_str);
-        Q_EMIT getDomainWhoisPrivacySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainWhoisPrivacySignalError(output, error_type, error_str);
         Q_EMIT getDomainWhoisPrivacySignalErrorFull(worker, error_type, error_str);
     }
@@ -2026,32 +1558,6 @@ void OAIDomainsApi::getDomainsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDomainsListSignal(output);
         Q_EMIT getDomainsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainsListSignalE(output, error_type, error_str);
-        Q_EMIT getDomainsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainsListSignalError(output, error_type, error_str);
         Q_EMIT getDomainsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -2118,32 +1624,6 @@ void OAIDomainsApi::getDomainsWelcomeEmailCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getDomainsWelcomeEmailSignal(output);
         Q_EMIT getDomainsWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDomainsWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getDomainsWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDomainsWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getDomainsWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -2196,32 +1676,6 @@ void OAIDomainsApi::getNewDomainCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewDomainSignal(output);
         Q_EMIT getNewDomainSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewDomainSignalE(output, error_type, error_str);
-        Q_EMIT getNewDomainSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewDomainSignalError(output, error_type, error_str);
         Q_EMIT getNewDomainSignalErrorFull(worker, error_type, error_str);
     }
@@ -2273,32 +1727,6 @@ void OAIDomainsApi::patchDomainsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT patchDomainsSignal();
         Q_EMIT patchDomainsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT patchDomainsSignalE(error_type, error_str);
-        Q_EMIT patchDomainsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT patchDomainsSignalError(error_type, error_str);
         Q_EMIT patchDomainsSignalErrorFull(worker, error_type, error_str);
     }
@@ -2365,32 +1793,6 @@ void OAIDomainsApi::postDomainRenewalCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postDomainRenewalSignal(output);
         Q_EMIT postDomainRenewalSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postDomainRenewalSignalE(output, error_type, error_str);
-        Q_EMIT postDomainRenewalSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postDomainRenewalSignalError(output, error_type, error_str);
         Q_EMIT postDomainRenewalSignalErrorFull(worker, error_type, error_str);
     }
@@ -2457,32 +1859,6 @@ void OAIDomainsApi::postDomainTransferCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postDomainTransferSignal(output);
         Q_EMIT postDomainTransferSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postDomainTransferSignalE(output, error_type, error_str);
-        Q_EMIT postDomainTransferSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postDomainTransferSignalError(output, error_type, error_str);
         Q_EMIT postDomainTransferSignalErrorFull(worker, error_type, error_str);
     }
@@ -2534,32 +1910,6 @@ void OAIDomainsApi::putDomainsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putDomainsSignal();
         Q_EMIT putDomainsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putDomainsSignalE(error_type, error_str);
-        Q_EMIT putDomainsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putDomainsSignalError(error_type, error_str);
         Q_EMIT putDomainsSignalErrorFull(worker, error_type, error_str);
     }
@@ -2631,32 +1981,6 @@ void OAIDomainsApi::updateDomainContactCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateDomainContactSignal(output);
         Q_EMIT updateDomainContactSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateDomainContactSignalE(output, error_type, error_str);
-        Q_EMIT updateDomainContactSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateDomainContactSignalError(output, error_type, error_str);
         Q_EMIT updateDomainContactSignalErrorFull(worker, error_type, error_str);
     }
@@ -2722,32 +2046,6 @@ void OAIDomainsApi::updateDomainInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateDomainInfoSignal();
         Q_EMIT updateDomainInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateDomainInfoSignalE(error_type, error_str);
-        Q_EMIT updateDomainInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateDomainInfoSignalError(error_type, error_str);
         Q_EMIT updateDomainInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -2819,32 +2117,6 @@ void OAIDomainsApi::updateDomainNameserversCallback(OAIHttpRequestWorker *worker
         Q_EMIT updateDomainNameserversSignal(output);
         Q_EMIT updateDomainNameserversSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateDomainNameserversSignalE(output, error_type, error_str);
-        Q_EMIT updateDomainNameserversSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateDomainNameserversSignalError(output, error_type, error_str);
         Q_EMIT updateDomainNameserversSignalErrorFull(worker, error_type, error_str);
     }
@@ -2916,42 +2188,16 @@ void OAIDomainsApi::updateDomainWhoisPrivacyCallback(OAIHttpRequestWorker *worke
         Q_EMIT updateDomainWhoisPrivacySignal(output);
         Q_EMIT updateDomainWhoisPrivacySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateDomainWhoisPrivacySignalE(output, error_type, error_str);
-        Q_EMIT updateDomainWhoisPrivacySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateDomainWhoisPrivacySignalError(output, error_type, error_str);
         Q_EMIT updateDomainWhoisPrivacySignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIDomainsApi::tokenAvailable(){
+void OAIDomainsApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2961,7 +2207,7 @@ void OAIDomainsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2971,7 +2217,7 @@ void OAIDomainsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2981,7 +2227,7 @@ void OAIDomainsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

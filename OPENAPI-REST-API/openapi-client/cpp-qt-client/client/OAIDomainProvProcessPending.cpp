@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainProvProcessPending::OAIDomainProvProcessPending(QString json) {
+OAIDomainProvProcessPending::OAIDomainProvProcessPending(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIDomainProvProcessPending::initializeModel() {
     m_attributes_isValid = false;
 }
 
-void OAIDomainProvProcessPending::fromJson(QString jsonString) {
+void OAIDomainProvProcessPending::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMailBlockRspamd : public OAIObject {
 public:
     OAIMailBlockRspamd();
-    OAIMailBlockRspamd(QString json);
+    OAIMailBlockRspamd(const QString &json);
     ~OAIMailBlockRspamd() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getFrom() const;
     void setFrom(const QString &from);

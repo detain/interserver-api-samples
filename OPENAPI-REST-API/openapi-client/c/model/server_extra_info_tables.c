@@ -12,18 +12,21 @@ static server_extra_info_tables_t *server_extra_info_tables_create_internal(
     if (!server_extra_info_tables_local_var) {
         return NULL;
     }
-    server_extra_info_tables_local_var->assets = assets;
-
+    memset(server_extra_info_tables_local_var, 0, sizeof(server_extra_info_tables_t));
     server_extra_info_tables_local_var->_library_owned = 1;
+    server_extra_info_tables_local_var->assets = assets;
     return server_extra_info_tables_local_var;
 }
 
 __attribute__((deprecated)) server_extra_info_tables_t *server_extra_info_tables_create(
     server_assets_t *assets
     ) {
-    return server_extra_info_tables_create_internal (
+    server_extra_info_tables_t *result = server_extra_info_tables_create_internal (
         assets
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_extra_info_tables_free(server_extra_info_tables_t *server_extra_info_tables) {
@@ -86,9 +89,14 @@ server_extra_info_tables_t *server_extra_info_tables_parseFromJSON(cJSON *server
     assets_local_nonprim = server_assets_parseFromJSON(assets); //nonprimitive
 
 
+
     server_extra_info_tables_local_var = server_extra_info_tables_create_internal (
         assets_local_nonprim
         );
+
+    if (!server_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return server_extra_info_tables_local_var;
 end:

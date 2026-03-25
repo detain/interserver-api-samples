@@ -13,7 +13,7 @@
 /*
  * OAIMailLogEntry.h
  *
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  */
 
 #ifndef OAIMailLogEntry_H
@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMailLogEntry : public OAIObject {
 public:
     OAIMailLogEntry();
-    OAIMailLogEntry(QString json);
+    OAIMailLogEntry(const QString &json);
     ~OAIMailLogEntry() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getId() const;
     void setId(const qint32 &_id);
@@ -58,11 +58,6 @@ public:
     void setTo(const QString &to);
     bool is_to_Set() const;
     bool is_to_Valid() const;
-
-    QString getSubject() const;
-    void setSubject(const QString &subject);
-    bool is_subject_Set() const;
-    bool is_subject_Valid() const;
 
     QString getCreated() const;
     void setCreated(const QString &created);
@@ -94,6 +89,16 @@ public:
     bool is_interface_Set() const;
     bool is_interface_Valid() const;
 
+    QString getSubject() const;
+    void setSubject(const QString &subject);
+    bool is_subject_Set() const;
+    bool is_subject_Valid() const;
+
+    QString getMessageId() const;
+    void setMessageId(const QString &message_id);
+    bool is_message_id_Set() const;
+    bool is_message_id_Valid() const;
+
     QString getSendingZone() const;
     void setSendingZone(const QString &sending_zone);
     bool is_sending_zone_Set() const;
@@ -109,10 +114,25 @@ public:
     bool is_seq_Set() const;
     bool is_seq_Valid() const;
 
+    qint32 getDelivered() const;
+    void setDelivered(const qint32 &delivered);
+    bool is_delivered_Set() const;
+    bool is_delivered_Valid() const;
+
+    qint32 getCode() const;
+    void setCode(const qint32 &code);
+    bool is_code_Set() const;
+    bool is_code_Valid() const;
+
     QString getRecipient() const;
     void setRecipient(const QString &recipient);
     bool is_recipient_Set() const;
     bool is_recipient_Valid() const;
+
+    QString getResponse() const;
+    void setResponse(const QString &response);
+    bool is_response_Set() const;
+    bool is_response_Valid() const;
 
     QString getDomain() const;
     void setDomain(const QString &domain);
@@ -124,8 +144,8 @@ public:
     bool is_locked_Set() const;
     bool is_locked_Valid() const;
 
-    qint32 getLockTime() const;
-    void setLockTime(const qint32 &lock_time);
+    QString getLockTime() const;
+    void setLockTime(const QString &lock_time);
     bool is_lock_time_Set() const;
     bool is_lock_time_Valid() const;
 
@@ -143,16 +163,6 @@ public:
     void setMxHostname(const QString &mx_hostname);
     bool is_mx_hostname_Set() const;
     bool is_mx_hostname_Valid() const;
-
-    QString getResponse() const;
-    void setResponse(const QString &response);
-    bool is_response_Set() const;
-    bool is_response_Valid() const;
-
-    QString getMessageId() const;
-    void setMessageId(const QString &message_id);
-    bool is_message_id_Set() const;
-    bool is_message_id_Valid() const;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;
@@ -175,10 +185,6 @@ private:
     QString m_to;
     bool m_to_isSet;
     bool m_to_isValid;
-
-    QString m_subject;
-    bool m_subject_isSet;
-    bool m_subject_isValid;
 
     QString m_created;
     bool m_created_isSet;
@@ -204,6 +210,14 @@ private:
     bool m_interface_isSet;
     bool m_interface_isValid;
 
+    QString m_subject;
+    bool m_subject_isSet;
+    bool m_subject_isValid;
+
+    QString m_message_id;
+    bool m_message_id_isSet;
+    bool m_message_id_isValid;
+
     QString m_sending_zone;
     bool m_sending_zone_isSet;
     bool m_sending_zone_isValid;
@@ -216,9 +230,21 @@ private:
     bool m_seq_isSet;
     bool m_seq_isValid;
 
+    qint32 m_delivered;
+    bool m_delivered_isSet;
+    bool m_delivered_isValid;
+
+    qint32 m_code;
+    bool m_code_isSet;
+    bool m_code_isValid;
+
     QString m_recipient;
     bool m_recipient_isSet;
     bool m_recipient_isValid;
+
+    QString m_response;
+    bool m_response_isSet;
+    bool m_response_isValid;
 
     QString m_domain;
     bool m_domain_isSet;
@@ -228,7 +254,7 @@ private:
     bool m_locked_isSet;
     bool m_locked_isValid;
 
-    qint32 m_lock_time;
+    QString m_lock_time;
     bool m_lock_time_isSet;
     bool m_lock_time_isValid;
 
@@ -243,14 +269,6 @@ private:
     QString m_mx_hostname;
     bool m_mx_hostname_isSet;
     bool m_mx_hostname_isValid;
-
-    QString m_response;
-    bool m_response_isSet;
-    bool m_response_isValid;
-
-    QString m_message_id;
-    bool m_message_id_isSet;
-    bool m_message_id_isValid;
 };
 
 } // namespace OpenAPI

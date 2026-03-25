@@ -400,6 +400,7 @@ src/gatling/scala/org/openapitools/client/model/UrlRequest.scala
 src/gatling/scala/org/openapitools/client/model/VPSCancel200Response.scala
 src/gatling/scala/org/openapitools/client/model/VPSTrafficDataDataSectionResponse.scala
 src/gatling/scala/org/openapitools/client/model/VPSTrafficDataDataSectionResponseInner.scala
+src/gatling/scala/org/openapitools/client/model/ViewMailLogStartDateParameter.scala
 src/gatling/scala/org/openapitools/client/model/ViewTicketResponse.scala
 src/gatling/scala/org/openapitools/client/model/Vps.scala
 src/gatling/scala/org/openapitools/client/model/VpsBackupRow.scala

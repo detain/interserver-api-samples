@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAccountInfoLimits_inner : public OAIObject {
 public:
     OAIAccountInfoLimits_inner();
-    OAIAccountInfoLimits_inner(QString json);
+    OAIAccountInfoLimits_inner(const QString &json);
     ~OAIAccountInfoLimits_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getStart() const;
     void setStart(const QString &start);

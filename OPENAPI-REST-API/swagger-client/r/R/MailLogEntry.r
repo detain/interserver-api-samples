@@ -23,14 +23,16 @@
 #' @field sendingZone 
 #' @field bodySize 
 #' @field seq 
+#' @field delivered 
+#' @field code 
 #' @field recipient 
+#' @field response 
 #' @field domain 
 #' @field locked 
 #' @field lockTime 
 #' @field assigned 
 #' @field queued 
 #' @field mxHostname 
-#' @field response 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -53,15 +55,17 @@ MailLogEntry <- R6::R6Class(
     `sendingZone` = NULL,
     `bodySize` = NULL,
     `seq` = NULL,
+    `delivered` = NULL,
+    `code` = NULL,
     `recipient` = NULL,
+    `response` = NULL,
     `domain` = NULL,
     `locked` = NULL,
     `lockTime` = NULL,
     `assigned` = NULL,
     `queued` = NULL,
     `mxHostname` = NULL,
-    `response` = NULL,
-    initialize = function(`_id`, `id`, `from`, `to`, `subject`, `messageId`, `created`, `time`, `user`, `transtype`, `origin`, `interface`, `sendingZone`, `bodySize`, `seq`, `recipient`, `domain`, `locked`, `lockTime`, `assigned`, `queued`, `mxHostname`, `response`){
+    initialize = function(`_id`, `id`, `from`, `to`, `subject`, `messageId`, `created`, `time`, `user`, `transtype`, `origin`, `interface`, `sendingZone`, `bodySize`, `seq`, `delivered`, `code`, `recipient`, `response`, `domain`, `locked`, `lockTime`, `assigned`, `queued`, `mxHostname`){
       if (!missing(`_id`)) {
         stopifnot(is.numeric(`_id`), length(`_id`) == 1)
         self$`_id` <- `_id`
@@ -122,9 +126,21 @@ MailLogEntry <- R6::R6Class(
         stopifnot(is.numeric(`seq`), length(`seq`) == 1)
         self$`seq` <- `seq`
       }
+      if (!missing(`delivered`)) {
+        stopifnot(is.numeric(`delivered`), length(`delivered`) == 1)
+        self$`delivered` <- `delivered`
+      }
+      if (!missing(`code`)) {
+        stopifnot(is.numeric(`code`), length(`code`) == 1)
+        self$`code` <- `code`
+      }
       if (!missing(`recipient`)) {
         stopifnot(is.character(`recipient`), length(`recipient`) == 1)
         self$`recipient` <- `recipient`
+      }
+      if (!missing(`response`)) {
+        stopifnot(is.character(`response`), length(`response`) == 1)
+        self$`response` <- `response`
       }
       if (!missing(`domain`)) {
         stopifnot(is.character(`domain`), length(`domain`) == 1)
@@ -135,7 +151,7 @@ MailLogEntry <- R6::R6Class(
         self$`locked` <- `locked`
       }
       if (!missing(`lockTime`)) {
-        stopifnot(is.numeric(`lockTime`), length(`lockTime`) == 1)
+        stopifnot(is.character(`lockTime`), length(`lockTime`) == 1)
         self$`lockTime` <- `lockTime`
       }
       if (!missing(`assigned`)) {
@@ -149,10 +165,6 @@ MailLogEntry <- R6::R6Class(
       if (!missing(`mxHostname`)) {
         stopifnot(is.character(`mxHostname`), length(`mxHostname`) == 1)
         self$`mxHostname` <- `mxHostname`
-      }
-      if (!missing(`response`)) {
-        stopifnot(is.character(`response`), length(`response`) == 1)
-        self$`response` <- `response`
       }
     },
     toJSON = function() {
@@ -202,8 +214,17 @@ MailLogEntry <- R6::R6Class(
       if (!is.null(self$`seq`)) {
         MailLogEntryObject[['seq']] <- self$`seq`
       }
+      if (!is.null(self$`delivered`)) {
+        MailLogEntryObject[['delivered']] <- self$`delivered`
+      }
+      if (!is.null(self$`code`)) {
+        MailLogEntryObject[['code']] <- self$`code`
+      }
       if (!is.null(self$`recipient`)) {
         MailLogEntryObject[['recipient']] <- self$`recipient`
+      }
+      if (!is.null(self$`response`)) {
+        MailLogEntryObject[['response']] <- self$`response`
       }
       if (!is.null(self$`domain`)) {
         MailLogEntryObject[['domain']] <- self$`domain`
@@ -222,9 +243,6 @@ MailLogEntry <- R6::R6Class(
       }
       if (!is.null(self$`mxHostname`)) {
         MailLogEntryObject[['mxHostname']] <- self$`mxHostname`
-      }
-      if (!is.null(self$`response`)) {
-        MailLogEntryObject[['response']] <- self$`response`
       }
 
       MailLogEntryObject
@@ -276,8 +294,17 @@ MailLogEntry <- R6::R6Class(
       if (!is.null(MailLogEntryObject$`seq`)) {
         self$`seq` <- MailLogEntryObject$`seq`
       }
+      if (!is.null(MailLogEntryObject$`delivered`)) {
+        self$`delivered` <- MailLogEntryObject$`delivered`
+      }
+      if (!is.null(MailLogEntryObject$`code`)) {
+        self$`code` <- MailLogEntryObject$`code`
+      }
       if (!is.null(MailLogEntryObject$`recipient`)) {
         self$`recipient` <- MailLogEntryObject$`recipient`
+      }
+      if (!is.null(MailLogEntryObject$`response`)) {
+        self$`response` <- MailLogEntryObject$`response`
       }
       if (!is.null(MailLogEntryObject$`domain`)) {
         self$`domain` <- MailLogEntryObject$`domain`
@@ -296,9 +323,6 @@ MailLogEntry <- R6::R6Class(
       }
       if (!is.null(MailLogEntryObject$`mxHostname`)) {
         self$`mxHostname` <- MailLogEntryObject$`mxHostname`
-      }
-      if (!is.null(MailLogEntryObject$`response`)) {
-        self$`response` <- MailLogEntryObject$`response`
       }
     },
     toJSONString = function() {
@@ -319,14 +343,16 @@ MailLogEntry <- R6::R6Class(
            "sendingZone": %s,
            "bodySize": %d,
            "seq": %d,
+           "delivered": %d,
+           "code": %d,
            "recipient": %s,
+           "response": %s,
            "domain": %s,
            "locked": %d,
-           "lockTime": %d,
+           "lockTime": %s,
            "assigned": %s,
            "queued": %s,
-           "mxHostname": %s,
-           "response": %s
+           "mxHostname": %s
         }',
         self$`_id`,
         self$`id`,
@@ -343,14 +369,16 @@ MailLogEntry <- R6::R6Class(
         self$`sendingZone`,
         self$`bodySize`,
         self$`seq`,
+        self$`delivered`,
+        self$`code`,
         self$`recipient`,
+        self$`response`,
         self$`domain`,
         self$`locked`,
         self$`lockTime`,
         self$`assigned`,
         self$`queued`,
-        self$`mxHostname`,
-        self$`response`
+        self$`mxHostname`
       )
     },
     fromJSONString = function(MailLogEntryJson) {
@@ -370,14 +398,16 @@ MailLogEntry <- R6::R6Class(
       self$`sendingZone` <- MailLogEntryObject$`sendingZone`
       self$`bodySize` <- MailLogEntryObject$`bodySize`
       self$`seq` <- MailLogEntryObject$`seq`
+      self$`delivered` <- MailLogEntryObject$`delivered`
+      self$`code` <- MailLogEntryObject$`code`
       self$`recipient` <- MailLogEntryObject$`recipient`
+      self$`response` <- MailLogEntryObject$`response`
       self$`domain` <- MailLogEntryObject$`domain`
       self$`locked` <- MailLogEntryObject$`locked`
       self$`lockTime` <- MailLogEntryObject$`lockTime`
       self$`assigned` <- MailLogEntryObject$`assigned`
       self$`queued` <- MailLogEntryObject$`queued`
       self$`mxHostname` <- MailLogEntryObject$`mxHostname`
-      self$`response` <- MailLogEntryObject$`response`
     }
   )
 )

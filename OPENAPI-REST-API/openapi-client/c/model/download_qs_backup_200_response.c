@@ -13,10 +13,10 @@ static download_qs_backup_200_response_t *download_qs_backup_200_response_create
     if (!download_qs_backup_200_response_local_var) {
         return NULL;
     }
+    memset(download_qs_backup_200_response_local_var, 0, sizeof(download_qs_backup_200_response_t));
+    download_qs_backup_200_response_local_var->_library_owned = 1;
     download_qs_backup_200_response_local_var->text = text;
     download_qs_backup_200_response_local_var->url = url;
-
-    download_qs_backup_200_response_local_var->_library_owned = 1;
     return download_qs_backup_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) download_qs_backup_200_response_t *download_qs_backu
     char *text,
     char *url
     ) {
-    return download_qs_backup_200_response_create_internal (
+    download_qs_backup_200_response_t *result = download_qs_backup_200_response_create_internal (
         text,
         url
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void download_qs_backup_200_response_free(download_qs_backup_200_response_t *download_qs_backup_200_response) {
@@ -80,6 +83,10 @@ download_qs_backup_200_response_t *download_qs_backup_200_response_parseFromJSON
 
     download_qs_backup_200_response_t *download_qs_backup_200_response_local_var = NULL;
 
+    char *text_local_str = NULL;
+
+    char *url_local_str = NULL;
+
     // download_qs_backup_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(download_qs_backup_200_responseJSON, "text");
     if (cJSON_IsNull(text)) {
@@ -105,13 +112,28 @@ download_qs_backup_200_response_t *download_qs_backup_200_response_parseFromJSON
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+    if (url && !cJSON_IsNull(url)) url_local_str = strdup(url->valuestring);
+
     download_qs_backup_200_response_local_var = download_qs_backup_200_response_create_internal (
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
-        url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL
+        text_local_str,
+        url_local_str
         );
+
+    if (!download_qs_backup_200_response_local_var) {
+        goto end;
+    }
 
     return download_qs_backup_200_response_local_var;
 end:
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (url_local_str) {
+        free(url_local_str);
+        url_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -94,27 +94,6 @@ void test_MailLogEntry_to_is_assigned_from_json()
 }
 
 
-void test_MailLogEntry_subject_is_assigned_from_json()
-{
-
-
-    bourne::json input =
-    {
-        "subject", "hello"
-    };
-
-    MailLogEntry obj(input.dump());
-
-    TEST_ASSERT_EQUAL_STRING("hello", obj.getSubject().c_str());
-
-
-
-
-
-
-}
-
-
 void test_MailLogEntry_created_is_assigned_from_json()
 {
 
@@ -241,6 +220,48 @@ void test_MailLogEntry_interface_is_assigned_from_json()
 }
 
 
+void test_MailLogEntry_subject_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "subject", "hello"
+    };
+
+    MailLogEntry obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getSubject().c_str());
+
+
+
+
+
+
+}
+
+
+void test_MailLogEntry_messageId_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "messageId", "hello"
+    };
+
+    MailLogEntry obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getMessageId().c_str());
+
+
+
+
+
+
+}
+
+
 void test_MailLogEntry_sendingZone_is_assigned_from_json()
 {
 
@@ -304,6 +325,48 @@ void test_MailLogEntry_seq_is_assigned_from_json()
 }
 
 
+void test_MailLogEntry_delivered_is_assigned_from_json()
+{
+    bourne::json input =
+    {
+        "delivered", 1
+    };
+
+    MailLogEntry obj(input.dump());
+
+    TEST_ASSERT_EQUAL_INT(1, obj.getDelivered());
+
+
+
+
+
+
+
+
+}
+
+
+void test_MailLogEntry_code_is_assigned_from_json()
+{
+    bourne::json input =
+    {
+        "code", 1
+    };
+
+    MailLogEntry obj(input.dump());
+
+    TEST_ASSERT_EQUAL_INT(1, obj.getCode());
+
+
+
+
+
+
+
+
+}
+
+
 void test_MailLogEntry_recipient_is_assigned_from_json()
 {
 
@@ -316,6 +379,27 @@ void test_MailLogEntry_recipient_is_assigned_from_json()
     MailLogEntry obj(input.dump());
 
     TEST_ASSERT_EQUAL_STRING("hello", obj.getRecipient().c_str());
+
+
+
+
+
+
+}
+
+
+void test_MailLogEntry_response_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "response", "hello"
+    };
+
+    MailLogEntry obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getResponse().c_str());
 
 
 
@@ -369,16 +453,16 @@ void test_MailLogEntry_locked_is_assigned_from_json()
 
 void test_MailLogEntry_lockTime_is_assigned_from_json()
 {
+
+
     bourne::json input =
     {
-        "lockTime", 1
+        "lockTime", "hello"
     };
 
     MailLogEntry obj(input.dump());
 
-    TEST_ASSERT_EQUAL_INT(1, obj.getLockTime());
-
-
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getLockTime().c_str());
 
 
 
@@ -442,48 +526,6 @@ void test_MailLogEntry_mxHostname_is_assigned_from_json()
     MailLogEntry obj(input.dump());
 
     TEST_ASSERT_EQUAL_STRING("hello", obj.getMxHostname().c_str());
-
-
-
-
-
-
-}
-
-
-void test_MailLogEntry_response_is_assigned_from_json()
-{
-
-
-    bourne::json input =
-    {
-        "response", "hello"
-    };
-
-    MailLogEntry obj(input.dump());
-
-    TEST_ASSERT_EQUAL_STRING("hello", obj.getResponse().c_str());
-
-
-
-
-
-
-}
-
-
-void test_MailLogEntry_messageId_is_assigned_from_json()
-{
-
-
-    bourne::json input =
-    {
-        "messageId", "hello"
-    };
-
-    MailLogEntry obj(input.dump());
-
-    TEST_ASSERT_EQUAL_STRING("hello", obj.getMessageId().c_str());
 
 
 
@@ -572,27 +614,6 @@ void test_MailLogEntry_to_is_converted_to_json()
     output = obj.toJson();
 
     TEST_ASSERT(input["to"] == output["to"]);
-
-
-
-}
-
-
-void test_MailLogEntry_subject_is_converted_to_json()
-{
-
-    bourne::json input =
-    {
-        "subject", "hello"
-    };
-
-    MailLogEntry obj(input.dump());
-
-    bourne::json output = bourne::json::object();
-
-    output = obj.toJson();
-
-    TEST_ASSERT(input["subject"] == output["subject"]);
 
 
 
@@ -725,6 +746,48 @@ void test_MailLogEntry_interface_is_converted_to_json()
 }
 
 
+void test_MailLogEntry_subject_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "subject", "hello"
+    };
+
+    MailLogEntry obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["subject"] == output["subject"]);
+
+
+
+}
+
+
+void test_MailLogEntry_messageId_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "messageId", "hello"
+    };
+
+    MailLogEntry obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["messageId"] == output["messageId"]);
+
+
+
+}
+
+
 void test_MailLogEntry_sendingZone_is_converted_to_json()
 {
 
@@ -788,6 +851,48 @@ void test_MailLogEntry_seq_is_converted_to_json()
 }
 
 
+void test_MailLogEntry_delivered_is_converted_to_json()
+{
+    bourne::json input =
+    {
+        "delivered", 1
+    };
+
+    MailLogEntry obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["delivered"] == output["delivered"]);
+
+
+
+
+}
+
+
+void test_MailLogEntry_code_is_converted_to_json()
+{
+    bourne::json input =
+    {
+        "code", 1
+    };
+
+    MailLogEntry obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["code"] == output["code"]);
+
+
+
+
+}
+
+
 void test_MailLogEntry_recipient_is_converted_to_json()
 {
 
@@ -803,6 +908,27 @@ void test_MailLogEntry_recipient_is_converted_to_json()
     output = obj.toJson();
 
     TEST_ASSERT(input["recipient"] == output["recipient"]);
+
+
+
+}
+
+
+void test_MailLogEntry_response_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "response", "hello"
+    };
+
+    MailLogEntry obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["response"] == output["response"]);
 
 
 
@@ -853,9 +979,10 @@ void test_MailLogEntry_locked_is_converted_to_json()
 
 void test_MailLogEntry_lockTime_is_converted_to_json()
 {
+
     bourne::json input =
     {
-        "lockTime", 1
+        "lockTime", "hello"
     };
 
     MailLogEntry obj(input.dump());
@@ -865,7 +992,6 @@ void test_MailLogEntry_lockTime_is_converted_to_json()
     output = obj.toJson();
 
     TEST_ASSERT(input["lockTime"] == output["lockTime"]);
-
 
 
 
@@ -929,48 +1055,6 @@ void test_MailLogEntry_mxHostname_is_converted_to_json()
     output = obj.toJson();
 
     TEST_ASSERT(input["mxHostname"] == output["mxHostname"]);
-
-
-
-}
-
-
-void test_MailLogEntry_response_is_converted_to_json()
-{
-
-    bourne::json input =
-    {
-        "response", "hello"
-    };
-
-    MailLogEntry obj(input.dump());
-
-    bourne::json output = bourne::json::object();
-
-    output = obj.toJson();
-
-    TEST_ASSERT(input["response"] == output["response"]);
-
-
-
-}
-
-
-void test_MailLogEntry_messageId_is_converted_to_json()
-{
-
-    bourne::json input =
-    {
-        "messageId", "hello"
-    };
-
-    MailLogEntry obj(input.dump());
-
-    bourne::json output = bourne::json::object();
-
-    output = obj.toJson();
-
-    TEST_ASSERT(input["messageId"] == output["messageId"]);
 
 
 

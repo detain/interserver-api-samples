@@ -47,10 +47,8 @@ class ServerExtraInfoTables {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerExtraInfoTables[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerExtraInfoTables[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'assets'), 'Required key "ServerExtraInfoTables[assets]" is missing from JSON.');
+        assert(json[r'assets'] != null, 'Required key "ServerExtraInfoTables[assets]" has a null value in JSON.');
         return true;
       }());
 

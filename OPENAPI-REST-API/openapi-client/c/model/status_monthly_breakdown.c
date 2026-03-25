@@ -17,14 +17,14 @@ static status_monthly_breakdown_t *status_monthly_breakdown_create_internal(
     if (!status_monthly_breakdown_local_var) {
         return NULL;
     }
+    memset(status_monthly_breakdown_local_var, 0, sizeof(status_monthly_breakdown_t));
+    status_monthly_breakdown_local_var->_library_owned = 1;
     status_monthly_breakdown_local_var->_default = _default;
     status_monthly_breakdown_local_var->failed = failed;
     status_monthly_breakdown_local_var->rejected = rejected;
     status_monthly_breakdown_local_var->pending = pending;
     status_monthly_breakdown_local_var->locked = locked;
     status_monthly_breakdown_local_var->paid = paid;
-
-    status_monthly_breakdown_local_var->_library_owned = 1;
     return status_monthly_breakdown_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) status_monthly_breakdown_t *status_monthly_breakdown
     monthly_counts_t *locked,
     monthly_counts_t *paid
     ) {
-    return status_monthly_breakdown_create_internal (
+    status_monthly_breakdown_t *result = status_monthly_breakdown_create_internal (
         _default,
         failed,
         rejected,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) status_monthly_breakdown_t *status_monthly_breakdown
         locked,
         paid
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void status_monthly_breakdown_free(status_monthly_breakdown_t *status_monthly_breakdown) {
@@ -271,6 +274,7 @@ status_monthly_breakdown_t *status_monthly_breakdown_parseFromJSON(cJSON *status
     paid_local_nonprim = monthly_counts_parseFromJSON(paid); //custom
 
 
+
     status_monthly_breakdown_local_var = status_monthly_breakdown_create_internal (
         _default_local_nonprim,
         failed_local_nonprim,
@@ -279,6 +283,10 @@ status_monthly_breakdown_t *status_monthly_breakdown_parseFromJSON(cJSON *status
         locked_local_nonprim,
         paid_local_nonprim
         );
+
+    if (!status_monthly_breakdown_local_var) {
+        goto end;
+    }
 
     return status_monthly_breakdown_local_var;
 end:

@@ -6,7 +6,7 @@
 
 
 static servers_buy_now_error_t *servers_buy_now_error_create_internal(
-    int success,
+    int *success,
     char *text,
     list_t *errors
     ) {
@@ -14,24 +14,33 @@ static servers_buy_now_error_t *servers_buy_now_error_create_internal(
     if (!servers_buy_now_error_local_var) {
         return NULL;
     }
+    memset(servers_buy_now_error_local_var, 0, sizeof(servers_buy_now_error_t));
+    servers_buy_now_error_local_var->_library_owned = 1;
     servers_buy_now_error_local_var->success = success;
     servers_buy_now_error_local_var->text = text;
     servers_buy_now_error_local_var->errors = errors;
-
-    servers_buy_now_error_local_var->_library_owned = 1;
     return servers_buy_now_error_local_var;
 }
 
 __attribute__((deprecated)) servers_buy_now_error_t *servers_buy_now_error_create(
-    int success,
+    int *success,
     char *text,
     list_t *errors
     ) {
-    return servers_buy_now_error_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    servers_buy_now_error_t *result = servers_buy_now_error_create_internal (
+        success_copy,
         text,
         errors
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void servers_buy_now_error_free(servers_buy_now_error_t *servers_buy_now_error) {
@@ -43,6 +52,10 @@ void servers_buy_now_error_free(servers_buy_now_error_t *servers_buy_now_error) 
         return ;
     }
     listEntry_t *listEntry;
+    if (servers_buy_now_error->success) {
+        free(servers_buy_now_error->success);
+        servers_buy_now_error->success = NULL;
+    }
     if (servers_buy_now_error->text) {
         free(servers_buy_now_error->text);
         servers_buy_now_error->text = NULL;
@@ -62,7 +75,7 @@ cJSON *servers_buy_now_error_convertToJSON(servers_buy_now_error_t *servers_buy_
 
     // servers_buy_now_error->success
     if(servers_buy_now_error->success) {
-    if(cJSON_AddBoolToObject(item, "success", servers_buy_now_error->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *servers_buy_now_error->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -104,6 +117,11 @@ servers_buy_now_error_t *servers_buy_now_error_parseFromJSON(cJSON *servers_buy_
 
     servers_buy_now_error_t *servers_buy_now_error_local_var = NULL;
 
+    // define the local variable for servers_buy_now_error->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // define the local list for servers_buy_now_error->errors
     list_t *errorsList = NULL;
 
@@ -117,6 +135,12 @@ servers_buy_now_error_t *servers_buy_now_error_parseFromJSON(cJSON *servers_buy_
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // servers_buy_now_error->text
@@ -154,14 +178,28 @@ servers_buy_now_error_t *servers_buy_now_error_parseFromJSON(cJSON *servers_buy_
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     servers_buy_now_error_local_var = servers_buy_now_error_create_internal (
-        success ? success->valueint : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
+        success_local_var,
+        text_local_str,
         errors ? errorsList : NULL
         );
 
+    if (!servers_buy_now_error_local_var) {
+        goto end;
+    }
+
     return servers_buy_now_error_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, errorsList) {

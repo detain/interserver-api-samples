@@ -19,19 +19,19 @@ typedef struct ip_block_t ip_block_t;
 
 
 typedef struct ip_block_t {
-    int id; //numeric
+    int *id; //numeric
     char *short_desc; // string
     char *qty; // string
-    double monthly_price; //numeric
+    double *monthly_price; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ip_block_t;
 
 __attribute__((deprecated)) ip_block_t *ip_block_create(
-    int id,
+    int *id,
     char *short_desc,
     char *qty,
-    double monthly_price
+    double *monthly_price
 );
 
 void ip_block_free(ip_block_t *ip_block);

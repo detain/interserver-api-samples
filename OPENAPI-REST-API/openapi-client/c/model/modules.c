@@ -11,15 +11,18 @@ static modules_t *modules_create_internal(
     if (!modules_local_var) {
         return NULL;
     }
-
+    memset(modules_local_var, 0, sizeof(modules_t));
     modules_local_var->_library_owned = 1;
     return modules_local_var;
 }
 
 __attribute__((deprecated)) modules_t *modules_create(
     ) {
-    return modules_create_internal (
+    modules_t *result = modules_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void modules_free(modules_t *modules) {
@@ -49,8 +52,13 @@ modules_t *modules_parseFromJSON(cJSON *modulesJSON){
     modules_t *modules_local_var = NULL;
 
 
+
     modules_local_var = modules_create_internal (
         );
+
+    if (!modules_local_var) {
+        goto end;
+    }
 
     return modules_local_var;
 end:

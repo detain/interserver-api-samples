@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAITicketCustomFieldDetails::OAITicketCustomFieldDetails(QString json) {
+OAITicketCustomFieldDetails::OAITicketCustomFieldDetails(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAITicketCustomFieldDetails::initializeModel() {
     m_port_isValid = false;
 }
 
-void OAITicketCustomFieldDetails::fromJson(QString jsonString) {
+void OAITicketCustomFieldDetails::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

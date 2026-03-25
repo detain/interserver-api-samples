@@ -42,13 +42,13 @@ class OAIHome_services_backups;
 class OAIHome_services : public OAIObject {
 public:
     OAIHome_services();
-    OAIHome_services(QString json);
+    OAIHome_services(const QString &json);
     ~OAIHome_services() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIHome_services_domains getDomains() const;
     void setDomains(const OAIHome_services_domains &domains);

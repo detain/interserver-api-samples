@@ -53,10 +53,10 @@ class VpsTrafficDataSectionResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsTrafficDataSectionResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsTrafficDataSectionResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "VpsTrafficDataSectionResponse[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "VpsTrafficDataSectionResponse[name]" has a null value in JSON.');
+        assert(json.containsKey(r'data'), 'Required key "VpsTrafficDataSectionResponse[data]" is missing from JSON.');
+        assert(json[r'data'] != null, 'Required key "VpsTrafficDataSectionResponse[data]" has a null value in JSON.');
         return true;
       }());
 

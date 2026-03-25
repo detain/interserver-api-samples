@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAffiliateBannerRow : public OAIObject {
 public:
     OAIAffiliateBannerRow();
-    OAIAffiliateBannerRow(QString json);
+    OAIAffiliateBannerRow(const QString &json);
     ~OAIAffiliateBannerRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getImage() const;
     void setImage(const QString &image);

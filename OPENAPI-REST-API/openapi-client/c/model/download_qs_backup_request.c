@@ -12,18 +12,21 @@ static download_qs_backup_request_t *download_qs_backup_request_create_internal(
     if (!download_qs_backup_request_local_var) {
         return NULL;
     }
-    download_qs_backup_request_local_var->file = file;
-
+    memset(download_qs_backup_request_local_var, 0, sizeof(download_qs_backup_request_t));
     download_qs_backup_request_local_var->_library_owned = 1;
+    download_qs_backup_request_local_var->file = file;
     return download_qs_backup_request_local_var;
 }
 
 __attribute__((deprecated)) download_qs_backup_request_t *download_qs_backup_request_create(
     char *file
     ) {
-    return download_qs_backup_request_create_internal (
+    download_qs_backup_request_t *result = download_qs_backup_request_create_internal (
         file
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void download_qs_backup_request_free(download_qs_backup_request_t *download_qs_backup_request) {
@@ -65,6 +68,8 @@ download_qs_backup_request_t *download_qs_backup_request_parseFromJSON(cJSON *do
 
     download_qs_backup_request_t *download_qs_backup_request_local_var = NULL;
 
+    char *file_local_str = NULL;
+
     // download_qs_backup_request->file
     cJSON *file = cJSON_GetObjectItemCaseSensitive(download_qs_backup_requestJSON, "file");
     if (cJSON_IsNull(file)) {
@@ -81,12 +86,22 @@ download_qs_backup_request_t *download_qs_backup_request_parseFromJSON(cJSON *do
     }
 
 
+    if (file && !cJSON_IsNull(file)) file_local_str = strdup(file->valuestring);
+
     download_qs_backup_request_local_var = download_qs_backup_request_create_internal (
-        strdup(file->valuestring)
+        file_local_str
         );
+
+    if (!download_qs_backup_request_local_var) {
+        goto end;
+    }
 
     return download_qs_backup_request_local_var;
 end:
+    if (file_local_str) {
+        free(file_local_str);
+        file_local_str = NULL;
+    }
     return NULL;
 
 }

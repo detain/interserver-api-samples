@@ -20,14 +20,14 @@ typedef struct server_ipmi_live_request_t server_ipmi_live_request_t;
 
 typedef struct server_ipmi_live_request_t {
     char *ip; // string
-    int asset; //numeric
+    int *asset; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } server_ipmi_live_request_t;
 
 __attribute__((deprecated)) server_ipmi_live_request_t *server_ipmi_live_request_create(
     char *ip,
-    int asset
+    int *asset
 );
 
 void server_ipmi_live_request_free(server_ipmi_live_request_t *server_ipmi_live_request);

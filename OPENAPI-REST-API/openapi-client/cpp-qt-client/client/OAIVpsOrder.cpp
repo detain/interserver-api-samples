@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder::OAIVpsOrder(QString json) {
+OAIVpsOrder::OAIVpsOrder(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -128,7 +128,7 @@ void OAIVpsOrder::initializeModel() {
     m_currency_symbol_isValid = false;
 }
 
-void OAIVpsOrder::fromJson(QString jsonString) {
+void OAIVpsOrder::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -18,6 +18,8 @@ static home_details_modules_t *home_details_modules_create_internal(
     if (!home_details_modules_local_var) {
         return NULL;
     }
+    memset(home_details_modules_local_var, 0, sizeof(home_details_modules_t));
+    home_details_modules_local_var->_library_owned = 1;
     home_details_modules_local_var->domains = domains;
     home_details_modules_local_var->webhosting = webhosting;
     home_details_modules_local_var->vps = vps;
@@ -25,8 +27,6 @@ static home_details_modules_t *home_details_modules_create_internal(
     home_details_modules_local_var->backups = backups;
     home_details_modules_local_var->servers = servers;
     home_details_modules_local_var->quickservers = quickservers;
-
-    home_details_modules_local_var->_library_owned = 1;
     return home_details_modules_local_var;
 }
 
@@ -39,7 +39,7 @@ __attribute__((deprecated)) home_details_modules_t *home_details_modules_create(
     home_details_modules_servers_t *servers,
     home_details_modules_quickservers_t *quickservers
     ) {
-    return home_details_modules_create_internal (
+    home_details_modules_t *result = home_details_modules_create_internal (
         domains,
         webhosting,
         vps,
@@ -48,6 +48,9 @@ __attribute__((deprecated)) home_details_modules_t *home_details_modules_create(
         servers,
         quickservers
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_details_modules_free(home_details_modules_t *home_details_modules) {
@@ -280,6 +283,7 @@ home_details_modules_t *home_details_modules_parseFromJSON(cJSON *home_details_m
     }
 
 
+
     home_details_modules_local_var = home_details_modules_create_internal (
         domains ? domains_local_nonprim : NULL,
         webhosting ? webhosting_local_nonprim : NULL,
@@ -289,6 +293,10 @@ home_details_modules_t *home_details_modules_parseFromJSON(cJSON *home_details_m
         servers ? servers_local_nonprim : NULL,
         quickservers ? quickservers_local_nonprim : NULL
         );
+
+    if (!home_details_modules_local_var) {
+        goto end;
+    }
 
     return home_details_modules_local_var;
 end:

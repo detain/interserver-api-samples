@@ -1,4 +1,4 @@
-# # CreateFilter201Response
+# CreateFilter201Response
 
 ## Properties
 

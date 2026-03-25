@@ -39,7 +39,7 @@ typedef struct domain_t {
     struct domain_contact_details_t *contact_details; //model
     char *pwarning; // string
     char *transfer_info; // string
-    int errors; //boolean
+    int *errors; //boolean
     list_t *domain_logs; //primitive container
     struct domain_all_info_t *all_info; //model
     char *registrar_status; // string
@@ -63,7 +63,7 @@ __attribute__((deprecated)) domain_t *domain_create(
     domain_contact_details_t *contact_details,
     char *pwarning,
     char *transfer_info,
-    int errors,
+    int *errors,
     list_t *domain_logs,
     domain_all_info_t *all_info,
     char *registrar_status,

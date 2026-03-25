@@ -25,6 +25,8 @@ static website_service_master_t *website_service_master_create_internal(
     if (!website_service_master_local_var) {
         return NULL;
     }
+    memset(website_service_master_local_var, 0, sizeof(website_service_master_t));
+    website_service_master_local_var->_library_owned = 1;
     website_service_master_local_var->website_id = website_id;
     website_service_master_local_var->website_name = website_name;
     website_service_master_local_var->website_ip = website_ip;
@@ -39,8 +41,6 @@ static website_service_master_t *website_service_master_create_internal(
     website_service_master_local_var->website_partitions = website_partitions;
     website_service_master_local_var->website_dns1 = website_dns1;
     website_service_master_local_var->website_dns2 = website_dns2;
-
-    website_service_master_local_var->_library_owned = 1;
     return website_service_master_local_var;
 }
 
@@ -60,7 +60,7 @@ __attribute__((deprecated)) website_service_master_t *website_service_master_cre
     char *website_dns1,
     char *website_dns2
     ) {
-    return website_service_master_create_internal (
+    website_service_master_t *result = website_service_master_create_internal (
         website_id,
         website_name,
         website_ip,
@@ -76,6 +76,9 @@ __attribute__((deprecated)) website_service_master_t *website_service_master_cre
         website_dns1,
         website_dns2
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_service_master_free(website_service_master_t *website_service_master) {
@@ -272,6 +275,34 @@ website_service_master_t *website_service_master_parseFromJSON(cJSON *website_se
 
     website_service_master_t *website_service_master_local_var = NULL;
 
+    char *website_id_local_str = NULL;
+
+    char *website_name_local_str = NULL;
+
+    char *website_ip_local_str = NULL;
+
+    char *website_type_local_str = NULL;
+
+    char *website_available_local_str = NULL;
+
+    char *website_hdsize_local_str = NULL;
+
+    char *website_hdfree_local_str = NULL;
+
+    char *website_load_local_str = NULL;
+
+    char *website_last_update_local_str = NULL;
+
+    char *website_max_sites_local_str = NULL;
+
+    char *website_order_local_str = NULL;
+
+    char *website_partitions_local_str = NULL;
+
+    char *website_dns1_local_str = NULL;
+
+    char *website_dns2_local_str = NULL;
+
     // website_service_master->website_id
     cJSON *website_id = cJSON_GetObjectItemCaseSensitive(website_service_masterJSON, "website_id");
     if (cJSON_IsNull(website_id)) {
@@ -441,25 +472,100 @@ website_service_master_t *website_service_master_parseFromJSON(cJSON *website_se
     }
 
 
+    if (website_id && !cJSON_IsNull(website_id)) website_id_local_str = strdup(website_id->valuestring);
+    if (website_name && !cJSON_IsNull(website_name)) website_name_local_str = strdup(website_name->valuestring);
+    if (website_ip && !cJSON_IsNull(website_ip)) website_ip_local_str = strdup(website_ip->valuestring);
+    if (website_type && !cJSON_IsNull(website_type)) website_type_local_str = strdup(website_type->valuestring);
+    if (website_available && !cJSON_IsNull(website_available)) website_available_local_str = strdup(website_available->valuestring);
+    if (website_hdsize && !cJSON_IsNull(website_hdsize)) website_hdsize_local_str = strdup(website_hdsize->valuestring);
+    if (website_hdfree && !cJSON_IsNull(website_hdfree)) website_hdfree_local_str = strdup(website_hdfree->valuestring);
+    if (website_load && !cJSON_IsNull(website_load)) website_load_local_str = strdup(website_load->valuestring);
+    if (website_last_update && !cJSON_IsNull(website_last_update)) website_last_update_local_str = strdup(website_last_update->valuestring);
+    if (website_max_sites && !cJSON_IsNull(website_max_sites)) website_max_sites_local_str = strdup(website_max_sites->valuestring);
+    if (website_order && !cJSON_IsNull(website_order)) website_order_local_str = strdup(website_order->valuestring);
+    if (website_partitions && !cJSON_IsNull(website_partitions)) website_partitions_local_str = strdup(website_partitions->valuestring);
+    if (website_dns1 && !cJSON_IsNull(website_dns1)) website_dns1_local_str = strdup(website_dns1->valuestring);
+    if (website_dns2 && !cJSON_IsNull(website_dns2)) website_dns2_local_str = strdup(website_dns2->valuestring);
+
     website_service_master_local_var = website_service_master_create_internal (
-        website_id && !cJSON_IsNull(website_id) ? strdup(website_id->valuestring) : NULL,
-        website_name && !cJSON_IsNull(website_name) ? strdup(website_name->valuestring) : NULL,
-        website_ip && !cJSON_IsNull(website_ip) ? strdup(website_ip->valuestring) : NULL,
-        website_type && !cJSON_IsNull(website_type) ? strdup(website_type->valuestring) : NULL,
-        website_available && !cJSON_IsNull(website_available) ? strdup(website_available->valuestring) : NULL,
-        website_hdsize && !cJSON_IsNull(website_hdsize) ? strdup(website_hdsize->valuestring) : NULL,
-        website_hdfree && !cJSON_IsNull(website_hdfree) ? strdup(website_hdfree->valuestring) : NULL,
-        website_load && !cJSON_IsNull(website_load) ? strdup(website_load->valuestring) : NULL,
-        website_last_update && !cJSON_IsNull(website_last_update) ? strdup(website_last_update->valuestring) : NULL,
-        website_max_sites && !cJSON_IsNull(website_max_sites) ? strdup(website_max_sites->valuestring) : NULL,
-        website_order && !cJSON_IsNull(website_order) ? strdup(website_order->valuestring) : NULL,
-        website_partitions && !cJSON_IsNull(website_partitions) ? strdup(website_partitions->valuestring) : NULL,
-        website_dns1 && !cJSON_IsNull(website_dns1) ? strdup(website_dns1->valuestring) : NULL,
-        website_dns2 && !cJSON_IsNull(website_dns2) ? strdup(website_dns2->valuestring) : NULL
+        website_id_local_str,
+        website_name_local_str,
+        website_ip_local_str,
+        website_type_local_str,
+        website_available_local_str,
+        website_hdsize_local_str,
+        website_hdfree_local_str,
+        website_load_local_str,
+        website_last_update_local_str,
+        website_max_sites_local_str,
+        website_order_local_str,
+        website_partitions_local_str,
+        website_dns1_local_str,
+        website_dns2_local_str
         );
+
+    if (!website_service_master_local_var) {
+        goto end;
+    }
 
     return website_service_master_local_var;
 end:
+    if (website_id_local_str) {
+        free(website_id_local_str);
+        website_id_local_str = NULL;
+    }
+    if (website_name_local_str) {
+        free(website_name_local_str);
+        website_name_local_str = NULL;
+    }
+    if (website_ip_local_str) {
+        free(website_ip_local_str);
+        website_ip_local_str = NULL;
+    }
+    if (website_type_local_str) {
+        free(website_type_local_str);
+        website_type_local_str = NULL;
+    }
+    if (website_available_local_str) {
+        free(website_available_local_str);
+        website_available_local_str = NULL;
+    }
+    if (website_hdsize_local_str) {
+        free(website_hdsize_local_str);
+        website_hdsize_local_str = NULL;
+    }
+    if (website_hdfree_local_str) {
+        free(website_hdfree_local_str);
+        website_hdfree_local_str = NULL;
+    }
+    if (website_load_local_str) {
+        free(website_load_local_str);
+        website_load_local_str = NULL;
+    }
+    if (website_last_update_local_str) {
+        free(website_last_update_local_str);
+        website_last_update_local_str = NULL;
+    }
+    if (website_max_sites_local_str) {
+        free(website_max_sites_local_str);
+        website_max_sites_local_str = NULL;
+    }
+    if (website_order_local_str) {
+        free(website_order_local_str);
+        website_order_local_str = NULL;
+    }
+    if (website_partitions_local_str) {
+        free(website_partitions_local_str);
+        website_partitions_local_str = NULL;
+    }
+    if (website_dns1_local_str) {
+        free(website_dns1_local_str);
+        website_dns1_local_str = NULL;
+    }
+    if (website_dns2_local_str) {
+        free(website_dns2_local_str);
+        website_dns2_local_str = NULL;
+    }
     return NULL;
 
 }

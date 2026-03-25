@@ -1,4 +1,4 @@
-# # BillingPaymentMethodRequest
+# BillingPaymentMethodRequest
 
 ## Properties
 

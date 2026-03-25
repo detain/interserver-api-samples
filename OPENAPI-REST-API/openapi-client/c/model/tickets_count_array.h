@@ -19,17 +19,17 @@ typedef struct tickets_count_array_t tickets_count_array_t;
 
 
 typedef struct tickets_count_array_t {
-    int open; //numeric
-    int on_hold; //numeric
-    int closed; //numeric
+    int *open; //numeric
+    int *on_hold; //numeric
+    int *closed; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } tickets_count_array_t;
 
 __attribute__((deprecated)) tickets_count_array_t *tickets_count_array_create(
-    int open,
-    int on_hold,
-    int closed
+    int *open,
+    int *on_hold,
+    int *closed
 );
 
 void tickets_count_array_free(tickets_count_array_t *tickets_count_array);

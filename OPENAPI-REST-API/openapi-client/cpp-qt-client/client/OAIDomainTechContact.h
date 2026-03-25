@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainTechContact : public OAIObject {
 public:
     OAIDomainTechContact();
-    OAIDomainTechContact(QString json);
+    OAIDomainTechContact(const QString &json);
     ~OAIDomainTechContact() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getState() const;
     void setState(const QString &state);

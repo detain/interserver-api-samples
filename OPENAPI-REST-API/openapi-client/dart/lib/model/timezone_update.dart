@@ -48,10 +48,8 @@ class TimezoneUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TimezoneUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TimezoneUpdate[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'timezone'), 'Required key "TimezoneUpdate[timezone]" is missing from JSON.');
+        assert(json[r'timezone'] != null, 'Required key "TimezoneUpdate[timezone]" has a null value in JSON.');
         return true;
       }());
 

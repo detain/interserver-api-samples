@@ -13,10 +13,10 @@ static vps_traffic_history_response_t *vps_traffic_history_response_create_inter
     if (!vps_traffic_history_response_local_var) {
         return NULL;
     }
+    memset(vps_traffic_history_response_local_var, 0, sizeof(vps_traffic_history_response_t));
+    vps_traffic_history_response_local_var->_library_owned = 1;
     vps_traffic_history_response_local_var->hour = hour;
     vps_traffic_history_response_local_var->day = day;
-
-    vps_traffic_history_response_local_var->_library_owned = 1;
     return vps_traffic_history_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) vps_traffic_history_response_t *vps_traffic_history_
     vps_traffic_history_section_response_t *hour,
     vps_traffic_history_section_response_t *day
     ) {
-    return vps_traffic_history_response_create_internal (
+    vps_traffic_history_response_t *result = vps_traffic_history_response_create_internal (
         hour,
         day
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_traffic_history_response_free(vps_traffic_history_response_t *vps_traffic_history_response) {
@@ -123,10 +126,15 @@ vps_traffic_history_response_t *vps_traffic_history_response_parseFromJSON(cJSON
     day_local_nonprim = vps_traffic_history_section_response_parseFromJSON(day); //nonprimitive
 
 
+
     vps_traffic_history_response_local_var = vps_traffic_history_response_create_internal (
         hour_local_nonprim,
         day_local_nonprim
         );
+
+    if (!vps_traffic_history_response_local_var) {
+        goto end;
+    }
 
     return vps_traffic_history_response_local_var;
 end:

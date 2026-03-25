@@ -6,7 +6,7 @@
 
 
 static asset_server_t *asset_server_create_internal(
-    int id,
+    int *id,
     char *region,
     char *price,
     list_t *cpu,
@@ -19,6 +19,8 @@ static asset_server_t *asset_server_create_internal(
     if (!asset_server_local_var) {
         return NULL;
     }
+    memset(asset_server_local_var, 0, sizeof(asset_server_t));
+    asset_server_local_var->_library_owned = 1;
     asset_server_local_var->id = id;
     asset_server_local_var->region = region;
     asset_server_local_var->price = price;
@@ -27,13 +29,11 @@ static asset_server_t *asset_server_create_internal(
     asset_server_local_var->bandwidth = bandwidth;
     asset_server_local_var->ips = ips;
     asset_server_local_var->hd = hd;
-
-    asset_server_local_var->_library_owned = 1;
     return asset_server_local_var;
 }
 
 __attribute__((deprecated)) asset_server_t *asset_server_create(
-    int id,
+    int *id,
     char *region,
     char *price,
     list_t *cpu,
@@ -42,8 +42,13 @@ __attribute__((deprecated)) asset_server_t *asset_server_create(
     list_t *ips,
     list_t* hd
     ) {
-    return asset_server_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    asset_server_t *result = asset_server_create_internal (
+        id_copy,
         region,
         price,
         cpu,
@@ -52,6 +57,10 @@ __attribute__((deprecated)) asset_server_t *asset_server_create(
         ips,
         hd
         );
+    if (!result) {
+        free(id_copy);
+    }
+    return result;
 }
 
 void asset_server_free(asset_server_t *asset_server) {
@@ -63,6 +72,10 @@ void asset_server_free(asset_server_t *asset_server) {
         return ;
     }
     listEntry_t *listEntry;
+    if (asset_server->id) {
+        free(asset_server->id);
+        asset_server->id = NULL;
+    }
     if (asset_server->region) {
         free(asset_server->region);
         asset_server->region = NULL;
@@ -117,7 +130,7 @@ cJSON *asset_server_convertToJSON(asset_server_t *asset_server) {
 
     // asset_server->id
     if(asset_server->id) {
-    if(cJSON_AddNumberToObject(item, "id", asset_server->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *asset_server->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -250,6 +263,13 @@ asset_server_t *asset_server_parseFromJSON(cJSON *asset_serverJSON){
 
     asset_server_t *asset_server_local_var = NULL;
 
+    // define the local variable for asset_server->id
+    int *id_local_var = NULL;
+
+    char *region_local_str = NULL;
+
+    char *price_local_str = NULL;
+
     // define the local list for asset_server->cpu
     list_t *cpuList = NULL;
 
@@ -275,6 +295,12 @@ asset_server_t *asset_server_parseFromJSON(cJSON *asset_serverJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // asset_server->region
@@ -426,10 +452,13 @@ asset_server_t *asset_server_parseFromJSON(cJSON *asset_serverJSON){
     }
 
 
+    if (region && !cJSON_IsNull(region)) region_local_str = strdup(region->valuestring);
+    if (price && !cJSON_IsNull(price)) price_local_str = strdup(price->valuestring);
+
     asset_server_local_var = asset_server_create_internal (
-        id ? id->valuedouble : 0,
-        region && !cJSON_IsNull(region) ? strdup(region->valuestring) : NULL,
-        price && !cJSON_IsNull(price) ? strdup(price->valuestring) : NULL,
+        id_local_var,
+        region_local_str,
+        price_local_str,
         cpu ? cpuList : NULL,
         memory ? memoryList : NULL,
         bandwidth ? bandwidthList : NULL,
@@ -437,8 +466,24 @@ asset_server_t *asset_server_parseFromJSON(cJSON *asset_serverJSON){
         hd ? hdList : NULL
         );
 
+    if (!asset_server_local_var) {
+        goto end;
+    }
+
     return asset_server_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (region_local_str) {
+        free(region_local_str);
+        region_local_str = NULL;
+    }
+    if (price_local_str) {
+        free(price_local_str);
+        price_local_str = NULL;
+    }
     if (cpuList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, cpuList) {

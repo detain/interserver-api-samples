@@ -33,13 +33,13 @@ class OAIChargeInvoiceRows_invoices_value;
 class OAIChargeInvoiceRows : public OAIObject {
 public:
     OAIChargeInvoiceRows();
-    OAIChargeInvoiceRows(QString json);
+    OAIChargeInvoiceRows(const QString &json);
     ~OAIChargeInvoiceRows() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

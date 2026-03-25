@@ -32,13 +32,13 @@ class OAIVpsTrafficHistorySectionResponse;
 class OAIVpsTrafficHistoryResponse : public OAIObject {
 public:
     OAIVpsTrafficHistoryResponse();
-    OAIVpsTrafficHistoryResponse(QString json);
+    OAIVpsTrafficHistoryResponse(const QString &json);
     ~OAIVpsTrafficHistoryResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsTrafficHistorySectionResponse getHour() const;
     void setHour(const OAIVpsTrafficHistorySectionResponse &hour);

@@ -969,8 +969,8 @@ Class | Description
  *MailDeliverabilityResponse* | Deliverability statistics for a mail service.
  *MailExtraInfoTable* | A supplementary information table for a mail service (e.g., connection details).
  *MailExtraInfoTableRow* | A single row in the mail service supplementary information table.
- *MailLog* | Mail log records
- *MailLogEntry* | An email record
+ *MailLog* | Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
+ *MailLogEntry* | A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
  *MailOrder* | A mail order record
  *MailRow* | A result row from the `Mail` `GET` request.
  *MailSchema* | 
@@ -1115,6 +1115,7 @@ Class | Description
  *VPSCancel_200_response* | 
  *VPSTrafficDataDataSectionResponse* | VPS Traffic Data section Data subsection Row Response
  *VPSTrafficDataDataSectionResponse_inner* | 
+ *ViewMailLog_startDate_parameter* | 
  *ViewTicketResponse* | Ticket details
  *Vps* | 
  *VpsBackupRow* | A single backed-up item and information about it.

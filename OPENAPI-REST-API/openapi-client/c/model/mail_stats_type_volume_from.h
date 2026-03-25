@@ -19,15 +19,15 @@ typedef struct mail_stats_type_volume_from_t mail_stats_type_volume_from_t;
 
 
 typedef struct mail_stats_type_volume_from_t {
-    int billingsomedomain_com; //numeric
-    int salessomedomain_com; //numeric
+    int *billingsomedomain_com; //numeric
+    int *salessomedomain_com; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } mail_stats_type_volume_from_t;
 
 __attribute__((deprecated)) mail_stats_type_volume_from_t *mail_stats_type_volume_from_create(
-    int billingsomedomain_com,
-    int salessomedomain_com
+    int *billingsomedomain_com,
+    int *salessomedomain_com
 );
 
 void mail_stats_type_volume_from_free(mail_stats_type_volume_from_t *mail_stats_type_volume_from);

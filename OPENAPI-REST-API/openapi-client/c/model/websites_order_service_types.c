@@ -12,18 +12,21 @@ static websites_order_service_types_t *websites_order_service_types_create_inter
     if (!websites_order_service_types_local_var) {
         return NULL;
     }
-    websites_order_service_types_local_var->_11447 = _11447;
-
+    memset(websites_order_service_types_local_var, 0, sizeof(websites_order_service_types_t));
     websites_order_service_types_local_var->_library_owned = 1;
+    websites_order_service_types_local_var->_11447 = _11447;
     return websites_order_service_types_local_var;
 }
 
 __attribute__((deprecated)) websites_order_service_types_t *websites_order_service_types_create(
     websites_order_service_types_t *_11447
     ) {
-    return websites_order_service_types_create_internal (
+    websites_order_service_types_t *result = websites_order_service_types_create_internal (
         _11447
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void websites_order_service_types_free(websites_order_service_types_t *websites_order_service_types) {
@@ -86,9 +89,14 @@ websites_order_service_types_t *websites_order_service_types_parseFromJSON(cJSON
     _11447_local_nonprim = websites_order_service_types_parseFromJSON(_11447); //nonprimitive
 
 
+
     websites_order_service_types_local_var = websites_order_service_types_create_internal (
         _11447_local_nonprim
         );
+
+    if (!websites_order_service_types_local_var) {
+        goto end;
+    }
 
     return websites_order_service_types_local_var;
 end:

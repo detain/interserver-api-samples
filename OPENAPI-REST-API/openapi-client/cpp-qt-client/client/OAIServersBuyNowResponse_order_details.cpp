@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServersBuyNowResponse_order_details::OAIServersBuyNowResponse_order_details(QString json) {
+OAIServersBuyNowResponse_order_details::OAIServersBuyNowResponse_order_details(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIServersBuyNowResponse_order_details::initializeModel() {
     m_invoice_id_isValid = false;
 }
 
-void OAIServersBuyNowResponse_order_details::fromJson(QString jsonString) {
+void OAIServersBuyNowResponse_order_details::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

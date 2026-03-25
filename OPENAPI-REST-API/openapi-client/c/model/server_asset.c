@@ -6,7 +6,7 @@
 
 
 static server_asset_t *server_asset_create_internal(
-    int id,
+    int *id,
     char *order_id,
     char *hostname,
     char *status,
@@ -59,6 +59,8 @@ static server_asset_t *server_asset_create_internal(
     if (!server_asset_local_var) {
         return NULL;
     }
+    memset(server_asset_local_var, 0, sizeof(server_asset_t));
+    server_asset_local_var->_library_owned = 1;
     server_asset_local_var->id = id;
     server_asset_local_var->order_id = order_id;
     server_asset_local_var->hostname = hostname;
@@ -107,13 +109,11 @@ static server_asset_t *server_asset_create_internal(
     server_asset_local_var->create_timestamp = create_timestamp;
     server_asset_local_var->update_timestamp = update_timestamp;
     server_asset_local_var->comment = comment;
-
-    server_asset_local_var->_library_owned = 1;
     return server_asset_local_var;
 }
 
 __attribute__((deprecated)) server_asset_t *server_asset_create(
-    int id,
+    int *id,
     char *order_id,
     char *hostname,
     char *status,
@@ -162,8 +162,13 @@ __attribute__((deprecated)) server_asset_t *server_asset_create(
     any_type_t *update_timestamp,
     any_type_t *comment
     ) {
-    return server_asset_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    server_asset_t *result = server_asset_create_internal (
+        id_copy,
         order_id,
         hostname,
         status,
@@ -212,6 +217,10 @@ __attribute__((deprecated)) server_asset_t *server_asset_create(
         update_timestamp,
         comment
         );
+    if (!result) {
+        free(id_copy);
+    }
+    return result;
 }
 
 void server_asset_free(server_asset_t *server_asset) {
@@ -223,6 +232,10 @@ void server_asset_free(server_asset_t *server_asset) {
         return ;
     }
     listEntry_t *listEntry;
+    if (server_asset->id) {
+        free(server_asset->id);
+        server_asset->id = NULL;
+    }
     if (server_asset->order_id) {
         free(server_asset->order_id);
         server_asset->order_id = NULL;
@@ -430,7 +443,7 @@ cJSON *server_asset_convertToJSON(server_asset_t *server_asset) {
     if (!server_asset->id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "id", server_asset->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *server_asset->id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -937,6 +950,77 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
 
     server_asset_t *server_asset_local_var = NULL;
 
+    // define the local variable for server_asset->id
+    int *id_local_var = NULL;
+
+    char *order_id_local_str = NULL;
+
+    char *hostname_local_str = NULL;
+
+    char *status_local_str = NULL;
+
+    char *primary_ipv4_local_str = NULL;
+
+    char *primary_ipv6_local_str = NULL;
+
+    char *datacenter_local_str = NULL;
+
+    char *type_id_local_str = NULL;
+
+    char *asset_tag_local_str = NULL;
+
+    char *rack_local_str = NULL;
+
+    char *row_local_str = NULL;
+
+    char *col_local_str = NULL;
+
+    char *unit_start_local_str = NULL;
+
+    char *unit_end_local_str = NULL;
+
+    char *unit_sub_local_str = NULL;
+
+    char *ipmi_mac_local_str = NULL;
+
+    char *ipmi_ip_local_str = NULL;
+
+    char *ipmi_working_local_str = NULL;
+
+    char *company_local_str = NULL;
+
+    char *comments_local_str = NULL;
+
+    char *make_local_str = NULL;
+
+    char *model_local_str = NULL;
+
+    char *description_local_str = NULL;
+
+    char *customer_id_local_str = NULL;
+
+    char *external_id_local_str = NULL;
+
+    char *billing_status_local_str = NULL;
+
+    char *overdue_local_str = NULL;
+
+    char *asset_id_local_str = NULL;
+
+    char *asset_name_local_str = NULL;
+
+    char *rack_id_local_str = NULL;
+
+    char *rack_name_local_str = NULL;
+
+    char *rack_location_local_str = NULL;
+
+    char *rack_size_local_str = NULL;
+
+    char *rack_x_local_str = NULL;
+
+    char *rack_y_local_str = NULL;
+
     // define the local list for server_asset->switchports
     list_t *switchportsList = NULL;
 
@@ -990,6 +1074,12 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
 
     // server_asset->order_id
     cJSON *order_id = cJSON_GetObjectItemCaseSensitive(server_assetJSON, "order_id");
@@ -1676,42 +1766,77 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
     }
 
 
+    if (order_id && !cJSON_IsNull(order_id)) order_id_local_str = strdup(order_id->valuestring);
+    if (hostname && !cJSON_IsNull(hostname)) hostname_local_str = strdup(hostname->valuestring);
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+    if (primary_ipv4 && !cJSON_IsNull(primary_ipv4)) primary_ipv4_local_str = strdup(primary_ipv4->valuestring);
+    if (primary_ipv6 && !cJSON_IsNull(primary_ipv6)) primary_ipv6_local_str = strdup(primary_ipv6->valuestring);
+    if (datacenter && !cJSON_IsNull(datacenter)) datacenter_local_str = strdup(datacenter->valuestring);
+    if (type_id && !cJSON_IsNull(type_id)) type_id_local_str = strdup(type_id->valuestring);
+    if (asset_tag && !cJSON_IsNull(asset_tag)) asset_tag_local_str = strdup(asset_tag->valuestring);
+    if (rack && !cJSON_IsNull(rack)) rack_local_str = strdup(rack->valuestring);
+    if (row && !cJSON_IsNull(row)) row_local_str = strdup(row->valuestring);
+    if (col && !cJSON_IsNull(col)) col_local_str = strdup(col->valuestring);
+    if (unit_start && !cJSON_IsNull(unit_start)) unit_start_local_str = strdup(unit_start->valuestring);
+    if (unit_end && !cJSON_IsNull(unit_end)) unit_end_local_str = strdup(unit_end->valuestring);
+    if (unit_sub && !cJSON_IsNull(unit_sub)) unit_sub_local_str = strdup(unit_sub->valuestring);
+    if (ipmi_mac && !cJSON_IsNull(ipmi_mac)) ipmi_mac_local_str = strdup(ipmi_mac->valuestring);
+    if (ipmi_ip && !cJSON_IsNull(ipmi_ip)) ipmi_ip_local_str = strdup(ipmi_ip->valuestring);
+    if (ipmi_working && !cJSON_IsNull(ipmi_working)) ipmi_working_local_str = strdup(ipmi_working->valuestring);
+    if (company && !cJSON_IsNull(company)) company_local_str = strdup(company->valuestring);
+    if (comments && !cJSON_IsNull(comments)) comments_local_str = strdup(comments->valuestring);
+    if (make && !cJSON_IsNull(make)) make_local_str = strdup(make->valuestring);
+    if (model && !cJSON_IsNull(model)) model_local_str = strdup(model->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (customer_id && !cJSON_IsNull(customer_id)) customer_id_local_str = strdup(customer_id->valuestring);
+    if (external_id && !cJSON_IsNull(external_id)) external_id_local_str = strdup(external_id->valuestring);
+    if (billing_status && !cJSON_IsNull(billing_status)) billing_status_local_str = strdup(billing_status->valuestring);
+    if (overdue && !cJSON_IsNull(overdue)) overdue_local_str = strdup(overdue->valuestring);
+    if (asset_id && !cJSON_IsNull(asset_id)) asset_id_local_str = strdup(asset_id->valuestring);
+    if (asset_name && !cJSON_IsNull(asset_name)) asset_name_local_str = strdup(asset_name->valuestring);
+    if (rack_id && !cJSON_IsNull(rack_id)) rack_id_local_str = strdup(rack_id->valuestring);
+    if (rack_name && !cJSON_IsNull(rack_name)) rack_name_local_str = strdup(rack_name->valuestring);
+    if (rack_location && !cJSON_IsNull(rack_location)) rack_location_local_str = strdup(rack_location->valuestring);
+    if (rack_size && !cJSON_IsNull(rack_size)) rack_size_local_str = strdup(rack_size->valuestring);
+    if (rack_x && !cJSON_IsNull(rack_x)) rack_x_local_str = strdup(rack_x->valuestring);
+    if (rack_y && !cJSON_IsNull(rack_y)) rack_y_local_str = strdup(rack_y->valuestring);
+
     server_asset_local_var = server_asset_create_internal (
-        id->valuedouble,
-        strdup(order_id->valuestring),
-        strdup(hostname->valuestring),
-        strdup(status->valuestring),
-        strdup(primary_ipv4->valuestring),
-        strdup(primary_ipv6->valuestring),
-        strdup(datacenter->valuestring),
-        strdup(type_id->valuestring),
-        strdup(asset_tag->valuestring),
-        strdup(rack->valuestring),
-        strdup(row->valuestring),
-        strdup(col->valuestring),
-        strdup(unit_start->valuestring),
-        strdup(unit_end->valuestring),
-        strdup(unit_sub->valuestring),
-        strdup(ipmi_mac->valuestring),
-        strdup(ipmi_ip->valuestring),
-        strdup(ipmi_working->valuestring),
-        strdup(company->valuestring),
-        strdup(comments->valuestring),
-        strdup(make->valuestring),
-        strdup(model->valuestring),
-        strdup(description->valuestring),
-        strdup(customer_id->valuestring),
-        strdup(external_id->valuestring),
-        strdup(billing_status->valuestring),
-        strdup(overdue->valuestring),
-        strdup(asset_id->valuestring),
-        strdup(asset_name->valuestring),
-        strdup(rack_id->valuestring),
-        strdup(rack_name->valuestring),
-        strdup(rack_location->valuestring),
-        strdup(rack_size->valuestring),
-        strdup(rack_x->valuestring),
-        strdup(rack_y->valuestring),
+        id_local_var,
+        order_id_local_str,
+        hostname_local_str,
+        status_local_str,
+        primary_ipv4_local_str,
+        primary_ipv6_local_str,
+        datacenter_local_str,
+        type_id_local_str,
+        asset_tag_local_str,
+        rack_local_str,
+        row_local_str,
+        col_local_str,
+        unit_start_local_str,
+        unit_end_local_str,
+        unit_sub_local_str,
+        ipmi_mac_local_str,
+        ipmi_ip_local_str,
+        ipmi_working_local_str,
+        company_local_str,
+        comments_local_str,
+        make_local_str,
+        model_local_str,
+        description_local_str,
+        customer_id_local_str,
+        external_id_local_str,
+        billing_status_local_str,
+        overdue_local_str,
+        asset_id_local_str,
+        asset_name_local_str,
+        rack_id_local_str,
+        rack_name_local_str,
+        rack_location_local_str,
+        rack_size_local_str,
+        rack_x_local_str,
+        rack_y_local_str,
         switchportsList,
         vlansList,
         vlans6List,
@@ -1727,8 +1852,152 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         comment ? comment_local_nonprim : NULL
         );
 
+    if (!server_asset_local_var) {
+        goto end;
+    }
+
     return server_asset_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (order_id_local_str) {
+        free(order_id_local_str);
+        order_id_local_str = NULL;
+    }
+    if (hostname_local_str) {
+        free(hostname_local_str);
+        hostname_local_str = NULL;
+    }
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
+    if (primary_ipv4_local_str) {
+        free(primary_ipv4_local_str);
+        primary_ipv4_local_str = NULL;
+    }
+    if (primary_ipv6_local_str) {
+        free(primary_ipv6_local_str);
+        primary_ipv6_local_str = NULL;
+    }
+    if (datacenter_local_str) {
+        free(datacenter_local_str);
+        datacenter_local_str = NULL;
+    }
+    if (type_id_local_str) {
+        free(type_id_local_str);
+        type_id_local_str = NULL;
+    }
+    if (asset_tag_local_str) {
+        free(asset_tag_local_str);
+        asset_tag_local_str = NULL;
+    }
+    if (rack_local_str) {
+        free(rack_local_str);
+        rack_local_str = NULL;
+    }
+    if (row_local_str) {
+        free(row_local_str);
+        row_local_str = NULL;
+    }
+    if (col_local_str) {
+        free(col_local_str);
+        col_local_str = NULL;
+    }
+    if (unit_start_local_str) {
+        free(unit_start_local_str);
+        unit_start_local_str = NULL;
+    }
+    if (unit_end_local_str) {
+        free(unit_end_local_str);
+        unit_end_local_str = NULL;
+    }
+    if (unit_sub_local_str) {
+        free(unit_sub_local_str);
+        unit_sub_local_str = NULL;
+    }
+    if (ipmi_mac_local_str) {
+        free(ipmi_mac_local_str);
+        ipmi_mac_local_str = NULL;
+    }
+    if (ipmi_ip_local_str) {
+        free(ipmi_ip_local_str);
+        ipmi_ip_local_str = NULL;
+    }
+    if (ipmi_working_local_str) {
+        free(ipmi_working_local_str);
+        ipmi_working_local_str = NULL;
+    }
+    if (company_local_str) {
+        free(company_local_str);
+        company_local_str = NULL;
+    }
+    if (comments_local_str) {
+        free(comments_local_str);
+        comments_local_str = NULL;
+    }
+    if (make_local_str) {
+        free(make_local_str);
+        make_local_str = NULL;
+    }
+    if (model_local_str) {
+        free(model_local_str);
+        model_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (customer_id_local_str) {
+        free(customer_id_local_str);
+        customer_id_local_str = NULL;
+    }
+    if (external_id_local_str) {
+        free(external_id_local_str);
+        external_id_local_str = NULL;
+    }
+    if (billing_status_local_str) {
+        free(billing_status_local_str);
+        billing_status_local_str = NULL;
+    }
+    if (overdue_local_str) {
+        free(overdue_local_str);
+        overdue_local_str = NULL;
+    }
+    if (asset_id_local_str) {
+        free(asset_id_local_str);
+        asset_id_local_str = NULL;
+    }
+    if (asset_name_local_str) {
+        free(asset_name_local_str);
+        asset_name_local_str = NULL;
+    }
+    if (rack_id_local_str) {
+        free(rack_id_local_str);
+        rack_id_local_str = NULL;
+    }
+    if (rack_name_local_str) {
+        free(rack_name_local_str);
+        rack_name_local_str = NULL;
+    }
+    if (rack_location_local_str) {
+        free(rack_location_local_str);
+        rack_location_local_str = NULL;
+    }
+    if (rack_size_local_str) {
+        free(rack_size_local_str);
+        rack_size_local_str = NULL;
+    }
+    if (rack_x_local_str) {
+        free(rack_x_local_str);
+        rack_x_local_str = NULL;
+    }
+    if (rack_y_local_str) {
+        free(rack_y_local_str);
+        rack_y_local_str = NULL;
+    }
     if (switchportsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, switchportsList) {

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAITickets_countArray::OAITickets_countArray(QString json) {
+OAITickets_countArray::OAITickets_countArray(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAITickets_countArray::initializeModel() {
     m_closed_isValid = false;
 }
 
-void OAITickets_countArray::fromJson(QString jsonString) {
+void OAITickets_countArray::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

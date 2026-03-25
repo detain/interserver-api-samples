@@ -14,11 +14,11 @@ static licenses_order_t *licenses_order_create_internal(
     if (!licenses_order_local_var) {
         return NULL;
     }
+    memset(licenses_order_local_var, 0, sizeof(licenses_order_t));
+    licenses_order_local_var->_library_owned = 1;
     licenses_order_local_var->service_categories = service_categories;
     licenses_order_local_var->package_costs = package_costs;
     licenses_order_local_var->service_types = service_types;
-
-    licenses_order_local_var->_library_owned = 1;
     return licenses_order_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) licenses_order_t *licenses_order_create(
     licenses_order_package_costs_t *package_costs,
     licenses_order_service_types_t *service_types
     ) {
-    return licenses_order_create_internal (
+    licenses_order_t *result = licenses_order_create_internal (
         service_categories,
         package_costs,
         service_types
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void licenses_order_free(licenses_order_t *licenses_order) {
@@ -148,11 +151,16 @@ licenses_order_t *licenses_order_parseFromJSON(cJSON *licenses_orderJSON){
     }
 
 
+
     licenses_order_local_var = licenses_order_create_internal (
         service_categories ? service_categories_local_nonprim : NULL,
         package_costs ? package_costs_local_nonprim : NULL,
         service_types ? service_types_local_nonprim : NULL
         );
+
+    if (!licenses_order_local_var) {
+        goto end;
+    }
 
     return licenses_order_local_var;
 end:

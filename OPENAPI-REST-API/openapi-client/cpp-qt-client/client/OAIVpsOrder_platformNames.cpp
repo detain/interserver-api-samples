@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder_platformNames::OAIVpsOrder_platformNames(QString json) {
+OAIVpsOrder_platformNames::OAIVpsOrder_platformNames(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIVpsOrder_platformNames::initializeModel() {
     m_hyperv_isValid = false;
 }
 
-void OAIVpsOrder_platformNames::fromJson(QString jsonString) {
+void OAIVpsOrder_platformNames::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

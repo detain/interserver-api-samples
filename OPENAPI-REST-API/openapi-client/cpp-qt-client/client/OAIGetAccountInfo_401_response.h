@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIGetAccountInfo_401_response : public OAIObject {
 public:
     OAIGetAccountInfo_401_response();
-    OAIGetAccountInfo_401_response(QString json);
+    OAIGetAccountInfo_401_response(const QString &json);
     ~OAIGetAccountInfo_401_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getCode() const;
     void setCode(const qint32 &code);

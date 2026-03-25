@@ -19,23 +19,23 @@ typedef struct server_location1_t server_location1_t;
 
 
 typedef struct server_location1_t {
-    int location_id; //numeric
+    int *location_id; //numeric
     char *location_name; // string
     char *location_lat; // string
     char *location_long; // string
     char *location_description; // string
-    int location_ipmi_group; //numeric
+    int *location_ipmi_group; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } server_location1_t;
 
 __attribute__((deprecated)) server_location1_t *server_location1_create(
-    int location_id,
+    int *location_id,
     char *location_name,
     char *location_lat,
     char *location_long,
     char *location_description,
-    int location_ipmi_group
+    int *location_ipmi_group
 );
 
 void server_location1_free(server_location1_t *server_location1);

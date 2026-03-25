@@ -13,10 +13,10 @@ static vps_traffic_history_section_response_t *vps_traffic_history_section_respo
     if (!vps_traffic_history_section_response_local_var) {
         return NULL;
     }
+    memset(vps_traffic_history_section_response_local_var, 0, sizeof(vps_traffic_history_section_response_t));
+    vps_traffic_history_section_response_local_var->_library_owned = 1;
     vps_traffic_history_section_response_local_var->data = data;
     vps_traffic_history_section_response_local_var->times = times;
-
-    vps_traffic_history_section_response_local_var->_library_owned = 1;
     return vps_traffic_history_section_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) vps_traffic_history_section_response_t *vps_traffic_
     list_t *data,
     list_t *times
     ) {
-    return vps_traffic_history_section_response_create_internal (
+    vps_traffic_history_section_response_t *result = vps_traffic_history_section_response_create_internal (
         data,
         times
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_traffic_history_section_response_free(vps_traffic_history_section_response_t *vps_traffic_history_section_response) {
@@ -159,10 +162,15 @@ vps_traffic_history_section_response_t *vps_traffic_history_section_response_par
     }
 
 
+
     vps_traffic_history_section_response_local_var = vps_traffic_history_section_response_create_internal (
         dataList,
         timesList
         );
+
+    if (!vps_traffic_history_section_response_local_var) {
+        goto end;
+    }
 
     return vps_traffic_history_section_response_local_var;
 end:

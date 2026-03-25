@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBillingAddCcRequest::OAIBillingAddCcRequest(QString json) {
+OAIBillingAddCcRequest::OAIBillingAddCcRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIBillingAddCcRequest::initializeModel() {
     m_cc_ccv2_isValid = false;
 }
 
-void OAIBillingAddCcRequest::fromJson(QString jsonString) {
+void OAIBillingAddCcRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

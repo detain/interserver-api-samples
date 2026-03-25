@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAITickets_countArray : public OAIObject {
 public:
     OAITickets_countArray();
-    OAITickets_countArray(QString json);
+    OAITickets_countArray(const QString &json);
     ~OAITickets_countArray() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getOpen() const;
     void setOpen(const qint32 &open);

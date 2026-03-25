@@ -29,7 +29,7 @@ interserver_management_api_deny_rule_record_TYPE_e deny_rule_record_type_FromStr
 typedef struct deny_rule_record_t {
     interserver_management_api_deny_rule_record_TYPE_e type; //enum
     char *data; // string
-    int id; //numeric
+    int *id; //numeric
     char *created; // string
     char *user; // string
 
@@ -39,7 +39,7 @@ typedef struct deny_rule_record_t {
 __attribute__((deprecated)) deny_rule_record_t *deny_rule_record_create(
     interserver_management_api_deny_rule_record_TYPE_e type,
     char *data,
-    int id,
+    int *id,
     char *created,
     char *user
 );

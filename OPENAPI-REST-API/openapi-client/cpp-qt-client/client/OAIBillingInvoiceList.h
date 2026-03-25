@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIBillingInvoiceList : public OAIObject {
 public:
     OAIBillingInvoiceList();
-    OAIBillingInvoiceList(QString json);
+    OAIBillingInvoiceList(const QString &json);
     ~OAIBillingInvoiceList() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<OAIObject> getRows() const;
     void setRows(const QList<OAIObject> &rows);

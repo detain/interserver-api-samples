@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServersBuyNowError::OAIServersBuyNowError(QString json) {
+OAIServersBuyNowError::OAIServersBuyNowError(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIServersBuyNowError::initializeModel() {
     m_errors_isValid = false;
 }
 
-void OAIServersBuyNowError::fromJson(QString jsonString) {
+void OAIServersBuyNowError::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

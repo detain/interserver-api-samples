@@ -1,4 +1,4 @@
-# # PostWebsiteMigration200Response
+# PostWebsiteMigration200Response
 
 ## Properties
 

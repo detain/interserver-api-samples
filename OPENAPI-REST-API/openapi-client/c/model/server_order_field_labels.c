@@ -18,6 +18,8 @@ static server_order_field_labels_t *server_order_field_labels_create_internal(
     if (!server_order_field_labels_local_var) {
         return NULL;
     }
+    memset(server_order_field_labels_local_var, 0, sizeof(server_order_field_labels_t));
+    server_order_field_labels_local_var->_library_owned = 1;
     server_order_field_labels_local_var->bandwidth = bandwidth;
     server_order_field_labels_local_var->ips = ips;
     server_order_field_labels_local_var->os = os;
@@ -25,8 +27,6 @@ static server_order_field_labels_t *server_order_field_labels_create_internal(
     server_order_field_labels_local_var->raid = raid;
     server_order_field_labels_local_var->memory = memory;
     server_order_field_labels_local_var->hd = hd;
-
-    server_order_field_labels_local_var->_library_owned = 1;
     return server_order_field_labels_local_var;
 }
 
@@ -39,7 +39,7 @@ __attribute__((deprecated)) server_order_field_labels_t *server_order_field_labe
     server_order_field_label_t *memory,
     server_order_field_label_t *hd
     ) {
-    return server_order_field_labels_create_internal (
+    server_order_field_labels_t *result = server_order_field_labels_create_internal (
         bandwidth,
         ips,
         os,
@@ -48,6 +48,9 @@ __attribute__((deprecated)) server_order_field_labels_t *server_order_field_labe
         memory,
         hd
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_order_field_labels_free(server_order_field_labels_t *server_order_field_labels) {
@@ -280,6 +283,7 @@ server_order_field_labels_t *server_order_field_labels_parseFromJSON(cJSON *serv
     }
 
 
+
     server_order_field_labels_local_var = server_order_field_labels_create_internal (
         bandwidth ? bandwidth_local_nonprim : NULL,
         ips ? ips_local_nonprim : NULL,
@@ -289,6 +293,10 @@ server_order_field_labels_t *server_order_field_labels_parseFromJSON(cJSON *serv
         memory ? memory_local_nonprim : NULL,
         hd ? hd_local_nonprim : NULL
         );
+
+    if (!server_order_field_labels_local_var) {
+        goto end;
+    }
 
     return server_order_field_labels_local_var;
 end:

@@ -18,16 +18,18 @@ static account_info_post_t *account_info_post_create_internal(
     char *locale,
     char *email_invoices,
     char *email_abuse,
-    int disable_reset,
-    int disable_reinstall,
-    int disable_server_notifications,
-    int disable_email_notifications,
+    int *disable_reset,
+    int *disable_reinstall,
+    int *disable_server_notifications,
+    int *disable_email_notifications,
     char *gstin
     ) {
     account_info_post_t *account_info_post_local_var = malloc(sizeof(account_info_post_t));
     if (!account_info_post_local_var) {
         return NULL;
     }
+    memset(account_info_post_local_var, 0, sizeof(account_info_post_t));
+    account_info_post_local_var->_library_owned = 1;
     account_info_post_local_var->name = name;
     account_info_post_local_var->address = address;
     account_info_post_local_var->city = city;
@@ -45,8 +47,6 @@ static account_info_post_t *account_info_post_create_internal(
     account_info_post_local_var->disable_server_notifications = disable_server_notifications;
     account_info_post_local_var->disable_email_notifications = disable_email_notifications;
     account_info_post_local_var->gstin = gstin;
-
-    account_info_post_local_var->_library_owned = 1;
     return account_info_post_local_var;
 }
 
@@ -63,13 +63,33 @@ __attribute__((deprecated)) account_info_post_t *account_info_post_create(
     char *locale,
     char *email_invoices,
     char *email_abuse,
-    int disable_reset,
-    int disable_reinstall,
-    int disable_server_notifications,
-    int disable_email_notifications,
+    int *disable_reset,
+    int *disable_reinstall,
+    int *disable_server_notifications,
+    int *disable_email_notifications,
     char *gstin
     ) {
-    return account_info_post_create_internal (
+    int *disable_reset_copy = NULL;
+    if (disable_reset) {
+        disable_reset_copy = malloc(sizeof(int));
+        if (disable_reset_copy) *disable_reset_copy = *disable_reset;
+    }
+    int *disable_reinstall_copy = NULL;
+    if (disable_reinstall) {
+        disable_reinstall_copy = malloc(sizeof(int));
+        if (disable_reinstall_copy) *disable_reinstall_copy = *disable_reinstall;
+    }
+    int *disable_server_notifications_copy = NULL;
+    if (disable_server_notifications) {
+        disable_server_notifications_copy = malloc(sizeof(int));
+        if (disable_server_notifications_copy) *disable_server_notifications_copy = *disable_server_notifications;
+    }
+    int *disable_email_notifications_copy = NULL;
+    if (disable_email_notifications) {
+        disable_email_notifications_copy = malloc(sizeof(int));
+        if (disable_email_notifications_copy) *disable_email_notifications_copy = *disable_email_notifications;
+    }
+    account_info_post_t *result = account_info_post_create_internal (
         name,
         address,
         city,
@@ -82,12 +102,19 @@ __attribute__((deprecated)) account_info_post_t *account_info_post_create(
         locale,
         email_invoices,
         email_abuse,
-        disable_reset,
-        disable_reinstall,
-        disable_server_notifications,
-        disable_email_notifications,
+        disable_reset_copy,
+        disable_reinstall_copy,
+        disable_server_notifications_copy,
+        disable_email_notifications_copy,
         gstin
         );
+    if (!result) {
+        free(disable_reset_copy);
+        free(disable_reinstall_copy);
+        free(disable_server_notifications_copy);
+        free(disable_email_notifications_copy);
+    }
+    return result;
 }
 
 void account_info_post_free(account_info_post_t *account_info_post) {
@@ -146,6 +173,22 @@ void account_info_post_free(account_info_post_t *account_info_post) {
     if (account_info_post->email_abuse) {
         free(account_info_post->email_abuse);
         account_info_post->email_abuse = NULL;
+    }
+    if (account_info_post->disable_reset) {
+        free(account_info_post->disable_reset);
+        account_info_post->disable_reset = NULL;
+    }
+    if (account_info_post->disable_reinstall) {
+        free(account_info_post->disable_reinstall);
+        account_info_post->disable_reinstall = NULL;
+    }
+    if (account_info_post->disable_server_notifications) {
+        free(account_info_post->disable_server_notifications);
+        account_info_post->disable_server_notifications = NULL;
+    }
+    if (account_info_post->disable_email_notifications) {
+        free(account_info_post->disable_email_notifications);
+        account_info_post->disable_email_notifications = NULL;
     }
     if (account_info_post->gstin) {
         free(account_info_post->gstin);
@@ -262,7 +305,7 @@ cJSON *account_info_post_convertToJSON(account_info_post_t *account_info_post) {
 
     // account_info_post->disable_reset
     if(account_info_post->disable_reset) {
-    if(cJSON_AddBoolToObject(item, "disable_reset", account_info_post->disable_reset) == NULL) {
+    if(cJSON_AddBoolToObject(item, "disable_reset", *account_info_post->disable_reset) == NULL) {
     goto fail; //Bool
     }
     }
@@ -270,7 +313,7 @@ cJSON *account_info_post_convertToJSON(account_info_post_t *account_info_post) {
 
     // account_info_post->disable_reinstall
     if(account_info_post->disable_reinstall) {
-    if(cJSON_AddBoolToObject(item, "disable_reinstall", account_info_post->disable_reinstall) == NULL) {
+    if(cJSON_AddBoolToObject(item, "disable_reinstall", *account_info_post->disable_reinstall) == NULL) {
     goto fail; //Bool
     }
     }
@@ -278,7 +321,7 @@ cJSON *account_info_post_convertToJSON(account_info_post_t *account_info_post) {
 
     // account_info_post->disable_server_notifications
     if(account_info_post->disable_server_notifications) {
-    if(cJSON_AddBoolToObject(item, "disable_server_notifications", account_info_post->disable_server_notifications) == NULL) {
+    if(cJSON_AddBoolToObject(item, "disable_server_notifications", *account_info_post->disable_server_notifications) == NULL) {
     goto fail; //Bool
     }
     }
@@ -286,7 +329,7 @@ cJSON *account_info_post_convertToJSON(account_info_post_t *account_info_post) {
 
     // account_info_post->disable_email_notifications
     if(account_info_post->disable_email_notifications) {
-    if(cJSON_AddBoolToObject(item, "disable_email_notifications", account_info_post->disable_email_notifications) == NULL) {
+    if(cJSON_AddBoolToObject(item, "disable_email_notifications", *account_info_post->disable_email_notifications) == NULL) {
     goto fail; //Bool
     }
     }
@@ -310,6 +353,44 @@ fail:
 account_info_post_t *account_info_post_parseFromJSON(cJSON *account_info_postJSON){
 
     account_info_post_t *account_info_post_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    char *address_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *state_local_str = NULL;
+
+    char *zip_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *phone_local_str = NULL;
+
+    char *company_local_str = NULL;
+
+    char *address2_local_str = NULL;
+
+    char *locale_local_str = NULL;
+
+    char *email_invoices_local_str = NULL;
+
+    char *email_abuse_local_str = NULL;
+
+    // define the local variable for account_info_post->disable_reset
+    int *disable_reset_local_var = NULL;
+
+    // define the local variable for account_info_post->disable_reinstall
+    int *disable_reinstall_local_var = NULL;
+
+    // define the local variable for account_info_post->disable_server_notifications
+    int *disable_server_notifications_local_var = NULL;
+
+    // define the local variable for account_info_post->disable_email_notifications
+    int *disable_email_notifications_local_var = NULL;
+
+    char *gstin_local_str = NULL;
 
     // account_info_post->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(account_info_postJSON, "name");
@@ -486,6 +567,12 @@ account_info_post_t *account_info_post_parseFromJSON(cJSON *account_info_postJSO
     {
     goto end; //Bool
     }
+    disable_reset_local_var = malloc(sizeof(int));
+    if(!disable_reset_local_var)
+    {
+        goto end;
+    }
+    *disable_reset_local_var = disable_reset->valueint;
     }
 
     // account_info_post->disable_reinstall
@@ -498,6 +585,12 @@ account_info_post_t *account_info_post_parseFromJSON(cJSON *account_info_postJSO
     {
     goto end; //Bool
     }
+    disable_reinstall_local_var = malloc(sizeof(int));
+    if(!disable_reinstall_local_var)
+    {
+        goto end;
+    }
+    *disable_reinstall_local_var = disable_reinstall->valueint;
     }
 
     // account_info_post->disable_server_notifications
@@ -510,6 +603,12 @@ account_info_post_t *account_info_post_parseFromJSON(cJSON *account_info_postJSO
     {
     goto end; //Bool
     }
+    disable_server_notifications_local_var = malloc(sizeof(int));
+    if(!disable_server_notifications_local_var)
+    {
+        goto end;
+    }
+    *disable_server_notifications_local_var = disable_server_notifications->valueint;
     }
 
     // account_info_post->disable_email_notifications
@@ -522,6 +621,12 @@ account_info_post_t *account_info_post_parseFromJSON(cJSON *account_info_postJSO
     {
     goto end; //Bool
     }
+    disable_email_notifications_local_var = malloc(sizeof(int));
+    if(!disable_email_notifications_local_var)
+    {
+        goto end;
+    }
+    *disable_email_notifications_local_var = disable_email_notifications->valueint;
     }
 
     // account_info_post->gstin
@@ -537,28 +642,114 @@ account_info_post_t *account_info_post_parseFromJSON(cJSON *account_info_postJSO
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (address && !cJSON_IsNull(address)) address_local_str = strdup(address->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (state && !cJSON_IsNull(state)) state_local_str = strdup(state->valuestring);
+    if (zip && !cJSON_IsNull(zip)) zip_local_str = strdup(zip->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (phone && !cJSON_IsNull(phone)) phone_local_str = strdup(phone->valuestring);
+    if (company && !cJSON_IsNull(company)) company_local_str = strdup(company->valuestring);
+    if (address2 && !cJSON_IsNull(address2)) address2_local_str = strdup(address2->valuestring);
+    if (locale && !cJSON_IsNull(locale)) locale_local_str = strdup(locale->valuestring);
+    if (email_invoices && !cJSON_IsNull(email_invoices)) email_invoices_local_str = strdup(email_invoices->valuestring);
+    if (email_abuse && !cJSON_IsNull(email_abuse)) email_abuse_local_str = strdup(email_abuse->valuestring);
+    if (gstin && !cJSON_IsNull(gstin)) gstin_local_str = strdup(gstin->valuestring);
+
     account_info_post_local_var = account_info_post_create_internal (
-        strdup(name->valuestring),
-        strdup(address->valuestring),
-        strdup(city->valuestring),
-        strdup(state->valuestring),
-        strdup(zip->valuestring),
-        strdup(country->valuestring),
-        strdup(phone->valuestring),
-        company && !cJSON_IsNull(company) ? strdup(company->valuestring) : NULL,
-        address2 && !cJSON_IsNull(address2) ? strdup(address2->valuestring) : NULL,
-        locale && !cJSON_IsNull(locale) ? strdup(locale->valuestring) : NULL,
-        email_invoices && !cJSON_IsNull(email_invoices) ? strdup(email_invoices->valuestring) : NULL,
-        email_abuse && !cJSON_IsNull(email_abuse) ? strdup(email_abuse->valuestring) : NULL,
-        disable_reset ? disable_reset->valueint : 0,
-        disable_reinstall ? disable_reinstall->valueint : 0,
-        disable_server_notifications ? disable_server_notifications->valueint : 0,
-        disable_email_notifications ? disable_email_notifications->valueint : 0,
-        gstin && !cJSON_IsNull(gstin) ? strdup(gstin->valuestring) : NULL
+        name_local_str,
+        address_local_str,
+        city_local_str,
+        state_local_str,
+        zip_local_str,
+        country_local_str,
+        phone_local_str,
+        company_local_str,
+        address2_local_str,
+        locale_local_str,
+        email_invoices_local_str,
+        email_abuse_local_str,
+        disable_reset_local_var,
+        disable_reinstall_local_var,
+        disable_server_notifications_local_var,
+        disable_email_notifications_local_var,
+        gstin_local_str
         );
+
+    if (!account_info_post_local_var) {
+        goto end;
+    }
 
     return account_info_post_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (address_local_str) {
+        free(address_local_str);
+        address_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (state_local_str) {
+        free(state_local_str);
+        state_local_str = NULL;
+    }
+    if (zip_local_str) {
+        free(zip_local_str);
+        zip_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (phone_local_str) {
+        free(phone_local_str);
+        phone_local_str = NULL;
+    }
+    if (company_local_str) {
+        free(company_local_str);
+        company_local_str = NULL;
+    }
+    if (address2_local_str) {
+        free(address2_local_str);
+        address2_local_str = NULL;
+    }
+    if (locale_local_str) {
+        free(locale_local_str);
+        locale_local_str = NULL;
+    }
+    if (email_invoices_local_str) {
+        free(email_invoices_local_str);
+        email_invoices_local_str = NULL;
+    }
+    if (email_abuse_local_str) {
+        free(email_abuse_local_str);
+        email_abuse_local_str = NULL;
+    }
+    if (disable_reset_local_var) {
+        free(disable_reset_local_var);
+        disable_reset_local_var = NULL;
+    }
+    if (disable_reinstall_local_var) {
+        free(disable_reinstall_local_var);
+        disable_reinstall_local_var = NULL;
+    }
+    if (disable_server_notifications_local_var) {
+        free(disable_server_notifications_local_var);
+        disable_server_notifications_local_var = NULL;
+    }
+    if (disable_email_notifications_local_var) {
+        free(disable_email_notifications_local_var);
+        disable_email_notifications_local_var = NULL;
+    }
+    if (gstin_local_str) {
+        free(gstin_local_str);
+        gstin_local_str = NULL;
+    }
     return NULL;
 
 }

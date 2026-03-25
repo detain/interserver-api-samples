@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILicenseRow::OAILicenseRow(QString json) {
+OAILicenseRow::OAILicenseRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAILicenseRow::initializeModel() {
     m_invoices_date_isValid = false;
 }
 
-void OAILicenseRow::fromJson(QString jsonString) {
+void OAILicenseRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

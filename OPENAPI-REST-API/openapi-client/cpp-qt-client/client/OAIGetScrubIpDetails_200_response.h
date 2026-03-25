@@ -42,13 +42,13 @@ class OAIGetScrubIpDetails_200_response_filter_firewall;
 class OAIGetScrubIpDetails_200_response : public OAIObject {
 public:
     OAIGetScrubIpDetails_200_response();
-    OAIGetScrubIpDetails_200_response(QString json);
+    OAIGetScrubIpDetails_200_response(const QString &json);
     ~OAIGetScrubIpDetails_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIGetScrubIpDetails_200_response_serviceInfo getServiceInfo() const;
     void setServiceInfo(const OAIGetScrubIpDetails_200_response_serviceInfo &service_info);

@@ -16,12 +16,14 @@ static account_info_data_cc_t *account_info_data_cc_create_internal(
     char *country,
     char *maxmind_riskscore,
     account_info_max_mind_response_t *maxmind,
-    int verified
+    int *verified
     ) {
     account_info_data_cc_t *account_info_data_cc_local_var = malloc(sizeof(account_info_data_cc_t));
     if (!account_info_data_cc_local_var) {
         return NULL;
     }
+    memset(account_info_data_cc_local_var, 0, sizeof(account_info_data_cc_t));
+    account_info_data_cc_local_var->_library_owned = 1;
     account_info_data_cc_local_var->cc = cc;
     account_info_data_cc_local_var->cc_exp = cc_exp;
     account_info_data_cc_local_var->name = name;
@@ -33,8 +35,6 @@ static account_info_data_cc_t *account_info_data_cc_create_internal(
     account_info_data_cc_local_var->maxmind_riskscore = maxmind_riskscore;
     account_info_data_cc_local_var->maxmind = maxmind;
     account_info_data_cc_local_var->verified = verified;
-
-    account_info_data_cc_local_var->_library_owned = 1;
     return account_info_data_cc_local_var;
 }
 
@@ -49,9 +49,14 @@ __attribute__((deprecated)) account_info_data_cc_t *account_info_data_cc_create(
     char *country,
     char *maxmind_riskscore,
     account_info_max_mind_response_t *maxmind,
-    int verified
+    int *verified
     ) {
-    return account_info_data_cc_create_internal (
+    int *verified_copy = NULL;
+    if (verified) {
+        verified_copy = malloc(sizeof(int));
+        if (verified_copy) *verified_copy = *verified;
+    }
+    account_info_data_cc_t *result = account_info_data_cc_create_internal (
         cc,
         cc_exp,
         name,
@@ -62,8 +67,12 @@ __attribute__((deprecated)) account_info_data_cc_t *account_info_data_cc_create(
         country,
         maxmind_riskscore,
         maxmind,
-        verified
+        verified_copy
         );
+    if (!result) {
+        free(verified_copy);
+    }
+    return result;
 }
 
 void account_info_data_cc_free(account_info_data_cc_t *account_info_data_cc) {
@@ -114,6 +123,10 @@ void account_info_data_cc_free(account_info_data_cc_t *account_info_data_cc) {
     if (account_info_data_cc->maxmind) {
         account_info_max_mind_response_free(account_info_data_cc->maxmind);
         account_info_data_cc->maxmind = NULL;
+    }
+    if (account_info_data_cc->verified) {
+        free(account_info_data_cc->verified);
+        account_info_data_cc->verified = NULL;
     }
     free(account_info_data_cc);
 }
@@ -208,7 +221,7 @@ cJSON *account_info_data_cc_convertToJSON(account_info_data_cc_t *account_info_d
 
     // account_info_data_cc->verified
     if(account_info_data_cc->verified) {
-    if(cJSON_AddBoolToObject(item, "verified", account_info_data_cc->verified) == NULL) {
+    if(cJSON_AddBoolToObject(item, "verified", *account_info_data_cc->verified) == NULL) {
     goto fail; //Bool
     }
     }
@@ -225,8 +238,29 @@ account_info_data_cc_t *account_info_data_cc_parseFromJSON(cJSON *account_info_d
 
     account_info_data_cc_t *account_info_data_cc_local_var = NULL;
 
+    char *cc_local_str = NULL;
+
+    char *cc_exp_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    char *address_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *state_local_str = NULL;
+
+    char *zip_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *maxmind_riskscore_local_str = NULL;
+
     // define the local variable for account_info_data_cc->maxmind
     account_info_max_mind_response_t *maxmind_local_nonprim = NULL;
+
+    // define the local variable for account_info_data_cc->verified
+    int *verified_local_var = NULL;
 
     // account_info_data_cc->cc
     cJSON *cc = cJSON_GetObjectItemCaseSensitive(account_info_data_ccJSON, "cc");
@@ -355,28 +389,88 @@ account_info_data_cc_t *account_info_data_cc_parseFromJSON(cJSON *account_info_d
     {
     goto end; //Bool
     }
+    verified_local_var = malloc(sizeof(int));
+    if(!verified_local_var)
+    {
+        goto end;
+    }
+    *verified_local_var = verified->valueint;
     }
 
 
+    if (cc && !cJSON_IsNull(cc)) cc_local_str = strdup(cc->valuestring);
+    if (cc_exp && !cJSON_IsNull(cc_exp)) cc_exp_local_str = strdup(cc_exp->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (address && !cJSON_IsNull(address)) address_local_str = strdup(address->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (state && !cJSON_IsNull(state)) state_local_str = strdup(state->valuestring);
+    if (zip && !cJSON_IsNull(zip)) zip_local_str = strdup(zip->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (maxmind_riskscore && !cJSON_IsNull(maxmind_riskscore)) maxmind_riskscore_local_str = strdup(maxmind_riskscore->valuestring);
+
     account_info_data_cc_local_var = account_info_data_cc_create_internal (
-        cc && !cJSON_IsNull(cc) ? strdup(cc->valuestring) : NULL,
-        cc_exp && !cJSON_IsNull(cc_exp) ? strdup(cc_exp->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        address && !cJSON_IsNull(address) ? strdup(address->valuestring) : NULL,
-        city && !cJSON_IsNull(city) ? strdup(city->valuestring) : NULL,
-        state && !cJSON_IsNull(state) ? strdup(state->valuestring) : NULL,
-        zip && !cJSON_IsNull(zip) ? strdup(zip->valuestring) : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        maxmind_riskscore && !cJSON_IsNull(maxmind_riskscore) ? strdup(maxmind_riskscore->valuestring) : NULL,
+        cc_local_str,
+        cc_exp_local_str,
+        name_local_str,
+        address_local_str,
+        city_local_str,
+        state_local_str,
+        zip_local_str,
+        country_local_str,
+        maxmind_riskscore_local_str,
         maxmind ? maxmind_local_nonprim : NULL,
-        verified ? verified->valueint : 0
+        verified_local_var
         );
+
+    if (!account_info_data_cc_local_var) {
+        goto end;
+    }
 
     return account_info_data_cc_local_var;
 end:
+    if (cc_local_str) {
+        free(cc_local_str);
+        cc_local_str = NULL;
+    }
+    if (cc_exp_local_str) {
+        free(cc_exp_local_str);
+        cc_exp_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (address_local_str) {
+        free(address_local_str);
+        address_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (state_local_str) {
+        free(state_local_str);
+        state_local_str = NULL;
+    }
+    if (zip_local_str) {
+        free(zip_local_str);
+        zip_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (maxmind_riskscore_local_str) {
+        free(maxmind_riskscore_local_str);
+        maxmind_riskscore_local_str = NULL;
+    }
     if (maxmind_local_nonprim) {
         account_info_max_mind_response_free(maxmind_local_nonprim);
         maxmind_local_nonprim = NULL;
+    }
+    if (verified_local_var) {
+        free(verified_local_var);
+        verified_local_var = NULL;
     }
     return NULL;
 

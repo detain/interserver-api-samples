@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class QuickserverServiceInfo(BaseModel):
     """
@@ -55,7 +56,8 @@ class QuickserverServiceInfo(BaseModel):
     __properties: ClassVar[List[str]] = ["qs_id", "qs_custid", "qs_server", "qs_ip", "qs_ipv6", "qs_vzid", "qs_currency", "qs_type", "qs_order_date", "qs_status", "qs_invoice", "qs_coupon", "qs_extra", "qs_hostname", "qs_server_status", "qs_comment", "qs_slices", "qs_vnc", "qs_vnc_port", "qs_rootpass", "qs_mac", "qs_os", "qs_version", "qs_location", "qs_platform"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -67,8 +69,7 @@ class QuickserverServiceInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

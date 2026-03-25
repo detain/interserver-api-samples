@@ -113,10 +113,14 @@ class SendMailAdv {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SendMailAdv[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SendMailAdv[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'subject'), 'Required key "SendMailAdv[subject]" is missing from JSON.');
+        assert(json[r'subject'] != null, 'Required key "SendMailAdv[subject]" has a null value in JSON.');
+        assert(json.containsKey(r'body'), 'Required key "SendMailAdv[body]" is missing from JSON.');
+        assert(json[r'body'] != null, 'Required key "SendMailAdv[body]" has a null value in JSON.');
+        assert(json.containsKey(r'from'), 'Required key "SendMailAdv[from]" is missing from JSON.');
+        assert(json[r'from'] != null, 'Required key "SendMailAdv[from]" has a null value in JSON.');
+        assert(json.containsKey(r'to'), 'Required key "SendMailAdv[to]" is missing from JSON.');
+        assert(json[r'to'] != null, 'Required key "SendMailAdv[to]" has a null value in JSON.');
         return true;
       }());
 

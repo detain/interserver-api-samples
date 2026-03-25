@@ -6,28 +6,37 @@
 
 
 static scrub_ip_filter_types_t *scrub_ip_filter_types_create_internal(
-    int success,
+    int *success,
     list_t* filters
     ) {
     scrub_ip_filter_types_t *scrub_ip_filter_types_local_var = malloc(sizeof(scrub_ip_filter_types_t));
     if (!scrub_ip_filter_types_local_var) {
         return NULL;
     }
+    memset(scrub_ip_filter_types_local_var, 0, sizeof(scrub_ip_filter_types_t));
+    scrub_ip_filter_types_local_var->_library_owned = 1;
     scrub_ip_filter_types_local_var->success = success;
     scrub_ip_filter_types_local_var->filters = filters;
-
-    scrub_ip_filter_types_local_var->_library_owned = 1;
     return scrub_ip_filter_types_local_var;
 }
 
 __attribute__((deprecated)) scrub_ip_filter_types_t *scrub_ip_filter_types_create(
-    int success,
+    int *success,
     list_t* filters
     ) {
-    return scrub_ip_filter_types_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    scrub_ip_filter_types_t *result = scrub_ip_filter_types_create_internal (
+        success_copy,
         filters
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void scrub_ip_filter_types_free(scrub_ip_filter_types_t *scrub_ip_filter_types) {
@@ -39,6 +48,10 @@ void scrub_ip_filter_types_free(scrub_ip_filter_types_t *scrub_ip_filter_types) 
         return ;
     }
     listEntry_t *listEntry;
+    if (scrub_ip_filter_types->success) {
+        free(scrub_ip_filter_types->success);
+        scrub_ip_filter_types->success = NULL;
+    }
     if (scrub_ip_filter_types->filters) {
         list_ForEach(listEntry, scrub_ip_filter_types->filters) {
             keyValuePair_t *localKeyValue = listEntry->data;
@@ -57,7 +70,7 @@ cJSON *scrub_ip_filter_types_convertToJSON(scrub_ip_filter_types_t *scrub_ip_fil
 
     // scrub_ip_filter_types->success
     if(scrub_ip_filter_types->success) {
-    if(cJSON_AddBoolToObject(item, "success", scrub_ip_filter_types->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *scrub_ip_filter_types->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -90,6 +103,9 @@ scrub_ip_filter_types_t *scrub_ip_filter_types_parseFromJSON(cJSON *scrub_ip_fil
 
     scrub_ip_filter_types_t *scrub_ip_filter_types_local_var = NULL;
 
+    // define the local variable for scrub_ip_filter_types->success
+    int *success_local_var = NULL;
+
     // define the local map for scrub_ip_filter_types->filters
     list_t *filtersList = NULL;
 
@@ -103,6 +119,12 @@ scrub_ip_filter_types_t *scrub_ip_filter_types_parseFromJSON(cJSON *scrub_ip_fil
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // scrub_ip_filter_types->filters
@@ -117,13 +139,22 @@ scrub_ip_filter_types_t *scrub_ip_filter_types_parseFromJSON(cJSON *scrub_ip_fil
     }
 
 
+
     scrub_ip_filter_types_local_var = scrub_ip_filter_types_create_internal (
-        success ? success->valueint : 0,
+        success_local_var,
         filters ? filtersList : NULL
         );
 
+    if (!scrub_ip_filter_types_local_var) {
+        goto end;
+    }
+
     return scrub_ip_filter_types_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
 
     // The data type of the elements in scrub_ip_filter_types->filters is currently not supported.
 

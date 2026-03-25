@@ -692,12 +692,18 @@ describe("MailApi", () => {
     const to: string = "to_example"
     const subject: string = "subject_example"
     const mailid: string = "mailid_example"
+    const messageId: string = "messageId_example"
+    const replyto: string = "replyto_example"
+    const headerfrom: string = "headerfrom_example"
+    const delivered: number = 56
     const skip: number = 56
     const limit: number = 56
-    const startDate: number = 789
-    const endDate: number = 789
-    const delivered: string = "delivered_example"
-    return expect(instance.viewMailLog(id, id, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered, {})).resolves.toBe(null)
+    const startDate: api.StartDate = undefined
+    const endDate: api.EndDate = undefined
+    const sort: string = "sort_example"
+    const dir: string = "dir_example"
+    const groupby: string = "groupby_example"
+    return expect(instance.viewMailLog(id, id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby, {})).resolves.toBe(null)
   })
 })
 

@@ -12,18 +12,21 @@ static websites_order_packges_t *websites_order_packges_create_internal(
     if (!websites_order_packges_local_var) {
         return NULL;
     }
-    websites_order_packges_local_var->_11440 = _11440;
-
+    memset(websites_order_packges_local_var, 0, sizeof(websites_order_packges_t));
     websites_order_packges_local_var->_library_owned = 1;
+    websites_order_packges_local_var->_11440 = _11440;
     return websites_order_packges_local_var;
 }
 
 __attribute__((deprecated)) websites_order_packges_t *websites_order_packges_create(
     websites_order_packages_info_t *_11440
     ) {
-    return websites_order_packges_create_internal (
+    websites_order_packges_t *result = websites_order_packges_create_internal (
         _11440
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void websites_order_packges_free(websites_order_packges_t *websites_order_packges) {
@@ -86,9 +89,14 @@ websites_order_packges_t *websites_order_packges_parseFromJSON(cJSON *websites_o
     _11440_local_nonprim = websites_order_packages_info_parseFromJSON(_11440); //nonprimitive
 
 
+
     websites_order_packges_local_var = websites_order_packges_create_internal (
         _11440_local_nonprim
         );
+
+    if (!websites_order_packges_local_var) {
+        goto end;
+    }
 
     return websites_order_packges_local_var;
 end:

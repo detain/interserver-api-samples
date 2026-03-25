@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIVpsOrder_locationStock_1 : public OAIObject {
 public:
     OAIVpsOrder_locationStock_1();
-    OAIVpsOrder_locationStock_1(QString json);
+    OAIVpsOrder_locationStock_1(const QString &json);
     ~OAIVpsOrder_locationStock_1() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isKvm() const;
     void setKvm(const bool &kvm);

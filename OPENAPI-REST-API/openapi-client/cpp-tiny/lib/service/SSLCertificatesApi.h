@@ -24,7 +24,7 @@ class SSLCertificatesApi : public Service {
 public:
     SSLCertificatesApi() = default;
 
-    virtual ~SSLCertificatesApi() = default;
+    virtual ~SSLCertificatesApi();
 
     /**
     * Place SSL Cert Order.

@@ -1,4 +1,4 @@
-# # GetAccountInfo401Response
+# GetAccountInfo401Response
 
 ## Properties
 

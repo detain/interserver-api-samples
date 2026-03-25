@@ -6,24 +6,33 @@
 
 
 static licenses_order_package_costs_t *licenses_order_package_costs_create_internal(
-    double licenses_order_package_costs11468
+    double *licenses_order_package_costs11468
     ) {
     licenses_order_package_costs_t *licenses_order_package_costs_local_var = malloc(sizeof(licenses_order_package_costs_t));
     if (!licenses_order_package_costs_local_var) {
         return NULL;
     }
-    licenses_order_package_costs_local_var->licenses_order_package_costs11468 = licenses_order_package_costs11468;
-
+    memset(licenses_order_package_costs_local_var, 0, sizeof(licenses_order_package_costs_t));
     licenses_order_package_costs_local_var->_library_owned = 1;
+    licenses_order_package_costs_local_var->licenses_order_package_costs11468 = licenses_order_package_costs11468;
     return licenses_order_package_costs_local_var;
 }
 
 __attribute__((deprecated)) licenses_order_package_costs_t *licenses_order_package_costs_create(
-    double licenses_order_package_costs11468
+    double *licenses_order_package_costs11468
     ) {
-    return licenses_order_package_costs_create_internal (
-        licenses_order_package_costs11468
+    double *licenses_order_package_costs11468_copy = NULL;
+    if (licenses_order_package_costs11468) {
+        licenses_order_package_costs11468_copy = malloc(sizeof(double));
+        if (licenses_order_package_costs11468_copy) *licenses_order_package_costs11468_copy = *licenses_order_package_costs11468;
+    }
+    licenses_order_package_costs_t *result = licenses_order_package_costs_create_internal (
+        licenses_order_package_costs11468_copy
         );
+    if (!result) {
+        free(licenses_order_package_costs11468_copy);
+    }
+    return result;
 }
 
 void licenses_order_package_costs_free(licenses_order_package_costs_t *licenses_order_package_costs) {
@@ -35,6 +44,10 @@ void licenses_order_package_costs_free(licenses_order_package_costs_t *licenses_
         return ;
     }
     listEntry_t *listEntry;
+    if (licenses_order_package_costs->licenses_order_package_costs11468) {
+        free(licenses_order_package_costs->licenses_order_package_costs11468);
+        licenses_order_package_costs->licenses_order_package_costs11468 = NULL;
+    }
     free(licenses_order_package_costs);
 }
 
@@ -43,7 +56,7 @@ cJSON *licenses_order_package_costs_convertToJSON(licenses_order_package_costs_t
 
     // licenses_order_package_costs->licenses_order_package_costs11468
     if(licenses_order_package_costs->licenses_order_package_costs11468) {
-    if(cJSON_AddNumberToObject(item, "LicensesOrderPackageCosts11468", licenses_order_package_costs->licenses_order_package_costs11468) == NULL) {
+    if(cJSON_AddNumberToObject(item, "LicensesOrderPackageCosts11468", *licenses_order_package_costs->licenses_order_package_costs11468) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -60,6 +73,9 @@ licenses_order_package_costs_t *licenses_order_package_costs_parseFromJSON(cJSON
 
     licenses_order_package_costs_t *licenses_order_package_costs_local_var = NULL;
 
+    // define the local variable for licenses_order_package_costs->licenses_order_package_costs11468
+    double *licenses_order_package_costs11468_local_var = NULL;
+
     // licenses_order_package_costs->licenses_order_package_costs11468
     cJSON *licenses_order_package_costs11468 = cJSON_GetObjectItemCaseSensitive(licenses_order_package_costsJSON, "LicensesOrderPackageCosts11468");
     if (cJSON_IsNull(licenses_order_package_costs11468)) {
@@ -70,15 +86,30 @@ licenses_order_package_costs_t *licenses_order_package_costs_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    licenses_order_package_costs11468_local_var = malloc(sizeof(double));
+    if(!licenses_order_package_costs11468_local_var)
+    {
+        goto end;
+    }
+    *licenses_order_package_costs11468_local_var = licenses_order_package_costs11468->valuedouble;
     }
 
 
+
     licenses_order_package_costs_local_var = licenses_order_package_costs_create_internal (
-        licenses_order_package_costs11468 ? licenses_order_package_costs11468->valuedouble : 0
+        licenses_order_package_costs11468_local_var
         );
+
+    if (!licenses_order_package_costs_local_var) {
+        goto end;
+    }
 
     return licenses_order_package_costs_local_var;
 end:
+    if (licenses_order_package_costs11468_local_var) {
+        free(licenses_order_package_costs11468_local_var);
+        licenses_order_package_costs11468_local_var = NULL;
+    }
     return NULL;
 
 }

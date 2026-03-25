@@ -6,28 +6,37 @@
 
 
 static scrub_ip_place_order_t *scrub_ip_place_order_create_internal(
-    int service_type,
+    int *service_type,
     char *ip
     ) {
     scrub_ip_place_order_t *scrub_ip_place_order_local_var = malloc(sizeof(scrub_ip_place_order_t));
     if (!scrub_ip_place_order_local_var) {
         return NULL;
     }
+    memset(scrub_ip_place_order_local_var, 0, sizeof(scrub_ip_place_order_t));
+    scrub_ip_place_order_local_var->_library_owned = 1;
     scrub_ip_place_order_local_var->service_type = service_type;
     scrub_ip_place_order_local_var->ip = ip;
-
-    scrub_ip_place_order_local_var->_library_owned = 1;
     return scrub_ip_place_order_local_var;
 }
 
 __attribute__((deprecated)) scrub_ip_place_order_t *scrub_ip_place_order_create(
-    int service_type,
+    int *service_type,
     char *ip
     ) {
-    return scrub_ip_place_order_create_internal (
-        service_type,
+    int *service_type_copy = NULL;
+    if (service_type) {
+        service_type_copy = malloc(sizeof(int));
+        if (service_type_copy) *service_type_copy = *service_type;
+    }
+    scrub_ip_place_order_t *result = scrub_ip_place_order_create_internal (
+        service_type_copy,
         ip
         );
+    if (!result) {
+        free(service_type_copy);
+    }
+    return result;
 }
 
 void scrub_ip_place_order_free(scrub_ip_place_order_t *scrub_ip_place_order) {
@@ -39,6 +48,10 @@ void scrub_ip_place_order_free(scrub_ip_place_order_t *scrub_ip_place_order) {
         return ;
     }
     listEntry_t *listEntry;
+    if (scrub_ip_place_order->service_type) {
+        free(scrub_ip_place_order->service_type);
+        scrub_ip_place_order->service_type = NULL;
+    }
     if (scrub_ip_place_order->ip) {
         free(scrub_ip_place_order->ip);
         scrub_ip_place_order->ip = NULL;
@@ -53,7 +66,7 @@ cJSON *scrub_ip_place_order_convertToJSON(scrub_ip_place_order_t *scrub_ip_place
     if (!scrub_ip_place_order->service_type) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "service_type", scrub_ip_place_order->service_type) == NULL) {
+    if(cJSON_AddNumberToObject(item, "service_type", *scrub_ip_place_order->service_type) == NULL) {
     goto fail; //Numeric
     }
 
@@ -78,6 +91,11 @@ scrub_ip_place_order_t *scrub_ip_place_order_parseFromJSON(cJSON *scrub_ip_place
 
     scrub_ip_place_order_t *scrub_ip_place_order_local_var = NULL;
 
+    // define the local variable for scrub_ip_place_order->service_type
+    int *service_type_local_var = NULL;
+
+    char *ip_local_str = NULL;
+
     // scrub_ip_place_order->service_type
     cJSON *service_type = cJSON_GetObjectItemCaseSensitive(scrub_ip_place_orderJSON, "service_type");
     if (cJSON_IsNull(service_type)) {
@@ -92,6 +110,12 @@ scrub_ip_place_order_t *scrub_ip_place_order_parseFromJSON(cJSON *scrub_ip_place
     {
     goto end; //Numeric
     }
+    service_type_local_var = malloc(sizeof(int));
+    if(!service_type_local_var)
+    {
+        goto end;
+    }
+    *service_type_local_var = service_type->valuedouble;
 
     // scrub_ip_place_order->ip
     cJSON *ip = cJSON_GetObjectItemCaseSensitive(scrub_ip_place_orderJSON, "ip");
@@ -109,13 +133,27 @@ scrub_ip_place_order_t *scrub_ip_place_order_parseFromJSON(cJSON *scrub_ip_place
     }
 
 
+    if (ip && !cJSON_IsNull(ip)) ip_local_str = strdup(ip->valuestring);
+
     scrub_ip_place_order_local_var = scrub_ip_place_order_create_internal (
-        service_type->valuedouble,
-        strdup(ip->valuestring)
+        service_type_local_var,
+        ip_local_str
         );
+
+    if (!scrub_ip_place_order_local_var) {
+        goto end;
+    }
 
     return scrub_ip_place_order_local_var;
 end:
+    if (service_type_local_var) {
+        free(service_type_local_var);
+        service_type_local_var = NULL;
+    }
+    if (ip_local_str) {
+        free(ip_local_str);
+        ip_local_str = NULL;
+    }
     return NULL;
 
 }

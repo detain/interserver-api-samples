@@ -1,4 +1,4 @@
-# # AccountInfoDataEmailSettings
+# AccountInfoDataEmailSettings
 
 ## Properties
 

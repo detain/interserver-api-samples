@@ -103,10 +103,14 @@ class LicenseClientLink {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LicenseClientLink[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LicenseClientLink[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'label'), 'Required key "LicenseClientLink[label]" is missing from JSON.');
+        assert(json[r'label'] != null, 'Required key "LicenseClientLink[label]" has a null value in JSON.');
+        assert(json.containsKey(r'link'), 'Required key "LicenseClientLink[link]" is missing from JSON.');
+        assert(json[r'link'] != null, 'Required key "LicenseClientLink[link]" has a null value in JSON.');
+        assert(json.containsKey(r'icon'), 'Required key "LicenseClientLink[icon]" is missing from JSON.');
+        assert(json[r'icon'] != null, 'Required key "LicenseClientLink[icon]" has a null value in JSON.');
+        assert(json.containsKey(r'help_text'), 'Required key "LicenseClientLink[help_text]" is missing from JSON.');
+        assert(json[r'help_text'] != null, 'Required key "LicenseClientLink[help_text]" has a null value in JSON.');
         return true;
       }());
 

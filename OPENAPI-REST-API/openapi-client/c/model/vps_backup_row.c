@@ -7,39 +7,60 @@
 
 static vps_backup_row_t *vps_backup_row_create_internal(
     char *type,
-    int service,
+    int *service,
     char *name,
-    int size,
-    int date
+    int *size,
+    int *date
     ) {
     vps_backup_row_t *vps_backup_row_local_var = malloc(sizeof(vps_backup_row_t));
     if (!vps_backup_row_local_var) {
         return NULL;
     }
+    memset(vps_backup_row_local_var, 0, sizeof(vps_backup_row_t));
+    vps_backup_row_local_var->_library_owned = 1;
     vps_backup_row_local_var->type = type;
     vps_backup_row_local_var->service = service;
     vps_backup_row_local_var->name = name;
     vps_backup_row_local_var->size = size;
     vps_backup_row_local_var->date = date;
-
-    vps_backup_row_local_var->_library_owned = 1;
     return vps_backup_row_local_var;
 }
 
 __attribute__((deprecated)) vps_backup_row_t *vps_backup_row_create(
     char *type,
-    int service,
+    int *service,
     char *name,
-    int size,
-    int date
+    int *size,
+    int *date
     ) {
-    return vps_backup_row_create_internal (
+    int *service_copy = NULL;
+    if (service) {
+        service_copy = malloc(sizeof(int));
+        if (service_copy) *service_copy = *service;
+    }
+    int *size_copy = NULL;
+    if (size) {
+        size_copy = malloc(sizeof(int));
+        if (size_copy) *size_copy = *size;
+    }
+    int *date_copy = NULL;
+    if (date) {
+        date_copy = malloc(sizeof(int));
+        if (date_copy) *date_copy = *date;
+    }
+    vps_backup_row_t *result = vps_backup_row_create_internal (
         type,
-        service,
+        service_copy,
         name,
-        size,
-        date
+        size_copy,
+        date_copy
         );
+    if (!result) {
+        free(service_copy);
+        free(size_copy);
+        free(date_copy);
+    }
+    return result;
 }
 
 void vps_backup_row_free(vps_backup_row_t *vps_backup_row) {
@@ -55,9 +76,21 @@ void vps_backup_row_free(vps_backup_row_t *vps_backup_row) {
         free(vps_backup_row->type);
         vps_backup_row->type = NULL;
     }
+    if (vps_backup_row->service) {
+        free(vps_backup_row->service);
+        vps_backup_row->service = NULL;
+    }
     if (vps_backup_row->name) {
         free(vps_backup_row->name);
         vps_backup_row->name = NULL;
+    }
+    if (vps_backup_row->size) {
+        free(vps_backup_row->size);
+        vps_backup_row->size = NULL;
+    }
+    if (vps_backup_row->date) {
+        free(vps_backup_row->date);
+        vps_backup_row->date = NULL;
     }
     free(vps_backup_row);
 }
@@ -78,7 +111,7 @@ cJSON *vps_backup_row_convertToJSON(vps_backup_row_t *vps_backup_row) {
     if (!vps_backup_row->service) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "service", vps_backup_row->service) == NULL) {
+    if(cJSON_AddNumberToObject(item, "service", *vps_backup_row->service) == NULL) {
     goto fail; //Numeric
     }
 
@@ -96,7 +129,7 @@ cJSON *vps_backup_row_convertToJSON(vps_backup_row_t *vps_backup_row) {
     if (!vps_backup_row->size) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "size", vps_backup_row->size) == NULL) {
+    if(cJSON_AddNumberToObject(item, "size", *vps_backup_row->size) == NULL) {
     goto fail; //Numeric
     }
 
@@ -105,7 +138,7 @@ cJSON *vps_backup_row_convertToJSON(vps_backup_row_t *vps_backup_row) {
     if (!vps_backup_row->date) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "date", vps_backup_row->date) == NULL) {
+    if(cJSON_AddNumberToObject(item, "date", *vps_backup_row->date) == NULL) {
     goto fail; //Numeric
     }
 
@@ -120,6 +153,19 @@ fail:
 vps_backup_row_t *vps_backup_row_parseFromJSON(cJSON *vps_backup_rowJSON){
 
     vps_backup_row_t *vps_backup_row_local_var = NULL;
+
+    char *type_local_str = NULL;
+
+    // define the local variable for vps_backup_row->service
+    int *service_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    // define the local variable for vps_backup_row->size
+    int *size_local_var = NULL;
+
+    // define the local variable for vps_backup_row->date
+    int *date_local_var = NULL;
 
     // vps_backup_row->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(vps_backup_rowJSON, "type");
@@ -150,6 +196,12 @@ vps_backup_row_t *vps_backup_row_parseFromJSON(cJSON *vps_backup_rowJSON){
     {
     goto end; //Numeric
     }
+    service_local_var = malloc(sizeof(int));
+    if(!service_local_var)
+    {
+        goto end;
+    }
+    *service_local_var = service->valuedouble;
 
     // vps_backup_row->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(vps_backup_rowJSON, "name");
@@ -180,6 +232,12 @@ vps_backup_row_t *vps_backup_row_parseFromJSON(cJSON *vps_backup_rowJSON){
     {
     goto end; //Numeric
     }
+    size_local_var = malloc(sizeof(int));
+    if(!size_local_var)
+    {
+        goto end;
+    }
+    *size_local_var = size->valuedouble;
 
     // vps_backup_row->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(vps_backup_rowJSON, "date");
@@ -195,18 +253,51 @@ vps_backup_row_t *vps_backup_row_parseFromJSON(cJSON *vps_backup_rowJSON){
     {
     goto end; //Numeric
     }
+    date_local_var = malloc(sizeof(int));
+    if(!date_local_var)
+    {
+        goto end;
+    }
+    *date_local_var = date->valuedouble;
 
+
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
 
     vps_backup_row_local_var = vps_backup_row_create_internal (
-        strdup(type->valuestring),
-        service->valuedouble,
-        strdup(name->valuestring),
-        size->valuedouble,
-        date->valuedouble
+        type_local_str,
+        service_local_var,
+        name_local_str,
+        size_local_var,
+        date_local_var
         );
+
+    if (!vps_backup_row_local_var) {
+        goto end;
+    }
 
     return vps_backup_row_local_var;
 end:
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
+    if (service_local_var) {
+        free(service_local_var);
+        service_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (size_local_var) {
+        free(size_local_var);
+        size_local_var = NULL;
+    }
+    if (date_local_var) {
+        free(date_local_var);
+        date_local_var = NULL;
+    }
     return NULL;
 
 }

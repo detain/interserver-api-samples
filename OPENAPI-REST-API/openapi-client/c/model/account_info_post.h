@@ -31,10 +31,10 @@ typedef struct account_info_post_t {
     char *locale; // string
     char *email_invoices; // string
     char *email_abuse; // string
-    int disable_reset; //boolean
-    int disable_reinstall; //boolean
-    int disable_server_notifications; //boolean
-    int disable_email_notifications; //boolean
+    int *disable_reset; //boolean
+    int *disable_reinstall; //boolean
+    int *disable_server_notifications; //boolean
+    int *disable_email_notifications; //boolean
     char *gstin; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -53,10 +53,10 @@ __attribute__((deprecated)) account_info_post_t *account_info_post_create(
     char *locale,
     char *email_invoices,
     char *email_abuse,
-    int disable_reset,
-    int disable_reinstall,
-    int disable_server_notifications,
-    int disable_email_notifications,
+    int *disable_reset,
+    int *disable_reinstall,
+    int *disable_server_notifications,
+    int *disable_email_notifications,
     char *gstin
 );
 

@@ -20,51 +20,55 @@ class MAIL_LOG_ENTRY
 feature --Access
 
     var_id: INTEGER_32
-      -- internal db id
+      -- Internal auto-increment database row ID.
     id: detachable STRING_32
-      -- mail id
+      -- The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
     var_from: detachable STRING_32
-      -- from address
+      -- SMTP envelope `MAIL FROM` address.
     to: detachable STRING_32
-      -- to address
+      -- SMTP envelope `RCPT TO` address.
     subject: detachable STRING_32
-      -- email subject
+      -- The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
     message_id: detachable STRING_32
-      -- message id
+      -- The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
     created: detachable STRING_32
-      -- creation date
+      -- Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
     time: INTEGER_32
-      -- creation timestamp
+      -- Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
     user: detachable STRING_32
-      -- user account
+      -- The SMTP AUTH username used to submit the message (e.g. `mb5658`).
     transtype: detachable STRING_32
-      -- transaction type
+      -- SMTP transaction type negotiated with the relay.
     origin: detachable STRING_32
-      -- origin ip
+      -- IP address of the client that submitted the message to the relay.
     interface: detachable STRING_32
-      -- interface name
+      -- Relay interface name that accepted the message.
     sending_zone: detachable STRING_32
-      -- sending zone
+      -- The sending zone assigned by the relay for outbound delivery.
     body_size: INTEGER_32
-      -- email body size in bytes
+      -- Size of the message body in bytes.
     seq: INTEGER_32
-      -- index of email in the to adderess list
+      -- Sequence index of this recipient in a multi-recipient message. Starts at 1.
+    delivered: INTEGER_32
+      -- Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+    code: INTEGER_32
+      -- The SMTP response code from the destination MX server (e.g. `250`).
     recipient: detachable STRING_32
-      -- to address this email is being sent to
-    domain: detachable STRING_32
-      -- to address domain
-    locked: INTEGER_32
-      -- locked status
-    lock_time: INTEGER_32
-      -- lock timestamp
-    assigned: detachable STRING_32
-      -- assigned server
-    queued: detachable STRING_32
-      -- queued timestamp
-    mx_hostname: detachable STRING_32
-      -- mx hostname
+      -- The specific recipient address this delivery record is for.
     response: detachable STRING_32
-      -- mail delivery response
+      -- The full SMTP response string received from the destination MX server.
+    domain: detachable STRING_32
+      -- The destination domain for this delivery attempt.
+    locked: INTEGER_32
+      -- Whether the queue entry is currently locked for delivery processing.
+    lock_time: detachable STRING_32
+      -- Millisecond-precision timestamp of the last queue lock acquisition.
+    assigned: detachable STRING_32
+      -- The relay server node assigned to deliver this message.
+    queued: detachable STRING_32
+      -- ISO 8601 timestamp when the message was placed into the delivery queue.
+    mx_hostname: detachable STRING_32
+      -- The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
 
 feature -- Change Element
 
@@ -188,12 +192,36 @@ feature -- Change Element
         seq_set: seq = a_name
       end
 
+    set_delivered (a_name: like delivered)
+        -- Set 'delivered' with 'a_name'.
+      do
+        delivered := a_name
+      ensure
+        delivered_set: delivered = a_name
+      end
+
+    set_code (a_name: like code)
+        -- Set 'code' with 'a_name'.
+      do
+        code := a_name
+      ensure
+        code_set: code = a_name
+      end
+
     set_recipient (a_name: like recipient)
         -- Set 'recipient' with 'a_name'.
       do
         recipient := a_name
       ensure
         recipient_set: recipient = a_name
+      end
+
+    set_response (a_name: like response)
+        -- Set 'response' with 'a_name'.
+      do
+        response := a_name
+      ensure
+        response_set: response = a_name
       end
 
     set_domain (a_name: like domain)
@@ -242,14 +270,6 @@ feature -- Change Element
         mx_hostname := a_name
       ensure
         mx_hostname_set: mx_hostname = a_name
-      end
-
-    set_response (a_name: like response)
-        -- Set 'response' with 'a_name'.
-      do
-        response := a_name
-      ensure
-        response_set: response = a_name
       end
 
 
@@ -335,9 +355,24 @@ feature -- Change Element
           Result.append (l_seq.out)
           Result.append ("%N")
         end
+        if attached delivered as l_delivered then
+          Result.append ("%Ndelivered:")
+          Result.append (l_delivered.out)
+          Result.append ("%N")
+        end
+        if attached code as l_code then
+          Result.append ("%Ncode:")
+          Result.append (l_code.out)
+          Result.append ("%N")
+        end
         if attached recipient as l_recipient then
           Result.append ("%Nrecipient:")
           Result.append (l_recipient.out)
+          Result.append ("%N")
+        end
+        if attached response as l_response then
+          Result.append ("%Nresponse:")
+          Result.append (l_response.out)
           Result.append ("%N")
         end
         if attached domain as l_domain then
@@ -368,11 +403,6 @@ feature -- Change Element
         if attached mx_hostname as l_mx_hostname then
           Result.append ("%Nmx_hostname:")
           Result.append (l_mx_hostname.out)
-          Result.append ("%N")
-        end
-        if attached response as l_response then
-          Result.append ("%Nresponse:")
-          Result.append (l_response.out)
           Result.append ("%N")
         end
       end

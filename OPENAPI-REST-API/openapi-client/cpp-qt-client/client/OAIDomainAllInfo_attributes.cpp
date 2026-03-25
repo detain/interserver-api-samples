@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainAllInfo_attributes::OAIDomainAllInfo_attributes(QString json) {
+OAIDomainAllInfo_attributes::OAIDomainAllInfo_attributes(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -71,7 +71,7 @@ void OAIDomainAllInfo_attributes::initializeModel() {
     m_expiredate_isValid = false;
 }
 
-void OAIDomainAllInfo_attributes::fromJson(QString jsonString) {
+void OAIDomainAllInfo_attributes::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

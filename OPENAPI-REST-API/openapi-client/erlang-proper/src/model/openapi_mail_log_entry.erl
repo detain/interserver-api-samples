@@ -24,14 +24,16 @@
   | {'sendingZone', binary() }
   | {'bodySize', integer() }
   | {'seq', integer() }
+  | {'delivered', integer() }
+  | {'code', integer() }
   | {'recipient', binary() }
+  | {'response', binary() }
   | {'domain', binary() }
   | {'locked', integer() }
-  | {'lockTime', integer() }
+  | {'lockTime', binary() }
   | {'assigned', binary() }
   | {'queued', binary() }
   | {'mxHostname', binary() }
-  | {'response', binary() }
   ].
 
 
@@ -54,14 +56,16 @@ openapi_mail_log_entry(Fields) ->
             , {'sendingZone', binary() }
             , {'bodySize', integer() }
             , {'seq', integer() }
+            , {'delivered', integer() }
+            , {'code', integer() }
             , {'recipient', binary() }
+            , {'response', binary() }
             , {'domain', binary() }
             , {'locked', integer() }
-            , {'lockTime', integer() }
+            , {'lockTime', binary() }
             , {'assigned', binary() }
             , {'queued', binary() }
             , {'mxHostname', binary() }
-            , {'response', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

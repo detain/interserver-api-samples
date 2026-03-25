@@ -7,7 +7,7 @@ model_instance <- MailLogEntry$new()
 
 test_that("_id", {
   # tests for the property `_id` (integer)
-  # internal db id
+  # Internal auto-increment database row ID.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`_id`, "EXPECTED_RESULT")
@@ -15,7 +15,7 @@ test_that("_id", {
 
 test_that("id", {
   # tests for the property `id` (character)
-  # mail id
+  # The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
@@ -23,7 +23,7 @@ test_that("id", {
 
 test_that("from", {
   # tests for the property `from` (character)
-  # from address
+  # SMTP envelope &#x60;MAIL FROM&#x60; address.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`from`, "EXPECTED_RESULT")
@@ -31,7 +31,7 @@ test_that("from", {
 
 test_that("to", {
   # tests for the property `to` (character)
-  # to address
+  # SMTP envelope &#x60;RCPT TO&#x60; address.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`to`, "EXPECTED_RESULT")
@@ -39,7 +39,7 @@ test_that("to", {
 
 test_that("subject", {
   # tests for the property `subject` (character)
-  # email subject
+  # The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`subject`, "EXPECTED_RESULT")
@@ -47,7 +47,7 @@ test_that("subject", {
 
 test_that("messageId", {
   # tests for the property `messageId` (character)
-  # message id
+  # The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`messageId`, "EXPECTED_RESULT")
@@ -55,7 +55,7 @@ test_that("messageId", {
 
 test_that("created", {
   # tests for the property `created` (character)
-  # creation date
+  # Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`created`, "EXPECTED_RESULT")
@@ -63,7 +63,7 @@ test_that("created", {
 
 test_that("time", {
   # tests for the property `time` (integer)
-  # creation timestamp
+  # Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`time`, "EXPECTED_RESULT")
@@ -71,7 +71,7 @@ test_that("time", {
 
 test_that("user", {
   # tests for the property `user` (character)
-  # user account
+  # The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
@@ -79,7 +79,7 @@ test_that("user", {
 
 test_that("transtype", {
   # tests for the property `transtype` (character)
-  # transaction type
+  # SMTP transaction type negotiated with the relay.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`transtype`, "EXPECTED_RESULT")
@@ -87,7 +87,7 @@ test_that("transtype", {
 
 test_that("origin", {
   # tests for the property `origin` (character)
-  # origin ip
+  # IP address of the client that submitted the message to the relay.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`origin`, "EXPECTED_RESULT")
@@ -95,7 +95,7 @@ test_that("origin", {
 
 test_that("interface", {
   # tests for the property `interface` (character)
-  # interface name
+  # Relay interface name that accepted the message.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`interface`, "EXPECTED_RESULT")
@@ -103,7 +103,7 @@ test_that("interface", {
 
 test_that("sendingZone", {
   # tests for the property `sendingZone` (character)
-  # sending zone
+  # The sending zone assigned by the relay for outbound delivery.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`sendingZone`, "EXPECTED_RESULT")
@@ -111,7 +111,7 @@ test_that("sendingZone", {
 
 test_that("bodySize", {
   # tests for the property `bodySize` (integer)
-  # email body size in bytes
+  # Size of the message body in bytes.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`bodySize`, "EXPECTED_RESULT")
@@ -119,23 +119,47 @@ test_that("bodySize", {
 
 test_that("seq", {
   # tests for the property `seq` (integer)
-  # index of email in the to adderess list
+  # Sequence index of this recipient in a multi-recipient message. Starts at 1.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`seq`, "EXPECTED_RESULT")
 })
 
+test_that("delivered", {
+  # tests for the property `delivered` (integer)
+  # Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`delivered`, "EXPECTED_RESULT")
+})
+
+test_that("code", {
+  # tests for the property `code` (integer)
+  # The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`code`, "EXPECTED_RESULT")
+})
+
 test_that("recipient", {
   # tests for the property `recipient` (character)
-  # to address this email is being sent to
+  # The specific recipient address this delivery record is for.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`recipient`, "EXPECTED_RESULT")
 })
 
+test_that("response", {
+  # tests for the property `response` (character)
+  # The full SMTP response string received from the destination MX server.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`response`, "EXPECTED_RESULT")
+})
+
 test_that("domain", {
   # tests for the property `domain` (character)
-  # to address domain
+  # The destination domain for this delivery attempt.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`domain`, "EXPECTED_RESULT")
@@ -143,15 +167,15 @@ test_that("domain", {
 
 test_that("locked", {
   # tests for the property `locked` (integer)
-  # locked status
+  # Whether the queue entry is currently locked for delivery processing.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`locked`, "EXPECTED_RESULT")
 })
 
 test_that("lockTime", {
-  # tests for the property `lockTime` (integer)
-  # lock timestamp
+  # tests for the property `lockTime` (character)
+  # Millisecond-precision timestamp of the last queue lock acquisition.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`lockTime`, "EXPECTED_RESULT")
@@ -159,7 +183,7 @@ test_that("lockTime", {
 
 test_that("assigned", {
   # tests for the property `assigned` (character)
-  # assigned server
+  # The relay server node assigned to deliver this message.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`assigned`, "EXPECTED_RESULT")
@@ -167,7 +191,7 @@ test_that("assigned", {
 
 test_that("queued", {
   # tests for the property `queued` (character)
-  # queued timestamp
+  # ISO 8601 timestamp when the message was placed into the delivery queue.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`queued`, "EXPECTED_RESULT")
@@ -175,16 +199,8 @@ test_that("queued", {
 
 test_that("mxHostname", {
   # tests for the property `mxHostname` (character)
-  # mx hostname
+  # The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`mxHostname`, "EXPECTED_RESULT")
-})
-
-test_that("response", {
-  # tests for the property `response` (character)
-  # mail delivery response
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`response`, "EXPECTED_RESULT")
 })

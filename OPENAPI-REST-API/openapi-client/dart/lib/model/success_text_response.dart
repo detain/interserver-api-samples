@@ -82,10 +82,8 @@ class SuccessTextResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SuccessTextResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SuccessTextResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'success'), 'Required key "SuccessTextResponse[success]" is missing from JSON.');
+        assert(json[r'success'] != null, 'Required key "SuccessTextResponse[success]" has a null value in JSON.');
         return true;
       }());
 

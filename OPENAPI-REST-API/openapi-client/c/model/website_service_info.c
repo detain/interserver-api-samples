@@ -26,6 +26,8 @@ static website_service_info_t *website_service_info_create_internal(
     if (!website_service_info_local_var) {
         return NULL;
     }
+    memset(website_service_info_local_var, 0, sizeof(website_service_info_t));
+    website_service_info_local_var->_library_owned = 1;
     website_service_info_local_var->website_id = website_id;
     website_service_info_local_var->website_server = website_server;
     website_service_info_local_var->website_type = website_type;
@@ -41,8 +43,6 @@ static website_service_info_t *website_service_info_create_internal(
     website_service_info_local_var->website_comment = website_comment;
     website_service_info_local_var->website_username = website_username;
     website_service_info_local_var->website_server_status = website_server_status;
-
-    website_service_info_local_var->_library_owned = 1;
     return website_service_info_local_var;
 }
 
@@ -63,7 +63,7 @@ __attribute__((deprecated)) website_service_info_t *website_service_info_create(
     char *website_username,
     char *website_server_status
     ) {
-    return website_service_info_create_internal (
+    website_service_info_t *result = website_service_info_create_internal (
         website_id,
         website_server,
         website_type,
@@ -80,6 +80,9 @@ __attribute__((deprecated)) website_service_info_t *website_service_info_create(
         website_username,
         website_server_status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_service_info_free(website_service_info_t *website_service_info) {
@@ -288,6 +291,36 @@ website_service_info_t *website_service_info_parseFromJSON(cJSON *website_servic
 
     website_service_info_t *website_service_info_local_var = NULL;
 
+    char *website_id_local_str = NULL;
+
+    char *website_server_local_str = NULL;
+
+    char *website_type_local_str = NULL;
+
+    char *website_currency_local_str = NULL;
+
+    char *website_order_date_local_str = NULL;
+
+    char *website_custid_local_str = NULL;
+
+    char *website_ip_local_str = NULL;
+
+    char *website_status_local_str = NULL;
+
+    char *website_invoice_local_str = NULL;
+
+    char *website_coupon_local_str = NULL;
+
+    char *website_extra_local_str = NULL;
+
+    char *website_hostname_local_str = NULL;
+
+    char *website_comment_local_str = NULL;
+
+    char *website_username_local_str = NULL;
+
+    char *website_server_status_local_str = NULL;
+
     // website_service_info->website_id
     cJSON *website_id = cJSON_GetObjectItemCaseSensitive(website_service_infoJSON, "website_id");
     if (cJSON_IsNull(website_id)) {
@@ -469,26 +502,106 @@ website_service_info_t *website_service_info_parseFromJSON(cJSON *website_servic
     }
 
 
+    if (website_id && !cJSON_IsNull(website_id)) website_id_local_str = strdup(website_id->valuestring);
+    if (website_server && !cJSON_IsNull(website_server)) website_server_local_str = strdup(website_server->valuestring);
+    if (website_type && !cJSON_IsNull(website_type)) website_type_local_str = strdup(website_type->valuestring);
+    if (website_currency && !cJSON_IsNull(website_currency)) website_currency_local_str = strdup(website_currency->valuestring);
+    if (website_order_date && !cJSON_IsNull(website_order_date)) website_order_date_local_str = strdup(website_order_date->valuestring);
+    if (website_custid && !cJSON_IsNull(website_custid)) website_custid_local_str = strdup(website_custid->valuestring);
+    if (website_ip && !cJSON_IsNull(website_ip)) website_ip_local_str = strdup(website_ip->valuestring);
+    if (website_status && !cJSON_IsNull(website_status)) website_status_local_str = strdup(website_status->valuestring);
+    if (website_invoice && !cJSON_IsNull(website_invoice)) website_invoice_local_str = strdup(website_invoice->valuestring);
+    if (website_coupon && !cJSON_IsNull(website_coupon)) website_coupon_local_str = strdup(website_coupon->valuestring);
+    if (website_extra && !cJSON_IsNull(website_extra)) website_extra_local_str = strdup(website_extra->valuestring);
+    if (website_hostname && !cJSON_IsNull(website_hostname)) website_hostname_local_str = strdup(website_hostname->valuestring);
+    if (website_comment && !cJSON_IsNull(website_comment)) website_comment_local_str = strdup(website_comment->valuestring);
+    if (website_username && !cJSON_IsNull(website_username)) website_username_local_str = strdup(website_username->valuestring);
+    if (website_server_status && !cJSON_IsNull(website_server_status)) website_server_status_local_str = strdup(website_server_status->valuestring);
+
     website_service_info_local_var = website_service_info_create_internal (
-        website_id && !cJSON_IsNull(website_id) ? strdup(website_id->valuestring) : NULL,
-        website_server && !cJSON_IsNull(website_server) ? strdup(website_server->valuestring) : NULL,
-        website_type && !cJSON_IsNull(website_type) ? strdup(website_type->valuestring) : NULL,
-        website_currency && !cJSON_IsNull(website_currency) ? strdup(website_currency->valuestring) : NULL,
-        website_order_date && !cJSON_IsNull(website_order_date) ? strdup(website_order_date->valuestring) : NULL,
-        website_custid && !cJSON_IsNull(website_custid) ? strdup(website_custid->valuestring) : NULL,
-        website_ip && !cJSON_IsNull(website_ip) ? strdup(website_ip->valuestring) : NULL,
-        website_status && !cJSON_IsNull(website_status) ? strdup(website_status->valuestring) : NULL,
-        website_invoice && !cJSON_IsNull(website_invoice) ? strdup(website_invoice->valuestring) : NULL,
-        website_coupon && !cJSON_IsNull(website_coupon) ? strdup(website_coupon->valuestring) : NULL,
-        website_extra && !cJSON_IsNull(website_extra) ? strdup(website_extra->valuestring) : NULL,
-        website_hostname && !cJSON_IsNull(website_hostname) ? strdup(website_hostname->valuestring) : NULL,
-        website_comment && !cJSON_IsNull(website_comment) ? strdup(website_comment->valuestring) : NULL,
-        website_username && !cJSON_IsNull(website_username) ? strdup(website_username->valuestring) : NULL,
-        website_server_status && !cJSON_IsNull(website_server_status) ? strdup(website_server_status->valuestring) : NULL
+        website_id_local_str,
+        website_server_local_str,
+        website_type_local_str,
+        website_currency_local_str,
+        website_order_date_local_str,
+        website_custid_local_str,
+        website_ip_local_str,
+        website_status_local_str,
+        website_invoice_local_str,
+        website_coupon_local_str,
+        website_extra_local_str,
+        website_hostname_local_str,
+        website_comment_local_str,
+        website_username_local_str,
+        website_server_status_local_str
         );
+
+    if (!website_service_info_local_var) {
+        goto end;
+    }
 
     return website_service_info_local_var;
 end:
+    if (website_id_local_str) {
+        free(website_id_local_str);
+        website_id_local_str = NULL;
+    }
+    if (website_server_local_str) {
+        free(website_server_local_str);
+        website_server_local_str = NULL;
+    }
+    if (website_type_local_str) {
+        free(website_type_local_str);
+        website_type_local_str = NULL;
+    }
+    if (website_currency_local_str) {
+        free(website_currency_local_str);
+        website_currency_local_str = NULL;
+    }
+    if (website_order_date_local_str) {
+        free(website_order_date_local_str);
+        website_order_date_local_str = NULL;
+    }
+    if (website_custid_local_str) {
+        free(website_custid_local_str);
+        website_custid_local_str = NULL;
+    }
+    if (website_ip_local_str) {
+        free(website_ip_local_str);
+        website_ip_local_str = NULL;
+    }
+    if (website_status_local_str) {
+        free(website_status_local_str);
+        website_status_local_str = NULL;
+    }
+    if (website_invoice_local_str) {
+        free(website_invoice_local_str);
+        website_invoice_local_str = NULL;
+    }
+    if (website_coupon_local_str) {
+        free(website_coupon_local_str);
+        website_coupon_local_str = NULL;
+    }
+    if (website_extra_local_str) {
+        free(website_extra_local_str);
+        website_extra_local_str = NULL;
+    }
+    if (website_hostname_local_str) {
+        free(website_hostname_local_str);
+        website_hostname_local_str = NULL;
+    }
+    if (website_comment_local_str) {
+        free(website_comment_local_str);
+        website_comment_local_str = NULL;
+    }
+    if (website_username_local_str) {
+        free(website_username_local_str);
+        website_username_local_str = NULL;
+    }
+    if (website_server_status_local_str) {
+        free(website_server_status_local_str);
+        website_server_status_local_str = NULL;
+    }
     return NULL;
 
 }

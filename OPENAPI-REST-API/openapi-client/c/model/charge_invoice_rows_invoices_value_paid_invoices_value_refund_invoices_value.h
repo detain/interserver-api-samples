@@ -19,9 +19,9 @@ typedef struct charge_invoice_rows_invoices_value_paid_invoices_value_refund_inv
 
 
 typedef struct charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t {
-    double invoices_id; //numeric
+    double *invoices_id; //numeric
     char *invoices_description; // string
-    double invoices_amount; //numeric
+    double *invoices_amount; //numeric
     char *invoices_date; // string
     char *invoices_currency; // string
     char *currency_symbol; // string
@@ -31,9 +31,9 @@ typedef struct charge_invoice_rows_invoices_value_paid_invoices_value_refund_inv
 } charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t;
 
 __attribute__((deprecated)) charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_create(
-    double invoices_id,
+    double *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
     char *invoices_currency,
     char *currency_symbol,

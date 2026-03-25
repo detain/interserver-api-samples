@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailStatsType_volume_ip::OAIMailStatsType_volume_ip(QString json) {
+OAIMailStatsType_volume_ip::OAIMailStatsType_volume_ip(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIMailStatsType_volume_ip::initializeModel() {
     m_r_4_4_4_4_isValid = false;
 }
 
-void OAIMailStatsType_volume_ip::fromJson(QString jsonString) {
+void OAIMailStatsType_volume_ip::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

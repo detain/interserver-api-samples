@@ -20,14 +20,14 @@ typedef struct post_website_buy_ip_200_response_t post_website_buy_ip_200_respon
 
 typedef struct post_website_buy_ip_200_response_t {
     char *message; // string
-    int success; //boolean
+    int *success; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } post_website_buy_ip_200_response_t;
 
 __attribute__((deprecated)) post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_create(
     char *message,
-    int success
+    int *success
 );
 
 void post_website_buy_ip_200_response_free(post_website_buy_ip_200_response_t *post_website_buy_ip_200_response);

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAccountInfoOauthConfigProviders_value : public OAIObject {
 public:
     OAIAccountInfoOauthConfigProviders_value();
-    OAIAccountInfoOauthConfigProviders_value(QString json);
+    OAIAccountInfoOauthConfigProviders_value(const QString &json);
     ~OAIAccountInfoOauthConfigProviders_value() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isEnabled() const;
     void setEnabled(const bool &enabled);

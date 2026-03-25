@@ -16,13 +16,13 @@ static get_scrub_ip_details_200_response_filter_firewall_filters_inner_t *get_sc
     if (!get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var, 0, sizeof(get_scrub_ip_details_200_response_filter_firewall_filters_inner_t));
+    get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->daddr = daddr;
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->dest = dest;
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->filter_name = filter_name;
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->destination_ip = destination_ip;
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->filter = filter;
-
-    get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_filter_firewall_fi
     char *destination_ip,
     char *filter
     ) {
-    return get_scrub_ip_details_200_response_filter_firewall_filters_inner_create_internal (
+    get_scrub_ip_details_200_response_filter_firewall_filters_inner_t *result = get_scrub_ip_details_200_response_filter_firewall_filters_inner_create_internal (
         daddr,
         dest,
         filter_name,
         destination_ip,
         filter
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_filter_firewall_filters_inner_free(get_scrub_ip_details_200_response_filter_firewall_filters_inner_t *get_scrub_ip_details_200_response_filter_firewall_filters_inner) {
@@ -128,6 +131,16 @@ get_scrub_ip_details_200_response_filter_firewall_filters_inner_t *get_scrub_ip_
 
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_t *get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var = NULL;
 
+    char *daddr_local_str = NULL;
+
+    char *dest_local_str = NULL;
+
+    char *filter_name_local_str = NULL;
+
+    char *destination_ip_local_str = NULL;
+
+    char *filter_local_str = NULL;
+
     // get_scrub_ip_details_200_response_filter_firewall_filters_inner->daddr
     cJSON *daddr = cJSON_GetObjectItemCaseSensitive(get_scrub_ip_details_200_response_filter_firewall_filters_innerJSON, "daddr");
     if (cJSON_IsNull(daddr)) {
@@ -189,16 +202,46 @@ get_scrub_ip_details_200_response_filter_firewall_filters_inner_t *get_scrub_ip_
     }
 
 
+    if (daddr && !cJSON_IsNull(daddr)) daddr_local_str = strdup(daddr->valuestring);
+    if (dest && !cJSON_IsNull(dest)) dest_local_str = strdup(dest->valuestring);
+    if (filter_name && !cJSON_IsNull(filter_name)) filter_name_local_str = strdup(filter_name->valuestring);
+    if (destination_ip && !cJSON_IsNull(destination_ip)) destination_ip_local_str = strdup(destination_ip->valuestring);
+    if (filter && !cJSON_IsNull(filter)) filter_local_str = strdup(filter->valuestring);
+
     get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var = get_scrub_ip_details_200_response_filter_firewall_filters_inner_create_internal (
-        daddr && !cJSON_IsNull(daddr) ? strdup(daddr->valuestring) : NULL,
-        dest && !cJSON_IsNull(dest) ? strdup(dest->valuestring) : NULL,
-        filter_name && !cJSON_IsNull(filter_name) ? strdup(filter_name->valuestring) : NULL,
-        destination_ip && !cJSON_IsNull(destination_ip) ? strdup(destination_ip->valuestring) : NULL,
-        filter && !cJSON_IsNull(filter) ? strdup(filter->valuestring) : NULL
+        daddr_local_str,
+        dest_local_str,
+        filter_name_local_str,
+        destination_ip_local_str,
+        filter_local_str
         );
+
+    if (!get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_filter_firewall_filters_inner_local_var;
 end:
+    if (daddr_local_str) {
+        free(daddr_local_str);
+        daddr_local_str = NULL;
+    }
+    if (dest_local_str) {
+        free(dest_local_str);
+        dest_local_str = NULL;
+    }
+    if (filter_name_local_str) {
+        free(filter_name_local_str);
+        filter_name_local_str = NULL;
+    }
+    if (destination_ip_local_str) {
+        free(destination_ip_local_str);
+        destination_ip_local_str = NULL;
+    }
+    if (filter_local_str) {
+        free(filter_local_str);
+        filter_local_str = NULL;
+    }
     return NULL;
 
 }

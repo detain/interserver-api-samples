@@ -30,7 +30,7 @@ typedef struct account_info_data_cc_t {
     char *country; // string
     char *maxmind_riskscore; // string
     struct account_info_max_mind_response_t *maxmind; //model
-    int verified; //boolean
+    int *verified; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } account_info_data_cc_t;
@@ -46,7 +46,7 @@ __attribute__((deprecated)) account_info_data_cc_t *account_info_data_cc_create(
     char *country,
     char *maxmind_riskscore,
     account_info_max_mind_response_t *maxmind,
-    int verified
+    int *verified
 );
 
 void account_info_data_cc_free(account_info_data_cc_t *account_info_data_cc);

@@ -19,7 +19,7 @@ typedef struct service_category_t service_category_t;
 
 
 typedef struct service_category_t {
-    int category_id; //numeric
+    int *category_id; //numeric
     char *category_name; // string
     char *category_tag; // string
     char *category_module; // string
@@ -28,7 +28,7 @@ typedef struct service_category_t {
 } service_category_t;
 
 __attribute__((deprecated)) service_category_t *service_category_create(
-    int category_id,
+    int *category_id,
     char *category_name,
     char *category_tag,
     char *category_module

@@ -119,6 +119,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -138,7 +145,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addBackupCallback(OAIHttpRequestWorker *worker);
     void cancelBackupCallback(OAIHttpRequestWorker *worker);
@@ -176,66 +183,26 @@ Q_SIGNALS:
     void updateBackupInfoSignalFull(OAIHttpRequestWorker *worker);
     void validateBackupOrderSignalFull(OAIHttpRequestWorker *worker, OAIBackupOrderPutResponse summary);
 
-    Q_DECL_DEPRECATED_X("Use addBackupSignalError() instead")
-    void addBackupSignalE(OAIBackupOrderPostResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addBackupSignalError(OAIBackupOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use cancelBackupSignalError() instead")
-    void cancelBackupSignalE(OAICancelBackup_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void cancelBackupSignalError(OAICancelBackup_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupInfoSignalError() instead")
-    void getBackupInfoSignalE(OAIBackup summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupInfoSignalError(OAIBackup summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupInvoicesSignalError() instead")
-    void getBackupInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupLoginSignalError() instead")
-    void getBackupLoginSignalE(OAIBackupLoginResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupLoginSignalError(OAIBackupLoginResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupsListSignalError() instead")
-    void getBackupsListSignalE(QList<OAIBackupRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupsListSignalError(QList<OAIBackupRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupsWelcomeEmailSignalError() instead")
-    void getBackupsWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewBackupSignalError() instead")
-    void getNewBackupSignalE(OAIBackupsOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewBackupSignalError(OAIBackupsOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateBackupInfoSignalError() instead")
-    void updateBackupInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateBackupInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use validateBackupOrderSignalError() instead")
-    void validateBackupOrderSignalE(OAIBackupOrderPutResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void validateBackupOrderSignalError(OAIBackupOrderPutResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addBackupSignalErrorFull() instead")
-    void addBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use cancelBackupSignalErrorFull() instead")
-    void cancelBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void cancelBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupInfoSignalErrorFull() instead")
-    void getBackupInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupInvoicesSignalErrorFull() instead")
-    void getBackupInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupLoginSignalErrorFull() instead")
-    void getBackupLoginSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupLoginSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupsListSignalErrorFull() instead")
-    void getBackupsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBackupsWelcomeEmailSignalErrorFull() instead")
-    void getBackupsWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBackupsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewBackupSignalErrorFull() instead")
-    void getNewBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateBackupInfoSignalErrorFull() instead")
-    void updateBackupInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateBackupInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use validateBackupOrderSignalErrorFull() instead")
-    void validateBackupOrderSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void validateBackupOrderSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

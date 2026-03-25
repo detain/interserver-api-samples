@@ -12,7 +12,8 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 import org.openapitools.client.models.BuyItNowRowCpuInner
 
@@ -29,7 +30,7 @@ case class BuyItNowRowCpuInnerOneOf(
     speed: Option[String] = None,
     num_cpus: Option[String] = None,
     num_cores: Option[String] = None
-)
+) extends BuyItNowRowCpuInner
   
 object BuyItNowRowCpuInnerOneOf {
   given encoderBuyItNowRowCpuInnerOneOf: Encoder[BuyItNowRowCpuInnerOneOf] = Encoder.instance { t =>

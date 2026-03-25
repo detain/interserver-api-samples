@@ -12,18 +12,21 @@ static vps_extra_info_tables_t *vps_extra_info_tables_create_internal(
     if (!vps_extra_info_tables_local_var) {
         return NULL;
     }
-    vps_extra_info_tables_local_var->ip_info = ip_info;
-
+    memset(vps_extra_info_tables_local_var, 0, sizeof(vps_extra_info_tables_t));
     vps_extra_info_tables_local_var->_library_owned = 1;
+    vps_extra_info_tables_local_var->ip_info = ip_info;
     return vps_extra_info_tables_local_var;
 }
 
 __attribute__((deprecated)) vps_extra_info_tables_t *vps_extra_info_tables_create(
     vps_ip_info_t *ip_info
     ) {
-    return vps_extra_info_tables_create_internal (
+    vps_extra_info_tables_t *result = vps_extra_info_tables_create_internal (
         ip_info
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_extra_info_tables_free(vps_extra_info_tables_t *vps_extra_info_tables) {
@@ -82,9 +85,14 @@ vps_extra_info_tables_t *vps_extra_info_tables_parseFromJSON(cJSON *vps_extra_in
     }
 
 
+
     vps_extra_info_tables_local_var = vps_extra_info_tables_create_internal (
         ip_info ? ip_info_local_nonprim : NULL
         );
+
+    if (!vps_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return vps_extra_info_tables_local_var;
 end:

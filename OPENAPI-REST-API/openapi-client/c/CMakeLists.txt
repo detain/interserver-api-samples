@@ -422,6 +422,7 @@ set(SRCS
     model/update_ticket.c
     model/update_ticket_response_schema.c
     model/url_request.c
+    model/view_mail_log_start_date_parameter.c
     model/view_ticket_response.c
     model/vps.c
     model/vps_backup_row.c
@@ -898,6 +899,7 @@ set(HDRS
     model/update_ticket.h
     model/update_ticket_response_schema.h
     model/url_request.h
+    model/view_mail_log_start_date_parameter.h
     model/view_ticket_response.h
     model/vps.h
     model/vps_backup_row.h

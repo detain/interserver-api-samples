@@ -21,7 +21,7 @@ typedef struct vps_da_license_t vps_da_license_t;
 typedef struct vps_da_license_t {
     char *name; // string
     char *sub_name; // string
-    int cost; //numeric
+    int *cost; //numeric
     char *img_disabled; // string
     char *img_active; // string
 
@@ -31,7 +31,7 @@ typedef struct vps_da_license_t {
 __attribute__((deprecated)) vps_da_license_t *vps_da_license_create(
     char *name,
     char *sub_name,
-    int cost,
+    int *cost,
     char *img_disabled,
     char *img_active
 );

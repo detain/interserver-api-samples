@@ -27,27 +27,71 @@ void OpenAPIMailLogEntry::WriteJson(JsonWriter& Writer) const
 	Writer->WriteIdentifierPrefix(TEXT("id")); WriteJsonValue(Writer, Id);
 	Writer->WriteIdentifierPrefix(TEXT("from")); WriteJsonValue(Writer, From);
 	Writer->WriteIdentifierPrefix(TEXT("to")); WriteJsonValue(Writer, To);
-	Writer->WriteIdentifierPrefix(TEXT("subject")); WriteJsonValue(Writer, Subject);
 	Writer->WriteIdentifierPrefix(TEXT("created")); WriteJsonValue(Writer, Created);
 	Writer->WriteIdentifierPrefix(TEXT("time")); WriteJsonValue(Writer, Time);
 	Writer->WriteIdentifierPrefix(TEXT("user")); WriteJsonValue(Writer, User);
 	Writer->WriteIdentifierPrefix(TEXT("transtype")); WriteJsonValue(Writer, Transtype);
 	Writer->WriteIdentifierPrefix(TEXT("origin")); WriteJsonValue(Writer, Origin);
 	Writer->WriteIdentifierPrefix(TEXT("interface")); WriteJsonValue(Writer, Interface);
-	Writer->WriteIdentifierPrefix(TEXT("sendingZone")); WriteJsonValue(Writer, SendingZone);
-	Writer->WriteIdentifierPrefix(TEXT("bodySize")); WriteJsonValue(Writer, BodySize);
-	Writer->WriteIdentifierPrefix(TEXT("seq")); WriteJsonValue(Writer, Seq);
-	Writer->WriteIdentifierPrefix(TEXT("recipient")); WriteJsonValue(Writer, Recipient);
-	Writer->WriteIdentifierPrefix(TEXT("domain")); WriteJsonValue(Writer, Domain);
-	Writer->WriteIdentifierPrefix(TEXT("locked")); WriteJsonValue(Writer, Locked);
-	Writer->WriteIdentifierPrefix(TEXT("lockTime")); WriteJsonValue(Writer, LockTime);
-	Writer->WriteIdentifierPrefix(TEXT("assigned")); WriteJsonValue(Writer, Assigned);
-	Writer->WriteIdentifierPrefix(TEXT("queued")); WriteJsonValue(Writer, Queued);
-	Writer->WriteIdentifierPrefix(TEXT("mxHostname")); WriteJsonValue(Writer, MxHostname);
-	Writer->WriteIdentifierPrefix(TEXT("response")); WriteJsonValue(Writer, Response);
+	if (Subject.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("subject")); WriteJsonValue(Writer, Subject.GetValue());
+	}
 	if (MessageId.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("messageId")); WriteJsonValue(Writer, MessageId.GetValue());
+	}
+	if (SendingZone.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("sendingZone")); WriteJsonValue(Writer, SendingZone.GetValue());
+	}
+	if (BodySize.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("bodySize")); WriteJsonValue(Writer, BodySize.GetValue());
+	}
+	if (Seq.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("seq")); WriteJsonValue(Writer, Seq.GetValue());
+	}
+	if (Delivered.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("delivered")); WriteJsonValue(Writer, Delivered.GetValue());
+	}
+	if (Code.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("code")); WriteJsonValue(Writer, Code.GetValue());
+	}
+	if (Recipient.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("recipient")); WriteJsonValue(Writer, Recipient.GetValue());
+	}
+	if (Response.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("response")); WriteJsonValue(Writer, Response.GetValue());
+	}
+	if (Domain.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("domain")); WriteJsonValue(Writer, Domain.GetValue());
+	}
+	if (Locked.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("locked")); WriteJsonValue(Writer, Locked.GetValue());
+	}
+	if (LockTime.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("lockTime")); WriteJsonValue(Writer, LockTime.GetValue());
+	}
+	if (Assigned.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("assigned")); WriteJsonValue(Writer, Assigned.GetValue());
+	}
+	if (Queued.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("queued")); WriteJsonValue(Writer, Queued.GetValue());
+	}
+	if (MxHostname.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("mxHostname")); WriteJsonValue(Writer, MxHostname.GetValue());
 	}
 	Writer->WriteObjectEnd();
 }
@@ -64,25 +108,27 @@ bool OpenAPIMailLogEntry::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("id"), Id);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("from"), From);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("to"), To);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("subject"), Subject);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("created"), Created);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("time"), Time);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("user"), User);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("transtype"), Transtype);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("origin"), Origin);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("interface"), Interface);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("subject"), Subject);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("messageId"), MessageId);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("sendingZone"), SendingZone);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("bodySize"), BodySize);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("seq"), Seq);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("delivered"), Delivered);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("code"), Code);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("recipient"), Recipient);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("response"), Response);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("domain"), Domain);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("locked"), Locked);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("lockTime"), LockTime);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("assigned"), Assigned);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("queued"), Queued);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("mxHostname"), MxHostname);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("response"), Response);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("messageId"), MessageId);
 
 	return ParseSuccess;
 }

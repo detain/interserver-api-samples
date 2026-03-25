@@ -1,4 +1,4 @@
-# # LicenseRow
+# LicenseRow
 
 ## Properties
 

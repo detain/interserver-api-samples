@@ -1,4 +1,4 @@
-# # DomainAllInfoAttributesContactSet
+# DomainAllInfoAttributesContactSet
 
 ## Properties
 

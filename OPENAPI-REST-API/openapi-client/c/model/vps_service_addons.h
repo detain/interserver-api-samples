@@ -19,19 +19,19 @@ typedef struct vps_service_addons_t vps_service_addons_t;
 
 
 typedef struct vps_service_addons_t {
-    int has_cpanel; //boolean
-    int has_directadmin; //boolean
-    int has_fantastico; //boolean
-    int has_softaculous; //boolean
-    int has_hdspace; //boolean
-    int dedicated_ip; //boolean
+    int *has_cpanel; //boolean
+    int *has_directadmin; //boolean
+    int *has_fantastico; //boolean
+    int *has_softaculous; //boolean
+    int *has_hdspace; //boolean
+    int *dedicated_ip; //boolean
     list_t *extra_ips; //primitive container
     list_t *extra_ips6; //primitive container
     list_t *unpaid_ips; //primitive container
     list_t *ips; //primitive container
     list_t *ips6; //primitive container
-    int cpanel_id; //numeric
-    int cost; //numeric
+    int *cpanel_id; //numeric
+    int *cost; //numeric
     list_t *ids; //primitive container
     list_t *rdata; //primitive container
 
@@ -39,19 +39,19 @@ typedef struct vps_service_addons_t {
 } vps_service_addons_t;
 
 __attribute__((deprecated)) vps_service_addons_t *vps_service_addons_create(
-    int has_cpanel,
-    int has_directadmin,
-    int has_fantastico,
-    int has_softaculous,
-    int has_hdspace,
-    int dedicated_ip,
+    int *has_cpanel,
+    int *has_directadmin,
+    int *has_fantastico,
+    int *has_softaculous,
+    int *has_hdspace,
+    int *dedicated_ip,
     list_t *extra_ips,
     list_t *extra_ips6,
     list_t *unpaid_ips,
     list_t *ips,
     list_t *ips6,
-    int cpanel_id,
-    int cost,
+    int *cpanel_id,
+    int *cost,
     list_t *ids,
     list_t *rdata
 );

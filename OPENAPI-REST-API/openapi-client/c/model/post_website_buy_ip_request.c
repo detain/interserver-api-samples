@@ -12,18 +12,21 @@ static post_website_buy_ip_request_t *post_website_buy_ip_request_create_interna
     if (!post_website_buy_ip_request_local_var) {
         return NULL;
     }
-    post_website_buy_ip_request_local_var->ips = ips;
-
+    memset(post_website_buy_ip_request_local_var, 0, sizeof(post_website_buy_ip_request_t));
     post_website_buy_ip_request_local_var->_library_owned = 1;
+    post_website_buy_ip_request_local_var->ips = ips;
     return post_website_buy_ip_request_local_var;
 }
 
 __attribute__((deprecated)) post_website_buy_ip_request_t *post_website_buy_ip_request_create(
     list_t* ips
     ) {
-    return post_website_buy_ip_request_create_internal (
+    post_website_buy_ip_request_t *result = post_website_buy_ip_request_create_internal (
         ips
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void post_website_buy_ip_request_free(post_website_buy_ip_request_t *post_website_buy_ip_request) {
@@ -114,9 +117,14 @@ post_website_buy_ip_request_t *post_website_buy_ip_request_parseFromJSON(cJSON *
     }
 
 
+
     post_website_buy_ip_request_local_var = post_website_buy_ip_request_create_internal (
         ips ? ipsList : NULL
         );
+
+    if (!post_website_buy_ip_request_local_var) {
+        goto end;
+    }
 
     return post_website_buy_ip_request_local_var;
 end:

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBackupClientLink : public OAIObject {
 public:
     OAIBackupClientLink();
-    OAIBackupClientLink(QString json);
+    OAIBackupClientLink(const QString &json);
     ~OAIBackupClientLink() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getLabel() const;
     void setLabel(const QString &label);

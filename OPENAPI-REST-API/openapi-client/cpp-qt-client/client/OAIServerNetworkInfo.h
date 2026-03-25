@@ -36,13 +36,13 @@ class OAIServerNetworkInfo_switchports;
 class OAIServerNetworkInfo : public OAIObject {
 public:
     OAIServerNetworkInfo();
-    OAIServerNetworkInfo(QString json);
+    OAIServerNetworkInfo(const QString &json);
     ~OAIServerNetworkInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<QString> getVlans() const;
     void setVlans(const QList<QString> &vlans);

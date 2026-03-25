@@ -12,76 +12,82 @@ Swagger Codegen version: 3.0.78
 require 'date'
 
 module SwaggerClient
-  # An email record
+  # A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
   class MailLogEntry
-    # internal db id
+    # Internal auto-increment database row ID.
     attr_accessor :_id
 
-    # mail id
+    # The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
     attr_accessor :id
 
-    # from address
+    # SMTP envelope `MAIL FROM` address.
     attr_accessor :from
 
-    # to address
+    # SMTP envelope `RCPT TO` address.
     attr_accessor :to
 
-    # email subject
+    # The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
     attr_accessor :subject
 
-    # message id
+    # The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
     attr_accessor :message_id
 
-    # creation date
+    # Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
     attr_accessor :created
 
-    # creation timestamp
+    # Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
     attr_accessor :time
 
-    # user account
+    # The SMTP AUTH username used to submit the message (e.g. `mb5658`).
     attr_accessor :user
 
-    # transaction type
+    # SMTP transaction type negotiated with the relay.
     attr_accessor :transtype
 
-    # origin ip
+    # IP address of the client that submitted the message to the relay.
     attr_accessor :origin
 
-    # interface name
+    # Relay interface name that accepted the message.
     attr_accessor :interface
 
-    # sending zone
+    # The sending zone assigned by the relay for outbound delivery.
     attr_accessor :sending_zone
 
-    # email body size in bytes
+    # Size of the message body in bytes.
     attr_accessor :body_size
 
-    # index of email in the to adderess list
+    # Sequence index of this recipient in a multi-recipient message. Starts at 1.
     attr_accessor :seq
 
-    # to address this email is being sent to
+    # Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+    attr_accessor :delivered
+
+    # The SMTP response code from the destination MX server (e.g. `250`).
+    attr_accessor :code
+
+    # The specific recipient address this delivery record is for.
     attr_accessor :recipient
 
-    # to address domain
+    # The full SMTP response string received from the destination MX server.
+    attr_accessor :response
+
+    # The destination domain for this delivery attempt.
     attr_accessor :domain
 
-    # locked status
+    # Whether the queue entry is currently locked for delivery processing.
     attr_accessor :locked
 
-    # lock timestamp
+    # Millisecond-precision timestamp of the last queue lock acquisition.
     attr_accessor :lock_time
 
-    # assigned server
+    # The relay server node assigned to deliver this message.
     attr_accessor :assigned
 
-    # queued timestamp
+    # ISO 8601 timestamp when the message was placed into the delivery queue.
     attr_accessor :queued
 
-    # mx hostname
+    # The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
     attr_accessor :mx_hostname
-
-    # mail delivery response
-    attr_accessor :response
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -101,14 +107,16 @@ module SwaggerClient
         :'sending_zone' => :'sendingZone',
         :'body_size' => :'bodySize',
         :'seq' => :'seq',
+        :'delivered' => :'delivered',
+        :'code' => :'code',
         :'recipient' => :'recipient',
+        :'response' => :'response',
         :'domain' => :'domain',
         :'locked' => :'locked',
         :'lock_time' => :'lockTime',
         :'assigned' => :'assigned',
         :'queued' => :'queued',
-        :'mx_hostname' => :'mxHostname',
-        :'response' => :'response'
+        :'mx_hostname' => :'mxHostname'
       }
     end
 
@@ -130,20 +138,37 @@ module SwaggerClient
         :'sending_zone' => :'Object',
         :'body_size' => :'Object',
         :'seq' => :'Object',
+        :'delivered' => :'Object',
+        :'code' => :'Object',
         :'recipient' => :'Object',
+        :'response' => :'Object',
         :'domain' => :'Object',
         :'locked' => :'Object',
         :'lock_time' => :'Object',
         :'assigned' => :'Object',
         :'queued' => :'Object',
-        :'mx_hostname' => :'Object',
-        :'response' => :'Object'
+        :'mx_hostname' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'subject',
+        :'message_id',
+        :'sending_zone',
+        :'body_size',
+        :'seq',
+        :'delivered',
+        :'code',
+        :'recipient',
+        :'response',
+        :'domain',
+        :'locked',
+        :'lock_time',
+        :'assigned',
+        :'queued',
+        :'mx_hostname'
       ])
     end
   
@@ -222,8 +247,20 @@ module SwaggerClient
         self.seq = attributes[:'seq']
       end
 
+      if attributes.key?(:'delivered')
+        self.delivered = attributes[:'delivered']
+      end
+
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
+      end
+
       if attributes.key?(:'recipient')
         self.recipient = attributes[:'recipient']
+      end
+
+      if attributes.key?(:'response')
+        self.response = attributes[:'response']
       end
 
       if attributes.key?(:'domain')
@@ -249,10 +286,6 @@ module SwaggerClient
       if attributes.key?(:'mx_hostname')
         self.mx_hostname = attributes[:'mx_hostname']
       end
-
-      if attributes.key?(:'response')
-        self.response = attributes[:'response']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -273,10 +306,6 @@ module SwaggerClient
 
       if @to.nil?
         invalid_properties.push('invalid value for "to", to cannot be nil.')
-      end
-
-      if @subject.nil?
-        invalid_properties.push('invalid value for "subject", subject cannot be nil.')
       end
 
       if @created.nil?
@@ -303,50 +332,6 @@ module SwaggerClient
         invalid_properties.push('invalid value for "interface", interface cannot be nil.')
       end
 
-      if @sending_zone.nil?
-        invalid_properties.push('invalid value for "sending_zone", sending_zone cannot be nil.')
-      end
-
-      if @body_size.nil?
-        invalid_properties.push('invalid value for "body_size", body_size cannot be nil.')
-      end
-
-      if @seq.nil?
-        invalid_properties.push('invalid value for "seq", seq cannot be nil.')
-      end
-
-      if @recipient.nil?
-        invalid_properties.push('invalid value for "recipient", recipient cannot be nil.')
-      end
-
-      if @domain.nil?
-        invalid_properties.push('invalid value for "domain", domain cannot be nil.')
-      end
-
-      if @locked.nil?
-        invalid_properties.push('invalid value for "locked", locked cannot be nil.')
-      end
-
-      if @lock_time.nil?
-        invalid_properties.push('invalid value for "lock_time", lock_time cannot be nil.')
-      end
-
-      if @assigned.nil?
-        invalid_properties.push('invalid value for "assigned", assigned cannot be nil.')
-      end
-
-      if @queued.nil?
-        invalid_properties.push('invalid value for "queued", queued cannot be nil.')
-      end
-
-      if @mx_hostname.nil?
-        invalid_properties.push('invalid value for "mx_hostname", mx_hostname cannot be nil.')
-      end
-
-      if @response.nil?
-        invalid_properties.push('invalid value for "response", response cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -357,24 +342,12 @@ module SwaggerClient
       return false if @id.nil?
       return false if @from.nil?
       return false if @to.nil?
-      return false if @subject.nil?
       return false if @created.nil?
       return false if @time.nil?
       return false if @user.nil?
       return false if @transtype.nil?
       return false if @origin.nil?
       return false if @interface.nil?
-      return false if @sending_zone.nil?
-      return false if @body_size.nil?
-      return false if @seq.nil?
-      return false if @recipient.nil?
-      return false if @domain.nil?
-      return false if @locked.nil?
-      return false if @lock_time.nil?
-      return false if @assigned.nil?
-      return false if @queued.nil?
-      return false if @mx_hostname.nil?
-      return false if @response.nil?
       true
     end
 
@@ -398,14 +371,16 @@ module SwaggerClient
           sending_zone == o.sending_zone &&
           body_size == o.body_size &&
           seq == o.seq &&
+          delivered == o.delivered &&
+          code == o.code &&
           recipient == o.recipient &&
+          response == o.response &&
           domain == o.domain &&
           locked == o.locked &&
           lock_time == o.lock_time &&
           assigned == o.assigned &&
           queued == o.queued &&
-          mx_hostname == o.mx_hostname &&
-          response == o.response
+          mx_hostname == o.mx_hostname
     end
 
     # @see the `==` method
@@ -417,7 +392,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_id, id, from, to, subject, message_id, created, time, user, transtype, origin, interface, sending_zone, body_size, seq, recipient, domain, locked, lock_time, assigned, queued, mx_hostname, response].hash
+      [_id, id, from, to, subject, message_id, created, time, user, transtype, origin, interface, sending_zone, body_size, seq, delivered, code, recipient, response, domain, locked, lock_time, assigned, queued, mx_hostname].hash
     end
 
     # Builds the object from hash

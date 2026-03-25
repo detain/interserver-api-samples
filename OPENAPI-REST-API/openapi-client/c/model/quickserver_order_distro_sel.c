@@ -12,18 +12,21 @@ static quickserver_order_distro_sel_t *quickserver_order_distro_sel_create_inter
     if (!quickserver_order_distro_sel_local_var) {
         return NULL;
     }
-    quickserver_order_distro_sel_local_var->ubuntu = ubuntu;
-
+    memset(quickserver_order_distro_sel_local_var, 0, sizeof(quickserver_order_distro_sel_t));
     quickserver_order_distro_sel_local_var->_library_owned = 1;
+    quickserver_order_distro_sel_local_var->ubuntu = ubuntu;
     return quickserver_order_distro_sel_local_var;
 }
 
 __attribute__((deprecated)) quickserver_order_distro_sel_t *quickserver_order_distro_sel_create(
     quickserver_order_distro_sel_ubuntu_t *ubuntu
     ) {
-    return quickserver_order_distro_sel_create_internal (
+    quickserver_order_distro_sel_t *result = quickserver_order_distro_sel_create_internal (
         ubuntu
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_order_distro_sel_free(quickserver_order_distro_sel_t *quickserver_order_distro_sel) {
@@ -82,9 +85,14 @@ quickserver_order_distro_sel_t *quickserver_order_distro_sel_parseFromJSON(cJSON
     }
 
 
+
     quickserver_order_distro_sel_local_var = quickserver_order_distro_sel_create_internal (
         ubuntu ? ubuntu_local_nonprim : NULL
         );
+
+    if (!quickserver_order_distro_sel_local_var) {
+        goto end;
+    }
 
     return quickserver_order_distro_sel_local_var;
 end:

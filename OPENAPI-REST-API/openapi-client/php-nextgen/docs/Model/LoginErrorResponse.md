@@ -1,4 +1,4 @@
-# # LoginErrorResponse
+# LoginErrorResponse
 
 ## Properties
 

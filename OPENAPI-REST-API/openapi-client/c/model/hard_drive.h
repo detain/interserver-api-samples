@@ -19,22 +19,22 @@ typedef struct hard_drive_t hard_drive_t;
 
 
 typedef struct hard_drive_t {
-    int id; //numeric
+    int *id; //numeric
     char *short_desc; // string
     char *size; // string
     char *drive_type; // string
-    double monthly_price; //numeric
+    double *monthly_price; //numeric
     char *monthly_price_display; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } hard_drive_t;
 
 __attribute__((deprecated)) hard_drive_t *hard_drive_create(
-    int id,
+    int *id,
     char *short_desc,
     char *size,
     char *drive_type,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display
 );
 

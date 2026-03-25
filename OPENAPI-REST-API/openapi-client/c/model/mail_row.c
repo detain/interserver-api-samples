@@ -16,13 +16,13 @@ static mail_row_t *mail_row_create_internal(
     if (!mail_row_local_var) {
         return NULL;
     }
+    memset(mail_row_local_var, 0, sizeof(mail_row_t));
+    mail_row_local_var->_library_owned = 1;
     mail_row_local_var->mail_id = mail_id;
     mail_row_local_var->repeat_invoices_cost = repeat_invoices_cost;
     mail_row_local_var->mail_username = mail_username;
     mail_row_local_var->mail_status = mail_status;
     mail_row_local_var->services_name = services_name;
-
-    mail_row_local_var->_library_owned = 1;
     return mail_row_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) mail_row_t *mail_row_create(
     char *mail_status,
     char *services_name
     ) {
-    return mail_row_create_internal (
+    mail_row_t *result = mail_row_create_internal (
         mail_id,
         repeat_invoices_cost,
         mail_username,
         mail_status,
         services_name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_row_free(mail_row_t *mail_row) {
@@ -128,6 +131,16 @@ mail_row_t *mail_row_parseFromJSON(cJSON *mail_rowJSON){
 
     mail_row_t *mail_row_local_var = NULL;
 
+    char *mail_id_local_str = NULL;
+
+    char *repeat_invoices_cost_local_str = NULL;
+
+    char *mail_username_local_str = NULL;
+
+    char *mail_status_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
     // mail_row->mail_id
     cJSON *mail_id = cJSON_GetObjectItemCaseSensitive(mail_rowJSON, "mail_id");
     if (cJSON_IsNull(mail_id)) {
@@ -189,16 +202,46 @@ mail_row_t *mail_row_parseFromJSON(cJSON *mail_rowJSON){
     }
 
 
+    if (mail_id && !cJSON_IsNull(mail_id)) mail_id_local_str = strdup(mail_id->valuestring);
+    if (repeat_invoices_cost && !cJSON_IsNull(repeat_invoices_cost)) repeat_invoices_cost_local_str = strdup(repeat_invoices_cost->valuestring);
+    if (mail_username && !cJSON_IsNull(mail_username)) mail_username_local_str = strdup(mail_username->valuestring);
+    if (mail_status && !cJSON_IsNull(mail_status)) mail_status_local_str = strdup(mail_status->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+
     mail_row_local_var = mail_row_create_internal (
-        mail_id && !cJSON_IsNull(mail_id) ? strdup(mail_id->valuestring) : NULL,
-        repeat_invoices_cost && !cJSON_IsNull(repeat_invoices_cost) ? strdup(repeat_invoices_cost->valuestring) : NULL,
-        mail_username && !cJSON_IsNull(mail_username) ? strdup(mail_username->valuestring) : NULL,
-        mail_status && !cJSON_IsNull(mail_status) ? strdup(mail_status->valuestring) : NULL,
-        services_name && !cJSON_IsNull(services_name) ? strdup(services_name->valuestring) : NULL
+        mail_id_local_str,
+        repeat_invoices_cost_local_str,
+        mail_username_local_str,
+        mail_status_local_str,
+        services_name_local_str
         );
+
+    if (!mail_row_local_var) {
+        goto end;
+    }
 
     return mail_row_local_var;
 end:
+    if (mail_id_local_str) {
+        free(mail_id_local_str);
+        mail_id_local_str = NULL;
+    }
+    if (repeat_invoices_cost_local_str) {
+        free(repeat_invoices_cost_local_str);
+        repeat_invoices_cost_local_str = NULL;
+    }
+    if (mail_username_local_str) {
+        free(mail_username_local_str);
+        mail_username_local_str = NULL;
+    }
+    if (mail_status_local_str) {
+        free(mail_status_local_str);
+        mail_status_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
     return NULL;
 
 }

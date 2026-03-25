@@ -1,4 +1,4 @@
-# # DeleteGeoFirewallRule
+# DeleteGeoFirewallRule
 
 ## Properties
 

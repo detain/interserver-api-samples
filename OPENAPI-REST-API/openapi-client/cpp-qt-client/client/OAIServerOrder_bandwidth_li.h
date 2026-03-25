@@ -32,13 +32,13 @@ class OAIServerOrderBandwidth;
 class OAIServerOrder_bandwidth_li : public OAIObject {
 public:
     OAIServerOrder_bandwidth_li();
-    OAIServerOrder_bandwidth_li(QString json);
+    OAIServerOrder_bandwidth_li(const QString &json);
     ~OAIServerOrder_bandwidth_li() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderBandwidth getR15() const;
     void setR15(const OAIServerOrderBandwidth &r_15);

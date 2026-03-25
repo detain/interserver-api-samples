@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAffiliateBannerRow::OAIAffiliateBannerRow(QString json) {
+OAIAffiliateBannerRow::OAIAffiliateBannerRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIAffiliateBannerRow::initializeModel() {
     m_height_isValid = false;
 }
 
-void OAIAffiliateBannerRow::fromJson(QString jsonString) {
+void OAIAffiliateBannerRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

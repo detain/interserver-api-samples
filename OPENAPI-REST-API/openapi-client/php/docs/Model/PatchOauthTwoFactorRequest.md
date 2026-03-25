@@ -1,4 +1,4 @@
-# # PatchOauthTwoFactorRequest
+# PatchOauthTwoFactorRequest
 
 ## Properties
 

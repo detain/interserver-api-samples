@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDomainNameserverGetResponse_inner : public OAIObject {
 public:
     OAIDomainNameserverGetResponse_inner();
-    OAIDomainNameserverGetResponse_inner(QString json);
+    OAIDomainNameserverGetResponse_inner(const QString &json);
     ~OAIDomainNameserverGetResponse_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getName() const;
     void setName(const QString &name);

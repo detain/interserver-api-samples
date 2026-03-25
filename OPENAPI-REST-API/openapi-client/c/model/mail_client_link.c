@@ -17,14 +17,14 @@ static mail_client_link_t *mail_client_link_create_internal(
     if (!mail_client_link_local_var) {
         return NULL;
     }
+    memset(mail_client_link_local_var, 0, sizeof(mail_client_link_t));
+    mail_client_link_local_var->_library_owned = 1;
     mail_client_link_local_var->label = label;
     mail_client_link_local_var->link = link;
     mail_client_link_local_var->icon = icon;
     mail_client_link_local_var->icon_text = icon_text;
     mail_client_link_local_var->help_text = help_text;
     mail_client_link_local_var->other_attr = other_attr;
-
-    mail_client_link_local_var->_library_owned = 1;
     return mail_client_link_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) mail_client_link_t *mail_client_link_create(
     char *help_text,
     char *other_attr
     ) {
-    return mail_client_link_create_internal (
+    mail_client_link_t *result = mail_client_link_create_internal (
         label,
         link,
         icon,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) mail_client_link_t *mail_client_link_create(
         help_text,
         other_attr
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_client_link_free(mail_client_link_t *mail_client_link) {
@@ -144,6 +147,18 @@ mail_client_link_t *mail_client_link_parseFromJSON(cJSON *mail_client_linkJSON){
 
     mail_client_link_t *mail_client_link_local_var = NULL;
 
+    char *label_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *icon_local_str = NULL;
+
+    char *icon_text_local_str = NULL;
+
+    char *help_text_local_str = NULL;
+
+    char *other_attr_local_str = NULL;
+
     // mail_client_link->label
     cJSON *label = cJSON_GetObjectItemCaseSensitive(mail_client_linkJSON, "label");
     if (cJSON_IsNull(label)) {
@@ -217,17 +232,52 @@ mail_client_link_t *mail_client_link_parseFromJSON(cJSON *mail_client_linkJSON){
     }
 
 
+    if (label && !cJSON_IsNull(label)) label_local_str = strdup(label->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (icon && !cJSON_IsNull(icon)) icon_local_str = strdup(icon->valuestring);
+    if (icon_text && !cJSON_IsNull(icon_text)) icon_text_local_str = strdup(icon_text->valuestring);
+    if (help_text && !cJSON_IsNull(help_text)) help_text_local_str = strdup(help_text->valuestring);
+    if (other_attr && !cJSON_IsNull(other_attr)) other_attr_local_str = strdup(other_attr->valuestring);
+
     mail_client_link_local_var = mail_client_link_create_internal (
-        label && !cJSON_IsNull(label) ? strdup(label->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        icon && !cJSON_IsNull(icon) ? strdup(icon->valuestring) : NULL,
-        icon_text && !cJSON_IsNull(icon_text) ? strdup(icon_text->valuestring) : NULL,
-        help_text && !cJSON_IsNull(help_text) ? strdup(help_text->valuestring) : NULL,
-        other_attr && !cJSON_IsNull(other_attr) ? strdup(other_attr->valuestring) : NULL
+        label_local_str,
+        link_local_str,
+        icon_local_str,
+        icon_text_local_str,
+        help_text_local_str,
+        other_attr_local_str
         );
+
+    if (!mail_client_link_local_var) {
+        goto end;
+    }
 
     return mail_client_link_local_var;
 end:
+    if (label_local_str) {
+        free(label_local_str);
+        label_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (icon_local_str) {
+        free(icon_local_str);
+        icon_local_str = NULL;
+    }
+    if (icon_text_local_str) {
+        free(icon_text_local_str);
+        icon_text_local_str = NULL;
+    }
+    if (help_text_local_str) {
+        free(help_text_local_str);
+        help_text_local_str = NULL;
+    }
+    if (other_attr_local_str) {
+        free(other_attr_local_str);
+        other_attr_local_str = NULL;
+    }
     return NULL;
 
 }

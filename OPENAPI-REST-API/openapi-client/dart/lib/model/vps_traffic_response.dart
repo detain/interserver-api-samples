@@ -95,10 +95,24 @@ class VpsTrafficResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsTrafficResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsTrafficResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "VpsTrafficResponse[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "VpsTrafficResponse[name]" has a null value in JSON.');
+        assert(json.containsKey(r'target'), 'Required key "VpsTrafficResponse[target]" is missing from JSON.');
+        assert(json[r'target'] != null, 'Required key "VpsTrafficResponse[target]" has a null value in JSON.');
+        assert(json.containsKey(r'interval'), 'Required key "VpsTrafficResponse[interval]" is missing from JSON.');
+        assert(json[r'interval'] != null, 'Required key "VpsTrafficResponse[interval]" has a null value in JSON.');
+        assert(json.containsKey(r'history'), 'Required key "VpsTrafficResponse[history]" is missing from JSON.');
+        assert(json[r'history'] != null, 'Required key "VpsTrafficResponse[history]" has a null value in JSON.');
+        assert(json.containsKey(r'last'), 'Required key "VpsTrafficResponse[last]" is missing from JSON.');
+        assert(json[r'last'] != null, 'Required key "VpsTrafficResponse[last]" has a null value in JSON.');
+        assert(json.containsKey(r'times'), 'Required key "VpsTrafficResponse[times]" is missing from JSON.');
+        assert(json[r'times'] != null, 'Required key "VpsTrafficResponse[times]" has a null value in JSON.');
+        assert(json.containsKey(r'totals'), 'Required key "VpsTrafficResponse[totals]" is missing from JSON.');
+        assert(json[r'totals'] != null, 'Required key "VpsTrafficResponse[totals]" has a null value in JSON.');
+        assert(json.containsKey(r'usage'), 'Required key "VpsTrafficResponse[usage]" is missing from JSON.');
+        assert(json[r'usage'] != null, 'Required key "VpsTrafficResponse[usage]" has a null value in JSON.');
+        assert(json.containsKey(r'data'), 'Required key "VpsTrafficResponse[data]" is missing from JSON.');
+        assert(json[r'data'] != null, 'Required key "VpsTrafficResponse[data]" has a null value in JSON.');
         return true;
       }());
 

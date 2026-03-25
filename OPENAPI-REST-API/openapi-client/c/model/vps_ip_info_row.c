@@ -13,10 +13,10 @@ static vps_ip_info_row_t *vps_ip_info_row_create_internal(
     if (!vps_ip_info_row_local_var) {
         return NULL;
     }
+    memset(vps_ip_info_row_local_var, 0, sizeof(vps_ip_info_row_t));
+    vps_ip_info_row_local_var->_library_owned = 1;
     vps_ip_info_row_local_var->desc = desc;
     vps_ip_info_row_local_var->value = value;
-
-    vps_ip_info_row_local_var->_library_owned = 1;
     return vps_ip_info_row_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) vps_ip_info_row_t *vps_ip_info_row_create(
     char *desc,
     char *value
     ) {
-    return vps_ip_info_row_create_internal (
+    vps_ip_info_row_t *result = vps_ip_info_row_create_internal (
         desc,
         value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_ip_info_row_free(vps_ip_info_row_t *vps_ip_info_row) {
@@ -80,6 +83,10 @@ vps_ip_info_row_t *vps_ip_info_row_parseFromJSON(cJSON *vps_ip_info_rowJSON){
 
     vps_ip_info_row_t *vps_ip_info_row_local_var = NULL;
 
+    char *desc_local_str = NULL;
+
+    char *value_local_str = NULL;
+
     // vps_ip_info_row->desc
     cJSON *desc = cJSON_GetObjectItemCaseSensitive(vps_ip_info_rowJSON, "desc");
     if (cJSON_IsNull(desc)) {
@@ -105,13 +112,28 @@ vps_ip_info_row_t *vps_ip_info_row_parseFromJSON(cJSON *vps_ip_info_rowJSON){
     }
 
 
+    if (desc && !cJSON_IsNull(desc)) desc_local_str = strdup(desc->valuestring);
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+
     vps_ip_info_row_local_var = vps_ip_info_row_create_internal (
-        desc && !cJSON_IsNull(desc) ? strdup(desc->valuestring) : NULL,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        desc_local_str,
+        value_local_str
         );
+
+    if (!vps_ip_info_row_local_var) {
+        goto end;
+    }
 
     return vps_ip_info_row_local_var;
 end:
+    if (desc_local_str) {
+        free(desc_local_str);
+        desc_local_str = NULL;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
+    }
     return NULL;
 
 }

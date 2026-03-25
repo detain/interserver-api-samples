@@ -8,8 +8,8 @@
 static websites_order_json_service_offers_item_t *websites_order_json_service_offers_item_create_internal(
     char *service_offer_id,
     char *service_id,
-    int intro_cost,
-    int renewal_cost,
+    int *intro_cost,
+    int *renewal_cost,
     char *intro_frequency,
     char *renewal_frequency,
     char *allow_coupon,
@@ -23,6 +23,8 @@ static websites_order_json_service_offers_item_t *websites_order_json_service_of
     if (!websites_order_json_service_offers_item_local_var) {
         return NULL;
     }
+    memset(websites_order_json_service_offers_item_local_var, 0, sizeof(websites_order_json_service_offers_item_t));
+    websites_order_json_service_offers_item_local_var->_library_owned = 1;
     websites_order_json_service_offers_item_local_var->service_offer_id = service_offer_id;
     websites_order_json_service_offers_item_local_var->service_id = service_id;
     websites_order_json_service_offers_item_local_var->intro_cost = intro_cost;
@@ -35,16 +37,14 @@ static websites_order_json_service_offers_item_t *websites_order_json_service_of
     websites_order_json_service_offers_item_local_var->updated_at = updated_at;
     websites_order_json_service_offers_item_local_var->deleted_at = deleted_at;
     websites_order_json_service_offers_item_local_var->currency_symbol = currency_symbol;
-
-    websites_order_json_service_offers_item_local_var->_library_owned = 1;
     return websites_order_json_service_offers_item_local_var;
 }
 
 __attribute__((deprecated)) websites_order_json_service_offers_item_t *websites_order_json_service_offers_item_create(
     char *service_offer_id,
     char *service_id,
-    int intro_cost,
-    int renewal_cost,
+    int *intro_cost,
+    int *renewal_cost,
     char *intro_frequency,
     char *renewal_frequency,
     char *allow_coupon,
@@ -54,11 +54,21 @@ __attribute__((deprecated)) websites_order_json_service_offers_item_t *websites_
     char *deleted_at,
     char *currency_symbol
     ) {
-    return websites_order_json_service_offers_item_create_internal (
+    int *intro_cost_copy = NULL;
+    if (intro_cost) {
+        intro_cost_copy = malloc(sizeof(int));
+        if (intro_cost_copy) *intro_cost_copy = *intro_cost;
+    }
+    int *renewal_cost_copy = NULL;
+    if (renewal_cost) {
+        renewal_cost_copy = malloc(sizeof(int));
+        if (renewal_cost_copy) *renewal_cost_copy = *renewal_cost;
+    }
+    websites_order_json_service_offers_item_t *result = websites_order_json_service_offers_item_create_internal (
         service_offer_id,
         service_id,
-        intro_cost,
-        renewal_cost,
+        intro_cost_copy,
+        renewal_cost_copy,
         intro_frequency,
         renewal_frequency,
         allow_coupon,
@@ -68,6 +78,11 @@ __attribute__((deprecated)) websites_order_json_service_offers_item_t *websites_
         deleted_at,
         currency_symbol
         );
+    if (!result) {
+        free(intro_cost_copy);
+        free(renewal_cost_copy);
+    }
+    return result;
 }
 
 void websites_order_json_service_offers_item_free(websites_order_json_service_offers_item_t *websites_order_json_service_offers_item) {
@@ -86,6 +101,14 @@ void websites_order_json_service_offers_item_free(websites_order_json_service_of
     if (websites_order_json_service_offers_item->service_id) {
         free(websites_order_json_service_offers_item->service_id);
         websites_order_json_service_offers_item->service_id = NULL;
+    }
+    if (websites_order_json_service_offers_item->intro_cost) {
+        free(websites_order_json_service_offers_item->intro_cost);
+        websites_order_json_service_offers_item->intro_cost = NULL;
+    }
+    if (websites_order_json_service_offers_item->renewal_cost) {
+        free(websites_order_json_service_offers_item->renewal_cost);
+        websites_order_json_service_offers_item->renewal_cost = NULL;
     }
     if (websites_order_json_service_offers_item->intro_frequency) {
         free(websites_order_json_service_offers_item->intro_frequency);
@@ -143,7 +166,7 @@ cJSON *websites_order_json_service_offers_item_convertToJSON(websites_order_json
 
     // websites_order_json_service_offers_item->intro_cost
     if(websites_order_json_service_offers_item->intro_cost) {
-    if(cJSON_AddNumberToObject(item, "intro_cost", websites_order_json_service_offers_item->intro_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "intro_cost", *websites_order_json_service_offers_item->intro_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -151,7 +174,7 @@ cJSON *websites_order_json_service_offers_item_convertToJSON(websites_order_json
 
     // websites_order_json_service_offers_item->renewal_cost
     if(websites_order_json_service_offers_item->renewal_cost) {
-    if(cJSON_AddNumberToObject(item, "renewal_cost", websites_order_json_service_offers_item->renewal_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "renewal_cost", *websites_order_json_service_offers_item->renewal_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -232,6 +255,32 @@ websites_order_json_service_offers_item_t *websites_order_json_service_offers_it
 
     websites_order_json_service_offers_item_t *websites_order_json_service_offers_item_local_var = NULL;
 
+    char *service_offer_id_local_str = NULL;
+
+    char *service_id_local_str = NULL;
+
+    // define the local variable for websites_order_json_service_offers_item->intro_cost
+    int *intro_cost_local_var = NULL;
+
+    // define the local variable for websites_order_json_service_offers_item->renewal_cost
+    int *renewal_cost_local_var = NULL;
+
+    char *intro_frequency_local_str = NULL;
+
+    char *renewal_frequency_local_str = NULL;
+
+    char *allow_coupon_local_str = NULL;
+
+    char *service_module_local_str = NULL;
+
+    char *created_at_local_str = NULL;
+
+    char *updated_at_local_str = NULL;
+
+    char *deleted_at_local_str = NULL;
+
+    char *currency_symbol_local_str = NULL;
+
     // websites_order_json_service_offers_item->service_offer_id
     cJSON *service_offer_id = cJSON_GetObjectItemCaseSensitive(websites_order_json_service_offers_itemJSON, "service_offer_id");
     if (cJSON_IsNull(service_offer_id)) {
@@ -266,6 +315,12 @@ websites_order_json_service_offers_item_t *websites_order_json_service_offers_it
     {
     goto end; //Numeric
     }
+    intro_cost_local_var = malloc(sizeof(int));
+    if(!intro_cost_local_var)
+    {
+        goto end;
+    }
+    *intro_cost_local_var = intro_cost->valuedouble;
     }
 
     // websites_order_json_service_offers_item->renewal_cost
@@ -278,6 +333,12 @@ websites_order_json_service_offers_item_t *websites_order_json_service_offers_it
     {
     goto end; //Numeric
     }
+    renewal_cost_local_var = malloc(sizeof(int));
+    if(!renewal_cost_local_var)
+    {
+        goto end;
+    }
+    *renewal_cost_local_var = renewal_cost->valuedouble;
     }
 
     // websites_order_json_service_offers_item->intro_frequency
@@ -377,23 +438,86 @@ websites_order_json_service_offers_item_t *websites_order_json_service_offers_it
     }
 
 
+    if (service_offer_id && !cJSON_IsNull(service_offer_id)) service_offer_id_local_str = strdup(service_offer_id->valuestring);
+    if (service_id && !cJSON_IsNull(service_id)) service_id_local_str = strdup(service_id->valuestring);
+    if (intro_frequency && !cJSON_IsNull(intro_frequency)) intro_frequency_local_str = strdup(intro_frequency->valuestring);
+    if (renewal_frequency && !cJSON_IsNull(renewal_frequency)) renewal_frequency_local_str = strdup(renewal_frequency->valuestring);
+    if (allow_coupon && !cJSON_IsNull(allow_coupon)) allow_coupon_local_str = strdup(allow_coupon->valuestring);
+    if (service_module && !cJSON_IsNull(service_module)) service_module_local_str = strdup(service_module->valuestring);
+    if (created_at && !cJSON_IsNull(created_at)) created_at_local_str = strdup(created_at->valuestring);
+    if (updated_at && !cJSON_IsNull(updated_at)) updated_at_local_str = strdup(updated_at->valuestring);
+    if (deleted_at && !cJSON_IsNull(deleted_at)) deleted_at_local_str = strdup(deleted_at->valuestring);
+    if (currency_symbol && !cJSON_IsNull(currency_symbol)) currency_symbol_local_str = strdup(currency_symbol->valuestring);
+
     websites_order_json_service_offers_item_local_var = websites_order_json_service_offers_item_create_internal (
-        service_offer_id && !cJSON_IsNull(service_offer_id) ? strdup(service_offer_id->valuestring) : NULL,
-        service_id && !cJSON_IsNull(service_id) ? strdup(service_id->valuestring) : NULL,
-        intro_cost ? intro_cost->valuedouble : 0,
-        renewal_cost ? renewal_cost->valuedouble : 0,
-        intro_frequency && !cJSON_IsNull(intro_frequency) ? strdup(intro_frequency->valuestring) : NULL,
-        renewal_frequency && !cJSON_IsNull(renewal_frequency) ? strdup(renewal_frequency->valuestring) : NULL,
-        allow_coupon && !cJSON_IsNull(allow_coupon) ? strdup(allow_coupon->valuestring) : NULL,
-        service_module && !cJSON_IsNull(service_module) ? strdup(service_module->valuestring) : NULL,
-        created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
-        updated_at && !cJSON_IsNull(updated_at) ? strdup(updated_at->valuestring) : NULL,
-        deleted_at && !cJSON_IsNull(deleted_at) ? strdup(deleted_at->valuestring) : NULL,
-        currency_symbol && !cJSON_IsNull(currency_symbol) ? strdup(currency_symbol->valuestring) : NULL
+        service_offer_id_local_str,
+        service_id_local_str,
+        intro_cost_local_var,
+        renewal_cost_local_var,
+        intro_frequency_local_str,
+        renewal_frequency_local_str,
+        allow_coupon_local_str,
+        service_module_local_str,
+        created_at_local_str,
+        updated_at_local_str,
+        deleted_at_local_str,
+        currency_symbol_local_str
         );
+
+    if (!websites_order_json_service_offers_item_local_var) {
+        goto end;
+    }
 
     return websites_order_json_service_offers_item_local_var;
 end:
+    if (service_offer_id_local_str) {
+        free(service_offer_id_local_str);
+        service_offer_id_local_str = NULL;
+    }
+    if (service_id_local_str) {
+        free(service_id_local_str);
+        service_id_local_str = NULL;
+    }
+    if (intro_cost_local_var) {
+        free(intro_cost_local_var);
+        intro_cost_local_var = NULL;
+    }
+    if (renewal_cost_local_var) {
+        free(renewal_cost_local_var);
+        renewal_cost_local_var = NULL;
+    }
+    if (intro_frequency_local_str) {
+        free(intro_frequency_local_str);
+        intro_frequency_local_str = NULL;
+    }
+    if (renewal_frequency_local_str) {
+        free(renewal_frequency_local_str);
+        renewal_frequency_local_str = NULL;
+    }
+    if (allow_coupon_local_str) {
+        free(allow_coupon_local_str);
+        allow_coupon_local_str = NULL;
+    }
+    if (service_module_local_str) {
+        free(service_module_local_str);
+        service_module_local_str = NULL;
+    }
+    if (created_at_local_str) {
+        free(created_at_local_str);
+        created_at_local_str = NULL;
+    }
+    if (updated_at_local_str) {
+        free(updated_at_local_str);
+        updated_at_local_str = NULL;
+    }
+    if (deleted_at_local_str) {
+        free(deleted_at_local_str);
+        deleted_at_local_str = NULL;
+    }
+    if (currency_symbol_local_str) {
+        free(currency_symbol_local_str);
+        currency_symbol_local_str = NULL;
+    }
     return NULL;
 
 }

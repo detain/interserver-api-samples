@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoData_email_settings::OAIAccountInfoData_email_settings(QString json) {
+OAIAccountInfoData_email_settings::OAIAccountInfoData_email_settings(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIAccountInfoData_email_settings::initializeModel() {
     m_admin_mass_communications_tpl_isValid = false;
 }
 
-void OAIAccountInfoData_email_settings::fromJson(QString jsonString) {
+void OAIAccountInfoData_email_settings::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

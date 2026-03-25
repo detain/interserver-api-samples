@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import MailLog._
 
 case class MailLog (
-  /* total number of mail log entries */
+  /* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
   total: Integer,
-/* number of emails skipped in listing */
+/* The `skip` value used for this page (echoed from the request). */
   skip: Integer,
-/* number of emails to return */
+/* The `limit` value used for this page (echoed from the request). */
   limit: Integer,
 emails: List[MailLogEntry])
 

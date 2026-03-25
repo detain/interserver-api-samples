@@ -1,4 +1,4 @@
-# # ServerOrderOS
+# ServerOrderOS
 
 ## Properties
 

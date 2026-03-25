@@ -31,11 +31,11 @@ static domain_nameserver_get_response_inner_t *domain_nameserver_get_response_in
     if (!domain_nameserver_get_response_inner_local_var) {
         return NULL;
     }
+    memset(domain_nameserver_get_response_inner_local_var, 0, sizeof(domain_nameserver_get_response_inner_t));
+    domain_nameserver_get_response_inner_local_var->_library_owned = 1;
     domain_nameserver_get_response_inner_local_var->name = name;
     domain_nameserver_get_response_inner_local_var->ipaddress = ipaddress;
     domain_nameserver_get_response_inner_local_var->can_delete = can_delete;
-
-    domain_nameserver_get_response_inner_local_var->_library_owned = 1;
     return domain_nameserver_get_response_inner_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) domain_nameserver_get_response_inner_t *domain_names
     char *ipaddress,
     interserver_management_api_domain_nameserver_get_response_inner_CANDELETE_e can_delete
     ) {
-    return domain_nameserver_get_response_inner_create_internal (
+    domain_nameserver_get_response_inner_t *result = domain_nameserver_get_response_inner_create_internal (
         name,
         ipaddress,
         can_delete
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_nameserver_get_response_inner_free(domain_nameserver_get_response_inner_t *domain_nameserver_get_response_inner) {
@@ -113,6 +116,10 @@ domain_nameserver_get_response_inner_t *domain_nameserver_get_response_inner_par
 
     domain_nameserver_get_response_inner_t *domain_nameserver_get_response_inner_local_var = NULL;
 
+    char *name_local_str = NULL;
+
+    char *ipaddress_local_str = NULL;
+
     // domain_nameserver_get_response_inner->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(domain_nameserver_get_response_innerJSON, "name");
     if (cJSON_IsNull(name)) {
@@ -161,14 +168,29 @@ domain_nameserver_get_response_inner_t *domain_nameserver_get_response_inner_par
     can_deleteVariable = domain_nameserver_get_response_inner_can_delete_FromString(can_delete->valuestring);
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (ipaddress && !cJSON_IsNull(ipaddress)) ipaddress_local_str = strdup(ipaddress->valuestring);
+
     domain_nameserver_get_response_inner_local_var = domain_nameserver_get_response_inner_create_internal (
-        strdup(name->valuestring),
-        strdup(ipaddress->valuestring),
+        name_local_str,
+        ipaddress_local_str,
         can_deleteVariable
         );
 
+    if (!domain_nameserver_get_response_inner_local_var) {
+        goto end;
+    }
+
     return domain_nameserver_get_response_inner_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (ipaddress_local_str) {
+        free(ipaddress_local_str);
+        ipaddress_local_str = NULL;
+    }
     return NULL;
 
 }

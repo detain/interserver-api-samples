@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAICreateFirewallRule::OAICreateFirewallRule(QString json) {
+OAICreateFirewallRule::OAICreateFirewallRule(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAICreateFirewallRule::initializeModel() {
     m_source_port_isValid = false;
 }
 
-void OAICreateFirewallRule::fromJson(QString jsonString) {
+void OAICreateFirewallRule::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

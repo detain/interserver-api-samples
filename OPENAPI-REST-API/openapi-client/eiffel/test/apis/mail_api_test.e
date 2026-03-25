@@ -398,7 +398,7 @@ feature -- Test routines
     test_view_mail_log
             -- View Mail Log
             --
-            -- Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+            -- Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the &#x60;groupby&#x60; parameter.  By default (&#x60;groupby&#x3D;recipient&#x60;), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and &#x60;mxHostname&#x60; values.  Set &#x60;groupby&#x3D;message&#x60; to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by &#x60;skip&#x60; and &#x60;limit&#x60;.  The &#x60;total&#x60; in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60;, &#x60;last monday&#x60;, or &#x60;2024-01-01 00:00:00&#x60;.  Examples: &#x60;startDate&#x3D;1704067200&amp;endDate&#x3D;1706745599&#x60; or &#x60;startDate&#x3D;2024-01-01&amp;endDate&#x3D;2024-01-31&#x60;.  **Sorting** is controlled by &#x60;sort&#x60; and &#x60;dir&#x60;.  Currently the only sort key is &#x60;time&#x60; (default), which orders by internal row ID.  **Delivery status** can be filtered with the &#x60;delivered&#x60; parameter: &#x60;delivered&#x3D;1&#x60; returns only successfully delivered messages; &#x60;delivered&#x3D;0&#x60; returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (&#x60;from&#x60;, &#x60;to&#x60;) and message headers (&#x60;headerfrom&#x60; for the &#x60;From:&#x60; header, &#x60;replyto&#x60; for &#x60;Reply-To:&#x60;). These may differ when a message is sent on behalf of another address.  The &#x60;mailid&#x60; parameter corresponds to the &#x60;id&#x60; field in the returned &#x60;MailLogEntry&#x60; objects, **not** the &#x60;_id&#x60; field.  It also matches the transaction ID returned in the &#x60;text&#x60; field of a successful send response.  The &#x60;messageId&#x60; parameter searches the &#x60;Message-ID&#x60; email header (case-insensitive substring match). 
         local
             l_response: MAIL_LOG
             l_id: INTEGER_32
@@ -409,16 +409,22 @@ feature -- Test routines
             l_to: STRING_32
             l_subject: STRING_32
             l_mailid: STRING_32
+            l_message_id: STRING_32
+            l_replyto: STRING_32
+            l_headerfrom: STRING_32
+            l_delivered: INTEGER_32
             l_skip: INTEGER_32
             l_limit: INTEGER_32
-            l_start_date: INTEGER_64
-            l_end_date: INTEGER_64
-            l_delivered: STRING_32
+            l_start_date: VIEW_MAIL_LOG_START_DATE_PARAMETER
+            l_end_date: VIEW_MAIL_LOG_START_DATE_PARAMETER
+            l_sort: STRING_32
+            l_dir: STRING_32
+            l_groupby: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- l_response := api.view_mail_log(l_id, l_id2, l_origin, l_mx, l_var_from, l_to, l_subject, l_mailid, l_skip, l_limit, l_start_date, l_end_date, l_delivered)
+            -- l_response := api.view_mail_log(l_id, l_id2, l_origin, l_mx, l_var_from, l_to, l_subject, l_mailid, l_message_id, l_replyto, l_headerfrom, l_delivered, l_skip, l_limit, l_start_date, l_end_date, l_sort, l_dir, l_groupby)
             assert ("not_implemented", False)
         end
 

@@ -1,4 +1,4 @@
-# # LoginSubmissionExampleGRecaptchaResponse
+# LoginSubmissionExampleGRecaptchaResponse
 
 ## Properties
 

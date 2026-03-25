@@ -13,10 +13,10 @@ static mail_tutorials_table_t *mail_tutorials_table_create_internal(
     if (!mail_tutorials_table_local_var) {
         return NULL;
     }
+    memset(mail_tutorials_table_local_var, 0, sizeof(mail_tutorials_table_t));
+    mail_tutorials_table_local_var->_library_owned = 1;
     mail_tutorials_table_local_var->title = title;
     mail_tutorials_table_local_var->rows = rows;
-
-    mail_tutorials_table_local_var->_library_owned = 1;
     return mail_tutorials_table_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) mail_tutorials_table_t *mail_tutorials_table_create(
     char *title,
     list_t *rows
     ) {
-    return mail_tutorials_table_create_internal (
+    mail_tutorials_table_t *result = mail_tutorials_table_create_internal (
         title,
         rows
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_tutorials_table_free(mail_tutorials_table_t *mail_tutorials_table) {
@@ -95,6 +98,8 @@ mail_tutorials_table_t *mail_tutorials_table_parseFromJSON(cJSON *mail_tutorials
 
     mail_tutorials_table_t *mail_tutorials_table_local_var = NULL;
 
+    char *title_local_str = NULL;
+
     // define the local list for mail_tutorials_table->rows
     list_t *rowsList = NULL;
 
@@ -135,13 +140,23 @@ mail_tutorials_table_t *mail_tutorials_table_parseFromJSON(cJSON *mail_tutorials
     }
 
 
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     mail_tutorials_table_local_var = mail_tutorials_table_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        title_local_str,
         rows ? rowsList : NULL
         );
 
+    if (!mail_tutorials_table_local_var) {
+        goto end;
+    }
+
     return mail_tutorials_table_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     if (rowsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, rowsList) {

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsSnapshot::OAIVpsSnapshot(QString json) {
+OAIVpsSnapshot::OAIVpsSnapshot(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIVpsSnapshot::initializeModel() {
     m_date_isValid = false;
 }
 
-void OAIVpsSnapshot::fromJson(QString jsonString) {
+void OAIVpsSnapshot::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

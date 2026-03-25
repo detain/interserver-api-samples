@@ -1,4 +1,4 @@
-# # AssetServerCPUInner
+# AssetServerCPUInner
 
 ## Properties
 

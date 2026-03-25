@@ -5,12 +5,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  **/
 import io.swagger.annotations.*;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-@Schema(description = "An email record")
+@Schema(description = "A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.")
 
 public class MailLogEntry   {
 
@@ -44,13 +44,19 @@ public class MailLogEntry   {
 
   private @Valid Integer seq = null;
 
+  private @Valid Integer delivered = null;
+
+  private @Valid Integer code = null;
+
   private @Valid String recipient = null;
+
+  private @Valid String response = null;
 
   private @Valid String domain = null;
 
   private @Valid Integer locked = null;
 
-  private @Valid Integer lockTime = null;
+  private @Valid String lockTime = null;
 
   private @Valid String assigned = null;
 
@@ -58,10 +64,8 @@ public class MailLogEntry   {
 
   private @Valid String mxHostname = null;
 
-  private @Valid String response = null;
-
   /**
-   * internal db id
+   * Internal auto-increment database row ID.
    **/
   public MailLogEntry _id(Integer _id) {
     this._id = _id;
@@ -69,7 +73,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "103172", required = true, value = "internal db id")
+  @ApiModelProperty(example = "103172", required = true, value = "Internal auto-increment database row ID.")
   @JsonProperty("_id")
   @NotNull
 
@@ -81,7 +85,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * mail id
+   * The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
    **/
   public MailLogEntry id(String id) {
     this.id = id;
@@ -89,7 +93,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "17c7eda538e0005d03", required = true, value = "mail id")
+  @ApiModelProperty(example = "17c7eda538e0005d03", required = true, value = "The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.")
   @JsonProperty("id")
   @NotNull
 
@@ -101,7 +105,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * from address
+   * SMTP envelope &#x60;MAIL FROM&#x60; address.
    **/
   public MailLogEntry from(String from) {
     this.from = from;
@@ -109,7 +113,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "person@mysite.com", required = true, value = "from address")
+  @ApiModelProperty(example = "person@mysite.com", required = true, value = "SMTP envelope `MAIL FROM` address.")
   @JsonProperty("from")
   @NotNull
 
@@ -121,7 +125,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * to address
+   * SMTP envelope &#x60;RCPT TO&#x60; address.
    **/
   public MailLogEntry to(String to) {
     this.to = to;
@@ -129,7 +133,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "client@isp.com", required = true, value = "to address")
+  @ApiModelProperty(example = "client@isp.com", required = true, value = "SMTP envelope `RCPT TO` address.")
   @JsonProperty("to")
   @NotNull
 
@@ -141,7 +145,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * email subject
+   * The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
    **/
   public MailLogEntry subject(String subject) {
     this.subject = subject;
@@ -149,9 +153,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "sell 0.005 shares", required = true, value = "email subject")
+  @ApiModelProperty(example = "sell 0.005 shares", value = "The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.")
   @JsonProperty("subject")
-  @NotNull
 
   public String getSubject() {
     return subject;
@@ -161,7 +164,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * message id
+   * The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
    **/
   public MailLogEntry messageId(String messageId) {
     this.messageId = messageId;
@@ -169,9 +172,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>", value = "message id")
+  @ApiModelProperty(example = "<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>", value = "The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.")
   @JsonProperty("messageId")
-  @NotNull
 
   public String getMessageId() {
     return messageId;
@@ -181,7 +183,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * creation date
+   * Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
    **/
   public MailLogEntry created(String created) {
     this.created = created;
@@ -189,7 +191,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "2021-10-14 08:50:10", required = true, value = "creation date")
+  @ApiModelProperty(example = "2021-10-14 08:50:10", required = true, value = "Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.")
   @JsonProperty("created")
   @NotNull
 
@@ -201,7 +203,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * creation timestamp
+   * Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
    **/
   public MailLogEntry time(Integer time) {
     this.time = time;
@@ -209,7 +211,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "1634215809", required = true, value = "creation timestamp")
+  @ApiModelProperty(example = "1634215809", required = true, value = "Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.")
   @JsonProperty("time")
   @NotNull
 
@@ -221,7 +223,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * user account
+   * The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
    **/
   public MailLogEntry user(String user) {
     this.user = user;
@@ -229,7 +231,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "mb5658", required = true, value = "user account")
+  @ApiModelProperty(example = "mb5658", required = true, value = "The SMTP AUTH username used to submit the message (e.g. `mb5658`).")
   @JsonProperty("user")
   @NotNull
 
@@ -241,7 +243,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * transaction type
+   * SMTP transaction type negotiated with the relay.
    **/
   public MailLogEntry transtype(String transtype) {
     this.transtype = transtype;
@@ -249,7 +251,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "ESMTPSA", required = true, value = "transaction type")
+  @ApiModelProperty(example = "ESMTPSA", required = true, value = "SMTP transaction type negotiated with the relay.")
   @JsonProperty("transtype")
   @NotNull
 
@@ -261,7 +263,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * origin ip
+   * IP address of the client that submitted the message to the relay.
    **/
   public MailLogEntry origin(String origin) {
     this.origin = origin;
@@ -269,7 +271,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "199.231.189.154", required = true, value = "origin ip")
+  @ApiModelProperty(example = "199.231.189.154", required = true, value = "IP address of the client that submitted the message to the relay.")
   @JsonProperty("origin")
   @NotNull
 
@@ -281,7 +283,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * interface name
+   * Relay interface name that accepted the message.
    **/
   public MailLogEntry _interface(String _interface) {
     this._interface = _interface;
@@ -289,7 +291,7 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "feeder", required = true, value = "interface name")
+  @ApiModelProperty(example = "feeder", required = true, value = "Relay interface name that accepted the message.")
   @JsonProperty("interface")
   @NotNull
 
@@ -301,7 +303,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * sending zone
+   * The sending zone assigned by the relay for outbound delivery.
    **/
   public MailLogEntry sendingZone(String sendingZone) {
     this.sendingZone = sendingZone;
@@ -309,9 +311,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "interserver", required = true, value = "sending zone")
+  @ApiModelProperty(example = "interserver", value = "The sending zone assigned by the relay for outbound delivery.")
   @JsonProperty("sendingZone")
-  @NotNull
 
   public String getSendingZone() {
     return sendingZone;
@@ -321,7 +322,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * email body size in bytes
+   * Size of the message body in bytes.
    **/
   public MailLogEntry bodySize(Integer bodySize) {
     this.bodySize = bodySize;
@@ -329,9 +330,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "63", required = true, value = "email body size in bytes")
+  @ApiModelProperty(example = "63", value = "Size of the message body in bytes.")
   @JsonProperty("bodySize")
-  @NotNull
 
   public Integer getBodySize() {
     return bodySize;
@@ -341,7 +341,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * index of email in the to adderess list
+   * Sequence index of this recipient in a multi-recipient message. Starts at 1.
    **/
   public MailLogEntry seq(Integer seq) {
     this.seq = seq;
@@ -349,9 +349,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "1", required = true, value = "index of email in the to adderess list")
+  @ApiModelProperty(example = "1", value = "Sequence index of this recipient in a multi-recipient message. Starts at 1.")
   @JsonProperty("seq")
-  @NotNull
 
   public Integer getSeq() {
     return seq;
@@ -361,7 +360,45 @@ public class MailLogEntry   {
   }
 
   /**
-   * to address this email is being sent to
+   * Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.
+   **/
+  public MailLogEntry delivered(Integer delivered) {
+    this.delivered = delivered;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1", value = "Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.")
+  @JsonProperty("delivered")
+
+  public Integer getDelivered() {
+    return delivered;
+  }
+  public void setDelivered(Integer delivered) {
+    this.delivered = delivered;
+  }
+
+  /**
+   * The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).
+   **/
+  public MailLogEntry code(Integer code) {
+    this.code = code;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "250", value = "The SMTP response code from the destination MX server (e.g. `250`).")
+  @JsonProperty("code")
+
+  public Integer getCode() {
+    return code;
+  }
+  public void setCode(Integer code) {
+    this.code = code;
+  }
+
+  /**
+   * The specific recipient address this delivery record is for.
    **/
   public MailLogEntry recipient(String recipient) {
     this.recipient = recipient;
@@ -369,9 +406,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "client@isp.com", required = true, value = "to address this email is being sent to")
+  @ApiModelProperty(example = "client@isp.com", value = "The specific recipient address this delivery record is for.")
   @JsonProperty("recipient")
-  @NotNull
 
   public String getRecipient() {
     return recipient;
@@ -381,7 +417,26 @@ public class MailLogEntry   {
   }
 
   /**
-   * to address domain
+   * The full SMTP response string received from the destination MX server.
+   **/
+  public MailLogEntry response(String response) {
+    this.response = response;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "250 2.0.0 Ok queued as C91D83E128C", value = "The full SMTP response string received from the destination MX server.")
+  @JsonProperty("response")
+
+  public String getResponse() {
+    return response;
+  }
+  public void setResponse(String response) {
+    this.response = response;
+  }
+
+  /**
+   * The destination domain for this delivery attempt.
    **/
   public MailLogEntry domain(String domain) {
     this.domain = domain;
@@ -389,9 +444,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "interserver.net", required = true, value = "to address domain")
+  @ApiModelProperty(example = "interserver.net", value = "The destination domain for this delivery attempt.")
   @JsonProperty("domain")
-  @NotNull
 
   public String getDomain() {
     return domain;
@@ -401,7 +455,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * locked status
+   * Whether the queue entry is currently locked for delivery processing.
    **/
   public MailLogEntry locked(Integer locked) {
     this.locked = locked;
@@ -409,9 +463,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "1", required = true, value = "locked status")
+  @ApiModelProperty(example = "1", value = "Whether the queue entry is currently locked for delivery processing.")
   @JsonProperty("locked")
-  @NotNull
 
   public Integer getLocked() {
     return locked;
@@ -421,27 +474,26 @@ public class MailLogEntry   {
   }
 
   /**
-   * lock timestamp
+   * Millisecond-precision timestamp of the last queue lock acquisition.
    **/
-  public MailLogEntry lockTime(Integer lockTime) {
+  public MailLogEntry lockTime(String lockTime) {
     this.lockTime = lockTime;
     return this;
   }
 
   
-  @ApiModelProperty(example = "1634215818533", required = true, value = "lock timestamp")
+  @ApiModelProperty(example = "1634215818533", value = "Millisecond-precision timestamp of the last queue lock acquisition.")
   @JsonProperty("lockTime")
-  @NotNull
 
-  public Integer getLockTime() {
+  public String getLockTime() {
     return lockTime;
   }
-  public void setLockTime(Integer lockTime) {
+  public void setLockTime(String lockTime) {
     this.lockTime = lockTime;
   }
 
   /**
-   * assigned server
+   * The relay server node assigned to deliver this message.
    **/
   public MailLogEntry assigned(String assigned) {
     this.assigned = assigned;
@@ -449,9 +501,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "relay1", required = true, value = "assigned server")
+  @ApiModelProperty(example = "relay1", value = "The relay server node assigned to deliver this message.")
   @JsonProperty("assigned")
-  @NotNull
 
   public String getAssigned() {
     return assigned;
@@ -461,7 +512,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * queued timestamp
+   * ISO 8601 timestamp when the message was placed into the delivery queue.
    **/
   public MailLogEntry queued(String queued) {
     this.queued = queued;
@@ -469,9 +520,8 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "2021-10-14T12:50:15.487Z", required = true, value = "queued timestamp")
+  @ApiModelProperty(example = "2021-10-14T12:50:15.487Z", value = "ISO 8601 timestamp when the message was placed into the delivery queue.")
   @JsonProperty("queued")
-  @NotNull
 
   public String getQueued() {
     return queued;
@@ -481,7 +531,7 @@ public class MailLogEntry   {
   }
 
   /**
-   * mx hostname
+   * The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.
    **/
   public MailLogEntry mxHostname(String mxHostname) {
     this.mxHostname = mxHostname;
@@ -489,35 +539,14 @@ public class MailLogEntry   {
   }
 
   
-  @ApiModelProperty(example = "mx.j.is.cc", required = true, value = "mx hostname")
+  @ApiModelProperty(example = "mx.j.is.cc", value = "The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.")
   @JsonProperty("mxHostname")
-  @NotNull
 
   public String getMxHostname() {
     return mxHostname;
   }
   public void setMxHostname(String mxHostname) {
     this.mxHostname = mxHostname;
-  }
-
-  /**
-   * mail delivery response
-   **/
-  public MailLogEntry response(String response) {
-    this.response = response;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "250 2.0.0 Ok queued as C91D83E128C", required = true, value = "mail delivery response")
-  @JsonProperty("response")
-  @NotNull
-
-  public String getResponse() {
-    return response;
-  }
-  public void setResponse(String response) {
-    this.response = response;
   }
 
 
@@ -545,19 +574,21 @@ public class MailLogEntry   {
         Objects.equals(sendingZone, mailLogEntry.sendingZone) &&
         Objects.equals(bodySize, mailLogEntry.bodySize) &&
         Objects.equals(seq, mailLogEntry.seq) &&
+        Objects.equals(delivered, mailLogEntry.delivered) &&
+        Objects.equals(code, mailLogEntry.code) &&
         Objects.equals(recipient, mailLogEntry.recipient) &&
+        Objects.equals(response, mailLogEntry.response) &&
         Objects.equals(domain, mailLogEntry.domain) &&
         Objects.equals(locked, mailLogEntry.locked) &&
         Objects.equals(lockTime, mailLogEntry.lockTime) &&
         Objects.equals(assigned, mailLogEntry.assigned) &&
         Objects.equals(queued, mailLogEntry.queued) &&
-        Objects.equals(mxHostname, mailLogEntry.mxHostname) &&
-        Objects.equals(response, mailLogEntry.response);
+        Objects.equals(mxHostname, mailLogEntry.mxHostname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_id, id, from, to, subject, messageId, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, recipient, domain, locked, lockTime, assigned, queued, mxHostname, response);
+    return Objects.hash(_id, id, from, to, subject, messageId, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname);
   }
 
   @Override
@@ -580,14 +611,16 @@ public class MailLogEntry   {
     sb.append("    sendingZone: ").append(toIndentedString(sendingZone)).append("\n");
     sb.append("    bodySize: ").append(toIndentedString(bodySize)).append("\n");
     sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
+    sb.append("    delivered: ").append(toIndentedString(delivered)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    recipient: ").append(toIndentedString(recipient)).append("\n");
+    sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    lockTime: ").append(toIndentedString(lockTime)).append("\n");
     sb.append("    assigned: ").append(toIndentedString(assigned)).append("\n");
     sb.append("    queued: ").append(toIndentedString(queued)).append("\n");
     sb.append("    mxHostname: ").append(toIndentedString(mxHostname)).append("\n");
-    sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("}");
     return sb.toString();
   }

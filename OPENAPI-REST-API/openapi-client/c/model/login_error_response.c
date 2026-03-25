@@ -13,10 +13,10 @@ static login_error_response_t *login_error_response_create_internal(
     if (!login_error_response_local_var) {
         return NULL;
     }
+    memset(login_error_response_local_var, 0, sizeof(login_error_response_t));
+    login_error_response_local_var->_library_owned = 1;
     login_error_response_local_var->message = message;
     login_error_response_local_var->field = field;
-
-    login_error_response_local_var->_library_owned = 1;
     return login_error_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) login_error_response_t *login_error_response_create(
     char *message,
     char *field
     ) {
-    return login_error_response_create_internal (
+    login_error_response_t *result = login_error_response_create_internal (
         message,
         field
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void login_error_response_free(login_error_response_t *login_error_response) {
@@ -80,6 +83,10 @@ login_error_response_t *login_error_response_parseFromJSON(cJSON *login_error_re
 
     login_error_response_t *login_error_response_local_var = NULL;
 
+    char *message_local_str = NULL;
+
+    char *field_local_str = NULL;
+
     // login_error_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(login_error_responseJSON, "message");
     if (cJSON_IsNull(message)) {
@@ -105,13 +112,28 @@ login_error_response_t *login_error_response_parseFromJSON(cJSON *login_error_re
     }
 
 
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+    if (field && !cJSON_IsNull(field)) field_local_str = strdup(field->valuestring);
+
     login_error_response_local_var = login_error_response_create_internal (
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        field && !cJSON_IsNull(field) ? strdup(field->valuestring) : NULL
+        message_local_str,
+        field_local_str
         );
+
+    if (!login_error_response_local_var) {
+        goto end;
+    }
 
     return login_error_response_local_var;
 end:
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
+    if (field_local_str) {
+        free(field_local_str);
+        field_local_str = NULL;
+    }
     return NULL;
 
 }

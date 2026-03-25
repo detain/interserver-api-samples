@@ -1,4 +1,4 @@
-# # AccountInfoCountryCurrencies
+# AccountInfoCountryCurrencies
 
 ## Properties
 

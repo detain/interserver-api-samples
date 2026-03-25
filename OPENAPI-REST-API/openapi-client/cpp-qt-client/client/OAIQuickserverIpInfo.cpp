@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserverIpInfo::OAIQuickserverIpInfo(QString json) {
+OAIQuickserverIpInfo::OAIQuickserverIpInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIQuickserverIpInfo::initializeModel() {
     m_rows_isValid = false;
 }
 
-void OAIQuickserverIpInfo::fromJson(QString jsonString) {
+void OAIQuickserverIpInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

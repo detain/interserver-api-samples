@@ -13,10 +13,10 @@ static get_account_tfa_setup_200_response_t *get_account_tfa_setup_200_response_
     if (!get_account_tfa_setup_200_response_local_var) {
         return NULL;
     }
+    memset(get_account_tfa_setup_200_response_local_var, 0, sizeof(get_account_tfa_setup_200_response_t));
+    get_account_tfa_setup_200_response_local_var->_library_owned = 1;
     get_account_tfa_setup_200_response_local_var->_2fa_google_key = _2fa_google_key;
     get_account_tfa_setup_200_response_local_var->_2fa_google_split = _2fa_google_split;
-
-    get_account_tfa_setup_200_response_local_var->_library_owned = 1;
     return get_account_tfa_setup_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) get_account_tfa_setup_200_response_t *get_account_tf
     char *_2fa_google_key,
     char *_2fa_google_split
     ) {
-    return get_account_tfa_setup_200_response_create_internal (
+    get_account_tfa_setup_200_response_t *result = get_account_tfa_setup_200_response_create_internal (
         _2fa_google_key,
         _2fa_google_split
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_account_tfa_setup_200_response_free(get_account_tfa_setup_200_response_t *get_account_tfa_setup_200_response) {
@@ -80,6 +83,10 @@ get_account_tfa_setup_200_response_t *get_account_tfa_setup_200_response_parseFr
 
     get_account_tfa_setup_200_response_t *get_account_tfa_setup_200_response_local_var = NULL;
 
+    char *_2fa_google_key_local_str = NULL;
+
+    char *_2fa_google_split_local_str = NULL;
+
     // get_account_tfa_setup_200_response->_2fa_google_key
     cJSON *_2fa_google_key = cJSON_GetObjectItemCaseSensitive(get_account_tfa_setup_200_responseJSON, "2fa_google_key");
     if (cJSON_IsNull(_2fa_google_key)) {
@@ -105,13 +112,28 @@ get_account_tfa_setup_200_response_t *get_account_tfa_setup_200_response_parseFr
     }
 
 
+    if (_2fa_google_key && !cJSON_IsNull(_2fa_google_key)) _2fa_google_key_local_str = strdup(_2fa_google_key->valuestring);
+    if (_2fa_google_split && !cJSON_IsNull(_2fa_google_split)) _2fa_google_split_local_str = strdup(_2fa_google_split->valuestring);
+
     get_account_tfa_setup_200_response_local_var = get_account_tfa_setup_200_response_create_internal (
-        _2fa_google_key && !cJSON_IsNull(_2fa_google_key) ? strdup(_2fa_google_key->valuestring) : NULL,
-        _2fa_google_split && !cJSON_IsNull(_2fa_google_split) ? strdup(_2fa_google_split->valuestring) : NULL
+        _2fa_google_key_local_str,
+        _2fa_google_split_local_str
         );
+
+    if (!get_account_tfa_setup_200_response_local_var) {
+        goto end;
+    }
 
     return get_account_tfa_setup_200_response_local_var;
 end:
+    if (_2fa_google_key_local_str) {
+        free(_2fa_google_key_local_str);
+        _2fa_google_key_local_str = NULL;
+    }
+    if (_2fa_google_split_local_str) {
+        free(_2fa_google_split_local_str);
+        _2fa_google_split_local_str = NULL;
+    }
     return NULL;
 
 }

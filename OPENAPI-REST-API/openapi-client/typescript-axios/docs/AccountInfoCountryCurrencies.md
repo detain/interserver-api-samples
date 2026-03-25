@@ -1,0 +1,19 @@
+# AccountInfoCountryCurrencies
+
+Maps country codes to their available currency options.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+
+## Example
+
+```typescript
+import { AccountInfoCountryCurrencies } from './api';
+
+const instance: AccountInfoCountryCurrencies = {
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

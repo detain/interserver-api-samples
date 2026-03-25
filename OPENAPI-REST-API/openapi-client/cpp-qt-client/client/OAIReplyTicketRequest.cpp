@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIReplyTicketRequest::OAIReplyTicketRequest(QString json) {
+OAIReplyTicketRequest::OAIReplyTicketRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIReplyTicketRequest::initializeModel() {
     m_content_isValid = false;
 }
 
-void OAIReplyTicketRequest::fromJson(QString jsonString) {
+void OAIReplyTicketRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

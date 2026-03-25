@@ -1,4 +1,4 @@
-# # ServerNetworkInfoSwitchports
+# ServerNetworkInfoSwitchports
 
 ## Properties
 

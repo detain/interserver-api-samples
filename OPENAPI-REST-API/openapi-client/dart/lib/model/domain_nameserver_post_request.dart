@@ -53,10 +53,10 @@ class DomainNameserverPostRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DomainNameserverPostRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DomainNameserverPostRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "DomainNameserverPostRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "DomainNameserverPostRequest[name]" has a null value in JSON.');
+        assert(json.containsKey(r'ipAddress'), 'Required key "DomainNameserverPostRequest[ipAddress]" is missing from JSON.');
+        assert(json[r'ipAddress'] != null, 'Required key "DomainNameserverPostRequest[ipAddress]" has a null value in JSON.');
         return true;
       }());
 

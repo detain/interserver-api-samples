@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ServerServiceInfo(BaseModel):
     """
@@ -66,7 +67,8 @@ class ServerServiceInfo(BaseModel):
     __properties: ClassVar[List[str]] = ["server_id", "server_hostname", "server_custid", "server_type", "server_currency", "server_order_date", "server_invoice", "server_coupon", "server_status", "server_root", "server_dedicated_tag", "server_custom_tag", "server_comment", "server_initial_bill", "server_hardware", "server_ips", "server_monthly_bill", "server_setup", "server_discount", "server_rep", "server_date", "server_total_cost", "server_location", "server_hardware_ordered", "server_billed", "server_welcome_email", "server_dedicated_cpu", "server_dedicated_memory", "server_dedicated_hd1", "server_dedicated_hd2", "server_dedicated_bandwidth", "server_dedicated_ips", "server_dedicated_os", "server_dedicated_cp", "server_dedicated_raid", "server_extra"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -78,8 +80,7 @@ class ServerServiceInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

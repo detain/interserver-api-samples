@@ -1,4 +1,4 @@
-# # ServerOrderMemory
+# ServerOrderMemory
 
 ## Properties
 

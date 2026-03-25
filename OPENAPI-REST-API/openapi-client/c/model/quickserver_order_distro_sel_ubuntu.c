@@ -12,18 +12,21 @@ static quickserver_order_distro_sel_ubuntu_t *quickserver_order_distro_sel_ubunt
     if (!quickserver_order_distro_sel_ubuntu_local_var) {
         return NULL;
     }
-    quickserver_order_distro_sel_ubuntu_local_var->ubuntu = ubuntu;
-
+    memset(quickserver_order_distro_sel_ubuntu_local_var, 0, sizeof(quickserver_order_distro_sel_ubuntu_t));
     quickserver_order_distro_sel_ubuntu_local_var->_library_owned = 1;
+    quickserver_order_distro_sel_ubuntu_local_var->ubuntu = ubuntu;
     return quickserver_order_distro_sel_ubuntu_local_var;
 }
 
 __attribute__((deprecated)) quickserver_order_distro_sel_ubuntu_t *quickserver_order_distro_sel_ubuntu_create(
     char *ubuntu
     ) {
-    return quickserver_order_distro_sel_ubuntu_create_internal (
+    quickserver_order_distro_sel_ubuntu_t *result = quickserver_order_distro_sel_ubuntu_create_internal (
         ubuntu
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_order_distro_sel_ubuntu_free(quickserver_order_distro_sel_ubuntu_t *quickserver_order_distro_sel_ubuntu) {
@@ -64,6 +67,8 @@ quickserver_order_distro_sel_ubuntu_t *quickserver_order_distro_sel_ubuntu_parse
 
     quickserver_order_distro_sel_ubuntu_t *quickserver_order_distro_sel_ubuntu_local_var = NULL;
 
+    char *ubuntu_local_str = NULL;
+
     // quickserver_order_distro_sel_ubuntu->ubuntu
     cJSON *ubuntu = cJSON_GetObjectItemCaseSensitive(quickserver_order_distro_sel_ubuntuJSON, "Ubuntu");
     if (cJSON_IsNull(ubuntu)) {
@@ -77,12 +82,22 @@ quickserver_order_distro_sel_ubuntu_t *quickserver_order_distro_sel_ubuntu_parse
     }
 
 
+    if (ubuntu && !cJSON_IsNull(ubuntu)) ubuntu_local_str = strdup(ubuntu->valuestring);
+
     quickserver_order_distro_sel_ubuntu_local_var = quickserver_order_distro_sel_ubuntu_create_internal (
-        ubuntu && !cJSON_IsNull(ubuntu) ? strdup(ubuntu->valuestring) : NULL
+        ubuntu_local_str
         );
+
+    if (!quickserver_order_distro_sel_ubuntu_local_var) {
+        goto end;
+    }
 
     return quickserver_order_distro_sel_ubuntu_local_var;
 end:
+    if (ubuntu_local_str) {
+        free(ubuntu_local_str);
+        ubuntu_local_str = NULL;
+    }
     return NULL;
 
 }

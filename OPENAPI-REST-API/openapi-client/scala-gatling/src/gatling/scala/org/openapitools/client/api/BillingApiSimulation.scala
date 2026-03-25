@@ -352,8 +352,8 @@ class BillingApiSimulation extends Simulation {
         .feed(getInvoicesQUERYFeeder)
         .exec(http("getInvoices")
         .httpRequest("GET","/invoices")
-        .queryParam("skip","${skip}")
         .queryParam("limit","${limit}")
+        .queryParam("skip","${skip}")
         .queryParam("searchString","${searchString}")
 )
 

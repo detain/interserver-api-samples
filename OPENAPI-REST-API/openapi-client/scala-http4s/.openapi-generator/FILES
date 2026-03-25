@@ -1,6 +1,8 @@
 .openapi-generator-ignore
+.scalafmt.conf
 build.sbt
 project/build.properties
+project/plugins.sbt
 src/main/scala/org/openapitools/client/apis/AccountApi.scala
 src/main/scala/org/openapitools/client/apis/BackupsApi.scala
 src/main/scala/org/openapitools/client/apis/BaseClient.scala
@@ -110,6 +112,7 @@ src/main/scala/org/openapitools/client/models/DeleteFilter400Response.scala
 src/main/scala/org/openapitools/client/models/DeleteFilter500Response.scala
 src/main/scala/org/openapitools/client/models/DeleteFirewallRule.scala
 src/main/scala/org/openapitools/client/models/DeleteGeoFirewallRule.scala
+src/main/scala/org/openapitools/client/models/DeliveredStatus.scala
 src/main/scala/org/openapitools/client/models/DenyRuleNew.scala
 src/main/scala/org/openapitools/client/models/DenyRuleNewType.scala
 src/main/scala/org/openapitools/client/models/DenyRuleRecord.scala
@@ -413,6 +416,10 @@ src/main/scala/org/openapitools/client/models/UrlRequest.scala
 src/main/scala/org/openapitools/client/models/VPSCancel200Response.scala
 src/main/scala/org/openapitools/client/models/VPSTrafficDataDataSectionResponse.scala
 src/main/scala/org/openapitools/client/models/VPSTrafficDataDataSectionResponseInner.scala
+src/main/scala/org/openapitools/client/models/ViewMailLogDirParameter.scala
+src/main/scala/org/openapitools/client/models/ViewMailLogGroupbyParameter.scala
+src/main/scala/org/openapitools/client/models/ViewMailLogSortParameter.scala
+src/main/scala/org/openapitools/client/models/ViewMailLogStartDateParameter.scala
 src/main/scala/org/openapitools/client/models/ViewTicketResponse.scala
 src/main/scala/org/openapitools/client/models/Vps.scala
 src/main/scala/org/openapitools/client/models/VpsBackupRow.scala

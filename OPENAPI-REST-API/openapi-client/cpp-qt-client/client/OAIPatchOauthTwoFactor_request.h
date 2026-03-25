@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIPatchOauthTwoFactor_request : public OAIObject {
 public:
     OAIPatchOauthTwoFactor_request();
-    OAIPatchOauthTwoFactor_request(QString json);
+    OAIPatchOauthTwoFactor_request(const QString &json);
     ~OAIPatchOauthTwoFactor_request() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getAccountId() const;
     void setAccountId(const qint32 &account_id);

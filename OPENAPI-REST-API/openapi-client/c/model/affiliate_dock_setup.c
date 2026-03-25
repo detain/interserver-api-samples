@@ -14,11 +14,11 @@ static affiliate_dock_setup_t *affiliate_dock_setup_create_internal(
     if (!affiliate_dock_setup_local_var) {
         return NULL;
     }
+    memset(affiliate_dock_setup_local_var, 0, sizeof(affiliate_dock_setup_t));
+    affiliate_dock_setup_local_var->_library_owned = 1;
     affiliate_dock_setup_local_var->affiliate_dock_title = affiliate_dock_title;
     affiliate_dock_setup_local_var->affiliate_dock_description = affiliate_dock_description;
     affiliate_dock_setup_local_var->referrer_coupon = referrer_coupon;
-
-    affiliate_dock_setup_local_var->_library_owned = 1;
     return affiliate_dock_setup_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) affiliate_dock_setup_t *affiliate_dock_setup_create(
     char *affiliate_dock_description,
     char *referrer_coupon
     ) {
-    return affiliate_dock_setup_create_internal (
+    affiliate_dock_setup_t *result = affiliate_dock_setup_create_internal (
         affiliate_dock_title,
         affiliate_dock_description,
         referrer_coupon
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void affiliate_dock_setup_free(affiliate_dock_setup_t *affiliate_dock_setup) {
@@ -96,6 +99,12 @@ affiliate_dock_setup_t *affiliate_dock_setup_parseFromJSON(cJSON *affiliate_dock
 
     affiliate_dock_setup_t *affiliate_dock_setup_local_var = NULL;
 
+    char *affiliate_dock_title_local_str = NULL;
+
+    char *affiliate_dock_description_local_str = NULL;
+
+    char *referrer_coupon_local_str = NULL;
+
     // affiliate_dock_setup->affiliate_dock_title
     cJSON *affiliate_dock_title = cJSON_GetObjectItemCaseSensitive(affiliate_dock_setupJSON, "affiliate_dock_title");
     if (cJSON_IsNull(affiliate_dock_title)) {
@@ -133,14 +142,34 @@ affiliate_dock_setup_t *affiliate_dock_setup_parseFromJSON(cJSON *affiliate_dock
     }
 
 
+    if (affiliate_dock_title && !cJSON_IsNull(affiliate_dock_title)) affiliate_dock_title_local_str = strdup(affiliate_dock_title->valuestring);
+    if (affiliate_dock_description && !cJSON_IsNull(affiliate_dock_description)) affiliate_dock_description_local_str = strdup(affiliate_dock_description->valuestring);
+    if (referrer_coupon && !cJSON_IsNull(referrer_coupon)) referrer_coupon_local_str = strdup(referrer_coupon->valuestring);
+
     affiliate_dock_setup_local_var = affiliate_dock_setup_create_internal (
-        affiliate_dock_title && !cJSON_IsNull(affiliate_dock_title) ? strdup(affiliate_dock_title->valuestring) : NULL,
-        affiliate_dock_description && !cJSON_IsNull(affiliate_dock_description) ? strdup(affiliate_dock_description->valuestring) : NULL,
-        referrer_coupon && !cJSON_IsNull(referrer_coupon) ? strdup(referrer_coupon->valuestring) : NULL
+        affiliate_dock_title_local_str,
+        affiliate_dock_description_local_str,
+        referrer_coupon_local_str
         );
+
+    if (!affiliate_dock_setup_local_var) {
+        goto end;
+    }
 
     return affiliate_dock_setup_local_var;
 end:
+    if (affiliate_dock_title_local_str) {
+        free(affiliate_dock_title_local_str);
+        affiliate_dock_title_local_str = NULL;
+    }
+    if (affiliate_dock_description_local_str) {
+        free(affiliate_dock_description_local_str);
+        affiliate_dock_description_local_str = NULL;
+    }
+    if (referrer_coupon_local_str) {
+        free(referrer_coupon_local_str);
+        referrer_coupon_local_str = NULL;
+    }
     return NULL;
 
 }

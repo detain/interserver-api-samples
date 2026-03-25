@@ -19,15 +19,15 @@ typedef struct home_ticket_status_t home_ticket_status_t;
 
 
 typedef struct home_ticket_status_t {
-    int open; //numeric
-    int on_hold; //numeric
+    int *open; //numeric
+    int *on_hold; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } home_ticket_status_t;
 
 __attribute__((deprecated)) home_ticket_status_t *home_ticket_status_create(
-    int open,
-    int on_hold
+    int *open,
+    int *on_hold
 );
 
 void home_ticket_status_free(home_ticket_status_t *home_ticket_status);

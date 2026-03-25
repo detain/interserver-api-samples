@@ -1,4 +1,4 @@
-# # GetOauthRedirect200Response
+# GetOauthRedirect200Response
 
 ## Properties
 

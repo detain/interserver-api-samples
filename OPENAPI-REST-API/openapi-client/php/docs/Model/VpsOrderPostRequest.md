@@ -1,4 +1,4 @@
-# # VpsOrderPostRequest
+# VpsOrderPostRequest
 
 ## Properties
 

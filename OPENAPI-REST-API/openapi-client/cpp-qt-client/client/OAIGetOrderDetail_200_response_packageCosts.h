@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIGetOrderDetail_200_response_packageCosts : public OAIObject {
 public:
     OAIGetOrderDetail_200_response_packageCosts();
-    OAIGetOrderDetail_200_response_packageCosts(QString json);
+    OAIGetOrderDetail_200_response_packageCosts(const QString &json);
     ~OAIGetOrderDetail_200_response_packageCosts() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getPackageId() const;
     void setPackageId(const double &package_id);

@@ -48,10 +48,8 @@ class DownloadQsBackupRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DownloadQsBackupRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DownloadQsBackupRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'file'), 'Required key "DownloadQsBackupRequest[file]" is missing from JSON.');
+        assert(json[r'file'] != null, 'Required key "DownloadQsBackupRequest[file]" has a null value in JSON.');
         return true;
       }());
 

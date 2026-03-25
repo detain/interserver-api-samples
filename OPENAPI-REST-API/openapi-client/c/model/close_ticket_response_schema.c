@@ -6,28 +6,37 @@
 
 
 static close_ticket_response_schema_t *close_ticket_response_schema_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     close_ticket_response_schema_t *close_ticket_response_schema_local_var = malloc(sizeof(close_ticket_response_schema_t));
     if (!close_ticket_response_schema_local_var) {
         return NULL;
     }
+    memset(close_ticket_response_schema_local_var, 0, sizeof(close_ticket_response_schema_t));
+    close_ticket_response_schema_local_var->_library_owned = 1;
     close_ticket_response_schema_local_var->success = success;
     close_ticket_response_schema_local_var->text = text;
-
-    close_ticket_response_schema_local_var->_library_owned = 1;
     return close_ticket_response_schema_local_var;
 }
 
 __attribute__((deprecated)) close_ticket_response_schema_t *close_ticket_response_schema_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return close_ticket_response_schema_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    close_ticket_response_schema_t *result = close_ticket_response_schema_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void close_ticket_response_schema_free(close_ticket_response_schema_t *close_ticket_response_schema) {
@@ -39,6 +48,10 @@ void close_ticket_response_schema_free(close_ticket_response_schema_t *close_tic
         return ;
     }
     listEntry_t *listEntry;
+    if (close_ticket_response_schema->success) {
+        free(close_ticket_response_schema->success);
+        close_ticket_response_schema->success = NULL;
+    }
     if (close_ticket_response_schema->text) {
         free(close_ticket_response_schema->text);
         close_ticket_response_schema->text = NULL;
@@ -51,7 +64,7 @@ cJSON *close_ticket_response_schema_convertToJSON(close_ticket_response_schema_t
 
     // close_ticket_response_schema->success
     if(close_ticket_response_schema->success) {
-    if(cJSON_AddBoolToObject(item, "success", close_ticket_response_schema->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *close_ticket_response_schema->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -76,6 +89,11 @@ close_ticket_response_schema_t *close_ticket_response_schema_parseFromJSON(cJSON
 
     close_ticket_response_schema_t *close_ticket_response_schema_local_var = NULL;
 
+    // define the local variable for close_ticket_response_schema->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // close_ticket_response_schema->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(close_ticket_response_schemaJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -86,6 +104,12 @@ close_ticket_response_schema_t *close_ticket_response_schema_parseFromJSON(cJSON
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // close_ticket_response_schema->text
@@ -101,13 +125,27 @@ close_ticket_response_schema_t *close_ticket_response_schema_parseFromJSON(cJSON
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     close_ticket_response_schema_local_var = close_ticket_response_schema_create_internal (
-        success ? success->valueint : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL
+        success_local_var,
+        text_local_str
         );
+
+    if (!close_ticket_response_schema_local_var) {
+        goto end;
+    }
 
     return close_ticket_response_schema_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

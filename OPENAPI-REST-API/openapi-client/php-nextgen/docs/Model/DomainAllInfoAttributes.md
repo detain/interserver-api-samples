@@ -1,4 +1,4 @@
-# # DomainAllInfoAttributes
+# DomainAllInfoAttributes
 
 ## Properties
 

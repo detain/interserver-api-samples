@@ -14,11 +14,11 @@ static vps_order_platform_names_t *vps_order_platform_names_create_internal(
     if (!vps_order_platform_names_local_var) {
         return NULL;
     }
+    memset(vps_order_platform_names_local_var, 0, sizeof(vps_order_platform_names_t));
+    vps_order_platform_names_local_var->_library_owned = 1;
     vps_order_platform_names_local_var->kvm = kvm;
     vps_order_platform_names_local_var->kvmstorage = kvmstorage;
     vps_order_platform_names_local_var->hyperv = hyperv;
-
-    vps_order_platform_names_local_var->_library_owned = 1;
     return vps_order_platform_names_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) vps_order_platform_names_t *vps_order_platform_names
     char *kvmstorage,
     char *hyperv
     ) {
-    return vps_order_platform_names_create_internal (
+    vps_order_platform_names_t *result = vps_order_platform_names_create_internal (
         kvm,
         kvmstorage,
         hyperv
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_order_platform_names_free(vps_order_platform_names_t *vps_order_platform_names) {
@@ -96,6 +99,12 @@ vps_order_platform_names_t *vps_order_platform_names_parseFromJSON(cJSON *vps_or
 
     vps_order_platform_names_t *vps_order_platform_names_local_var = NULL;
 
+    char *kvm_local_str = NULL;
+
+    char *kvmstorage_local_str = NULL;
+
+    char *hyperv_local_str = NULL;
+
     // vps_order_platform_names->kvm
     cJSON *kvm = cJSON_GetObjectItemCaseSensitive(vps_order_platform_namesJSON, "kvm");
     if (cJSON_IsNull(kvm)) {
@@ -133,14 +142,34 @@ vps_order_platform_names_t *vps_order_platform_names_parseFromJSON(cJSON *vps_or
     }
 
 
+    if (kvm && !cJSON_IsNull(kvm)) kvm_local_str = strdup(kvm->valuestring);
+    if (kvmstorage && !cJSON_IsNull(kvmstorage)) kvmstorage_local_str = strdup(kvmstorage->valuestring);
+    if (hyperv && !cJSON_IsNull(hyperv)) hyperv_local_str = strdup(hyperv->valuestring);
+
     vps_order_platform_names_local_var = vps_order_platform_names_create_internal (
-        kvm && !cJSON_IsNull(kvm) ? strdup(kvm->valuestring) : NULL,
-        kvmstorage && !cJSON_IsNull(kvmstorage) ? strdup(kvmstorage->valuestring) : NULL,
-        hyperv && !cJSON_IsNull(hyperv) ? strdup(hyperv->valuestring) : NULL
+        kvm_local_str,
+        kvmstorage_local_str,
+        hyperv_local_str
         );
+
+    if (!vps_order_platform_names_local_var) {
+        goto end;
+    }
 
     return vps_order_platform_names_local_var;
 end:
+    if (kvm_local_str) {
+        free(kvm_local_str);
+        kvm_local_str = NULL;
+    }
+    if (kvmstorage_local_str) {
+        free(kvmstorage_local_str);
+        kvmstorage_local_str = NULL;
+    }
+    if (hyperv_local_str) {
+        free(hyperv_local_str);
+        hyperv_local_str = NULL;
+    }
     return NULL;
 
 }

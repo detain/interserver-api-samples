@@ -11,15 +11,18 @@ static services_t *services_create_internal(
     if (!services_local_var) {
         return NULL;
     }
-
+    memset(services_local_var, 0, sizeof(services_t));
     services_local_var->_library_owned = 1;
     return services_local_var;
 }
 
 __attribute__((deprecated)) services_t *services_create(
     ) {
-    return services_create_internal (
+    services_t *result = services_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void services_free(services_t *services) {
@@ -49,8 +52,13 @@ services_t *services_parseFromJSON(cJSON *servicesJSON){
     services_t *services_local_var = NULL;
 
 
+
     services_local_var = services_create_internal (
         );
+
+    if (!services_local_var) {
+        goto end;
+    }
 
     return services_local_var;
 end:

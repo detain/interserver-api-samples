@@ -212,6 +212,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -231,7 +238,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addAccountCreditCardCallback(OAIHttpRequestWorker *worker);
     void addBillingCreditCardCallback(OAIHttpRequestWorker *worker);
@@ -320,168 +327,60 @@ Q_SIGNALS:
     void updateBillingCreditCardSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateBillingPaymentMethodSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    Q_DECL_DEPRECATED_X("Use addAccountCreditCardSignalError() instead")
-    void addAccountCreditCardSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addAccountCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addBillingCreditCardSignalError() instead")
-    void addBillingCreditCardSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addBillingCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addBillingPrepaySignalError() instead")
-    void addBillingPrepaySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addBillingPrepaySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteAccountCreditCardSignalError() instead")
-    void deleteAccountCreditCardSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void deleteAccountCreditCardSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteBillingCreditCardSignalError() instead")
-    void deleteBillingCreditCardSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteBillingCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteBillingInvoiceSignalError() instead")
-    void deleteBillingInvoiceSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteBillingInvoiceSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteBillingPrepaySignalError() instead")
-    void deleteBillingPrepaySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteBillingPrepaySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateBannersSignalError() instead")
-    void getAffiliateBannersSignalE(QList<OAIAffiliateBannerRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateBannersSignalError(QList<OAIAffiliateBannerRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateRichReportSignalError() instead")
-    void getAffiliateRichReportSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateRichReportSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateSalesGraphSignalError() instead")
-    void getAffiliateSalesGraphSignalE(OAIStatusMonthlyBreakdown summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateSalesGraphSignalError(OAIStatusMonthlyBreakdown summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateSalesReportSignalError() instead")
-    void getAffiliateSalesReportSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateSalesReportSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateTrafficGraphSignalError() instead")
-    void getAffiliateTrafficGraphSignalE(OAIMonthlyCounts<QString, qint32> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateTrafficGraphSignalError(OAIMonthlyCounts<QString, qint32> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateWebTrafficSignalError() instead")
-    void getAffiliateWebTrafficSignalE(QList<OAIAffiliateTrafficRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateWebTrafficSignalError(QList<OAIAffiliateTrafficRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingCartSignalError() instead")
-    void getBillingCartSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingCartSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingCreditCardVerifySignalError() instead")
-    void getBillingCreditCardVerifySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingCreditCardVerifySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingInvoiceSignalError() instead")
-    void getBillingInvoiceSignalE(OAIBillingInvoiceDetail<QString, QString> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingInvoiceSignalError(OAIBillingInvoiceDetail<QString, QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingInvoicesSignalError() instead")
-    void getBillingInvoicesSignalE(OAIBillingInvoiceList summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingInvoicesSignalError(OAIBillingInvoiceList summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingPrePaysSignalError() instead")
-    void getBillingPrePaysSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingPrePaysSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getInvoicesSignalError() instead")
-    void getInvoicesSignalE(QList<OAIInvoice> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getInvoicesSignalError(QList<OAIInvoice> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use initiatePaymentSignalError() instead")
-    void initiatePaymentSignalE(OAIInitiatePayment_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void initiatePaymentSignalError(OAIInitiatePayment_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postBillingCreditCardVerifySignalError() instead")
-    void postBillingCreditCardVerifySignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postBillingCreditCardVerifySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountCreditCardSignalError() instead")
-    void updateAccountCreditCardSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountCreditCardSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAffiliateDockSetupSignalError() instead")
-    void updateAffiliateDockSetupSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAffiliateDockSetupSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAffiliateLandingPageSignalError() instead")
-    void updateAffiliateLandingPageSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAffiliateLandingPageSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAffiliatePaymentSetupSignalError() instead")
-    void updateAffiliatePaymentSetupSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAffiliatePaymentSetupSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateBillingCreditCardSignalError() instead")
-    void updateBillingCreditCardSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateBillingCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateBillingPaymentMethodSignalError() instead")
-    void updateBillingPaymentMethodSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateBillingPaymentMethodSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addAccountCreditCardSignalErrorFull() instead")
-    void addAccountCreditCardSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addAccountCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addBillingCreditCardSignalErrorFull() instead")
-    void addBillingCreditCardSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addBillingCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addBillingPrepaySignalErrorFull() instead")
-    void addBillingPrepaySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addBillingPrepaySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteAccountCreditCardSignalErrorFull() instead")
-    void deleteAccountCreditCardSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteAccountCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteBillingCreditCardSignalErrorFull() instead")
-    void deleteBillingCreditCardSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteBillingCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteBillingInvoiceSignalErrorFull() instead")
-    void deleteBillingInvoiceSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteBillingInvoiceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteBillingPrepaySignalErrorFull() instead")
-    void deleteBillingPrepaySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteBillingPrepaySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateBannersSignalErrorFull() instead")
-    void getAffiliateBannersSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateBannersSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateRichReportSignalErrorFull() instead")
-    void getAffiliateRichReportSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateRichReportSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateSalesGraphSignalErrorFull() instead")
-    void getAffiliateSalesGraphSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateSalesGraphSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateSalesReportSignalErrorFull() instead")
-    void getAffiliateSalesReportSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateSalesReportSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateTrafficGraphSignalErrorFull() instead")
-    void getAffiliateTrafficGraphSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateTrafficGraphSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getAffiliateWebTrafficSignalErrorFull() instead")
-    void getAffiliateWebTrafficSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getAffiliateWebTrafficSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingCartSignalErrorFull() instead")
-    void getBillingCartSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingCartSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingCreditCardVerifySignalErrorFull() instead")
-    void getBillingCreditCardVerifySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingCreditCardVerifySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingInvoiceSignalErrorFull() instead")
-    void getBillingInvoiceSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingInvoiceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingInvoicesSignalErrorFull() instead")
-    void getBillingInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getBillingPrePaysSignalErrorFull() instead")
-    void getBillingPrePaysSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getBillingPrePaysSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getInvoicesSignalErrorFull() instead")
-    void getInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use initiatePaymentSignalErrorFull() instead")
-    void initiatePaymentSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void initiatePaymentSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postBillingCreditCardVerifySignalErrorFull() instead")
-    void postBillingCreditCardVerifySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postBillingCreditCardVerifySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAccountCreditCardSignalErrorFull() instead")
-    void updateAccountCreditCardSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAccountCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAffiliateDockSetupSignalErrorFull() instead")
-    void updateAffiliateDockSetupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAffiliateDockSetupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAffiliateLandingPageSignalErrorFull() instead")
-    void updateAffiliateLandingPageSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAffiliateLandingPageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateAffiliatePaymentSetupSignalErrorFull() instead")
-    void updateAffiliatePaymentSetupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateAffiliatePaymentSetupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateBillingCreditCardSignalErrorFull() instead")
-    void updateBillingCreditCardSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateBillingCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateBillingPaymentMethodSignalErrorFull() instead")
-    void updateBillingPaymentMethodSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateBillingPaymentMethodSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

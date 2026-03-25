@@ -1,4 +1,4 @@
-# # AccountInfoMaxMindResponseRiskScore
+# AccountInfoMaxMindResponseRiskScore
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # RaidOption
+# RaidOption
 
 ## Properties
 

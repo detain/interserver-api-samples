@@ -19,8 +19,8 @@ typedef struct scrub_ips_row_schema_t scrub_ips_row_schema_t;
 
 
 typedef struct scrub_ips_row_schema_t {
-    int scrub_ip_id; //numeric
-    double repeat_invoices_cost; //numeric
+    int *scrub_ip_id; //numeric
+    double *repeat_invoices_cost; //numeric
     char *scrub_ip_ip; // string
     char *scrub_ip_status; // string
     char *services_name; // string
@@ -29,8 +29,8 @@ typedef struct scrub_ips_row_schema_t {
 } scrub_ips_row_schema_t;
 
 __attribute__((deprecated)) scrub_ips_row_schema_t *scrub_ips_row_schema_create(
-    int scrub_ip_id,
-    double repeat_invoices_cost,
+    int *scrub_ip_id,
+    double *repeat_invoices_cost,
     char *scrub_ip_ip,
     char *scrub_ip_status,
     char *services_name

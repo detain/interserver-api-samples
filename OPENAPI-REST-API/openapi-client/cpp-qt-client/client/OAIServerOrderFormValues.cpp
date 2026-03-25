@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerOrderFormValues::OAIServerOrderFormValues(QString json) {
+OAIServerOrderFormValues::OAIServerOrderFormValues(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -56,7 +56,7 @@ void OAIServerOrderFormValues::initializeModel() {
     m_hd_isValid = false;
 }
 
-void OAIServerOrderFormValues::fromJson(QString jsonString) {
+void OAIServerOrderFormValues::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -1,4 +1,4 @@
-# # VpsExtraInfoTables
+# VpsExtraInfoTables
 
 ## Properties
 

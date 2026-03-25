@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAccountInfoData_fraudrecord : public OAIObject {
 public:
     OAIAccountInfoData_fraudrecord();
-    OAIAccountInfoData_fraudrecord(QString json);
+    OAIAccountInfoData_fraudrecord(const QString &json);
     ~OAIAccountInfoData_fraudrecord() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getScore() const;
     void setScore(const QString &score);

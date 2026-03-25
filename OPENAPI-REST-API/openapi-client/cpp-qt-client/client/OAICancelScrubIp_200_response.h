@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAICancelScrubIp_200_response : public OAIObject {
 public:
     OAICancelScrubIp_200_response();
-    OAICancelScrubIp_200_response(QString json);
+    OAICancelScrubIp_200_response(const QString &json);
     ~OAICancelScrubIp_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

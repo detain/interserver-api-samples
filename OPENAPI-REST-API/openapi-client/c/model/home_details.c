@@ -12,18 +12,21 @@ static home_details_t *home_details_create_internal(
     if (!home_details_local_var) {
         return NULL;
     }
-    home_details_local_var->modules = modules;
-
+    memset(home_details_local_var, 0, sizeof(home_details_t));
     home_details_local_var->_library_owned = 1;
+    home_details_local_var->modules = modules;
     return home_details_local_var;
 }
 
 __attribute__((deprecated)) home_details_t *home_details_create(
     home_details_modules_t *modules
     ) {
-    return home_details_create_internal (
+    home_details_t *result = home_details_create_internal (
         modules
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_details_free(home_details_t *home_details) {
@@ -82,9 +85,14 @@ home_details_t *home_details_parseFromJSON(cJSON *home_detailsJSON){
     }
 
 
+
     home_details_local_var = home_details_create_internal (
         modules ? modules_local_nonprim : NULL
         );
+
+    if (!home_details_local_var) {
+        goto end;
+    }
 
     return home_details_local_var;
 end:

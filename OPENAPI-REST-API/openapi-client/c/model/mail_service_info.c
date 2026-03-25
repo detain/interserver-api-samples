@@ -25,6 +25,8 @@ static mail_service_info_t *mail_service_info_create_internal(
     if (!mail_service_info_local_var) {
         return NULL;
     }
+    memset(mail_service_info_local_var, 0, sizeof(mail_service_info_t));
+    mail_service_info_local_var->_library_owned = 1;
     mail_service_info_local_var->mail_id = mail_id;
     mail_service_info_local_var->mail_type = mail_type;
     mail_service_info_local_var->mail_currency = mail_currency;
@@ -39,8 +41,6 @@ static mail_service_info_t *mail_service_info_create_internal(
     mail_service_info_local_var->mail_extra = mail_extra;
     mail_service_info_local_var->mail_server_status = mail_server_status;
     mail_service_info_local_var->mail_comment = mail_comment;
-
-    mail_service_info_local_var->_library_owned = 1;
     return mail_service_info_local_var;
 }
 
@@ -60,7 +60,7 @@ __attribute__((deprecated)) mail_service_info_t *mail_service_info_create(
     char *mail_server_status,
     char *mail_comment
     ) {
-    return mail_service_info_create_internal (
+    mail_service_info_t *result = mail_service_info_create_internal (
         mail_id,
         mail_type,
         mail_currency,
@@ -76,6 +76,9 @@ __attribute__((deprecated)) mail_service_info_t *mail_service_info_create(
         mail_server_status,
         mail_comment
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_service_info_free(mail_service_info_t *mail_service_info) {
@@ -280,6 +283,34 @@ mail_service_info_t *mail_service_info_parseFromJSON(cJSON *mail_service_infoJSO
 
     mail_service_info_t *mail_service_info_local_var = NULL;
 
+    char *mail_id_local_str = NULL;
+
+    char *mail_type_local_str = NULL;
+
+    char *mail_currency_local_str = NULL;
+
+    char *mail_order_date_local_str = NULL;
+
+    char *mail_custid_local_str = NULL;
+
+    char *mail_quota_local_str = NULL;
+
+    char *mail_status_local_str = NULL;
+
+    char *mail_invoice_local_str = NULL;
+
+    char *mail_username_local_str = NULL;
+
+    char *mail_ip_local_str = NULL;
+
+    char *mail_coupon_local_str = NULL;
+
+    char *mail_extra_local_str = NULL;
+
+    char *mail_server_status_local_str = NULL;
+
+    char *mail_comment_local_str = NULL;
+
     // mail_service_info->mail_id
     cJSON *mail_id = cJSON_GetObjectItemCaseSensitive(mail_service_infoJSON, "mail_id");
     if (cJSON_IsNull(mail_id)) {
@@ -473,25 +504,100 @@ mail_service_info_t *mail_service_info_parseFromJSON(cJSON *mail_service_infoJSO
     }
 
 
+    if (mail_id && !cJSON_IsNull(mail_id)) mail_id_local_str = strdup(mail_id->valuestring);
+    if (mail_type && !cJSON_IsNull(mail_type)) mail_type_local_str = strdup(mail_type->valuestring);
+    if (mail_currency && !cJSON_IsNull(mail_currency)) mail_currency_local_str = strdup(mail_currency->valuestring);
+    if (mail_order_date && !cJSON_IsNull(mail_order_date)) mail_order_date_local_str = strdup(mail_order_date->valuestring);
+    if (mail_custid && !cJSON_IsNull(mail_custid)) mail_custid_local_str = strdup(mail_custid->valuestring);
+    if (mail_quota && !cJSON_IsNull(mail_quota)) mail_quota_local_str = strdup(mail_quota->valuestring);
+    if (mail_status && !cJSON_IsNull(mail_status)) mail_status_local_str = strdup(mail_status->valuestring);
+    if (mail_invoice && !cJSON_IsNull(mail_invoice)) mail_invoice_local_str = strdup(mail_invoice->valuestring);
+    if (mail_username && !cJSON_IsNull(mail_username)) mail_username_local_str = strdup(mail_username->valuestring);
+    if (mail_ip && !cJSON_IsNull(mail_ip)) mail_ip_local_str = strdup(mail_ip->valuestring);
+    if (mail_coupon && !cJSON_IsNull(mail_coupon)) mail_coupon_local_str = strdup(mail_coupon->valuestring);
+    if (mail_extra && !cJSON_IsNull(mail_extra)) mail_extra_local_str = strdup(mail_extra->valuestring);
+    if (mail_server_status && !cJSON_IsNull(mail_server_status)) mail_server_status_local_str = strdup(mail_server_status->valuestring);
+    if (mail_comment && !cJSON_IsNull(mail_comment)) mail_comment_local_str = strdup(mail_comment->valuestring);
+
     mail_service_info_local_var = mail_service_info_create_internal (
-        strdup(mail_id->valuestring),
-        strdup(mail_type->valuestring),
-        strdup(mail_currency->valuestring),
-        strdup(mail_order_date->valuestring),
-        strdup(mail_custid->valuestring),
-        strdup(mail_quota->valuestring),
-        strdup(mail_status->valuestring),
-        strdup(mail_invoice->valuestring),
-        mail_username && !cJSON_IsNull(mail_username) ? strdup(mail_username->valuestring) : NULL,
-        mail_ip && !cJSON_IsNull(mail_ip) ? strdup(mail_ip->valuestring) : NULL,
-        mail_coupon && !cJSON_IsNull(mail_coupon) ? strdup(mail_coupon->valuestring) : NULL,
-        mail_extra && !cJSON_IsNull(mail_extra) ? strdup(mail_extra->valuestring) : NULL,
-        mail_server_status && !cJSON_IsNull(mail_server_status) ? strdup(mail_server_status->valuestring) : NULL,
-        mail_comment && !cJSON_IsNull(mail_comment) ? strdup(mail_comment->valuestring) : NULL
+        mail_id_local_str,
+        mail_type_local_str,
+        mail_currency_local_str,
+        mail_order_date_local_str,
+        mail_custid_local_str,
+        mail_quota_local_str,
+        mail_status_local_str,
+        mail_invoice_local_str,
+        mail_username_local_str,
+        mail_ip_local_str,
+        mail_coupon_local_str,
+        mail_extra_local_str,
+        mail_server_status_local_str,
+        mail_comment_local_str
         );
+
+    if (!mail_service_info_local_var) {
+        goto end;
+    }
 
     return mail_service_info_local_var;
 end:
+    if (mail_id_local_str) {
+        free(mail_id_local_str);
+        mail_id_local_str = NULL;
+    }
+    if (mail_type_local_str) {
+        free(mail_type_local_str);
+        mail_type_local_str = NULL;
+    }
+    if (mail_currency_local_str) {
+        free(mail_currency_local_str);
+        mail_currency_local_str = NULL;
+    }
+    if (mail_order_date_local_str) {
+        free(mail_order_date_local_str);
+        mail_order_date_local_str = NULL;
+    }
+    if (mail_custid_local_str) {
+        free(mail_custid_local_str);
+        mail_custid_local_str = NULL;
+    }
+    if (mail_quota_local_str) {
+        free(mail_quota_local_str);
+        mail_quota_local_str = NULL;
+    }
+    if (mail_status_local_str) {
+        free(mail_status_local_str);
+        mail_status_local_str = NULL;
+    }
+    if (mail_invoice_local_str) {
+        free(mail_invoice_local_str);
+        mail_invoice_local_str = NULL;
+    }
+    if (mail_username_local_str) {
+        free(mail_username_local_str);
+        mail_username_local_str = NULL;
+    }
+    if (mail_ip_local_str) {
+        free(mail_ip_local_str);
+        mail_ip_local_str = NULL;
+    }
+    if (mail_coupon_local_str) {
+        free(mail_coupon_local_str);
+        mail_coupon_local_str = NULL;
+    }
+    if (mail_extra_local_str) {
+        free(mail_extra_local_str);
+        mail_extra_local_str = NULL;
+    }
+    if (mail_server_status_local_str) {
+        free(mail_server_status_local_str);
+        mail_server_status_local_str = NULL;
+    }
+    if (mail_comment_local_str) {
+        free(mail_comment_local_str);
+        mail_comment_local_str = NULL;
+    }
     return NULL;
 
 }

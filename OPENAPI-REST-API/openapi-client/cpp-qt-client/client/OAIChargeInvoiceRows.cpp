@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIChargeInvoiceRows::OAIChargeInvoiceRows(QString json) {
+OAIChargeInvoiceRows::OAIChargeInvoiceRows(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIChargeInvoiceRows::initializeModel() {
     m_invoices_isValid = false;
 }
 
-void OAIChargeInvoiceRows::fromJson(QString jsonString) {
+void OAIChargeInvoiceRows::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

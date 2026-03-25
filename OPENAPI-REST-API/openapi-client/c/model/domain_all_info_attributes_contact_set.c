@@ -14,11 +14,11 @@ static domain_all_info_attributes_contact_set_t *domain_all_info_attributes_cont
     if (!domain_all_info_attributes_contact_set_local_var) {
         return NULL;
     }
+    memset(domain_all_info_attributes_contact_set_local_var, 0, sizeof(domain_all_info_attributes_contact_set_t));
+    domain_all_info_attributes_contact_set_local_var->_library_owned = 1;
     domain_all_info_attributes_contact_set_local_var->owner = owner;
     domain_all_info_attributes_contact_set_local_var->admin = admin;
     domain_all_info_attributes_contact_set_local_var->tech = tech;
-
-    domain_all_info_attributes_contact_set_local_var->_library_owned = 1;
     return domain_all_info_attributes_contact_set_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) domain_all_info_attributes_contact_set_t *domain_all
     domain_admin_contact_t *admin,
     domain_tech_contact_t *tech
     ) {
-    return domain_all_info_attributes_contact_set_create_internal (
+    domain_all_info_attributes_contact_set_t *result = domain_all_info_attributes_contact_set_create_internal (
         owner,
         admin,
         tech
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_all_info_attributes_contact_set_free(domain_all_info_attributes_contact_set_t *domain_all_info_attributes_contact_set) {
@@ -148,11 +151,16 @@ domain_all_info_attributes_contact_set_t *domain_all_info_attributes_contact_set
     }
 
 
+
     domain_all_info_attributes_contact_set_local_var = domain_all_info_attributes_contact_set_create_internal (
         owner ? owner_local_nonprim : NULL,
         admin ? admin_local_nonprim : NULL,
         tech ? tech_local_nonprim : NULL
         );
+
+    if (!domain_all_info_attributes_contact_set_local_var) {
+        goto end;
+    }
 
     return domain_all_info_attributes_contact_set_local_var;
 end:

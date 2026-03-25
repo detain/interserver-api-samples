@@ -271,7 +271,7 @@ sessionid: {{apiKey}}
 
 ### View Mail Log
 ## View Mail Log
-GET https://my.interserver.net/apiv2/mail/{{id}}/log?id2={{id2}}&origin={{origin}}&mx={{mx}}&from={{from}}&to={{to}}&subject={{subject}}&mailid={{mailid}}&skip={{skip}}&limit={{limit}}&startDate={{startDate}}&endDate={{endDate}}&delivered={{delivered}}
+GET https://my.interserver.net/apiv2/mail/{{id}}/log?id2={{id2}}&origin={{origin}}&mx={{mx}}&from={{from}}&to={{to}}&subject={{subject}}&mailid={{mailid}}&messageId={{messageId}}&replyto={{replyto}}&headerfrom={{headerfrom}}&delivered={{delivered}}&skip={{skip}}&limit={{limit}}&startDate={{startDate}}&endDate={{endDate}}&sort={{sort}}&dir={{dir}}&groupby={{groupby}}
 Accept: application/json
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}

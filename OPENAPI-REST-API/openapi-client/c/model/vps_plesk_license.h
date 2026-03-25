@@ -19,19 +19,19 @@ typedef struct vps_plesk_license_t vps_plesk_license_t;
 
 
 typedef struct vps_plesk_license_t {
-    int id; //numeric
+    int *id; //numeric
     char *name; // string
     char *sub_name; // string
-    int cost; //numeric
+    int *cost; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_plesk_license_t;
 
 __attribute__((deprecated)) vps_plesk_license_t *vps_plesk_license_create(
-    int id,
+    int *id,
     char *name,
     char *sub_name,
-    int cost
+    int *cost
 );
 
 void vps_plesk_license_free(vps_plesk_license_t *vps_plesk_license);

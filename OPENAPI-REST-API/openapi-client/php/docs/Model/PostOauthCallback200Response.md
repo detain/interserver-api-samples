@@ -1,4 +1,4 @@
-# # PostOauthCallback200Response
+# PostOauthCallback200Response
 
 ## Properties
 

@@ -23,6 +23,8 @@ static license_service_info_t *license_service_info_create_internal(
     if (!license_service_info_local_var) {
         return NULL;
     }
+    memset(license_service_info_local_var, 0, sizeof(license_service_info_t));
+    license_service_info_local_var->_library_owned = 1;
     license_service_info_local_var->license_id = license_id;
     license_service_info_local_var->license_type = license_type;
     license_service_info_local_var->license_currency = license_currency;
@@ -35,8 +37,6 @@ static license_service_info_t *license_service_info_create_internal(
     license_service_info_local_var->license_hostname = license_hostname;
     license_service_info_local_var->license_key = license_key;
     license_service_info_local_var->license_extra = license_extra;
-
-    license_service_info_local_var->_library_owned = 1;
     return license_service_info_local_var;
 }
 
@@ -54,7 +54,7 @@ __attribute__((deprecated)) license_service_info_t *license_service_info_create(
     char *license_key,
     char *license_extra
     ) {
-    return license_service_info_create_internal (
+    license_service_info_t *result = license_service_info_create_internal (
         license_id,
         license_type,
         license_currency,
@@ -68,6 +68,9 @@ __attribute__((deprecated)) license_service_info_t *license_service_info_create(
         license_key,
         license_extra
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void license_service_info_free(license_service_info_t *license_service_info) {
@@ -249,6 +252,30 @@ license_service_info_t *license_service_info_parseFromJSON(cJSON *license_servic
 
     license_service_info_t *license_service_info_local_var = NULL;
 
+    char *license_id_local_str = NULL;
+
+    char *license_type_local_str = NULL;
+
+    char *license_currency_local_str = NULL;
+
+    char *license_order_date_local_str = NULL;
+
+    char *license_custid_local_str = NULL;
+
+    char *license_ip_local_str = NULL;
+
+    char *license_status_local_str = NULL;
+
+    char *license_invoice_local_str = NULL;
+
+    char *license_coupon_local_str = NULL;
+
+    char *license_hostname_local_str = NULL;
+
+    char *license_key_local_str = NULL;
+
+    char *license_extra_local_str = NULL;
+
     // license_service_info->license_id
     cJSON *license_id = cJSON_GetObjectItemCaseSensitive(license_service_infoJSON, "license_id");
     if (cJSON_IsNull(license_id)) {
@@ -421,23 +448,88 @@ license_service_info_t *license_service_info_parseFromJSON(cJSON *license_servic
     }
 
 
+    if (license_id && !cJSON_IsNull(license_id)) license_id_local_str = strdup(license_id->valuestring);
+    if (license_type && !cJSON_IsNull(license_type)) license_type_local_str = strdup(license_type->valuestring);
+    if (license_currency && !cJSON_IsNull(license_currency)) license_currency_local_str = strdup(license_currency->valuestring);
+    if (license_order_date && !cJSON_IsNull(license_order_date)) license_order_date_local_str = strdup(license_order_date->valuestring);
+    if (license_custid && !cJSON_IsNull(license_custid)) license_custid_local_str = strdup(license_custid->valuestring);
+    if (license_ip && !cJSON_IsNull(license_ip)) license_ip_local_str = strdup(license_ip->valuestring);
+    if (license_status && !cJSON_IsNull(license_status)) license_status_local_str = strdup(license_status->valuestring);
+    if (license_invoice && !cJSON_IsNull(license_invoice)) license_invoice_local_str = strdup(license_invoice->valuestring);
+    if (license_coupon && !cJSON_IsNull(license_coupon)) license_coupon_local_str = strdup(license_coupon->valuestring);
+    if (license_hostname && !cJSON_IsNull(license_hostname)) license_hostname_local_str = strdup(license_hostname->valuestring);
+    if (license_key && !cJSON_IsNull(license_key)) license_key_local_str = strdup(license_key->valuestring);
+    if (license_extra && !cJSON_IsNull(license_extra)) license_extra_local_str = strdup(license_extra->valuestring);
+
     license_service_info_local_var = license_service_info_create_internal (
-        strdup(license_id->valuestring),
-        strdup(license_type->valuestring),
-        strdup(license_currency->valuestring),
-        strdup(license_order_date->valuestring),
-        strdup(license_custid->valuestring),
-        strdup(license_ip->valuestring),
-        strdup(license_status->valuestring),
-        strdup(license_invoice->valuestring),
-        strdup(license_coupon->valuestring),
-        license_hostname && !cJSON_IsNull(license_hostname) ? strdup(license_hostname->valuestring) : NULL,
-        license_key && !cJSON_IsNull(license_key) ? strdup(license_key->valuestring) : NULL,
-        license_extra && !cJSON_IsNull(license_extra) ? strdup(license_extra->valuestring) : NULL
+        license_id_local_str,
+        license_type_local_str,
+        license_currency_local_str,
+        license_order_date_local_str,
+        license_custid_local_str,
+        license_ip_local_str,
+        license_status_local_str,
+        license_invoice_local_str,
+        license_coupon_local_str,
+        license_hostname_local_str,
+        license_key_local_str,
+        license_extra_local_str
         );
+
+    if (!license_service_info_local_var) {
+        goto end;
+    }
 
     return license_service_info_local_var;
 end:
+    if (license_id_local_str) {
+        free(license_id_local_str);
+        license_id_local_str = NULL;
+    }
+    if (license_type_local_str) {
+        free(license_type_local_str);
+        license_type_local_str = NULL;
+    }
+    if (license_currency_local_str) {
+        free(license_currency_local_str);
+        license_currency_local_str = NULL;
+    }
+    if (license_order_date_local_str) {
+        free(license_order_date_local_str);
+        license_order_date_local_str = NULL;
+    }
+    if (license_custid_local_str) {
+        free(license_custid_local_str);
+        license_custid_local_str = NULL;
+    }
+    if (license_ip_local_str) {
+        free(license_ip_local_str);
+        license_ip_local_str = NULL;
+    }
+    if (license_status_local_str) {
+        free(license_status_local_str);
+        license_status_local_str = NULL;
+    }
+    if (license_invoice_local_str) {
+        free(license_invoice_local_str);
+        license_invoice_local_str = NULL;
+    }
+    if (license_coupon_local_str) {
+        free(license_coupon_local_str);
+        license_coupon_local_str = NULL;
+    }
+    if (license_hostname_local_str) {
+        free(license_hostname_local_str);
+        license_hostname_local_str = NULL;
+    }
+    if (license_key_local_str) {
+        free(license_key_local_str);
+        license_key_local_str = NULL;
+    }
+    if (license_extra_local_str) {
+        free(license_extra_local_str);
+        license_extra_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -1,4 +1,4 @@
-# # LicenseIpInfoRow
+# LicenseIpInfoRow
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ChargeInvoiceRows
+# ChargeInvoiceRows
 
 ## Properties
 

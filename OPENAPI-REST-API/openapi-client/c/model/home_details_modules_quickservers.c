@@ -16,13 +16,13 @@ static home_details_modules_quickservers_t *home_details_modules_quickservers_cr
     if (!home_details_modules_quickservers_local_var) {
         return NULL;
     }
+    memset(home_details_modules_quickservers_local_var, 0, sizeof(home_details_modules_quickservers_t));
+    home_details_modules_quickservers_local_var->_library_owned = 1;
     home_details_modules_quickservers_local_var->icon = icon;
     home_details_modules_quickservers_local_var->view_link = view_link;
     home_details_modules_quickservers_local_var->heading = heading;
     home_details_modules_quickservers_local_var->buy_link = buy_link;
     home_details_modules_quickservers_local_var->list_link = list_link;
-
-    home_details_modules_quickservers_local_var->_library_owned = 1;
     return home_details_modules_quickservers_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) home_details_modules_quickservers_t *home_details_mo
     char *buy_link,
     char *list_link
     ) {
-    return home_details_modules_quickservers_create_internal (
+    home_details_modules_quickservers_t *result = home_details_modules_quickservers_create_internal (
         icon,
         view_link,
         heading,
         buy_link,
         list_link
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_details_modules_quickservers_free(home_details_modules_quickservers_t *home_details_modules_quickservers) {
@@ -128,6 +131,16 @@ home_details_modules_quickservers_t *home_details_modules_quickservers_parseFrom
 
     home_details_modules_quickservers_t *home_details_modules_quickservers_local_var = NULL;
 
+    char *icon_local_str = NULL;
+
+    char *view_link_local_str = NULL;
+
+    char *heading_local_str = NULL;
+
+    char *buy_link_local_str = NULL;
+
+    char *list_link_local_str = NULL;
+
     // home_details_modules_quickservers->icon
     cJSON *icon = cJSON_GetObjectItemCaseSensitive(home_details_modules_quickserversJSON, "icon");
     if (cJSON_IsNull(icon)) {
@@ -189,16 +202,46 @@ home_details_modules_quickservers_t *home_details_modules_quickservers_parseFrom
     }
 
 
+    if (icon && !cJSON_IsNull(icon)) icon_local_str = strdup(icon->valuestring);
+    if (view_link && !cJSON_IsNull(view_link)) view_link_local_str = strdup(view_link->valuestring);
+    if (heading && !cJSON_IsNull(heading)) heading_local_str = strdup(heading->valuestring);
+    if (buy_link && !cJSON_IsNull(buy_link)) buy_link_local_str = strdup(buy_link->valuestring);
+    if (list_link && !cJSON_IsNull(list_link)) list_link_local_str = strdup(list_link->valuestring);
+
     home_details_modules_quickservers_local_var = home_details_modules_quickservers_create_internal (
-        icon && !cJSON_IsNull(icon) ? strdup(icon->valuestring) : NULL,
-        view_link && !cJSON_IsNull(view_link) ? strdup(view_link->valuestring) : NULL,
-        heading && !cJSON_IsNull(heading) ? strdup(heading->valuestring) : NULL,
-        buy_link && !cJSON_IsNull(buy_link) ? strdup(buy_link->valuestring) : NULL,
-        list_link && !cJSON_IsNull(list_link) ? strdup(list_link->valuestring) : NULL
+        icon_local_str,
+        view_link_local_str,
+        heading_local_str,
+        buy_link_local_str,
+        list_link_local_str
         );
+
+    if (!home_details_modules_quickservers_local_var) {
+        goto end;
+    }
 
     return home_details_modules_quickservers_local_var;
 end:
+    if (icon_local_str) {
+        free(icon_local_str);
+        icon_local_str = NULL;
+    }
+    if (view_link_local_str) {
+        free(view_link_local_str);
+        view_link_local_str = NULL;
+    }
+    if (heading_local_str) {
+        free(heading_local_str);
+        heading_local_str = NULL;
+    }
+    if (buy_link_local_str) {
+        free(buy_link_local_str);
+        buy_link_local_str = NULL;
+    }
+    if (list_link_local_str) {
+        free(list_link_local_str);
+        list_link_local_str = NULL;
+    }
     return NULL;
 
 }

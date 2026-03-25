@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMailAlertsResponse_inner : public OAIObject {
 public:
     OAIMailAlertsResponse_inner();
-    OAIMailAlertsResponse_inner(QString json);
+    OAIMailAlertsResponse_inner(const QString &json);
     ~OAIMailAlertsResponse_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getAlertId() const;
     void setAlertId(const qint32 &alert_id);

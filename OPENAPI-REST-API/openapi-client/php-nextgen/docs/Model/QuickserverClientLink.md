@@ -1,4 +1,4 @@
-# # QuickserverClientLink
+# QuickserverClientLink
 
 ## Properties
 

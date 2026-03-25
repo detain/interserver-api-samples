@@ -6,28 +6,37 @@
 
 
 static enable_scrub_500_response_t *enable_scrub_500_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     enable_scrub_500_response_t *enable_scrub_500_response_local_var = malloc(sizeof(enable_scrub_500_response_t));
     if (!enable_scrub_500_response_local_var) {
         return NULL;
     }
+    memset(enable_scrub_500_response_local_var, 0, sizeof(enable_scrub_500_response_t));
+    enable_scrub_500_response_local_var->_library_owned = 1;
     enable_scrub_500_response_local_var->success = success;
     enable_scrub_500_response_local_var->text = text;
-
-    enable_scrub_500_response_local_var->_library_owned = 1;
     return enable_scrub_500_response_local_var;
 }
 
 __attribute__((deprecated)) enable_scrub_500_response_t *enable_scrub_500_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return enable_scrub_500_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    enable_scrub_500_response_t *result = enable_scrub_500_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void enable_scrub_500_response_free(enable_scrub_500_response_t *enable_scrub_500_response) {
@@ -39,6 +48,10 @@ void enable_scrub_500_response_free(enable_scrub_500_response_t *enable_scrub_50
         return ;
     }
     listEntry_t *listEntry;
+    if (enable_scrub_500_response->success) {
+        free(enable_scrub_500_response->success);
+        enable_scrub_500_response->success = NULL;
+    }
     if (enable_scrub_500_response->text) {
         free(enable_scrub_500_response->text);
         enable_scrub_500_response->text = NULL;
@@ -53,7 +66,7 @@ cJSON *enable_scrub_500_response_convertToJSON(enable_scrub_500_response_t *enab
     if (!enable_scrub_500_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", enable_scrub_500_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *enable_scrub_500_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -78,6 +91,11 @@ enable_scrub_500_response_t *enable_scrub_500_response_parseFromJSON(cJSON *enab
 
     enable_scrub_500_response_t *enable_scrub_500_response_local_var = NULL;
 
+    // define the local variable for enable_scrub_500_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // enable_scrub_500_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(enable_scrub_500_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -92,6 +110,12 @@ enable_scrub_500_response_t *enable_scrub_500_response_parseFromJSON(cJSON *enab
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // enable_scrub_500_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(enable_scrub_500_responseJSON, "text");
@@ -109,13 +133,27 @@ enable_scrub_500_response_t *enable_scrub_500_response_parseFromJSON(cJSON *enab
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     enable_scrub_500_response_local_var = enable_scrub_500_response_create_internal (
-        success->valueint,
-        strdup(text->valuestring)
+        success_local_var,
+        text_local_str
         );
+
+    if (!enable_scrub_500_response_local_var) {
+        goto end;
+    }
 
     return enable_scrub_500_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

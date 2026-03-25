@@ -6,28 +6,43 @@
 
 
 static mail_stats_type_volume_from_t *mail_stats_type_volume_from_create_internal(
-    int billingsomedomain_com,
-    int salessomedomain_com
+    int *billingsomedomain_com,
+    int *salessomedomain_com
     ) {
     mail_stats_type_volume_from_t *mail_stats_type_volume_from_local_var = malloc(sizeof(mail_stats_type_volume_from_t));
     if (!mail_stats_type_volume_from_local_var) {
         return NULL;
     }
+    memset(mail_stats_type_volume_from_local_var, 0, sizeof(mail_stats_type_volume_from_t));
+    mail_stats_type_volume_from_local_var->_library_owned = 1;
     mail_stats_type_volume_from_local_var->billingsomedomain_com = billingsomedomain_com;
     mail_stats_type_volume_from_local_var->salessomedomain_com = salessomedomain_com;
-
-    mail_stats_type_volume_from_local_var->_library_owned = 1;
     return mail_stats_type_volume_from_local_var;
 }
 
 __attribute__((deprecated)) mail_stats_type_volume_from_t *mail_stats_type_volume_from_create(
-    int billingsomedomain_com,
-    int salessomedomain_com
+    int *billingsomedomain_com,
+    int *salessomedomain_com
     ) {
-    return mail_stats_type_volume_from_create_internal (
-        billingsomedomain_com,
-        salessomedomain_com
+    int *billingsomedomain_com_copy = NULL;
+    if (billingsomedomain_com) {
+        billingsomedomain_com_copy = malloc(sizeof(int));
+        if (billingsomedomain_com_copy) *billingsomedomain_com_copy = *billingsomedomain_com;
+    }
+    int *salessomedomain_com_copy = NULL;
+    if (salessomedomain_com) {
+        salessomedomain_com_copy = malloc(sizeof(int));
+        if (salessomedomain_com_copy) *salessomedomain_com_copy = *salessomedomain_com;
+    }
+    mail_stats_type_volume_from_t *result = mail_stats_type_volume_from_create_internal (
+        billingsomedomain_com_copy,
+        salessomedomain_com_copy
         );
+    if (!result) {
+        free(billingsomedomain_com_copy);
+        free(salessomedomain_com_copy);
+    }
+    return result;
 }
 
 void mail_stats_type_volume_from_free(mail_stats_type_volume_from_t *mail_stats_type_volume_from) {
@@ -39,6 +54,14 @@ void mail_stats_type_volume_from_free(mail_stats_type_volume_from_t *mail_stats_
         return ;
     }
     listEntry_t *listEntry;
+    if (mail_stats_type_volume_from->billingsomedomain_com) {
+        free(mail_stats_type_volume_from->billingsomedomain_com);
+        mail_stats_type_volume_from->billingsomedomain_com = NULL;
+    }
+    if (mail_stats_type_volume_from->salessomedomain_com) {
+        free(mail_stats_type_volume_from->salessomedomain_com);
+        mail_stats_type_volume_from->salessomedomain_com = NULL;
+    }
     free(mail_stats_type_volume_from);
 }
 
@@ -47,7 +70,7 @@ cJSON *mail_stats_type_volume_from_convertToJSON(mail_stats_type_volume_from_t *
 
     // mail_stats_type_volume_from->billingsomedomain_com
     if(mail_stats_type_volume_from->billingsomedomain_com) {
-    if(cJSON_AddNumberToObject(item, "billing@somedomain.com", mail_stats_type_volume_from->billingsomedomain_com) == NULL) {
+    if(cJSON_AddNumberToObject(item, "billing@somedomain.com", *mail_stats_type_volume_from->billingsomedomain_com) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -55,7 +78,7 @@ cJSON *mail_stats_type_volume_from_convertToJSON(mail_stats_type_volume_from_t *
 
     // mail_stats_type_volume_from->salessomedomain_com
     if(mail_stats_type_volume_from->salessomedomain_com) {
-    if(cJSON_AddNumberToObject(item, "sales@somedomain.com", mail_stats_type_volume_from->salessomedomain_com) == NULL) {
+    if(cJSON_AddNumberToObject(item, "sales@somedomain.com", *mail_stats_type_volume_from->salessomedomain_com) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -72,6 +95,12 @@ mail_stats_type_volume_from_t *mail_stats_type_volume_from_parseFromJSON(cJSON *
 
     mail_stats_type_volume_from_t *mail_stats_type_volume_from_local_var = NULL;
 
+    // define the local variable for mail_stats_type_volume_from->billingsomedomain_com
+    int *billingsomedomain_com_local_var = NULL;
+
+    // define the local variable for mail_stats_type_volume_from->salessomedomain_com
+    int *salessomedomain_com_local_var = NULL;
+
     // mail_stats_type_volume_from->billingsomedomain_com
     cJSON *billingsomedomain_com = cJSON_GetObjectItemCaseSensitive(mail_stats_type_volume_fromJSON, "billing@somedomain.com");
     if (cJSON_IsNull(billingsomedomain_com)) {
@@ -82,6 +111,12 @@ mail_stats_type_volume_from_t *mail_stats_type_volume_from_parseFromJSON(cJSON *
     {
     goto end; //Numeric
     }
+    billingsomedomain_com_local_var = malloc(sizeof(int));
+    if(!billingsomedomain_com_local_var)
+    {
+        goto end;
+    }
+    *billingsomedomain_com_local_var = billingsomedomain_com->valuedouble;
     }
 
     // mail_stats_type_volume_from->salessomedomain_com
@@ -94,16 +129,35 @@ mail_stats_type_volume_from_t *mail_stats_type_volume_from_parseFromJSON(cJSON *
     {
     goto end; //Numeric
     }
+    salessomedomain_com_local_var = malloc(sizeof(int));
+    if(!salessomedomain_com_local_var)
+    {
+        goto end;
+    }
+    *salessomedomain_com_local_var = salessomedomain_com->valuedouble;
     }
 
 
+
     mail_stats_type_volume_from_local_var = mail_stats_type_volume_from_create_internal (
-        billingsomedomain_com ? billingsomedomain_com->valuedouble : 0,
-        salessomedomain_com ? salessomedomain_com->valuedouble : 0
+        billingsomedomain_com_local_var,
+        salessomedomain_com_local_var
         );
+
+    if (!mail_stats_type_volume_from_local_var) {
+        goto end;
+    }
 
     return mail_stats_type_volume_from_local_var;
 end:
+    if (billingsomedomain_com_local_var) {
+        free(billingsomedomain_com_local_var);
+        billingsomedomain_com_local_var = NULL;
+    }
+    if (salessomedomain_com_local_var) {
+        free(salessomedomain_com_local_var);
+        salessomedomain_com_local_var = NULL;
+    }
     return NULL;
 
 }

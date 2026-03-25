@@ -12,18 +12,21 @@ static reply_ticket_request_t *reply_ticket_request_create_internal(
     if (!reply_ticket_request_local_var) {
         return NULL;
     }
-    reply_ticket_request_local_var->content = content;
-
+    memset(reply_ticket_request_local_var, 0, sizeof(reply_ticket_request_t));
     reply_ticket_request_local_var->_library_owned = 1;
+    reply_ticket_request_local_var->content = content;
     return reply_ticket_request_local_var;
 }
 
 __attribute__((deprecated)) reply_ticket_request_t *reply_ticket_request_create(
     char *content
     ) {
-    return reply_ticket_request_create_internal (
+    reply_ticket_request_t *result = reply_ticket_request_create_internal (
         content
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void reply_ticket_request_free(reply_ticket_request_t *reply_ticket_request) {
@@ -64,6 +67,8 @@ reply_ticket_request_t *reply_ticket_request_parseFromJSON(cJSON *reply_ticket_r
 
     reply_ticket_request_t *reply_ticket_request_local_var = NULL;
 
+    char *content_local_str = NULL;
+
     // reply_ticket_request->content
     cJSON *content = cJSON_GetObjectItemCaseSensitive(reply_ticket_requestJSON, "content");
     if (cJSON_IsNull(content)) {
@@ -77,12 +82,22 @@ reply_ticket_request_t *reply_ticket_request_parseFromJSON(cJSON *reply_ticket_r
     }
 
 
+    if (content && !cJSON_IsNull(content)) content_local_str = strdup(content->valuestring);
+
     reply_ticket_request_local_var = reply_ticket_request_create_internal (
-        content && !cJSON_IsNull(content) ? strdup(content->valuestring) : NULL
+        content_local_str
         );
+
+    if (!reply_ticket_request_local_var) {
+        goto end;
+    }
 
     return reply_ticket_request_local_var;
 end:
+    if (content_local_str) {
+        free(content_local_str);
+        content_local_str = NULL;
+    }
     return NULL;
 
 }

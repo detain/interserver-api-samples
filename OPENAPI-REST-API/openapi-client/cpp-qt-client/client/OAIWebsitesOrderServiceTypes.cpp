@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIWebsitesOrderServiceTypes::OAIWebsitesOrderServiceTypes(QString json) {
+OAIWebsitesOrderServiceTypes::OAIWebsitesOrderServiceTypes(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -74,7 +74,7 @@ void OAIWebsitesOrderServiceTypes::initializeModel() {
     m_services_moreinfo_url_isValid = false;
 }
 
-void OAIWebsitesOrderServiceTypes::fromJson(QString jsonString) {
+void OAIWebsitesOrderServiceTypes::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

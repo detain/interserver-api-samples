@@ -5,6 +5,7 @@ import io.swagger.model.DenyRuleNew;
 import io.swagger.model.DenyRuleRecord;
 import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
+import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse2008;
 import io.swagger.model.InlineResponse401;
@@ -23,6 +24,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 
 import javax.ws.rs.*;
@@ -625,7 +627,7 @@ public class MailApi {
     @GET
     @Path("/{id}/log")
     @Produces({ "application/json" })
-    @Operation(summary = "View Mail Log", description = "Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.", security = {
+    @Operation(summary = "View Mail Log", description = "Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). ", security = {
         @SecurityRequirement(name = "apiKeyAuth"),
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Mail" })
@@ -638,40 +640,58 @@ public class MailApi {
  @Parameter(description = "The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.") Integer id
 ,  @QueryParam("id") 
 
- @Parameter(description = "The ID of your mail order this will be sent through.")  Long id
+ @Parameter(description = "The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;.")  Long id
 ,  @QueryParam("origin") 
 
- @Parameter(description = "originating ip address sending mail")  String origin
+ @Parameter(description = "Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.")  String origin
 ,  @QueryParam("mx") 
 
- @Parameter(description = "mx record mail was sent to")  String mx
+ @Parameter(description = "Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response.")  String mx
 ,  @QueryParam("from") 
 
- @Parameter(description = "from email address")  String from
+ @Parameter(description = "Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;.")  String from
 ,  @QueryParam("to") 
 
- @Parameter(description = "to/destination email address")  String to
+ @Parameter(description = "Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.")  String to
 ,  @QueryParam("subject") 
 
- @Parameter(description = "subject containing this string")  String subject
-,  @QueryParam("mailid") 
+ @Parameter(description = "Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.")  String subject
+, @Size(min=18,max=19)  @QueryParam("mailid") 
 
- @Parameter(description = "mail id")  String mailid
-, @Min(0)  @QueryParam("skip") @DefaultValue("0") 
+ @Parameter(description = "Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.")  String mailid
+,  @QueryParam("messageId") 
 
- @Parameter(description = "number of records to skip for pagination")  Integer skip
-, @Min(1) @Max(10000)  @QueryParam("limit") @DefaultValue("100") 
+ @Parameter(description = "Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.")  String messageId
+,  @QueryParam("replyto") 
 
- @Parameter(description = "maximum number of records to return")  Integer limit
-, @Min(0L) @Max(9999999999L)  @QueryParam("startDate") 
+ @Parameter(description = "Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.")  String replyto
+,  @QueryParam("headerfrom") 
 
- @Parameter(description = "earliest date to get emails in unix timestamp format")  Long startDate
-, @Min(0L) @Max(9999999999L)  @QueryParam("endDate") 
-
- @Parameter(description = "Latest date to get emails in unix timestamp format.")  Long endDate
+ @Parameter(description = "Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.")  String headerfrom
 ,  @QueryParam("delivered") 
 
- @Parameter(description = "Filter emails by whether or not they were delivered.")  String delivered
+ @Parameter(description = "Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.")  Integer delivered
+, @Min(0)  @QueryParam("skip") @DefaultValue("0") 
+
+ @Parameter(description = "Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).")  Integer skip
+, @Min(1) @Max(10000)  @QueryParam("limit") @DefaultValue("100") 
+
+ @Parameter(description = "Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.")  Integer limit
+,  @QueryParam("startDate") 
+
+ @Parameter(description = "Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.")  StartDate startDate
+,  @QueryParam("endDate") 
+
+ @Parameter(description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.")  EndDate endDate
+,  @QueryParam("sort") @DefaultValue("time") 
+
+ @Parameter(description = "Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).")  String sort
+,  @QueryParam("dir") @DefaultValue("desc") 
+
+ @Parameter(description = "Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.")  String dir
+,  @QueryParam("groupby") @DefaultValue("recipient") 
+
+ @Parameter(description = "Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.")  String groupby
 ) {
         return Response.ok().entity("magic!").build();
     }}

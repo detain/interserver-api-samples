@@ -32,13 +32,13 @@ class OAIServerAssets;
 class OAIServerExtraInfoTables : public OAIObject {
 public:
     OAIServerExtraInfoTables();
-    OAIServerExtraInfoTables(QString json);
+    OAIServerExtraInfoTables(const QString &json);
     ~OAIServerExtraInfoTables() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerAssets getAssets() const;
     void setAssets(const OAIServerAssets &assets);

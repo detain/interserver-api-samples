@@ -422,6 +422,7 @@ part 'model/url_request.dart';
 part 'model/vps_cancel200_response.dart';
 part 'model/vps_traffic_data_data_section_response.dart';
 part 'model/vps_traffic_data_data_section_response_inner.dart';
+part 'model/view_mail_log_start_date_parameter.dart';
 part 'model/view_ticket_response.dart';
 part 'model/vps.dart';
 part 'model/vps_backup_row.dart';

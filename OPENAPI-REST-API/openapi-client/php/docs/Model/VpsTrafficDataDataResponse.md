@@ -1,4 +1,4 @@
-# # VpsTrafficDataDataResponse
+# VpsTrafficDataDataResponse
 
 ## Properties
 

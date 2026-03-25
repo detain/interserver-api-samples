@@ -20,7 +20,7 @@ typedef struct domain_search_response_t domain_search_response_t;
 
 
 typedef struct domain_search_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *response_text; // string
     char *response_time; // string
     list_t *lookup; //nonprimitive container
@@ -31,7 +31,7 @@ typedef struct domain_search_response_t {
 } domain_search_response_t;
 
 __attribute__((deprecated)) domain_search_response_t *domain_search_response_create(
-    int success,
+    int *success,
     char *response_text,
     char *response_time,
     list_t *lookup,

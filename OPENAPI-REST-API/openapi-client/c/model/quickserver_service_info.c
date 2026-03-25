@@ -36,6 +36,8 @@ static quickserver_service_info_t *quickserver_service_info_create_internal(
     if (!quickserver_service_info_local_var) {
         return NULL;
     }
+    memset(quickserver_service_info_local_var, 0, sizeof(quickserver_service_info_t));
+    quickserver_service_info_local_var->_library_owned = 1;
     quickserver_service_info_local_var->qs_id = qs_id;
     quickserver_service_info_local_var->qs_custid = qs_custid;
     quickserver_service_info_local_var->qs_server = qs_server;
@@ -61,8 +63,6 @@ static quickserver_service_info_t *quickserver_service_info_create_internal(
     quickserver_service_info_local_var->qs_version = qs_version;
     quickserver_service_info_local_var->qs_location = qs_location;
     quickserver_service_info_local_var->qs_platform = qs_platform;
-
-    quickserver_service_info_local_var->_library_owned = 1;
     return quickserver_service_info_local_var;
 }
 
@@ -93,7 +93,7 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
     char *qs_location,
     any_type_t *qs_platform
     ) {
-    return quickserver_service_info_create_internal (
+    quickserver_service_info_t *result = quickserver_service_info_create_internal (
         qs_id,
         qs_custid,
         qs_server,
@@ -120,6 +120,9 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
         qs_location,
         qs_platform
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_service_info_free(quickserver_service_info_t *quickserver_service_info) {
@@ -463,11 +466,55 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
 
     quickserver_service_info_t *quickserver_service_info_local_var = NULL;
 
+    char *qs_id_local_str = NULL;
+
+    char *qs_custid_local_str = NULL;
+
+    char *qs_server_local_str = NULL;
+
+    char *qs_ip_local_str = NULL;
+
     // define the local variable for quickserver_service_info->qs_ipv6
     _t *qs_ipv6_local_nonprim = NULL;
 
+    char *qs_vzid_local_str = NULL;
+
+    char *qs_currency_local_str = NULL;
+
+    char *qs_type_local_str = NULL;
+
+    char *qs_order_date_local_str = NULL;
+
+    char *qs_status_local_str = NULL;
+
+    char *qs_invoice_local_str = NULL;
+
+    char *qs_coupon_local_str = NULL;
+
+    char *qs_extra_local_str = NULL;
+
+    char *qs_hostname_local_str = NULL;
+
+    char *qs_server_status_local_str = NULL;
+
+    char *qs_comment_local_str = NULL;
+
+    char *qs_slices_local_str = NULL;
+
+    char *qs_vnc_local_str = NULL;
+
     // define the local variable for quickserver_service_info->qs_vnc_port
     _t *qs_vnc_port_local_nonprim = NULL;
+
+    char *qs_rootpass_local_str = NULL;
+
+    char *qs_mac_local_str = NULL;
+
+    char *qs_os_local_str = NULL;
+
+    char *qs_version_local_str = NULL;
+
+    char *qs_location_local_str = NULL;
 
     // define the local variable for quickserver_service_info->qs_platform
     _t *qs_platform_local_nonprim = NULL;
@@ -764,43 +811,158 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
     }
 
 
+    if (qs_id && !cJSON_IsNull(qs_id)) qs_id_local_str = strdup(qs_id->valuestring);
+    if (qs_custid && !cJSON_IsNull(qs_custid)) qs_custid_local_str = strdup(qs_custid->valuestring);
+    if (qs_server && !cJSON_IsNull(qs_server)) qs_server_local_str = strdup(qs_server->valuestring);
+    if (qs_ip && !cJSON_IsNull(qs_ip)) qs_ip_local_str = strdup(qs_ip->valuestring);
+    if (qs_vzid && !cJSON_IsNull(qs_vzid)) qs_vzid_local_str = strdup(qs_vzid->valuestring);
+    if (qs_currency && !cJSON_IsNull(qs_currency)) qs_currency_local_str = strdup(qs_currency->valuestring);
+    if (qs_type && !cJSON_IsNull(qs_type)) qs_type_local_str = strdup(qs_type->valuestring);
+    if (qs_order_date && !cJSON_IsNull(qs_order_date)) qs_order_date_local_str = strdup(qs_order_date->valuestring);
+    if (qs_status && !cJSON_IsNull(qs_status)) qs_status_local_str = strdup(qs_status->valuestring);
+    if (qs_invoice && !cJSON_IsNull(qs_invoice)) qs_invoice_local_str = strdup(qs_invoice->valuestring);
+    if (qs_coupon && !cJSON_IsNull(qs_coupon)) qs_coupon_local_str = strdup(qs_coupon->valuestring);
+    if (qs_extra && !cJSON_IsNull(qs_extra)) qs_extra_local_str = strdup(qs_extra->valuestring);
+    if (qs_hostname && !cJSON_IsNull(qs_hostname)) qs_hostname_local_str = strdup(qs_hostname->valuestring);
+    if (qs_server_status && !cJSON_IsNull(qs_server_status)) qs_server_status_local_str = strdup(qs_server_status->valuestring);
+    if (qs_comment && !cJSON_IsNull(qs_comment)) qs_comment_local_str = strdup(qs_comment->valuestring);
+    if (qs_slices && !cJSON_IsNull(qs_slices)) qs_slices_local_str = strdup(qs_slices->valuestring);
+    if (qs_vnc && !cJSON_IsNull(qs_vnc)) qs_vnc_local_str = strdup(qs_vnc->valuestring);
+    if (qs_rootpass && !cJSON_IsNull(qs_rootpass)) qs_rootpass_local_str = strdup(qs_rootpass->valuestring);
+    if (qs_mac && !cJSON_IsNull(qs_mac)) qs_mac_local_str = strdup(qs_mac->valuestring);
+    if (qs_os && !cJSON_IsNull(qs_os)) qs_os_local_str = strdup(qs_os->valuestring);
+    if (qs_version && !cJSON_IsNull(qs_version)) qs_version_local_str = strdup(qs_version->valuestring);
+    if (qs_location && !cJSON_IsNull(qs_location)) qs_location_local_str = strdup(qs_location->valuestring);
+
     quickserver_service_info_local_var = quickserver_service_info_create_internal (
-        qs_id && !cJSON_IsNull(qs_id) ? strdup(qs_id->valuestring) : NULL,
-        qs_custid && !cJSON_IsNull(qs_custid) ? strdup(qs_custid->valuestring) : NULL,
-        qs_server && !cJSON_IsNull(qs_server) ? strdup(qs_server->valuestring) : NULL,
-        qs_ip && !cJSON_IsNull(qs_ip) ? strdup(qs_ip->valuestring) : NULL,
+        qs_id_local_str,
+        qs_custid_local_str,
+        qs_server_local_str,
+        qs_ip_local_str,
         qs_ipv6 ? qs_ipv6_local_nonprim : NULL,
-        qs_vzid && !cJSON_IsNull(qs_vzid) ? strdup(qs_vzid->valuestring) : NULL,
-        qs_currency && !cJSON_IsNull(qs_currency) ? strdup(qs_currency->valuestring) : NULL,
-        qs_type && !cJSON_IsNull(qs_type) ? strdup(qs_type->valuestring) : NULL,
-        qs_order_date && !cJSON_IsNull(qs_order_date) ? strdup(qs_order_date->valuestring) : NULL,
-        qs_status && !cJSON_IsNull(qs_status) ? strdup(qs_status->valuestring) : NULL,
-        qs_invoice && !cJSON_IsNull(qs_invoice) ? strdup(qs_invoice->valuestring) : NULL,
-        qs_coupon && !cJSON_IsNull(qs_coupon) ? strdup(qs_coupon->valuestring) : NULL,
-        qs_extra && !cJSON_IsNull(qs_extra) ? strdup(qs_extra->valuestring) : NULL,
-        qs_hostname && !cJSON_IsNull(qs_hostname) ? strdup(qs_hostname->valuestring) : NULL,
-        qs_server_status && !cJSON_IsNull(qs_server_status) ? strdup(qs_server_status->valuestring) : NULL,
-        qs_comment && !cJSON_IsNull(qs_comment) ? strdup(qs_comment->valuestring) : NULL,
-        qs_slices && !cJSON_IsNull(qs_slices) ? strdup(qs_slices->valuestring) : NULL,
-        qs_vnc && !cJSON_IsNull(qs_vnc) ? strdup(qs_vnc->valuestring) : NULL,
+        qs_vzid_local_str,
+        qs_currency_local_str,
+        qs_type_local_str,
+        qs_order_date_local_str,
+        qs_status_local_str,
+        qs_invoice_local_str,
+        qs_coupon_local_str,
+        qs_extra_local_str,
+        qs_hostname_local_str,
+        qs_server_status_local_str,
+        qs_comment_local_str,
+        qs_slices_local_str,
+        qs_vnc_local_str,
         qs_vnc_port ? qs_vnc_port_local_nonprim : NULL,
-        qs_rootpass && !cJSON_IsNull(qs_rootpass) ? strdup(qs_rootpass->valuestring) : NULL,
-        qs_mac && !cJSON_IsNull(qs_mac) ? strdup(qs_mac->valuestring) : NULL,
-        qs_os && !cJSON_IsNull(qs_os) ? strdup(qs_os->valuestring) : NULL,
-        qs_version && !cJSON_IsNull(qs_version) ? strdup(qs_version->valuestring) : NULL,
-        qs_location && !cJSON_IsNull(qs_location) ? strdup(qs_location->valuestring) : NULL,
+        qs_rootpass_local_str,
+        qs_mac_local_str,
+        qs_os_local_str,
+        qs_version_local_str,
+        qs_location_local_str,
         qs_platform ? qs_platform_local_nonprim : NULL
         );
 
+    if (!quickserver_service_info_local_var) {
+        goto end;
+    }
+
     return quickserver_service_info_local_var;
 end:
+    if (qs_id_local_str) {
+        free(qs_id_local_str);
+        qs_id_local_str = NULL;
+    }
+    if (qs_custid_local_str) {
+        free(qs_custid_local_str);
+        qs_custid_local_str = NULL;
+    }
+    if (qs_server_local_str) {
+        free(qs_server_local_str);
+        qs_server_local_str = NULL;
+    }
+    if (qs_ip_local_str) {
+        free(qs_ip_local_str);
+        qs_ip_local_str = NULL;
+    }
     if (qs_ipv6_local_nonprim) {
         _free(qs_ipv6_local_nonprim);
         qs_ipv6_local_nonprim = NULL;
     }
+    if (qs_vzid_local_str) {
+        free(qs_vzid_local_str);
+        qs_vzid_local_str = NULL;
+    }
+    if (qs_currency_local_str) {
+        free(qs_currency_local_str);
+        qs_currency_local_str = NULL;
+    }
+    if (qs_type_local_str) {
+        free(qs_type_local_str);
+        qs_type_local_str = NULL;
+    }
+    if (qs_order_date_local_str) {
+        free(qs_order_date_local_str);
+        qs_order_date_local_str = NULL;
+    }
+    if (qs_status_local_str) {
+        free(qs_status_local_str);
+        qs_status_local_str = NULL;
+    }
+    if (qs_invoice_local_str) {
+        free(qs_invoice_local_str);
+        qs_invoice_local_str = NULL;
+    }
+    if (qs_coupon_local_str) {
+        free(qs_coupon_local_str);
+        qs_coupon_local_str = NULL;
+    }
+    if (qs_extra_local_str) {
+        free(qs_extra_local_str);
+        qs_extra_local_str = NULL;
+    }
+    if (qs_hostname_local_str) {
+        free(qs_hostname_local_str);
+        qs_hostname_local_str = NULL;
+    }
+    if (qs_server_status_local_str) {
+        free(qs_server_status_local_str);
+        qs_server_status_local_str = NULL;
+    }
+    if (qs_comment_local_str) {
+        free(qs_comment_local_str);
+        qs_comment_local_str = NULL;
+    }
+    if (qs_slices_local_str) {
+        free(qs_slices_local_str);
+        qs_slices_local_str = NULL;
+    }
+    if (qs_vnc_local_str) {
+        free(qs_vnc_local_str);
+        qs_vnc_local_str = NULL;
+    }
     if (qs_vnc_port_local_nonprim) {
         _free(qs_vnc_port_local_nonprim);
         qs_vnc_port_local_nonprim = NULL;
+    }
+    if (qs_rootpass_local_str) {
+        free(qs_rootpass_local_str);
+        qs_rootpass_local_str = NULL;
+    }
+    if (qs_mac_local_str) {
+        free(qs_mac_local_str);
+        qs_mac_local_str = NULL;
+    }
+    if (qs_os_local_str) {
+        free(qs_os_local_str);
+        qs_os_local_str = NULL;
+    }
+    if (qs_version_local_str) {
+        free(qs_version_local_str);
+        qs_version_local_str = NULL;
+    }
+    if (qs_location_local_str) {
+        free(qs_location_local_str);
+        qs_location_local_str = NULL;
     }
     if (qs_platform_local_nonprim) {
         _free(qs_platform_local_nonprim);

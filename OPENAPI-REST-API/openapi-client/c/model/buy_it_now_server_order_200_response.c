@@ -16,13 +16,13 @@ static buy_it_now_server_order_200_response_t *buy_it_now_server_order_200_respo
     if (!buy_it_now_server_order_200_response_local_var) {
         return NULL;
     }
+    memset(buy_it_now_server_order_200_response_local_var, 0, sizeof(buy_it_now_server_order_200_response_t));
+    buy_it_now_server_order_200_response_local_var->_library_owned = 1;
     buy_it_now_server_order_200_response_local_var->bandwidth = bandwidth;
     buy_it_now_server_order_200_response_local_var->ips = ips;
     buy_it_now_server_order_200_response_local_var->os = os;
     buy_it_now_server_order_200_response_local_var->cp = cp;
     buy_it_now_server_order_200_response_local_var->raid = raid;
-
-    buy_it_now_server_order_200_response_local_var->_library_owned = 1;
     return buy_it_now_server_order_200_response_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) buy_it_now_server_order_200_response_t *buy_it_now_s
     list_t *cp,
     list_t *raid
     ) {
-    return buy_it_now_server_order_200_response_create_internal (
+    buy_it_now_server_order_200_response_t *result = buy_it_now_server_order_200_response_create_internal (
         bandwidth,
         ips,
         os,
         cp,
         raid
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void buy_it_now_server_order_200_response_free(buy_it_now_server_order_200_response_t *buy_it_now_server_order_200_response) {
@@ -339,6 +342,7 @@ buy_it_now_server_order_200_response_t *buy_it_now_server_order_200_response_par
     }
 
 
+
     buy_it_now_server_order_200_response_local_var = buy_it_now_server_order_200_response_create_internal (
         bandwidth ? bandwidthList : NULL,
         ips ? ipsList : NULL,
@@ -346,6 +350,10 @@ buy_it_now_server_order_200_response_t *buy_it_now_server_order_200_response_par
         cp ? cpList : NULL,
         raid ? raidList : NULL
         );
+
+    if (!buy_it_now_server_order_200_response_local_var) {
+        goto end;
+    }
 
     return buy_it_now_server_order_200_response_local_var;
 end:

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsServiceMaster : public OAIObject {
 public:
     OAIVpsServiceMaster();
-    OAIVpsServiceMaster(QString json);
+    OAIVpsServiceMaster(const QString &json);
     ~OAIVpsServiceMaster() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getVpsId() const;
     void setVpsId(const QString &vps_id);

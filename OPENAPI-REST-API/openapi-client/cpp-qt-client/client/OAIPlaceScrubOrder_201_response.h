@@ -33,13 +33,13 @@ class OAIPlaceScrubOrder_201_response_order_details;
 class OAIPlaceScrubOrder_201_response : public OAIObject {
 public:
     OAIPlaceScrubOrder_201_response();
-    OAIPlaceScrubOrder_201_response(QString json);
+    OAIPlaceScrubOrder_201_response(const QString &json);
     ~OAIPlaceScrubOrder_201_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

@@ -33,13 +33,13 @@ class OAILoginSubmissionExample_g_recaptcha_response_dep;
 class OAILoginSubmissionExample_g_recaptcha_response : public OAIObject {
 public:
     OAILoginSubmissionExample_g_recaptcha_response();
-    OAILoginSubmissionExample_g_recaptcha_response(QString json);
+    OAILoginSubmissionExample_g_recaptcha_response(const QString &json);
     ~OAILoginSubmissionExample_g_recaptcha_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isVIsShallow() const;
     void setVIsShallow(const bool &__v_is_shallow);

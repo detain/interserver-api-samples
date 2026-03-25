@@ -73,10 +73,10 @@ class CreateFirewallRule {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateFirewallRule[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateFirewallRule[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'protocol_id'), 'Required key "CreateFirewallRule[protocol_id]" is missing from JSON.');
+        assert(json[r'protocol_id'] != null, 'Required key "CreateFirewallRule[protocol_id]" has a null value in JSON.');
+        assert(json.containsKey(r'xdp_action'), 'Required key "CreateFirewallRule[xdp_action]" is missing from JSON.');
+        assert(json[r'xdp_action'] != null, 'Required key "CreateFirewallRule[xdp_action]" has a null value in JSON.');
         return true;
       }());
 

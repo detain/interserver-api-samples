@@ -19,14 +19,14 @@ typedef struct disable_scrub_400_response_t disable_scrub_400_response_t;
 
 
 typedef struct disable_scrub_400_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } disable_scrub_400_response_t;
 
 __attribute__((deprecated)) disable_scrub_400_response_t *disable_scrub_400_response_create(
-    int success,
+    int *success,
     char *text
 );
 

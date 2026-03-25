@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsServiceAddons::OAIVpsServiceAddons(QString json) {
+OAIVpsServiceAddons::OAIVpsServiceAddons(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -80,7 +80,7 @@ void OAIVpsServiceAddons::initializeModel() {
     m_rdata_isValid = false;
 }
 
-void OAIVpsServiceAddons::fromJson(QString jsonString) {
+void OAIVpsServiceAddons::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAITicketNewResponse : public OAIObject {
 public:
     OAITicketNewResponse();
-    OAITicketNewResponse(QString json);
+    OAITicketNewResponse(const QString &json);
     ~OAITicketNewResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getText() const;
     void setText(const QString &text);

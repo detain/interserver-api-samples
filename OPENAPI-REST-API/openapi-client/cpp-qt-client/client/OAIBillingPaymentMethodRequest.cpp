@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBillingPaymentMethodRequest::OAIBillingPaymentMethodRequest(QString json) {
+OAIBillingPaymentMethodRequest::OAIBillingPaymentMethodRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIBillingPaymentMethodRequest::initializeModel() {
     m_cc_auto_isValid = false;
 }
 
-void OAIBillingPaymentMethodRequest::fromJson(QString jsonString) {
+void OAIBillingPaymentMethodRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

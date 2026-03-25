@@ -14,6 +14,7 @@ package org.openapitools.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.constraints.*;
@@ -22,35 +23,37 @@ import io.micronaut.core.annotation.*;
 import javax.annotation.Generated;
 
 /**
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  */
 @JsonPropertyOrder({
   MailLogEntry.JSON_PROPERTY_ID,
   MailLogEntry.JSON_PROPERTY_ID,
   MailLogEntry.JSON_PROPERTY_FROM,
   MailLogEntry.JSON_PROPERTY_TO,
-  MailLogEntry.JSON_PROPERTY_SUBJECT,
   MailLogEntry.JSON_PROPERTY_CREATED,
   MailLogEntry.JSON_PROPERTY_TIME,
   MailLogEntry.JSON_PROPERTY_USER,
   MailLogEntry.JSON_PROPERTY_TRANSTYPE,
   MailLogEntry.JSON_PROPERTY_ORIGIN,
   MailLogEntry.JSON_PROPERTY_INTERFACE,
+  MailLogEntry.JSON_PROPERTY_SUBJECT,
+  MailLogEntry.JSON_PROPERTY_MESSAGE_ID,
   MailLogEntry.JSON_PROPERTY_SENDING_ZONE,
   MailLogEntry.JSON_PROPERTY_BODY_SIZE,
   MailLogEntry.JSON_PROPERTY_SEQ,
+  MailLogEntry.JSON_PROPERTY_DELIVERED,
+  MailLogEntry.JSON_PROPERTY_CODE,
   MailLogEntry.JSON_PROPERTY_RECIPIENT,
+  MailLogEntry.JSON_PROPERTY_RESPONSE,
   MailLogEntry.JSON_PROPERTY_DOMAIN,
   MailLogEntry.JSON_PROPERTY_LOCKED,
   MailLogEntry.JSON_PROPERTY_LOCK_TIME,
   MailLogEntry.JSON_PROPERTY_ASSIGNED,
   MailLogEntry.JSON_PROPERTY_QUEUED,
-  MailLogEntry.JSON_PROPERTY_MX_HOSTNAME,
-  MailLogEntry.JSON_PROPERTY_RESPONSE,
-  MailLogEntry.JSON_PROPERTY_MESSAGE_ID
+  MailLogEntry.JSON_PROPERTY_MX_HOSTNAME
 })
 @JsonTypeName("MailLogEntry")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class MailLogEntry {
     public static final String JSON_PROPERTY_ID = "_id";
@@ -64,9 +67,6 @@ public class MailLogEntry {
 
     public static final String JSON_PROPERTY_TO = "to";
     private String to;
-
-    public static final String JSON_PROPERTY_SUBJECT = "subject";
-    private String subject;
 
     public static final String JSON_PROPERTY_CREATED = "created";
     private String created;
@@ -86,6 +86,12 @@ public class MailLogEntry {
     public static final String JSON_PROPERTY_INTERFACE = "interface";
     private String _interface;
 
+    public static final String JSON_PROPERTY_SUBJECT = "subject";
+    private String subject;
+
+    public static final String JSON_PROPERTY_MESSAGE_ID = "messageId";
+    private String messageId;
+
     public static final String JSON_PROPERTY_SENDING_ZONE = "sendingZone";
     private String sendingZone;
 
@@ -95,8 +101,17 @@ public class MailLogEntry {
     public static final String JSON_PROPERTY_SEQ = "seq";
     private Integer seq;
 
+    public static final String JSON_PROPERTY_DELIVERED = "delivered";
+    private Integer delivered;
+
+    public static final String JSON_PROPERTY_CODE = "code";
+    private Integer code;
+
     public static final String JSON_PROPERTY_RECIPIENT = "recipient";
     private String recipient;
+
+    public static final String JSON_PROPERTY_RESPONSE = "response";
+    private String response;
 
     public static final String JSON_PROPERTY_DOMAIN = "domain";
     private String domain;
@@ -105,7 +120,7 @@ public class MailLogEntry {
     private Integer locked;
 
     public static final String JSON_PROPERTY_LOCK_TIME = "lockTime";
-    private Integer lockTime;
+    private String lockTime;
 
     public static final String JSON_PROPERTY_ASSIGNED = "assigned";
     private String assigned;
@@ -116,35 +131,17 @@ public class MailLogEntry {
     public static final String JSON_PROPERTY_MX_HOSTNAME = "mxHostname";
     private String mxHostname;
 
-    public static final String JSON_PROPERTY_RESPONSE = "response";
-    private String response;
-
-    public static final String JSON_PROPERTY_MESSAGE_ID = "messageId";
-    private String messageId;
-
-    public MailLogEntry(Integer id, String id, String from, String to, String subject, String created, Integer time, String user, String transtype, String origin, String _interface, String sendingZone, Integer bodySize, Integer seq, String recipient, String domain, Integer locked, Integer lockTime, String assigned, String queued, String mxHostname, String response) {
+    public MailLogEntry(Integer id, String id, String from, String to, String created, Integer time, String user, String transtype, String origin, String _interface) {
         this.id = id;
         this.id = id;
         this.from = from;
         this.to = to;
-        this.subject = subject;
         this.created = created;
         this.time = time;
         this.user = user;
         this.transtype = transtype;
         this.origin = origin;
         this._interface = _interface;
-        this.sendingZone = sendingZone;
-        this.bodySize = bodySize;
-        this.seq = seq;
-        this.recipient = recipient;
-        this.domain = domain;
-        this.locked = locked;
-        this.lockTime = lockTime;
-        this.assigned = assigned;
-        this.queued = queued;
-        this.mxHostname = mxHostname;
-        this.response = response;
     }
 
     public MailLogEntry id(Integer id) {
@@ -153,7 +150,7 @@ public class MailLogEntry {
     }
 
     /**
-     * internal db id
+     * Internal auto-increment database row ID.
      * @return id
      */
     @NotNull
@@ -175,7 +172,7 @@ public class MailLogEntry {
     }
 
     /**
-     * mail id
+     * The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
      * @return id
      */
     @NotNull
@@ -197,7 +194,7 @@ public class MailLogEntry {
     }
 
     /**
-     * from address
+     * SMTP envelope &#x60;MAIL FROM&#x60; address.
      * @return from
      */
     @NotNull
@@ -219,7 +216,7 @@ public class MailLogEntry {
     }
 
     /**
-     * to address
+     * SMTP envelope &#x60;RCPT TO&#x60; address.
      * @return to
      */
     @NotNull
@@ -235,35 +232,13 @@ public class MailLogEntry {
         this.to = to;
     }
 
-    public MailLogEntry subject(String subject) {
-        this.subject = subject;
-        return this;
-    }
-
-    /**
-     * email subject
-     * @return subject
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_SUBJECT)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getSubject() {
-        return subject;
-    }
-
-    @JsonProperty(JSON_PROPERTY_SUBJECT)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public MailLogEntry created(String created) {
         this.created = created;
         return this;
     }
 
     /**
-     * creation date
+     * Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
      * @return created
      */
     @NotNull
@@ -285,7 +260,7 @@ public class MailLogEntry {
     }
 
     /**
-     * creation timestamp
+     * Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
      * @return time
      */
     @NotNull
@@ -307,7 +282,7 @@ public class MailLogEntry {
     }
 
     /**
-     * user account
+     * The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
      * @return user
      */
     @NotNull
@@ -329,7 +304,7 @@ public class MailLogEntry {
     }
 
     /**
-     * transaction type
+     * SMTP transaction type negotiated with the relay.
      * @return transtype
      */
     @NotNull
@@ -351,7 +326,7 @@ public class MailLogEntry {
     }
 
     /**
-     * origin ip
+     * IP address of the client that submitted the message to the relay.
      * @return origin
      */
     @NotNull
@@ -373,7 +348,7 @@ public class MailLogEntry {
     }
 
     /**
-     * interface name
+     * Relay interface name that accepted the message.
      * @return _interface
      */
     @NotNull
@@ -389,246 +364,26 @@ public class MailLogEntry {
         this._interface = _interface;
     }
 
-    public MailLogEntry sendingZone(String sendingZone) {
-        this.sendingZone = sendingZone;
+    public MailLogEntry subject(String subject) {
+        this.subject = subject;
         return this;
     }
 
     /**
-     * sending zone
-     * @return sendingZone
+     * The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+     * @return subject
      */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_SENDING_ZONE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getSendingZone() {
-        return sendingZone;
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_SUBJECT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getSubject() {
+        return subject;
     }
 
-    @JsonProperty(JSON_PROPERTY_SENDING_ZONE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setSendingZone(String sendingZone) {
-        this.sendingZone = sendingZone;
-    }
-
-    public MailLogEntry bodySize(Integer bodySize) {
-        this.bodySize = bodySize;
-        return this;
-    }
-
-    /**
-     * email body size in bytes
-     * @return bodySize
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_BODY_SIZE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public Integer getBodySize() {
-        return bodySize;
-    }
-
-    @JsonProperty(JSON_PROPERTY_BODY_SIZE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
-    }
-
-    public MailLogEntry seq(Integer seq) {
-        this.seq = seq;
-        return this;
-    }
-
-    /**
-     * index of email in the to adderess list
-     * @return seq
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_SEQ)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public Integer getSeq() {
-        return seq;
-    }
-
-    @JsonProperty(JSON_PROPERTY_SEQ)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public MailLogEntry recipient(String recipient) {
-        this.recipient = recipient;
-        return this;
-    }
-
-    /**
-     * to address this email is being sent to
-     * @return recipient
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_RECIPIENT)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getRecipient() {
-        return recipient;
-    }
-
-    @JsonProperty(JSON_PROPERTY_RECIPIENT)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
-
-    public MailLogEntry domain(String domain) {
-        this.domain = domain;
-        return this;
-    }
-
-    /**
-     * to address domain
-     * @return domain
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_DOMAIN)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getDomain() {
-        return domain;
-    }
-
-    @JsonProperty(JSON_PROPERTY_DOMAIN)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-
-    public MailLogEntry locked(Integer locked) {
-        this.locked = locked;
-        return this;
-    }
-
-    /**
-     * locked status
-     * @return locked
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_LOCKED)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public Integer getLocked() {
-        return locked;
-    }
-
-    @JsonProperty(JSON_PROPERTY_LOCKED)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setLocked(Integer locked) {
-        this.locked = locked;
-    }
-
-    public MailLogEntry lockTime(Integer lockTime) {
-        this.lockTime = lockTime;
-        return this;
-    }
-
-    /**
-     * lock timestamp
-     * @return lockTime
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_LOCK_TIME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public Integer getLockTime() {
-        return lockTime;
-    }
-
-    @JsonProperty(JSON_PROPERTY_LOCK_TIME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setLockTime(Integer lockTime) {
-        this.lockTime = lockTime;
-    }
-
-    public MailLogEntry assigned(String assigned) {
-        this.assigned = assigned;
-        return this;
-    }
-
-    /**
-     * assigned server
-     * @return assigned
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_ASSIGNED)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getAssigned() {
-        return assigned;
-    }
-
-    @JsonProperty(JSON_PROPERTY_ASSIGNED)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAssigned(String assigned) {
-        this.assigned = assigned;
-    }
-
-    public MailLogEntry queued(String queued) {
-        this.queued = queued;
-        return this;
-    }
-
-    /**
-     * queued timestamp
-     * @return queued
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_QUEUED)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getQueued() {
-        return queued;
-    }
-
-    @JsonProperty(JSON_PROPERTY_QUEUED)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setQueued(String queued) {
-        this.queued = queued;
-    }
-
-    public MailLogEntry mxHostname(String mxHostname) {
-        this.mxHostname = mxHostname;
-        return this;
-    }
-
-    /**
-     * mx hostname
-     * @return mxHostname
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_MX_HOSTNAME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getMxHostname() {
-        return mxHostname;
-    }
-
-    @JsonProperty(JSON_PROPERTY_MX_HOSTNAME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setMxHostname(String mxHostname) {
-        this.mxHostname = mxHostname;
-    }
-
-    public MailLogEntry response(String response) {
-        this.response = response;
-        return this;
-    }
-
-    /**
-     * mail delivery response
-     * @return response
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_RESPONSE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public String getResponse() {
-        return response;
-    }
-
-    @JsonProperty(JSON_PROPERTY_RESPONSE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setResponse(String response) {
-        this.response = response;
+    @JsonProperty(JSON_PROPERTY_SUBJECT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public MailLogEntry messageId(String messageId) {
@@ -637,7 +392,7 @@ public class MailLogEntry {
     }
 
     /**
-     * message id
+     * The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
      * @return messageId
      */
     @Nullable
@@ -653,6 +408,292 @@ public class MailLogEntry {
         this.messageId = messageId;
     }
 
+    public MailLogEntry sendingZone(String sendingZone) {
+        this.sendingZone = sendingZone;
+        return this;
+    }
+
+    /**
+     * The sending zone assigned by the relay for outbound delivery.
+     * @return sendingZone
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_SENDING_ZONE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getSendingZone() {
+        return sendingZone;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SENDING_ZONE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSendingZone(String sendingZone) {
+        this.sendingZone = sendingZone;
+    }
+
+    public MailLogEntry bodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+        return this;
+    }
+
+    /**
+     * Size of the message body in bytes.
+     * @return bodySize
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_BODY_SIZE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Integer getBodySize() {
+        return bodySize;
+    }
+
+    @JsonProperty(JSON_PROPERTY_BODY_SIZE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+    }
+
+    public MailLogEntry seq(Integer seq) {
+        this.seq = seq;
+        return this;
+    }
+
+    /**
+     * Sequence index of this recipient in a multi-recipient message. Starts at 1.
+     * @return seq
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_SEQ)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Integer getSeq() {
+        return seq;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SEQ)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
+    public MailLogEntry delivered(Integer delivered) {
+        this.delivered = delivered;
+        return this;
+    }
+
+    /**
+     * Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.
+     * @return delivered
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_DELIVERED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Integer getDelivered() {
+        return delivered;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DELIVERED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDelivered(Integer delivered) {
+        this.delivered = delivered;
+    }
+
+    public MailLogEntry code(Integer code) {
+        this.code = code;
+        return this;
+    }
+
+    /**
+     * The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).
+     * @return code
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_CODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Integer getCode() {
+        return code;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public MailLogEntry recipient(String recipient) {
+        this.recipient = recipient;
+        return this;
+    }
+
+    /**
+     * The specific recipient address this delivery record is for.
+     * @return recipient
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_RECIPIENT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getRecipient() {
+        return recipient;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RECIPIENT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public MailLogEntry response(String response) {
+        this.response = response;
+        return this;
+    }
+
+    /**
+     * The full SMTP response string received from the destination MX server.
+     * @return response
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_RESPONSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getResponse() {
+        return response;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RESPONSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public MailLogEntry domain(String domain) {
+        this.domain = domain;
+        return this;
+    }
+
+    /**
+     * The destination domain for this delivery attempt.
+     * @return domain
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_DOMAIN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getDomain() {
+        return domain;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DOMAIN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public MailLogEntry locked(Integer locked) {
+        this.locked = locked;
+        return this;
+    }
+
+    /**
+     * Whether the queue entry is currently locked for delivery processing.
+     * @return locked
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_LOCKED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Integer getLocked() {
+        return locked;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LOCKED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLocked(Integer locked) {
+        this.locked = locked;
+    }
+
+    public MailLogEntry lockTime(String lockTime) {
+        this.lockTime = lockTime;
+        return this;
+    }
+
+    /**
+     * Millisecond-precision timestamp of the last queue lock acquisition.
+     * @return lockTime
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_LOCK_TIME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getLockTime() {
+        return lockTime;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LOCK_TIME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLockTime(String lockTime) {
+        this.lockTime = lockTime;
+    }
+
+    public MailLogEntry assigned(String assigned) {
+        this.assigned = assigned;
+        return this;
+    }
+
+    /**
+     * The relay server node assigned to deliver this message.
+     * @return assigned
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_ASSIGNED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getAssigned() {
+        return assigned;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ASSIGNED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setAssigned(String assigned) {
+        this.assigned = assigned;
+    }
+
+    public MailLogEntry queued(String queued) {
+        this.queued = queued;
+        return this;
+    }
+
+    /**
+     * ISO 8601 timestamp when the message was placed into the delivery queue.
+     * @return queued
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_QUEUED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getQueued() {
+        return queued;
+    }
+
+    @JsonProperty(JSON_PROPERTY_QUEUED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setQueued(String queued) {
+        this.queued = queued;
+    }
+
+    public MailLogEntry mxHostname(String mxHostname) {
+        this.mxHostname = mxHostname;
+        return this;
+    }
+
+    /**
+     * The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.
+     * @return mxHostname
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_MX_HOSTNAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getMxHostname() {
+        return mxHostname;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MX_HOSTNAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setMxHostname(String mxHostname) {
+        this.mxHostname = mxHostname;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -666,30 +707,32 @@ public class MailLogEntry {
             Objects.equals(this.id, mailLogEntry.id) &&
             Objects.equals(this.from, mailLogEntry.from) &&
             Objects.equals(this.to, mailLogEntry.to) &&
-            Objects.equals(this.subject, mailLogEntry.subject) &&
             Objects.equals(this.created, mailLogEntry.created) &&
             Objects.equals(this.time, mailLogEntry.time) &&
             Objects.equals(this.user, mailLogEntry.user) &&
             Objects.equals(this.transtype, mailLogEntry.transtype) &&
             Objects.equals(this.origin, mailLogEntry.origin) &&
             Objects.equals(this._interface, mailLogEntry._interface) &&
+            Objects.equals(this.subject, mailLogEntry.subject) &&
+            Objects.equals(this.messageId, mailLogEntry.messageId) &&
             Objects.equals(this.sendingZone, mailLogEntry.sendingZone) &&
             Objects.equals(this.bodySize, mailLogEntry.bodySize) &&
             Objects.equals(this.seq, mailLogEntry.seq) &&
+            Objects.equals(this.delivered, mailLogEntry.delivered) &&
+            Objects.equals(this.code, mailLogEntry.code) &&
             Objects.equals(this.recipient, mailLogEntry.recipient) &&
+            Objects.equals(this.response, mailLogEntry.response) &&
             Objects.equals(this.domain, mailLogEntry.domain) &&
             Objects.equals(this.locked, mailLogEntry.locked) &&
             Objects.equals(this.lockTime, mailLogEntry.lockTime) &&
             Objects.equals(this.assigned, mailLogEntry.assigned) &&
             Objects.equals(this.queued, mailLogEntry.queued) &&
-            Objects.equals(this.mxHostname, mailLogEntry.mxHostname) &&
-            Objects.equals(this.response, mailLogEntry.response) &&
-            Objects.equals(this.messageId, mailLogEntry.messageId);
+            Objects.equals(this.mxHostname, mailLogEntry.mxHostname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, id, from, to, subject, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, recipient, domain, locked, lockTime, assigned, queued, mxHostname, response, messageId);
+        return Objects.hash(id, id, from, to, created, time, user, transtype, origin, _interface, subject, messageId, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname);
     }
 
     @Override
@@ -700,25 +743,27 @@ public class MailLogEntry {
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    from: ").append(toIndentedString(from)).append("\n");
         sb.append("    to: ").append(toIndentedString(to)).append("\n");
-        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
         sb.append("    created: ").append(toIndentedString(created)).append("\n");
         sb.append("    time: ").append(toIndentedString(time)).append("\n");
         sb.append("    user: ").append(toIndentedString(user)).append("\n");
         sb.append("    transtype: ").append(toIndentedString(transtype)).append("\n");
         sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
         sb.append("    _interface: ").append(toIndentedString(_interface)).append("\n");
+        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+        sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
         sb.append("    sendingZone: ").append(toIndentedString(sendingZone)).append("\n");
         sb.append("    bodySize: ").append(toIndentedString(bodySize)).append("\n");
         sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
+        sb.append("    delivered: ").append(toIndentedString(delivered)).append("\n");
+        sb.append("    code: ").append(toIndentedString(code)).append("\n");
         sb.append("    recipient: ").append(toIndentedString(recipient)).append("\n");
+        sb.append("    response: ").append(toIndentedString(response)).append("\n");
         sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
         sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
         sb.append("    lockTime: ").append(toIndentedString(lockTime)).append("\n");
         sb.append("    assigned: ").append(toIndentedString(assigned)).append("\n");
         sb.append("    queued: ").append(toIndentedString(queued)).append("\n");
         sb.append("    mxHostname: ").append(toIndentedString(mxHostname)).append("\n");
-        sb.append("    response: ").append(toIndentedString(response)).append("\n");
-        sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -728,10 +773,7 @@ public class MailLogEntry {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

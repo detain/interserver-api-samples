@@ -1,4 +1,4 @@
-# # GetAccountTfaSetup200Response
+# GetAccountTfaSetup200Response
 
 ## Properties
 

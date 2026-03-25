@@ -1,4 +1,4 @@
-# # TicketNew
+# TicketNew
 
 ## Properties
 

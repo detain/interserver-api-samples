@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAICreateFilter_201_response : public OAIObject {
 public:
     OAICreateFilter_201_response();
-    OAICreateFilter_201_response(QString json);
+    OAICreateFilter_201_response(const QString &json);
     ~OAICreateFilter_201_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

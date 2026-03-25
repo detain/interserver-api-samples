@@ -12,18 +12,21 @@ static email_address_t *email_address_create_internal(
     if (!email_address_local_var) {
         return NULL;
     }
-    email_address_local_var->email = email;
-
+    memset(email_address_local_var, 0, sizeof(email_address_t));
     email_address_local_var->_library_owned = 1;
+    email_address_local_var->email = email;
     return email_address_local_var;
 }
 
 __attribute__((deprecated)) email_address_t *email_address_create(
     char *email
     ) {
-    return email_address_create_internal (
+    email_address_t *result = email_address_create_internal (
         email
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void email_address_free(email_address_t *email_address) {
@@ -64,6 +67,8 @@ email_address_t *email_address_parseFromJSON(cJSON *email_addressJSON){
 
     email_address_t *email_address_local_var = NULL;
 
+    char *email_local_str = NULL;
+
     // email_address->email
     cJSON *email = cJSON_GetObjectItemCaseSensitive(email_addressJSON, "email");
     if (cJSON_IsNull(email)) {
@@ -77,12 +82,22 @@ email_address_t *email_address_parseFromJSON(cJSON *email_addressJSON){
     }
 
 
+    if (email && !cJSON_IsNull(email)) email_local_str = strdup(email->valuestring);
+
     email_address_local_var = email_address_create_internal (
-        email && !cJSON_IsNull(email) ? strdup(email->valuestring) : NULL
+        email_local_str
         );
+
+    if (!email_address_local_var) {
+        goto end;
+    }
 
     return email_address_local_var;
 end:
+    if (email_local_str) {
+        free(email_local_str);
+        email_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -13,10 +13,10 @@ static get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *get_scru
     if (!get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var, 0, sizeof(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t));
+    get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var->title = title;
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var->rows = rows;
-
-    get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_extra_info_tables_
     char *title,
     list_t *rows
     ) {
-    return get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_create_internal (
+    get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *result = get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_create_internal (
         title,
         rows
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_free(get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *get_scrub_ip_details_200_response_extra_info_tables_scrub_ips) {
@@ -95,6 +98,8 @@ get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *get_scrub_ip_de
 
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var = NULL;
 
+    char *title_local_str = NULL;
+
     // define the local list for get_scrub_ip_details_200_response_extra_info_tables_scrub_ips->rows
     list_t *rowsList = NULL;
 
@@ -135,13 +140,23 @@ get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *get_scrub_ip_de
     }
 
 
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var = get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        title_local_str,
         rows ? rowsList : NULL
         );
 
+    if (!get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var) {
+        goto end;
+    }
+
     return get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     if (rowsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, rowsList) {

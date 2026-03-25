@@ -285,32 +285,6 @@ void OAILicensesApi::addLicenseCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addLicenseSignal();
         Q_EMIT addLicenseSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addLicenseSignalE(error_type, error_str);
-        Q_EMIT addLicenseSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addLicenseSignalError(error_type, error_str);
         Q_EMIT addLicenseSignalErrorFull(worker, error_type, error_str);
     }
@@ -377,32 +351,6 @@ void OAILicensesApi::getLicenseInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getLicenseInfoSignal(output);
         Q_EMIT getLicenseInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getLicenseInfoSignalE(output, error_type, error_str);
-        Q_EMIT getLicenseInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getLicenseInfoSignalError(output, error_type, error_str);
         Q_EMIT getLicenseInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -469,32 +417,6 @@ void OAILicensesApi::getLicenseInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getLicenseInvoicesSignal(output);
         Q_EMIT getLicenseInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getLicenseInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getLicenseInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getLicenseInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getLicenseInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -556,32 +478,6 @@ void OAILicensesApi::getLicenseListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getLicenseListSignal(output);
         Q_EMIT getLicenseListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getLicenseListSignalE(output, error_type, error_str);
-        Q_EMIT getLicenseListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getLicenseListSignalError(output, error_type, error_str);
         Q_EMIT getLicenseListSignalErrorFull(worker, error_type, error_str);
     }
@@ -647,32 +543,6 @@ void OAILicensesApi::getLicenseOrderCatTagInfoCallback(OAIHttpRequestWorker *wor
         Q_EMIT getLicenseOrderCatTagInfoSignal();
         Q_EMIT getLicenseOrderCatTagInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getLicenseOrderCatTagInfoSignalE(error_type, error_str);
-        Q_EMIT getLicenseOrderCatTagInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getLicenseOrderCatTagInfoSignalError(error_type, error_str);
         Q_EMIT getLicenseOrderCatTagInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -739,32 +609,6 @@ void OAILicensesApi::getLicensesWelcomeEmailCallback(OAIHttpRequestWorker *worke
         Q_EMIT getLicensesWelcomeEmailSignal(output);
         Q_EMIT getLicensesWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getLicensesWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getLicensesWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getLicensesWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getLicensesWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -817,32 +661,6 @@ void OAILicensesApi::getNewLicenseCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewLicenseSignal(output);
         Q_EMIT getNewLicenseSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewLicenseSignalE(output, error_type, error_str);
-        Q_EMIT getNewLicenseSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewLicenseSignalError(output, error_type, error_str);
         Q_EMIT getNewLicenseSignalErrorFull(worker, error_type, error_str);
     }
@@ -909,32 +727,6 @@ void OAILicensesApi::licensesCancelCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT licensesCancelSignal(output);
         Q_EMIT licensesCancelSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT licensesCancelSignalE(output, error_type, error_str);
-        Q_EMIT licensesCancelSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT licensesCancelSignalError(output, error_type, error_str);
         Q_EMIT licensesCancelSignalErrorFull(worker, error_type, error_str);
     }
@@ -1006,32 +798,6 @@ void OAILicensesApi::postLicenseChangeIpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postLicenseChangeIpSignal(output);
         Q_EMIT postLicenseChangeIpSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postLicenseChangeIpSignalE(output, error_type, error_str);
-        Q_EMIT postLicenseChangeIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postLicenseChangeIpSignalError(output, error_type, error_str);
         Q_EMIT postLicenseChangeIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -1083,32 +849,6 @@ void OAILicensesApi::putLicensesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putLicensesSignal();
         Q_EMIT putLicensesSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putLicensesSignalE(error_type, error_str);
-        Q_EMIT putLicensesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putLicensesSignalError(error_type, error_str);
         Q_EMIT putLicensesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1174,42 +914,16 @@ void OAILicensesApi::updateLicenseInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateLicenseInfoSignal();
         Q_EMIT updateLicenseInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateLicenseInfoSignalE(error_type, error_str);
-        Q_EMIT updateLicenseInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateLicenseInfoSignalError(error_type, error_str);
         Q_EMIT updateLicenseInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAILicensesApi::tokenAvailable(){
+void OAILicensesApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1219,7 +933,7 @@ void OAILicensesApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1229,7 +943,7 @@ void OAILicensesApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1239,7 +953,7 @@ void OAILicensesApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

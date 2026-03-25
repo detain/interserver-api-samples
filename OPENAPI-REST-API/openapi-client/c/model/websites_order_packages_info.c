@@ -24,6 +24,8 @@ static websites_order_packages_info_t *websites_order_packages_info_create_inter
     if (!websites_order_packages_info_local_var) {
         return NULL;
     }
+    memset(websites_order_packages_info_local_var, 0, sizeof(websites_order_packages_info_t));
+    websites_order_packages_info_local_var->_library_owned = 1;
     websites_order_packages_info_local_var->services_id = services_id;
     websites_order_packages_info_local_var->services_name = services_name;
     websites_order_packages_info_local_var->services_cost = services_cost;
@@ -37,8 +39,6 @@ static websites_order_packages_info_t *websites_order_packages_info_create_inter
     websites_order_packages_info_local_var->services_html = services_html;
     websites_order_packages_info_local_var->services_moreinfo_url = services_moreinfo_url;
     websites_order_packages_info_local_var->services_hidden = services_hidden;
-
-    websites_order_packages_info_local_var->_library_owned = 1;
     return websites_order_packages_info_local_var;
 }
 
@@ -57,7 +57,7 @@ __attribute__((deprecated)) websites_order_packages_info_t *websites_order_packa
     char *services_moreinfo_url,
     char *services_hidden
     ) {
-    return websites_order_packages_info_create_internal (
+    websites_order_packages_info_t *result = websites_order_packages_info_create_internal (
         services_id,
         services_name,
         services_cost,
@@ -72,6 +72,9 @@ __attribute__((deprecated)) websites_order_packages_info_t *websites_order_packa
         services_moreinfo_url,
         services_hidden
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void websites_order_packages_info_free(websites_order_packages_info_t *websites_order_packages_info) {
@@ -264,6 +267,32 @@ websites_order_packages_info_t *websites_order_packages_info_parseFromJSON(cJSON
 
     websites_order_packages_info_t *websites_order_packages_info_local_var = NULL;
 
+    char *services_id_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
+    char *services_cost_local_str = NULL;
+
+    char *services_category_local_str = NULL;
+
+    char *services_buyable_local_str = NULL;
+
+    char *services_type_local_str = NULL;
+
+    char *services_module_local_str = NULL;
+
+    char *services_description_local_str = NULL;
+
+    char *services_field1_local_str = NULL;
+
+    char *services_field2_local_str = NULL;
+
+    char *services_html_local_str = NULL;
+
+    char *services_moreinfo_url_local_str = NULL;
+
+    char *services_hidden_local_str = NULL;
+
     // websites_order_packages_info->services_id
     cJSON *services_id = cJSON_GetObjectItemCaseSensitive(websites_order_packages_infoJSON, "services_id");
     if (cJSON_IsNull(services_id)) {
@@ -445,24 +474,94 @@ websites_order_packages_info_t *websites_order_packages_info_parseFromJSON(cJSON
     }
 
 
+    if (services_id && !cJSON_IsNull(services_id)) services_id_local_str = strdup(services_id->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+    if (services_cost && !cJSON_IsNull(services_cost)) services_cost_local_str = strdup(services_cost->valuestring);
+    if (services_category && !cJSON_IsNull(services_category)) services_category_local_str = strdup(services_category->valuestring);
+    if (services_buyable && !cJSON_IsNull(services_buyable)) services_buyable_local_str = strdup(services_buyable->valuestring);
+    if (services_type && !cJSON_IsNull(services_type)) services_type_local_str = strdup(services_type->valuestring);
+    if (services_module && !cJSON_IsNull(services_module)) services_module_local_str = strdup(services_module->valuestring);
+    if (services_description && !cJSON_IsNull(services_description)) services_description_local_str = strdup(services_description->valuestring);
+    if (services_field1 && !cJSON_IsNull(services_field1)) services_field1_local_str = strdup(services_field1->valuestring);
+    if (services_field2 && !cJSON_IsNull(services_field2)) services_field2_local_str = strdup(services_field2->valuestring);
+    if (services_html && !cJSON_IsNull(services_html)) services_html_local_str = strdup(services_html->valuestring);
+    if (services_moreinfo_url && !cJSON_IsNull(services_moreinfo_url)) services_moreinfo_url_local_str = strdup(services_moreinfo_url->valuestring);
+    if (services_hidden && !cJSON_IsNull(services_hidden)) services_hidden_local_str = strdup(services_hidden->valuestring);
+
     websites_order_packages_info_local_var = websites_order_packages_info_create_internal (
-        strdup(services_id->valuestring),
-        strdup(services_name->valuestring),
-        strdup(services_cost->valuestring),
-        strdup(services_category->valuestring),
-        strdup(services_buyable->valuestring),
-        strdup(services_type->valuestring),
-        strdup(services_module->valuestring),
-        strdup(services_description->valuestring),
-        services_field1 && !cJSON_IsNull(services_field1) ? strdup(services_field1->valuestring) : NULL,
-        services_field2 && !cJSON_IsNull(services_field2) ? strdup(services_field2->valuestring) : NULL,
-        services_html && !cJSON_IsNull(services_html) ? strdup(services_html->valuestring) : NULL,
-        services_moreinfo_url && !cJSON_IsNull(services_moreinfo_url) ? strdup(services_moreinfo_url->valuestring) : NULL,
-        services_hidden && !cJSON_IsNull(services_hidden) ? strdup(services_hidden->valuestring) : NULL
+        services_id_local_str,
+        services_name_local_str,
+        services_cost_local_str,
+        services_category_local_str,
+        services_buyable_local_str,
+        services_type_local_str,
+        services_module_local_str,
+        services_description_local_str,
+        services_field1_local_str,
+        services_field2_local_str,
+        services_html_local_str,
+        services_moreinfo_url_local_str,
+        services_hidden_local_str
         );
+
+    if (!websites_order_packages_info_local_var) {
+        goto end;
+    }
 
     return websites_order_packages_info_local_var;
 end:
+    if (services_id_local_str) {
+        free(services_id_local_str);
+        services_id_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
+    if (services_cost_local_str) {
+        free(services_cost_local_str);
+        services_cost_local_str = NULL;
+    }
+    if (services_category_local_str) {
+        free(services_category_local_str);
+        services_category_local_str = NULL;
+    }
+    if (services_buyable_local_str) {
+        free(services_buyable_local_str);
+        services_buyable_local_str = NULL;
+    }
+    if (services_type_local_str) {
+        free(services_type_local_str);
+        services_type_local_str = NULL;
+    }
+    if (services_module_local_str) {
+        free(services_module_local_str);
+        services_module_local_str = NULL;
+    }
+    if (services_description_local_str) {
+        free(services_description_local_str);
+        services_description_local_str = NULL;
+    }
+    if (services_field1_local_str) {
+        free(services_field1_local_str);
+        services_field1_local_str = NULL;
+    }
+    if (services_field2_local_str) {
+        free(services_field2_local_str);
+        services_field2_local_str = NULL;
+    }
+    if (services_html_local_str) {
+        free(services_html_local_str);
+        services_html_local_str = NULL;
+    }
+    if (services_moreinfo_url_local_str) {
+        free(services_moreinfo_url_local_str);
+        services_moreinfo_url_local_str = NULL;
+    }
+    if (services_hidden_local_str) {
+        free(services_hidden_local_str);
+        services_hidden_local_str = NULL;
+    }
     return NULL;
 
 }

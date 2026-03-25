@@ -1,4 +1,4 @@
-# # VpsTrafficUsageResponse
+# VpsTrafficUsageResponse
 
 ## Properties
 

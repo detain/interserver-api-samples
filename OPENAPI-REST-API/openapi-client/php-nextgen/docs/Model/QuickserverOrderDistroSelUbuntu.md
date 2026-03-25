@@ -1,4 +1,4 @@
-# # QuickserverOrderDistroSelUbuntu
+# QuickserverOrderDistroSelUbuntu
 
 ## Properties
 

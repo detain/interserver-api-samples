@@ -1,4 +1,4 @@
-# # DisableScrub500Response
+# DisableScrub500Response
 
 ## Properties
 

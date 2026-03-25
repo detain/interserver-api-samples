@@ -20,14 +20,14 @@ typedef struct charge_invoice_rows_t charge_invoice_rows_t;
 
 
 typedef struct charge_invoice_rows_t {
-    int success; //boolean
+    int *success; //boolean
     list_t* invoices; //map
 
     int _library_owned; // Is the library responsible for freeing this object?
 } charge_invoice_rows_t;
 
 __attribute__((deprecated)) charge_invoice_rows_t *charge_invoice_rows_create(
-    int success,
+    int *success,
     list_t* invoices
 );
 

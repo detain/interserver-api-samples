@@ -1,4 +1,4 @@
-# # GetScrubIpDetails200ResponseClientLinksInner
+# GetScrubIpDetails200ResponseClientLinksInner
 
 ## Properties
 

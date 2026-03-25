@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsPlesk12Data::OAIVpsPlesk12Data(QString json) {
+OAIVpsPlesk12Data::OAIVpsPlesk12Data(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIVpsPlesk12Data::initializeModel() {
     m_host_isValid = false;
 }
 
-void OAIVpsPlesk12Data::fromJson(QString jsonString) {
+void OAIVpsPlesk12Data::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

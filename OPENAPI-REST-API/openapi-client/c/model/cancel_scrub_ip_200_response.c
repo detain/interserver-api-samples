@@ -6,28 +6,37 @@
 
 
 static cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_local_var = malloc(sizeof(cancel_scrub_ip_200_response_t));
     if (!cancel_scrub_ip_200_response_local_var) {
         return NULL;
     }
+    memset(cancel_scrub_ip_200_response_local_var, 0, sizeof(cancel_scrub_ip_200_response_t));
+    cancel_scrub_ip_200_response_local_var->_library_owned = 1;
     cancel_scrub_ip_200_response_local_var->success = success;
     cancel_scrub_ip_200_response_local_var->text = text;
-
-    cancel_scrub_ip_200_response_local_var->_library_owned = 1;
     return cancel_scrub_ip_200_response_local_var;
 }
 
 __attribute__((deprecated)) cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return cancel_scrub_ip_200_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    cancel_scrub_ip_200_response_t *result = cancel_scrub_ip_200_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void cancel_scrub_ip_200_response_free(cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response) {
@@ -39,6 +48,10 @@ void cancel_scrub_ip_200_response_free(cancel_scrub_ip_200_response_t *cancel_sc
         return ;
     }
     listEntry_t *listEntry;
+    if (cancel_scrub_ip_200_response->success) {
+        free(cancel_scrub_ip_200_response->success);
+        cancel_scrub_ip_200_response->success = NULL;
+    }
     if (cancel_scrub_ip_200_response->text) {
         free(cancel_scrub_ip_200_response->text);
         cancel_scrub_ip_200_response->text = NULL;
@@ -53,7 +66,7 @@ cJSON *cancel_scrub_ip_200_response_convertToJSON(cancel_scrub_ip_200_response_t
     if (!cancel_scrub_ip_200_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", cancel_scrub_ip_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *cancel_scrub_ip_200_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -78,6 +91,11 @@ cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_parseFromJSON(cJSON
 
     cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_local_var = NULL;
 
+    // define the local variable for cancel_scrub_ip_200_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // cancel_scrub_ip_200_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(cancel_scrub_ip_200_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -92,6 +110,12 @@ cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_parseFromJSON(cJSON
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // cancel_scrub_ip_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(cancel_scrub_ip_200_responseJSON, "text");
@@ -109,13 +133,27 @@ cancel_scrub_ip_200_response_t *cancel_scrub_ip_200_response_parseFromJSON(cJSON
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     cancel_scrub_ip_200_response_local_var = cancel_scrub_ip_200_response_create_internal (
-        success->valueint,
-        strdup(text->valuestring)
+        success_local_var,
+        text_local_str
         );
+
+    if (!cancel_scrub_ip_200_response_local_var) {
+        goto end;
+    }
 
     return cancel_scrub_ip_200_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

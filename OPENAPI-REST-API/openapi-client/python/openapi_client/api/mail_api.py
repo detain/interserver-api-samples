@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictInt, StrictStr, field_validator
-from typing import List, Optional
+from typing import Any, List, Optional
 from typing_extensions import Annotated
 from openapi_client.models.charge_invoice_rows import ChargeInvoiceRows
 from openapi_client.models.deny_rule_new import DenyRuleNew
@@ -6937,18 +6937,24 @@ class MailApi:
     def view_mail_log(
         self,
         id: Annotated[StrictInt, Field(description="The mail service ID. Use `mail_id` from `GET /mail`.")],
-        id2: Annotated[Optional[StrictInt], Field(description="The ID of your mail order this will be sent through.")] = None,
-        origin: Annotated[Optional[StrictStr], Field(description="originating ip address sending mail")] = None,
-        mx: Annotated[Optional[StrictStr], Field(description="mx record mail was sent to")] = None,
-        var_from: Annotated[Optional[StrictStr], Field(description="from email address")] = None,
-        to: Annotated[Optional[StrictStr], Field(description="to/destination email address")] = None,
-        subject: Annotated[Optional[StrictStr], Field(description="subject containing this string")] = None,
-        mailid: Annotated[Optional[StrictStr], Field(description="mail id")] = None,
-        skip: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="number of records to skip for pagination")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]], Field(description="maximum number of records to return")] = None,
-        start_date: Annotated[Optional[Annotated[int, Field(le=9999999999, strict=True, ge=0)]], Field(description="earliest date to get emails in unix timestamp format")] = None,
-        end_date: Annotated[Optional[Annotated[int, Field(le=9999999999, strict=True, ge=0)]], Field(description="Latest date to get emails in unix timestamp format.")] = None,
-        delivered: Annotated[Optional[StrictStr], Field(description="Filter emails by whether or not they were delivered.")] = None,
+        id2: Annotated[Optional[StrictInt], Field(description="The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.")] = None,
+        origin: Annotated[Optional[StrictStr], Field(description="Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.")] = None,
+        mx: Annotated[Optional[StrictStr], Field(description="Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.")] = None,
+        var_from: Annotated[Optional[StrictStr], Field(description="Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.")] = None,
+        to: Annotated[Optional[StrictStr], Field(description="Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.")] = None,
+        mailid: Annotated[Optional[Annotated[str, Field(min_length=18, strict=True, max_length=19)]], Field(description="Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.")] = None,
+        message_id: Annotated[Optional[StrictStr], Field(description="Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.")] = None,
+        replyto: Annotated[Optional[StrictStr], Field(description="Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.")] = None,
+        headerfrom: Annotated[Optional[StrictStr], Field(description="Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.")] = None,
+        delivered: Annotated[Optional[StrictInt], Field(description="Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.")] = None,
+        skip: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]], Field(description="Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.")] = None,
+        start_date: Annotated[Optional[Any], Field(description="Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.")] = None,
+        end_date: Annotated[Optional[Any], Field(description="Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).")] = None,
+        dir: Annotated[Optional[StrictStr], Field(description="Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.")] = None,
+        groupby: Annotated[Optional[StrictStr], Field(description="Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6964,34 +6970,46 @@ class MailApi:
     ) -> MailLog:
         """View Mail Log
 
-        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
 
         :param id: The mail service ID. Use `mail_id` from `GET /mail`. (required)
         :type id: int
-        :param id2: The ID of your mail order this will be sent through.
+        :param id2: The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
         :type id2: int
-        :param origin: originating ip address sending mail
+        :param origin: Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
         :type origin: str
-        :param mx: mx record mail was sent to
+        :param mx: Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
         :type mx: str
-        :param var_from: from email address
+        :param var_from: Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
         :type var_from: str
-        :param to: to/destination email address
+        :param to: Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
         :type to: str
-        :param subject: subject containing this string
+        :param subject: Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
         :type subject: str
-        :param mailid: mail id
+        :param mailid: Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
         :type mailid: str
-        :param skip: number of records to skip for pagination
+        :param message_id: Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+        :type message_id: str
+        :param replyto: Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
+        :type replyto: str
+        :param headerfrom: Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
+        :type headerfrom: str
+        :param delivered: Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+        :type delivered: int
+        :param skip: Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
         :type skip: int
-        :param limit: maximum number of records to return
+        :param limit: Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
         :type limit: int
-        :param start_date: earliest date to get emails in unix timestamp format
-        :type start_date: int
-        :param end_date: Latest date to get emails in unix timestamp format.
-        :type end_date: int
-        :param delivered: Filter emails by whether or not they were delivered.
-        :type delivered: str
+        :param start_date: Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+        :type start_date: ViewMailLogStartDateParameter
+        :param end_date: Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+        :type end_date: ViewMailLogStartDateParameter
+        :param sort: Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
+        :type sort: str
+        :param dir: Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
+        :type dir: str
+        :param groupby: Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
+        :type groupby: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7023,11 +7041,17 @@ class MailApi:
             to=to,
             subject=subject,
             mailid=mailid,
+            message_id=message_id,
+            replyto=replyto,
+            headerfrom=headerfrom,
+            delivered=delivered,
             skip=skip,
             limit=limit,
             start_date=start_date,
             end_date=end_date,
-            delivered=delivered,
+            sort=sort,
+            dir=dir,
+            groupby=groupby,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7053,18 +7077,24 @@ class MailApi:
     def view_mail_log_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The mail service ID. Use `mail_id` from `GET /mail`.")],
-        id2: Annotated[Optional[StrictInt], Field(description="The ID of your mail order this will be sent through.")] = None,
-        origin: Annotated[Optional[StrictStr], Field(description="originating ip address sending mail")] = None,
-        mx: Annotated[Optional[StrictStr], Field(description="mx record mail was sent to")] = None,
-        var_from: Annotated[Optional[StrictStr], Field(description="from email address")] = None,
-        to: Annotated[Optional[StrictStr], Field(description="to/destination email address")] = None,
-        subject: Annotated[Optional[StrictStr], Field(description="subject containing this string")] = None,
-        mailid: Annotated[Optional[StrictStr], Field(description="mail id")] = None,
-        skip: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="number of records to skip for pagination")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]], Field(description="maximum number of records to return")] = None,
-        start_date: Annotated[Optional[Annotated[int, Field(le=9999999999, strict=True, ge=0)]], Field(description="earliest date to get emails in unix timestamp format")] = None,
-        end_date: Annotated[Optional[Annotated[int, Field(le=9999999999, strict=True, ge=0)]], Field(description="Latest date to get emails in unix timestamp format.")] = None,
-        delivered: Annotated[Optional[StrictStr], Field(description="Filter emails by whether or not they were delivered.")] = None,
+        id2: Annotated[Optional[StrictInt], Field(description="The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.")] = None,
+        origin: Annotated[Optional[StrictStr], Field(description="Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.")] = None,
+        mx: Annotated[Optional[StrictStr], Field(description="Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.")] = None,
+        var_from: Annotated[Optional[StrictStr], Field(description="Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.")] = None,
+        to: Annotated[Optional[StrictStr], Field(description="Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.")] = None,
+        mailid: Annotated[Optional[Annotated[str, Field(min_length=18, strict=True, max_length=19)]], Field(description="Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.")] = None,
+        message_id: Annotated[Optional[StrictStr], Field(description="Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.")] = None,
+        replyto: Annotated[Optional[StrictStr], Field(description="Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.")] = None,
+        headerfrom: Annotated[Optional[StrictStr], Field(description="Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.")] = None,
+        delivered: Annotated[Optional[StrictInt], Field(description="Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.")] = None,
+        skip: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]], Field(description="Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.")] = None,
+        start_date: Annotated[Optional[Any], Field(description="Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.")] = None,
+        end_date: Annotated[Optional[Any], Field(description="Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).")] = None,
+        dir: Annotated[Optional[StrictStr], Field(description="Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.")] = None,
+        groupby: Annotated[Optional[StrictStr], Field(description="Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7080,34 +7110,46 @@ class MailApi:
     ) -> ApiResponse[MailLog]:
         """View Mail Log
 
-        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
 
         :param id: The mail service ID. Use `mail_id` from `GET /mail`. (required)
         :type id: int
-        :param id2: The ID of your mail order this will be sent through.
+        :param id2: The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
         :type id2: int
-        :param origin: originating ip address sending mail
+        :param origin: Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
         :type origin: str
-        :param mx: mx record mail was sent to
+        :param mx: Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
         :type mx: str
-        :param var_from: from email address
+        :param var_from: Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
         :type var_from: str
-        :param to: to/destination email address
+        :param to: Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
         :type to: str
-        :param subject: subject containing this string
+        :param subject: Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
         :type subject: str
-        :param mailid: mail id
+        :param mailid: Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
         :type mailid: str
-        :param skip: number of records to skip for pagination
+        :param message_id: Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+        :type message_id: str
+        :param replyto: Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
+        :type replyto: str
+        :param headerfrom: Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
+        :type headerfrom: str
+        :param delivered: Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+        :type delivered: int
+        :param skip: Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
         :type skip: int
-        :param limit: maximum number of records to return
+        :param limit: Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
         :type limit: int
-        :param start_date: earliest date to get emails in unix timestamp format
-        :type start_date: int
-        :param end_date: Latest date to get emails in unix timestamp format.
-        :type end_date: int
-        :param delivered: Filter emails by whether or not they were delivered.
-        :type delivered: str
+        :param start_date: Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+        :type start_date: ViewMailLogStartDateParameter
+        :param end_date: Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+        :type end_date: ViewMailLogStartDateParameter
+        :param sort: Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
+        :type sort: str
+        :param dir: Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
+        :type dir: str
+        :param groupby: Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
+        :type groupby: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7139,11 +7181,17 @@ class MailApi:
             to=to,
             subject=subject,
             mailid=mailid,
+            message_id=message_id,
+            replyto=replyto,
+            headerfrom=headerfrom,
+            delivered=delivered,
             skip=skip,
             limit=limit,
             start_date=start_date,
             end_date=end_date,
-            delivered=delivered,
+            sort=sort,
+            dir=dir,
+            groupby=groupby,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7169,18 +7217,24 @@ class MailApi:
     def view_mail_log_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The mail service ID. Use `mail_id` from `GET /mail`.")],
-        id2: Annotated[Optional[StrictInt], Field(description="The ID of your mail order this will be sent through.")] = None,
-        origin: Annotated[Optional[StrictStr], Field(description="originating ip address sending mail")] = None,
-        mx: Annotated[Optional[StrictStr], Field(description="mx record mail was sent to")] = None,
-        var_from: Annotated[Optional[StrictStr], Field(description="from email address")] = None,
-        to: Annotated[Optional[StrictStr], Field(description="to/destination email address")] = None,
-        subject: Annotated[Optional[StrictStr], Field(description="subject containing this string")] = None,
-        mailid: Annotated[Optional[StrictStr], Field(description="mail id")] = None,
-        skip: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="number of records to skip for pagination")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]], Field(description="maximum number of records to return")] = None,
-        start_date: Annotated[Optional[Annotated[int, Field(le=9999999999, strict=True, ge=0)]], Field(description="earliest date to get emails in unix timestamp format")] = None,
-        end_date: Annotated[Optional[Annotated[int, Field(le=9999999999, strict=True, ge=0)]], Field(description="Latest date to get emails in unix timestamp format.")] = None,
-        delivered: Annotated[Optional[StrictStr], Field(description="Filter emails by whether or not they were delivered.")] = None,
+        id2: Annotated[Optional[StrictInt], Field(description="The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.")] = None,
+        origin: Annotated[Optional[StrictStr], Field(description="Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.")] = None,
+        mx: Annotated[Optional[StrictStr], Field(description="Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.")] = None,
+        var_from: Annotated[Optional[StrictStr], Field(description="Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.")] = None,
+        to: Annotated[Optional[StrictStr], Field(description="Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.")] = None,
+        mailid: Annotated[Optional[Annotated[str, Field(min_length=18, strict=True, max_length=19)]], Field(description="Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.")] = None,
+        message_id: Annotated[Optional[StrictStr], Field(description="Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.")] = None,
+        replyto: Annotated[Optional[StrictStr], Field(description="Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.")] = None,
+        headerfrom: Annotated[Optional[StrictStr], Field(description="Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.")] = None,
+        delivered: Annotated[Optional[StrictInt], Field(description="Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.")] = None,
+        skip: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]], Field(description="Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.")] = None,
+        start_date: Annotated[Optional[Any], Field(description="Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.")] = None,
+        end_date: Annotated[Optional[Any], Field(description="Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).")] = None,
+        dir: Annotated[Optional[StrictStr], Field(description="Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.")] = None,
+        groupby: Annotated[Optional[StrictStr], Field(description="Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7196,34 +7250,46 @@ class MailApi:
     ) -> RESTResponseType:
         """View Mail Log
 
-        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+        Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
 
         :param id: The mail service ID. Use `mail_id` from `GET /mail`. (required)
         :type id: int
-        :param id2: The ID of your mail order this will be sent through.
+        :param id2: The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
         :type id2: int
-        :param origin: originating ip address sending mail
+        :param origin: Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
         :type origin: str
-        :param mx: mx record mail was sent to
+        :param mx: Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
         :type mx: str
-        :param var_from: from email address
+        :param var_from: Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
         :type var_from: str
-        :param to: to/destination email address
+        :param to: Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
         :type to: str
-        :param subject: subject containing this string
+        :param subject: Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
         :type subject: str
-        :param mailid: mail id
+        :param mailid: Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
         :type mailid: str
-        :param skip: number of records to skip for pagination
+        :param message_id: Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+        :type message_id: str
+        :param replyto: Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
+        :type replyto: str
+        :param headerfrom: Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
+        :type headerfrom: str
+        :param delivered: Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+        :type delivered: int
+        :param skip: Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
         :type skip: int
-        :param limit: maximum number of records to return
+        :param limit: Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
         :type limit: int
-        :param start_date: earliest date to get emails in unix timestamp format
-        :type start_date: int
-        :param end_date: Latest date to get emails in unix timestamp format.
-        :type end_date: int
-        :param delivered: Filter emails by whether or not they were delivered.
-        :type delivered: str
+        :param start_date: Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+        :type start_date: ViewMailLogStartDateParameter
+        :param end_date: Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+        :type end_date: ViewMailLogStartDateParameter
+        :param sort: Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
+        :type sort: str
+        :param dir: Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
+        :type dir: str
+        :param groupby: Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
+        :type groupby: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7255,11 +7321,17 @@ class MailApi:
             to=to,
             subject=subject,
             mailid=mailid,
+            message_id=message_id,
+            replyto=replyto,
+            headerfrom=headerfrom,
+            delivered=delivered,
             skip=skip,
             limit=limit,
             start_date=start_date,
             end_date=end_date,
-            delivered=delivered,
+            sort=sort,
+            dir=dir,
+            groupby=groupby,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7287,11 +7359,17 @@ class MailApi:
         to,
         subject,
         mailid,
+        message_id,
+        replyto,
+        headerfrom,
+        delivered,
         skip,
         limit,
         start_date,
         end_date,
-        delivered,
+        sort,
+        dir,
+        groupby,
         _request_auth,
         _content_type,
         _headers,
@@ -7344,6 +7422,22 @@ class MailApi:
             
             _query_params.append(('mailid', mailid))
             
+        if message_id is not None:
+            
+            _query_params.append(('messageId', message_id))
+            
+        if replyto is not None:
+            
+            _query_params.append(('replyto', replyto))
+            
+        if headerfrom is not None:
+            
+            _query_params.append(('headerfrom', headerfrom))
+            
+        if delivered is not None:
+            
+            _query_params.append(('delivered', delivered))
+            
         if skip is not None:
             
             _query_params.append(('skip', skip))
@@ -7360,9 +7454,17 @@ class MailApi:
             
             _query_params.append(('endDate', end_date))
             
-        if delivered is not None:
+        if sort is not None:
             
-            _query_params.append(('delivered', delivered))
+            _query_params.append(('sort', sort))
+            
+        if dir is not None:
+            
+            _query_params.append(('dir', dir))
+            
+        if groupby is not None:
+            
+            _query_params.append(('groupby', groupby))
             
         # process the header parameters
         # process the form parameters

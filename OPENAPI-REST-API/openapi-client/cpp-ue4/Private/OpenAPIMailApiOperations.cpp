@@ -1366,6 +1366,162 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIMail
 	return false;
 }
 
+inline FString ToString(const OpenAPIMailApi::ViewMailLogRequest::SortEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPIMailApi::ViewMailLogRequest::SortEnum::Time:
+		return TEXT("time");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIMailApi::ViewMailLogRequest::SortEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPIMailApi::ViewMailLogRequest::EnumToString(const OpenAPIMailApi::ViewMailLogRequest::SortEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPIMailApi::ViewMailLogRequest::SortEnum& Value)
+{
+	static TMap<FString, OpenAPIMailApi::ViewMailLogRequest::SortEnum> StringToEnum = { 
+		{ TEXT("time"), OpenAPIMailApi::ViewMailLogRequest::SortEnum::Time }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPIMailApi::ViewMailLogRequest::EnumFromString(const FString& EnumAsString, OpenAPIMailApi::ViewMailLogRequest::SortEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPIMailApi::ViewMailLogRequest::SortEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIMailApi::ViewMailLogRequest::SortEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
+inline FString ToString(const OpenAPIMailApi::ViewMailLogRequest::DirEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPIMailApi::ViewMailLogRequest::DirEnum::Asc:
+		return TEXT("asc");
+	case OpenAPIMailApi::ViewMailLogRequest::DirEnum::Desc:
+		return TEXT("desc");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIMailApi::ViewMailLogRequest::DirEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPIMailApi::ViewMailLogRequest::EnumToString(const OpenAPIMailApi::ViewMailLogRequest::DirEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPIMailApi::ViewMailLogRequest::DirEnum& Value)
+{
+	static TMap<FString, OpenAPIMailApi::ViewMailLogRequest::DirEnum> StringToEnum = { 
+		{ TEXT("asc"), OpenAPIMailApi::ViewMailLogRequest::DirEnum::Asc },
+		{ TEXT("desc"), OpenAPIMailApi::ViewMailLogRequest::DirEnum::Desc }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPIMailApi::ViewMailLogRequest::EnumFromString(const FString& EnumAsString, OpenAPIMailApi::ViewMailLogRequest::DirEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPIMailApi::ViewMailLogRequest::DirEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIMailApi::ViewMailLogRequest::DirEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
+inline FString ToString(const OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum::Message:
+		return TEXT("message");
+	case OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum::Recipient:
+		return TEXT("recipient");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPIMailApi::ViewMailLogRequest::EnumToString(const OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum& Value)
+{
+	static TMap<FString, OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum> StringToEnum = { 
+		{ TEXT("message"), OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum::Message },
+		{ TEXT("recipient"), OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum::Recipient }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPIMailApi::ViewMailLogRequest::EnumFromString(const FString& EnumAsString, OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIMailApi::ViewMailLogRequest::GroupbyEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
 FString OpenAPIMailApi::ViewMailLogRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 
@@ -1402,6 +1558,22 @@ FString OpenAPIMailApi::ViewMailLogRequest::ComputePath() const
 	{
 		QueryParams.Add(FString(TEXT("mailid=")) + ToUrlString(Mailid.GetValue()));
 	}
+	if(MessageId.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("messageId=")) + ToUrlString(MessageId.GetValue()));
+	}
+	if(Replyto.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("replyto=")) + ToUrlString(Replyto.GetValue()));
+	}
+	if(Headerfrom.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("headerfrom=")) + ToUrlString(Headerfrom.GetValue()));
+	}
+	if(Delivered.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("delivered=")) + ToUrlString(Delivered.GetValue()));
+	}
 	if(Skip.IsSet())
 	{
 		QueryParams.Add(FString(TEXT("skip=")) + ToUrlString(Skip.GetValue()));
@@ -1418,9 +1590,17 @@ FString OpenAPIMailApi::ViewMailLogRequest::ComputePath() const
 	{
 		QueryParams.Add(FString(TEXT("endDate=")) + ToUrlString(EndDate.GetValue()));
 	}
-	if(Delivered.IsSet())
+	if(Sort.IsSet())
 	{
-		QueryParams.Add(FString(TEXT("delivered=")) + ToUrlString(Delivered.GetValue()));
+		QueryParams.Add(FString(TEXT("sort=")) + ToUrlString(Sort.GetValue()));
+	}
+	if(Dir.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("dir=")) + ToUrlString(Dir.GetValue()));
+	}
+	if(Groupby.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("groupby=")) + ToUrlString(Groupby.GetValue()));
 	}
 	Path += TCHAR('?');
 	Path += FString::Join(QueryParams, TEXT("&"));

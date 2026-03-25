@@ -356,32 +356,6 @@ void OAIVPSApi::addVpsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addVpsSignal();
         Q_EMIT addVpsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addVpsSignalE(error_type, error_str);
-        Q_EMIT addVpsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addVpsSignalError(error_type, error_str);
         Q_EMIT addVpsSignalErrorFull(worker, error_type, error_str);
     }
@@ -479,32 +453,6 @@ void OAIVPSApi::deleteVpsBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteVpsBackupSignal(output);
         Q_EMIT deleteVpsBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteVpsBackupSignalE(output, error_type, error_str);
-        Q_EMIT deleteVpsBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteVpsBackupSignalError(output, error_type, error_str);
         Q_EMIT deleteVpsBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -571,32 +519,6 @@ void OAIVPSApi::doVpsBlockSmtpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsBlockSmtpSignal(output);
         Q_EMIT doVpsBlockSmtpSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsBlockSmtpSignalE(output, error_type, error_str);
-        Q_EMIT doVpsBlockSmtpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsBlockSmtpSignalError(output, error_type, error_str);
         Q_EMIT doVpsBlockSmtpSignalErrorFull(worker, error_type, error_str);
     }
@@ -663,32 +585,6 @@ void OAIVPSApi::doVpsDisableCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsDisableCdSignal(output);
         Q_EMIT doVpsDisableCdSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsDisableCdSignalE(output, error_type, error_str);
-        Q_EMIT doVpsDisableCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsDisableCdSignalError(output, error_type, error_str);
         Q_EMIT doVpsDisableCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -755,32 +651,6 @@ void OAIVPSApi::doVpsDisableQuotaCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsDisableQuotaSignal(output);
         Q_EMIT doVpsDisableQuotaSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsDisableQuotaSignalE(output, error_type, error_str);
-        Q_EMIT doVpsDisableQuotaSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsDisableQuotaSignalError(output, error_type, error_str);
         Q_EMIT doVpsDisableQuotaSignalErrorFull(worker, error_type, error_str);
     }
@@ -847,32 +717,6 @@ void OAIVPSApi::doVpsEjectCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsEjectCdSignal(output);
         Q_EMIT doVpsEjectCdSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsEjectCdSignalE(output, error_type, error_str);
-        Q_EMIT doVpsEjectCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsEjectCdSignalError(output, error_type, error_str);
         Q_EMIT doVpsEjectCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -939,32 +783,6 @@ void OAIVPSApi::doVpsEnableQuotaCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsEnableQuotaSignal(output);
         Q_EMIT doVpsEnableQuotaSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsEnableQuotaSignalE(output, error_type, error_str);
-        Q_EMIT doVpsEnableQuotaSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsEnableQuotaSignalError(output, error_type, error_str);
         Q_EMIT doVpsEnableQuotaSignalErrorFull(worker, error_type, error_str);
     }
@@ -1031,32 +849,6 @@ void OAIVPSApi::doVpsRestartCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsRestartSignal(output);
         Q_EMIT doVpsRestartSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsRestartSignalE(output, error_type, error_str);
-        Q_EMIT doVpsRestartSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsRestartSignalError(output, error_type, error_str);
         Q_EMIT doVpsRestartSignalErrorFull(worker, error_type, error_str);
     }
@@ -1123,32 +915,6 @@ void OAIVPSApi::doVpsStartCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsStartSignal(output);
         Q_EMIT doVpsStartSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsStartSignalE(output, error_type, error_str);
-        Q_EMIT doVpsStartSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsStartSignalError(output, error_type, error_str);
         Q_EMIT doVpsStartSignalErrorFull(worker, error_type, error_str);
     }
@@ -1215,32 +981,6 @@ void OAIVPSApi::doVpsStopCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT doVpsStopSignal(output);
         Q_EMIT doVpsStopSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT doVpsStopSignalE(output, error_type, error_str);
-        Q_EMIT doVpsStopSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT doVpsStopSignalError(output, error_type, error_str);
         Q_EMIT doVpsStopSignalErrorFull(worker, error_type, error_str);
     }
@@ -1328,32 +1068,6 @@ void OAIVPSApi::downloadVpsBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT downloadVpsBackupSignal(output);
         Q_EMIT downloadVpsBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT downloadVpsBackupSignalE(output, error_type, error_str);
-        Q_EMIT downloadVpsBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT downloadVpsBackupSignalError(output, error_type, error_str);
         Q_EMIT downloadVpsBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -1406,32 +1120,6 @@ void OAIVPSApi::getNewVpsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewVpsSignal(output);
         Q_EMIT getNewVpsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewVpsSignalE(output, error_type, error_str);
-        Q_EMIT getNewVpsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewVpsSignalError(output, error_type, error_str);
         Q_EMIT getNewVpsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1514,32 +1202,6 @@ void OAIVPSApi::getVpsBackupsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsBackupsSignal(output);
         Q_EMIT getVpsBackupsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsBackupsSignalE(output, error_type, error_str);
-        Q_EMIT getVpsBackupsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsBackupsSignalError(output, error_type, error_str);
         Q_EMIT getVpsBackupsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1605,32 +1267,6 @@ void OAIVPSApi::getVpsBuyHdSpaceCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsBuyHdSpaceSignal();
         Q_EMIT getVpsBuyHdSpaceSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsBuyHdSpaceSignalE(error_type, error_str);
-        Q_EMIT getVpsBuyHdSpaceSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsBuyHdSpaceSignalError(error_type, error_str);
         Q_EMIT getVpsBuyHdSpaceSignalErrorFull(worker, error_type, error_str);
     }
@@ -1696,32 +1332,6 @@ void OAIVPSApi::getVpsBuyIpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsBuyIpSignal();
         Q_EMIT getVpsBuyIpSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsBuyIpSignalE(error_type, error_str);
-        Q_EMIT getVpsBuyIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsBuyIpSignalError(error_type, error_str);
         Q_EMIT getVpsBuyIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -1797,32 +1407,6 @@ void OAIVPSApi::getVpsChangeTimezoneCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsChangeTimezoneSignal(output);
         Q_EMIT getVpsChangeTimezoneSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsChangeTimezoneSignalE(output, error_type, error_str);
-        Q_EMIT getVpsChangeTimezoneSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsChangeTimezoneSignalError(output, error_type, error_str);
         Q_EMIT getVpsChangeTimezoneSignalErrorFull(worker, error_type, error_str);
     }
@@ -1889,32 +1473,6 @@ void OAIVPSApi::getVpsInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsInfoSignal(output);
         Q_EMIT getVpsInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsInfoSignalE(output, error_type, error_str);
-        Q_EMIT getVpsInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsInfoSignalError(output, error_type, error_str);
         Q_EMIT getVpsInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -1981,32 +1539,6 @@ void OAIVPSApi::getVpsInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsInvoicesSignal(output);
         Q_EMIT getVpsInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getVpsInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getVpsInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -2068,32 +1600,6 @@ void OAIVPSApi::getVpsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsListSignal(output);
         Q_EMIT getVpsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsListSignalE(output, error_type, error_str);
-        Q_EMIT getVpsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsListSignalError(output, error_type, error_str);
         Q_EMIT getVpsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -2160,32 +1666,6 @@ void OAIVPSApi::getVpsReinstallOsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsReinstallOsSignal(output);
         Q_EMIT getVpsReinstallOsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsReinstallOsSignalE(output, error_type, error_str);
-        Q_EMIT getVpsReinstallOsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsReinstallOsSignalError(output, error_type, error_str);
         Q_EMIT getVpsReinstallOsSignalErrorFull(worker, error_type, error_str);
     }
@@ -2252,32 +1732,6 @@ void OAIVPSApi::getVpsReverseDnsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsReverseDnsSignal(output);
         Q_EMIT getVpsReverseDnsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsReverseDnsSignalE(output, error_type, error_str);
-        Q_EMIT getVpsReverseDnsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsReverseDnsSignalError(output, error_type, error_str);
         Q_EMIT getVpsReverseDnsSignalErrorFull(worker, error_type, error_str);
     }
@@ -2343,32 +1797,6 @@ void OAIVPSApi::getVpsSetupVncCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsSetupVncSignal();
         Q_EMIT getVpsSetupVncSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsSetupVncSignalE(error_type, error_str);
-        Q_EMIT getVpsSetupVncSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsSetupVncSignalError(error_type, error_str);
         Q_EMIT getVpsSetupVncSignalErrorFull(worker, error_type, error_str);
     }
@@ -2434,32 +1862,6 @@ void OAIVPSApi::getVpsSlicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsSlicesSignal();
         Q_EMIT getVpsSlicesSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsSlicesSignalE(error_type, error_str);
-        Q_EMIT getVpsSlicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsSlicesSignalError(error_type, error_str);
         Q_EMIT getVpsSlicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -2526,32 +1928,6 @@ void OAIVPSApi::getVpsTrafficUsageCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsTrafficUsageSignal(output);
         Q_EMIT getVpsTrafficUsageSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsTrafficUsageSignalE(output, error_type, error_str);
-        Q_EMIT getVpsTrafficUsageSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsTrafficUsageSignalError(output, error_type, error_str);
         Q_EMIT getVpsTrafficUsageSignalErrorFull(worker, error_type, error_str);
     }
@@ -2617,32 +1993,6 @@ void OAIVPSApi::getVpsViewDesktopCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsViewDesktopSignal();
         Q_EMIT getVpsViewDesktopSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsViewDesktopSignalE(error_type, error_str);
-        Q_EMIT getVpsViewDesktopSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsViewDesktopSignalError(error_type, error_str);
         Q_EMIT getVpsViewDesktopSignalErrorFull(worker, error_type, error_str);
     }
@@ -2709,32 +2059,6 @@ void OAIVPSApi::getVpsWelcomeEmailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getVpsWelcomeEmailSignal(output);
         Q_EMIT getVpsWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getVpsWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getVpsWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getVpsWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getVpsWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -2801,32 +2125,6 @@ void OAIVPSApi::postVpsBackupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsBackupSignal(output);
         Q_EMIT postVpsBackupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsBackupSignalE(output, error_type, error_str);
-        Q_EMIT postVpsBackupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsBackupSignalError(output, error_type, error_str);
         Q_EMIT postVpsBackupSignalErrorFull(worker, error_type, error_str);
     }
@@ -2892,32 +2190,6 @@ void OAIVPSApi::postVpsBuyHdSpaceCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsBuyHdSpaceSignal();
         Q_EMIT postVpsBuyHdSpaceSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsBuyHdSpaceSignalE(error_type, error_str);
-        Q_EMIT postVpsBuyHdSpaceSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsBuyHdSpaceSignalError(error_type, error_str);
         Q_EMIT postVpsBuyHdSpaceSignalErrorFull(worker, error_type, error_str);
     }
@@ -2983,32 +2255,6 @@ void OAIVPSApi::postVpsBuyIpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsBuyIpSignal();
         Q_EMIT postVpsBuyIpSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsBuyIpSignalE(error_type, error_str);
-        Q_EMIT postVpsBuyIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsBuyIpSignalError(error_type, error_str);
         Q_EMIT postVpsBuyIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -3079,32 +2325,6 @@ void OAIVPSApi::postVpsChangeHostnameCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsChangeHostnameSignal(output);
         Q_EMIT postVpsChangeHostnameSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsChangeHostnameSignalE(output, error_type, error_str);
-        Q_EMIT postVpsChangeHostnameSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsChangeHostnameSignalError(output, error_type, error_str);
         Q_EMIT postVpsChangeHostnameSignalErrorFull(worker, error_type, error_str);
     }
@@ -3175,32 +2395,6 @@ void OAIVPSApi::postVpsChangeRootPasswordCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT postVpsChangeRootPasswordSignal(output);
         Q_EMIT postVpsChangeRootPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsChangeRootPasswordSignalE(output, error_type, error_str);
-        Q_EMIT postVpsChangeRootPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsChangeRootPasswordSignalError(output, error_type, error_str);
         Q_EMIT postVpsChangeRootPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -3271,32 +2465,6 @@ void OAIVPSApi::postVpsChangeTimezoneCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsChangeTimezoneSignal(output);
         Q_EMIT postVpsChangeTimezoneSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsChangeTimezoneSignalE(output, error_type, error_str);
-        Q_EMIT postVpsChangeTimezoneSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsChangeTimezoneSignalError(output, error_type, error_str);
         Q_EMIT postVpsChangeTimezoneSignalErrorFull(worker, error_type, error_str);
     }
@@ -3367,32 +2535,6 @@ void OAIVPSApi::postVpsChangeWebuzoPasswordCallback(OAIHttpRequestWorker *worker
         Q_EMIT postVpsChangeWebuzoPasswordSignal(output);
         Q_EMIT postVpsChangeWebuzoPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsChangeWebuzoPasswordSignalE(output, error_type, error_str);
-        Q_EMIT postVpsChangeWebuzoPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsChangeWebuzoPasswordSignalError(output, error_type, error_str);
         Q_EMIT postVpsChangeWebuzoPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -3463,32 +2605,6 @@ void OAIVPSApi::postVpsInsertCdCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsInsertCdSignal(output);
         Q_EMIT postVpsInsertCdSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsInsertCdSignalE(output, error_type, error_str);
-        Q_EMIT postVpsInsertCdSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsInsertCdSignalError(output, error_type, error_str);
         Q_EMIT postVpsInsertCdSignalErrorFull(worker, error_type, error_str);
     }
@@ -3567,32 +2683,6 @@ void OAIVPSApi::postVpsReinstallOsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsReinstallOsSignal(output);
         Q_EMIT postVpsReinstallOsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsReinstallOsSignalE(output, error_type, error_str);
-        Q_EMIT postVpsReinstallOsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsReinstallOsSignalError(output, error_type, error_str);
         Q_EMIT postVpsReinstallOsSignalErrorFull(worker, error_type, error_str);
     }
@@ -3659,32 +2749,6 @@ void OAIVPSApi::postVpsResetPasswordCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsResetPasswordSignal(output);
         Q_EMIT postVpsResetPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsResetPasswordSignalE(output, error_type, error_str);
-        Q_EMIT postVpsResetPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsResetPasswordSignalError(output, error_type, error_str);
         Q_EMIT postVpsResetPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -3756,32 +2820,6 @@ void OAIVPSApi::postVpsRestoreCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsRestoreSignal(output);
         Q_EMIT postVpsRestoreSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsRestoreSignalE(output, error_type, error_str);
-        Q_EMIT postVpsRestoreSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsRestoreSignalError(output, error_type, error_str);
         Q_EMIT postVpsRestoreSignalErrorFull(worker, error_type, error_str);
     }
@@ -3853,32 +2891,6 @@ void OAIVPSApi::postVpsReverseDnsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsReverseDnsSignal(output);
         Q_EMIT postVpsReverseDnsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsReverseDnsSignalE(output, error_type, error_str);
-        Q_EMIT postVpsReverseDnsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsReverseDnsSignalError(output, error_type, error_str);
         Q_EMIT postVpsReverseDnsSignalErrorFull(worker, error_type, error_str);
     }
@@ -3945,32 +2957,6 @@ void OAIVPSApi::postVpsSetupVncCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsSetupVncSignal(output);
         Q_EMIT postVpsSetupVncSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsSetupVncSignalE(output, error_type, error_str);
-        Q_EMIT postVpsSetupVncSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsSetupVncSignalError(output, error_type, error_str);
         Q_EMIT postVpsSetupVncSignalErrorFull(worker, error_type, error_str);
     }
@@ -4036,32 +3022,6 @@ void OAIVPSApi::postVpsSlicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsSlicesSignal();
         Q_EMIT postVpsSlicesSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsSlicesSignalE(error_type, error_str);
-        Q_EMIT postVpsSlicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsSlicesSignalError(error_type, error_str);
         Q_EMIT postVpsSlicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -4127,32 +3087,6 @@ void OAIVPSApi::postVpsViewDesktopCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postVpsViewDesktopSignal();
         Q_EMIT postVpsViewDesktopSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postVpsViewDesktopSignalE(error_type, error_str);
-        Q_EMIT postVpsViewDesktopSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postVpsViewDesktopSignalError(error_type, error_str);
         Q_EMIT postVpsViewDesktopSignalErrorFull(worker, error_type, error_str);
     }
@@ -4210,32 +3144,6 @@ void OAIVPSApi::putVpsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putVpsSignal(output);
         Q_EMIT putVpsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putVpsSignalE(output, error_type, error_str);
-        Q_EMIT putVpsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putVpsSignalError(output, error_type, error_str);
         Q_EMIT putVpsSignalErrorFull(worker, error_type, error_str);
     }
@@ -4301,32 +3209,6 @@ void OAIVPSApi::updateVpsInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateVpsInfoSignal();
         Q_EMIT updateVpsInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateVpsInfoSignalE(error_type, error_str);
-        Q_EMIT updateVpsInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateVpsInfoSignalError(error_type, error_str);
         Q_EMIT updateVpsInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -4393,42 +3275,16 @@ void OAIVPSApi::vPSCancelCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT vPSCancelSignal(output);
         Q_EMIT vPSCancelSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT vPSCancelSignalE(output, error_type, error_str);
-        Q_EMIT vPSCancelSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT vPSCancelSignalError(output, error_type, error_str);
         Q_EMIT vPSCancelSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIVPSApi::tokenAvailable(){
+void OAIVPSApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -4438,7 +3294,7 @@ void OAIVPSApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -4448,7 +3304,7 @@ void OAIVPSApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -4458,7 +3314,7 @@ void OAIVPSApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

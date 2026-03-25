@@ -37,6 +37,7 @@ local openapiclient_mail_alert_update_request = require "openapiclient.model.mai
 local openapiclient_mail_delist_request = require "openapiclient.model.mail_delist_request"
 local openapiclient_send_mail = require "openapiclient.model.send_mail"
 local openapiclient_send_mail_adv = require "openapiclient.model.send_mail_adv"
+local openapiclient_view_mail_log_start_date_parameter = require "openapiclient.model.view_mail_log_start_date_parameter"
 
 local mail_api = {}
 local mail_api_mt = {
@@ -1430,13 +1431,13 @@ function mail_api:update_mail_info(id)
 	end
 end
 
-function mail_api:view_mail_log(id, id2, origin, mx, from, to, subject, mailid, skip, limit, start_date, end_date, delivered)
+function mail_api:view_mail_log(id, id2, origin, mx, from, to, subject, mailid, message_id, replyto, headerfrom, delivered, skip, limit, start_date, end_date, sort, dir, groupby)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/mail/%s/log?id=%s&origin=%s&mx=%s&from=%s&to=%s&subject=%s&mailid=%s&skip=%s&limit=%s&startDate=%s&endDate=%s&delivered=%s",
-			self.basePath, id, http_util.encodeURIComponent(id2), http_util.encodeURIComponent(origin), http_util.encodeURIComponent(mx), http_util.encodeURIComponent(from), http_util.encodeURIComponent(to), http_util.encodeURIComponent(subject), http_util.encodeURIComponent(mailid), http_util.encodeURIComponent(skip), http_util.encodeURIComponent(limit), http_util.encodeURIComponent(start_date), http_util.encodeURIComponent(end_date), http_util.encodeURIComponent(delivered));
+		path = string.format("%s/mail/%s/log?id=%s&origin=%s&mx=%s&from=%s&to=%s&subject=%s&mailid=%s&messageId=%s&replyto=%s&headerfrom=%s&delivered=%s&skip=%s&limit=%s&startDate=%s&endDate=%s&sort=%s&dir=%s&groupby=%s",
+			self.basePath, id, http_util.encodeURIComponent(id2), http_util.encodeURIComponent(origin), http_util.encodeURIComponent(mx), http_util.encodeURIComponent(from), http_util.encodeURIComponent(to), http_util.encodeURIComponent(subject), http_util.encodeURIComponent(mailid), http_util.encodeURIComponent(message_id), http_util.encodeURIComponent(replyto), http_util.encodeURIComponent(headerfrom), http_util.encodeURIComponent(delivered), http_util.encodeURIComponent(skip), http_util.encodeURIComponent(limit), http_util.encodeURIComponent(start_date), http_util.encodeURIComponent(end_date), http_util.encodeURIComponent(sort), http_util.encodeURIComponent(dir), http_util.encodeURIComponent(groupby));
 	})
 
 	-- set HTTP verb

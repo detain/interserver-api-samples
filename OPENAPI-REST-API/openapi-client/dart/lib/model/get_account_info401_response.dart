@@ -53,10 +53,10 @@ class GetAccountInfo401Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetAccountInfo401Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetAccountInfo401Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'code'), 'Required key "GetAccountInfo401Response[code]" is missing from JSON.');
+        assert(json[r'code'] != null, 'Required key "GetAccountInfo401Response[code]" has a null value in JSON.');
+        assert(json.containsKey(r'message'), 'Required key "GetAccountInfo401Response[message]" is missing from JSON.');
+        assert(json[r'message'] != null, 'Required key "GetAccountInfo401Response[message]" has a null value in JSON.');
         return true;
       }());
 

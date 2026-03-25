@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHome_services_vps::OAIHome_services_vps(QString json) {
+OAIHome_services_vps::OAIHome_services_vps(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIHome_services_vps::initializeModel() {
     m_count_isValid = false;
 }
 
-void OAIHome_services_vps::fromJson(QString jsonString) {
+void OAIHome_services_vps::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

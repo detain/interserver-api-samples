@@ -298,32 +298,6 @@ void OAIAccountApi::changeAccountUsernameCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT changeAccountUsernameSignal(output);
         Q_EMIT changeAccountUsernameSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT changeAccountUsernameSignalE(output, error_type, error_str);
-        Q_EMIT changeAccountUsernameSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT changeAccountUsernameSignalError(output, error_type, error_str);
         Q_EMIT changeAccountUsernameSignalErrorFull(worker, error_type, error_str);
     }
@@ -390,32 +364,6 @@ void OAIAccountApi::deleteAccountOauthNameCallback(OAIHttpRequestWorker *worker)
         Q_EMIT deleteAccountOauthNameSignal(output);
         Q_EMIT deleteAccountOauthNameSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteAccountOauthNameSignalE(output, error_type, error_str);
-        Q_EMIT deleteAccountOauthNameSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteAccountOauthNameSignalError(output, error_type, error_str);
         Q_EMIT deleteAccountOauthNameSignalErrorFull(worker, error_type, error_str);
     }
@@ -468,32 +416,6 @@ void OAIAccountApi::deleteAccountTfaCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteAccountTfaSignal(output);
         Q_EMIT deleteAccountTfaSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteAccountTfaSignalE(output, error_type, error_str);
-        Q_EMIT deleteAccountTfaSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteAccountTfaSignalError(output, error_type, error_str);
         Q_EMIT deleteAccountTfaSignalErrorFull(worker, error_type, error_str);
     }
@@ -546,32 +468,6 @@ void OAIAccountApi::deleteIpLimitCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteIpLimitSignal(output);
         Q_EMIT deleteIpLimitSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteIpLimitSignalE(output, error_type, error_str);
-        Q_EMIT deleteIpLimitSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteIpLimitSignalError(output, error_type, error_str);
         Q_EMIT deleteIpLimitSignalErrorFull(worker, error_type, error_str);
     }
@@ -624,32 +520,6 @@ void OAIAccountApi::getAccountInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getAccountInfoSignal(output);
         Q_EMIT getAccountInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAccountInfoSignalE(output, error_type, error_str);
-        Q_EMIT getAccountInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAccountInfoSignalError(output, error_type, error_str);
         Q_EMIT getAccountInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -702,32 +572,6 @@ void OAIAccountApi::getAccountTfaSetupCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getAccountTfaSetupSignal(output);
         Q_EMIT getAccountTfaSetupSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getAccountTfaSetupSignalE(output, error_type, error_str);
-        Q_EMIT getAccountTfaSetupSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getAccountTfaSetupSignalError(output, error_type, error_str);
         Q_EMIT getAccountTfaSetupSignalErrorFull(worker, error_type, error_str);
     }
@@ -780,32 +624,6 @@ void OAIAccountApi::getHomeCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getHomeSignal(output);
         Q_EMIT getHomeSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getHomeSignalE(output, error_type, error_str);
-        Q_EMIT getHomeSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getHomeSignalError(output, error_type, error_str);
         Q_EMIT getHomeSignalErrorFull(worker, error_type, error_str);
     }
@@ -858,32 +676,6 @@ void OAIAccountApi::getSearchCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getSearchSignal(output);
         Q_EMIT getSearchSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getSearchSignalE(output, error_type, error_str);
-        Q_EMIT getSearchSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getSearchSignalError(output, error_type, error_str);
         Q_EMIT getSearchSignalErrorFull(worker, error_type, error_str);
     }
@@ -936,32 +728,6 @@ void OAIAccountApi::logoutCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT logoutSignal(output);
         Q_EMIT logoutSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT logoutSignalE(output, error_type, error_str);
-        Q_EMIT logoutSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT logoutSignalError(output, error_type, error_str);
         Q_EMIT logoutSignalErrorFull(worker, error_type, error_str);
     }
@@ -1028,32 +794,6 @@ void OAIAccountApi::logoutAccountOauthCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT logoutAccountOauthSignal(output);
         Q_EMIT logoutAccountOauthSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT logoutAccountOauthSignalE(output, error_type, error_str);
-        Q_EMIT logoutAccountOauthSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT logoutAccountOauthSignalError(output, error_type, error_str);
         Q_EMIT logoutAccountOauthSignalErrorFull(worker, error_type, error_str);
     }
@@ -1106,32 +846,6 @@ void OAIAccountApi::updateAccountApiKeyCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateAccountApiKeySignal(output);
         Q_EMIT updateAccountApiKeySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountApiKeySignalE(output, error_type, error_str);
-        Q_EMIT updateAccountApiKeySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountApiKeySignalError(output, error_type, error_str);
         Q_EMIT updateAccountApiKeySignalErrorFull(worker, error_type, error_str);
     }
@@ -1192,32 +906,6 @@ void OAIAccountApi::updateAccountFeaturesCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT updateAccountFeaturesSignal(output);
         Q_EMIT updateAccountFeaturesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountFeaturesSignalE(output, error_type, error_str);
-        Q_EMIT updateAccountFeaturesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountFeaturesSignalError(output, error_type, error_str);
         Q_EMIT updateAccountFeaturesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1337,32 +1025,6 @@ void OAIAccountApi::updateAccountInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateAccountInfoSignal();
         Q_EMIT updateAccountInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountInfoSignalE(error_type, error_str);
-        Q_EMIT updateAccountInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountInfoSignalError(error_type, error_str);
         Q_EMIT updateAccountInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -1422,32 +1084,6 @@ void OAIAccountApi::updateAccountIpLimitsCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT updateAccountIpLimitsSignal();
         Q_EMIT updateAccountIpLimitsSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountIpLimitsSignalE(error_type, error_str);
-        Q_EMIT updateAccountIpLimitsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountIpLimitsSignalError(error_type, error_str);
         Q_EMIT updateAccountIpLimitsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1504,32 +1140,6 @@ void OAIAccountApi::updateAccountPasswordCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT updateAccountPasswordSignal(output);
         Q_EMIT updateAccountPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountPasswordSignalE(output, error_type, error_str);
-        Q_EMIT updateAccountPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountPasswordSignalError(output, error_type, error_str);
         Q_EMIT updateAccountPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -1586,32 +1196,6 @@ void OAIAccountApi::updateAccountSshKeyCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateAccountSshKeySignal(output);
         Q_EMIT updateAccountSshKeySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountSshKeySignalE(output, error_type, error_str);
-        Q_EMIT updateAccountSshKeySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountSshKeySignalError(output, error_type, error_str);
         Q_EMIT updateAccountSshKeySignalErrorFull(worker, error_type, error_str);
     }
@@ -1668,42 +1252,16 @@ void OAIAccountApi::updateAccountTfaCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateAccountTfaSignal(output);
         Q_EMIT updateAccountTfaSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateAccountTfaSignalE(output, error_type, error_str);
-        Q_EMIT updateAccountTfaSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateAccountTfaSignalError(output, error_type, error_str);
         Q_EMIT updateAccountTfaSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIAccountApi::tokenAvailable(){
+void OAIAccountApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1713,7 +1271,7 @@ void OAIAccountApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1723,7 +1281,7 @@ void OAIAccountApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1733,7 +1291,7 @@ void OAIAccountApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

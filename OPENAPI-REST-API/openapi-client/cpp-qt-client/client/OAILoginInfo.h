@@ -33,13 +33,13 @@ class OAILoginServiceCounts;
 class OAILoginInfo : public OAIObject {
 public:
     OAILoginInfo();
-    OAILoginInfo(QString json);
+    OAILoginInfo(const QString &json);
     ~OAILoginInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCaptcha() const;
     void setCaptcha(const QString &captcha);

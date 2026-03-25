@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILoginErrorResponse::OAILoginErrorResponse(QString json) {
+OAILoginErrorResponse::OAILoginErrorResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAILoginErrorResponse::initializeModel() {
     m_field_isValid = false;
 }
 
-void OAILoginErrorResponse::fromJson(QString jsonString) {
+void OAILoginErrorResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

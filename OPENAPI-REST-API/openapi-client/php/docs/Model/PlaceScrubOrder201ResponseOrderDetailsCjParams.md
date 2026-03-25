@@ -1,4 +1,4 @@
-# # PlaceScrubOrder201ResponseOrderDetailsCjParams
+# PlaceScrubOrder201ResponseOrderDetailsCjParams
 
 ## Properties
 

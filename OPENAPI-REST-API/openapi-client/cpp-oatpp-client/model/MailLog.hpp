@@ -12,7 +12,7 @@
 /*
  * MailLog.h
  *
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 
 #ifndef MailLog_H_

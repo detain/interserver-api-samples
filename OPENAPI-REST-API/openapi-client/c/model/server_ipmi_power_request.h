@@ -28,14 +28,14 @@ interserver_management_api_server_ipmi_power_request_ACTION_e server_ipmi_power_
 
 typedef struct server_ipmi_power_request_t {
     interserver_management_api_server_ipmi_power_request_ACTION_e action; //enum
-    int asset; //numeric
+    int *asset; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } server_ipmi_power_request_t;
 
 __attribute__((deprecated)) server_ipmi_power_request_t *server_ipmi_power_request_create(
     interserver_management_api_server_ipmi_power_request_ACTION_e action,
-    int asset
+    int *asset
 );
 
 void server_ipmi_power_request_free(server_ipmi_power_request_t *server_ipmi_power_request);

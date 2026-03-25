@@ -222,12 +222,18 @@ isa_ok($api, 'OpenAPIClient::MailApi');
 #my $view_mail_log_to = undef; # replace NULL with a proper value
 #my $view_mail_log_subject = undef; # replace NULL with a proper value
 #my $view_mail_log_mailid = undef; # replace NULL with a proper value
+#my $view_mail_log_message_id = undef; # replace NULL with a proper value
+#my $view_mail_log_replyto = undef; # replace NULL with a proper value
+#my $view_mail_log_headerfrom = undef; # replace NULL with a proper value
+#my $view_mail_log_delivered = undef; # replace NULL with a proper value
 #my $view_mail_log_skip = undef; # replace NULL with a proper value
 #my $view_mail_log_limit = undef; # replace NULL with a proper value
 #my $view_mail_log_start_date = undef; # replace NULL with a proper value
 #my $view_mail_log_end_date = undef; # replace NULL with a proper value
-#my $view_mail_log_delivered = undef; # replace NULL with a proper value
-#my $view_mail_log_result = $api->view_mail_log(id => $view_mail_log_id, id2 => $view_mail_log_id2, origin => $view_mail_log_origin, mx => $view_mail_log_mx, from => $view_mail_log_from, to => $view_mail_log_to, subject => $view_mail_log_subject, mailid => $view_mail_log_mailid, skip => $view_mail_log_skip, limit => $view_mail_log_limit, start_date => $view_mail_log_start_date, end_date => $view_mail_log_end_date, delivered => $view_mail_log_delivered);
+#my $view_mail_log_sort = undef; # replace NULL with a proper value
+#my $view_mail_log_dir = undef; # replace NULL with a proper value
+#my $view_mail_log_groupby = undef; # replace NULL with a proper value
+#my $view_mail_log_result = $api->view_mail_log(id => $view_mail_log_id, id2 => $view_mail_log_id2, origin => $view_mail_log_origin, mx => $view_mail_log_mx, from => $view_mail_log_from, to => $view_mail_log_to, subject => $view_mail_log_subject, mailid => $view_mail_log_mailid, message_id => $view_mail_log_message_id, replyto => $view_mail_log_replyto, headerfrom => $view_mail_log_headerfrom, delivered => $view_mail_log_delivered, skip => $view_mail_log_skip, limit => $view_mail_log_limit, start_date => $view_mail_log_start_date, end_date => $view_mail_log_end_date, sort => $view_mail_log_sort, dir => $view_mail_log_dir, groupby => $view_mail_log_groupby);
 
 
 done_testing();

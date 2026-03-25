@@ -12,25 +12,29 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 
 /** 
   */
-case class AccountInfoOauthproviders(
-)
-  
+trait AccountInfoOauthproviders
 object AccountInfoOauthproviders {
-  given encoderAccountInfoOauthproviders: Encoder[AccountInfoOauthproviders] = Encoder.instance { t =>
-    Json.fromFields{
-      Seq(
-      ).flatten
-    }
+  import io.circe.{ Decoder, Encoder }
+  import io.circe.syntax.*
+  import cats.syntax.functor.*
+
+// no discriminator
+  given encoderAccountInfoOauthproviders: Encoder[AccountInfoOauthproviders] = Encoder.instance {
+    case obj: AccountInfoOauthConfigProviders => obj.asJson
+    case obj: Seq[AnyType] => obj.asJson
   }
-  given decoderAccountInfoOauthproviders: Decoder[AccountInfoOauthproviders] = Decoder.instance { c =>
-    for {
-    } yield AccountInfoOauthproviders(
-    )
-  }
+
+  given decoderAccountInfoOauthproviders: Decoder[AccountInfoOauthproviders] =
+    List[Decoder[AccountInfoOauthproviders]](
+      Decoder[AccountInfoOauthConfigProviders].widen,
+      Decoder[Seq[AnyType]].widen,
+  ).reduceLeft(_ or _)
 }
+
 

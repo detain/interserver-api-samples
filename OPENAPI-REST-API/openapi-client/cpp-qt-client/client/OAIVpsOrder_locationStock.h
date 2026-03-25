@@ -32,13 +32,13 @@ class OAIVpsOrder_locationStock_1;
 class OAIVpsOrder_locationStock : public OAIObject {
 public:
     OAIVpsOrder_locationStock();
-    OAIVpsOrder_locationStock(QString json);
+    OAIVpsOrder_locationStock(const QString &json);
     ~OAIVpsOrder_locationStock() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsOrder_locationStock_1 getR1() const;
     void setR1(const OAIVpsOrder_locationStock_1 &r_1);

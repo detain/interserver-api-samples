@@ -33,13 +33,13 @@ class OAIPlaceScrubOrder_201_response_order_details_cj_params;
 class OAIPlaceScrubOrder_201_response_order_details : public OAIObject {
 public:
     OAIPlaceScrubOrder_201_response_order_details();
-    OAIPlaceScrubOrder_201_response_order_details(QString json);
+    OAIPlaceScrubOrder_201_response_order_details(const QString &json);
     ~OAIPlaceScrubOrder_201_response_order_details() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getTotalCost() const;
     void setTotalCost(const qint32 &total_cost);

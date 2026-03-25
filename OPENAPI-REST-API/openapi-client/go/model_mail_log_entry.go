@@ -20,54 +20,58 @@ import (
 // checks if the MailLogEntry type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MailLogEntry{}
 
-// MailLogEntry An email record
+// MailLogEntry A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 type MailLogEntry struct {
-	// internal db id
+	// Internal auto-increment database row ID.
 	Id int32 `json:"_id"`
-	// mail id
+	// The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
 	Id string `json:"id"`
-	// from address
+	// SMTP envelope `MAIL FROM` address.
 	From string `json:"from"`
-	// to address
+	// SMTP envelope `RCPT TO` address.
 	To string `json:"to"`
-	// email subject
-	Subject string `json:"subject"`
-	// message id
-	MessageId *string `json:"messageId,omitempty"`
-	// creation date
+	// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+	Subject NullableString `json:"subject,omitempty"`
+	// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+	MessageId NullableString `json:"messageId,omitempty"`
+	// Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
 	Created string `json:"created"`
-	// creation timestamp
+	// Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
 	Time int32 `json:"time"`
-	// user account
+	// The SMTP AUTH username used to submit the message (e.g. `mb5658`).
 	User string `json:"user"`
-	// transaction type
+	// SMTP transaction type negotiated with the relay.
 	Transtype string `json:"transtype"`
-	// origin ip
+	// IP address of the client that submitted the message to the relay.
 	Origin string `json:"origin"`
-	// interface name
+	// Relay interface name that accepted the message.
 	Interface string `json:"interface"`
-	// sending zone
-	SendingZone string `json:"sendingZone"`
-	// email body size in bytes
-	BodySize int32 `json:"bodySize"`
-	// index of email in the to adderess list
-	Seq int32 `json:"seq"`
-	// to address this email is being sent to
-	Recipient string `json:"recipient"`
-	// to address domain
-	Domain string `json:"domain"`
-	// locked status
-	Locked int32 `json:"locked"`
-	// lock timestamp
-	LockTime int32 `json:"lockTime"`
-	// assigned server
-	Assigned string `json:"assigned"`
-	// queued timestamp
-	Queued string `json:"queued"`
-	// mx hostname
-	MxHostname string `json:"mxHostname"`
-	// mail delivery response
-	Response string `json:"response"`
+	// The sending zone assigned by the relay for outbound delivery.
+	SendingZone NullableString `json:"sendingZone,omitempty"`
+	// Size of the message body in bytes.
+	BodySize NullableInt32 `json:"bodySize,omitempty"`
+	// Sequence index of this recipient in a multi-recipient message. Starts at 1.
+	Seq NullableInt32 `json:"seq,omitempty"`
+	// Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+	Delivered NullableInt32 `json:"delivered,omitempty"`
+	// The SMTP response code from the destination MX server (e.g. `250`).
+	Code NullableInt32 `json:"code,omitempty"`
+	// The specific recipient address this delivery record is for.
+	Recipient NullableString `json:"recipient,omitempty"`
+	// The full SMTP response string received from the destination MX server.
+	Response NullableString `json:"response,omitempty"`
+	// The destination domain for this delivery attempt.
+	Domain NullableString `json:"domain,omitempty"`
+	// Whether the queue entry is currently locked for delivery processing.
+	Locked NullableInt32 `json:"locked,omitempty"`
+	// Millisecond-precision timestamp of the last queue lock acquisition.
+	LockTime NullableString `json:"lockTime,omitempty"`
+	// The relay server node assigned to deliver this message.
+	Assigned NullableString `json:"assigned,omitempty"`
+	// ISO 8601 timestamp when the message was placed into the delivery queue.
+	Queued NullableString `json:"queued,omitempty"`
+	// The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+	MxHostname NullableString `json:"mxHostname,omitempty"`
 }
 
 type _MailLogEntry MailLogEntry
@@ -76,30 +80,18 @@ type _MailLogEntry MailLogEntry
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMailLogEntry(id int32, id string, from string, to string, subject string, created string, time int32, user string, transtype string, origin string, interface_ string, sendingZone string, bodySize int32, seq int32, recipient string, domain string, locked int32, lockTime int32, assigned string, queued string, mxHostname string, response string) *MailLogEntry {
+func NewMailLogEntry(id int32, id string, from string, to string, created string, time int32, user string, transtype string, origin string, interface_ string) *MailLogEntry {
 	this := MailLogEntry{}
 	this.Id = id
 	this.Id = id
 	this.From = from
 	this.To = to
-	this.Subject = subject
 	this.Created = created
 	this.Time = time
 	this.User = user
 	this.Transtype = transtype
 	this.Origin = origin
 	this.Interface = interface_
-	this.SendingZone = sendingZone
-	this.BodySize = bodySize
-	this.Seq = seq
-	this.Recipient = recipient
-	this.Domain = domain
-	this.Locked = locked
-	this.LockTime = lockTime
-	this.Assigned = assigned
-	this.Queued = queued
-	this.MxHostname = mxHostname
-	this.Response = response
 	return &this
 }
 
@@ -207,60 +199,88 @@ func (o *MailLogEntry) SetTo(v string) {
 	o.To = v
 }
 
-// GetSubject returns the Subject field value
+// GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MailLogEntry) GetSubject() string {
-	if o == nil {
+	if o == nil || IsNil(o.Subject.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Subject
+	return *o.Subject.Get()
 }
 
-// GetSubjectOk returns a tuple with the Subject field value
+// GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MailLogEntry) GetSubjectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Subject, true
+	return o.Subject.Get(), o.Subject.IsSet()
 }
 
-// SetSubject sets field value
-func (o *MailLogEntry) SetSubject(v string) {
-	o.Subject = v
-}
-
-// GetMessageId returns the MessageId field value if set, zero value otherwise.
-func (o *MailLogEntry) GetMessageId() string {
-	if o == nil || IsNil(o.MessageId) {
-		var ret string
-		return ret
-	}
-	return *o.MessageId
-}
-
-// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetMessageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.MessageId) {
-		return nil, false
-	}
-	return o.MessageId, true
-}
-
-// HasMessageId returns a boolean if a field has been set.
-func (o *MailLogEntry) HasMessageId() bool {
-	if o != nil && !IsNil(o.MessageId) {
+// HasSubject returns a boolean if a field has been set.
+func (o *MailLogEntry) HasSubject() bool {
+	if o != nil && o.Subject.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
+// SetSubject gets a reference to the given NullableString and assigns it to the Subject field.
+func (o *MailLogEntry) SetSubject(v string) {
+	o.Subject.Set(&v)
+}
+// SetSubjectNil sets the value for Subject to be an explicit nil
+func (o *MailLogEntry) SetSubjectNil() {
+	o.Subject.Set(nil)
+}
+
+// UnsetSubject ensures that no value is present for Subject, not even an explicit nil
+func (o *MailLogEntry) UnsetSubject() {
+	o.Subject.Unset()
+}
+
+// GetMessageId returns the MessageId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetMessageId() string {
+	if o == nil || IsNil(o.MessageId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MessageId.Get()
+}
+
+// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetMessageIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MessageId.Get(), o.MessageId.IsSet()
+}
+
+// HasMessageId returns a boolean if a field has been set.
+func (o *MailLogEntry) HasMessageId() bool {
+	if o != nil && o.MessageId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMessageId gets a reference to the given NullableString and assigns it to the MessageId field.
 func (o *MailLogEntry) SetMessageId(v string) {
-	o.MessageId = &v
+	o.MessageId.Set(&v)
+}
+// SetMessageIdNil sets the value for MessageId to be an explicit nil
+func (o *MailLogEntry) SetMessageIdNil() {
+	o.MessageId.Set(nil)
+}
+
+// UnsetMessageId ensures that no value is present for MessageId, not even an explicit nil
+func (o *MailLogEntry) UnsetMessageId() {
+	o.MessageId.Unset()
 }
 
 // GetCreated returns the Created field value
@@ -407,268 +427,550 @@ func (o *MailLogEntry) SetInterface(v string) {
 	o.Interface = v
 }
 
-// GetSendingZone returns the SendingZone field value
+// GetSendingZone returns the SendingZone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MailLogEntry) GetSendingZone() string {
-	if o == nil {
+	if o == nil || IsNil(o.SendingZone.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.SendingZone
+	return *o.SendingZone.Get()
 }
 
-// GetSendingZoneOk returns a tuple with the SendingZone field value
+// GetSendingZoneOk returns a tuple with the SendingZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MailLogEntry) GetSendingZoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.SendingZone, true
+	return o.SendingZone.Get(), o.SendingZone.IsSet()
 }
 
-// SetSendingZone sets field value
+// HasSendingZone returns a boolean if a field has been set.
+func (o *MailLogEntry) HasSendingZone() bool {
+	if o != nil && o.SendingZone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSendingZone gets a reference to the given NullableString and assigns it to the SendingZone field.
 func (o *MailLogEntry) SetSendingZone(v string) {
-	o.SendingZone = v
+	o.SendingZone.Set(&v)
+}
+// SetSendingZoneNil sets the value for SendingZone to be an explicit nil
+func (o *MailLogEntry) SetSendingZoneNil() {
+	o.SendingZone.Set(nil)
 }
 
-// GetBodySize returns the BodySize field value
+// UnsetSendingZone ensures that no value is present for SendingZone, not even an explicit nil
+func (o *MailLogEntry) UnsetSendingZone() {
+	o.SendingZone.Unset()
+}
+
+// GetBodySize returns the BodySize field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MailLogEntry) GetBodySize() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.BodySize.Get()) {
 		var ret int32
 		return ret
 	}
-
-	return o.BodySize
+	return *o.BodySize.Get()
 }
 
-// GetBodySizeOk returns a tuple with the BodySize field value
+// GetBodySizeOk returns a tuple with the BodySize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MailLogEntry) GetBodySizeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BodySize, true
+	return o.BodySize.Get(), o.BodySize.IsSet()
 }
 
-// SetBodySize sets field value
+// HasBodySize returns a boolean if a field has been set.
+func (o *MailLogEntry) HasBodySize() bool {
+	if o != nil && o.BodySize.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBodySize gets a reference to the given NullableInt32 and assigns it to the BodySize field.
 func (o *MailLogEntry) SetBodySize(v int32) {
-	o.BodySize = v
+	o.BodySize.Set(&v)
+}
+// SetBodySizeNil sets the value for BodySize to be an explicit nil
+func (o *MailLogEntry) SetBodySizeNil() {
+	o.BodySize.Set(nil)
 }
 
-// GetSeq returns the Seq field value
+// UnsetBodySize ensures that no value is present for BodySize, not even an explicit nil
+func (o *MailLogEntry) UnsetBodySize() {
+	o.BodySize.Unset()
+}
+
+// GetSeq returns the Seq field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MailLogEntry) GetSeq() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Seq.Get()) {
 		var ret int32
 		return ret
 	}
-
-	return o.Seq
+	return *o.Seq.Get()
 }
 
-// GetSeqOk returns a tuple with the Seq field value
+// GetSeqOk returns a tuple with the Seq field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MailLogEntry) GetSeqOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Seq, true
+	return o.Seq.Get(), o.Seq.IsSet()
 }
 
-// SetSeq sets field value
+// HasSeq returns a boolean if a field has been set.
+func (o *MailLogEntry) HasSeq() bool {
+	if o != nil && o.Seq.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSeq gets a reference to the given NullableInt32 and assigns it to the Seq field.
 func (o *MailLogEntry) SetSeq(v int32) {
-	o.Seq = v
+	o.Seq.Set(&v)
+}
+// SetSeqNil sets the value for Seq to be an explicit nil
+func (o *MailLogEntry) SetSeqNil() {
+	o.Seq.Set(nil)
 }
 
-// GetRecipient returns the Recipient field value
-func (o *MailLogEntry) GetRecipient() string {
+// UnsetSeq ensures that no value is present for Seq, not even an explicit nil
+func (o *MailLogEntry) UnsetSeq() {
+	o.Seq.Unset()
+}
+
+// GetDelivered returns the Delivered field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetDelivered() int32 {
+	if o == nil || IsNil(o.Delivered.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Delivered.Get()
+}
+
+// GetDeliveredOk returns a tuple with the Delivered field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetDeliveredOk() (*int32, bool) {
 	if o == nil {
+		return nil, false
+	}
+	return o.Delivered.Get(), o.Delivered.IsSet()
+}
+
+// HasDelivered returns a boolean if a field has been set.
+func (o *MailLogEntry) HasDelivered() bool {
+	if o != nil && o.Delivered.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDelivered gets a reference to the given NullableInt32 and assigns it to the Delivered field.
+func (o *MailLogEntry) SetDelivered(v int32) {
+	o.Delivered.Set(&v)
+}
+// SetDeliveredNil sets the value for Delivered to be an explicit nil
+func (o *MailLogEntry) SetDeliveredNil() {
+	o.Delivered.Set(nil)
+}
+
+// UnsetDelivered ensures that no value is present for Delivered, not even an explicit nil
+func (o *MailLogEntry) UnsetDelivered() {
+	o.Delivered.Unset()
+}
+
+// GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetCode() int32 {
+	if o == nil || IsNil(o.Code.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Code.Get()
+}
+
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetCodeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Code.Get(), o.Code.IsSet()
+}
+
+// HasCode returns a boolean if a field has been set.
+func (o *MailLogEntry) HasCode() bool {
+	if o != nil && o.Code.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given NullableInt32 and assigns it to the Code field.
+func (o *MailLogEntry) SetCode(v int32) {
+	o.Code.Set(&v)
+}
+// SetCodeNil sets the value for Code to be an explicit nil
+func (o *MailLogEntry) SetCodeNil() {
+	o.Code.Set(nil)
+}
+
+// UnsetCode ensures that no value is present for Code, not even an explicit nil
+func (o *MailLogEntry) UnsetCode() {
+	o.Code.Unset()
+}
+
+// GetRecipient returns the Recipient field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetRecipient() string {
+	if o == nil || IsNil(o.Recipient.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Recipient
+	return *o.Recipient.Get()
 }
 
-// GetRecipientOk returns a tuple with the Recipient field value
+// GetRecipientOk returns a tuple with the Recipient field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MailLogEntry) GetRecipientOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Recipient, true
+	return o.Recipient.Get(), o.Recipient.IsSet()
 }
 
-// SetRecipient sets field value
+// HasRecipient returns a boolean if a field has been set.
+func (o *MailLogEntry) HasRecipient() bool {
+	if o != nil && o.Recipient.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipient gets a reference to the given NullableString and assigns it to the Recipient field.
 func (o *MailLogEntry) SetRecipient(v string) {
-	o.Recipient = v
+	o.Recipient.Set(&v)
+}
+// SetRecipientNil sets the value for Recipient to be an explicit nil
+func (o *MailLogEntry) SetRecipientNil() {
+	o.Recipient.Set(nil)
 }
 
-// GetDomain returns the Domain field value
-func (o *MailLogEntry) GetDomain() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Domain
+// UnsetRecipient ensures that no value is present for Recipient, not even an explicit nil
+func (o *MailLogEntry) UnsetRecipient() {
+	o.Recipient.Unset()
 }
 
-// GetDomainOk returns a tuple with the Domain field value
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetDomainOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Domain, true
-}
-
-// SetDomain sets field value
-func (o *MailLogEntry) SetDomain(v string) {
-	o.Domain = v
-}
-
-// GetLocked returns the Locked field value
-func (o *MailLogEntry) GetLocked() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Locked
-}
-
-// GetLockedOk returns a tuple with the Locked field value
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetLockedOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Locked, true
-}
-
-// SetLocked sets field value
-func (o *MailLogEntry) SetLocked(v int32) {
-	o.Locked = v
-}
-
-// GetLockTime returns the LockTime field value
-func (o *MailLogEntry) GetLockTime() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.LockTime
-}
-
-// GetLockTimeOk returns a tuple with the LockTime field value
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetLockTimeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LockTime, true
-}
-
-// SetLockTime sets field value
-func (o *MailLogEntry) SetLockTime(v int32) {
-	o.LockTime = v
-}
-
-// GetAssigned returns the Assigned field value
-func (o *MailLogEntry) GetAssigned() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Assigned
-}
-
-// GetAssignedOk returns a tuple with the Assigned field value
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetAssignedOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Assigned, true
-}
-
-// SetAssigned sets field value
-func (o *MailLogEntry) SetAssigned(v string) {
-	o.Assigned = v
-}
-
-// GetQueued returns the Queued field value
-func (o *MailLogEntry) GetQueued() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Queued
-}
-
-// GetQueuedOk returns a tuple with the Queued field value
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetQueuedOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Queued, true
-}
-
-// SetQueued sets field value
-func (o *MailLogEntry) SetQueued(v string) {
-	o.Queued = v
-}
-
-// GetMxHostname returns the MxHostname field value
-func (o *MailLogEntry) GetMxHostname() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.MxHostname
-}
-
-// GetMxHostnameOk returns a tuple with the MxHostname field value
-// and a boolean to check if the value has been set.
-func (o *MailLogEntry) GetMxHostnameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MxHostname, true
-}
-
-// SetMxHostname sets field value
-func (o *MailLogEntry) SetMxHostname(v string) {
-	o.MxHostname = v
-}
-
-// GetResponse returns the Response field value
+// GetResponse returns the Response field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MailLogEntry) GetResponse() string {
-	if o == nil {
+	if o == nil || IsNil(o.Response.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Response
+	return *o.Response.Get()
 }
 
-// GetResponseOk returns a tuple with the Response field value
+// GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MailLogEntry) GetResponseOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Response, true
+	return o.Response.Get(), o.Response.IsSet()
 }
 
-// SetResponse sets field value
+// HasResponse returns a boolean if a field has been set.
+func (o *MailLogEntry) HasResponse() bool {
+	if o != nil && o.Response.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetResponse gets a reference to the given NullableString and assigns it to the Response field.
 func (o *MailLogEntry) SetResponse(v string) {
-	o.Response = v
+	o.Response.Set(&v)
+}
+// SetResponseNil sets the value for Response to be an explicit nil
+func (o *MailLogEntry) SetResponseNil() {
+	o.Response.Set(nil)
+}
+
+// UnsetResponse ensures that no value is present for Response, not even an explicit nil
+func (o *MailLogEntry) UnsetResponse() {
+	o.Response.Unset()
+}
+
+// GetDomain returns the Domain field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetDomain() string {
+	if o == nil || IsNil(o.Domain.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Domain.Get()
+}
+
+// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Domain.Get(), o.Domain.IsSet()
+}
+
+// HasDomain returns a boolean if a field has been set.
+func (o *MailLogEntry) HasDomain() bool {
+	if o != nil && o.Domain.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDomain gets a reference to the given NullableString and assigns it to the Domain field.
+func (o *MailLogEntry) SetDomain(v string) {
+	o.Domain.Set(&v)
+}
+// SetDomainNil sets the value for Domain to be an explicit nil
+func (o *MailLogEntry) SetDomainNil() {
+	o.Domain.Set(nil)
+}
+
+// UnsetDomain ensures that no value is present for Domain, not even an explicit nil
+func (o *MailLogEntry) UnsetDomain() {
+	o.Domain.Unset()
+}
+
+// GetLocked returns the Locked field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetLocked() int32 {
+	if o == nil || IsNil(o.Locked.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Locked.Get()
+}
+
+// GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetLockedOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Locked.Get(), o.Locked.IsSet()
+}
+
+// HasLocked returns a boolean if a field has been set.
+func (o *MailLogEntry) HasLocked() bool {
+	if o != nil && o.Locked.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLocked gets a reference to the given NullableInt32 and assigns it to the Locked field.
+func (o *MailLogEntry) SetLocked(v int32) {
+	o.Locked.Set(&v)
+}
+// SetLockedNil sets the value for Locked to be an explicit nil
+func (o *MailLogEntry) SetLockedNil() {
+	o.Locked.Set(nil)
+}
+
+// UnsetLocked ensures that no value is present for Locked, not even an explicit nil
+func (o *MailLogEntry) UnsetLocked() {
+	o.Locked.Unset()
+}
+
+// GetLockTime returns the LockTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetLockTime() string {
+	if o == nil || IsNil(o.LockTime.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LockTime.Get()
+}
+
+// GetLockTimeOk returns a tuple with the LockTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetLockTimeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LockTime.Get(), o.LockTime.IsSet()
+}
+
+// HasLockTime returns a boolean if a field has been set.
+func (o *MailLogEntry) HasLockTime() bool {
+	if o != nil && o.LockTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTime gets a reference to the given NullableString and assigns it to the LockTime field.
+func (o *MailLogEntry) SetLockTime(v string) {
+	o.LockTime.Set(&v)
+}
+// SetLockTimeNil sets the value for LockTime to be an explicit nil
+func (o *MailLogEntry) SetLockTimeNil() {
+	o.LockTime.Set(nil)
+}
+
+// UnsetLockTime ensures that no value is present for LockTime, not even an explicit nil
+func (o *MailLogEntry) UnsetLockTime() {
+	o.LockTime.Unset()
+}
+
+// GetAssigned returns the Assigned field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetAssigned() string {
+	if o == nil || IsNil(o.Assigned.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Assigned.Get()
+}
+
+// GetAssignedOk returns a tuple with the Assigned field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetAssignedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Assigned.Get(), o.Assigned.IsSet()
+}
+
+// HasAssigned returns a boolean if a field has been set.
+func (o *MailLogEntry) HasAssigned() bool {
+	if o != nil && o.Assigned.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAssigned gets a reference to the given NullableString and assigns it to the Assigned field.
+func (o *MailLogEntry) SetAssigned(v string) {
+	o.Assigned.Set(&v)
+}
+// SetAssignedNil sets the value for Assigned to be an explicit nil
+func (o *MailLogEntry) SetAssignedNil() {
+	o.Assigned.Set(nil)
+}
+
+// UnsetAssigned ensures that no value is present for Assigned, not even an explicit nil
+func (o *MailLogEntry) UnsetAssigned() {
+	o.Assigned.Unset()
+}
+
+// GetQueued returns the Queued field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetQueued() string {
+	if o == nil || IsNil(o.Queued.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Queued.Get()
+}
+
+// GetQueuedOk returns a tuple with the Queued field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetQueuedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Queued.Get(), o.Queued.IsSet()
+}
+
+// HasQueued returns a boolean if a field has been set.
+func (o *MailLogEntry) HasQueued() bool {
+	if o != nil && o.Queued.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetQueued gets a reference to the given NullableString and assigns it to the Queued field.
+func (o *MailLogEntry) SetQueued(v string) {
+	o.Queued.Set(&v)
+}
+// SetQueuedNil sets the value for Queued to be an explicit nil
+func (o *MailLogEntry) SetQueuedNil() {
+	o.Queued.Set(nil)
+}
+
+// UnsetQueued ensures that no value is present for Queued, not even an explicit nil
+func (o *MailLogEntry) UnsetQueued() {
+	o.Queued.Unset()
+}
+
+// GetMxHostname returns the MxHostname field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetMxHostname() string {
+	if o == nil || IsNil(o.MxHostname.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MxHostname.Get()
+}
+
+// GetMxHostnameOk returns a tuple with the MxHostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetMxHostnameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MxHostname.Get(), o.MxHostname.IsSet()
+}
+
+// HasMxHostname returns a boolean if a field has been set.
+func (o *MailLogEntry) HasMxHostname() bool {
+	if o != nil && o.MxHostname.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMxHostname gets a reference to the given NullableString and assigns it to the MxHostname field.
+func (o *MailLogEntry) SetMxHostname(v string) {
+	o.MxHostname.Set(&v)
+}
+// SetMxHostnameNil sets the value for MxHostname to be an explicit nil
+func (o *MailLogEntry) SetMxHostnameNil() {
+	o.MxHostname.Set(nil)
+}
+
+// UnsetMxHostname ensures that no value is present for MxHostname, not even an explicit nil
+func (o *MailLogEntry) UnsetMxHostname() {
+	o.MxHostname.Unset()
 }
 
 func (o MailLogEntry) MarshalJSON() ([]byte, error) {
@@ -685,9 +987,11 @@ func (o MailLogEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["from"] = o.From
 	toSerialize["to"] = o.To
-	toSerialize["subject"] = o.Subject
-	if !IsNil(o.MessageId) {
-		toSerialize["messageId"] = o.MessageId
+	if o.Subject.IsSet() {
+		toSerialize["subject"] = o.Subject.Get()
+	}
+	if o.MessageId.IsSet() {
+		toSerialize["messageId"] = o.MessageId.Get()
 	}
 	toSerialize["created"] = o.Created
 	toSerialize["time"] = o.Time
@@ -695,17 +999,45 @@ func (o MailLogEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize["transtype"] = o.Transtype
 	toSerialize["origin"] = o.Origin
 	toSerialize["interface"] = o.Interface
-	toSerialize["sendingZone"] = o.SendingZone
-	toSerialize["bodySize"] = o.BodySize
-	toSerialize["seq"] = o.Seq
-	toSerialize["recipient"] = o.Recipient
-	toSerialize["domain"] = o.Domain
-	toSerialize["locked"] = o.Locked
-	toSerialize["lockTime"] = o.LockTime
-	toSerialize["assigned"] = o.Assigned
-	toSerialize["queued"] = o.Queued
-	toSerialize["mxHostname"] = o.MxHostname
-	toSerialize["response"] = o.Response
+	if o.SendingZone.IsSet() {
+		toSerialize["sendingZone"] = o.SendingZone.Get()
+	}
+	if o.BodySize.IsSet() {
+		toSerialize["bodySize"] = o.BodySize.Get()
+	}
+	if o.Seq.IsSet() {
+		toSerialize["seq"] = o.Seq.Get()
+	}
+	if o.Delivered.IsSet() {
+		toSerialize["delivered"] = o.Delivered.Get()
+	}
+	if o.Code.IsSet() {
+		toSerialize["code"] = o.Code.Get()
+	}
+	if o.Recipient.IsSet() {
+		toSerialize["recipient"] = o.Recipient.Get()
+	}
+	if o.Response.IsSet() {
+		toSerialize["response"] = o.Response.Get()
+	}
+	if o.Domain.IsSet() {
+		toSerialize["domain"] = o.Domain.Get()
+	}
+	if o.Locked.IsSet() {
+		toSerialize["locked"] = o.Locked.Get()
+	}
+	if o.LockTime.IsSet() {
+		toSerialize["lockTime"] = o.LockTime.Get()
+	}
+	if o.Assigned.IsSet() {
+		toSerialize["assigned"] = o.Assigned.Get()
+	}
+	if o.Queued.IsSet() {
+		toSerialize["queued"] = o.Queued.Get()
+	}
+	if o.MxHostname.IsSet() {
+		toSerialize["mxHostname"] = o.MxHostname.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -718,24 +1050,12 @@ func (o *MailLogEntry) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"from",
 		"to",
-		"subject",
 		"created",
 		"time",
 		"user",
 		"transtype",
 		"origin",
 		"interface",
-		"sendingZone",
-		"bodySize",
-		"seq",
-		"recipient",
-		"domain",
-		"locked",
-		"lockTime",
-		"assigned",
-		"queued",
-		"mxHostname",
-		"response",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -159,15 +159,11 @@ class MailStatsType {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailStatsType[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailStatsType[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return MailStatsType(
-        time: MailStatsTypeTimeEnum.fromJson(json[r'time']) ?? '1h',
+        time: MailStatsTypeTimeEnum.fromJson(json[r'time']) ?? const MailStatsTypeTimeEnum._('1h'),
         usage: mapValueOfType<int>(json, r'usage'),
         currency: mapValueOfType<String>(json, r'currency'),
         currencySymbol: mapValueOfType<String>(json, r'currencySymbol'),

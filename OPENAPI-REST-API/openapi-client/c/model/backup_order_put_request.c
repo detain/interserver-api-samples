@@ -6,32 +6,47 @@
 
 
 static backup_order_put_request_t *backup_order_put_request_create_internal(
-    int validate_only,
-    int service_type,
+    int *validate_only,
+    int *service_type,
     char *coupon
     ) {
     backup_order_put_request_t *backup_order_put_request_local_var = malloc(sizeof(backup_order_put_request_t));
     if (!backup_order_put_request_local_var) {
         return NULL;
     }
+    memset(backup_order_put_request_local_var, 0, sizeof(backup_order_put_request_t));
+    backup_order_put_request_local_var->_library_owned = 1;
     backup_order_put_request_local_var->validate_only = validate_only;
     backup_order_put_request_local_var->service_type = service_type;
     backup_order_put_request_local_var->coupon = coupon;
-
-    backup_order_put_request_local_var->_library_owned = 1;
     return backup_order_put_request_local_var;
 }
 
 __attribute__((deprecated)) backup_order_put_request_t *backup_order_put_request_create(
-    int validate_only,
-    int service_type,
+    int *validate_only,
+    int *service_type,
     char *coupon
     ) {
-    return backup_order_put_request_create_internal (
-        validate_only,
-        service_type,
+    int *validate_only_copy = NULL;
+    if (validate_only) {
+        validate_only_copy = malloc(sizeof(int));
+        if (validate_only_copy) *validate_only_copy = *validate_only;
+    }
+    int *service_type_copy = NULL;
+    if (service_type) {
+        service_type_copy = malloc(sizeof(int));
+        if (service_type_copy) *service_type_copy = *service_type;
+    }
+    backup_order_put_request_t *result = backup_order_put_request_create_internal (
+        validate_only_copy,
+        service_type_copy,
         coupon
         );
+    if (!result) {
+        free(validate_only_copy);
+        free(service_type_copy);
+    }
+    return result;
 }
 
 void backup_order_put_request_free(backup_order_put_request_t *backup_order_put_request) {
@@ -43,6 +58,14 @@ void backup_order_put_request_free(backup_order_put_request_t *backup_order_put_
         return ;
     }
     listEntry_t *listEntry;
+    if (backup_order_put_request->validate_only) {
+        free(backup_order_put_request->validate_only);
+        backup_order_put_request->validate_only = NULL;
+    }
+    if (backup_order_put_request->service_type) {
+        free(backup_order_put_request->service_type);
+        backup_order_put_request->service_type = NULL;
+    }
     if (backup_order_put_request->coupon) {
         free(backup_order_put_request->coupon);
         backup_order_put_request->coupon = NULL;
@@ -55,7 +78,7 @@ cJSON *backup_order_put_request_convertToJSON(backup_order_put_request_t *backup
 
     // backup_order_put_request->validate_only
     if(backup_order_put_request->validate_only) {
-    if(cJSON_AddBoolToObject(item, "validateOnly", backup_order_put_request->validate_only) == NULL) {
+    if(cJSON_AddBoolToObject(item, "validateOnly", *backup_order_put_request->validate_only) == NULL) {
     goto fail; //Bool
     }
     }
@@ -63,7 +86,7 @@ cJSON *backup_order_put_request_convertToJSON(backup_order_put_request_t *backup
 
     // backup_order_put_request->service_type
     if(backup_order_put_request->service_type) {
-    if(cJSON_AddNumberToObject(item, "serviceType", backup_order_put_request->service_type) == NULL) {
+    if(cJSON_AddNumberToObject(item, "serviceType", *backup_order_put_request->service_type) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -88,6 +111,14 @@ backup_order_put_request_t *backup_order_put_request_parseFromJSON(cJSON *backup
 
     backup_order_put_request_t *backup_order_put_request_local_var = NULL;
 
+    // define the local variable for backup_order_put_request->validate_only
+    int *validate_only_local_var = NULL;
+
+    // define the local variable for backup_order_put_request->service_type
+    int *service_type_local_var = NULL;
+
+    char *coupon_local_str = NULL;
+
     // backup_order_put_request->validate_only
     cJSON *validate_only = cJSON_GetObjectItemCaseSensitive(backup_order_put_requestJSON, "validateOnly");
     if (cJSON_IsNull(validate_only)) {
@@ -98,6 +129,12 @@ backup_order_put_request_t *backup_order_put_request_parseFromJSON(cJSON *backup
     {
     goto end; //Bool
     }
+    validate_only_local_var = malloc(sizeof(int));
+    if(!validate_only_local_var)
+    {
+        goto end;
+    }
+    *validate_only_local_var = validate_only->valueint;
     }
 
     // backup_order_put_request->service_type
@@ -110,6 +147,12 @@ backup_order_put_request_t *backup_order_put_request_parseFromJSON(cJSON *backup
     {
     goto end; //Numeric
     }
+    service_type_local_var = malloc(sizeof(int));
+    if(!service_type_local_var)
+    {
+        goto end;
+    }
+    *service_type_local_var = service_type->valuedouble;
     }
 
     // backup_order_put_request->coupon
@@ -125,14 +168,32 @@ backup_order_put_request_t *backup_order_put_request_parseFromJSON(cJSON *backup
     }
 
 
+    if (coupon && !cJSON_IsNull(coupon)) coupon_local_str = strdup(coupon->valuestring);
+
     backup_order_put_request_local_var = backup_order_put_request_create_internal (
-        validate_only ? validate_only->valueint : 0,
-        service_type ? service_type->valuedouble : 0,
-        coupon && !cJSON_IsNull(coupon) ? strdup(coupon->valuestring) : NULL
+        validate_only_local_var,
+        service_type_local_var,
+        coupon_local_str
         );
+
+    if (!backup_order_put_request_local_var) {
+        goto end;
+    }
 
     return backup_order_put_request_local_var;
 end:
+    if (validate_only_local_var) {
+        free(validate_only_local_var);
+        validate_only_local_var = NULL;
+    }
+    if (service_type_local_var) {
+        free(service_type_local_var);
+        service_type_local_var = NULL;
+    }
+    if (coupon_local_str) {
+        free(coupon_local_str);
+        coupon_local_str = NULL;
+    }
     return NULL;
 
 }

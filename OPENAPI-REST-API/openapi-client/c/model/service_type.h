@@ -19,18 +19,18 @@ typedef struct service_type_t service_type_t;
 
 
 typedef struct service_type_t {
-    int st_id; //numeric
+    int *st_id; //numeric
     char *st_name; // string
-    int st_category; //numeric
+    int *st_category; //numeric
     char *st_module; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } service_type_t;
 
 __attribute__((deprecated)) service_type_t *service_type_create(
-    int st_id,
+    int *st_id,
     char *st_name,
-    int st_category,
+    int *st_category,
     char *st_module
 );
 

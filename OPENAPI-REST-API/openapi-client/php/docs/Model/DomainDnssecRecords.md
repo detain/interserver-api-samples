@@ -1,4 +1,4 @@
-# # DomainDnssecRecords
+# DomainDnssecRecords
 
 ## Properties
 

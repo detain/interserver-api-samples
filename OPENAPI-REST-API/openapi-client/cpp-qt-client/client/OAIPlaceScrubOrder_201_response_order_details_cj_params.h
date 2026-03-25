@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIPlaceScrubOrder_201_response_order_details_cj_params : public OAIObject {
 public:
     OAIPlaceScrubOrder_201_response_order_details_cj_params();
-    OAIPlaceScrubOrder_201_response_order_details_cj_params(QString json);
+    OAIPlaceScrubOrder_201_response_order_details_cj_params(const QString &json);
     ~OAIPlaceScrubOrder_201_response_order_details_cj_params() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getContainerTagId() const;
     void setContainerTagId(const qint32 &container_tag_id);

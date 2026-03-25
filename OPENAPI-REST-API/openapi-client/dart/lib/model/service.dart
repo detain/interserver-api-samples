@@ -101,10 +101,26 @@ class Service {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Service[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Service[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'services_id'), 'Required key "Service[services_id]" is missing from JSON.');
+        assert(json[r'services_id'] != null, 'Required key "Service[services_id]" has a null value in JSON.');
+        assert(json.containsKey(r'services_name'), 'Required key "Service[services_name]" is missing from JSON.');
+        assert(json[r'services_name'] != null, 'Required key "Service[services_name]" has a null value in JSON.');
+        assert(json.containsKey(r'services_cost'), 'Required key "Service[services_cost]" is missing from JSON.');
+        assert(json[r'services_cost'] != null, 'Required key "Service[services_cost]" has a null value in JSON.');
+        assert(json.containsKey(r'services_currency'), 'Required key "Service[services_currency]" is missing from JSON.');
+        assert(json[r'services_currency'] != null, 'Required key "Service[services_currency]" has a null value in JSON.');
+        assert(json.containsKey(r'services_category'), 'Required key "Service[services_category]" is missing from JSON.');
+        assert(json[r'services_category'] != null, 'Required key "Service[services_category]" has a null value in JSON.');
+        assert(json.containsKey(r'services_buyable'), 'Required key "Service[services_buyable]" is missing from JSON.');
+        assert(json[r'services_buyable'] != null, 'Required key "Service[services_buyable]" has a null value in JSON.');
+        assert(json.containsKey(r'services_type'), 'Required key "Service[services_type]" is missing from JSON.');
+        assert(json[r'services_type'] != null, 'Required key "Service[services_type]" has a null value in JSON.');
+        assert(json.containsKey(r'services_field1'), 'Required key "Service[services_field1]" is missing from JSON.');
+        assert(json[r'services_field1'] != null, 'Required key "Service[services_field1]" has a null value in JSON.');
+        assert(json.containsKey(r'services_field2'), 'Required key "Service[services_field2]" is missing from JSON.');
+        assert(json[r'services_field2'] != null, 'Required key "Service[services_field2]" has a null value in JSON.');
+        assert(json.containsKey(r'services_module'), 'Required key "Service[services_module]" is missing from JSON.');
+        assert(json[r'services_module'] != null, 'Required key "Service[services_module]" has a null value in JSON.');
         return true;
       }());
 

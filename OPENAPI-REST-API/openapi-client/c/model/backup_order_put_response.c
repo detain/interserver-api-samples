@@ -6,21 +6,23 @@
 
 
 static backup_order_put_response_t *backup_order_put_response_create_internal(
-    int _continue,
+    int *_continue,
     list_t *errors,
-    int service_type,
+    int *service_type,
     char *service_cost,
     char *original_cost,
     char *repeat_service_cost,
     char *hostname,
     char *password,
     char *coupon,
-    int coupon_code
+    int *coupon_code
     ) {
     backup_order_put_response_t *backup_order_put_response_local_var = malloc(sizeof(backup_order_put_response_t));
     if (!backup_order_put_response_local_var) {
         return NULL;
     }
+    memset(backup_order_put_response_local_var, 0, sizeof(backup_order_put_response_t));
+    backup_order_put_response_local_var->_library_owned = 1;
     backup_order_put_response_local_var->_continue = _continue;
     backup_order_put_response_local_var->errors = errors;
     backup_order_put_response_local_var->service_type = service_type;
@@ -31,35 +33,54 @@ static backup_order_put_response_t *backup_order_put_response_create_internal(
     backup_order_put_response_local_var->password = password;
     backup_order_put_response_local_var->coupon = coupon;
     backup_order_put_response_local_var->coupon_code = coupon_code;
-
-    backup_order_put_response_local_var->_library_owned = 1;
     return backup_order_put_response_local_var;
 }
 
 __attribute__((deprecated)) backup_order_put_response_t *backup_order_put_response_create(
-    int _continue,
+    int *_continue,
     list_t *errors,
-    int service_type,
+    int *service_type,
     char *service_cost,
     char *original_cost,
     char *repeat_service_cost,
     char *hostname,
     char *password,
     char *coupon,
-    int coupon_code
+    int *coupon_code
     ) {
-    return backup_order_put_response_create_internal (
-        _continue,
+    int *_continue_copy = NULL;
+    if (_continue) {
+        _continue_copy = malloc(sizeof(int));
+        if (_continue_copy) *_continue_copy = *_continue;
+    }
+    int *service_type_copy = NULL;
+    if (service_type) {
+        service_type_copy = malloc(sizeof(int));
+        if (service_type_copy) *service_type_copy = *service_type;
+    }
+    int *coupon_code_copy = NULL;
+    if (coupon_code) {
+        coupon_code_copy = malloc(sizeof(int));
+        if (coupon_code_copy) *coupon_code_copy = *coupon_code;
+    }
+    backup_order_put_response_t *result = backup_order_put_response_create_internal (
+        _continue_copy,
         errors,
-        service_type,
+        service_type_copy,
         service_cost,
         original_cost,
         repeat_service_cost,
         hostname,
         password,
         coupon,
-        coupon_code
+        coupon_code_copy
         );
+    if (!result) {
+        free(_continue_copy);
+        free(service_type_copy);
+        free(coupon_code_copy);
+    }
+    return result;
 }
 
 void backup_order_put_response_free(backup_order_put_response_t *backup_order_put_response) {
@@ -71,12 +92,20 @@ void backup_order_put_response_free(backup_order_put_response_t *backup_order_pu
         return ;
     }
     listEntry_t *listEntry;
+    if (backup_order_put_response->_continue) {
+        free(backup_order_put_response->_continue);
+        backup_order_put_response->_continue = NULL;
+    }
     if (backup_order_put_response->errors) {
         list_ForEach(listEntry, backup_order_put_response->errors) {
             free(listEntry->data);
         }
         list_freeList(backup_order_put_response->errors);
         backup_order_put_response->errors = NULL;
+    }
+    if (backup_order_put_response->service_type) {
+        free(backup_order_put_response->service_type);
+        backup_order_put_response->service_type = NULL;
     }
     if (backup_order_put_response->service_cost) {
         free(backup_order_put_response->service_cost);
@@ -102,6 +131,10 @@ void backup_order_put_response_free(backup_order_put_response_t *backup_order_pu
         free(backup_order_put_response->coupon);
         backup_order_put_response->coupon = NULL;
     }
+    if (backup_order_put_response->coupon_code) {
+        free(backup_order_put_response->coupon_code);
+        backup_order_put_response->coupon_code = NULL;
+    }
     free(backup_order_put_response);
 }
 
@@ -110,7 +143,7 @@ cJSON *backup_order_put_response_convertToJSON(backup_order_put_response_t *back
 
     // backup_order_put_response->_continue
     if(backup_order_put_response->_continue) {
-    if(cJSON_AddBoolToObject(item, "continue", backup_order_put_response->_continue) == NULL) {
+    if(cJSON_AddBoolToObject(item, "continue", *backup_order_put_response->_continue) == NULL) {
     goto fail; //Bool
     }
     }
@@ -135,7 +168,7 @@ cJSON *backup_order_put_response_convertToJSON(backup_order_put_response_t *back
 
     // backup_order_put_response->service_type
     if(backup_order_put_response->service_type) {
-    if(cJSON_AddNumberToObject(item, "serviceType", backup_order_put_response->service_type) == NULL) {
+    if(cJSON_AddNumberToObject(item, "serviceType", *backup_order_put_response->service_type) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -191,7 +224,7 @@ cJSON *backup_order_put_response_convertToJSON(backup_order_put_response_t *back
 
     // backup_order_put_response->coupon_code
     if(backup_order_put_response->coupon_code) {
-    if(cJSON_AddNumberToObject(item, "couponCode", backup_order_put_response->coupon_code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "couponCode", *backup_order_put_response->coupon_code) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -208,8 +241,29 @@ backup_order_put_response_t *backup_order_put_response_parseFromJSON(cJSON *back
 
     backup_order_put_response_t *backup_order_put_response_local_var = NULL;
 
+    // define the local variable for backup_order_put_response->_continue
+    int *_continue_local_var = NULL;
+
     // define the local list for backup_order_put_response->errors
     list_t *errorsList = NULL;
+
+    // define the local variable for backup_order_put_response->service_type
+    int *service_type_local_var = NULL;
+
+    char *service_cost_local_str = NULL;
+
+    char *original_cost_local_str = NULL;
+
+    char *repeat_service_cost_local_str = NULL;
+
+    char *hostname_local_str = NULL;
+
+    char *password_local_str = NULL;
+
+    char *coupon_local_str = NULL;
+
+    // define the local variable for backup_order_put_response->coupon_code
+    int *coupon_code_local_var = NULL;
 
     // backup_order_put_response->_continue
     cJSON *_continue = cJSON_GetObjectItemCaseSensitive(backup_order_put_responseJSON, "continue");
@@ -221,6 +275,12 @@ backup_order_put_response_t *backup_order_put_response_parseFromJSON(cJSON *back
     {
     goto end; //Bool
     }
+    _continue_local_var = malloc(sizeof(int));
+    if(!_continue_local_var)
+    {
+        goto end;
+    }
+    *_continue_local_var = _continue->valueint;
     }
 
     // backup_order_put_response->errors
@@ -255,6 +315,12 @@ backup_order_put_response_t *backup_order_put_response_parseFromJSON(cJSON *back
     {
     goto end; //Numeric
     }
+    service_type_local_var = malloc(sizeof(int));
+    if(!service_type_local_var)
+    {
+        goto end;
+    }
+    *service_type_local_var = service_type->valuedouble;
     }
 
     // backup_order_put_response->service_cost
@@ -339,24 +405,45 @@ backup_order_put_response_t *backup_order_put_response_parseFromJSON(cJSON *back
     {
     goto end; //Numeric
     }
+    coupon_code_local_var = malloc(sizeof(int));
+    if(!coupon_code_local_var)
+    {
+        goto end;
+    }
+    *coupon_code_local_var = coupon_code->valuedouble;
     }
 
 
+    if (service_cost && !cJSON_IsNull(service_cost)) service_cost_local_str = strdup(service_cost->valuestring);
+    if (original_cost && !cJSON_IsNull(original_cost)) original_cost_local_str = strdup(original_cost->valuestring);
+    if (repeat_service_cost && !cJSON_IsNull(repeat_service_cost)) repeat_service_cost_local_str = strdup(repeat_service_cost->valuestring);
+    if (hostname && !cJSON_IsNull(hostname)) hostname_local_str = strdup(hostname->valuestring);
+    if (password && !cJSON_IsNull(password)) password_local_str = strdup(password->valuestring);
+    if (coupon && !cJSON_IsNull(coupon)) coupon_local_str = strdup(coupon->valuestring);
+
     backup_order_put_response_local_var = backup_order_put_response_create_internal (
-        _continue ? _continue->valueint : 0,
+        _continue_local_var,
         errors ? errorsList : NULL,
-        service_type ? service_type->valuedouble : 0,
-        service_cost && !cJSON_IsNull(service_cost) ? strdup(service_cost->valuestring) : NULL,
-        original_cost && !cJSON_IsNull(original_cost) ? strdup(original_cost->valuestring) : NULL,
-        repeat_service_cost && !cJSON_IsNull(repeat_service_cost) ? strdup(repeat_service_cost->valuestring) : NULL,
-        hostname && !cJSON_IsNull(hostname) ? strdup(hostname->valuestring) : NULL,
-        password && !cJSON_IsNull(password) ? strdup(password->valuestring) : NULL,
-        coupon && !cJSON_IsNull(coupon) ? strdup(coupon->valuestring) : NULL,
-        coupon_code ? coupon_code->valuedouble : 0
+        service_type_local_var,
+        service_cost_local_str,
+        original_cost_local_str,
+        repeat_service_cost_local_str,
+        hostname_local_str,
+        password_local_str,
+        coupon_local_str,
+        coupon_code_local_var
         );
+
+    if (!backup_order_put_response_local_var) {
+        goto end;
+    }
 
     return backup_order_put_response_local_var;
 end:
+    if (_continue_local_var) {
+        free(_continue_local_var);
+        _continue_local_var = NULL;
+    }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, errorsList) {
@@ -365,6 +452,38 @@ end:
         }
         list_freeList(errorsList);
         errorsList = NULL;
+    }
+    if (service_type_local_var) {
+        free(service_type_local_var);
+        service_type_local_var = NULL;
+    }
+    if (service_cost_local_str) {
+        free(service_cost_local_str);
+        service_cost_local_str = NULL;
+    }
+    if (original_cost_local_str) {
+        free(original_cost_local_str);
+        original_cost_local_str = NULL;
+    }
+    if (repeat_service_cost_local_str) {
+        free(repeat_service_cost_local_str);
+        repeat_service_cost_local_str = NULL;
+    }
+    if (hostname_local_str) {
+        free(hostname_local_str);
+        hostname_local_str = NULL;
+    }
+    if (password_local_str) {
+        free(password_local_str);
+        password_local_str = NULL;
+    }
+    if (coupon_local_str) {
+        free(coupon_local_str);
+        coupon_local_str = NULL;
+    }
+    if (coupon_code_local_var) {
+        free(coupon_code_local_var);
+        coupon_code_local_var = NULL;
     }
     return NULL;
 

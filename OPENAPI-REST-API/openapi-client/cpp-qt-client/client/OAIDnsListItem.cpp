@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDnsListItem::OAIDnsListItem(QString json) {
+OAIDnsListItem::OAIDnsListItem(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIDnsListItem::initializeModel() {
     m_content_isValid = false;
 }
 
-void OAIDnsListItem::fromJson(QString jsonString) {
+void OAIDnsListItem::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

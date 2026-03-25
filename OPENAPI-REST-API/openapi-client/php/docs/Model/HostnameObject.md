@@ -1,4 +1,4 @@
-# # HostnameObject
+# HostnameObject
 
 ## Properties
 

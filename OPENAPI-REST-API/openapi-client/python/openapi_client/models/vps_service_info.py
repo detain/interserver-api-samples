@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class VpsServiceInfo(BaseModel):
     """
@@ -57,7 +58,8 @@ class VpsServiceInfo(BaseModel):
     __properties: ClassVar[List[str]] = ["vps_id", "vps_custid", "vps_server", "vps_ip", "vps_ipv6", "vps_vzid", "vps_currency", "vps_type", "vps_order_date", "vps_status", "vps_invoice", "vps_coupon", "vps_extra", "vps_hostname", "vps_server_status", "vps_comment", "vps_slices", "vps_vnc", "vps_vnc_port", "vps_rootpass", "vps_mac", "vps_os", "vps_version", "vps_location", "vps_platform", "vps_diskused", "vps_diskmax"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -69,8 +71,7 @@ class VpsServiceInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

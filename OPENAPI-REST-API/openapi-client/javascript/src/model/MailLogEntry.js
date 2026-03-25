@@ -21,34 +21,22 @@ import ApiClient from '../ApiClient';
 class MailLogEntry {
     /**
      * Constructs a new <code>MailLogEntry</code>.
-     * An email record
+     * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
      * @alias module:model/MailLogEntry
-     * @param _id {Number} internal db id
-     * @param id {String} mail id
-     * @param from {String} from address
-     * @param to {String} to address
-     * @param subject {String} email subject
-     * @param created {String} creation date
-     * @param time {Number} creation timestamp
-     * @param user {String} user account
-     * @param transtype {String} transaction type
-     * @param origin {String} origin ip
-     * @param _interface {String} interface name
-     * @param sendingZone {String} sending zone
-     * @param bodySize {Number} email body size in bytes
-     * @param seq {Number} index of email in the to adderess list
-     * @param recipient {String} to address this email is being sent to
-     * @param domain {String} to address domain
-     * @param locked {Number} locked status
-     * @param lockTime {Number} lock timestamp
-     * @param assigned {String} assigned server
-     * @param queued {String} queued timestamp
-     * @param mxHostname {String} mx hostname
-     * @param response {String} mail delivery response
+     * @param _id {Number} Internal auto-increment database row ID.
+     * @param id {String} The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
+     * @param from {String} SMTP envelope `MAIL FROM` address.
+     * @param to {String} SMTP envelope `RCPT TO` address.
+     * @param created {String} Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
+     * @param time {Number} Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
+     * @param user {String} The SMTP AUTH username used to submit the message (e.g. `mb5658`).
+     * @param transtype {String} SMTP transaction type negotiated with the relay.
+     * @param origin {String} IP address of the client that submitted the message to the relay.
+     * @param _interface {String} Relay interface name that accepted the message.
      */
-    constructor(_id, id, from, to, subject, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, recipient, domain, locked, lockTime, assigned, queued, mxHostname, response) { 
+    constructor(_id, id, from, to, created, time, user, transtype, origin, _interface) { 
         
-        MailLogEntry.initialize(this, _id, id, from, to, subject, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, recipient, domain, locked, lockTime, assigned, queued, mxHostname, response);
+        MailLogEntry.initialize(this, _id, id, from, to, created, time, user, transtype, origin, _interface);
     }
 
     /**
@@ -56,29 +44,17 @@ class MailLogEntry {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, _id, id, from, to, subject, created, time, user, transtype, origin, _interface, sendingZone, bodySize, seq, recipient, domain, locked, lockTime, assigned, queued, mxHostname, response) { 
+    static initialize(obj, _id, id, from, to, created, time, user, transtype, origin, _interface) { 
         obj['_id'] = _id;
         obj['id'] = id;
         obj['from'] = from;
         obj['to'] = to;
-        obj['subject'] = subject;
         obj['created'] = created;
         obj['time'] = time;
         obj['user'] = user;
         obj['transtype'] = transtype;
         obj['origin'] = origin;
         obj['interface'] = _interface;
-        obj['sendingZone'] = sendingZone;
-        obj['bodySize'] = bodySize;
-        obj['seq'] = seq;
-        obj['recipient'] = recipient;
-        obj['domain'] = domain;
-        obj['locked'] = locked;
-        obj['lockTime'] = lockTime;
-        obj['assigned'] = assigned;
-        obj['queued'] = queued;
-        obj['mxHostname'] = mxHostname;
-        obj['response'] = response;
     }
 
     /**
@@ -104,9 +80,6 @@ class MailLogEntry {
             if (data.hasOwnProperty('to')) {
                 obj['to'] = ApiClient.convertToType(data['to'], 'String');
             }
-            if (data.hasOwnProperty('subject')) {
-                obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
-            }
             if (data.hasOwnProperty('created')) {
                 obj['created'] = ApiClient.convertToType(data['created'], 'String');
             }
@@ -125,6 +98,12 @@ class MailLogEntry {
             if (data.hasOwnProperty('interface')) {
                 obj['interface'] = ApiClient.convertToType(data['interface'], 'String');
             }
+            if (data.hasOwnProperty('subject')) {
+                obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
+            }
+            if (data.hasOwnProperty('messageId')) {
+                obj['messageId'] = ApiClient.convertToType(data['messageId'], 'String');
+            }
             if (data.hasOwnProperty('sendingZone')) {
                 obj['sendingZone'] = ApiClient.convertToType(data['sendingZone'], 'String');
             }
@@ -134,8 +113,17 @@ class MailLogEntry {
             if (data.hasOwnProperty('seq')) {
                 obj['seq'] = ApiClient.convertToType(data['seq'], 'Number');
             }
+            if (data.hasOwnProperty('delivered')) {
+                obj['delivered'] = ApiClient.convertToType(data['delivered'], 'Number');
+            }
+            if (data.hasOwnProperty('code')) {
+                obj['code'] = ApiClient.convertToType(data['code'], 'Number');
+            }
             if (data.hasOwnProperty('recipient')) {
                 obj['recipient'] = ApiClient.convertToType(data['recipient'], 'String');
+            }
+            if (data.hasOwnProperty('response')) {
+                obj['response'] = ApiClient.convertToType(data['response'], 'String');
             }
             if (data.hasOwnProperty('domain')) {
                 obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
@@ -144,7 +132,7 @@ class MailLogEntry {
                 obj['locked'] = ApiClient.convertToType(data['locked'], 'Number');
             }
             if (data.hasOwnProperty('lockTime')) {
-                obj['lockTime'] = ApiClient.convertToType(data['lockTime'], 'Number');
+                obj['lockTime'] = ApiClient.convertToType(data['lockTime'], 'String');
             }
             if (data.hasOwnProperty('assigned')) {
                 obj['assigned'] = ApiClient.convertToType(data['assigned'], 'String');
@@ -154,12 +142,6 @@ class MailLogEntry {
             }
             if (data.hasOwnProperty('mxHostname')) {
                 obj['mxHostname'] = ApiClient.convertToType(data['mxHostname'], 'String');
-            }
-            if (data.hasOwnProperty('response')) {
-                obj['response'] = ApiClient.convertToType(data['response'], 'String');
-            }
-            if (data.hasOwnProperty('messageId')) {
-                obj['messageId'] = ApiClient.convertToType(data['messageId'], 'String');
             }
         }
         return obj;
@@ -190,10 +172,6 @@ class MailLogEntry {
             throw new Error("Expected the field `to` to be a primitive type in the JSON string but got " + data['to']);
         }
         // ensure the json data is a string
-        if (data['subject'] && !(typeof data['subject'] === 'string' || data['subject'] instanceof String)) {
-            throw new Error("Expected the field `subject` to be a primitive type in the JSON string but got " + data['subject']);
-        }
-        // ensure the json data is a string
         if (data['created'] && !(typeof data['created'] === 'string' || data['created'] instanceof String)) {
             throw new Error("Expected the field `created` to be a primitive type in the JSON string but got " + data['created']);
         }
@@ -214,6 +192,14 @@ class MailLogEntry {
             throw new Error("Expected the field `interface` to be a primitive type in the JSON string but got " + data['interface']);
         }
         // ensure the json data is a string
+        if (data['subject'] && !(typeof data['subject'] === 'string' || data['subject'] instanceof String)) {
+            throw new Error("Expected the field `subject` to be a primitive type in the JSON string but got " + data['subject']);
+        }
+        // ensure the json data is a string
+        if (data['messageId'] && !(typeof data['messageId'] === 'string' || data['messageId'] instanceof String)) {
+            throw new Error("Expected the field `messageId` to be a primitive type in the JSON string but got " + data['messageId']);
+        }
+        // ensure the json data is a string
         if (data['sendingZone'] && !(typeof data['sendingZone'] === 'string' || data['sendingZone'] instanceof String)) {
             throw new Error("Expected the field `sendingZone` to be a primitive type in the JSON string but got " + data['sendingZone']);
         }
@@ -222,8 +208,16 @@ class MailLogEntry {
             throw new Error("Expected the field `recipient` to be a primitive type in the JSON string but got " + data['recipient']);
         }
         // ensure the json data is a string
+        if (data['response'] && !(typeof data['response'] === 'string' || data['response'] instanceof String)) {
+            throw new Error("Expected the field `response` to be a primitive type in the JSON string but got " + data['response']);
+        }
+        // ensure the json data is a string
         if (data['domain'] && !(typeof data['domain'] === 'string' || data['domain'] instanceof String)) {
             throw new Error("Expected the field `domain` to be a primitive type in the JSON string but got " + data['domain']);
+        }
+        // ensure the json data is a string
+        if (data['lockTime'] && !(typeof data['lockTime'] === 'string' || data['lockTime'] instanceof String)) {
+            throw new Error("Expected the field `lockTime` to be a primitive type in the JSON string but got " + data['lockTime']);
         }
         // ensure the json data is a string
         if (data['assigned'] && !(typeof data['assigned'] === 'string' || data['assigned'] instanceof String)) {
@@ -237,14 +231,6 @@ class MailLogEntry {
         if (data['mxHostname'] && !(typeof data['mxHostname'] === 'string' || data['mxHostname'] instanceof String)) {
             throw new Error("Expected the field `mxHostname` to be a primitive type in the JSON string but got " + data['mxHostname']);
         }
-        // ensure the json data is a string
-        if (data['response'] && !(typeof data['response'] === 'string' || data['response'] instanceof String)) {
-            throw new Error("Expected the field `response` to be a primitive type in the JSON string but got " + data['response']);
-        }
-        // ensure the json data is a string
-        if (data['messageId'] && !(typeof data['messageId'] === 'string' || data['messageId'] instanceof String)) {
-            throw new Error("Expected the field `messageId` to be a primitive type in the JSON string but got " + data['messageId']);
-        }
 
         return true;
     }
@@ -252,145 +238,157 @@ class MailLogEntry {
 
 }
 
-MailLogEntry.RequiredProperties = ["_id", "id", "from", "to", "subject", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "recipient", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname", "response"];
+MailLogEntry.RequiredProperties = ["_id", "id", "from", "to", "created", "time", "user", "transtype", "origin", "interface"];
 
 /**
- * internal db id
+ * Internal auto-increment database row ID.
  * @member {Number} _id
  */
 MailLogEntry.prototype['_id'] = undefined;
 
 /**
- * mail id
+ * The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
  * @member {String} id
  */
 MailLogEntry.prototype['id'] = undefined;
 
 /**
- * from address
+ * SMTP envelope `MAIL FROM` address.
  * @member {String} from
  */
 MailLogEntry.prototype['from'] = undefined;
 
 /**
- * to address
+ * SMTP envelope `RCPT TO` address.
  * @member {String} to
  */
 MailLogEntry.prototype['to'] = undefined;
 
 /**
- * email subject
- * @member {String} subject
- */
-MailLogEntry.prototype['subject'] = undefined;
-
-/**
- * creation date
+ * Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
  * @member {String} created
  */
 MailLogEntry.prototype['created'] = undefined;
 
 /**
- * creation timestamp
+ * Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
  * @member {Number} time
  */
 MailLogEntry.prototype['time'] = undefined;
 
 /**
- * user account
+ * The SMTP AUTH username used to submit the message (e.g. `mb5658`).
  * @member {String} user
  */
 MailLogEntry.prototype['user'] = undefined;
 
 /**
- * transaction type
+ * SMTP transaction type negotiated with the relay.
  * @member {String} transtype
  */
 MailLogEntry.prototype['transtype'] = undefined;
 
 /**
- * origin ip
+ * IP address of the client that submitted the message to the relay.
  * @member {String} origin
  */
 MailLogEntry.prototype['origin'] = undefined;
 
 /**
- * interface name
+ * Relay interface name that accepted the message.
  * @member {String} interface
  */
 MailLogEntry.prototype['interface'] = undefined;
 
 /**
- * sending zone
+ * The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+ * @member {String} subject
+ */
+MailLogEntry.prototype['subject'] = undefined;
+
+/**
+ * The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+ * @member {String} messageId
+ */
+MailLogEntry.prototype['messageId'] = undefined;
+
+/**
+ * The sending zone assigned by the relay for outbound delivery.
  * @member {String} sendingZone
  */
 MailLogEntry.prototype['sendingZone'] = undefined;
 
 /**
- * email body size in bytes
+ * Size of the message body in bytes.
  * @member {Number} bodySize
  */
 MailLogEntry.prototype['bodySize'] = undefined;
 
 /**
- * index of email in the to adderess list
+ * Sequence index of this recipient in a multi-recipient message. Starts at 1.
  * @member {Number} seq
  */
 MailLogEntry.prototype['seq'] = undefined;
 
 /**
- * to address this email is being sent to
+ * Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+ * @member {Number} delivered
+ */
+MailLogEntry.prototype['delivered'] = undefined;
+
+/**
+ * The SMTP response code from the destination MX server (e.g. `250`).
+ * @member {Number} code
+ */
+MailLogEntry.prototype['code'] = undefined;
+
+/**
+ * The specific recipient address this delivery record is for.
  * @member {String} recipient
  */
 MailLogEntry.prototype['recipient'] = undefined;
 
 /**
- * to address domain
- * @member {String} domain
- */
-MailLogEntry.prototype['domain'] = undefined;
-
-/**
- * locked status
- * @member {Number} locked
- */
-MailLogEntry.prototype['locked'] = undefined;
-
-/**
- * lock timestamp
- * @member {Number} lockTime
- */
-MailLogEntry.prototype['lockTime'] = undefined;
-
-/**
- * assigned server
- * @member {String} assigned
- */
-MailLogEntry.prototype['assigned'] = undefined;
-
-/**
- * queued timestamp
- * @member {String} queued
- */
-MailLogEntry.prototype['queued'] = undefined;
-
-/**
- * mx hostname
- * @member {String} mxHostname
- */
-MailLogEntry.prototype['mxHostname'] = undefined;
-
-/**
- * mail delivery response
+ * The full SMTP response string received from the destination MX server.
  * @member {String} response
  */
 MailLogEntry.prototype['response'] = undefined;
 
 /**
- * message id
- * @member {String} messageId
+ * The destination domain for this delivery attempt.
+ * @member {String} domain
  */
-MailLogEntry.prototype['messageId'] = undefined;
+MailLogEntry.prototype['domain'] = undefined;
+
+/**
+ * Whether the queue entry is currently locked for delivery processing.
+ * @member {Number} locked
+ */
+MailLogEntry.prototype['locked'] = undefined;
+
+/**
+ * Millisecond-precision timestamp of the last queue lock acquisition.
+ * @member {String} lockTime
+ */
+MailLogEntry.prototype['lockTime'] = undefined;
+
+/**
+ * The relay server node assigned to deliver this message.
+ * @member {String} assigned
+ */
+MailLogEntry.prototype['assigned'] = undefined;
+
+/**
+ * ISO 8601 timestamp when the message was placed into the delivery queue.
+ * @member {String} queued
+ */
+MailLogEntry.prototype['queued'] = undefined;
+
+/**
+ * The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+ * @member {String} mxHostname
+ */
+MailLogEntry.prototype['mxHostname'] = undefined;
 
 
 

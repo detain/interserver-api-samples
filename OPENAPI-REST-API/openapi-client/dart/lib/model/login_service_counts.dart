@@ -62,10 +62,12 @@ class LoginServiceCounts {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LoginServiceCounts[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LoginServiceCounts[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'vps'), 'Required key "LoginServiceCounts[vps]" is missing from JSON.');
+        assert(json[r'vps'] != null, 'Required key "LoginServiceCounts[vps]" has a null value in JSON.');
+        assert(json.containsKey(r'websites'), 'Required key "LoginServiceCounts[websites]" is missing from JSON.');
+        assert(json[r'websites'] != null, 'Required key "LoginServiceCounts[websites]" has a null value in JSON.');
+        assert(json.containsKey(r'servers'), 'Required key "LoginServiceCounts[servers]" is missing from JSON.');
+        assert(json[r'servers'] != null, 'Required key "LoginServiceCounts[servers]" has a null value in JSON.');
         return true;
       }());
 

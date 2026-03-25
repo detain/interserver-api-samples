@@ -1,4 +1,4 @@
-# # VpsTrafficHistorySectionDataResponse
+# VpsTrafficHistorySectionDataResponse
 
 ## Properties
 

@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIReverseDnsEntries : public OAIObject {
 public:
     OAIReverseDnsEntries();
-    OAIReverseDnsEntries(QString json);
+    OAIReverseDnsEntries(const QString &json);
     ~OAIReverseDnsEntries() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QMap<QString, QJsonValue> getIps() const;
     void setIps(const QMap<QString, QJsonValue> &ips);

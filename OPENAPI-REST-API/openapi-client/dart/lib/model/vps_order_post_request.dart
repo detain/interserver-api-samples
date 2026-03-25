@@ -131,10 +131,22 @@ class VpsOrderPostRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsOrderPostRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsOrderPostRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'osDistro'), 'Required key "VpsOrderPostRequest[osDistro]" is missing from JSON.');
+        assert(json[r'osDistro'] != null, 'Required key "VpsOrderPostRequest[osDistro]" has a null value in JSON.');
+        assert(json.containsKey(r'slices'), 'Required key "VpsOrderPostRequest[slices]" is missing from JSON.');
+        assert(json[r'slices'] != null, 'Required key "VpsOrderPostRequest[slices]" has a null value in JSON.');
+        assert(json.containsKey(r'vpsPlatform'), 'Required key "VpsOrderPostRequest[vpsPlatform]" is missing from JSON.');
+        assert(json[r'vpsPlatform'] != null, 'Required key "VpsOrderPostRequest[vpsPlatform]" has a null value in JSON.');
+        assert(json.containsKey(r'period'), 'Required key "VpsOrderPostRequest[period]" is missing from JSON.');
+        assert(json[r'period'] != null, 'Required key "VpsOrderPostRequest[period]" has a null value in JSON.');
+        assert(json.containsKey(r'location'), 'Required key "VpsOrderPostRequest[location]" is missing from JSON.');
+        assert(json[r'location'] != null, 'Required key "VpsOrderPostRequest[location]" has a null value in JSON.');
+        assert(json.containsKey(r'osVersion'), 'Required key "VpsOrderPostRequest[osVersion]" is missing from JSON.');
+        assert(json[r'osVersion'] != null, 'Required key "VpsOrderPostRequest[osVersion]" has a null value in JSON.');
+        assert(json.containsKey(r'hostname'), 'Required key "VpsOrderPostRequest[hostname]" is missing from JSON.');
+        assert(json[r'hostname'] != null, 'Required key "VpsOrderPostRequest[hostname]" has a null value in JSON.');
+        assert(json.containsKey(r'rootpass'), 'Required key "VpsOrderPostRequest[rootpass]" is missing from JSON.');
+        assert(json[r'rootpass'] != null, 'Required key "VpsOrderPostRequest[rootpass]" has a null value in JSON.');
         return true;
       }());
 

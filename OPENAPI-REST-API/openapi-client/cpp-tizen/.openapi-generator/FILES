@@ -798,6 +798,8 @@ src/VPSTrafficDataDataSectionResponse.cpp
 src/VPSTrafficDataDataSectionResponse.h
 src/VPSTrafficDataDataSectionResponseInner.cpp
 src/VPSTrafficDataDataSectionResponseInner.h
+src/ViewMailLogStartDateParameter.cpp
+src/ViewMailLogStartDateParameter.h
 src/ViewTicketResponse.cpp
 src/ViewTicketResponse.h
 src/Vps.cpp

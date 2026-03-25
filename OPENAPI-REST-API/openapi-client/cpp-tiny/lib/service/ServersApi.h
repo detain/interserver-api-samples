@@ -35,7 +35,7 @@ class ServersApi : public Service {
 public:
     ServersApi() = default;
 
-    virtual ~ServersApi() = default;
+    virtual ~ServersApi();
 
     /**
     * Place Server Order.

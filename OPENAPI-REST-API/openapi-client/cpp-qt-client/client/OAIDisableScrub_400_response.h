@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDisableScrub_400_response : public OAIObject {
 public:
     OAIDisableScrub_400_response();
-    OAIDisableScrub_400_response(QString json);
+    OAIDisableScrub_400_response(const QString &json);
     ~OAIDisableScrub_400_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

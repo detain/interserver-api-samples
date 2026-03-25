@@ -413,6 +413,7 @@ build = {
 		["openapiclient.model.update_ticket"] = "openapiclient/model/update_ticket.lua";
 		["openapiclient.model.update_ticket_response_schema"] = "openapiclient/model/update_ticket_response_schema.lua";
 		["openapiclient.model.url_request"] = "openapiclient/model/url_request.lua";
+		["openapiclient.model.view_mail_log_start_date_parameter"] = "openapiclient/model/view_mail_log_start_date_parameter.lua";
 		["openapiclient.model.view_ticket_response"] = "openapiclient/model/view_ticket_response.lua";
 		["openapiclient.model.vps"] = "openapiclient/model/vps.lua";
 		["openapiclient.model.vps_backup_row"] = "openapiclient/model/vps_backup_row.lua";

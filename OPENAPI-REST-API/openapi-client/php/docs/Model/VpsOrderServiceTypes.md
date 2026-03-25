@@ -1,4 +1,4 @@
-# # VpsOrderServiceTypes
+# VpsOrderServiceTypes
 
 ## Properties
 

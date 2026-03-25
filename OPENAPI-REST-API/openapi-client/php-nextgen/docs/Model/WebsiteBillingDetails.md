@@ -1,4 +1,4 @@
-# # WebsiteBillingDetails
+# WebsiteBillingDetails
 
 ## Properties
 

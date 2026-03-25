@@ -12,18 +12,21 @@ static account_ssh_key_t *account_ssh_key_create_internal(
     if (!account_ssh_key_local_var) {
         return NULL;
     }
-    account_ssh_key_local_var->ssh_key = ssh_key;
-
+    memset(account_ssh_key_local_var, 0, sizeof(account_ssh_key_t));
     account_ssh_key_local_var->_library_owned = 1;
+    account_ssh_key_local_var->ssh_key = ssh_key;
     return account_ssh_key_local_var;
 }
 
 __attribute__((deprecated)) account_ssh_key_t *account_ssh_key_create(
     char *ssh_key
     ) {
-    return account_ssh_key_create_internal (
+    account_ssh_key_t *result = account_ssh_key_create_internal (
         ssh_key
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_ssh_key_free(account_ssh_key_t *account_ssh_key) {
@@ -64,6 +67,8 @@ account_ssh_key_t *account_ssh_key_parseFromJSON(cJSON *account_ssh_keyJSON){
 
     account_ssh_key_t *account_ssh_key_local_var = NULL;
 
+    char *ssh_key_local_str = NULL;
+
     // account_ssh_key->ssh_key
     cJSON *ssh_key = cJSON_GetObjectItemCaseSensitive(account_ssh_keyJSON, "ssh_key");
     if (cJSON_IsNull(ssh_key)) {
@@ -77,12 +82,22 @@ account_ssh_key_t *account_ssh_key_parseFromJSON(cJSON *account_ssh_keyJSON){
     }
 
 
+    if (ssh_key && !cJSON_IsNull(ssh_key)) ssh_key_local_str = strdup(ssh_key->valuestring);
+
     account_ssh_key_local_var = account_ssh_key_create_internal (
-        ssh_key && !cJSON_IsNull(ssh_key) ? strdup(ssh_key->valuestring) : NULL
+        ssh_key_local_str
         );
+
+    if (!account_ssh_key_local_var) {
+        goto end;
+    }
 
     return account_ssh_key_local_var;
 end:
+    if (ssh_key_local_str) {
+        free(ssh_key_local_str);
+        ssh_key_local_str = NULL;
+    }
     return NULL;
 
 }

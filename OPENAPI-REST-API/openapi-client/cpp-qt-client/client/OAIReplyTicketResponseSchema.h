@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIReplyTicketResponseSchema : public OAIObject {
 public:
     OAIReplyTicketResponseSchema();
-    OAIReplyTicketResponseSchema(QString json);
+    OAIReplyTicketResponseSchema(const QString &json);
     ~OAIReplyTicketResponseSchema() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

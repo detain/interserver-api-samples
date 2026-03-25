@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHome_ticketStatus::OAIHome_ticketStatus(QString json) {
+OAIHome_ticketStatus::OAIHome_ticketStatus(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIHome_ticketStatus::initializeModel() {
     m_on_hold_isValid = false;
 }
 
-void OAIHome_ticketStatus::fromJson(QString jsonString) {
+void OAIHome_ticketStatus::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

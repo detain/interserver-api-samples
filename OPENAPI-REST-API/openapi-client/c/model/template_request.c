@@ -14,11 +14,11 @@ static template_request_t *template_request_create_internal(
     if (!template_request_local_var) {
         return NULL;
     }
+    memset(template_request_local_var, 0, sizeof(template_request_t));
+    template_request_local_var->_library_owned = 1;
     template_request_local_var->_template = _template;
     template_request_local_var->local_password = local_password;
     template_request_local_var->password = password;
-
-    template_request_local_var->_library_owned = 1;
     return template_request_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) template_request_t *template_request_create(
     char *local_password,
     char *password
     ) {
-    return template_request_create_internal (
+    template_request_t *result = template_request_create_internal (
         _template,
         local_password,
         password
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void template_request_free(template_request_t *template_request) {
@@ -98,6 +101,12 @@ template_request_t *template_request_parseFromJSON(cJSON *template_requestJSON){
 
     template_request_t *template_request_local_var = NULL;
 
+    char *_template_local_str = NULL;
+
+    char *local_password_local_str = NULL;
+
+    char *password_local_str = NULL;
+
     // template_request->_template
     cJSON *_template = cJSON_GetObjectItemCaseSensitive(template_requestJSON, "template");
     if (cJSON_IsNull(_template)) {
@@ -141,14 +150,34 @@ template_request_t *template_request_parseFromJSON(cJSON *template_requestJSON){
     }
 
 
+    if (_template && !cJSON_IsNull(_template)) _template_local_str = strdup(_template->valuestring);
+    if (local_password && !cJSON_IsNull(local_password)) local_password_local_str = strdup(local_password->valuestring);
+    if (password && !cJSON_IsNull(password)) password_local_str = strdup(password->valuestring);
+
     template_request_local_var = template_request_create_internal (
-        strdup(_template->valuestring),
-        strdup(local_password->valuestring),
-        password && !cJSON_IsNull(password) ? strdup(password->valuestring) : NULL
+        _template_local_str,
+        local_password_local_str,
+        password_local_str
         );
+
+    if (!template_request_local_var) {
+        goto end;
+    }
 
     return template_request_local_var;
 end:
+    if (_template_local_str) {
+        free(_template_local_str);
+        _template_local_str = NULL;
+    }
+    if (local_password_local_str) {
+        free(local_password_local_str);
+        local_password_local_str = NULL;
+    }
+    if (password_local_str) {
+        free(password_local_str);
+        password_local_str = NULL;
+    }
     return NULL;
 
 }

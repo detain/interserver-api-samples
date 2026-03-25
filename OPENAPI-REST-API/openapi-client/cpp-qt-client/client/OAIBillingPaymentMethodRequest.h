@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBillingPaymentMethodRequest : public OAIObject {
 public:
     OAIBillingPaymentMethodRequest();
-    OAIBillingPaymentMethodRequest(QString json);
+    OAIBillingPaymentMethodRequest(const QString &json);
     ~OAIBillingPaymentMethodRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getPaymentMethod() const;
     void setPaymentMethod(const QString &payment_method);

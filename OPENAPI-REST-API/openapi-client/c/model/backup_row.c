@@ -17,14 +17,14 @@ static backup_row_t *backup_row_create_internal(
     if (!backup_row_local_var) {
         return NULL;
     }
+    memset(backup_row_local_var, 0, sizeof(backup_row_t));
+    backup_row_local_var->_library_owned = 1;
     backup_row_local_var->backup_id = backup_id;
     backup_row_local_var->backup_name = backup_name;
     backup_row_local_var->backup_cost = backup_cost;
     backup_row_local_var->backup_username = backup_username;
     backup_row_local_var->backup_status = backup_status;
     backup_row_local_var->services_name = services_name;
-
-    backup_row_local_var->_library_owned = 1;
     return backup_row_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) backup_row_t *backup_row_create(
     char *backup_status,
     char *services_name
     ) {
-    return backup_row_create_internal (
+    backup_row_t *result = backup_row_create_internal (
         backup_id,
         backup_name,
         backup_cost,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) backup_row_t *backup_row_create(
         backup_status,
         services_name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backup_row_free(backup_row_t *backup_row) {
@@ -144,6 +147,18 @@ backup_row_t *backup_row_parseFromJSON(cJSON *backup_rowJSON){
 
     backup_row_t *backup_row_local_var = NULL;
 
+    char *backup_id_local_str = NULL;
+
+    char *backup_name_local_str = NULL;
+
+    char *backup_cost_local_str = NULL;
+
+    char *backup_username_local_str = NULL;
+
+    char *backup_status_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
     // backup_row->backup_id
     cJSON *backup_id = cJSON_GetObjectItemCaseSensitive(backup_rowJSON, "backup_id");
     if (cJSON_IsNull(backup_id)) {
@@ -217,17 +232,52 @@ backup_row_t *backup_row_parseFromJSON(cJSON *backup_rowJSON){
     }
 
 
+    if (backup_id && !cJSON_IsNull(backup_id)) backup_id_local_str = strdup(backup_id->valuestring);
+    if (backup_name && !cJSON_IsNull(backup_name)) backup_name_local_str = strdup(backup_name->valuestring);
+    if (backup_cost && !cJSON_IsNull(backup_cost)) backup_cost_local_str = strdup(backup_cost->valuestring);
+    if (backup_username && !cJSON_IsNull(backup_username)) backup_username_local_str = strdup(backup_username->valuestring);
+    if (backup_status && !cJSON_IsNull(backup_status)) backup_status_local_str = strdup(backup_status->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+
     backup_row_local_var = backup_row_create_internal (
-        backup_id && !cJSON_IsNull(backup_id) ? strdup(backup_id->valuestring) : NULL,
-        backup_name && !cJSON_IsNull(backup_name) ? strdup(backup_name->valuestring) : NULL,
-        backup_cost && !cJSON_IsNull(backup_cost) ? strdup(backup_cost->valuestring) : NULL,
-        backup_username && !cJSON_IsNull(backup_username) ? strdup(backup_username->valuestring) : NULL,
-        backup_status && !cJSON_IsNull(backup_status) ? strdup(backup_status->valuestring) : NULL,
-        services_name && !cJSON_IsNull(services_name) ? strdup(services_name->valuestring) : NULL
+        backup_id_local_str,
+        backup_name_local_str,
+        backup_cost_local_str,
+        backup_username_local_str,
+        backup_status_local_str,
+        services_name_local_str
         );
+
+    if (!backup_row_local_var) {
+        goto end;
+    }
 
     return backup_row_local_var;
 end:
+    if (backup_id_local_str) {
+        free(backup_id_local_str);
+        backup_id_local_str = NULL;
+    }
+    if (backup_name_local_str) {
+        free(backup_name_local_str);
+        backup_name_local_str = NULL;
+    }
+    if (backup_cost_local_str) {
+        free(backup_cost_local_str);
+        backup_cost_local_str = NULL;
+    }
+    if (backup_username_local_str) {
+        free(backup_username_local_str);
+        backup_username_local_str = NULL;
+    }
+    if (backup_status_local_str) {
+        free(backup_status_local_str);
+        backup_status_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
     return NULL;
 
 }

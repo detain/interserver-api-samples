@@ -42,7 +42,7 @@ typedef struct quickserver_t {
     char *token; // string
     char *service_disk_used; // string
     char *service_disk_total; // string
-    double disk_percentage; //numeric
+    double *disk_percentage; //numeric
     char *memory; // string
     char *hdd; // string
     list_t *service_overview_extra; //primitive container
@@ -68,7 +68,7 @@ __attribute__((deprecated)) quickserver_t *quickserver_create(
     char *token,
     char *service_disk_used,
     char *service_disk_total,
-    double disk_percentage,
+    double *disk_percentage,
     char *memory,
     char *hdd,
     list_t *service_overview_extra

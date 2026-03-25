@@ -1,4 +1,4 @@
-# # PasswordRequest
+# PasswordRequest
 
 ## Properties
 

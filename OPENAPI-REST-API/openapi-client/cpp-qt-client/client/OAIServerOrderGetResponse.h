@@ -50,13 +50,13 @@ class OAIAssetServer;
 class OAIServerOrderGetResponse : public OAIObject {
 public:
     OAIServerOrderGetResponse();
-    OAIServerOrderGetResponse(QString json);
+    OAIServerOrderGetResponse(const QString &json);
     ~OAIServerOrderGetResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIFormValues getFormValues() const;
     void setFormValues(const OAIFormValues &form_values);

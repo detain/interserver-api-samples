@@ -285,32 +285,6 @@ void OAIDNSApi::addDnsDomainCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addDnsDomainSignal();
         Q_EMIT addDnsDomainSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addDnsDomainSignalE(error_type, error_str);
-        Q_EMIT addDnsDomainSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addDnsDomainSignalError(error_type, error_str);
         Q_EMIT addDnsDomainSignalErrorFull(worker, error_type, error_str);
     }
@@ -396,32 +370,6 @@ void OAIDNSApi::addDnsRecordCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addDnsRecordSignal();
         Q_EMIT addDnsRecordSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addDnsRecordSignalE(error_type, error_str);
-        Q_EMIT addDnsRecordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addDnsRecordSignalError(error_type, error_str);
         Q_EMIT addDnsRecordSignalErrorFull(worker, error_type, error_str);
     }
@@ -487,32 +435,6 @@ void OAIDNSApi::deleteDnsDomainCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteDnsDomainSignal();
         Q_EMIT deleteDnsDomainSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteDnsDomainSignalE(error_type, error_str);
-        Q_EMIT deleteDnsDomainSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteDnsDomainSignalError(error_type, error_str);
         Q_EMIT deleteDnsDomainSignalErrorFull(worker, error_type, error_str);
     }
@@ -592,32 +514,6 @@ void OAIDNSApi::deleteDnsRecordCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteDnsRecordSignal();
         Q_EMIT deleteDnsRecordSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteDnsRecordSignalE(error_type, error_str);
-        Q_EMIT deleteDnsRecordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteDnsRecordSignalError(error_type, error_str);
         Q_EMIT deleteDnsRecordSignalErrorFull(worker, error_type, error_str);
     }
@@ -693,32 +589,6 @@ void OAIDNSApi::getDnsDomainCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDnsDomainSignal(output);
         Q_EMIT getDnsDomainSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDnsDomainSignalE(output, error_type, error_str);
-        Q_EMIT getDnsDomainSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDnsDomainSignalError(output, error_type, error_str);
         Q_EMIT getDnsDomainSignalErrorFull(worker, error_type, error_str);
     }
@@ -780,32 +650,6 @@ void OAIDNSApi::getDnsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getDnsListSignal(output);
         Q_EMIT getDnsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getDnsListSignalE(output, error_type, error_str);
-        Q_EMIT getDnsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getDnsListSignalError(output, error_type, error_str);
         Q_EMIT getDnsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -917,42 +761,16 @@ void OAIDNSApi::updateDnsRecordCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateDnsRecordSignal();
         Q_EMIT updateDnsRecordSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateDnsRecordSignalE(error_type, error_str);
-        Q_EMIT updateDnsRecordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateDnsRecordSignalError(error_type, error_str);
         Q_EMIT updateDnsRecordSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIDNSApi::tokenAvailable(){
+void OAIDNSApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -962,7 +780,7 @@ void OAIDNSApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -972,7 +790,7 @@ void OAIDNSApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -982,7 +800,7 @@ void OAIDNSApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

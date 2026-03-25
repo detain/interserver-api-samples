@@ -12,18 +12,21 @@ static post_oauth_callback_request_t *post_oauth_callback_request_create_interna
     if (!post_oauth_callback_request_local_var) {
         return NULL;
     }
-    post_oauth_callback_request_local_var->provider = provider;
-
+    memset(post_oauth_callback_request_local_var, 0, sizeof(post_oauth_callback_request_t));
     post_oauth_callback_request_local_var->_library_owned = 1;
+    post_oauth_callback_request_local_var->provider = provider;
     return post_oauth_callback_request_local_var;
 }
 
 __attribute__((deprecated)) post_oauth_callback_request_t *post_oauth_callback_request_create(
     char *provider
     ) {
-    return post_oauth_callback_request_create_internal (
+    post_oauth_callback_request_t *result = post_oauth_callback_request_create_internal (
         provider
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void post_oauth_callback_request_free(post_oauth_callback_request_t *post_oauth_callback_request) {
@@ -64,6 +67,8 @@ post_oauth_callback_request_t *post_oauth_callback_request_parseFromJSON(cJSON *
 
     post_oauth_callback_request_t *post_oauth_callback_request_local_var = NULL;
 
+    char *provider_local_str = NULL;
+
     // post_oauth_callback_request->provider
     cJSON *provider = cJSON_GetObjectItemCaseSensitive(post_oauth_callback_requestJSON, "provider");
     if (cJSON_IsNull(provider)) {
@@ -77,12 +82,22 @@ post_oauth_callback_request_t *post_oauth_callback_request_parseFromJSON(cJSON *
     }
 
 
+    if (provider && !cJSON_IsNull(provider)) provider_local_str = strdup(provider->valuestring);
+
     post_oauth_callback_request_local_var = post_oauth_callback_request_create_internal (
-        provider && !cJSON_IsNull(provider) ? strdup(provider->valuestring) : NULL
+        provider_local_str
         );
+
+    if (!post_oauth_callback_request_local_var) {
+        goto end;
+    }
 
     return post_oauth_callback_request_local_var;
 end:
+    if (provider_local_str) {
+        free(provider_local_str);
+        provider_local_str = NULL;
+    }
     return NULL;
 
 }

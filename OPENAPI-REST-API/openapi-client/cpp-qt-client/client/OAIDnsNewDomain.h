@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDnsNewDomain : public OAIObject {
 public:
     OAIDnsNewDomain();
-    OAIDnsNewDomain(QString json);
+    OAIDnsNewDomain(const QString &json);
     ~OAIDnsNewDomain() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getDomain() const;
     void setDomain(const QString &domain);

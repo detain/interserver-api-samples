@@ -1,4 +1,4 @@
-# # MailSchemaExtraInfoTables
+# MailSchemaExtraInfoTables
 
 ## Properties
 

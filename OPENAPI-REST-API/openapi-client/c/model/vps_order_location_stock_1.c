@@ -6,32 +6,53 @@
 
 
 static vps_order_location_stock_1_t *vps_order_location_stock_1_create_internal(
-    int kvm,
-    int kvmstorage,
-    int hyperv
+    int *kvm,
+    int *kvmstorage,
+    int *hyperv
     ) {
     vps_order_location_stock_1_t *vps_order_location_stock_1_local_var = malloc(sizeof(vps_order_location_stock_1_t));
     if (!vps_order_location_stock_1_local_var) {
         return NULL;
     }
+    memset(vps_order_location_stock_1_local_var, 0, sizeof(vps_order_location_stock_1_t));
+    vps_order_location_stock_1_local_var->_library_owned = 1;
     vps_order_location_stock_1_local_var->kvm = kvm;
     vps_order_location_stock_1_local_var->kvmstorage = kvmstorage;
     vps_order_location_stock_1_local_var->hyperv = hyperv;
-
-    vps_order_location_stock_1_local_var->_library_owned = 1;
     return vps_order_location_stock_1_local_var;
 }
 
 __attribute__((deprecated)) vps_order_location_stock_1_t *vps_order_location_stock_1_create(
-    int kvm,
-    int kvmstorage,
-    int hyperv
+    int *kvm,
+    int *kvmstorage,
+    int *hyperv
     ) {
-    return vps_order_location_stock_1_create_internal (
-        kvm,
-        kvmstorage,
-        hyperv
+    int *kvm_copy = NULL;
+    if (kvm) {
+        kvm_copy = malloc(sizeof(int));
+        if (kvm_copy) *kvm_copy = *kvm;
+    }
+    int *kvmstorage_copy = NULL;
+    if (kvmstorage) {
+        kvmstorage_copy = malloc(sizeof(int));
+        if (kvmstorage_copy) *kvmstorage_copy = *kvmstorage;
+    }
+    int *hyperv_copy = NULL;
+    if (hyperv) {
+        hyperv_copy = malloc(sizeof(int));
+        if (hyperv_copy) *hyperv_copy = *hyperv;
+    }
+    vps_order_location_stock_1_t *result = vps_order_location_stock_1_create_internal (
+        kvm_copy,
+        kvmstorage_copy,
+        hyperv_copy
         );
+    if (!result) {
+        free(kvm_copy);
+        free(kvmstorage_copy);
+        free(hyperv_copy);
+    }
+    return result;
 }
 
 void vps_order_location_stock_1_free(vps_order_location_stock_1_t *vps_order_location_stock_1) {
@@ -43,6 +64,18 @@ void vps_order_location_stock_1_free(vps_order_location_stock_1_t *vps_order_loc
         return ;
     }
     listEntry_t *listEntry;
+    if (vps_order_location_stock_1->kvm) {
+        free(vps_order_location_stock_1->kvm);
+        vps_order_location_stock_1->kvm = NULL;
+    }
+    if (vps_order_location_stock_1->kvmstorage) {
+        free(vps_order_location_stock_1->kvmstorage);
+        vps_order_location_stock_1->kvmstorage = NULL;
+    }
+    if (vps_order_location_stock_1->hyperv) {
+        free(vps_order_location_stock_1->hyperv);
+        vps_order_location_stock_1->hyperv = NULL;
+    }
     free(vps_order_location_stock_1);
 }
 
@@ -51,7 +84,7 @@ cJSON *vps_order_location_stock_1_convertToJSON(vps_order_location_stock_1_t *vp
 
     // vps_order_location_stock_1->kvm
     if(vps_order_location_stock_1->kvm) {
-    if(cJSON_AddBoolToObject(item, "kvm", vps_order_location_stock_1->kvm) == NULL) {
+    if(cJSON_AddBoolToObject(item, "kvm", *vps_order_location_stock_1->kvm) == NULL) {
     goto fail; //Bool
     }
     }
@@ -59,7 +92,7 @@ cJSON *vps_order_location_stock_1_convertToJSON(vps_order_location_stock_1_t *vp
 
     // vps_order_location_stock_1->kvmstorage
     if(vps_order_location_stock_1->kvmstorage) {
-    if(cJSON_AddBoolToObject(item, "kvmstorage", vps_order_location_stock_1->kvmstorage) == NULL) {
+    if(cJSON_AddBoolToObject(item, "kvmstorage", *vps_order_location_stock_1->kvmstorage) == NULL) {
     goto fail; //Bool
     }
     }
@@ -67,7 +100,7 @@ cJSON *vps_order_location_stock_1_convertToJSON(vps_order_location_stock_1_t *vp
 
     // vps_order_location_stock_1->hyperv
     if(vps_order_location_stock_1->hyperv) {
-    if(cJSON_AddBoolToObject(item, "hyperv", vps_order_location_stock_1->hyperv) == NULL) {
+    if(cJSON_AddBoolToObject(item, "hyperv", *vps_order_location_stock_1->hyperv) == NULL) {
     goto fail; //Bool
     }
     }
@@ -84,6 +117,15 @@ vps_order_location_stock_1_t *vps_order_location_stock_1_parseFromJSON(cJSON *vp
 
     vps_order_location_stock_1_t *vps_order_location_stock_1_local_var = NULL;
 
+    // define the local variable for vps_order_location_stock_1->kvm
+    int *kvm_local_var = NULL;
+
+    // define the local variable for vps_order_location_stock_1->kvmstorage
+    int *kvmstorage_local_var = NULL;
+
+    // define the local variable for vps_order_location_stock_1->hyperv
+    int *hyperv_local_var = NULL;
+
     // vps_order_location_stock_1->kvm
     cJSON *kvm = cJSON_GetObjectItemCaseSensitive(vps_order_location_stock_1JSON, "kvm");
     if (cJSON_IsNull(kvm)) {
@@ -94,6 +136,12 @@ vps_order_location_stock_1_t *vps_order_location_stock_1_parseFromJSON(cJSON *vp
     {
     goto end; //Bool
     }
+    kvm_local_var = malloc(sizeof(int));
+    if(!kvm_local_var)
+    {
+        goto end;
+    }
+    *kvm_local_var = kvm->valueint;
     }
 
     // vps_order_location_stock_1->kvmstorage
@@ -106,6 +154,12 @@ vps_order_location_stock_1_t *vps_order_location_stock_1_parseFromJSON(cJSON *vp
     {
     goto end; //Bool
     }
+    kvmstorage_local_var = malloc(sizeof(int));
+    if(!kvmstorage_local_var)
+    {
+        goto end;
+    }
+    *kvmstorage_local_var = kvmstorage->valueint;
     }
 
     // vps_order_location_stock_1->hyperv
@@ -118,17 +172,40 @@ vps_order_location_stock_1_t *vps_order_location_stock_1_parseFromJSON(cJSON *vp
     {
     goto end; //Bool
     }
+    hyperv_local_var = malloc(sizeof(int));
+    if(!hyperv_local_var)
+    {
+        goto end;
+    }
+    *hyperv_local_var = hyperv->valueint;
     }
 
 
+
     vps_order_location_stock_1_local_var = vps_order_location_stock_1_create_internal (
-        kvm ? kvm->valueint : 0,
-        kvmstorage ? kvmstorage->valueint : 0,
-        hyperv ? hyperv->valueint : 0
+        kvm_local_var,
+        kvmstorage_local_var,
+        hyperv_local_var
         );
+
+    if (!vps_order_location_stock_1_local_var) {
+        goto end;
+    }
 
     return vps_order_location_stock_1_local_var;
 end:
+    if (kvm_local_var) {
+        free(kvm_local_var);
+        kvm_local_var = NULL;
+    }
+    if (kvmstorage_local_var) {
+        free(kvmstorage_local_var);
+        kvmstorage_local_var = NULL;
+    }
+    if (hyperv_local_var) {
+        free(hyperv_local_var);
+        hyperv_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -19,13 +19,13 @@ typedef struct invoice_t invoice_t;
 
 
 typedef struct invoice_t {
-    long id; //numeric
+    long *id; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } invoice_t;
 
 __attribute__((deprecated)) invoice_t *invoice_create(
-    long id
+    long *id
 );
 
 void invoice_free(invoice_t *invoice);

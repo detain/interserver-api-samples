@@ -10,7 +10,7 @@
 
     
         type t = {
-                              var_11447: Websites_order_service_types.t
+                              var_11447: t
                   
                   
                 
@@ -19,7 +19,7 @@
                         } [@@deriving yojson { strict = false }, show, eq ];;
         
         (** The service types data. *)
-        let create (var_11447 : Websites_order_service_types.t) : t = {
+        let create (var_11447 : t) : t = {
             var_11447 = var_11447;
         }
     

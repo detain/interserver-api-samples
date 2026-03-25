@@ -20,14 +20,14 @@ typedef struct create_filter_t create_filter_t;
 
 typedef struct create_filter_t {
     char *filter_type; // string
-    int port; //numeric
+    int *port; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } create_filter_t;
 
 __attribute__((deprecated)) create_filter_t *create_filter_create(
     char *filter_type,
-    int port
+    int *port
 );
 
 void create_filter_free(create_filter_t *create_filter);

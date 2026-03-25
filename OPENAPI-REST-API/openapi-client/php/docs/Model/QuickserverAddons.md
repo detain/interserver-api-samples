@@ -1,4 +1,4 @@
-# # QuickserverAddons
+# QuickserverAddons
 
 ## Properties
 

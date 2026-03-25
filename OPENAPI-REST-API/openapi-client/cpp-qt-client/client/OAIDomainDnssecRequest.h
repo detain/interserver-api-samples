@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIDomainDnssecRequest : public OAIObject {
 public:
     OAIDomainDnssecRequest();
-    OAIDomainDnssecRequest(QString json);
+    OAIDomainDnssecRequest(const QString &json);
     ~OAIDomainDnssecRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<qint32> getAlgorithm() const;
     void setAlgorithm(const QList<qint32> &algorithm);

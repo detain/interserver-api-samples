@@ -23,7 +23,7 @@ using SwaggerDateConverter = Interserver.MyAdmin.Client.Client.SwaggerDateConver
 namespace Interserver.MyAdmin.Client.Model
 {
     /// <summary>
-    /// Mail log records
+    /// Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
     /// </summary>
     [DataContract]
         public partial class MailLog :  IEquatable<MailLog>, IValidatableObject
@@ -31,9 +31,9 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MailLog" /> class.
         /// </summary>
-        /// <param name="total">total number of mail log entries (required).</param>
-        /// <param name="skip">number of emails skipped in listing (required).</param>
-        /// <param name="limit">number of emails to return (required).</param>
+        /// <param name="total">Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode. (required).</param>
+        /// <param name="skip">The &#x60;skip&#x60; value used for this page (echoed from the request). (required).</param>
+        /// <param name="limit">The &#x60;limit&#x60; value used for this page (echoed from the request). (required).</param>
         /// <param name="emails">emails (required).</param>
         public MailLog(int? total = default(int?), int? skip = default(int?), int? limit = default(int?), List<MailLogEntry> emails = default(List<MailLogEntry>))
         {
@@ -76,23 +76,23 @@ namespace Interserver.MyAdmin.Client.Model
         }
         
         /// <summary>
-        /// total number of mail log entries
+        /// Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.
         /// </summary>
-        /// <value>total number of mail log entries</value>
+        /// <value>Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.</value>
         [DataMember(Name="total", EmitDefaultValue=false)]
         public int? total { get; set; }
 
         /// <summary>
-        /// number of emails skipped in listing
+        /// The &#x60;skip&#x60; value used for this page (echoed from the request).
         /// </summary>
-        /// <value>number of emails skipped in listing</value>
+        /// <value>The &#x60;skip&#x60; value used for this page (echoed from the request).</value>
         [DataMember(Name="skip", EmitDefaultValue=false)]
         public int? skip { get; set; }
 
         /// <summary>
-        /// number of emails to return
+        /// The &#x60;limit&#x60; value used for this page (echoed from the request).
         /// </summary>
-        /// <value>number of emails to return</value>
+        /// <value>The &#x60;limit&#x60; value used for this page (echoed from the request).</value>
         [DataMember(Name="limit", EmitDefaultValue=false)]
         public int? limit { get; set; }
 

@@ -1,4 +1,4 @@
-# # LicensesCancel200Response
+# LicensesCancel200Response
 
 ## Properties
 

@@ -21,7 +21,7 @@ typedef struct server_asset_t server_asset_t;
 
 
 typedef struct server_asset_t {
-    int id; //numeric
+    int *id; //numeric
     char *order_id; // string
     char *hostname; // string
     char *status; // string
@@ -74,7 +74,7 @@ typedef struct server_asset_t {
 } server_asset_t;
 
 __attribute__((deprecated)) server_asset_t *server_asset_create(
-    int id,
+    int *id,
     char *order_id,
     char *hostname,
     char *status,

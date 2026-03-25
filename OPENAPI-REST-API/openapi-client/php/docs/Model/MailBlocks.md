@@ -1,4 +1,4 @@
-# # MailBlocks
+# MailBlocks
 
 ## Properties
 

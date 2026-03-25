@@ -1,4 +1,4 @@
-# # IpLimitRange
+# IpLimitRange
 
 ## Properties
 

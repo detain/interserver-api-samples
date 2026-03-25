@@ -25,14 +25,14 @@ typedef struct tickets_row_t {
     char *lastreplier; // string
     char *status; // string
     char *priority; // string
-    int total_replies; //numeric
+    int *total_replies; //numeric
     char *lastactivity; // string
     char *departmenttitle; // string
-    int ticketid; //numeric
+    int *ticketid; //numeric
     char *can_close; // string
     any_type_t *attachments; // custom
     char *status_text; // string
-    int checked; //boolean
+    int *checked; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } tickets_row_t;
@@ -43,14 +43,14 @@ __attribute__((deprecated)) tickets_row_t *tickets_row_create(
     char *lastreplier,
     char *status,
     char *priority,
-    int total_replies,
+    int *total_replies,
     char *lastactivity,
     char *departmenttitle,
-    int ticketid,
+    int *ticketid,
     char *can_close,
     any_type_t *attachments,
     char *status_text,
-    int checked
+    int *checked
 );
 
 void tickets_row_free(tickets_row_t *tickets_row);

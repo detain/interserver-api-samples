@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMailServiceType : public OAIObject {
 public:
     OAIMailServiceType();
-    OAIMailServiceType(QString json);
+    OAIMailServiceType(const QString &json);
     ~OAIMailServiceType() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getServicesId() const;
     void setServicesId(const QString &services_id);

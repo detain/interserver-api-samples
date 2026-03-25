@@ -20,7 +20,7 @@ typedef struct servers_buy_now_response_t servers_buy_now_response_t;
 
 
 typedef struct servers_buy_now_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
     struct servers_buy_now_response_order_details_t *order_details; //model
 
@@ -28,7 +28,7 @@ typedef struct servers_buy_now_response_t {
 } servers_buy_now_response_t;
 
 __attribute__((deprecated)) servers_buy_now_response_t *servers_buy_now_response_create(
-    int success,
+    int *success,
     char *text,
     servers_buy_now_response_order_details_t *order_details
 );

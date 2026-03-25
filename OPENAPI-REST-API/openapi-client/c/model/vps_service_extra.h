@@ -20,14 +20,14 @@ typedef struct vps_service_extra_t vps_service_extra_t;
 
 
 typedef struct vps_service_extra_t {
-    int spice; //numeric
+    int *spice; //numeric
     list_t *snapshots; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_service_extra_t;
 
 __attribute__((deprecated)) vps_service_extra_t *vps_service_extra_create(
-    int spice,
+    int *spice,
     list_t *snapshots
 );
 

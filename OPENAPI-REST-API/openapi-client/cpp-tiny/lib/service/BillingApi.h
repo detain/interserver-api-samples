@@ -35,7 +35,7 @@ class BillingApi : public Service {
 public:
     BillingApi() = default;
 
-    virtual ~BillingApi() = default;
+    virtual ~BillingApi();
 
     /**
     * Add Credit Card to Account.

@@ -34,13 +34,13 @@ class OAIBackupsOrder_serviceTypes;
 class OAIBackupsOrder : public OAIObject {
 public:
     OAIBackupsOrder();
-    OAIBackupsOrder(QString json);
+    OAIBackupsOrder(const QString &json);
     ~OAIBackupsOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIBackupsOrderPackageCosts getPackageCosts() const;
     void setPackageCosts(const OAIBackupsOrderPackageCosts &package_costs);

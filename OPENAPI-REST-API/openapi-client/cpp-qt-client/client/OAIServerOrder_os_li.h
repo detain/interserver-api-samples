@@ -32,13 +32,13 @@ class OAIServerOrderOS;
 class OAIServerOrder_os_li : public OAIObject {
 public:
     OAIServerOrder_os_li();
-    OAIServerOrder_os_li(QString json);
+    OAIServerOrder_os_li(const QString &json);
     ~OAIServerOrder_os_li() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderOS getR51() const;
     void setR51(const OAIServerOrderOS &r_51);

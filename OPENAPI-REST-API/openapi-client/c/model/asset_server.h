@@ -20,7 +20,7 @@ typedef struct asset_server_t asset_server_t;
 
 
 typedef struct asset_server_t {
-    int id; //numeric
+    int *id; //numeric
     char *region; // string
     char *price; // string
     list_t *cpu; //nonprimitive container
@@ -33,7 +33,7 @@ typedef struct asset_server_t {
 } asset_server_t;
 
 __attribute__((deprecated)) asset_server_t *asset_server_create(
-    int id,
+    int *id,
     char *region,
     char *price,
     list_t *cpu,

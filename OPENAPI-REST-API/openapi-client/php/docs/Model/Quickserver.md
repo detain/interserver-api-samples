@@ -1,4 +1,4 @@
-# # Quickserver
+# Quickserver
 
 ## Properties
 

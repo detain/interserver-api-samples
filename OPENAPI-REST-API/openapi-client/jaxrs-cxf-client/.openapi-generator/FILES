@@ -393,6 +393,7 @@ src/gen/java/org/openapitools/model/UrlRequest.java
 src/gen/java/org/openapitools/model/VPSCancel200Response.java
 src/gen/java/org/openapitools/model/VPSTrafficDataDataSectionResponse.java
 src/gen/java/org/openapitools/model/VPSTrafficDataDataSectionResponseInner.java
+src/gen/java/org/openapitools/model/ViewMailLogStartDateParameter.java
 src/gen/java/org/openapitools/model/ViewTicketResponse.java
 src/gen/java/org/openapitools/model/Vps.java
 src/gen/java/org/openapitools/model/VpsBackupRow.java

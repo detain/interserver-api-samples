@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIScrubIpPlaceOrder::OAIScrubIpPlaceOrder(QString json) {
+OAIScrubIpPlaceOrder::OAIScrubIpPlaceOrder(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIScrubIpPlaceOrder::initializeModel() {
     m_ip_isValid = false;
 }
 
-void OAIScrubIpPlaceOrder::fromJson(QString jsonString) {
+void OAIScrubIpPlaceOrder::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

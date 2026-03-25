@@ -172,6 +172,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -191,7 +198,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void cancelScrubIpCallback(OAIHttpRequestWorker *worker);
     void createFilterCallback(OAIHttpRequestWorker *worker);
@@ -247,102 +254,38 @@ Q_SIGNALS:
     void scrubIpsDeleteGeoRuleSignalFull(OAIHttpRequestWorker *worker, OAIScrubIpsDeleteRule_200_response summary);
     void scrubIpsDeleteRuleSignalFull(OAIHttpRequestWorker *worker, OAIScrubIpsDeleteRule_200_response summary);
 
-    Q_DECL_DEPRECATED_X("Use cancelScrubIpSignalError() instead")
-    void cancelScrubIpSignalE(OAICancelScrubIp_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void cancelScrubIpSignalError(OAICancelScrubIp_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createFilterSignalError() instead")
-    void createFilterSignalE(OAICreateFilter_201_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void createFilterSignalError(OAICreateFilter_201_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createGeoRuleSignalError() instead")
-    void createGeoRuleSignalE(OAICreateRule_201_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void createGeoRuleSignalError(OAICreateRule_201_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createRuleSignalError() instead")
-    void createRuleSignalE(OAICreateRule_201_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void createRuleSignalError(OAICreateRule_201_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteFilterSignalError() instead")
-    void deleteFilterSignalE(OAIDeleteFilter_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteFilterSignalError(OAIDeleteFilter_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use disableScrubSignalError() instead")
-    void disableScrubSignalE(OAIDisableScrub_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void disableScrubSignalError(OAIDisableScrub_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use enableScrubSignalError() instead")
-    void enableScrubSignalE(OAIEnableScrub_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void enableScrubSignalError(OAIEnableScrub_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getOrderDetailSignalError() instead")
-    void getOrderDetailSignalE(OAIGetOrderDetail_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getOrderDetailSignalError(OAIGetOrderDetail_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpDetailsSignalError() instead")
-    void getScrubIpDetailsSignalE(OAIGetScrubIpDetails_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpDetailsSignalError(OAIGetScrubIpDetails_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpFilterTypesSignalError() instead")
-    void getScrubIpFilterTypesSignalE(OAIScrubIpFilterTypes summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpFilterTypesSignalError(OAIScrubIpFilterTypes summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpInvoicesSignalError() instead")
-    void getScrubIpInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpLogsSignalError() instead")
-    void getScrubIpLogsSignalE(QList<OAIScrubIpsLogRowSchema> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpLogsSignalError(QList<OAIScrubIpsLogRowSchema> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpsListSignalError() instead")
-    void getScrubIpsListSignalE(QList<OAIScrubIpsRowSchema> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpsListSignalError(QList<OAIScrubIpsRowSchema> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use placeScrubOrderSignalError() instead")
-    void placeScrubOrderSignalE(OAIPlaceScrubOrder_201_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void placeScrubOrderSignalError(OAIPlaceScrubOrder_201_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use scrubIpsDeleteGeoRuleSignalError() instead")
-    void scrubIpsDeleteGeoRuleSignalE(OAIScrubIpsDeleteRule_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void scrubIpsDeleteGeoRuleSignalError(OAIScrubIpsDeleteRule_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use scrubIpsDeleteRuleSignalError() instead")
-    void scrubIpsDeleteRuleSignalE(OAIScrubIpsDeleteRule_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void scrubIpsDeleteRuleSignalError(OAIScrubIpsDeleteRule_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use cancelScrubIpSignalErrorFull() instead")
-    void cancelScrubIpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void cancelScrubIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createFilterSignalErrorFull() instead")
-    void createFilterSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void createFilterSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createGeoRuleSignalErrorFull() instead")
-    void createGeoRuleSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void createGeoRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createRuleSignalErrorFull() instead")
-    void createRuleSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void createRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteFilterSignalErrorFull() instead")
-    void deleteFilterSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteFilterSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use disableScrubSignalErrorFull() instead")
-    void disableScrubSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void disableScrubSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use enableScrubSignalErrorFull() instead")
-    void enableScrubSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void enableScrubSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getOrderDetailSignalErrorFull() instead")
-    void getOrderDetailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getOrderDetailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpDetailsSignalErrorFull() instead")
-    void getScrubIpDetailsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpDetailsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpFilterTypesSignalErrorFull() instead")
-    void getScrubIpFilterTypesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpFilterTypesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpInvoicesSignalErrorFull() instead")
-    void getScrubIpInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpLogsSignalErrorFull() instead")
-    void getScrubIpLogsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpLogsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getScrubIpsListSignalErrorFull() instead")
-    void getScrubIpsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getScrubIpsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use placeScrubOrderSignalErrorFull() instead")
-    void placeScrubOrderSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void placeScrubOrderSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use scrubIpsDeleteGeoRuleSignalErrorFull() instead")
-    void scrubIpsDeleteGeoRuleSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void scrubIpsDeleteGeoRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use scrubIpsDeleteRuleSignalErrorFull() instead")
-    void scrubIpsDeleteRuleSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void scrubIpsDeleteRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

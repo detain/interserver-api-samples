@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAffiliateTrafficRow : public OAIObject {
 public:
     OAIAffiliateTrafficRow();
-    OAIAffiliateTrafficRow(QString json);
+    OAIAffiliateTrafficRow(const QString &json);
     ~OAIAffiliateTrafficRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTrafficId() const;
     void setTrafficId(const QString &traffic_id);

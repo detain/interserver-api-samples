@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDelete_Firewall_Rule::OAIDelete_Firewall_Rule(QString json) {
+OAIDelete_Firewall_Rule::OAIDelete_Firewall_Rule(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIDelete_Firewall_Rule::initializeModel() {
     m_rule_id_isValid = false;
 }
 
-void OAIDelete_Firewall_Rule::fromJson(QString jsonString) {
+void OAIDelete_Firewall_Rule::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

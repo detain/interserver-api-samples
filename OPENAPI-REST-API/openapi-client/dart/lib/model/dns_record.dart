@@ -107,10 +107,26 @@ class DnsRecord {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DnsRecord[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DnsRecord[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "DnsRecord[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "DnsRecord[id]" has a null value in JSON.');
+        assert(json.containsKey(r'domain_id'), 'Required key "DnsRecord[domain_id]" is missing from JSON.');
+        assert(json[r'domain_id'] != null, 'Required key "DnsRecord[domain_id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "DnsRecord[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "DnsRecord[name]" has a null value in JSON.');
+        assert(json.containsKey(r'type'), 'Required key "DnsRecord[type]" is missing from JSON.');
+        assert(json[r'type'] != null, 'Required key "DnsRecord[type]" has a null value in JSON.');
+        assert(json.containsKey(r'content'), 'Required key "DnsRecord[content]" is missing from JSON.');
+        assert(json[r'content'] != null, 'Required key "DnsRecord[content]" has a null value in JSON.');
+        assert(json.containsKey(r'ttl'), 'Required key "DnsRecord[ttl]" is missing from JSON.');
+        assert(json[r'ttl'] != null, 'Required key "DnsRecord[ttl]" has a null value in JSON.');
+        assert(json.containsKey(r'prio'), 'Required key "DnsRecord[prio]" is missing from JSON.');
+        assert(json[r'prio'] != null, 'Required key "DnsRecord[prio]" has a null value in JSON.');
+        assert(json.containsKey(r'disabled'), 'Required key "DnsRecord[disabled]" is missing from JSON.');
+        assert(json[r'disabled'] != null, 'Required key "DnsRecord[disabled]" has a null value in JSON.');
+        assert(json.containsKey(r'ordername'), 'Required key "DnsRecord[ordername]" is missing from JSON.');
+        assert(json[r'ordername'] != null, 'Required key "DnsRecord[ordername]" has a null value in JSON.');
+        assert(json.containsKey(r'auth'), 'Required key "DnsRecord[auth]" is missing from JSON.');
+        assert(json[r'auth'] != null, 'Required key "DnsRecord[auth]" has a null value in JSON.');
         return true;
       }());
 

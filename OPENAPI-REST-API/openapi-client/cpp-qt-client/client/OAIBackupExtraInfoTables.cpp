@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBackupExtraInfoTables::OAIBackupExtraInfoTables(QString json) {
+OAIBackupExtraInfoTables::OAIBackupExtraInfoTables(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIBackupExtraInfoTables::initializeModel() {
     m_ip_info_isValid = false;
 }
 
-void OAIBackupExtraInfoTables::fromJson(QString jsonString) {
+void OAIBackupExtraInfoTables::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

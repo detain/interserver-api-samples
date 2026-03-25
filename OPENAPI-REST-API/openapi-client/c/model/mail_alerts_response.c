@@ -11,15 +11,18 @@ static mail_alerts_response_t *mail_alerts_response_create_internal(
     if (!mail_alerts_response_local_var) {
         return NULL;
     }
-
+    memset(mail_alerts_response_local_var, 0, sizeof(mail_alerts_response_t));
     mail_alerts_response_local_var->_library_owned = 1;
     return mail_alerts_response_local_var;
 }
 
 __attribute__((deprecated)) mail_alerts_response_t *mail_alerts_response_create(
     ) {
-    return mail_alerts_response_create_internal (
+    mail_alerts_response_t *result = mail_alerts_response_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_alerts_response_free(mail_alerts_response_t *mail_alerts_response) {
@@ -49,8 +52,13 @@ mail_alerts_response_t *mail_alerts_response_parseFromJSON(cJSON *mail_alerts_re
     mail_alerts_response_t *mail_alerts_response_local_var = NULL;
 
 
+
     mail_alerts_response_local_var = mail_alerts_response_create_internal (
         );
+
+    if (!mail_alerts_response_local_var) {
+        goto end;
+    }
 
     return mail_alerts_response_local_var;
 end:

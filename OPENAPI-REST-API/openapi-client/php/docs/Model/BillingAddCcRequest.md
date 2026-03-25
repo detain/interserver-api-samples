@@ -1,4 +1,4 @@
-# # BillingAddCcRequest
+# BillingAddCcRequest
 
 ## Properties
 

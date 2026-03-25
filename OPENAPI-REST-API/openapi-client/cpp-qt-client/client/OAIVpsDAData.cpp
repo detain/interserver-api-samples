@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsDAData::OAIVpsDAData(QString json) {
+OAIVpsDAData::OAIVpsDAData(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIVpsDAData::initializeModel() {
     m_free_isValid = false;
 }
 
-void OAIVpsDAData::fromJson(QString jsonString) {
+void OAIVpsDAData::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

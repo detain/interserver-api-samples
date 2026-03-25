@@ -1,4 +1,4 @@
-# # QueueResponse
+# QueueResponse
 
 ## Properties
 

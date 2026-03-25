@@ -1,4 +1,4 @@
-# # QuickserverIpInfo
+# QuickserverIpInfo
 
 ## Properties
 

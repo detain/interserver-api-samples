@@ -1,4 +1,4 @@
-# # AccountFeatures
+# AccountFeatures
 
 ## Properties
 

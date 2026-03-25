@@ -34,13 +34,13 @@ class OAIGetScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner;
 class OAIGetScrubIpDetails_200_response_extraInfoTables_scrub_ips : public OAIObject {
 public:
     OAIGetScrubIpDetails_200_response_extraInfoTables_scrub_ips();
-    OAIGetScrubIpDetails_200_response_extraInfoTables_scrub_ips(QString json);
+    OAIGetScrubIpDetails_200_response_extraInfoTables_scrub_ips(const QString &json);
     ~OAIGetScrubIpDetails_200_response_extraInfoTables_scrub_ips() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTitle() const;
     void setTitle(const QString &title);

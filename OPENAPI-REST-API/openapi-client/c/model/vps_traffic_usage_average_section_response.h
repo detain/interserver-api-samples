@@ -19,17 +19,17 @@ typedef struct vps_traffic_usage_average_section_response_t vps_traffic_usage_av
 
 
 typedef struct vps_traffic_usage_average_section_response_t {
-    int total; //numeric
-    int count; //numeric
-    int value; //numeric
+    int *total; //numeric
+    int *count; //numeric
+    int *value; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_traffic_usage_average_section_response_t;
 
 __attribute__((deprecated)) vps_traffic_usage_average_section_response_t *vps_traffic_usage_average_section_response_create(
-    int total,
-    int count,
-    int value
+    int *total,
+    int *count,
+    int *value
 );
 
 void vps_traffic_usage_average_section_response_free(vps_traffic_usage_average_section_response_t *vps_traffic_usage_average_section_response);

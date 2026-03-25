@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserverIpTableRow::OAIQuickserverIpTableRow(QString json) {
+OAIQuickserverIpTableRow::OAIQuickserverIpTableRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIQuickserverIpTableRow::initializeModel() {
     m_value_isValid = false;
 }
 
-void OAIQuickserverIpTableRow::fromJson(QString jsonString) {
+void OAIQuickserverIpTableRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

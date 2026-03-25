@@ -12,18 +12,21 @@ static captcha_response_t *captcha_response_create_internal(
     if (!captcha_response_local_var) {
         return NULL;
     }
-    captcha_response_local_var->captcha = captcha;
-
+    memset(captcha_response_local_var, 0, sizeof(captcha_response_t));
     captcha_response_local_var->_library_owned = 1;
+    captcha_response_local_var->captcha = captcha;
     return captcha_response_local_var;
 }
 
 __attribute__((deprecated)) captcha_response_t *captcha_response_create(
     char *captcha
     ) {
-    return captcha_response_create_internal (
+    captcha_response_t *result = captcha_response_create_internal (
         captcha
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void captcha_response_free(captcha_response_t *captcha_response) {
@@ -65,6 +68,8 @@ captcha_response_t *captcha_response_parseFromJSON(cJSON *captcha_responseJSON){
 
     captcha_response_t *captcha_response_local_var = NULL;
 
+    char *captcha_local_str = NULL;
+
     // captcha_response->captcha
     cJSON *captcha = cJSON_GetObjectItemCaseSensitive(captcha_responseJSON, "captcha");
     if (cJSON_IsNull(captcha)) {
@@ -81,12 +86,22 @@ captcha_response_t *captcha_response_parseFromJSON(cJSON *captcha_responseJSON){
     }
 
 
+    if (captcha && !cJSON_IsNull(captcha)) captcha_local_str = strdup(captcha->valuestring);
+
     captcha_response_local_var = captcha_response_create_internal (
-        strdup(captcha->valuestring)
+        captcha_local_str
         );
+
+    if (!captcha_response_local_var) {
+        goto end;
+    }
 
     return captcha_response_local_var;
 end:
+    if (captcha_local_str) {
+        free(captcha_local_str);
+        captcha_local_str = NULL;
+    }
     return NULL;
 
 }

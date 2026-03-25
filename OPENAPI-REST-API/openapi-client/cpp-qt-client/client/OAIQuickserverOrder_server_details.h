@@ -32,13 +32,13 @@ class OAIQuickserverOrderServerDetails381;
 class OAIQuickserverOrder_server_details : public OAIObject {
 public:
     OAIQuickserverOrder_server_details();
-    OAIQuickserverOrder_server_details(QString json);
+    OAIQuickserverOrder_server_details(const QString &json);
     ~OAIQuickserverOrder_server_details() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIQuickserverOrderServerDetails381 getR381() const;
     void setR381(const OAIQuickserverOrderServerDetails381 &r_381);

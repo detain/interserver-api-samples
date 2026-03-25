@@ -1,4 +1,4 @@
-# # UpdateTicketResponseSchema
+# UpdateTicketResponseSchema
 
 ## Properties
 

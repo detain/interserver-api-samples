@@ -41,13 +41,13 @@ class OAIBuyItNowServerOrder_200_response_raid_inner;
 class OAIBuyItNowServerOrder_200_response : public OAIObject {
 public:
     OAIBuyItNowServerOrder_200_response();
-    OAIBuyItNowServerOrder_200_response(QString json);
+    OAIBuyItNowServerOrder_200_response(const QString &json);
     ~OAIBuyItNowServerOrder_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<OAIBuyItNowServerOrder_200_response_bandwidth_inner> getBandwidth() const;
     void setBandwidth(const QList<OAIBuyItNowServerOrder_200_response_bandwidth_inner> &bandwidth);

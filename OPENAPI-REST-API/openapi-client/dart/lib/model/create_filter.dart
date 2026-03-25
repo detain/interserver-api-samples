@@ -53,10 +53,10 @@ class CreateFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'filter_type'), 'Required key "CreateFilter[filter_type]" is missing from JSON.');
+        assert(json[r'filter_type'] != null, 'Required key "CreateFilter[filter_type]" has a null value in JSON.');
+        assert(json.containsKey(r'port'), 'Required key "CreateFilter[port]" is missing from JSON.');
+        assert(json[r'port'] != null, 'Required key "CreateFilter[port]" has a null value in JSON.');
         return true;
       }());
 

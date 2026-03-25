@@ -19,19 +19,19 @@ typedef struct mail_stats_type_volume_to_t mail_stats_type_volume_to_t;
 
 
 typedef struct mail_stats_type_volume_to_t {
-    int clientdomain_com; //numeric
-    int usersite_net; //numeric
-    int salescompany_com; //numeric
-    int clientanothersite_com; //numeric
+    int *clientdomain_com; //numeric
+    int *usersite_net; //numeric
+    int *salescompany_com; //numeric
+    int *clientanothersite_com; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } mail_stats_type_volume_to_t;
 
 __attribute__((deprecated)) mail_stats_type_volume_to_t *mail_stats_type_volume_to_create(
-    int clientdomain_com,
-    int usersite_net,
-    int salescompany_com,
-    int clientanothersite_com
+    int *clientdomain_com,
+    int *usersite_net,
+    int *salescompany_com,
+    int *clientanothersite_com
 );
 
 void mail_stats_type_volume_to_free(mail_stats_type_volume_to_t *mail_stats_type_volume_to);

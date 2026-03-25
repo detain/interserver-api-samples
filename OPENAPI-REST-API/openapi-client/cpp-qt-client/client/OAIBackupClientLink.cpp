@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBackupClientLink::OAIBackupClientLink(QString json) {
+OAIBackupClientLink::OAIBackupClientLink(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIBackupClientLink::initializeModel() {
     m_other_attr_isValid = false;
 }
 
-void OAIBackupClientLink::fromJson(QString jsonString) {
+void OAIBackupClientLink::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

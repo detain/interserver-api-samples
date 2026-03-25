@@ -13,54 +13,58 @@ No summary available.
 
 .DESCRIPTION
 
-An email record
+A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 
 .PARAMETER Id
-internal db id
+Internal auto-increment database row ID.
 .PARAMETER Id
-mail id
+The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
 .PARAMETER VarFrom
-from address
+SMTP envelope `MAIL FROM` address.
 .PARAMETER To
-to address
+SMTP envelope `RCPT TO` address.
 .PARAMETER Subject
-email subject
+The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
 .PARAMETER MessageId
-message id
+The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
 .PARAMETER Created
-creation date
+Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
 .PARAMETER Time
-creation timestamp
+Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
 .PARAMETER User
-user account
+The SMTP AUTH username used to submit the message (e.g. `mb5658`).
 .PARAMETER Transtype
-transaction type
+SMTP transaction type negotiated with the relay.
 .PARAMETER Origin
-origin ip
+IP address of the client that submitted the message to the relay.
 .PARAMETER Interface
-interface name
+Relay interface name that accepted the message.
 .PARAMETER SendingZone
-sending zone
+The sending zone assigned by the relay for outbound delivery.
 .PARAMETER BodySize
-email body size in bytes
+Size of the message body in bytes.
 .PARAMETER Seq
-index of email in the to adderess list
+Sequence index of this recipient in a multi-recipient message. Starts at 1.
+.PARAMETER Delivered
+Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+.PARAMETER Code
+The SMTP response code from the destination MX server (e.g. `250`).
 .PARAMETER Recipient
-to address this email is being sent to
-.PARAMETER Domain
-to address domain
-.PARAMETER Locked
-locked status
-.PARAMETER LockTime
-lock timestamp
-.PARAMETER Assigned
-assigned server
-.PARAMETER Queued
-queued timestamp
-.PARAMETER MxHostname
-mx hostname
+The specific recipient address this delivery record is for.
 .PARAMETER Response
-mail delivery response
+The full SMTP response string received from the destination MX server.
+.PARAMETER Domain
+The destination domain for this delivery attempt.
+.PARAMETER Locked
+Whether the queue entry is currently locked for delivery processing.
+.PARAMETER LockTime
+Millisecond-precision timestamp of the last queue lock acquisition.
+.PARAMETER Assigned
+The relay server node assigned to deliver this message.
+.PARAMETER Queued
+ISO 8601 timestamp when the message was placed into the delivery queue.
+.PARAMETER MxHostname
+The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
 .OUTPUTS
 
 MailLogEntry<PSCustomObject>
@@ -109,35 +113,41 @@ function Initialize-MailLogEntry {
         [String]
         ${SendingZone},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
+        [System.Nullable[Int32]]
         ${BodySize},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
+        [System.Nullable[Int32]]
         ${Seq},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${Delivered},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${Code},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Recipient},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Domain},
-        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
-        ${Locked},
         [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
-        ${LockTime},
+        [String]
+        ${Response},
         [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Assigned},
+        ${Domain},
         [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Queued},
+        [System.Nullable[Int32]]
+        ${Locked},
         [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MxHostname},
+        ${LockTime},
         [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Response}
+        ${Assigned},
+        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Queued},
+        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${MxHostname}
     )
 
     Process {
@@ -158,10 +168,6 @@ function Initialize-MailLogEntry {
 
         if ($null -eq $To) {
             throw "invalid value for 'To', 'To' cannot be null."
-        }
-
-        if ($null -eq $Subject) {
-            throw "invalid value for 'Subject', 'Subject' cannot be null."
         }
 
         if ($null -eq $Created) {
@@ -188,50 +194,6 @@ function Initialize-MailLogEntry {
             throw "invalid value for 'Interface', 'Interface' cannot be null."
         }
 
-        if ($null -eq $SendingZone) {
-            throw "invalid value for 'SendingZone', 'SendingZone' cannot be null."
-        }
-
-        if ($null -eq $BodySize) {
-            throw "invalid value for 'BodySize', 'BodySize' cannot be null."
-        }
-
-        if ($null -eq $Seq) {
-            throw "invalid value for 'Seq', 'Seq' cannot be null."
-        }
-
-        if ($null -eq $Recipient) {
-            throw "invalid value for 'Recipient', 'Recipient' cannot be null."
-        }
-
-        if ($null -eq $Domain) {
-            throw "invalid value for 'Domain', 'Domain' cannot be null."
-        }
-
-        if ($null -eq $Locked) {
-            throw "invalid value for 'Locked', 'Locked' cannot be null."
-        }
-
-        if ($null -eq $LockTime) {
-            throw "invalid value for 'LockTime', 'LockTime' cannot be null."
-        }
-
-        if ($null -eq $Assigned) {
-            throw "invalid value for 'Assigned', 'Assigned' cannot be null."
-        }
-
-        if ($null -eq $Queued) {
-            throw "invalid value for 'Queued', 'Queued' cannot be null."
-        }
-
-        if ($null -eq $MxHostname) {
-            throw "invalid value for 'MxHostname', 'MxHostname' cannot be null."
-        }
-
-        if ($null -eq $Response) {
-            throw "invalid value for 'Response', 'Response' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
             "_id" = ${Id}
@@ -249,14 +211,16 @@ function Initialize-MailLogEntry {
             "sendingZone" = ${SendingZone}
             "bodySize" = ${BodySize}
             "seq" = ${Seq}
+            "delivered" = ${Delivered}
+            "code" = ${Code}
             "recipient" = ${Recipient}
+            "response" = ${Response}
             "domain" = ${Domain}
             "locked" = ${Locked}
             "lockTime" = ${LockTime}
             "assigned" = ${Assigned}
             "queued" = ${Queued}
             "mxHostname" = ${MxHostname}
-            "response" = ${Response}
         }
 
 
@@ -294,7 +258,7 @@ function ConvertFrom-JsonToMailLogEntry {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in MailLogEntry
-        $AllProperties = ("_id", "id", "from", "to", "subject", "messageId", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "recipient", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname", "response")
+        $AllProperties = ("_id", "id", "from", "to", "subject", "messageId", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "delivered", "code", "recipient", "response", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -327,12 +291,6 @@ function ConvertFrom-JsonToMailLogEntry {
             throw "Error! JSON cannot be serialized due to the required property 'to' missing."
         } else {
             $To = $JsonParameters.PSobject.Properties["to"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "subject"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'subject' missing."
-        } else {
-            $Subject = $JsonParameters.PSobject.Properties["subject"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created"))) {
@@ -371,76 +329,94 @@ function ConvertFrom-JsonToMailLogEntry {
             $Interface = $JsonParameters.PSobject.Properties["interface"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "sendingZone"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'sendingZone' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "subject"))) { #optional property not found
+            $Subject = $null
         } else {
-            $SendingZone = $JsonParameters.PSobject.Properties["sendingZone"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "bodySize"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'bodySize' missing."
-        } else {
-            $BodySize = $JsonParameters.PSobject.Properties["bodySize"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "seq"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'seq' missing."
-        } else {
-            $Seq = $JsonParameters.PSobject.Properties["seq"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "recipient"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'recipient' missing."
-        } else {
-            $Recipient = $JsonParameters.PSobject.Properties["recipient"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "domain"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'domain' missing."
-        } else {
-            $Domain = $JsonParameters.PSobject.Properties["domain"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "locked"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'locked' missing."
-        } else {
-            $Locked = $JsonParameters.PSobject.Properties["locked"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "lockTime"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'lockTime' missing."
-        } else {
-            $LockTime = $JsonParameters.PSobject.Properties["lockTime"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "assigned"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'assigned' missing."
-        } else {
-            $Assigned = $JsonParameters.PSobject.Properties["assigned"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "queued"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'queued' missing."
-        } else {
-            $Queued = $JsonParameters.PSobject.Properties["queued"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "mxHostname"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'mxHostname' missing."
-        } else {
-            $MxHostname = $JsonParameters.PSobject.Properties["mxHostname"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "response"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'response' missing."
-        } else {
-            $Response = $JsonParameters.PSobject.Properties["response"].value
+            $Subject = $JsonParameters.PSobject.Properties["subject"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "messageId"))) { #optional property not found
             $MessageId = $null
         } else {
             $MessageId = $JsonParameters.PSobject.Properties["messageId"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "sendingZone"))) { #optional property not found
+            $SendingZone = $null
+        } else {
+            $SendingZone = $JsonParameters.PSobject.Properties["sendingZone"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "bodySize"))) { #optional property not found
+            $BodySize = $null
+        } else {
+            $BodySize = $JsonParameters.PSobject.Properties["bodySize"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "seq"))) { #optional property not found
+            $Seq = $null
+        } else {
+            $Seq = $JsonParameters.PSobject.Properties["seq"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "delivered"))) { #optional property not found
+            $Delivered = $null
+        } else {
+            $Delivered = $JsonParameters.PSobject.Properties["delivered"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "code"))) { #optional property not found
+            $Code = $null
+        } else {
+            $Code = $JsonParameters.PSobject.Properties["code"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "recipient"))) { #optional property not found
+            $Recipient = $null
+        } else {
+            $Recipient = $JsonParameters.PSobject.Properties["recipient"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "response"))) { #optional property not found
+            $Response = $null
+        } else {
+            $Response = $JsonParameters.PSobject.Properties["response"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "domain"))) { #optional property not found
+            $Domain = $null
+        } else {
+            $Domain = $JsonParameters.PSobject.Properties["domain"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "locked"))) { #optional property not found
+            $Locked = $null
+        } else {
+            $Locked = $JsonParameters.PSobject.Properties["locked"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "lockTime"))) { #optional property not found
+            $LockTime = $null
+        } else {
+            $LockTime = $JsonParameters.PSobject.Properties["lockTime"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "assigned"))) { #optional property not found
+            $Assigned = $null
+        } else {
+            $Assigned = $JsonParameters.PSobject.Properties["assigned"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "queued"))) { #optional property not found
+            $Queued = $null
+        } else {
+            $Queued = $JsonParameters.PSobject.Properties["queued"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "mxHostname"))) { #optional property not found
+            $MxHostname = $null
+        } else {
+            $MxHostname = $JsonParameters.PSobject.Properties["mxHostname"].value
         }
 
         $PSO = [PSCustomObject]@{
@@ -459,14 +435,16 @@ function ConvertFrom-JsonToMailLogEntry {
             "sendingZone" = ${SendingZone}
             "bodySize" = ${BodySize}
             "seq" = ${Seq}
+            "delivered" = ${Delivered}
+            "code" = ${Code}
             "recipient" = ${Recipient}
+            "response" = ${Response}
             "domain" = ${Domain}
             "locked" = ${Locked}
             "lockTime" = ${LockTime}
             "assigned" = ${Assigned}
             "queued" = ${Queued}
             "mxHostname" = ${MxHostname}
-            "response" = ${Response}
         }
 
         return $PSO

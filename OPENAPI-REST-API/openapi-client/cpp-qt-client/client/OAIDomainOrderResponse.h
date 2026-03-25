@@ -33,13 +33,13 @@ class OAIDomainOrderResponse_attributes;
 class OAIDomainOrderResponse : public OAIObject {
 public:
     OAIDomainOrderResponse();
-    OAIDomainOrderResponse(QString json);
+    OAIDomainOrderResponse(const QString &json);
     ~OAIDomainOrderResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getOpsVersion() const;
     void setOpsVersion(const QString &_ops_version);

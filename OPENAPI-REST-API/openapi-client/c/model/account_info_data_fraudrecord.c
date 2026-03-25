@@ -15,12 +15,12 @@ static account_info_data_fraudrecord_t *account_info_data_fraudrecord_create_int
     if (!account_info_data_fraudrecord_local_var) {
         return NULL;
     }
+    memset(account_info_data_fraudrecord_local_var, 0, sizeof(account_info_data_fraudrecord_t));
+    account_info_data_fraudrecord_local_var->_library_owned = 1;
     account_info_data_fraudrecord_local_var->score = score;
     account_info_data_fraudrecord_local_var->count = count;
     account_info_data_fraudrecord_local_var->reliability = reliability;
     account_info_data_fraudrecord_local_var->code = code;
-
-    account_info_data_fraudrecord_local_var->_library_owned = 1;
     return account_info_data_fraudrecord_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) account_info_data_fraudrecord_t *account_info_data_f
     char *reliability,
     char *code
     ) {
-    return account_info_data_fraudrecord_create_internal (
+    account_info_data_fraudrecord_t *result = account_info_data_fraudrecord_create_internal (
         score,
         count,
         reliability,
         code
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_info_data_fraudrecord_free(account_info_data_fraudrecord_t *account_info_data_fraudrecord) {
@@ -112,6 +115,14 @@ account_info_data_fraudrecord_t *account_info_data_fraudrecord_parseFromJSON(cJS
 
     account_info_data_fraudrecord_t *account_info_data_fraudrecord_local_var = NULL;
 
+    char *score_local_str = NULL;
+
+    char *count_local_str = NULL;
+
+    char *reliability_local_str = NULL;
+
+    char *code_local_str = NULL;
+
     // account_info_data_fraudrecord->score
     cJSON *score = cJSON_GetObjectItemCaseSensitive(account_info_data_fraudrecordJSON, "score");
     if (cJSON_IsNull(score)) {
@@ -161,15 +172,40 @@ account_info_data_fraudrecord_t *account_info_data_fraudrecord_parseFromJSON(cJS
     }
 
 
+    if (score && !cJSON_IsNull(score)) score_local_str = strdup(score->valuestring);
+    if (count && !cJSON_IsNull(count)) count_local_str = strdup(count->valuestring);
+    if (reliability && !cJSON_IsNull(reliability)) reliability_local_str = strdup(reliability->valuestring);
+    if (code && !cJSON_IsNull(code)) code_local_str = strdup(code->valuestring);
+
     account_info_data_fraudrecord_local_var = account_info_data_fraudrecord_create_internal (
-        score && !cJSON_IsNull(score) ? strdup(score->valuestring) : NULL,
-        count && !cJSON_IsNull(count) ? strdup(count->valuestring) : NULL,
-        reliability && !cJSON_IsNull(reliability) ? strdup(reliability->valuestring) : NULL,
-        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL
+        score_local_str,
+        count_local_str,
+        reliability_local_str,
+        code_local_str
         );
+
+    if (!account_info_data_fraudrecord_local_var) {
+        goto end;
+    }
 
     return account_info_data_fraudrecord_local_var;
 end:
+    if (score_local_str) {
+        free(score_local_str);
+        score_local_str = NULL;
+    }
+    if (count_local_str) {
+        free(count_local_str);
+        count_local_str = NULL;
+    }
+    if (reliability_local_str) {
+        free(reliability_local_str);
+        reliability_local_str = NULL;
+    }
+    if (code_local_str) {
+        free(code_local_str);
+        code_local_str = NULL;
+    }
     return NULL;
 
 }

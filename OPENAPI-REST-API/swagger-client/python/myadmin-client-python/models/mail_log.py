@@ -57,7 +57,7 @@ class MailLog(object):
     def total(self):
         """Gets the total of this MailLog.  # noqa: E501
 
-        total number of mail log entries  # noqa: E501
+        Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.  # noqa: E501
 
         :return: The total of this MailLog.  # noqa: E501
         :rtype: int
@@ -68,7 +68,7 @@ class MailLog(object):
     def total(self, total):
         """Sets the total of this MailLog.
 
-        total number of mail log entries  # noqa: E501
+        Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.  # noqa: E501
 
         :param total: The total of this MailLog.  # noqa: E501
         :type: int
@@ -82,7 +82,7 @@ class MailLog(object):
     def skip(self):
         """Gets the skip of this MailLog.  # noqa: E501
 
-        number of emails skipped in listing  # noqa: E501
+        The `skip` value used for this page (echoed from the request).  # noqa: E501
 
         :return: The skip of this MailLog.  # noqa: E501
         :rtype: int
@@ -93,7 +93,7 @@ class MailLog(object):
     def skip(self, skip):
         """Sets the skip of this MailLog.
 
-        number of emails skipped in listing  # noqa: E501
+        The `skip` value used for this page (echoed from the request).  # noqa: E501
 
         :param skip: The skip of this MailLog.  # noqa: E501
         :type: int
@@ -107,7 +107,7 @@ class MailLog(object):
     def limit(self):
         """Gets the limit of this MailLog.  # noqa: E501
 
-        number of emails to return  # noqa: E501
+        The `limit` value used for this page (echoed from the request).  # noqa: E501
 
         :return: The limit of this MailLog.  # noqa: E501
         :rtype: int
@@ -118,7 +118,7 @@ class MailLog(object):
     def limit(self, limit):
         """Sets the limit of this MailLog.
 
-        number of emails to return  # noqa: E501
+        The `limit` value used for this page (echoed from the request).  # noqa: E501
 
         :param limit: The limit of this MailLog.  # noqa: E501
         :type: int

@@ -2,7 +2,7 @@
 /*
  * MailLog.h
  *
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 
 #ifndef TINY_CPP_CLIENT_MailLog_H_
@@ -18,7 +18,7 @@
 namespace Tiny {
 
 
-/*! \brief Mail log records
+/*! \brief Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
  *
  *  \ingroup Models
  *
@@ -47,25 +47,25 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get total number of mail log entries
+	/*! \brief Get Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
 	 */
 	int getTotal();
 
-	/*! \brief Set total number of mail log entries
+	/*! \brief Set Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
 	 */
 	void setTotal(int total);
-	/*! \brief Get number of emails skipped in listing
+	/*! \brief Get The `skip` value used for this page (echoed from the request).
 	 */
 	int getSkip();
 
-	/*! \brief Set number of emails skipped in listing
+	/*! \brief Set The `skip` value used for this page (echoed from the request).
 	 */
 	void setSkip(int skip);
-	/*! \brief Get number of emails to return
+	/*! \brief Get The `limit` value used for this page (echoed from the request).
 	 */
 	int getLimit();
 
-	/*! \brief Set number of emails to return
+	/*! \brief Set The `limit` value used for this page (echoed from the request).
 	 */
 	void setLimit(int limit);
 	/*! \brief Get 

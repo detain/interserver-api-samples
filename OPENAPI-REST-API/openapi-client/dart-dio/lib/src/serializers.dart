@@ -391,6 +391,7 @@ import 'package:openapi/src/model/url_request.dart';
 import 'package:openapi/src/model/vps_cancel200_response.dart';
 import 'package:openapi/src/model/vps_traffic_data_data_section_response.dart';
 import 'package:openapi/src/model/vps_traffic_data_data_section_response_inner.dart';
+import 'package:openapi/src/model/view_mail_log_start_date_parameter.dart';
 import 'package:openapi/src/model/view_ticket_response.dart';
 import 'package:openapi/src/model/vps.dart';
 import 'package:openapi/src/model/vps_backup_row.dart';
@@ -844,6 +845,7 @@ part 'serializers.g.dart';
   VPSCancel200Response,
   VPSTrafficDataDataSectionResponse,
   VPSTrafficDataDataSectionResponseInner,
+  ViewMailLogStartDateParameter,
   ViewTicketResponse,
   Vps,
   VpsBackupRow,

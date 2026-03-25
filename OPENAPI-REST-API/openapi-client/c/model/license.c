@@ -22,6 +22,8 @@ static license_t *license_create_internal(
     if (!license_local_var) {
         return NULL;
     }
+    memset(license_local_var, 0, sizeof(license_t));
+    license_local_var->_library_owned = 1;
     license_local_var->service_info = service_info;
     license_local_var->client_links = client_links;
     license_local_var->billing_details = billing_details;
@@ -33,8 +35,6 @@ static license_t *license_create_internal(
     license_local_var->service_overview_extra = service_overview_extra;
     license_local_var->service_type = service_type;
     license_local_var->license_key = license_key;
-
-    license_local_var->_library_owned = 1;
     return license_local_var;
 }
 
@@ -51,7 +51,7 @@ __attribute__((deprecated)) license_t *license_create(
     license_service_type_t *service_type,
     char *license_key
     ) {
-    return license_create_internal (
+    license_t *result = license_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -64,6 +64,9 @@ __attribute__((deprecated)) license_t *license_create(
         service_type,
         license_key
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void license_free(license_t *license) {
@@ -291,14 +294,24 @@ license_t *license_parseFromJSON(cJSON *licenseJSON){
     // define the local variable for license->billing_details
     license_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
+    char *package_local_str = NULL;
+
     // define the local list for license->service_extra
     list_t *service_extraList = NULL;
 
     // define the local variable for license->extra_info_tables
     license_extra_info_tables_t *extra_info_tables_local_nonprim = NULL;
 
+    char *service_overview_extra_local_str = NULL;
+
     // define the local variable for license->service_type
     license_service_type_t *service_type_local_nonprim = NULL;
+
+    char *license_key_local_str = NULL;
 
     // license->service_info
     cJSON *service_info = cJSON_GetObjectItemCaseSensitive(licenseJSON, "serviceInfo");
@@ -476,19 +489,29 @@ license_t *license_parseFromJSON(cJSON *licenseJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+    if (service_overview_extra && !cJSON_IsNull(service_overview_extra)) service_overview_extra_local_str = strdup(service_overview_extra->valuestring);
+    if (license_key && !cJSON_IsNull(license_key)) license_key_local_str = strdup(license_key->valuestring);
+
     license_local_var = license_create_internal (
         service_info_local_nonprim,
         client_linksList,
         billing_details_local_nonprim,
-        strdup(cust_currency->valuestring),
-        strdup(cust_currency_symbol->valuestring),
-        strdup(package->valuestring),
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
+        package_local_str,
         service_extraList,
         extra_info_tables_local_nonprim,
-        strdup(service_overview_extra->valuestring),
+        service_overview_extra_local_str,
         service_type_local_nonprim,
-        strdup(license_key->valuestring)
+        license_key_local_str
         );
+
+    if (!license_local_var) {
+        goto end;
+    }
 
     return license_local_var;
 end:
@@ -509,6 +532,18 @@ end:
         license_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
+    }
     if (service_extraList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, service_extraList) {
@@ -522,9 +557,17 @@ end:
         license_extra_info_tables_free(extra_info_tables_local_nonprim);
         extra_info_tables_local_nonprim = NULL;
     }
+    if (service_overview_extra_local_str) {
+        free(service_overview_extra_local_str);
+        service_overview_extra_local_str = NULL;
+    }
     if (service_type_local_nonprim) {
         license_service_type_free(service_type_local_nonprim);
         service_type_local_nonprim = NULL;
+    }
+    if (license_key_local_str) {
+        free(license_key_local_str);
+        license_key_local_str = NULL;
     }
     return NULL;
 

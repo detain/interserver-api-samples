@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsOrderPutRequest : public OAIObject {
 public:
     OAIVpsOrderPutRequest();
-    OAIVpsOrderPutRequest(QString json);
+    OAIVpsOrderPutRequest(const QString &json);
     ~OAIVpsOrderPutRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getOsDistro() const;
     void setOsDistro(const QString &os_distro);

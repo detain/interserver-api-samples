@@ -41,8 +41,8 @@ typedef struct vps_t {
     struct vps_extra_info_tables_t *extra_info_tables; //model
     char *module; // string
     char *token; // string
-    int da_link; //numeric
-    int sr_link; //numeric
+    int *da_link; //numeric
+    int *sr_link; //numeric
     struct vps_cp_data_t *cp_data; //model
     struct vps_da_data_t *da_data; //model
     struct vps_plesk12_data_t *plesk12_data; //model
@@ -65,8 +65,8 @@ __attribute__((deprecated)) vps_t *vps_create(
     vps_extra_info_tables_t *extra_info_tables,
     char *module,
     char *token,
-    int da_link,
-    int sr_link,
+    int *da_link,
+    int *sr_link,
     vps_cp_data_t *cp_data,
     vps_da_data_t *da_data,
     vps_plesk12_data_t *plesk12_data,

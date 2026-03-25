@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIDomainLookupResponse : public OAIObject {
 public:
     OAIDomainLookupResponse();
-    OAIDomainLookupResponse(QString json);
+    OAIDomainLookupResponse(const QString &json);
     ~OAIDomainLookupResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isAvailable() const;
     void setAvailable(const bool &available);

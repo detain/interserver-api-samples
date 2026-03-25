@@ -45,7 +45,7 @@ import javax.annotation.Generated;
   DomainAllInfoAttributes.JSON_PROPERTY_EXPIREDATE
 })
 @JsonTypeName("DomainAllInfo_attributes")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class DomainAllInfoAttributes {
     public static final String JSON_PROPERTY_CONTACT_SET = "contact_set";
@@ -413,10 +413,7 @@ public class DomainAllInfoAttributes {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

@@ -741,6 +741,7 @@ Class | Method | HTTP request | Description
  - [OASUrlRequest](OASUrlRequest.md)
  - [OASVPSCancel200Response](OASVPSCancel200Response.md)
  - [OASVPSTrafficDataDataSectionResponse](OASVPSTrafficDataDataSectionResponse.md)
+ - [OASViewMailLogStartDateParameter](OASViewMailLogStartDateParameter.md)
  - [OASViewTicketResponse](OASViewTicketResponse.md)
  - [OASVps](OASVps.md)
  - [OASVpsBackupRow](OASVpsBackupRow.md)

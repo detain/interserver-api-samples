@@ -16,19 +16,19 @@ void main() {
   // final instance = MailLog();
 
   group('test MailLog', () {
-    // total number of mail log entries
+    // Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
     // int total
     test('to test the property `total`', () async {
       // TODO
     });
 
-    // number of emails skipped in listing
+    // The `skip` value used for this page (echoed from the request).
     // int skip
     test('to test the property `skip`', () async {
       // TODO
     });
 
-    // number of emails to return
+    // The `limit` value used for this page (echoed from the request).
     // int limit
     test('to test the property `limit`', () async {
       // TODO

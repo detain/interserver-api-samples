@@ -36,6 +36,7 @@ import { MailStatsType } from '../model/mailStatsType';
 import { SendMail } from '../model/sendMail';
 import { SendMailAdv } from '../model/sendMailAdv';
 import { SuccessTextResponse } from '../model/successTextResponse';
+import { ViewMailLogStartDateParameter } from '../model/viewMailLogStartDateParameter';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -2102,23 +2103,29 @@ export class MailApi {
         });
     }
     /**
-     * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+     * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
      * @summary View Mail Log
      * @param id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
-     * @param id2 The ID of your mail order this will be sent through.
-     * @param origin originating ip address sending mail
-     * @param mx mx record mail was sent to
-     * @param from from email address
-     * @param to to/destination email address
-     * @param subject subject containing this string
-     * @param mailid mail id
-     * @param skip number of records to skip for pagination
-     * @param limit maximum number of records to return
-     * @param startDate earliest date to get emails in unix timestamp format
-     * @param endDate Latest date to get emails in unix timestamp format.
-     * @param delivered Filter emails by whether or not they were delivered.
+     * @param id2 The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;.
+     * @param origin Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
+     * @param mx Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response.
+     * @param from Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;.
+     * @param to Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
+     * @param subject Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
+     * @param mailid Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
+     * @param messageId Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param replyto Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
+     * @param headerfrom Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
+     * @param delivered Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+     * @param skip Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
+     * @param limit Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
+     * @param startDate Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
+     * @param endDate Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param sort Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
+     * @param dir Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
+     * @param groupby Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
      */
-    public async viewMailLog (id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, skip?: number, limit?: number, startDate?: number, endDate?: number, delivered?: '0' | '1', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: MailLog;  }> {
+    public async viewMailLog (id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, messageId?: string, replyto?: string, headerfrom?: string, delivered?: 0 | 1, skip?: number, limit?: number, startDate?: ViewMailLogStartDateParameter, endDate?: ViewMailLogStartDateParameter, sort?: 'time', dir?: 'asc' | 'desc', groupby?: 'message' | 'recipient', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: MailLog;  }> {
         const localVarPath = this.basePath + '/mail/{id}/log'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -2165,6 +2172,22 @@ export class MailApi {
             localVarQueryParameters['mailid'] = ObjectSerializer.serialize(mailid, "string");
         }
 
+        if (messageId !== undefined) {
+            localVarQueryParameters['messageId'] = ObjectSerializer.serialize(messageId, "string");
+        }
+
+        if (replyto !== undefined) {
+            localVarQueryParameters['replyto'] = ObjectSerializer.serialize(replyto, "string");
+        }
+
+        if (headerfrom !== undefined) {
+            localVarQueryParameters['headerfrom'] = ObjectSerializer.serialize(headerfrom, "string");
+        }
+
+        if (delivered !== undefined) {
+            localVarQueryParameters['delivered'] = ObjectSerializer.serialize(delivered, "0 | 1");
+        }
+
         if (skip !== undefined) {
             localVarQueryParameters['skip'] = ObjectSerializer.serialize(skip, "number");
         }
@@ -2174,15 +2197,23 @@ export class MailApi {
         }
 
         if (startDate !== undefined) {
-            localVarQueryParameters['startDate'] = ObjectSerializer.serialize(startDate, "number");
+            localVarQueryParameters['startDate'] = ObjectSerializer.serialize(startDate, "ViewMailLogStartDateParameter");
         }
 
         if (endDate !== undefined) {
-            localVarQueryParameters['endDate'] = ObjectSerializer.serialize(endDate, "number");
+            localVarQueryParameters['endDate'] = ObjectSerializer.serialize(endDate, "ViewMailLogStartDateParameter");
         }
 
-        if (delivered !== undefined) {
-            localVarQueryParameters['delivered'] = ObjectSerializer.serialize(delivered, "'0' | '1'");
+        if (sort !== undefined) {
+            localVarQueryParameters['sort'] = ObjectSerializer.serialize(sort, "'time'");
+        }
+
+        if (dir !== undefined) {
+            localVarQueryParameters['dir'] = ObjectSerializer.serialize(dir, "'asc' | 'desc'");
+        }
+
+        if (groupby !== undefined) {
+            localVarQueryParameters['groupby'] = ObjectSerializer.serialize(groupby, "'message' | 'recipient'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAITemplateRequest : public OAIObject {
 public:
     OAITemplateRequest();
-    OAITemplateRequest(QString json);
+    OAITemplateRequest(const QString &json);
     ~OAITemplateRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getRTemplate() const;
     void setRTemplate(const QString &r_template);

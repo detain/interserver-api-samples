@@ -19,19 +19,19 @@ typedef struct domain_order_tld_services_t domain_order_tld_services_t;
 
 
 typedef struct domain_order_tld_services_t {
-    int _asia; //numeric
-    int _be; //numeric
-    int _biz; //numeric
-    int _ca; //numeric
+    int *_asia; //numeric
+    int *_be; //numeric
+    int *_biz; //numeric
+    int *_ca; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } domain_order_tld_services_t;
 
 __attribute__((deprecated)) domain_order_tld_services_t *domain_order_tld_services_create(
-    int _asia,
-    int _be,
-    int _biz,
-    int _ca
+    int *_asia,
+    int *_be,
+    int *_biz,
+    int *_ca
 );
 
 void domain_order_tld_services_free(domain_order_tld_services_t *domain_order_tld_services);

@@ -1,4 +1,4 @@
-# # MailAlertRequest
+# MailAlertRequest
 
 ## Properties
 

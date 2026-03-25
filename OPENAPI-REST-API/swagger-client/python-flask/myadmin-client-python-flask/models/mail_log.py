@@ -60,7 +60,7 @@ class MailLog(Model):
     def total(self) -> int:
         """Gets the total of this MailLog.
 
-        total number of mail log entries  # noqa: E501
+        Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.  # noqa: E501
 
         :return: The total of this MailLog.
         :rtype: int
@@ -71,7 +71,7 @@ class MailLog(Model):
     def total(self, total: int):
         """Sets the total of this MailLog.
 
-        total number of mail log entries  # noqa: E501
+        Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.  # noqa: E501
 
         :param total: The total of this MailLog.
         :type total: int
@@ -85,7 +85,7 @@ class MailLog(Model):
     def skip(self) -> int:
         """Gets the skip of this MailLog.
 
-        number of emails skipped in listing  # noqa: E501
+        The `skip` value used for this page (echoed from the request).  # noqa: E501
 
         :return: The skip of this MailLog.
         :rtype: int
@@ -96,7 +96,7 @@ class MailLog(Model):
     def skip(self, skip: int):
         """Sets the skip of this MailLog.
 
-        number of emails skipped in listing  # noqa: E501
+        The `skip` value used for this page (echoed from the request).  # noqa: E501
 
         :param skip: The skip of this MailLog.
         :type skip: int
@@ -110,7 +110,7 @@ class MailLog(Model):
     def limit(self) -> int:
         """Gets the limit of this MailLog.
 
-        number of emails to return  # noqa: E501
+        The `limit` value used for this page (echoed from the request).  # noqa: E501
 
         :return: The limit of this MailLog.
         :rtype: int
@@ -121,7 +121,7 @@ class MailLog(Model):
     def limit(self, limit: int):
         """Sets the limit of this MailLog.
 
-        number of emails to return  # noqa: E501
+        The `limit` value used for this page (echoed from the request).  # noqa: E501
 
         :param limit: The limit of this MailLog.
         :type limit: int

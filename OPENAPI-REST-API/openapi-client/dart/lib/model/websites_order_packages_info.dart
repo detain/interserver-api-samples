@@ -182,10 +182,22 @@ class WebsitesOrderPackagesInfo {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebsitesOrderPackagesInfo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebsitesOrderPackagesInfo[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'services_id'), 'Required key "WebsitesOrderPackagesInfo[services_id]" is missing from JSON.');
+        assert(json[r'services_id'] != null, 'Required key "WebsitesOrderPackagesInfo[services_id]" has a null value in JSON.');
+        assert(json.containsKey(r'services_name'), 'Required key "WebsitesOrderPackagesInfo[services_name]" is missing from JSON.');
+        assert(json[r'services_name'] != null, 'Required key "WebsitesOrderPackagesInfo[services_name]" has a null value in JSON.');
+        assert(json.containsKey(r'services_cost'), 'Required key "WebsitesOrderPackagesInfo[services_cost]" is missing from JSON.');
+        assert(json[r'services_cost'] != null, 'Required key "WebsitesOrderPackagesInfo[services_cost]" has a null value in JSON.');
+        assert(json.containsKey(r'services_category'), 'Required key "WebsitesOrderPackagesInfo[services_category]" is missing from JSON.');
+        assert(json[r'services_category'] != null, 'Required key "WebsitesOrderPackagesInfo[services_category]" has a null value in JSON.');
+        assert(json.containsKey(r'services_buyable'), 'Required key "WebsitesOrderPackagesInfo[services_buyable]" is missing from JSON.');
+        assert(json[r'services_buyable'] != null, 'Required key "WebsitesOrderPackagesInfo[services_buyable]" has a null value in JSON.');
+        assert(json.containsKey(r'services_type'), 'Required key "WebsitesOrderPackagesInfo[services_type]" is missing from JSON.');
+        assert(json[r'services_type'] != null, 'Required key "WebsitesOrderPackagesInfo[services_type]" has a null value in JSON.');
+        assert(json.containsKey(r'services_module'), 'Required key "WebsitesOrderPackagesInfo[services_module]" is missing from JSON.');
+        assert(json[r'services_module'] != null, 'Required key "WebsitesOrderPackagesInfo[services_module]" has a null value in JSON.');
+        assert(json.containsKey(r'services_description'), 'Required key "WebsitesOrderPackagesInfo[services_description]" is missing from JSON.');
+        assert(json[r'services_description'] != null, 'Required key "WebsitesOrderPackagesInfo[services_description]" has a null value in JSON.');
         return true;
       }());
 

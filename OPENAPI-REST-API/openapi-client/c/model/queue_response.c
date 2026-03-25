@@ -7,27 +7,36 @@
 
 static queue_response_t *queue_response_create_internal(
     char *text,
-    int queue_id
+    int *queue_id
     ) {
     queue_response_t *queue_response_local_var = malloc(sizeof(queue_response_t));
     if (!queue_response_local_var) {
         return NULL;
     }
+    memset(queue_response_local_var, 0, sizeof(queue_response_t));
+    queue_response_local_var->_library_owned = 1;
     queue_response_local_var->text = text;
     queue_response_local_var->queue_id = queue_id;
-
-    queue_response_local_var->_library_owned = 1;
     return queue_response_local_var;
 }
 
 __attribute__((deprecated)) queue_response_t *queue_response_create(
     char *text,
-    int queue_id
+    int *queue_id
     ) {
-    return queue_response_create_internal (
+    int *queue_id_copy = NULL;
+    if (queue_id) {
+        queue_id_copy = malloc(sizeof(int));
+        if (queue_id_copy) *queue_id_copy = *queue_id;
+    }
+    queue_response_t *result = queue_response_create_internal (
         text,
-        queue_id
+        queue_id_copy
         );
+    if (!result) {
+        free(queue_id_copy);
+    }
+    return result;
 }
 
 void queue_response_free(queue_response_t *queue_response) {
@@ -42,6 +51,10 @@ void queue_response_free(queue_response_t *queue_response) {
     if (queue_response->text) {
         free(queue_response->text);
         queue_response->text = NULL;
+    }
+    if (queue_response->queue_id) {
+        free(queue_response->queue_id);
+        queue_response->queue_id = NULL;
     }
     free(queue_response);
 }
@@ -62,7 +75,7 @@ cJSON *queue_response_convertToJSON(queue_response_t *queue_response) {
     if (!queue_response->queue_id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "queueId", queue_response->queue_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "queueId", *queue_response->queue_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -77,6 +90,11 @@ fail:
 queue_response_t *queue_response_parseFromJSON(cJSON *queue_responseJSON){
 
     queue_response_t *queue_response_local_var = NULL;
+
+    char *text_local_str = NULL;
+
+    // define the local variable for queue_response->queue_id
+    int *queue_id_local_var = NULL;
 
     // queue_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(queue_responseJSON, "text");
@@ -107,15 +125,35 @@ queue_response_t *queue_response_parseFromJSON(cJSON *queue_responseJSON){
     {
     goto end; //Numeric
     }
+    queue_id_local_var = malloc(sizeof(int));
+    if(!queue_id_local_var)
+    {
+        goto end;
+    }
+    *queue_id_local_var = queue_id->valuedouble;
 
+
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
 
     queue_response_local_var = queue_response_create_internal (
-        strdup(text->valuestring),
-        queue_id->valuedouble
+        text_local_str,
+        queue_id_local_var
         );
+
+    if (!queue_response_local_var) {
+        goto end;
+    }
 
     return queue_response_local_var;
 end:
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (queue_id_local_var) {
+        free(queue_id_local_var);
+        queue_id_local_var = NULL;
+    }
     return NULL;
 
 }

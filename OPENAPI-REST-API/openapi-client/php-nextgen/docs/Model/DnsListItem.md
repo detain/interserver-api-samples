@@ -1,4 +1,4 @@
-# # DnsListItem
+# DnsListItem
 
 ## Properties
 

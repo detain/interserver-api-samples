@@ -55,10 +55,10 @@ class IpLimitRange {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "IpLimitRange[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "IpLimitRange[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'start'), 'Required key "IpLimitRange[start]" is missing from JSON.');
+        assert(json[r'start'] != null, 'Required key "IpLimitRange[start]" has a null value in JSON.');
+        assert(json.containsKey(r'end'), 'Required key "IpLimitRange[end]" is missing from JSON.');
+        assert(json[r'end'] != null, 'Required key "IpLimitRange[end]" has a null value in JSON.');
         return true;
       }());
 

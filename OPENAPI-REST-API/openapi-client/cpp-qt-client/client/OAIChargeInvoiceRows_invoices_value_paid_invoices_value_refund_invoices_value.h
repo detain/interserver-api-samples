@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value : public OAIObject {
 public:
     OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value();
-    OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value(QString json);
+    OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value(const QString &json);
     ~OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getInvoicesId() const;
     void setInvoicesId(const double &invoices_id);

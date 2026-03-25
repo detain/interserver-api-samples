@@ -21,216 +21,220 @@ using Newtonsoft.Json;
 namespace myadmin-client-aspnetcore.Models
 {
     /// <summary>
-    /// An email record
+    /// A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
     /// </summary>
     [DataContract]
     public partial class MailLogEntry : IEquatable<MailLogEntry>
     { 
         /// <summary>
-        /// internal db id
+        /// Internal auto-increment database row ID.
         /// </summary>
-        /// <value>internal db id</value>
+        /// <value>Internal auto-increment database row ID.</value>
         [Required]
 
         [DataMember(Name="_id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// mail id
+        /// The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
         /// </summary>
-        /// <value>mail id</value>
+        /// <value>The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.</value>
         [Required]
 
         [DataMember(Name="id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// from address
+        /// SMTP envelope &#x60;MAIL FROM&#x60; address.
         /// </summary>
-        /// <value>from address</value>
+        /// <value>SMTP envelope &#x60;MAIL FROM&#x60; address.</value>
         [Required]
 
         [DataMember(Name="from")]
         public string From { get; set; }
 
         /// <summary>
-        /// to address
+        /// SMTP envelope &#x60;RCPT TO&#x60; address.
         /// </summary>
-        /// <value>to address</value>
+        /// <value>SMTP envelope &#x60;RCPT TO&#x60; address.</value>
         [Required]
 
         [DataMember(Name="to")]
         public string To { get; set; }
 
         /// <summary>
-        /// email subject
+        /// The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
         /// </summary>
-        /// <value>email subject</value>
-        [Required]
+        /// <value>The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.</value>
 
         [DataMember(Name="subject")]
         public string Subject { get; set; }
 
         /// <summary>
-        /// message id
+        /// The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
         /// </summary>
-        /// <value>message id</value>
+        /// <value>The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.</value>
 
         [DataMember(Name="messageId")]
         public string MessageId { get; set; }
 
         /// <summary>
-        /// creation date
+        /// Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
         /// </summary>
-        /// <value>creation date</value>
+        /// <value>Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.</value>
         [Required]
 
         [DataMember(Name="created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// creation timestamp
+        /// Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
         /// </summary>
-        /// <value>creation timestamp</value>
+        /// <value>Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.</value>
         [Required]
 
         [DataMember(Name="time")]
         public int? Time { get; set; }
 
         /// <summary>
-        /// user account
+        /// The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
         /// </summary>
-        /// <value>user account</value>
+        /// <value>The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).</value>
         [Required]
 
         [DataMember(Name="user")]
         public string User { get; set; }
 
         /// <summary>
-        /// transaction type
+        /// SMTP transaction type negotiated with the relay.
         /// </summary>
-        /// <value>transaction type</value>
+        /// <value>SMTP transaction type negotiated with the relay.</value>
         [Required]
 
         [DataMember(Name="transtype")]
         public string Transtype { get; set; }
 
         /// <summary>
-        /// origin ip
+        /// IP address of the client that submitted the message to the relay.
         /// </summary>
-        /// <value>origin ip</value>
+        /// <value>IP address of the client that submitted the message to the relay.</value>
         [Required]
 
         [DataMember(Name="origin")]
         public string Origin { get; set; }
 
         /// <summary>
-        /// interface name
+        /// Relay interface name that accepted the message.
         /// </summary>
-        /// <value>interface name</value>
+        /// <value>Relay interface name that accepted the message.</value>
         [Required]
 
         [DataMember(Name="interface")]
         public string _Interface { get; set; }
 
         /// <summary>
-        /// sending zone
+        /// The sending zone assigned by the relay for outbound delivery.
         /// </summary>
-        /// <value>sending zone</value>
-        [Required]
+        /// <value>The sending zone assigned by the relay for outbound delivery.</value>
 
         [DataMember(Name="sendingZone")]
         public string SendingZone { get; set; }
 
         /// <summary>
-        /// email body size in bytes
+        /// Size of the message body in bytes.
         /// </summary>
-        /// <value>email body size in bytes</value>
-        [Required]
+        /// <value>Size of the message body in bytes.</value>
 
         [DataMember(Name="bodySize")]
         public int? BodySize { get; set; }
 
         /// <summary>
-        /// index of email in the to adderess list
+        /// Sequence index of this recipient in a multi-recipient message. Starts at 1.
         /// </summary>
-        /// <value>index of email in the to adderess list</value>
-        [Required]
+        /// <value>Sequence index of this recipient in a multi-recipient message. Starts at 1.</value>
 
         [DataMember(Name="seq")]
         public int? Seq { get; set; }
 
         /// <summary>
-        /// to address this email is being sent to
+        /// Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.
         /// </summary>
-        /// <value>to address this email is being sent to</value>
-        [Required]
+        /// <value>Delivery status flag.  &#x60;1&#x60; &#x3D; successfully delivered to destination MX. &#x60;0&#x60; &#x3D; queued, deferred, or failed.  &#x60;null&#x60; &#x3D; delivery not yet attempted.</value>
+
+        [DataMember(Name="delivered")]
+        public int? Delivered { get; set; }
+
+        /// <summary>
+        /// The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).
+        /// </summary>
+        /// <value>The SMTP response code from the destination MX server (e.g. &#x60;250&#x60;).</value>
+
+        [DataMember(Name="code")]
+        public int? Code { get; set; }
+
+        /// <summary>
+        /// The specific recipient address this delivery record is for.
+        /// </summary>
+        /// <value>The specific recipient address this delivery record is for.</value>
 
         [DataMember(Name="recipient")]
         public string Recipient { get; set; }
 
         /// <summary>
-        /// to address domain
+        /// The full SMTP response string received from the destination MX server.
         /// </summary>
-        /// <value>to address domain</value>
-        [Required]
+        /// <value>The full SMTP response string received from the destination MX server.</value>
+
+        [DataMember(Name="response")]
+        public string Response { get; set; }
+
+        /// <summary>
+        /// The destination domain for this delivery attempt.
+        /// </summary>
+        /// <value>The destination domain for this delivery attempt.</value>
 
         [DataMember(Name="domain")]
         public string Domain { get; set; }
 
         /// <summary>
-        /// locked status
+        /// Whether the queue entry is currently locked for delivery processing.
         /// </summary>
-        /// <value>locked status</value>
-        [Required]
+        /// <value>Whether the queue entry is currently locked for delivery processing.</value>
 
         [DataMember(Name="locked")]
         public int? Locked { get; set; }
 
         /// <summary>
-        /// lock timestamp
+        /// Millisecond-precision timestamp of the last queue lock acquisition.
         /// </summary>
-        /// <value>lock timestamp</value>
-        [Required]
+        /// <value>Millisecond-precision timestamp of the last queue lock acquisition.</value>
 
         [DataMember(Name="lockTime")]
-        public int? LockTime { get; set; }
+        public string LockTime { get; set; }
 
         /// <summary>
-        /// assigned server
+        /// The relay server node assigned to deliver this message.
         /// </summary>
-        /// <value>assigned server</value>
-        [Required]
+        /// <value>The relay server node assigned to deliver this message.</value>
 
         [DataMember(Name="assigned")]
         public string Assigned { get; set; }
 
         /// <summary>
-        /// queued timestamp
+        /// ISO 8601 timestamp when the message was placed into the delivery queue.
         /// </summary>
-        /// <value>queued timestamp</value>
-        [Required]
+        /// <value>ISO 8601 timestamp when the message was placed into the delivery queue.</value>
 
         [DataMember(Name="queued")]
         public string Queued { get; set; }
 
         /// <summary>
-        /// mx hostname
+        /// The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.
         /// </summary>
-        /// <value>mx hostname</value>
-        [Required]
+        /// <value>The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter.</value>
 
         [DataMember(Name="mxHostname")]
         public string MxHostname { get; set; }
-
-        /// <summary>
-        /// mail delivery response
-        /// </summary>
-        /// <value>mail delivery response</value>
-        [Required]
-
-        [DataMember(Name="response")]
-        public string Response { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -255,14 +259,16 @@ namespace myadmin-client-aspnetcore.Models
             sb.Append("  SendingZone: ").Append(SendingZone).Append("\n");
             sb.Append("  BodySize: ").Append(BodySize).Append("\n");
             sb.Append("  Seq: ").Append(Seq).Append("\n");
+            sb.Append("  Delivered: ").Append(Delivered).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
+            sb.Append("  Response: ").Append(Response).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Locked: ").Append(Locked).Append("\n");
             sb.Append("  LockTime: ").Append(LockTime).Append("\n");
             sb.Append("  Assigned: ").Append(Assigned).Append("\n");
             sb.Append("  Queued: ").Append(Queued).Append("\n");
             sb.Append("  MxHostname: ").Append(MxHostname).Append("\n");
-            sb.Append("  Response: ").Append(Response).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -375,9 +381,24 @@ namespace myadmin-client-aspnetcore.Models
                     Seq.Equals(other.Seq)
                 ) && 
                 (
+                    Delivered == other.Delivered ||
+                    Delivered != null &&
+                    Delivered.Equals(other.Delivered)
+                ) && 
+                (
+                    Code == other.Code ||
+                    Code != null &&
+                    Code.Equals(other.Code)
+                ) && 
+                (
                     Recipient == other.Recipient ||
                     Recipient != null &&
                     Recipient.Equals(other.Recipient)
+                ) && 
+                (
+                    Response == other.Response ||
+                    Response != null &&
+                    Response.Equals(other.Response)
                 ) && 
                 (
                     Domain == other.Domain ||
@@ -408,11 +429,6 @@ namespace myadmin-client-aspnetcore.Models
                     MxHostname == other.MxHostname ||
                     MxHostname != null &&
                     MxHostname.Equals(other.MxHostname)
-                ) && 
-                (
-                    Response == other.Response ||
-                    Response != null &&
-                    Response.Equals(other.Response)
                 );
         }
 
@@ -456,8 +472,14 @@ namespace myadmin-client-aspnetcore.Models
                     hashCode = hashCode * 59 + BodySize.GetHashCode();
                     if (Seq != null)
                     hashCode = hashCode * 59 + Seq.GetHashCode();
+                    if (Delivered != null)
+                    hashCode = hashCode * 59 + Delivered.GetHashCode();
+                    if (Code != null)
+                    hashCode = hashCode * 59 + Code.GetHashCode();
                     if (Recipient != null)
                     hashCode = hashCode * 59 + Recipient.GetHashCode();
+                    if (Response != null)
+                    hashCode = hashCode * 59 + Response.GetHashCode();
                     if (Domain != null)
                     hashCode = hashCode * 59 + Domain.GetHashCode();
                     if (Locked != null)
@@ -470,8 +492,6 @@ namespace myadmin-client-aspnetcore.Models
                     hashCode = hashCode * 59 + Queued.GetHashCode();
                     if (MxHostname != null)
                     hashCode = hashCode * 59 + MxHostname.GetHashCode();
-                    if (Response != null)
-                    hashCode = hashCode * 59 + Response.GetHashCode();
                 return hashCode;
             }
         }

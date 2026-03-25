@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIUrlRequest::OAIUrlRequest(QString json) {
+OAIUrlRequest::OAIUrlRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIUrlRequest::initializeModel() {
     m_url_isValid = false;
 }
 
-void OAIUrlRequest::fromJson(QString jsonString) {
+void OAIUrlRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

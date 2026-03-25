@@ -20,14 +20,14 @@ typedef struct server_order_field_label_t server_order_field_label_t;
 
 typedef struct server_order_field_label_t {
     char *name; // string
-    int active; //numeric
+    int *active; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } server_order_field_label_t;
 
 __attribute__((deprecated)) server_order_field_label_t *server_order_field_label_create(
     char *name,
-    int active
+    int *active
 );
 
 void server_order_field_label_free(server_order_field_label_t *server_order_field_label);

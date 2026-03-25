@@ -1,4 +1,4 @@
-# # GetWebsiteBuyIp200Response
+# GetWebsiteBuyIp200Response
 
 ## Properties
 

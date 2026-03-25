@@ -13,10 +13,10 @@ static generic_response_t *generic_response_create_internal(
     if (!generic_response_local_var) {
         return NULL;
     }
+    memset(generic_response_local_var, 0, sizeof(generic_response_t));
+    generic_response_local_var->_library_owned = 1;
     generic_response_local_var->status = status;
     generic_response_local_var->text = text;
-
-    generic_response_local_var->_library_owned = 1;
     return generic_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) generic_response_t *generic_response_create(
     char *status,
     char *text
     ) {
-    return generic_response_create_internal (
+    generic_response_t *result = generic_response_create_internal (
         status,
         text
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void generic_response_free(generic_response_t *generic_response) {
@@ -82,6 +85,10 @@ generic_response_t *generic_response_parseFromJSON(cJSON *generic_responseJSON){
 
     generic_response_t *generic_response_local_var = NULL;
 
+    char *status_local_str = NULL;
+
+    char *text_local_str = NULL;
+
     // generic_response->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(generic_responseJSON, "status");
     if (cJSON_IsNull(status)) {
@@ -113,13 +120,28 @@ generic_response_t *generic_response_parseFromJSON(cJSON *generic_responseJSON){
     }
 
 
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     generic_response_local_var = generic_response_create_internal (
-        strdup(status->valuestring),
-        strdup(text->valuestring)
+        status_local_str,
+        text_local_str
         );
+
+    if (!generic_response_local_var) {
+        goto end;
+    }
 
     return generic_response_local_var;
 end:
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -13,10 +13,10 @@ static vps_order_os_names_t *vps_order_os_names_create_internal(
     if (!vps_order_os_names_local_var) {
         return NULL;
     }
+    memset(vps_order_os_names_local_var, 0, sizeof(vps_order_os_names_t));
+    vps_order_os_names_local_var->_library_owned = 1;
     vps_order_os_names_local_var->opensuse = opensuse;
     vps_order_os_names_local_var->ubuntu = ubuntu;
-
-    vps_order_os_names_local_var->_library_owned = 1;
     return vps_order_os_names_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) vps_order_os_names_t *vps_order_os_names_create(
     char *opensuse,
     char *ubuntu
     ) {
-    return vps_order_os_names_create_internal (
+    vps_order_os_names_t *result = vps_order_os_names_create_internal (
         opensuse,
         ubuntu
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_order_os_names_free(vps_order_os_names_t *vps_order_os_names) {
@@ -80,6 +83,10 @@ vps_order_os_names_t *vps_order_os_names_parseFromJSON(cJSON *vps_order_os_names
 
     vps_order_os_names_t *vps_order_os_names_local_var = NULL;
 
+    char *opensuse_local_str = NULL;
+
+    char *ubuntu_local_str = NULL;
+
     // vps_order_os_names->opensuse
     cJSON *opensuse = cJSON_GetObjectItemCaseSensitive(vps_order_os_namesJSON, "opensuse");
     if (cJSON_IsNull(opensuse)) {
@@ -105,13 +112,28 @@ vps_order_os_names_t *vps_order_os_names_parseFromJSON(cJSON *vps_order_os_names
     }
 
 
+    if (opensuse && !cJSON_IsNull(opensuse)) opensuse_local_str = strdup(opensuse->valuestring);
+    if (ubuntu && !cJSON_IsNull(ubuntu)) ubuntu_local_str = strdup(ubuntu->valuestring);
+
     vps_order_os_names_local_var = vps_order_os_names_create_internal (
-        opensuse && !cJSON_IsNull(opensuse) ? strdup(opensuse->valuestring) : NULL,
-        ubuntu && !cJSON_IsNull(ubuntu) ? strdup(ubuntu->valuestring) : NULL
+        opensuse_local_str,
+        ubuntu_local_str
         );
+
+    if (!vps_order_os_names_local_var) {
+        goto end;
+    }
 
     return vps_order_os_names_local_var;
 end:
+    if (opensuse_local_str) {
+        free(opensuse_local_str);
+        opensuse_local_str = NULL;
+    }
+    if (ubuntu_local_str) {
+        free(ubuntu_local_str);
+        ubuntu_local_str = NULL;
+    }
     return NULL;
 
 }

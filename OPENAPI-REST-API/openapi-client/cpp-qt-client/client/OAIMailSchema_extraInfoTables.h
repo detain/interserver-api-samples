@@ -34,13 +34,13 @@ class OAIMailTutorialsTable;
 class OAIMailSchema_extraInfoTables : public OAIObject {
 public:
     OAIMailSchema_extraInfoTables();
-    OAIMailSchema_extraInfoTables(QString json);
+    OAIMailSchema_extraInfoTables(const QString &json);
     ~OAIMailSchema_extraInfoTables() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIMailExtraInfoTable getMail() const;
     void setMail(const OAIMailExtraInfoTable &mail);

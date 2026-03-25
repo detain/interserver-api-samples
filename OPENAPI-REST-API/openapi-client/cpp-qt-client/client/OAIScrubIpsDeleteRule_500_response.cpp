@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIScrubIpsDeleteRule_500_response::OAIScrubIpsDeleteRule_500_response(QString json) {
+OAIScrubIpsDeleteRule_500_response::OAIScrubIpsDeleteRule_500_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIScrubIpsDeleteRule_500_response::initializeModel() {
     m_text_isValid = false;
 }
 
-void OAIScrubIpsDeleteRule_500_response::fromJson(QString jsonString) {
+void OAIScrubIpsDeleteRule_500_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

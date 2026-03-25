@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.JSON_PROPERTY_INVOICES_DATE_FORMATTED
 })
 @JsonTypeName("ChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue {
     public static final String JSON_PROPERTY_INVOICES_ID = "invoices_id";
@@ -260,10 +260,7 @@ public class ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue 
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

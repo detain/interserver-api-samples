@@ -32,13 +32,13 @@ class OAIServerOrderFieldLabel;
 class OAIServerOrderFieldLabels : public OAIObject {
 public:
     OAIServerOrderFieldLabels();
-    OAIServerOrderFieldLabels(QString json);
+    OAIServerOrderFieldLabels(const QString &json);
     ~OAIServerOrderFieldLabels() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderFieldLabel getBandwidth() const;
     void setBandwidth(const OAIServerOrderFieldLabel &bandwidth);

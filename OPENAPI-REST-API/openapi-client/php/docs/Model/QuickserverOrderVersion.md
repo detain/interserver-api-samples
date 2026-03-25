@@ -1,4 +1,4 @@
-# # QuickserverOrderVersion
+# QuickserverOrderVersion
 
 ## Properties
 

@@ -19,14 +19,14 @@ typedef struct region_t region_t;
 
 
 typedef struct region_t {
-    int region_id; //numeric
+    int *region_id; //numeric
     char *region_name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } region_t;
 
 __attribute__((deprecated)) region_t *region_create(
-    int region_id,
+    int *region_id,
     char *region_name
 );
 

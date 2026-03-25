@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainLookupResponse::OAIDomainLookupResponse(QString json) {
+OAIDomainLookupResponse::OAIDomainLookupResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -68,7 +68,7 @@ void OAIDomainLookupResponse::initializeModel() {
     m_currencies_isValid = false;
 }
 
-void OAIDomainLookupResponse::fromJson(QString jsonString) {
+void OAIDomainLookupResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

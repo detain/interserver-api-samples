@@ -13,10 +13,10 @@ static scrub_ip_filter_types_filters_value_t *scrub_ip_filter_types_filters_valu
     if (!scrub_ip_filter_types_filters_value_local_var) {
         return NULL;
     }
+    memset(scrub_ip_filter_types_filters_value_local_var, 0, sizeof(scrub_ip_filter_types_filters_value_t));
+    scrub_ip_filter_types_filters_value_local_var->_library_owned = 1;
     scrub_ip_filter_types_filters_value_local_var->name = name;
     scrub_ip_filter_types_filters_value_local_var->desc = desc;
-
-    scrub_ip_filter_types_filters_value_local_var->_library_owned = 1;
     return scrub_ip_filter_types_filters_value_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) scrub_ip_filter_types_filters_value_t *scrub_ip_filt
     char *name,
     char *desc
     ) {
-    return scrub_ip_filter_types_filters_value_create_internal (
+    scrub_ip_filter_types_filters_value_t *result = scrub_ip_filter_types_filters_value_create_internal (
         name,
         desc
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void scrub_ip_filter_types_filters_value_free(scrub_ip_filter_types_filters_value_t *scrub_ip_filter_types_filters_value) {
@@ -80,6 +83,10 @@ scrub_ip_filter_types_filters_value_t *scrub_ip_filter_types_filters_value_parse
 
     scrub_ip_filter_types_filters_value_t *scrub_ip_filter_types_filters_value_local_var = NULL;
 
+    char *name_local_str = NULL;
+
+    char *desc_local_str = NULL;
+
     // scrub_ip_filter_types_filters_value->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(scrub_ip_filter_types_filters_valueJSON, "name");
     if (cJSON_IsNull(name)) {
@@ -105,13 +112,28 @@ scrub_ip_filter_types_filters_value_t *scrub_ip_filter_types_filters_value_parse
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (desc && !cJSON_IsNull(desc)) desc_local_str = strdup(desc->valuestring);
+
     scrub_ip_filter_types_filters_value_local_var = scrub_ip_filter_types_filters_value_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        desc && !cJSON_IsNull(desc) ? strdup(desc->valuestring) : NULL
+        name_local_str,
+        desc_local_str
         );
+
+    if (!scrub_ip_filter_types_filters_value_local_var) {
+        goto end;
+    }
 
     return scrub_ip_filter_types_filters_value_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (desc_local_str) {
+        free(desc_local_str);
+        desc_local_str = NULL;
+    }
     return NULL;
 
 }

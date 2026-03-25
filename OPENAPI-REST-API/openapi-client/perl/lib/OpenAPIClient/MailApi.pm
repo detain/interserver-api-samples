@@ -1797,18 +1797,24 @@ sub update_mail_info {
 # View Mail Log
 #
 # @param int $id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. (required)
-# @param int $id2 The ID of your mail order this will be sent through. (optional)
-# @param string $origin originating ip address sending mail (optional)
-# @param string $mx mx record mail was sent to (optional)
-# @param string $from from email address (optional)
-# @param string $to to/destination email address (optional)
-# @param string $subject subject containing this string (optional)
-# @param string $mailid mail id (optional)
-# @param int $skip number of records to skip for pagination (optional, default to 0)
-# @param int $limit maximum number of records to return (optional, default to 100)
-# @param int $start_date earliest date to get emails in unix timestamp format (optional)
-# @param int $end_date Latest date to get emails in unix timestamp format. (optional)
-# @param string $delivered Filter emails by whether or not they were delivered. (optional)
+# @param int $id2 The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;. (optional)
+# @param string $origin Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. (optional)
+# @param string $mx Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response. (optional)
+# @param string $from Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;. (optional)
+# @param string $to Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved. (optional)
+# @param string $subject Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response. (optional)
+# @param string $mailid Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;. (optional)
+# @param string $message_id Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. (optional)
+# @param string $replyto Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set. (optional)
+# @param string $headerfrom Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address. (optional)
+# @param int $delivered Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. (optional)
+# @param int $skip Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip). (optional, default to 0)
+# @param int $limit Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages. (optional, default to 100)
+# @param ViewMailLogStartDateParameter $start_date Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included. (optional)
+# @param ViewMailLogStartDateParameter $end_date Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. (optional)
+# @param string $sort Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). (optional, default to 'time')
+# @param string $dir Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first. (optional, default to 'desc')
+# @param string $groupby Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode. (optional, default to 'recipient')
 {
     my $params = {
     'id' => {
@@ -1818,62 +1824,92 @@ sub update_mail_info {
     },
     'id2' => {
         data_type => 'int',
-        description => 'The ID of your mail order this will be sent through.',
+        description => 'The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;.',
         required => '0',
     },
     'origin' => {
         data_type => 'string',
-        description => 'originating ip address sending mail',
+        description => 'Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.',
         required => '0',
     },
     'mx' => {
         data_type => 'string',
-        description => 'mx record mail was sent to',
+        description => 'Filter by the MX hostname the relay attempted delivery to.  For example &#x60;mx.google.com&#x60; would return messages destined for Gmail recipients. Maps to &#x60;mxHostname&#x60; in the &#x60;MailLogEntry&#x60; response.',
         required => '0',
     },
     'from' => {
         data_type => 'string',
-        description => 'from email address',
+        description => 'Filter by SMTP envelope &#x60;MAIL FROM&#x60; address (exact match).  This is the address the relay used for bounce handling and may differ from the &#x60;From:&#x60; message header.  For header-level filtering use &#x60;headerfrom&#x60;.',
         required => '0',
     },
     'to' => {
         data_type => 'string',
-        description => 'to/destination email address',
+        description => 'Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.',
         required => '0',
     },
     'subject' => {
         data_type => 'string',
-        description => 'subject containing this string',
+        description => 'Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.',
         required => '0',
     },
     'mailid' => {
         data_type => 'string',
-        description => 'mail id',
+        description => 'Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.',
+        required => '0',
+    },
+    'message_id' => {
+        data_type => 'string',
+        description => 'Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.',
+        required => '0',
+    },
+    'replyto' => {
+        data_type => 'string',
+        description => 'Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.',
+        required => '0',
+    },
+    'headerfrom' => {
+        data_type => 'string',
+        description => 'Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.',
+        required => '0',
+    },
+    'delivered' => {
+        data_type => 'int',
+        description => 'Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.',
         required => '0',
     },
     'skip' => {
         data_type => 'int',
-        description => 'number of records to skip for pagination',
+        description => 'Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).',
         required => '0',
     },
     'limit' => {
         data_type => 'int',
-        description => 'maximum number of records to return',
+        description => 'Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.',
         required => '0',
     },
     'start_date' => {
-        data_type => 'int',
-        description => 'earliest date to get emails in unix timestamp format',
+        data_type => 'ViewMailLogStartDateParameter',
+        description => 'Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.',
         required => '0',
     },
     'end_date' => {
-        data_type => 'int',
-        description => 'Latest date to get emails in unix timestamp format.',
+        data_type => 'ViewMailLogStartDateParameter',
+        description => 'Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.',
         required => '0',
     },
-    'delivered' => {
+    'sort' => {
         data_type => 'string',
-        description => 'Filter emails by whether or not they were delivered.',
+        description => 'Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).',
+        required => '0',
+    },
+    'dir' => {
+        data_type => 'string',
+        description => 'Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.',
+        required => '0',
+    },
+    'groupby' => {
+        data_type => 'string',
+        description => 'Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.',
         required => '0',
     },
     };
@@ -1944,6 +1980,26 @@ sub view_mail_log {
     }
 
     # query params
+    if ( exists $args{'message_id'}) {
+        $query_params->{'messageId'} = $self->{api_client}->to_query_value($args{'message_id'});
+    }
+
+    # query params
+    if ( exists $args{'replyto'}) {
+        $query_params->{'replyto'} = $self->{api_client}->to_query_value($args{'replyto'});
+    }
+
+    # query params
+    if ( exists $args{'headerfrom'}) {
+        $query_params->{'headerfrom'} = $self->{api_client}->to_query_value($args{'headerfrom'});
+    }
+
+    # query params
+    if ( exists $args{'delivered'}) {
+        $query_params->{'delivered'} = $self->{api_client}->to_query_value($args{'delivered'});
+    }
+
+    # query params
     if ( exists $args{'skip'}) {
         $query_params->{'skip'} = $self->{api_client}->to_query_value($args{'skip'});
     }
@@ -1964,8 +2020,18 @@ sub view_mail_log {
     }
 
     # query params
-    if ( exists $args{'delivered'}) {
-        $query_params->{'delivered'} = $self->{api_client}->to_query_value($args{'delivered'});
+    if ( exists $args{'sort'}) {
+        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
+    }
+
+    # query params
+    if ( exists $args{'dir'}) {
+        $query_params->{'dir'} = $self->{api_client}->to_query_value($args{'dir'});
+    }
+
+    # query params
+    if ( exists $args{'groupby'}) {
+        $query_params->{'groupby'} = $self->{api_client}->to_query_value($args{'groupby'});
     }
 
     # path params

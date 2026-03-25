@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAICreateRule_201_response::OAICreateRule_201_response(QString json) {
+OAICreateRule_201_response::OAICreateRule_201_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAICreateRule_201_response::initializeModel() {
     m_text_isValid = false;
 }
 
-void OAICreateRule_201_response::fromJson(QString jsonString) {
+void OAICreateRule_201_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

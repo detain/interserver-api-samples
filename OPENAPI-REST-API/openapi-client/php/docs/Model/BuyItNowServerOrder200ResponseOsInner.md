@@ -1,4 +1,4 @@
-# # BuyItNowServerOrder200ResponseOsInner
+# BuyItNowServerOrder200ResponseOsInner
 
 ## Properties
 

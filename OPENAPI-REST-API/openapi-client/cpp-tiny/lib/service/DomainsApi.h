@@ -37,7 +37,7 @@ class DomainsApi : public Service {
 public:
     DomainsApi() = default;
 
-    virtual ~DomainsApi() = default;
+    virtual ~DomainsApi();
 
     /**
     * Place Domain Order.

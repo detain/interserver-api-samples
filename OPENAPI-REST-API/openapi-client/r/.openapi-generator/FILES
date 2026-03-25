@@ -396,6 +396,7 @@ R/update_account_tfa_request.R
 R/update_ticket.R
 R/update_ticket_response_schema.R
 R/url_request.R
+R/view_mail_log_start_date_parameter.R
 R/view_ticket_response.R
 R/vps.R
 R/vps_api.R
@@ -866,6 +867,7 @@ docs/VPSApi.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -1329,6 +1331,7 @@ tests/testthat/test_update_account_tfa_request.R
 tests/testthat/test_update_ticket.R
 tests/testthat/test_update_ticket_response_schema.R
 tests/testthat/test_url_request.R
+tests/testthat/test_view_mail_log_start_date_parameter.R
 tests/testthat/test_view_ticket_response.R
 tests/testthat/test_vps.R
 tests/testthat/test_vps_api.R

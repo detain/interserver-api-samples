@@ -1,4 +1,4 @@
-# # Region
+# Region
 
 ## Properties
 

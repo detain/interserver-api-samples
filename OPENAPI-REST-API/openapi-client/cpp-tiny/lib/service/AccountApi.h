@@ -28,7 +28,7 @@ class AccountApi : public Service {
 public:
     AccountApi() = default;
 
-    virtual ~AccountApi() = default;
+    virtual ~AccountApi();
 
     /**
     * Change Account Username.

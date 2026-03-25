@@ -7,27 +7,36 @@
 
 static post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_create_internal(
     char *message,
-    int success
+    int *success
     ) {
     post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_local_var = malloc(sizeof(post_website_buy_ip_200_response_t));
     if (!post_website_buy_ip_200_response_local_var) {
         return NULL;
     }
+    memset(post_website_buy_ip_200_response_local_var, 0, sizeof(post_website_buy_ip_200_response_t));
+    post_website_buy_ip_200_response_local_var->_library_owned = 1;
     post_website_buy_ip_200_response_local_var->message = message;
     post_website_buy_ip_200_response_local_var->success = success;
-
-    post_website_buy_ip_200_response_local_var->_library_owned = 1;
     return post_website_buy_ip_200_response_local_var;
 }
 
 __attribute__((deprecated)) post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_create(
     char *message,
-    int success
+    int *success
     ) {
-    return post_website_buy_ip_200_response_create_internal (
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    post_website_buy_ip_200_response_t *result = post_website_buy_ip_200_response_create_internal (
         message,
-        success
+        success_copy
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void post_website_buy_ip_200_response_free(post_website_buy_ip_200_response_t *post_website_buy_ip_200_response) {
@@ -42,6 +51,10 @@ void post_website_buy_ip_200_response_free(post_website_buy_ip_200_response_t *p
     if (post_website_buy_ip_200_response->message) {
         free(post_website_buy_ip_200_response->message);
         post_website_buy_ip_200_response->message = NULL;
+    }
+    if (post_website_buy_ip_200_response->success) {
+        free(post_website_buy_ip_200_response->success);
+        post_website_buy_ip_200_response->success = NULL;
     }
     free(post_website_buy_ip_200_response);
 }
@@ -59,7 +72,7 @@ cJSON *post_website_buy_ip_200_response_convertToJSON(post_website_buy_ip_200_re
 
     // post_website_buy_ip_200_response->success
     if(post_website_buy_ip_200_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", post_website_buy_ip_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *post_website_buy_ip_200_response->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -75,6 +88,11 @@ fail:
 post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_parseFromJSON(cJSON *post_website_buy_ip_200_responseJSON){
 
     post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_local_var = NULL;
+
+    char *message_local_str = NULL;
+
+    // define the local variable for post_website_buy_ip_200_response->success
+    int *success_local_var = NULL;
 
     // post_website_buy_ip_200_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(post_website_buy_ip_200_responseJSON, "message");
@@ -98,16 +116,36 @@ post_website_buy_ip_200_response_t *post_website_buy_ip_200_response_parseFromJS
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
 
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+
     post_website_buy_ip_200_response_local_var = post_website_buy_ip_200_response_create_internal (
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        success ? success->valueint : 0
+        message_local_str,
+        success_local_var
         );
+
+    if (!post_website_buy_ip_200_response_local_var) {
+        goto end;
+    }
 
     return post_website_buy_ip_200_response_local_var;
 end:
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
     return NULL;
 
 }

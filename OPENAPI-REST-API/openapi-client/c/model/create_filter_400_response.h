@@ -19,7 +19,7 @@ typedef struct create_filter_400_response_t create_filter_400_response_t;
 
 
 typedef struct create_filter_400_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
     list_t *errors; //primitive container
 
@@ -27,7 +27,7 @@ typedef struct create_filter_400_response_t {
 } create_filter_400_response_t;
 
 __attribute__((deprecated)) create_filter_400_response_t *create_filter_400_response_create(
-    int success,
+    int *success,
     char *text,
     list_t *errors
 );

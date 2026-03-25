@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDownloadQsBackup_request : public OAIObject {
 public:
     OAIDownloadQsBackup_request();
-    OAIDownloadQsBackup_request(QString json);
+    OAIDownloadQsBackup_request(const QString &json);
     ~OAIDownloadQsBackup_request() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getFile() const;
     void setFile(const QString &file);

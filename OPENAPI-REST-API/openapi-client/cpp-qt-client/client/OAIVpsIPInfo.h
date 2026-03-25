@@ -34,13 +34,13 @@ class OAIVpsIPInfoRow;
 class OAIVpsIPInfo : public OAIObject {
 public:
     OAIVpsIPInfo();
-    OAIVpsIPInfo(QString json);
+    OAIVpsIPInfo(const QString &json);
     ~OAIVpsIPInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTitle() const;
     void setTitle(const QString &title);

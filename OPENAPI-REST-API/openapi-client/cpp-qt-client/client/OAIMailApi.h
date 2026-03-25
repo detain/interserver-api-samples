@@ -39,6 +39,7 @@
 #include "OAISendMail.h"
 #include "OAISendMailAdv.h"
 #include "OAISuccessTextResponse.h"
+#include "OAIViewMailLog_startDate_parameter.h"
 #include <QString>
 
 #include <QObject>
@@ -214,16 +215,29 @@ public:
     * @param[in]  to QString [optional]
     * @param[in]  subject QString [optional]
     * @param[in]  mailid QString [optional]
+    * @param[in]  message_id QString [optional]
+    * @param[in]  replyto QString [optional]
+    * @param[in]  headerfrom QString [optional]
+    * @param[in]  delivered qint32 [optional]
     * @param[in]  skip qint32 [optional]
     * @param[in]  limit qint32 [optional]
-    * @param[in]  start_date qint64 [optional]
-    * @param[in]  end_date qint64 [optional]
-    * @param[in]  delivered QString [optional]
+    * @param[in]  start_date OAIViewMailLog_startDate_parameter [optional]
+    * @param[in]  end_date OAIViewMailLog_startDate_parameter [optional]
+    * @param[in]  sort QString [optional]
+    * @param[in]  dir QString [optional]
+    * @param[in]  groupby QString [optional]
     */
-    virtual void viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qint64> &id2 = ::OpenAPI::OptionalParam<qint64>(), const ::OpenAPI::OptionalParam<QString> &origin = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &mx = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &from = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &to = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &subject = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &mailid = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<qint32> &skip = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &limit = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint64> &start_date = ::OpenAPI::OptionalParam<qint64>(), const ::OpenAPI::OptionalParam<qint64> &end_date = ::OpenAPI::OptionalParam<qint64>(), const ::OpenAPI::OptionalParam<QString> &delivered = ::OpenAPI::OptionalParam<QString>());
+    virtual void viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qint64> &id2 = ::OpenAPI::OptionalParam<qint64>(), const ::OpenAPI::OptionalParam<QString> &origin = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &mx = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &from = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &to = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &subject = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &mailid = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &message_id = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &replyto = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &headerfrom = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<qint32> &delivered = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &skip = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &limit = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<OAIViewMailLog_startDate_parameter> &start_date = ::OpenAPI::OptionalParam<OAIViewMailLog_startDate_parameter>(), const ::OpenAPI::OptionalParam<OAIViewMailLog_startDate_parameter> &end_date = ::OpenAPI::OptionalParam<OAIViewMailLog_startDate_parameter>(), const ::OpenAPI::OptionalParam<QString> &sort = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &dir = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &groupby = ::OpenAPI::OptionalParam<QString>());
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -243,7 +257,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addMailCallback(OAIHttpRequestWorker *worker);
     void addRuleCallback(OAIHttpRequestWorker *worker);
@@ -329,162 +343,58 @@ Q_SIGNALS:
     void updateMailInfoSignalFull(OAIHttpRequestWorker *worker);
     void viewMailLogSignalFull(OAIHttpRequestWorker *worker, OAIMailLog summary);
 
-    Q_DECL_DEPRECATED_X("Use addMailSignalError() instead")
-    void addMailSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addMailSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addRuleSignalError() instead")
-    void addRuleSignalE(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void addRuleSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createMailAlertSignalError() instead")
-    void createMailAlertSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void createMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteMailAlertSignalError() instead")
-    void deleteMailAlertSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteRuleSignalError() instead")
-    void deleteRuleSignalE(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteRuleSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use delistBlockSignalError() instead")
-    void delistBlockSignalE(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void delistBlockSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailAlertsSignalError() instead")
-    void getMailAlertsSignalE(OAIMailAlertsResponse<OAIMailAlertsResponse_inner> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailAlertsSignalError(OAIMailAlertsResponse<OAIMailAlertsResponse_inner> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailBlocksSignalError() instead")
-    void getMailBlocksSignalE(OAIMailBlocks summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailBlocksSignalError(OAIMailBlocks summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailDelistSignalError() instead")
-    void getMailDelistSignalE(OAIMailDelistResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailDelistSignalError(OAIMailDelistResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailDeliverabilitySignalError() instead")
-    void getMailDeliverabilitySignalE(OAIMailDeliverabilityResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailDeliverabilitySignalError(OAIMailDeliverabilityResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailInfoSignalError() instead")
-    void getMailInfoSignalE(OAIMailSchema summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailInfoSignalError(OAIMailSchema summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailInvoicesSignalError() instead")
-    void getMailInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailListSignalError() instead")
-    void getMailListSignalE(QList<OAIMailRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailListSignalError(QList<OAIMailRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailWelcomeEmailSignalError() instead")
-    void getMailWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewMailSignalError() instead")
-    void getNewMailSignalE(OAIMailOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewMailSignalError(OAIMailOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getRulesSignalError() instead")
-    void getRulesSignalE(QList<OAIDenyRuleRecord> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getRulesSignalError(QList<OAIDenyRuleRecord> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getStatsSignalError() instead")
-    void getStatsSignalE(OAIMailStatsType summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getStatsSignalError(OAIMailStatsType summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use mailCancelSignalError() instead")
-    void mailCancelSignalE(OAIMailCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void mailCancelSignalError(OAIMailCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postMailDelistSignalError() instead")
-    void postMailDelistSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postMailDelistSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putMailSignalError() instead")
-    void putMailSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putMailSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use resetMailPasswordSignalError() instead")
-    void resetMailPasswordSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void resetMailPasswordSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use sendAdvMailSignalError() instead")
-    void sendAdvMailSignalE(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void sendAdvMailSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use sendMailSignalError() instead")
-    void sendMailSignalE(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void sendMailSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateMailAlertSignalError() instead")
-    void updateMailAlertSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void updateMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateMailInfoSignalError() instead")
-    void updateMailInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateMailInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use viewMailLogSignalError() instead")
-    void viewMailLogSignalE(OAIMailLog summary, QNetworkReply::NetworkError error_type, QString error_str);
     void viewMailLogSignalError(OAIMailLog summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addMailSignalErrorFull() instead")
-    void addMailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use addRuleSignalErrorFull() instead")
-    void addRuleSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use createMailAlertSignalErrorFull() instead")
-    void createMailAlertSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void createMailAlertSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteMailAlertSignalErrorFull() instead")
-    void deleteMailAlertSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteMailAlertSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteRuleSignalErrorFull() instead")
-    void deleteRuleSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use delistBlockSignalErrorFull() instead")
-    void delistBlockSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void delistBlockSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailAlertsSignalErrorFull() instead")
-    void getMailAlertsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailAlertsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailBlocksSignalErrorFull() instead")
-    void getMailBlocksSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailBlocksSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailDelistSignalErrorFull() instead")
-    void getMailDelistSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailDelistSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailDeliverabilitySignalErrorFull() instead")
-    void getMailDeliverabilitySignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailDeliverabilitySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailInfoSignalErrorFull() instead")
-    void getMailInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailInvoicesSignalErrorFull() instead")
-    void getMailInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailListSignalErrorFull() instead")
-    void getMailListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMailWelcomeEmailSignalErrorFull() instead")
-    void getMailWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMailWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewMailSignalErrorFull() instead")
-    void getNewMailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getRulesSignalErrorFull() instead")
-    void getRulesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getRulesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getStatsSignalErrorFull() instead")
-    void getStatsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getStatsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use mailCancelSignalErrorFull() instead")
-    void mailCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void mailCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postMailDelistSignalErrorFull() instead")
-    void postMailDelistSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postMailDelistSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putMailSignalErrorFull() instead")
-    void putMailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use resetMailPasswordSignalErrorFull() instead")
-    void resetMailPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void resetMailPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use sendAdvMailSignalErrorFull() instead")
-    void sendAdvMailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void sendAdvMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use sendMailSignalErrorFull() instead")
-    void sendMailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void sendMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateMailAlertSignalErrorFull() instead")
-    void updateMailAlertSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateMailAlertSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateMailInfoSignalErrorFull() instead")
-    void updateMailInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateMailInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use viewMailLogSignalErrorFull() instead")
-    void viewMailLogSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void viewMailLogSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

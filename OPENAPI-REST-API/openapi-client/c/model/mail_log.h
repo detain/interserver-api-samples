@@ -1,7 +1,7 @@
 /*
  * mail_log.h
  *
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 
 #ifndef _mail_log_H_
@@ -20,18 +20,18 @@ typedef struct mail_log_t mail_log_t;
 
 
 typedef struct mail_log_t {
-    int total; //numeric
-    int skip; //numeric
-    int limit; //numeric
+    int *total; //numeric
+    int *skip; //numeric
+    int *limit; //numeric
     list_t *emails; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } mail_log_t;
 
 __attribute__((deprecated)) mail_log_t *mail_log_create(
-    int total,
-    int skip,
-    int limit,
+    int *total,
+    int *skip,
+    int *limit,
     list_t *emails
 );
 

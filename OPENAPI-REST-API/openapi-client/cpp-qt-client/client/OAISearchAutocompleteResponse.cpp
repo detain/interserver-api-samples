@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAISearchAutocompleteResponse::OAISearchAutocompleteResponse(QString json) {
+OAISearchAutocompleteResponse::OAISearchAutocompleteResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAISearchAutocompleteResponse::initializeModel() {
 
 }
 
-void OAISearchAutocompleteResponse::fromJson(QString jsonString) {
+void OAISearchAutocompleteResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

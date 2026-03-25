@@ -27,6 +27,7 @@ from openapi_client.models.account_info_data_fraudrecord import AccountInfoDataF
 from openapi_client.models.account_info_max_mind_response import AccountInfoMaxMindResponse
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AccountInfoData(BaseModel):
     """
@@ -99,7 +100,8 @@ class AccountInfoData(BaseModel):
     __properties: ClassVar[List[str]] = ["group", "address", "city", "country", "disable_cc", "fraudrecord_score", "ima", "name", "payment_method", "phone", "pin", "state", "status", "zip", "account_id", "account_lid", "address2", "affiliate_dock_description", "affiliate_dock_title", "affiliate_payment_method", "affiliate_paypal", "cc", "cc_auto", "cc_exp", "cc_type", "cc_whitelist", "ccs", "ccs_added", "company", "currency", "disable_reinstall", "disable_reset", "email", "email_abuse", "email_settings", "extra", "facebook_id", "facebook_url", "firstname", "fraudrecord", "github_id", "github_url", "google_id", "google_url", "innertell_id", "lastname", "locale", "maxmind", "maxmind_score", "mb_id", "modernbill_id", "picture", "referrer_coupon", "reseller_markup", "username", "ssh_key", "ssh_key_wrapped", "api_key", "api_key_wrapped", "2fa_google_key", "2fa_google_enabled", "2fa_google", "2fa_google_split", "2fa_google_qr"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -111,8 +113,7 @@ class AccountInfoData(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

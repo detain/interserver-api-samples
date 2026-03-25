@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAITicketCustomFieldDetails : public OAIObject {
 public:
     OAITicketCustomFieldDetails();
-    OAITicketCustomFieldDetails(QString json);
+    OAITicketCustomFieldDetails(const QString &json);
     ~OAITicketCustomFieldDetails() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCustomerServerAccess() const;
     void setCustomerServerAccess(const QString &customer_server_access);

@@ -13,12 +13,14 @@ static buy_it_now_row_t *buy_it_now_row_create_internal(
     char *bandwidth,
     char *ips,
     char *location,
-    int price
+    int *price
     ) {
     buy_it_now_row_t *buy_it_now_row_local_var = malloc(sizeof(buy_it_now_row_t));
     if (!buy_it_now_row_local_var) {
         return NULL;
     }
+    memset(buy_it_now_row_local_var, 0, sizeof(buy_it_now_row_t));
+    buy_it_now_row_local_var->_library_owned = 1;
     buy_it_now_row_local_var->server_id = server_id;
     buy_it_now_row_local_var->cpu = cpu;
     buy_it_now_row_local_var->memory = memory;
@@ -27,8 +29,6 @@ static buy_it_now_row_t *buy_it_now_row_create_internal(
     buy_it_now_row_local_var->ips = ips;
     buy_it_now_row_local_var->location = location;
     buy_it_now_row_local_var->price = price;
-
-    buy_it_now_row_local_var->_library_owned = 1;
     return buy_it_now_row_local_var;
 }
 
@@ -40,9 +40,14 @@ __attribute__((deprecated)) buy_it_now_row_t *buy_it_now_row_create(
     char *bandwidth,
     char *ips,
     char *location,
-    int price
+    int *price
     ) {
-    return buy_it_now_row_create_internal (
+    int *price_copy = NULL;
+    if (price) {
+        price_copy = malloc(sizeof(int));
+        if (price_copy) *price_copy = *price;
+    }
+    buy_it_now_row_t *result = buy_it_now_row_create_internal (
         server_id,
         cpu,
         memory,
@@ -50,8 +55,12 @@ __attribute__((deprecated)) buy_it_now_row_t *buy_it_now_row_create(
         bandwidth,
         ips,
         location,
-        price
+        price_copy
         );
+    if (!result) {
+        free(price_copy);
+    }
+    return result;
 }
 
 void buy_it_now_row_free(buy_it_now_row_t *buy_it_now_row) {
@@ -99,6 +108,10 @@ void buy_it_now_row_free(buy_it_now_row_t *buy_it_now_row) {
     if (buy_it_now_row->location) {
         free(buy_it_now_row->location);
         buy_it_now_row->location = NULL;
+    }
+    if (buy_it_now_row->price) {
+        free(buy_it_now_row->price);
+        buy_it_now_row->price = NULL;
     }
     free(buy_it_now_row);
 }
@@ -188,7 +201,7 @@ cJSON *buy_it_now_row_convertToJSON(buy_it_now_row_t *buy_it_now_row) {
 
     // buy_it_now_row->price
     if(buy_it_now_row->price) {
-    if(cJSON_AddNumberToObject(item, "price", buy_it_now_row->price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "price", *buy_it_now_row->price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -205,11 +218,24 @@ buy_it_now_row_t *buy_it_now_row_parseFromJSON(cJSON *buy_it_now_rowJSON){
 
     buy_it_now_row_t *buy_it_now_row_local_var = NULL;
 
+    char *server_id_local_str = NULL;
+
     // define the local list for buy_it_now_row->cpu
     list_t *cpuList = NULL;
 
+    char *memory_local_str = NULL;
+
     // define the local map for buy_it_now_row->disk
     list_t *diskList = NULL;
+
+    char *bandwidth_local_str = NULL;
+
+    char *ips_local_str = NULL;
+
+    char *location_local_str = NULL;
+
+    // define the local variable for buy_it_now_row->price
+    int *price_local_var = NULL;
 
     // buy_it_now_row->server_id
     cJSON *server_id = cJSON_GetObjectItemCaseSensitive(buy_it_now_rowJSON, "server_id");
@@ -333,22 +359,42 @@ buy_it_now_row_t *buy_it_now_row_parseFromJSON(cJSON *buy_it_now_rowJSON){
     {
     goto end; //Numeric
     }
+    price_local_var = malloc(sizeof(int));
+    if(!price_local_var)
+    {
+        goto end;
+    }
+    *price_local_var = price->valuedouble;
     }
 
 
+    if (server_id && !cJSON_IsNull(server_id)) server_id_local_str = strdup(server_id->valuestring);
+    if (memory && !cJSON_IsNull(memory)) memory_local_str = strdup(memory->valuestring);
+    if (bandwidth && !cJSON_IsNull(bandwidth)) bandwidth_local_str = strdup(bandwidth->valuestring);
+    if (ips && !cJSON_IsNull(ips)) ips_local_str = strdup(ips->valuestring);
+    if (location && !cJSON_IsNull(location)) location_local_str = strdup(location->valuestring);
+
     buy_it_now_row_local_var = buy_it_now_row_create_internal (
-        server_id && !cJSON_IsNull(server_id) ? strdup(server_id->valuestring) : NULL,
+        server_id_local_str,
         cpu ? cpuList : NULL,
-        memory && !cJSON_IsNull(memory) ? strdup(memory->valuestring) : NULL,
+        memory_local_str,
         disk ? diskList : NULL,
-        bandwidth && !cJSON_IsNull(bandwidth) ? strdup(bandwidth->valuestring) : NULL,
-        ips && !cJSON_IsNull(ips) ? strdup(ips->valuestring) : NULL,
-        location && !cJSON_IsNull(location) ? strdup(location->valuestring) : NULL,
-        price ? price->valuedouble : 0
+        bandwidth_local_str,
+        ips_local_str,
+        location_local_str,
+        price_local_var
         );
+
+    if (!buy_it_now_row_local_var) {
+        goto end;
+    }
 
     return buy_it_now_row_local_var;
 end:
+    if (server_id_local_str) {
+        free(server_id_local_str);
+        server_id_local_str = NULL;
+    }
     if (cpuList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, cpuList) {
@@ -357,6 +403,10 @@ end:
         }
         list_freeList(cpuList);
         cpuList = NULL;
+    }
+    if (memory_local_str) {
+        free(memory_local_str);
+        memory_local_str = NULL;
     }
     if (diskList) {
         listEntry_t *listEntry = NULL;
@@ -371,6 +421,22 @@ end:
         }
         list_freeList(diskList);
         diskList = NULL;
+    }
+    if (bandwidth_local_str) {
+        free(bandwidth_local_str);
+        bandwidth_local_str = NULL;
+    }
+    if (ips_local_str) {
+        free(ips_local_str);
+        ips_local_str = NULL;
+    }
+    if (location_local_str) {
+        free(location_local_str);
+        location_local_str = NULL;
+    }
+    if (price_local_var) {
+        free(price_local_var);
+        price_local_var = NULL;
     }
     return NULL;
 

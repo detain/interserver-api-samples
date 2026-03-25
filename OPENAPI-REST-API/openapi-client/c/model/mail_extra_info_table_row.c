@@ -13,10 +13,10 @@ static mail_extra_info_table_row_t *mail_extra_info_table_row_create_internal(
     if (!mail_extra_info_table_row_local_var) {
         return NULL;
     }
+    memset(mail_extra_info_table_row_local_var, 0, sizeof(mail_extra_info_table_row_t));
+    mail_extra_info_table_row_local_var->_library_owned = 1;
     mail_extra_info_table_row_local_var->desc = desc;
     mail_extra_info_table_row_local_var->value = value;
-
-    mail_extra_info_table_row_local_var->_library_owned = 1;
     return mail_extra_info_table_row_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) mail_extra_info_table_row_t *mail_extra_info_table_r
     char *desc,
     char *value
     ) {
-    return mail_extra_info_table_row_create_internal (
+    mail_extra_info_table_row_t *result = mail_extra_info_table_row_create_internal (
         desc,
         value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_extra_info_table_row_free(mail_extra_info_table_row_t *mail_extra_info_table_row) {
@@ -80,6 +83,10 @@ mail_extra_info_table_row_t *mail_extra_info_table_row_parseFromJSON(cJSON *mail
 
     mail_extra_info_table_row_t *mail_extra_info_table_row_local_var = NULL;
 
+    char *desc_local_str = NULL;
+
+    char *value_local_str = NULL;
+
     // mail_extra_info_table_row->desc
     cJSON *desc = cJSON_GetObjectItemCaseSensitive(mail_extra_info_table_rowJSON, "desc");
     if (cJSON_IsNull(desc)) {
@@ -105,13 +112,28 @@ mail_extra_info_table_row_t *mail_extra_info_table_row_parseFromJSON(cJSON *mail
     }
 
 
+    if (desc && !cJSON_IsNull(desc)) desc_local_str = strdup(desc->valuestring);
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+
     mail_extra_info_table_row_local_var = mail_extra_info_table_row_create_internal (
-        desc && !cJSON_IsNull(desc) ? strdup(desc->valuestring) : NULL,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        desc_local_str,
+        value_local_str
         );
+
+    if (!mail_extra_info_table_row_local_var) {
+        goto end;
+    }
 
     return mail_extra_info_table_row_local_var;
 end:
+    if (desc_local_str) {
+        free(desc_local_str);
+        desc_local_str = NULL;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
+    }
     return NULL;
 
 }

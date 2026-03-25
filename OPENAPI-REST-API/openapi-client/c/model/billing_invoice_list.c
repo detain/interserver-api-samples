@@ -13,10 +13,10 @@ static billing_invoice_list_t *billing_invoice_list_create_internal(
     if (!billing_invoice_list_local_var) {
         return NULL;
     }
+    memset(billing_invoice_list_local_var, 0, sizeof(billing_invoice_list_t));
+    billing_invoice_list_local_var->_library_owned = 1;
     billing_invoice_list_local_var->rows = rows;
     billing_invoice_list_local_var->summary = summary;
-
-    billing_invoice_list_local_var->_library_owned = 1;
     return billing_invoice_list_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) billing_invoice_list_t *billing_invoice_list_create(
     list_t *rows,
     object_t *summary
     ) {
-    return billing_invoice_list_create_internal (
+    billing_invoice_list_t *result = billing_invoice_list_create_internal (
         rows,
         summary
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void billing_invoice_list_free(billing_invoice_list_t *billing_invoice_list) {
@@ -138,10 +141,15 @@ billing_invoice_list_t *billing_invoice_list_parseFromJSON(cJSON *billing_invoic
     }
 
 
+
     billing_invoice_list_local_var = billing_invoice_list_create_internal (
         rows ? rowsList : NULL,
         summary ? summary_local_object : NULL
         );
+
+    if (!billing_invoice_list_local_var) {
+        goto end;
+    }
 
     return billing_invoice_list_local_var;
 end:

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerOrderOS::OAIServerOrderOS(QString json) {
+OAIServerOrderOS::OAIServerOrderOS(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIServerOrderOS::initializeModel() {
     m_monthly_price_display_isValid = false;
 }
 
-void OAIServerOrderOS::fromJson(QString jsonString) {
+void OAIServerOrderOS::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

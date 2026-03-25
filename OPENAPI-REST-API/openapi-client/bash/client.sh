@@ -8,7 +8,7 @@
 # ! openapi-generator (https://openapi-generator.tech)
 # ! FROM OPENAPI SPECIFICATION IN JSON.
 # !
-# ! Generator version: 7.20.0
+# ! Generator version: 7.21.0
 # !
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -279,11 +279,17 @@ operation_parameters_minimum_occurrences["viewMailLog:::from"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::to"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::subject"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::mailid"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::messageId"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::replyto"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::headerfrom"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::delivered"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::skip"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::limit"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::startDate"]=0
 operation_parameters_minimum_occurrences["viewMailLog:::endDate"]=0
-operation_parameters_minimum_occurrences["viewMailLog:::delivered"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::sort"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::dir"]=0
+operation_parameters_minimum_occurrences["viewMailLog:::groupby"]=0
 operation_parameters_minimum_occurrences["getCountries:::fetch_by"]=0
 operation_parameters_minimum_occurrences["getOauthRedirect:::provider"]=1
 operation_parameters_minimum_occurrences["patchOauthTwoFactor:::PatchOauthTwoFactorRequest"]=1
@@ -660,11 +666,17 @@ operation_parameters_maximum_occurrences["viewMailLog:::from"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::to"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::subject"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::mailid"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::messageId"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::replyto"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::headerfrom"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::delivered"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::skip"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::limit"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::startDate"]=0
 operation_parameters_maximum_occurrences["viewMailLog:::endDate"]=0
-operation_parameters_maximum_occurrences["viewMailLog:::delivered"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::sort"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::dir"]=0
+operation_parameters_maximum_occurrences["viewMailLog:::groupby"]=0
 operation_parameters_maximum_occurrences["getCountries:::fetch_by"]=0
 operation_parameters_maximum_occurrences["getOauthRedirect:::provider"]=0
 operation_parameters_maximum_occurrences["patchOauthTwoFactor:::PatchOauthTwoFactorRequest"]=0
@@ -1038,11 +1050,17 @@ operation_parameters_collection_type["viewMailLog:::from"]=""
 operation_parameters_collection_type["viewMailLog:::to"]=""
 operation_parameters_collection_type["viewMailLog:::subject"]=""
 operation_parameters_collection_type["viewMailLog:::mailid"]=""
+operation_parameters_collection_type["viewMailLog:::messageId"]=""
+operation_parameters_collection_type["viewMailLog:::replyto"]=""
+operation_parameters_collection_type["viewMailLog:::headerfrom"]=""
+operation_parameters_collection_type["viewMailLog:::delivered"]=""
 operation_parameters_collection_type["viewMailLog:::skip"]=""
 operation_parameters_collection_type["viewMailLog:::limit"]=""
 operation_parameters_collection_type["viewMailLog:::startDate"]=""
 operation_parameters_collection_type["viewMailLog:::endDate"]=""
-operation_parameters_collection_type["viewMailLog:::delivered"]=""
+operation_parameters_collection_type["viewMailLog:::sort"]=""
+operation_parameters_collection_type["viewMailLog:::dir"]=""
+operation_parameters_collection_type["viewMailLog:::groupby"]=""
 operation_parameters_collection_type["getCountries:::fetch_by"]=""
 operation_parameters_collection_type["getOauthRedirect:::provider"]=""
 operation_parameters_collection_type["patchOauthTwoFactor:::PatchOauthTwoFactorRequest"]=""
@@ -4872,33 +4890,61 @@ print_viewMailLog_help() {
     echo ""
     echo -e "${BOLD}${WHITE}viewMailLog - View Mail Log${OFF}${BLUE}(AUTH - )${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status." | paste -sd' ' - | fold -sw 80
+    echo -e "Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+
+**Row grouping** is controlled by the 'groupby' parameter.  By default ('groupby=recipient'), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own 'recipient', 'delivered', 'response', and 'mxHostname' values.  Set 'groupby=message' to collapse to one row per message (delivery fields will reflect one arbitrary recipient).
+
+**Pagination** is controlled by 'skip' and 'limit'.  The 'total' in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.
+
+**Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP 'strtotime()' such as '2024-01-15', 'last monday', or '2024-01-01 00:00:00'.  Examples: 'startDate=1704067200&endDate=1706745599' or 'startDate=2024-01-01&endDate=2024-01-31'.
+
+**Sorting** is controlled by 'sort' and 'dir'.  Currently the only sort key is 'time' (default), which orders by internal row ID.
+
+**Delivery status** can be filtered with the 'delivered' parameter: 'delivered=1' returns only successfully delivered messages; 'delivered=0' returns messages still in queue or that failed.
+
+**Address filtering** distinguishes between the SMTP envelope address ('from', 'to') and message headers ('headerfrom' for the 'From:' header, 'replyto' for 'Reply-To:'). These may differ when a message is sent on behalf of another address.
+
+The 'mailid' parameter corresponds to the 'id' field in the returned 'MailLogEntry' objects, **not** the '_id' field.  It also matches the transaction ID returned in the 'text' field of a successful send response.
+
+The 'messageId' parameter searches the 'Message-ID' email header (case-insensitive substring match)." | paste -sd' ' - | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}id${OFF} ${BLUE}[integer]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The mail service ID. Use 'mail_id' from 'GET /mail'. ${YELLOW}Specify as: id=value${OFF}" | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}id${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: null)${OFF} - The ID of your mail order this will be sent through.${YELLOW} Specify as: id=value${OFF}" \
+    echo -e "  * ${GREEN}id${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: null)${OFF} - The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from 'GET /mail' or 'GET /mail/{id}'.${YELLOW} Specify as: id=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}origin${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - originating ip address sending mail${YELLOW} Specify as: origin=value${OFF}" \
+    echo -e "  * ${GREEN}origin${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.${YELLOW} Specify as: origin=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}mx${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - mx record mail was sent to${YELLOW} Specify as: mx=value${OFF}" \
+    echo -e "  * ${GREEN}mx${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by the MX hostname the relay attempted delivery to.  For example 'mx.google.com' would return messages destined for Gmail recipients. Maps to 'mxHostname' in the 'MailLogEntry' response.${YELLOW} Specify as: mx=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}from${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - from email address${YELLOW} Specify as: from=value${OFF}" \
+    echo -e "  * ${GREEN}from${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by SMTP envelope 'MAIL FROM' address (exact match).  This is the address the relay used for bounce handling and may differ from the 'From:' message header.  For header-level filtering use 'headerfrom'.${YELLOW} Specify as: from=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}to${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - to/destination email address${YELLOW} Specify as: to=value${OFF}" \
+    echo -e "  * ${GREEN}to${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by SMTP envelope 'RCPT TO' address (exact match).  This is the delivery address used by the relay and may differ from the 'To:' header when BCC recipients are involved.${YELLOW} Specify as: to=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}subject${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - subject containing this string${YELLOW} Specify as: subject=value${OFF}" \
+    echo -e "  * ${GREEN}subject${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by email 'Subject' header (exact match).  MIME-encoded subjects are decoded automatically in the response.${YELLOW} Specify as: subject=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}mailid${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - mail id${YELLOW} Specify as: mailid=value${OFF}" \
+    echo -e "  * ${GREEN}mailid${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by the relay-assigned mail ID string (exact match).  This corresponds to the 'id' field in 'MailLogEntry' and to the 'text' value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as '185997065c60008840'.${YELLOW} Specify as: mailid=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}skip${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - number of records to skip for pagination${YELLOW} Specify as: skip=value${OFF}" \
+    echo -e "  * ${GREEN}messageId${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by the 'Message-ID' email header using a substring (case-insensitive) match.  The 'Message-ID' is assigned by the sending mail client and is visible in the 'messageId' field of 'MailLogEntry'.${YELLOW} Specify as: messageId=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - maximum number of records to return${YELLOW} Specify as: limit=value${OFF}" \
+    echo -e "  * ${GREEN}replyto${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by the 'Reply-To' message header address (exact match).  Only returns messages where this header was explicitly set.${YELLOW} Specify as: replyto=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}startDate${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: null)${OFF} - earliest date to get emails in unix timestamp format${YELLOW} Specify as: startDate=value${OFF}" \
+    echo -e "  * ${GREEN}headerfrom${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by the 'From' message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope 'from' parameter when sending on behalf of another address.${YELLOW} Specify as: headerfrom=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}endDate${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: null)${OFF} - Latest date to get emails in unix timestamp format.${YELLOW} Specify as: endDate=value${OFF}" \
+    echo -e "  * ${GREEN}delivered${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: null)${OFF} - Filter by delivery status.  '1' returns only messages that were successfully delivered to the destination MX.  '0' returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.${YELLOW} Specify as: delivered=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}delivered${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter emails by whether or not they were delivered.${YELLOW} Specify as: delivered=value${OFF}" \
+    echo -e "  * ${GREEN}skip${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - Number of records to skip for pagination.  Use in combination with 'limit' to page through large result sets.  Defaults to '0' (no skip).${YELLOW} Specify as: skip=value${OFF}" \
+        | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Maximum number of records to return per page.  Defaults to '100'. Maximum allowed value is '10000'.  The response also includes a 'total' field with the full matched count so you can calculate the number of pages.${YELLOW} Specify as: limit=value${OFF}" \
+        | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}startDate${OFF} ${BLUE}[ViewMailLogStartDateParameter]${OFF} ${CYAN}(default: null)${OFF} - Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by 'strtotime()' such as '2024-01-15' or 'last monday'.  Messages with a 'time' value **greater than or equal to** this value will be included.${YELLOW} Specify as: startDate=value${OFF}" \
+        | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}endDate${OFF} ${BLUE}[ViewMailLogStartDateParameter]${OFF} ${CYAN}(default: null)${OFF} - Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by 'strtotime()' such as '2024-01-31' or 'yesterday'.  Messages with a 'time' value **less than or equal to** this value will be included.${YELLOW} Specify as: endDate=value${OFF}" \
+        | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}sort${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: time)${OFF} - Field to sort results by.  Currently only 'time' is supported (sorts by internal row ID which corresponds to chronological order).${YELLOW} Specify as: sort=value${OFF}" \
+        | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}dir${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: desc)${OFF} - Sort direction.  'desc' returns newest first (default), 'asc' returns oldest first.${YELLOW} Specify as: dir=value${OFF}" \
+        | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}groupby${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: recipient)${OFF} - Controls how results are grouped.  'recipient' (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own 'recipient', 'delivered', 'response', and delivery metadata.  'message' collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The 'total' count in the response matches the grouping mode.${YELLOW} Specify as: groupby=value${OFF}" \
         | paste -sd' ' - | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -13937,7 +13983,7 @@ call_viewMailLog() {
     local path_parameter_names=(id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(id origin mx from to subject mailid skip limit startDate endDate delivered      )
+    local query_parameter_names=(id origin mx from to subject mailid messageId replyto headerfrom delivered skip limit startDate endDate sort dir groupby      )
     local path
 
     if ! path=$(build_request_path "/apiv2/mail/{id}/log" path_parameter_names query_parameter_names); then

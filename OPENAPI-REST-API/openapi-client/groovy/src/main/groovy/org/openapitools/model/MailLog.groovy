@@ -9,11 +9,11 @@ import org.openapitools.model.MailLogEntry;
 
 @Canonical
 class MailLog {
-    /* total number of mail log entries */
+    /* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
     Integer total
-    /* number of emails skipped in listing */
+    /* The `skip` value used for this page (echoed from the request). */
     Integer skip
-    /* number of emails to return */
+    /* The `limit` value used for this page (echoed from the request). */
     Integer limit
     
     List<MailLogEntry> emails = new ArrayList<>()

@@ -1,4 +1,4 @@
-# # ScrubIpFilterTypesFiltersValue
+# ScrubIpFilterTypesFiltersValue
 
 ## Properties
 

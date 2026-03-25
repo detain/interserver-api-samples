@@ -40,6 +40,8 @@ static get_scrub_ip_details_200_response_service_info_t *get_scrub_ip_details_20
     if (!get_scrub_ip_details_200_response_service_info_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_service_info_local_var, 0, sizeof(get_scrub_ip_details_200_response_service_info_t));
+    get_scrub_ip_details_200_response_service_info_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_service_info_local_var->scrub_ip_id = scrub_ip_id;
     get_scrub_ip_details_200_response_service_info_local_var->scrub_ip_type = scrub_ip_type;
     get_scrub_ip_details_200_response_service_info_local_var->scrub_ip_custid = scrub_ip_custid;
@@ -52,8 +54,6 @@ static get_scrub_ip_details_200_response_service_info_t *get_scrub_ip_details_20
     get_scrub_ip_details_200_response_service_info_local_var->scrub_ip_currency = scrub_ip_currency;
     get_scrub_ip_details_200_response_service_info_local_var->scrub_ip_coupon = scrub_ip_coupon;
     get_scrub_ip_details_200_response_service_info_local_var->scrub_ip_comment = scrub_ip_comment;
-
-    get_scrub_ip_details_200_response_service_info_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_service_info_local_var;
 }
 
@@ -71,7 +71,7 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_service_info_t *ge
     char *scrub_ip_coupon,
     char *scrub_ip_comment
     ) {
-    return get_scrub_ip_details_200_response_service_info_create_internal (
+    get_scrub_ip_details_200_response_service_info_t *result = get_scrub_ip_details_200_response_service_info_create_internal (
         scrub_ip_id,
         scrub_ip_type,
         scrub_ip_custid,
@@ -85,6 +85,9 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_service_info_t *ge
         scrub_ip_coupon,
         scrub_ip_comment
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_service_info_free(get_scrub_ip_details_200_response_service_info_t *get_scrub_ip_details_200_response_service_info) {
@@ -254,6 +257,28 @@ get_scrub_ip_details_200_response_service_info_t *get_scrub_ip_details_200_respo
 
     get_scrub_ip_details_200_response_service_info_t *get_scrub_ip_details_200_response_service_info_local_var = NULL;
 
+    char *scrub_ip_id_local_str = NULL;
+
+    char *scrub_ip_type_local_str = NULL;
+
+    char *scrub_ip_custid_local_str = NULL;
+
+    char *scrub_ip_order_date_local_str = NULL;
+
+    char *scrub_ip_ip_local_str = NULL;
+
+    char *scrub_ip_service_id_local_str = NULL;
+
+    char *scrub_ip_service_module_local_str = NULL;
+
+    char *scrub_ip_invoice_local_str = NULL;
+
+    char *scrub_ip_currency_local_str = NULL;
+
+    char *scrub_ip_coupon_local_str = NULL;
+
+    char *scrub_ip_comment_local_str = NULL;
+
     // get_scrub_ip_details_200_response_service_info->scrub_ip_id
     cJSON *scrub_ip_id = cJSON_GetObjectItemCaseSensitive(get_scrub_ip_details_200_response_service_infoJSON, "scrub_ip_id");
     if (cJSON_IsNull(scrub_ip_id)) {
@@ -401,23 +426,83 @@ get_scrub_ip_details_200_response_service_info_t *get_scrub_ip_details_200_respo
     }
 
 
+    if (scrub_ip_id && !cJSON_IsNull(scrub_ip_id)) scrub_ip_id_local_str = strdup(scrub_ip_id->valuestring);
+    if (scrub_ip_type && !cJSON_IsNull(scrub_ip_type)) scrub_ip_type_local_str = strdup(scrub_ip_type->valuestring);
+    if (scrub_ip_custid && !cJSON_IsNull(scrub_ip_custid)) scrub_ip_custid_local_str = strdup(scrub_ip_custid->valuestring);
+    if (scrub_ip_order_date && !cJSON_IsNull(scrub_ip_order_date)) scrub_ip_order_date_local_str = strdup(scrub_ip_order_date->valuestring);
+    if (scrub_ip_ip && !cJSON_IsNull(scrub_ip_ip)) scrub_ip_ip_local_str = strdup(scrub_ip_ip->valuestring);
+    if (scrub_ip_service_id && !cJSON_IsNull(scrub_ip_service_id)) scrub_ip_service_id_local_str = strdup(scrub_ip_service_id->valuestring);
+    if (scrub_ip_service_module && !cJSON_IsNull(scrub_ip_service_module)) scrub_ip_service_module_local_str = strdup(scrub_ip_service_module->valuestring);
+    if (scrub_ip_invoice && !cJSON_IsNull(scrub_ip_invoice)) scrub_ip_invoice_local_str = strdup(scrub_ip_invoice->valuestring);
+    if (scrub_ip_currency && !cJSON_IsNull(scrub_ip_currency)) scrub_ip_currency_local_str = strdup(scrub_ip_currency->valuestring);
+    if (scrub_ip_coupon && !cJSON_IsNull(scrub_ip_coupon)) scrub_ip_coupon_local_str = strdup(scrub_ip_coupon->valuestring);
+    if (scrub_ip_comment && !cJSON_IsNull(scrub_ip_comment)) scrub_ip_comment_local_str = strdup(scrub_ip_comment->valuestring);
+
     get_scrub_ip_details_200_response_service_info_local_var = get_scrub_ip_details_200_response_service_info_create_internal (
-        scrub_ip_id && !cJSON_IsNull(scrub_ip_id) ? strdup(scrub_ip_id->valuestring) : NULL,
-        scrub_ip_type && !cJSON_IsNull(scrub_ip_type) ? strdup(scrub_ip_type->valuestring) : NULL,
-        scrub_ip_custid && !cJSON_IsNull(scrub_ip_custid) ? strdup(scrub_ip_custid->valuestring) : NULL,
-        scrub_ip_order_date && !cJSON_IsNull(scrub_ip_order_date) ? strdup(scrub_ip_order_date->valuestring) : NULL,
-        scrub_ip_ip && !cJSON_IsNull(scrub_ip_ip) ? strdup(scrub_ip_ip->valuestring) : NULL,
-        scrub_ip_service_id && !cJSON_IsNull(scrub_ip_service_id) ? strdup(scrub_ip_service_id->valuestring) : NULL,
-        scrub_ip_service_module && !cJSON_IsNull(scrub_ip_service_module) ? strdup(scrub_ip_service_module->valuestring) : NULL,
+        scrub_ip_id_local_str,
+        scrub_ip_type_local_str,
+        scrub_ip_custid_local_str,
+        scrub_ip_order_date_local_str,
+        scrub_ip_ip_local_str,
+        scrub_ip_service_id_local_str,
+        scrub_ip_service_module_local_str,
         scrub_ip_status ? scrub_ip_statusVariable : interserver_management_api_get_scrub_ip_details_200_response_service_info_SCRUBIPSTATUS_NULL,
-        scrub_ip_invoice && !cJSON_IsNull(scrub_ip_invoice) ? strdup(scrub_ip_invoice->valuestring) : NULL,
-        scrub_ip_currency && !cJSON_IsNull(scrub_ip_currency) ? strdup(scrub_ip_currency->valuestring) : NULL,
-        scrub_ip_coupon && !cJSON_IsNull(scrub_ip_coupon) ? strdup(scrub_ip_coupon->valuestring) : NULL,
-        scrub_ip_comment && !cJSON_IsNull(scrub_ip_comment) ? strdup(scrub_ip_comment->valuestring) : NULL
+        scrub_ip_invoice_local_str,
+        scrub_ip_currency_local_str,
+        scrub_ip_coupon_local_str,
+        scrub_ip_comment_local_str
         );
+
+    if (!get_scrub_ip_details_200_response_service_info_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_service_info_local_var;
 end:
+    if (scrub_ip_id_local_str) {
+        free(scrub_ip_id_local_str);
+        scrub_ip_id_local_str = NULL;
+    }
+    if (scrub_ip_type_local_str) {
+        free(scrub_ip_type_local_str);
+        scrub_ip_type_local_str = NULL;
+    }
+    if (scrub_ip_custid_local_str) {
+        free(scrub_ip_custid_local_str);
+        scrub_ip_custid_local_str = NULL;
+    }
+    if (scrub_ip_order_date_local_str) {
+        free(scrub_ip_order_date_local_str);
+        scrub_ip_order_date_local_str = NULL;
+    }
+    if (scrub_ip_ip_local_str) {
+        free(scrub_ip_ip_local_str);
+        scrub_ip_ip_local_str = NULL;
+    }
+    if (scrub_ip_service_id_local_str) {
+        free(scrub_ip_service_id_local_str);
+        scrub_ip_service_id_local_str = NULL;
+    }
+    if (scrub_ip_service_module_local_str) {
+        free(scrub_ip_service_module_local_str);
+        scrub_ip_service_module_local_str = NULL;
+    }
+    if (scrub_ip_invoice_local_str) {
+        free(scrub_ip_invoice_local_str);
+        scrub_ip_invoice_local_str = NULL;
+    }
+    if (scrub_ip_currency_local_str) {
+        free(scrub_ip_currency_local_str);
+        scrub_ip_currency_local_str = NULL;
+    }
+    if (scrub_ip_coupon_local_str) {
+        free(scrub_ip_coupon_local_str);
+        scrub_ip_coupon_local_str = NULL;
+    }
+    if (scrub_ip_comment_local_str) {
+        free(scrub_ip_comment_local_str);
+        scrub_ip_comment_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -45,7 +45,7 @@ class BuyItNowRowCpuInner {
         }
 
         try {
-            if (typeof instance === "BuyItNowRowCpuInnerOneOf") {
+            if (instance instanceof BuyItNowRowCpuInnerOneOf) {
                 this.actualInstance = instance;
             } else {
                 // plain JS object

@@ -39,6 +39,7 @@ import io.swagger.server.models.DenyRuleNew
 import io.swagger.server.models.DenyRuleRecord
 import io.swagger.server.models.EmailAddress
 import io.swagger.server.models.EmailAddressName
+import io.swagger.server.models.EndDate
 import io.swagger.server.models.GenericResponse
 import io.swagger.server.models.InlineResponse2008
 import io.swagger.server.models.InlineResponse401
@@ -57,6 +58,7 @@ import io.swagger.server.models.MailSchema
 import io.swagger.server.models.MailStatsType
 import io.swagger.server.models.SendMail
 import io.swagger.server.models.SendMailAdv
+import io.swagger.server.models.StartDate
 import io.swagger.server.models.SuccessTextResponse
 
 @KtorExperimentalLocationsAPI
@@ -663,7 +665,7 @@ fun Route.MailApi() {
     "to" : "client@isp.com",
     "subject" : "sell 0.005 shares",
     "messageId" : "<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>",
-    "created" : "2021-10-14T08:50:10.000Z",
+    "created" : "2021-10-14 08:50:10",
     "time" : 1634215809,
     "user" : "mb5658",
     "transtype" : "ESMTPSA",
@@ -672,10 +674,12 @@ fun Route.MailApi() {
     "sendingZone" : "interserver",
     "bodySize" : 63,
     "seq" : 1,
+    "delivered" : 1,
+    "code" : 250,
     "recipient" : "client@isp.com",
     "domain" : "interserver.net",
     "locked" : 1,
-    "lockTime" : 1634215818533,
+    "lockTime" : "1634215818533",
     "assigned" : "relay1",
     "queued" : "2021-10-14T12:50:15.487Z",
     "mxHostname" : "mx.j.is.cc",

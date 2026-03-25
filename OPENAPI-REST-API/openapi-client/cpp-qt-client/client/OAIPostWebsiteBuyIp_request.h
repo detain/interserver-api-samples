@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIPostWebsiteBuyIp_request : public OAIObject {
 public:
     OAIPostWebsiteBuyIp_request();
-    OAIPostWebsiteBuyIp_request(QString json);
+    OAIPostWebsiteBuyIp_request(const QString &json);
     ~OAIPostWebsiteBuyIp_request() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QMap<QString, QString> getIps() const;
     void setIps(const QMap<QString, QString> &ips);

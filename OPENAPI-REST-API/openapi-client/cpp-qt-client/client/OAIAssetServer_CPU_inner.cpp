@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAssetServer_CPU_inner::OAIAssetServer_CPU_inner(QString json) {
+OAIAssetServer_CPU_inner::OAIAssetServer_CPU_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIAssetServer_CPU_inner::initializeModel() {
 
 }
 
-void OAIAssetServer_CPU_inner::fromJson(QString jsonString) {
+void OAIAssetServer_CPU_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

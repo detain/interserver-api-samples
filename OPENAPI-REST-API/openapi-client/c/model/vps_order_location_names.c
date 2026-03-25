@@ -12,18 +12,21 @@ static vps_order_location_names_t *vps_order_location_names_create_internal(
     if (!vps_order_location_names_local_var) {
         return NULL;
     }
-    vps_order_location_names_local_var->_3 = _3;
-
+    memset(vps_order_location_names_local_var, 0, sizeof(vps_order_location_names_t));
     vps_order_location_names_local_var->_library_owned = 1;
+    vps_order_location_names_local_var->_3 = _3;
     return vps_order_location_names_local_var;
 }
 
 __attribute__((deprecated)) vps_order_location_names_t *vps_order_location_names_create(
     char *_3
     ) {
-    return vps_order_location_names_create_internal (
+    vps_order_location_names_t *result = vps_order_location_names_create_internal (
         _3
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_order_location_names_free(vps_order_location_names_t *vps_order_location_names) {
@@ -64,6 +67,8 @@ vps_order_location_names_t *vps_order_location_names_parseFromJSON(cJSON *vps_or
 
     vps_order_location_names_t *vps_order_location_names_local_var = NULL;
 
+    char *_3_local_str = NULL;
+
     // vps_order_location_names->_3
     cJSON *_3 = cJSON_GetObjectItemCaseSensitive(vps_order_location_namesJSON, "3");
     if (cJSON_IsNull(_3)) {
@@ -77,12 +82,22 @@ vps_order_location_names_t *vps_order_location_names_parseFromJSON(cJSON *vps_or
     }
 
 
+    if (_3 && !cJSON_IsNull(_3)) _3_local_str = strdup(_3->valuestring);
+
     vps_order_location_names_local_var = vps_order_location_names_create_internal (
-        _3 && !cJSON_IsNull(_3) ? strdup(_3->valuestring) : NULL
+        _3_local_str
         );
+
+    if (!vps_order_location_names_local_var) {
+        goto end;
+    }
 
     return vps_order_location_names_local_var;
 end:
+    if (_3_local_str) {
+        free(_3_local_str);
+        _3_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIFormValues : public OAIObject {
 public:
     OAIFormValues();
-    OAIFormValues(QString json);
+    OAIFormValues(const QString &json);
     ~OAIFormValues() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getMemory() const;
     void setMemory(const qint32 &memory);

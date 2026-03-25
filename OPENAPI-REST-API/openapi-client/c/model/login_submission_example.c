@@ -16,13 +16,13 @@ static login_submission_example_t *login_submission_example_create_internal(
     if (!login_submission_example_local_var) {
         return NULL;
     }
+    memset(login_submission_example_local_var, 0, sizeof(login_submission_example_t));
+    login_submission_example_local_var->_library_owned = 1;
     login_submission_example_local_var->login = login;
     login_submission_example_local_var->passwd = passwd;
     login_submission_example_local_var->remember = remember;
     login_submission_example_local_var->g_recaptcha_response = g_recaptcha_response;
     login_submission_example_local_var->tfa = tfa;
-
-    login_submission_example_local_var->_library_owned = 1;
     return login_submission_example_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) login_submission_example_t *login_submission_example
     login_submission_example_g_recaptcha_response_t *g_recaptcha_response,
     char *tfa
     ) {
-    return login_submission_example_create_internal (
+    login_submission_example_t *result = login_submission_example_create_internal (
         login,
         passwd,
         remember,
         g_recaptcha_response,
         tfa
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void login_submission_example_free(login_submission_example_t *login_submission_example) {
@@ -135,8 +138,16 @@ login_submission_example_t *login_submission_example_parseFromJSON(cJSON *login_
 
     login_submission_example_t *login_submission_example_local_var = NULL;
 
+    char *login_local_str = NULL;
+
+    char *passwd_local_str = NULL;
+
+    char *remember_local_str = NULL;
+
     // define the local variable for login_submission_example->g_recaptcha_response
     login_submission_example_g_recaptcha_response_t *g_recaptcha_response_local_nonprim = NULL;
+
+    char *tfa_local_str = NULL;
 
     // login_submission_example->login
     cJSON *login = cJSON_GetObjectItemCaseSensitive(login_submission_exampleJSON, "login");
@@ -202,19 +213,44 @@ login_submission_example_t *login_submission_example_parseFromJSON(cJSON *login_
     }
 
 
+    if (login && !cJSON_IsNull(login)) login_local_str = strdup(login->valuestring);
+    if (passwd && !cJSON_IsNull(passwd)) passwd_local_str = strdup(passwd->valuestring);
+    if (remember && !cJSON_IsNull(remember)) remember_local_str = strdup(remember->valuestring);
+    if (tfa && !cJSON_IsNull(tfa)) tfa_local_str = strdup(tfa->valuestring);
+
     login_submission_example_local_var = login_submission_example_create_internal (
-        strdup(login->valuestring),
-        strdup(passwd->valuestring),
-        remember && !cJSON_IsNull(remember) ? strdup(remember->valuestring) : NULL,
+        login_local_str,
+        passwd_local_str,
+        remember_local_str,
         g_recaptcha_response ? g_recaptcha_response_local_nonprim : NULL,
-        tfa && !cJSON_IsNull(tfa) ? strdup(tfa->valuestring) : NULL
+        tfa_local_str
         );
+
+    if (!login_submission_example_local_var) {
+        goto end;
+    }
 
     return login_submission_example_local_var;
 end:
+    if (login_local_str) {
+        free(login_local_str);
+        login_local_str = NULL;
+    }
+    if (passwd_local_str) {
+        free(passwd_local_str);
+        passwd_local_str = NULL;
+    }
+    if (remember_local_str) {
+        free(remember_local_str);
+        remember_local_str = NULL;
+    }
     if (g_recaptcha_response_local_nonprim) {
         login_submission_example_g_recaptcha_response_free(g_recaptcha_response_local_nonprim);
         g_recaptcha_response_local_nonprim = NULL;
+    }
+    if (tfa_local_str) {
+        free(tfa_local_str);
+        tfa_local_str = NULL;
     }
     return NULL;
 

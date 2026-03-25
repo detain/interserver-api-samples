@@ -1,4 +1,4 @@
-# # AccountInfoOauthConfigProviders
+# AccountInfoOauthConfigProviders
 
 ## Properties
 

@@ -12,18 +12,21 @@ static password_request_t *password_request_create_internal(
     if (!password_request_local_var) {
         return NULL;
     }
-    password_request_local_var->password = password;
-
+    memset(password_request_local_var, 0, sizeof(password_request_t));
     password_request_local_var->_library_owned = 1;
+    password_request_local_var->password = password;
     return password_request_local_var;
 }
 
 __attribute__((deprecated)) password_request_t *password_request_create(
     char *password
     ) {
-    return password_request_create_internal (
+    password_request_t *result = password_request_create_internal (
         password
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void password_request_free(password_request_t *password_request) {
@@ -65,6 +68,8 @@ password_request_t *password_request_parseFromJSON(cJSON *password_requestJSON){
 
     password_request_t *password_request_local_var = NULL;
 
+    char *password_local_str = NULL;
+
     // password_request->password
     cJSON *password = cJSON_GetObjectItemCaseSensitive(password_requestJSON, "password");
     if (cJSON_IsNull(password)) {
@@ -81,12 +86,22 @@ password_request_t *password_request_parseFromJSON(cJSON *password_requestJSON){
     }
 
 
+    if (password && !cJSON_IsNull(password)) password_local_str = strdup(password->valuestring);
+
     password_request_local_var = password_request_create_internal (
-        strdup(password->valuestring)
+        password_local_str
         );
+
+    if (!password_request_local_var) {
+        goto end;
+    }
 
     return password_request_local_var;
 end:
+    if (password_local_str) {
+        free(password_local_str);
+        password_local_str = NULL;
+    }
     return NULL;
 
 }

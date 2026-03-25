@@ -12,18 +12,21 @@ static quickserver_order_server_details_t *quickserver_order_server_details_crea
     if (!quickserver_order_server_details_local_var) {
         return NULL;
     }
-    quickserver_order_server_details_local_var->_381 = _381;
-
+    memset(quickserver_order_server_details_local_var, 0, sizeof(quickserver_order_server_details_t));
     quickserver_order_server_details_local_var->_library_owned = 1;
+    quickserver_order_server_details_local_var->_381 = _381;
     return quickserver_order_server_details_local_var;
 }
 
 __attribute__((deprecated)) quickserver_order_server_details_t *quickserver_order_server_details_create(
     quickserver_order_server_details381_t *_381
     ) {
-    return quickserver_order_server_details_create_internal (
+    quickserver_order_server_details_t *result = quickserver_order_server_details_create_internal (
         _381
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_order_server_details_free(quickserver_order_server_details_t *quickserver_order_server_details) {
@@ -82,9 +85,14 @@ quickserver_order_server_details_t *quickserver_order_server_details_parseFromJS
     }
 
 
+
     quickserver_order_server_details_local_var = quickserver_order_server_details_create_internal (
         _381 ? _381_local_nonprim : NULL
         );
+
+    if (!quickserver_order_server_details_local_var) {
+        goto end;
+    }
 
     return quickserver_order_server_details_local_var;
 end:

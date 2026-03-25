@@ -1,4 +1,4 @@
-# # MailStatsTypeVolumeFrom
+# MailStatsTypeVolumeFrom
 
 ## Properties
 

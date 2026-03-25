@@ -16,13 +16,13 @@ static domain_client_link_t *domain_client_link_create_internal(
     if (!domain_client_link_local_var) {
         return NULL;
     }
+    memset(domain_client_link_local_var, 0, sizeof(domain_client_link_t));
+    domain_client_link_local_var->_library_owned = 1;
     domain_client_link_local_var->label = label;
     domain_client_link_local_var->link = link;
     domain_client_link_local_var->icon = icon;
     domain_client_link_local_var->icon_text = icon_text;
     domain_client_link_local_var->help_text = help_text;
-
-    domain_client_link_local_var->_library_owned = 1;
     return domain_client_link_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) domain_client_link_t *domain_client_link_create(
     char *icon_text,
     char *help_text
     ) {
-    return domain_client_link_create_internal (
+    domain_client_link_t *result = domain_client_link_create_internal (
         label,
         link,
         icon,
         icon_text,
         help_text
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_client_link_free(domain_client_link_t *domain_client_link) {
@@ -128,6 +131,16 @@ domain_client_link_t *domain_client_link_parseFromJSON(cJSON *domain_client_link
 
     domain_client_link_t *domain_client_link_local_var = NULL;
 
+    char *label_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *icon_local_str = NULL;
+
+    char *icon_text_local_str = NULL;
+
+    char *help_text_local_str = NULL;
+
     // domain_client_link->label
     cJSON *label = cJSON_GetObjectItemCaseSensitive(domain_client_linkJSON, "label");
     if (cJSON_IsNull(label)) {
@@ -189,16 +202,46 @@ domain_client_link_t *domain_client_link_parseFromJSON(cJSON *domain_client_link
     }
 
 
+    if (label && !cJSON_IsNull(label)) label_local_str = strdup(label->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (icon && !cJSON_IsNull(icon)) icon_local_str = strdup(icon->valuestring);
+    if (icon_text && !cJSON_IsNull(icon_text)) icon_text_local_str = strdup(icon_text->valuestring);
+    if (help_text && !cJSON_IsNull(help_text)) help_text_local_str = strdup(help_text->valuestring);
+
     domain_client_link_local_var = domain_client_link_create_internal (
-        label && !cJSON_IsNull(label) ? strdup(label->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        icon && !cJSON_IsNull(icon) ? strdup(icon->valuestring) : NULL,
-        icon_text && !cJSON_IsNull(icon_text) ? strdup(icon_text->valuestring) : NULL,
-        help_text && !cJSON_IsNull(help_text) ? strdup(help_text->valuestring) : NULL
+        label_local_str,
+        link_local_str,
+        icon_local_str,
+        icon_text_local_str,
+        help_text_local_str
         );
+
+    if (!domain_client_link_local_var) {
+        goto end;
+    }
 
     return domain_client_link_local_var;
 end:
+    if (label_local_str) {
+        free(label_local_str);
+        label_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (icon_local_str) {
+        free(icon_local_str);
+        icon_local_str = NULL;
+    }
+    if (icon_text_local_str) {
+        free(icon_text_local_str);
+        icon_text_local_str = NULL;
+    }
+    if (help_text_local_str) {
+        free(help_text_local_str);
+        help_text_local_str = NULL;
+    }
     return NULL;
 
 }

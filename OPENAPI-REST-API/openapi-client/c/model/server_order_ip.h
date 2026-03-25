@@ -20,12 +20,12 @@ typedef struct server_order_ip_t server_order_ip_t;
 
 typedef struct server_order_ip_t {
     char *id; // string
-    int price; //numeric
+    int *price; //numeric
     char *img; // string
     char *short_desc; // string
     char *long_desc; // string
     char *qty; // string
-    int monthly_price; //numeric
+    int *monthly_price; //numeric
     char *price_display; // string
     char *monthly_price_display; // string
 
@@ -34,12 +34,12 @@ typedef struct server_order_ip_t {
 
 __attribute__((deprecated)) server_order_ip_t *server_order_ip_create(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
     char *qty,
-    int monthly_price,
+    int *monthly_price,
     char *price_display,
     char *monthly_price_display
 );

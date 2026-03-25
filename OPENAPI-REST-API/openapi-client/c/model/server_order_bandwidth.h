@@ -20,14 +20,14 @@ typedef struct server_order_bandwidth_t server_order_bandwidth_t;
 
 typedef struct server_order_bandwidth_t {
     char *id; // string
-    int price; //numeric
+    int *price; //numeric
     char *img; // string
     char *short_desc; // string
     char *long_desc; // string
     char *type; // string
     char *qty; // string
     char *active; // string
-    int monthly_price; //numeric
+    int *monthly_price; //numeric
     char *price_display; // string
     char *monthly_price_display; // string
 
@@ -36,14 +36,14 @@ typedef struct server_order_bandwidth_t {
 
 __attribute__((deprecated)) server_order_bandwidth_t *server_order_bandwidth_create(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
     char *type,
     char *qty,
     char *active,
-    int monthly_price,
+    int *monthly_price,
     char *price_display,
     char *monthly_price_display
 );

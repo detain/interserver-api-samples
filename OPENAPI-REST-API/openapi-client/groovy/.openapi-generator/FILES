@@ -395,6 +395,7 @@ src/main/groovy/org/openapitools/model/UrlRequest.groovy
 src/main/groovy/org/openapitools/model/VPSCancel200Response.groovy
 src/main/groovy/org/openapitools/model/VPSTrafficDataDataSectionResponse.groovy
 src/main/groovy/org/openapitools/model/VPSTrafficDataDataSectionResponseInner.groovy
+src/main/groovy/org/openapitools/model/ViewMailLogStartDateParameter.groovy
 src/main/groovy/org/openapitools/model/ViewTicketResponse.groovy
 src/main/groovy/org/openapitools/model/Vps.groovy
 src/main/groovy/org/openapitools/model/VpsBackupRow.groovy

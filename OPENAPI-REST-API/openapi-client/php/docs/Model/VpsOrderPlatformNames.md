@@ -1,4 +1,4 @@
-# # VpsOrderPlatformNames
+# VpsOrderPlatformNames
 
 ## Properties
 

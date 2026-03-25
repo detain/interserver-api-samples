@@ -1,4 +1,4 @@
-# # MailRow
+# MailRow
 
 ## Properties
 

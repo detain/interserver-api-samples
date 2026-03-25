@@ -49,9 +49,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-12T01:47:30.549169014-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T16:38:48.461562589-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class MailLog {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -82,7 +82,7 @@ public class MailLog {
   }
 
   /**
-   * total number of mail log entries
+   * Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.
    * @return total
    */
   @javax.annotation.Nonnull
@@ -101,7 +101,7 @@ public class MailLog {
   }
 
   /**
-   * number of emails skipped in listing
+   * The &#x60;skip&#x60; value used for this page (echoed from the request).
    * @return skip
    */
   @javax.annotation.Nonnull
@@ -120,7 +120,7 @@ public class MailLog {
   }
 
   /**
-   * number of emails to return
+   * The &#x60;limit&#x60; value used for this page (echoed from the request).
    * @return limit
    */
   @javax.annotation.Nonnull
@@ -198,10 +198,7 @@ public class MailLog {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 

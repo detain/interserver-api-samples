@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIModuleSettings::OAIModuleSettings(QString json) {
+OAIModuleSettings::OAIModuleSettings(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -89,7 +89,7 @@ void OAIModuleSettings::initializeModel() {
     m_title_field3_isValid = false;
 }
 
-void OAIModuleSettings::fromJson(QString jsonString) {
+void OAIModuleSettings::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

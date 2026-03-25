@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAITemplateRequest::OAITemplateRequest(QString json) {
+OAITemplateRequest::OAITemplateRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAITemplateRequest::initializeModel() {
     m_password_isValid = false;
 }
 
-void OAITemplateRequest::fromJson(QString jsonString) {
+void OAITemplateRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

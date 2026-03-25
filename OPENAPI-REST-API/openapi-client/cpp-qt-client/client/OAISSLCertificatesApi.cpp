@@ -281,32 +281,6 @@ void OAISSLCertificatesApi::addSslCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addSslSignal();
         Q_EMIT addSslSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addSslSignalE(error_type, error_str);
-        Q_EMIT addSslSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addSslSignalError(error_type, error_str);
         Q_EMIT addSslSignalErrorFull(worker, error_type, error_str);
     }
@@ -358,32 +332,6 @@ void OAISSLCertificatesApi::getNewSslCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewSslSignal();
         Q_EMIT getNewSslSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewSslSignalE(error_type, error_str);
-        Q_EMIT getNewSslSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewSslSignalError(error_type, error_str);
         Q_EMIT getNewSslSignalErrorFull(worker, error_type, error_str);
     }
@@ -449,32 +397,6 @@ void OAISSLCertificatesApi::getSslInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getSslInfoSignal();
         Q_EMIT getSslInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getSslInfoSignalE(error_type, error_str);
-        Q_EMIT getSslInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getSslInfoSignalError(error_type, error_str);
         Q_EMIT getSslInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -541,32 +463,6 @@ void OAISSLCertificatesApi::getSslInvoicesCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getSslInvoicesSignal(output);
         Q_EMIT getSslInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getSslInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getSslInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getSslInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getSslInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -618,32 +514,6 @@ void OAISSLCertificatesApi::getSslListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getSslListSignal();
         Q_EMIT getSslListSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getSslListSignalE(error_type, error_str);
-        Q_EMIT getSslListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getSslListSignalError(error_type, error_str);
         Q_EMIT getSslListSignalErrorFull(worker, error_type, error_str);
     }
@@ -710,32 +580,6 @@ void OAISSLCertificatesApi::getSslWelcomeEmailCallback(OAIHttpRequestWorker *wor
         Q_EMIT getSslWelcomeEmailSignal(output);
         Q_EMIT getSslWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getSslWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getSslWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getSslWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getSslWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -787,32 +631,6 @@ void OAISSLCertificatesApi::putSslCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putSslSignal();
         Q_EMIT putSslSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putSslSignalE(error_type, error_str);
-        Q_EMIT putSslSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putSslSignalError(error_type, error_str);
         Q_EMIT putSslSignalErrorFull(worker, error_type, error_str);
     }
@@ -879,32 +697,6 @@ void OAISSLCertificatesApi::sslCancelCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT sslCancelSignal(output);
         Q_EMIT sslCancelSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT sslCancelSignalE(output, error_type, error_str);
-        Q_EMIT sslCancelSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT sslCancelSignalError(output, error_type, error_str);
         Q_EMIT sslCancelSignalErrorFull(worker, error_type, error_str);
     }
@@ -970,42 +762,16 @@ void OAISSLCertificatesApi::updateSslInfoCallback(OAIHttpRequestWorker *worker) 
         Q_EMIT updateSslInfoSignal();
         Q_EMIT updateSslInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateSslInfoSignalE(error_type, error_str);
-        Q_EMIT updateSslInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateSslInfoSignalError(error_type, error_str);
         Q_EMIT updateSslInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAISSLCertificatesApi::tokenAvailable(){
+void OAISSLCertificatesApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1015,7 +781,7 @@ void OAISSLCertificatesApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1025,7 +791,7 @@ void OAISSLCertificatesApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1035,7 +801,7 @@ void OAISSLCertificatesApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

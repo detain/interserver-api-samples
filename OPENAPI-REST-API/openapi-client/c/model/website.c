@@ -20,6 +20,8 @@ static website_t *website_create_internal(
     if (!website_local_var) {
         return NULL;
     }
+    memset(website_local_var, 0, sizeof(website_t));
+    website_local_var->_library_owned = 1;
     website_local_var->service_info = service_info;
     website_local_var->client_links = client_links;
     website_local_var->billing_details = billing_details;
@@ -29,8 +31,6 @@ static website_t *website_create_internal(
     website_local_var->package = package;
     website_local_var->service_extra = service_extra;
     website_local_var->extra_info_tables = extra_info_tables;
-
-    website_local_var->_library_owned = 1;
     return website_local_var;
 }
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) website_t *website_create(
     list_t *service_extra,
     website_extra_info_tables_t *extra_info_tables
     ) {
-    return website_create_internal (
+    website_t *result = website_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -56,6 +56,9 @@ __attribute__((deprecated)) website_t *website_create(
         service_extra,
         extra_info_tables
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_free(website_t *website) {
@@ -251,8 +254,14 @@ website_t *website_parseFromJSON(cJSON *websiteJSON){
     // define the local variable for website->billing_details
     website_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
     // define the local variable for website->service_master
     website_service_master_t *service_master_local_nonprim = NULL;
+
+    char *package_local_str = NULL;
 
     // define the local list for website->service_extra
     list_t *service_extraList = NULL;
@@ -381,17 +390,25 @@ website_t *website_parseFromJSON(cJSON *websiteJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+
     website_local_var = website_create_internal (
         service_info ? service_info_local_nonprim : NULL,
         client_links ? client_linksList : NULL,
         billing_details ? billing_details_local_nonprim : NULL,
-        cust_currency && !cJSON_IsNull(cust_currency) ? strdup(cust_currency->valuestring) : NULL,
-        cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol) ? strdup(cust_currency_symbol->valuestring) : NULL,
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
         service_master ? service_master_local_nonprim : NULL,
-        package && !cJSON_IsNull(package) ? strdup(package->valuestring) : NULL,
+        package_local_str,
         service_extra ? service_extraList : NULL,
         extra_info_tables ? extra_info_tables_local_nonprim : NULL
         );
+
+    if (!website_local_var) {
+        goto end;
+    }
 
     return website_local_var;
 end:
@@ -412,9 +429,21 @@ end:
         website_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
     if (service_master_local_nonprim) {
         website_service_master_free(service_master_local_nonprim);
         service_master_local_nonprim = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
     }
     if (service_extraList) {
         listEntry_t *listEntry = NULL;

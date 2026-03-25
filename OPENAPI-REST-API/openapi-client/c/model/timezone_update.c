@@ -12,18 +12,21 @@ static timezone_update_t *timezone_update_create_internal(
     if (!timezone_update_local_var) {
         return NULL;
     }
-    timezone_update_local_var->timezone = timezone;
-
+    memset(timezone_update_local_var, 0, sizeof(timezone_update_t));
     timezone_update_local_var->_library_owned = 1;
+    timezone_update_local_var->timezone = timezone;
     return timezone_update_local_var;
 }
 
 __attribute__((deprecated)) timezone_update_t *timezone_update_create(
     char *timezone
     ) {
-    return timezone_update_create_internal (
+    timezone_update_t *result = timezone_update_create_internal (
         timezone
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void timezone_update_free(timezone_update_t *timezone_update) {
@@ -65,6 +68,8 @@ timezone_update_t *timezone_update_parseFromJSON(cJSON *timezone_updateJSON){
 
     timezone_update_t *timezone_update_local_var = NULL;
 
+    char *timezone_local_str = NULL;
+
     // timezone_update->timezone
     cJSON *timezone = cJSON_GetObjectItemCaseSensitive(timezone_updateJSON, "timezone");
     if (cJSON_IsNull(timezone)) {
@@ -81,12 +86,22 @@ timezone_update_t *timezone_update_parseFromJSON(cJSON *timezone_updateJSON){
     }
 
 
+    if (timezone && !cJSON_IsNull(timezone)) timezone_local_str = strdup(timezone->valuestring);
+
     timezone_update_local_var = timezone_update_create_internal (
-        strdup(timezone->valuestring)
+        timezone_local_str
         );
+
+    if (!timezone_update_local_var) {
+        goto end;
+    }
 
     return timezone_update_local_var;
 end:
+    if (timezone_local_str) {
+        free(timezone_local_str);
+        timezone_local_str = NULL;
+    }
     return NULL;
 
 }

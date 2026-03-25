@@ -11,15 +11,18 @@ static vps_backup_rows_t *vps_backup_rows_create_internal(
     if (!vps_backup_rows_local_var) {
         return NULL;
     }
-
+    memset(vps_backup_rows_local_var, 0, sizeof(vps_backup_rows_t));
     vps_backup_rows_local_var->_library_owned = 1;
     return vps_backup_rows_local_var;
 }
 
 __attribute__((deprecated)) vps_backup_rows_t *vps_backup_rows_create(
     ) {
-    return vps_backup_rows_create_internal (
+    vps_backup_rows_t *result = vps_backup_rows_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_backup_rows_free(vps_backup_rows_t *vps_backup_rows) {
@@ -49,8 +52,13 @@ vps_backup_rows_t *vps_backup_rows_parseFromJSON(cJSON *vps_backup_rowsJSON){
     vps_backup_rows_t *vps_backup_rows_local_var = NULL;
 
 
+
     vps_backup_rows_local_var = vps_backup_rows_create_internal (
         );
+
+    if (!vps_backup_rows_local_var) {
+        goto end;
+    }
 
     return vps_backup_rows_local_var;
 end:

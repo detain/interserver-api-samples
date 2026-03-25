@@ -15,12 +15,12 @@ static domain_dnssec_records_inner_t *domain_dnssec_records_inner_create_interna
     if (!domain_dnssec_records_inner_local_var) {
         return NULL;
     }
+    memset(domain_dnssec_records_inner_local_var, 0, sizeof(domain_dnssec_records_inner_t));
+    domain_dnssec_records_inner_local_var->_library_owned = 1;
     domain_dnssec_records_inner_local_var->algorithm = algorithm;
     domain_dnssec_records_inner_local_var->digest_type = digest_type;
     domain_dnssec_records_inner_local_var->digest = digest;
     domain_dnssec_records_inner_local_var->key_tag = key_tag;
-
-    domain_dnssec_records_inner_local_var->_library_owned = 1;
     return domain_dnssec_records_inner_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) domain_dnssec_records_inner_t *domain_dnssec_records
     char *digest,
     char *key_tag
     ) {
-    return domain_dnssec_records_inner_create_internal (
+    domain_dnssec_records_inner_t *result = domain_dnssec_records_inner_create_internal (
         algorithm,
         digest_type,
         digest,
         key_tag
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_dnssec_records_inner_free(domain_dnssec_records_inner_t *domain_dnssec_records_inner) {
@@ -112,6 +115,14 @@ domain_dnssec_records_inner_t *domain_dnssec_records_inner_parseFromJSON(cJSON *
 
     domain_dnssec_records_inner_t *domain_dnssec_records_inner_local_var = NULL;
 
+    char *algorithm_local_str = NULL;
+
+    char *digest_type_local_str = NULL;
+
+    char *digest_local_str = NULL;
+
+    char *key_tag_local_str = NULL;
+
     // domain_dnssec_records_inner->algorithm
     cJSON *algorithm = cJSON_GetObjectItemCaseSensitive(domain_dnssec_records_innerJSON, "algorithm");
     if (cJSON_IsNull(algorithm)) {
@@ -161,15 +172,40 @@ domain_dnssec_records_inner_t *domain_dnssec_records_inner_parseFromJSON(cJSON *
     }
 
 
+    if (algorithm && !cJSON_IsNull(algorithm)) algorithm_local_str = strdup(algorithm->valuestring);
+    if (digest_type && !cJSON_IsNull(digest_type)) digest_type_local_str = strdup(digest_type->valuestring);
+    if (digest && !cJSON_IsNull(digest)) digest_local_str = strdup(digest->valuestring);
+    if (key_tag && !cJSON_IsNull(key_tag)) key_tag_local_str = strdup(key_tag->valuestring);
+
     domain_dnssec_records_inner_local_var = domain_dnssec_records_inner_create_internal (
-        algorithm && !cJSON_IsNull(algorithm) ? strdup(algorithm->valuestring) : NULL,
-        digest_type && !cJSON_IsNull(digest_type) ? strdup(digest_type->valuestring) : NULL,
-        digest && !cJSON_IsNull(digest) ? strdup(digest->valuestring) : NULL,
-        key_tag && !cJSON_IsNull(key_tag) ? strdup(key_tag->valuestring) : NULL
+        algorithm_local_str,
+        digest_type_local_str,
+        digest_local_str,
+        key_tag_local_str
         );
+
+    if (!domain_dnssec_records_inner_local_var) {
+        goto end;
+    }
 
     return domain_dnssec_records_inner_local_var;
 end:
+    if (algorithm_local_str) {
+        free(algorithm_local_str);
+        algorithm_local_str = NULL;
+    }
+    if (digest_type_local_str) {
+        free(digest_type_local_str);
+        digest_type_local_str = NULL;
+    }
+    if (digest_local_str) {
+        free(digest_local_str);
+        digest_local_str = NULL;
+    }
+    if (key_tag_local_str) {
+        free(key_tag_local_str);
+        key_tag_local_str = NULL;
+    }
     return NULL;
 
 }

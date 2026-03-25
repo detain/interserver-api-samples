@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailSchema_extraInfoTables::OAIMailSchema_extraInfoTables(QString json) {
+OAIMailSchema_extraInfoTables::OAIMailSchema_extraInfoTables(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIMailSchema_extraInfoTables::initializeModel() {
     m_tutorials_isValid = false;
 }
 
-void OAIMailSchema_extraInfoTables::fromJson(QString jsonString) {
+void OAIMailSchema_extraInfoTables::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

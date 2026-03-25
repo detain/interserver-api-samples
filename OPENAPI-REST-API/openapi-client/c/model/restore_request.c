@@ -13,10 +13,10 @@ static restore_request_t *restore_request_create_internal(
     if (!restore_request_local_var) {
         return NULL;
     }
+    memset(restore_request_local_var, 0, sizeof(restore_request_t));
+    restore_request_local_var->_library_owned = 1;
     restore_request_local_var->backup = backup;
     restore_request_local_var->password = password;
-
-    restore_request_local_var->_library_owned = 1;
     return restore_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) restore_request_t *restore_request_create(
     char *backup,
     char *password
     ) {
-    return restore_request_create_internal (
+    restore_request_t *result = restore_request_create_internal (
         backup,
         password
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void restore_request_free(restore_request_t *restore_request) {
@@ -80,6 +83,10 @@ restore_request_t *restore_request_parseFromJSON(cJSON *restore_requestJSON){
 
     restore_request_t *restore_request_local_var = NULL;
 
+    char *backup_local_str = NULL;
+
+    char *password_local_str = NULL;
+
     // restore_request->backup
     cJSON *backup = cJSON_GetObjectItemCaseSensitive(restore_requestJSON, "backup");
     if (cJSON_IsNull(backup)) {
@@ -105,13 +112,28 @@ restore_request_t *restore_request_parseFromJSON(cJSON *restore_requestJSON){
     }
 
 
+    if (backup && !cJSON_IsNull(backup)) backup_local_str = strdup(backup->valuestring);
+    if (password && !cJSON_IsNull(password)) password_local_str = strdup(password->valuestring);
+
     restore_request_local_var = restore_request_create_internal (
-        backup && !cJSON_IsNull(backup) ? strdup(backup->valuestring) : NULL,
-        password && !cJSON_IsNull(password) ? strdup(password->valuestring) : NULL
+        backup_local_str,
+        password_local_str
         );
+
+    if (!restore_request_local_var) {
+        goto end;
+    }
 
     return restore_request_local_var;
 end:
+    if (backup_local_str) {
+        free(backup_local_str);
+        backup_local_str = NULL;
+    }
+    if (password_local_str) {
+        free(password_local_str);
+        password_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIHostnameObject : public OAIObject {
 public:
     OAIHostnameObject();
-    OAIHostnameObject(QString json);
+    OAIHostnameObject(const QString &json);
     ~OAIHostnameObject() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getHostname() const;
     void setHostname(const QString &hostname);

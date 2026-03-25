@@ -119,6 +119,7 @@ DomainTechContact : io.swagger.model.DomainTechContact
 DomainWhoisPrivacyRequest : io.swagger.model.DomainWhoisPrivacyRequest
 EmailAddress : io.swagger.model.EmailAddress
 EmailAddressName : io.swagger.model.EmailAddressName
+EndDate : io.swagger.model.EndDate
 FieldLabel : io.swagger.model.FieldLabel
 FormValues : io.swagger.model.FormValues
 GenericResponse : io.swagger.model.GenericResponse
@@ -380,6 +381,7 @@ ServiceType : io.swagger.model.ServiceType
 ServiceTypes : io.swagger.model.ServiceTypes
 Services : io.swagger.model.Services
 ServicesInfo : io.swagger.model.ServicesInfo
+StartDate : io.swagger.model.StartDate
 StatusMonthlyBreakdown : io.swagger.model.StatusMonthlyBreakdown
 SuccessTextResponse : io.swagger.model.SuccessTextResponse
 TemplateRequest : io.swagger.model.TemplateRequest

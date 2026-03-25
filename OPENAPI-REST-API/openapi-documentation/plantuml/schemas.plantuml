@@ -1847,25 +1847,27 @@ entity MailLogEntry {
     * id: String
     * from: String
     * to: String
-    * subject: String
     * created: String
     * time: Integer
     * user: String
     * transtype: String
     * origin: String
     * interface: String
-    * sendingZone: String
-    * bodySize: Integer
-    * seq: Integer
-    * recipient: String
-    * domain: String
-    * locked: Integer
-    * lockTime: Integer
-    * assigned: String
-    * queued: String
-    * mxHostname: String
-    * response: String
+    subject: String
     messageId: String
+    sendingZone: String
+    bodySize: Integer
+    seq: Integer
+    delivered: Integer
+    code: Integer
+    recipient: String
+    response: String
+    domain: String
+    locked: Integer
+    lockTime: String
+    assigned: String
+    queued: String
+    mxHostname: String
 }
 
 entity MailOrder {
@@ -3038,6 +3040,9 @@ entity VPSTrafficDataDataSectionResponse {
 }
 
 entity VPSTrafficDataDataSectionResponseInner {
+}
+
+entity ViewMailLogStartDateParameter {
 }
 
 entity ViewTicketResponse {

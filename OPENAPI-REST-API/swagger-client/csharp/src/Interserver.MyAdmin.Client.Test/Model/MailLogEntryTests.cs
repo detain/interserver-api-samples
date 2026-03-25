@@ -186,12 +186,36 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO unit test for the property 'seq'
         }
         /// <summary>
+        /// Test the property 'delivered'
+        /// </summary>
+        [Test]
+        public void deliveredTest()
+        {
+            // TODO unit test for the property 'delivered'
+        }
+        /// <summary>
+        /// Test the property 'code'
+        /// </summary>
+        [Test]
+        public void codeTest()
+        {
+            // TODO unit test for the property 'code'
+        }
+        /// <summary>
         /// Test the property 'recipient'
         /// </summary>
         [Test]
         public void recipientTest()
         {
             // TODO unit test for the property 'recipient'
+        }
+        /// <summary>
+        /// Test the property 'response'
+        /// </summary>
+        [Test]
+        public void responseTest()
+        {
+            // TODO unit test for the property 'response'
         }
         /// <summary>
         /// Test the property 'domain'
@@ -240,14 +264,6 @@ namespace Interserver.MyAdmin.Client.Test
         public void mxHostnameTest()
         {
             // TODO unit test for the property 'mxHostname'
-        }
-        /// <summary>
-        /// Test the property 'response'
-        /// </summary>
-        [Test]
-        public void responseTest()
-        {
-            // TODO unit test for the property 'response'
         }
 
     }

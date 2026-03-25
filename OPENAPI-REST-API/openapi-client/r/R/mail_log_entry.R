@@ -1,35 +1,37 @@
 #' Create a new MailLogEntry
 #'
 #' @description
-#' An email record
+#' A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 #'
 #' @docType class
 #' @title MailLogEntry
 #' @description MailLogEntry Class
 #' @format An \code{R6Class} generator object
-#' @field _id internal db id integer
-#' @field id mail id character
-#' @field from from address character
-#' @field to to address character
-#' @field subject email subject character
-#' @field messageId message id character [optional]
-#' @field created creation date character
-#' @field time creation timestamp integer
-#' @field user user account character
-#' @field transtype transaction type character
-#' @field origin origin ip character
-#' @field interface interface name character
-#' @field sendingZone sending zone character
-#' @field bodySize email body size in bytes integer
-#' @field seq index of email in the to adderess list integer
-#' @field recipient to address this email is being sent to character
-#' @field domain to address domain character
-#' @field locked locked status integer
-#' @field lockTime lock timestamp integer
-#' @field assigned assigned server character
-#' @field queued queued timestamp character
-#' @field mxHostname mx hostname character
-#' @field response mail delivery response character
+#' @field _id Internal auto-increment database row ID. integer
+#' @field id The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. character
+#' @field from SMTP envelope `MAIL FROM` address. character
+#' @field to SMTP envelope `RCPT TO` address. character
+#' @field subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. character [optional]
+#' @field messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. character [optional]
+#' @field created Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. character
+#' @field time Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. integer
+#' @field user The SMTP AUTH username used to submit the message (e.g. `mb5658`). character
+#' @field transtype SMTP transaction type negotiated with the relay. character
+#' @field origin IP address of the client that submitted the message to the relay. character
+#' @field interface Relay interface name that accepted the message. character
+#' @field sendingZone The sending zone assigned by the relay for outbound delivery. character [optional]
+#' @field bodySize Size of the message body in bytes. integer [optional]
+#' @field seq Sequence index of this recipient in a multi-recipient message. Starts at 1. integer [optional]
+#' @field delivered Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted. integer [optional]
+#' @field code The SMTP response code from the destination MX server (e.g. `250`). integer [optional]
+#' @field recipient The specific recipient address this delivery record is for. character [optional]
+#' @field response The full SMTP response string received from the destination MX server. character [optional]
+#' @field domain The destination domain for this delivery attempt. character [optional]
+#' @field locked Whether the queue entry is currently locked for delivery processing. integer [optional]
+#' @field lockTime Millisecond-precision timestamp of the last queue lock acquisition. character [optional]
+#' @field assigned The relay server node assigned to deliver this message. character [optional]
+#' @field queued ISO 8601 timestamp when the message was placed into the delivery queue. character [optional]
+#' @field mxHostname The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -51,43 +53,47 @@ MailLogEntry <- R6::R6Class(
     `sendingZone` = NULL,
     `bodySize` = NULL,
     `seq` = NULL,
+    `delivered` = NULL,
+    `code` = NULL,
     `recipient` = NULL,
+    `response` = NULL,
     `domain` = NULL,
     `locked` = NULL,
     `lockTime` = NULL,
     `assigned` = NULL,
     `queued` = NULL,
     `mxHostname` = NULL,
-    `response` = NULL,
 
     #' @description
     #' Initialize a new MailLogEntry class.
     #'
-    #' @param _id internal db id
-    #' @param id mail id
-    #' @param from from address
-    #' @param to to address
-    #' @param subject email subject
-    #' @param created creation date
-    #' @param time creation timestamp
-    #' @param user user account
-    #' @param transtype transaction type
-    #' @param origin origin ip
-    #' @param interface interface name
-    #' @param sendingZone sending zone
-    #' @param bodySize email body size in bytes
-    #' @param seq index of email in the to adderess list
-    #' @param recipient to address this email is being sent to
-    #' @param domain to address domain
-    #' @param locked locked status
-    #' @param lockTime lock timestamp
-    #' @param assigned assigned server
-    #' @param queued queued timestamp
-    #' @param mxHostname mx hostname
-    #' @param response mail delivery response
-    #' @param messageId message id
+    #' @param _id Internal auto-increment database row ID.
+    #' @param id The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
+    #' @param from SMTP envelope `MAIL FROM` address.
+    #' @param to SMTP envelope `RCPT TO` address.
+    #' @param created Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
+    #' @param time Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
+    #' @param user The SMTP AUTH username used to submit the message (e.g. `mb5658`).
+    #' @param transtype SMTP transaction type negotiated with the relay.
+    #' @param origin IP address of the client that submitted the message to the relay.
+    #' @param interface Relay interface name that accepted the message.
+    #' @param subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+    #' @param messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+    #' @param sendingZone The sending zone assigned by the relay for outbound delivery.
+    #' @param bodySize Size of the message body in bytes.
+    #' @param seq Sequence index of this recipient in a multi-recipient message. Starts at 1.
+    #' @param delivered Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+    #' @param code The SMTP response code from the destination MX server (e.g. `250`).
+    #' @param recipient The specific recipient address this delivery record is for.
+    #' @param response The full SMTP response string received from the destination MX server.
+    #' @param domain The destination domain for this delivery attempt.
+    #' @param locked Whether the queue entry is currently locked for delivery processing.
+    #' @param lockTime Millisecond-precision timestamp of the last queue lock acquisition.
+    #' @param assigned The relay server node assigned to deliver this message.
+    #' @param queued ISO 8601 timestamp when the message was placed into the delivery queue.
+    #' @param mxHostname The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `id`, `from`, `to`, `subject`, `created`, `time`, `user`, `transtype`, `origin`, `interface`, `sendingZone`, `bodySize`, `seq`, `recipient`, `domain`, `locked`, `lockTime`, `assigned`, `queued`, `mxHostname`, `response`, `messageId` = NULL, ...) {
+    initialize = function(`_id`, `id`, `from`, `to`, `created`, `time`, `user`, `transtype`, `origin`, `interface`, `subject` = NULL, `messageId` = NULL, `sendingZone` = NULL, `bodySize` = NULL, `seq` = NULL, `delivered` = NULL, `code` = NULL, `recipient` = NULL, `response` = NULL, `domain` = NULL, `locked` = NULL, `lockTime` = NULL, `assigned` = NULL, `queued` = NULL, `mxHostname` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.numeric(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be an integer:", `_id`))
@@ -111,12 +117,6 @@ MailLogEntry <- R6::R6Class(
           stop(paste("Error! Invalid data for `to`. Must be a string:", `to`))
         }
         self$`to` <- `to`
-      }
-      if (!missing(`subject`)) {
-        if (!(is.character(`subject`) && length(`subject`) == 1)) {
-          stop(paste("Error! Invalid data for `subject`. Must be a string:", `subject`))
-        }
-        self$`subject` <- `subject`
       }
       if (!missing(`created`)) {
         if (!(is.character(`created`) && length(`created`) == 1)) {
@@ -154,77 +154,95 @@ MailLogEntry <- R6::R6Class(
         }
         self$`interface` <- `interface`
       }
-      if (!missing(`sendingZone`)) {
-        if (!(is.character(`sendingZone`) && length(`sendingZone`) == 1)) {
-          stop(paste("Error! Invalid data for `sendingZone`. Must be a string:", `sendingZone`))
+      if (!is.null(`subject`)) {
+        if (!(is.character(`subject`) && length(`subject`) == 1)) {
+          stop(paste("Error! Invalid data for `subject`. Must be a string:", `subject`))
         }
-        self$`sendingZone` <- `sendingZone`
-      }
-      if (!missing(`bodySize`)) {
-        if (!(is.numeric(`bodySize`) && length(`bodySize`) == 1)) {
-          stop(paste("Error! Invalid data for `bodySize`. Must be an integer:", `bodySize`))
-        }
-        self$`bodySize` <- `bodySize`
-      }
-      if (!missing(`seq`)) {
-        if (!(is.numeric(`seq`) && length(`seq`) == 1)) {
-          stop(paste("Error! Invalid data for `seq`. Must be an integer:", `seq`))
-        }
-        self$`seq` <- `seq`
-      }
-      if (!missing(`recipient`)) {
-        if (!(is.character(`recipient`) && length(`recipient`) == 1)) {
-          stop(paste("Error! Invalid data for `recipient`. Must be a string:", `recipient`))
-        }
-        self$`recipient` <- `recipient`
-      }
-      if (!missing(`domain`)) {
-        if (!(is.character(`domain`) && length(`domain`) == 1)) {
-          stop(paste("Error! Invalid data for `domain`. Must be a string:", `domain`))
-        }
-        self$`domain` <- `domain`
-      }
-      if (!missing(`locked`)) {
-        if (!(is.numeric(`locked`) && length(`locked`) == 1)) {
-          stop(paste("Error! Invalid data for `locked`. Must be an integer:", `locked`))
-        }
-        self$`locked` <- `locked`
-      }
-      if (!missing(`lockTime`)) {
-        if (!(is.numeric(`lockTime`) && length(`lockTime`) == 1)) {
-          stop(paste("Error! Invalid data for `lockTime`. Must be an integer:", `lockTime`))
-        }
-        self$`lockTime` <- `lockTime`
-      }
-      if (!missing(`assigned`)) {
-        if (!(is.character(`assigned`) && length(`assigned`) == 1)) {
-          stop(paste("Error! Invalid data for `assigned`. Must be a string:", `assigned`))
-        }
-        self$`assigned` <- `assigned`
-      }
-      if (!missing(`queued`)) {
-        if (!(is.character(`queued`) && length(`queued`) == 1)) {
-          stop(paste("Error! Invalid data for `queued`. Must be a string:", `queued`))
-        }
-        self$`queued` <- `queued`
-      }
-      if (!missing(`mxHostname`)) {
-        if (!(is.character(`mxHostname`) && length(`mxHostname`) == 1)) {
-          stop(paste("Error! Invalid data for `mxHostname`. Must be a string:", `mxHostname`))
-        }
-        self$`mxHostname` <- `mxHostname`
-      }
-      if (!missing(`response`)) {
-        if (!(is.character(`response`) && length(`response`) == 1)) {
-          stop(paste("Error! Invalid data for `response`. Must be a string:", `response`))
-        }
-        self$`response` <- `response`
+        self$`subject` <- `subject`
       }
       if (!is.null(`messageId`)) {
         if (!(is.character(`messageId`) && length(`messageId`) == 1)) {
           stop(paste("Error! Invalid data for `messageId`. Must be a string:", `messageId`))
         }
         self$`messageId` <- `messageId`
+      }
+      if (!is.null(`sendingZone`)) {
+        if (!(is.character(`sendingZone`) && length(`sendingZone`) == 1)) {
+          stop(paste("Error! Invalid data for `sendingZone`. Must be a string:", `sendingZone`))
+        }
+        self$`sendingZone` <- `sendingZone`
+      }
+      if (!is.null(`bodySize`)) {
+        if (!(is.numeric(`bodySize`) && length(`bodySize`) == 1)) {
+          stop(paste("Error! Invalid data for `bodySize`. Must be an integer:", `bodySize`))
+        }
+        self$`bodySize` <- `bodySize`
+      }
+      if (!is.null(`seq`)) {
+        if (!(is.numeric(`seq`) && length(`seq`) == 1)) {
+          stop(paste("Error! Invalid data for `seq`. Must be an integer:", `seq`))
+        }
+        self$`seq` <- `seq`
+      }
+      if (!is.null(`delivered`)) {
+        if (!(is.numeric(`delivered`) && length(`delivered`) == 1)) {
+          stop(paste("Error! Invalid data for `delivered`. Must be an integer:", `delivered`))
+        }
+        self$`delivered` <- `delivered`
+      }
+      if (!is.null(`code`)) {
+        if (!(is.numeric(`code`) && length(`code`) == 1)) {
+          stop(paste("Error! Invalid data for `code`. Must be an integer:", `code`))
+        }
+        self$`code` <- `code`
+      }
+      if (!is.null(`recipient`)) {
+        if (!(is.character(`recipient`) && length(`recipient`) == 1)) {
+          stop(paste("Error! Invalid data for `recipient`. Must be a string:", `recipient`))
+        }
+        self$`recipient` <- `recipient`
+      }
+      if (!is.null(`response`)) {
+        if (!(is.character(`response`) && length(`response`) == 1)) {
+          stop(paste("Error! Invalid data for `response`. Must be a string:", `response`))
+        }
+        self$`response` <- `response`
+      }
+      if (!is.null(`domain`)) {
+        if (!(is.character(`domain`) && length(`domain`) == 1)) {
+          stop(paste("Error! Invalid data for `domain`. Must be a string:", `domain`))
+        }
+        self$`domain` <- `domain`
+      }
+      if (!is.null(`locked`)) {
+        if (!(is.numeric(`locked`) && length(`locked`) == 1)) {
+          stop(paste("Error! Invalid data for `locked`. Must be an integer:", `locked`))
+        }
+        self$`locked` <- `locked`
+      }
+      if (!is.null(`lockTime`)) {
+        if (!(is.character(`lockTime`) && length(`lockTime`) == 1)) {
+          stop(paste("Error! Invalid data for `lockTime`. Must be a string:", `lockTime`))
+        }
+        self$`lockTime` <- `lockTime`
+      }
+      if (!is.null(`assigned`)) {
+        if (!(is.character(`assigned`) && length(`assigned`) == 1)) {
+          stop(paste("Error! Invalid data for `assigned`. Must be a string:", `assigned`))
+        }
+        self$`assigned` <- `assigned`
+      }
+      if (!is.null(`queued`)) {
+        if (!(is.character(`queued`) && length(`queued`) == 1)) {
+          stop(paste("Error! Invalid data for `queued`. Must be a string:", `queued`))
+        }
+        self$`queued` <- `queued`
+      }
+      if (!is.null(`mxHostname`)) {
+        if (!(is.character(`mxHostname`) && length(`mxHostname`) == 1)) {
+          stop(paste("Error! Invalid data for `mxHostname`. Must be a string:", `mxHostname`))
+        }
+        self$`mxHostname` <- `mxHostname`
       }
     },
 
@@ -319,9 +337,21 @@ MailLogEntry <- R6::R6Class(
         MailLogEntryObject[["seq"]] <-
           self$`seq`
       }
+      if (!is.null(self$`delivered`)) {
+        MailLogEntryObject[["delivered"]] <-
+          self$`delivered`
+      }
+      if (!is.null(self$`code`)) {
+        MailLogEntryObject[["code"]] <-
+          self$`code`
+      }
       if (!is.null(self$`recipient`)) {
         MailLogEntryObject[["recipient"]] <-
           self$`recipient`
+      }
+      if (!is.null(self$`response`)) {
+        MailLogEntryObject[["response"]] <-
+          self$`response`
       }
       if (!is.null(self$`domain`)) {
         MailLogEntryObject[["domain"]] <-
@@ -346,10 +376,6 @@ MailLogEntry <- R6::R6Class(
       if (!is.null(self$`mxHostname`)) {
         MailLogEntryObject[["mxHostname"]] <-
           self$`mxHostname`
-      }
-      if (!is.null(self$`response`)) {
-        MailLogEntryObject[["response"]] <-
-          self$`response`
       }
       return(MailLogEntryObject)
     },
@@ -406,8 +432,17 @@ MailLogEntry <- R6::R6Class(
       if (!is.null(this_object$`seq`)) {
         self$`seq` <- this_object$`seq`
       }
+      if (!is.null(this_object$`delivered`)) {
+        self$`delivered` <- this_object$`delivered`
+      }
+      if (!is.null(this_object$`code`)) {
+        self$`code` <- this_object$`code`
+      }
       if (!is.null(this_object$`recipient`)) {
         self$`recipient` <- this_object$`recipient`
+      }
+      if (!is.null(this_object$`response`)) {
+        self$`response` <- this_object$`response`
       }
       if (!is.null(this_object$`domain`)) {
         self$`domain` <- this_object$`domain`
@@ -426,9 +461,6 @@ MailLogEntry <- R6::R6Class(
       }
       if (!is.null(this_object$`mxHostname`)) {
         self$`mxHostname` <- this_object$`mxHostname`
-      }
-      if (!is.null(this_object$`response`)) {
-        self$`response` <- this_object$`response`
       }
       self
     },
@@ -466,14 +498,16 @@ MailLogEntry <- R6::R6Class(
       self$`sendingZone` <- this_object$`sendingZone`
       self$`bodySize` <- this_object$`bodySize`
       self$`seq` <- this_object$`seq`
+      self$`delivered` <- this_object$`delivered`
+      self$`code` <- this_object$`code`
       self$`recipient` <- this_object$`recipient`
+      self$`response` <- this_object$`response`
       self$`domain` <- this_object$`domain`
       self$`locked` <- this_object$`locked`
       self$`lockTime` <- this_object$`lockTime`
       self$`assigned` <- this_object$`assigned`
       self$`queued` <- this_object$`queued`
       self$`mxHostname` <- this_object$`mxHostname`
-      self$`response` <- this_object$`response`
       self
     },
 
@@ -514,14 +548,6 @@ MailLogEntry <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `to` is missing."))
-      }
-      # check the required field `subject`
-      if (!is.null(input_json$`subject`)) {
-        if (!(is.character(input_json$`subject`) && length(input_json$`subject`) == 1)) {
-          stop(paste("Error! Invalid data for `subject`. Must be a string:", input_json$`subject`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `subject` is missing."))
       }
       # check the required field `created`
       if (!is.null(input_json$`created`)) {
@@ -571,94 +597,6 @@ MailLogEntry <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `interface` is missing."))
       }
-      # check the required field `sendingZone`
-      if (!is.null(input_json$`sendingZone`)) {
-        if (!(is.character(input_json$`sendingZone`) && length(input_json$`sendingZone`) == 1)) {
-          stop(paste("Error! Invalid data for `sendingZone`. Must be a string:", input_json$`sendingZone`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `sendingZone` is missing."))
-      }
-      # check the required field `bodySize`
-      if (!is.null(input_json$`bodySize`)) {
-        if (!(is.numeric(input_json$`bodySize`) && length(input_json$`bodySize`) == 1)) {
-          stop(paste("Error! Invalid data for `bodySize`. Must be an integer:", input_json$`bodySize`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `bodySize` is missing."))
-      }
-      # check the required field `seq`
-      if (!is.null(input_json$`seq`)) {
-        if (!(is.numeric(input_json$`seq`) && length(input_json$`seq`) == 1)) {
-          stop(paste("Error! Invalid data for `seq`. Must be an integer:", input_json$`seq`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `seq` is missing."))
-      }
-      # check the required field `recipient`
-      if (!is.null(input_json$`recipient`)) {
-        if (!(is.character(input_json$`recipient`) && length(input_json$`recipient`) == 1)) {
-          stop(paste("Error! Invalid data for `recipient`. Must be a string:", input_json$`recipient`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `recipient` is missing."))
-      }
-      # check the required field `domain`
-      if (!is.null(input_json$`domain`)) {
-        if (!(is.character(input_json$`domain`) && length(input_json$`domain`) == 1)) {
-          stop(paste("Error! Invalid data for `domain`. Must be a string:", input_json$`domain`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `domain` is missing."))
-      }
-      # check the required field `locked`
-      if (!is.null(input_json$`locked`)) {
-        if (!(is.numeric(input_json$`locked`) && length(input_json$`locked`) == 1)) {
-          stop(paste("Error! Invalid data for `locked`. Must be an integer:", input_json$`locked`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `locked` is missing."))
-      }
-      # check the required field `lockTime`
-      if (!is.null(input_json$`lockTime`)) {
-        if (!(is.numeric(input_json$`lockTime`) && length(input_json$`lockTime`) == 1)) {
-          stop(paste("Error! Invalid data for `lockTime`. Must be an integer:", input_json$`lockTime`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `lockTime` is missing."))
-      }
-      # check the required field `assigned`
-      if (!is.null(input_json$`assigned`)) {
-        if (!(is.character(input_json$`assigned`) && length(input_json$`assigned`) == 1)) {
-          stop(paste("Error! Invalid data for `assigned`. Must be a string:", input_json$`assigned`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `assigned` is missing."))
-      }
-      # check the required field `queued`
-      if (!is.null(input_json$`queued`)) {
-        if (!(is.character(input_json$`queued`) && length(input_json$`queued`) == 1)) {
-          stop(paste("Error! Invalid data for `queued`. Must be a string:", input_json$`queued`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `queued` is missing."))
-      }
-      # check the required field `mxHostname`
-      if (!is.null(input_json$`mxHostname`)) {
-        if (!(is.character(input_json$`mxHostname`) && length(input_json$`mxHostname`) == 1)) {
-          stop(paste("Error! Invalid data for `mxHostname`. Must be a string:", input_json$`mxHostname`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `mxHostname` is missing."))
-      }
-      # check the required field `response`
-      if (!is.null(input_json$`response`)) {
-        if (!(is.character(input_json$`response`) && length(input_json$`response`) == 1)) {
-          stop(paste("Error! Invalid data for `response`. Must be a string:", input_json$`response`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MailLogEntry: the required field `response` is missing."))
-      }
     },
 
     #' @description
@@ -694,11 +632,6 @@ MailLogEntry <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `subject` is null
-      if (is.null(self$`subject`)) {
-        return(FALSE)
-      }
-
       # check if the required `created` is null
       if (is.null(self$`created`)) {
         return(FALSE)
@@ -726,61 +659,6 @@ MailLogEntry <- R6::R6Class(
 
       # check if the required `interface` is null
       if (is.null(self$`interface`)) {
-        return(FALSE)
-      }
-
-      # check if the required `sendingZone` is null
-      if (is.null(self$`sendingZone`)) {
-        return(FALSE)
-      }
-
-      # check if the required `bodySize` is null
-      if (is.null(self$`bodySize`)) {
-        return(FALSE)
-      }
-
-      # check if the required `seq` is null
-      if (is.null(self$`seq`)) {
-        return(FALSE)
-      }
-
-      # check if the required `recipient` is null
-      if (is.null(self$`recipient`)) {
-        return(FALSE)
-      }
-
-      # check if the required `domain` is null
-      if (is.null(self$`domain`)) {
-        return(FALSE)
-      }
-
-      # check if the required `locked` is null
-      if (is.null(self$`locked`)) {
-        return(FALSE)
-      }
-
-      # check if the required `lockTime` is null
-      if (is.null(self$`lockTime`)) {
-        return(FALSE)
-      }
-
-      # check if the required `assigned` is null
-      if (is.null(self$`assigned`)) {
-        return(FALSE)
-      }
-
-      # check if the required `queued` is null
-      if (is.null(self$`queued`)) {
-        return(FALSE)
-      }
-
-      # check if the required `mxHostname` is null
-      if (is.null(self$`mxHostname`)) {
-        return(FALSE)
-      }
-
-      # check if the required `response` is null
-      if (is.null(self$`response`)) {
         return(FALSE)
       }
 
@@ -813,11 +691,6 @@ MailLogEntry <- R6::R6Class(
         invalid_fields["to"] <- "Non-nullable required field `to` cannot be null."
       }
 
-      # check if the required `subject` is null
-      if (is.null(self$`subject`)) {
-        invalid_fields["subject"] <- "Non-nullable required field `subject` cannot be null."
-      }
-
       # check if the required `created` is null
       if (is.null(self$`created`)) {
         invalid_fields["created"] <- "Non-nullable required field `created` cannot be null."
@@ -846,61 +719,6 @@ MailLogEntry <- R6::R6Class(
       # check if the required `interface` is null
       if (is.null(self$`interface`)) {
         invalid_fields["interface"] <- "Non-nullable required field `interface` cannot be null."
-      }
-
-      # check if the required `sendingZone` is null
-      if (is.null(self$`sendingZone`)) {
-        invalid_fields["sendingZone"] <- "Non-nullable required field `sendingZone` cannot be null."
-      }
-
-      # check if the required `bodySize` is null
-      if (is.null(self$`bodySize`)) {
-        invalid_fields["bodySize"] <- "Non-nullable required field `bodySize` cannot be null."
-      }
-
-      # check if the required `seq` is null
-      if (is.null(self$`seq`)) {
-        invalid_fields["seq"] <- "Non-nullable required field `seq` cannot be null."
-      }
-
-      # check if the required `recipient` is null
-      if (is.null(self$`recipient`)) {
-        invalid_fields["recipient"] <- "Non-nullable required field `recipient` cannot be null."
-      }
-
-      # check if the required `domain` is null
-      if (is.null(self$`domain`)) {
-        invalid_fields["domain"] <- "Non-nullable required field `domain` cannot be null."
-      }
-
-      # check if the required `locked` is null
-      if (is.null(self$`locked`)) {
-        invalid_fields["locked"] <- "Non-nullable required field `locked` cannot be null."
-      }
-
-      # check if the required `lockTime` is null
-      if (is.null(self$`lockTime`)) {
-        invalid_fields["lockTime"] <- "Non-nullable required field `lockTime` cannot be null."
-      }
-
-      # check if the required `assigned` is null
-      if (is.null(self$`assigned`)) {
-        invalid_fields["assigned"] <- "Non-nullable required field `assigned` cannot be null."
-      }
-
-      # check if the required `queued` is null
-      if (is.null(self$`queued`)) {
-        invalid_fields["queued"] <- "Non-nullable required field `queued` cannot be null."
-      }
-
-      # check if the required `mxHostname` is null
-      if (is.null(self$`mxHostname`)) {
-        invalid_fields["mxHostname"] <- "Non-nullable required field `mxHostname` cannot be null."
-      }
-
-      # check if the required `response` is null
-      if (is.null(self$`response`)) {
-        invalid_fields["response"] <- "Non-nullable required field `response` cannot be null."
       }
 
       invalid_fields

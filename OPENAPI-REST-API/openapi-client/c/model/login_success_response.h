@@ -20,7 +20,7 @@ typedef struct login_success_response_t login_success_response_t;
 
 typedef struct login_success_response_t {
     char *session_id; // string
-    int account_id; //numeric
+    int *account_id; //numeric
     char *account_lid; // string
     char *ima; // string
     char *gravatar; // string
@@ -30,7 +30,7 @@ typedef struct login_success_response_t {
 
 __attribute__((deprecated)) login_success_response_t *login_success_response_create(
     char *session_id,
-    int account_id,
+    int *account_id,
     char *account_lid,
     char *ima,
     char *gravatar

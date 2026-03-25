@@ -12,18 +12,21 @@ static websites_order_json_services_t *websites_order_json_services_create_inter
     if (!websites_order_json_services_local_var) {
         return NULL;
     }
-    websites_order_json_services_local_var->_11447 = _11447;
-
+    memset(websites_order_json_services_local_var, 0, sizeof(websites_order_json_services_t));
     websites_order_json_services_local_var->_library_owned = 1;
+    websites_order_json_services_local_var->_11447 = _11447;
     return websites_order_json_services_local_var;
 }
 
 __attribute__((deprecated)) websites_order_json_services_t *websites_order_json_services_create(
     char *_11447
     ) {
-    return websites_order_json_services_create_internal (
+    websites_order_json_services_t *result = websites_order_json_services_create_internal (
         _11447
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void websites_order_json_services_free(websites_order_json_services_t *websites_order_json_services) {
@@ -65,6 +68,8 @@ websites_order_json_services_t *websites_order_json_services_parseFromJSON(cJSON
 
     websites_order_json_services_t *websites_order_json_services_local_var = NULL;
 
+    char *_11447_local_str = NULL;
+
     // websites_order_json_services->_11447
     cJSON *_11447 = cJSON_GetObjectItemCaseSensitive(websites_order_json_servicesJSON, "11447");
     if (cJSON_IsNull(_11447)) {
@@ -81,12 +86,22 @@ websites_order_json_services_t *websites_order_json_services_parseFromJSON(cJSON
     }
 
 
+    if (_11447 && !cJSON_IsNull(_11447)) _11447_local_str = strdup(_11447->valuestring);
+
     websites_order_json_services_local_var = websites_order_json_services_create_internal (
-        strdup(_11447->valuestring)
+        _11447_local_str
         );
+
+    if (!websites_order_json_services_local_var) {
+        goto end;
+    }
 
     return websites_order_json_services_local_var;
 end:
+    if (_11447_local_str) {
+        free(_11447_local_str);
+        _11447_local_str = NULL;
+    }
     return NULL;
 
 }

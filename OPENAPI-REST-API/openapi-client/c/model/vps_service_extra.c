@@ -6,28 +6,37 @@
 
 
 static vps_service_extra_t *vps_service_extra_create_internal(
-    int spice,
+    int *spice,
     list_t *snapshots
     ) {
     vps_service_extra_t *vps_service_extra_local_var = malloc(sizeof(vps_service_extra_t));
     if (!vps_service_extra_local_var) {
         return NULL;
     }
+    memset(vps_service_extra_local_var, 0, sizeof(vps_service_extra_t));
+    vps_service_extra_local_var->_library_owned = 1;
     vps_service_extra_local_var->spice = spice;
     vps_service_extra_local_var->snapshots = snapshots;
-
-    vps_service_extra_local_var->_library_owned = 1;
     return vps_service_extra_local_var;
 }
 
 __attribute__((deprecated)) vps_service_extra_t *vps_service_extra_create(
-    int spice,
+    int *spice,
     list_t *snapshots
     ) {
-    return vps_service_extra_create_internal (
-        spice,
+    int *spice_copy = NULL;
+    if (spice) {
+        spice_copy = malloc(sizeof(int));
+        if (spice_copy) *spice_copy = *spice;
+    }
+    vps_service_extra_t *result = vps_service_extra_create_internal (
+        spice_copy,
         snapshots
         );
+    if (!result) {
+        free(spice_copy);
+    }
+    return result;
 }
 
 void vps_service_extra_free(vps_service_extra_t *vps_service_extra) {
@@ -39,6 +48,10 @@ void vps_service_extra_free(vps_service_extra_t *vps_service_extra) {
         return ;
     }
     listEntry_t *listEntry;
+    if (vps_service_extra->spice) {
+        free(vps_service_extra->spice);
+        vps_service_extra->spice = NULL;
+    }
     if (vps_service_extra->snapshots) {
         list_ForEach(listEntry, vps_service_extra->snapshots) {
             vps_snapshot_free(listEntry->data);
@@ -54,7 +67,7 @@ cJSON *vps_service_extra_convertToJSON(vps_service_extra_t *vps_service_extra) {
 
     // vps_service_extra->spice
     if(vps_service_extra->spice) {
-    if(cJSON_AddNumberToObject(item, "spice", vps_service_extra->spice) == NULL) {
+    if(cJSON_AddNumberToObject(item, "spice", *vps_service_extra->spice) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -91,6 +104,9 @@ vps_service_extra_t *vps_service_extra_parseFromJSON(cJSON *vps_service_extraJSO
 
     vps_service_extra_t *vps_service_extra_local_var = NULL;
 
+    // define the local variable for vps_service_extra->spice
+    int *spice_local_var = NULL;
+
     // define the local list for vps_service_extra->snapshots
     list_t *snapshotsList = NULL;
 
@@ -104,6 +120,12 @@ vps_service_extra_t *vps_service_extra_parseFromJSON(cJSON *vps_service_extraJSO
     {
     goto end; //Numeric
     }
+    spice_local_var = malloc(sizeof(int));
+    if(!spice_local_var)
+    {
+        goto end;
+    }
+    *spice_local_var = spice->valuedouble;
     }
 
     // vps_service_extra->snapshots
@@ -131,13 +153,22 @@ vps_service_extra_t *vps_service_extra_parseFromJSON(cJSON *vps_service_extraJSO
     }
 
 
+
     vps_service_extra_local_var = vps_service_extra_create_internal (
-        spice ? spice->valuedouble : 0,
+        spice_local_var,
         snapshots ? snapshotsList : NULL
         );
 
+    if (!vps_service_extra_local_var) {
+        goto end;
+    }
+
     return vps_service_extra_local_var;
 end:
+    if (spice_local_var) {
+        free(spice_local_var);
+        spice_local_var = NULL;
+    }
     if (snapshotsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, snapshotsList) {

@@ -1,4 +1,4 @@
-# # SearchAutocompleteResponse
+# SearchAutocompleteResponse
 
 ## Properties
 

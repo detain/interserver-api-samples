@@ -1,4 +1,4 @@
-# # DnsUpdateRecord
+# DnsUpdateRecord
 
 ## Properties
 

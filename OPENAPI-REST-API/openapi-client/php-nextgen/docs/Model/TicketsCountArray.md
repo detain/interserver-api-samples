@@ -1,4 +1,4 @@
-# # TicketsCountArray
+# TicketsCountArray
 
 ## Properties
 

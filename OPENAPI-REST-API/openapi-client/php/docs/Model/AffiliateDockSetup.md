@@ -1,4 +1,4 @@
-# # AffiliateDockSetup
+# AffiliateDockSetup
 
 ## Properties
 

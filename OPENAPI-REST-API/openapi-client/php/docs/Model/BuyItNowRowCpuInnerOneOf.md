@@ -1,4 +1,4 @@
-# # BuyItNowRowCpuInnerOneOf
+# BuyItNowRowCpuInnerOneOf
 
 ## Properties
 

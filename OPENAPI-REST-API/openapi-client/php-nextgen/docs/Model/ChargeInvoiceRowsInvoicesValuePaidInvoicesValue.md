@@ -1,4 +1,4 @@
-# # ChargeInvoiceRowsInvoicesValuePaidInvoicesValue
+# ChargeInvoiceRowsInvoicesValuePaidInvoicesValue
 
 ## Properties
 

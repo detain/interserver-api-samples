@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoData::OAIAccountInfoData(QString json) {
+OAIAccountInfoData::OAIAccountInfoData(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -227,7 +227,7 @@ void OAIAccountInfoData::initializeModel() {
     m_r_2fa_google_qr_isValid = false;
 }
 
-void OAIAccountInfoData::fromJson(QString jsonString) {
+void OAIAccountInfoData::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

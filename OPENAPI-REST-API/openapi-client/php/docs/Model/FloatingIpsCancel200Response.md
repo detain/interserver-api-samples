@@ -1,4 +1,4 @@
-# # FloatingIpsCancel200Response
+# FloatingIpsCancel200Response
 
 ## Properties
 

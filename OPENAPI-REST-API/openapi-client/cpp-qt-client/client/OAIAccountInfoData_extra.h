@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAccountInfoData_extra : public OAIObject {
 public:
     OAIAccountInfoData_extra();
-    OAIAccountInfoData_extra(QString json);
+    OAIAccountInfoData_extra(const QString &json);
     ~OAIAccountInfoData_extra() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getPrivateWhois() const;
     void setPrivateWhois(const QString &private_whois);

@@ -28,7 +28,7 @@ typedef struct server_order_memory_t {
     char *size; // string
     char *type; // string
     char *hidden; // string
-    int monthly_price; //numeric
+    int *monthly_price; //numeric
     char *drive_type; // string
     char *monthly_price_display; // string
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) server_order_memory_t *server_order_memory_create(
     char *size,
     char *type,
     char *hidden,
-    int monthly_price,
+    int *monthly_price,
     char *drive_type,
     char *monthly_price_display
 );

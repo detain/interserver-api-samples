@@ -8,7 +8,7 @@
 static charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_create_internal(
     char *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
     char *invoices_currency,
     char *currency_symbol,
@@ -20,6 +20,8 @@ static charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_
     if (!charge_invoice_rows_invoices_value_paid_invoices_value_local_var) {
         return NULL;
     }
+    memset(charge_invoice_rows_invoices_value_paid_invoices_value_local_var, 0, sizeof(charge_invoice_rows_invoices_value_paid_invoices_value_t));
+    charge_invoice_rows_invoices_value_paid_invoices_value_local_var->_library_owned = 1;
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var->invoices_id = invoices_id;
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var->invoices_description = invoices_description;
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var->invoices_amount = invoices_amount;
@@ -29,15 +31,13 @@ static charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var->invoices_date_formatted = invoices_date_formatted;
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var->payment_type = payment_type;
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var->refund_invoices = refund_invoices;
-
-    charge_invoice_rows_invoices_value_paid_invoices_value_local_var->_library_owned = 1;
     return charge_invoice_rows_invoices_value_paid_invoices_value_local_var;
 }
 
 __attribute__((deprecated)) charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_create(
     char *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
     char *invoices_currency,
     char *currency_symbol,
@@ -45,10 +45,15 @@ __attribute__((deprecated)) charge_invoice_rows_invoices_value_paid_invoices_val
     char *payment_type,
     list_t* refund_invoices
     ) {
-    return charge_invoice_rows_invoices_value_paid_invoices_value_create_internal (
+    double *invoices_amount_copy = NULL;
+    if (invoices_amount) {
+        invoices_amount_copy = malloc(sizeof(double));
+        if (invoices_amount_copy) *invoices_amount_copy = *invoices_amount;
+    }
+    charge_invoice_rows_invoices_value_paid_invoices_value_t *result = charge_invoice_rows_invoices_value_paid_invoices_value_create_internal (
         invoices_id,
         invoices_description,
-        invoices_amount,
+        invoices_amount_copy,
         invoices_date,
         invoices_currency,
         currency_symbol,
@@ -56,6 +61,10 @@ __attribute__((deprecated)) charge_invoice_rows_invoices_value_paid_invoices_val
         payment_type,
         refund_invoices
         );
+    if (!result) {
+        free(invoices_amount_copy);
+    }
+    return result;
 }
 
 void charge_invoice_rows_invoices_value_paid_invoices_value_free(charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value) {
@@ -74,6 +83,10 @@ void charge_invoice_rows_invoices_value_paid_invoices_value_free(charge_invoice_
     if (charge_invoice_rows_invoices_value_paid_invoices_value->invoices_description) {
         free(charge_invoice_rows_invoices_value_paid_invoices_value->invoices_description);
         charge_invoice_rows_invoices_value_paid_invoices_value->invoices_description = NULL;
+    }
+    if (charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount) {
+        free(charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount);
+        charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount = NULL;
     }
     if (charge_invoice_rows_invoices_value_paid_invoices_value->invoices_date) {
         free(charge_invoice_rows_invoices_value_paid_invoices_value->invoices_date);
@@ -129,7 +142,7 @@ cJSON *charge_invoice_rows_invoices_value_paid_invoices_value_convertToJSON(char
 
     // charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount
     if(charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount) {
-    if(cJSON_AddNumberToObject(item, "invoices_amount", charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount) == NULL) {
+    if(cJSON_AddNumberToObject(item, "invoices_amount", *charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -202,6 +215,23 @@ charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_in
 
     charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_local_var = NULL;
 
+    char *invoices_id_local_str = NULL;
+
+    char *invoices_description_local_str = NULL;
+
+    // define the local variable for charge_invoice_rows_invoices_value_paid_invoices_value->invoices_amount
+    double *invoices_amount_local_var = NULL;
+
+    char *invoices_date_local_str = NULL;
+
+    char *invoices_currency_local_str = NULL;
+
+    char *currency_symbol_local_str = NULL;
+
+    char *invoices_date_formatted_local_str = NULL;
+
+    char *payment_type_local_str = NULL;
+
     // define the local map for charge_invoice_rows_invoices_value_paid_invoices_value->refund_invoices
     list_t *refund_invoicesList = NULL;
 
@@ -239,6 +269,12 @@ charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_in
     {
     goto end; //Numeric
     }
+    invoices_amount_local_var = malloc(sizeof(double));
+    if(!invoices_amount_local_var)
+    {
+        goto end;
+    }
+    *invoices_amount_local_var = invoices_amount->valuedouble;
     }
 
     // charge_invoice_rows_invoices_value_paid_invoices_value->invoices_date
@@ -313,20 +349,64 @@ charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_in
     }
 
 
+    if (invoices_id && !cJSON_IsNull(invoices_id)) invoices_id_local_str = strdup(invoices_id->valuestring);
+    if (invoices_description && !cJSON_IsNull(invoices_description)) invoices_description_local_str = strdup(invoices_description->valuestring);
+    if (invoices_date && !cJSON_IsNull(invoices_date)) invoices_date_local_str = strdup(invoices_date->valuestring);
+    if (invoices_currency && !cJSON_IsNull(invoices_currency)) invoices_currency_local_str = strdup(invoices_currency->valuestring);
+    if (currency_symbol && !cJSON_IsNull(currency_symbol)) currency_symbol_local_str = strdup(currency_symbol->valuestring);
+    if (invoices_date_formatted && !cJSON_IsNull(invoices_date_formatted)) invoices_date_formatted_local_str = strdup(invoices_date_formatted->valuestring);
+    if (payment_type && !cJSON_IsNull(payment_type)) payment_type_local_str = strdup(payment_type->valuestring);
+
     charge_invoice_rows_invoices_value_paid_invoices_value_local_var = charge_invoice_rows_invoices_value_paid_invoices_value_create_internal (
-        invoices_id && !cJSON_IsNull(invoices_id) ? strdup(invoices_id->valuestring) : NULL,
-        invoices_description && !cJSON_IsNull(invoices_description) ? strdup(invoices_description->valuestring) : NULL,
-        invoices_amount ? invoices_amount->valuedouble : 0,
-        invoices_date && !cJSON_IsNull(invoices_date) ? strdup(invoices_date->valuestring) : NULL,
-        invoices_currency && !cJSON_IsNull(invoices_currency) ? strdup(invoices_currency->valuestring) : NULL,
-        currency_symbol && !cJSON_IsNull(currency_symbol) ? strdup(currency_symbol->valuestring) : NULL,
-        invoices_date_formatted && !cJSON_IsNull(invoices_date_formatted) ? strdup(invoices_date_formatted->valuestring) : NULL,
-        payment_type && !cJSON_IsNull(payment_type) ? strdup(payment_type->valuestring) : NULL,
+        invoices_id_local_str,
+        invoices_description_local_str,
+        invoices_amount_local_var,
+        invoices_date_local_str,
+        invoices_currency_local_str,
+        currency_symbol_local_str,
+        invoices_date_formatted_local_str,
+        payment_type_local_str,
         refund_invoices ? refund_invoicesList : NULL
         );
 
+    if (!charge_invoice_rows_invoices_value_paid_invoices_value_local_var) {
+        goto end;
+    }
+
     return charge_invoice_rows_invoices_value_paid_invoices_value_local_var;
 end:
+    if (invoices_id_local_str) {
+        free(invoices_id_local_str);
+        invoices_id_local_str = NULL;
+    }
+    if (invoices_description_local_str) {
+        free(invoices_description_local_str);
+        invoices_description_local_str = NULL;
+    }
+    if (invoices_amount_local_var) {
+        free(invoices_amount_local_var);
+        invoices_amount_local_var = NULL;
+    }
+    if (invoices_date_local_str) {
+        free(invoices_date_local_str);
+        invoices_date_local_str = NULL;
+    }
+    if (invoices_currency_local_str) {
+        free(invoices_currency_local_str);
+        invoices_currency_local_str = NULL;
+    }
+    if (currency_symbol_local_str) {
+        free(currency_symbol_local_str);
+        currency_symbol_local_str = NULL;
+    }
+    if (invoices_date_formatted_local_str) {
+        free(invoices_date_formatted_local_str);
+        invoices_date_formatted_local_str = NULL;
+    }
+    if (payment_type_local_str) {
+        free(payment_type_local_str);
+        payment_type_local_str = NULL;
+    }
 
     // The data type of the elements in charge_invoice_rows_invoices_value_paid_invoices_value->refund_invoices is currently not supported.
 

@@ -13,10 +13,10 @@ static billing_payment_method_request_t *billing_payment_method_request_create_i
     if (!billing_payment_method_request_local_var) {
         return NULL;
     }
+    memset(billing_payment_method_request_local_var, 0, sizeof(billing_payment_method_request_t));
+    billing_payment_method_request_local_var->_library_owned = 1;
     billing_payment_method_request_local_var->payment_method = payment_method;
     billing_payment_method_request_local_var->cc_auto = cc_auto;
-
-    billing_payment_method_request_local_var->_library_owned = 1;
     return billing_payment_method_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) billing_payment_method_request_t *billing_payment_me
     char *payment_method,
     char *cc_auto
     ) {
-    return billing_payment_method_request_create_internal (
+    billing_payment_method_request_t *result = billing_payment_method_request_create_internal (
         payment_method,
         cc_auto
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void billing_payment_method_request_free(billing_payment_method_request_t *billing_payment_method_request) {
@@ -80,6 +83,10 @@ billing_payment_method_request_t *billing_payment_method_request_parseFromJSON(c
 
     billing_payment_method_request_t *billing_payment_method_request_local_var = NULL;
 
+    char *payment_method_local_str = NULL;
+
+    char *cc_auto_local_str = NULL;
+
     // billing_payment_method_request->payment_method
     cJSON *payment_method = cJSON_GetObjectItemCaseSensitive(billing_payment_method_requestJSON, "payment_method");
     if (cJSON_IsNull(payment_method)) {
@@ -105,13 +112,28 @@ billing_payment_method_request_t *billing_payment_method_request_parseFromJSON(c
     }
 
 
+    if (payment_method && !cJSON_IsNull(payment_method)) payment_method_local_str = strdup(payment_method->valuestring);
+    if (cc_auto && !cJSON_IsNull(cc_auto)) cc_auto_local_str = strdup(cc_auto->valuestring);
+
     billing_payment_method_request_local_var = billing_payment_method_request_create_internal (
-        payment_method && !cJSON_IsNull(payment_method) ? strdup(payment_method->valuestring) : NULL,
-        cc_auto && !cJSON_IsNull(cc_auto) ? strdup(cc_auto->valuestring) : NULL
+        payment_method_local_str,
+        cc_auto_local_str
         );
+
+    if (!billing_payment_method_request_local_var) {
+        goto end;
+    }
 
     return billing_payment_method_request_local_var;
 end:
+    if (payment_method_local_str) {
+        free(payment_method_local_str);
+        payment_method_local_str = NULL;
+    }
+    if (cc_auto_local_str) {
+        free(cc_auto_local_str);
+        cc_auto_local_str = NULL;
+    }
     return NULL;
 
 }

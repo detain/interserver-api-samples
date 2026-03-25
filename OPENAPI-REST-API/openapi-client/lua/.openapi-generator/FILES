@@ -392,6 +392,7 @@ openapiclient/model/update_account_tfa_request.lua
 openapiclient/model/update_ticket.lua
 openapiclient/model/update_ticket_response_schema.lua
 openapiclient/model/url_request.lua
+openapiclient/model/view_mail_log_start_date_parameter.lua
 openapiclient/model/view_ticket_response.lua
 openapiclient/model/vps.lua
 openapiclient/model/vps_backup_row.lua
@@ -855,6 +856,7 @@ spec/update_account_tfa_request_spec.lua
 spec/update_ticket_response_schema_spec.lua
 spec/update_ticket_spec.lua
 spec/url_request_spec.lua
+spec/view_mail_log_start_date_parameter_spec.lua
 spec/view_ticket_response_spec.lua
 spec/vps_api_spec.lua
 spec/vps_backup_row_spec.lua

@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIVPSTrafficDataDataSectionResponse : public OAIObject {
 public:
     OAIVPSTrafficDataDataSectionResponse();
-    OAIVPSTrafficDataDataSectionResponse(QString json);
+    OAIVPSTrafficDataDataSectionResponse(const QString &json);
     ~OAIVPSTrafficDataDataSectionResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;

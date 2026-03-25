@@ -802,6 +802,8 @@ client/OAIVPSTrafficDataDataSectionResponse.cpp
 client/OAIVPSTrafficDataDataSectionResponse.h
 client/OAIVPSTrafficDataDataSectionResponse_inner.cpp
 client/OAIVPSTrafficDataDataSectionResponse_inner.h
+client/OAIViewMailLog_startDate_parameter.cpp
+client/OAIViewMailLog_startDate_parameter.h
 client/OAIViewTicketResponse.cpp
 client/OAIViewTicketResponse.h
 client/OAIVps.cpp

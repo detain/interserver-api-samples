@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIPlaceBuyNowServer_request::OAIPlaceBuyNowServer_request(QString json) {
+OAIPlaceBuyNowServer_request::OAIPlaceBuyNowServer_request(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIPlaceBuyNowServer_request::initializeModel() {
     m_server_root_password_isValid = false;
 }
 
-void OAIPlaceBuyNowServer_request::fromJson(QString jsonString) {
+void OAIPlaceBuyNowServer_request::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

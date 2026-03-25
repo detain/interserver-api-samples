@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIInitiatePayment_200_response::OAIInitiatePayment_200_response(QString json) {
+OAIInitiatePayment_200_response::OAIInitiatePayment_200_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIInitiatePayment_200_response::initializeModel() {
     m_text_isValid = false;
 }
 
-void OAIInitiatePayment_200_response::fromJson(QString jsonString) {
+void OAIInitiatePayment_200_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

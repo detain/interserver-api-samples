@@ -13,10 +13,10 @@ static license_ip_info_t *license_ip_info_create_internal(
     if (!license_ip_info_local_var) {
         return NULL;
     }
+    memset(license_ip_info_local_var, 0, sizeof(license_ip_info_t));
+    license_ip_info_local_var->_library_owned = 1;
     license_ip_info_local_var->title = title;
     license_ip_info_local_var->rows = rows;
-
-    license_ip_info_local_var->_library_owned = 1;
     return license_ip_info_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) license_ip_info_t *license_ip_info_create(
     char *title,
     list_t *rows
     ) {
-    return license_ip_info_create_internal (
+    license_ip_info_t *result = license_ip_info_create_internal (
         title,
         rows
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void license_ip_info_free(license_ip_info_t *license_ip_info) {
@@ -95,6 +98,8 @@ license_ip_info_t *license_ip_info_parseFromJSON(cJSON *license_ip_infoJSON){
 
     license_ip_info_t *license_ip_info_local_var = NULL;
 
+    char *title_local_str = NULL;
+
     // define the local list for license_ip_info->rows
     list_t *rowsList = NULL;
 
@@ -135,13 +140,23 @@ license_ip_info_t *license_ip_info_parseFromJSON(cJSON *license_ip_infoJSON){
     }
 
 
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     license_ip_info_local_var = license_ip_info_create_internal (
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        title_local_str,
         rows ? rowsList : NULL
         );
 
+    if (!license_ip_info_local_var) {
+        goto end;
+    }
+
     return license_ip_info_local_var;
 end:
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     if (rowsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, rowsList) {

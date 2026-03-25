@@ -34,13 +34,13 @@ class OAIQuickserverAddonsRow;
 class OAIQuickserverAddons : public OAIObject {
 public:
     OAIQuickserverAddons();
-    OAIQuickserverAddons(QString json);
+    OAIQuickserverAddons(const QString &json);
     ~OAIQuickserverAddons() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTitle() const;
     void setTitle(const QString &title);

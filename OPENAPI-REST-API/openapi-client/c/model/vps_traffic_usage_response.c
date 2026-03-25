@@ -14,11 +14,11 @@ static vps_traffic_usage_response_t *vps_traffic_usage_response_create_internal(
     if (!vps_traffic_usage_response_local_var) {
         return NULL;
     }
+    memset(vps_traffic_usage_response_local_var, 0, sizeof(vps_traffic_usage_response_t));
+    vps_traffic_usage_response_local_var->_library_owned = 1;
     vps_traffic_usage_response_local_var->current = current;
     vps_traffic_usage_response_local_var->peak = peak;
     vps_traffic_usage_response_local_var->average = average;
-
-    vps_traffic_usage_response_local_var->_library_owned = 1;
     return vps_traffic_usage_response_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) vps_traffic_usage_response_t *vps_traffic_usage_resp
     vps_traffic_totals_section_response_t *peak,
     vps_traffic_usage_average_response_t *average
     ) {
-    return vps_traffic_usage_response_create_internal (
+    vps_traffic_usage_response_t *result = vps_traffic_usage_response_create_internal (
         current,
         peak,
         average
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_traffic_usage_response_free(vps_traffic_usage_response_t *vps_traffic_usage_response) {
@@ -160,11 +163,16 @@ vps_traffic_usage_response_t *vps_traffic_usage_response_parseFromJSON(cJSON *vp
     average_local_nonprim = vps_traffic_usage_average_response_parseFromJSON(average); //nonprimitive
 
 
+
     vps_traffic_usage_response_local_var = vps_traffic_usage_response_create_internal (
         current_local_nonprim,
         peak_local_nonprim,
         average_local_nonprim
         );
+
+    if (!vps_traffic_usage_response_local_var) {
+        goto end;
+    }
 
     return vps_traffic_usage_response_local_var;
 end:

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserverOrder_server_details::OAIQuickserverOrder_server_details(QString json) {
+OAIQuickserverOrder_server_details::OAIQuickserverOrder_server_details(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIQuickserverOrder_server_details::initializeModel() {
     m_r_381_isValid = false;
 }
 
-void OAIQuickserverOrder_server_details::fromJson(QString jsonString) {
+void OAIQuickserverOrder_server_details::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

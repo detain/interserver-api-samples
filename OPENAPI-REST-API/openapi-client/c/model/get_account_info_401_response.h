@@ -19,14 +19,14 @@ typedef struct get_account_info_401_response_t get_account_info_401_response_t;
 
 
 typedef struct get_account_info_401_response_t {
-    int code; //numeric
+    int *code; //numeric
     char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } get_account_info_401_response_t;
 
 __attribute__((deprecated)) get_account_info_401_response_t *get_account_info_401_response_create(
-    int code,
+    int *code,
     char *message
 );
 

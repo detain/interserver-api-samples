@@ -12,18 +12,21 @@ static server_order_cpu_li_t *server_order_cpu_li_create_internal(
     if (!server_order_cpu_li_local_var) {
         return NULL;
     }
-    server_order_cpu_li_local_var->_254 = _254;
-
+    memset(server_order_cpu_li_local_var, 0, sizeof(server_order_cpu_li_t));
     server_order_cpu_li_local_var->_library_owned = 1;
+    server_order_cpu_li_local_var->_254 = _254;
     return server_order_cpu_li_local_var;
 }
 
 __attribute__((deprecated)) server_order_cpu_li_t *server_order_cpu_li_create(
     server_order_cpu_t *_254
     ) {
-    return server_order_cpu_li_create_internal (
+    server_order_cpu_li_t *result = server_order_cpu_li_create_internal (
         _254
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_order_cpu_li_free(server_order_cpu_li_t *server_order_cpu_li) {
@@ -82,9 +85,14 @@ server_order_cpu_li_t *server_order_cpu_li_parseFromJSON(cJSON *server_order_cpu
     }
 
 
+
     server_order_cpu_li_local_var = server_order_cpu_li_create_internal (
         _254 ? _254_local_nonprim : NULL
         );
+
+    if (!server_order_cpu_li_local_var) {
+        goto end;
+    }
 
     return server_order_cpu_li_local_var;
 end:

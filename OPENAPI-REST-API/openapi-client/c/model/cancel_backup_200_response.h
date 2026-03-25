@@ -19,14 +19,14 @@ typedef struct cancel_backup_200_response_t cancel_backup_200_response_t;
 
 
 typedef struct cancel_backup_200_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } cancel_backup_200_response_t;
 
 __attribute__((deprecated)) cancel_backup_200_response_t *cancel_backup_200_response_create(
-    int success,
+    int *success,
     char *text
 );
 

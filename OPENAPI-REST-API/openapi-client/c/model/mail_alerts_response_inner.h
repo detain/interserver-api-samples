@@ -19,7 +19,7 @@ typedef struct mail_alerts_response_inner_t mail_alerts_response_inner_t;
 
 
 typedef struct mail_alerts_response_inner_t {
-    int alert_id; //numeric
+    int *alert_id; //numeric
     char *alert_type; // string
     char *alert_value; // string
     char *alert_to; // string
@@ -29,7 +29,7 @@ typedef struct mail_alerts_response_inner_t {
 } mail_alerts_response_inner_t;
 
 __attribute__((deprecated)) mail_alerts_response_inner_t *mail_alerts_response_inner_create(
-    int alert_id,
+    int *alert_id,
     char *alert_type,
     char *alert_value,
     char *alert_to,

@@ -194,10 +194,6 @@ class LicenseServiceType {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LicenseServiceType[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LicenseServiceType[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

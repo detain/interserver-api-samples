@@ -32,13 +32,13 @@ class OAILicenseIpInfo;
 class OAILicense_extraInfoTables : public OAIObject {
 public:
     OAILicense_extraInfoTables();
-    OAILicense_extraInfoTables(QString json);
+    OAILicense_extraInfoTables(const QString &json);
     ~OAILicense_extraInfoTables() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAILicenseIpInfo getIpInfo() const;
     void setIpInfo(const OAILicenseIpInfo &ip_info);

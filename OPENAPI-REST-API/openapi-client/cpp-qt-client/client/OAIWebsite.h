@@ -43,13 +43,13 @@ class OAIWebsiteExtraInfoTables;
 class OAIWebsite : public OAIObject {
 public:
     OAIWebsite();
-    OAIWebsite(QString json);
+    OAIWebsite(const QString &json);
     ~OAIWebsite() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIWebsiteServiceInfo getServiceInfo() const;
     void setServiceInfo(const OAIWebsiteServiceInfo &service_info);

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBackupOrderPostResponse::OAIBackupOrderPostResponse(QString json) {
+OAIBackupOrderPostResponse::OAIBackupOrderPostResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIBackupOrderPostResponse::initializeModel() {
     m_cj_params_isValid = false;
 }
 
-void OAIBackupOrderPostResponse::fromJson(QString jsonString) {
+void OAIBackupOrderPostResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

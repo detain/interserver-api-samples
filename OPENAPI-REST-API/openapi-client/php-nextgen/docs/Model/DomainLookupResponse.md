@@ -1,4 +1,4 @@
-# # DomainLookupResponse
+# DomainLookupResponse
 
 ## Properties
 

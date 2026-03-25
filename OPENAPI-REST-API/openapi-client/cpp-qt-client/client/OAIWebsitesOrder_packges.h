@@ -32,13 +32,13 @@ class OAIWebsitesOrderPackagesInfo;
 class OAIWebsitesOrder_packges : public OAIObject {
 public:
     OAIWebsitesOrder_packges();
-    OAIWebsitesOrder_packges(QString json);
+    OAIWebsitesOrder_packges(const QString &json);
     ~OAIWebsitesOrder_packges() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIWebsitesOrderPackagesInfo getR11440() const;
     void setR11440(const OAIWebsitesOrderPackagesInfo &r_11440);

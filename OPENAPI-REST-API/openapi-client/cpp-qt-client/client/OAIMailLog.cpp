@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailLog::OAIMailLog(QString json) {
+OAIMailLog::OAIMailLog(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIMailLog::initializeModel() {
     m_emails_isValid = false;
 }
 
-void OAIMailLog::fromJson(QString jsonString) {
+void OAIMailLog::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

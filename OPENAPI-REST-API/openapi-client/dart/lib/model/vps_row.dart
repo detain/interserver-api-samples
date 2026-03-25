@@ -97,10 +97,22 @@ class VpsRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsRow[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'vps_id'), 'Required key "VpsRow[vps_id]" is missing from JSON.');
+        assert(json[r'vps_id'] != null, 'Required key "VpsRow[vps_id]" has a null value in JSON.');
+        assert(json.containsKey(r'vps_name'), 'Required key "VpsRow[vps_name]" is missing from JSON.');
+        assert(json[r'vps_name'] != null, 'Required key "VpsRow[vps_name]" has a null value in JSON.');
+        assert(json.containsKey(r'repeat_invoices_cost'), 'Required key "VpsRow[repeat_invoices_cost]" is missing from JSON.');
+        assert(json[r'repeat_invoices_cost'] != null, 'Required key "VpsRow[repeat_invoices_cost]" has a null value in JSON.');
+        assert(json.containsKey(r'vps_hostname'), 'Required key "VpsRow[vps_hostname]" is missing from JSON.');
+        assert(json[r'vps_hostname'] != null, 'Required key "VpsRow[vps_hostname]" has a null value in JSON.');
+        assert(json.containsKey(r'vps_ip'), 'Required key "VpsRow[vps_ip]" is missing from JSON.');
+        assert(json[r'vps_ip'] != null, 'Required key "VpsRow[vps_ip]" has a null value in JSON.');
+        assert(json.containsKey(r'vps_status'), 'Required key "VpsRow[vps_status]" is missing from JSON.');
+        assert(json[r'vps_status'] != null, 'Required key "VpsRow[vps_status]" has a null value in JSON.');
+        assert(json.containsKey(r'services_name'), 'Required key "VpsRow[services_name]" is missing from JSON.');
+        assert(json[r'services_name'] != null, 'Required key "VpsRow[services_name]" has a null value in JSON.');
+        assert(json.containsKey(r'vps_comment'), 'Required key "VpsRow[vps_comment]" is missing from JSON.');
+        assert(json[r'vps_comment'] != null, 'Required key "VpsRow[vps_comment]" has a null value in JSON.');
         return true;
       }());
 

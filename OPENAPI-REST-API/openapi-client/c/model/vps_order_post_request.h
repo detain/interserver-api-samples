@@ -36,10 +36,10 @@ interserver_management_api_vps_order_post_request_CONTROLPANEL_e vps_order_post_
 
 typedef struct vps_order_post_request_t {
     char *os_distro; // string
-    int slices; //numeric
+    int *slices; //numeric
     interserver_management_api_vps_order_post_request_VPSPLATFORM_e vps_platform; //enum
-    int period; //numeric
-    int location; //numeric
+    int *period; //numeric
+    int *location; //numeric
     char *os_version; // string
     char *hostname; // string
     char *rootpass; // string
@@ -52,10 +52,10 @@ typedef struct vps_order_post_request_t {
 
 __attribute__((deprecated)) vps_order_post_request_t *vps_order_post_request_create(
     char *os_distro,
-    int slices,
+    int *slices,
     interserver_management_api_vps_order_post_request_VPSPLATFORM_e vps_platform,
-    int period,
-    int location,
+    int *period,
+    int *location,
     char *os_version,
     char *hostname,
     char *rootpass,

@@ -31,11 +31,11 @@ static deny_rule_new_t *deny_rule_new_create_internal(
     if (!deny_rule_new_local_var) {
         return NULL;
     }
+    memset(deny_rule_new_local_var, 0, sizeof(deny_rule_new_t));
+    deny_rule_new_local_var->_library_owned = 1;
     deny_rule_new_local_var->type = type;
     deny_rule_new_local_var->data = data;
     deny_rule_new_local_var->user = user;
-
-    deny_rule_new_local_var->_library_owned = 1;
     return deny_rule_new_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) deny_rule_new_t *deny_rule_new_create(
     char *data,
     char *user
     ) {
-    return deny_rule_new_create_internal (
+    deny_rule_new_t *result = deny_rule_new_create_internal (
         type,
         data,
         user
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void deny_rule_new_free(deny_rule_new_t *deny_rule_new) {
@@ -112,6 +115,10 @@ deny_rule_new_t *deny_rule_new_parseFromJSON(cJSON *deny_rule_newJSON){
 
     deny_rule_new_t *deny_rule_new_local_var = NULL;
 
+    char *data_local_str = NULL;
+
+    char *user_local_str = NULL;
+
     // deny_rule_new->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(deny_rule_newJSON, "type");
     if (cJSON_IsNull(type)) {
@@ -157,14 +164,29 @@ deny_rule_new_t *deny_rule_new_parseFromJSON(cJSON *deny_rule_newJSON){
     }
 
 
+    if (data && !cJSON_IsNull(data)) data_local_str = strdup(data->valuestring);
+    if (user && !cJSON_IsNull(user)) user_local_str = strdup(user->valuestring);
+
     deny_rule_new_local_var = deny_rule_new_create_internal (
         typeVariable,
-        strdup(data->valuestring),
-        user && !cJSON_IsNull(user) ? strdup(user->valuestring) : NULL
+        data_local_str,
+        user_local_str
         );
+
+    if (!deny_rule_new_local_var) {
+        goto end;
+    }
 
     return deny_rule_new_local_var;
 end:
+    if (data_local_str) {
+        free(data_local_str);
+        data_local_str = NULL;
+    }
+    if (user_local_str) {
+        free(user_local_str);
+        user_local_str = NULL;
+    }
     return NULL;
 
 }

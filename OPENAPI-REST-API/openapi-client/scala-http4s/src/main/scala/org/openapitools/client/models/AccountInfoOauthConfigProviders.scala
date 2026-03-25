@@ -12,14 +12,15 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 import org.openapitools.client.models.AccountInfoOauthproviders
 
 /** Map of OAuth providers and their linked status on the account.
   */
 case class AccountInfoOauthConfigProviders(
-)
+) extends AccountInfoOauthproviders
   
 object AccountInfoOauthConfigProviders {
   given encoderAccountInfoOauthConfigProviders: Encoder[AccountInfoOauthConfigProviders] = Encoder.instance { t =>

@@ -394,6 +394,7 @@ docs/VPSApi.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -861,6 +862,7 @@ src/PSOpenAPITools/Model/UrlRequest.ps1
 src/PSOpenAPITools/Model/VPSCancel200Response.ps1
 src/PSOpenAPITools/Model/VPSTrafficDataDataSectionResponse.ps1
 src/PSOpenAPITools/Model/VPSTrafficDataDataSectionResponseInner.ps1
+src/PSOpenAPITools/Model/ViewMailLogStartDateParameter.ps1
 src/PSOpenAPITools/Model/ViewTicketResponse.ps1
 src/PSOpenAPITools/Model/Vps.ps1
 src/PSOpenAPITools/Model/VpsBackupRow.ps1
@@ -1333,6 +1335,7 @@ tests/Model/UrlRequest.Tests.ps1
 tests/Model/VPSCancel200Response.Tests.ps1
 tests/Model/VPSTrafficDataDataSectionResponse.Tests.ps1
 tests/Model/VPSTrafficDataDataSectionResponseInner.Tests.ps1
+tests/Model/ViewMailLogStartDateParameter.Tests.ps1
 tests/Model/ViewTicketResponse.Tests.ps1
 tests/Model/Vps.Tests.ps1
 tests/Model/VpsBackupRow.Tests.ps1

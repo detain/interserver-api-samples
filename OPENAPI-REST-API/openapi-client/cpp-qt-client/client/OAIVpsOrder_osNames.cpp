@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder_osNames::OAIVpsOrder_osNames(QString json) {
+OAIVpsOrder_osNames::OAIVpsOrder_osNames(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIVpsOrder_osNames::initializeModel() {
     m_ubuntu_isValid = false;
 }
 
-void OAIVpsOrder_osNames::fromJson(QString jsonString) {
+void OAIVpsOrder_osNames::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

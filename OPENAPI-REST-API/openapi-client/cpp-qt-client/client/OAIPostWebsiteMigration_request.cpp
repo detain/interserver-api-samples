@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIPostWebsiteMigration_request::OAIPostWebsiteMigration_request(QString json) {
+OAIPostWebsiteMigration_request::OAIPostWebsiteMigration_request(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -74,7 +74,7 @@ void OAIPostWebsiteMigration_request::initializeModel() {
     m_domain_reg_password_isValid = false;
 }
 
-void OAIPostWebsiteMigration_request::fromJson(QString jsonString) {
+void OAIPostWebsiteMigration_request::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

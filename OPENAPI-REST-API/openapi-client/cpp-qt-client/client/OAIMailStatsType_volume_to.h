@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIMailStatsType_volume_to : public OAIObject {
 public:
     OAIMailStatsType_volume_to();
-    OAIMailStatsType_volume_to(QString json);
+    OAIMailStatsType_volume_to(const QString &json);
     ~OAIMailStatsType_volume_to() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getClientdomainCom() const;
     void setClientdomainCom(const qint32 &clientdomain_com);

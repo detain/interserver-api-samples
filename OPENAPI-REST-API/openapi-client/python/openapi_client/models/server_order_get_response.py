@@ -30,6 +30,7 @@ from openapi_client.models.form_values import FormValues
 from openapi_client.models.region import Region
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ServerOrderGetResponse(BaseModel):
     """
@@ -57,7 +58,8 @@ class ServerOrderGetResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["form_values", "config_ids", "cpu", "cpu_li", "config_li", "field_label", "cpu_cores", "frequency", "currency", "currencySymbol", "country", "custid", "ima", "step", "regions", "asset_servers", "buy_it_servers", "display_showmore", "cust_discount"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -69,8 +71,7 @@ class ServerOrderGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -118,13 +119,15 @@ class ServerOrderGetResponse(BaseModel):
                 if self.field_label[_key_field_label]:
                     _field_dict[_key_field_label] = self.field_label[_key_field_label].to_dict()
             _dict['field_label'] = _field_dict
-        # override the default output from pydantic by calling `to_dict()` of each value in cpu_cores (dict)
-        _field_dict = {}
+        # override the default output from pydantic by calling `to_dict()` of each value in cpu_cores (dict of dict)
+        _field_dict_of_dict = {}
         if self.cpu_cores:
-            for _key_cpu_cores in self.cpu_cores:
-                if self.cpu_cores[_key_cpu_cores]:
-                    _field_dict[_key_cpu_cores] = self.cpu_cores[_key_cpu_cores].to_dict()
-            _dict['cpu_cores'] = _field_dict
+            for _key_cpu_cores, _value_cpu_cores in self.cpu_cores.items():
+                if _value_cpu_cores is not None:
+                    _field_dict_of_dict[_key_cpu_cores] = {
+                        _key: _value.to_dict() for _key, _value in _value_cpu_cores.items()
+                    }
+            _dict['cpu_cores'] = _field_dict_of_dict
         # override the default output from pydantic by calling `to_dict()` of each item in regions (list)
         _items = []
         if self.regions:
@@ -175,7 +178,7 @@ class ServerOrderGetResponse(BaseModel):
                     if _v is not None
                     else None
                 )
-                for _k, _v in obj.get("cpu_cores").items()
+                for _k, _v in obj["cpu_cores"].items()
             )
             if obj.get("cpu_cores") is not None
             else None,

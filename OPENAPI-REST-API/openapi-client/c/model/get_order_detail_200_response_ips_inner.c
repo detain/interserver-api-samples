@@ -6,7 +6,7 @@
 
 
 static get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inner_create_internal(
-    double service_id,
+    double *service_id,
     char *service_module,
     char *service_hostname
     ) {
@@ -14,24 +14,33 @@ static get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_
     if (!get_order_detail_200_response_ips_inner_local_var) {
         return NULL;
     }
+    memset(get_order_detail_200_response_ips_inner_local_var, 0, sizeof(get_order_detail_200_response_ips_inner_t));
+    get_order_detail_200_response_ips_inner_local_var->_library_owned = 1;
     get_order_detail_200_response_ips_inner_local_var->service_id = service_id;
     get_order_detail_200_response_ips_inner_local_var->service_module = service_module;
     get_order_detail_200_response_ips_inner_local_var->service_hostname = service_hostname;
-
-    get_order_detail_200_response_ips_inner_local_var->_library_owned = 1;
     return get_order_detail_200_response_ips_inner_local_var;
 }
 
 __attribute__((deprecated)) get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inner_create(
-    double service_id,
+    double *service_id,
     char *service_module,
     char *service_hostname
     ) {
-    return get_order_detail_200_response_ips_inner_create_internal (
-        service_id,
+    double *service_id_copy = NULL;
+    if (service_id) {
+        service_id_copy = malloc(sizeof(double));
+        if (service_id_copy) *service_id_copy = *service_id;
+    }
+    get_order_detail_200_response_ips_inner_t *result = get_order_detail_200_response_ips_inner_create_internal (
+        service_id_copy,
         service_module,
         service_hostname
         );
+    if (!result) {
+        free(service_id_copy);
+    }
+    return result;
 }
 
 void get_order_detail_200_response_ips_inner_free(get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inner) {
@@ -43,6 +52,10 @@ void get_order_detail_200_response_ips_inner_free(get_order_detail_200_response_
         return ;
     }
     listEntry_t *listEntry;
+    if (get_order_detail_200_response_ips_inner->service_id) {
+        free(get_order_detail_200_response_ips_inner->service_id);
+        get_order_detail_200_response_ips_inner->service_id = NULL;
+    }
     if (get_order_detail_200_response_ips_inner->service_module) {
         free(get_order_detail_200_response_ips_inner->service_module);
         get_order_detail_200_response_ips_inner->service_module = NULL;
@@ -59,7 +72,7 @@ cJSON *get_order_detail_200_response_ips_inner_convertToJSON(get_order_detail_20
 
     // get_order_detail_200_response_ips_inner->service_id
     if(get_order_detail_200_response_ips_inner->service_id) {
-    if(cJSON_AddNumberToObject(item, "service_id", get_order_detail_200_response_ips_inner->service_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "service_id", *get_order_detail_200_response_ips_inner->service_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -92,6 +105,13 @@ get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inn
 
     get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inner_local_var = NULL;
 
+    // define the local variable for get_order_detail_200_response_ips_inner->service_id
+    double *service_id_local_var = NULL;
+
+    char *service_module_local_str = NULL;
+
+    char *service_hostname_local_str = NULL;
+
     // get_order_detail_200_response_ips_inner->service_id
     cJSON *service_id = cJSON_GetObjectItemCaseSensitive(get_order_detail_200_response_ips_innerJSON, "service_id");
     if (cJSON_IsNull(service_id)) {
@@ -102,6 +122,12 @@ get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inn
     {
     goto end; //Numeric
     }
+    service_id_local_var = malloc(sizeof(double));
+    if(!service_id_local_var)
+    {
+        goto end;
+    }
+    *service_id_local_var = service_id->valuedouble;
     }
 
     // get_order_detail_200_response_ips_inner->service_module
@@ -129,14 +155,33 @@ get_order_detail_200_response_ips_inner_t *get_order_detail_200_response_ips_inn
     }
 
 
+    if (service_module && !cJSON_IsNull(service_module)) service_module_local_str = strdup(service_module->valuestring);
+    if (service_hostname && !cJSON_IsNull(service_hostname)) service_hostname_local_str = strdup(service_hostname->valuestring);
+
     get_order_detail_200_response_ips_inner_local_var = get_order_detail_200_response_ips_inner_create_internal (
-        service_id ? service_id->valuedouble : 0,
-        service_module && !cJSON_IsNull(service_module) ? strdup(service_module->valuestring) : NULL,
-        service_hostname && !cJSON_IsNull(service_hostname) ? strdup(service_hostname->valuestring) : NULL
+        service_id_local_var,
+        service_module_local_str,
+        service_hostname_local_str
         );
+
+    if (!get_order_detail_200_response_ips_inner_local_var) {
+        goto end;
+    }
 
     return get_order_detail_200_response_ips_inner_local_var;
 end:
+    if (service_id_local_var) {
+        free(service_id_local_var);
+        service_id_local_var = NULL;
+    }
+    if (service_module_local_str) {
+        free(service_module_local_str);
+        service_module_local_str = NULL;
+    }
+    if (service_hostname_local_str) {
+        free(service_hostname_local_str);
+        service_hostname_local_str = NULL;
+    }
     return NULL;
 
 }

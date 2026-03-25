@@ -10,7 +10,7 @@ static home_t *home_create_internal(
     char *last_login,
     char *currency,
     char *amount,
-    int invoice_list,
+    int *invoice_list,
     char *balance,
     char *full_name,
     char *email,
@@ -25,6 +25,8 @@ static home_t *home_create_internal(
     if (!home_local_var) {
         return NULL;
     }
+    memset(home_local_var, 0, sizeof(home_t));
+    home_local_var->_library_owned = 1;
     home_local_var->last_login_ip = last_login_ip;
     home_local_var->last_login = last_login;
     home_local_var->currency = currency;
@@ -39,8 +41,6 @@ static home_t *home_create_internal(
     home_local_var->details = details;
     home_local_var->services = services;
     home_local_var->affiliate_amount = affiliate_amount;
-
-    home_local_var->_library_owned = 1;
     return home_local_var;
 }
 
@@ -49,7 +49,7 @@ __attribute__((deprecated)) home_t *home_create(
     char *last_login,
     char *currency,
     char *amount,
-    int invoice_list,
+    int *invoice_list,
     char *balance,
     char *full_name,
     char *email,
@@ -60,12 +60,17 @@ __attribute__((deprecated)) home_t *home_create(
     home_services_t *services,
     char *affiliate_amount
     ) {
-    return home_create_internal (
+    int *invoice_list_copy = NULL;
+    if (invoice_list) {
+        invoice_list_copy = malloc(sizeof(int));
+        if (invoice_list_copy) *invoice_list_copy = *invoice_list;
+    }
+    home_t *result = home_create_internal (
         last_login_ip,
         last_login,
         currency,
         amount,
-        invoice_list,
+        invoice_list_copy,
         balance,
         full_name,
         email,
@@ -76,6 +81,10 @@ __attribute__((deprecated)) home_t *home_create(
         services,
         affiliate_amount
         );
+    if (!result) {
+        free(invoice_list_copy);
+    }
+    return result;
 }
 
 void home_free(home_t *home) {
@@ -102,6 +111,10 @@ void home_free(home_t *home) {
     if (home->amount) {
         free(home->amount);
         home->amount = NULL;
+    }
+    if (home->invoice_list) {
+        free(home->invoice_list);
+        home->invoice_list = NULL;
     }
     if (home->balance) {
         free(home->balance);
@@ -188,7 +201,7 @@ cJSON *home_convertToJSON(home_t *home) {
     if (!home->invoice_list) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "invoice_list", home->invoice_list) == NULL) {
+    if(cJSON_AddNumberToObject(item, "invoice_list", *home->invoice_list) == NULL) {
     goto fail; //Numeric
     }
 
@@ -314,6 +327,23 @@ home_t *home_parseFromJSON(cJSON *homeJSON){
 
     home_t *home_local_var = NULL;
 
+    char *last_login_ip_local_str = NULL;
+
+    char *last_login_local_str = NULL;
+
+    char *currency_local_str = NULL;
+
+    char *amount_local_str = NULL;
+
+    // define the local variable for home->invoice_list
+    int *invoice_list_local_var = NULL;
+
+    char *balance_local_str = NULL;
+
+    char *full_name_local_str = NULL;
+
+    char *email_local_str = NULL;
+
     // define the local list for home->tickets
     list_t *ticketsList = NULL;
 
@@ -328,6 +358,8 @@ home_t *home_parseFromJSON(cJSON *homeJSON){
 
     // define the local variable for home->services
     home_services_t *services_local_nonprim = NULL;
+
+    char *affiliate_amount_local_str = NULL;
 
     // home->last_login_ip
     cJSON *last_login_ip = cJSON_GetObjectItemCaseSensitive(homeJSON, "last_login_ip");
@@ -403,6 +435,12 @@ home_t *home_parseFromJSON(cJSON *homeJSON){
     {
     goto end; //Numeric
     }
+    invoice_list_local_var = malloc(sizeof(int));
+    if(!invoice_list_local_var)
+    {
+        goto end;
+    }
+    *invoice_list_local_var = invoice_list->valuedouble;
 
     // home->balance
     cJSON *balance = cJSON_GetObjectItemCaseSensitive(homeJSON, "balance");
@@ -538,25 +576,70 @@ home_t *home_parseFromJSON(cJSON *homeJSON){
     }
 
 
+    if (last_login_ip && !cJSON_IsNull(last_login_ip)) last_login_ip_local_str = strdup(last_login_ip->valuestring);
+    if (last_login && !cJSON_IsNull(last_login)) last_login_local_str = strdup(last_login->valuestring);
+    if (currency && !cJSON_IsNull(currency)) currency_local_str = strdup(currency->valuestring);
+    if (amount && !cJSON_IsNull(amount)) amount_local_str = strdup(amount->valuestring);
+    if (balance && !cJSON_IsNull(balance)) balance_local_str = strdup(balance->valuestring);
+    if (full_name && !cJSON_IsNull(full_name)) full_name_local_str = strdup(full_name->valuestring);
+    if (email && !cJSON_IsNull(email)) email_local_str = strdup(email->valuestring);
+    if (affiliate_amount && !cJSON_IsNull(affiliate_amount)) affiliate_amount_local_str = strdup(affiliate_amount->valuestring);
+
     home_local_var = home_create_internal (
-        strdup(last_login_ip->valuestring),
-        strdup(last_login->valuestring),
-        strdup(currency->valuestring),
-        strdup(amount->valuestring),
-        invoice_list->valuedouble,
-        strdup(balance->valuestring),
-        strdup(full_name->valuestring),
-        strdup(email->valuestring),
+        last_login_ip_local_str,
+        last_login_local_str,
+        currency_local_str,
+        amount_local_str,
+        invoice_list_local_var,
+        balance_local_str,
+        full_name_local_str,
+        email_local_str,
         ticketsList,
         ticket_status_local_nonprim,
         ticket_status_view_local_nonprim,
         details_local_nonprim,
         services_local_nonprim,
-        strdup(affiliate_amount->valuestring)
+        affiliate_amount_local_str
         );
+
+    if (!home_local_var) {
+        goto end;
+    }
 
     return home_local_var;
 end:
+    if (last_login_ip_local_str) {
+        free(last_login_ip_local_str);
+        last_login_ip_local_str = NULL;
+    }
+    if (last_login_local_str) {
+        free(last_login_local_str);
+        last_login_local_str = NULL;
+    }
+    if (currency_local_str) {
+        free(currency_local_str);
+        currency_local_str = NULL;
+    }
+    if (amount_local_str) {
+        free(amount_local_str);
+        amount_local_str = NULL;
+    }
+    if (invoice_list_local_var) {
+        free(invoice_list_local_var);
+        invoice_list_local_var = NULL;
+    }
+    if (balance_local_str) {
+        free(balance_local_str);
+        balance_local_str = NULL;
+    }
+    if (full_name_local_str) {
+        free(full_name_local_str);
+        full_name_local_str = NULL;
+    }
+    if (email_local_str) {
+        free(email_local_str);
+        email_local_str = NULL;
+    }
     if (ticketsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, ticketsList) {
@@ -581,6 +664,10 @@ end:
     if (services_local_nonprim) {
         home_services_free(services_local_nonprim);
         services_local_nonprim = NULL;
+    }
+    if (affiliate_amount_local_str) {
+        free(affiliate_amount_local_str);
+        affiliate_amount_local_str = NULL;
     }
     return NULL;
 

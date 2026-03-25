@@ -55,10 +55,10 @@ class MailAttachment {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailAttachment[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailAttachment[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'filename'), 'Required key "MailAttachment[filename]" is missing from JSON.');
+        assert(json[r'filename'] != null, 'Required key "MailAttachment[filename]" has a null value in JSON.');
+        assert(json.containsKey(r'data'), 'Required key "MailAttachment[data]" is missing from JSON.');
+        assert(json[r'data'] != null, 'Required key "MailAttachment[data]" has a null value in JSON.');
         return true;
       }());
 

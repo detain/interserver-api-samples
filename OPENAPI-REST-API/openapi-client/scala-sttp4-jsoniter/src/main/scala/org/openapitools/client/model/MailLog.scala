@@ -15,14 +15,14 @@ import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
   /**
    * MailLog
-   * Mail log records
+   * Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
    */
 case class MailLog(
-  /* total number of mail log entries */
+  /* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
   @named("total") total: Int,
-  /* number of emails skipped in listing */
+  /* The `skip` value used for this page (echoed from the request). */
   @named("skip") skip: Int,
-  /* number of emails to return */
+  /* The `limit` value used for this page (echoed from the request). */
   @named("limit") limit: Int,
   @named("emails") emails: Seq[MailLogEntry]
 )

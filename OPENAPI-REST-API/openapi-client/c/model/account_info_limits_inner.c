@@ -13,10 +13,10 @@ static account_info_limits_inner_t *account_info_limits_inner_create_internal(
     if (!account_info_limits_inner_local_var) {
         return NULL;
     }
+    memset(account_info_limits_inner_local_var, 0, sizeof(account_info_limits_inner_t));
+    account_info_limits_inner_local_var->_library_owned = 1;
     account_info_limits_inner_local_var->start = start;
     account_info_limits_inner_local_var->end = end;
-
-    account_info_limits_inner_local_var->_library_owned = 1;
     return account_info_limits_inner_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) account_info_limits_inner_t *account_info_limits_inn
     char *start,
     char *end
     ) {
-    return account_info_limits_inner_create_internal (
+    account_info_limits_inner_t *result = account_info_limits_inner_create_internal (
         start,
         end
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_info_limits_inner_free(account_info_limits_inner_t *account_info_limits_inner) {
@@ -80,6 +83,10 @@ account_info_limits_inner_t *account_info_limits_inner_parseFromJSON(cJSON *acco
 
     account_info_limits_inner_t *account_info_limits_inner_local_var = NULL;
 
+    char *start_local_str = NULL;
+
+    char *end_local_str = NULL;
+
     // account_info_limits_inner->start
     cJSON *start = cJSON_GetObjectItemCaseSensitive(account_info_limits_innerJSON, "start");
     if (cJSON_IsNull(start)) {
@@ -105,13 +112,28 @@ account_info_limits_inner_t *account_info_limits_inner_parseFromJSON(cJSON *acco
     }
 
 
+    if (start && !cJSON_IsNull(start)) start_local_str = strdup(start->valuestring);
+    if (end && !cJSON_IsNull(end)) end_local_str = strdup(end->valuestring);
+
     account_info_limits_inner_local_var = account_info_limits_inner_create_internal (
-        start && !cJSON_IsNull(start) ? strdup(start->valuestring) : NULL,
-        end && !cJSON_IsNull(end) ? strdup(end->valuestring) : NULL
+        start_local_str,
+        end_local_str
         );
+
+    if (!account_info_limits_inner_local_var) {
+        goto end;
+    }
 
     return account_info_limits_inner_local_var;
 end:
+    if (start_local_str) {
+        free(start_local_str);
+        start_local_str = NULL;
+    }
+    if (end_local_str) {
+        free(end_local_str);
+        end_local_str = NULL;
+    }
     return NULL;
 
 }

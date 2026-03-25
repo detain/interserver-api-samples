@@ -11,23 +11,23 @@
  */
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 public class OASMailLog implements OAS.MappedProperties {
     /**
-     * total number of mail log entries
+     * Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
      * @return total
      */
     public Integer total { get; set; }
 
     /**
-     * number of emails skipped in listing
+     * The `skip` value used for this page (echoed from the request).
      * @return skip
      */
     public Integer skip { get; set; }
 
     /**
-     * number of emails to return
+     * The `limit` value used for this page (echoed from the request).
      * @return r_limit
      */
     public Integer r_limit { get; set; }

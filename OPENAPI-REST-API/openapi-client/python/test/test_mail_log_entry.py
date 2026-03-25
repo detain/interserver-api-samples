@@ -51,14 +51,16 @@ class TestMailLogEntry(unittest.TestCase):
                 sending_zone = 'interserver',
                 body_size = 63,
                 seq = 1,
+                delivered = 1,
+                code = 250,
                 recipient = 'client@isp.com',
+                response = '250 2.0.0 Ok queued as C91D83E128C',
                 domain = 'interserver.net',
                 locked = 1,
-                lock_time = 1634215818533,
+                lock_time = '1634215818533',
                 assigned = 'relay1',
                 queued = '2021-10-14T12:50:15.487Z',
-                mx_hostname = 'mx.j.is.cc',
-                response = '250 2.0.0 Ok queued as C91D83E128C'
+                mx_hostname = 'mx.j.is.cc'
             )
         else:
             return MailLogEntry(
@@ -66,24 +68,12 @@ class TestMailLogEntry(unittest.TestCase):
                 id = '17c7eda538e0005d03',
                 var_from = 'person@mysite.com',
                 to = 'client@isp.com',
-                subject = 'sell 0.005 shares',
                 created = '2021-10-14 08:50:10',
                 time = 1634215809,
                 user = 'mb5658',
                 transtype = 'ESMTPSA',
                 origin = '199.231.189.154',
                 interface = 'feeder',
-                sending_zone = 'interserver',
-                body_size = 63,
-                seq = 1,
-                recipient = 'client@isp.com',
-                domain = 'interserver.net',
-                locked = 1,
-                lock_time = 1634215818533,
-                assigned = 'relay1',
-                queued = '2021-10-14T12:50:15.487Z',
-                mx_hostname = 'mx.j.is.cc',
-                response = '250 2.0.0 Ok queued as C91D83E128C',
         )
         """
 

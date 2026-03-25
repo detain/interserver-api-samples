@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILoginSubmissionExample_g_recaptcha_response_dep::OAILoginSubmissionExample_g_recaptcha_response_dep(QString json) {
+OAILoginSubmissionExample_g_recaptcha_response_dep::OAILoginSubmissionExample_g_recaptcha_response_dep(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAILoginSubmissionExample_g_recaptcha_response_dep::initializeModel() {
     m_n_isValid = false;
 }
 
-void OAILoginSubmissionExample_g_recaptcha_response_dep::fromJson(QString jsonString) {
+void OAILoginSubmissionExample_g_recaptcha_response_dep::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

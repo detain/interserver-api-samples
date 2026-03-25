@@ -12,18 +12,21 @@ static url_request_t *url_request_create_internal(
     if (!url_request_local_var) {
         return NULL;
     }
-    url_request_local_var->url = url;
-
+    memset(url_request_local_var, 0, sizeof(url_request_t));
     url_request_local_var->_library_owned = 1;
+    url_request_local_var->url = url;
     return url_request_local_var;
 }
 
 __attribute__((deprecated)) url_request_t *url_request_create(
     char *url
     ) {
-    return url_request_create_internal (
+    url_request_t *result = url_request_create_internal (
         url
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void url_request_free(url_request_t *url_request) {
@@ -64,6 +67,8 @@ url_request_t *url_request_parseFromJSON(cJSON *url_requestJSON){
 
     url_request_t *url_request_local_var = NULL;
 
+    char *url_local_str = NULL;
+
     // url_request->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(url_requestJSON, "url");
     if (cJSON_IsNull(url)) {
@@ -77,12 +82,22 @@ url_request_t *url_request_parseFromJSON(cJSON *url_requestJSON){
     }
 
 
+    if (url && !cJSON_IsNull(url)) url_local_str = strdup(url->valuestring);
+
     url_request_local_var = url_request_create_internal (
-        url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL
+        url_local_str
         );
+
+    if (!url_request_local_var) {
+        goto end;
+    }
 
     return url_request_local_var;
 end:
+    if (url_local_str) {
+        free(url_local_str);
+        url_local_str = NULL;
+    }
     return NULL;
 
 }

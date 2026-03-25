@@ -20,16 +20,16 @@ typedef struct vps_snapshot_t vps_snapshot_t;
 
 typedef struct vps_snapshot_t {
     char *name; // string
-    int used; //numeric
-    int date; //numeric
+    int *used; //numeric
+    int *date; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_snapshot_t;
 
 __attribute__((deprecated)) vps_snapshot_t *vps_snapshot_create(
     char *name,
-    int used,
-    int date
+    int *used,
+    int *date
 );
 
 void vps_snapshot_free(vps_snapshot_t *vps_snapshot);

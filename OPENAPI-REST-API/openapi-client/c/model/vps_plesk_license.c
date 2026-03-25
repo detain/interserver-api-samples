@@ -6,36 +6,51 @@
 
 
 static vps_plesk_license_t *vps_plesk_license_create_internal(
-    int id,
+    int *id,
     char *name,
     char *sub_name,
-    int cost
+    int *cost
     ) {
     vps_plesk_license_t *vps_plesk_license_local_var = malloc(sizeof(vps_plesk_license_t));
     if (!vps_plesk_license_local_var) {
         return NULL;
     }
+    memset(vps_plesk_license_local_var, 0, sizeof(vps_plesk_license_t));
+    vps_plesk_license_local_var->_library_owned = 1;
     vps_plesk_license_local_var->id = id;
     vps_plesk_license_local_var->name = name;
     vps_plesk_license_local_var->sub_name = sub_name;
     vps_plesk_license_local_var->cost = cost;
-
-    vps_plesk_license_local_var->_library_owned = 1;
     return vps_plesk_license_local_var;
 }
 
 __attribute__((deprecated)) vps_plesk_license_t *vps_plesk_license_create(
-    int id,
+    int *id,
     char *name,
     char *sub_name,
-    int cost
+    int *cost
     ) {
-    return vps_plesk_license_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    int *cost_copy = NULL;
+    if (cost) {
+        cost_copy = malloc(sizeof(int));
+        if (cost_copy) *cost_copy = *cost;
+    }
+    vps_plesk_license_t *result = vps_plesk_license_create_internal (
+        id_copy,
         name,
         sub_name,
-        cost
+        cost_copy
         );
+    if (!result) {
+        free(id_copy);
+        free(cost_copy);
+    }
+    return result;
 }
 
 void vps_plesk_license_free(vps_plesk_license_t *vps_plesk_license) {
@@ -47,6 +62,10 @@ void vps_plesk_license_free(vps_plesk_license_t *vps_plesk_license) {
         return ;
     }
     listEntry_t *listEntry;
+    if (vps_plesk_license->id) {
+        free(vps_plesk_license->id);
+        vps_plesk_license->id = NULL;
+    }
     if (vps_plesk_license->name) {
         free(vps_plesk_license->name);
         vps_plesk_license->name = NULL;
@@ -54,6 +73,10 @@ void vps_plesk_license_free(vps_plesk_license_t *vps_plesk_license) {
     if (vps_plesk_license->sub_name) {
         free(vps_plesk_license->sub_name);
         vps_plesk_license->sub_name = NULL;
+    }
+    if (vps_plesk_license->cost) {
+        free(vps_plesk_license->cost);
+        vps_plesk_license->cost = NULL;
     }
     free(vps_plesk_license);
 }
@@ -63,7 +86,7 @@ cJSON *vps_plesk_license_convertToJSON(vps_plesk_license_t *vps_plesk_license) {
 
     // vps_plesk_license->id
     if(vps_plesk_license->id) {
-    if(cJSON_AddNumberToObject(item, "id", vps_plesk_license->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *vps_plesk_license->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -87,7 +110,7 @@ cJSON *vps_plesk_license_convertToJSON(vps_plesk_license_t *vps_plesk_license) {
 
     // vps_plesk_license->cost
     if(vps_plesk_license->cost) {
-    if(cJSON_AddNumberToObject(item, "cost", vps_plesk_license->cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cost", *vps_plesk_license->cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -104,6 +127,16 @@ vps_plesk_license_t *vps_plesk_license_parseFromJSON(cJSON *vps_plesk_licenseJSO
 
     vps_plesk_license_t *vps_plesk_license_local_var = NULL;
 
+    // define the local variable for vps_plesk_license->id
+    int *id_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    char *sub_name_local_str = NULL;
+
+    // define the local variable for vps_plesk_license->cost
+    int *cost_local_var = NULL;
+
     // vps_plesk_license->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(vps_plesk_licenseJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -114,6 +147,12 @@ vps_plesk_license_t *vps_plesk_license_parseFromJSON(cJSON *vps_plesk_licenseJSO
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // vps_plesk_license->name
@@ -150,18 +189,47 @@ vps_plesk_license_t *vps_plesk_license_parseFromJSON(cJSON *vps_plesk_licenseJSO
     {
     goto end; //Numeric
     }
+    cost_local_var = malloc(sizeof(int));
+    if(!cost_local_var)
+    {
+        goto end;
+    }
+    *cost_local_var = cost->valuedouble;
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (sub_name && !cJSON_IsNull(sub_name)) sub_name_local_str = strdup(sub_name->valuestring);
+
     vps_plesk_license_local_var = vps_plesk_license_create_internal (
-        id ? id->valuedouble : 0,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        sub_name && !cJSON_IsNull(sub_name) ? strdup(sub_name->valuestring) : NULL,
-        cost ? cost->valuedouble : 0
+        id_local_var,
+        name_local_str,
+        sub_name_local_str,
+        cost_local_var
         );
+
+    if (!vps_plesk_license_local_var) {
+        goto end;
+    }
 
     return vps_plesk_license_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (sub_name_local_str) {
+        free(sub_name_local_str);
+        sub_name_local_str = NULL;
+    }
+    if (cost_local_var) {
+        free(cost_local_var);
+        cost_local_var = NULL;
+    }
     return NULL;
 
 }

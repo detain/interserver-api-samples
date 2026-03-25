@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBackupIPInfoRow::OAIBackupIPInfoRow(QString json) {
+OAIBackupIPInfoRow::OAIBackupIPInfoRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIBackupIPInfoRow::initializeModel() {
     m_value_isValid = false;
 }
 
-void OAIBackupIPInfoRow::fromJson(QString jsonString) {
+void OAIBackupIPInfoRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

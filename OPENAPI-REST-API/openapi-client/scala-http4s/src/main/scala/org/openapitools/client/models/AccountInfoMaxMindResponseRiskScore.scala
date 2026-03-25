@@ -12,25 +12,29 @@ package org.openapitools.client.models
 
 import io.circe.*
 import io.circe.syntax.*
-import io.circe.{Decoder, Encoder}
+import io.circe.{Decoder, DecodingFailure, Encoder}
+import cats.syntax.functor.*
 
 
 /** 
   */
-case class AccountInfoMaxMindResponseRiskScore(
-)
-  
+trait AccountInfoMaxMindResponseRiskScore
 object AccountInfoMaxMindResponseRiskScore {
-  given encoderAccountInfoMaxMindResponseRiskScore: Encoder[AccountInfoMaxMindResponseRiskScore] = Encoder.instance { t =>
-    Json.fromFields{
-      Seq(
-      ).flatten
-    }
+  import io.circe.{ Decoder, Encoder }
+  import io.circe.syntax.*
+  import cats.syntax.functor.*
+
+// no discriminator
+  given encoderAccountInfoMaxMindResponseRiskScore: Encoder[AccountInfoMaxMindResponseRiskScore] = Encoder.instance {
+    case obj: BigDecimal => obj.asJson
+    case obj: String => obj.asJson
   }
-  given decoderAccountInfoMaxMindResponseRiskScore: Decoder[AccountInfoMaxMindResponseRiskScore] = Decoder.instance { c =>
-    for {
-    } yield AccountInfoMaxMindResponseRiskScore(
-    )
-  }
+
+  given decoderAccountInfoMaxMindResponseRiskScore: Decoder[AccountInfoMaxMindResponseRiskScore] =
+    List[Decoder[AccountInfoMaxMindResponseRiskScore]](
+      Decoder[BigDecimal].widen,
+      Decoder[String].widen,
+  ).reduceLeft(_ or _)
 }
+
 

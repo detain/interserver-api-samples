@@ -1,4 +1,4 @@
-# # MailAttachment
+# MailAttachment
 
 ## Properties
 

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIVpsOrder_platformNames : public OAIObject {
 public:
     OAIVpsOrder_platformNames();
-    OAIVpsOrder_platformNames(QString json);
+    OAIVpsOrder_platformNames(const QString &json);
     ~OAIVpsOrder_platformNames() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getKvm() const;
     void setKvm(const QString &kvm);

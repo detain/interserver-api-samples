@@ -1,4 +1,4 @@
-# # VpsServiceInfo
+# VpsServiceInfo
 
 ## Properties
 

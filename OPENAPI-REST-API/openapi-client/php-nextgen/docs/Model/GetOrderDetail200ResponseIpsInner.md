@@ -1,4 +1,4 @@
-# # GetOrderDetail200ResponseIpsInner
+# GetOrderDetail200ResponseIpsInner
 
 ## Properties
 

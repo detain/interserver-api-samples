@@ -334,10 +334,7 @@ NUMBER_0(BigDecimal.valueOf(new BigDecimal("0"))), NUMBER_1(BigDecimal.valueOf(n
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

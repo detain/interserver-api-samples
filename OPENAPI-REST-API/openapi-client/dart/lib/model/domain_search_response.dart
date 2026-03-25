@@ -113,10 +113,6 @@ class DomainSearchResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DomainSearchResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DomainSearchResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -124,8 +120,12 @@ class DomainSearchResponse {
         success: mapValueOfType<bool>(json, r'success'),
         responseText: mapValueOfType<String>(json, r'response_text'),
         responseTime: mapValueOfType<String>(json, r'response_time'),
-        lookup: Object.listFromJson(json[r'lookup']),
-        suggest: Object.listFromJson(json[r'suggest']),
+        lookup: json[r'lookup'] is Iterable
+            ? (json[r'lookup'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
+        suggest: json[r'suggest'] is Iterable
+            ? (json[r'suggest'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
         tlds: json[r'tlds'] is Iterable
             ? (json[r'tlds'] as Iterable).cast<String>().toList(growable: false)
             : const [],

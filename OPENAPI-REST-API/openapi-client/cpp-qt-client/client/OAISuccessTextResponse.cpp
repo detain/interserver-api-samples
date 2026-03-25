@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAISuccessTextResponse::OAISuccessTextResponse(QString json) {
+OAISuccessTextResponse::OAISuccessTextResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAISuccessTextResponse::initializeModel() {
     m_action_isValid = false;
 }
 
-void OAISuccessTextResponse::fromJson(QString jsonString) {
+void OAISuccessTextResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

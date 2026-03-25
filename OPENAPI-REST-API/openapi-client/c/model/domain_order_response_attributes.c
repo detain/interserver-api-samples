@@ -13,10 +13,10 @@ static domain_order_response_attributes_t *domain_order_response_attributes_crea
     if (!domain_order_response_attributes_local_var) {
         return NULL;
     }
+    memset(domain_order_response_attributes_local_var, 0, sizeof(domain_order_response_attributes_t));
+    domain_order_response_attributes_local_var->_library_owned = 1;
     domain_order_response_attributes_local_var->id = id;
     domain_order_response_attributes_local_var->admin_email = admin_email;
-
-    domain_order_response_attributes_local_var->_library_owned = 1;
     return domain_order_response_attributes_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) domain_order_response_attributes_t *domain_order_res
     char *id,
     char *admin_email
     ) {
-    return domain_order_response_attributes_create_internal (
+    domain_order_response_attributes_t *result = domain_order_response_attributes_create_internal (
         id,
         admin_email
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_order_response_attributes_free(domain_order_response_attributes_t *domain_order_response_attributes) {
@@ -80,6 +83,10 @@ domain_order_response_attributes_t *domain_order_response_attributes_parseFromJS
 
     domain_order_response_attributes_t *domain_order_response_attributes_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *admin_email_local_str = NULL;
+
     // domain_order_response_attributes->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(domain_order_response_attributesJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -105,13 +112,28 @@ domain_order_response_attributes_t *domain_order_response_attributes_parseFromJS
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (admin_email && !cJSON_IsNull(admin_email)) admin_email_local_str = strdup(admin_email->valuestring);
+
     domain_order_response_attributes_local_var = domain_order_response_attributes_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        admin_email && !cJSON_IsNull(admin_email) ? strdup(admin_email->valuestring) : NULL
+        id_local_str,
+        admin_email_local_str
         );
+
+    if (!domain_order_response_attributes_local_var) {
+        goto end;
+    }
 
     return domain_order_response_attributes_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (admin_email_local_str) {
+        free(admin_email_local_str);
+        admin_email_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -14,30 +14,32 @@ import options
 
 
 type MailLogEntry* = object
-  ## An email record
-  id*: int ## internal db id
-  id*: string ## mail id
-  `from`*: string ## from address
-  to*: string ## to address
-  subject*: string ## email subject
-  created*: string ## creation date
-  time*: int ## creation timestamp
-  user*: string ## user account
-  transtype*: string ## transaction type
-  origin*: string ## origin ip
-  `interface`*: string ## interface name
-  sendingZone*: string ## sending zone
-  bodySize*: int ## email body size in bytes
-  seq*: int ## index of email in the to adderess list
-  recipient*: string ## to address this email is being sent to
-  domain*: string ## to address domain
-  locked*: int ## locked status
-  lockTime*: int ## lock timestamp
-  assigned*: string ## assigned server
-  queued*: string ## queued timestamp
-  mxHostname*: string ## mx hostname
-  response*: string ## mail delivery response
-  messageId*: Option[string] ## message id
+  ## A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
+  id*: int ## Internal auto-increment database row ID.
+  id*: string ## The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
+  `from`*: string ## SMTP envelope `MAIL FROM` address.
+  to*: string ## SMTP envelope `RCPT TO` address.
+  created*: string ## Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
+  time*: int ## Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
+  user*: string ## The SMTP AUTH username used to submit the message (e.g. `mb5658`).
+  transtype*: string ## SMTP transaction type negotiated with the relay.
+  origin*: string ## IP address of the client that submitted the message to the relay.
+  `interface`*: string ## Relay interface name that accepted the message.
+  subject*: Option[string] ## The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+  messageId*: Option[string] ## The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+  sendingZone*: Option[string] ## The sending zone assigned by the relay for outbound delivery.
+  bodySize*: Option[int] ## Size of the message body in bytes.
+  seq*: Option[int] ## Sequence index of this recipient in a multi-recipient message. Starts at 1.
+  delivered*: Option[int] ## Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+  code*: Option[int] ## The SMTP response code from the destination MX server (e.g. `250`).
+  recipient*: Option[string] ## The specific recipient address this delivery record is for.
+  response*: Option[string] ## The full SMTP response string received from the destination MX server.
+  domain*: Option[string] ## The destination domain for this delivery attempt.
+  locked*: Option[int] ## Whether the queue entry is currently locked for delivery processing.
+  lockTime*: Option[string] ## Millisecond-precision timestamp of the last queue lock acquisition.
+  assigned*: Option[string] ## The relay server node assigned to deliver this message.
+  queued*: Option[string] ## ISO 8601 timestamp when the message was placed into the delivery queue.
+  mxHostname*: Option[string] ## The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
 
 
 # Custom JSON deserialization for MailLogEntry with custom field names
@@ -52,8 +54,6 @@ proc to*(node: JsonNode, T: typedesc[MailLogEntry]): MailLogEntry =
       result.`from` = to(node["from"], string)
     if node.hasKey("to"):
       result.to = to(node["to"], string)
-    if node.hasKey("subject"):
-      result.subject = to(node["subject"], string)
     if node.hasKey("created"):
       result.created = to(node["created"], string)
     if node.hasKey("time"):
@@ -66,30 +66,36 @@ proc to*(node: JsonNode, T: typedesc[MailLogEntry]): MailLogEntry =
       result.origin = to(node["origin"], string)
     if node.hasKey("interface"):
       result.`interface` = to(node["interface"], string)
-    if node.hasKey("sendingZone"):
-      result.sendingZone = to(node["sendingZone"], string)
-    if node.hasKey("bodySize"):
-      result.bodySize = to(node["bodySize"], int)
-    if node.hasKey("seq"):
-      result.seq = to(node["seq"], int)
-    if node.hasKey("recipient"):
-      result.recipient = to(node["recipient"], string)
-    if node.hasKey("domain"):
-      result.domain = to(node["domain"], string)
-    if node.hasKey("locked"):
-      result.locked = to(node["locked"], int)
-    if node.hasKey("lockTime"):
-      result.lockTime = to(node["lockTime"], int)
-    if node.hasKey("assigned"):
-      result.assigned = to(node["assigned"], string)
-    if node.hasKey("queued"):
-      result.queued = to(node["queued"], string)
-    if node.hasKey("mxHostname"):
-      result.mxHostname = to(node["mxHostname"], string)
-    if node.hasKey("response"):
-      result.response = to(node["response"], string)
+    if node.hasKey("subject") and node["subject"].kind != JNull:
+      result.subject = some(to(node["subject"], typeof(result.subject.get())))
     if node.hasKey("messageId") and node["messageId"].kind != JNull:
       result.messageId = some(to(node["messageId"], typeof(result.messageId.get())))
+    if node.hasKey("sendingZone") and node["sendingZone"].kind != JNull:
+      result.sendingZone = some(to(node["sendingZone"], typeof(result.sendingZone.get())))
+    if node.hasKey("bodySize") and node["bodySize"].kind != JNull:
+      result.bodySize = some(to(node["bodySize"], typeof(result.bodySize.get())))
+    if node.hasKey("seq") and node["seq"].kind != JNull:
+      result.seq = some(to(node["seq"], typeof(result.seq.get())))
+    if node.hasKey("delivered") and node["delivered"].kind != JNull:
+      result.delivered = some(to(node["delivered"], typeof(result.delivered.get())))
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("recipient") and node["recipient"].kind != JNull:
+      result.recipient = some(to(node["recipient"], typeof(result.recipient.get())))
+    if node.hasKey("response") and node["response"].kind != JNull:
+      result.response = some(to(node["response"], typeof(result.response.get())))
+    if node.hasKey("domain") and node["domain"].kind != JNull:
+      result.domain = some(to(node["domain"], typeof(result.domain.get())))
+    if node.hasKey("locked") and node["locked"].kind != JNull:
+      result.locked = some(to(node["locked"], typeof(result.locked.get())))
+    if node.hasKey("lockTime") and node["lockTime"].kind != JNull:
+      result.lockTime = some(to(node["lockTime"], typeof(result.lockTime.get())))
+    if node.hasKey("assigned") and node["assigned"].kind != JNull:
+      result.assigned = some(to(node["assigned"], typeof(result.assigned.get())))
+    if node.hasKey("queued") and node["queued"].kind != JNull:
+      result.queued = some(to(node["queued"], typeof(result.queued.get())))
+    if node.hasKey("mxHostname") and node["mxHostname"].kind != JNull:
+      result.mxHostname = some(to(node["mxHostname"], typeof(result.mxHostname.get())))
 
 # Custom JSON serialization for MailLogEntry with custom field names
 proc `%`*(obj: MailLogEntry): JsonNode =
@@ -98,24 +104,40 @@ proc `%`*(obj: MailLogEntry): JsonNode =
   result["id"] = %obj.id
   result["from"] = %obj.`from`
   result["to"] = %obj.to
-  result["subject"] = %obj.subject
   result["created"] = %obj.created
   result["time"] = %obj.time
   result["user"] = %obj.user
   result["transtype"] = %obj.transtype
   result["origin"] = %obj.origin
   result["interface"] = %obj.`interface`
-  result["sendingZone"] = %obj.sendingZone
-  result["bodySize"] = %obj.bodySize
-  result["seq"] = %obj.seq
-  result["recipient"] = %obj.recipient
-  result["domain"] = %obj.domain
-  result["locked"] = %obj.locked
-  result["lockTime"] = %obj.lockTime
-  result["assigned"] = %obj.assigned
-  result["queued"] = %obj.queued
-  result["mxHostname"] = %obj.mxHostname
-  result["response"] = %obj.response
+  if obj.subject.isSome():
+    result["subject"] = %obj.subject.get()
   if obj.messageId.isSome():
     result["messageId"] = %obj.messageId.get()
+  if obj.sendingZone.isSome():
+    result["sendingZone"] = %obj.sendingZone.get()
+  if obj.bodySize.isSome():
+    result["bodySize"] = %obj.bodySize.get()
+  if obj.seq.isSome():
+    result["seq"] = %obj.seq.get()
+  if obj.delivered.isSome():
+    result["delivered"] = %obj.delivered.get()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.recipient.isSome():
+    result["recipient"] = %obj.recipient.get()
+  if obj.response.isSome():
+    result["response"] = %obj.response.get()
+  if obj.domain.isSome():
+    result["domain"] = %obj.domain.get()
+  if obj.locked.isSome():
+    result["locked"] = %obj.locked.get()
+  if obj.lockTime.isSome():
+    result["lockTime"] = %obj.lockTime.get()
+  if obj.assigned.isSome():
+    result["assigned"] = %obj.assigned.get()
+  if obj.queued.isSome():
+    result["queued"] = %obj.queued.get()
+  if obj.mxHostname.isSome():
+    result["mxHostname"] = %obj.mxHostname.get()
 

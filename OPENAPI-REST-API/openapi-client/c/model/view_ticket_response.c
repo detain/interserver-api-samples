@@ -6,7 +6,7 @@
 
 
 static view_ticket_response_t *view_ticket_response_create_internal(
-    int success,
+    int *success,
     ticket_details_t *ticket,
     ticket_custom_field_details_t *ticket_custom_fields,
     ticket_post_details_t *ticket_posts
@@ -15,27 +15,36 @@ static view_ticket_response_t *view_ticket_response_create_internal(
     if (!view_ticket_response_local_var) {
         return NULL;
     }
+    memset(view_ticket_response_local_var, 0, sizeof(view_ticket_response_t));
+    view_ticket_response_local_var->_library_owned = 1;
     view_ticket_response_local_var->success = success;
     view_ticket_response_local_var->ticket = ticket;
     view_ticket_response_local_var->ticket_custom_fields = ticket_custom_fields;
     view_ticket_response_local_var->ticket_posts = ticket_posts;
-
-    view_ticket_response_local_var->_library_owned = 1;
     return view_ticket_response_local_var;
 }
 
 __attribute__((deprecated)) view_ticket_response_t *view_ticket_response_create(
-    int success,
+    int *success,
     ticket_details_t *ticket,
     ticket_custom_field_details_t *ticket_custom_fields,
     ticket_post_details_t *ticket_posts
     ) {
-    return view_ticket_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    view_ticket_response_t *result = view_ticket_response_create_internal (
+        success_copy,
         ticket,
         ticket_custom_fields,
         ticket_posts
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void view_ticket_response_free(view_ticket_response_t *view_ticket_response) {
@@ -47,6 +56,10 @@ void view_ticket_response_free(view_ticket_response_t *view_ticket_response) {
         return ;
     }
     listEntry_t *listEntry;
+    if (view_ticket_response->success) {
+        free(view_ticket_response->success);
+        view_ticket_response->success = NULL;
+    }
     if (view_ticket_response->ticket) {
         ticket_details_free(view_ticket_response->ticket);
         view_ticket_response->ticket = NULL;
@@ -69,7 +82,7 @@ cJSON *view_ticket_response_convertToJSON(view_ticket_response_t *view_ticket_re
     if (!view_ticket_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", view_ticket_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *view_ticket_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -125,6 +138,9 @@ view_ticket_response_t *view_ticket_response_parseFromJSON(cJSON *view_ticket_re
 
     view_ticket_response_t *view_ticket_response_local_var = NULL;
 
+    // define the local variable for view_ticket_response->success
+    int *success_local_var = NULL;
+
     // define the local variable for view_ticket_response->ticket
     ticket_details_t *ticket_local_nonprim = NULL;
 
@@ -148,6 +164,12 @@ view_ticket_response_t *view_ticket_response_parseFromJSON(cJSON *view_ticket_re
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // view_ticket_response->ticket
     cJSON *ticket = cJSON_GetObjectItemCaseSensitive(view_ticket_responseJSON, "ticket");
@@ -180,15 +202,24 @@ view_ticket_response_t *view_ticket_response_parseFromJSON(cJSON *view_ticket_re
     }
 
 
+
     view_ticket_response_local_var = view_ticket_response_create_internal (
-        success->valueint,
+        success_local_var,
         ticket_local_nonprim,
         ticket_custom_fields ? ticket_custom_fields_local_nonprim : NULL,
         ticket_posts ? ticket_posts_local_nonprim : NULL
         );
 
+    if (!view_ticket_response_local_var) {
+        goto end;
+    }
+
     return view_ticket_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
     if (ticket_local_nonprim) {
         ticket_details_free(ticket_local_nonprim);
         ticket_local_nonprim = NULL;

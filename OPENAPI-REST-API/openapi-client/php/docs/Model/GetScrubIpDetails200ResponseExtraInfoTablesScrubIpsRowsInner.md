@@ -1,4 +1,4 @@
-# # GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner
+# GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner
 
 ## Properties
 

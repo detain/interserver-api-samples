@@ -6,9 +6,9 @@
 
 
 static charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_create_internal(
-    double invoices_id,
+    double *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
     char *invoices_currency,
     char *currency_symbol,
@@ -18,6 +18,8 @@ static charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_va
     if (!charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var) {
         return NULL;
     }
+    memset(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var, 0, sizeof(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t));
+    charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->_library_owned = 1;
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->invoices_id = invoices_id;
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->invoices_description = invoices_description;
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->invoices_amount = invoices_amount;
@@ -25,29 +27,42 @@ static charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_va
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->invoices_currency = invoices_currency;
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->currency_symbol = currency_symbol;
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->invoices_date_formatted = invoices_date_formatted;
-
-    charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var->_library_owned = 1;
     return charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var;
 }
 
 __attribute__((deprecated)) charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_create(
-    double invoices_id,
+    double *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
     char *invoices_currency,
     char *currency_symbol,
     char *invoices_date_formatted
     ) {
-    return charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_create_internal (
-        invoices_id,
+    double *invoices_id_copy = NULL;
+    if (invoices_id) {
+        invoices_id_copy = malloc(sizeof(double));
+        if (invoices_id_copy) *invoices_id_copy = *invoices_id;
+    }
+    double *invoices_amount_copy = NULL;
+    if (invoices_amount) {
+        invoices_amount_copy = malloc(sizeof(double));
+        if (invoices_amount_copy) *invoices_amount_copy = *invoices_amount;
+    }
+    charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *result = charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_create_internal (
+        invoices_id_copy,
         invoices_description,
-        invoices_amount,
+        invoices_amount_copy,
         invoices_date,
         invoices_currency,
         currency_symbol,
         invoices_date_formatted
         );
+    if (!result) {
+        free(invoices_id_copy);
+        free(invoices_amount_copy);
+    }
+    return result;
 }
 
 void charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_free(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value) {
@@ -59,9 +74,17 @@ void charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_valu
         return ;
     }
     listEntry_t *listEntry;
+    if (charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id) {
+        free(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id);
+        charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id = NULL;
+    }
     if (charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_description) {
         free(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_description);
         charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_description = NULL;
+    }
+    if (charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount) {
+        free(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount);
+        charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount = NULL;
     }
     if (charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_date) {
         free(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_date);
@@ -87,7 +110,7 @@ cJSON *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_va
 
     // charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id
     if(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id) {
-    if(cJSON_AddNumberToObject(item, "invoices_id", charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "invoices_id", *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -103,7 +126,7 @@ cJSON *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_va
 
     // charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount
     if(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount) {
-    if(cJSON_AddNumberToObject(item, "invoices_amount", charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount) == NULL) {
+    if(cJSON_AddNumberToObject(item, "invoices_amount", *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -152,6 +175,22 @@ charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *
 
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var = NULL;
 
+    // define the local variable for charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id
+    double *invoices_id_local_var = NULL;
+
+    char *invoices_description_local_str = NULL;
+
+    // define the local variable for charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_amount
+    double *invoices_amount_local_var = NULL;
+
+    char *invoices_date_local_str = NULL;
+
+    char *invoices_currency_local_str = NULL;
+
+    char *currency_symbol_local_str = NULL;
+
+    char *invoices_date_formatted_local_str = NULL;
+
     // charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_id
     cJSON *invoices_id = cJSON_GetObjectItemCaseSensitive(charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_valueJSON, "invoices_id");
     if (cJSON_IsNull(invoices_id)) {
@@ -162,6 +201,12 @@ charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *
     {
     goto end; //Numeric
     }
+    invoices_id_local_var = malloc(sizeof(double));
+    if(!invoices_id_local_var)
+    {
+        goto end;
+    }
+    *invoices_id_local_var = invoices_id->valuedouble;
     }
 
     // charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_description
@@ -186,6 +231,12 @@ charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *
     {
     goto end; //Numeric
     }
+    invoices_amount_local_var = malloc(sizeof(double));
+    if(!invoices_amount_local_var)
+    {
+        goto end;
+    }
+    *invoices_amount_local_var = invoices_amount->valuedouble;
     }
 
     // charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value->invoices_date
@@ -237,18 +288,56 @@ charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_t *
     }
 
 
+    if (invoices_description && !cJSON_IsNull(invoices_description)) invoices_description_local_str = strdup(invoices_description->valuestring);
+    if (invoices_date && !cJSON_IsNull(invoices_date)) invoices_date_local_str = strdup(invoices_date->valuestring);
+    if (invoices_currency && !cJSON_IsNull(invoices_currency)) invoices_currency_local_str = strdup(invoices_currency->valuestring);
+    if (currency_symbol && !cJSON_IsNull(currency_symbol)) currency_symbol_local_str = strdup(currency_symbol->valuestring);
+    if (invoices_date_formatted && !cJSON_IsNull(invoices_date_formatted)) invoices_date_formatted_local_str = strdup(invoices_date_formatted->valuestring);
+
     charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var = charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_create_internal (
-        invoices_id ? invoices_id->valuedouble : 0,
-        invoices_description && !cJSON_IsNull(invoices_description) ? strdup(invoices_description->valuestring) : NULL,
-        invoices_amount ? invoices_amount->valuedouble : 0,
-        invoices_date && !cJSON_IsNull(invoices_date) ? strdup(invoices_date->valuestring) : NULL,
-        invoices_currency && !cJSON_IsNull(invoices_currency) ? strdup(invoices_currency->valuestring) : NULL,
-        currency_symbol && !cJSON_IsNull(currency_symbol) ? strdup(currency_symbol->valuestring) : NULL,
-        invoices_date_formatted && !cJSON_IsNull(invoices_date_formatted) ? strdup(invoices_date_formatted->valuestring) : NULL
+        invoices_id_local_var,
+        invoices_description_local_str,
+        invoices_amount_local_var,
+        invoices_date_local_str,
+        invoices_currency_local_str,
+        currency_symbol_local_str,
+        invoices_date_formatted_local_str
         );
+
+    if (!charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var) {
+        goto end;
+    }
 
     return charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value_local_var;
 end:
+    if (invoices_id_local_var) {
+        free(invoices_id_local_var);
+        invoices_id_local_var = NULL;
+    }
+    if (invoices_description_local_str) {
+        free(invoices_description_local_str);
+        invoices_description_local_str = NULL;
+    }
+    if (invoices_amount_local_var) {
+        free(invoices_amount_local_var);
+        invoices_amount_local_var = NULL;
+    }
+    if (invoices_date_local_str) {
+        free(invoices_date_local_str);
+        invoices_date_local_str = NULL;
+    }
+    if (invoices_currency_local_str) {
+        free(invoices_currency_local_str);
+        invoices_currency_local_str = NULL;
+    }
+    if (currency_symbol_local_str) {
+        free(currency_symbol_local_str);
+        currency_symbol_local_str = NULL;
+    }
+    if (invoices_date_formatted_local_str) {
+        free(invoices_date_formatted_local_str);
+        invoices_date_formatted_local_str = NULL;
+    }
     return NULL;
 
 }

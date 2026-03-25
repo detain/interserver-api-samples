@@ -35,7 +35,7 @@ use \Interserver\MyAdmin\ObjectSerializer;
  * MailLog Class Doc Comment
  *
  * @category Class
- * @description Mail log records
+ * @description Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  * @package  Interserver\MyAdmin
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -245,7 +245,7 @@ class MailLog implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param int $total total number of mail log entries
+     * @param int $total Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
      *
      * @return $this
      */
@@ -269,7 +269,7 @@ class MailLog implements ModelInterface, ArrayAccess
     /**
      * Sets skip
      *
-     * @param int $skip number of emails skipped in listing
+     * @param int $skip The `skip` value used for this page (echoed from the request).
      *
      * @return $this
      */
@@ -293,7 +293,7 @@ class MailLog implements ModelInterface, ArrayAccess
     /**
      * Sets limit
      *
-     * @param int $limit number of emails to return
+     * @param int $limit The `limit` value used for this page (echoed from the request).
      *
      * @return $this
      */

@@ -44,13 +44,13 @@ class OAIHomeDetailsModulesQuickservers;
 class OAIHome_details_modules : public OAIObject {
 public:
     OAIHome_details_modules();
-    OAIHome_details_modules(QString json);
+    OAIHome_details_modules(const QString &json);
     ~OAIHome_details_modules() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIHomeDetailsModulesDomains getDomains() const;
     void setDomains(const OAIHomeDetailsModulesDomains &domains);

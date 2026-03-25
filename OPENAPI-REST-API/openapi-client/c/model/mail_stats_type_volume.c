@@ -14,11 +14,11 @@ static mail_stats_type_volume_t *mail_stats_type_volume_create_internal(
     if (!mail_stats_type_volume_local_var) {
         return NULL;
     }
+    memset(mail_stats_type_volume_local_var, 0, sizeof(mail_stats_type_volume_t));
+    mail_stats_type_volume_local_var->_library_owned = 1;
     mail_stats_type_volume_local_var->to = to;
     mail_stats_type_volume_local_var->from = from;
     mail_stats_type_volume_local_var->ip = ip;
-
-    mail_stats_type_volume_local_var->_library_owned = 1;
     return mail_stats_type_volume_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) mail_stats_type_volume_t *mail_stats_type_volume_cre
     mail_stats_type_volume_from_t *from,
     mail_stats_type_volume_ip_t *ip
     ) {
-    return mail_stats_type_volume_create_internal (
+    mail_stats_type_volume_t *result = mail_stats_type_volume_create_internal (
         to,
         from,
         ip
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_stats_type_volume_free(mail_stats_type_volume_t *mail_stats_type_volume) {
@@ -148,11 +151,16 @@ mail_stats_type_volume_t *mail_stats_type_volume_parseFromJSON(cJSON *mail_stats
     }
 
 
+
     mail_stats_type_volume_local_var = mail_stats_type_volume_create_internal (
         to ? to_local_nonprim : NULL,
         from ? from_local_nonprim : NULL,
         ip ? ip_local_nonprim : NULL
         );
+
+    if (!mail_stats_type_volume_local_var) {
+        goto end;
+    }
 
     return mail_stats_type_volume_local_var;
 end:

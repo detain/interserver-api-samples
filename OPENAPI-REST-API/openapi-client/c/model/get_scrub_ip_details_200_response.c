@@ -19,6 +19,8 @@ static get_scrub_ip_details_200_response_t *get_scrub_ip_details_200_response_cr
     if (!get_scrub_ip_details_200_response_local_var) {
         return NULL;
     }
+    memset(get_scrub_ip_details_200_response_local_var, 0, sizeof(get_scrub_ip_details_200_response_t));
+    get_scrub_ip_details_200_response_local_var->_library_owned = 1;
     get_scrub_ip_details_200_response_local_var->service_info = service_info;
     get_scrub_ip_details_200_response_local_var->client_links = client_links;
     get_scrub_ip_details_200_response_local_var->billing_details = billing_details;
@@ -27,8 +29,6 @@ static get_scrub_ip_details_200_response_t *get_scrub_ip_details_200_response_cr
     get_scrub_ip_details_200_response_local_var->package = package;
     get_scrub_ip_details_200_response_local_var->extra_info_tables = extra_info_tables;
     get_scrub_ip_details_200_response_local_var->filter_firewall = filter_firewall;
-
-    get_scrub_ip_details_200_response_local_var->_library_owned = 1;
     return get_scrub_ip_details_200_response_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_t *get_scrub_ip_de
     get_scrub_ip_details_200_response_extra_info_tables_t *extra_info_tables,
     get_scrub_ip_details_200_response_filter_firewall_t *filter_firewall
     ) {
-    return get_scrub_ip_details_200_response_create_internal (
+    get_scrub_ip_details_200_response_t *result = get_scrub_ip_details_200_response_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) get_scrub_ip_details_200_response_t *get_scrub_ip_de
         extra_info_tables,
         filter_firewall
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_free(get_scrub_ip_details_200_response_t *get_scrub_ip_details_200_response) {
@@ -220,6 +223,12 @@ get_scrub_ip_details_200_response_t *get_scrub_ip_details_200_response_parseFrom
     // define the local variable for get_scrub_ip_details_200_response->billing_details
     get_scrub_ip_details_200_response_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
+    char *package_local_str = NULL;
+
     // define the local variable for get_scrub_ip_details_200_response->extra_info_tables
     get_scrub_ip_details_200_response_extra_info_tables_t *extra_info_tables_local_nonprim = NULL;
 
@@ -323,16 +332,24 @@ get_scrub_ip_details_200_response_t *get_scrub_ip_details_200_response_parseFrom
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+
     get_scrub_ip_details_200_response_local_var = get_scrub_ip_details_200_response_create_internal (
         service_info ? service_info_local_nonprim : NULL,
         client_links ? client_linksList : NULL,
         billing_details ? billing_details_local_nonprim : NULL,
-        cust_currency && !cJSON_IsNull(cust_currency) ? strdup(cust_currency->valuestring) : NULL,
-        cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol) ? strdup(cust_currency_symbol->valuestring) : NULL,
-        package && !cJSON_IsNull(package) ? strdup(package->valuestring) : NULL,
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
+        package_local_str,
         extra_info_tables ? extra_info_tables_local_nonprim : NULL,
         filter_firewall ? filter_firewall_local_nonprim : NULL
         );
+
+    if (!get_scrub_ip_details_200_response_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_local_var;
 end:
@@ -352,6 +369,18 @@ end:
     if (billing_details_local_nonprim) {
         get_scrub_ip_details_200_response_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
+    }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
     }
     if (extra_info_tables_local_nonprim) {
         get_scrub_ip_details_200_response_extra_info_tables_free(extra_info_tables_local_nonprim);

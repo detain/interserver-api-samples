@@ -6,24 +6,33 @@
 
 
 static invoice_t *invoice_create_internal(
-    long id
+    long *id
     ) {
     invoice_t *invoice_local_var = malloc(sizeof(invoice_t));
     if (!invoice_local_var) {
         return NULL;
     }
-    invoice_local_var->id = id;
-
+    memset(invoice_local_var, 0, sizeof(invoice_t));
     invoice_local_var->_library_owned = 1;
+    invoice_local_var->id = id;
     return invoice_local_var;
 }
 
 __attribute__((deprecated)) invoice_t *invoice_create(
-    long id
+    long *id
     ) {
-    return invoice_create_internal (
-        id
+    long *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(long));
+        if (id_copy) *id_copy = *id;
+    }
+    invoice_t *result = invoice_create_internal (
+        id_copy
         );
+    if (!result) {
+        free(id_copy);
+    }
+    return result;
 }
 
 void invoice_free(invoice_t *invoice) {
@@ -35,6 +44,10 @@ void invoice_free(invoice_t *invoice) {
         return ;
     }
     listEntry_t *listEntry;
+    if (invoice->id) {
+        free(invoice->id);
+        invoice->id = NULL;
+    }
     free(invoice);
 }
 
@@ -43,7 +56,7 @@ cJSON *invoice_convertToJSON(invoice_t *invoice) {
 
     // invoice->id
     if(invoice->id) {
-    if(cJSON_AddNumberToObject(item, "id", invoice->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *invoice->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -60,6 +73,9 @@ invoice_t *invoice_parseFromJSON(cJSON *invoiceJSON){
 
     invoice_t *invoice_local_var = NULL;
 
+    // define the local variable for invoice->id
+    long *id_local_var = NULL;
+
     // invoice->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(invoiceJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -70,15 +86,30 @@ invoice_t *invoice_parseFromJSON(cJSON *invoiceJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(long));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
 
+
     invoice_local_var = invoice_create_internal (
-        id ? id->valuedouble : 0
+        id_local_var
         );
+
+    if (!invoice_local_var) {
+        goto end;
+    }
 
     return invoice_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
     return NULL;
 
 }

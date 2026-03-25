@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIEnableScrub_500_response::OAIEnableScrub_500_response(QString json) {
+OAIEnableScrub_500_response::OAIEnableScrub_500_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIEnableScrub_500_response::initializeModel() {
     m_text_isValid = false;
 }
 
-void OAIEnableScrub_500_response::fromJson(QString jsonString) {
+void OAIEnableScrub_500_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

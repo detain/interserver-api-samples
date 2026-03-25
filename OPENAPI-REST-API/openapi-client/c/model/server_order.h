@@ -31,7 +31,7 @@ typedef struct server_order_t server_order_t;
 typedef struct server_order_t {
     struct server_order_form_values_t *form_values; //model
     struct server_order_config_ids_t *config_ids; //model
-    int cpu; //numeric
+    int *cpu; //numeric
     struct server_order_field_labels_t *field_label; //model
     struct server_order_cpu_li_t *cpu_li; //model
     struct server_order_memory_li_t *memory_li; //model
@@ -47,7 +47,7 @@ typedef struct server_order_t {
 __attribute__((deprecated)) server_order_t *server_order_create(
     server_order_form_values_t *form_values,
     server_order_config_ids_t *config_ids,
-    int cpu,
+    int *cpu,
     server_order_field_labels_t *field_label,
     server_order_cpu_li_t *cpu_li,
     server_order_memory_li_t *memory_li,

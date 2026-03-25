@@ -936,6 +936,8 @@ class ApiClient {
           return VPSTrafficDataDataSectionResponse.fromJson(value);
         case 'VPSTrafficDataDataSectionResponseInner':
           return VPSTrafficDataDataSectionResponseInner.fromJson(value);
+        case 'ViewMailLogStartDateParameter':
+          return ViewMailLogStartDateParameter.fromJson(value);
         case 'ViewTicketResponse':
           return ViewTicketResponse.fromJson(value);
         case 'Vps':

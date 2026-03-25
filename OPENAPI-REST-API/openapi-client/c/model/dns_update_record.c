@@ -19,6 +19,8 @@ static dns_update_record_t *dns_update_record_create_internal(
     if (!dns_update_record_local_var) {
         return NULL;
     }
+    memset(dns_update_record_local_var, 0, sizeof(dns_update_record_t));
+    dns_update_record_local_var->_library_owned = 1;
     dns_update_record_local_var->name = name;
     dns_update_record_local_var->type = type;
     dns_update_record_local_var->content = content;
@@ -27,8 +29,6 @@ static dns_update_record_t *dns_update_record_create_internal(
     dns_update_record_local_var->disabled = disabled;
     dns_update_record_local_var->ordername = ordername;
     dns_update_record_local_var->auth = auth;
-
-    dns_update_record_local_var->_library_owned = 1;
     return dns_update_record_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) dns_update_record_t *dns_update_record_create(
     char *ordername,
     char *auth
     ) {
-    return dns_update_record_create_internal (
+    dns_update_record_t *result = dns_update_record_create_internal (
         name,
         type,
         content,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) dns_update_record_t *dns_update_record_create(
         ordername,
         auth
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void dns_update_record_free(dns_update_record_t *dns_update_record) {
@@ -177,8 +180,22 @@ dns_update_record_t *dns_update_record_parseFromJSON(cJSON *dns_update_recordJSO
 
     dns_update_record_t *dns_update_record_local_var = NULL;
 
+    char *name_local_str = NULL;
+
     // define the local variable for dns_update_record->type
     interserver_management_api_dns_record_type__e type_local_nonprim = 0;
+
+    char *content_local_str = NULL;
+
+    char *ttl_local_str = NULL;
+
+    char *prio_local_str = NULL;
+
+    char *disabled_local_str = NULL;
+
+    char *ordername_local_str = NULL;
+
+    char *auth_local_str = NULL;
 
     // dns_update_record->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(dns_update_recordJSON, "name");
@@ -274,21 +291,61 @@ dns_update_record_t *dns_update_record_parseFromJSON(cJSON *dns_update_recordJSO
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (content && !cJSON_IsNull(content)) content_local_str = strdup(content->valuestring);
+    if (ttl && !cJSON_IsNull(ttl)) ttl_local_str = strdup(ttl->valuestring);
+    if (prio && !cJSON_IsNull(prio)) prio_local_str = strdup(prio->valuestring);
+    if (disabled && !cJSON_IsNull(disabled)) disabled_local_str = strdup(disabled->valuestring);
+    if (ordername && !cJSON_IsNull(ordername)) ordername_local_str = strdup(ordername->valuestring);
+    if (auth && !cJSON_IsNull(auth)) auth_local_str = strdup(auth->valuestring);
+
     dns_update_record_local_var = dns_update_record_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        name_local_str,
         type ? type_local_nonprim : 0,
-        content && !cJSON_IsNull(content) ? strdup(content->valuestring) : NULL,
-        ttl && !cJSON_IsNull(ttl) ? strdup(ttl->valuestring) : NULL,
-        prio && !cJSON_IsNull(prio) ? strdup(prio->valuestring) : NULL,
-        disabled && !cJSON_IsNull(disabled) ? strdup(disabled->valuestring) : NULL,
-        ordername && !cJSON_IsNull(ordername) ? strdup(ordername->valuestring) : NULL,
-        auth && !cJSON_IsNull(auth) ? strdup(auth->valuestring) : NULL
+        content_local_str,
+        ttl_local_str,
+        prio_local_str,
+        disabled_local_str,
+        ordername_local_str,
+        auth_local_str
         );
+
+    if (!dns_update_record_local_var) {
+        goto end;
+    }
 
     return dns_update_record_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (type_local_nonprim) {
         type_local_nonprim = 0;
+    }
+    if (content_local_str) {
+        free(content_local_str);
+        content_local_str = NULL;
+    }
+    if (ttl_local_str) {
+        free(ttl_local_str);
+        ttl_local_str = NULL;
+    }
+    if (prio_local_str) {
+        free(prio_local_str);
+        prio_local_str = NULL;
+    }
+    if (disabled_local_str) {
+        free(disabled_local_str);
+        disabled_local_str = NULL;
+    }
+    if (ordername_local_str) {
+        free(ordername_local_str);
+        ordername_local_str = NULL;
+    }
+    if (auth_local_str) {
+        free(auth_local_str);
+        auth_local_str = NULL;
     }
     return NULL;
 

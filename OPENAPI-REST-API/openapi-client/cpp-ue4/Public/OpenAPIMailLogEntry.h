@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIMailLogEntry
  *
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  */
 class OPENAPI_API OpenAPIMailLogEntry : public Model
 {
@@ -29,52 +29,56 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
-	/* internal db id */
+	/* Internal auto-increment database row ID. */
 	int32 Id = 0;
-	/* mail id */
+	/* The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. */
 	FString Id;
-	/* from address */
+	/* SMTP envelope `MAIL FROM` address. */
 	FString From;
-	/* to address */
+	/* SMTP envelope `RCPT TO` address. */
 	FString To;
-	/* email subject */
-	FString Subject;
-	/* creation date */
+	/* Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. */
 	FString Created;
-	/* creation timestamp */
+	/* Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. */
 	int32 Time = 0;
-	/* user account */
+	/* The SMTP AUTH username used to submit the message (e.g. `mb5658`). */
 	FString User;
-	/* transaction type */
+	/* SMTP transaction type negotiated with the relay. */
 	FString Transtype;
-	/* origin ip */
+	/* IP address of the client that submitted the message to the relay. */
 	FString Origin;
-	/* interface name */
+	/* Relay interface name that accepted the message. */
 	FString Interface;
-	/* sending zone */
-	FString SendingZone;
-	/* email body size in bytes */
-	int32 BodySize = 0;
-	/* index of email in the to adderess list */
-	int32 Seq = 0;
-	/* to address this email is being sent to */
-	FString Recipient;
-	/* to address domain */
-	FString Domain;
-	/* locked status */
-	int32 Locked = 0;
-	/* lock timestamp */
-	int32 LockTime = 0;
-	/* assigned server */
-	FString Assigned;
-	/* queued timestamp */
-	FString Queued;
-	/* mx hostname */
-	FString MxHostname;
-	/* mail delivery response */
-	FString Response;
-	/* message id */
+	/* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. */
+	TOptional<FString> Subject;
+	/* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. */
 	TOptional<FString> MessageId;
+	/* The sending zone assigned by the relay for outbound delivery. */
+	TOptional<FString> SendingZone;
+	/* Size of the message body in bytes. */
+	TOptional<int32> BodySize;
+	/* Sequence index of this recipient in a multi-recipient message. Starts at 1. */
+	TOptional<int32> Seq;
+	/* Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted. */
+	TOptional<int32> Delivered;
+	/* The SMTP response code from the destination MX server (e.g. `250`). */
+	TOptional<int32> Code;
+	/* The specific recipient address this delivery record is for. */
+	TOptional<FString> Recipient;
+	/* The full SMTP response string received from the destination MX server. */
+	TOptional<FString> Response;
+	/* The destination domain for this delivery attempt. */
+	TOptional<FString> Domain;
+	/* Whether the queue entry is currently locked for delivery processing. */
+	TOptional<int32> Locked;
+	/* Millisecond-precision timestamp of the last queue lock acquisition. */
+	TOptional<FString> LockTime;
+	/* The relay server node assigned to deliver this message. */
+	TOptional<FString> Assigned;
+	/* ISO 8601 timestamp when the message was placed into the delivery queue. */
+	TOptional<FString> Queued;
+	/* The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. */
+	TOptional<FString> MxHostname;
 };
 
 }

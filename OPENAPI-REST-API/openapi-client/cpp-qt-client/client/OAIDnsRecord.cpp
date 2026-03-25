@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDnsRecord::OAIDnsRecord(QString json) {
+OAIDnsRecord::OAIDnsRecord(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -65,7 +65,7 @@ void OAIDnsRecord::initializeModel() {
     m_auth_isValid = false;
 }
 
-void OAIDnsRecord::fromJson(QString jsonString) {
+void OAIDnsRecord::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBandwidth : public OAIObject {
 public:
     OAIBandwidth();
-    OAIBandwidth(QString json);
+    OAIBandwidth(const QString &json);
     ~OAIBandwidth() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getId() const;
     void setId(const qint32 &id);

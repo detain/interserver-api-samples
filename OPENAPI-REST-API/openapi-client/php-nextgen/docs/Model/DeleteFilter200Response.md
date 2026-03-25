@@ -1,4 +1,4 @@
-# # DeleteFilter200Response
+# DeleteFilter200Response
 
 ## Properties
 

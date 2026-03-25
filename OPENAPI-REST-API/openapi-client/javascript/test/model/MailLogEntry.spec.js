@@ -78,12 +78,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property subject (base name: "subject")', function() {
-      // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.MailLogEntry();
-      //expect(instance).to.be();
-    });
-
     it('should have the property created (base name: "created")', function() {
       // uncomment below and update the code to test the property created
       //var instance = new InterServerManagementApi.MailLogEntry();
@@ -120,6 +114,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property subject (base name: "subject")', function() {
+      // uncomment below and update the code to test the property subject
+      //var instance = new InterServerManagementApi.MailLogEntry();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property messageId (base name: "messageId")', function() {
+      // uncomment below and update the code to test the property messageId
+      //var instance = new InterServerManagementApi.MailLogEntry();
+      //expect(instance).to.be();
+    });
+
     it('should have the property sendingZone (base name: "sendingZone")', function() {
       // uncomment below and update the code to test the property sendingZone
       //var instance = new InterServerManagementApi.MailLogEntry();
@@ -138,8 +144,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property delivered (base name: "delivered")', function() {
+      // uncomment below and update the code to test the property delivered
+      //var instance = new InterServerManagementApi.MailLogEntry();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property code (base name: "code")', function() {
+      // uncomment below and update the code to test the property code
+      //var instance = new InterServerManagementApi.MailLogEntry();
+      //expect(instance).to.be();
+    });
+
     it('should have the property recipient (base name: "recipient")', function() {
       // uncomment below and update the code to test the property recipient
+      //var instance = new InterServerManagementApi.MailLogEntry();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property response (base name: "response")', function() {
+      // uncomment below and update the code to test the property response
       //var instance = new InterServerManagementApi.MailLogEntry();
       //expect(instance).to.be();
     });
@@ -176,18 +200,6 @@
 
     it('should have the property mxHostname (base name: "mxHostname")', function() {
       // uncomment below and update the code to test the property mxHostname
-      //var instance = new InterServerManagementApi.MailLogEntry();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property response (base name: "response")', function() {
-      // uncomment below and update the code to test the property response
-      //var instance = new InterServerManagementApi.MailLogEntry();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property messageId (base name: "messageId")', function() {
-      // uncomment below and update the code to test the property messageId
       //var instance = new InterServerManagementApi.MailLogEntry();
       //expect(instance).to.be();
     });

@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **INTEGER_32** | total number of mail log entries | [default to null]
-**skip** | **INTEGER_32** | number of emails skipped in listing | [default to null]
-**limit** | **INTEGER_32** | number of emails to return | [default to null]
+**total** | **INTEGER_32** | Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode. | [default to null]
+**skip** | **INTEGER_32** | The &#x60;skip&#x60; value used for this page (echoed from the request). | [default to null]
+**limit** | **INTEGER_32** | The &#x60;limit&#x60; value used for this page (echoed from the request). | [default to null]
 **emails** | [**LIST [MAIL_LOG_ENTRY]**](MailLogEntry.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

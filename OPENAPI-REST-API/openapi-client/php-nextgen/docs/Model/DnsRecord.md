@@ -1,4 +1,4 @@
-# # DnsRecord
+# DnsRecord
 
 ## Properties
 

@@ -7,27 +7,36 @@
 
 static post_website_migration_200_response_t *post_website_migration_200_response_create_internal(
     char *text,
-    int ticket
+    int *ticket
     ) {
     post_website_migration_200_response_t *post_website_migration_200_response_local_var = malloc(sizeof(post_website_migration_200_response_t));
     if (!post_website_migration_200_response_local_var) {
         return NULL;
     }
+    memset(post_website_migration_200_response_local_var, 0, sizeof(post_website_migration_200_response_t));
+    post_website_migration_200_response_local_var->_library_owned = 1;
     post_website_migration_200_response_local_var->text = text;
     post_website_migration_200_response_local_var->ticket = ticket;
-
-    post_website_migration_200_response_local_var->_library_owned = 1;
     return post_website_migration_200_response_local_var;
 }
 
 __attribute__((deprecated)) post_website_migration_200_response_t *post_website_migration_200_response_create(
     char *text,
-    int ticket
+    int *ticket
     ) {
-    return post_website_migration_200_response_create_internal (
+    int *ticket_copy = NULL;
+    if (ticket) {
+        ticket_copy = malloc(sizeof(int));
+        if (ticket_copy) *ticket_copy = *ticket;
+    }
+    post_website_migration_200_response_t *result = post_website_migration_200_response_create_internal (
         text,
-        ticket
+        ticket_copy
         );
+    if (!result) {
+        free(ticket_copy);
+    }
+    return result;
 }
 
 void post_website_migration_200_response_free(post_website_migration_200_response_t *post_website_migration_200_response) {
@@ -42,6 +51,10 @@ void post_website_migration_200_response_free(post_website_migration_200_respons
     if (post_website_migration_200_response->text) {
         free(post_website_migration_200_response->text);
         post_website_migration_200_response->text = NULL;
+    }
+    if (post_website_migration_200_response->ticket) {
+        free(post_website_migration_200_response->ticket);
+        post_website_migration_200_response->ticket = NULL;
     }
     free(post_website_migration_200_response);
 }
@@ -59,7 +72,7 @@ cJSON *post_website_migration_200_response_convertToJSON(post_website_migration_
 
     // post_website_migration_200_response->ticket
     if(post_website_migration_200_response->ticket) {
-    if(cJSON_AddNumberToObject(item, "ticket", post_website_migration_200_response->ticket) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ticket", *post_website_migration_200_response->ticket) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -75,6 +88,11 @@ fail:
 post_website_migration_200_response_t *post_website_migration_200_response_parseFromJSON(cJSON *post_website_migration_200_responseJSON){
 
     post_website_migration_200_response_t *post_website_migration_200_response_local_var = NULL;
+
+    char *text_local_str = NULL;
+
+    // define the local variable for post_website_migration_200_response->ticket
+    int *ticket_local_var = NULL;
 
     // post_website_migration_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(post_website_migration_200_responseJSON, "text");
@@ -98,16 +116,36 @@ post_website_migration_200_response_t *post_website_migration_200_response_parse
     {
     goto end; //Numeric
     }
+    ticket_local_var = malloc(sizeof(int));
+    if(!ticket_local_var)
+    {
+        goto end;
+    }
+    *ticket_local_var = ticket->valuedouble;
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     post_website_migration_200_response_local_var = post_website_migration_200_response_create_internal (
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
-        ticket ? ticket->valuedouble : 0
+        text_local_str,
+        ticket_local_var
         );
+
+    if (!post_website_migration_200_response_local_var) {
+        goto end;
+    }
 
     return post_website_migration_200_response_local_var;
 end:
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (ticket_local_var) {
+        free(ticket_local_var);
+        ticket_local_var = NULL;
+    }
     return NULL;
 
 }

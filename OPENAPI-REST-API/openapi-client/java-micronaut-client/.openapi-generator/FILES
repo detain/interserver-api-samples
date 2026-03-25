@@ -399,6 +399,7 @@ docs/models/UrlRequest.md
 docs/models/VPSCancel200Response.md
 docs/models/VPSTrafficDataDataSectionResponse.md
 docs/models/VPSTrafficDataDataSectionResponseInner.md
+docs/models/ViewMailLogStartDateParameter.md
 docs/models/ViewTicketResponse.md
 docs/models/Vps.md
 docs/models/VpsBackupRow.md
@@ -873,6 +874,7 @@ src/main/java/org/openapitools/model/UrlRequest.java
 src/main/java/org/openapitools/model/VPSCancel200Response.java
 src/main/java/org/openapitools/model/VPSTrafficDataDataSectionResponse.java
 src/main/java/org/openapitools/model/VPSTrafficDataDataSectionResponseInner.java
+src/main/java/org/openapitools/model/ViewMailLogStartDateParameter.java
 src/main/java/org/openapitools/model/ViewTicketResponse.java
 src/main/java/org/openapitools/model/Vps.java
 src/main/java/org/openapitools/model/VpsBackupRow.java
@@ -1340,6 +1342,7 @@ src/test/java/org/openapitools/model/UrlRequestTest.java
 src/test/java/org/openapitools/model/VPSCancel200ResponseTest.java
 src/test/java/org/openapitools/model/VPSTrafficDataDataSectionResponseInnerTest.java
 src/test/java/org/openapitools/model/VPSTrafficDataDataSectionResponseTest.java
+src/test/java/org/openapitools/model/ViewMailLogStartDateParameterTest.java
 src/test/java/org/openapitools/model/ViewTicketResponseTest.java
 src/test/java/org/openapitools/model/VpsBackupRowTest.java
 src/test/java/org/openapitools/model/VpsBackupRowsTest.java

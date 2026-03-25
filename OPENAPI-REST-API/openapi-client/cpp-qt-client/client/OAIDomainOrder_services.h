@@ -32,13 +32,13 @@ class OAIDomainOrderServices10001;
 class OAIDomainOrder_services : public OAIObject {
 public:
     OAIDomainOrder_services();
-    OAIDomainOrder_services(QString json);
+    OAIDomainOrder_services(const QString &json);
     ~OAIDomainOrder_services() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIDomainOrderServices10001 getDomainOrderServices10001() const;
     void setDomainOrderServices10001(const OAIDomainOrderServices10001 &domain_order_services10001);

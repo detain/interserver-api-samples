@@ -2,7 +2,7 @@
 
 InterServer Management API
 - API version: 0.9.0
-  - Generator version: 7.20.0
+  - Generator version: 7.21.0
 
 # Overview
 
@@ -851,6 +851,7 @@ Class | Method | HTTP request | Description
  - [VPSCancel200Response](docs/VPSCancel200Response.md)
  - [VPSTrafficDataDataSectionResponse](docs/VPSTrafficDataDataSectionResponse.md)
  - [VPSTrafficDataDataSectionResponseInner](docs/VPSTrafficDataDataSectionResponseInner.md)
+ - [ViewMailLogStartDateParameter](docs/ViewMailLogStartDateParameter.md)
  - [ViewTicketResponse](docs/ViewTicketResponse.md)
  - [Vps](docs/Vps.md)
  - [VpsBackupRow](docs/VpsBackupRow.md)

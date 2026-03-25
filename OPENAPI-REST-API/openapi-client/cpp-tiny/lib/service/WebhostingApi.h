@@ -37,7 +37,7 @@ class WebhostingApi : public Service {
 public:
     WebhostingApi() = default;
 
-    virtual ~WebhostingApi() = default;
+    virtual ~WebhostingApi();
 
     /**
     * Place Website Order.

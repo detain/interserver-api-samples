@@ -23,6 +23,8 @@ static domain_service_info_t *domain_service_info_create_internal(
     if (!domain_service_info_local_var) {
         return NULL;
     }
+    memset(domain_service_info_local_var, 0, sizeof(domain_service_info_t));
+    domain_service_info_local_var->_library_owned = 1;
     domain_service_info_local_var->domain_id = domain_id;
     domain_service_info_local_var->domain_hostname = domain_hostname;
     domain_service_info_local_var->domain_username = domain_username;
@@ -35,8 +37,6 @@ static domain_service_info_t *domain_service_info_create_internal(
     domain_service_info_local_var->domain_status = domain_status;
     domain_service_info_local_var->domain_invoice = domain_invoice;
     domain_service_info_local_var->domain_coupon = domain_coupon;
-
-    domain_service_info_local_var->_library_owned = 1;
     return domain_service_info_local_var;
 }
 
@@ -54,7 +54,7 @@ __attribute__((deprecated)) domain_service_info_t *domain_service_info_create(
     char *domain_invoice,
     char *domain_coupon
     ) {
-    return domain_service_info_create_internal (
+    domain_service_info_t *result = domain_service_info_create_internal (
         domain_id,
         domain_hostname,
         domain_username,
@@ -68,6 +68,9 @@ __attribute__((deprecated)) domain_service_info_t *domain_service_info_create(
         domain_invoice,
         domain_coupon
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_service_info_free(domain_service_info_t *domain_service_info) {
@@ -240,6 +243,30 @@ domain_service_info_t *domain_service_info_parseFromJSON(cJSON *domain_service_i
 
     domain_service_info_t *domain_service_info_local_var = NULL;
 
+    char *domain_id_local_str = NULL;
+
+    char *domain_hostname_local_str = NULL;
+
+    char *domain_username_local_str = NULL;
+
+    char *domain_password_local_str = NULL;
+
+    char *domain_type_local_str = NULL;
+
+    char *domain_currency_local_str = NULL;
+
+    char *domain_expire_date_local_str = NULL;
+
+    char *domain_order_date_local_str = NULL;
+
+    char *domain_custid_local_str = NULL;
+
+    char *domain_status_local_str = NULL;
+
+    char *domain_invoice_local_str = NULL;
+
+    char *domain_coupon_local_str = NULL;
+
     // domain_service_info->domain_id
     cJSON *domain_id = cJSON_GetObjectItemCaseSensitive(domain_service_infoJSON, "domain_id");
     if (cJSON_IsNull(domain_id)) {
@@ -385,23 +412,88 @@ domain_service_info_t *domain_service_info_parseFromJSON(cJSON *domain_service_i
     }
 
 
+    if (domain_id && !cJSON_IsNull(domain_id)) domain_id_local_str = strdup(domain_id->valuestring);
+    if (domain_hostname && !cJSON_IsNull(domain_hostname)) domain_hostname_local_str = strdup(domain_hostname->valuestring);
+    if (domain_username && !cJSON_IsNull(domain_username)) domain_username_local_str = strdup(domain_username->valuestring);
+    if (domain_password && !cJSON_IsNull(domain_password)) domain_password_local_str = strdup(domain_password->valuestring);
+    if (domain_type && !cJSON_IsNull(domain_type)) domain_type_local_str = strdup(domain_type->valuestring);
+    if (domain_currency && !cJSON_IsNull(domain_currency)) domain_currency_local_str = strdup(domain_currency->valuestring);
+    if (domain_expire_date && !cJSON_IsNull(domain_expire_date)) domain_expire_date_local_str = strdup(domain_expire_date->valuestring);
+    if (domain_order_date && !cJSON_IsNull(domain_order_date)) domain_order_date_local_str = strdup(domain_order_date->valuestring);
+    if (domain_custid && !cJSON_IsNull(domain_custid)) domain_custid_local_str = strdup(domain_custid->valuestring);
+    if (domain_status && !cJSON_IsNull(domain_status)) domain_status_local_str = strdup(domain_status->valuestring);
+    if (domain_invoice && !cJSON_IsNull(domain_invoice)) domain_invoice_local_str = strdup(domain_invoice->valuestring);
+    if (domain_coupon && !cJSON_IsNull(domain_coupon)) domain_coupon_local_str = strdup(domain_coupon->valuestring);
+
     domain_service_info_local_var = domain_service_info_create_internal (
-        domain_id && !cJSON_IsNull(domain_id) ? strdup(domain_id->valuestring) : NULL,
-        domain_hostname && !cJSON_IsNull(domain_hostname) ? strdup(domain_hostname->valuestring) : NULL,
-        domain_username && !cJSON_IsNull(domain_username) ? strdup(domain_username->valuestring) : NULL,
-        domain_password && !cJSON_IsNull(domain_password) ? strdup(domain_password->valuestring) : NULL,
-        domain_type && !cJSON_IsNull(domain_type) ? strdup(domain_type->valuestring) : NULL,
-        domain_currency && !cJSON_IsNull(domain_currency) ? strdup(domain_currency->valuestring) : NULL,
-        domain_expire_date && !cJSON_IsNull(domain_expire_date) ? strdup(domain_expire_date->valuestring) : NULL,
-        domain_order_date && !cJSON_IsNull(domain_order_date) ? strdup(domain_order_date->valuestring) : NULL,
-        domain_custid && !cJSON_IsNull(domain_custid) ? strdup(domain_custid->valuestring) : NULL,
-        domain_status && !cJSON_IsNull(domain_status) ? strdup(domain_status->valuestring) : NULL,
-        domain_invoice && !cJSON_IsNull(domain_invoice) ? strdup(domain_invoice->valuestring) : NULL,
-        domain_coupon && !cJSON_IsNull(domain_coupon) ? strdup(domain_coupon->valuestring) : NULL
+        domain_id_local_str,
+        domain_hostname_local_str,
+        domain_username_local_str,
+        domain_password_local_str,
+        domain_type_local_str,
+        domain_currency_local_str,
+        domain_expire_date_local_str,
+        domain_order_date_local_str,
+        domain_custid_local_str,
+        domain_status_local_str,
+        domain_invoice_local_str,
+        domain_coupon_local_str
         );
+
+    if (!domain_service_info_local_var) {
+        goto end;
+    }
 
     return domain_service_info_local_var;
 end:
+    if (domain_id_local_str) {
+        free(domain_id_local_str);
+        domain_id_local_str = NULL;
+    }
+    if (domain_hostname_local_str) {
+        free(domain_hostname_local_str);
+        domain_hostname_local_str = NULL;
+    }
+    if (domain_username_local_str) {
+        free(domain_username_local_str);
+        domain_username_local_str = NULL;
+    }
+    if (domain_password_local_str) {
+        free(domain_password_local_str);
+        domain_password_local_str = NULL;
+    }
+    if (domain_type_local_str) {
+        free(domain_type_local_str);
+        domain_type_local_str = NULL;
+    }
+    if (domain_currency_local_str) {
+        free(domain_currency_local_str);
+        domain_currency_local_str = NULL;
+    }
+    if (domain_expire_date_local_str) {
+        free(domain_expire_date_local_str);
+        domain_expire_date_local_str = NULL;
+    }
+    if (domain_order_date_local_str) {
+        free(domain_order_date_local_str);
+        domain_order_date_local_str = NULL;
+    }
+    if (domain_custid_local_str) {
+        free(domain_custid_local_str);
+        domain_custid_local_str = NULL;
+    }
+    if (domain_status_local_str) {
+        free(domain_status_local_str);
+        domain_status_local_str = NULL;
+    }
+    if (domain_invoice_local_str) {
+        free(domain_invoice_local_str);
+        domain_invoice_local_str = NULL;
+    }
+    if (domain_coupon_local_str) {
+        free(domain_coupon_local_str);
+        domain_coupon_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -12,18 +12,21 @@ static websites_order_json_service_offers_t *websites_order_json_service_offers_
     if (!websites_order_json_service_offers_local_var) {
         return NULL;
     }
-    websites_order_json_service_offers_local_var->_1026 = _1026;
-
+    memset(websites_order_json_service_offers_local_var, 0, sizeof(websites_order_json_service_offers_t));
     websites_order_json_service_offers_local_var->_library_owned = 1;
+    websites_order_json_service_offers_local_var->_1026 = _1026;
     return websites_order_json_service_offers_local_var;
 }
 
 __attribute__((deprecated)) websites_order_json_service_offers_t *websites_order_json_service_offers_create(
     list_t *_1026
     ) {
-    return websites_order_json_service_offers_create_internal (
+    websites_order_json_service_offers_t *result = websites_order_json_service_offers_create_internal (
         _1026
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void websites_order_json_service_offers_free(websites_order_json_service_offers_t *websites_order_json_service_offers) {
@@ -111,9 +114,14 @@ websites_order_json_service_offers_t *websites_order_json_service_offers_parseFr
     }
 
 
+
     websites_order_json_service_offers_local_var = websites_order_json_service_offers_create_internal (
         _1026List
         );
+
+    if (!websites_order_json_service_offers_local_var) {
+        goto end;
+    }
 
     return websites_order_json_service_offers_local_var;
 end:

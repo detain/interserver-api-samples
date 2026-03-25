@@ -6,28 +6,37 @@
 
 
 static ssl_cancel_200_response_t *ssl_cancel_200_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     ssl_cancel_200_response_t *ssl_cancel_200_response_local_var = malloc(sizeof(ssl_cancel_200_response_t));
     if (!ssl_cancel_200_response_local_var) {
         return NULL;
     }
+    memset(ssl_cancel_200_response_local_var, 0, sizeof(ssl_cancel_200_response_t));
+    ssl_cancel_200_response_local_var->_library_owned = 1;
     ssl_cancel_200_response_local_var->success = success;
     ssl_cancel_200_response_local_var->text = text;
-
-    ssl_cancel_200_response_local_var->_library_owned = 1;
     return ssl_cancel_200_response_local_var;
 }
 
 __attribute__((deprecated)) ssl_cancel_200_response_t *ssl_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return ssl_cancel_200_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    ssl_cancel_200_response_t *result = ssl_cancel_200_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void ssl_cancel_200_response_free(ssl_cancel_200_response_t *ssl_cancel_200_response) {
@@ -39,6 +48,10 @@ void ssl_cancel_200_response_free(ssl_cancel_200_response_t *ssl_cancel_200_resp
         return ;
     }
     listEntry_t *listEntry;
+    if (ssl_cancel_200_response->success) {
+        free(ssl_cancel_200_response->success);
+        ssl_cancel_200_response->success = NULL;
+    }
     if (ssl_cancel_200_response->text) {
         free(ssl_cancel_200_response->text);
         ssl_cancel_200_response->text = NULL;
@@ -53,7 +66,7 @@ cJSON *ssl_cancel_200_response_convertToJSON(ssl_cancel_200_response_t *ssl_canc
     if (!ssl_cancel_200_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", ssl_cancel_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *ssl_cancel_200_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -78,6 +91,11 @@ ssl_cancel_200_response_t *ssl_cancel_200_response_parseFromJSON(cJSON *ssl_canc
 
     ssl_cancel_200_response_t *ssl_cancel_200_response_local_var = NULL;
 
+    // define the local variable for ssl_cancel_200_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // ssl_cancel_200_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(ssl_cancel_200_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -92,6 +110,12 @@ ssl_cancel_200_response_t *ssl_cancel_200_response_parseFromJSON(cJSON *ssl_canc
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // ssl_cancel_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(ssl_cancel_200_responseJSON, "text");
@@ -109,13 +133,27 @@ ssl_cancel_200_response_t *ssl_cancel_200_response_parseFromJSON(cJSON *ssl_canc
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     ssl_cancel_200_response_local_var = ssl_cancel_200_response_create_internal (
-        success->valueint,
-        strdup(text->valuestring)
+        success_local_var,
+        text_local_str
         );
+
+    if (!ssl_cancel_200_response_local_var) {
+        goto end;
+    }
 
     return ssl_cancel_200_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

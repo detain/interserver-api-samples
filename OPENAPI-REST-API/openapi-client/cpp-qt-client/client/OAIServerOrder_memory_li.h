@@ -32,13 +32,13 @@ class OAIServerOrder_memory_li_254;
 class OAIServerOrder_memory_li : public OAIObject {
 public:
     OAIServerOrder_memory_li();
-    OAIServerOrder_memory_li(QString json);
+    OAIServerOrder_memory_li(const QString &json);
     ~OAIServerOrder_memory_li() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrder_memory_li_254 getR254() const;
     void setR254(const OAIServerOrder_memory_li_254 &r_254);

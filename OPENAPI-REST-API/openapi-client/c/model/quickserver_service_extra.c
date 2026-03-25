@@ -12,18 +12,21 @@ static quickserver_service_extra_t *quickserver_service_extra_create_internal(
     if (!quickserver_service_extra_local_var) {
         return NULL;
     }
-    quickserver_service_extra_local_var->platform = platform;
-
+    memset(quickserver_service_extra_local_var, 0, sizeof(quickserver_service_extra_t));
     quickserver_service_extra_local_var->_library_owned = 1;
+    quickserver_service_extra_local_var->platform = platform;
     return quickserver_service_extra_local_var;
 }
 
 __attribute__((deprecated)) quickserver_service_extra_t *quickserver_service_extra_create(
     char *platform
     ) {
-    return quickserver_service_extra_create_internal (
+    quickserver_service_extra_t *result = quickserver_service_extra_create_internal (
         platform
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_service_extra_free(quickserver_service_extra_t *quickserver_service_extra) {
@@ -64,6 +67,8 @@ quickserver_service_extra_t *quickserver_service_extra_parseFromJSON(cJSON *quic
 
     quickserver_service_extra_t *quickserver_service_extra_local_var = NULL;
 
+    char *platform_local_str = NULL;
+
     // quickserver_service_extra->platform
     cJSON *platform = cJSON_GetObjectItemCaseSensitive(quickserver_service_extraJSON, "platform");
     if (cJSON_IsNull(platform)) {
@@ -77,12 +82,22 @@ quickserver_service_extra_t *quickserver_service_extra_parseFromJSON(cJSON *quic
     }
 
 
+    if (platform && !cJSON_IsNull(platform)) platform_local_str = strdup(platform->valuestring);
+
     quickserver_service_extra_local_var = quickserver_service_extra_create_internal (
-        platform && !cJSON_IsNull(platform) ? strdup(platform->valuestring) : NULL
+        platform_local_str
         );
+
+    if (!quickserver_service_extra_local_var) {
+        goto end;
+    }
 
     return quickserver_service_extra_local_var;
 end:
+    if (platform_local_str) {
+        free(platform_local_str);
+        platform_local_str = NULL;
+    }
     return NULL;
 
 }

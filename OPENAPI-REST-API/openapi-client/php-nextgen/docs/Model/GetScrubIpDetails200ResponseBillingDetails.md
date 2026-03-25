@@ -1,4 +1,4 @@
-# # GetScrubIpDetails200ResponseBillingDetails
+# GetScrubIpDetails200ResponseBillingDetails
 
 ## Properties
 

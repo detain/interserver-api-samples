@@ -21,6 +21,8 @@ static backup_billing_details_t *backup_billing_details_create_internal(
     if (!backup_billing_details_local_var) {
         return NULL;
     }
+    memset(backup_billing_details_local_var, 0, sizeof(backup_billing_details_t));
+    backup_billing_details_local_var->_library_owned = 1;
     backup_billing_details_local_var->service_last_invoice_date = service_last_invoice_date;
     backup_billing_details_local_var->service_payment_status = service_payment_status;
     backup_billing_details_local_var->service_frequency = service_frequency;
@@ -31,8 +33,6 @@ static backup_billing_details_t *backup_billing_details_create_internal(
     backup_billing_details_local_var->service_cost_info = service_cost_info;
     backup_billing_details_local_var->service_extra = service_extra;
     backup_billing_details_local_var->service_extra_json = service_extra_json;
-
-    backup_billing_details_local_var->_library_owned = 1;
     return backup_billing_details_local_var;
 }
 
@@ -48,7 +48,7 @@ __attribute__((deprecated)) backup_billing_details_t *backup_billing_details_cre
     char *service_extra,
     char *service_extra_json
     ) {
-    return backup_billing_details_create_internal (
+    backup_billing_details_t *result = backup_billing_details_create_internal (
         service_last_invoice_date,
         service_payment_status,
         service_frequency,
@@ -60,6 +60,9 @@ __attribute__((deprecated)) backup_billing_details_t *backup_billing_details_cre
         service_extra,
         service_extra_json
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backup_billing_details_free(backup_billing_details_t *backup_billing_details) {
@@ -208,6 +211,26 @@ backup_billing_details_t *backup_billing_details_parseFromJSON(cJSON *backup_bil
 
     backup_billing_details_t *backup_billing_details_local_var = NULL;
 
+    char *service_last_invoice_date_local_str = NULL;
+
+    char *service_payment_status_local_str = NULL;
+
+    char *service_frequency_local_str = NULL;
+
+    char *next_date_local_str = NULL;
+
+    char *service_next_invoice_date_local_str = NULL;
+
+    char *service_currency_local_str = NULL;
+
+    char *service_currency_symbol_local_str = NULL;
+
+    char *service_cost_info_local_str = NULL;
+
+    char *service_extra_local_str = NULL;
+
+    char *service_extra_json_local_str = NULL;
+
     // backup_billing_details->service_last_invoice_date
     cJSON *service_last_invoice_date = cJSON_GetObjectItemCaseSensitive(backup_billing_detailsJSON, "service_last_invoice_date");
     if (cJSON_IsNull(service_last_invoice_date)) {
@@ -329,21 +352,76 @@ backup_billing_details_t *backup_billing_details_parseFromJSON(cJSON *backup_bil
     }
 
 
+    if (service_last_invoice_date && !cJSON_IsNull(service_last_invoice_date)) service_last_invoice_date_local_str = strdup(service_last_invoice_date->valuestring);
+    if (service_payment_status && !cJSON_IsNull(service_payment_status)) service_payment_status_local_str = strdup(service_payment_status->valuestring);
+    if (service_frequency && !cJSON_IsNull(service_frequency)) service_frequency_local_str = strdup(service_frequency->valuestring);
+    if (next_date && !cJSON_IsNull(next_date)) next_date_local_str = strdup(next_date->valuestring);
+    if (service_next_invoice_date && !cJSON_IsNull(service_next_invoice_date)) service_next_invoice_date_local_str = strdup(service_next_invoice_date->valuestring);
+    if (service_currency && !cJSON_IsNull(service_currency)) service_currency_local_str = strdup(service_currency->valuestring);
+    if (service_currency_symbol && !cJSON_IsNull(service_currency_symbol)) service_currency_symbol_local_str = strdup(service_currency_symbol->valuestring);
+    if (service_cost_info && !cJSON_IsNull(service_cost_info)) service_cost_info_local_str = strdup(service_cost_info->valuestring);
+    if (service_extra && !cJSON_IsNull(service_extra)) service_extra_local_str = strdup(service_extra->valuestring);
+    if (service_extra_json && !cJSON_IsNull(service_extra_json)) service_extra_json_local_str = strdup(service_extra_json->valuestring);
+
     backup_billing_details_local_var = backup_billing_details_create_internal (
-        service_last_invoice_date && !cJSON_IsNull(service_last_invoice_date) ? strdup(service_last_invoice_date->valuestring) : NULL,
-        service_payment_status && !cJSON_IsNull(service_payment_status) ? strdup(service_payment_status->valuestring) : NULL,
-        service_frequency && !cJSON_IsNull(service_frequency) ? strdup(service_frequency->valuestring) : NULL,
-        next_date && !cJSON_IsNull(next_date) ? strdup(next_date->valuestring) : NULL,
-        service_next_invoice_date && !cJSON_IsNull(service_next_invoice_date) ? strdup(service_next_invoice_date->valuestring) : NULL,
-        service_currency && !cJSON_IsNull(service_currency) ? strdup(service_currency->valuestring) : NULL,
-        service_currency_symbol && !cJSON_IsNull(service_currency_symbol) ? strdup(service_currency_symbol->valuestring) : NULL,
-        service_cost_info && !cJSON_IsNull(service_cost_info) ? strdup(service_cost_info->valuestring) : NULL,
-        service_extra && !cJSON_IsNull(service_extra) ? strdup(service_extra->valuestring) : NULL,
-        service_extra_json && !cJSON_IsNull(service_extra_json) ? strdup(service_extra_json->valuestring) : NULL
+        service_last_invoice_date_local_str,
+        service_payment_status_local_str,
+        service_frequency_local_str,
+        next_date_local_str,
+        service_next_invoice_date_local_str,
+        service_currency_local_str,
+        service_currency_symbol_local_str,
+        service_cost_info_local_str,
+        service_extra_local_str,
+        service_extra_json_local_str
         );
+
+    if (!backup_billing_details_local_var) {
+        goto end;
+    }
 
     return backup_billing_details_local_var;
 end:
+    if (service_last_invoice_date_local_str) {
+        free(service_last_invoice_date_local_str);
+        service_last_invoice_date_local_str = NULL;
+    }
+    if (service_payment_status_local_str) {
+        free(service_payment_status_local_str);
+        service_payment_status_local_str = NULL;
+    }
+    if (service_frequency_local_str) {
+        free(service_frequency_local_str);
+        service_frequency_local_str = NULL;
+    }
+    if (next_date_local_str) {
+        free(next_date_local_str);
+        next_date_local_str = NULL;
+    }
+    if (service_next_invoice_date_local_str) {
+        free(service_next_invoice_date_local_str);
+        service_next_invoice_date_local_str = NULL;
+    }
+    if (service_currency_local_str) {
+        free(service_currency_local_str);
+        service_currency_local_str = NULL;
+    }
+    if (service_currency_symbol_local_str) {
+        free(service_currency_symbol_local_str);
+        service_currency_symbol_local_str = NULL;
+    }
+    if (service_cost_info_local_str) {
+        free(service_cost_info_local_str);
+        service_cost_info_local_str = NULL;
+    }
+    if (service_extra_local_str) {
+        free(service_extra_local_str);
+        service_extra_local_str = NULL;
+    }
+    if (service_extra_json_local_str) {
+        free(service_extra_json_local_str);
+        service_extra_json_local_str = NULL;
+    }
     return NULL;
 
 }

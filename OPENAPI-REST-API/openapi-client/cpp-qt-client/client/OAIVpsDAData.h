@@ -32,13 +32,13 @@ class OAIVpsDALicense;
 class OAIVpsDAData : public OAIObject {
 public:
     OAIVpsDAData();
-    OAIVpsDAData(QString json);
+    OAIVpsDAData(const QString &json);
     ~OAIVpsDAData() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsDALicense getFree() const;
     void setFree(const OAIVpsDALicense &free);

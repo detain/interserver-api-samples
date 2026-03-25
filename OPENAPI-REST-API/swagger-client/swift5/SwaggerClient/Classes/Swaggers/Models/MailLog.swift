@@ -8,15 +8,15 @@
 import Foundation
 
 
-/** Mail log records */
+/** Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages. */
 
 public struct MailLog: Codable {
 
-    /** total number of mail log entries */
+    /** Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode. */
     public var total: Int
-    /** number of emails skipped in listing */
+    /** The &#x60;skip&#x60; value used for this page (echoed from the request). */
     public var skip: Int
-    /** number of emails to return */
+    /** The &#x60;limit&#x60; value used for this page (echoed from the request). */
     public var limit: Int
     public var emails: [MailLogEntry]
 

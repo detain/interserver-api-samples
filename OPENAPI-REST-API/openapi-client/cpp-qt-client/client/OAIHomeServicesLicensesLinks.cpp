@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHomeServicesLicensesLinks::OAIHomeServicesLicensesLinks(QString json) {
+OAIHomeServicesLicensesLinks::OAIHomeServicesLicensesLinks(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIHomeServicesLicensesLinks::initializeModel() {
     m_r_386522_isValid = false;
 }
 
-void OAIHomeServicesLicensesLinks::fromJson(QString jsonString) {
+void OAIHomeServicesLicensesLinks::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

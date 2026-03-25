@@ -1,4 +1,4 @@
-# # OperatingSystem
+# OperatingSystem
 
 ## Properties
 

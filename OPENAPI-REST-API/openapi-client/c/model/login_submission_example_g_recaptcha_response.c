@@ -6,9 +6,9 @@
 
 
 static login_submission_example_g_recaptcha_response_t *login_submission_example_g_recaptcha_response_create_internal(
-    int __v_is_shallow,
+    int *__v_is_shallow,
     login_submission_example_g_recaptcha_response_dep_t *dep,
-    int __v_is_ref,
+    int *__v_is_ref,
     char *_raw_value,
     char *_value
     ) {
@@ -16,30 +16,45 @@ static login_submission_example_g_recaptcha_response_t *login_submission_example
     if (!login_submission_example_g_recaptcha_response_local_var) {
         return NULL;
     }
+    memset(login_submission_example_g_recaptcha_response_local_var, 0, sizeof(login_submission_example_g_recaptcha_response_t));
+    login_submission_example_g_recaptcha_response_local_var->_library_owned = 1;
     login_submission_example_g_recaptcha_response_local_var->__v_is_shallow = __v_is_shallow;
     login_submission_example_g_recaptcha_response_local_var->dep = dep;
     login_submission_example_g_recaptcha_response_local_var->__v_is_ref = __v_is_ref;
     login_submission_example_g_recaptcha_response_local_var->_raw_value = _raw_value;
     login_submission_example_g_recaptcha_response_local_var->_value = _value;
-
-    login_submission_example_g_recaptcha_response_local_var->_library_owned = 1;
     return login_submission_example_g_recaptcha_response_local_var;
 }
 
 __attribute__((deprecated)) login_submission_example_g_recaptcha_response_t *login_submission_example_g_recaptcha_response_create(
-    int __v_is_shallow,
+    int *__v_is_shallow,
     login_submission_example_g_recaptcha_response_dep_t *dep,
-    int __v_is_ref,
+    int *__v_is_ref,
     char *_raw_value,
     char *_value
     ) {
-    return login_submission_example_g_recaptcha_response_create_internal (
-        __v_is_shallow,
+    int *__v_is_shallow_copy = NULL;
+    if (__v_is_shallow) {
+        __v_is_shallow_copy = malloc(sizeof(int));
+        if (__v_is_shallow_copy) *__v_is_shallow_copy = *__v_is_shallow;
+    }
+    int *__v_is_ref_copy = NULL;
+    if (__v_is_ref) {
+        __v_is_ref_copy = malloc(sizeof(int));
+        if (__v_is_ref_copy) *__v_is_ref_copy = *__v_is_ref;
+    }
+    login_submission_example_g_recaptcha_response_t *result = login_submission_example_g_recaptcha_response_create_internal (
+        __v_is_shallow_copy,
         dep,
-        __v_is_ref,
+        __v_is_ref_copy,
         _raw_value,
         _value
         );
+    if (!result) {
+        free(__v_is_shallow_copy);
+        free(__v_is_ref_copy);
+    }
+    return result;
 }
 
 void login_submission_example_g_recaptcha_response_free(login_submission_example_g_recaptcha_response_t *login_submission_example_g_recaptcha_response) {
@@ -51,9 +66,17 @@ void login_submission_example_g_recaptcha_response_free(login_submission_example
         return ;
     }
     listEntry_t *listEntry;
+    if (login_submission_example_g_recaptcha_response->__v_is_shallow) {
+        free(login_submission_example_g_recaptcha_response->__v_is_shallow);
+        login_submission_example_g_recaptcha_response->__v_is_shallow = NULL;
+    }
     if (login_submission_example_g_recaptcha_response->dep) {
         login_submission_example_g_recaptcha_response_dep_free(login_submission_example_g_recaptcha_response->dep);
         login_submission_example_g_recaptcha_response->dep = NULL;
+    }
+    if (login_submission_example_g_recaptcha_response->__v_is_ref) {
+        free(login_submission_example_g_recaptcha_response->__v_is_ref);
+        login_submission_example_g_recaptcha_response->__v_is_ref = NULL;
     }
     if (login_submission_example_g_recaptcha_response->_raw_value) {
         free(login_submission_example_g_recaptcha_response->_raw_value);
@@ -71,7 +94,7 @@ cJSON *login_submission_example_g_recaptcha_response_convertToJSON(login_submiss
 
     // login_submission_example_g_recaptcha_response->__v_is_shallow
     if(login_submission_example_g_recaptcha_response->__v_is_shallow) {
-    if(cJSON_AddBoolToObject(item, "__v_isShallow", login_submission_example_g_recaptcha_response->__v_is_shallow) == NULL) {
+    if(cJSON_AddBoolToObject(item, "__v_isShallow", *login_submission_example_g_recaptcha_response->__v_is_shallow) == NULL) {
     goto fail; //Bool
     }
     }
@@ -92,7 +115,7 @@ cJSON *login_submission_example_g_recaptcha_response_convertToJSON(login_submiss
 
     // login_submission_example_g_recaptcha_response->__v_is_ref
     if(login_submission_example_g_recaptcha_response->__v_is_ref) {
-    if(cJSON_AddBoolToObject(item, "__v_isRef", login_submission_example_g_recaptcha_response->__v_is_ref) == NULL) {
+    if(cJSON_AddBoolToObject(item, "__v_isRef", *login_submission_example_g_recaptcha_response->__v_is_ref) == NULL) {
     goto fail; //Bool
     }
     }
@@ -125,8 +148,18 @@ login_submission_example_g_recaptcha_response_t *login_submission_example_g_reca
 
     login_submission_example_g_recaptcha_response_t *login_submission_example_g_recaptcha_response_local_var = NULL;
 
+    // define the local variable for login_submission_example_g_recaptcha_response->__v_is_shallow
+    int *__v_is_shallow_local_var = NULL;
+
     // define the local variable for login_submission_example_g_recaptcha_response->dep
     login_submission_example_g_recaptcha_response_dep_t *dep_local_nonprim = NULL;
+
+    // define the local variable for login_submission_example_g_recaptcha_response->__v_is_ref
+    int *__v_is_ref_local_var = NULL;
+
+    char *_raw_value_local_str = NULL;
+
+    char *_value_local_str = NULL;
 
     // login_submission_example_g_recaptcha_response->__v_is_shallow
     cJSON *__v_is_shallow = cJSON_GetObjectItemCaseSensitive(login_submission_example_g_recaptcha_responseJSON, "__v_isShallow");
@@ -138,6 +171,12 @@ login_submission_example_g_recaptcha_response_t *login_submission_example_g_reca
     {
     goto end; //Bool
     }
+    __v_is_shallow_local_var = malloc(sizeof(int));
+    if(!__v_is_shallow_local_var)
+    {
+        goto end;
+    }
+    *__v_is_shallow_local_var = __v_is_shallow->valueint;
     }
 
     // login_submission_example_g_recaptcha_response->dep
@@ -159,6 +198,12 @@ login_submission_example_g_recaptcha_response_t *login_submission_example_g_reca
     {
     goto end; //Bool
     }
+    __v_is_ref_local_var = malloc(sizeof(int));
+    if(!__v_is_ref_local_var)
+    {
+        goto end;
+    }
+    *__v_is_ref_local_var = __v_is_ref->valueint;
     }
 
     // login_submission_example_g_recaptcha_response->_raw_value
@@ -186,19 +231,42 @@ login_submission_example_g_recaptcha_response_t *login_submission_example_g_reca
     }
 
 
+    if (_raw_value && !cJSON_IsNull(_raw_value)) _raw_value_local_str = strdup(_raw_value->valuestring);
+    if (_value && !cJSON_IsNull(_value)) _value_local_str = strdup(_value->valuestring);
+
     login_submission_example_g_recaptcha_response_local_var = login_submission_example_g_recaptcha_response_create_internal (
-        __v_is_shallow ? __v_is_shallow->valueint : 0,
+        __v_is_shallow_local_var,
         dep ? dep_local_nonprim : NULL,
-        __v_is_ref ? __v_is_ref->valueint : 0,
-        _raw_value && !cJSON_IsNull(_raw_value) ? strdup(_raw_value->valuestring) : NULL,
-        _value && !cJSON_IsNull(_value) ? strdup(_value->valuestring) : NULL
+        __v_is_ref_local_var,
+        _raw_value_local_str,
+        _value_local_str
         );
+
+    if (!login_submission_example_g_recaptcha_response_local_var) {
+        goto end;
+    }
 
     return login_submission_example_g_recaptcha_response_local_var;
 end:
+    if (__v_is_shallow_local_var) {
+        free(__v_is_shallow_local_var);
+        __v_is_shallow_local_var = NULL;
+    }
     if (dep_local_nonprim) {
         login_submission_example_g_recaptcha_response_dep_free(dep_local_nonprim);
         dep_local_nonprim = NULL;
+    }
+    if (__v_is_ref_local_var) {
+        free(__v_is_ref_local_var);
+        __v_is_ref_local_var = NULL;
+    }
+    if (_raw_value_local_str) {
+        free(_raw_value_local_str);
+        _raw_value_local_str = NULL;
+    }
+    if (_value_local_str) {
+        free(_value_local_str);
+        _value_local_str = NULL;
     }
     return NULL;
 

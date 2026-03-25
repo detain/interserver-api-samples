@@ -22,7 +22,7 @@ typedef struct quickserver_order_server_details381_t {
     char *cpu; // string
     char *ram; // string
     char *hd; // string
-    int cores; //numeric
+    int *cores; //numeric
     char *cost; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -32,7 +32,7 @@ __attribute__((deprecated)) quickserver_order_server_details381_t *quickserver_o
     char *cpu,
     char *ram,
     char *hd,
-    int cores,
+    int *cores,
     char *cost
 );
 

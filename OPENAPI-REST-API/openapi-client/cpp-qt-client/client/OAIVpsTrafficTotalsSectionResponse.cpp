@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsTrafficTotalsSectionResponse::OAIVpsTrafficTotalsSectionResponse(QString json) {
+OAIVpsTrafficTotalsSectionResponse::OAIVpsTrafficTotalsSectionResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIVpsTrafficTotalsSectionResponse::initializeModel() {
     m_out_isValid = false;
 }
 
-void OAIVpsTrafficTotalsSectionResponse::fromJson(QString jsonString) {
+void OAIVpsTrafficTotalsSectionResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

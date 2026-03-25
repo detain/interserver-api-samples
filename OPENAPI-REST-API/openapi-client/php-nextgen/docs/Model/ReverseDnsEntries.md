@@ -1,4 +1,4 @@
-# # ReverseDnsEntries
+# ReverseDnsEntries
 
 ## Properties
 

@@ -13,10 +13,10 @@ static account_info_data_email_settings_t *account_info_data_email_settings_crea
     if (!account_info_data_email_settings_local_var) {
         return NULL;
     }
+    memset(account_info_data_email_settings_local_var, 0, sizeof(account_info_data_email_settings_t));
+    account_info_data_email_settings_local_var->_library_owned = 1;
     account_info_data_email_settings_local_var->admin_cc_bad_response = admin_cc_bad_response;
     account_info_data_email_settings_local_var->admin_mass_communications_tpl = admin_mass_communications_tpl;
-
-    account_info_data_email_settings_local_var->_library_owned = 1;
     return account_info_data_email_settings_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) account_info_data_email_settings_t *account_info_dat
     char *admin_cc_bad_response,
     char *admin_mass_communications_tpl
     ) {
-    return account_info_data_email_settings_create_internal (
+    account_info_data_email_settings_t *result = account_info_data_email_settings_create_internal (
         admin_cc_bad_response,
         admin_mass_communications_tpl
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void account_info_data_email_settings_free(account_info_data_email_settings_t *account_info_data_email_settings) {
@@ -80,6 +83,10 @@ account_info_data_email_settings_t *account_info_data_email_settings_parseFromJS
 
     account_info_data_email_settings_t *account_info_data_email_settings_local_var = NULL;
 
+    char *admin_cc_bad_response_local_str = NULL;
+
+    char *admin_mass_communications_tpl_local_str = NULL;
+
     // account_info_data_email_settings->admin_cc_bad_response
     cJSON *admin_cc_bad_response = cJSON_GetObjectItemCaseSensitive(account_info_data_email_settingsJSON, "admin/cc_bad_response");
     if (cJSON_IsNull(admin_cc_bad_response)) {
@@ -105,13 +112,28 @@ account_info_data_email_settings_t *account_info_data_email_settings_parseFromJS
     }
 
 
+    if (admin_cc_bad_response && !cJSON_IsNull(admin_cc_bad_response)) admin_cc_bad_response_local_str = strdup(admin_cc_bad_response->valuestring);
+    if (admin_mass_communications_tpl && !cJSON_IsNull(admin_mass_communications_tpl)) admin_mass_communications_tpl_local_str = strdup(admin_mass_communications_tpl->valuestring);
+
     account_info_data_email_settings_local_var = account_info_data_email_settings_create_internal (
-        admin_cc_bad_response && !cJSON_IsNull(admin_cc_bad_response) ? strdup(admin_cc_bad_response->valuestring) : NULL,
-        admin_mass_communications_tpl && !cJSON_IsNull(admin_mass_communications_tpl) ? strdup(admin_mass_communications_tpl->valuestring) : NULL
+        admin_cc_bad_response_local_str,
+        admin_mass_communications_tpl_local_str
         );
+
+    if (!account_info_data_email_settings_local_var) {
+        goto end;
+    }
 
     return account_info_data_email_settings_local_var;
 end:
+    if (admin_cc_bad_response_local_str) {
+        free(admin_cc_bad_response_local_str);
+        admin_cc_bad_response_local_str = NULL;
+    }
+    if (admin_mass_communications_tpl_local_str) {
+        free(admin_mass_communications_tpl_local_str);
+        admin_mass_communications_tpl_local_str = NULL;
+    }
     return NULL;
 
 }

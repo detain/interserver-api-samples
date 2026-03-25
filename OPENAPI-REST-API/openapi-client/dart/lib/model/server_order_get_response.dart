@@ -205,10 +205,24 @@ class ServerOrderGetResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerOrderGetResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerOrderGetResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'form_values'), 'Required key "ServerOrderGetResponse[form_values]" is missing from JSON.');
+        assert(json[r'form_values'] != null, 'Required key "ServerOrderGetResponse[form_values]" has a null value in JSON.');
+        assert(json.containsKey(r'config_ids'), 'Required key "ServerOrderGetResponse[config_ids]" is missing from JSON.');
+        assert(json[r'config_ids'] != null, 'Required key "ServerOrderGetResponse[config_ids]" has a null value in JSON.');
+        assert(json.containsKey(r'cpu'), 'Required key "ServerOrderGetResponse[cpu]" is missing from JSON.');
+        assert(json[r'cpu'] != null, 'Required key "ServerOrderGetResponse[cpu]" has a null value in JSON.');
+        assert(json.containsKey(r'cpu_li'), 'Required key "ServerOrderGetResponse[cpu_li]" is missing from JSON.');
+        assert(json[r'cpu_li'] != null, 'Required key "ServerOrderGetResponse[cpu_li]" has a null value in JSON.');
+        assert(json.containsKey(r'config_li'), 'Required key "ServerOrderGetResponse[config_li]" is missing from JSON.');
+        assert(json[r'config_li'] != null, 'Required key "ServerOrderGetResponse[config_li]" has a null value in JSON.');
+        assert(json.containsKey(r'frequency'), 'Required key "ServerOrderGetResponse[frequency]" is missing from JSON.');
+        assert(json[r'frequency'] != null, 'Required key "ServerOrderGetResponse[frequency]" has a null value in JSON.');
+        assert(json.containsKey(r'currency'), 'Required key "ServerOrderGetResponse[currency]" is missing from JSON.');
+        assert(json[r'currency'] != null, 'Required key "ServerOrderGetResponse[currency]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "ServerOrderGetResponse[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "ServerOrderGetResponse[country]" has a null value in JSON.');
+        assert(json.containsKey(r'step'), 'Required key "ServerOrderGetResponse[step]" is missing from JSON.');
+        assert(json[r'step'] != null, 'Required key "ServerOrderGetResponse[step]" has a null value in JSON.');
         return true;
       }());
 
@@ -229,7 +243,9 @@ class ServerOrderGetResponse {
         ima: mapValueOfType<String>(json, r'ima'),
         regions: Region.listFromJson(json[r'regions']),
         assetServers: AssetServer.listFromJson(json[r'asset_servers']),
-        buyItServers: Object.listFromJson(json[r'buy_it_servers']),
+        buyItServers: json[r'buy_it_servers'] is Iterable
+            ? (json[r'buy_it_servers'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
         displayShowmore: mapValueOfType<String>(json, r'display_showmore'),
         custDiscount: num.parse('${json[r'cust_discount']}'),
       );

@@ -53,10 +53,10 @@ class AccountInfoOauthConfig {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AccountInfoOauthConfig[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AccountInfoOauthConfig[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'callback'), 'Required key "AccountInfoOauthConfig[callback]" is missing from JSON.');
+        assert(json[r'callback'] != null, 'Required key "AccountInfoOauthConfig[callback]" has a null value in JSON.');
+        assert(json.containsKey(r'providers'), 'Required key "AccountInfoOauthConfig[providers]" is missing from JSON.');
+        assert(json[r'providers'] != null, 'Required key "AccountInfoOauthConfig[providers]" has a null value in JSON.');
         return true;
       }());
 

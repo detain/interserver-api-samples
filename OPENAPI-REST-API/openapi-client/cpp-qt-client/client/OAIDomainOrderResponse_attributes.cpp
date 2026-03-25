@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainOrderResponse_attributes::OAIDomainOrderResponse_attributes(QString json) {
+OAIDomainOrderResponse_attributes::OAIDomainOrderResponse_attributes(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIDomainOrderResponse_attributes::initializeModel() {
     m_admin_email_isValid = false;
 }
 
-void OAIDomainOrderResponse_attributes::fromJson(QString jsonString) {
+void OAIDomainOrderResponse_attributes::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

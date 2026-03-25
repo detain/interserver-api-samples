@@ -6,24 +6,33 @@
 
 
 static delete_firewall_rule_t *delete_firewall_rule_create_internal(
-    int rule_id
+    int *rule_id
     ) {
     delete_firewall_rule_t *delete_firewall_rule_local_var = malloc(sizeof(delete_firewall_rule_t));
     if (!delete_firewall_rule_local_var) {
         return NULL;
     }
-    delete_firewall_rule_local_var->rule_id = rule_id;
-
+    memset(delete_firewall_rule_local_var, 0, sizeof(delete_firewall_rule_t));
     delete_firewall_rule_local_var->_library_owned = 1;
+    delete_firewall_rule_local_var->rule_id = rule_id;
     return delete_firewall_rule_local_var;
 }
 
 __attribute__((deprecated)) delete_firewall_rule_t *delete_firewall_rule_create(
-    int rule_id
+    int *rule_id
     ) {
-    return delete_firewall_rule_create_internal (
-        rule_id
+    int *rule_id_copy = NULL;
+    if (rule_id) {
+        rule_id_copy = malloc(sizeof(int));
+        if (rule_id_copy) *rule_id_copy = *rule_id;
+    }
+    delete_firewall_rule_t *result = delete_firewall_rule_create_internal (
+        rule_id_copy
         );
+    if (!result) {
+        free(rule_id_copy);
+    }
+    return result;
 }
 
 void delete_firewall_rule_free(delete_firewall_rule_t *delete_firewall_rule) {
@@ -35,6 +44,10 @@ void delete_firewall_rule_free(delete_firewall_rule_t *delete_firewall_rule) {
         return ;
     }
     listEntry_t *listEntry;
+    if (delete_firewall_rule->rule_id) {
+        free(delete_firewall_rule->rule_id);
+        delete_firewall_rule->rule_id = NULL;
+    }
     free(delete_firewall_rule);
 }
 
@@ -45,7 +58,7 @@ cJSON *delete_firewall_rule_convertToJSON(delete_firewall_rule_t *delete_firewal
     if (!delete_firewall_rule->rule_id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "rule_id", delete_firewall_rule->rule_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "rule_id", *delete_firewall_rule->rule_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -61,6 +74,9 @@ delete_firewall_rule_t *delete_firewall_rule_parseFromJSON(cJSON *delete_firewal
 
     delete_firewall_rule_t *delete_firewall_rule_local_var = NULL;
 
+    // define the local variable for delete_firewall_rule->rule_id
+    int *rule_id_local_var = NULL;
+
     // delete_firewall_rule->rule_id
     cJSON *rule_id = cJSON_GetObjectItemCaseSensitive(delete_firewall_ruleJSON, "rule_id");
     if (cJSON_IsNull(rule_id)) {
@@ -75,14 +91,29 @@ delete_firewall_rule_t *delete_firewall_rule_parseFromJSON(cJSON *delete_firewal
     {
     goto end; //Numeric
     }
+    rule_id_local_var = malloc(sizeof(int));
+    if(!rule_id_local_var)
+    {
+        goto end;
+    }
+    *rule_id_local_var = rule_id->valuedouble;
+
 
 
     delete_firewall_rule_local_var = delete_firewall_rule_create_internal (
-        rule_id->valuedouble
+        rule_id_local_var
         );
+
+    if (!delete_firewall_rule_local_var) {
+        goto end;
+    }
 
     return delete_firewall_rule_local_var;
 end:
+    if (rule_id_local_var) {
+        free(rule_id_local_var);
+        rule_id_local_var = NULL;
+    }
     return NULL;
 
 }

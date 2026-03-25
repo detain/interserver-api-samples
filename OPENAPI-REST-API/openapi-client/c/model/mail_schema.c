@@ -21,6 +21,8 @@ static mail_schema_t *mail_schema_create_internal(
     if (!mail_schema_local_var) {
         return NULL;
     }
+    memset(mail_schema_local_var, 0, sizeof(mail_schema_t));
+    mail_schema_local_var->_library_owned = 1;
     mail_schema_local_var->service_info = service_info;
     mail_schema_local_var->client_links = client_links;
     mail_schema_local_var->billing_details = billing_details;
@@ -31,8 +33,6 @@ static mail_schema_t *mail_schema_create_internal(
     mail_schema_local_var->service_type = service_type;
     mail_schema_local_var->usage_count = usage_count;
     mail_schema_local_var->service_extra = service_extra;
-
-    mail_schema_local_var->_library_owned = 1;
     return mail_schema_local_var;
 }
 
@@ -48,7 +48,7 @@ __attribute__((deprecated)) mail_schema_t *mail_schema_create(
     char *usage_count,
     list_t *service_extra
     ) {
-    return mail_schema_create_internal (
+    mail_schema_t *result = mail_schema_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -60,6 +60,9 @@ __attribute__((deprecated)) mail_schema_t *mail_schema_create(
         usage_count,
         service_extra
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_schema_free(mail_schema_t *mail_schema) {
@@ -273,11 +276,19 @@ mail_schema_t *mail_schema_parseFromJSON(cJSON *mail_schemaJSON){
     // define the local variable for mail_schema->billing_details
     mail_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
+    char *package_local_str = NULL;
+
     // define the local variable for mail_schema->extra_info_tables
     mail_schema_extra_info_tables_t *extra_info_tables_local_nonprim = NULL;
 
     // define the local variable for mail_schema->service_type
     mail_service_type_t *service_type_local_nonprim = NULL;
+
+    char *usage_count_local_str = NULL;
 
     // define the local list for mail_schema->service_extra
     list_t *service_extraList = NULL;
@@ -440,18 +451,27 @@ mail_schema_t *mail_schema_parseFromJSON(cJSON *mail_schemaJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+    if (usage_count && !cJSON_IsNull(usage_count)) usage_count_local_str = strdup(usage_count->valuestring);
+
     mail_schema_local_var = mail_schema_create_internal (
         service_info_local_nonprim,
         client_linksList,
         billing_details_local_nonprim,
-        strdup(cust_currency->valuestring),
-        strdup(cust_currency_symbol->valuestring),
-        strdup(package->valuestring),
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
+        package_local_str,
         extra_info_tables_local_nonprim,
         service_type_local_nonprim,
-        strdup(usage_count->valuestring),
+        usage_count_local_str,
         service_extra ? service_extraList : NULL
         );
+
+    if (!mail_schema_local_var) {
+        goto end;
+    }
 
     return mail_schema_local_var;
 end:
@@ -472,6 +492,18 @@ end:
         mail_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
+    }
     if (extra_info_tables_local_nonprim) {
         mail_schema_extra_info_tables_free(extra_info_tables_local_nonprim);
         extra_info_tables_local_nonprim = NULL;
@@ -479,6 +511,10 @@ end:
     if (service_type_local_nonprim) {
         mail_service_type_free(service_type_local_nonprim);
         service_type_local_nonprim = NULL;
+    }
+    if (usage_count_local_str) {
+        free(usage_count_local_str);
+        usage_count_local_str = NULL;
     }
     if (service_extraList) {
         listEntry_t *listEntry = NULL;

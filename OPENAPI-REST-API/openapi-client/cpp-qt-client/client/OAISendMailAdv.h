@@ -36,13 +36,13 @@ class OAIMailAttachment;
 class OAISendMailAdv : public OAIObject {
 public:
     OAISendMailAdv();
-    OAISendMailAdv(QString json);
+    OAISendMailAdv(const QString &json);
     ~OAISendMailAdv() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getSubject() const;
     void setSubject(const QString &subject);

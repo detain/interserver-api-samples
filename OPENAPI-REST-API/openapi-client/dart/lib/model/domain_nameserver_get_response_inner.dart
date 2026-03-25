@@ -60,10 +60,12 @@ class DomainNameserverGetResponseInner {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DomainNameserverGetResponseInner[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DomainNameserverGetResponseInner[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "DomainNameserverGetResponseInner[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "DomainNameserverGetResponseInner[name]" has a null value in JSON.');
+        assert(json.containsKey(r'ipaddress'), 'Required key "DomainNameserverGetResponseInner[ipaddress]" is missing from JSON.');
+        assert(json[r'ipaddress'] != null, 'Required key "DomainNameserverGetResponseInner[ipaddress]" has a null value in JSON.');
+        assert(json.containsKey(r'can_delete'), 'Required key "DomainNameserverGetResponseInner[can_delete]" is missing from JSON.');
+        assert(json[r'can_delete'] != null, 'Required key "DomainNameserverGetResponseInner[can_delete]" has a null value in JSON.');
         return true;
       }());
 

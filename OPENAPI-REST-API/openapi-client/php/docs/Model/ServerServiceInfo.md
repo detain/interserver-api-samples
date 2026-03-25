@@ -1,4 +1,4 @@
-# # ServerServiceInfo
+# ServerServiceInfo
 
 ## Properties
 

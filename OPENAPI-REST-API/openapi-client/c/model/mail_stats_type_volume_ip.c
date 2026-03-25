@@ -6,36 +6,63 @@
 
 
 static mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_create_internal(
-    int _1_1_1_1,
-    int _2_2_2_2,
-    int _3_3_3_3,
-    int _4_4_4_4
+    int *_1_1_1_1,
+    int *_2_2_2_2,
+    int *_3_3_3_3,
+    int *_4_4_4_4
     ) {
     mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_local_var = malloc(sizeof(mail_stats_type_volume_ip_t));
     if (!mail_stats_type_volume_ip_local_var) {
         return NULL;
     }
+    memset(mail_stats_type_volume_ip_local_var, 0, sizeof(mail_stats_type_volume_ip_t));
+    mail_stats_type_volume_ip_local_var->_library_owned = 1;
     mail_stats_type_volume_ip_local_var->_1_1_1_1 = _1_1_1_1;
     mail_stats_type_volume_ip_local_var->_2_2_2_2 = _2_2_2_2;
     mail_stats_type_volume_ip_local_var->_3_3_3_3 = _3_3_3_3;
     mail_stats_type_volume_ip_local_var->_4_4_4_4 = _4_4_4_4;
-
-    mail_stats_type_volume_ip_local_var->_library_owned = 1;
     return mail_stats_type_volume_ip_local_var;
 }
 
 __attribute__((deprecated)) mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_create(
-    int _1_1_1_1,
-    int _2_2_2_2,
-    int _3_3_3_3,
-    int _4_4_4_4
+    int *_1_1_1_1,
+    int *_2_2_2_2,
+    int *_3_3_3_3,
+    int *_4_4_4_4
     ) {
-    return mail_stats_type_volume_ip_create_internal (
-        _1_1_1_1,
-        _2_2_2_2,
-        _3_3_3_3,
-        _4_4_4_4
+    int *_1_1_1_1_copy = NULL;
+    if (_1_1_1_1) {
+        _1_1_1_1_copy = malloc(sizeof(int));
+        if (_1_1_1_1_copy) *_1_1_1_1_copy = *_1_1_1_1;
+    }
+    int *_2_2_2_2_copy = NULL;
+    if (_2_2_2_2) {
+        _2_2_2_2_copy = malloc(sizeof(int));
+        if (_2_2_2_2_copy) *_2_2_2_2_copy = *_2_2_2_2;
+    }
+    int *_3_3_3_3_copy = NULL;
+    if (_3_3_3_3) {
+        _3_3_3_3_copy = malloc(sizeof(int));
+        if (_3_3_3_3_copy) *_3_3_3_3_copy = *_3_3_3_3;
+    }
+    int *_4_4_4_4_copy = NULL;
+    if (_4_4_4_4) {
+        _4_4_4_4_copy = malloc(sizeof(int));
+        if (_4_4_4_4_copy) *_4_4_4_4_copy = *_4_4_4_4;
+    }
+    mail_stats_type_volume_ip_t *result = mail_stats_type_volume_ip_create_internal (
+        _1_1_1_1_copy,
+        _2_2_2_2_copy,
+        _3_3_3_3_copy,
+        _4_4_4_4_copy
         );
+    if (!result) {
+        free(_1_1_1_1_copy);
+        free(_2_2_2_2_copy);
+        free(_3_3_3_3_copy);
+        free(_4_4_4_4_copy);
+    }
+    return result;
 }
 
 void mail_stats_type_volume_ip_free(mail_stats_type_volume_ip_t *mail_stats_type_volume_ip) {
@@ -47,6 +74,22 @@ void mail_stats_type_volume_ip_free(mail_stats_type_volume_ip_t *mail_stats_type
         return ;
     }
     listEntry_t *listEntry;
+    if (mail_stats_type_volume_ip->_1_1_1_1) {
+        free(mail_stats_type_volume_ip->_1_1_1_1);
+        mail_stats_type_volume_ip->_1_1_1_1 = NULL;
+    }
+    if (mail_stats_type_volume_ip->_2_2_2_2) {
+        free(mail_stats_type_volume_ip->_2_2_2_2);
+        mail_stats_type_volume_ip->_2_2_2_2 = NULL;
+    }
+    if (mail_stats_type_volume_ip->_3_3_3_3) {
+        free(mail_stats_type_volume_ip->_3_3_3_3);
+        mail_stats_type_volume_ip->_3_3_3_3 = NULL;
+    }
+    if (mail_stats_type_volume_ip->_4_4_4_4) {
+        free(mail_stats_type_volume_ip->_4_4_4_4);
+        mail_stats_type_volume_ip->_4_4_4_4 = NULL;
+    }
     free(mail_stats_type_volume_ip);
 }
 
@@ -55,7 +98,7 @@ cJSON *mail_stats_type_volume_ip_convertToJSON(mail_stats_type_volume_ip_t *mail
 
     // mail_stats_type_volume_ip->_1_1_1_1
     if(mail_stats_type_volume_ip->_1_1_1_1) {
-    if(cJSON_AddNumberToObject(item, "1.1.1.1", mail_stats_type_volume_ip->_1_1_1_1) == NULL) {
+    if(cJSON_AddNumberToObject(item, "1.1.1.1", *mail_stats_type_volume_ip->_1_1_1_1) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -63,7 +106,7 @@ cJSON *mail_stats_type_volume_ip_convertToJSON(mail_stats_type_volume_ip_t *mail
 
     // mail_stats_type_volume_ip->_2_2_2_2
     if(mail_stats_type_volume_ip->_2_2_2_2) {
-    if(cJSON_AddNumberToObject(item, "2.2.2.2", mail_stats_type_volume_ip->_2_2_2_2) == NULL) {
+    if(cJSON_AddNumberToObject(item, "2.2.2.2", *mail_stats_type_volume_ip->_2_2_2_2) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -71,7 +114,7 @@ cJSON *mail_stats_type_volume_ip_convertToJSON(mail_stats_type_volume_ip_t *mail
 
     // mail_stats_type_volume_ip->_3_3_3_3
     if(mail_stats_type_volume_ip->_3_3_3_3) {
-    if(cJSON_AddNumberToObject(item, "3.3.3.3", mail_stats_type_volume_ip->_3_3_3_3) == NULL) {
+    if(cJSON_AddNumberToObject(item, "3.3.3.3", *mail_stats_type_volume_ip->_3_3_3_3) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -79,7 +122,7 @@ cJSON *mail_stats_type_volume_ip_convertToJSON(mail_stats_type_volume_ip_t *mail
 
     // mail_stats_type_volume_ip->_4_4_4_4
     if(mail_stats_type_volume_ip->_4_4_4_4) {
-    if(cJSON_AddNumberToObject(item, "4.4.4.4", mail_stats_type_volume_ip->_4_4_4_4) == NULL) {
+    if(cJSON_AddNumberToObject(item, "4.4.4.4", *mail_stats_type_volume_ip->_4_4_4_4) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -96,6 +139,18 @@ mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_parseFromJSON(cJSON *mail
 
     mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_local_var = NULL;
 
+    // define the local variable for mail_stats_type_volume_ip->_1_1_1_1
+    int *_1_1_1_1_local_var = NULL;
+
+    // define the local variable for mail_stats_type_volume_ip->_2_2_2_2
+    int *_2_2_2_2_local_var = NULL;
+
+    // define the local variable for mail_stats_type_volume_ip->_3_3_3_3
+    int *_3_3_3_3_local_var = NULL;
+
+    // define the local variable for mail_stats_type_volume_ip->_4_4_4_4
+    int *_4_4_4_4_local_var = NULL;
+
     // mail_stats_type_volume_ip->_1_1_1_1
     cJSON *_1_1_1_1 = cJSON_GetObjectItemCaseSensitive(mail_stats_type_volume_ipJSON, "1.1.1.1");
     if (cJSON_IsNull(_1_1_1_1)) {
@@ -106,6 +161,12 @@ mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_parseFromJSON(cJSON *mail
     {
     goto end; //Numeric
     }
+    _1_1_1_1_local_var = malloc(sizeof(int));
+    if(!_1_1_1_1_local_var)
+    {
+        goto end;
+    }
+    *_1_1_1_1_local_var = _1_1_1_1->valuedouble;
     }
 
     // mail_stats_type_volume_ip->_2_2_2_2
@@ -118,6 +179,12 @@ mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_parseFromJSON(cJSON *mail
     {
     goto end; //Numeric
     }
+    _2_2_2_2_local_var = malloc(sizeof(int));
+    if(!_2_2_2_2_local_var)
+    {
+        goto end;
+    }
+    *_2_2_2_2_local_var = _2_2_2_2->valuedouble;
     }
 
     // mail_stats_type_volume_ip->_3_3_3_3
@@ -130,6 +197,12 @@ mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_parseFromJSON(cJSON *mail
     {
     goto end; //Numeric
     }
+    _3_3_3_3_local_var = malloc(sizeof(int));
+    if(!_3_3_3_3_local_var)
+    {
+        goto end;
+    }
+    *_3_3_3_3_local_var = _3_3_3_3->valuedouble;
     }
 
     // mail_stats_type_volume_ip->_4_4_4_4
@@ -142,18 +215,45 @@ mail_stats_type_volume_ip_t *mail_stats_type_volume_ip_parseFromJSON(cJSON *mail
     {
     goto end; //Numeric
     }
+    _4_4_4_4_local_var = malloc(sizeof(int));
+    if(!_4_4_4_4_local_var)
+    {
+        goto end;
+    }
+    *_4_4_4_4_local_var = _4_4_4_4->valuedouble;
     }
 
 
+
     mail_stats_type_volume_ip_local_var = mail_stats_type_volume_ip_create_internal (
-        _1_1_1_1 ? _1_1_1_1->valuedouble : 0,
-        _2_2_2_2 ? _2_2_2_2->valuedouble : 0,
-        _3_3_3_3 ? _3_3_3_3->valuedouble : 0,
-        _4_4_4_4 ? _4_4_4_4->valuedouble : 0
+        _1_1_1_1_local_var,
+        _2_2_2_2_local_var,
+        _3_3_3_3_local_var,
+        _4_4_4_4_local_var
         );
+
+    if (!mail_stats_type_volume_ip_local_var) {
+        goto end;
+    }
 
     return mail_stats_type_volume_ip_local_var;
 end:
+    if (_1_1_1_1_local_var) {
+        free(_1_1_1_1_local_var);
+        _1_1_1_1_local_var = NULL;
+    }
+    if (_2_2_2_2_local_var) {
+        free(_2_2_2_2_local_var);
+        _2_2_2_2_local_var = NULL;
+    }
+    if (_3_3_3_3_local_var) {
+        free(_3_3_3_3_local_var);
+        _3_3_3_3_local_var = NULL;
+    }
+    if (_4_4_4_4_local_var) {
+        free(_4_4_4_4_local_var);
+        _4_4_4_4_local_var = NULL;
+    }
     return NULL;
 
 }

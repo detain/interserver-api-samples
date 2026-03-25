@@ -394,6 +394,7 @@ src/inter_server_management_api/specs/update_account_tfa_request.clj
 src/inter_server_management_api/specs/update_ticket.clj
 src/inter_server_management_api/specs/update_ticket_response_schema.clj
 src/inter_server_management_api/specs/url_request.clj
+src/inter_server_management_api/specs/view_mail_log_start_date_parameter.clj
 src/inter_server_management_api/specs/view_ticket_response.clj
 src/inter_server_management_api/specs/vps.clj
 src/inter_server_management_api/specs/vps_backup_row.clj

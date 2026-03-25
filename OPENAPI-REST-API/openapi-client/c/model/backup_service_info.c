@@ -26,6 +26,8 @@ static backup_service_info_t *backup_service_info_create_internal(
     if (!backup_service_info_local_var) {
         return NULL;
     }
+    memset(backup_service_info_local_var, 0, sizeof(backup_service_info_t));
+    backup_service_info_local_var->_library_owned = 1;
     backup_service_info_local_var->backup_id = backup_id;
     backup_service_info_local_var->backup_server = backup_server;
     backup_service_info_local_var->backup_username = backup_username;
@@ -41,8 +43,6 @@ static backup_service_info_t *backup_service_info_create_internal(
     backup_service_info_local_var->backup_extra = backup_extra;
     backup_service_info_local_var->backup_server_status = backup_server_status;
     backup_service_info_local_var->backup_comment = backup_comment;
-
-    backup_service_info_local_var->_library_owned = 1;
     return backup_service_info_local_var;
 }
 
@@ -63,7 +63,7 @@ __attribute__((deprecated)) backup_service_info_t *backup_service_info_create(
     char *backup_server_status,
     char *backup_comment
     ) {
-    return backup_service_info_create_internal (
+    backup_service_info_t *result = backup_service_info_create_internal (
         backup_id,
         backup_server,
         backup_username,
@@ -80,6 +80,9 @@ __attribute__((deprecated)) backup_service_info_t *backup_service_info_create(
         backup_server_status,
         backup_comment
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backup_service_info_free(backup_service_info_t *backup_service_info) {
@@ -288,6 +291,36 @@ backup_service_info_t *backup_service_info_parseFromJSON(cJSON *backup_service_i
 
     backup_service_info_t *backup_service_info_local_var = NULL;
 
+    char *backup_id_local_str = NULL;
+
+    char *backup_server_local_str = NULL;
+
+    char *backup_username_local_str = NULL;
+
+    char *backup_type_local_str = NULL;
+
+    char *backup_currency_local_str = NULL;
+
+    char *backup_order_date_local_str = NULL;
+
+    char *backup_custid_local_str = NULL;
+
+    char *backup_quota_local_str = NULL;
+
+    char *backup_ip_local_str = NULL;
+
+    char *backup_status_local_str = NULL;
+
+    char *backup_invoice_local_str = NULL;
+
+    char *backup_coupon_local_str = NULL;
+
+    char *backup_extra_local_str = NULL;
+
+    char *backup_server_status_local_str = NULL;
+
+    char *backup_comment_local_str = NULL;
+
     // backup_service_info->backup_id
     cJSON *backup_id = cJSON_GetObjectItemCaseSensitive(backup_service_infoJSON, "backup_id");
     if (cJSON_IsNull(backup_id)) {
@@ -469,26 +502,106 @@ backup_service_info_t *backup_service_info_parseFromJSON(cJSON *backup_service_i
     }
 
 
+    if (backup_id && !cJSON_IsNull(backup_id)) backup_id_local_str = strdup(backup_id->valuestring);
+    if (backup_server && !cJSON_IsNull(backup_server)) backup_server_local_str = strdup(backup_server->valuestring);
+    if (backup_username && !cJSON_IsNull(backup_username)) backup_username_local_str = strdup(backup_username->valuestring);
+    if (backup_type && !cJSON_IsNull(backup_type)) backup_type_local_str = strdup(backup_type->valuestring);
+    if (backup_currency && !cJSON_IsNull(backup_currency)) backup_currency_local_str = strdup(backup_currency->valuestring);
+    if (backup_order_date && !cJSON_IsNull(backup_order_date)) backup_order_date_local_str = strdup(backup_order_date->valuestring);
+    if (backup_custid && !cJSON_IsNull(backup_custid)) backup_custid_local_str = strdup(backup_custid->valuestring);
+    if (backup_quota && !cJSON_IsNull(backup_quota)) backup_quota_local_str = strdup(backup_quota->valuestring);
+    if (backup_ip && !cJSON_IsNull(backup_ip)) backup_ip_local_str = strdup(backup_ip->valuestring);
+    if (backup_status && !cJSON_IsNull(backup_status)) backup_status_local_str = strdup(backup_status->valuestring);
+    if (backup_invoice && !cJSON_IsNull(backup_invoice)) backup_invoice_local_str = strdup(backup_invoice->valuestring);
+    if (backup_coupon && !cJSON_IsNull(backup_coupon)) backup_coupon_local_str = strdup(backup_coupon->valuestring);
+    if (backup_extra && !cJSON_IsNull(backup_extra)) backup_extra_local_str = strdup(backup_extra->valuestring);
+    if (backup_server_status && !cJSON_IsNull(backup_server_status)) backup_server_status_local_str = strdup(backup_server_status->valuestring);
+    if (backup_comment && !cJSON_IsNull(backup_comment)) backup_comment_local_str = strdup(backup_comment->valuestring);
+
     backup_service_info_local_var = backup_service_info_create_internal (
-        backup_id && !cJSON_IsNull(backup_id) ? strdup(backup_id->valuestring) : NULL,
-        backup_server && !cJSON_IsNull(backup_server) ? strdup(backup_server->valuestring) : NULL,
-        backup_username && !cJSON_IsNull(backup_username) ? strdup(backup_username->valuestring) : NULL,
-        backup_type && !cJSON_IsNull(backup_type) ? strdup(backup_type->valuestring) : NULL,
-        backup_currency && !cJSON_IsNull(backup_currency) ? strdup(backup_currency->valuestring) : NULL,
-        backup_order_date && !cJSON_IsNull(backup_order_date) ? strdup(backup_order_date->valuestring) : NULL,
-        backup_custid && !cJSON_IsNull(backup_custid) ? strdup(backup_custid->valuestring) : NULL,
-        backup_quota && !cJSON_IsNull(backup_quota) ? strdup(backup_quota->valuestring) : NULL,
-        backup_ip && !cJSON_IsNull(backup_ip) ? strdup(backup_ip->valuestring) : NULL,
-        backup_status && !cJSON_IsNull(backup_status) ? strdup(backup_status->valuestring) : NULL,
-        backup_invoice && !cJSON_IsNull(backup_invoice) ? strdup(backup_invoice->valuestring) : NULL,
-        backup_coupon && !cJSON_IsNull(backup_coupon) ? strdup(backup_coupon->valuestring) : NULL,
-        backup_extra && !cJSON_IsNull(backup_extra) ? strdup(backup_extra->valuestring) : NULL,
-        backup_server_status && !cJSON_IsNull(backup_server_status) ? strdup(backup_server_status->valuestring) : NULL,
-        backup_comment && !cJSON_IsNull(backup_comment) ? strdup(backup_comment->valuestring) : NULL
+        backup_id_local_str,
+        backup_server_local_str,
+        backup_username_local_str,
+        backup_type_local_str,
+        backup_currency_local_str,
+        backup_order_date_local_str,
+        backup_custid_local_str,
+        backup_quota_local_str,
+        backup_ip_local_str,
+        backup_status_local_str,
+        backup_invoice_local_str,
+        backup_coupon_local_str,
+        backup_extra_local_str,
+        backup_server_status_local_str,
+        backup_comment_local_str
         );
+
+    if (!backup_service_info_local_var) {
+        goto end;
+    }
 
     return backup_service_info_local_var;
 end:
+    if (backup_id_local_str) {
+        free(backup_id_local_str);
+        backup_id_local_str = NULL;
+    }
+    if (backup_server_local_str) {
+        free(backup_server_local_str);
+        backup_server_local_str = NULL;
+    }
+    if (backup_username_local_str) {
+        free(backup_username_local_str);
+        backup_username_local_str = NULL;
+    }
+    if (backup_type_local_str) {
+        free(backup_type_local_str);
+        backup_type_local_str = NULL;
+    }
+    if (backup_currency_local_str) {
+        free(backup_currency_local_str);
+        backup_currency_local_str = NULL;
+    }
+    if (backup_order_date_local_str) {
+        free(backup_order_date_local_str);
+        backup_order_date_local_str = NULL;
+    }
+    if (backup_custid_local_str) {
+        free(backup_custid_local_str);
+        backup_custid_local_str = NULL;
+    }
+    if (backup_quota_local_str) {
+        free(backup_quota_local_str);
+        backup_quota_local_str = NULL;
+    }
+    if (backup_ip_local_str) {
+        free(backup_ip_local_str);
+        backup_ip_local_str = NULL;
+    }
+    if (backup_status_local_str) {
+        free(backup_status_local_str);
+        backup_status_local_str = NULL;
+    }
+    if (backup_invoice_local_str) {
+        free(backup_invoice_local_str);
+        backup_invoice_local_str = NULL;
+    }
+    if (backup_coupon_local_str) {
+        free(backup_coupon_local_str);
+        backup_coupon_local_str = NULL;
+    }
+    if (backup_extra_local_str) {
+        free(backup_extra_local_str);
+        backup_extra_local_str = NULL;
+    }
+    if (backup_server_status_local_str) {
+        free(backup_server_status_local_str);
+        backup_server_status_local_str = NULL;
+    }
+    if (backup_comment_local_str) {
+        free(backup_comment_local_str);
+        backup_comment_local_str = NULL;
+    }
     return NULL;
 
 }

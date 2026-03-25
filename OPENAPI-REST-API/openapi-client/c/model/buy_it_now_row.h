@@ -27,7 +27,7 @@ typedef struct buy_it_now_row_t {
     char *bandwidth; // string
     char *ips; // string
     char *location; // string
-    int price; //numeric
+    int *price; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } buy_it_now_row_t;
@@ -40,7 +40,7 @@ __attribute__((deprecated)) buy_it_now_row_t *buy_it_now_row_create(
     char *bandwidth,
     char *ips,
     char *location,
-    int price
+    int *price
 );
 
 void buy_it_now_row_free(buy_it_now_row_t *buy_it_now_row);

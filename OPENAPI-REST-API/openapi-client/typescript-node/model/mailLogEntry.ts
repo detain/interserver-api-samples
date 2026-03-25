@@ -13,101 +13,109 @@
 import { RequestFile } from './models';
 
 /**
-* An email record
+* A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 */
 export class MailLogEntry {
     /**
-    * internal db id
+    * Internal auto-increment database row ID.
     */
     '_id': number;
     /**
-    * mail id
+    * The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
     */
     'id': string;
     /**
-    * from address
+    * SMTP envelope `MAIL FROM` address.
     */
     'from': string;
     /**
-    * to address
+    * SMTP envelope `RCPT TO` address.
     */
     'to': string;
     /**
-    * email subject
-    */
-    'subject': string;
-    /**
-    * creation date
+    * Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
     */
     'created': string;
     /**
-    * creation timestamp
+    * Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
     */
     'time': number;
     /**
-    * user account
+    * The SMTP AUTH username used to submit the message (e.g. `mb5658`).
     */
     'user': string;
     /**
-    * transaction type
+    * SMTP transaction type negotiated with the relay.
     */
     'transtype': string;
     /**
-    * origin ip
+    * IP address of the client that submitted the message to the relay.
     */
     'origin': string;
     /**
-    * interface name
+    * Relay interface name that accepted the message.
     */
     '_interface': string;
     /**
-    * sending zone
+    * The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
     */
-    'sendingZone': string;
+    'subject'?: string | null;
     /**
-    * email body size in bytes
+    * The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
     */
-    'bodySize': number;
+    'messageId'?: string | null;
     /**
-    * index of email in the to adderess list
+    * The sending zone assigned by the relay for outbound delivery.
     */
-    'seq': number;
+    'sendingZone'?: string | null;
     /**
-    * to address this email is being sent to
+    * Size of the message body in bytes.
     */
-    'recipient': string;
+    'bodySize'?: number | null;
     /**
-    * to address domain
+    * Sequence index of this recipient in a multi-recipient message. Starts at 1.
     */
-    'domain': string;
+    'seq'?: number | null;
     /**
-    * locked status
+    * Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
     */
-    'locked': number;
+    'delivered'?: number | null;
     /**
-    * lock timestamp
+    * The SMTP response code from the destination MX server (e.g. `250`).
     */
-    'lockTime': number;
+    'code'?: number | null;
     /**
-    * assigned server
+    * The specific recipient address this delivery record is for.
     */
-    'assigned': string;
+    'recipient'?: string | null;
     /**
-    * queued timestamp
+    * The full SMTP response string received from the destination MX server.
     */
-    'queued': string;
+    'response'?: string | null;
     /**
-    * mx hostname
+    * The destination domain for this delivery attempt.
     */
-    'mxHostname': string;
+    'domain'?: string | null;
     /**
-    * mail delivery response
+    * Whether the queue entry is currently locked for delivery processing.
     */
-    'response': string;
+    'locked'?: number | null;
     /**
-    * message id
+    * Millisecond-precision timestamp of the last queue lock acquisition.
     */
-    'messageId'?: string;
+    'lockTime'?: string | null;
+    /**
+    * The relay server node assigned to deliver this message.
+    */
+    'assigned'?: string | null;
+    /**
+    * ISO 8601 timestamp when the message was placed into the delivery queue.
+    */
+    'queued'?: string | null;
+    /**
+    * The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+    */
+    'mxHostname'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -130,11 +138,6 @@ export class MailLogEntry {
         {
             "name": "to",
             "baseName": "to",
-            "type": "string"
-        },
-        {
-            "name": "subject",
-            "baseName": "subject",
             "type": "string"
         },
         {
@@ -168,6 +171,16 @@ export class MailLogEntry {
             "type": "string"
         },
         {
+            "name": "subject",
+            "baseName": "subject",
+            "type": "string"
+        },
+        {
+            "name": "messageId",
+            "baseName": "messageId",
+            "type": "string"
+        },
+        {
             "name": "sendingZone",
             "baseName": "sendingZone",
             "type": "string"
@@ -183,8 +196,23 @@ export class MailLogEntry {
             "type": "number"
         },
         {
+            "name": "delivered",
+            "baseName": "delivered",
+            "type": "number"
+        },
+        {
+            "name": "code",
+            "baseName": "code",
+            "type": "number"
+        },
+        {
             "name": "recipient",
             "baseName": "recipient",
+            "type": "string"
+        },
+        {
+            "name": "response",
+            "baseName": "response",
             "type": "string"
         },
         {
@@ -200,7 +228,7 @@ export class MailLogEntry {
         {
             "name": "lockTime",
             "baseName": "lockTime",
-            "type": "number"
+            "type": "string"
         },
         {
             "name": "assigned",
@@ -215,16 +243,6 @@ export class MailLogEntry {
         {
             "name": "mxHostname",
             "baseName": "mxHostname",
-            "type": "string"
-        },
-        {
-            "name": "response",
-            "baseName": "response",
-            "type": "string"
-        },
-        {
-            "name": "messageId",
-            "baseName": "messageId",
             "type": "string"
         }    ];
 

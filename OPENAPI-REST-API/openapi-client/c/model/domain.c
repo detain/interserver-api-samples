@@ -18,7 +18,7 @@ static domain_t *domain_create_internal(
     domain_contact_details_t *contact_details,
     char *pwarning,
     char *transfer_info,
-    int errors,
+    int *errors,
     list_t *domain_logs,
     domain_all_info_t *all_info,
     char *registrar_status,
@@ -30,6 +30,8 @@ static domain_t *domain_create_internal(
     if (!domain_local_var) {
         return NULL;
     }
+    memset(domain_local_var, 0, sizeof(domain_t));
+    domain_local_var->_library_owned = 1;
     domain_local_var->service_info = service_info;
     domain_local_var->service_types = service_types;
     domain_local_var->client_links = client_links;
@@ -49,8 +51,6 @@ static domain_t *domain_create_internal(
     domain_local_var->locked = locked;
     domain_local_var->whois_privacy = whois_privacy;
     domain_local_var->auto_renew = auto_renew;
-
-    domain_local_var->_library_owned = 1;
     return domain_local_var;
 }
 
@@ -67,7 +67,7 @@ __attribute__((deprecated)) domain_t *domain_create(
     domain_contact_details_t *contact_details,
     char *pwarning,
     char *transfer_info,
-    int errors,
+    int *errors,
     list_t *domain_logs,
     domain_all_info_t *all_info,
     char *registrar_status,
@@ -75,7 +75,12 @@ __attribute__((deprecated)) domain_t *domain_create(
     char *whois_privacy,
     char *auto_renew
     ) {
-    return domain_create_internal (
+    int *errors_copy = NULL;
+    if (errors) {
+        errors_copy = malloc(sizeof(int));
+        if (errors_copy) *errors_copy = *errors;
+    }
+    domain_t *result = domain_create_internal (
         service_info,
         service_types,
         client_links,
@@ -88,7 +93,7 @@ __attribute__((deprecated)) domain_t *domain_create(
         contact_details,
         pwarning,
         transfer_info,
-        errors,
+        errors_copy,
         domain_logs,
         all_info,
         registrar_status,
@@ -96,6 +101,10 @@ __attribute__((deprecated)) domain_t *domain_create(
         whois_privacy,
         auto_renew
         );
+    if (!result) {
+        free(errors_copy);
+    }
+    return result;
 }
 
 void domain_free(domain_t *domain) {
@@ -163,6 +172,10 @@ void domain_free(domain_t *domain) {
     if (domain->transfer_info) {
         free(domain->transfer_info);
         domain->transfer_info = NULL;
+    }
+    if (domain->errors) {
+        free(domain->errors);
+        domain->errors = NULL;
     }
     if (domain->domain_logs) {
         list_ForEach(listEntry, domain->domain_logs) {
@@ -345,7 +358,7 @@ cJSON *domain_convertToJSON(domain_t *domain) {
 
     // domain->errors
     if(domain->errors) {
-    if(cJSON_AddBoolToObject(item, "errors", domain->errors) == NULL) {
+    if(cJSON_AddBoolToObject(item, "errors", *domain->errors) == NULL) {
     goto fail; //Bool
     }
     }
@@ -436,6 +449,10 @@ domain_t *domain_parseFromJSON(cJSON *domainJSON){
     // define the local variable for domain->billing_details
     domain_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
     // define the local variable for domain->service_extra
     domain_billing_extra_t *service_extra_local_nonprim = NULL;
 
@@ -448,11 +465,26 @@ domain_t *domain_parseFromJSON(cJSON *domainJSON){
     // define the local variable for domain->contact_details
     domain_contact_details_t *contact_details_local_nonprim = NULL;
 
+    char *pwarning_local_str = NULL;
+
+    char *transfer_info_local_str = NULL;
+
+    // define the local variable for domain->errors
+    int *errors_local_var = NULL;
+
     // define the local list for domain->domain_logs
     list_t *domain_logsList = NULL;
 
     // define the local variable for domain->all_info
     domain_all_info_t *all_info_local_nonprim = NULL;
+
+    char *registrar_status_local_str = NULL;
+
+    char *locked_local_str = NULL;
+
+    char *whois_privacy_local_str = NULL;
+
+    char *auto_renew_local_str = NULL;
 
     // domain->service_info
     cJSON *service_info = cJSON_GetObjectItemCaseSensitive(domainJSON, "serviceInfo");
@@ -601,6 +633,12 @@ domain_t *domain_parseFromJSON(cJSON *domainJSON){
     {
     goto end; //Bool
     }
+    errors_local_var = malloc(sizeof(int));
+    if(!errors_local_var)
+    {
+        goto end;
+    }
+    *errors_local_var = errors->valueint;
     }
 
     // domain->domain_logs
@@ -683,27 +721,40 @@ domain_t *domain_parseFromJSON(cJSON *domainJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (pwarning && !cJSON_IsNull(pwarning)) pwarning_local_str = strdup(pwarning->valuestring);
+    if (transfer_info && !cJSON_IsNull(transfer_info)) transfer_info_local_str = strdup(transfer_info->valuestring);
+    if (registrar_status && !cJSON_IsNull(registrar_status)) registrar_status_local_str = strdup(registrar_status->valuestring);
+    if (locked && !cJSON_IsNull(locked)) locked_local_str = strdup(locked->valuestring);
+    if (whois_privacy && !cJSON_IsNull(whois_privacy)) whois_privacy_local_str = strdup(whois_privacy->valuestring);
+    if (auto_renew && !cJSON_IsNull(auto_renew)) auto_renew_local_str = strdup(auto_renew->valuestring);
+
     domain_local_var = domain_create_internal (
         service_info ? service_info_local_nonprim : NULL,
         service_types ? service_typesList : NULL,
         client_links ? client_linksList : NULL,
         billing_details ? billing_details_local_nonprim : NULL,
-        cust_currency && !cJSON_IsNull(cust_currency) ? strdup(cust_currency->valuestring) : NULL,
-        cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol) ? strdup(cust_currency_symbol->valuestring) : NULL,
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
         service_extra ? service_extra_local_nonprim : NULL,
         extra_info_tables ? extra_info_tables_local_nonprim : NULL,
         service_type ? service_type_local_nonprim : NULL,
         contact_details ? contact_details_local_nonprim : NULL,
-        pwarning && !cJSON_IsNull(pwarning) ? strdup(pwarning->valuestring) : NULL,
-        transfer_info && !cJSON_IsNull(transfer_info) ? strdup(transfer_info->valuestring) : NULL,
-        errors ? errors->valueint : 0,
+        pwarning_local_str,
+        transfer_info_local_str,
+        errors_local_var,
         domain_logs ? domain_logsList : NULL,
         all_info ? all_info_local_nonprim : NULL,
-        registrar_status && !cJSON_IsNull(registrar_status) ? strdup(registrar_status->valuestring) : NULL,
-        locked && !cJSON_IsNull(locked) ? strdup(locked->valuestring) : NULL,
-        whois_privacy && !cJSON_IsNull(whois_privacy) ? strdup(whois_privacy->valuestring) : NULL,
-        auto_renew && !cJSON_IsNull(auto_renew) ? strdup(auto_renew->valuestring) : NULL
+        registrar_status_local_str,
+        locked_local_str,
+        whois_privacy_local_str,
+        auto_renew_local_str
         );
+
+    if (!domain_local_var) {
+        goto end;
+    }
 
     return domain_local_var;
 end:
@@ -727,6 +778,14 @@ end:
         domain_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
     if (service_extra_local_nonprim) {
         domain_billing_extra_free(service_extra_local_nonprim);
         service_extra_local_nonprim = NULL;
@@ -743,6 +802,18 @@ end:
         domain_contact_details_free(contact_details_local_nonprim);
         contact_details_local_nonprim = NULL;
     }
+    if (pwarning_local_str) {
+        free(pwarning_local_str);
+        pwarning_local_str = NULL;
+    }
+    if (transfer_info_local_str) {
+        free(transfer_info_local_str);
+        transfer_info_local_str = NULL;
+    }
+    if (errors_local_var) {
+        free(errors_local_var);
+        errors_local_var = NULL;
+    }
     if (domain_logsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, domain_logsList) {
@@ -755,6 +826,22 @@ end:
     if (all_info_local_nonprim) {
         domain_all_info_free(all_info_local_nonprim);
         all_info_local_nonprim = NULL;
+    }
+    if (registrar_status_local_str) {
+        free(registrar_status_local_str);
+        registrar_status_local_str = NULL;
+    }
+    if (locked_local_str) {
+        free(locked_local_str);
+        locked_local_str = NULL;
+    }
+    if (whois_privacy_local_str) {
+        free(whois_privacy_local_str);
+        whois_privacy_local_str = NULL;
+    }
+    if (auto_renew_local_str) {
+        free(auto_renew_local_str);
+        auto_renew_local_str = NULL;
     }
     return NULL;
 

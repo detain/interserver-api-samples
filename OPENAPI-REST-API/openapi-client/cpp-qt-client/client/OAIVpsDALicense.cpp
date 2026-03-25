@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsDALicense::OAIVpsDALicense(QString json) {
+OAIVpsDALicense::OAIVpsDALicense(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIVpsDALicense::initializeModel() {
     m_img_active_isValid = false;
 }
 
-void OAIVpsDALicense::fromJson(QString jsonString) {
+void OAIVpsDALicense::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

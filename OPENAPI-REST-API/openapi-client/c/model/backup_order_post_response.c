@@ -6,13 +6,13 @@
 
 
 static backup_order_post_response_t *backup_order_post_response_create_internal(
-    int _continue,
+    int *_continue,
     list_t *errors,
     char *total_cost,
     char *iid,
     list_t *iids,
     list_t *real_iids,
-    int service_id,
+    int *service_id,
     char *invoice_description,
     backup_order_post_response_cj_params_t *cj_params
     ) {
@@ -20,6 +20,8 @@ static backup_order_post_response_t *backup_order_post_response_create_internal(
     if (!backup_order_post_response_local_var) {
         return NULL;
     }
+    memset(backup_order_post_response_local_var, 0, sizeof(backup_order_post_response_t));
+    backup_order_post_response_local_var->_library_owned = 1;
     backup_order_post_response_local_var->_continue = _continue;
     backup_order_post_response_local_var->errors = errors;
     backup_order_post_response_local_var->total_cost = total_cost;
@@ -29,33 +31,46 @@ static backup_order_post_response_t *backup_order_post_response_create_internal(
     backup_order_post_response_local_var->service_id = service_id;
     backup_order_post_response_local_var->invoice_description = invoice_description;
     backup_order_post_response_local_var->cj_params = cj_params;
-
-    backup_order_post_response_local_var->_library_owned = 1;
     return backup_order_post_response_local_var;
 }
 
 __attribute__((deprecated)) backup_order_post_response_t *backup_order_post_response_create(
-    int _continue,
+    int *_continue,
     list_t *errors,
     char *total_cost,
     char *iid,
     list_t *iids,
     list_t *real_iids,
-    int service_id,
+    int *service_id,
     char *invoice_description,
     backup_order_post_response_cj_params_t *cj_params
     ) {
-    return backup_order_post_response_create_internal (
-        _continue,
+    int *_continue_copy = NULL;
+    if (_continue) {
+        _continue_copy = malloc(sizeof(int));
+        if (_continue_copy) *_continue_copy = *_continue;
+    }
+    int *service_id_copy = NULL;
+    if (service_id) {
+        service_id_copy = malloc(sizeof(int));
+        if (service_id_copy) *service_id_copy = *service_id;
+    }
+    backup_order_post_response_t *result = backup_order_post_response_create_internal (
+        _continue_copy,
         errors,
         total_cost,
         iid,
         iids,
         real_iids,
-        service_id,
+        service_id_copy,
         invoice_description,
         cj_params
         );
+    if (!result) {
+        free(_continue_copy);
+        free(service_id_copy);
+    }
+    return result;
 }
 
 void backup_order_post_response_free(backup_order_post_response_t *backup_order_post_response) {
@@ -67,6 +82,10 @@ void backup_order_post_response_free(backup_order_post_response_t *backup_order_
         return ;
     }
     listEntry_t *listEntry;
+    if (backup_order_post_response->_continue) {
+        free(backup_order_post_response->_continue);
+        backup_order_post_response->_continue = NULL;
+    }
     if (backup_order_post_response->errors) {
         list_ForEach(listEntry, backup_order_post_response->errors) {
             free(listEntry->data);
@@ -96,6 +115,10 @@ void backup_order_post_response_free(backup_order_post_response_t *backup_order_
         list_freeList(backup_order_post_response->real_iids);
         backup_order_post_response->real_iids = NULL;
     }
+    if (backup_order_post_response->service_id) {
+        free(backup_order_post_response->service_id);
+        backup_order_post_response->service_id = NULL;
+    }
     if (backup_order_post_response->invoice_description) {
         free(backup_order_post_response->invoice_description);
         backup_order_post_response->invoice_description = NULL;
@@ -112,7 +135,7 @@ cJSON *backup_order_post_response_convertToJSON(backup_order_post_response_t *ba
 
     // backup_order_post_response->_continue
     if(backup_order_post_response->_continue) {
-    if(cJSON_AddBoolToObject(item, "continue", backup_order_post_response->_continue) == NULL) {
+    if(cJSON_AddBoolToObject(item, "continue", *backup_order_post_response->_continue) == NULL) {
     goto fail; //Bool
     }
     }
@@ -187,7 +210,7 @@ cJSON *backup_order_post_response_convertToJSON(backup_order_post_response_t *ba
 
     // backup_order_post_response->service_id
     if(backup_order_post_response->service_id) {
-    if(cJSON_AddNumberToObject(item, "serviceId", backup_order_post_response->service_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "serviceId", *backup_order_post_response->service_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -225,14 +248,26 @@ backup_order_post_response_t *backup_order_post_response_parseFromJSON(cJSON *ba
 
     backup_order_post_response_t *backup_order_post_response_local_var = NULL;
 
+    // define the local variable for backup_order_post_response->_continue
+    int *_continue_local_var = NULL;
+
     // define the local list for backup_order_post_response->errors
     list_t *errorsList = NULL;
+
+    char *total_cost_local_str = NULL;
+
+    char *iid_local_str = NULL;
 
     // define the local list for backup_order_post_response->iids
     list_t *iidsList = NULL;
 
     // define the local list for backup_order_post_response->real_iids
     list_t *real_iidsList = NULL;
+
+    // define the local variable for backup_order_post_response->service_id
+    int *service_id_local_var = NULL;
+
+    char *invoice_description_local_str = NULL;
 
     // define the local variable for backup_order_post_response->cj_params
     backup_order_post_response_cj_params_t *cj_params_local_nonprim = NULL;
@@ -247,6 +282,12 @@ backup_order_post_response_t *backup_order_post_response_parseFromJSON(cJSON *ba
     {
     goto end; //Bool
     }
+    _continue_local_var = malloc(sizeof(int));
+    if(!_continue_local_var)
+    {
+        goto end;
+    }
+    *_continue_local_var = _continue->valueint;
     }
 
     // backup_order_post_response->errors
@@ -349,6 +390,12 @@ backup_order_post_response_t *backup_order_post_response_parseFromJSON(cJSON *ba
     {
     goto end; //Numeric
     }
+    service_id_local_var = malloc(sizeof(int));
+    if(!service_id_local_var)
+    {
+        goto end;
+    }
+    *service_id_local_var = service_id->valuedouble;
     }
 
     // backup_order_post_response->invoice_description
@@ -373,20 +420,32 @@ backup_order_post_response_t *backup_order_post_response_parseFromJSON(cJSON *ba
     }
 
 
+    if (total_cost && !cJSON_IsNull(total_cost)) total_cost_local_str = strdup(total_cost->valuestring);
+    if (iid && !cJSON_IsNull(iid)) iid_local_str = strdup(iid->valuestring);
+    if (invoice_description && !cJSON_IsNull(invoice_description)) invoice_description_local_str = strdup(invoice_description->valuestring);
+
     backup_order_post_response_local_var = backup_order_post_response_create_internal (
-        _continue ? _continue->valueint : 0,
+        _continue_local_var,
         errors ? errorsList : NULL,
-        total_cost && !cJSON_IsNull(total_cost) ? strdup(total_cost->valuestring) : NULL,
-        iid && !cJSON_IsNull(iid) ? strdup(iid->valuestring) : NULL,
+        total_cost_local_str,
+        iid_local_str,
         iids ? iidsList : NULL,
         real_iids ? real_iidsList : NULL,
-        service_id ? service_id->valuedouble : 0,
-        invoice_description && !cJSON_IsNull(invoice_description) ? strdup(invoice_description->valuestring) : NULL,
+        service_id_local_var,
+        invoice_description_local_str,
         cj_params ? cj_params_local_nonprim : NULL
         );
 
+    if (!backup_order_post_response_local_var) {
+        goto end;
+    }
+
     return backup_order_post_response_local_var;
 end:
+    if (_continue_local_var) {
+        free(_continue_local_var);
+        _continue_local_var = NULL;
+    }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, errorsList) {
@@ -395,6 +454,14 @@ end:
         }
         list_freeList(errorsList);
         errorsList = NULL;
+    }
+    if (total_cost_local_str) {
+        free(total_cost_local_str);
+        total_cost_local_str = NULL;
+    }
+    if (iid_local_str) {
+        free(iid_local_str);
+        iid_local_str = NULL;
     }
     if (iidsList) {
         listEntry_t *listEntry = NULL;
@@ -413,6 +480,14 @@ end:
         }
         list_freeList(real_iidsList);
         real_iidsList = NULL;
+    }
+    if (service_id_local_var) {
+        free(service_id_local_var);
+        service_id_local_var = NULL;
+    }
+    if (invoice_description_local_str) {
+        free(invoice_description_local_str);
+        invoice_description_local_str = NULL;
     }
     if (cj_params_local_nonprim) {
         backup_order_post_response_cj_params_free(cj_params_local_nonprim);

@@ -13,10 +13,10 @@ static license_ip_info_row_t *license_ip_info_row_create_internal(
     if (!license_ip_info_row_local_var) {
         return NULL;
     }
+    memset(license_ip_info_row_local_var, 0, sizeof(license_ip_info_row_t));
+    license_ip_info_row_local_var->_library_owned = 1;
     license_ip_info_row_local_var->desc = desc;
     license_ip_info_row_local_var->value = value;
-
-    license_ip_info_row_local_var->_library_owned = 1;
     return license_ip_info_row_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) license_ip_info_row_t *license_ip_info_row_create(
     char *desc,
     char *value
     ) {
-    return license_ip_info_row_create_internal (
+    license_ip_info_row_t *result = license_ip_info_row_create_internal (
         desc,
         value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void license_ip_info_row_free(license_ip_info_row_t *license_ip_info_row) {
@@ -80,6 +83,10 @@ license_ip_info_row_t *license_ip_info_row_parseFromJSON(cJSON *license_ip_info_
 
     license_ip_info_row_t *license_ip_info_row_local_var = NULL;
 
+    char *desc_local_str = NULL;
+
+    char *value_local_str = NULL;
+
     // license_ip_info_row->desc
     cJSON *desc = cJSON_GetObjectItemCaseSensitive(license_ip_info_rowJSON, "desc");
     if (cJSON_IsNull(desc)) {
@@ -105,13 +112,28 @@ license_ip_info_row_t *license_ip_info_row_parseFromJSON(cJSON *license_ip_info_
     }
 
 
+    if (desc && !cJSON_IsNull(desc)) desc_local_str = strdup(desc->valuestring);
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+
     license_ip_info_row_local_var = license_ip_info_row_create_internal (
-        desc && !cJSON_IsNull(desc) ? strdup(desc->valuestring) : NULL,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        desc_local_str,
+        value_local_str
         );
+
+    if (!license_ip_info_row_local_var) {
+        goto end;
+    }
 
     return license_ip_info_row_local_var;
 end:
+    if (desc_local_str) {
+        free(desc_local_str);
+        desc_local_str = NULL;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
+    }
     return NULL;
 
 }

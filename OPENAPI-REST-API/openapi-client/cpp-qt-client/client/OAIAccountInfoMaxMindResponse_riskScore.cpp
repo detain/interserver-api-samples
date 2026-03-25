@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoMaxMindResponse_riskScore::OAIAccountInfoMaxMindResponse_riskScore(QString json) {
+OAIAccountInfoMaxMindResponse_riskScore::OAIAccountInfoMaxMindResponse_riskScore(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIAccountInfoMaxMindResponse_riskScore::initializeModel() {
 
 }
 
-void OAIAccountInfoMaxMindResponse_riskScore::fromJson(QString jsonString) {
+void OAIAccountInfoMaxMindResponse_riskScore::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

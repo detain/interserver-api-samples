@@ -48,7 +48,7 @@ import javax.annotation.Generated;
   Home.JSON_PROPERTY_A_F_F_I_L_I_A_T_E_A_M_O_U_N_T
 })
 @JsonTypeName("Home")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class Home {
     public static final String JSON_PROPERTY_LAST_LOGIN_IP = "last_login_ip";
@@ -484,10 +484,7 @@ public class Home {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

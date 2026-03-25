@@ -15,12 +15,12 @@ static server_row_t *server_row_create_internal(
     if (!server_row_local_var) {
         return NULL;
     }
+    memset(server_row_local_var, 0, sizeof(server_row_t));
+    server_row_local_var->_library_owned = 1;
     server_row_local_var->server_id = server_id;
     server_row_local_var->account_lid = account_lid;
     server_row_local_var->server_hostname = server_hostname;
     server_row_local_var->server_status = server_status;
-
-    server_row_local_var->_library_owned = 1;
     return server_row_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) server_row_t *server_row_create(
     char *server_hostname,
     char *server_status
     ) {
-    return server_row_create_internal (
+    server_row_t *result = server_row_create_internal (
         server_id,
         account_lid,
         server_hostname,
         server_status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_row_free(server_row_t *server_row) {
@@ -116,6 +119,14 @@ server_row_t *server_row_parseFromJSON(cJSON *server_rowJSON){
 
     server_row_t *server_row_local_var = NULL;
 
+    char *server_id_local_str = NULL;
+
+    char *account_lid_local_str = NULL;
+
+    char *server_hostname_local_str = NULL;
+
+    char *server_status_local_str = NULL;
+
     // server_row->server_id
     cJSON *server_id = cJSON_GetObjectItemCaseSensitive(server_rowJSON, "server_id");
     if (cJSON_IsNull(server_id)) {
@@ -177,15 +188,40 @@ server_row_t *server_row_parseFromJSON(cJSON *server_rowJSON){
     }
 
 
+    if (server_id && !cJSON_IsNull(server_id)) server_id_local_str = strdup(server_id->valuestring);
+    if (account_lid && !cJSON_IsNull(account_lid)) account_lid_local_str = strdup(account_lid->valuestring);
+    if (server_hostname && !cJSON_IsNull(server_hostname)) server_hostname_local_str = strdup(server_hostname->valuestring);
+    if (server_status && !cJSON_IsNull(server_status)) server_status_local_str = strdup(server_status->valuestring);
+
     server_row_local_var = server_row_create_internal (
-        strdup(server_id->valuestring),
-        strdup(account_lid->valuestring),
-        strdup(server_hostname->valuestring),
-        strdup(server_status->valuestring)
+        server_id_local_str,
+        account_lid_local_str,
+        server_hostname_local_str,
+        server_status_local_str
         );
+
+    if (!server_row_local_var) {
+        goto end;
+    }
 
     return server_row_local_var;
 end:
+    if (server_id_local_str) {
+        free(server_id_local_str);
+        server_id_local_str = NULL;
+    }
+    if (account_lid_local_str) {
+        free(account_lid_local_str);
+        account_lid_local_str = NULL;
+    }
+    if (server_hostname_local_str) {
+        free(server_hostname_local_str);
+        server_hostname_local_str = NULL;
+    }
+    if (server_status_local_str) {
+        free(server_status_local_str);
+        server_status_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -1,4 +1,4 @@
-# # LicenseServiceInfo
+# LicenseServiceInfo
 
 ## Properties
 

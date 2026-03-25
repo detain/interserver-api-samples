@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIScrubIpsRowSchema : public OAIObject {
 public:
     OAIScrubIpsRowSchema();
-    OAIScrubIpsRowSchema(QString json);
+    OAIScrubIpsRowSchema(const QString &json);
     ~OAIScrubIpsRowSchema() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getScrubIpId() const;
     void setScrubIpId(const qint32 &scrub_ip_id);

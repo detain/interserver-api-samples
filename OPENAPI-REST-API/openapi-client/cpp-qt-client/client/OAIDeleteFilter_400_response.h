@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDeleteFilter_400_response : public OAIObject {
 public:
     OAIDeleteFilter_400_response();
-    OAIDeleteFilter_400_response(QString json);
+    OAIDeleteFilter_400_response(const QString &json);
     ~OAIDeleteFilter_400_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

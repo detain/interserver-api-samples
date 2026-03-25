@@ -425,6 +425,7 @@ docs/update_account_tfa_request.md
 docs/update_ticket.md
 docs/update_ticket_response_schema.md
 docs/url_request.md
+docs/view_mail_log_start_date_parameter.md
 docs/view_ticket_response.md
 docs/vps.md
 docs/vps_backup_row.md
@@ -1259,6 +1260,8 @@ model/update_ticket_response_schema.c
 model/update_ticket_response_schema.h
 model/url_request.c
 model/url_request.h
+model/view_mail_log_start_date_parameter.c
+model/view_mail_log_start_date_parameter.h
 model/view_ticket_response.c
 model/view_ticket_response.h
 model/vps.c
@@ -1788,6 +1791,7 @@ unit-test/test_update_account_tfa_request.c
 unit-test/test_update_ticket.c
 unit-test/test_update_ticket_response_schema.c
 unit-test/test_url_request.c
+unit-test/test_view_mail_log_start_date_parameter.c
 unit-test/test_view_ticket_response.c
 unit-test/test_vps.c
 unit-test/test_vps_backup_row.c

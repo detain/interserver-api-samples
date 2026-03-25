@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIScrubIpPlaceOrder : public OAIObject {
 public:
     OAIScrubIpPlaceOrder();
-    OAIScrubIpPlaceOrder(QString json);
+    OAIScrubIpPlaceOrder(const QString &json);
     ~OAIScrubIpPlaceOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getServiceType() const;
     void setServiceType(const qint32 &service_type);

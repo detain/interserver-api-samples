@@ -396,6 +396,7 @@ lib/inter_server_management_api/model/update_account_tfa_request.ex
 lib/inter_server_management_api/model/update_ticket.ex
 lib/inter_server_management_api/model/update_ticket_response_schema.ex
 lib/inter_server_management_api/model/url_request.ex
+lib/inter_server_management_api/model/view_mail_log_start_date_parameter.ex
 lib/inter_server_management_api/model/view_ticket_response.ex
 lib/inter_server_management_api/model/vps.ex
 lib/inter_server_management_api/model/vps_backup_row.ex

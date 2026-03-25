@@ -1,4 +1,4 @@
-# # AccountInfoDataCc
+# AccountInfoDataCc
 
 ## Properties
 

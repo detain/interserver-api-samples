@@ -32,13 +32,13 @@ class OAIWebsiteTable;
 class OAIWebsiteExtraInfoTables : public OAIObject {
 public:
     OAIWebsiteExtraInfoTables();
-    OAIWebsiteExtraInfoTables(QString json);
+    OAIWebsiteExtraInfoTables(const QString &json);
     ~OAIWebsiteExtraInfoTables() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIWebsiteTable getLinks() const;
     void setLinks(const OAIWebsiteTable &links);

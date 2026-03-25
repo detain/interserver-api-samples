@@ -86,19 +86,23 @@ class MailDelistResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailDelistResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailDelistResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return MailDelistResponse(
         id: mapValueOfType<int>(json, r'id'),
-        local: Object.listFromJson(json[r'local']),
-        mbtrap: Object.listFromJson(json[r'mbtrap']),
-        subject: Object.listFromJson(json[r'subject']),
-        manual: Object.listFromJson(json[r'manual']),
+        local: json[r'local'] is Iterable
+            ? (json[r'local'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
+        mbtrap: json[r'mbtrap'] is Iterable
+            ? (json[r'mbtrap'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
+        subject: json[r'subject'] is Iterable
+            ? (json[r'subject'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
+        manual: json[r'manual'] is Iterable
+            ? (json[r'manual'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
       );
     }
     return null;

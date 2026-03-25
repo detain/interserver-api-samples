@@ -7,27 +7,36 @@
 
 static field_label_t *field_label_create_internal(
     char *name,
-    int active
+    int *active
     ) {
     field_label_t *field_label_local_var = malloc(sizeof(field_label_t));
     if (!field_label_local_var) {
         return NULL;
     }
+    memset(field_label_local_var, 0, sizeof(field_label_t));
+    field_label_local_var->_library_owned = 1;
     field_label_local_var->name = name;
     field_label_local_var->active = active;
-
-    field_label_local_var->_library_owned = 1;
     return field_label_local_var;
 }
 
 __attribute__((deprecated)) field_label_t *field_label_create(
     char *name,
-    int active
+    int *active
     ) {
-    return field_label_create_internal (
+    int *active_copy = NULL;
+    if (active) {
+        active_copy = malloc(sizeof(int));
+        if (active_copy) *active_copy = *active;
+    }
+    field_label_t *result = field_label_create_internal (
         name,
-        active
+        active_copy
         );
+    if (!result) {
+        free(active_copy);
+    }
+    return result;
 }
 
 void field_label_free(field_label_t *field_label) {
@@ -42,6 +51,10 @@ void field_label_free(field_label_t *field_label) {
     if (field_label->name) {
         free(field_label->name);
         field_label->name = NULL;
+    }
+    if (field_label->active) {
+        free(field_label->active);
+        field_label->active = NULL;
     }
     free(field_label);
 }
@@ -59,7 +72,7 @@ cJSON *field_label_convertToJSON(field_label_t *field_label) {
 
     // field_label->active
     if(field_label->active) {
-    if(cJSON_AddNumberToObject(item, "active", field_label->active) == NULL) {
+    if(cJSON_AddNumberToObject(item, "active", *field_label->active) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -75,6 +88,11 @@ fail:
 field_label_t *field_label_parseFromJSON(cJSON *field_labelJSON){
 
     field_label_t *field_label_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    // define the local variable for field_label->active
+    int *active_local_var = NULL;
 
     // field_label->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(field_labelJSON, "name");
@@ -98,16 +116,36 @@ field_label_t *field_label_parseFromJSON(cJSON *field_labelJSON){
     {
     goto end; //Numeric
     }
+    active_local_var = malloc(sizeof(int));
+    if(!active_local_var)
+    {
+        goto end;
+    }
+    *active_local_var = active->valuedouble;
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     field_label_local_var = field_label_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        active ? active->valuedouble : 0
+        name_local_str,
+        active_local_var
         );
+
+    if (!field_label_local_var) {
+        goto end;
+    }
 
     return field_label_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (active_local_var) {
+        free(active_local_var);
+        active_local_var = NULL;
+    }
     return NULL;
 
 }

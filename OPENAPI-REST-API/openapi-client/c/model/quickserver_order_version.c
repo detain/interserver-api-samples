@@ -12,18 +12,21 @@ static quickserver_order_version_t *quickserver_order_version_create_internal(
     if (!quickserver_order_version_local_var) {
         return NULL;
     }
-    quickserver_order_version_local_var->centosstream_8 = centosstream_8;
-
+    memset(quickserver_order_version_local_var, 0, sizeof(quickserver_order_version_t));
     quickserver_order_version_local_var->_library_owned = 1;
+    quickserver_order_version_local_var->centosstream_8 = centosstream_8;
     return quickserver_order_version_local_var;
 }
 
 __attribute__((deprecated)) quickserver_order_version_t *quickserver_order_version_create(
     quickserver_order_version_centosstream8_t *centosstream_8
     ) {
-    return quickserver_order_version_create_internal (
+    quickserver_order_version_t *result = quickserver_order_version_create_internal (
         centosstream_8
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_order_version_free(quickserver_order_version_t *quickserver_order_version) {
@@ -82,9 +85,14 @@ quickserver_order_version_t *quickserver_order_version_parseFromJSON(cJSON *quic
     }
 
 
+
     quickserver_order_version_local_var = quickserver_order_version_create_internal (
         centosstream_8 ? centosstream_8_local_nonprim : NULL
         );
+
+    if (!quickserver_order_version_local_var) {
+        goto end;
+    }
 
     return quickserver_order_version_local_var;
 end:

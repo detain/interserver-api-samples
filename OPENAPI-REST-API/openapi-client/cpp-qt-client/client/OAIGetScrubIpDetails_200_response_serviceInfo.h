@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIGetScrubIpDetails_200_response_serviceInfo : public OAIObject {
 public:
     OAIGetScrubIpDetails_200_response_serviceInfo();
-    OAIGetScrubIpDetails_200_response_serviceInfo(QString json);
+    OAIGetScrubIpDetails_200_response_serviceInfo(const QString &json);
     ~OAIGetScrubIpDetails_200_response_serviceInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getScrubIpId() const;
     void setScrubIpId(const QString &scrub_ip_id);

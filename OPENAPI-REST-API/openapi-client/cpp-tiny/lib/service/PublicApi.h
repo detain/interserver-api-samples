@@ -35,7 +35,7 @@ class PublicApi : public Service {
 public:
     PublicApi() = default;
 
-    virtual ~PublicApi() = default;
+    virtual ~PublicApi();
 
     /**
     * Get Captcha Challenge.

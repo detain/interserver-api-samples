@@ -272,6 +272,8 @@ class ApiClient {
           return new EmailAddress.fromJson(value);
         case 'EmailAddressName':
           return new EmailAddressName.fromJson(value);
+        case 'EndDate':
+          return new EndDate.fromJson(value);
         case 'FieldLabel':
           return new FieldLabel.fromJson(value);
         case 'FormValues':
@@ -794,6 +796,8 @@ class ApiClient {
           return new Services.fromJson(value);
         case 'ServicesInfo':
           return new ServicesInfo.fromJson(value);
+        case 'StartDate':
+          return new StartDate.fromJson(value);
         case 'StatusMonthlyBreakdown':
           return new StatusMonthlyBreakdown.fromJson(value);
         case 'SuccessTextResponse':

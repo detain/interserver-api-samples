@@ -36,13 +36,13 @@ class OAITickets_countArray;
 class OAITickets : public OAIObject {
 public:
     OAITickets();
-    OAITickets(QString json);
+    OAITickets(const QString &json);
     ~OAITickets() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getIma() const;
     void setIma(const QString &ima);

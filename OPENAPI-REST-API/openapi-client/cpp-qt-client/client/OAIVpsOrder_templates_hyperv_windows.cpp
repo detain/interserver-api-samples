@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder_templates_hyperv_windows::OAIVpsOrder_templates_hyperv_windows(QString json) {
+OAIVpsOrder_templates_hyperv_windows::OAIVpsOrder_templates_hyperv_windows(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIVpsOrder_templates_hyperv_windows::initializeModel() {
     m_windows2022_isValid = false;
 }
 
-void OAIVpsOrder_templates_hyperv_windows::fromJson(QString jsonString) {
+void OAIVpsOrder_templates_hyperv_windows::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

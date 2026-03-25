@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetScrubIpDetails_200_response::OAIGetScrubIpDetails_200_response(QString json) {
+OAIGetScrubIpDetails_200_response::OAIGetScrubIpDetails_200_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIGetScrubIpDetails_200_response::initializeModel() {
     m_filter_firewall_isValid = false;
 }
 
-void OAIGetScrubIpDetails_200_response::fromJson(QString jsonString) {
+void OAIGetScrubIpDetails_200_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

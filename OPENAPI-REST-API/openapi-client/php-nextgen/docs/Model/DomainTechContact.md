@@ -1,4 +1,4 @@
-# # DomainTechContact
+# DomainTechContact
 
 ## Properties
 

@@ -6,14 +6,14 @@
 
 
 static server_switchport_t *server_switchport_create_internal(
-    int switchport_id,
+    int *switchport_id,
     char *switch_id,
     char *_switch,
     char *port,
     char *blade,
     char *justport,
     char *graph_id,
-    int asset_id,
+    int *asset_id,
     list_t *vlans,
     list_t *vlans6
     ) {
@@ -21,6 +21,8 @@ static server_switchport_t *server_switchport_create_internal(
     if (!server_switchport_local_var) {
         return NULL;
     }
+    memset(server_switchport_local_var, 0, sizeof(server_switchport_t));
+    server_switchport_local_var->_library_owned = 1;
     server_switchport_local_var->switchport_id = switchport_id;
     server_switchport_local_var->switch_id = switch_id;
     server_switchport_local_var->_switch = _switch;
@@ -31,35 +33,48 @@ static server_switchport_t *server_switchport_create_internal(
     server_switchport_local_var->asset_id = asset_id;
     server_switchport_local_var->vlans = vlans;
     server_switchport_local_var->vlans6 = vlans6;
-
-    server_switchport_local_var->_library_owned = 1;
     return server_switchport_local_var;
 }
 
 __attribute__((deprecated)) server_switchport_t *server_switchport_create(
-    int switchport_id,
+    int *switchport_id,
     char *switch_id,
     char *_switch,
     char *port,
     char *blade,
     char *justport,
     char *graph_id,
-    int asset_id,
+    int *asset_id,
     list_t *vlans,
     list_t *vlans6
     ) {
-    return server_switchport_create_internal (
-        switchport_id,
+    int *switchport_id_copy = NULL;
+    if (switchport_id) {
+        switchport_id_copy = malloc(sizeof(int));
+        if (switchport_id_copy) *switchport_id_copy = *switchport_id;
+    }
+    int *asset_id_copy = NULL;
+    if (asset_id) {
+        asset_id_copy = malloc(sizeof(int));
+        if (asset_id_copy) *asset_id_copy = *asset_id;
+    }
+    server_switchport_t *result = server_switchport_create_internal (
+        switchport_id_copy,
         switch_id,
         _switch,
         port,
         blade,
         justport,
         graph_id,
-        asset_id,
+        asset_id_copy,
         vlans,
         vlans6
         );
+    if (!result) {
+        free(switchport_id_copy);
+        free(asset_id_copy);
+    }
+    return result;
 }
 
 void server_switchport_free(server_switchport_t *server_switchport) {
@@ -71,6 +86,10 @@ void server_switchport_free(server_switchport_t *server_switchport) {
         return ;
     }
     listEntry_t *listEntry;
+    if (server_switchport->switchport_id) {
+        free(server_switchport->switchport_id);
+        server_switchport->switchport_id = NULL;
+    }
     if (server_switchport->switch_id) {
         free(server_switchport->switch_id);
         server_switchport->switch_id = NULL;
@@ -94,6 +113,10 @@ void server_switchport_free(server_switchport_t *server_switchport) {
     if (server_switchport->graph_id) {
         free(server_switchport->graph_id);
         server_switchport->graph_id = NULL;
+    }
+    if (server_switchport->asset_id) {
+        free(server_switchport->asset_id);
+        server_switchport->asset_id = NULL;
     }
     if (server_switchport->vlans) {
         list_ForEach(listEntry, server_switchport->vlans) {
@@ -119,7 +142,7 @@ cJSON *server_switchport_convertToJSON(server_switchport_t *server_switchport) {
     if (!server_switchport->switchport_id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "switchport_id", server_switchport->switchport_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "switchport_id", *server_switchport->switchport_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -182,7 +205,7 @@ cJSON *server_switchport_convertToJSON(server_switchport_t *server_switchport) {
     if (!server_switchport->asset_id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "asset_id", server_switchport->asset_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "asset_id", *server_switchport->asset_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -232,6 +255,24 @@ server_switchport_t *server_switchport_parseFromJSON(cJSON *server_switchportJSO
 
     server_switchport_t *server_switchport_local_var = NULL;
 
+    // define the local variable for server_switchport->switchport_id
+    int *switchport_id_local_var = NULL;
+
+    char *switch_id_local_str = NULL;
+
+    char *_switch_local_str = NULL;
+
+    char *port_local_str = NULL;
+
+    char *blade_local_str = NULL;
+
+    char *justport_local_str = NULL;
+
+    char *graph_id_local_str = NULL;
+
+    // define the local variable for server_switchport->asset_id
+    int *asset_id_local_var = NULL;
+
     // define the local list for server_switchport->vlans
     list_t *vlansList = NULL;
 
@@ -252,6 +293,12 @@ server_switchport_t *server_switchport_parseFromJSON(cJSON *server_switchportJSO
     {
     goto end; //Numeric
     }
+    switchport_id_local_var = malloc(sizeof(int));
+    if(!switchport_id_local_var)
+    {
+        goto end;
+    }
+    *switchport_id_local_var = switchport_id->valuedouble;
 
     // server_switchport->switch_id
     cJSON *switch_id = cJSON_GetObjectItemCaseSensitive(server_switchportJSON, "switch_id");
@@ -357,6 +404,12 @@ server_switchport_t *server_switchport_parseFromJSON(cJSON *server_switchportJSO
     {
     goto end; //Numeric
     }
+    asset_id_local_var = malloc(sizeof(int));
+    if(!asset_id_local_var)
+    {
+        goto end;
+    }
+    *asset_id_local_var = asset_id->valuedouble;
 
     // server_switchport->vlans
     cJSON *vlans = cJSON_GetObjectItemCaseSensitive(server_switchportJSON, "vlans");
@@ -403,21 +456,64 @@ server_switchport_t *server_switchport_parseFromJSON(cJSON *server_switchportJSO
     }
 
 
+    if (switch_id && !cJSON_IsNull(switch_id)) switch_id_local_str = strdup(switch_id->valuestring);
+    if (_switch && !cJSON_IsNull(_switch)) _switch_local_str = strdup(_switch->valuestring);
+    if (port && !cJSON_IsNull(port)) port_local_str = strdup(port->valuestring);
+    if (blade && !cJSON_IsNull(blade)) blade_local_str = strdup(blade->valuestring);
+    if (justport && !cJSON_IsNull(justport)) justport_local_str = strdup(justport->valuestring);
+    if (graph_id && !cJSON_IsNull(graph_id)) graph_id_local_str = strdup(graph_id->valuestring);
+
     server_switchport_local_var = server_switchport_create_internal (
-        switchport_id->valuedouble,
-        strdup(switch_id->valuestring),
-        strdup(_switch->valuestring),
-        strdup(port->valuestring),
-        strdup(blade->valuestring),
-        strdup(justport->valuestring),
-        strdup(graph_id->valuestring),
-        asset_id->valuedouble,
+        switchport_id_local_var,
+        switch_id_local_str,
+        _switch_local_str,
+        port_local_str,
+        blade_local_str,
+        justport_local_str,
+        graph_id_local_str,
+        asset_id_local_var,
         vlans ? vlansList : NULL,
         vlans6 ? vlans6List : NULL
         );
 
+    if (!server_switchport_local_var) {
+        goto end;
+    }
+
     return server_switchport_local_var;
 end:
+    if (switchport_id_local_var) {
+        free(switchport_id_local_var);
+        switchport_id_local_var = NULL;
+    }
+    if (switch_id_local_str) {
+        free(switch_id_local_str);
+        switch_id_local_str = NULL;
+    }
+    if (_switch_local_str) {
+        free(_switch_local_str);
+        _switch_local_str = NULL;
+    }
+    if (port_local_str) {
+        free(port_local_str);
+        port_local_str = NULL;
+    }
+    if (blade_local_str) {
+        free(blade_local_str);
+        blade_local_str = NULL;
+    }
+    if (justport_local_str) {
+        free(justport_local_str);
+        justport_local_str = NULL;
+    }
+    if (graph_id_local_str) {
+        free(graph_id_local_str);
+        graph_id_local_str = NULL;
+    }
+    if (asset_id_local_var) {
+        free(asset_id_local_var);
+        asset_id_local_var = NULL;
+    }
     if (vlansList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, vlansList) {

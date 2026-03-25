@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServerServiceInfo : public OAIObject {
 public:
     OAIServerServiceInfo();
-    OAIServerServiceInfo(QString json);
+    OAIServerServiceInfo(const QString &json);
     ~OAIServerServiceInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getServerId() const;
     void setServerId(const QString &server_id);

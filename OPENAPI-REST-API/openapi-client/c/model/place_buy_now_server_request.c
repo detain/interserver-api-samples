@@ -6,7 +6,7 @@
 
 
 static place_buy_now_server_request_t *place_buy_now_server_request_create_internal(
-    double server_id,
+    double *server_id,
     char *server_hostname,
     char *server_root_password
     ) {
@@ -14,24 +14,33 @@ static place_buy_now_server_request_t *place_buy_now_server_request_create_inter
     if (!place_buy_now_server_request_local_var) {
         return NULL;
     }
+    memset(place_buy_now_server_request_local_var, 0, sizeof(place_buy_now_server_request_t));
+    place_buy_now_server_request_local_var->_library_owned = 1;
     place_buy_now_server_request_local_var->server_id = server_id;
     place_buy_now_server_request_local_var->server_hostname = server_hostname;
     place_buy_now_server_request_local_var->server_root_password = server_root_password;
-
-    place_buy_now_server_request_local_var->_library_owned = 1;
     return place_buy_now_server_request_local_var;
 }
 
 __attribute__((deprecated)) place_buy_now_server_request_t *place_buy_now_server_request_create(
-    double server_id,
+    double *server_id,
     char *server_hostname,
     char *server_root_password
     ) {
-    return place_buy_now_server_request_create_internal (
-        server_id,
+    double *server_id_copy = NULL;
+    if (server_id) {
+        server_id_copy = malloc(sizeof(double));
+        if (server_id_copy) *server_id_copy = *server_id;
+    }
+    place_buy_now_server_request_t *result = place_buy_now_server_request_create_internal (
+        server_id_copy,
         server_hostname,
         server_root_password
         );
+    if (!result) {
+        free(server_id_copy);
+    }
+    return result;
 }
 
 void place_buy_now_server_request_free(place_buy_now_server_request_t *place_buy_now_server_request) {
@@ -43,6 +52,10 @@ void place_buy_now_server_request_free(place_buy_now_server_request_t *place_buy
         return ;
     }
     listEntry_t *listEntry;
+    if (place_buy_now_server_request->server_id) {
+        free(place_buy_now_server_request->server_id);
+        place_buy_now_server_request->server_id = NULL;
+    }
     if (place_buy_now_server_request->server_hostname) {
         free(place_buy_now_server_request->server_hostname);
         place_buy_now_server_request->server_hostname = NULL;
@@ -59,7 +72,7 @@ cJSON *place_buy_now_server_request_convertToJSON(place_buy_now_server_request_t
 
     // place_buy_now_server_request->server_id
     if(place_buy_now_server_request->server_id) {
-    if(cJSON_AddNumberToObject(item, "server_id", place_buy_now_server_request->server_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "server_id", *place_buy_now_server_request->server_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -92,6 +105,13 @@ place_buy_now_server_request_t *place_buy_now_server_request_parseFromJSON(cJSON
 
     place_buy_now_server_request_t *place_buy_now_server_request_local_var = NULL;
 
+    // define the local variable for place_buy_now_server_request->server_id
+    double *server_id_local_var = NULL;
+
+    char *server_hostname_local_str = NULL;
+
+    char *server_root_password_local_str = NULL;
+
     // place_buy_now_server_request->server_id
     cJSON *server_id = cJSON_GetObjectItemCaseSensitive(place_buy_now_server_requestJSON, "server_id");
     if (cJSON_IsNull(server_id)) {
@@ -102,6 +122,12 @@ place_buy_now_server_request_t *place_buy_now_server_request_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    server_id_local_var = malloc(sizeof(double));
+    if(!server_id_local_var)
+    {
+        goto end;
+    }
+    *server_id_local_var = server_id->valuedouble;
     }
 
     // place_buy_now_server_request->server_hostname
@@ -129,14 +155,33 @@ place_buy_now_server_request_t *place_buy_now_server_request_parseFromJSON(cJSON
     }
 
 
+    if (server_hostname && !cJSON_IsNull(server_hostname)) server_hostname_local_str = strdup(server_hostname->valuestring);
+    if (server_root_password && !cJSON_IsNull(server_root_password)) server_root_password_local_str = strdup(server_root_password->valuestring);
+
     place_buy_now_server_request_local_var = place_buy_now_server_request_create_internal (
-        server_id ? server_id->valuedouble : 0,
-        server_hostname && !cJSON_IsNull(server_hostname) ? strdup(server_hostname->valuestring) : NULL,
-        server_root_password && !cJSON_IsNull(server_root_password) ? strdup(server_root_password->valuestring) : NULL
+        server_id_local_var,
+        server_hostname_local_str,
+        server_root_password_local_str
         );
+
+    if (!place_buy_now_server_request_local_var) {
+        goto end;
+    }
 
     return place_buy_now_server_request_local_var;
 end:
+    if (server_id_local_var) {
+        free(server_id_local_var);
+        server_id_local_var = NULL;
+    }
+    if (server_hostname_local_str) {
+        free(server_hostname_local_str);
+        server_hostname_local_str = NULL;
+    }
+    if (server_root_password_local_str) {
+        free(server_root_password_local_str);
+        server_root_password_local_str = NULL;
+    }
     return NULL;
 
 }

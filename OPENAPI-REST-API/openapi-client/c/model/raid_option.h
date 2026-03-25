@@ -19,17 +19,17 @@ typedef struct raid_option_t raid_option_t;
 
 
 typedef struct raid_option_t {
-    int id; //numeric
+    int *id; //numeric
     char *short_desc; // string
-    double monthly_price; //numeric
+    double *monthly_price; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } raid_option_t;
 
 __attribute__((deprecated)) raid_option_t *raid_option_create(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price
+    double *monthly_price
 );
 
 void raid_option_free(raid_option_t *raid_option);

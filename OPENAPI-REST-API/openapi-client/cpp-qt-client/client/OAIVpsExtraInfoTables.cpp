@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsExtraInfoTables::OAIVpsExtraInfoTables(QString json) {
+OAIVpsExtraInfoTables::OAIVpsExtraInfoTables(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIVpsExtraInfoTables::initializeModel() {
     m_ip_info_isValid = false;
 }
 
-void OAIVpsExtraInfoTables::fromJson(QString jsonString) {
+void OAIVpsExtraInfoTables::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

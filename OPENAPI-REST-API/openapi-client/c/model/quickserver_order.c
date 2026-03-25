@@ -16,13 +16,13 @@ static quickserver_order_t *quickserver_order_create_internal(
     if (!quickserver_order_local_var) {
         return NULL;
     }
+    memset(quickserver_order_local_var, 0, sizeof(quickserver_order_t));
+    quickserver_order_local_var->_library_owned = 1;
     quickserver_order_local_var->qs_id = qs_id;
     quickserver_order_local_var->server_details = server_details;
     quickserver_order_local_var->templates = templates;
     quickserver_order_local_var->version = version;
     quickserver_order_local_var->distro_sel = distro_sel;
-
-    quickserver_order_local_var->_library_owned = 1;
     return quickserver_order_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) quickserver_order_t *quickserver_order_create(
     quickserver_order_version_t *version,
     quickserver_order_distro_sel_t *distro_sel
     ) {
-    return quickserver_order_create_internal (
+    quickserver_order_t *result = quickserver_order_create_internal (
         qs_id,
         server_details,
         templates,
         version,
         distro_sel
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_order_free(quickserver_order_t *quickserver_order) {
@@ -148,6 +151,8 @@ quickserver_order_t *quickserver_order_parseFromJSON(cJSON *quickserver_orderJSO
 
     quickserver_order_t *quickserver_order_local_var = NULL;
 
+    char *qs_id_local_str = NULL;
+
     // define the local variable for quickserver_order->server_details
     quickserver_order_server_details_t *server_details_local_nonprim = NULL;
 
@@ -209,16 +214,26 @@ quickserver_order_t *quickserver_order_parseFromJSON(cJSON *quickserver_orderJSO
     }
 
 
+    if (qs_id && !cJSON_IsNull(qs_id)) qs_id_local_str = strdup(qs_id->valuestring);
+
     quickserver_order_local_var = quickserver_order_create_internal (
-        qs_id && !cJSON_IsNull(qs_id) ? strdup(qs_id->valuestring) : NULL,
+        qs_id_local_str,
         server_details ? server_details_local_nonprim : NULL,
         templates ? templates_local_nonprim : NULL,
         version ? version_local_nonprim : NULL,
         distro_sel ? distro_sel_local_nonprim : NULL
         );
 
+    if (!quickserver_order_local_var) {
+        goto end;
+    }
+
     return quickserver_order_local_var;
 end:
+    if (qs_id_local_str) {
+        free(qs_id_local_str);
+        qs_id_local_str = NULL;
+    }
     if (server_details_local_nonprim) {
         quickserver_order_server_details_free(server_details_local_nonprim);
         server_details_local_nonprim = NULL;

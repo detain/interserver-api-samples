@@ -20,12 +20,12 @@ typedef struct domain_lookup_response_t domain_lookup_response_t;
 
 
 typedef struct domain_lookup_response_t {
-    int available; //boolean
-    int premium; //boolean
-    int website; //boolean
-    int domain_service; //boolean
+    int *available; //boolean
+    int *premium; //boolean
+    int *website; //boolean
+    int *domain_service; //boolean
     object_t *service; //object
-    int whois_privacy; //boolean
+    int *whois_privacy; //boolean
     char *_new; // string
     char *renewal; // string
     char *transfer; // string
@@ -36,12 +36,12 @@ typedef struct domain_lookup_response_t {
 } domain_lookup_response_t;
 
 __attribute__((deprecated)) domain_lookup_response_t *domain_lookup_response_create(
-    int available,
-    int premium,
-    int website,
-    int domain_service,
+    int *available,
+    int *premium,
+    int *website,
+    int *domain_service,
     object_t *service,
-    int whois_privacy,
+    int *whois_privacy,
     char *_new,
     char *renewal,
     char *transfer,

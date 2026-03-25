@@ -315,32 +315,6 @@ void OAIMailApi::addMailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addMailSignal();
         Q_EMIT addMailSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addMailSignalE(error_type, error_str);
-        Q_EMIT addMailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addMailSignalError(error_type, error_str);
         Q_EMIT addMailSignalErrorFull(worker, error_type, error_str);
     }
@@ -412,32 +386,6 @@ void OAIMailApi::addRuleCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT addRuleSignal(output);
         Q_EMIT addRuleSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT addRuleSignalE(output, error_type, error_str);
-        Q_EMIT addRuleSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT addRuleSignalError(output, error_type, error_str);
         Q_EMIT addRuleSignalErrorFull(worker, error_type, error_str);
     }
@@ -509,32 +457,6 @@ void OAIMailApi::createMailAlertCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT createMailAlertSignal(output);
         Q_EMIT createMailAlertSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT createMailAlertSignalE(output, error_type, error_str);
-        Q_EMIT createMailAlertSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT createMailAlertSignalError(output, error_type, error_str);
         Q_EMIT createMailAlertSignalErrorFull(worker, error_type, error_str);
     }
@@ -617,32 +539,6 @@ void OAIMailApi::deleteMailAlertCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteMailAlertSignal(output);
         Q_EMIT deleteMailAlertSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteMailAlertSignalE(output, error_type, error_str);
-        Q_EMIT deleteMailAlertSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteMailAlertSignalError(output, error_type, error_str);
         Q_EMIT deleteMailAlertSignalErrorFull(worker, error_type, error_str);
     }
@@ -723,32 +619,6 @@ void OAIMailApi::deleteRuleCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteRuleSignal(output);
         Q_EMIT deleteRuleSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteRuleSignalE(output, error_type, error_str);
-        Q_EMIT deleteRuleSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteRuleSignalError(output, error_type, error_str);
         Q_EMIT deleteRuleSignalErrorFull(worker, error_type, error_str);
     }
@@ -819,32 +689,6 @@ void OAIMailApi::delistBlockCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT delistBlockSignal(output);
         Q_EMIT delistBlockSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT delistBlockSignalE(output, error_type, error_str);
-        Q_EMIT delistBlockSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT delistBlockSignalError(output, error_type, error_str);
         Q_EMIT delistBlockSignalErrorFull(worker, error_type, error_str);
     }
@@ -911,32 +755,6 @@ void OAIMailApi::getMailAlertsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailAlertsSignal(output);
         Q_EMIT getMailAlertsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailAlertsSignalE(output, error_type, error_str);
-        Q_EMIT getMailAlertsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailAlertsSignalError(output, error_type, error_str);
         Q_EMIT getMailAlertsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1003,32 +821,6 @@ void OAIMailApi::getMailBlocksCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailBlocksSignal(output);
         Q_EMIT getMailBlocksSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailBlocksSignalE(output, error_type, error_str);
-        Q_EMIT getMailBlocksSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailBlocksSignalError(output, error_type, error_str);
         Q_EMIT getMailBlocksSignalErrorFull(worker, error_type, error_str);
     }
@@ -1095,32 +887,6 @@ void OAIMailApi::getMailDelistCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailDelistSignal(output);
         Q_EMIT getMailDelistSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailDelistSignalE(output, error_type, error_str);
-        Q_EMIT getMailDelistSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailDelistSignalError(output, error_type, error_str);
         Q_EMIT getMailDelistSignalErrorFull(worker, error_type, error_str);
     }
@@ -1187,32 +953,6 @@ void OAIMailApi::getMailDeliverabilityCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailDeliverabilitySignal(output);
         Q_EMIT getMailDeliverabilitySignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailDeliverabilitySignalE(output, error_type, error_str);
-        Q_EMIT getMailDeliverabilitySignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailDeliverabilitySignalError(output, error_type, error_str);
         Q_EMIT getMailDeliverabilitySignalErrorFull(worker, error_type, error_str);
     }
@@ -1279,32 +1019,6 @@ void OAIMailApi::getMailInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailInfoSignal(output);
         Q_EMIT getMailInfoSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailInfoSignalE(output, error_type, error_str);
-        Q_EMIT getMailInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailInfoSignalError(output, error_type, error_str);
         Q_EMIT getMailInfoSignalErrorFull(worker, error_type, error_str);
     }
@@ -1371,32 +1085,6 @@ void OAIMailApi::getMailInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailInvoicesSignal(output);
         Q_EMIT getMailInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getMailInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getMailInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1458,32 +1146,6 @@ void OAIMailApi::getMailListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailListSignal(output);
         Q_EMIT getMailListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailListSignalE(output, error_type, error_str);
-        Q_EMIT getMailListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailListSignalError(output, error_type, error_str);
         Q_EMIT getMailListSignalErrorFull(worker, error_type, error_str);
     }
@@ -1550,32 +1212,6 @@ void OAIMailApi::getMailWelcomeEmailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getMailWelcomeEmailSignal(output);
         Q_EMIT getMailWelcomeEmailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getMailWelcomeEmailSignalE(output, error_type, error_str);
-        Q_EMIT getMailWelcomeEmailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getMailWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getMailWelcomeEmailSignalErrorFull(worker, error_type, error_str);
     }
@@ -1628,32 +1264,6 @@ void OAIMailApi::getNewMailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getNewMailSignal(output);
         Q_EMIT getNewMailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getNewMailSignalE(output, error_type, error_str);
-        Q_EMIT getNewMailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getNewMailSignalError(output, error_type, error_str);
         Q_EMIT getNewMailSignalErrorFull(worker, error_type, error_str);
     }
@@ -1729,32 +1339,6 @@ void OAIMailApi::getRulesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getRulesSignal(output);
         Q_EMIT getRulesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getRulesSignalE(output, error_type, error_str);
-        Q_EMIT getRulesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getRulesSignalError(output, error_type, error_str);
         Q_EMIT getRulesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1837,32 +1421,6 @@ void OAIMailApi::getStatsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getStatsSignal(output);
         Q_EMIT getStatsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getStatsSignalE(output, error_type, error_str);
-        Q_EMIT getStatsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getStatsSignalError(output, error_type, error_str);
         Q_EMIT getStatsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1929,32 +1487,6 @@ void OAIMailApi::mailCancelCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT mailCancelSignal(output);
         Q_EMIT mailCancelSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT mailCancelSignalE(output, error_type, error_str);
-        Q_EMIT mailCancelSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT mailCancelSignalError(output, error_type, error_str);
         Q_EMIT mailCancelSignalErrorFull(worker, error_type, error_str);
     }
@@ -2026,32 +1558,6 @@ void OAIMailApi::postMailDelistCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT postMailDelistSignal(output);
         Q_EMIT postMailDelistSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT postMailDelistSignalE(output, error_type, error_str);
-        Q_EMIT postMailDelistSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT postMailDelistSignalError(output, error_type, error_str);
         Q_EMIT postMailDelistSignalErrorFull(worker, error_type, error_str);
     }
@@ -2103,32 +1609,6 @@ void OAIMailApi::putMailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT putMailSignal();
         Q_EMIT putMailSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT putMailSignalE(error_type, error_str);
-        Q_EMIT putMailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT putMailSignalError(error_type, error_str);
         Q_EMIT putMailSignalErrorFull(worker, error_type, error_str);
     }
@@ -2195,32 +1675,6 @@ void OAIMailApi::resetMailPasswordCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT resetMailPasswordSignal(output);
         Q_EMIT resetMailPasswordSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT resetMailPasswordSignalE(output, error_type, error_str);
-        Q_EMIT resetMailPasswordSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT resetMailPasswordSignalError(output, error_type, error_str);
         Q_EMIT resetMailPasswordSignalErrorFull(worker, error_type, error_str);
     }
@@ -2292,32 +1746,6 @@ void OAIMailApi::sendAdvMailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT sendAdvMailSignal(output);
         Q_EMIT sendAdvMailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT sendAdvMailSignalE(output, error_type, error_str);
-        Q_EMIT sendAdvMailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT sendAdvMailSignalError(output, error_type, error_str);
         Q_EMIT sendAdvMailSignalErrorFull(worker, error_type, error_str);
     }
@@ -2389,32 +1817,6 @@ void OAIMailApi::sendMailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT sendMailSignal(output);
         Q_EMIT sendMailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT sendMailSignalE(output, error_type, error_str);
-        Q_EMIT sendMailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT sendMailSignalError(output, error_type, error_str);
         Q_EMIT sendMailSignalErrorFull(worker, error_type, error_str);
     }
@@ -2486,32 +1888,6 @@ void OAIMailApi::updateMailAlertCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateMailAlertSignal(output);
         Q_EMIT updateMailAlertSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateMailAlertSignalE(output, error_type, error_str);
-        Q_EMIT updateMailAlertSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateMailAlertSignalError(output, error_type, error_str);
         Q_EMIT updateMailAlertSignalErrorFull(worker, error_type, error_str);
     }
@@ -2577,38 +1953,12 @@ void OAIMailApi::updateMailInfoCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT updateMailInfoSignal();
         Q_EMIT updateMailInfoSignalFull(worker);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT updateMailInfoSignalE(error_type, error_str);
-        Q_EMIT updateMailInfoSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT updateMailInfoSignalError(error_type, error_str);
         Q_EMIT updateMailInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIMailApi::viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qint64> &id2, const ::OpenAPI::OptionalParam<QString> &origin, const ::OpenAPI::OptionalParam<QString> &mx, const ::OpenAPI::OptionalParam<QString> &from, const ::OpenAPI::OptionalParam<QString> &to, const ::OpenAPI::OptionalParam<QString> &subject, const ::OpenAPI::OptionalParam<QString> &mailid, const ::OpenAPI::OptionalParam<qint32> &skip, const ::OpenAPI::OptionalParam<qint32> &limit, const ::OpenAPI::OptionalParam<qint64> &start_date, const ::OpenAPI::OptionalParam<qint64> &end_date, const ::OpenAPI::OptionalParam<QString> &delivered) {
+void OAIMailApi::viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qint64> &id2, const ::OpenAPI::OptionalParam<QString> &origin, const ::OpenAPI::OptionalParam<QString> &mx, const ::OpenAPI::OptionalParam<QString> &from, const ::OpenAPI::OptionalParam<QString> &to, const ::OpenAPI::OptionalParam<QString> &subject, const ::OpenAPI::OptionalParam<QString> &mailid, const ::OpenAPI::OptionalParam<QString> &message_id, const ::OpenAPI::OptionalParam<QString> &replyto, const ::OpenAPI::OptionalParam<QString> &headerfrom, const ::OpenAPI::OptionalParam<qint32> &delivered, const ::OpenAPI::OptionalParam<qint32> &skip, const ::OpenAPI::OptionalParam<qint32> &limit, const ::OpenAPI::OptionalParam<OAIViewMailLog_startDate_parameter> &start_date, const ::OpenAPI::OptionalParam<OAIViewMailLog_startDate_parameter> &end_date, const ::OpenAPI::OptionalParam<QString> &sort, const ::OpenAPI::OptionalParam<QString> &dir, const ::OpenAPI::OptionalParam<QString> &groupby) {
     QString fullPath = QString(_serverConfigs["viewMailLog"][_serverIndices.value("viewMailLog")].URL()+"/mail/{id}/log");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -2739,6 +2089,66 @@ void OAIMailApi::viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qi
 
         fullPath.append(QUrl::toPercentEncoding("mailid")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(mailid.stringValue())));
     }
+    if (message_id.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "messageId", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("messageId")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(message_id.stringValue())));
+    }
+    if (replyto.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "replyto", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("replyto")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(replyto.stringValue())));
+    }
+    if (headerfrom.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "headerfrom", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("headerfrom")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(headerfrom.stringValue())));
+    }
+    if (delivered.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "delivered", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("delivered")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(delivered.stringValue())));
+    }
     if (skip.hasValue())
     {
         queryStyle = "form";
@@ -2781,9 +2191,55 @@ void OAIMailApi::viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qi
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("startDate")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_date.stringValue())));
-    }
+        
+        QString paramString = (queryStyle == "form" && true) ? "" : (queryStyle == "form" && !(true)) ? "startDate"+querySuffix : "";
+        QJsonObject parameter = start_date.value().asJsonObject();
+        qint32 count = 0;
+        for(const QString& key : parameter.keys()) {
+            if (count > 0) {
+                queryDelimiter =  ((queryStyle == "form" || queryStyle == "deepObject") && true) ? "&" : getParamStyleDelimiter(queryStyle, key, true);
+                paramString.append(queryDelimiter);
+            }
+            QString assignOperator;
+            if (queryStyle == "form")
+                assignOperator = (true) ? "=" : ",";
+            else if (queryStyle == "deepObject")
+                assignOperator = (true) ? "=" : "none";
+            switch(parameter.value(key).type()) {
+                case QJsonValue::String:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("startDate").append("[").append(key).append("]"))+assignOperator+parameter.value(key).toString());
+                    break;
+                }
+                case QJsonValue::Double:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("startDate").append("[").append(key).append("]"))+assignOperator+QString::number(parameter.value(key).toDouble()));
+                    break;
+                }
+                case QJsonValue::Bool:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("startDate").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toBool()).toString());
+                    break;
+                }
+                case QJsonValue::Array:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("startDate").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toArray()).toString());
+                    break;
+                }
+                case QJsonValue::Object:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("startDate").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toObject()).toString());
+                    break;
+                }
+                case QJsonValue::Null:
+                case QJsonValue::Undefined:
+                    break;
+            }
+            count++;
+        }
+        fullPath.append(paramString);
+        
+            }
     if (end_date.hasValue())
     {
         queryStyle = "form";
@@ -2796,23 +2252,99 @@ void OAIMailApi::viewMailLog(const qint32 &id, const ::OpenAPI::OptionalParam<qi
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("endDate")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(end_date.stringValue())));
-    }
-    if (delivered.hasValue())
+        
+        QString paramString = (queryStyle == "form" && true) ? "" : (queryStyle == "form" && !(true)) ? "endDate"+querySuffix : "";
+        QJsonObject parameter = end_date.value().asJsonObject();
+        qint32 count = 0;
+        for(const QString& key : parameter.keys()) {
+            if (count > 0) {
+                queryDelimiter =  ((queryStyle == "form" || queryStyle == "deepObject") && true) ? "&" : getParamStyleDelimiter(queryStyle, key, true);
+                paramString.append(queryDelimiter);
+            }
+            QString assignOperator;
+            if (queryStyle == "form")
+                assignOperator = (true) ? "=" : ",";
+            else if (queryStyle == "deepObject")
+                assignOperator = (true) ? "=" : "none";
+            switch(parameter.value(key).type()) {
+                case QJsonValue::String:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("endDate").append("[").append(key).append("]"))+assignOperator+parameter.value(key).toString());
+                    break;
+                }
+                case QJsonValue::Double:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("endDate").append("[").append(key).append("]"))+assignOperator+QString::number(parameter.value(key).toDouble()));
+                    break;
+                }
+                case QJsonValue::Bool:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("endDate").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toBool()).toString());
+                    break;
+                }
+                case QJsonValue::Array:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("endDate").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toArray()).toString());
+                    break;
+                }
+                case QJsonValue::Object:
+                {
+                    paramString.append(((queryStyle == "form") ? key : QString("endDate").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toObject()).toString());
+                    break;
+                }
+                case QJsonValue::Null:
+                case QJsonValue::Undefined:
+                    break;
+            }
+            count++;
+        }
+        fullPath.append(paramString);
+        
+            }
+    if (sort.hasValue())
     {
         queryStyle = "form";
         if (queryStyle == "")
             queryStyle = "form";
         queryPrefix = getParamStylePrefix(queryStyle);
         querySuffix = getParamStyleSuffix(queryStyle);
-        queryDelimiter = getParamStyleDelimiter(queryStyle, "delivered", true);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "sort", true);
         if (fullPath.indexOf("?") > 0)
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("delivered")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(delivered.stringValue())));
+        fullPath.append(QUrl::toPercentEncoding("sort")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(sort.stringValue())));
+    }
+    if (dir.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "dir", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("dir")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(dir.stringValue())));
+    }
+    if (groupby.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "groupby", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("groupby")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(groupby.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2850,42 +2382,16 @@ void OAIMailApi::viewMailLogCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT viewMailLogSignal(output);
         Q_EMIT viewMailLogSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT viewMailLogSignalE(output, error_type, error_str);
-        Q_EMIT viewMailLogSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT viewMailLogSignalError(output, error_type, error_str);
         Q_EMIT viewMailLogSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIMailApi::tokenAvailable(){
+void OAIMailApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2895,7 +2401,7 @@ void OAIMailApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2905,7 +2411,7 @@ void OAIMailApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -2915,7 +2421,7 @@ void OAIMailApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

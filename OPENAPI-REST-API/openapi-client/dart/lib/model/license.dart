@@ -113,10 +113,28 @@ class License {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "License[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "License[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'serviceInfo'), 'Required key "License[serviceInfo]" is missing from JSON.');
+        assert(json[r'serviceInfo'] != null, 'Required key "License[serviceInfo]" has a null value in JSON.');
+        assert(json.containsKey(r'client_links'), 'Required key "License[client_links]" is missing from JSON.');
+        assert(json[r'client_links'] != null, 'Required key "License[client_links]" has a null value in JSON.');
+        assert(json.containsKey(r'billingDetails'), 'Required key "License[billingDetails]" is missing from JSON.');
+        assert(json[r'billingDetails'] != null, 'Required key "License[billingDetails]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrency'), 'Required key "License[custCurrency]" is missing from JSON.');
+        assert(json[r'custCurrency'] != null, 'Required key "License[custCurrency]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrencySymbol'), 'Required key "License[custCurrencySymbol]" is missing from JSON.');
+        assert(json[r'custCurrencySymbol'] != null, 'Required key "License[custCurrencySymbol]" has a null value in JSON.');
+        assert(json.containsKey(r'package'), 'Required key "License[package]" is missing from JSON.');
+        assert(json[r'package'] != null, 'Required key "License[package]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceExtra'), 'Required key "License[serviceExtra]" is missing from JSON.');
+        assert(json[r'serviceExtra'] != null, 'Required key "License[serviceExtra]" has a null value in JSON.');
+        assert(json.containsKey(r'extraInfoTables'), 'Required key "License[extraInfoTables]" is missing from JSON.');
+        assert(json[r'extraInfoTables'] != null, 'Required key "License[extraInfoTables]" has a null value in JSON.');
+        assert(json.containsKey(r'service_overview_extra'), 'Required key "License[service_overview_extra]" is missing from JSON.');
+        assert(json[r'service_overview_extra'] != null, 'Required key "License[service_overview_extra]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceType'), 'Required key "License[serviceType]" is missing from JSON.');
+        assert(json[r'serviceType'] != null, 'Required key "License[serviceType]" has a null value in JSON.');
+        assert(json.containsKey(r'license_key'), 'Required key "License[license_key]" is missing from JSON.');
+        assert(json[r'license_key'] != null, 'Required key "License[license_key]" has a null value in JSON.');
         return true;
       }());
 

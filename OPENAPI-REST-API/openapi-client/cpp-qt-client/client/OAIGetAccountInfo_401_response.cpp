@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIGetAccountInfo_401_response::OAIGetAccountInfo_401_response(QString json) {
+OAIGetAccountInfo_401_response::OAIGetAccountInfo_401_response(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIGetAccountInfo_401_response::initializeModel() {
     m_message_isValid = false;
 }
 
-void OAIGetAccountInfo_401_response::fromJson(QString jsonString) {
+void OAIGetAccountInfo_401_response::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

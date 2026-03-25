@@ -24,6 +24,8 @@ static post_website_migration_request_t *post_website_migration_request_create_i
     if (!post_website_migration_request_local_var) {
         return NULL;
     }
+    memset(post_website_migration_request_local_var, 0, sizeof(post_website_migration_request_t));
+    post_website_migration_request_local_var->_library_owned = 1;
     post_website_migration_request_local_var->cust_portal = cust_portal;
     post_website_migration_request_local_var->reg_email = reg_email;
     post_website_migration_request_local_var->password = password;
@@ -37,8 +39,6 @@ static post_website_migration_request_t *post_website_migration_request_create_i
     post_website_migration_request_local_var->domain_reg_portal = domain_reg_portal;
     post_website_migration_request_local_var->domain_reg_email = domain_reg_email;
     post_website_migration_request_local_var->domain_reg_password = domain_reg_password;
-
-    post_website_migration_request_local_var->_library_owned = 1;
     return post_website_migration_request_local_var;
 }
 
@@ -57,7 +57,7 @@ __attribute__((deprecated)) post_website_migration_request_t *post_website_migra
     char *domain_reg_email,
     char *domain_reg_password
     ) {
-    return post_website_migration_request_create_internal (
+    post_website_migration_request_t *result = post_website_migration_request_create_internal (
         cust_portal,
         reg_email,
         password,
@@ -72,6 +72,9 @@ __attribute__((deprecated)) post_website_migration_request_t *post_website_migra
         domain_reg_email,
         domain_reg_password
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void post_website_migration_request_free(post_website_migration_request_t *post_website_migration_request) {
@@ -256,6 +259,32 @@ post_website_migration_request_t *post_website_migration_request_parseFromJSON(c
 
     post_website_migration_request_t *post_website_migration_request_local_var = NULL;
 
+    char *cust_portal_local_str = NULL;
+
+    char *reg_email_local_str = NULL;
+
+    char *password_local_str = NULL;
+
+    char *ctrl_panel_local_str = NULL;
+
+    char *ftp_username_local_str = NULL;
+
+    char *ftp_password_local_str = NULL;
+
+    char *site_busy_mig_local_str = NULL;
+
+    char *spl_req_mig_local_str = NULL;
+
+    char *domain_reg_local_str = NULL;
+
+    char *data_mig_local_str = NULL;
+
+    char *domain_reg_portal_local_str = NULL;
+
+    char *domain_reg_email_local_str = NULL;
+
+    char *domain_reg_password_local_str = NULL;
+
     // post_website_migration_request->cust_portal
     cJSON *cust_portal = cJSON_GetObjectItemCaseSensitive(post_website_migration_requestJSON, "custPortal");
     if (cJSON_IsNull(cust_portal)) {
@@ -413,24 +442,94 @@ post_website_migration_request_t *post_website_migration_request_parseFromJSON(c
     }
 
 
+    if (cust_portal && !cJSON_IsNull(cust_portal)) cust_portal_local_str = strdup(cust_portal->valuestring);
+    if (reg_email && !cJSON_IsNull(reg_email)) reg_email_local_str = strdup(reg_email->valuestring);
+    if (password && !cJSON_IsNull(password)) password_local_str = strdup(password->valuestring);
+    if (ctrl_panel && !cJSON_IsNull(ctrl_panel)) ctrl_panel_local_str = strdup(ctrl_panel->valuestring);
+    if (ftp_username && !cJSON_IsNull(ftp_username)) ftp_username_local_str = strdup(ftp_username->valuestring);
+    if (ftp_password && !cJSON_IsNull(ftp_password)) ftp_password_local_str = strdup(ftp_password->valuestring);
+    if (site_busy_mig && !cJSON_IsNull(site_busy_mig)) site_busy_mig_local_str = strdup(site_busy_mig->valuestring);
+    if (spl_req_mig && !cJSON_IsNull(spl_req_mig)) spl_req_mig_local_str = strdup(spl_req_mig->valuestring);
+    if (domain_reg && !cJSON_IsNull(domain_reg)) domain_reg_local_str = strdup(domain_reg->valuestring);
+    if (data_mig && !cJSON_IsNull(data_mig)) data_mig_local_str = strdup(data_mig->valuestring);
+    if (domain_reg_portal && !cJSON_IsNull(domain_reg_portal)) domain_reg_portal_local_str = strdup(domain_reg_portal->valuestring);
+    if (domain_reg_email && !cJSON_IsNull(domain_reg_email)) domain_reg_email_local_str = strdup(domain_reg_email->valuestring);
+    if (domain_reg_password && !cJSON_IsNull(domain_reg_password)) domain_reg_password_local_str = strdup(domain_reg_password->valuestring);
+
     post_website_migration_request_local_var = post_website_migration_request_create_internal (
-        cust_portal && !cJSON_IsNull(cust_portal) ? strdup(cust_portal->valuestring) : NULL,
-        reg_email && !cJSON_IsNull(reg_email) ? strdup(reg_email->valuestring) : NULL,
-        password && !cJSON_IsNull(password) ? strdup(password->valuestring) : NULL,
-        ctrl_panel && !cJSON_IsNull(ctrl_panel) ? strdup(ctrl_panel->valuestring) : NULL,
-        ftp_username && !cJSON_IsNull(ftp_username) ? strdup(ftp_username->valuestring) : NULL,
-        ftp_password && !cJSON_IsNull(ftp_password) ? strdup(ftp_password->valuestring) : NULL,
-        site_busy_mig && !cJSON_IsNull(site_busy_mig) ? strdup(site_busy_mig->valuestring) : NULL,
-        spl_req_mig && !cJSON_IsNull(spl_req_mig) ? strdup(spl_req_mig->valuestring) : NULL,
-        domain_reg && !cJSON_IsNull(domain_reg) ? strdup(domain_reg->valuestring) : NULL,
-        data_mig && !cJSON_IsNull(data_mig) ? strdup(data_mig->valuestring) : NULL,
-        domain_reg_portal && !cJSON_IsNull(domain_reg_portal) ? strdup(domain_reg_portal->valuestring) : NULL,
-        domain_reg_email && !cJSON_IsNull(domain_reg_email) ? strdup(domain_reg_email->valuestring) : NULL,
-        domain_reg_password && !cJSON_IsNull(domain_reg_password) ? strdup(domain_reg_password->valuestring) : NULL
+        cust_portal_local_str,
+        reg_email_local_str,
+        password_local_str,
+        ctrl_panel_local_str,
+        ftp_username_local_str,
+        ftp_password_local_str,
+        site_busy_mig_local_str,
+        spl_req_mig_local_str,
+        domain_reg_local_str,
+        data_mig_local_str,
+        domain_reg_portal_local_str,
+        domain_reg_email_local_str,
+        domain_reg_password_local_str
         );
+
+    if (!post_website_migration_request_local_var) {
+        goto end;
+    }
 
     return post_website_migration_request_local_var;
 end:
+    if (cust_portal_local_str) {
+        free(cust_portal_local_str);
+        cust_portal_local_str = NULL;
+    }
+    if (reg_email_local_str) {
+        free(reg_email_local_str);
+        reg_email_local_str = NULL;
+    }
+    if (password_local_str) {
+        free(password_local_str);
+        password_local_str = NULL;
+    }
+    if (ctrl_panel_local_str) {
+        free(ctrl_panel_local_str);
+        ctrl_panel_local_str = NULL;
+    }
+    if (ftp_username_local_str) {
+        free(ftp_username_local_str);
+        ftp_username_local_str = NULL;
+    }
+    if (ftp_password_local_str) {
+        free(ftp_password_local_str);
+        ftp_password_local_str = NULL;
+    }
+    if (site_busy_mig_local_str) {
+        free(site_busy_mig_local_str);
+        site_busy_mig_local_str = NULL;
+    }
+    if (spl_req_mig_local_str) {
+        free(spl_req_mig_local_str);
+        spl_req_mig_local_str = NULL;
+    }
+    if (domain_reg_local_str) {
+        free(domain_reg_local_str);
+        domain_reg_local_str = NULL;
+    }
+    if (data_mig_local_str) {
+        free(data_mig_local_str);
+        data_mig_local_str = NULL;
+    }
+    if (domain_reg_portal_local_str) {
+        free(domain_reg_portal_local_str);
+        domain_reg_portal_local_str = NULL;
+    }
+    if (domain_reg_email_local_str) {
+        free(domain_reg_email_local_str);
+        domain_reg_email_local_str = NULL;
+    }
+    if (domain_reg_password_local_str) {
+        free(domain_reg_password_local_str);
+        domain_reg_password_local_str = NULL;
+    }
     return NULL;
 
 }

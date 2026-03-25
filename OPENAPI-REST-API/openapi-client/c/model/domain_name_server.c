@@ -14,11 +14,11 @@ static domain_name_server_t *domain_name_server_create_internal(
     if (!domain_name_server_local_var) {
         return NULL;
     }
+    memset(domain_name_server_local_var, 0, sizeof(domain_name_server_t));
+    domain_name_server_local_var->_library_owned = 1;
     domain_name_server_local_var->sortorder = sortorder;
     domain_name_server_local_var->name = name;
     domain_name_server_local_var->ipaddress = ipaddress;
-
-    domain_name_server_local_var->_library_owned = 1;
     return domain_name_server_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) domain_name_server_t *domain_name_server_create(
     char *name,
     char *ipaddress
     ) {
-    return domain_name_server_create_internal (
+    domain_name_server_t *result = domain_name_server_create_internal (
         sortorder,
         name,
         ipaddress
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_name_server_free(domain_name_server_t *domain_name_server) {
@@ -96,6 +99,12 @@ domain_name_server_t *domain_name_server_parseFromJSON(cJSON *domain_name_server
 
     domain_name_server_t *domain_name_server_local_var = NULL;
 
+    char *sortorder_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    char *ipaddress_local_str = NULL;
+
     // domain_name_server->sortorder
     cJSON *sortorder = cJSON_GetObjectItemCaseSensitive(domain_name_serverJSON, "sortorder");
     if (cJSON_IsNull(sortorder)) {
@@ -133,14 +142,34 @@ domain_name_server_t *domain_name_server_parseFromJSON(cJSON *domain_name_server
     }
 
 
+    if (sortorder && !cJSON_IsNull(sortorder)) sortorder_local_str = strdup(sortorder->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (ipaddress && !cJSON_IsNull(ipaddress)) ipaddress_local_str = strdup(ipaddress->valuestring);
+
     domain_name_server_local_var = domain_name_server_create_internal (
-        sortorder && !cJSON_IsNull(sortorder) ? strdup(sortorder->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        ipaddress && !cJSON_IsNull(ipaddress) ? strdup(ipaddress->valuestring) : NULL
+        sortorder_local_str,
+        name_local_str,
+        ipaddress_local_str
         );
+
+    if (!domain_name_server_local_var) {
+        goto end;
+    }
 
     return domain_name_server_local_var;
 end:
+    if (sortorder_local_str) {
+        free(sortorder_local_str);
+        sortorder_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (ipaddress_local_str) {
+        free(ipaddress_local_str);
+        ipaddress_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -32,13 +32,13 @@ class OAIBackupIPInfo;
 class OAIBackupExtraInfoTables : public OAIObject {
 public:
     OAIBackupExtraInfoTables();
-    OAIBackupExtraInfoTables(QString json);
+    OAIBackupExtraInfoTables(const QString &json);
     ~OAIBackupExtraInfoTables() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIBackupIPInfo getIpInfo() const;
     void setIpInfo(const OAIBackupIPInfo &ip_info);

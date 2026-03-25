@@ -26,7 +26,7 @@ import io.micronaut.core.annotation.*;
 import javax.annotation.Generated;
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 @JsonPropertyOrder({
   MailLog.JSON_PROPERTY_TOTAL,
@@ -35,7 +35,7 @@ import javax.annotation.Generated;
   MailLog.JSON_PROPERTY_EMAILS
 })
 @JsonTypeName("MailLog")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class MailLog {
     public static final String JSON_PROPERTY_TOTAL = "total";
@@ -63,7 +63,7 @@ public class MailLog {
     }
 
     /**
-     * total number of mail log entries
+     * Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode.
      * @return total
      */
     @NotNull
@@ -85,7 +85,7 @@ public class MailLog {
     }
 
     /**
-     * number of emails skipped in listing
+     * The &#x60;skip&#x60; value used for this page (echoed from the request).
      * @return skip
      */
     @NotNull
@@ -107,7 +107,7 @@ public class MailLog {
     }
 
     /**
-     * number of emails to return
+     * The &#x60;limit&#x60; value used for this page (echoed from the request).
      * @return limit
      */
     @NotNull
@@ -187,10 +187,7 @@ public class MailLog {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

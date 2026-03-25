@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIPlaceScrubOrder_201_response_order_details_cj_params::OAIPlaceScrubOrder_201_response_order_details_cj_params(QString json) {
+OAIPlaceScrubOrder_201_response_order_details_cj_params::OAIPlaceScrubOrder_201_response_order_details_cj_params(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIPlaceScrubOrder_201_response_order_details_cj_params::initializeModel() 
     m_currency_isValid = false;
 }
 
-void OAIPlaceScrubOrder_201_response_order_details_cj_params::fromJson(QString jsonString) {
+void OAIPlaceScrubOrder_201_response_order_details_cj_params::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

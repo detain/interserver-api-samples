@@ -1,4 +1,4 @@
-# # ServersBuyNowError
+# ServersBuyNowError
 
 ## Properties
 

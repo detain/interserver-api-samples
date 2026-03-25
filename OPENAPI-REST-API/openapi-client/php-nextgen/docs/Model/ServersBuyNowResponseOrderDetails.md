@@ -1,4 +1,4 @@
-# # ServersBuyNowResponseOrderDetails
+# ServersBuyNowResponseOrderDetails
 
 ## Properties
 

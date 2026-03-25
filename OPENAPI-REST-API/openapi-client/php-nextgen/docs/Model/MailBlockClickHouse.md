@@ -1,4 +1,4 @@
-# # MailBlockClickHouse
+# MailBlockClickHouse
 
 ## Properties
 

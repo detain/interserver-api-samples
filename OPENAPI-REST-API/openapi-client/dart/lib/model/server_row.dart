@@ -69,10 +69,14 @@ class ServerRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerRow[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'server_id'), 'Required key "ServerRow[server_id]" is missing from JSON.');
+        assert(json[r'server_id'] != null, 'Required key "ServerRow[server_id]" has a null value in JSON.');
+        assert(json.containsKey(r'account_lid'), 'Required key "ServerRow[account_lid]" is missing from JSON.');
+        assert(json[r'account_lid'] != null, 'Required key "ServerRow[account_lid]" has a null value in JSON.');
+        assert(json.containsKey(r'server_hostname'), 'Required key "ServerRow[server_hostname]" is missing from JSON.');
+        assert(json[r'server_hostname'] != null, 'Required key "ServerRow[server_hostname]" has a null value in JSON.');
+        assert(json.containsKey(r'server_status'), 'Required key "ServerRow[server_status]" is missing from JSON.');
+        assert(json[r'server_status'] != null, 'Required key "ServerRow[server_status]" has a null value in JSON.');
         return true;
       }());
 

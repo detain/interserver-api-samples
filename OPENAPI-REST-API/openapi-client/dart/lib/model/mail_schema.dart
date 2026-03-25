@@ -107,10 +107,24 @@ class MailSchema {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailSchema[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailSchema[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'serviceInfo'), 'Required key "MailSchema[serviceInfo]" is missing from JSON.');
+        assert(json[r'serviceInfo'] != null, 'Required key "MailSchema[serviceInfo]" has a null value in JSON.');
+        assert(json.containsKey(r'client_links'), 'Required key "MailSchema[client_links]" is missing from JSON.');
+        assert(json[r'client_links'] != null, 'Required key "MailSchema[client_links]" has a null value in JSON.');
+        assert(json.containsKey(r'billingDetails'), 'Required key "MailSchema[billingDetails]" is missing from JSON.');
+        assert(json[r'billingDetails'] != null, 'Required key "MailSchema[billingDetails]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrency'), 'Required key "MailSchema[custCurrency]" is missing from JSON.');
+        assert(json[r'custCurrency'] != null, 'Required key "MailSchema[custCurrency]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrencySymbol'), 'Required key "MailSchema[custCurrencySymbol]" is missing from JSON.');
+        assert(json[r'custCurrencySymbol'] != null, 'Required key "MailSchema[custCurrencySymbol]" has a null value in JSON.');
+        assert(json.containsKey(r'package'), 'Required key "MailSchema[package]" is missing from JSON.');
+        assert(json[r'package'] != null, 'Required key "MailSchema[package]" has a null value in JSON.');
+        assert(json.containsKey(r'extraInfoTables'), 'Required key "MailSchema[extraInfoTables]" is missing from JSON.');
+        assert(json[r'extraInfoTables'] != null, 'Required key "MailSchema[extraInfoTables]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceType'), 'Required key "MailSchema[serviceType]" is missing from JSON.');
+        assert(json[r'serviceType'] != null, 'Required key "MailSchema[serviceType]" has a null value in JSON.');
+        assert(json.containsKey(r'usage_count'), 'Required key "MailSchema[usage_count]" is missing from JSON.');
+        assert(json[r'usage_count'] != null, 'Required key "MailSchema[usage_count]" has a null value in JSON.');
         return true;
       }());
 

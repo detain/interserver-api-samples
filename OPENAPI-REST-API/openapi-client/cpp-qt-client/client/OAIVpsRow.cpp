@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsRow::OAIVpsRow(QString json) {
+OAIVpsRow::OAIVpsRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIVpsRow::initializeModel() {
     m_vps_comment_isValid = false;
 }
 
-void OAIVpsRow::fromJson(QString jsonString) {
+void OAIVpsRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

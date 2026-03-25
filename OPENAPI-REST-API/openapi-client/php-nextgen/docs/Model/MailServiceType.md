@@ -1,4 +1,4 @@
-# # MailServiceType
+# MailServiceType
 
 ## Properties
 

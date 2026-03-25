@@ -32,13 +32,13 @@ class OAIVpsPleskLicense;
 class OAIVpsPlesk12Data : public OAIObject {
 public:
     OAIVpsPlesk12Data();
-    OAIVpsPlesk12Data(QString json);
+    OAIVpsPlesk12Data(const QString &json);
     ~OAIVpsPlesk12Data() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsPleskLicense getAdmin() const;
     void setAdmin(const OAIVpsPleskLicense &admin);

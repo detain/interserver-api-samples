@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAICaptchaResponse : public OAIObject {
 public:
     OAICaptchaResponse();
-    OAICaptchaResponse(QString json);
+    OAICaptchaResponse(const QString &json);
     ~OAICaptchaResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCaptcha() const;
     void setCaptcha(const QString &captcha);

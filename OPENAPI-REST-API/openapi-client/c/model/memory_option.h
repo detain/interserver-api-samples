@@ -19,18 +19,18 @@ typedef struct memory_option_t memory_option_t;
 
 
 typedef struct memory_option_t {
-    int id; //numeric
+    int *id; //numeric
     char *short_desc; // string
-    double monthly_price; //numeric
+    double *monthly_price; //numeric
     char *monthly_price_display; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } memory_option_t;
 
 __attribute__((deprecated)) memory_option_t *memory_option_create(
-    int id,
+    int *id,
     char *short_desc,
-    double monthly_price,
+    double *monthly_price,
     char *monthly_price_display
 );
 

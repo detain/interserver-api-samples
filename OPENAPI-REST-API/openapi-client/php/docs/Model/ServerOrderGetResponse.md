@@ -1,4 +1,4 @@
-# # ServerOrderGetResponse
+# ServerOrderGetResponse
 
 ## Properties
 

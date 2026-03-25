@@ -6,36 +6,51 @@
 
 
 static ip_block_t *ip_block_create_internal(
-    int id,
+    int *id,
     char *short_desc,
     char *qty,
-    double monthly_price
+    double *monthly_price
     ) {
     ip_block_t *ip_block_local_var = malloc(sizeof(ip_block_t));
     if (!ip_block_local_var) {
         return NULL;
     }
+    memset(ip_block_local_var, 0, sizeof(ip_block_t));
+    ip_block_local_var->_library_owned = 1;
     ip_block_local_var->id = id;
     ip_block_local_var->short_desc = short_desc;
     ip_block_local_var->qty = qty;
     ip_block_local_var->monthly_price = monthly_price;
-
-    ip_block_local_var->_library_owned = 1;
     return ip_block_local_var;
 }
 
 __attribute__((deprecated)) ip_block_t *ip_block_create(
-    int id,
+    int *id,
     char *short_desc,
     char *qty,
-    double monthly_price
+    double *monthly_price
     ) {
-    return ip_block_create_internal (
-        id,
+    int *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(int));
+        if (id_copy) *id_copy = *id;
+    }
+    double *monthly_price_copy = NULL;
+    if (monthly_price) {
+        monthly_price_copy = malloc(sizeof(double));
+        if (monthly_price_copy) *monthly_price_copy = *monthly_price;
+    }
+    ip_block_t *result = ip_block_create_internal (
+        id_copy,
         short_desc,
         qty,
-        monthly_price
+        monthly_price_copy
         );
+    if (!result) {
+        free(id_copy);
+        free(monthly_price_copy);
+    }
+    return result;
 }
 
 void ip_block_free(ip_block_t *ip_block) {
@@ -47,6 +62,10 @@ void ip_block_free(ip_block_t *ip_block) {
         return ;
     }
     listEntry_t *listEntry;
+    if (ip_block->id) {
+        free(ip_block->id);
+        ip_block->id = NULL;
+    }
     if (ip_block->short_desc) {
         free(ip_block->short_desc);
         ip_block->short_desc = NULL;
@@ -54,6 +73,10 @@ void ip_block_free(ip_block_t *ip_block) {
     if (ip_block->qty) {
         free(ip_block->qty);
         ip_block->qty = NULL;
+    }
+    if (ip_block->monthly_price) {
+        free(ip_block->monthly_price);
+        ip_block->monthly_price = NULL;
     }
     free(ip_block);
 }
@@ -63,7 +86,7 @@ cJSON *ip_block_convertToJSON(ip_block_t *ip_block) {
 
     // ip_block->id
     if(ip_block->id) {
-    if(cJSON_AddNumberToObject(item, "id", ip_block->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *ip_block->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -87,7 +110,7 @@ cJSON *ip_block_convertToJSON(ip_block_t *ip_block) {
 
     // ip_block->monthly_price
     if(ip_block->monthly_price) {
-    if(cJSON_AddNumberToObject(item, "monthly_price", ip_block->monthly_price) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_price", *ip_block->monthly_price) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -104,6 +127,16 @@ ip_block_t *ip_block_parseFromJSON(cJSON *ip_blockJSON){
 
     ip_block_t *ip_block_local_var = NULL;
 
+    // define the local variable for ip_block->id
+    int *id_local_var = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    char *qty_local_str = NULL;
+
+    // define the local variable for ip_block->monthly_price
+    double *monthly_price_local_var = NULL;
+
     // ip_block->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ip_blockJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -114,6 +147,12 @@ ip_block_t *ip_block_parseFromJSON(cJSON *ip_blockJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(int));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // ip_block->short_desc
@@ -150,18 +189,47 @@ ip_block_t *ip_block_parseFromJSON(cJSON *ip_blockJSON){
     {
     goto end; //Numeric
     }
+    monthly_price_local_var = malloc(sizeof(double));
+    if(!monthly_price_local_var)
+    {
+        goto end;
+    }
+    *monthly_price_local_var = monthly_price->valuedouble;
     }
 
 
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+    if (qty && !cJSON_IsNull(qty)) qty_local_str = strdup(qty->valuestring);
+
     ip_block_local_var = ip_block_create_internal (
-        id ? id->valuedouble : 0,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        qty && !cJSON_IsNull(qty) ? strdup(qty->valuestring) : NULL,
-        monthly_price ? monthly_price->valuedouble : 0
+        id_local_var,
+        short_desc_local_str,
+        qty_local_str,
+        monthly_price_local_var
         );
+
+    if (!ip_block_local_var) {
+        goto end;
+    }
 
     return ip_block_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (qty_local_str) {
+        free(qty_local_str);
+        qty_local_str = NULL;
+    }
+    if (monthly_price_local_var) {
+        free(monthly_price_local_var);
+        monthly_price_local_var = NULL;
+    }
     return NULL;
 
 }

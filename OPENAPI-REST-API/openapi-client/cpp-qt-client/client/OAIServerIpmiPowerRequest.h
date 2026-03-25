@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIServerIpmiPowerRequest : public OAIObject {
 public:
     OAIServerIpmiPowerRequest();
-    OAIServerIpmiPowerRequest(QString json);
+    OAIServerIpmiPowerRequest(const QString &json);
     ~OAIServerIpmiPowerRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getAction() const;
     void setAction(const QString &action);

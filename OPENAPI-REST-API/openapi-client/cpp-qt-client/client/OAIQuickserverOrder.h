@@ -39,13 +39,13 @@ class OAIQuickserverOrder_distro_sel;
 class OAIQuickserverOrder : public OAIObject {
 public:
     OAIQuickserverOrder();
-    OAIQuickserverOrder(QString json);
+    OAIQuickserverOrder(const QString &json);
     ~OAIQuickserverOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getQsId() const;
     void setQsId(const QString &qs_id);

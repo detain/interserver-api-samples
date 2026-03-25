@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIServerSwitchport : public OAIObject {
 public:
     OAIServerSwitchport();
-    OAIServerSwitchport(QString json);
+    OAIServerSwitchport(const QString &json);
     ~OAIServerSwitchport() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getSwitchportId() const;
     void setSwitchportId(const qint32 &switchport_id);

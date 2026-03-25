@@ -14,11 +14,11 @@ static mail_blocks_t *mail_blocks_create_internal(
     if (!mail_blocks_local_var) {
         return NULL;
     }
+    memset(mail_blocks_local_var, 0, sizeof(mail_blocks_t));
+    mail_blocks_local_var->_library_owned = 1;
     mail_blocks_local_var->local = local;
     mail_blocks_local_var->mbtrap = mbtrap;
     mail_blocks_local_var->subject = subject;
-
-    mail_blocks_local_var->_library_owned = 1;
     return mail_blocks_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) mail_blocks_t *mail_blocks_create(
     list_t *mbtrap,
     list_t *subject
     ) {
-    return mail_blocks_create_internal (
+    mail_blocks_t *result = mail_blocks_create_internal (
         local,
         mbtrap,
         subject
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void mail_blocks_free(mail_blocks_t *mail_blocks) {
@@ -235,11 +238,16 @@ mail_blocks_t *mail_blocks_parseFromJSON(cJSON *mail_blocksJSON){
     }
 
 
+
     mail_blocks_local_var = mail_blocks_create_internal (
         localList,
         mbtrapList,
         subjectList
         );
+
+    if (!mail_blocks_local_var) {
+        goto end;
+    }
 
     return mail_blocks_local_var;
 end:

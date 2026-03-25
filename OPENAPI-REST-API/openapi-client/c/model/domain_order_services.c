@@ -12,18 +12,21 @@ static domain_order_services_t *domain_order_services_create_internal(
     if (!domain_order_services_local_var) {
         return NULL;
     }
-    domain_order_services_local_var->domain_order_services10001 = domain_order_services10001;
-
+    memset(domain_order_services_local_var, 0, sizeof(domain_order_services_t));
     domain_order_services_local_var->_library_owned = 1;
+    domain_order_services_local_var->domain_order_services10001 = domain_order_services10001;
     return domain_order_services_local_var;
 }
 
 __attribute__((deprecated)) domain_order_services_t *domain_order_services_create(
     domain_order_services10001_t *domain_order_services10001
     ) {
-    return domain_order_services_create_internal (
+    domain_order_services_t *result = domain_order_services_create_internal (
         domain_order_services10001
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_order_services_free(domain_order_services_t *domain_order_services) {
@@ -82,9 +85,14 @@ domain_order_services_t *domain_order_services_parseFromJSON(cJSON *domain_order
     }
 
 
+
     domain_order_services_local_var = domain_order_services_create_internal (
         domain_order_services10001 ? domain_order_services10001_local_nonprim : NULL
         );
+
+    if (!domain_order_services_local_var) {
+        goto end;
+    }
 
     return domain_order_services_local_var;
 end:

@@ -20,7 +20,7 @@ typedef struct server_assets_t server_assets_t;
 
 typedef struct server_assets_t {
     char *title; // string
-    int size; //numeric
+    int *size; //numeric
     char *type; // string
     list_t *header; //primitive container
     list_t *rows; //primitive container
@@ -30,7 +30,7 @@ typedef struct server_assets_t {
 
 __attribute__((deprecated)) server_assets_t *server_assets_create(
     char *title,
-    int size,
+    int *size,
     char *type,
     list_t *header,
     list_t *rows

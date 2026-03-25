@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailAlertsResponse_inner::OAIMailAlertsResponse_inner(QString json) {
+OAIMailAlertsResponse_inner::OAIMailAlertsResponse_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIMailAlertsResponse_inner::initializeModel() {
     m_alert_enabled_isValid = false;
 }
 
-void OAIMailAlertsResponse_inner::fromJson(QString jsonString) {
+void OAIMailAlertsResponse_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

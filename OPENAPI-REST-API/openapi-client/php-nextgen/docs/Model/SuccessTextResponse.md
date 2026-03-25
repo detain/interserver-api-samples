@@ -1,4 +1,4 @@
-# # SuccessTextResponse
+# SuccessTextResponse
 
 ## Properties
 

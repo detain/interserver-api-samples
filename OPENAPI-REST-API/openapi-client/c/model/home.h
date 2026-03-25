@@ -27,7 +27,7 @@ typedef struct home_t {
     char *last_login; // string
     char *currency; // string
     char *amount; // string
-    int invoice_list; //numeric
+    int *invoice_list; //numeric
     char *balance; // string
     char *full_name; // string
     char *email; // string
@@ -46,7 +46,7 @@ __attribute__((deprecated)) home_t *home_create(
     char *last_login,
     char *currency,
     char *amount,
-    int invoice_list,
+    int *invoice_list,
     char *balance,
     char *full_name,
     char *email,

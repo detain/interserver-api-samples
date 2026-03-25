@@ -19,14 +19,14 @@ typedef struct create_filter_500_response_t create_filter_500_response_t;
 
 
 typedef struct create_filter_500_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } create_filter_500_response_t;
 
 __attribute__((deprecated)) create_filter_500_response_t *create_filter_500_response_create(
-    int success,
+    int *success,
     char *text
 );
 

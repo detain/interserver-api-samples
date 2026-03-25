@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainNameserverPostRequest::OAIDomainNameserverPostRequest(QString json) {
+OAIDomainNameserverPostRequest::OAIDomainNameserverPostRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIDomainNameserverPostRequest::initializeModel() {
     m_ip_address_isValid = false;
 }
 
-void OAIDomainNameserverPostRequest::fromJson(QString jsonString) {
+void OAIDomainNameserverPostRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

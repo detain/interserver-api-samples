@@ -9368,7 +9368,16 @@
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /mail/{id}/log</code></pre></div>
     <div class="method-summary">View Mail Log (<span class="nickname">viewMailLog</span>)</div>
-    <div class="method-notes">Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.</div>
+    <div class="method-notes"><p>Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.</p>
+<p><strong>Row grouping</strong> is controlled by the <code>groupby</code> parameter.  By default (<code>groupby=recipient</code>), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own <code>recipient</code>, <code>delivered</code>, <code>response</code>, and <code>mxHostname</code> values.  Set <code>groupby=message</code> to collapse to one row per message (delivery fields will reflect one arbitrary recipient).</p>
+<p><strong>Pagination</strong> is controlled by <code>skip</code> and <code>limit</code>.  The <code>total</code> in the response reflects the row count <strong>after</strong> grouping, so it matches the number of pages you need to fetch.</p>
+<p><strong>Date filtering</strong> accepts either a Unix timestamp (integer) or a date string parseable by PHP <code>strtotime()</code> such as <code>2024-01-15</code>, <code>last monday</code>, or <code>2024-01-01 00:00:00</code>.  Examples: <code>startDate=1704067200&amp;endDate=1706745599</code> or <code>startDate=2024-01-01&amp;endDate=2024-01-31</code>.</p>
+<p><strong>Sorting</strong> is controlled by <code>sort</code> and <code>dir</code>.  Currently the only sort key is <code>time</code> (default), which orders by internal row ID.</p>
+<p><strong>Delivery status</strong> can be filtered with the <code>delivered</code> parameter: <code>delivered=1</code> returns only successfully delivered messages; <code>delivered=0</code> returns messages still in queue or that failed.</p>
+<p><strong>Address filtering</strong> distinguishes between the SMTP envelope address (<code>from</code>, <code>to</code>) and message headers (<code>headerfrom</code> for the <code>From:</code> header, <code>replyto</code> for <code>Reply-To:</code>). These may differ when a message is sent on behalf of another address.</p>
+<p>The <code>mailid</code> parameter corresponds to the <code>id</code> field in the returned <code>MailLogEntry</code> objects, <strong>not</strong> the <code>_id</code> field.  It also matches the transaction ID returned in the <code>text</code> field of a successful send response.</p>
+<p>The <code>messageId</code> parameter searches the <code>Message-ID</code> email header (case-insensitive substring match).</p>
+</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -9383,29 +9392,41 @@
     <div class="field-items">
       <div class="param">id (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The ID of your mail order this will be sent through. format: int64</div>      <div class="param">origin (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &lt;code&gt;GET /mail&lt;/code&gt; or &lt;code&gt;GET /mail/{id}&lt;/code&gt;. format: int64</div>      <div class="param">origin (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; originating ip address sending mail </div>      <div class="param">mx (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. format: ipv4</div>      <div class="param">mx (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; mx record mail was sent to </div>      <div class="param">from (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the MX hostname the relay attempted delivery to.  For example &lt;code&gt;mx.google.com&lt;/code&gt; would return messages destined for Gmail recipients. Maps to &lt;code&gt;mxHostname&lt;/code&gt; in the &lt;code&gt;MailLogEntry&lt;/code&gt; response. </div>      <div class="param">from (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; from email address </div>      <div class="param">to (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by SMTP envelope &lt;code&gt;MAIL FROM&lt;/code&gt; address (exact match).  This is the address the relay used for bounce handling and may differ from the &lt;code&gt;From:&lt;/code&gt; message header.  For header-level filtering use &lt;code&gt;headerfrom&lt;/code&gt;. format: email</div>      <div class="param">to (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; to/destination email address </div>      <div class="param">subject (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by SMTP envelope &lt;code&gt;RCPT TO&lt;/code&gt; address (exact match).  This is the delivery address used by the relay and may differ from the &lt;code&gt;To:&lt;/code&gt; header when BCC recipients are involved. format: email</div>      <div class="param">subject (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; subject containing this string </div>      <div class="param">mailid (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by email &lt;code&gt;Subject&lt;/code&gt; header (exact match).  MIME-encoded subjects are decoded automatically in the response. </div>      <div class="param">mailid (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; mail id </div>      <div class="param">skip (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &lt;code&gt;id&lt;/code&gt; field in &lt;code&gt;MailLogEntry&lt;/code&gt; and to the &lt;code&gt;text&lt;/code&gt; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &lt;code&gt;185997065c60008840&lt;/code&gt;. </div>      <div class="param">messageId (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; number of records to skip for pagination default: 0 format: int32</div>      <div class="param">limit (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the &lt;code&gt;Message-ID&lt;/code&gt; email header using a substring (case-insensitive) match.  The &lt;code&gt;Message-ID&lt;/code&gt; is assigned by the sending mail client and is visible in the &lt;code&gt;messageId&lt;/code&gt; field of &lt;code&gt;MailLogEntry&lt;/code&gt;. </div>      <div class="param">replyto (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of records to return default: 100 format: int32</div>      <div class="param">startDate (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the &lt;code&gt;Reply-To&lt;/code&gt; message header address (exact match).  Only returns messages where this header was explicitly set. format: email</div>      <div class="param">headerfrom (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; earliest date to get emails in unix timestamp format format: int64</div>      <div class="param">endDate (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the &lt;code&gt;From&lt;/code&gt; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &lt;code&gt;from&lt;/code&gt; parameter when sending on behalf of another address. format: email</div>      <div class="param">delivered (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Latest date to get emails in unix timestamp format. format: int64</div>      <div class="param">delivered (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by delivery status.  &lt;code&gt;1&lt;/code&gt; returns only messages that were successfully delivered to the destination MX.  &lt;code&gt;0&lt;/code&gt; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. </div>      <div class="param">skip (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter emails by whether or not they were delivered. </div>    </div>  <!-- field-items -->
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of records to skip for pagination.  Use in combination with &lt;code&gt;limit&lt;/code&gt; to page through large result sets.  Defaults to &lt;code&gt;0&lt;/code&gt; (no skip). default: 0 format: int32</div>      <div class="param">limit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of records to return per page.  Defaults to &lt;code&gt;100&lt;/code&gt;. Maximum allowed value is &lt;code&gt;10000&lt;/code&gt;.  The response also includes a &lt;code&gt;total&lt;/code&gt; field with the full matched count so you can calculate the number of pages. default: 100 format: int32</div>      <div class="param">startDate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &lt;code&gt;strtotime()&lt;/code&gt; such as &lt;code&gt;2024-01-15&lt;/code&gt; or &lt;code&gt;last monday&lt;/code&gt;.  Messages with a &lt;code&gt;time&lt;/code&gt; value &lt;strong&gt;greater than or equal to&lt;/strong&gt; this value will be included. </div>      <div class="param">endDate (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &lt;code&gt;strtotime()&lt;/code&gt; such as &lt;code&gt;2024-01-31&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;.  Messages with a &lt;code&gt;time&lt;/code&gt; value &lt;strong&gt;less than or equal to&lt;/strong&gt; this value will be included. </div>      <div class="param">sort (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Field to sort results by.  Currently only &lt;code&gt;time&lt;/code&gt; is supported (sorts by internal row ID which corresponds to chronological order). default: time </div>      <div class="param">dir (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Sort direction.  &lt;code&gt;desc&lt;/code&gt; returns newest first (default), &lt;code&gt;asc&lt;/code&gt; returns oldest first. default: desc </div>      <div class="param">groupby (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Controls how results are grouped.  &lt;code&gt;recipient&lt;/code&gt; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &lt;code&gt;recipient&lt;/code&gt;, &lt;code&gt;delivered&lt;/code&gt;, &lt;code&gt;response&lt;/code&gt;, and delivery metadata.  &lt;code&gt;message&lt;/code&gt; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &lt;code&gt;total&lt;/code&gt; count in the response matches the grouping mode. default: recipient </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -9429,7 +9450,7 @@
     "to" : "client@isp.com",
     "subject" : "sell 0.005 shares",
     "messageId" : "<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>",
-    "created" : "2021-10-14T08:50:10.000Z",
+    "created" : "2021-10-14 08:50:10",
     "time" : 1634215809,
     "user" : "mb5658",
     "transtype" : "ESMTPSA",
@@ -9438,10 +9459,12 @@
     "sendingZone" : "interserver",
     "bodySize" : 63,
     "seq" : 1,
+    "delivered" : 1,
+    "code" : 250,
     "recipient" : "client@isp.com",
     "domain" : "interserver.net",
     "locked" : 1,
-    "lockTime" : 1634215818533,
+    "lockTime" : "1634215818533",
     "assigned" : "relay1",
     "queued" : "2021-10-14T12:50:15.487Z",
     "mxHostname" : "mx.j.is.cc",
@@ -9461,8 +9484,11 @@
     Paginated list of mail log entries matching the specified filters.
         <a href="#MailLog">MailLog</a>
     <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: MailLogExample</div>
-    <pre class="example"><code>{&quot;total&quot;:1,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:1634215818533,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
+    <div class="example-data-content-type">Content-Type: MailLogMessageExample</div>
+    <pre class="example"><code>{&quot;total&quot;:1,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:1634215818533,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: MailLogRecipientExample</div>
+    <pre class="example"><code>{&quot;total&quot;:4,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:1634215818533,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
     <h4 class="field-label">400</h4>
     bad input parameter
         <a href="#"></a>
@@ -20737,6 +20763,7 @@
     <li><a href="#WebsitesOrder_serviceTypes"><code>WebsitesOrder_serviceTypes</code></a></li>
     <li><a href="#account_2fa_body"><code>account_2fa_body</code></a></li>
     <li><a href="#account_2fa_body_1"><code>account_2fa_body_1</code></a></li>
+    <li><a href="#endDate"><code>endDate</code></a></li>
     <li><a href="#id_backups_body"><code>id_backups_body</code></a></li>
     <li><a href="#id_backups_body_1"><code>id_backups_body_1</code></a></li>
     <li><a href="#id_backups_body_2"><code>id_backups_body_2</code></a></li>
@@ -20812,6 +20839,7 @@
     <li><a href="#oauth_body_2"><code>oauth_body_2</code></a></li>
     <li><a href="#oauth_body_3"><code>oauth_body_3</code></a></li>
     <li><a href="#order_buy_now_server_body"><code>order_buy_now_server_body</code></a></li>
+    <li><a href="#startDate"><code>startDate</code></a></li>
   </ol>
 
   <div class="model">
@@ -23202,68 +23230,72 @@
   </div>
   <div class="model">
     <h3><a name="MailLog"><code>MailLog</code> - MailLog</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>Mail log records</div>
+    <div class='model-description'>Paginated mail log response.  Contains the full matched count (&lt;code&gt;total&lt;/code&gt;) plus a page of &lt;code&gt;MailLogEntry&lt;/code&gt; records.  The &lt;code&gt;total&lt;/code&gt; reflects the grouping mode: with &lt;code&gt;groupby&#x3D;recipient&lt;/code&gt; it counts delivery attempts, with &lt;code&gt;groupby&#x3D;message&lt;/code&gt; it counts unique messages.</div>
     <div class="field-items">
-      <div class="param">total </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> total number of mail log entries </div>
+      <div class="param">total </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Total number of log entries that match the supplied filters, regardless of &lt;code&gt;skip&lt;/code&gt; and &lt;code&gt;limit&lt;/code&gt;.  Reflects the &lt;code&gt;groupby&lt;/code&gt; mode. </div>
           <div class="param-desc"><span class="param-type">example: 10234</span></div>
-<div class="param">skip </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> number of emails skipped in listing </div>
+<div class="param">skip </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The &lt;code&gt;skip&lt;/code&gt; value used for this page (echoed from the request). </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
-<div class="param">limit </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> number of emails to return </div>
+<div class="param">limit </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The &lt;code&gt;limit&lt;/code&gt; value used for this page (echoed from the request). </div>
           <div class="param-desc"><span class="param-type">example: 100</span></div>
 <div class="param">emails </div><div class="param-desc"><span class="param-type"><a href="#MailLogEntry">array[MailLogEntry]</a></span>  </div>
-          <div class="param-desc"><span class="param-type">example: [{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:1634215818533,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]</span></div>
+          <div class="param-desc"><span class="param-type">example: [{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:&quot;1634215818533&quot;,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]</span></div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="MailLogEntry"><code>MailLogEntry</code> - MailLogEntry</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>An email record</div>
+    <div class='model-description'>A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &lt;code&gt;groupby&#x3D;recipient&lt;/code&gt; each row represents one delivery attempt; when &lt;code&gt;groupby&#x3D;message&lt;/code&gt; delivery fields reflect one arbitrary recipient.</div>
     <div class="field-items">
-      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> internal db id </div>
+      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Internal auto-increment database row ID. </div>
           <div class="param-desc"><span class="param-type">example: 103172</span></div>
-<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> mail id </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The relay-assigned mail ID (18-19 hex characters).  Matches the &lt;code&gt;mailid&lt;/code&gt; filter parameter and the &lt;code&gt;text&lt;/code&gt; value returned by send endpoints. </div>
           <div class="param-desc"><span class="param-type">example: 17c7eda538e0005d03</span></div>
-<div class="param">from </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> from address </div>
+<div class="param">from </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> SMTP envelope &lt;code&gt;MAIL FROM&lt;/code&gt; address. </div>
           <div class="param-desc"><span class="param-type">example: person@mysite.com</span></div>
-<div class="param">to </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> to address </div>
+<div class="param">to </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> SMTP envelope &lt;code&gt;RCPT TO&lt;/code&gt; address. </div>
           <div class="param-desc"><span class="param-type">example: client@isp.com</span></div>
-<div class="param">subject </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email subject </div>
+<div class="param">subject (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The &lt;code&gt;Subject&lt;/code&gt; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. </div>
           <div class="param-desc"><span class="param-type">example: sell 0.005 shares</span></div>
-<div class="param">messageId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> message id </div>
+<div class="param">messageId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The &lt;code&gt;Message-ID&lt;/code&gt; header value.  Can be used with the &lt;code&gt;messageId&lt;/code&gt; filter for subsequent lookups. </div>
           <div class="param-desc"><span class="param-type">example: &lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;</span></div>
-<div class="param">created </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> creation date </div>
+<div class="param">created </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Human-readable creation timestamp in &lt;code&gt;YYYY-MM-DD HH:MM:SS&lt;/code&gt; format. </div>
           <div class="param-desc"><span class="param-type">example: 2021-10-14 08:50:10</span></div>
-<div class="param">time </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> creation timestamp </div>
+<div class="param">time </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Unix timestamp of message acceptance.  Corresponds to the &lt;code&gt;startDate&lt;/code&gt; and &lt;code&gt;endDate&lt;/code&gt; filter parameters. </div>
           <div class="param-desc"><span class="param-type">example: 1634215809</span></div>
-<div class="param">user </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user account </div>
+<div class="param">user </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The SMTP AUTH username used to submit the message (e.g. &lt;code&gt;mb5658&lt;/code&gt;). </div>
           <div class="param-desc"><span class="param-type">example: mb5658</span></div>
-<div class="param">transtype </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> transaction type </div>
+<div class="param">transtype </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> SMTP transaction type negotiated with the relay. </div>
           <div class="param-desc"><span class="param-type">example: ESMTPSA</span></div>
-<div class="param">origin </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> origin ip </div>
+<div class="param">origin </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IP address of the client that submitted the message to the relay. </div>
           <div class="param-desc"><span class="param-type">example: 199.231.189.154</span></div>
-<div class="param">interface </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> interface name </div>
+<div class="param">interface </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Relay interface name that accepted the message. </div>
           <div class="param-desc"><span class="param-type">example: feeder</span></div>
-<div class="param">sendingZone </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> sending zone </div>
+<div class="param">sendingZone (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The sending zone assigned by the relay for outbound delivery. </div>
           <div class="param-desc"><span class="param-type">example: interserver</span></div>
-<div class="param">bodySize </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> email body size in bytes </div>
+<div class="param">bodySize (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Size of the message body in bytes. </div>
           <div class="param-desc"><span class="param-type">example: 63</span></div>
-<div class="param">seq </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> index of email in the to adderess list </div>
+<div class="param">seq (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Sequence index of this recipient in a multi-recipient message. Starts at 1. </div>
           <div class="param-desc"><span class="param-type">example: 1</span></div>
-<div class="param">recipient </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> to address this email is being sent to </div>
+<div class="param">delivered (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Delivery status flag.  &lt;code&gt;1&lt;/code&gt; &#x3D; successfully delivered to destination MX. &lt;code&gt;0&lt;/code&gt; &#x3D; queued, deferred, or failed.  &lt;code&gt;null&lt;/code&gt; &#x3D; delivery not yet attempted. </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">code (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The SMTP response code from the destination MX server (e.g. &lt;code&gt;250&lt;/code&gt;). </div>
+          <div class="param-desc"><span class="param-type">example: 250</span></div>
+<div class="param">recipient (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The specific recipient address this delivery record is for. </div>
           <div class="param-desc"><span class="param-type">example: client@isp.com</span></div>
-<div class="param">domain </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> to address domain </div>
-          <div class="param-desc"><span class="param-type">example: interserver.net</span></div>
-<div class="param">locked </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> locked status </div>
-          <div class="param-desc"><span class="param-type">example: 1</span></div>
-<div class="param">lockTime </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> lock timestamp </div>
-          <div class="param-desc"><span class="param-type">example: 1634215818533</span></div>
-<div class="param">assigned </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> assigned server </div>
-          <div class="param-desc"><span class="param-type">example: relay1</span></div>
-<div class="param">queued </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> queued timestamp </div>
-          <div class="param-desc"><span class="param-type">example: 2021-10-14T12:50:15.487Z</span></div>
-<div class="param">mxHostname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> mx hostname </div>
-          <div class="param-desc"><span class="param-type">example: mx.j.is.cc</span></div>
-<div class="param">response </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> mail delivery response </div>
+<div class="param">response (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The full SMTP response string received from the destination MX server. </div>
           <div class="param-desc"><span class="param-type">example: 250 2.0.0 Ok queued as C91D83E128C</span></div>
+<div class="param">domain (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The destination domain for this delivery attempt. </div>
+          <div class="param-desc"><span class="param-type">example: interserver.net</span></div>
+<div class="param">locked (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Whether the queue entry is currently locked for delivery processing. </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">lockTime (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Millisecond-precision timestamp of the last queue lock acquisition. </div>
+          <div class="param-desc"><span class="param-type">example: 1634215818533</span></div>
+<div class="param">assigned (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The relay server node assigned to deliver this message. </div>
+          <div class="param-desc"><span class="param-type">example: relay1</span></div>
+<div class="param">queued (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ISO 8601 timestamp when the message was placed into the delivery queue. </div>
+          <div class="param-desc"><span class="param-type">example: 2021-10-14T12:50:15.487Z</span></div>
+<div class="param">mxHostname (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The MX hostname the relay connected to for delivery.  Corresponds to the &lt;code&gt;mx&lt;/code&gt; filter parameter. </div>
+          <div class="param-desc"><span class="param-type">example: mx.j.is.cc</span></div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -26149,6 +26181,12 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="endDate"><code>endDate</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="id_backups_body"><code>id_backups_body</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
@@ -26924,6 +26962,12 @@
 <div class="param">server_root_password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The root or administrator password to set on the server. </div>
           <div class="param-desc"><span class="param-type">example: uD1c!@cgD</span></div>
     </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="startDate"><code>startDate</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
   </div>
   </body>
 </html>

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoLimits_inner::OAIAccountInfoLimits_inner(QString json) {
+OAIAccountInfoLimits_inner::OAIAccountInfoLimits_inner(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIAccountInfoLimits_inner::initializeModel() {
     m_end_isValid = false;
 }
 
-void OAIAccountInfoLimits_inner::fromJson(QString jsonString) {
+void OAIAccountInfoLimits_inner::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

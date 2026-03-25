@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIWebsiteClientLink::OAIWebsiteClientLink(QString json) {
+OAIWebsiteClientLink::OAIWebsiteClientLink(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIWebsiteClientLink::initializeModel() {
     m_other_attr_isValid = false;
 }
 
-void OAIWebsiteClientLink::fromJson(QString jsonString) {
+void OAIWebsiteClientLink::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

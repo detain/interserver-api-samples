@@ -1,4 +1,4 @@
-# # DomainBillingDetails
+# DomainBillingDetails
 
 ## Properties
 

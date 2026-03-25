@@ -6,11 +6,11 @@
 
 
 static server_order_form_values_t *server_order_form_values_create_internal(
-    int memory,
+    int *memory,
     char *bandwidth,
     char *ips,
     char *os,
-    int cp,
+    int *cp,
     char *raid,
     char *hd
     ) {
@@ -18,6 +18,8 @@ static server_order_form_values_t *server_order_form_values_create_internal(
     if (!server_order_form_values_local_var) {
         return NULL;
     }
+    memset(server_order_form_values_local_var, 0, sizeof(server_order_form_values_t));
+    server_order_form_values_local_var->_library_owned = 1;
     server_order_form_values_local_var->memory = memory;
     server_order_form_values_local_var->bandwidth = bandwidth;
     server_order_form_values_local_var->ips = ips;
@@ -25,29 +27,42 @@ static server_order_form_values_t *server_order_form_values_create_internal(
     server_order_form_values_local_var->cp = cp;
     server_order_form_values_local_var->raid = raid;
     server_order_form_values_local_var->hd = hd;
-
-    server_order_form_values_local_var->_library_owned = 1;
     return server_order_form_values_local_var;
 }
 
 __attribute__((deprecated)) server_order_form_values_t *server_order_form_values_create(
-    int memory,
+    int *memory,
     char *bandwidth,
     char *ips,
     char *os,
-    int cp,
+    int *cp,
     char *raid,
     char *hd
     ) {
-    return server_order_form_values_create_internal (
-        memory,
+    int *memory_copy = NULL;
+    if (memory) {
+        memory_copy = malloc(sizeof(int));
+        if (memory_copy) *memory_copy = *memory;
+    }
+    int *cp_copy = NULL;
+    if (cp) {
+        cp_copy = malloc(sizeof(int));
+        if (cp_copy) *cp_copy = *cp;
+    }
+    server_order_form_values_t *result = server_order_form_values_create_internal (
+        memory_copy,
         bandwidth,
         ips,
         os,
-        cp,
+        cp_copy,
         raid,
         hd
         );
+    if (!result) {
+        free(memory_copy);
+        free(cp_copy);
+    }
+    return result;
 }
 
 void server_order_form_values_free(server_order_form_values_t *server_order_form_values) {
@@ -59,6 +74,10 @@ void server_order_form_values_free(server_order_form_values_t *server_order_form
         return ;
     }
     listEntry_t *listEntry;
+    if (server_order_form_values->memory) {
+        free(server_order_form_values->memory);
+        server_order_form_values->memory = NULL;
+    }
     if (server_order_form_values->bandwidth) {
         free(server_order_form_values->bandwidth);
         server_order_form_values->bandwidth = NULL;
@@ -70,6 +89,10 @@ void server_order_form_values_free(server_order_form_values_t *server_order_form
     if (server_order_form_values->os) {
         free(server_order_form_values->os);
         server_order_form_values->os = NULL;
+    }
+    if (server_order_form_values->cp) {
+        free(server_order_form_values->cp);
+        server_order_form_values->cp = NULL;
     }
     if (server_order_form_values->raid) {
         free(server_order_form_values->raid);
@@ -87,7 +110,7 @@ cJSON *server_order_form_values_convertToJSON(server_order_form_values_t *server
 
     // server_order_form_values->memory
     if(server_order_form_values->memory) {
-    if(cJSON_AddNumberToObject(item, "memory", server_order_form_values->memory) == NULL) {
+    if(cJSON_AddNumberToObject(item, "memory", *server_order_form_values->memory) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -119,7 +142,7 @@ cJSON *server_order_form_values_convertToJSON(server_order_form_values_t *server
 
     // server_order_form_values->cp
     if(server_order_form_values->cp) {
-    if(cJSON_AddNumberToObject(item, "cp", server_order_form_values->cp) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cp", *server_order_form_values->cp) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -152,6 +175,22 @@ server_order_form_values_t *server_order_form_values_parseFromJSON(cJSON *server
 
     server_order_form_values_t *server_order_form_values_local_var = NULL;
 
+    // define the local variable for server_order_form_values->memory
+    int *memory_local_var = NULL;
+
+    char *bandwidth_local_str = NULL;
+
+    char *ips_local_str = NULL;
+
+    char *os_local_str = NULL;
+
+    // define the local variable for server_order_form_values->cp
+    int *cp_local_var = NULL;
+
+    char *raid_local_str = NULL;
+
+    char *hd_local_str = NULL;
+
     // server_order_form_values->memory
     cJSON *memory = cJSON_GetObjectItemCaseSensitive(server_order_form_valuesJSON, "memory");
     if (cJSON_IsNull(memory)) {
@@ -162,6 +201,12 @@ server_order_form_values_t *server_order_form_values_parseFromJSON(cJSON *server
     {
     goto end; //Numeric
     }
+    memory_local_var = malloc(sizeof(int));
+    if(!memory_local_var)
+    {
+        goto end;
+    }
+    *memory_local_var = memory->valuedouble;
     }
 
     // server_order_form_values->bandwidth
@@ -210,6 +255,12 @@ server_order_form_values_t *server_order_form_values_parseFromJSON(cJSON *server
     {
     goto end; //Numeric
     }
+    cp_local_var = malloc(sizeof(int));
+    if(!cp_local_var)
+    {
+        goto end;
+    }
+    *cp_local_var = cp->valuedouble;
     }
 
     // server_order_form_values->raid
@@ -237,18 +288,56 @@ server_order_form_values_t *server_order_form_values_parseFromJSON(cJSON *server
     }
 
 
+    if (bandwidth && !cJSON_IsNull(bandwidth)) bandwidth_local_str = strdup(bandwidth->valuestring);
+    if (ips && !cJSON_IsNull(ips)) ips_local_str = strdup(ips->valuestring);
+    if (os && !cJSON_IsNull(os)) os_local_str = strdup(os->valuestring);
+    if (raid && !cJSON_IsNull(raid)) raid_local_str = strdup(raid->valuestring);
+    if (hd && !cJSON_IsNull(hd)) hd_local_str = strdup(hd->valuestring);
+
     server_order_form_values_local_var = server_order_form_values_create_internal (
-        memory ? memory->valuedouble : 0,
-        bandwidth && !cJSON_IsNull(bandwidth) ? strdup(bandwidth->valuestring) : NULL,
-        ips && !cJSON_IsNull(ips) ? strdup(ips->valuestring) : NULL,
-        os && !cJSON_IsNull(os) ? strdup(os->valuestring) : NULL,
-        cp ? cp->valuedouble : 0,
-        raid && !cJSON_IsNull(raid) ? strdup(raid->valuestring) : NULL,
-        hd && !cJSON_IsNull(hd) ? strdup(hd->valuestring) : NULL
+        memory_local_var,
+        bandwidth_local_str,
+        ips_local_str,
+        os_local_str,
+        cp_local_var,
+        raid_local_str,
+        hd_local_str
         );
+
+    if (!server_order_form_values_local_var) {
+        goto end;
+    }
 
     return server_order_form_values_local_var;
 end:
+    if (memory_local_var) {
+        free(memory_local_var);
+        memory_local_var = NULL;
+    }
+    if (bandwidth_local_str) {
+        free(bandwidth_local_str);
+        bandwidth_local_str = NULL;
+    }
+    if (ips_local_str) {
+        free(ips_local_str);
+        ips_local_str = NULL;
+    }
+    if (os_local_str) {
+        free(os_local_str);
+        os_local_str = NULL;
+    }
+    if (cp_local_var) {
+        free(cp_local_var);
+        cp_local_var = NULL;
+    }
+    if (raid_local_str) {
+        free(raid_local_str);
+        raid_local_str = NULL;
+    }
+    if (hd_local_str) {
+        free(hd_local_str);
+        hd_local_str = NULL;
+    }
     return NULL;
 
 }

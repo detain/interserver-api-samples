@@ -17,14 +17,14 @@ static website_row_t *website_row_create_internal(
     if (!website_row_local_var) {
         return NULL;
     }
+    memset(website_row_local_var, 0, sizeof(website_row_t));
+    website_row_local_var->_library_owned = 1;
     website_row_local_var->website_id = website_id;
     website_row_local_var->website_hostname = website_hostname;
     website_row_local_var->repeat_invoices_cost = repeat_invoices_cost;
     website_row_local_var->website_status = website_status;
     website_row_local_var->services_name = services_name;
     website_row_local_var->website_comment = website_comment;
-
-    website_row_local_var->_library_owned = 1;
     return website_row_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) website_row_t *website_row_create(
     char *services_name,
     char *website_comment
     ) {
-    return website_row_create_internal (
+    website_row_t *result = website_row_create_internal (
         website_id,
         website_hostname,
         repeat_invoices_cost,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) website_row_t *website_row_create(
         services_name,
         website_comment
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_row_free(website_row_t *website_row) {
@@ -150,6 +153,18 @@ website_row_t *website_row_parseFromJSON(cJSON *website_rowJSON){
 
     website_row_t *website_row_local_var = NULL;
 
+    char *website_id_local_str = NULL;
+
+    char *website_hostname_local_str = NULL;
+
+    char *repeat_invoices_cost_local_str = NULL;
+
+    char *website_status_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
+    char *website_comment_local_str = NULL;
+
     // website_row->website_id
     cJSON *website_id = cJSON_GetObjectItemCaseSensitive(website_rowJSON, "website_id");
     if (cJSON_IsNull(website_id)) {
@@ -241,17 +256,52 @@ website_row_t *website_row_parseFromJSON(cJSON *website_rowJSON){
     }
 
 
+    if (website_id && !cJSON_IsNull(website_id)) website_id_local_str = strdup(website_id->valuestring);
+    if (website_hostname && !cJSON_IsNull(website_hostname)) website_hostname_local_str = strdup(website_hostname->valuestring);
+    if (repeat_invoices_cost && !cJSON_IsNull(repeat_invoices_cost)) repeat_invoices_cost_local_str = strdup(repeat_invoices_cost->valuestring);
+    if (website_status && !cJSON_IsNull(website_status)) website_status_local_str = strdup(website_status->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+    if (website_comment && !cJSON_IsNull(website_comment)) website_comment_local_str = strdup(website_comment->valuestring);
+
     website_row_local_var = website_row_create_internal (
-        strdup(website_id->valuestring),
-        strdup(website_hostname->valuestring),
-        strdup(repeat_invoices_cost->valuestring),
-        strdup(website_status->valuestring),
-        strdup(services_name->valuestring),
-        strdup(website_comment->valuestring)
+        website_id_local_str,
+        website_hostname_local_str,
+        repeat_invoices_cost_local_str,
+        website_status_local_str,
+        services_name_local_str,
+        website_comment_local_str
         );
+
+    if (!website_row_local_var) {
+        goto end;
+    }
 
     return website_row_local_var;
 end:
+    if (website_id_local_str) {
+        free(website_id_local_str);
+        website_id_local_str = NULL;
+    }
+    if (website_hostname_local_str) {
+        free(website_hostname_local_str);
+        website_hostname_local_str = NULL;
+    }
+    if (repeat_invoices_cost_local_str) {
+        free(repeat_invoices_cost_local_str);
+        repeat_invoices_cost_local_str = NULL;
+    }
+    if (website_status_local_str) {
+        free(website_status_local_str);
+        website_status_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
+    if (website_comment_local_str) {
+        free(website_comment_local_str);
+        website_comment_local_str = NULL;
+    }
     return NULL;
 
 }

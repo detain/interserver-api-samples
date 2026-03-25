@@ -32,13 +32,13 @@ class OAIVpsTrafficTotalsSectionResponse;
 class OAIVpsTrafficTotalsResposne : public OAIObject {
 public:
     OAIVpsTrafficTotalsResposne();
-    OAIVpsTrafficTotalsResposne(QString json);
+    OAIVpsTrafficTotalsResposne(const QString &json);
     ~OAIVpsTrafficTotalsResposne() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIVpsTrafficTotalsSectionResponse getDay() const;
     void setDay(const OAIVpsTrafficTotalsSectionResponse &day);

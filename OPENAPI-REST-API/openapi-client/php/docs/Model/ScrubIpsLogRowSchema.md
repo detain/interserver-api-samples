@@ -1,4 +1,4 @@
-# # ScrubIpsLogRowSchema
+# ScrubIpsLogRowSchema
 
 ## Properties
 

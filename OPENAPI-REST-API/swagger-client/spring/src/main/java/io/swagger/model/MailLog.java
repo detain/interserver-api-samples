@@ -17,9 +17,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
-@Schema(description = "Mail log records")
+@Schema(description = "Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.")
 @Validated
 @NotUndefined
 
@@ -49,11 +49,11 @@ public class MailLog   {
   }
 
   /**
-   * total number of mail log entries
+   * Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
    * @return total
    **/
   
-  @Schema(example = "10234", required = true, description = "total number of mail log entries")
+  @Schema(example = "10234", required = true, description = "Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.")
   
   @NotNull
   public Integer getTotal() {  
@@ -74,11 +74,11 @@ public class MailLog   {
   }
 
   /**
-   * number of emails skipped in listing
+   * The `skip` value used for this page (echoed from the request).
    * @return skip
    **/
   
-  @Schema(example = "0", required = true, description = "number of emails skipped in listing")
+  @Schema(example = "0", required = true, description = "The `skip` value used for this page (echoed from the request).")
   
   @NotNull
   public Integer getSkip() {  
@@ -99,11 +99,11 @@ public class MailLog   {
   }
 
   /**
-   * number of emails to return
+   * The `limit` value used for this page (echoed from the request).
    * @return limit
    **/
   
-  @Schema(example = "100", required = true, description = "number of emails to return")
+  @Schema(example = "100", required = true, description = "The `limit` value used for this page (echoed from the request).")
   
   @NotNull
   public Integer getLimit() {  
@@ -133,7 +133,7 @@ public class MailLog   {
    * @return emails
    **/
   
-  @Schema(example = "[{\"_id\":103172,\"id\":\"17c7eda538e0005d03\",\"from\":\"person@mysite.com\",\"to\":\"client@isp.com\",\"subject\":\"sell 0.005 shares\",\"messageId\":\"<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>\",\"created\":\"2021-10-14 08:50:10\",\"time\":1634215809,\"user\":\"mb5658\",\"transtype\":\"ESMTPSA\",\"origin\":\"199.231.189.154\",\"interface\":\"feeder\",\"sendingZone\":\"interserver\",\"bodySize\":63,\"seq\":1,\"recipient\":\"client@isp.com\",\"domain\":\"interserver.net\",\"locked\":1,\"lockTime\":1634215818533,\"assigned\":\"relay1\",\"queued\":\"2021-10-14T12:50:15.487Z\",\"mxHostname\":\"mx.j.is.cc\",\"response\":\"250 2.0.0 Ok queued as C91D83E128C\"}]", required = true, description = "")
+  @Schema(example = "[{\"_id\":103172,\"id\":\"17c7eda538e0005d03\",\"from\":\"person@mysite.com\",\"to\":\"client@isp.com\",\"subject\":\"sell 0.005 shares\",\"messageId\":\"<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>\",\"created\":\"2021-10-14 08:50:10\",\"time\":1634215809,\"user\":\"mb5658\",\"transtype\":\"ESMTPSA\",\"origin\":\"199.231.189.154\",\"interface\":\"feeder\",\"sendingZone\":\"interserver\",\"bodySize\":63,\"seq\":1,\"delivered\":1,\"code\":250,\"recipient\":\"client@isp.com\",\"domain\":\"interserver.net\",\"locked\":1,\"lockTime\":\"1634215818533\",\"assigned\":\"relay1\",\"queued\":\"2021-10-14T12:50:15.487Z\",\"mxHostname\":\"mx.j.is.cc\",\"response\":\"250 2.0.0 Ok queued as C91D83E128C\"}]", required = true, description = "")
   
 @Valid
   @NotNull

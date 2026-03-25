@@ -8,7 +8,7 @@
 # ! openapi-generator (https://openapi-generator.tech)
 # ! FROM OPENAPI SPECIFICATION IN JSON.
 # !
-# ! Generator version: 7.20.0
+# ! Generator version: 7.21.0
 # !
 # !
 # ! System wide installation:
@@ -516,7 +516,7 @@ _()
     operation_parameters["sendMail"]="id= "
     operation_parameters["updateMailAlert"]="id= "
     operation_parameters["updateMailInfo"]="id= "
-    operation_parameters["viewMailLog"]="id= id= origin= mx= from= to= subject= mailid= skip= limit= startDate= endDate= delivered= "
+    operation_parameters["viewMailLog"]="id= id= origin= mx= from= to= subject= mailid= messageId= replyto= headerfrom= delivered= skip= limit= startDate= endDate= sort= dir= groupby= "
     operation_parameters["getCaptcha"]=""
     operation_parameters["getCountries"]="fetch_by= "
     operation_parameters["getInfo"]=""

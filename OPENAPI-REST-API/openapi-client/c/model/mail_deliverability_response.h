@@ -21,7 +21,7 @@ typedef struct mail_deliverability_response_t mail_deliverability_response_t;
 
 typedef struct mail_deliverability_response_t {
     object_t *stat; //object
-    double percent; //numeric
+    double *percent; //numeric
     list_t *table_data; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -29,7 +29,7 @@ typedef struct mail_deliverability_response_t {
 
 __attribute__((deprecated)) mail_deliverability_response_t *mail_deliverability_response_create(
     object_t *stat,
-    double percent,
+    double *percent,
     list_t *table_data
 );
 

@@ -65,15 +65,13 @@ class BillingInvoiceList {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BillingInvoiceList[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BillingInvoiceList[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return BillingInvoiceList(
-        rows: Object.listFromJson(json[r'rows']),
+        rows: json[r'rows'] is Iterable
+            ? (json[r'rows'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
         summary: mapValueOfType<Object>(json, r'summary'),
       );
     }

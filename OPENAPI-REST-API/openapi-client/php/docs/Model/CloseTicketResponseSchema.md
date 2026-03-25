@@ -1,4 +1,4 @@
-# # CloseTicketResponseSchema
+# CloseTicketResponseSchema
 
 ## Properties
 

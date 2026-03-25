@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIPostOauthCallback_request::OAIPostOauthCallback_request(QString json) {
+OAIPostOauthCallback_request::OAIPostOauthCallback_request(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIPostOauthCallback_request::initializeModel() {
     m_provider_isValid = false;
 }
 
-void OAIPostOauthCallback_request::fromJson(QString jsonString) {
+void OAIPostOauthCallback_request::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

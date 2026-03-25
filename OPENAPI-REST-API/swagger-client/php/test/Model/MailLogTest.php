@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * MailLogTest Class Doc Comment
  *
  * @category    Class
- * @description Mail log records
+ * @description Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  * @package     Interserver\MyAdmin
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen

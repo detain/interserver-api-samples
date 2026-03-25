@@ -1,4 +1,4 @@
-# # QuickserverIpTableRow
+# QuickserverIpTableRow
 
 ## Properties
 

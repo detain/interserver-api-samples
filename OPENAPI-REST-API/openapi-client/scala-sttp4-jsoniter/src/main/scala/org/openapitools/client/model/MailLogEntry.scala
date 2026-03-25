@@ -15,54 +15,58 @@ import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
   /**
    * MailLogEntry
-   * An email record
+   * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
    */
 case class MailLogEntry(
-  /* internal db id */
+  /* Internal auto-increment database row ID. */
   @named("_id") _id: Int,
-  /* mail id */
+  /* The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. */
   @named("id") id: String,
-  /* from address */
+  /* SMTP envelope `MAIL FROM` address. */
   @named("from") from: String,
-  /* to address */
+  /* SMTP envelope `RCPT TO` address. */
   @named("to") to: String,
-  /* email subject */
-  @named("subject") subject: String,
-  /* creation date */
+  /* Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. */
   @named("created") created: String,
-  /* creation timestamp */
+  /* Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. */
   @named("time") time: Int,
-  /* user account */
+  /* The SMTP AUTH username used to submit the message (e.g. `mb5658`). */
   @named("user") user: String,
-  /* transaction type */
+  /* SMTP transaction type negotiated with the relay. */
   @named("transtype") transtype: String,
-  /* origin ip */
+  /* IP address of the client that submitted the message to the relay. */
   @named("origin") origin: String,
-  /* interface name */
+  /* Relay interface name that accepted the message. */
   @named("interface") interface: String,
-  /* sending zone */
-  @named("sendingZone") sendingZone: String,
-  /* email body size in bytes */
-  @named("bodySize") bodySize: Int,
-  /* index of email in the to adderess list */
-  @named("seq") seq: Int,
-  /* to address this email is being sent to */
-  @named("recipient") recipient: String,
-  /* to address domain */
-  @named("domain") domain: String,
-  /* locked status */
-  @named("locked") locked: Int,
-  /* lock timestamp */
-  @named("lockTime") lockTime: Int,
-  /* assigned server */
-  @named("assigned") assigned: String,
-  /* queued timestamp */
-  @named("queued") queued: String,
-  /* mx hostname */
-  @named("mxHostname") mxHostname: String,
-  /* mail delivery response */
-  @named("response") response: String,
-  /* message id */
-  @named("messageId") messageId: Option[String] = scala.None
+  /* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. */
+  @named("subject") subject: Option[String] = scala.None,
+  /* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. */
+  @named("messageId") messageId: Option[String] = scala.None,
+  /* The sending zone assigned by the relay for outbound delivery. */
+  @named("sendingZone") sendingZone: Option[String] = scala.None,
+  /* Size of the message body in bytes. */
+  @named("bodySize") bodySize: Option[Int] = scala.None,
+  /* Sequence index of this recipient in a multi-recipient message. Starts at 1. */
+  @named("seq") seq: Option[Int] = scala.None,
+  /* Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted. */
+  @named("delivered") delivered: Option[Int] = scala.None,
+  /* The SMTP response code from the destination MX server (e.g. `250`). */
+  @named("code") code: Option[Int] = scala.None,
+  /* The specific recipient address this delivery record is for. */
+  @named("recipient") recipient: Option[String] = scala.None,
+  /* The full SMTP response string received from the destination MX server. */
+  @named("response") response: Option[String] = scala.None,
+  /* The destination domain for this delivery attempt. */
+  @named("domain") domain: Option[String] = scala.None,
+  /* Whether the queue entry is currently locked for delivery processing. */
+  @named("locked") locked: Option[Int] = scala.None,
+  /* Millisecond-precision timestamp of the last queue lock acquisition. */
+  @named("lockTime") lockTime: Option[String] = scala.None,
+  /* The relay server node assigned to deliver this message. */
+  @named("assigned") assigned: Option[String] = scala.None,
+  /* ISO 8601 timestamp when the message was placed into the delivery queue. */
+  @named("queued") queued: Option[String] = scala.None,
+  /* The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. */
+  @named("mxHostname") mxHostname: Option[String] = scala.None
 )
 

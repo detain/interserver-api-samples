@@ -101,10 +101,10 @@ class ServerClientLink {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerClientLink[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerClientLink[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'label'), 'Required key "ServerClientLink[label]" is missing from JSON.');
+        assert(json[r'label'] != null, 'Required key "ServerClientLink[label]" has a null value in JSON.');
+        assert(json.containsKey(r'link'), 'Required key "ServerClientLink[link]" is missing from JSON.');
+        assert(json[r'link'] != null, 'Required key "ServerClientLink[link]" has a null value in JSON.');
         return true;
       }());
 

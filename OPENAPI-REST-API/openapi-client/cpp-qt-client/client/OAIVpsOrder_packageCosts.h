@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIVpsOrder_packageCosts : public OAIObject {
 public:
     OAIVpsOrder_packageCosts();
-    OAIVpsOrder_packageCosts(QString json);
+    OAIVpsOrder_packageCosts(const QString &json);
     ~OAIVpsOrder_packageCosts() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getR57() const;
     void setR57(const double &r_57);

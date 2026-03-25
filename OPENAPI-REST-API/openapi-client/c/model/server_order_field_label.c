@@ -7,27 +7,36 @@
 
 static server_order_field_label_t *server_order_field_label_create_internal(
     char *name,
-    int active
+    int *active
     ) {
     server_order_field_label_t *server_order_field_label_local_var = malloc(sizeof(server_order_field_label_t));
     if (!server_order_field_label_local_var) {
         return NULL;
     }
+    memset(server_order_field_label_local_var, 0, sizeof(server_order_field_label_t));
+    server_order_field_label_local_var->_library_owned = 1;
     server_order_field_label_local_var->name = name;
     server_order_field_label_local_var->active = active;
-
-    server_order_field_label_local_var->_library_owned = 1;
     return server_order_field_label_local_var;
 }
 
 __attribute__((deprecated)) server_order_field_label_t *server_order_field_label_create(
     char *name,
-    int active
+    int *active
     ) {
-    return server_order_field_label_create_internal (
+    int *active_copy = NULL;
+    if (active) {
+        active_copy = malloc(sizeof(int));
+        if (active_copy) *active_copy = *active;
+    }
+    server_order_field_label_t *result = server_order_field_label_create_internal (
         name,
-        active
+        active_copy
         );
+    if (!result) {
+        free(active_copy);
+    }
+    return result;
 }
 
 void server_order_field_label_free(server_order_field_label_t *server_order_field_label) {
@@ -42,6 +51,10 @@ void server_order_field_label_free(server_order_field_label_t *server_order_fiel
     if (server_order_field_label->name) {
         free(server_order_field_label->name);
         server_order_field_label->name = NULL;
+    }
+    if (server_order_field_label->active) {
+        free(server_order_field_label->active);
+        server_order_field_label->active = NULL;
     }
     free(server_order_field_label);
 }
@@ -59,7 +72,7 @@ cJSON *server_order_field_label_convertToJSON(server_order_field_label_t *server
 
     // server_order_field_label->active
     if(server_order_field_label->active) {
-    if(cJSON_AddNumberToObject(item, "active", server_order_field_label->active) == NULL) {
+    if(cJSON_AddNumberToObject(item, "active", *server_order_field_label->active) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -75,6 +88,11 @@ fail:
 server_order_field_label_t *server_order_field_label_parseFromJSON(cJSON *server_order_field_labelJSON){
 
     server_order_field_label_t *server_order_field_label_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    // define the local variable for server_order_field_label->active
+    int *active_local_var = NULL;
 
     // server_order_field_label->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(server_order_field_labelJSON, "name");
@@ -98,16 +116,36 @@ server_order_field_label_t *server_order_field_label_parseFromJSON(cJSON *server
     {
     goto end; //Numeric
     }
+    active_local_var = malloc(sizeof(int));
+    if(!active_local_var)
+    {
+        goto end;
+    }
+    *active_local_var = active->valuedouble;
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     server_order_field_label_local_var = server_order_field_label_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        active ? active->valuedouble : 0
+        name_local_str,
+        active_local_var
         );
+
+    if (!server_order_field_label_local_var) {
+        goto end;
+    }
 
     return server_order_field_label_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (active_local_var) {
+        free(active_local_var);
+        active_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -11,15 +11,18 @@ static vps_traffic_data_data_section_response_inner_t *vps_traffic_data_data_sec
     if (!vps_traffic_data_data_section_response_inner_local_var) {
         return NULL;
     }
-
+    memset(vps_traffic_data_data_section_response_inner_local_var, 0, sizeof(vps_traffic_data_data_section_response_inner_t));
     vps_traffic_data_data_section_response_inner_local_var->_library_owned = 1;
     return vps_traffic_data_data_section_response_inner_local_var;
 }
 
 __attribute__((deprecated)) vps_traffic_data_data_section_response_inner_t *vps_traffic_data_data_section_response_inner_create(
     ) {
-    return vps_traffic_data_data_section_response_inner_create_internal (
+    vps_traffic_data_data_section_response_inner_t *result = vps_traffic_data_data_section_response_inner_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_traffic_data_data_section_response_inner_free(vps_traffic_data_data_section_response_inner_t *vps_traffic_data_data_section_response_inner) {
@@ -49,8 +52,13 @@ vps_traffic_data_data_section_response_inner_t *vps_traffic_data_data_section_re
     vps_traffic_data_data_section_response_inner_t *vps_traffic_data_data_section_response_inner_local_var = NULL;
 
 
+
     vps_traffic_data_data_section_response_inner_local_var = vps_traffic_data_data_section_response_inner_create_internal (
         );
+
+    if (!vps_traffic_data_data_section_response_inner_local_var) {
+        goto end;
+    }
 
     return vps_traffic_data_data_section_response_inner_local_var;
 end:

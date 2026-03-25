@@ -33,13 +33,13 @@ class OAIDomainBillingExtra;
 class OAIDomainBillingDetails : public OAIObject {
 public:
     OAIDomainBillingDetails();
-    OAIDomainBillingDetails(QString json);
+    OAIDomainBillingDetails(const QString &json);
     ~OAIDomainBillingDetails() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getServiceLastInvoiceDate() const;
     void setServiceLastInvoiceDate(const QString &service_last_invoice_date);

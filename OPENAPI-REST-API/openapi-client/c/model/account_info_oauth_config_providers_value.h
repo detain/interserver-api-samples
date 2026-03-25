@@ -19,8 +19,8 @@ typedef struct account_info_oauth_config_providers_value_t account_info_oauth_co
 
 
 typedef struct account_info_oauth_config_providers_value_t {
-    int enabled; //boolean
-    int linked; //boolean
+    int *enabled; //boolean
+    int *linked; //boolean
     char *account; // string
     char *url; // string
 
@@ -28,8 +28,8 @@ typedef struct account_info_oauth_config_providers_value_t {
 } account_info_oauth_config_providers_value_t;
 
 __attribute__((deprecated)) account_info_oauth_config_providers_value_t *account_info_oauth_config_providers_value_create(
-    int enabled,
-    int linked,
+    int *enabled,
+    int *linked,
     char *account,
     char *url
 );

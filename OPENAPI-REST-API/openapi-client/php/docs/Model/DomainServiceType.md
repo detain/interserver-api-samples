@@ -1,4 +1,4 @@
-# # DomainServiceType
+# DomainServiceType
 
 ## Properties
 

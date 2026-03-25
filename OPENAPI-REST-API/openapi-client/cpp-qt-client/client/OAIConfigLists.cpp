@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIConfigLists::OAIConfigLists(QString json) {
+OAIConfigLists::OAIConfigLists(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIConfigLists::initializeModel() {
     m_raid_li_isValid = false;
 }
 
-void OAIConfigLists::fromJson(QString jsonString) {
+void OAIConfigLists::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

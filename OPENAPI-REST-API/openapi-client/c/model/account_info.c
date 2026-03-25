@@ -16,14 +16,16 @@ static account_info_t *account_info_create_internal(
     account_info_limits_t *limits,
     char *language,
     account_info_country_currencies_t *country_currencies,
-    int enable_locales,
-    int enable_currencies,
+    int *enable_locales,
+    int *enable_currencies,
     char *gravatar
     ) {
     account_info_t *account_info_local_var = malloc(sizeof(account_info_t));
     if (!account_info_local_var) {
         return NULL;
     }
+    memset(account_info_local_var, 0, sizeof(account_info_t));
+    account_info_local_var->_library_owned = 1;
     account_info_local_var->custid = custid;
     account_info_local_var->ima = ima;
     account_info_local_var->data = data;
@@ -37,8 +39,6 @@ static account_info_t *account_info_create_internal(
     account_info_local_var->enable_locales = enable_locales;
     account_info_local_var->enable_currencies = enable_currencies;
     account_info_local_var->gravatar = gravatar;
-
-    account_info_local_var->_library_owned = 1;
     return account_info_local_var;
 }
 
@@ -53,11 +53,21 @@ __attribute__((deprecated)) account_info_t *account_info_create(
     account_info_limits_t *limits,
     char *language,
     account_info_country_currencies_t *country_currencies,
-    int enable_locales,
-    int enable_currencies,
+    int *enable_locales,
+    int *enable_currencies,
     char *gravatar
     ) {
-    return account_info_create_internal (
+    int *enable_locales_copy = NULL;
+    if (enable_locales) {
+        enable_locales_copy = malloc(sizeof(int));
+        if (enable_locales_copy) *enable_locales_copy = *enable_locales;
+    }
+    int *enable_currencies_copy = NULL;
+    if (enable_currencies) {
+        enable_currencies_copy = malloc(sizeof(int));
+        if (enable_currencies_copy) *enable_currencies_copy = *enable_currencies;
+    }
+    account_info_t *result = account_info_create_internal (
         custid,
         ima,
         data,
@@ -68,10 +78,15 @@ __attribute__((deprecated)) account_info_t *account_info_create(
         limits,
         language,
         country_currencies,
-        enable_locales,
-        enable_currencies,
+        enable_locales_copy,
+        enable_currencies_copy,
         gravatar
         );
+    if (!result) {
+        free(enable_locales_copy);
+        free(enable_currencies_copy);
+    }
+    return result;
 }
 
 void account_info_free(account_info_t *account_info) {
@@ -125,6 +140,14 @@ void account_info_free(account_info_t *account_info) {
     if (account_info->country_currencies) {
         account_info_country_currencies_free(account_info->country_currencies);
         account_info->country_currencies = NULL;
+    }
+    if (account_info->enable_locales) {
+        free(account_info->enable_locales);
+        account_info->enable_locales = NULL;
+    }
+    if (account_info->enable_currencies) {
+        free(account_info->enable_currencies);
+        account_info->enable_currencies = NULL;
     }
     if (account_info->gravatar) {
         free(account_info->gravatar);
@@ -252,7 +275,7 @@ cJSON *account_info_convertToJSON(account_info_t *account_info) {
 
     // account_info->enable_locales
     if(account_info->enable_locales) {
-    if(cJSON_AddBoolToObject(item, "enableLocales", account_info->enable_locales) == NULL) {
+    if(cJSON_AddBoolToObject(item, "enableLocales", *account_info->enable_locales) == NULL) {
     goto fail; //Bool
     }
     }
@@ -260,7 +283,7 @@ cJSON *account_info_convertToJSON(account_info_t *account_info) {
 
     // account_info->enable_currencies
     if(account_info->enable_currencies) {
-    if(cJSON_AddBoolToObject(item, "enableCurrencies", account_info->enable_currencies) == NULL) {
+    if(cJSON_AddBoolToObject(item, "enableCurrencies", *account_info->enable_currencies) == NULL) {
     goto fail; //Bool
     }
     }
@@ -285,8 +308,14 @@ account_info_t *account_info_parseFromJSON(cJSON *account_infoJSON){
 
     account_info_t *account_info_local_var = NULL;
 
+    char *custid_local_str = NULL;
+
+    char *ima_local_str = NULL;
+
     // define the local variable for account_info->data
     account_info_data_t *data_local_nonprim = NULL;
+
+    char *ip_local_str = NULL;
 
     // define the local variable for account_info->oauthproviders
     account_info_oauthproviders_t *oauthproviders_local_nonprim = NULL;
@@ -300,8 +329,18 @@ account_info_t *account_info_parseFromJSON(cJSON *account_infoJSON){
     // define the local variable for account_info->limits
     account_info_limits_t *limits_local_nonprim = NULL;
 
+    char *language_local_str = NULL;
+
     // define the local variable for account_info->country_currencies
     account_info_country_currencies_t *country_currencies_local_nonprim = NULL;
+
+    // define the local variable for account_info->enable_locales
+    int *enable_locales_local_var = NULL;
+
+    // define the local variable for account_info->enable_currencies
+    int *enable_currencies_local_var = NULL;
+
+    char *gravatar_local_str = NULL;
 
     // account_info->custid
     cJSON *custid = cJSON_GetObjectItemCaseSensitive(account_infoJSON, "custid");
@@ -428,6 +467,12 @@ account_info_t *account_info_parseFromJSON(cJSON *account_infoJSON){
     {
     goto end; //Bool
     }
+    enable_locales_local_var = malloc(sizeof(int));
+    if(!enable_locales_local_var)
+    {
+        goto end;
+    }
+    *enable_locales_local_var = enable_locales->valueint;
     }
 
     // account_info->enable_currencies
@@ -440,6 +485,12 @@ account_info_t *account_info_parseFromJSON(cJSON *account_infoJSON){
     {
     goto end; //Bool
     }
+    enable_currencies_local_var = malloc(sizeof(int));
+    if(!enable_currencies_local_var)
+    {
+        goto end;
+    }
+    *enable_currencies_local_var = enable_currencies->valueint;
     }
 
     // account_info->gravatar
@@ -455,27 +506,49 @@ account_info_t *account_info_parseFromJSON(cJSON *account_infoJSON){
     }
 
 
+    if (custid && !cJSON_IsNull(custid)) custid_local_str = strdup(custid->valuestring);
+    if (ima && !cJSON_IsNull(ima)) ima_local_str = strdup(ima->valuestring);
+    if (ip && !cJSON_IsNull(ip)) ip_local_str = strdup(ip->valuestring);
+    if (language && !cJSON_IsNull(language)) language_local_str = strdup(language->valuestring);
+    if (gravatar && !cJSON_IsNull(gravatar)) gravatar_local_str = strdup(gravatar->valuestring);
+
     account_info_local_var = account_info_create_internal (
-        custid && !cJSON_IsNull(custid) ? strdup(custid->valuestring) : NULL,
-        ima && !cJSON_IsNull(ima) ? strdup(ima->valuestring) : NULL,
+        custid_local_str,
+        ima_local_str,
         data ? data_local_nonprim : NULL,
-        ip && !cJSON_IsNull(ip) ? strdup(ip->valuestring) : NULL,
+        ip_local_str,
         oauthproviders ? oauthproviders_local_nonprim : NULL,
         oauthconfig ? oauthconfig_local_nonprim : NULL,
         oauthadapters ? oauthadaptersList : NULL,
         limits ? limits_local_nonprim : NULL,
-        language && !cJSON_IsNull(language) ? strdup(language->valuestring) : NULL,
+        language_local_str,
         country_currencies ? country_currencies_local_nonprim : NULL,
-        enable_locales ? enable_locales->valueint : 0,
-        enable_currencies ? enable_currencies->valueint : 0,
-        gravatar && !cJSON_IsNull(gravatar) ? strdup(gravatar->valuestring) : NULL
+        enable_locales_local_var,
+        enable_currencies_local_var,
+        gravatar_local_str
         );
+
+    if (!account_info_local_var) {
+        goto end;
+    }
 
     return account_info_local_var;
 end:
+    if (custid_local_str) {
+        free(custid_local_str);
+        custid_local_str = NULL;
+    }
+    if (ima_local_str) {
+        free(ima_local_str);
+        ima_local_str = NULL;
+    }
     if (data_local_nonprim) {
         account_info_data_free(data_local_nonprim);
         data_local_nonprim = NULL;
+    }
+    if (ip_local_str) {
+        free(ip_local_str);
+        ip_local_str = NULL;
     }
     if (oauthproviders_local_nonprim) {
         account_info_oauthproviders_free(oauthproviders_local_nonprim);
@@ -498,9 +571,25 @@ end:
         account_info_limits_free(limits_local_nonprim);
         limits_local_nonprim = NULL;
     }
+    if (language_local_str) {
+        free(language_local_str);
+        language_local_str = NULL;
+    }
     if (country_currencies_local_nonprim) {
         account_info_country_currencies_free(country_currencies_local_nonprim);
         country_currencies_local_nonprim = NULL;
+    }
+    if (enable_locales_local_var) {
+        free(enable_locales_local_var);
+        enable_locales_local_var = NULL;
+    }
+    if (enable_currencies_local_var) {
+        free(enable_currencies_local_var);
+        enable_currencies_local_var = NULL;
+    }
+    if (gravatar_local_str) {
+        free(gravatar_local_str);
+        gravatar_local_str = NULL;
     }
     return NULL;
 

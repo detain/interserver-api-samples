@@ -1,4 +1,4 @@
-# # BackupExtraInfoTables
+# BackupExtraInfoTables
 
 ## Properties
 

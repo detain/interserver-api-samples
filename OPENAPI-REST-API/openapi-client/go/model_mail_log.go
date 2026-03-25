@@ -20,13 +20,13 @@ import (
 // checks if the MailLog type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MailLog{}
 
-// MailLog Mail log records
+// MailLog Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
 type MailLog struct {
-	// total number of mail log entries
+	// Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
 	Total int32 `json:"total"`
-	// number of emails skipped in listing
+	// The `skip` value used for this page (echoed from the request).
 	Skip int32 `json:"skip"`
-	// number of emails to return
+	// The `limit` value used for this page (echoed from the request).
 	Limit int32 `json:"limit"`
 	Emails []MailLogEntry `json:"emails"`
 }

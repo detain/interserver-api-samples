@@ -1,4 +1,4 @@
-# # DnsNewRecord
+# DnsNewRecord
 
 ## Properties
 

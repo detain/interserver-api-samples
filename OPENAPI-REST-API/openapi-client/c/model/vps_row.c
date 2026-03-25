@@ -19,6 +19,8 @@ static vps_row_t *vps_row_create_internal(
     if (!vps_row_local_var) {
         return NULL;
     }
+    memset(vps_row_local_var, 0, sizeof(vps_row_t));
+    vps_row_local_var->_library_owned = 1;
     vps_row_local_var->vps_id = vps_id;
     vps_row_local_var->vps_name = vps_name;
     vps_row_local_var->repeat_invoices_cost = repeat_invoices_cost;
@@ -27,8 +29,6 @@ static vps_row_t *vps_row_create_internal(
     vps_row_local_var->vps_status = vps_status;
     vps_row_local_var->services_name = services_name;
     vps_row_local_var->vps_comment = vps_comment;
-
-    vps_row_local_var->_library_owned = 1;
     return vps_row_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) vps_row_t *vps_row_create(
     char *services_name,
     char *vps_comment
     ) {
-    return vps_row_create_internal (
+    vps_row_t *result = vps_row_create_internal (
         vps_id,
         vps_name,
         repeat_invoices_cost,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) vps_row_t *vps_row_create(
         services_name,
         vps_comment
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_row_free(vps_row_t *vps_row) {
@@ -184,6 +187,22 @@ vps_row_t *vps_row_parseFromJSON(cJSON *vps_rowJSON){
 
     vps_row_t *vps_row_local_var = NULL;
 
+    char *vps_id_local_str = NULL;
+
+    char *vps_name_local_str = NULL;
+
+    char *repeat_invoices_cost_local_str = NULL;
+
+    char *vps_hostname_local_str = NULL;
+
+    char *vps_ip_local_str = NULL;
+
+    char *vps_status_local_str = NULL;
+
+    char *services_name_local_str = NULL;
+
+    char *vps_comment_local_str = NULL;
+
     // vps_row->vps_id
     cJSON *vps_id = cJSON_GetObjectItemCaseSensitive(vps_rowJSON, "vps_id");
     if (cJSON_IsNull(vps_id)) {
@@ -305,19 +324,64 @@ vps_row_t *vps_row_parseFromJSON(cJSON *vps_rowJSON){
     }
 
 
+    if (vps_id && !cJSON_IsNull(vps_id)) vps_id_local_str = strdup(vps_id->valuestring);
+    if (vps_name && !cJSON_IsNull(vps_name)) vps_name_local_str = strdup(vps_name->valuestring);
+    if (repeat_invoices_cost && !cJSON_IsNull(repeat_invoices_cost)) repeat_invoices_cost_local_str = strdup(repeat_invoices_cost->valuestring);
+    if (vps_hostname && !cJSON_IsNull(vps_hostname)) vps_hostname_local_str = strdup(vps_hostname->valuestring);
+    if (vps_ip && !cJSON_IsNull(vps_ip)) vps_ip_local_str = strdup(vps_ip->valuestring);
+    if (vps_status && !cJSON_IsNull(vps_status)) vps_status_local_str = strdup(vps_status->valuestring);
+    if (services_name && !cJSON_IsNull(services_name)) services_name_local_str = strdup(services_name->valuestring);
+    if (vps_comment && !cJSON_IsNull(vps_comment)) vps_comment_local_str = strdup(vps_comment->valuestring);
+
     vps_row_local_var = vps_row_create_internal (
-        strdup(vps_id->valuestring),
-        strdup(vps_name->valuestring),
-        strdup(repeat_invoices_cost->valuestring),
-        strdup(vps_hostname->valuestring),
-        strdup(vps_ip->valuestring),
-        strdup(vps_status->valuestring),
-        strdup(services_name->valuestring),
-        strdup(vps_comment->valuestring)
+        vps_id_local_str,
+        vps_name_local_str,
+        repeat_invoices_cost_local_str,
+        vps_hostname_local_str,
+        vps_ip_local_str,
+        vps_status_local_str,
+        services_name_local_str,
+        vps_comment_local_str
         );
+
+    if (!vps_row_local_var) {
+        goto end;
+    }
 
     return vps_row_local_var;
 end:
+    if (vps_id_local_str) {
+        free(vps_id_local_str);
+        vps_id_local_str = NULL;
+    }
+    if (vps_name_local_str) {
+        free(vps_name_local_str);
+        vps_name_local_str = NULL;
+    }
+    if (repeat_invoices_cost_local_str) {
+        free(repeat_invoices_cost_local_str);
+        repeat_invoices_cost_local_str = NULL;
+    }
+    if (vps_hostname_local_str) {
+        free(vps_hostname_local_str);
+        vps_hostname_local_str = NULL;
+    }
+    if (vps_ip_local_str) {
+        free(vps_ip_local_str);
+        vps_ip_local_str = NULL;
+    }
+    if (vps_status_local_str) {
+        free(vps_status_local_str);
+        vps_status_local_str = NULL;
+    }
+    if (services_name_local_str) {
+        free(services_name_local_str);
+        services_name_local_str = NULL;
+    }
+    if (vps_comment_local_str) {
+        free(vps_comment_local_str);
+        vps_comment_local_str = NULL;
+    }
     return NULL;
 
 }

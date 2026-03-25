@@ -20,14 +20,14 @@ typedef struct queue_response_t queue_response_t;
 
 typedef struct queue_response_t {
     char *text; // string
-    int queue_id; //numeric
+    int *queue_id; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } queue_response_t;
 
 __attribute__((deprecated)) queue_response_t *queue_response_create(
     char *text,
-    int queue_id
+    int *queue_id
 );
 
 void queue_response_free(queue_response_t *queue_response);

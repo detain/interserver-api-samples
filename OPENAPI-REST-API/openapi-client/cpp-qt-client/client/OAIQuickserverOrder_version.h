@@ -32,13 +32,13 @@ class OAIQuickserverOrderVersionCentosstream8;
 class OAIQuickserverOrder_version : public OAIObject {
 public:
     OAIQuickserverOrder_version();
-    OAIQuickserverOrder_version(QString json);
+    OAIQuickserverOrder_version(const QString &json);
     ~OAIQuickserverOrder_version() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIQuickserverOrderVersionCentosstream8 getCentosstream8() const;
     void setCentosstream8(const OAIQuickserverOrderVersionCentosstream8 &centosstream_8);

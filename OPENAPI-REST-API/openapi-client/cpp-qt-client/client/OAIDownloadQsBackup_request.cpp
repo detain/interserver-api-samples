@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDownloadQsBackup_request::OAIDownloadQsBackup_request(QString json) {
+OAIDownloadQsBackup_request::OAIDownloadQsBackup_request(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIDownloadQsBackup_request::initializeModel() {
     m_file_isValid = false;
 }
 
-void OAIDownloadQsBackup_request::fromJson(QString jsonString) {
+void OAIDownloadQsBackup_request::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

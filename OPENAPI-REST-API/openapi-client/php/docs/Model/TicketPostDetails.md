@@ -1,4 +1,4 @@
-# # TicketPostDetails
+# TicketPostDetails
 
 ## Properties
 

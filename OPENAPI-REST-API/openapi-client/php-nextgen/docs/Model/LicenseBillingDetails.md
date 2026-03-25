@@ -1,4 +1,4 @@
-# # LicenseBillingDetails
+# LicenseBillingDetails
 
 ## Properties
 

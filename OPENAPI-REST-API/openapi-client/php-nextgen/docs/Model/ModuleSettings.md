@@ -1,4 +1,4 @@
-# # ModuleSettings
+# ModuleSettings
 
 ## Properties
 

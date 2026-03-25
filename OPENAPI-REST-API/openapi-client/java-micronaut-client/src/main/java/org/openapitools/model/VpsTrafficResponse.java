@@ -44,7 +44,7 @@ import javax.annotation.Generated;
   VpsTrafficResponse.JSON_PROPERTY_DATA
 })
 @JsonTypeName("VpsTrafficResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class VpsTrafficResponse {
     public static final String JSON_PROPERTY_NAME = "name";
@@ -346,10 +346,7 @@ public class VpsTrafficResponse {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

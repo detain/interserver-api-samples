@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIScrubIpsLogRowSchema : public OAIObject {
 public:
     OAIScrubIpsLogRowSchema();
-    OAIScrubIpsLogRowSchema(QString json);
+    OAIScrubIpsLogRowSchema(const QString &json);
     ~OAIScrubIpsLogRowSchema() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getDate() const;
     void setDate(const QString &date);

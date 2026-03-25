@@ -21,7 +21,7 @@ namespace OpenAPI
 /*
  * OpenAPIMailLog
  *
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
  */
 class OPENAPI_API OpenAPIMailLog : public Model
 {
@@ -30,11 +30,11 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
-	/* total number of mail log entries */
+	/* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
 	int32 Total = 0;
-	/* number of emails skipped in listing */
+	/* The `skip` value used for this page (echoed from the request). */
 	int32 Skip = 0;
-	/* number of emails to return */
+	/* The `limit` value used for this page (echoed from the request). */
 	int32 Limit = 0;
 	TArray<OpenAPIMailLogEntry> Emails;
 };

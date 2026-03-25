@@ -41,7 +41,7 @@ import javax.annotation.Generated;
   DomainTechContact.JSON_PROPERTY_LAST_NAME
 })
 @JsonTypeName("DomainTechContact")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-12T01:47:40.928523750-04:00[America/New_York]", comments = "Generator version: 7.20.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class DomainTechContact {
     public static final String JSON_PROPERTY_STATE = "state";
@@ -454,10 +454,7 @@ public class DomainTechContact {
      * (except the first line).
      */
     private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
     }
 
 }

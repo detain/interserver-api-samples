@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServiceCategories::OAIServiceCategories(QString json) {
+OAIServiceCategories::OAIServiceCategories(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIServiceCategories::initializeModel() {
 
 }
 
-void OAIServiceCategories::fromJson(QString jsonString) {
+void OAIServiceCategories::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

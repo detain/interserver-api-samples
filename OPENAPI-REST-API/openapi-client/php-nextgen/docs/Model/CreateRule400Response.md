@@ -1,4 +1,4 @@
-# # CreateRule400Response
+# CreateRule400Response
 
 ## Properties
 

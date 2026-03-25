@@ -44,13 +44,13 @@ class OAIQuickserver_extraInfoTables;
 class OAIQuickserver : public OAIObject {
 public:
     OAIQuickserver();
-    OAIQuickserver(QString json);
+    OAIQuickserver(const QString &json);
     ~OAIQuickserver() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIQuickserverServiceInfo getServiceInfo() const;
     void setServiceInfo(const OAIQuickserverServiceInfo &service_info);

@@ -12,18 +12,21 @@ static server_network_info_assets_t *server_network_info_assets_create_internal(
     if (!server_network_info_assets_local_var) {
         return NULL;
     }
-    server_network_info_assets_local_var->_3497 = _3497;
-
+    memset(server_network_info_assets_local_var, 0, sizeof(server_network_info_assets_t));
     server_network_info_assets_local_var->_library_owned = 1;
+    server_network_info_assets_local_var->_3497 = _3497;
     return server_network_info_assets_local_var;
 }
 
 __attribute__((deprecated)) server_network_info_assets_t *server_network_info_assets_create(
     server_asset_t *_3497
     ) {
-    return server_network_info_assets_create_internal (
+    server_network_info_assets_t *result = server_network_info_assets_create_internal (
         _3497
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_network_info_assets_free(server_network_info_assets_t *server_network_info_assets) {
@@ -86,9 +89,14 @@ server_network_info_assets_t *server_network_info_assets_parseFromJSON(cJSON *se
     _3497_local_nonprim = server_asset_parseFromJSON(_3497); //nonprimitive
 
 
+
     server_network_info_assets_local_var = server_network_info_assets_create_internal (
         _3497_local_nonprim
         );
+
+    if (!server_network_info_assets_local_var) {
+        goto end;
+    }
 
     return server_network_info_assets_local_var;
 end:

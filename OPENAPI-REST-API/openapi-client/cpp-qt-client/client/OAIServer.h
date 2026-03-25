@@ -44,13 +44,13 @@ class OAIServerServiceInfo;
 class OAIServer : public OAIObject {
 public:
     OAIServer();
-    OAIServer(QString json);
+    OAIServer(const QString &json);
     ~OAIServer() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isIpmiAuth() const;
     void setIpmiAuth(const bool &ipmi_auth);

@@ -2,7 +2,7 @@
 
 # MailLog
 
-Mail log records
+Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
 
 The class is defined in **[MailLog.java](../../src/main/java/org/openapitools/model/MailLog.java)**
 
@@ -10,9 +10,9 @@ The class is defined in **[MailLog.java](../../src/main/java/org/openapitools/mo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | `Integer` | total number of mail log entries | 
-**skip** | `Integer` | number of emails skipped in listing | 
-**limit** | `Integer` | number of emails to return | 
+**total** | `Integer` | Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode. | 
+**skip** | `Integer` | The &#x60;skip&#x60; value used for this page (echoed from the request). | 
+**limit** | `Integer` | The &#x60;limit&#x60; value used for this page (echoed from the request). | 
 **emails** | [`List&lt;MailLogEntry&gt;`](MailLogEntry.md) |  | 
 
 

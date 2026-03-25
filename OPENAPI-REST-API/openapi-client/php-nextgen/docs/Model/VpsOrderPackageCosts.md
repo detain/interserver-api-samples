@@ -1,4 +1,4 @@
-# # VpsOrderPackageCosts
+# VpsOrderPackageCosts
 
 ## Properties
 

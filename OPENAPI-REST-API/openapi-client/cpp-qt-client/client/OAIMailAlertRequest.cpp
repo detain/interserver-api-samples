@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailAlertRequest::OAIMailAlertRequest(QString json) {
+OAIMailAlertRequest::OAIMailAlertRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -47,7 +47,7 @@ void OAIMailAlertRequest::initializeModel() {
     m_enabled_isValid = false;
 }
 
-void OAIMailAlertRequest::fromJson(QString jsonString) {
+void OAIMailAlertRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

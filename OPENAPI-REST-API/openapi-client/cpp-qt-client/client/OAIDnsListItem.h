@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIDnsListItem : public OAIObject {
 public:
     OAIDnsListItem();
-    OAIDnsListItem(QString json);
+    OAIDnsListItem(const QString &json);
     ~OAIDnsListItem() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getId() const;
     void setId(const qint32 &id);

@@ -34,8 +34,8 @@ typedef struct account_info_t {
     account_info_limits_t *limits; // custom
     char *language; // string
     account_info_country_currencies_t *country_currencies; // custom
-    int enable_locales; //boolean
-    int enable_currencies; //boolean
+    int *enable_locales; //boolean
+    int *enable_currencies; //boolean
     char *gravatar; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -52,8 +52,8 @@ __attribute__((deprecated)) account_info_t *account_info_create(
     account_info_limits_t *limits,
     char *language,
     account_info_country_currencies_t *country_currencies,
-    int enable_locales,
-    int enable_currencies,
+    int *enable_locales,
+    int *enable_currencies,
     char *gravatar
 );
 

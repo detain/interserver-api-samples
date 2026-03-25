@@ -1,4 +1,4 @@
-# # LicensesOrderServiceTypes
+# LicensesOrderServiceTypes
 
 ## Properties
 

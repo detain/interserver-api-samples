@@ -15,12 +15,12 @@ static server_network_info_t *server_network_info_create_internal(
     if (!server_network_info_local_var) {
         return NULL;
     }
+    memset(server_network_info_local_var, 0, sizeof(server_network_info_t));
+    server_network_info_local_var->_library_owned = 1;
     server_network_info_local_var->vlans = vlans;
     server_network_info_local_var->vlans6 = vlans6;
     server_network_info_local_var->assets = assets;
     server_network_info_local_var->switchports = switchports;
-
-    server_network_info_local_var->_library_owned = 1;
     return server_network_info_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) server_network_info_t *server_network_info_create(
     server_network_info_assets_t *assets,
     server_network_info_switchports_t *switchports
     ) {
-    return server_network_info_create_internal (
+    server_network_info_t *result = server_network_info_create_internal (
         vlans,
         vlans6,
         assets,
         switchports
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_network_info_free(server_network_info_t *server_network_info) {
@@ -237,12 +240,17 @@ server_network_info_t *server_network_info_parseFromJSON(cJSON *server_network_i
     switchports_local_nonprim = server_network_info_switchports_parseFromJSON(switchports); //nonprimitive
 
 
+
     server_network_info_local_var = server_network_info_create_internal (
         vlansList,
         vlans6List,
         assets_local_nonprim,
         switchports_local_nonprim
         );
+
+    if (!server_network_info_local_var) {
+        goto end;
+    }
 
     return server_network_info_local_var;
 end:

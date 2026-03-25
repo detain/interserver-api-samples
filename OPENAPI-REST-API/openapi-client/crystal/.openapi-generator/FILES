@@ -393,6 +393,7 @@ spec/models/update_account_tfa_request_spec.cr
 spec/models/update_ticket_response_schema_spec.cr
 spec/models/update_ticket_spec.cr
 spec/models/url_request_spec.cr
+spec/models/view_mail_log_start_date_parameter_spec.cr
 spec/models/view_ticket_response_spec.cr
 spec/models/vps_backup_row_spec.cr
 spec/models/vps_backup_rows_spec.cr
@@ -863,6 +864,7 @@ src/openapi_client/models/update_account_tfa_request.cr
 src/openapi_client/models/update_ticket.cr
 src/openapi_client/models/update_ticket_response_schema.cr
 src/openapi_client/models/url_request.cr
+src/openapi_client/models/view_mail_log_start_date_parameter.cr
 src/openapi_client/models/view_ticket_response.cr
 src/openapi_client/models/vps.cr
 src/openapi_client/models/vps_backup_row.cr

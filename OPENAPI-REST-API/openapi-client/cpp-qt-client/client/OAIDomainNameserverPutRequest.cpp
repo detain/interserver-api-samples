@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainNameserverPutRequest::OAIDomainNameserverPutRequest(QString json) {
+OAIDomainNameserverPutRequest::OAIDomainNameserverPutRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIDomainNameserverPutRequest::initializeModel() {
     m_nameserver_isValid = false;
 }
 
-void OAIDomainNameserverPutRequest::fromJson(QString jsonString) {
+void OAIDomainNameserverPutRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

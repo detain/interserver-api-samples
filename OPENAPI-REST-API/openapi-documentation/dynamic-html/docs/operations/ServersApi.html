@@ -1,0 +1,426 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="addServer"></a>addServer</h2>
+  <hr>
+  <p></p>
+  <p>Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="buyItNowServerOrder"></a>buyItNowServerOrder</h2>
+  <hr>
+  <p></p>
+  <p>Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/order/buy_now_server</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="buyItNowServerOrder_200_response"><a href="">buyItNowServerOrder_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getMPServers"></a>getMPServers</h2>
+  <hr>
+  <p></p>
+  <p>Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/buy_now_servers_list</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="BuyItNowList"><a href="">BuyItNowList</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getNewServer"></a>getNewServer</h2>
+  <hr>
+  <p></p>
+  <p>Retrieves available server configurations and pricing for ordering a new dedicated server.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ServerOrder"><a href="">ServerOrder</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getServerInfo"></a>getServerInfo</h2>
+  <hr>
+  <p></p>
+  <p>Returns detailed information about a specific server including its hardware configuration, IPs, and status.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Server"><a href="">Server</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="getServerInvoices"></a>getServerInvoices</h2>
+  <hr>
+  <p></p>
+  <p>Returns the billing invoices associated with this dedicated server.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/invoices</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ChargeInvoiceRows"><a href="">ChargeInvoiceRows</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getServerList"></a>getServerList</h2>
+  <hr>
+  <p></p>
+  <p>Returns all dedicated server services on the account with their current status and configuration.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ServerRow"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getServerReverseDns"></a>getServerReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Returns the current reverse DNS (PTR record) entries for the server&#39;s IP addresses.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ReverseDnsEntries"><a href="">ReverseDnsEntries</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getServersWelcomeEmail"></a>getServersWelcomeEmail</h2>
+  <hr>
+  <p></p>
+  <p>Resends the welcome email for the order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/welcome_email</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+  </ul>
+  <h2><a name="placeBuyNowServer"></a>placeBuyNowServer</h2>
+  <hr>
+  <p></p>
+  <p>Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/order/buy_now_server</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ServersBuyNowResponse"><a href="">ServersBuyNowResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">PlaceBuyNowServerRequest</span>
+      <span class="param-type">PlaceBuyNowServerRequest(PlaceBuyNowServerRequest)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="postServerReverseDns"></a>postServerReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Updates the reverse DNS (PTR record) entries for the server&#39;s IP addresses.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">ReverseDnsEntries</span>
+      <span class="param-type">ReverseDnsEntries(ReverseDnsEntries)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="putServers"></a>putServers</h2>
+  <hr>
+  <p></p>
+  <p>Validates a server order before placing it. Use this to check for errors before committing to a purchase.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="serverIpmiLiveGet"></a>serverIpmiLiveGet</h2>
+  <hr>
+  <p></p>
+  <p>Returns the current IPMI live connection information for the server.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/ipmi_live</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ServerIpmiLiveInfo"><a href="">ServerIpmiLiveInfo</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+  </ul>
+  <h2><a name="serverIpmiLivePost"></a>serverIpmiLivePost</h2>
+  <hr>
+  <p></p>
+  <p>Configures IPMI live access by whitelisting your current IP address for connections to the server&#39;s IPMI management interface.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/ipmi_live</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ServerIpmiLiveInfo"><a href="">ServerIpmiLiveInfo</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ip</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">Your IP Address you wish to connect to the IPMI system from.</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">asset</span>
+      <span class="param-type">Integer(integer)</span>
+      
+      <p class="param-description">Asset ID</p>
+      </li>
+  </ul>
+  <h2><a name="serverIpmiPowerGet"></a>serverIpmiPowerGet</h2>
+  <hr>
+  <p></p>
+  <p>Returns the chassis power status from ipmi.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/ipmi_power</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+  </ul>
+  <h2><a name="serverIpmiPowerPost"></a>serverIpmiPowerPost</h2>
+  <hr>
+  <p></p>
+  <p>Uses the IPMI interface to set the Power status on the server.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}/ipmi_power</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">action</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">The power action to send to the ipmi controller.</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">asset</span>
+      <span class="param-type">Integer(integer)</span>
+      
+      <p class="param-description">The Asset ID</p>
+      </li>
+  </ul>
+  <h2><a name="serversCancel"></a>serversCancel</h2>
+  <hr>
+  <p></p>
+  <p>Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="serversCancel_200_response"><a href="">serversCancel_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Server ID number</p>
+      </li>
+  </ul>
+  <h2><a name="updateServerInfo"></a>updateServerInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates settings on a dedicated server order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/servers/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Server ID number.</p>
+      </li>
+  </ul>
+</div>

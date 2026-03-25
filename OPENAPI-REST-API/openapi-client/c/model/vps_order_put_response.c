@@ -6,24 +6,24 @@
 
 
 static vps_order_put_response_t *vps_order_put_response_create_internal(
-    int _continue,
+    int *_continue,
     list_t *errors,
-    int coupon_code,
-    int service_cost,
-    int slice_cost,
-    int service_type,
-    int repeat_slice_cost,
-    int original_slice_cost,
-    int original_cost,
-    int repeat_service_cost,
-    int monthly_service_cost,
+    int *coupon_code,
+    int *service_cost,
+    int *slice_cost,
+    int *service_type,
+    int *repeat_slice_cost,
+    int *original_slice_cost,
+    int *original_cost,
+    int *repeat_service_cost,
+    int *monthly_service_cost,
     char *custid,
     char *os,
     char *slices,
     char *platform,
     char *controlpanel,
-    int period,
-    int location,
+    int *period,
+    int *location,
     char *version,
     char *hostname,
     char *coupon,
@@ -33,6 +33,8 @@ static vps_order_put_response_t *vps_order_put_response_create_internal(
     if (!vps_order_put_response_local_var) {
         return NULL;
     }
+    memset(vps_order_put_response_local_var, 0, sizeof(vps_order_put_response_t));
+    vps_order_put_response_local_var->_library_owned = 1;
     vps_order_put_response_local_var->_continue = _continue;
     vps_order_put_response_local_var->errors = errors;
     vps_order_put_response_local_var->coupon_code = coupon_code;
@@ -55,59 +57,132 @@ static vps_order_put_response_t *vps_order_put_response_create_internal(
     vps_order_put_response_local_var->hostname = hostname;
     vps_order_put_response_local_var->coupon = coupon;
     vps_order_put_response_local_var->rootpass = rootpass;
-
-    vps_order_put_response_local_var->_library_owned = 1;
     return vps_order_put_response_local_var;
 }
 
 __attribute__((deprecated)) vps_order_put_response_t *vps_order_put_response_create(
-    int _continue,
+    int *_continue,
     list_t *errors,
-    int coupon_code,
-    int service_cost,
-    int slice_cost,
-    int service_type,
-    int repeat_slice_cost,
-    int original_slice_cost,
-    int original_cost,
-    int repeat_service_cost,
-    int monthly_service_cost,
+    int *coupon_code,
+    int *service_cost,
+    int *slice_cost,
+    int *service_type,
+    int *repeat_slice_cost,
+    int *original_slice_cost,
+    int *original_cost,
+    int *repeat_service_cost,
+    int *monthly_service_cost,
     char *custid,
     char *os,
     char *slices,
     char *platform,
     char *controlpanel,
-    int period,
-    int location,
+    int *period,
+    int *location,
     char *version,
     char *hostname,
     char *coupon,
     char *rootpass
     ) {
-    return vps_order_put_response_create_internal (
-        _continue,
+    int *_continue_copy = NULL;
+    if (_continue) {
+        _continue_copy = malloc(sizeof(int));
+        if (_continue_copy) *_continue_copy = *_continue;
+    }
+    int *coupon_code_copy = NULL;
+    if (coupon_code) {
+        coupon_code_copy = malloc(sizeof(int));
+        if (coupon_code_copy) *coupon_code_copy = *coupon_code;
+    }
+    int *service_cost_copy = NULL;
+    if (service_cost) {
+        service_cost_copy = malloc(sizeof(int));
+        if (service_cost_copy) *service_cost_copy = *service_cost;
+    }
+    int *slice_cost_copy = NULL;
+    if (slice_cost) {
+        slice_cost_copy = malloc(sizeof(int));
+        if (slice_cost_copy) *slice_cost_copy = *slice_cost;
+    }
+    int *service_type_copy = NULL;
+    if (service_type) {
+        service_type_copy = malloc(sizeof(int));
+        if (service_type_copy) *service_type_copy = *service_type;
+    }
+    int *repeat_slice_cost_copy = NULL;
+    if (repeat_slice_cost) {
+        repeat_slice_cost_copy = malloc(sizeof(int));
+        if (repeat_slice_cost_copy) *repeat_slice_cost_copy = *repeat_slice_cost;
+    }
+    int *original_slice_cost_copy = NULL;
+    if (original_slice_cost) {
+        original_slice_cost_copy = malloc(sizeof(int));
+        if (original_slice_cost_copy) *original_slice_cost_copy = *original_slice_cost;
+    }
+    int *original_cost_copy = NULL;
+    if (original_cost) {
+        original_cost_copy = malloc(sizeof(int));
+        if (original_cost_copy) *original_cost_copy = *original_cost;
+    }
+    int *repeat_service_cost_copy = NULL;
+    if (repeat_service_cost) {
+        repeat_service_cost_copy = malloc(sizeof(int));
+        if (repeat_service_cost_copy) *repeat_service_cost_copy = *repeat_service_cost;
+    }
+    int *monthly_service_cost_copy = NULL;
+    if (monthly_service_cost) {
+        monthly_service_cost_copy = malloc(sizeof(int));
+        if (monthly_service_cost_copy) *monthly_service_cost_copy = *monthly_service_cost;
+    }
+    int *period_copy = NULL;
+    if (period) {
+        period_copy = malloc(sizeof(int));
+        if (period_copy) *period_copy = *period;
+    }
+    int *location_copy = NULL;
+    if (location) {
+        location_copy = malloc(sizeof(int));
+        if (location_copy) *location_copy = *location;
+    }
+    vps_order_put_response_t *result = vps_order_put_response_create_internal (
+        _continue_copy,
         errors,
-        coupon_code,
-        service_cost,
-        slice_cost,
-        service_type,
-        repeat_slice_cost,
-        original_slice_cost,
-        original_cost,
-        repeat_service_cost,
-        monthly_service_cost,
+        coupon_code_copy,
+        service_cost_copy,
+        slice_cost_copy,
+        service_type_copy,
+        repeat_slice_cost_copy,
+        original_slice_cost_copy,
+        original_cost_copy,
+        repeat_service_cost_copy,
+        monthly_service_cost_copy,
         custid,
         os,
         slices,
         platform,
         controlpanel,
-        period,
-        location,
+        period_copy,
+        location_copy,
         version,
         hostname,
         coupon,
         rootpass
         );
+    if (!result) {
+        free(_continue_copy);
+        free(coupon_code_copy);
+        free(service_cost_copy);
+        free(slice_cost_copy);
+        free(service_type_copy);
+        free(repeat_slice_cost_copy);
+        free(original_slice_cost_copy);
+        free(original_cost_copy);
+        free(repeat_service_cost_copy);
+        free(monthly_service_cost_copy);
+        free(period_copy);
+        free(location_copy);
+    }
+    return result;
 }
 
 void vps_order_put_response_free(vps_order_put_response_t *vps_order_put_response) {
@@ -119,12 +194,52 @@ void vps_order_put_response_free(vps_order_put_response_t *vps_order_put_respons
         return ;
     }
     listEntry_t *listEntry;
+    if (vps_order_put_response->_continue) {
+        free(vps_order_put_response->_continue);
+        vps_order_put_response->_continue = NULL;
+    }
     if (vps_order_put_response->errors) {
         list_ForEach(listEntry, vps_order_put_response->errors) {
             any_type_free(listEntry->data);
         }
         list_freeList(vps_order_put_response->errors);
         vps_order_put_response->errors = NULL;
+    }
+    if (vps_order_put_response->coupon_code) {
+        free(vps_order_put_response->coupon_code);
+        vps_order_put_response->coupon_code = NULL;
+    }
+    if (vps_order_put_response->service_cost) {
+        free(vps_order_put_response->service_cost);
+        vps_order_put_response->service_cost = NULL;
+    }
+    if (vps_order_put_response->slice_cost) {
+        free(vps_order_put_response->slice_cost);
+        vps_order_put_response->slice_cost = NULL;
+    }
+    if (vps_order_put_response->service_type) {
+        free(vps_order_put_response->service_type);
+        vps_order_put_response->service_type = NULL;
+    }
+    if (vps_order_put_response->repeat_slice_cost) {
+        free(vps_order_put_response->repeat_slice_cost);
+        vps_order_put_response->repeat_slice_cost = NULL;
+    }
+    if (vps_order_put_response->original_slice_cost) {
+        free(vps_order_put_response->original_slice_cost);
+        vps_order_put_response->original_slice_cost = NULL;
+    }
+    if (vps_order_put_response->original_cost) {
+        free(vps_order_put_response->original_cost);
+        vps_order_put_response->original_cost = NULL;
+    }
+    if (vps_order_put_response->repeat_service_cost) {
+        free(vps_order_put_response->repeat_service_cost);
+        vps_order_put_response->repeat_service_cost = NULL;
+    }
+    if (vps_order_put_response->monthly_service_cost) {
+        free(vps_order_put_response->monthly_service_cost);
+        vps_order_put_response->monthly_service_cost = NULL;
     }
     if (vps_order_put_response->custid) {
         free(vps_order_put_response->custid);
@@ -145,6 +260,14 @@ void vps_order_put_response_free(vps_order_put_response_t *vps_order_put_respons
     if (vps_order_put_response->controlpanel) {
         free(vps_order_put_response->controlpanel);
         vps_order_put_response->controlpanel = NULL;
+    }
+    if (vps_order_put_response->period) {
+        free(vps_order_put_response->period);
+        vps_order_put_response->period = NULL;
+    }
+    if (vps_order_put_response->location) {
+        free(vps_order_put_response->location);
+        vps_order_put_response->location = NULL;
     }
     if (vps_order_put_response->version) {
         free(vps_order_put_response->version);
@@ -170,7 +293,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->_continue
     if(vps_order_put_response->_continue) {
-    if(cJSON_AddBoolToObject(item, "continue", vps_order_put_response->_continue) == NULL) {
+    if(cJSON_AddBoolToObject(item, "continue", *vps_order_put_response->_continue) == NULL) {
     goto fail; //Bool
     }
     }
@@ -198,7 +321,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->coupon_code
     if(vps_order_put_response->coupon_code) {
-    if(cJSON_AddNumberToObject(item, "coupon_code", vps_order_put_response->coupon_code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "coupon_code", *vps_order_put_response->coupon_code) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -206,7 +329,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->service_cost
     if(vps_order_put_response->service_cost) {
-    if(cJSON_AddNumberToObject(item, "service_cost", vps_order_put_response->service_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "service_cost", *vps_order_put_response->service_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -214,7 +337,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->slice_cost
     if(vps_order_put_response->slice_cost) {
-    if(cJSON_AddNumberToObject(item, "slice_cost", vps_order_put_response->slice_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "slice_cost", *vps_order_put_response->slice_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -222,7 +345,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->service_type
     if(vps_order_put_response->service_type) {
-    if(cJSON_AddNumberToObject(item, "service_type", vps_order_put_response->service_type) == NULL) {
+    if(cJSON_AddNumberToObject(item, "service_type", *vps_order_put_response->service_type) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -230,7 +353,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->repeat_slice_cost
     if(vps_order_put_response->repeat_slice_cost) {
-    if(cJSON_AddNumberToObject(item, "repeat_slice_cost", vps_order_put_response->repeat_slice_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "repeat_slice_cost", *vps_order_put_response->repeat_slice_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -238,7 +361,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->original_slice_cost
     if(vps_order_put_response->original_slice_cost) {
-    if(cJSON_AddNumberToObject(item, "original_slice_cost", vps_order_put_response->original_slice_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "original_slice_cost", *vps_order_put_response->original_slice_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -246,7 +369,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->original_cost
     if(vps_order_put_response->original_cost) {
-    if(cJSON_AddNumberToObject(item, "original_cost", vps_order_put_response->original_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "original_cost", *vps_order_put_response->original_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -254,7 +377,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->repeat_service_cost
     if(vps_order_put_response->repeat_service_cost) {
-    if(cJSON_AddNumberToObject(item, "repeat_service_cost", vps_order_put_response->repeat_service_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "repeat_service_cost", *vps_order_put_response->repeat_service_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -262,7 +385,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->monthly_service_cost
     if(vps_order_put_response->monthly_service_cost) {
-    if(cJSON_AddNumberToObject(item, "monthly_service_cost", vps_order_put_response->monthly_service_cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_service_cost", *vps_order_put_response->monthly_service_cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -310,7 +433,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->period
     if(vps_order_put_response->period) {
-    if(cJSON_AddNumberToObject(item, "period", vps_order_put_response->period) == NULL) {
+    if(cJSON_AddNumberToObject(item, "period", *vps_order_put_response->period) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -318,7 +441,7 @@ cJSON *vps_order_put_response_convertToJSON(vps_order_put_response_t *vps_order_
 
     // vps_order_put_response->location
     if(vps_order_put_response->location) {
-    if(cJSON_AddNumberToObject(item, "location", vps_order_put_response->location) == NULL) {
+    if(cJSON_AddNumberToObject(item, "location", *vps_order_put_response->location) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -367,8 +490,62 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
 
     vps_order_put_response_t *vps_order_put_response_local_var = NULL;
 
+    // define the local variable for vps_order_put_response->_continue
+    int *_continue_local_var = NULL;
+
     // define the local list for vps_order_put_response->errors
     list_t *errorsList = NULL;
+
+    // define the local variable for vps_order_put_response->coupon_code
+    int *coupon_code_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->service_cost
+    int *service_cost_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->slice_cost
+    int *slice_cost_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->service_type
+    int *service_type_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->repeat_slice_cost
+    int *repeat_slice_cost_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->original_slice_cost
+    int *original_slice_cost_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->original_cost
+    int *original_cost_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->repeat_service_cost
+    int *repeat_service_cost_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->monthly_service_cost
+    int *monthly_service_cost_local_var = NULL;
+
+    char *custid_local_str = NULL;
+
+    char *os_local_str = NULL;
+
+    char *slices_local_str = NULL;
+
+    char *platform_local_str = NULL;
+
+    char *controlpanel_local_str = NULL;
+
+    // define the local variable for vps_order_put_response->period
+    int *period_local_var = NULL;
+
+    // define the local variable for vps_order_put_response->location
+    int *location_local_var = NULL;
+
+    char *version_local_str = NULL;
+
+    char *hostname_local_str = NULL;
+
+    char *coupon_local_str = NULL;
+
+    char *rootpass_local_str = NULL;
 
     // vps_order_put_response->_continue
     cJSON *_continue = cJSON_GetObjectItemCaseSensitive(vps_order_put_responseJSON, "continue");
@@ -380,6 +557,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Bool
     }
+    _continue_local_var = malloc(sizeof(int));
+    if(!_continue_local_var)
+    {
+        goto end;
+    }
+    *_continue_local_var = _continue->valueint;
     }
 
     // vps_order_put_response->errors
@@ -416,6 +599,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    coupon_code_local_var = malloc(sizeof(int));
+    if(!coupon_code_local_var)
+    {
+        goto end;
+    }
+    *coupon_code_local_var = coupon_code->valuedouble;
     }
 
     // vps_order_put_response->service_cost
@@ -428,6 +617,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    service_cost_local_var = malloc(sizeof(int));
+    if(!service_cost_local_var)
+    {
+        goto end;
+    }
+    *service_cost_local_var = service_cost->valuedouble;
     }
 
     // vps_order_put_response->slice_cost
@@ -440,6 +635,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    slice_cost_local_var = malloc(sizeof(int));
+    if(!slice_cost_local_var)
+    {
+        goto end;
+    }
+    *slice_cost_local_var = slice_cost->valuedouble;
     }
 
     // vps_order_put_response->service_type
@@ -452,6 +653,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    service_type_local_var = malloc(sizeof(int));
+    if(!service_type_local_var)
+    {
+        goto end;
+    }
+    *service_type_local_var = service_type->valuedouble;
     }
 
     // vps_order_put_response->repeat_slice_cost
@@ -464,6 +671,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    repeat_slice_cost_local_var = malloc(sizeof(int));
+    if(!repeat_slice_cost_local_var)
+    {
+        goto end;
+    }
+    *repeat_slice_cost_local_var = repeat_slice_cost->valuedouble;
     }
 
     // vps_order_put_response->original_slice_cost
@@ -476,6 +689,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    original_slice_cost_local_var = malloc(sizeof(int));
+    if(!original_slice_cost_local_var)
+    {
+        goto end;
+    }
+    *original_slice_cost_local_var = original_slice_cost->valuedouble;
     }
 
     // vps_order_put_response->original_cost
@@ -488,6 +707,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    original_cost_local_var = malloc(sizeof(int));
+    if(!original_cost_local_var)
+    {
+        goto end;
+    }
+    *original_cost_local_var = original_cost->valuedouble;
     }
 
     // vps_order_put_response->repeat_service_cost
@@ -500,6 +725,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    repeat_service_cost_local_var = malloc(sizeof(int));
+    if(!repeat_service_cost_local_var)
+    {
+        goto end;
+    }
+    *repeat_service_cost_local_var = repeat_service_cost->valuedouble;
     }
 
     // vps_order_put_response->monthly_service_cost
@@ -512,6 +743,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    monthly_service_cost_local_var = malloc(sizeof(int));
+    if(!monthly_service_cost_local_var)
+    {
+        goto end;
+    }
+    *monthly_service_cost_local_var = monthly_service_cost->valuedouble;
     }
 
     // vps_order_put_response->custid
@@ -584,6 +821,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    period_local_var = malloc(sizeof(int));
+    if(!period_local_var)
+    {
+        goto end;
+    }
+    *period_local_var = period->valuedouble;
     }
 
     // vps_order_put_response->location
@@ -596,6 +839,12 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     {
     goto end; //Numeric
     }
+    location_local_var = malloc(sizeof(int));
+    if(!location_local_var)
+    {
+        goto end;
+    }
+    *location_local_var = location->valuedouble;
     }
 
     // vps_order_put_response->version
@@ -647,33 +896,51 @@ vps_order_put_response_t *vps_order_put_response_parseFromJSON(cJSON *vps_order_
     }
 
 
+    if (custid && !cJSON_IsNull(custid)) custid_local_str = strdup(custid->valuestring);
+    if (os && !cJSON_IsNull(os)) os_local_str = strdup(os->valuestring);
+    if (slices && !cJSON_IsNull(slices)) slices_local_str = strdup(slices->valuestring);
+    if (platform && !cJSON_IsNull(platform)) platform_local_str = strdup(platform->valuestring);
+    if (controlpanel && !cJSON_IsNull(controlpanel)) controlpanel_local_str = strdup(controlpanel->valuestring);
+    if (version && !cJSON_IsNull(version)) version_local_str = strdup(version->valuestring);
+    if (hostname && !cJSON_IsNull(hostname)) hostname_local_str = strdup(hostname->valuestring);
+    if (coupon && !cJSON_IsNull(coupon)) coupon_local_str = strdup(coupon->valuestring);
+    if (rootpass && !cJSON_IsNull(rootpass)) rootpass_local_str = strdup(rootpass->valuestring);
+
     vps_order_put_response_local_var = vps_order_put_response_create_internal (
-        _continue ? _continue->valueint : 0,
+        _continue_local_var,
         errors ? errorsList : NULL,
-        coupon_code ? coupon_code->valuedouble : 0,
-        service_cost ? service_cost->valuedouble : 0,
-        slice_cost ? slice_cost->valuedouble : 0,
-        service_type ? service_type->valuedouble : 0,
-        repeat_slice_cost ? repeat_slice_cost->valuedouble : 0,
-        original_slice_cost ? original_slice_cost->valuedouble : 0,
-        original_cost ? original_cost->valuedouble : 0,
-        repeat_service_cost ? repeat_service_cost->valuedouble : 0,
-        monthly_service_cost ? monthly_service_cost->valuedouble : 0,
-        custid && !cJSON_IsNull(custid) ? strdup(custid->valuestring) : NULL,
-        os && !cJSON_IsNull(os) ? strdup(os->valuestring) : NULL,
-        slices && !cJSON_IsNull(slices) ? strdup(slices->valuestring) : NULL,
-        platform && !cJSON_IsNull(platform) ? strdup(platform->valuestring) : NULL,
-        controlpanel && !cJSON_IsNull(controlpanel) ? strdup(controlpanel->valuestring) : NULL,
-        period ? period->valuedouble : 0,
-        location ? location->valuedouble : 0,
-        version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL,
-        hostname && !cJSON_IsNull(hostname) ? strdup(hostname->valuestring) : NULL,
-        coupon && !cJSON_IsNull(coupon) ? strdup(coupon->valuestring) : NULL,
-        rootpass && !cJSON_IsNull(rootpass) ? strdup(rootpass->valuestring) : NULL
+        coupon_code_local_var,
+        service_cost_local_var,
+        slice_cost_local_var,
+        service_type_local_var,
+        repeat_slice_cost_local_var,
+        original_slice_cost_local_var,
+        original_cost_local_var,
+        repeat_service_cost_local_var,
+        monthly_service_cost_local_var,
+        custid_local_str,
+        os_local_str,
+        slices_local_str,
+        platform_local_str,
+        controlpanel_local_str,
+        period_local_var,
+        location_local_var,
+        version_local_str,
+        hostname_local_str,
+        coupon_local_str,
+        rootpass_local_str
         );
+
+    if (!vps_order_put_response_local_var) {
+        goto end;
+    }
 
     return vps_order_put_response_local_var;
 end:
+    if (_continue_local_var) {
+        free(_continue_local_var);
+        _continue_local_var = NULL;
+    }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, errorsList) {
@@ -682,6 +949,86 @@ end:
         }
         list_freeList(errorsList);
         errorsList = NULL;
+    }
+    if (coupon_code_local_var) {
+        free(coupon_code_local_var);
+        coupon_code_local_var = NULL;
+    }
+    if (service_cost_local_var) {
+        free(service_cost_local_var);
+        service_cost_local_var = NULL;
+    }
+    if (slice_cost_local_var) {
+        free(slice_cost_local_var);
+        slice_cost_local_var = NULL;
+    }
+    if (service_type_local_var) {
+        free(service_type_local_var);
+        service_type_local_var = NULL;
+    }
+    if (repeat_slice_cost_local_var) {
+        free(repeat_slice_cost_local_var);
+        repeat_slice_cost_local_var = NULL;
+    }
+    if (original_slice_cost_local_var) {
+        free(original_slice_cost_local_var);
+        original_slice_cost_local_var = NULL;
+    }
+    if (original_cost_local_var) {
+        free(original_cost_local_var);
+        original_cost_local_var = NULL;
+    }
+    if (repeat_service_cost_local_var) {
+        free(repeat_service_cost_local_var);
+        repeat_service_cost_local_var = NULL;
+    }
+    if (monthly_service_cost_local_var) {
+        free(monthly_service_cost_local_var);
+        monthly_service_cost_local_var = NULL;
+    }
+    if (custid_local_str) {
+        free(custid_local_str);
+        custid_local_str = NULL;
+    }
+    if (os_local_str) {
+        free(os_local_str);
+        os_local_str = NULL;
+    }
+    if (slices_local_str) {
+        free(slices_local_str);
+        slices_local_str = NULL;
+    }
+    if (platform_local_str) {
+        free(platform_local_str);
+        platform_local_str = NULL;
+    }
+    if (controlpanel_local_str) {
+        free(controlpanel_local_str);
+        controlpanel_local_str = NULL;
+    }
+    if (period_local_var) {
+        free(period_local_var);
+        period_local_var = NULL;
+    }
+    if (location_local_var) {
+        free(location_local_var);
+        location_local_var = NULL;
+    }
+    if (version_local_str) {
+        free(version_local_str);
+        version_local_str = NULL;
+    }
+    if (hostname_local_str) {
+        free(hostname_local_str);
+        hostname_local_str = NULL;
+    }
+    if (coupon_local_str) {
+        free(coupon_local_str);
+        coupon_local_str = NULL;
+    }
+    if (rootpass_local_str) {
+        free(rootpass_local_str);
+        rootpass_local_str = NULL;
     }
     return NULL;
 

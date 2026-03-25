@@ -8,10 +8,10 @@
 static websites_order_t *websites_order_create_internal(
     char *step,
     char *website,
-    int period,
-    int service_offer_id,
+    int *period,
+    int *service_offer_id,
     websites_order_packages_t *packages,
-    int enable_domain_registering,
+    int *enable_domain_registering,
     websites_order_json_services_t *json_services,
     websites_order_json_service_offers_t *json_service_offers,
     websites_order_service_types_t *service_types,
@@ -22,6 +22,8 @@ static websites_order_t *websites_order_create_internal(
     if (!websites_order_local_var) {
         return NULL;
     }
+    memset(websites_order_local_var, 0, sizeof(websites_order_t));
+    websites_order_local_var->_library_owned = 1;
     websites_order_local_var->step = step;
     websites_order_local_var->website = website;
     websites_order_local_var->period = period;
@@ -33,37 +35,56 @@ static websites_order_t *websites_order_create_internal(
     websites_order_local_var->service_types = service_types;
     websites_order_local_var->service_offers = service_offers;
     websites_order_local_var->packges = packges;
-
-    websites_order_local_var->_library_owned = 1;
     return websites_order_local_var;
 }
 
 __attribute__((deprecated)) websites_order_t *websites_order_create(
     char *step,
     char *website,
-    int period,
-    int service_offer_id,
+    int *period,
+    int *service_offer_id,
     websites_order_packages_t *packages,
-    int enable_domain_registering,
+    int *enable_domain_registering,
     websites_order_json_services_t *json_services,
     websites_order_json_service_offers_t *json_service_offers,
     websites_order_service_types_t *service_types,
     websites_order_service_offers_t *service_offers,
     websites_order_packges_t *packges
     ) {
-    return websites_order_create_internal (
+    int *period_copy = NULL;
+    if (period) {
+        period_copy = malloc(sizeof(int));
+        if (period_copy) *period_copy = *period;
+    }
+    int *service_offer_id_copy = NULL;
+    if (service_offer_id) {
+        service_offer_id_copy = malloc(sizeof(int));
+        if (service_offer_id_copy) *service_offer_id_copy = *service_offer_id;
+    }
+    int *enable_domain_registering_copy = NULL;
+    if (enable_domain_registering) {
+        enable_domain_registering_copy = malloc(sizeof(int));
+        if (enable_domain_registering_copy) *enable_domain_registering_copy = *enable_domain_registering;
+    }
+    websites_order_t *result = websites_order_create_internal (
         step,
         website,
-        period,
-        service_offer_id,
+        period_copy,
+        service_offer_id_copy,
         packages,
-        enable_domain_registering,
+        enable_domain_registering_copy,
         json_services,
         json_service_offers,
         service_types,
         service_offers,
         packges
         );
+    if (!result) {
+        free(period_copy);
+        free(service_offer_id_copy);
+        free(enable_domain_registering_copy);
+    }
+    return result;
 }
 
 void websites_order_free(websites_order_t *websites_order) {
@@ -83,9 +104,21 @@ void websites_order_free(websites_order_t *websites_order) {
         free(websites_order->website);
         websites_order->website = NULL;
     }
+    if (websites_order->period) {
+        free(websites_order->period);
+        websites_order->period = NULL;
+    }
+    if (websites_order->service_offer_id) {
+        free(websites_order->service_offer_id);
+        websites_order->service_offer_id = NULL;
+    }
     if (websites_order->packages) {
         websites_order_packages_free(websites_order->packages);
         websites_order->packages = NULL;
+    }
+    if (websites_order->enable_domain_registering) {
+        free(websites_order->enable_domain_registering);
+        websites_order->enable_domain_registering = NULL;
     }
     if (websites_order->json_services) {
         websites_order_json_services_free(websites_order->json_services);
@@ -135,7 +168,7 @@ cJSON *websites_order_convertToJSON(websites_order_t *websites_order) {
     if (!websites_order->period) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "period", websites_order->period) == NULL) {
+    if(cJSON_AddNumberToObject(item, "period", *websites_order->period) == NULL) {
     goto fail; //Numeric
     }
 
@@ -144,7 +177,7 @@ cJSON *websites_order_convertToJSON(websites_order_t *websites_order) {
     if (!websites_order->service_offer_id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "serviceOfferId", websites_order->service_offer_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "serviceOfferId", *websites_order->service_offer_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -167,7 +200,7 @@ cJSON *websites_order_convertToJSON(websites_order_t *websites_order) {
     if (!websites_order->enable_domain_registering) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "enableDomainRegistering", websites_order->enable_domain_registering) == NULL) {
+    if(cJSON_AddBoolToObject(item, "enableDomainRegistering", *websites_order->enable_domain_registering) == NULL) {
     goto fail; //Bool
     }
 
@@ -252,8 +285,21 @@ websites_order_t *websites_order_parseFromJSON(cJSON *websites_orderJSON){
 
     websites_order_t *websites_order_local_var = NULL;
 
+    char *step_local_str = NULL;
+
+    char *website_local_str = NULL;
+
+    // define the local variable for websites_order->period
+    int *period_local_var = NULL;
+
+    // define the local variable for websites_order->service_offer_id
+    int *service_offer_id_local_var = NULL;
+
     // define the local variable for websites_order->packages
     websites_order_packages_t *packages_local_nonprim = NULL;
+
+    // define the local variable for websites_order->enable_domain_registering
+    int *enable_domain_registering_local_var = NULL;
 
     // define the local variable for websites_order->json_services
     websites_order_json_services_t *json_services_local_nonprim = NULL;
@@ -314,6 +360,12 @@ websites_order_t *websites_order_parseFromJSON(cJSON *websites_orderJSON){
     {
     goto end; //Numeric
     }
+    period_local_var = malloc(sizeof(int));
+    if(!period_local_var)
+    {
+        goto end;
+    }
+    *period_local_var = period->valuedouble;
 
     // websites_order->service_offer_id
     cJSON *service_offer_id = cJSON_GetObjectItemCaseSensitive(websites_orderJSON, "serviceOfferId");
@@ -329,6 +381,12 @@ websites_order_t *websites_order_parseFromJSON(cJSON *websites_orderJSON){
     {
     goto end; //Numeric
     }
+    service_offer_id_local_var = malloc(sizeof(int));
+    if(!service_offer_id_local_var)
+    {
+        goto end;
+    }
+    *service_offer_id_local_var = service_offer_id->valuedouble;
 
     // websites_order->packages
     cJSON *packages = cJSON_GetObjectItemCaseSensitive(websites_orderJSON, "packages");
@@ -356,6 +414,12 @@ websites_order_t *websites_order_parseFromJSON(cJSON *websites_orderJSON){
     {
     goto end; //Bool
     }
+    enable_domain_registering_local_var = malloc(sizeof(int));
+    if(!enable_domain_registering_local_var)
+    {
+        goto end;
+    }
+    *enable_domain_registering_local_var = enable_domain_registering->valueint;
 
     // websites_order->json_services
     cJSON *json_services = cJSON_GetObjectItemCaseSensitive(websites_orderJSON, "jsonServices");
@@ -415,13 +479,16 @@ websites_order_t *websites_order_parseFromJSON(cJSON *websites_orderJSON){
     }
 
 
+    if (step && !cJSON_IsNull(step)) step_local_str = strdup(step->valuestring);
+    if (website && !cJSON_IsNull(website)) website_local_str = strdup(website->valuestring);
+
     websites_order_local_var = websites_order_create_internal (
-        strdup(step->valuestring),
-        strdup(website->valuestring),
-        period->valuedouble,
-        service_offer_id->valuedouble,
+        step_local_str,
+        website_local_str,
+        period_local_var,
+        service_offer_id_local_var,
         packages_local_nonprim,
-        enable_domain_registering->valueint,
+        enable_domain_registering_local_var,
         json_services_local_nonprim,
         json_service_offers_local_nonprim,
         service_types_local_nonprim,
@@ -429,11 +496,35 @@ websites_order_t *websites_order_parseFromJSON(cJSON *websites_orderJSON){
         packges ? packges_local_nonprim : NULL
         );
 
+    if (!websites_order_local_var) {
+        goto end;
+    }
+
     return websites_order_local_var;
 end:
+    if (step_local_str) {
+        free(step_local_str);
+        step_local_str = NULL;
+    }
+    if (website_local_str) {
+        free(website_local_str);
+        website_local_str = NULL;
+    }
+    if (period_local_var) {
+        free(period_local_var);
+        period_local_var = NULL;
+    }
+    if (service_offer_id_local_var) {
+        free(service_offer_id_local_var);
+        service_offer_id_local_var = NULL;
+    }
     if (packages_local_nonprim) {
         websites_order_packages_free(packages_local_nonprim);
         packages_local_nonprim = NULL;
+    }
+    if (enable_domain_registering_local_var) {
+        free(enable_domain_registering_local_var);
+        enable_domain_registering_local_var = NULL;
     }
     if (json_services_local_nonprim) {
         websites_order_json_services_free(json_services_local_nonprim);

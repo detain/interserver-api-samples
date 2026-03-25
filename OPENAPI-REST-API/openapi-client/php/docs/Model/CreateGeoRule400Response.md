@@ -1,4 +1,4 @@
-# # CreateGeoRule400Response
+# CreateGeoRule400Response
 
 ## Properties
 

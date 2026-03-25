@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainAllInfo_attributes_contact_set::OAIDomainAllInfo_attributes_contact_set(QString json) {
+OAIDomainAllInfo_attributes_contact_set::OAIDomainAllInfo_attributes_contact_set(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIDomainAllInfo_attributes_contact_set::initializeModel() {
     m_tech_isValid = false;
 }
 
-void OAIDomainAllInfo_attributes_contact_set::fromJson(QString jsonString) {
+void OAIDomainAllInfo_attributes_contact_set::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

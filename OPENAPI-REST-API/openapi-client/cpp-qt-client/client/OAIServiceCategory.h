@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIServiceCategory : public OAIObject {
 public:
     OAIServiceCategory();
-    OAIServiceCategory(QString json);
+    OAIServiceCategory(const QString &json);
     ~OAIServiceCategory() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getCategoryId() const;
     void setCategoryId(const qint32 &category_id);

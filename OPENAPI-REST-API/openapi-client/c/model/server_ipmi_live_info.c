@@ -16,13 +16,13 @@ static server_ipmi_live_info_t *server_ipmi_live_info_create_internal(
     if (!server_ipmi_live_info_local_var) {
         return NULL;
     }
+    memset(server_ipmi_live_info_local_var, 0, sizeof(server_ipmi_live_info_t));
+    server_ipmi_live_info_local_var->_library_owned = 1;
     server_ipmi_live_info_local_var->text = text;
     server_ipmi_live_info_local_var->public_ip = public_ip;
     server_ipmi_live_info_local_var->allowed_ip = allowed_ip;
     server_ipmi_live_info_local_var->client_username = client_username;
     server_ipmi_live_info_local_var->client_password = client_password;
-
-    server_ipmi_live_info_local_var->_library_owned = 1;
     return server_ipmi_live_info_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) server_ipmi_live_info_t *server_ipmi_live_info_creat
     char *client_username,
     char *client_password
     ) {
-    return server_ipmi_live_info_create_internal (
+    server_ipmi_live_info_t *result = server_ipmi_live_info_create_internal (
         text,
         public_ip,
         allowed_ip,
         client_username,
         client_password
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_ipmi_live_info_free(server_ipmi_live_info_t *server_ipmi_live_info) {
@@ -128,6 +131,16 @@ server_ipmi_live_info_t *server_ipmi_live_info_parseFromJSON(cJSON *server_ipmi_
 
     server_ipmi_live_info_t *server_ipmi_live_info_local_var = NULL;
 
+    char *text_local_str = NULL;
+
+    char *public_ip_local_str = NULL;
+
+    char *allowed_ip_local_str = NULL;
+
+    char *client_username_local_str = NULL;
+
+    char *client_password_local_str = NULL;
+
     // server_ipmi_live_info->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(server_ipmi_live_infoJSON, "text");
     if (cJSON_IsNull(text)) {
@@ -189,16 +202,46 @@ server_ipmi_live_info_t *server_ipmi_live_info_parseFromJSON(cJSON *server_ipmi_
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+    if (public_ip && !cJSON_IsNull(public_ip)) public_ip_local_str = strdup(public_ip->valuestring);
+    if (allowed_ip && !cJSON_IsNull(allowed_ip)) allowed_ip_local_str = strdup(allowed_ip->valuestring);
+    if (client_username && !cJSON_IsNull(client_username)) client_username_local_str = strdup(client_username->valuestring);
+    if (client_password && !cJSON_IsNull(client_password)) client_password_local_str = strdup(client_password->valuestring);
+
     server_ipmi_live_info_local_var = server_ipmi_live_info_create_internal (
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
-        public_ip && !cJSON_IsNull(public_ip) ? strdup(public_ip->valuestring) : NULL,
-        allowed_ip && !cJSON_IsNull(allowed_ip) ? strdup(allowed_ip->valuestring) : NULL,
-        client_username && !cJSON_IsNull(client_username) ? strdup(client_username->valuestring) : NULL,
-        client_password && !cJSON_IsNull(client_password) ? strdup(client_password->valuestring) : NULL
+        text_local_str,
+        public_ip_local_str,
+        allowed_ip_local_str,
+        client_username_local_str,
+        client_password_local_str
         );
+
+    if (!server_ipmi_live_info_local_var) {
+        goto end;
+    }
 
     return server_ipmi_live_info_local_var;
 end:
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (public_ip_local_str) {
+        free(public_ip_local_str);
+        public_ip_local_str = NULL;
+    }
+    if (allowed_ip_local_str) {
+        free(allowed_ip_local_str);
+        allowed_ip_local_str = NULL;
+    }
+    if (client_username_local_str) {
+        free(client_username_local_str);
+        client_username_local_str = NULL;
+    }
+    if (client_password_local_str) {
+        free(client_password_local_str);
+        client_password_local_str = NULL;
+    }
     return NULL;
 
 }

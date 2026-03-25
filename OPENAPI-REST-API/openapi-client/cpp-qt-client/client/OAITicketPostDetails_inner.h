@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAITicketPostDetails_inner : public OAIObject {
 public:
     OAITicketPostDetails_inner();
-    OAITicketPostDetails_inner(QString json);
+    OAITicketPostDetails_inner(const QString &json);
     ~OAITicketPostDetails_inner() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getPostId() const;
     void setPostId(const qint32 &post_id);

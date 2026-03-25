@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrder_locationStock_1::OAIVpsOrder_locationStock_1(QString json) {
+OAIVpsOrder_locationStock_1::OAIVpsOrder_locationStock_1(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIVpsOrder_locationStock_1::initializeModel() {
     m_hyperv_isValid = false;
 }
 
-void OAIVpsOrder_locationStock_1::fromJson(QString jsonString) {
+void OAIVpsOrder_locationStock_1::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

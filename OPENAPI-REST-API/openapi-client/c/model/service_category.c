@@ -6,7 +6,7 @@
 
 
 static service_category_t *service_category_create_internal(
-    int category_id,
+    int *category_id,
     char *category_name,
     char *category_tag,
     char *category_module
@@ -15,27 +15,36 @@ static service_category_t *service_category_create_internal(
     if (!service_category_local_var) {
         return NULL;
     }
+    memset(service_category_local_var, 0, sizeof(service_category_t));
+    service_category_local_var->_library_owned = 1;
     service_category_local_var->category_id = category_id;
     service_category_local_var->category_name = category_name;
     service_category_local_var->category_tag = category_tag;
     service_category_local_var->category_module = category_module;
-
-    service_category_local_var->_library_owned = 1;
     return service_category_local_var;
 }
 
 __attribute__((deprecated)) service_category_t *service_category_create(
-    int category_id,
+    int *category_id,
     char *category_name,
     char *category_tag,
     char *category_module
     ) {
-    return service_category_create_internal (
-        category_id,
+    int *category_id_copy = NULL;
+    if (category_id) {
+        category_id_copy = malloc(sizeof(int));
+        if (category_id_copy) *category_id_copy = *category_id;
+    }
+    service_category_t *result = service_category_create_internal (
+        category_id_copy,
         category_name,
         category_tag,
         category_module
         );
+    if (!result) {
+        free(category_id_copy);
+    }
+    return result;
 }
 
 void service_category_free(service_category_t *service_category) {
@@ -47,6 +56,10 @@ void service_category_free(service_category_t *service_category) {
         return ;
     }
     listEntry_t *listEntry;
+    if (service_category->category_id) {
+        free(service_category->category_id);
+        service_category->category_id = NULL;
+    }
     if (service_category->category_name) {
         free(service_category->category_name);
         service_category->category_name = NULL;
@@ -69,7 +82,7 @@ cJSON *service_category_convertToJSON(service_category_t *service_category) {
     if (!service_category->category_id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "category_id", service_category->category_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "category_id", *service_category->category_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -112,6 +125,15 @@ service_category_t *service_category_parseFromJSON(cJSON *service_categoryJSON){
 
     service_category_t *service_category_local_var = NULL;
 
+    // define the local variable for service_category->category_id
+    int *category_id_local_var = NULL;
+
+    char *category_name_local_str = NULL;
+
+    char *category_tag_local_str = NULL;
+
+    char *category_module_local_str = NULL;
+
     // service_category->category_id
     cJSON *category_id = cJSON_GetObjectItemCaseSensitive(service_categoryJSON, "category_id");
     if (cJSON_IsNull(category_id)) {
@@ -126,6 +148,12 @@ service_category_t *service_category_parseFromJSON(cJSON *service_categoryJSON){
     {
     goto end; //Numeric
     }
+    category_id_local_var = malloc(sizeof(int));
+    if(!category_id_local_var)
+    {
+        goto end;
+    }
+    *category_id_local_var = category_id->valuedouble;
 
     // service_category->category_name
     cJSON *category_name = cJSON_GetObjectItemCaseSensitive(service_categoryJSON, "category_name");
@@ -173,15 +201,39 @@ service_category_t *service_category_parseFromJSON(cJSON *service_categoryJSON){
     }
 
 
+    if (category_name && !cJSON_IsNull(category_name)) category_name_local_str = strdup(category_name->valuestring);
+    if (category_tag && !cJSON_IsNull(category_tag)) category_tag_local_str = strdup(category_tag->valuestring);
+    if (category_module && !cJSON_IsNull(category_module)) category_module_local_str = strdup(category_module->valuestring);
+
     service_category_local_var = service_category_create_internal (
-        category_id->valuedouble,
-        strdup(category_name->valuestring),
-        strdup(category_tag->valuestring),
-        strdup(category_module->valuestring)
+        category_id_local_var,
+        category_name_local_str,
+        category_tag_local_str,
+        category_module_local_str
         );
+
+    if (!service_category_local_var) {
+        goto end;
+    }
 
     return service_category_local_var;
 end:
+    if (category_id_local_var) {
+        free(category_id_local_var);
+        category_id_local_var = NULL;
+    }
+    if (category_name_local_str) {
+        free(category_name_local_str);
+        category_name_local_str = NULL;
+    }
+    if (category_tag_local_str) {
+        free(category_tag_local_str);
+        category_tag_local_str = NULL;
+    }
+    if (category_module_local_str) {
+        free(category_module_local_str);
+        category_module_local_str = NULL;
+    }
     return NULL;
 
 }

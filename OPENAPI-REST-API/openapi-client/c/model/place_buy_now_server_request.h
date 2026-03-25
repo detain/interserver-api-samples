@@ -19,7 +19,7 @@ typedef struct place_buy_now_server_request_t place_buy_now_server_request_t;
 
 
 typedef struct place_buy_now_server_request_t {
-    double server_id; //numeric
+    double *server_id; //numeric
     char *server_hostname; // string
     char *server_root_password; // string
 
@@ -27,7 +27,7 @@ typedef struct place_buy_now_server_request_t {
 } place_buy_now_server_request_t;
 
 __attribute__((deprecated)) place_buy_now_server_request_t *place_buy_now_server_request_create(
-    double server_id,
+    double *server_id,
     char *server_hostname,
     char *server_root_password
 );

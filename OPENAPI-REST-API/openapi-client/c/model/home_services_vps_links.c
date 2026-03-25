@@ -14,11 +14,11 @@ static home_services_vps_links_t *home_services_vps_links_create_internal(
     if (!home_services_vps_links_local_var) {
         return NULL;
     }
+    memset(home_services_vps_links_local_var, 0, sizeof(home_services_vps_links_t));
+    home_services_vps_links_local_var->_library_owned = 1;
     home_services_vps_links_local_var->_465503 = _465503;
     home_services_vps_links_local_var->_2500081 = _2500081;
     home_services_vps_links_local_var->_2578866 = _2578866;
-
-    home_services_vps_links_local_var->_library_owned = 1;
     return home_services_vps_links_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) home_services_vps_links_t *home_services_vps_links_c
     char *_2500081,
     char *_2578866
     ) {
-    return home_services_vps_links_create_internal (
+    home_services_vps_links_t *result = home_services_vps_links_create_internal (
         _465503,
         _2500081,
         _2578866
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void home_services_vps_links_free(home_services_vps_links_t *home_services_vps_links) {
@@ -96,6 +99,12 @@ home_services_vps_links_t *home_services_vps_links_parseFromJSON(cJSON *home_ser
 
     home_services_vps_links_t *home_services_vps_links_local_var = NULL;
 
+    char *_465503_local_str = NULL;
+
+    char *_2500081_local_str = NULL;
+
+    char *_2578866_local_str = NULL;
+
     // home_services_vps_links->_465503
     cJSON *_465503 = cJSON_GetObjectItemCaseSensitive(home_services_vps_linksJSON, "465503");
     if (cJSON_IsNull(_465503)) {
@@ -133,14 +142,34 @@ home_services_vps_links_t *home_services_vps_links_parseFromJSON(cJSON *home_ser
     }
 
 
+    if (_465503 && !cJSON_IsNull(_465503)) _465503_local_str = strdup(_465503->valuestring);
+    if (_2500081 && !cJSON_IsNull(_2500081)) _2500081_local_str = strdup(_2500081->valuestring);
+    if (_2578866 && !cJSON_IsNull(_2578866)) _2578866_local_str = strdup(_2578866->valuestring);
+
     home_services_vps_links_local_var = home_services_vps_links_create_internal (
-        _465503 && !cJSON_IsNull(_465503) ? strdup(_465503->valuestring) : NULL,
-        _2500081 && !cJSON_IsNull(_2500081) ? strdup(_2500081->valuestring) : NULL,
-        _2578866 && !cJSON_IsNull(_2578866) ? strdup(_2578866->valuestring) : NULL
+        _465503_local_str,
+        _2500081_local_str,
+        _2578866_local_str
         );
+
+    if (!home_services_vps_links_local_var) {
+        goto end;
+    }
 
     return home_services_vps_links_local_var;
 end:
+    if (_465503_local_str) {
+        free(_465503_local_str);
+        _465503_local_str = NULL;
+    }
+    if (_2500081_local_str) {
+        free(_2500081_local_str);
+        _2500081_local_str = NULL;
+    }
+    if (_2578866_local_str) {
+        free(_2578866_local_str);
+        _2578866_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -12,78 +12,84 @@
 
 
 /**
- * An email record
- * @param id internal db id
- * @param id mail id
- * @param from from address
- * @param to to address
- * @param subject email subject
- * @param messageId message id
- * @param created creation date
- * @param time creation timestamp
- * @param user user account
- * @param transtype transaction type
- * @param origin origin ip
- * @param &#x60;interface&#x60; interface name
- * @param sendingZone sending zone
- * @param bodySize email body size in bytes
- * @param seq index of email in the to adderess list
- * @param recipient to address this email is being sent to
- * @param domain to address domain
- * @param locked locked status
- * @param lockTime lock timestamp
- * @param assigned assigned server
- * @param queued queued timestamp
- * @param mxHostname mx hostname
- * @param response mail delivery response
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
+ * @param id Internal auto-increment database row ID.
+ * @param id The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
+ * @param from SMTP envelope `MAIL FROM` address.
+ * @param to SMTP envelope `RCPT TO` address.
+ * @param subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+ * @param messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+ * @param created Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
+ * @param time Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
+ * @param user The SMTP AUTH username used to submit the message (e.g. `mb5658`).
+ * @param transtype SMTP transaction type negotiated with the relay.
+ * @param origin IP address of the client that submitted the message to the relay.
+ * @param &#x60;interface&#x60; Relay interface name that accepted the message.
+ * @param sendingZone The sending zone assigned by the relay for outbound delivery.
+ * @param bodySize Size of the message body in bytes.
+ * @param seq Sequence index of this recipient in a multi-recipient message. Starts at 1.
+ * @param delivered Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+ * @param code The SMTP response code from the destination MX server (e.g. `250`).
+ * @param recipient The specific recipient address this delivery record is for.
+ * @param response The full SMTP response string received from the destination MX server.
+ * @param domain The destination domain for this delivery attempt.
+ * @param locked Whether the queue entry is currently locked for delivery processing.
+ * @param lockTime Millisecond-precision timestamp of the last queue lock acquisition.
+ * @param assigned The relay server node assigned to deliver this message.
+ * @param queued ISO 8601 timestamp when the message was placed into the delivery queue.
+ * @param mxHostname The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
  */
 data class MailLogEntry (
 
-    /* internal db id */
+    /* Internal auto-increment database row ID. */
     val id: kotlin.Int,
-    /* mail id */
+    /* The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. */
     val id: kotlin.String,
-    /* from address */
+    /* SMTP envelope `MAIL FROM` address. */
     val from: kotlin.String,
-    /* to address */
+    /* SMTP envelope `RCPT TO` address. */
     val to: kotlin.String,
-    /* email subject */
-    val subject: kotlin.String,
-    /* message id */
+    /* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. */
+    val subject: kotlin.String? = null,
+    /* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. */
     val messageId: kotlin.String? = null,
-    /* creation date */
+    /* Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. */
     val created: kotlin.String,
-    /* creation timestamp */
+    /* Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. */
     val time: kotlin.Int,
-    /* user account */
+    /* The SMTP AUTH username used to submit the message (e.g. `mb5658`). */
     val user: kotlin.String,
-    /* transaction type */
+    /* SMTP transaction type negotiated with the relay. */
     val transtype: kotlin.String,
-    /* origin ip */
+    /* IP address of the client that submitted the message to the relay. */
     val origin: kotlin.String,
-    /* interface name */
+    /* Relay interface name that accepted the message. */
     val `interface`: kotlin.String,
-    /* sending zone */
-    val sendingZone: kotlin.String,
-    /* email body size in bytes */
-    val bodySize: kotlin.Int,
-    /* index of email in the to adderess list */
-    val seq: kotlin.Int,
-    /* to address this email is being sent to */
-    val recipient: kotlin.String,
-    /* to address domain */
-    val domain: kotlin.String,
-    /* locked status */
-    val locked: kotlin.Int,
-    /* lock timestamp */
-    val lockTime: kotlin.Int,
-    /* assigned server */
-    val assigned: kotlin.String,
-    /* queued timestamp */
-    val queued: kotlin.String,
-    /* mx hostname */
-    val mxHostname: kotlin.String,
-    /* mail delivery response */
-    val response: kotlin.String
+    /* The sending zone assigned by the relay for outbound delivery. */
+    val sendingZone: kotlin.String? = null,
+    /* Size of the message body in bytes. */
+    val bodySize: kotlin.Int? = null,
+    /* Sequence index of this recipient in a multi-recipient message. Starts at 1. */
+    val seq: kotlin.Int? = null,
+    /* Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted. */
+    val delivered: kotlin.Int? = null,
+    /* The SMTP response code from the destination MX server (e.g. `250`). */
+    val code: kotlin.Int? = null,
+    /* The specific recipient address this delivery record is for. */
+    val recipient: kotlin.String? = null,
+    /* The full SMTP response string received from the destination MX server. */
+    val response: kotlin.String? = null,
+    /* The destination domain for this delivery attempt. */
+    val domain: kotlin.String? = null,
+    /* Whether the queue entry is currently locked for delivery processing. */
+    val locked: kotlin.Int? = null,
+    /* Millisecond-precision timestamp of the last queue lock acquisition. */
+    val lockTime: kotlin.String? = null,
+    /* The relay server node assigned to deliver this message. */
+    val assigned: kotlin.String? = null,
+    /* ISO 8601 timestamp when the message was placed into the delivery queue. */
+    val queued: kotlin.String? = null,
+    /* The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. */
+    val mxHostname: kotlin.String? = null
 ) {
 }

@@ -25,7 +25,7 @@ typedef struct backup_order_post_response_cj_params_t {
     char *type; // string
     char *item1; // string
     char *amt1; // string
-    int qty1; //numeric
+    int *qty1; //numeric
     char *currency; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -38,7 +38,7 @@ __attribute__((deprecated)) backup_order_post_response_cj_params_t *backup_order
     char *type,
     char *item1,
     char *amt1,
-    int qty1,
+    int *qty1,
     char *currency
 );
 

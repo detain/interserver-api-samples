@@ -1,4 +1,4 @@
-# # CreateFilter400Response
+# CreateFilter400Response
 
 ## Properties
 

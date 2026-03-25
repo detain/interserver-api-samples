@@ -48,10 +48,8 @@ class WebsitesOrderPackages {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebsitesOrderPackages[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebsitesOrderPackages[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'11447'), 'Required key "WebsitesOrderPackages[11447]" is missing from JSON.');
+        assert(json[r'11447'] != null, 'Required key "WebsitesOrderPackages[11447]" has a null value in JSON.');
         return true;
       }());
 

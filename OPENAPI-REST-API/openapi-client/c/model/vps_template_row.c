@@ -20,6 +20,8 @@ static vps_template_row_t *vps_template_row_create_internal(
     if (!vps_template_row_local_var) {
         return NULL;
     }
+    memset(vps_template_row_local_var, 0, sizeof(vps_template_row_t));
+    vps_template_row_local_var->_library_owned = 1;
     vps_template_row_local_var->template_id = template_id;
     vps_template_row_local_var->template_type = template_type;
     vps_template_row_local_var->template_os = template_os;
@@ -29,8 +31,6 @@ static vps_template_row_t *vps_template_row_create_internal(
     vps_template_row_local_var->template_available = template_available;
     vps_template_row_local_var->template_name = template_name;
     vps_template_row_local_var->template_dir = template_dir;
-
-    vps_template_row_local_var->_library_owned = 1;
     return vps_template_row_local_var;
 }
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) vps_template_row_t *vps_template_row_create(
     char *template_name,
     char *template_dir
     ) {
-    return vps_template_row_create_internal (
+    vps_template_row_t *result = vps_template_row_create_internal (
         template_id,
         template_type,
         template_os,
@@ -56,6 +56,9 @@ __attribute__((deprecated)) vps_template_row_t *vps_template_row_create(
         template_name,
         template_dir
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_template_row_free(vps_template_row_t *vps_template_row) {
@@ -192,6 +195,24 @@ vps_template_row_t *vps_template_row_parseFromJSON(cJSON *vps_template_rowJSON){
 
     vps_template_row_t *vps_template_row_local_var = NULL;
 
+    char *template_id_local_str = NULL;
+
+    char *template_type_local_str = NULL;
+
+    char *template_os_local_str = NULL;
+
+    char *template_version_local_str = NULL;
+
+    char *template_bits_local_str = NULL;
+
+    char *template_file_local_str = NULL;
+
+    char *template_available_local_str = NULL;
+
+    char *template_name_local_str = NULL;
+
+    char *template_dir_local_str = NULL;
+
     // vps_template_row->template_id
     cJSON *template_id = cJSON_GetObjectItemCaseSensitive(vps_template_rowJSON, "template_id");
     if (cJSON_IsNull(template_id)) {
@@ -301,20 +322,70 @@ vps_template_row_t *vps_template_row_parseFromJSON(cJSON *vps_template_rowJSON){
     }
 
 
+    if (template_id && !cJSON_IsNull(template_id)) template_id_local_str = strdup(template_id->valuestring);
+    if (template_type && !cJSON_IsNull(template_type)) template_type_local_str = strdup(template_type->valuestring);
+    if (template_os && !cJSON_IsNull(template_os)) template_os_local_str = strdup(template_os->valuestring);
+    if (template_version && !cJSON_IsNull(template_version)) template_version_local_str = strdup(template_version->valuestring);
+    if (template_bits && !cJSON_IsNull(template_bits)) template_bits_local_str = strdup(template_bits->valuestring);
+    if (template_file && !cJSON_IsNull(template_file)) template_file_local_str = strdup(template_file->valuestring);
+    if (template_available && !cJSON_IsNull(template_available)) template_available_local_str = strdup(template_available->valuestring);
+    if (template_name && !cJSON_IsNull(template_name)) template_name_local_str = strdup(template_name->valuestring);
+    if (template_dir && !cJSON_IsNull(template_dir)) template_dir_local_str = strdup(template_dir->valuestring);
+
     vps_template_row_local_var = vps_template_row_create_internal (
-        template_id && !cJSON_IsNull(template_id) ? strdup(template_id->valuestring) : NULL,
-        template_type && !cJSON_IsNull(template_type) ? strdup(template_type->valuestring) : NULL,
-        template_os && !cJSON_IsNull(template_os) ? strdup(template_os->valuestring) : NULL,
-        template_version && !cJSON_IsNull(template_version) ? strdup(template_version->valuestring) : NULL,
-        template_bits && !cJSON_IsNull(template_bits) ? strdup(template_bits->valuestring) : NULL,
-        template_file && !cJSON_IsNull(template_file) ? strdup(template_file->valuestring) : NULL,
-        template_available && !cJSON_IsNull(template_available) ? strdup(template_available->valuestring) : NULL,
-        template_name && !cJSON_IsNull(template_name) ? strdup(template_name->valuestring) : NULL,
-        template_dir && !cJSON_IsNull(template_dir) ? strdup(template_dir->valuestring) : NULL
+        template_id_local_str,
+        template_type_local_str,
+        template_os_local_str,
+        template_version_local_str,
+        template_bits_local_str,
+        template_file_local_str,
+        template_available_local_str,
+        template_name_local_str,
+        template_dir_local_str
         );
+
+    if (!vps_template_row_local_var) {
+        goto end;
+    }
 
     return vps_template_row_local_var;
 end:
+    if (template_id_local_str) {
+        free(template_id_local_str);
+        template_id_local_str = NULL;
+    }
+    if (template_type_local_str) {
+        free(template_type_local_str);
+        template_type_local_str = NULL;
+    }
+    if (template_os_local_str) {
+        free(template_os_local_str);
+        template_os_local_str = NULL;
+    }
+    if (template_version_local_str) {
+        free(template_version_local_str);
+        template_version_local_str = NULL;
+    }
+    if (template_bits_local_str) {
+        free(template_bits_local_str);
+        template_bits_local_str = NULL;
+    }
+    if (template_file_local_str) {
+        free(template_file_local_str);
+        template_file_local_str = NULL;
+    }
+    if (template_available_local_str) {
+        free(template_available_local_str);
+        template_available_local_str = NULL;
+    }
+    if (template_name_local_str) {
+        free(template_name_local_str);
+        template_name_local_str = NULL;
+    }
+    if (template_dir_local_str) {
+        free(template_dir_local_str);
+        template_dir_local_str = NULL;
+    }
     return NULL;
 
 }

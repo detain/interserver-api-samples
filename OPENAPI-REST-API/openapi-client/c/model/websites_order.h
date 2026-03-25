@@ -27,10 +27,10 @@ typedef struct websites_order_t websites_order_t;
 typedef struct websites_order_t {
     char *step; // string
     char *website; // string
-    int period; //numeric
-    int service_offer_id; //numeric
+    int *period; //numeric
+    int *service_offer_id; //numeric
     struct websites_order_packages_t *packages; //model
-    int enable_domain_registering; //boolean
+    int *enable_domain_registering; //boolean
     struct websites_order_json_services_t *json_services; //model
     struct websites_order_json_service_offers_t *json_service_offers; //model
     struct websites_order_service_types_t *service_types; //model
@@ -43,10 +43,10 @@ typedef struct websites_order_t {
 __attribute__((deprecated)) websites_order_t *websites_order_create(
     char *step,
     char *website,
-    int period,
-    int service_offer_id,
+    int *period,
+    int *service_offer_id,
     websites_order_packages_t *packages,
-    int enable_domain_registering,
+    int *enable_domain_registering,
     websites_order_json_services_t *json_services,
     websites_order_json_service_offers_t *json_service_offers,
     websites_order_service_types_t *service_types,

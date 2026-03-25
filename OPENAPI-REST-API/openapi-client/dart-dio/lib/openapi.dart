@@ -404,6 +404,7 @@ export 'package:openapi/src/model/url_request.dart';
 export 'package:openapi/src/model/vps_cancel200_response.dart';
 export 'package:openapi/src/model/vps_traffic_data_data_section_response.dart';
 export 'package:openapi/src/model/vps_traffic_data_data_section_response_inner.dart';
+export 'package:openapi/src/model/view_mail_log_start_date_parameter.dart';
 export 'package:openapi/src/model/view_ticket_response.dart';
 export 'package:openapi/src/model/vps.dart';
 export 'package:openapi/src/model/vps_backup_row.dart';

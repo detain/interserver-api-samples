@@ -1,4 +1,4 @@
-# # CancelDomain200Response
+# CancelDomain200Response
 
 ## Properties
 

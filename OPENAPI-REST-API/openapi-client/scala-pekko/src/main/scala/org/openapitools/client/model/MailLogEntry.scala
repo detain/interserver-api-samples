@@ -14,51 +14,55 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class MailLogEntry (
-  /* internal db id */
+  /* Internal auto-increment database row ID. */
   _id: Int,
-  /* mail id */
+  /* The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. */
   id: String,
-  /* from address */
+  /* SMTP envelope `MAIL FROM` address. */
   from: String,
-  /* to address */
+  /* SMTP envelope `RCPT TO` address. */
   to: String,
-  /* email subject */
-  subject: String,
-  /* creation date */
+  /* Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. */
   created: String,
-  /* creation timestamp */
+  /* Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. */
   time: Int,
-  /* user account */
+  /* The SMTP AUTH username used to submit the message (e.g. `mb5658`). */
   user: String,
-  /* transaction type */
+  /* SMTP transaction type negotiated with the relay. */
   transtype: String,
-  /* origin ip */
+  /* IP address of the client that submitted the message to the relay. */
   origin: String,
-  /* interface name */
+  /* Relay interface name that accepted the message. */
   interface: String,
-  /* sending zone */
-  sendingZone: String,
-  /* email body size in bytes */
-  bodySize: Int,
-  /* index of email in the to adderess list */
-  seq: Int,
-  /* to address this email is being sent to */
-  recipient: String,
-  /* to address domain */
-  domain: String,
-  /* locked status */
-  locked: Int,
-  /* lock timestamp */
-  lockTime: Int,
-  /* assigned server */
-  assigned: String,
-  /* queued timestamp */
-  queued: String,
-  /* mx hostname */
-  mxHostname: String,
-  /* mail delivery response */
-  response: String,
-  /* message id */
-  messageId: Option[String] = None
+  /* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. */
+  subject: Option[String] = None,
+  /* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. */
+  messageId: Option[String] = None,
+  /* The sending zone assigned by the relay for outbound delivery. */
+  sendingZone: Option[String] = None,
+  /* Size of the message body in bytes. */
+  bodySize: Option[Int] = None,
+  /* Sequence index of this recipient in a multi-recipient message. Starts at 1. */
+  seq: Option[Int] = None,
+  /* Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted. */
+  delivered: Option[Int] = None,
+  /* The SMTP response code from the destination MX server (e.g. `250`). */
+  code: Option[Int] = None,
+  /* The specific recipient address this delivery record is for. */
+  recipient: Option[String] = None,
+  /* The full SMTP response string received from the destination MX server. */
+  response: Option[String] = None,
+  /* The destination domain for this delivery attempt. */
+  domain: Option[String] = None,
+  /* Whether the queue entry is currently locked for delivery processing. */
+  locked: Option[Int] = None,
+  /* Millisecond-precision timestamp of the last queue lock acquisition. */
+  lockTime: Option[String] = None,
+  /* The relay server node assigned to deliver this message. */
+  assigned: Option[String] = None,
+  /* ISO 8601 timestamp when the message was placed into the delivery queue. */
+  queued: Option[String] = None,
+  /* The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. */
+  mxHostname: Option[String] = None
 ) extends ApiModel
 

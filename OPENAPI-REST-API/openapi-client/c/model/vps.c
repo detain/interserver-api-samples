@@ -17,8 +17,8 @@ static vps_t *vps_create_internal(
     vps_extra_info_tables_t *extra_info_tables,
     char *module,
     char *token,
-    int da_link,
-    int sr_link,
+    int *da_link,
+    int *sr_link,
     vps_cp_data_t *cp_data,
     vps_da_data_t *da_data,
     vps_plesk12_data_t *plesk12_data,
@@ -30,6 +30,8 @@ static vps_t *vps_create_internal(
     if (!vps_local_var) {
         return NULL;
     }
+    memset(vps_local_var, 0, sizeof(vps_t));
+    vps_local_var->_library_owned = 1;
     vps_local_var->service_info = service_info;
     vps_local_var->client_links = client_links;
     vps_local_var->billing_details = billing_details;
@@ -49,8 +51,6 @@ static vps_t *vps_create_internal(
     vps_local_var->service_addons = service_addons;
     vps_local_var->os_template = os_template;
     vps_local_var->cpu_graph_data = cpu_graph_data;
-
-    vps_local_var->_library_owned = 1;
     return vps_local_var;
 }
 
@@ -66,8 +66,8 @@ __attribute__((deprecated)) vps_t *vps_create(
     vps_extra_info_tables_t *extra_info_tables,
     char *module,
     char *token,
-    int da_link,
-    int sr_link,
+    int *da_link,
+    int *sr_link,
     vps_cp_data_t *cp_data,
     vps_da_data_t *da_data,
     vps_plesk12_data_t *plesk12_data,
@@ -75,7 +75,17 @@ __attribute__((deprecated)) vps_t *vps_create(
     char *os_template,
     any_type_t *cpu_graph_data
     ) {
-    return vps_create_internal (
+    int *da_link_copy = NULL;
+    if (da_link) {
+        da_link_copy = malloc(sizeof(int));
+        if (da_link_copy) *da_link_copy = *da_link;
+    }
+    int *sr_link_copy = NULL;
+    if (sr_link) {
+        sr_link_copy = malloc(sizeof(int));
+        if (sr_link_copy) *sr_link_copy = *sr_link;
+    }
+    vps_t *result = vps_create_internal (
         service_info,
         client_links,
         billing_details,
@@ -87,8 +97,8 @@ __attribute__((deprecated)) vps_t *vps_create(
         extra_info_tables,
         module,
         token,
-        da_link,
-        sr_link,
+        da_link_copy,
+        sr_link_copy,
         cp_data,
         da_data,
         plesk12_data,
@@ -96,6 +106,11 @@ __attribute__((deprecated)) vps_t *vps_create(
         os_template,
         cpu_graph_data
         );
+    if (!result) {
+        free(da_link_copy);
+        free(sr_link_copy);
+    }
+    return result;
 }
 
 void vps_free(vps_t *vps) {
@@ -153,6 +168,14 @@ void vps_free(vps_t *vps) {
     if (vps->token) {
         free(vps->token);
         vps->token = NULL;
+    }
+    if (vps->da_link) {
+        free(vps->da_link);
+        vps->da_link = NULL;
+    }
+    if (vps->sr_link) {
+        free(vps->sr_link);
+        vps->sr_link = NULL;
     }
     if (vps->cp_data) {
         vps_cp_data_free(vps->cp_data);
@@ -324,7 +347,7 @@ cJSON *vps_convertToJSON(vps_t *vps) {
     if (!vps->da_link) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "da_link", vps->da_link) == NULL) {
+    if(cJSON_AddNumberToObject(item, "da_link", *vps->da_link) == NULL) {
     goto fail; //Numeric
     }
 
@@ -333,7 +356,7 @@ cJSON *vps_convertToJSON(vps_t *vps) {
     if (!vps->sr_link) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "sr_link", vps->sr_link) == NULL) {
+    if(cJSON_AddNumberToObject(item, "sr_link", *vps->sr_link) == NULL) {
     goto fail; //Numeric
     }
 
@@ -435,14 +458,30 @@ vps_t *vps_parseFromJSON(cJSON *vpsJSON){
     // define the local variable for vps->billing_details
     vps_billing_details_t *billing_details_local_nonprim = NULL;
 
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
     // define the local variable for vps->service_master
     vps_service_master_t *service_master_local_nonprim = NULL;
+
+    char *package_local_str = NULL;
 
     // define the local variable for vps->service_extra
     vps_service_extra_t *service_extra_local_nonprim = NULL;
 
     // define the local variable for vps->extra_info_tables
     vps_extra_info_tables_t *extra_info_tables_local_nonprim = NULL;
+
+    char *module_local_str = NULL;
+
+    char *token_local_str = NULL;
+
+    // define the local variable for vps->da_link
+    int *da_link_local_var = NULL;
+
+    // define the local variable for vps->sr_link
+    int *sr_link_local_var = NULL;
 
     // define the local variable for vps->cp_data
     vps_cp_data_t *cp_data_local_nonprim = NULL;
@@ -455,6 +494,8 @@ vps_t *vps_parseFromJSON(cJSON *vpsJSON){
 
     // define the local variable for vps->service_addons
     vps_service_addons_t *service_addons_local_nonprim = NULL;
+
+    char *os_template_local_str = NULL;
 
     // define the local variable for vps->cpu_graph_data
     _t *cpu_graph_data_local_nonprim = NULL;
@@ -635,6 +676,12 @@ vps_t *vps_parseFromJSON(cJSON *vpsJSON){
     {
     goto end; //Numeric
     }
+    da_link_local_var = malloc(sizeof(int));
+    if(!da_link_local_var)
+    {
+        goto end;
+    }
+    *da_link_local_var = da_link->valuedouble;
 
     // vps->sr_link
     cJSON *sr_link = cJSON_GetObjectItemCaseSensitive(vpsJSON, "sr_link");
@@ -650,6 +697,12 @@ vps_t *vps_parseFromJSON(cJSON *vpsJSON){
     {
     goto end; //Numeric
     }
+    sr_link_local_var = malloc(sizeof(int));
+    if(!sr_link_local_var)
+    {
+        goto end;
+    }
+    *sr_link_local_var = sr_link->valuedouble;
 
     // vps->cp_data
     cJSON *cp_data = cJSON_GetObjectItemCaseSensitive(vpsJSON, "cp_data");
@@ -721,27 +774,38 @@ vps_t *vps_parseFromJSON(cJSON *vpsJSON){
     }
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+    if (module && !cJSON_IsNull(module)) module_local_str = strdup(module->valuestring);
+    if (token && !cJSON_IsNull(token)) token_local_str = strdup(token->valuestring);
+    if (os_template && !cJSON_IsNull(os_template)) os_template_local_str = strdup(os_template->valuestring);
+
     vps_local_var = vps_create_internal (
         service_info_local_nonprim,
         client_linksList,
         billing_details_local_nonprim,
-        strdup(cust_currency->valuestring),
-        strdup(cust_currency_symbol->valuestring),
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
         service_master_local_nonprim,
-        strdup(package->valuestring),
+        package_local_str,
         service_extra_local_nonprim,
         extra_info_tables_local_nonprim,
-        strdup(module->valuestring),
-        strdup(token->valuestring),
-        da_link->valuedouble,
-        sr_link->valuedouble,
+        module_local_str,
+        token_local_str,
+        da_link_local_var,
+        sr_link_local_var,
         cp_data_local_nonprim,
         da_data_local_nonprim,
         plesk12_data_local_nonprim,
         service_addons_local_nonprim,
-        os_template && !cJSON_IsNull(os_template) ? strdup(os_template->valuestring) : NULL,
+        os_template_local_str,
         cpu_graph_data ? cpu_graph_data_local_nonprim : NULL
         );
+
+    if (!vps_local_var) {
+        goto end;
+    }
 
     return vps_local_var;
 end:
@@ -762,9 +826,21 @@ end:
         vps_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
     }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
     if (service_master_local_nonprim) {
         vps_service_master_free(service_master_local_nonprim);
         service_master_local_nonprim = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
     }
     if (service_extra_local_nonprim) {
         vps_service_extra_free(service_extra_local_nonprim);
@@ -773,6 +849,22 @@ end:
     if (extra_info_tables_local_nonprim) {
         vps_extra_info_tables_free(extra_info_tables_local_nonprim);
         extra_info_tables_local_nonprim = NULL;
+    }
+    if (module_local_str) {
+        free(module_local_str);
+        module_local_str = NULL;
+    }
+    if (token_local_str) {
+        free(token_local_str);
+        token_local_str = NULL;
+    }
+    if (da_link_local_var) {
+        free(da_link_local_var);
+        da_link_local_var = NULL;
+    }
+    if (sr_link_local_var) {
+        free(sr_link_local_var);
+        sr_link_local_var = NULL;
     }
     if (cp_data_local_nonprim) {
         vps_cp_data_free(cp_data_local_nonprim);
@@ -789,6 +881,10 @@ end:
     if (service_addons_local_nonprim) {
         vps_service_addons_free(service_addons_local_nonprim);
         service_addons_local_nonprim = NULL;
+    }
+    if (os_template_local_str) {
+        free(os_template_local_str);
+        os_template_local_str = NULL;
     }
     if (cpu_graph_data_local_nonprim) {
         _free(cpu_graph_data_local_nonprim);

@@ -11,146 +11,158 @@
  */
 
 /**
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  */
 public class OASMailLogEntry implements OAS.MappedProperties {
     /**
-     * internal db id
+     * Internal auto-increment database row ID.
      * @return id
      */
     public Integer id { get; set; }
 
     /**
-     * mail id
+     * The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
      * @return id
      */
     public String id { get; set; }
 
     /**
-     * from address
+     * SMTP envelope `MAIL FROM` address.
      * @return r_from
      */
     public String r_from { get; set; }
 
     /**
-     * to address
+     * SMTP envelope `RCPT TO` address.
      * @return to
      */
     public String to { get; set; }
 
     /**
-     * email subject
-     * @return subject
-     */
-    public String subject { get; set; }
-
-    /**
-     * creation date
+     * Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
      * @return created
      */
     public String created { get; set; }
 
     /**
-     * creation timestamp
+     * Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
      * @return r_time
      */
     public Integer r_time { get; set; }
 
     /**
-     * user account
+     * The SMTP AUTH username used to submit the message (e.g. `mb5658`).
      * @return user
      */
     public String user { get; set; }
 
     /**
-     * transaction type
+     * SMTP transaction type negotiated with the relay.
      * @return transtype
      */
     public String transtype { get; set; }
 
     /**
-     * origin ip
+     * IP address of the client that submitted the message to the relay.
      * @return origin
      */
     public String origin { get; set; }
 
     /**
-     * interface name
+     * Relay interface name that accepted the message.
      * @return r_interface
      */
     public String r_interface { get; set; }
 
     /**
-     * sending zone
+     * The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+     * @return subject
+     */
+    public String subject { get; set; }
+
+    /**
+     * The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+     * @return messageId
+     */
+    public String messageId { get; set; }
+
+    /**
+     * The sending zone assigned by the relay for outbound delivery.
      * @return sendingZone
      */
     public String sendingZone { get; set; }
 
     /**
-     * email body size in bytes
+     * Size of the message body in bytes.
      * @return bodySize
      */
     public Integer bodySize { get; set; }
 
     /**
-     * index of email in the to adderess list
+     * Sequence index of this recipient in a multi-recipient message. Starts at 1.
      * @return seq
      */
     public Integer seq { get; set; }
 
     /**
-     * to address this email is being sent to
+     * Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+     * @return delivered
+     */
+    public Integer delivered { get; set; }
+
+    /**
+     * The SMTP response code from the destination MX server (e.g. `250`).
+     * @return code
+     */
+    public Integer code { get; set; }
+
+    /**
+     * The specific recipient address this delivery record is for.
      * @return recipient
      */
     public String recipient { get; set; }
 
     /**
-     * to address domain
-     * @return domain
-     */
-    public String domain { get; set; }
-
-    /**
-     * locked status
-     * @return locked
-     */
-    public Integer locked { get; set; }
-
-    /**
-     * lock timestamp
-     * @return lockTime
-     */
-    public Integer lockTime { get; set; }
-
-    /**
-     * assigned server
-     * @return assigned
-     */
-    public String assigned { get; set; }
-
-    /**
-     * queued timestamp
-     * @return queued
-     */
-    public String queued { get; set; }
-
-    /**
-     * mx hostname
-     * @return mxHostname
-     */
-    public String mxHostname { get; set; }
-
-    /**
-     * mail delivery response
+     * The full SMTP response string received from the destination MX server.
      * @return response
      */
     public String response { get; set; }
 
     /**
-     * message id
-     * @return messageId
+     * The destination domain for this delivery attempt.
+     * @return domain
      */
-    public String messageId { get; set; }
+    public String domain { get; set; }
+
+    /**
+     * Whether the queue entry is currently locked for delivery processing.
+     * @return locked
+     */
+    public Integer locked { get; set; }
+
+    /**
+     * Millisecond-precision timestamp of the last queue lock acquisition.
+     * @return lockTime
+     */
+    public String lockTime { get; set; }
+
+    /**
+     * The relay server node assigned to deliver this message.
+     * @return assigned
+     */
+    public String assigned { get; set; }
+
+    /**
+     * ISO 8601 timestamp when the message was placed into the delivery queue.
+     * @return queued
+     */
+    public String queued { get; set; }
+
+    /**
+     * The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+     * @return mxHostname
+     */
+    public String mxHostname { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         '_id' => 'id',
@@ -202,25 +214,27 @@ public class OASMailLogEntry implements OAS.MappedProperties {
           mailLogEntry.id = '17c7eda538e0005d03';
           mailLogEntry.r_from = 'person@mysite.com';
           mailLogEntry.to = 'client@isp.com';
-          mailLogEntry.subject = 'sell 0.005 shares';
           mailLogEntry.created = '2021-10-14 08:50:10';
           mailLogEntry.r_time = 1634215809;
           mailLogEntry.user = 'mb5658';
           mailLogEntry.transtype = 'ESMTPSA';
           mailLogEntry.origin = '199.231.189.154';
           mailLogEntry.r_interface = 'feeder';
+          mailLogEntry.subject = 'sell 0.005 shares';
+          mailLogEntry.messageId = '<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>';
           mailLogEntry.sendingZone = 'interserver';
           mailLogEntry.bodySize = 63;
           mailLogEntry.seq = 1;
+          mailLogEntry.delivered = 1;
+          mailLogEntry.code = 250;
           mailLogEntry.recipient = 'client@isp.com';
+          mailLogEntry.response = '250 2.0.0 Ok queued as C91D83E128C';
           mailLogEntry.domain = 'interserver.net';
           mailLogEntry.locked = 1;
-          mailLogEntry.lockTime = 1634215818533;
+          mailLogEntry.lockTime = '1634215818533';
           mailLogEntry.assigned = 'relay1';
           mailLogEntry.queued = '2021-10-14T12:50:15.487Z';
           mailLogEntry.mxHostname = 'mx.j.is.cc';
-          mailLogEntry.response = '250 2.0.0 Ok queued as C91D83E128C';
-          mailLogEntry.messageId = '<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>';
         return mailLogEntry;
     }
 
@@ -231,25 +245,27 @@ public class OASMailLogEntry implements OAS.MappedProperties {
                 && this.id == mailLogEntry.id
                 && this.r_from == mailLogEntry.r_from
                 && this.to == mailLogEntry.to
-                && this.subject == mailLogEntry.subject
                 && this.created == mailLogEntry.created
                 && this.r_time == mailLogEntry.r_time
                 && this.user == mailLogEntry.user
                 && this.transtype == mailLogEntry.transtype
                 && this.origin == mailLogEntry.origin
                 && this.r_interface == mailLogEntry.r_interface
+                && this.subject == mailLogEntry.subject
+                && this.messageId == mailLogEntry.messageId
                 && this.sendingZone == mailLogEntry.sendingZone
                 && this.bodySize == mailLogEntry.bodySize
                 && this.seq == mailLogEntry.seq
+                && this.delivered == mailLogEntry.delivered
+                && this.code == mailLogEntry.code
                 && this.recipient == mailLogEntry.recipient
+                && this.response == mailLogEntry.response
                 && this.domain == mailLogEntry.domain
                 && this.locked == mailLogEntry.locked
                 && this.lockTime == mailLogEntry.lockTime
                 && this.assigned == mailLogEntry.assigned
                 && this.queued == mailLogEntry.queued
-                && this.mxHostname == mailLogEntry.mxHostname
-                && this.response == mailLogEntry.response
-                && this.messageId == mailLogEntry.messageId;
+                && this.mxHostname == mailLogEntry.mxHostname;
         }
         return false;
     }
@@ -260,25 +276,27 @@ public class OASMailLogEntry implements OAS.MappedProperties {
         hashCode = (17 * hashCode) + (id == null ? 0 : System.hashCode(id));
         hashCode = (17 * hashCode) + (r_from == null ? 0 : System.hashCode(r_from));
         hashCode = (17 * hashCode) + (to == null ? 0 : System.hashCode(to));
-        hashCode = (17 * hashCode) + (subject == null ? 0 : System.hashCode(subject));
         hashCode = (17 * hashCode) + (created == null ? 0 : System.hashCode(created));
         hashCode = (17 * hashCode) + (r_time == null ? 0 : System.hashCode(r_time));
         hashCode = (17 * hashCode) + (user == null ? 0 : System.hashCode(user));
         hashCode = (17 * hashCode) + (transtype == null ? 0 : System.hashCode(transtype));
         hashCode = (17 * hashCode) + (origin == null ? 0 : System.hashCode(origin));
         hashCode = (17 * hashCode) + (r_interface == null ? 0 : System.hashCode(r_interface));
+        hashCode = (17 * hashCode) + (subject == null ? 0 : System.hashCode(subject));
+        hashCode = (17 * hashCode) + (messageId == null ? 0 : System.hashCode(messageId));
         hashCode = (17 * hashCode) + (sendingZone == null ? 0 : System.hashCode(sendingZone));
         hashCode = (17 * hashCode) + (bodySize == null ? 0 : System.hashCode(bodySize));
         hashCode = (17 * hashCode) + (seq == null ? 0 : System.hashCode(seq));
+        hashCode = (17 * hashCode) + (delivered == null ? 0 : System.hashCode(delivered));
+        hashCode = (17 * hashCode) + (code == null ? 0 : System.hashCode(code));
         hashCode = (17 * hashCode) + (recipient == null ? 0 : System.hashCode(recipient));
+        hashCode = (17 * hashCode) + (response == null ? 0 : System.hashCode(response));
         hashCode = (17 * hashCode) + (domain == null ? 0 : System.hashCode(domain));
         hashCode = (17 * hashCode) + (locked == null ? 0 : System.hashCode(locked));
         hashCode = (17 * hashCode) + (lockTime == null ? 0 : System.hashCode(lockTime));
         hashCode = (17 * hashCode) + (assigned == null ? 0 : System.hashCode(assigned));
         hashCode = (17 * hashCode) + (queued == null ? 0 : System.hashCode(queued));
         hashCode = (17 * hashCode) + (mxHostname == null ? 0 : System.hashCode(mxHostname));
-        hashCode = (17 * hashCode) + (response == null ? 0 : System.hashCode(response));
-        hashCode = (17 * hashCode) + (messageId == null ? 0 : System.hashCode(messageId));
         return hashCode;
     }
 }

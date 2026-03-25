@@ -12,18 +12,21 @@ static backup_extra_info_tables_t *backup_extra_info_tables_create_internal(
     if (!backup_extra_info_tables_local_var) {
         return NULL;
     }
-    backup_extra_info_tables_local_var->ip_info = ip_info;
-
+    memset(backup_extra_info_tables_local_var, 0, sizeof(backup_extra_info_tables_t));
     backup_extra_info_tables_local_var->_library_owned = 1;
+    backup_extra_info_tables_local_var->ip_info = ip_info;
     return backup_extra_info_tables_local_var;
 }
 
 __attribute__((deprecated)) backup_extra_info_tables_t *backup_extra_info_tables_create(
     backup_ip_info_t *ip_info
     ) {
-    return backup_extra_info_tables_create_internal (
+    backup_extra_info_tables_t *result = backup_extra_info_tables_create_internal (
         ip_info
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void backup_extra_info_tables_free(backup_extra_info_tables_t *backup_extra_info_tables) {
@@ -82,9 +85,14 @@ backup_extra_info_tables_t *backup_extra_info_tables_parseFromJSON(cJSON *backup
     }
 
 
+
     backup_extra_info_tables_local_var = backup_extra_info_tables_create_internal (
         ip_info ? ip_info_local_nonprim : NULL
         );
+
+    if (!backup_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return backup_extra_info_tables_local_var;
 end:

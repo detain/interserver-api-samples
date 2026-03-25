@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHostnameObject::OAIHostnameObject(QString json) {
+OAIHostnameObject::OAIHostnameObject(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIHostnameObject::initializeModel() {
     m_hostname_isValid = false;
 }
 
-void OAIHostnameObject::fromJson(QString jsonString) {
+void OAIHostnameObject::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -21,26 +29,26 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
  *
- * @param total total number of mail log entries
- * @param skip number of emails skipped in listing
- * @param limit number of emails to return
+ * @param total Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
+ * @param skip The `skip` value used for this page (echoed from the request).
+ * @param limit The `limit` value used for this page (echoed from the request).
  * @param emails 
  */
 
 
 data class MailLog (
 
-    /* total number of mail log entries */
+    /* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
     @Json(name = "total")
     val total: kotlin.Int,
 
-    /* number of emails skipped in listing */
+    /* The `skip` value used for this page (echoed from the request). */
     @Json(name = "skip")
     val skip: kotlin.Int,
 
-    /* number of emails to return */
+    /* The `limit` value used for this page (echoed from the request). */
     @Json(name = "limit")
     val limit: kotlin.Int,
 

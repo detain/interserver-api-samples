@@ -53,10 +53,10 @@ class VpsTrafficHistoryResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsTrafficHistoryResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsTrafficHistoryResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'hour'), 'Required key "VpsTrafficHistoryResponse[hour]" is missing from JSON.');
+        assert(json[r'hour'] != null, 'Required key "VpsTrafficHistoryResponse[hour]" has a null value in JSON.');
+        assert(json.containsKey(r'day'), 'Required key "VpsTrafficHistoryResponse[day]" is missing from JSON.');
+        assert(json[r'day'] != null, 'Required key "VpsTrafficHistoryResponse[day]" has a null value in JSON.');
         return true;
       }());
 

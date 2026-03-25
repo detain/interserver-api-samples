@@ -1,4 +1,4 @@
-# # WebsiteServiceMaster
+# WebsiteServiceMaster
 
 ## Properties
 

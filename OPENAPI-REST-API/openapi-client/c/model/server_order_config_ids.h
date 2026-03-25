@@ -19,11 +19,11 @@ typedef struct server_order_config_ids_t server_order_config_ids_t;
 
 
 typedef struct server_order_config_ids_t {
-    int memory; //numeric
+    int *memory; //numeric
     char *bandwidth; // string
     char *ips; // string
     char *os; // string
-    int cp; //numeric
+    int *cp; //numeric
     char *raid; // string
     char *hd; // string
 
@@ -31,11 +31,11 @@ typedef struct server_order_config_ids_t {
 } server_order_config_ids_t;
 
 __attribute__((deprecated)) server_order_config_ids_t *server_order_config_ids_create(
-    int memory,
+    int *memory,
     char *bandwidth,
     char *ips,
     char *os,
-    int cp,
+    int *cp,
     char *raid,
     char *hd
 );

@@ -21,7 +21,7 @@ typedef struct server_order_cpu_t server_order_cpu_t;
 
 typedef struct server_order_cpu_t {
     char *id; // string
-    int price; //numeric
+    int *price; //numeric
     char *img; // string
     char *short_desc; // string
     char *long_desc; // string
@@ -35,7 +35,7 @@ typedef struct server_order_cpu_t {
     char *num_cores; // string
     char *num_cpus; // string
     char *benchmark; // string
-    int monthly_price; //numeric
+    int *monthly_price; //numeric
     char *max_ram; // string
     char *min_ram; // string
     char *max_lff; // string
@@ -51,7 +51,7 @@ typedef struct server_order_cpu_t {
 
 __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
@@ -65,7 +65,7 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *num_cores,
     char *num_cpus,
     char *benchmark,
-    int monthly_price,
+    int *monthly_price,
     char *max_ram,
     char *min_ram,
     char *max_lff,

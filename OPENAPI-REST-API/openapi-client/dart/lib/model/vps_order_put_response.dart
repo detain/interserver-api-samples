@@ -383,16 +383,14 @@ class VpsOrderPutResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsOrderPutResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsOrderPutResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return VpsOrderPutResponse(
         continue_: mapValueOfType<bool>(json, r'continue'),
-        errors: Object.listFromJson(json[r'errors']),
+        errors: json[r'errors'] is Iterable
+            ? (json[r'errors'] as Iterable).cast<Object>().toList(growable: false)
+            : const [],
         couponCode: mapValueOfType<int>(json, r'coupon_code'),
         serviceCost: mapValueOfType<int>(json, r'service_cost'),
         sliceCost: mapValueOfType<int>(json, r'slice_cost'),

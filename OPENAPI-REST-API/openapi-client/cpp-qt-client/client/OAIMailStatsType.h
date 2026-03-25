@@ -33,13 +33,13 @@ class OAIMailStatsType_volume;
 class OAIMailStatsType : public OAIObject {
 public:
     OAIMailStatsType();
-    OAIMailStatsType(QString json);
+    OAIMailStatsType(const QString &json);
     ~OAIMailStatsType() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getTime() const;
     void setTime(const QString &time);

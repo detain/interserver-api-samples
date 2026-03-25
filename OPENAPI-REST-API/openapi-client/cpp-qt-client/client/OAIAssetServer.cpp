@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAssetServer::OAIAssetServer(QString json) {
+OAIAssetServer::OAIAssetServer(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -59,7 +59,7 @@ void OAIAssetServer::initializeModel() {
     m_hd_isValid = false;
 }
 
-void OAIAssetServer::fromJson(QString jsonString) {
+void OAIAssetServer::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

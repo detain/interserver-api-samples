@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAffiliatePaymentSetup::OAIAffiliatePaymentSetup(QString json) {
+OAIAffiliatePaymentSetup::OAIAffiliatePaymentSetup(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIAffiliatePaymentSetup::initializeModel() {
     m_affiliate_payment_method_isValid = false;
 }
 
-void OAIAffiliatePaymentSetup::fromJson(QString jsonString) {
+void OAIAffiliatePaymentSetup::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

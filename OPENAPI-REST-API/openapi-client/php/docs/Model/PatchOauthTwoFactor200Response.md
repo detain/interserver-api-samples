@@ -1,4 +1,4 @@
-# # PatchOauthTwoFactor200Response
+# PatchOauthTwoFactor200Response
 
 ## Properties
 

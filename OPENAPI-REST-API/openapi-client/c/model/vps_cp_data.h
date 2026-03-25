@@ -20,14 +20,14 @@ typedef struct vps_cp_data_t vps_cp_data_t;
 
 typedef struct vps_cp_data_t {
     char *name; // string
-    int cost; //numeric
+    int *cost; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_cp_data_t;
 
 __attribute__((deprecated)) vps_cp_data_t *vps_cp_data_create(
     char *name,
-    int cost
+    int *cost
 );
 
 void vps_cp_data_free(vps_cp_data_t *vps_cp_data);

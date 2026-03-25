@@ -12,7 +12,7 @@
 /*
  * MailLogEntry.h
  *
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When &#x60;groupby&#x3D;recipient&#x60; each row represents one delivery attempt; when &#x60;groupby&#x3D;message&#x60; delivery fields reflect one arbitrary recipient.
  */
 
 #ifndef MailLogEntry_H_
@@ -44,7 +44,7 @@ class MailLogEntry : public oatpp::DTO {
   DTO_FIELD(oatpp::String, to);
 
   DTO_FIELD(oatpp::String, subject);
-
+  DTO_FIELD(oatpp::Boolean, subjectIsSet);
   DTO_FIELD(oatpp::String, messageId);
   DTO_FIELD(oatpp::Boolean, messageIdIsSet);
   DTO_FIELD(oatpp::String, created);
@@ -60,27 +60,31 @@ class MailLogEntry : public oatpp::DTO {
   DTO_FIELD(oatpp::String, interface);
 
   DTO_FIELD(oatpp::String, sendingZone);
-
+  DTO_FIELD(oatpp::Boolean, sendingZoneIsSet);
   DTO_FIELD(oatpp::Int32, bodySize);
-
+  DTO_FIELD(oatpp::Boolean, bodySizeIsSet);
   DTO_FIELD(oatpp::Int32, seq);
-
+  DTO_FIELD(oatpp::Boolean, seqIsSet);
+  DTO_FIELD(oatpp::Int32, delivered);
+  DTO_FIELD(oatpp::Boolean, deliveredIsSet);
+  DTO_FIELD(oatpp::Int32, code);
+  DTO_FIELD(oatpp::Boolean, codeIsSet);
   DTO_FIELD(oatpp::String, recipient);
-
-  DTO_FIELD(oatpp::String, domain);
-
-  DTO_FIELD(oatpp::Int32, locked);
-
-  DTO_FIELD(oatpp::Int32, lockTime);
-
-  DTO_FIELD(oatpp::String, assigned);
-
-  DTO_FIELD(oatpp::String, queued);
-
-  DTO_FIELD(oatpp::String, mxHostname);
-
+  DTO_FIELD(oatpp::Boolean, recipientIsSet);
   DTO_FIELD(oatpp::String, response);
-
+  DTO_FIELD(oatpp::Boolean, responseIsSet);
+  DTO_FIELD(oatpp::String, domain);
+  DTO_FIELD(oatpp::Boolean, domainIsSet);
+  DTO_FIELD(oatpp::Int32, locked);
+  DTO_FIELD(oatpp::Boolean, lockedIsSet);
+  DTO_FIELD(oatpp::String, lockTime);
+  DTO_FIELD(oatpp::Boolean, lockTimeIsSet);
+  DTO_FIELD(oatpp::String, assigned);
+  DTO_FIELD(oatpp::Boolean, assignedIsSet);
+  DTO_FIELD(oatpp::String, queued);
+  DTO_FIELD(oatpp::Boolean, queuedIsSet);
+  DTO_FIELD(oatpp::String, mxHostname);
+  DTO_FIELD(oatpp::Boolean, mxHostnameIsSet);
 
 };
 

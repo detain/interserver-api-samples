@@ -20,9 +20,9 @@ typedef struct place_scrub_order_201_response_order_details_t place_scrub_order_
 
 
 typedef struct place_scrub_order_201_response_order_details_t {
-    int total_cost; //numeric
-    int service_id; //numeric
-    int invoice_id; //numeric
+    int *total_cost; //numeric
+    int *service_id; //numeric
+    int *invoice_id; //numeric
     char *invoice_description; // string
     struct place_scrub_order_201_response_order_details_cj_params_t *cj_params; //model
 
@@ -30,9 +30,9 @@ typedef struct place_scrub_order_201_response_order_details_t {
 } place_scrub_order_201_response_order_details_t;
 
 __attribute__((deprecated)) place_scrub_order_201_response_order_details_t *place_scrub_order_201_response_order_details_create(
-    int total_cost,
-    int service_id,
-    int invoice_id,
+    int *total_cost,
+    int *service_id,
+    int *invoice_id,
     char *invoice_description,
     place_scrub_order_201_response_order_details_cj_params_t *cj_params
 );

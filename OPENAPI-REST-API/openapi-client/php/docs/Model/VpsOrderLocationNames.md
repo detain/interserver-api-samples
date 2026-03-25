@@ -1,4 +1,4 @@
-# # VpsOrderLocationNames
+# VpsOrderLocationNames
 
 ## Properties
 

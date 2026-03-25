@@ -123,10 +123,31 @@ class TicketsRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TicketsRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TicketsRow[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'title'), 'Required key "TicketsRow[title]" is missing from JSON.');
+        assert(json[r'title'] != null, 'Required key "TicketsRow[title]" has a null value in JSON.');
+        assert(json.containsKey(r'ticketmaskid'), 'Required key "TicketsRow[ticketmaskid]" is missing from JSON.');
+        assert(json[r'ticketmaskid'] != null, 'Required key "TicketsRow[ticketmaskid]" has a null value in JSON.');
+        assert(json.containsKey(r'lastreplier'), 'Required key "TicketsRow[lastreplier]" is missing from JSON.');
+        assert(json[r'lastreplier'] != null, 'Required key "TicketsRow[lastreplier]" has a null value in JSON.');
+        assert(json.containsKey(r'status'), 'Required key "TicketsRow[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "TicketsRow[status]" has a null value in JSON.');
+        assert(json.containsKey(r'priority'), 'Required key "TicketsRow[priority]" is missing from JSON.');
+        assert(json[r'priority'] != null, 'Required key "TicketsRow[priority]" has a null value in JSON.');
+        assert(json.containsKey(r'total_replies'), 'Required key "TicketsRow[total_replies]" is missing from JSON.');
+        assert(json[r'total_replies'] != null, 'Required key "TicketsRow[total_replies]" has a null value in JSON.');
+        assert(json.containsKey(r'lastactivity'), 'Required key "TicketsRow[lastactivity]" is missing from JSON.');
+        assert(json[r'lastactivity'] != null, 'Required key "TicketsRow[lastactivity]" has a null value in JSON.');
+        assert(json.containsKey(r'departmenttitle'), 'Required key "TicketsRow[departmenttitle]" is missing from JSON.');
+        assert(json[r'departmenttitle'] != null, 'Required key "TicketsRow[departmenttitle]" has a null value in JSON.');
+        assert(json.containsKey(r'ticketid'), 'Required key "TicketsRow[ticketid]" is missing from JSON.');
+        assert(json[r'ticketid'] != null, 'Required key "TicketsRow[ticketid]" has a null value in JSON.');
+        assert(json.containsKey(r'can_close'), 'Required key "TicketsRow[can_close]" is missing from JSON.');
+        assert(json[r'can_close'] != null, 'Required key "TicketsRow[can_close]" has a null value in JSON.');
+        assert(json.containsKey(r'attachments'), 'Required key "TicketsRow[attachments]" is missing from JSON.');
+        assert(json.containsKey(r'status_text'), 'Required key "TicketsRow[status_text]" is missing from JSON.');
+        assert(json[r'status_text'] != null, 'Required key "TicketsRow[status_text]" has a null value in JSON.');
+        assert(json.containsKey(r'checked'), 'Required key "TicketsRow[checked]" is missing from JSON.');
+        assert(json[r'checked'] != null, 'Required key "TicketsRow[checked]" has a null value in JSON.');
         return true;
       }());
 

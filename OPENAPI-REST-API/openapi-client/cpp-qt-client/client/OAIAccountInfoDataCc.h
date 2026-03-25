@@ -33,13 +33,13 @@ class OAIAccountInfoMaxMindResponse;
 class OAIAccountInfoDataCc : public OAIObject {
 public:
     OAIAccountInfoDataCc();
-    OAIAccountInfoDataCc(QString json);
+    OAIAccountInfoDataCc(const QString &json);
     ~OAIAccountInfoDataCc() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCc() const;
     void setCc(const QString &cc);

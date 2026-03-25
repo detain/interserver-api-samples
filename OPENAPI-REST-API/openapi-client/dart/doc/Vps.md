@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **plesk12Data** | [**VpsPlesk12Data**](VpsPlesk12Data.md) |  | 
 **serviceAddons** | [**VpsServiceAddons**](VpsServiceAddons.md) |  | 
 **osTemplate** | **String** |  | [optional] 
-**cpuGraphData** | [**Object**](.md) |  | [optional] 
+**cpuGraphData** | **Object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,4 +1,4 @@
-# # DownloadQsBackup200Response
+# DownloadQsBackup200Response
 
 ## Properties
 

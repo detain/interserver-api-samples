@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIIpLimitRange : public OAIObject {
 public:
     OAIIpLimitRange();
-    OAIIpLimitRange(QString json);
+    OAIIpLimitRange(const QString &json);
     ~OAIIpLimitRange() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getStart() const;
     void setStart(const QString &start);

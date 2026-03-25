@@ -12,18 +12,21 @@ static license_extra_info_tables_t *license_extra_info_tables_create_internal(
     if (!license_extra_info_tables_local_var) {
         return NULL;
     }
-    license_extra_info_tables_local_var->ip_info = ip_info;
-
+    memset(license_extra_info_tables_local_var, 0, sizeof(license_extra_info_tables_t));
     license_extra_info_tables_local_var->_library_owned = 1;
+    license_extra_info_tables_local_var->ip_info = ip_info;
     return license_extra_info_tables_local_var;
 }
 
 __attribute__((deprecated)) license_extra_info_tables_t *license_extra_info_tables_create(
     license_ip_info_t *ip_info
     ) {
-    return license_extra_info_tables_create_internal (
+    license_extra_info_tables_t *result = license_extra_info_tables_create_internal (
         ip_info
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void license_extra_info_tables_free(license_extra_info_tables_t *license_extra_info_tables) {
@@ -82,9 +85,14 @@ license_extra_info_tables_t *license_extra_info_tables_parseFromJSON(cJSON *lice
     }
 
 
+
     license_extra_info_tables_local_var = license_extra_info_tables_create_internal (
         ip_info ? ip_info_local_nonprim : NULL
         );
+
+    if (!license_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return license_extra_info_tables_local_var;
 end:

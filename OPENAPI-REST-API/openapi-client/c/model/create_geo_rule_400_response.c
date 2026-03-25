@@ -6,7 +6,7 @@
 
 
 static create_geo_rule_400_response_t *create_geo_rule_400_response_create_internal(
-    int success,
+    int *success,
     char *text,
     list_t *errors
     ) {
@@ -14,24 +14,33 @@ static create_geo_rule_400_response_t *create_geo_rule_400_response_create_inter
     if (!create_geo_rule_400_response_local_var) {
         return NULL;
     }
+    memset(create_geo_rule_400_response_local_var, 0, sizeof(create_geo_rule_400_response_t));
+    create_geo_rule_400_response_local_var->_library_owned = 1;
     create_geo_rule_400_response_local_var->success = success;
     create_geo_rule_400_response_local_var->text = text;
     create_geo_rule_400_response_local_var->errors = errors;
-
-    create_geo_rule_400_response_local_var->_library_owned = 1;
     return create_geo_rule_400_response_local_var;
 }
 
 __attribute__((deprecated)) create_geo_rule_400_response_t *create_geo_rule_400_response_create(
-    int success,
+    int *success,
     char *text,
     list_t *errors
     ) {
-    return create_geo_rule_400_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    create_geo_rule_400_response_t *result = create_geo_rule_400_response_create_internal (
+        success_copy,
         text,
         errors
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void create_geo_rule_400_response_free(create_geo_rule_400_response_t *create_geo_rule_400_response) {
@@ -43,6 +52,10 @@ void create_geo_rule_400_response_free(create_geo_rule_400_response_t *create_ge
         return ;
     }
     listEntry_t *listEntry;
+    if (create_geo_rule_400_response->success) {
+        free(create_geo_rule_400_response->success);
+        create_geo_rule_400_response->success = NULL;
+    }
     if (create_geo_rule_400_response->text) {
         free(create_geo_rule_400_response->text);
         create_geo_rule_400_response->text = NULL;
@@ -62,7 +75,7 @@ cJSON *create_geo_rule_400_response_convertToJSON(create_geo_rule_400_response_t
 
     // create_geo_rule_400_response->success
     if(create_geo_rule_400_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", create_geo_rule_400_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *create_geo_rule_400_response->success) == NULL) {
     goto fail; //Bool
     }
     }
@@ -104,6 +117,11 @@ create_geo_rule_400_response_t *create_geo_rule_400_response_parseFromJSON(cJSON
 
     create_geo_rule_400_response_t *create_geo_rule_400_response_local_var = NULL;
 
+    // define the local variable for create_geo_rule_400_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // define the local list for create_geo_rule_400_response->errors
     list_t *errorsList = NULL;
 
@@ -117,6 +135,12 @@ create_geo_rule_400_response_t *create_geo_rule_400_response_parseFromJSON(cJSON
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
     }
 
     // create_geo_rule_400_response->text
@@ -154,14 +178,28 @@ create_geo_rule_400_response_t *create_geo_rule_400_response_parseFromJSON(cJSON
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     create_geo_rule_400_response_local_var = create_geo_rule_400_response_create_internal (
-        success ? success->valueint : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
+        success_local_var,
+        text_local_str,
         errors ? errorsList : NULL
         );
 
+    if (!create_geo_rule_400_response_local_var) {
+        goto end;
+    }
+
     return create_geo_rule_400_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, errorsList) {

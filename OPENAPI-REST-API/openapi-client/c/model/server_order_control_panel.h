@@ -20,12 +20,12 @@ typedef struct server_order_control_panel_t server_order_control_panel_t;
 
 typedef struct server_order_control_panel_t {
     char *id; // string
-    int price; //numeric
+    int *price; //numeric
     char *img; // string
     char *short_desc; // string
     char *long_desc; // string
     char *os_type; // string
-    int monthly_price; //numeric
+    int *monthly_price; //numeric
     list_t *types; //primitive container
     char *price_display; // string
     char *monthly_price_display; // string
@@ -35,12 +35,12 @@ typedef struct server_order_control_panel_t {
 
 __attribute__((deprecated)) server_order_control_panel_t *server_order_control_panel_create(
     char *id,
-    int price,
+    int *price,
     char *img,
     char *short_desc,
     char *long_desc,
     char *os_type,
-    int monthly_price,
+    int *monthly_price,
     list_t *types,
     char *price_display,
     char *monthly_price_display

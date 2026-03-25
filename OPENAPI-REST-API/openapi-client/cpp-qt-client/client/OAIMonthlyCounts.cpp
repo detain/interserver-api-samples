@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMonthlyCounts::OAIMonthlyCounts(QString json) {
+OAIMonthlyCounts::OAIMonthlyCounts(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIMonthlyCounts::initializeModel() {
 
 }
 
-void OAIMonthlyCounts::fromJson(QString jsonString) {
+void OAIMonthlyCounts::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

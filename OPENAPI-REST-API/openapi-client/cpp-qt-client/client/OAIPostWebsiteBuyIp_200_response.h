@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIPostWebsiteBuyIp_200_response : public OAIObject {
 public:
     OAIPostWebsiteBuyIp_200_response();
-    OAIPostWebsiteBuyIp_200_response(QString json);
+    OAIPostWebsiteBuyIp_200_response(const QString &json);
     ~OAIPostWebsiteBuyIp_200_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getMessage() const;
     void setMessage(const QString &message);

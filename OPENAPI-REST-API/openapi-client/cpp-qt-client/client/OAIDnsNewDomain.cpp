@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDnsNewDomain::OAIDnsNewDomain(QString json) {
+OAIDnsNewDomain::OAIDnsNewDomain(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIDnsNewDomain::initializeModel() {
     m_ip_isValid = false;
 }
 
-void OAIDnsNewDomain::fromJson(QString jsonString) {
+void OAIDnsNewDomain::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

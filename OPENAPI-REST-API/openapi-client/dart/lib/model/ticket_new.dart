@@ -85,10 +85,10 @@ class TicketNew {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TicketNew[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TicketNew[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'subject'), 'Required key "TicketNew[subject]" is missing from JSON.');
+        assert(json[r'subject'] != null, 'Required key "TicketNew[subject]" has a null value in JSON.');
+        assert(json.containsKey(r'body'), 'Required key "TicketNew[body]" is missing from JSON.');
+        assert(json[r'body'] != null, 'Required key "TicketNew[body]" has a null value in JSON.');
         return true;
       }());
 

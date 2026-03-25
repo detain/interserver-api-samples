@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAffiliateDockSetup : public OAIObject {
 public:
     OAIAffiliateDockSetup();
-    OAIAffiliateDockSetup(QString json);
+    OAIAffiliateDockSetup(const QString &json);
     ~OAIAffiliateDockSetup() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getAffiliateDockTitle() const;
     void setAffiliateDockTitle(const QString &affiliate_dock_title);

@@ -32,13 +32,13 @@ class OAIBackupsOrderServiceTypes;
 class OAIBackupsOrder_serviceTypes : public OAIObject {
 public:
     OAIBackupsOrder_serviceTypes();
-    OAIBackupsOrder_serviceTypes(QString json);
+    OAIBackupsOrder_serviceTypes(const QString &json);
     ~OAIBackupsOrder_serviceTypes() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIBackupsOrderServiceTypes getR11006() const;
     void setR11006(const OAIBackupsOrderServiceTypes &r_11006);

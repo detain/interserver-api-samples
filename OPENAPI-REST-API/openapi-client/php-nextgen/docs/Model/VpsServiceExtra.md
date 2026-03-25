@@ -1,4 +1,4 @@
-# # VpsServiceExtra
+# VpsServiceExtra
 
 ## Properties
 

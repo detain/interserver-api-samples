@@ -6,7 +6,7 @@
 
 
 static server_t *server_create_internal(
-    int ipmi_auth,
+    int *ipmi_auth,
     list_t *client_links,
     server_billing_details_t *billing_details,
     char *cust_currency,
@@ -22,6 +22,8 @@ static server_t *server_create_internal(
     if (!server_local_var) {
         return NULL;
     }
+    memset(server_local_var, 0, sizeof(server_t));
+    server_local_var->_library_owned = 1;
     server_local_var->ipmi_auth = ipmi_auth;
     server_local_var->client_links = client_links;
     server_local_var->billing_details = billing_details;
@@ -33,13 +35,11 @@ static server_t *server_create_internal(
     server_local_var->network_info = network_info;
     server_local_var->extra_info_tables = extra_info_tables;
     server_local_var->service_info = service_info;
-
-    server_local_var->_library_owned = 1;
     return server_local_var;
 }
 
 __attribute__((deprecated)) server_t *server_create(
-    int ipmi_auth,
+    int *ipmi_auth,
     list_t *client_links,
     server_billing_details_t *billing_details,
     char *cust_currency,
@@ -51,8 +51,13 @@ __attribute__((deprecated)) server_t *server_create(
     server_extra_info_tables_t *extra_info_tables,
     server_service_info_t *service_info
     ) {
-    return server_create_internal (
-        ipmi_auth,
+    int *ipmi_auth_copy = NULL;
+    if (ipmi_auth) {
+        ipmi_auth_copy = malloc(sizeof(int));
+        if (ipmi_auth_copy) *ipmi_auth_copy = *ipmi_auth;
+    }
+    server_t *result = server_create_internal (
+        ipmi_auth_copy,
         client_links,
         billing_details,
         cust_currency,
@@ -64,6 +69,10 @@ __attribute__((deprecated)) server_t *server_create(
         extra_info_tables,
         service_info
         );
+    if (!result) {
+        free(ipmi_auth_copy);
+    }
+    return result;
 }
 
 void server_free(server_t *server) {
@@ -75,6 +84,10 @@ void server_free(server_t *server) {
         return ;
     }
     listEntry_t *listEntry;
+    if (server->ipmi_auth) {
+        free(server->ipmi_auth);
+        server->ipmi_auth = NULL;
+    }
     if (server->client_links) {
         list_ForEach(listEntry, server->client_links) {
             server_client_link_free(listEntry->data);
@@ -131,7 +144,7 @@ cJSON *server_convertToJSON(server_t *server) {
     if (!server->ipmi_auth) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "ipmiAuth", server->ipmi_auth) == NULL) {
+    if(cJSON_AddBoolToObject(item, "ipmiAuth", *server->ipmi_auth) == NULL) {
     goto fail; //Bool
     }
 
@@ -283,11 +296,20 @@ server_t *server_parseFromJSON(cJSON *serverJSON){
 
     server_t *server_local_var = NULL;
 
+    // define the local variable for server->ipmi_auth
+    int *ipmi_auth_local_var = NULL;
+
     // define the local list for server->client_links
     list_t *client_linksList = NULL;
 
     // define the local variable for server->billing_details
     server_billing_details_t *billing_details_local_nonprim = NULL;
+
+    char *cust_currency_local_str = NULL;
+
+    char *cust_currency_symbol_local_str = NULL;
+
+    char *package_local_str = NULL;
 
     // define the local list for server->service_extra
     list_t *service_extraList = NULL;
@@ -318,6 +340,12 @@ server_t *server_parseFromJSON(cJSON *serverJSON){
     {
     goto end; //Bool
     }
+    ipmi_auth_local_var = malloc(sizeof(int));
+    if(!ipmi_auth_local_var)
+    {
+        goto end;
+    }
+    *ipmi_auth_local_var = ipmi_auth->valueint;
 
     // server->client_links
     cJSON *client_links = cJSON_GetObjectItemCaseSensitive(serverJSON, "client_links");
@@ -477,13 +505,17 @@ server_t *server_parseFromJSON(cJSON *serverJSON){
     service_info_local_nonprim = server_service_info_parseFromJSON(service_info); //nonprimitive
 
 
+    if (cust_currency && !cJSON_IsNull(cust_currency)) cust_currency_local_str = strdup(cust_currency->valuestring);
+    if (cust_currency_symbol && !cJSON_IsNull(cust_currency_symbol)) cust_currency_symbol_local_str = strdup(cust_currency_symbol->valuestring);
+    if (package && !cJSON_IsNull(package)) package_local_str = strdup(package->valuestring);
+
     server_local_var = server_create_internal (
-        ipmi_auth->valueint,
+        ipmi_auth_local_var,
         client_linksList,
         billing_details_local_nonprim,
-        strdup(cust_currency->valuestring),
-        strdup(cust_currency_symbol->valuestring),
-        strdup(package->valuestring),
+        cust_currency_local_str,
+        cust_currency_symbol_local_str,
+        package_local_str,
         service_extraList,
         locations_local_nonprim,
         network_info_local_nonprim,
@@ -491,8 +523,16 @@ server_t *server_parseFromJSON(cJSON *serverJSON){
         service_info_local_nonprim
         );
 
+    if (!server_local_var) {
+        goto end;
+    }
+
     return server_local_var;
 end:
+    if (ipmi_auth_local_var) {
+        free(ipmi_auth_local_var);
+        ipmi_auth_local_var = NULL;
+    }
     if (client_linksList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, client_linksList) {
@@ -505,6 +545,18 @@ end:
     if (billing_details_local_nonprim) {
         server_billing_details_free(billing_details_local_nonprim);
         billing_details_local_nonprim = NULL;
+    }
+    if (cust_currency_local_str) {
+        free(cust_currency_local_str);
+        cust_currency_local_str = NULL;
+    }
+    if (cust_currency_symbol_local_str) {
+        free(cust_currency_symbol_local_str);
+        cust_currency_symbol_local_str = NULL;
+    }
+    if (package_local_str) {
+        free(package_local_str);
+        package_local_str = NULL;
     }
     if (service_extraList) {
         listEntry_t *listEntry = NULL;

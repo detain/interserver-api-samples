@@ -1,4 +1,4 @@
-# # VpsCPData
+# VpsCPData
 
 ## Properties
 

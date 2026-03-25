@@ -21,14 +21,14 @@ typedef struct home_services_licenses_t home_services_licenses_t;
 
 typedef struct home_services_licenses_t {
     struct home_services_licenses_links_t *links; //model
-    int count; //numeric
+    int *count; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } home_services_licenses_t;
 
 __attribute__((deprecated)) home_services_licenses_t *home_services_licenses_create(
     home_services_licenses_links_t *links,
-    int count
+    int *count
 );
 
 void home_services_licenses_free(home_services_licenses_t *home_services_licenses);

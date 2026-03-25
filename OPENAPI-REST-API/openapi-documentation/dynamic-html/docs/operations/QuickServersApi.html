@@ -1,0 +1,1105 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="addQs"></a>addQs</h2>
+  <hr>
+  <p></p>
+  <p>Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="deleteQsBackup"></a>deleteQsBackup</h2>
+  <hr>
+  <p></p>
+  <p>Permanently removes the specified backup file from storage. Use &#x60;GET /qs/{id}/backups&#x60; to list available backup filenames before deleting.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/backups</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">file</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The backup filename to delete.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">all</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsBlockSmtp"></a>doQsBlockSmtp</h2>
+  <hr>
+  <p></p>
+  <p>Blocks outbound SMTP for the QuickServer to prevent email abuse. Use this action when responding to abuse notifications or to enforce outbound email policies.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/block_smtp</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsDisableCd"></a>doQsDisableCd</h2>
+  <hr>
+  <p></p>
+  <p>Disables the virtual CD drive for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/disable_cd</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsDisableQuota"></a>doQsDisableQuota</h2>
+  <hr>
+  <p></p>
+  <p>Disables disk quota enforcement for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/disable_quota</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsEjectCd"></a>doQsEjectCd</h2>
+  <hr>
+  <p></p>
+  <p>Ejects the virtual CD from the QuickServer&#39;s CD drive.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/eject_cd</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsEnableQuota"></a>doQsEnableQuota</h2>
+  <hr>
+  <p></p>
+  <p>Enables disk quota enforcement for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/enable_quota</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsRestart"></a>doQsRestart</h2>
+  <hr>
+  <p></p>
+  <p>Restarts the QuickServer. The server will be shut down and started again.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/restart</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsStart"></a>doQsStart</h2>
+  <hr>
+  <p></p>
+  <p>Powers on the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/start</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="doQsStop"></a>doQsStop</h2>
+  <hr>
+  <p></p>
+  <p>Powers off the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/stop</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="downloadQsBackup"></a>downloadQsBackup</h2>
+  <hr>
+  <p></p>
+  <p>Generates a pre-signed download URL for the specified backup file. The URL is valid for 24 hours. Use &#x60;GET /qs/{id}/backups&#x60; to list available backup filenames.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/backups</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="downloadQsBackup_200_response"><a href="">downloadQsBackup_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">DownloadQsBackupRequest</span>
+      <span class="param-type">DownloadQsBackupRequest(DownloadQsBackupRequest)</span>
+      
+      <p class="param-description"></p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">all</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer.</p>
+      </li>
+  </ul>
+  <h2><a name="getNewQs"></a>getNewQs</h2>
+  <hr>
+  <p></p>
+  <p>Returns QuickServer ordering metadata and available plans. Use these details to build the order form and to validate a plan selection.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QuickserverOrder"><a href="">QuickserverOrder</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getQsBackups"></a>getQsBackups</h2>
+  <hr>
+  <p></p>
+  <p>Returns the available backups for the QuickServer across all storage systems (Swift, MinIO, ZFS). Use the backup &#x60;name&#x60; value with &#x60;PATCH /qs/{id}/backups&#x60; to download or &#x60;DELETE /qs/{id}/backups&#x60; to remove a backup. Use &#x60;POST /qs/{id}/restore&#x60; to restore from a backup.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/backups</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="VpsBackupRows"><a href="">VpsBackupRows</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">all</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer.</p>
+      </li>
+  </ul>
+  <h2><a name="getQsChangeHostname"></a>getQsChangeHostname</h2>
+  <hr>
+  <p></p>
+  <p>Retrieves the current hostname and any validation requirements for changing it.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_hostname</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsChangeRootPassword"></a>getQsChangeRootPassword</h2>
+  <hr>
+  <p></p>
+  <p>Retrieves instructions or metadata needed to reset the root password.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_root_password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsChangeTimezone"></a>getQsChangeTimezone</h2>
+  <hr>
+  <p></p>
+  <p>Returns the list of available timezones that can be set on the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_timezone</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="string"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsChangeWebuzoPassword"></a>getQsChangeWebuzoPassword</h2>
+  <hr>
+  <p></p>
+  <p>Retrieves instructions or metadata for changing the Webuzo control panel password.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_webuzo_password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsInfo"></a>getQsInfo</h2>
+  <hr>
+  <p></p>
+  <p>Returns detailed QuickServer information, including credentials, IPs, and available client actions.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Quickserver"><a href="">Quickserver</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="getQsInsertCd"></a>getQsInsertCd</h2>
+  <hr>
+  <p></p>
+  <p>Returns available ISO images that can be mounted in the QuickServer&#39;s virtual CD drive.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/insert_cd</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsInvoices"></a>getQsInvoices</h2>
+  <hr>
+  <p></p>
+  <p>Returns the billing invoices associated with this QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/invoices</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ChargeInvoiceRows"><a href="">ChargeInvoiceRows</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsList"></a>getQsList</h2>
+  <hr>
+  <p></p>
+  <p>Returns the QuickServer services on your account. Use the &#x60;qs_id&#x60; values with &#x60;/qs/{id}&#x60; for details or with the action endpoints (restart, backup, etc.) to manage each server.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QuickserverRow"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getQsReinstallOs"></a>getQsReinstallOs</h2>
+  <hr>
+  <p></p>
+  <p>Returns the list of available operating system templates for reinstalling the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/reinstall_os</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="VpsTemplatesList"><a href="">VpsTemplatesList</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsResetPassword"></a>getQsResetPassword</h2>
+  <hr>
+  <p></p>
+  <p>Returns information needed before resetting the QuickServer&#39;s root password.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/reset_password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsReverseDns"></a>getQsReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Returns the current reverse DNS (PTR record) entries for the QuickServer&#39;s IP addresses.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ReverseDnsEntries"><a href="">ReverseDnsEntries</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsSetupVnc"></a>getQsSetupVnc</h2>
+  <hr>
+  <p></p>
+  <p>Returns the current VNC connection information for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/setup_vnc</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsTrafficUsage"></a>getQsTrafficUsage</h2>
+  <hr>
+  <p></p>
+  <p>Returns bandwidth traffic usage data for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/traffic_usage</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsViewDesktop"></a>getQsViewDesktop</h2>
+  <hr>
+  <p></p>
+  <p>Returns remote desktop connection information for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/view_desktop</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="getQsWelcomeEmail"></a>getQsWelcomeEmail</h2>
+  <hr>
+  <p></p>
+  <p>Resends the welcome email containing connection details and credentials for the QuickServer order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/welcome_email</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Quickserver ID</p>
+      </li>
+  </ul>
+  <h2><a name="postQsBackup"></a>postQsBackup</h2>
+  <hr>
+  <p></p>
+  <p>Creates a backup of the QuickServer. The backup can be downloaded or restored later via the backups endpoints.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/backup</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsChangeHostname"></a>postQsChangeHostname</h2>
+  <hr>
+  <p></p>
+  <p>Submits a hostname change request for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_hostname</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsChangeRootPassword"></a>postQsChangeRootPassword</h2>
+  <hr>
+  <p></p>
+  <p>Triggers a root password reset for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_root_password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsChangeTimezone"></a>postQsChangeTimezone</h2>
+  <hr>
+  <p></p>
+  <p>Changes the system timezone on the QuickServer. Use &#x60;GET /qs/{id}/change_timezone&#x60; to list available options first.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_timezone</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">timezone</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">The time zone</p>
+      </li>
+  </ul>
+  <h2><a name="postQsChangeWebuzoPassword"></a>postQsChangeWebuzoPassword</h2>
+  <hr>
+  <p></p>
+  <p>Resets the Webuzo control panel password for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/change_webuzo_password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsInsertCd"></a>postQsInsertCd</h2>
+  <hr>
+  <p></p>
+  <p>Mounts an ISO image in the QuickServer&#39;s virtual CD drive. Use &#x60;GET /qs/{id}/insert_cd&#x60; to list available images.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/insert_cd</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsReinstallOs"></a>postQsReinstallOs</h2>
+  <hr>
+  <p></p>
+  <p>Reinstalls the operating system on the QuickServer. Warning - this will erase all data on the server.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/reinstall_os</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsResetPassword"></a>postQsResetPassword</h2>
+  <hr>
+  <p></p>
+  <p>Resets the root password on the QuickServer to a new randomly generated password.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/reset_password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsReverseDns"></a>postQsReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Updates the reverse DNS (PTR record) entries for the QuickServer&#39;s IP addresses.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">ReverseDnsEntries</span>
+      <span class="param-type">ReverseDnsEntries(ReverseDnsEntries)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="postQsSetupVnc"></a>postQsSetupVnc</h2>
+  <hr>
+  <p></p>
+  <p>Sets up or refreshes the VNC console connection for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/setup_vnc</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsTrafficUsage"></a>postQsTrafficUsage</h2>
+  <hr>
+  <p></p>
+  <p>Searches and filters the QuickServer&#39;s bandwidth traffic usage data by date range.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/traffic_usage</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQsViewDesktop"></a>postQsViewDesktop</h2>
+  <hr>
+  <p></p>
+  <p>Updates or refreshes the remote desktop session for the QuickServer.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/view_desktop</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="postQuickServerRestore"></a>postQuickServerRestore</h2>
+  <hr>
+  <p></p>
+  <p>Initiates a restore of the QuickServer from a previously created backup. The restore operation overwrites the current disk contents. Use &#x60;GET /qs/{id}/backups&#x60; to retrieve available backup names.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}/restore</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="QueueResponse"><a href="">QueueResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">RestoreRequest</span>
+      <span class="param-type">RestoreRequest(RestoreRequest)</span>
+      
+      <p class="param-description">QuickServer Restore request</p>
+      </li>
+  </ul>
+  <h2><a name="putQs"></a>putQs</h2>
+  <hr>
+  <p></p>
+  <p>Validates a QuickServer order and returns pricing or validation errors. Use this before submitting the final order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="quickserversCancel"></a>quickserversCancel</h2>
+  <hr>
+  <p></p>
+  <p>Cancels the QuickServer service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="quickserversCancel_200_response"><a href="">quickserversCancel_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">QuickServer ID number</p>
+      </li>
+  </ul>
+  <h2><a name="updateQsInfo"></a>updateQsInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates QuickServer metadata or stored settings associated with the order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/qs/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">QuickServer ID number.</p>
+      </li>
+  </ul>
+</div>

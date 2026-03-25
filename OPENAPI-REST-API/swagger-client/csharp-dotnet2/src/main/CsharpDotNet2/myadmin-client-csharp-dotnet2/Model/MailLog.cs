@@ -8,30 +8,30 @@ using Newtonsoft.Json;
 namespace IO.Swagger.Model {
 
   /// <summary>
-  /// Mail log records
+  /// Paginated mail log response.  Contains the full matched count (&#x60;total&#x60;) plus a page of &#x60;MailLogEntry&#x60; records.  The &#x60;total&#x60; reflects the grouping mode: with &#x60;groupby&#x3D;recipient&#x60; it counts delivery attempts, with &#x60;groupby&#x3D;message&#x60; it counts unique messages.
   /// </summary>
   [DataContract]
   public class MailLog {
     /// <summary>
-    /// total number of mail log entries
+    /// Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
     /// </summary>
-    /// <value>total number of mail log entries</value>
+    /// <value>Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.</value>
     [DataMember(Name="total", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "total")]
     public int? Total { get; set; }
 
     /// <summary>
-    /// number of emails skipped in listing
+    /// The `skip` value used for this page (echoed from the request).
     /// </summary>
-    /// <value>number of emails skipped in listing</value>
+    /// <value>The `skip` value used for this page (echoed from the request).</value>
     [DataMember(Name="skip", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "skip")]
     public int? Skip { get; set; }
 
     /// <summary>
-    /// number of emails to return
+    /// The `limit` value used for this page (echoed from the request).
     /// </summary>
-    /// <value>number of emails to return</value>
+    /// <value>The `limit` value used for this page (echoed from the request).</value>
     [DataMember(Name="limit", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "limit")]
     public int? Limit { get; set; }

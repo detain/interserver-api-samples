@@ -1368,19 +1368,37 @@ using namespace Tiny;
             std::string mailid
             , 
             
+            std::string messageId
+            , 
+            
+            std::string replyto
+            , 
+            
+            std::string headerfrom
+            , 
+            
+            int delivered
+            , 
+            
             int skip
             , 
             
             int limit
             , 
             
-            long startDate
+            ViewMailLog_startDate_parameter startDate
             , 
             
-            long endDate
+            ViewMailLog_startDate_parameter endDate
             , 
             
-            std::string delivered
+            std::string sort
+            , 
+            
+            std::string dir
+            , 
+            
+            std::string groupby
             
         )
         {
@@ -1389,7 +1407,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | id2 origin mx from to subject mailid skip limit startDate endDate delivered 
+            // Query    | id2 origin mx from to subject mailid messageId replyto headerfrom delivered skip limit startDate endDate sort dir groupby 
             addQueryParam("id",id2);
             addQueryParam("origin",origin);
             addQueryParam("mx",mx);
@@ -1397,11 +1415,17 @@ using namespace Tiny;
             addQueryParam("to",to);
             addQueryParam("subject",subject);
             addQueryParam("mailid",mailid);
+            addQueryParam("messageId",messageId);
+            addQueryParam("replyto",replyto);
+            addQueryParam("headerfrom",headerfrom);
+            addQueryParam("delivered",delivered);
             addQueryParam("skip",skip);
             addQueryParam("limit",limit);
             addQueryParam("startDate",startDate);
             addQueryParam("endDate",endDate);
-            addQueryParam("delivered",delivered);
+            addQueryParam("sort",sort);
+            addQueryParam("dir",dir);
+            addQueryParam("groupby",groupby);
 
             // Form     | 
 

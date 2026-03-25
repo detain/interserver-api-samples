@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIQuickserverOrderDistroSelUbuntu : public OAIObject {
 public:
     OAIQuickserverOrderDistroSelUbuntu();
-    OAIQuickserverOrderDistroSelUbuntu(QString json);
+    OAIQuickserverOrderDistroSelUbuntu(const QString &json);
     ~OAIQuickserverOrderDistroSelUbuntu() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getUbuntu() const;
     void setUbuntu(const QString &ubuntu);

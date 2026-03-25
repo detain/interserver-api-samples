@@ -1,4 +1,4 @@
-# # CancelScrubIp200Response
+# CancelScrubIp200Response
 
 ## Properties
 

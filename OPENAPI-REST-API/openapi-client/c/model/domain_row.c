@@ -16,13 +16,13 @@ static domain_row_t *domain_row_create_internal(
     if (!domain_row_local_var) {
         return NULL;
     }
+    memset(domain_row_local_var, 0, sizeof(domain_row_t));
+    domain_row_local_var->_library_owned = 1;
     domain_row_local_var->domain_id = domain_id;
     domain_row_local_var->domain_hostname = domain_hostname;
     domain_row_local_var->domain_expire_date = domain_expire_date;
     domain_row_local_var->cost = cost;
     domain_row_local_var->domain_status = domain_status;
-
-    domain_row_local_var->_library_owned = 1;
     return domain_row_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) domain_row_t *domain_row_create(
     char *cost,
     char *domain_status
     ) {
-    return domain_row_create_internal (
+    domain_row_t *result = domain_row_create_internal (
         domain_id,
         domain_hostname,
         domain_expire_date,
         cost,
         domain_status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_row_free(domain_row_t *domain_row) {
@@ -128,6 +131,16 @@ domain_row_t *domain_row_parseFromJSON(cJSON *domain_rowJSON){
 
     domain_row_t *domain_row_local_var = NULL;
 
+    char *domain_id_local_str = NULL;
+
+    char *domain_hostname_local_str = NULL;
+
+    char *domain_expire_date_local_str = NULL;
+
+    char *cost_local_str = NULL;
+
+    char *domain_status_local_str = NULL;
+
     // domain_row->domain_id
     cJSON *domain_id = cJSON_GetObjectItemCaseSensitive(domain_rowJSON, "domain_id");
     if (cJSON_IsNull(domain_id)) {
@@ -189,16 +202,46 @@ domain_row_t *domain_row_parseFromJSON(cJSON *domain_rowJSON){
     }
 
 
+    if (domain_id && !cJSON_IsNull(domain_id)) domain_id_local_str = strdup(domain_id->valuestring);
+    if (domain_hostname && !cJSON_IsNull(domain_hostname)) domain_hostname_local_str = strdup(domain_hostname->valuestring);
+    if (domain_expire_date && !cJSON_IsNull(domain_expire_date)) domain_expire_date_local_str = strdup(domain_expire_date->valuestring);
+    if (cost && !cJSON_IsNull(cost)) cost_local_str = strdup(cost->valuestring);
+    if (domain_status && !cJSON_IsNull(domain_status)) domain_status_local_str = strdup(domain_status->valuestring);
+
     domain_row_local_var = domain_row_create_internal (
-        domain_id && !cJSON_IsNull(domain_id) ? strdup(domain_id->valuestring) : NULL,
-        domain_hostname && !cJSON_IsNull(domain_hostname) ? strdup(domain_hostname->valuestring) : NULL,
-        domain_expire_date && !cJSON_IsNull(domain_expire_date) ? strdup(domain_expire_date->valuestring) : NULL,
-        cost && !cJSON_IsNull(cost) ? strdup(cost->valuestring) : NULL,
-        domain_status && !cJSON_IsNull(domain_status) ? strdup(domain_status->valuestring) : NULL
+        domain_id_local_str,
+        domain_hostname_local_str,
+        domain_expire_date_local_str,
+        cost_local_str,
+        domain_status_local_str
         );
+
+    if (!domain_row_local_var) {
+        goto end;
+    }
 
     return domain_row_local_var;
 end:
+    if (domain_id_local_str) {
+        free(domain_id_local_str);
+        domain_id_local_str = NULL;
+    }
+    if (domain_hostname_local_str) {
+        free(domain_hostname_local_str);
+        domain_hostname_local_str = NULL;
+    }
+    if (domain_expire_date_local_str) {
+        free(domain_expire_date_local_str);
+        domain_expire_date_local_str = NULL;
+    }
+    if (cost_local_str) {
+        free(cost_local_str);
+        cost_local_str = NULL;
+    }
+    if (domain_status_local_str) {
+        free(domain_status_local_str);
+        domain_status_local_str = NULL;
+    }
     return NULL;
 
 }

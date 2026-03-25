@@ -32,13 +32,13 @@ class OAIServerLocation1;
 class OAIServer_locations : public OAIObject {
 public:
     OAIServer_locations();
-    OAIServer_locations(QString json);
+    OAIServer_locations(const QString &json);
     ~OAIServer_locations() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerLocation1 getR1() const;
     void setR1(const OAIServerLocation1 &r_1);

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIServerNetworkInfo_assets::OAIServerNetworkInfo_assets(QString json) {
+OAIServerNetworkInfo_assets::OAIServerNetworkInfo_assets(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAIServerNetworkInfo_assets::initializeModel() {
     m_r_3497_isValid = false;
 }
 
-void OAIServerNetworkInfo_assets::fromJson(QString jsonString) {
+void OAIServerNetworkInfo_assets::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

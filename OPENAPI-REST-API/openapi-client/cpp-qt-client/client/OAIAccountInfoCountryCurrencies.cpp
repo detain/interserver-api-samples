@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoCountryCurrencies::OAIAccountInfoCountryCurrencies(QString json) {
+OAIAccountInfoCountryCurrencies::OAIAccountInfoCountryCurrencies(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIAccountInfoCountryCurrencies::initializeModel() {
 
 }
 
-void OAIAccountInfoCountryCurrencies::fromJson(QString jsonString) {
+void OAIAccountInfoCountryCurrencies::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

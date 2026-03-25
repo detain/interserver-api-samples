@@ -1,4 +1,4 @@
-# # VpsTemplateRow
+# VpsTemplateRow
 
 ## Properties
 

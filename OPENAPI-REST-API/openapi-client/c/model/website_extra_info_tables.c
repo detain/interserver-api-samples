@@ -14,11 +14,11 @@ static website_extra_info_tables_t *website_extra_info_tables_create_internal(
     if (!website_extra_info_tables_local_var) {
         return NULL;
     }
+    memset(website_extra_info_tables_local_var, 0, sizeof(website_extra_info_tables_t));
+    website_extra_info_tables_local_var->_library_owned = 1;
     website_extra_info_tables_local_var->links = links;
     website_extra_info_tables_local_var->preview = preview;
     website_extra_info_tables_local_var->dns = dns;
-
-    website_extra_info_tables_local_var->_library_owned = 1;
     return website_extra_info_tables_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) website_extra_info_tables_t *website_extra_info_tabl
     website_table_t *preview,
     website_table_t *dns
     ) {
-    return website_extra_info_tables_create_internal (
+    website_extra_info_tables_t *result = website_extra_info_tables_create_internal (
         links,
         preview,
         dns
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_extra_info_tables_free(website_extra_info_tables_t *website_extra_info_tables) {
@@ -148,11 +151,16 @@ website_extra_info_tables_t *website_extra_info_tables_parseFromJSON(cJSON *webs
     }
 
 
+
     website_extra_info_tables_local_var = website_extra_info_tables_create_internal (
         links ? links_local_nonprim : NULL,
         preview ? preview_local_nonprim : NULL,
         dns ? dns_local_nonprim : NULL
         );
+
+    if (!website_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return website_extra_info_tables_local_var;
 end:

@@ -294,6 +294,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -313,7 +320,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addQsCallback(OAIHttpRequestWorker *worker);
     void deleteQsBackupCallback(OAIHttpRequestWorker *worker);
@@ -453,270 +460,94 @@ Q_SIGNALS:
     void quickserversCancelSignalFull(OAIHttpRequestWorker *worker, OAIQuickserversCancel_200_response summary);
     void updateQsInfoSignalFull(OAIHttpRequestWorker *worker);
 
-    Q_DECL_DEPRECATED_X("Use addQsSignalError() instead")
-    void addQsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addQsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteQsBackupSignalError() instead")
-    void deleteQsBackupSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteQsBackupSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsBlockSmtpSignalError() instead")
-    void doQsBlockSmtpSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsBlockSmtpSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsDisableCdSignalError() instead")
-    void doQsDisableCdSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsDisableCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsDisableQuotaSignalError() instead")
-    void doQsDisableQuotaSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsDisableQuotaSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsEjectCdSignalError() instead")
-    void doQsEjectCdSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsEjectCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsEnableQuotaSignalError() instead")
-    void doQsEnableQuotaSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsEnableQuotaSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsRestartSignalError() instead")
-    void doQsRestartSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsRestartSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsStartSignalError() instead")
-    void doQsStartSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsStartSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsStopSignalError() instead")
-    void doQsStopSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsStopSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use downloadQsBackupSignalError() instead")
-    void downloadQsBackupSignalE(OAIDownloadQsBackup_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void downloadQsBackupSignalError(OAIDownloadQsBackup_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewQsSignalError() instead")
-    void getNewQsSignalE(OAIQuickserverOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewQsSignalError(OAIQuickserverOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsBackupsSignalError() instead")
-    void getQsBackupsSignalE(OAIVpsBackupRows<OAIVpsBackupRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsBackupsSignalError(OAIVpsBackupRows<OAIVpsBackupRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeHostnameSignalError() instead")
-    void getQsChangeHostnameSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeHostnameSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeRootPasswordSignalError() instead")
-    void getQsChangeRootPasswordSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeRootPasswordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeTimezoneSignalError() instead")
-    void getQsChangeTimezoneSignalE(QList<QString> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeTimezoneSignalError(QList<QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeWebuzoPasswordSignalError() instead")
-    void getQsChangeWebuzoPasswordSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeWebuzoPasswordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsInfoSignalError() instead")
-    void getQsInfoSignalE(OAIQuickserver summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsInfoSignalError(OAIQuickserver summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsInsertCdSignalError() instead")
-    void getQsInsertCdSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsInsertCdSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsInvoicesSignalError() instead")
-    void getQsInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsListSignalError() instead")
-    void getQsListSignalE(QList<OAIQuickserverRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsListSignalError(QList<OAIQuickserverRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsReinstallOsSignalError() instead")
-    void getQsReinstallOsSignalE(OAIVpsTemplatesList summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsReinstallOsSignalError(OAIVpsTemplatesList summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsResetPasswordSignalError() instead")
-    void getQsResetPasswordSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsResetPasswordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsReverseDnsSignalError() instead")
-    void getQsReverseDnsSignalE(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsReverseDnsSignalError(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsSetupVncSignalError() instead")
-    void getQsSetupVncSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsSetupVncSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsTrafficUsageSignalError() instead")
-    void getQsTrafficUsageSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsTrafficUsageSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsViewDesktopSignalError() instead")
-    void getQsViewDesktopSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void getQsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsWelcomeEmailSignalError() instead")
-    void getQsWelcomeEmailSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsWelcomeEmailSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsBackupSignalError() instead")
-    void postQsBackupSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsBackupSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeHostnameSignalError() instead")
-    void postQsChangeHostnameSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeHostnameSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeRootPasswordSignalError() instead")
-    void postQsChangeRootPasswordSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeRootPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeTimezoneSignalError() instead")
-    void postQsChangeTimezoneSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeTimezoneSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeWebuzoPasswordSignalError() instead")
-    void postQsChangeWebuzoPasswordSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeWebuzoPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsInsertCdSignalError() instead")
-    void postQsInsertCdSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsInsertCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsReinstallOsSignalError() instead")
-    void postQsReinstallOsSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsReinstallOsSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsResetPasswordSignalError() instead")
-    void postQsResetPasswordSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsResetPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsReverseDnsSignalError() instead")
-    void postQsReverseDnsSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsSetupVncSignalError() instead")
-    void postQsSetupVncSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsSetupVncSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsTrafficUsageSignalError() instead")
-    void postQsTrafficUsageSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void postQsTrafficUsageSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsViewDesktopSignalError() instead")
-    void postQsViewDesktopSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void postQsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQuickServerRestoreSignalError() instead")
-    void postQuickServerRestoreSignalE(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postQuickServerRestoreSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putQsSignalError() instead")
-    void putQsSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putQsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use quickserversCancelSignalError() instead")
-    void quickserversCancelSignalE(OAIQuickserversCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void quickserversCancelSignalError(OAIQuickserversCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateQsInfoSignalError() instead")
-    void updateQsInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateQsInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addQsSignalErrorFull() instead")
-    void addQsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addQsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use deleteQsBackupSignalErrorFull() instead")
-    void deleteQsBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void deleteQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsBlockSmtpSignalErrorFull() instead")
-    void doQsBlockSmtpSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsBlockSmtpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsDisableCdSignalErrorFull() instead")
-    void doQsDisableCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsDisableCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsDisableQuotaSignalErrorFull() instead")
-    void doQsDisableQuotaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsDisableQuotaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsEjectCdSignalErrorFull() instead")
-    void doQsEjectCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsEjectCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsEnableQuotaSignalErrorFull() instead")
-    void doQsEnableQuotaSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsEnableQuotaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsRestartSignalErrorFull() instead")
-    void doQsRestartSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsRestartSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsStartSignalErrorFull() instead")
-    void doQsStartSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsStartSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use doQsStopSignalErrorFull() instead")
-    void doQsStopSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void doQsStopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use downloadQsBackupSignalErrorFull() instead")
-    void downloadQsBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void downloadQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewQsSignalErrorFull() instead")
-    void getNewQsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewQsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsBackupsSignalErrorFull() instead")
-    void getQsBackupsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsBackupsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeHostnameSignalErrorFull() instead")
-    void getQsChangeHostnameSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeRootPasswordSignalErrorFull() instead")
-    void getQsChangeRootPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeRootPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeTimezoneSignalErrorFull() instead")
-    void getQsChangeTimezoneSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeTimezoneSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsChangeWebuzoPasswordSignalErrorFull() instead")
-    void getQsChangeWebuzoPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsChangeWebuzoPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsInfoSignalErrorFull() instead")
-    void getQsInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsInsertCdSignalErrorFull() instead")
-    void getQsInsertCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsInsertCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsInvoicesSignalErrorFull() instead")
-    void getQsInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsListSignalErrorFull() instead")
-    void getQsListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsReinstallOsSignalErrorFull() instead")
-    void getQsReinstallOsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsReinstallOsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsResetPasswordSignalErrorFull() instead")
-    void getQsResetPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsResetPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsReverseDnsSignalErrorFull() instead")
-    void getQsReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsSetupVncSignalErrorFull() instead")
-    void getQsSetupVncSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsSetupVncSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsTrafficUsageSignalErrorFull() instead")
-    void getQsTrafficUsageSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsTrafficUsageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsViewDesktopSignalErrorFull() instead")
-    void getQsViewDesktopSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getQsWelcomeEmailSignalErrorFull() instead")
-    void getQsWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getQsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsBackupSignalErrorFull() instead")
-    void postQsBackupSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeHostnameSignalErrorFull() instead")
-    void postQsChangeHostnameSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeRootPasswordSignalErrorFull() instead")
-    void postQsChangeRootPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeRootPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeTimezoneSignalErrorFull() instead")
-    void postQsChangeTimezoneSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeTimezoneSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsChangeWebuzoPasswordSignalErrorFull() instead")
-    void postQsChangeWebuzoPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsChangeWebuzoPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsInsertCdSignalErrorFull() instead")
-    void postQsInsertCdSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsInsertCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsReinstallOsSignalErrorFull() instead")
-    void postQsReinstallOsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsReinstallOsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsResetPasswordSignalErrorFull() instead")
-    void postQsResetPasswordSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsResetPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsReverseDnsSignalErrorFull() instead")
-    void postQsReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsSetupVncSignalErrorFull() instead")
-    void postQsSetupVncSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsSetupVncSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsTrafficUsageSignalErrorFull() instead")
-    void postQsTrafficUsageSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsTrafficUsageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQsViewDesktopSignalErrorFull() instead")
-    void postQsViewDesktopSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postQuickServerRestoreSignalErrorFull() instead")
-    void postQuickServerRestoreSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postQuickServerRestoreSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putQsSignalErrorFull() instead")
-    void putQsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putQsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use quickserversCancelSignalErrorFull() instead")
-    void quickserversCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void quickserversCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateQsInfoSignalErrorFull() instead")
-    void updateQsInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateQsInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

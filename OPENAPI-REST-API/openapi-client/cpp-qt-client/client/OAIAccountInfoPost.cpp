@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoPost::OAIAccountInfoPost(QString json) {
+OAIAccountInfoPost::OAIAccountInfoPost(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -86,7 +86,7 @@ void OAIAccountInfoPost::initializeModel() {
     m_gstin_isValid = false;
 }
 
-void OAIAccountInfoPost::fromJson(QString jsonString) {
+void OAIAccountInfoPost::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

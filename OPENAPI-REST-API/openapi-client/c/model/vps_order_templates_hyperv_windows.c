@@ -13,10 +13,10 @@ static vps_order_templates_hyperv_windows_t *vps_order_templates_hyperv_windows_
     if (!vps_order_templates_hyperv_windows_local_var) {
         return NULL;
     }
+    memset(vps_order_templates_hyperv_windows_local_var, 0, sizeof(vps_order_templates_hyperv_windows_t));
+    vps_order_templates_hyperv_windows_local_var->_library_owned = 1;
     vps_order_templates_hyperv_windows_local_var->windows2019_standard = windows2019_standard;
     vps_order_templates_hyperv_windows_local_var->windows2022 = windows2022;
-
-    vps_order_templates_hyperv_windows_local_var->_library_owned = 1;
     return vps_order_templates_hyperv_windows_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) vps_order_templates_hyperv_windows_t *vps_order_temp
     char *windows2019_standard,
     char *windows2022
     ) {
-    return vps_order_templates_hyperv_windows_create_internal (
+    vps_order_templates_hyperv_windows_t *result = vps_order_templates_hyperv_windows_create_internal (
         windows2019_standard,
         windows2022
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void vps_order_templates_hyperv_windows_free(vps_order_templates_hyperv_windows_t *vps_order_templates_hyperv_windows) {
@@ -80,6 +83,10 @@ vps_order_templates_hyperv_windows_t *vps_order_templates_hyperv_windows_parseFr
 
     vps_order_templates_hyperv_windows_t *vps_order_templates_hyperv_windows_local_var = NULL;
 
+    char *windows2019_standard_local_str = NULL;
+
+    char *windows2022_local_str = NULL;
+
     // vps_order_templates_hyperv_windows->windows2019_standard
     cJSON *windows2019_standard = cJSON_GetObjectItemCaseSensitive(vps_order_templates_hyperv_windowsJSON, "Windows2019Standard");
     if (cJSON_IsNull(windows2019_standard)) {
@@ -105,13 +112,28 @@ vps_order_templates_hyperv_windows_t *vps_order_templates_hyperv_windows_parseFr
     }
 
 
+    if (windows2019_standard && !cJSON_IsNull(windows2019_standard)) windows2019_standard_local_str = strdup(windows2019_standard->valuestring);
+    if (windows2022 && !cJSON_IsNull(windows2022)) windows2022_local_str = strdup(windows2022->valuestring);
+
     vps_order_templates_hyperv_windows_local_var = vps_order_templates_hyperv_windows_create_internal (
-        windows2019_standard && !cJSON_IsNull(windows2019_standard) ? strdup(windows2019_standard->valuestring) : NULL,
-        windows2022 && !cJSON_IsNull(windows2022) ? strdup(windows2022->valuestring) : NULL
+        windows2019_standard_local_str,
+        windows2022_local_str
         );
+
+    if (!vps_order_templates_hyperv_windows_local_var) {
+        goto end;
+    }
 
     return vps_order_templates_hyperv_windows_local_var;
 end:
+    if (windows2019_standard_local_str) {
+        free(windows2019_standard_local_str);
+        windows2019_standard_local_str = NULL;
+    }
+    if (windows2022_local_str) {
+        free(windows2022_local_str);
+        windows2022_local_str = NULL;
+    }
     return NULL;
 
 }

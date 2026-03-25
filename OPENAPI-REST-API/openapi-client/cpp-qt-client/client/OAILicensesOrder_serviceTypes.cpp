@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAILicensesOrder_serviceTypes::OAILicensesOrder_serviceTypes(QString json) {
+OAILicensesOrder_serviceTypes::OAILicensesOrder_serviceTypes(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -38,7 +38,7 @@ void OAILicensesOrder_serviceTypes::initializeModel() {
     m_licenses_order_service_types11482_isValid = false;
 }
 
-void OAILicensesOrder_serviceTypes::fromJson(QString jsonString) {
+void OAILicensesOrder_serviceTypes::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

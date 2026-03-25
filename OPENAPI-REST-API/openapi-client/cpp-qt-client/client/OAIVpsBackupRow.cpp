@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsBackupRow::OAIVpsBackupRow(QString json) {
+OAIVpsBackupRow::OAIVpsBackupRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIVpsBackupRow::initializeModel() {
     m_date_isValid = false;
 }
 
-void OAIVpsBackupRow::fromJson(QString jsonString) {
+void OAIVpsBackupRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

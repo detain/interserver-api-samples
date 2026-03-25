@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsServiceInfo::OAIVpsServiceInfo(QString json) {
+OAIVpsServiceInfo::OAIVpsServiceInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -116,7 +116,7 @@ void OAIVpsServiceInfo::initializeModel() {
     m_vps_diskmax_isValid = false;
 }
 
-void OAIVpsServiceInfo::fromJson(QString jsonString) {
+void OAIVpsServiceInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

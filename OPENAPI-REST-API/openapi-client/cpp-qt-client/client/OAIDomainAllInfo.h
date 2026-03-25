@@ -33,13 +33,13 @@ class OAIDomainAllInfo_attributes;
 class OAIDomainAllInfo : public OAIObject {
 public:
     OAIDomainAllInfo();
-    OAIDomainAllInfo(QString json);
+    OAIDomainAllInfo(const QString &json);
     ~OAIDomainAllInfo() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getOpsVersion() const;
     void setOpsVersion(const QString &_ops_version);

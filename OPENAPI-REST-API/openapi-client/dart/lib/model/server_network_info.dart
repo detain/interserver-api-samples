@@ -67,10 +67,14 @@ class ServerNetworkInfo {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ServerNetworkInfo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ServerNetworkInfo[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'vlans'), 'Required key "ServerNetworkInfo[vlans]" is missing from JSON.');
+        assert(json[r'vlans'] != null, 'Required key "ServerNetworkInfo[vlans]" has a null value in JSON.');
+        assert(json.containsKey(r'vlans6'), 'Required key "ServerNetworkInfo[vlans6]" is missing from JSON.');
+        assert(json[r'vlans6'] != null, 'Required key "ServerNetworkInfo[vlans6]" has a null value in JSON.');
+        assert(json.containsKey(r'assets'), 'Required key "ServerNetworkInfo[assets]" is missing from JSON.');
+        assert(json[r'assets'] != null, 'Required key "ServerNetworkInfo[assets]" has a null value in JSON.');
+        assert(json.containsKey(r'switchports'), 'Required key "ServerNetworkInfo[switchports]" is missing from JSON.');
+        assert(json[r'switchports'] != null, 'Required key "ServerNetworkInfo[switchports]" has a null value in JSON.');
         return true;
       }());
 

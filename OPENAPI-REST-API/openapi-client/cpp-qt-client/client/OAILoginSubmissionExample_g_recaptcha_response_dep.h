@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAILoginSubmissionExample_g_recaptcha_response_dep : public OAIObject {
 public:
     OAILoginSubmissionExample_g_recaptcha_response_dep();
-    OAILoginSubmissionExample_g_recaptcha_response_dep(QString json);
+    OAILoginSubmissionExample_g_recaptcha_response_dep(const QString &json);
     ~OAILoginSubmissionExample_g_recaptcha_response_dep() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getW() const;
     void setW(const qint32 &w);

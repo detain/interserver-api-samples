@@ -20,20 +20,20 @@ typedef struct vps_backup_row_t vps_backup_row_t;
 
 typedef struct vps_backup_row_t {
     char *type; // string
-    int service; //numeric
+    int *service; //numeric
     char *name; // string
-    int size; //numeric
-    int date; //numeric
+    int *size; //numeric
+    int *date; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_backup_row_t;
 
 __attribute__((deprecated)) vps_backup_row_t *vps_backup_row_create(
     char *type,
-    int service,
+    int *service,
     char *name,
-    int size,
-    int date
+    int *size,
+    int *date
 );
 
 void vps_backup_row_free(vps_backup_row_t *vps_backup_row);

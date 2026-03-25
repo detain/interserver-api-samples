@@ -393,6 +393,7 @@ docs/VPSApi.md
 docs/VPSCancel200Response.md
 docs/VPSTrafficDataDataSectionResponse.md
 docs/VPSTrafficDataDataSectionResponseInner.md
+docs/ViewMailLogStartDateParameter.md
 docs/ViewTicketResponse.md
 docs/Vps.md
 docs/VpsBackupRow.md
@@ -881,6 +882,7 @@ src/main/kotlin/org/openapitools/client/models/UrlRequest.kt
 src/main/kotlin/org/openapitools/client/models/VPSCancel200Response.kt
 src/main/kotlin/org/openapitools/client/models/VPSTrafficDataDataSectionResponse.kt
 src/main/kotlin/org/openapitools/client/models/VPSTrafficDataDataSectionResponseInner.kt
+src/main/kotlin/org/openapitools/client/models/ViewMailLogStartDateParameter.kt
 src/main/kotlin/org/openapitools/client/models/ViewTicketResponse.kt
 src/main/kotlin/org/openapitools/client/models/Vps.kt
 src/main/kotlin/org/openapitools/client/models/VpsBackupRow.kt
@@ -1346,6 +1348,7 @@ src/test/kotlin/org/openapitools/client/models/UrlRequestTest.kt
 src/test/kotlin/org/openapitools/client/models/VPSCancel200ResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/VPSTrafficDataDataSectionResponseInnerTest.kt
 src/test/kotlin/org/openapitools/client/models/VPSTrafficDataDataSectionResponseTest.kt
+src/test/kotlin/org/openapitools/client/models/ViewMailLogStartDateParameterTest.kt
 src/test/kotlin/org/openapitools/client/models/ViewTicketResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/VpsBackupRowTest.kt
 src/test/kotlin/org/openapitools/client/models/VpsBackupRowsTest.kt

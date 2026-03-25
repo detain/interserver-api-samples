@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAICreateGeoRule_400_response : public OAIObject {
 public:
     OAICreateGeoRule_400_response();
-    OAICreateGeoRule_400_response(QString json);
+    OAICreateGeoRule_400_response(const QString &json);
     ~OAICreateGeoRule_400_response() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isSuccess() const;
     void setSuccess(const bool &success);

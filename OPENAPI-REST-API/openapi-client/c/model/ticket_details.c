@@ -6,7 +6,7 @@
 
 
 static ticket_details_t *ticket_details_create_internal(
-    int ticketid,
+    int *ticketid,
     char *ticketmaskid,
     char *department,
     char *status,
@@ -19,6 +19,8 @@ static ticket_details_t *ticket_details_create_internal(
     if (!ticket_details_local_var) {
         return NULL;
     }
+    memset(ticket_details_local_var, 0, sizeof(ticket_details_t));
+    ticket_details_local_var->_library_owned = 1;
     ticket_details_local_var->ticketid = ticketid;
     ticket_details_local_var->ticketmaskid = ticketmaskid;
     ticket_details_local_var->department = department;
@@ -27,13 +29,11 @@ static ticket_details_t *ticket_details_create_internal(
     ticket_details_local_var->subject = subject;
     ticket_details_local_var->created_on = created_on;
     ticket_details_local_var->updated_on = updated_on;
-
-    ticket_details_local_var->_library_owned = 1;
     return ticket_details_local_var;
 }
 
 __attribute__((deprecated)) ticket_details_t *ticket_details_create(
-    int ticketid,
+    int *ticketid,
     char *ticketmaskid,
     char *department,
     char *status,
@@ -42,8 +42,13 @@ __attribute__((deprecated)) ticket_details_t *ticket_details_create(
     char *created_on,
     char *updated_on
     ) {
-    return ticket_details_create_internal (
-        ticketid,
+    int *ticketid_copy = NULL;
+    if (ticketid) {
+        ticketid_copy = malloc(sizeof(int));
+        if (ticketid_copy) *ticketid_copy = *ticketid;
+    }
+    ticket_details_t *result = ticket_details_create_internal (
+        ticketid_copy,
         ticketmaskid,
         department,
         status,
@@ -52,6 +57,10 @@ __attribute__((deprecated)) ticket_details_t *ticket_details_create(
         created_on,
         updated_on
         );
+    if (!result) {
+        free(ticketid_copy);
+    }
+    return result;
 }
 
 void ticket_details_free(ticket_details_t *ticket_details) {
@@ -63,6 +72,10 @@ void ticket_details_free(ticket_details_t *ticket_details) {
         return ;
     }
     listEntry_t *listEntry;
+    if (ticket_details->ticketid) {
+        free(ticket_details->ticketid);
+        ticket_details->ticketid = NULL;
+    }
     if (ticket_details->ticketmaskid) {
         free(ticket_details->ticketmaskid);
         ticket_details->ticketmaskid = NULL;
@@ -99,7 +112,7 @@ cJSON *ticket_details_convertToJSON(ticket_details_t *ticket_details) {
 
     // ticket_details->ticketid
     if(ticket_details->ticketid) {
-    if(cJSON_AddNumberToObject(item, "ticketid", ticket_details->ticketid) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ticketid", *ticket_details->ticketid) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -172,6 +185,23 @@ ticket_details_t *ticket_details_parseFromJSON(cJSON *ticket_detailsJSON){
 
     ticket_details_t *ticket_details_local_var = NULL;
 
+    // define the local variable for ticket_details->ticketid
+    int *ticketid_local_var = NULL;
+
+    char *ticketmaskid_local_str = NULL;
+
+    char *department_local_str = NULL;
+
+    char *status_local_str = NULL;
+
+    char *priority_local_str = NULL;
+
+    char *subject_local_str = NULL;
+
+    char *created_on_local_str = NULL;
+
+    char *updated_on_local_str = NULL;
+
     // ticket_details->ticketid
     cJSON *ticketid = cJSON_GetObjectItemCaseSensitive(ticket_detailsJSON, "ticketid");
     if (cJSON_IsNull(ticketid)) {
@@ -182,6 +212,12 @@ ticket_details_t *ticket_details_parseFromJSON(cJSON *ticket_detailsJSON){
     {
     goto end; //Numeric
     }
+    ticketid_local_var = malloc(sizeof(int));
+    if(!ticketid_local_var)
+    {
+        goto end;
+    }
+    *ticketid_local_var = ticketid->valuedouble;
     }
 
     // ticket_details->ticketmaskid
@@ -269,19 +305,63 @@ ticket_details_t *ticket_details_parseFromJSON(cJSON *ticket_detailsJSON){
     }
 
 
+    if (ticketmaskid && !cJSON_IsNull(ticketmaskid)) ticketmaskid_local_str = strdup(ticketmaskid->valuestring);
+    if (department && !cJSON_IsNull(department)) department_local_str = strdup(department->valuestring);
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+    if (priority && !cJSON_IsNull(priority)) priority_local_str = strdup(priority->valuestring);
+    if (subject && !cJSON_IsNull(subject)) subject_local_str = strdup(subject->valuestring);
+    if (created_on && !cJSON_IsNull(created_on)) created_on_local_str = strdup(created_on->valuestring);
+    if (updated_on && !cJSON_IsNull(updated_on)) updated_on_local_str = strdup(updated_on->valuestring);
+
     ticket_details_local_var = ticket_details_create_internal (
-        ticketid ? ticketid->valuedouble : 0,
-        ticketmaskid && !cJSON_IsNull(ticketmaskid) ? strdup(ticketmaskid->valuestring) : NULL,
-        department && !cJSON_IsNull(department) ? strdup(department->valuestring) : NULL,
-        status && !cJSON_IsNull(status) ? strdup(status->valuestring) : NULL,
-        priority && !cJSON_IsNull(priority) ? strdup(priority->valuestring) : NULL,
-        subject && !cJSON_IsNull(subject) ? strdup(subject->valuestring) : NULL,
-        created_on && !cJSON_IsNull(created_on) ? strdup(created_on->valuestring) : NULL,
-        updated_on && !cJSON_IsNull(updated_on) ? strdup(updated_on->valuestring) : NULL
+        ticketid_local_var,
+        ticketmaskid_local_str,
+        department_local_str,
+        status_local_str,
+        priority_local_str,
+        subject_local_str,
+        created_on_local_str,
+        updated_on_local_str
         );
+
+    if (!ticket_details_local_var) {
+        goto end;
+    }
 
     return ticket_details_local_var;
 end:
+    if (ticketid_local_var) {
+        free(ticketid_local_var);
+        ticketid_local_var = NULL;
+    }
+    if (ticketmaskid_local_str) {
+        free(ticketmaskid_local_str);
+        ticketmaskid_local_str = NULL;
+    }
+    if (department_local_str) {
+        free(department_local_str);
+        department_local_str = NULL;
+    }
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
+    if (priority_local_str) {
+        free(priority_local_str);
+        priority_local_str = NULL;
+    }
+    if (subject_local_str) {
+        free(subject_local_str);
+        subject_local_str = NULL;
+    }
+    if (created_on_local_str) {
+        free(created_on_local_str);
+        created_on_local_str = NULL;
+    }
+    if (updated_on_local_str) {
+        free(updated_on_local_str);
+        updated_on_local_str = NULL;
+    }
     return NULL;
 
 }

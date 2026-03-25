@@ -1545,6 +1545,10 @@ force-app/main/default/classes/OASVPSTrafficDataDataSectionResponse.cls
 force-app/main/default/classes/OASVPSTrafficDataDataSectionResponse.cls-meta.xml
 force-app/main/default/classes/OASVPSTrafficDataDataSectionResponseTest.cls
 force-app/main/default/classes/OASVPSTrafficDataDataSectionResponseTest.cls-meta.xml
+force-app/main/default/classes/OASViewMailLogStartDateParameter.cls
+force-app/main/default/classes/OASViewMailLogStartDateParameter.cls-meta.xml
+force-app/main/default/classes/OASViewMailLogStartDateParameterTest.cls
+force-app/main/default/classes/OASViewMailLogStartDateParameterTest.cls-meta.xml
 force-app/main/default/classes/OASViewTicketResponse.cls
 force-app/main/default/classes/OASViewTicketResponse.cls-meta.xml
 force-app/main/default/classes/OASViewTicketResponseTest.cls

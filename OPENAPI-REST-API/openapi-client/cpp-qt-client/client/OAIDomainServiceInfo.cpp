@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomainServiceInfo::OAIDomainServiceInfo(QString json) {
+OAIDomainServiceInfo::OAIDomainServiceInfo(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -71,7 +71,7 @@ void OAIDomainServiceInfo::initializeModel() {
     m_domain_coupon_isValid = false;
 }
 
-void OAIDomainServiceInfo::fromJson(QString jsonString) {
+void OAIDomainServiceInfo::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

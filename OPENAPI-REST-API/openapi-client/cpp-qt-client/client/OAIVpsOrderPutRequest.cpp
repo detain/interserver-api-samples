@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsOrderPutRequest::OAIVpsOrderPutRequest(QString json) {
+OAIVpsOrderPutRequest::OAIVpsOrderPutRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -68,7 +68,7 @@ void OAIVpsOrderPutRequest::initializeModel() {
     m_comment_isValid = false;
 }
 
-void OAIVpsOrderPutRequest::fromJson(QString jsonString) {
+void OAIVpsOrderPutRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

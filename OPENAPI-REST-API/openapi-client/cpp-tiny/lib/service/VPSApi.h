@@ -39,7 +39,7 @@ class VPSApi : public Service {
 public:
     VPSApi() = default;
 
-    virtual ~VPSApi() = default;
+    virtual ~VPSApi();
 
     /**
     * Place VPS Order.

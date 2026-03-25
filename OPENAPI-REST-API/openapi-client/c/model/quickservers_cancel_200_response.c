@@ -6,28 +6,37 @@
 
 
 static quickservers_cancel_200_response_t *quickservers_cancel_200_response_create_internal(
-    int success,
+    int *success,
     char *text
     ) {
     quickservers_cancel_200_response_t *quickservers_cancel_200_response_local_var = malloc(sizeof(quickservers_cancel_200_response_t));
     if (!quickservers_cancel_200_response_local_var) {
         return NULL;
     }
+    memset(quickservers_cancel_200_response_local_var, 0, sizeof(quickservers_cancel_200_response_t));
+    quickservers_cancel_200_response_local_var->_library_owned = 1;
     quickservers_cancel_200_response_local_var->success = success;
     quickservers_cancel_200_response_local_var->text = text;
-
-    quickservers_cancel_200_response_local_var->_library_owned = 1;
     return quickservers_cancel_200_response_local_var;
 }
 
 __attribute__((deprecated)) quickservers_cancel_200_response_t *quickservers_cancel_200_response_create(
-    int success,
+    int *success,
     char *text
     ) {
-    return quickservers_cancel_200_response_create_internal (
-        success,
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    quickservers_cancel_200_response_t *result = quickservers_cancel_200_response_create_internal (
+        success_copy,
         text
         );
+    if (!result) {
+        free(success_copy);
+    }
+    return result;
 }
 
 void quickservers_cancel_200_response_free(quickservers_cancel_200_response_t *quickservers_cancel_200_response) {
@@ -39,6 +48,10 @@ void quickservers_cancel_200_response_free(quickservers_cancel_200_response_t *q
         return ;
     }
     listEntry_t *listEntry;
+    if (quickservers_cancel_200_response->success) {
+        free(quickservers_cancel_200_response->success);
+        quickservers_cancel_200_response->success = NULL;
+    }
     if (quickservers_cancel_200_response->text) {
         free(quickservers_cancel_200_response->text);
         quickservers_cancel_200_response->text = NULL;
@@ -53,7 +66,7 @@ cJSON *quickservers_cancel_200_response_convertToJSON(quickservers_cancel_200_re
     if (!quickservers_cancel_200_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", quickservers_cancel_200_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *quickservers_cancel_200_response->success) == NULL) {
     goto fail; //Bool
     }
 
@@ -78,6 +91,11 @@ quickservers_cancel_200_response_t *quickservers_cancel_200_response_parseFromJS
 
     quickservers_cancel_200_response_t *quickservers_cancel_200_response_local_var = NULL;
 
+    // define the local variable for quickservers_cancel_200_response->success
+    int *success_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // quickservers_cancel_200_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(quickservers_cancel_200_responseJSON, "success");
     if (cJSON_IsNull(success)) {
@@ -92,6 +110,12 @@ quickservers_cancel_200_response_t *quickservers_cancel_200_response_parseFromJS
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // quickservers_cancel_200_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(quickservers_cancel_200_responseJSON, "text");
@@ -109,13 +133,27 @@ quickservers_cancel_200_response_t *quickservers_cancel_200_response_parseFromJS
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     quickservers_cancel_200_response_local_var = quickservers_cancel_200_response_create_internal (
-        success->valueint,
-        strdup(text->valuestring)
+        success_local_var,
+        text_local_str
         );
+
+    if (!quickservers_cancel_200_response_local_var) {
+        goto end;
+    }
 
     return quickservers_cancel_200_response_local_var;
 end:
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

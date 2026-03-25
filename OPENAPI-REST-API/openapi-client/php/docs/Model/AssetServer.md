@@ -1,4 +1,4 @@
-# # AssetServer
+# AssetServer
 
 ## Properties
 

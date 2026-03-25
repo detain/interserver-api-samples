@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIQuickserverRow : public OAIObject {
 public:
     OAIQuickserverRow();
-    OAIQuickserverRow(QString json);
+    OAIQuickserverRow(const QString &json);
     ~OAIQuickserverRow() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getQsId() const;
     void setQsId(const QString &qs_id);

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIScrubIpFilterTypes_filters_value : public OAIObject {
 public:
     OAIScrubIpFilterTypes_filters_value();
-    OAIScrubIpFilterTypes_filters_value(QString json);
+    OAIScrubIpFilterTypes_filters_value(const QString &json);
     ~OAIScrubIpFilterTypes_filters_value() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getName() const;
     void setName(const QString &name);

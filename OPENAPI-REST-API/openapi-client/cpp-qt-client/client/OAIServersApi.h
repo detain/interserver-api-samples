@@ -157,6 +157,13 @@ public:
 
 
 private:
+    enum class OauthMethod : int {
+        INVALID_VALUE_OPENAPI_GENERATED = 0,
+        ImplicitFlow = 1,
+        AuthorizationFlow = 2,
+        ClientCredentialsFlow = 3,
+        ResourceOwnerPasswordFlow = 4
+    };
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -176,7 +183,7 @@ private:
     OauthImplicit _implicitFlow;
     OauthCredentials _credentialFlow;
     OauthPassword _passwordFlow;
-    int _OauthMethod = 0;
+    OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
     void addServerCallback(OAIHttpRequestWorker *worker);
     void buyItNowServerOrderCallback(OAIHttpRequestWorker *worker);
@@ -238,114 +245,42 @@ Q_SIGNALS:
     void serversCancelSignalFull(OAIHttpRequestWorker *worker, OAIServersCancel_200_response summary);
     void updateServerInfoSignalFull(OAIHttpRequestWorker *worker);
 
-    Q_DECL_DEPRECATED_X("Use addServerSignalError() instead")
-    void addServerSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void addServerSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use buyItNowServerOrderSignalError() instead")
-    void buyItNowServerOrderSignalE(OAIBuyItNowServerOrder_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void buyItNowServerOrderSignalError(OAIBuyItNowServerOrder_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMPServersSignalError() instead")
-    void getMPServersSignalE(OAIBuyItNowList<OAIBuyItNowRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getMPServersSignalError(OAIBuyItNowList<OAIBuyItNowRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewServerSignalError() instead")
-    void getNewServerSignalE(OAIServerOrder summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewServerSignalError(OAIServerOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerInfoSignalError() instead")
-    void getServerInfoSignalE(OAIServer summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerInfoSignalError(OAIServer summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerInvoicesSignalError() instead")
-    void getServerInvoicesSignalE(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerListSignalError() instead")
-    void getServerListSignalE(QList<OAIServerRow> summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerListSignalError(QList<OAIServerRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerReverseDnsSignalError() instead")
-    void getServerReverseDnsSignalE(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerReverseDnsSignalError(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServersWelcomeEmailSignalError() instead")
-    void getServersWelcomeEmailSignalE(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void getServersWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use placeBuyNowServerSignalError() instead")
-    void placeBuyNowServerSignalE(OAIServersBuyNowResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void placeBuyNowServerSignalError(OAIServersBuyNowResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postServerReverseDnsSignalError() instead")
-    void postServerReverseDnsSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void postServerReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putServersSignalError() instead")
-    void putServersSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void putServersSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiLiveGetSignalError() instead")
-    void serverIpmiLiveGetSignalE(OAIServerIpmiLiveInfo summary, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiLiveGetSignalError(OAIServerIpmiLiveInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiLivePostSignalError() instead")
-    void serverIpmiLivePostSignalE(OAIServerIpmiLiveInfo summary, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiLivePostSignalError(OAIServerIpmiLiveInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiPowerGetSignalError() instead")
-    void serverIpmiPowerGetSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiPowerGetSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiPowerPostSignalError() instead")
-    void serverIpmiPowerPostSignalE(OAITextResponse summary, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiPowerPostSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serversCancelSignalError() instead")
-    void serversCancelSignalE(OAIServersCancel_200_response summary, QNetworkReply::NetworkError error_type, QString error_str);
     void serversCancelSignalError(OAIServersCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateServerInfoSignalError() instead")
-    void updateServerInfoSignalE(QNetworkReply::NetworkError error_type, QString error_str);
     void updateServerInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    Q_DECL_DEPRECATED_X("Use addServerSignalErrorFull() instead")
-    void addServerSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void addServerSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use buyItNowServerOrderSignalErrorFull() instead")
-    void buyItNowServerOrderSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void buyItNowServerOrderSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getMPServersSignalErrorFull() instead")
-    void getMPServersSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getMPServersSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getNewServerSignalErrorFull() instead")
-    void getNewServerSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getNewServerSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerInfoSignalErrorFull() instead")
-    void getServerInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerInvoicesSignalErrorFull() instead")
-    void getServerInvoicesSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerListSignalErrorFull() instead")
-    void getServerListSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServerReverseDnsSignalErrorFull() instead")
-    void getServerReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getServerReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use getServersWelcomeEmailSignalErrorFull() instead")
-    void getServersWelcomeEmailSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void getServersWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use placeBuyNowServerSignalErrorFull() instead")
-    void placeBuyNowServerSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void placeBuyNowServerSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use postServerReverseDnsSignalErrorFull() instead")
-    void postServerReverseDnsSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void postServerReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use putServersSignalErrorFull() instead")
-    void putServersSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void putServersSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiLiveGetSignalErrorFull() instead")
-    void serverIpmiLiveGetSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiLiveGetSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiLivePostSignalErrorFull() instead")
-    void serverIpmiLivePostSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiLivePostSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiPowerGetSignalErrorFull() instead")
-    void serverIpmiPowerGetSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiPowerGetSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serverIpmiPowerPostSignalErrorFull() instead")
-    void serverIpmiPowerPostSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void serverIpmiPowerPostSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use serversCancelSignalErrorFull() instead")
-    void serversCancelSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void serversCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    Q_DECL_DEPRECATED_X("Use updateServerInfoSignalErrorFull() instead")
-    void updateServerInfoSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void updateServerInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

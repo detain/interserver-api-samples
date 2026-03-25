@@ -15,12 +15,12 @@ static domain_prov_process_pending_attributes_t *domain_prov_process_pending_att
     if (!domain_prov_process_pending_attributes_local_var) {
         return NULL;
     }
+    memset(domain_prov_process_pending_attributes_local_var, 0, sizeof(domain_prov_process_pending_attributes_t));
+    domain_prov_process_pending_attributes_local_var->_library_owned = 1;
     domain_prov_process_pending_attributes_local_var->id = id;
     domain_prov_process_pending_attributes_local_var->order_id = order_id;
     domain_prov_process_pending_attributes_local_var->registration_expiration_date = registration_expiration_date;
     domain_prov_process_pending_attributes_local_var->f_auto_renew = f_auto_renew;
-
-    domain_prov_process_pending_attributes_local_var->_library_owned = 1;
     return domain_prov_process_pending_attributes_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) domain_prov_process_pending_attributes_t *domain_pro
     char *registration_expiration_date,
     char *f_auto_renew
     ) {
-    return domain_prov_process_pending_attributes_create_internal (
+    domain_prov_process_pending_attributes_t *result = domain_prov_process_pending_attributes_create_internal (
         id,
         order_id,
         registration_expiration_date,
         f_auto_renew
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_prov_process_pending_attributes_free(domain_prov_process_pending_attributes_t *domain_prov_process_pending_attributes) {
@@ -112,6 +115,14 @@ domain_prov_process_pending_attributes_t *domain_prov_process_pending_attributes
 
     domain_prov_process_pending_attributes_t *domain_prov_process_pending_attributes_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *order_id_local_str = NULL;
+
+    char *registration_expiration_date_local_str = NULL;
+
+    char *f_auto_renew_local_str = NULL;
+
     // domain_prov_process_pending_attributes->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(domain_prov_process_pending_attributesJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -161,15 +172,40 @@ domain_prov_process_pending_attributes_t *domain_prov_process_pending_attributes
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (order_id && !cJSON_IsNull(order_id)) order_id_local_str = strdup(order_id->valuestring);
+    if (registration_expiration_date && !cJSON_IsNull(registration_expiration_date)) registration_expiration_date_local_str = strdup(registration_expiration_date->valuestring);
+    if (f_auto_renew && !cJSON_IsNull(f_auto_renew)) f_auto_renew_local_str = strdup(f_auto_renew->valuestring);
+
     domain_prov_process_pending_attributes_local_var = domain_prov_process_pending_attributes_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,
-        registration_expiration_date && !cJSON_IsNull(registration_expiration_date) ? strdup(registration_expiration_date->valuestring) : NULL,
-        f_auto_renew && !cJSON_IsNull(f_auto_renew) ? strdup(f_auto_renew->valuestring) : NULL
+        id_local_str,
+        order_id_local_str,
+        registration_expiration_date_local_str,
+        f_auto_renew_local_str
         );
+
+    if (!domain_prov_process_pending_attributes_local_var) {
+        goto end;
+    }
 
     return domain_prov_process_pending_attributes_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (order_id_local_str) {
+        free(order_id_local_str);
+        order_id_local_str = NULL;
+    }
+    if (registration_expiration_date_local_str) {
+        free(registration_expiration_date_local_str);
+        registration_expiration_date_local_str = NULL;
+    }
+    if (f_auto_renew_local_str) {
+        free(f_auto_renew_local_str);
+        f_auto_renew_local_str = NULL;
+    }
     return NULL;
 
 }

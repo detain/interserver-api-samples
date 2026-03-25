@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIChargeInvoiceRows_invoices_value_paid_invoices_value::OAIChargeInvoiceRows_invoices_value_paid_invoices_value(QString json) {
+OAIChargeInvoiceRows_invoices_value_paid_invoices_value::OAIChargeInvoiceRows_invoices_value_paid_invoices_value(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -62,7 +62,7 @@ void OAIChargeInvoiceRows_invoices_value_paid_invoices_value::initializeModel() 
     m_refund_invoices_isValid = false;
 }
 
-void OAIChargeInvoiceRows_invoices_value_paid_invoices_value::fromJson(QString jsonString) {
+void OAIChargeInvoiceRows_invoices_value_paid_invoices_value::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

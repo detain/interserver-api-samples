@@ -34,13 +34,13 @@ class OAIQuickserverAddons;
 class OAIQuickserver_extraInfoTables : public OAIObject {
 public:
     OAIQuickserver_extraInfoTables();
-    OAIQuickserver_extraInfoTables(QString json);
+    OAIQuickserver_extraInfoTables(const QString &json);
     ~OAIQuickserver_extraInfoTables() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIQuickserverIpInfo getIpInfo() const;
     void setIpInfo(const OAIQuickserverIpInfo &ip_info);

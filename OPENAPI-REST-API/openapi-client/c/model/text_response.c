@@ -13,10 +13,10 @@ static text_response_t *text_response_create_internal(
     if (!text_response_local_var) {
         return NULL;
     }
+    memset(text_response_local_var, 0, sizeof(text_response_t));
+    text_response_local_var->_library_owned = 1;
     text_response_local_var->text = text;
     text_response_local_var->message = message;
-
-    text_response_local_var->_library_owned = 1;
     return text_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) text_response_t *text_response_create(
     char *text,
     char *message
     ) {
-    return text_response_create_internal (
+    text_response_t *result = text_response_create_internal (
         text,
         message
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void text_response_free(text_response_t *text_response) {
@@ -80,6 +83,10 @@ text_response_t *text_response_parseFromJSON(cJSON *text_responseJSON){
 
     text_response_t *text_response_local_var = NULL;
 
+    char *text_local_str = NULL;
+
+    char *message_local_str = NULL;
+
     // text_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(text_responseJSON, "text");
     if (cJSON_IsNull(text)) {
@@ -105,13 +112,28 @@ text_response_t *text_response_parseFromJSON(cJSON *text_responseJSON){
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+
     text_response_local_var = text_response_create_internal (
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
+        text_local_str,
+        message_local_str
         );
+
+    if (!text_response_local_var) {
+        goto end;
+    }
 
     return text_response_local_var;
 end:
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
     return NULL;
 
 }

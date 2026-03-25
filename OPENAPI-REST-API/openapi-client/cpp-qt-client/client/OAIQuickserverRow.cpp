@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIQuickserverRow::OAIQuickserverRow(QString json) {
+OAIQuickserverRow::OAIQuickserverRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIQuickserverRow::initializeModel() {
     m_qs_comment_isValid = false;
 }
 
-void OAIQuickserverRow::fromJson(QString jsonString) {
+void OAIQuickserverRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

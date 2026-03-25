@@ -1,4 +1,4 @@
-# # WebsiteTable
+# WebsiteTable
 
 ## Properties
 

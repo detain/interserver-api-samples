@@ -13,10 +13,10 @@ static website_login_response_t *website_login_response_create_internal(
     if (!website_login_response_local_var) {
         return NULL;
     }
+    memset(website_login_response_local_var, 0, sizeof(website_login_response_t));
+    website_login_response_local_var->_library_owned = 1;
     website_login_response_local_var->type = type;
     website_login_response_local_var->location = location;
-
-    website_login_response_local_var->_library_owned = 1;
     return website_login_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) website_login_response_t *website_login_response_cre
     char *type,
     char *location
     ) {
-    return website_login_response_create_internal (
+    website_login_response_t *result = website_login_response_create_internal (
         type,
         location
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_login_response_free(website_login_response_t *website_login_response) {
@@ -80,6 +83,10 @@ website_login_response_t *website_login_response_parseFromJSON(cJSON *website_lo
 
     website_login_response_t *website_login_response_local_var = NULL;
 
+    char *type_local_str = NULL;
+
+    char *location_local_str = NULL;
+
     // website_login_response->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(website_login_responseJSON, "type");
     if (cJSON_IsNull(type)) {
@@ -105,13 +112,28 @@ website_login_response_t *website_login_response_parseFromJSON(cJSON *website_lo
     }
 
 
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+    if (location && !cJSON_IsNull(location)) location_local_str = strdup(location->valuestring);
+
     website_login_response_local_var = website_login_response_create_internal (
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        location && !cJSON_IsNull(location) ? strdup(location->valuestring) : NULL
+        type_local_str,
+        location_local_str
         );
+
+    if (!website_login_response_local_var) {
+        goto end;
+    }
 
     return website_login_response_local_var;
 end:
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
+    if (location_local_str) {
+        free(location_local_str);
+        location_local_str = NULL;
+    }
     return NULL;
 
 }

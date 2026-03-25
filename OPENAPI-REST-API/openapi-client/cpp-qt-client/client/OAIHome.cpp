@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIHome::OAIHome(QString json) {
+OAIHome::OAIHome(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -77,7 +77,7 @@ void OAIHome::initializeModel() {
     m_affiliate_amount_isValid = false;
 }
 
-void OAIHome::fromJson(QString jsonString) {
+void OAIHome::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

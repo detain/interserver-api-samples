@@ -1,15 +1,15 @@
 #' Create a new MailLog
 #'
 #' @description
-#' Mail log records
+#' Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
 #'
 #' @docType class
 #' @title MailLog
 #' @description MailLog Class
 #' @format An \code{R6Class} generator object
-#' @field total total number of mail log entries integer
-#' @field skip number of emails skipped in listing integer
-#' @field limit number of emails to return integer
+#' @field total Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. integer
+#' @field skip The `skip` value used for this page (echoed from the request). integer
+#' @field limit The `limit` value used for this page (echoed from the request). integer
 #' @field emails  list(\link{MailLogEntry})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -25,9 +25,9 @@ MailLog <- R6::R6Class(
     #' @description
     #' Initialize a new MailLog class.
     #'
-    #' @param total total number of mail log entries
-    #' @param skip number of emails skipped in listing
-    #' @param limit number of emails to return
+    #' @param total Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
+    #' @param skip The `skip` value used for this page (echoed from the request).
+    #' @param limit The `limit` value used for this page (echoed from the request).
     #' @param emails emails
     #' @param ... Other optional arguments.
     initialize = function(`total`, `skip`, `limit`, `emails`, ...) {

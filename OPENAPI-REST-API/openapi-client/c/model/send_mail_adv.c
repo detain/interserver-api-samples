@@ -14,12 +14,14 @@ static send_mail_adv_t *send_mail_adv_create_internal(
     list_t *cc,
     list_t *bcc,
     list_t *attachments,
-    long id
+    long *id
     ) {
     send_mail_adv_t *send_mail_adv_local_var = malloc(sizeof(send_mail_adv_t));
     if (!send_mail_adv_local_var) {
         return NULL;
     }
+    memset(send_mail_adv_local_var, 0, sizeof(send_mail_adv_t));
+    send_mail_adv_local_var->_library_owned = 1;
     send_mail_adv_local_var->subject = subject;
     send_mail_adv_local_var->body = body;
     send_mail_adv_local_var->from = from;
@@ -29,8 +31,6 @@ static send_mail_adv_t *send_mail_adv_create_internal(
     send_mail_adv_local_var->bcc = bcc;
     send_mail_adv_local_var->attachments = attachments;
     send_mail_adv_local_var->id = id;
-
-    send_mail_adv_local_var->_library_owned = 1;
     return send_mail_adv_local_var;
 }
 
@@ -43,9 +43,14 @@ __attribute__((deprecated)) send_mail_adv_t *send_mail_adv_create(
     list_t *cc,
     list_t *bcc,
     list_t *attachments,
-    long id
+    long *id
     ) {
-    return send_mail_adv_create_internal (
+    long *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(long));
+        if (id_copy) *id_copy = *id;
+    }
+    send_mail_adv_t *result = send_mail_adv_create_internal (
         subject,
         body,
         from,
@@ -54,8 +59,12 @@ __attribute__((deprecated)) send_mail_adv_t *send_mail_adv_create(
         cc,
         bcc,
         attachments,
-        id
+        id_copy
         );
+    if (!result) {
+        free(id_copy);
+    }
+    return result;
 }
 
 void send_mail_adv_free(send_mail_adv_t *send_mail_adv) {
@@ -113,6 +122,10 @@ void send_mail_adv_free(send_mail_adv_t *send_mail_adv) {
         }
         list_freeList(send_mail_adv->attachments);
         send_mail_adv->attachments = NULL;
+    }
+    if (send_mail_adv->id) {
+        free(send_mail_adv->id);
+        send_mail_adv->id = NULL;
     }
     free(send_mail_adv);
 }
@@ -255,7 +268,7 @@ cJSON *send_mail_adv_convertToJSON(send_mail_adv_t *send_mail_adv) {
 
     // send_mail_adv->id
     if(send_mail_adv->id) {
-    if(cJSON_AddNumberToObject(item, "id", send_mail_adv->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *send_mail_adv->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -271,6 +284,10 @@ fail:
 send_mail_adv_t *send_mail_adv_parseFromJSON(cJSON *send_mail_advJSON){
 
     send_mail_adv_t *send_mail_adv_local_var = NULL;
+
+    char *subject_local_str = NULL;
+
+    char *body_local_str = NULL;
 
     // define the local variable for send_mail_adv->from
     email_address_name_t *from_local_nonprim = NULL;
@@ -289,6 +306,9 @@ send_mail_adv_t *send_mail_adv_parseFromJSON(cJSON *send_mail_advJSON){
 
     // define the local list for send_mail_adv->attachments
     list_t *attachmentsList = NULL;
+
+    // define the local variable for send_mail_adv->id
+    long *id_local_var = NULL;
 
     // send_mail_adv->subject
     cJSON *subject = cJSON_GetObjectItemCaseSensitive(send_mail_advJSON, "subject");
@@ -465,23 +485,44 @@ send_mail_adv_t *send_mail_adv_parseFromJSON(cJSON *send_mail_advJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(long));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
 
+    if (subject && !cJSON_IsNull(subject)) subject_local_str = strdup(subject->valuestring);
+    if (body && !cJSON_IsNull(body)) body_local_str = strdup(body->valuestring);
+
     send_mail_adv_local_var = send_mail_adv_create_internal (
-        strdup(subject->valuestring),
-        strdup(body->valuestring),
+        subject_local_str,
+        body_local_str,
         from_local_nonprim,
         toList,
         replyto ? replytoList : NULL,
         cc ? ccList : NULL,
         bcc ? bccList : NULL,
         attachments ? attachmentsList : NULL,
-        id ? id->valuedouble : 0
+        id_local_var
         );
+
+    if (!send_mail_adv_local_var) {
+        goto end;
+    }
 
     return send_mail_adv_local_var;
 end:
+    if (subject_local_str) {
+        free(subject_local_str);
+        subject_local_str = NULL;
+    }
+    if (body_local_str) {
+        free(body_local_str);
+        body_local_str = NULL;
+    }
     if (from_local_nonprim) {
         email_address_name_free(from_local_nonprim);
         from_local_nonprim = NULL;
@@ -530,6 +571,10 @@ end:
         }
         list_freeList(attachmentsList);
         attachmentsList = NULL;
+    }
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
     }
     return NULL;
 

@@ -34,13 +34,13 @@ class OAIBackupOrderPostResponse_cj_params;
 class OAIBackupOrderPostResponse : public OAIObject {
 public:
     OAIBackupOrderPostResponse();
-    OAIBackupOrderPostResponse(QString json);
+    OAIBackupOrderPostResponse(const QString &json);
     ~OAIBackupOrderPostResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isRContinue() const;
     void setRContinue(const bool &r_continue);

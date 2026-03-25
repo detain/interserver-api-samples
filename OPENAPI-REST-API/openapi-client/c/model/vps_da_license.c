@@ -8,7 +8,7 @@
 static vps_da_license_t *vps_da_license_create_internal(
     char *name,
     char *sub_name,
-    int cost,
+    int *cost,
     char *img_disabled,
     char *img_active
     ) {
@@ -16,30 +16,39 @@ static vps_da_license_t *vps_da_license_create_internal(
     if (!vps_da_license_local_var) {
         return NULL;
     }
+    memset(vps_da_license_local_var, 0, sizeof(vps_da_license_t));
+    vps_da_license_local_var->_library_owned = 1;
     vps_da_license_local_var->name = name;
     vps_da_license_local_var->sub_name = sub_name;
     vps_da_license_local_var->cost = cost;
     vps_da_license_local_var->img_disabled = img_disabled;
     vps_da_license_local_var->img_active = img_active;
-
-    vps_da_license_local_var->_library_owned = 1;
     return vps_da_license_local_var;
 }
 
 __attribute__((deprecated)) vps_da_license_t *vps_da_license_create(
     char *name,
     char *sub_name,
-    int cost,
+    int *cost,
     char *img_disabled,
     char *img_active
     ) {
-    return vps_da_license_create_internal (
+    int *cost_copy = NULL;
+    if (cost) {
+        cost_copy = malloc(sizeof(int));
+        if (cost_copy) *cost_copy = *cost;
+    }
+    vps_da_license_t *result = vps_da_license_create_internal (
         name,
         sub_name,
-        cost,
+        cost_copy,
         img_disabled,
         img_active
         );
+    if (!result) {
+        free(cost_copy);
+    }
+    return result;
 }
 
 void vps_da_license_free(vps_da_license_t *vps_da_license) {
@@ -58,6 +67,10 @@ void vps_da_license_free(vps_da_license_t *vps_da_license) {
     if (vps_da_license->sub_name) {
         free(vps_da_license->sub_name);
         vps_da_license->sub_name = NULL;
+    }
+    if (vps_da_license->cost) {
+        free(vps_da_license->cost);
+        vps_da_license->cost = NULL;
     }
     if (vps_da_license->img_disabled) {
         free(vps_da_license->img_disabled);
@@ -91,7 +104,7 @@ cJSON *vps_da_license_convertToJSON(vps_da_license_t *vps_da_license) {
 
     // vps_da_license->cost
     if(vps_da_license->cost) {
-    if(cJSON_AddNumberToObject(item, "cost", vps_da_license->cost) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cost", *vps_da_license->cost) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -123,6 +136,17 @@ fail:
 vps_da_license_t *vps_da_license_parseFromJSON(cJSON *vps_da_licenseJSON){
 
     vps_da_license_t *vps_da_license_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    char *sub_name_local_str = NULL;
+
+    // define the local variable for vps_da_license->cost
+    int *cost_local_var = NULL;
+
+    char *img_disabled_local_str = NULL;
+
+    char *img_active_local_str = NULL;
 
     // vps_da_license->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(vps_da_licenseJSON, "name");
@@ -158,6 +182,12 @@ vps_da_license_t *vps_da_license_parseFromJSON(cJSON *vps_da_licenseJSON){
     {
     goto end; //Numeric
     }
+    cost_local_var = malloc(sizeof(int));
+    if(!cost_local_var)
+    {
+        goto end;
+    }
+    *cost_local_var = cost->valuedouble;
     }
 
     // vps_da_license->img_disabled
@@ -185,16 +215,45 @@ vps_da_license_t *vps_da_license_parseFromJSON(cJSON *vps_da_licenseJSON){
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (sub_name && !cJSON_IsNull(sub_name)) sub_name_local_str = strdup(sub_name->valuestring);
+    if (img_disabled && !cJSON_IsNull(img_disabled)) img_disabled_local_str = strdup(img_disabled->valuestring);
+    if (img_active && !cJSON_IsNull(img_active)) img_active_local_str = strdup(img_active->valuestring);
+
     vps_da_license_local_var = vps_da_license_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        sub_name && !cJSON_IsNull(sub_name) ? strdup(sub_name->valuestring) : NULL,
-        cost ? cost->valuedouble : 0,
-        img_disabled && !cJSON_IsNull(img_disabled) ? strdup(img_disabled->valuestring) : NULL,
-        img_active && !cJSON_IsNull(img_active) ? strdup(img_active->valuestring) : NULL
+        name_local_str,
+        sub_name_local_str,
+        cost_local_var,
+        img_disabled_local_str,
+        img_active_local_str
         );
+
+    if (!vps_da_license_local_var) {
+        goto end;
+    }
 
     return vps_da_license_local_var;
 end:
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (sub_name_local_str) {
+        free(sub_name_local_str);
+        sub_name_local_str = NULL;
+    }
+    if (cost_local_var) {
+        free(cost_local_var);
+        cost_local_var = NULL;
+    }
+    if (img_disabled_local_str) {
+        free(img_disabled_local_str);
+        img_disabled_local_str = NULL;
+    }
+    if (img_active_local_str) {
+        free(img_active_local_str);
+        img_active_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -20,7 +20,7 @@ typedef struct server_lease_t server_lease_t;
 
 typedef struct server_lease_t {
     char *mac; // string
-    int authenticated; //boolean
+    int *authenticated; //boolean
     char *group; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -28,7 +28,7 @@ typedef struct server_lease_t {
 
 __attribute__((deprecated)) server_lease_t *server_lease_create(
     char *mac,
-    int authenticated,
+    int *authenticated,
     char *group
 );
 

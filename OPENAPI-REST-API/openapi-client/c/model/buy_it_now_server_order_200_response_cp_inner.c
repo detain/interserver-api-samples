@@ -16,13 +16,13 @@ static buy_it_now_server_order_200_response_cp_inner_t *buy_it_now_server_order_
     if (!buy_it_now_server_order_200_response_cp_inner_local_var) {
         return NULL;
     }
+    memset(buy_it_now_server_order_200_response_cp_inner_local_var, 0, sizeof(buy_it_now_server_order_200_response_cp_inner_t));
+    buy_it_now_server_order_200_response_cp_inner_local_var->_library_owned = 1;
     buy_it_now_server_order_200_response_cp_inner_local_var->id = id;
     buy_it_now_server_order_200_response_cp_inner_local_var->short_desc = short_desc;
     buy_it_now_server_order_200_response_cp_inner_local_var->long_desc = long_desc;
     buy_it_now_server_order_200_response_cp_inner_local_var->os_type = os_type;
     buy_it_now_server_order_200_response_cp_inner_local_var->monthly_price = monthly_price;
-
-    buy_it_now_server_order_200_response_cp_inner_local_var->_library_owned = 1;
     return buy_it_now_server_order_200_response_cp_inner_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) buy_it_now_server_order_200_response_cp_inner_t *buy
     char *os_type,
     char *monthly_price
     ) {
-    return buy_it_now_server_order_200_response_cp_inner_create_internal (
+    buy_it_now_server_order_200_response_cp_inner_t *result = buy_it_now_server_order_200_response_cp_inner_create_internal (
         id,
         short_desc,
         long_desc,
         os_type,
         monthly_price
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void buy_it_now_server_order_200_response_cp_inner_free(buy_it_now_server_order_200_response_cp_inner_t *buy_it_now_server_order_200_response_cp_inner) {
@@ -128,6 +131,16 @@ buy_it_now_server_order_200_response_cp_inner_t *buy_it_now_server_order_200_res
 
     buy_it_now_server_order_200_response_cp_inner_t *buy_it_now_server_order_200_response_cp_inner_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *short_desc_local_str = NULL;
+
+    char *long_desc_local_str = NULL;
+
+    char *os_type_local_str = NULL;
+
+    char *monthly_price_local_str = NULL;
+
     // buy_it_now_server_order_200_response_cp_inner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(buy_it_now_server_order_200_response_cp_innerJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -189,16 +202,46 @@ buy_it_now_server_order_200_response_cp_inner_t *buy_it_now_server_order_200_res
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (short_desc && !cJSON_IsNull(short_desc)) short_desc_local_str = strdup(short_desc->valuestring);
+    if (long_desc && !cJSON_IsNull(long_desc)) long_desc_local_str = strdup(long_desc->valuestring);
+    if (os_type && !cJSON_IsNull(os_type)) os_type_local_str = strdup(os_type->valuestring);
+    if (monthly_price && !cJSON_IsNull(monthly_price)) monthly_price_local_str = strdup(monthly_price->valuestring);
+
     buy_it_now_server_order_200_response_cp_inner_local_var = buy_it_now_server_order_200_response_cp_inner_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        short_desc && !cJSON_IsNull(short_desc) ? strdup(short_desc->valuestring) : NULL,
-        long_desc && !cJSON_IsNull(long_desc) ? strdup(long_desc->valuestring) : NULL,
-        os_type && !cJSON_IsNull(os_type) ? strdup(os_type->valuestring) : NULL,
-        monthly_price && !cJSON_IsNull(monthly_price) ? strdup(monthly_price->valuestring) : NULL
+        id_local_str,
+        short_desc_local_str,
+        long_desc_local_str,
+        os_type_local_str,
+        monthly_price_local_str
         );
+
+    if (!buy_it_now_server_order_200_response_cp_inner_local_var) {
+        goto end;
+    }
 
     return buy_it_now_server_order_200_response_cp_inner_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (short_desc_local_str) {
+        free(short_desc_local_str);
+        short_desc_local_str = NULL;
+    }
+    if (long_desc_local_str) {
+        free(long_desc_local_str);
+        long_desc_local_str = NULL;
+    }
+    if (os_type_local_str) {
+        free(os_type_local_str);
+        os_type_local_str = NULL;
+    }
+    if (monthly_price_local_str) {
+        free(monthly_price_local_str);
+        monthly_price_local_str = NULL;
+    }
     return NULL;
 
 }

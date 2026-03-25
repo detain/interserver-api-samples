@@ -1,4 +1,4 @@
-# # HardDrive
+# HardDrive
 
 ## Properties
 

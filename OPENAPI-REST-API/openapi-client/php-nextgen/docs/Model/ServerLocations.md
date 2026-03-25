@@ -1,4 +1,4 @@
-# # ServerLocations
+# ServerLocations
 
 ## Properties
 

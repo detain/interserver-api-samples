@@ -22,7 +22,7 @@ typedef struct charge_invoice_rows_invoices_value_paid_invoices_value_t charge_i
 typedef struct charge_invoice_rows_invoices_value_paid_invoices_value_t {
     char *invoices_id; // string
     char *invoices_description; // string
-    double invoices_amount; //numeric
+    double *invoices_amount; //numeric
     char *invoices_date; // string
     char *invoices_currency; // string
     char *currency_symbol; // string
@@ -36,7 +36,7 @@ typedef struct charge_invoice_rows_invoices_value_paid_invoices_value_t {
 __attribute__((deprecated)) charge_invoice_rows_invoices_value_paid_invoices_value_t *charge_invoice_rows_invoices_value_paid_invoices_value_create(
     char *invoices_id,
     char *invoices_description,
-    double invoices_amount,
+    double *invoices_amount,
     char *invoices_date,
     char *invoices_currency,
     char *currency_symbol,

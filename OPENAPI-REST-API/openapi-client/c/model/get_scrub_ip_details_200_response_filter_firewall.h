@@ -23,7 +23,7 @@ typedef struct get_scrub_ip_details_200_response_filter_firewall_t get_scrub_ip_
 typedef struct get_scrub_ip_details_200_response_filter_firewall_t {
     list_t *rules; //nonprimitive container
     list_t *filters; //nonprimitive container
-    int scrub_enabled; //numeric
+    int *scrub_enabled; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } get_scrub_ip_details_200_response_filter_firewall_t;
@@ -31,7 +31,7 @@ typedef struct get_scrub_ip_details_200_response_filter_firewall_t {
 __attribute__((deprecated)) get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_response_filter_firewall_create(
     list_t *rules,
     list_t *filters,
-    int scrub_enabled
+    int *scrub_enabled
 );
 
 void get_scrub_ip_details_200_response_filter_firewall_free(get_scrub_ip_details_200_response_filter_firewall_t *get_scrub_ip_details_200_response_filter_firewall);

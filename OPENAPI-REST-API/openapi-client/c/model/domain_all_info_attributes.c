@@ -23,6 +23,8 @@ static domain_all_info_attributes_t *domain_all_info_attributes_create_internal(
     if (!domain_all_info_attributes_local_var) {
         return NULL;
     }
+    memset(domain_all_info_attributes_local_var, 0, sizeof(domain_all_info_attributes_t));
+    domain_all_info_attributes_local_var->_library_owned = 1;
     domain_all_info_attributes_local_var->contact_set = contact_set;
     domain_all_info_attributes_local_var->registry_createdate = registry_createdate;
     domain_all_info_attributes_local_var->registry_expiredate = registry_expiredate;
@@ -35,8 +37,6 @@ static domain_all_info_attributes_t *domain_all_info_attributes_create_internal(
     domain_all_info_attributes_local_var->registry_updatedate = registry_updatedate;
     domain_all_info_attributes_local_var->affiliate_id = affiliate_id;
     domain_all_info_attributes_local_var->expiredate = expiredate;
-
-    domain_all_info_attributes_local_var->_library_owned = 1;
     return domain_all_info_attributes_local_var;
 }
 
@@ -54,7 +54,7 @@ __attribute__((deprecated)) domain_all_info_attributes_t *domain_all_info_attrib
     char *affiliate_id,
     char *expiredate
     ) {
-    return domain_all_info_attributes_create_internal (
+    domain_all_info_attributes_t *result = domain_all_info_attributes_create_internal (
         contact_set,
         registry_createdate,
         registry_expiredate,
@@ -68,6 +68,9 @@ __attribute__((deprecated)) domain_all_info_attributes_t *domain_all_info_attrib
         affiliate_id,
         expiredate
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_all_info_attributes_free(domain_all_info_attributes_t *domain_all_info_attributes) {
@@ -263,8 +266,28 @@ domain_all_info_attributes_t *domain_all_info_attributes_parseFromJSON(cJSON *do
     // define the local variable for domain_all_info_attributes->contact_set
     domain_all_info_attributes_contact_set_t *contact_set_local_nonprim = NULL;
 
+    char *registry_createdate_local_str = NULL;
+
+    char *registry_expiredate_local_str = NULL;
+
+    char *tld_data_local_str = NULL;
+
+    char *let_expire_local_str = NULL;
+
+    char *auto_renew_local_str = NULL;
+
+    char *sponsoring_rsp_local_str = NULL;
+
+    char *gdpr_consent_status_local_str = NULL;
+
     // define the local list for domain_all_info_attributes->nameserver_list
     list_t *nameserver_listList = NULL;
+
+    char *registry_updatedate_local_str = NULL;
+
+    char *affiliate_id_local_str = NULL;
+
+    char *expiredate_local_str = NULL;
 
     // domain_all_info_attributes->contact_set
     cJSON *contact_set = cJSON_GetObjectItemCaseSensitive(domain_all_info_attributesJSON, "contact_set");
@@ -420,26 +443,69 @@ domain_all_info_attributes_t *domain_all_info_attributes_parseFromJSON(cJSON *do
     }
 
 
+    if (registry_createdate && !cJSON_IsNull(registry_createdate)) registry_createdate_local_str = strdup(registry_createdate->valuestring);
+    if (registry_expiredate && !cJSON_IsNull(registry_expiredate)) registry_expiredate_local_str = strdup(registry_expiredate->valuestring);
+    if (tld_data && !cJSON_IsNull(tld_data)) tld_data_local_str = strdup(tld_data->valuestring);
+    if (let_expire && !cJSON_IsNull(let_expire)) let_expire_local_str = strdup(let_expire->valuestring);
+    if (auto_renew && !cJSON_IsNull(auto_renew)) auto_renew_local_str = strdup(auto_renew->valuestring);
+    if (sponsoring_rsp && !cJSON_IsNull(sponsoring_rsp)) sponsoring_rsp_local_str = strdup(sponsoring_rsp->valuestring);
+    if (gdpr_consent_status && !cJSON_IsNull(gdpr_consent_status)) gdpr_consent_status_local_str = strdup(gdpr_consent_status->valuestring);
+    if (registry_updatedate && !cJSON_IsNull(registry_updatedate)) registry_updatedate_local_str = strdup(registry_updatedate->valuestring);
+    if (affiliate_id && !cJSON_IsNull(affiliate_id)) affiliate_id_local_str = strdup(affiliate_id->valuestring);
+    if (expiredate && !cJSON_IsNull(expiredate)) expiredate_local_str = strdup(expiredate->valuestring);
+
     domain_all_info_attributes_local_var = domain_all_info_attributes_create_internal (
         contact_set ? contact_set_local_nonprim : NULL,
-        registry_createdate && !cJSON_IsNull(registry_createdate) ? strdup(registry_createdate->valuestring) : NULL,
-        registry_expiredate && !cJSON_IsNull(registry_expiredate) ? strdup(registry_expiredate->valuestring) : NULL,
-        tld_data && !cJSON_IsNull(tld_data) ? strdup(tld_data->valuestring) : NULL,
-        let_expire && !cJSON_IsNull(let_expire) ? strdup(let_expire->valuestring) : NULL,
-        auto_renew && !cJSON_IsNull(auto_renew) ? strdup(auto_renew->valuestring) : NULL,
-        sponsoring_rsp && !cJSON_IsNull(sponsoring_rsp) ? strdup(sponsoring_rsp->valuestring) : NULL,
-        gdpr_consent_status && !cJSON_IsNull(gdpr_consent_status) ? strdup(gdpr_consent_status->valuestring) : NULL,
+        registry_createdate_local_str,
+        registry_expiredate_local_str,
+        tld_data_local_str,
+        let_expire_local_str,
+        auto_renew_local_str,
+        sponsoring_rsp_local_str,
+        gdpr_consent_status_local_str,
         nameserver_list ? nameserver_listList : NULL,
-        registry_updatedate && !cJSON_IsNull(registry_updatedate) ? strdup(registry_updatedate->valuestring) : NULL,
-        affiliate_id && !cJSON_IsNull(affiliate_id) ? strdup(affiliate_id->valuestring) : NULL,
-        expiredate && !cJSON_IsNull(expiredate) ? strdup(expiredate->valuestring) : NULL
+        registry_updatedate_local_str,
+        affiliate_id_local_str,
+        expiredate_local_str
         );
+
+    if (!domain_all_info_attributes_local_var) {
+        goto end;
+    }
 
     return domain_all_info_attributes_local_var;
 end:
     if (contact_set_local_nonprim) {
         domain_all_info_attributes_contact_set_free(contact_set_local_nonprim);
         contact_set_local_nonprim = NULL;
+    }
+    if (registry_createdate_local_str) {
+        free(registry_createdate_local_str);
+        registry_createdate_local_str = NULL;
+    }
+    if (registry_expiredate_local_str) {
+        free(registry_expiredate_local_str);
+        registry_expiredate_local_str = NULL;
+    }
+    if (tld_data_local_str) {
+        free(tld_data_local_str);
+        tld_data_local_str = NULL;
+    }
+    if (let_expire_local_str) {
+        free(let_expire_local_str);
+        let_expire_local_str = NULL;
+    }
+    if (auto_renew_local_str) {
+        free(auto_renew_local_str);
+        auto_renew_local_str = NULL;
+    }
+    if (sponsoring_rsp_local_str) {
+        free(sponsoring_rsp_local_str);
+        sponsoring_rsp_local_str = NULL;
+    }
+    if (gdpr_consent_status_local_str) {
+        free(gdpr_consent_status_local_str);
+        gdpr_consent_status_local_str = NULL;
     }
     if (nameserver_listList) {
         listEntry_t *listEntry = NULL;
@@ -449,6 +515,18 @@ end:
         }
         list_freeList(nameserver_listList);
         nameserver_listList = NULL;
+    }
+    if (registry_updatedate_local_str) {
+        free(registry_updatedate_local_str);
+        registry_updatedate_local_str = NULL;
+    }
+    if (affiliate_id_local_str) {
+        free(affiliate_id_local_str);
+        affiliate_id_local_str = NULL;
+    }
+    if (expiredate_local_str) {
+        free(expiredate_local_str);
+        expiredate_local_str = NULL;
     }
     return NULL;
 

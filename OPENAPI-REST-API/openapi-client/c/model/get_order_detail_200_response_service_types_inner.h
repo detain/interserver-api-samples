@@ -19,9 +19,9 @@ typedef struct get_order_detail_200_response_service_types_inner_t get_order_det
 
 
 typedef struct get_order_detail_200_response_service_types_inner_t {
-    int services_id; //numeric
+    int *services_id; //numeric
     char *services_name; // string
-    int services_cost; //numeric
+    int *services_cost; //numeric
     char *services_field1; // string
     char *services_field2; // string
     char *services_module; // string
@@ -30,9 +30,9 @@ typedef struct get_order_detail_200_response_service_types_inner_t {
 } get_order_detail_200_response_service_types_inner_t;
 
 __attribute__((deprecated)) get_order_detail_200_response_service_types_inner_t *get_order_detail_200_response_service_types_inner_create(
-    int services_id,
+    int *services_id,
     char *services_name,
-    int services_cost,
+    int *services_cost,
     char *services_field1,
     char *services_field2,
     char *services_module

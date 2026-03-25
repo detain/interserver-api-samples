@@ -14,11 +14,11 @@ static affiliate_banner_row_t *affiliate_banner_row_create_internal(
     if (!affiliate_banner_row_local_var) {
         return NULL;
     }
+    memset(affiliate_banner_row_local_var, 0, sizeof(affiliate_banner_row_t));
+    affiliate_banner_row_local_var->_library_owned = 1;
     affiliate_banner_row_local_var->image = image;
     affiliate_banner_row_local_var->width = width;
     affiliate_banner_row_local_var->height = height;
-
-    affiliate_banner_row_local_var->_library_owned = 1;
     return affiliate_banner_row_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) affiliate_banner_row_t *affiliate_banner_row_create(
     char *width,
     char *height
     ) {
-    return affiliate_banner_row_create_internal (
+    affiliate_banner_row_t *result = affiliate_banner_row_create_internal (
         image,
         width,
         height
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void affiliate_banner_row_free(affiliate_banner_row_t *affiliate_banner_row) {
@@ -96,6 +99,12 @@ affiliate_banner_row_t *affiliate_banner_row_parseFromJSON(cJSON *affiliate_bann
 
     affiliate_banner_row_t *affiliate_banner_row_local_var = NULL;
 
+    char *image_local_str = NULL;
+
+    char *width_local_str = NULL;
+
+    char *height_local_str = NULL;
+
     // affiliate_banner_row->image
     cJSON *image = cJSON_GetObjectItemCaseSensitive(affiliate_banner_rowJSON, "image");
     if (cJSON_IsNull(image)) {
@@ -133,14 +142,34 @@ affiliate_banner_row_t *affiliate_banner_row_parseFromJSON(cJSON *affiliate_bann
     }
 
 
+    if (image && !cJSON_IsNull(image)) image_local_str = strdup(image->valuestring);
+    if (width && !cJSON_IsNull(width)) width_local_str = strdup(width->valuestring);
+    if (height && !cJSON_IsNull(height)) height_local_str = strdup(height->valuestring);
+
     affiliate_banner_row_local_var = affiliate_banner_row_create_internal (
-        image && !cJSON_IsNull(image) ? strdup(image->valuestring) : NULL,
-        width && !cJSON_IsNull(width) ? strdup(width->valuestring) : NULL,
-        height && !cJSON_IsNull(height) ? strdup(height->valuestring) : NULL
+        image_local_str,
+        width_local_str,
+        height_local_str
         );
+
+    if (!affiliate_banner_row_local_var) {
+        goto end;
+    }
 
     return affiliate_banner_row_local_var;
 end:
+    if (image_local_str) {
+        free(image_local_str);
+        image_local_str = NULL;
+    }
+    if (width_local_str) {
+        free(width_local_str);
+        width_local_str = NULL;
+    }
+    if (height_local_str) {
+        free(height_local_str);
+        height_local_str = NULL;
+    }
     return NULL;
 
 }

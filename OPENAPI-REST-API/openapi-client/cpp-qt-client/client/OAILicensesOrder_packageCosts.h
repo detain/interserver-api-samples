@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAILicensesOrder_packageCosts : public OAIObject {
 public:
     OAILicensesOrder_packageCosts();
-    OAILicensesOrder_packageCosts(QString json);
+    OAILicensesOrder_packageCosts(const QString &json);
     ~OAILicensesOrder_packageCosts() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     double getLicensesOrderPackageCosts11468() const;
     void setLicensesOrderPackageCosts11468(const double &licenses_order_package_costs11468);

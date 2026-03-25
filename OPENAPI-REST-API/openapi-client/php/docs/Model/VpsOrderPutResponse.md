@@ -1,4 +1,4 @@
-# # VpsOrderPutResponse
+# VpsOrderPutResponse
 
 ## Properties
 

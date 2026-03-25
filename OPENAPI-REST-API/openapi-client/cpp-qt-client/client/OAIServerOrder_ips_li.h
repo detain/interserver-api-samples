@@ -32,13 +32,13 @@ class OAIServerOrderIP;
 class OAIServerOrder_ips_li : public OAIObject {
 public:
     OAIServerOrder_ips_li();
-    OAIServerOrder_ips_li(QString json);
+    OAIServerOrder_ips_li(const QString &json);
     ~OAIServerOrder_ips_li() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderIP getR9() const;
     void setR9(const OAIServerOrderIP &r_9);

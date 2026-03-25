@@ -19,17 +19,17 @@ typedef struct vps_order_platform_packages_t vps_order_platform_packages_t;
 
 
 typedef struct vps_order_platform_packages_t {
-    double kvm; //numeric
-    double kvmstorage; //numeric
-    double hyperv; //numeric
+    double *kvm; //numeric
+    double *kvmstorage; //numeric
+    double *hyperv; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } vps_order_platform_packages_t;
 
 __attribute__((deprecated)) vps_order_platform_packages_t *vps_order_platform_packages_create(
-    double kvm,
-    double kvmstorage,
-    double hyperv
+    double *kvm,
+    double *kvmstorage,
+    double *hyperv
 );
 
 void vps_order_platform_packages_free(vps_order_platform_packages_t *vps_order_platform_packages);

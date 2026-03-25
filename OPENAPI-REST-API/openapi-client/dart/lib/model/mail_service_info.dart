@@ -199,10 +199,22 @@ class MailServiceInfo {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MailServiceInfo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MailServiceInfo[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'mail_id'), 'Required key "MailServiceInfo[mail_id]" is missing from JSON.');
+        assert(json[r'mail_id'] != null, 'Required key "MailServiceInfo[mail_id]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_type'), 'Required key "MailServiceInfo[mail_type]" is missing from JSON.');
+        assert(json[r'mail_type'] != null, 'Required key "MailServiceInfo[mail_type]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_currency'), 'Required key "MailServiceInfo[mail_currency]" is missing from JSON.');
+        assert(json[r'mail_currency'] != null, 'Required key "MailServiceInfo[mail_currency]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_order_date'), 'Required key "MailServiceInfo[mail_order_date]" is missing from JSON.');
+        assert(json[r'mail_order_date'] != null, 'Required key "MailServiceInfo[mail_order_date]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_custid'), 'Required key "MailServiceInfo[mail_custid]" is missing from JSON.');
+        assert(json[r'mail_custid'] != null, 'Required key "MailServiceInfo[mail_custid]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_quota'), 'Required key "MailServiceInfo[mail_quota]" is missing from JSON.');
+        assert(json[r'mail_quota'] != null, 'Required key "MailServiceInfo[mail_quota]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_status'), 'Required key "MailServiceInfo[mail_status]" is missing from JSON.');
+        assert(json[r'mail_status'] != null, 'Required key "MailServiceInfo[mail_status]" has a null value in JSON.');
+        assert(json.containsKey(r'mail_invoice'), 'Required key "MailServiceInfo[mail_invoice]" is missing from JSON.');
+        assert(json[r'mail_invoice'] != null, 'Required key "MailServiceInfo[mail_invoice]" has a null value in JSON.');
         return true;
       }());
 

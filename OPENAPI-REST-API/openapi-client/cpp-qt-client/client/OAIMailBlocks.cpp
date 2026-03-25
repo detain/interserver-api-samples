@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailBlocks::OAIMailBlocks(QString json) {
+OAIMailBlocks::OAIMailBlocks(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIMailBlocks::initializeModel() {
     m_subject_isValid = false;
 }
 
-void OAIMailBlocks::fromJson(QString jsonString) {
+void OAIMailBlocks::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

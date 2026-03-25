@@ -1,4 +1,4 @@
-# # AccountInfoLimits
+# AccountInfoLimits
 
 ## Properties
 

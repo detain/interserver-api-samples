@@ -8692,24 +8692,24 @@ export type MailExtraInfoTableRow = {
 }
 
 /**
- * Mail log records
+ * Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
  * @export
  */
 export type MailLog = {
     /**
-     * total number of mail log entries
+     * Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
      * @type {number}
      * @memberof MailLog
      */
     total: number;
     /**
-     * number of emails skipped in listing
+     * The `skip` value used for this page (echoed from the request).
      * @type {number}
      * @memberof MailLog
      */
     skip: number;
     /**
-     * number of emails to return
+     * The `limit` value used for this page (echoed from the request).
      * @type {number}
      * @memberof MailLog
      */
@@ -8723,148 +8723,160 @@ export type MailLog = {
 }
 
 /**
- * An email record
+ * A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
  * @export
  */
 export type MailLogEntry = {
     /**
-     * internal db id
+     * Internal auto-increment database row ID.
      * @type {number}
      * @memberof MailLogEntry
      */
     _id: number;
     /**
-     * mail id
+     * The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.
      * @type {string}
      * @memberof MailLogEntry
      */
     id: string;
     /**
-     * from address
+     * SMTP envelope `MAIL FROM` address.
      * @type {string}
      * @memberof MailLogEntry
      */
     from: string;
     /**
-     * to address
+     * SMTP envelope `RCPT TO` address.
      * @type {string}
      * @memberof MailLogEntry
      */
     to: string;
     /**
-     * email subject
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    subject: string;
-    /**
-     * creation date
+     * Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
      * @type {string}
      * @memberof MailLogEntry
      */
     created: string;
     /**
-     * creation timestamp
+     * Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
      * @type {number}
      * @memberof MailLogEntry
      */
     time: number;
     /**
-     * user account
+     * The SMTP AUTH username used to submit the message (e.g. `mb5658`).
      * @type {string}
      * @memberof MailLogEntry
      */
     user: string;
     /**
-     * transaction type
+     * SMTP transaction type negotiated with the relay.
      * @type {string}
      * @memberof MailLogEntry
      */
     transtype: string;
     /**
-     * origin ip
+     * IP address of the client that submitted the message to the relay.
      * @type {string}
      * @memberof MailLogEntry
      */
     origin: string;
     /**
-     * interface name
+     * Relay interface name that accepted the message.
      * @type {string}
      * @memberof MailLogEntry
      */
     _interface: string;
     /**
-     * sending zone
+     * The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
      * @type {string}
      * @memberof MailLogEntry
      */
-    sendingZone: string;
+    subject?: string;
     /**
-     * email body size in bytes
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    bodySize: number;
-    /**
-     * index of email in the to adderess list
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    seq: number;
-    /**
-     * to address this email is being sent to
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    recipient: string;
-    /**
-     * to address domain
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    domain: string;
-    /**
-     * locked status
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    locked: number;
-    /**
-     * lock timestamp
-     * @type {number}
-     * @memberof MailLogEntry
-     */
-    lockTime: number;
-    /**
-     * assigned server
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    assigned: string;
-    /**
-     * queued timestamp
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    queued: string;
-    /**
-     * mx hostname
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    mxHostname: string;
-    /**
-     * mail delivery response
-     * @type {string}
-     * @memberof MailLogEntry
-     */
-    response: string;
-    /**
-     * message id
+     * The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
      * @type {string}
      * @memberof MailLogEntry
      */
     messageId?: string;
+    /**
+     * The sending zone assigned by the relay for outbound delivery.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    sendingZone?: string;
+    /**
+     * Size of the message body in bytes.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    bodySize?: number;
+    /**
+     * Sequence index of this recipient in a multi-recipient message. Starts at 1.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    seq?: number;
+    /**
+     * Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    delivered?: number;
+    /**
+     * The SMTP response code from the destination MX server (e.g. `250`).
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    code?: number;
+    /**
+     * The specific recipient address this delivery record is for.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    recipient?: string;
+    /**
+     * The full SMTP response string received from the destination MX server.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    response?: string;
+    /**
+     * The destination domain for this delivery attempt.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    domain?: string;
+    /**
+     * Whether the queue entry is currently locked for delivery processing.
+     * @type {number}
+     * @memberof MailLogEntry
+     */
+    locked?: number;
+    /**
+     * Millisecond-precision timestamp of the last queue lock acquisition.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    lockTime?: string;
+    /**
+     * The relay server node assigned to deliver this message.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    assigned?: string;
+    /**
+     * ISO 8601 timestamp when the message was placed into the delivery queue.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    queued?: string;
+    /**
+     * The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
+     * @type {string}
+     * @memberof MailLogEntry
+     */
+    mxHostname?: string;
 }
 
 /**
@@ -14346,6 +14358,13 @@ export type VPSTrafficDataDataSectionResponse = {
  * @export
  */
 export type VPSTrafficDataDataSectionResponseInner = {
+}
+
+/**
+ * 
+ * @export
+ */
+export type ViewMailLogStartDateParameter = {
 }
 
 /**
@@ -25786,11 +25805,11 @@ export const MailApiFetchParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+         * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
          * @summary View Mail Log
          * @throws {RequiredError}
          */
-        viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, skip?: number, limit?: number, startDate?: number, endDate?: number, delivered?: '0' | '1', options: RequestOptions): FetchArgs {
+        viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, messageId?: string, replyto?: string, headerfrom?: string, delivered?: 0 | 1, skip?: number, limit?: number, startDate?: ViewMailLogStartDateParameter, endDate?: ViewMailLogStartDateParameter, sort?: 'time', dir?: 'asc' | 'desc', groupby?: 'message' | 'recipient', options: RequestOptions): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling viewMailLog.');
@@ -25848,6 +25867,22 @@ export const MailApiFetchParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['mailid'] = ((mailid:any):string);
             }
 
+            if (messageId !== undefined) {
+                localVarQueryParameter['messageId'] = ((messageId:any):string);
+            }
+
+            if (replyto !== undefined) {
+                localVarQueryParameter['replyto'] = ((replyto:any):string);
+            }
+
+            if (headerfrom !== undefined) {
+                localVarQueryParameter['headerfrom'] = ((headerfrom:any):string);
+            }
+
+            if (delivered !== undefined) {
+                localVarQueryParameter['delivered'] = ((delivered:any):string);
+            }
+
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = ((skip:any):string);
             }
@@ -25864,8 +25899,16 @@ export const MailApiFetchParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['endDate'] = ((endDate:any):string);
             }
 
-            if (delivered !== undefined) {
-                localVarQueryParameter['delivered'] = ((delivered:any):string);
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = ((sort:any):string);
+            }
+
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = ((dir:any):string);
+            }
+
+            if (groupby !== undefined) {
+                localVarQueryParameter['groupby'] = ((groupby:any):string);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -25932,7 +25975,7 @@ export type MailApiType = {
 
     updateMailInfo(id: string, options?: RequestOptions): Promise<Response>,
 
-    viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, skip?: number, limit?: number, startDate?: number, endDate?: number, delivered?: '0' | '1', options?: RequestOptions): Promise<MailLog>,
+    viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, messageId?: string, replyto?: string, headerfrom?: string, delivered?: 0 | 1, skip?: number, limit?: number, startDate?: ViewMailLogStartDateParameter, endDate?: ViewMailLogStartDateParameter, sort?: 'time', dir?: 'asc' | 'desc', groupby?: 'message' | 'recipient', options?: RequestOptions): Promise<MailLog>,
 }
 
 /**
@@ -26318,12 +26361,12 @@ export const MailApi = function(configuration?: Configuration, fetch: FetchAPI =
             });
         },
         /**
-         * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+         * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
          * @summary View Mail Log
          * @throws {RequiredError}
          */
-        viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, skip?: number, limit?: number, startDate?: number, endDate?: number, delivered?: '0' | '1', options?: RequestOptions = {}): Promise<MailLog> {
-            const localVarFetchArgs = MailApiFetchParamCreator(configuration).viewMailLog(id, id2, origin, mx, from, to, subject, mailid, skip, limit, startDate, endDate, delivered, options);
+        viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, messageId?: string, replyto?: string, headerfrom?: string, delivered?: 0 | 1, skip?: number, limit?: number, startDate?: ViewMailLogStartDateParameter, endDate?: ViewMailLogStartDateParameter, sort?: 'time', dir?: 'asc' | 'desc', groupby?: 'message' | 'recipient', options?: RequestOptions = {}): Promise<MailLog> {
+            const localVarFetchArgs = MailApiFetchParamCreator(configuration).viewMailLog(id, id2, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();

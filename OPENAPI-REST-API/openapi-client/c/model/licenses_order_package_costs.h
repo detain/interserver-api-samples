@@ -19,13 +19,13 @@ typedef struct licenses_order_package_costs_t licenses_order_package_costs_t;
 
 
 typedef struct licenses_order_package_costs_t {
-    double licenses_order_package_costs11468; //numeric
+    double *licenses_order_package_costs11468; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } licenses_order_package_costs_t;
 
 __attribute__((deprecated)) licenses_order_package_costs_t *licenses_order_package_costs_create(
-    double licenses_order_package_costs11468
+    double *licenses_order_package_costs11468
 );
 
 void licenses_order_package_costs_free(licenses_order_package_costs_t *licenses_order_package_costs);

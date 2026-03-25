@@ -209,7 +209,7 @@ Describe -tag 'PSOpenAPITools' -name 'MailApi' {
 
     Context 'Invoke-ViewMailLog' {
         It 'Test Invoke-ViewMailLog' {
-            #$TestResult = Invoke-ViewMailLog -Id "TEST_VALUE" -Id2 "TEST_VALUE" -Origin "TEST_VALUE" -Mx "TEST_VALUE" -From "TEST_VALUE" -To "TEST_VALUE" -Subject "TEST_VALUE" -Mailid "TEST_VALUE" -Skip "TEST_VALUE" -Limit "TEST_VALUE" -StartDate "TEST_VALUE" -EndDate "TEST_VALUE" -Delivered "TEST_VALUE"
+            #$TestResult = Invoke-ViewMailLog -Id "TEST_VALUE" -Id2 "TEST_VALUE" -Origin "TEST_VALUE" -Mx "TEST_VALUE" -From "TEST_VALUE" -To "TEST_VALUE" -Subject "TEST_VALUE" -Mailid "TEST_VALUE" -MessageId "TEST_VALUE" -Replyto "TEST_VALUE" -Headerfrom "TEST_VALUE" -Delivered "TEST_VALUE" -Skip "TEST_VALUE" -Limit "TEST_VALUE" -StartDate "TEST_VALUE" -EndDate "TEST_VALUE" -Sort "TEST_VALUE" -Dir "TEST_VALUE" -Groupby "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

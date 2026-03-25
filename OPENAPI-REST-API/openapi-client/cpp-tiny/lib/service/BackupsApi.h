@@ -30,7 +30,7 @@ class BackupsApi : public Service {
 public:
     BackupsApi() = default;
 
-    virtual ~BackupsApi() = default;
+    virtual ~BackupsApi();
 
     /**
     * Place Backup Order.

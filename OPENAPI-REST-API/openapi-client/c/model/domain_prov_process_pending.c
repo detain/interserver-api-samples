@@ -19,6 +19,8 @@ static domain_prov_process_pending_t *domain_prov_process_pending_create_interna
     if (!domain_prov_process_pending_local_var) {
         return NULL;
     }
+    memset(domain_prov_process_pending_local_var, 0, sizeof(domain_prov_process_pending_t));
+    domain_prov_process_pending_local_var->_library_owned = 1;
     domain_prov_process_pending_local_var->_ops_version = _ops_version;
     domain_prov_process_pending_local_var->response_text = response_text;
     domain_prov_process_pending_local_var->protocol = protocol;
@@ -27,8 +29,6 @@ static domain_prov_process_pending_t *domain_prov_process_pending_create_interna
     domain_prov_process_pending_local_var->object = object;
     domain_prov_process_pending_local_var->is_success = is_success;
     domain_prov_process_pending_local_var->attributes = attributes;
-
-    domain_prov_process_pending_local_var->_library_owned = 1;
     return domain_prov_process_pending_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) domain_prov_process_pending_t *domain_prov_process_p
     char *is_success,
     domain_prov_process_pending_attributes_t *attributes
     ) {
-    return domain_prov_process_pending_create_internal (
+    domain_prov_process_pending_t *result = domain_prov_process_pending_create_internal (
         _ops_version,
         response_text,
         protocol,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) domain_prov_process_pending_t *domain_prov_process_p
         is_success,
         attributes
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_prov_process_pending_free(domain_prov_process_pending_t *domain_prov_process_pending) {
@@ -181,6 +184,20 @@ domain_prov_process_pending_t *domain_prov_process_pending_parseFromJSON(cJSON *
 
     domain_prov_process_pending_t *domain_prov_process_pending_local_var = NULL;
 
+    char *_ops_version_local_str = NULL;
+
+    char *response_text_local_str = NULL;
+
+    char *protocol_local_str = NULL;
+
+    char *response_code_local_str = NULL;
+
+    char *action_local_str = NULL;
+
+    char *object_local_str = NULL;
+
+    char *is_success_local_str = NULL;
+
     // define the local variable for domain_prov_process_pending->attributes
     domain_prov_process_pending_attributes_t *attributes_local_nonprim = NULL;
 
@@ -278,19 +295,59 @@ domain_prov_process_pending_t *domain_prov_process_pending_parseFromJSON(cJSON *
     }
 
 
+    if (_ops_version && !cJSON_IsNull(_ops_version)) _ops_version_local_str = strdup(_ops_version->valuestring);
+    if (response_text && !cJSON_IsNull(response_text)) response_text_local_str = strdup(response_text->valuestring);
+    if (protocol && !cJSON_IsNull(protocol)) protocol_local_str = strdup(protocol->valuestring);
+    if (response_code && !cJSON_IsNull(response_code)) response_code_local_str = strdup(response_code->valuestring);
+    if (action && !cJSON_IsNull(action)) action_local_str = strdup(action->valuestring);
+    if (object && !cJSON_IsNull(object)) object_local_str = strdup(object->valuestring);
+    if (is_success && !cJSON_IsNull(is_success)) is_success_local_str = strdup(is_success->valuestring);
+
     domain_prov_process_pending_local_var = domain_prov_process_pending_create_internal (
-        _ops_version && !cJSON_IsNull(_ops_version) ? strdup(_ops_version->valuestring) : NULL,
-        response_text && !cJSON_IsNull(response_text) ? strdup(response_text->valuestring) : NULL,
-        protocol && !cJSON_IsNull(protocol) ? strdup(protocol->valuestring) : NULL,
-        response_code && !cJSON_IsNull(response_code) ? strdup(response_code->valuestring) : NULL,
-        action && !cJSON_IsNull(action) ? strdup(action->valuestring) : NULL,
-        object && !cJSON_IsNull(object) ? strdup(object->valuestring) : NULL,
-        is_success && !cJSON_IsNull(is_success) ? strdup(is_success->valuestring) : NULL,
+        _ops_version_local_str,
+        response_text_local_str,
+        protocol_local_str,
+        response_code_local_str,
+        action_local_str,
+        object_local_str,
+        is_success_local_str,
         attributes ? attributes_local_nonprim : NULL
         );
 
+    if (!domain_prov_process_pending_local_var) {
+        goto end;
+    }
+
     return domain_prov_process_pending_local_var;
 end:
+    if (_ops_version_local_str) {
+        free(_ops_version_local_str);
+        _ops_version_local_str = NULL;
+    }
+    if (response_text_local_str) {
+        free(response_text_local_str);
+        response_text_local_str = NULL;
+    }
+    if (protocol_local_str) {
+        free(protocol_local_str);
+        protocol_local_str = NULL;
+    }
+    if (response_code_local_str) {
+        free(response_code_local_str);
+        response_code_local_str = NULL;
+    }
+    if (action_local_str) {
+        free(action_local_str);
+        action_local_str = NULL;
+    }
+    if (object_local_str) {
+        free(object_local_str);
+        object_local_str = NULL;
+    }
+    if (is_success_local_str) {
+        free(is_success_local_str);
+        is_success_local_str = NULL;
+    }
     if (attributes_local_nonprim) {
         domain_prov_process_pending_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;

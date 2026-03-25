@@ -7,27 +7,36 @@
 
 static home_services_vps_t *home_services_vps_create_internal(
     home_services_vps_links_t *links,
-    int count
+    int *count
     ) {
     home_services_vps_t *home_services_vps_local_var = malloc(sizeof(home_services_vps_t));
     if (!home_services_vps_local_var) {
         return NULL;
     }
+    memset(home_services_vps_local_var, 0, sizeof(home_services_vps_t));
+    home_services_vps_local_var->_library_owned = 1;
     home_services_vps_local_var->links = links;
     home_services_vps_local_var->count = count;
-
-    home_services_vps_local_var->_library_owned = 1;
     return home_services_vps_local_var;
 }
 
 __attribute__((deprecated)) home_services_vps_t *home_services_vps_create(
     home_services_vps_links_t *links,
-    int count
+    int *count
     ) {
-    return home_services_vps_create_internal (
+    int *count_copy = NULL;
+    if (count) {
+        count_copy = malloc(sizeof(int));
+        if (count_copy) *count_copy = *count;
+    }
+    home_services_vps_t *result = home_services_vps_create_internal (
         links,
-        count
+        count_copy
         );
+    if (!result) {
+        free(count_copy);
+    }
+    return result;
 }
 
 void home_services_vps_free(home_services_vps_t *home_services_vps) {
@@ -42,6 +51,10 @@ void home_services_vps_free(home_services_vps_t *home_services_vps) {
     if (home_services_vps->links) {
         home_services_vps_links_free(home_services_vps->links);
         home_services_vps->links = NULL;
+    }
+    if (home_services_vps->count) {
+        free(home_services_vps->count);
+        home_services_vps->count = NULL;
     }
     free(home_services_vps);
 }
@@ -64,7 +77,7 @@ cJSON *home_services_vps_convertToJSON(home_services_vps_t *home_services_vps) {
 
     // home_services_vps->count
     if(home_services_vps->count) {
-    if(cJSON_AddNumberToObject(item, "count", home_services_vps->count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "count", *home_services_vps->count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -83,6 +96,9 @@ home_services_vps_t *home_services_vps_parseFromJSON(cJSON *home_services_vpsJSO
 
     // define the local variable for home_services_vps->links
     home_services_vps_links_t *links_local_nonprim = NULL;
+
+    // define the local variable for home_services_vps->count
+    int *count_local_var = NULL;
 
     // home_services_vps->links
     cJSON *links = cJSON_GetObjectItemCaseSensitive(home_services_vpsJSON, "links");
@@ -103,19 +119,34 @@ home_services_vps_t *home_services_vps_parseFromJSON(cJSON *home_services_vpsJSO
     {
     goto end; //Numeric
     }
+    count_local_var = malloc(sizeof(int));
+    if(!count_local_var)
+    {
+        goto end;
     }
+    *count_local_var = count->valuedouble;
+    }
+
 
 
     home_services_vps_local_var = home_services_vps_create_internal (
         links ? links_local_nonprim : NULL,
-        count ? count->valuedouble : 0
+        count_local_var
         );
+
+    if (!home_services_vps_local_var) {
+        goto end;
+    }
 
     return home_services_vps_local_var;
 end:
     if (links_local_nonprim) {
         home_services_vps_links_free(links_local_nonprim);
         links_local_nonprim = NULL;
+    }
+    if (count_local_var) {
+        free(count_local_var);
+        count_local_var = NULL;
     }
     return NULL;
 

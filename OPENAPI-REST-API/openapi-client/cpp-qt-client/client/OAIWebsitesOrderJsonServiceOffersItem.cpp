@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIWebsitesOrderJsonServiceOffersItem::OAIWebsitesOrderJsonServiceOffersItem(QString json) {
+OAIWebsitesOrderJsonServiceOffersItem::OAIWebsitesOrderJsonServiceOffersItem(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -71,7 +71,7 @@ void OAIWebsitesOrderJsonServiceOffersItem::initializeModel() {
     m_currency_symbol_isValid = false;
 }
 
-void OAIWebsitesOrderJsonServiceOffersItem::fromJson(QString jsonString) {
+void OAIWebsitesOrderJsonServiceOffersItem::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

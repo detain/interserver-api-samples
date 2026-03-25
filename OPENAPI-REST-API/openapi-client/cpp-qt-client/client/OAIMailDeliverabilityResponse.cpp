@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIMailDeliverabilityResponse::OAIMailDeliverabilityResponse(QString json) {
+OAIMailDeliverabilityResponse::OAIMailDeliverabilityResponse(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIMailDeliverabilityResponse::initializeModel() {
     m_table_data_isValid = false;
 }
 
-void OAIMailDeliverabilityResponse::fromJson(QString jsonString) {
+void OAIMailDeliverabilityResponse::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

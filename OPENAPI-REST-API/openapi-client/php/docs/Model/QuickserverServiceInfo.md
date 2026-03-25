@@ -1,4 +1,4 @@
-# # QuickserverServiceInfo
+# QuickserverServiceInfo
 
 ## Properties
 

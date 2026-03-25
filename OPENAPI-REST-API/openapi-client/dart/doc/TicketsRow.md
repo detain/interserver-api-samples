@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **departmenttitle** | **String** |  | 
 **ticketid** | **int** |  | 
 **canClose** | **String** |  | 
-**attachments** | [**Object**](.md) |  | 
+**attachments** | **Object** |  | 
 **statusText** | **String** |  | 
 **checked** | **bool** |  | 
 

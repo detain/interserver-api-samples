@@ -1,4 +1,4 @@
-# # QuickserverServiceExtra
+# QuickserverServiceExtra
 
 ## Properties
 

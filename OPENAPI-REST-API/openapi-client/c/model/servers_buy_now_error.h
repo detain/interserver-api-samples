@@ -19,7 +19,7 @@ typedef struct servers_buy_now_error_t servers_buy_now_error_t;
 
 
 typedef struct servers_buy_now_error_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
     list_t *errors; //primitive container
 
@@ -27,7 +27,7 @@ typedef struct servers_buy_now_error_t {
 } servers_buy_now_error_t;
 
 __attribute__((deprecated)) servers_buy_now_error_t *servers_buy_now_error_create(
-    int success,
+    int *success,
     char *text,
     list_t *errors
 );

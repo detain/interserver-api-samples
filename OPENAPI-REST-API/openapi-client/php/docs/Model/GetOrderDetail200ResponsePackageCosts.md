@@ -1,4 +1,4 @@
-# # GetOrderDetail200ResponsePackageCosts
+# GetOrderDetail200ResponsePackageCosts
 
 ## Properties
 

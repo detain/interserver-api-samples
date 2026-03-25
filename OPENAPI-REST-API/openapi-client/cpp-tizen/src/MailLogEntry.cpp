@@ -27,25 +27,27 @@ MailLogEntry::__init()
 	//id = std::string();
 	//from = std::string();
 	//to = std::string();
-	//subject = std::string();
 	//created = std::string();
 	//time = int(0);
 	//user = std::string();
 	//transtype = std::string();
 	//origin = std::string();
 	//interface = std::string();
+	//subject = std::string();
+	//messageId = std::string();
 	//sendingZone = std::string();
 	//bodySize = int(0);
 	//seq = int(0);
+	//delivered = int(0);
+	//code = int(0);
 	//recipient = std::string();
+	//response = std::string();
 	//domain = std::string();
 	//locked = int(0);
-	//lockTime = int(0);
+	//lockTime = std::string();
 	//assigned = std::string();
 	//queued = std::string();
 	//mxHostname = std::string();
-	//response = std::string();
-	//messageId = std::string();
 }
 
 void
@@ -70,11 +72,6 @@ MailLogEntry::__cleanup()
 	//
 	//delete to;
 	//to = NULL;
-	//}
-	//if(subject != NULL) {
-	//
-	//delete subject;
-	//subject = NULL;
 	//}
 	//if(created != NULL) {
 	//
@@ -106,6 +103,16 @@ MailLogEntry::__cleanup()
 	//delete interface;
 	//interface = NULL;
 	//}
+	//if(subject != NULL) {
+	//
+	//delete subject;
+	//subject = NULL;
+	//}
+	//if(messageId != NULL) {
+	//
+	//delete messageId;
+	//messageId = NULL;
+	//}
 	//if(sendingZone != NULL) {
 	//
 	//delete sendingZone;
@@ -121,10 +128,25 @@ MailLogEntry::__cleanup()
 	//delete seq;
 	//seq = NULL;
 	//}
+	//if(delivered != NULL) {
+	//
+	//delete delivered;
+	//delivered = NULL;
+	//}
+	//if(code != NULL) {
+	//
+	//delete code;
+	//code = NULL;
+	//}
 	//if(recipient != NULL) {
 	//
 	//delete recipient;
 	//recipient = NULL;
+	//}
+	//if(response != NULL) {
+	//
+	//delete response;
+	//response = NULL;
 	//}
 	//if(domain != NULL) {
 	//
@@ -155,16 +177,6 @@ MailLogEntry::__cleanup()
 	//
 	//delete mxHostname;
 	//mxHostname = NULL;
-	//}
-	//if(response != NULL) {
-	//
-	//delete response;
-	//response = NULL;
-	//}
-	//if(messageId != NULL) {
-	//
-	//delete messageId;
-	//messageId = NULL;
 	//}
 	//
 }
@@ -214,17 +226,6 @@ MailLogEntry::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&to, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *subjectKey = "subject";
-	node = json_object_get_member(pJsonObject, subjectKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&subject, node, "std::string", "");
 		} else {
 			
 		}
@@ -295,6 +296,28 @@ MailLogEntry::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *subjectKey = "subject";
+	node = json_object_get_member(pJsonObject, subjectKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&subject, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *messageIdKey = "messageId";
+	node = json_object_get_member(pJsonObject, messageIdKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&messageId, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *sendingZoneKey = "sendingZone";
 	node = json_object_get_member(pJsonObject, sendingZoneKey);
 	if (node !=NULL) {
@@ -328,6 +351,28 @@ MailLogEntry::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *deliveredKey = "delivered";
+	node = json_object_get_member(pJsonObject, deliveredKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&delivered, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *codeKey = "code";
+	node = json_object_get_member(pJsonObject, codeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&code, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *recipientKey = "recipient";
 	node = json_object_get_member(pJsonObject, recipientKey);
 	if (node !=NULL) {
@@ -335,6 +380,17 @@ MailLogEntry::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&recipient, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *responseKey = "response";
+	node = json_object_get_member(pJsonObject, responseKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&response, node, "std::string", "");
 		} else {
 			
 		}
@@ -366,8 +422,8 @@ MailLogEntry::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&lockTime, node, "int", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&lockTime, node, "std::string", "");
 		} else {
 			
 		}
@@ -401,28 +457,6 @@ MailLogEntry::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&mxHostname, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *responseKey = "response";
-	node = json_object_get_member(pJsonObject, responseKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&response, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *messageIdKey = "messageId";
-	node = json_object_get_member(pJsonObject, messageIdKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&messageId, node, "std::string", "");
 		} else {
 			
 		}
@@ -475,15 +509,6 @@ MailLogEntry::toJson()
 	}
 	const gchar *toKey = "to";
 	json_object_set_member(pJsonObject, toKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getSubject();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *subjectKey = "subject";
-	json_object_set_member(pJsonObject, subjectKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCreated();
 		node = converttoJson(&obj, "std::string", "");
@@ -539,6 +564,24 @@ MailLogEntry::toJson()
 	const gchar *interfaceKey = "interface";
 	json_object_set_member(pJsonObject, interfaceKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getSubject();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *subjectKey = "subject";
+	json_object_set_member(pJsonObject, subjectKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMessageId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *messageIdKey = "messageId";
+	json_object_set_member(pJsonObject, messageIdKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getSendingZone();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -565,6 +608,24 @@ MailLogEntry::toJson()
 	}
 	const gchar *seqKey = "seq";
 	json_object_set_member(pJsonObject, seqKey, node);
+	if (isprimitive("int")) {
+		int obj = getDelivered();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *deliveredKey = "delivered";
+	json_object_set_member(pJsonObject, deliveredKey, node);
+	if (isprimitive("int")) {
+		int obj = getCode();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *codeKey = "code";
+	json_object_set_member(pJsonObject, codeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getRecipient();
 		node = converttoJson(&obj, "std::string", "");
@@ -574,6 +635,15 @@ MailLogEntry::toJson()
 	}
 	const gchar *recipientKey = "recipient";
 	json_object_set_member(pJsonObject, recipientKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getResponse();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *responseKey = "response";
+	json_object_set_member(pJsonObject, responseKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getDomain();
 		node = converttoJson(&obj, "std::string", "");
@@ -592,9 +662,9 @@ MailLogEntry::toJson()
 	}
 	const gchar *lockedKey = "locked";
 	json_object_set_member(pJsonObject, lockedKey, node);
-	if (isprimitive("int")) {
-		int obj = getLockTime();
-		node = converttoJson(&obj, "int", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getLockTime();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
@@ -628,24 +698,6 @@ MailLogEntry::toJson()
 	}
 	const gchar *mxHostnameKey = "mxHostname";
 	json_object_set_member(pJsonObject, mxHostnameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getResponse();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *responseKey = "response";
-	json_object_set_member(pJsonObject, responseKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getMessageId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *messageIdKey = "messageId";
-	json_object_set_member(pJsonObject, messageIdKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -700,18 +752,6 @@ void
 MailLogEntry::setTo(std::string  to)
 {
 	this->to = to;
-}
-
-std::string
-MailLogEntry::getSubject()
-{
-	return subject;
-}
-
-void
-MailLogEntry::setSubject(std::string  subject)
-{
-	this->subject = subject;
 }
 
 std::string
@@ -787,6 +827,30 @@ MailLogEntry::setInterface(std::string  interface)
 }
 
 std::string
+MailLogEntry::getSubject()
+{
+	return subject;
+}
+
+void
+MailLogEntry::setSubject(std::string  subject)
+{
+	this->subject = subject;
+}
+
+std::string
+MailLogEntry::getMessageId()
+{
+	return messageId;
+}
+
+void
+MailLogEntry::setMessageId(std::string  messageId)
+{
+	this->messageId = messageId;
+}
+
+std::string
 MailLogEntry::getSendingZone()
 {
 	return sendingZone;
@@ -822,6 +886,30 @@ MailLogEntry::setSeq(int  seq)
 	this->seq = seq;
 }
 
+int
+MailLogEntry::getDelivered()
+{
+	return delivered;
+}
+
+void
+MailLogEntry::setDelivered(int  delivered)
+{
+	this->delivered = delivered;
+}
+
+int
+MailLogEntry::getCode()
+{
+	return code;
+}
+
+void
+MailLogEntry::setCode(int  code)
+{
+	this->code = code;
+}
+
 std::string
 MailLogEntry::getRecipient()
 {
@@ -832,6 +920,18 @@ void
 MailLogEntry::setRecipient(std::string  recipient)
 {
 	this->recipient = recipient;
+}
+
+std::string
+MailLogEntry::getResponse()
+{
+	return response;
+}
+
+void
+MailLogEntry::setResponse(std::string  response)
+{
+	this->response = response;
 }
 
 std::string
@@ -858,14 +958,14 @@ MailLogEntry::setLocked(int  locked)
 	this->locked = locked;
 }
 
-int
+std::string
 MailLogEntry::getLockTime()
 {
 	return lockTime;
 }
 
 void
-MailLogEntry::setLockTime(int  lockTime)
+MailLogEntry::setLockTime(std::string  lockTime)
 {
 	this->lockTime = lockTime;
 }
@@ -904,30 +1004,6 @@ void
 MailLogEntry::setMxHostname(std::string  mxHostname)
 {
 	this->mxHostname = mxHostname;
-}
-
-std::string
-MailLogEntry::getResponse()
-{
-	return response;
-}
-
-void
-MailLogEntry::setResponse(std::string  response)
-{
-	this->response = response;
-}
-
-std::string
-MailLogEntry::getMessageId()
-{
-	return messageId;
-}
-
-void
-MailLogEntry::setMessageId(std::string  messageId)
-{
-	this->messageId = messageId;
 }
 
 

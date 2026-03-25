@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBillingVerifyCcRequest::OAIBillingVerifyCcRequest(QString json) {
+OAIBillingVerifyCcRequest::OAIBillingVerifyCcRequest(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -50,7 +50,7 @@ void OAIBillingVerifyCcRequest::initializeModel() {
     m_terms_isValid = false;
 }
 
-void OAIBillingVerifyCcRequest::fromJson(QString jsonString) {
+void OAIBillingVerifyCcRequest::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

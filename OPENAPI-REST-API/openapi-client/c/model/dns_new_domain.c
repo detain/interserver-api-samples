@@ -13,10 +13,10 @@ static dns_new_domain_t *dns_new_domain_create_internal(
     if (!dns_new_domain_local_var) {
         return NULL;
     }
+    memset(dns_new_domain_local_var, 0, sizeof(dns_new_domain_t));
+    dns_new_domain_local_var->_library_owned = 1;
     dns_new_domain_local_var->domain = domain;
     dns_new_domain_local_var->ip = ip;
-
-    dns_new_domain_local_var->_library_owned = 1;
     return dns_new_domain_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) dns_new_domain_t *dns_new_domain_create(
     char *domain,
     char *ip
     ) {
-    return dns_new_domain_create_internal (
+    dns_new_domain_t *result = dns_new_domain_create_internal (
         domain,
         ip
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void dns_new_domain_free(dns_new_domain_t *dns_new_domain) {
@@ -82,6 +85,10 @@ dns_new_domain_t *dns_new_domain_parseFromJSON(cJSON *dns_new_domainJSON){
 
     dns_new_domain_t *dns_new_domain_local_var = NULL;
 
+    char *domain_local_str = NULL;
+
+    char *ip_local_str = NULL;
+
     // dns_new_domain->domain
     cJSON *domain = cJSON_GetObjectItemCaseSensitive(dns_new_domainJSON, "domain");
     if (cJSON_IsNull(domain)) {
@@ -113,13 +120,28 @@ dns_new_domain_t *dns_new_domain_parseFromJSON(cJSON *dns_new_domainJSON){
     }
 
 
+    if (domain && !cJSON_IsNull(domain)) domain_local_str = strdup(domain->valuestring);
+    if (ip && !cJSON_IsNull(ip)) ip_local_str = strdup(ip->valuestring);
+
     dns_new_domain_local_var = dns_new_domain_create_internal (
-        strdup(domain->valuestring),
-        strdup(ip->valuestring)
+        domain_local_str,
+        ip_local_str
         );
+
+    if (!dns_new_domain_local_var) {
+        goto end;
+    }
 
     return dns_new_domain_local_var;
 end:
+    if (domain_local_str) {
+        free(domain_local_str);
+        domain_local_str = NULL;
+    }
+    if (ip_local_str) {
+        free(ip_local_str);
+        ip_local_str = NULL;
+    }
     return NULL;
 
 }

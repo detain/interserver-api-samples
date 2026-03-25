@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIDomain::OAIDomain(QString json) {
+OAIDomain::OAIDomain(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -92,7 +92,7 @@ void OAIDomain::initializeModel() {
     m_auto_renew_isValid = false;
 }
 
-void OAIDomain::fromJson(QString jsonString) {
+void OAIDomain::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

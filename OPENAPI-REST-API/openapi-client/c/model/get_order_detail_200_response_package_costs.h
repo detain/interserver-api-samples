@@ -19,8 +19,8 @@ typedef struct get_order_detail_200_response_package_costs_t get_order_detail_20
 
 
 typedef struct get_order_detail_200_response_package_costs_t {
-    double package_id; //numeric
-    double package_cost; //numeric
+    double *package_id; //numeric
+    double *package_cost; //numeric
     char *currency; // string
     char *currency_symbol; // string
 
@@ -28,8 +28,8 @@ typedef struct get_order_detail_200_response_package_costs_t {
 } get_order_detail_200_response_package_costs_t;
 
 __attribute__((deprecated)) get_order_detail_200_response_package_costs_t *get_order_detail_200_response_package_costs_create(
-    double package_id,
-    double package_cost,
+    double *package_id,
+    double *package_cost,
     char *currency,
     char *currency_symbol
 );

@@ -13,10 +13,10 @@ static quickserver_extra_info_tables_t *quickserver_extra_info_tables_create_int
     if (!quickserver_extra_info_tables_local_var) {
         return NULL;
     }
+    memset(quickserver_extra_info_tables_local_var, 0, sizeof(quickserver_extra_info_tables_t));
+    quickserver_extra_info_tables_local_var->_library_owned = 1;
     quickserver_extra_info_tables_local_var->ip_info = ip_info;
     quickserver_extra_info_tables_local_var->addons = addons;
-
-    quickserver_extra_info_tables_local_var->_library_owned = 1;
     return quickserver_extra_info_tables_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) quickserver_extra_info_tables_t *quickserver_extra_i
     quickserver_ip_info_t *ip_info,
     quickserver_addons_t *addons
     ) {
-    return quickserver_extra_info_tables_create_internal (
+    quickserver_extra_info_tables_t *result = quickserver_extra_info_tables_create_internal (
         ip_info,
         addons
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quickserver_extra_info_tables_free(quickserver_extra_info_tables_t *quickserver_extra_info_tables) {
@@ -115,10 +118,15 @@ quickserver_extra_info_tables_t *quickserver_extra_info_tables_parseFromJSON(cJS
     }
 
 
+
     quickserver_extra_info_tables_local_var = quickserver_extra_info_tables_create_internal (
         ip_info ? ip_info_local_nonprim : NULL,
         addons ? addons_local_nonprim : NULL
         );
+
+    if (!quickserver_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return quickserver_extra_info_tables_local_var;
 end:

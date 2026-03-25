@@ -169,10 +169,40 @@ class Vps {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Vps[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Vps[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'serviceInfo'), 'Required key "Vps[serviceInfo]" is missing from JSON.');
+        assert(json[r'serviceInfo'] != null, 'Required key "Vps[serviceInfo]" has a null value in JSON.');
+        assert(json.containsKey(r'client_links'), 'Required key "Vps[client_links]" is missing from JSON.');
+        assert(json[r'client_links'] != null, 'Required key "Vps[client_links]" has a null value in JSON.');
+        assert(json.containsKey(r'billingDetails'), 'Required key "Vps[billingDetails]" is missing from JSON.');
+        assert(json[r'billingDetails'] != null, 'Required key "Vps[billingDetails]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrency'), 'Required key "Vps[custCurrency]" is missing from JSON.');
+        assert(json[r'custCurrency'] != null, 'Required key "Vps[custCurrency]" has a null value in JSON.');
+        assert(json.containsKey(r'custCurrencySymbol'), 'Required key "Vps[custCurrencySymbol]" is missing from JSON.');
+        assert(json[r'custCurrencySymbol'] != null, 'Required key "Vps[custCurrencySymbol]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceMaster'), 'Required key "Vps[serviceMaster]" is missing from JSON.');
+        assert(json[r'serviceMaster'] != null, 'Required key "Vps[serviceMaster]" has a null value in JSON.');
+        assert(json.containsKey(r'package'), 'Required key "Vps[package]" is missing from JSON.');
+        assert(json[r'package'] != null, 'Required key "Vps[package]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceExtra'), 'Required key "Vps[serviceExtra]" is missing from JSON.');
+        assert(json[r'serviceExtra'] != null, 'Required key "Vps[serviceExtra]" has a null value in JSON.');
+        assert(json.containsKey(r'extraInfoTables'), 'Required key "Vps[extraInfoTables]" is missing from JSON.');
+        assert(json[r'extraInfoTables'] != null, 'Required key "Vps[extraInfoTables]" has a null value in JSON.');
+        assert(json.containsKey(r'module'), 'Required key "Vps[module]" is missing from JSON.');
+        assert(json[r'module'] != null, 'Required key "Vps[module]" has a null value in JSON.');
+        assert(json.containsKey(r'token'), 'Required key "Vps[token]" is missing from JSON.');
+        assert(json[r'token'] != null, 'Required key "Vps[token]" has a null value in JSON.');
+        assert(json.containsKey(r'da_link'), 'Required key "Vps[da_link]" is missing from JSON.');
+        assert(json[r'da_link'] != null, 'Required key "Vps[da_link]" has a null value in JSON.');
+        assert(json.containsKey(r'sr_link'), 'Required key "Vps[sr_link]" is missing from JSON.');
+        assert(json[r'sr_link'] != null, 'Required key "Vps[sr_link]" has a null value in JSON.');
+        assert(json.containsKey(r'cp_data'), 'Required key "Vps[cp_data]" is missing from JSON.');
+        assert(json[r'cp_data'] != null, 'Required key "Vps[cp_data]" has a null value in JSON.');
+        assert(json.containsKey(r'da_data'), 'Required key "Vps[da_data]" is missing from JSON.');
+        assert(json[r'da_data'] != null, 'Required key "Vps[da_data]" has a null value in JSON.');
+        assert(json.containsKey(r'plesk12_data'), 'Required key "Vps[plesk12_data]" is missing from JSON.');
+        assert(json[r'plesk12_data'] != null, 'Required key "Vps[plesk12_data]" has a null value in JSON.');
+        assert(json.containsKey(r'serviceAddons'), 'Required key "Vps[serviceAddons]" is missing from JSON.');
+        assert(json[r'serviceAddons'] != null, 'Required key "Vps[serviceAddons]" has a null value in JSON.');
         return true;
       }());
 

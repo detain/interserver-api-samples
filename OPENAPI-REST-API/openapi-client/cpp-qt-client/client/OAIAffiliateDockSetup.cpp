@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAffiliateDockSetup::OAIAffiliateDockSetup(QString json) {
+OAIAffiliateDockSetup::OAIAffiliateDockSetup(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -44,7 +44,7 @@ void OAIAffiliateDockSetup::initializeModel() {
     m_referrer_coupon_isValid = false;
 }
 
-void OAIAffiliateDockSetup::fromJson(QString jsonString) {
+void OAIAffiliateDockSetup::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

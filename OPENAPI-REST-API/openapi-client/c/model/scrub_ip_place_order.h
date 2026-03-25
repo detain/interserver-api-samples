@@ -19,14 +19,14 @@ typedef struct scrub_ip_place_order_t scrub_ip_place_order_t;
 
 
 typedef struct scrub_ip_place_order_t {
-    int service_type; //numeric
+    int *service_type; //numeric
     char *ip; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } scrub_ip_place_order_t;
 
 __attribute__((deprecated)) scrub_ip_place_order_t *scrub_ip_place_order_create(
-    int service_type,
+    int *service_type,
     char *ip
 );
 

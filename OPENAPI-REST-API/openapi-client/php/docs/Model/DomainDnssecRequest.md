@@ -1,4 +1,4 @@
-# # DomainDnssecRequest
+# DomainDnssecRequest
 
 ## Properties
 

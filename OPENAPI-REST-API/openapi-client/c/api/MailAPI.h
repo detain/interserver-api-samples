@@ -26,12 +26,22 @@
 #include "../model/send_mail.h"
 #include "../model/send_mail_adv.h"
 #include "../model/success_text_response.h"
+#include "../model/view_mail_log_start_date_parameter.h"
 
 // Enum TIME for MailAPI_getStats
 typedef enum  { interserver_management_api_getStats_TIME_NULL = 0, interserver_management_api_getStats_TIME_all, interserver_management_api_getStats_TIME_billing, interserver_management_api_getStats_TIME_month, interserver_management_api_getStats_TIME__7d, interserver_management_api_getStats_TIME__24h, interserver_management_api_getStats_TIME__1d, interserver_management_api_getStats_TIME__1h } interserver_management_api_getStats_time_e;
 
 // Enum DELIVERED for MailAPI_viewMailLog
 typedef enum  { interserver_management_api_viewMailLog_DELIVERED_NULL = 0, interserver_management_api_viewMailLog_DELIVERED__0, interserver_management_api_viewMailLog_DELIVERED__1 } interserver_management_api_viewMailLog_delivered_e;
+
+// Enum SORT for MailAPI_viewMailLog
+typedef enum  { interserver_management_api_viewMailLog_SORT_NULL = 0, interserver_management_api_viewMailLog_SORT_time } interserver_management_api_viewMailLog_sort_e;
+
+// Enum DIR for MailAPI_viewMailLog
+typedef enum  { interserver_management_api_viewMailLog_DIR_NULL = 0, interserver_management_api_viewMailLog_DIR_asc, interserver_management_api_viewMailLog_DIR_desc } interserver_management_api_viewMailLog_dir_e;
+
+// Enum GROUPBY for MailAPI_viewMailLog
+typedef enum  { interserver_management_api_viewMailLog_GROUPBY_NULL = 0, interserver_management_api_viewMailLog_GROUPBY_message, interserver_management_api_viewMailLog_GROUPBY_recipient } interserver_management_api_viewMailLog_groupby_e;
 
 
 // Place Mail Order
@@ -236,9 +246,9 @@ MailAPI_updateMailInfo(apiClient_t *apiClient, char *id);
 
 // View Mail Log
 //
-// Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
+// Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
 //
 mail_log_t*
-MailAPI_viewMailLog(apiClient_t *apiClient, int *id, long id2, char *origin, char *mx, char *from, char *to, char *subject, char *mailid, int *skip, int *limit, long startDate, long endDate, interserver_management_api_viewMailLog_delivered_e delivered);
+MailAPI_viewMailLog(apiClient_t *apiClient, int *id, long id2, char *origin, char *mx, char *from, char *to, char *subject, char *mailid, char *messageId, char *replyto, char *headerfrom, int *delivered, int *skip, int *limit, view_mail_log_start_date_parameter_t *startDate, view_mail_log_start_date_parameter_t *endDate, interserver_management_api_viewMailLog_sort_e sort, interserver_management_api_viewMailLog_dir_e dir, interserver_management_api_viewMailLog_groupby_e groupby);
 
 

@@ -791,6 +791,7 @@ Class | Method | HTTP request | Description
  - [VPSCancel200Response](docs/VPSCancel200Response.md)
  - [VPSTrafficDataDataSectionResponse](docs/VPSTrafficDataDataSectionResponse.md)
  - [VPSTrafficDataDataSectionResponseInner](docs/VPSTrafficDataDataSectionResponseInner.md)
+ - [ViewMailLogStartDateParameter](docs/ViewMailLogStartDateParameter.md)
  - [ViewTicketResponse](docs/ViewTicketResponse.md)
  - [Vps](docs/Vps.md)
  - [VpsBackupRow](docs/VpsBackupRow.md)

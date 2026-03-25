@@ -2,8 +2,8 @@
 
 InterServer Management API
 - API version: 0.9.0
-  - Build date: 2026-03-12T01:47:30.549169014-04:00[America/New_York]
-  - Generator version: 7.20.0
+  - Build date: 2026-03-25T16:38:48.461562589-04:00[America/New_York]
+  - Generator version: 7.21.0
 
 # Overview
 
@@ -864,6 +864,7 @@ Class | Method | HTTP request | Description
  - [VPSCancel200Response](docs/VPSCancel200Response.md)
  - [VPSTrafficDataDataSectionResponse](docs/VPSTrafficDataDataSectionResponse.md)
  - [VPSTrafficDataDataSectionResponseInner](docs/VPSTrafficDataDataSectionResponseInner.md)
+ - [ViewMailLogStartDateParameter](docs/ViewMailLogStartDateParameter.md)
  - [ViewTicketResponse](docs/ViewTicketResponse.md)
  - [Vps](docs/Vps.md)
  - [VpsBackupRow](docs/VpsBackupRow.md)

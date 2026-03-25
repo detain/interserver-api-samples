@@ -32,13 +32,13 @@ namespace OpenAPI {
 class OAIBackupOrderPutResponse : public OAIObject {
 public:
     OAIBackupOrderPutResponse();
-    OAIBackupOrderPutResponse(QString json);
+    OAIBackupOrderPutResponse(const QString &json);
     ~OAIBackupOrderPutResponse() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     bool isRContinue() const;
     void setRContinue(const bool &r_continue);

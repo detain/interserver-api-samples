@@ -12,18 +12,21 @@ static get_scrub_ip_details_200_response_extra_info_tables_t *get_scrub_ip_detai
     if (!get_scrub_ip_details_200_response_extra_info_tables_local_var) {
         return NULL;
     }
-    get_scrub_ip_details_200_response_extra_info_tables_local_var->scrub_ips = scrub_ips;
-
+    memset(get_scrub_ip_details_200_response_extra_info_tables_local_var, 0, sizeof(get_scrub_ip_details_200_response_extra_info_tables_t));
     get_scrub_ip_details_200_response_extra_info_tables_local_var->_library_owned = 1;
+    get_scrub_ip_details_200_response_extra_info_tables_local_var->scrub_ips = scrub_ips;
     return get_scrub_ip_details_200_response_extra_info_tables_local_var;
 }
 
 __attribute__((deprecated)) get_scrub_ip_details_200_response_extra_info_tables_t *get_scrub_ip_details_200_response_extra_info_tables_create(
     get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_t *scrub_ips
     ) {
-    return get_scrub_ip_details_200_response_extra_info_tables_create_internal (
+    get_scrub_ip_details_200_response_extra_info_tables_t *result = get_scrub_ip_details_200_response_extra_info_tables_create_internal (
         scrub_ips
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_scrub_ip_details_200_response_extra_info_tables_free(get_scrub_ip_details_200_response_extra_info_tables_t *get_scrub_ip_details_200_response_extra_info_tables) {
@@ -82,9 +85,14 @@ get_scrub_ip_details_200_response_extra_info_tables_t *get_scrub_ip_details_200_
     }
 
 
+
     get_scrub_ip_details_200_response_extra_info_tables_local_var = get_scrub_ip_details_200_response_extra_info_tables_create_internal (
         scrub_ips ? scrub_ips_local_nonprim : NULL
         );
+
+    if (!get_scrub_ip_details_200_response_extra_info_tables_local_var) {
+        goto end;
+    }
 
     return get_scrub_ip_details_200_response_extra_info_tables_local_var;
 end:

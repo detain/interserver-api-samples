@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIBillingPrepayRequest : public OAIObject {
 public:
     OAIBillingPrepayRequest();
-    OAIBillingPrepayRequest(QString json);
+    OAIBillingPrepayRequest(const QString &json);
     ~OAIBillingPrepayRequest() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getModule() const;
     void setModule(const QString &module);

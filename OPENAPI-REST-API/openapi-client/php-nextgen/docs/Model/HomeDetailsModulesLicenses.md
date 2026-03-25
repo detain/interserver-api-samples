@@ -1,4 +1,4 @@
-# # HomeDetailsModulesLicenses
+# HomeDetailsModulesLicenses
 
 ## Properties
 

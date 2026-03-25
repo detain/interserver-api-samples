@@ -48,13 +48,13 @@ class OAIRaidOption;
 class OAIConfigLists : public OAIObject {
 public:
     OAIConfigLists();
-    OAIConfigLists(QString json);
+    OAIConfigLists(const QString &json);
     ~OAIConfigLists() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QMap<QString, OAICpu> getCpuLi() const;
     void setCpuLi(const QMap<QString, OAICpu> &cpu_li);

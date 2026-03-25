@@ -1,4 +1,4 @@
-# # VpsPleskLicense
+# VpsPleskLicense
 
 ## Properties
 

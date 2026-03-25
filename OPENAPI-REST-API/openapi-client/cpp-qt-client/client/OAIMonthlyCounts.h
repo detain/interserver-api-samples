@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIMonthlyCounts : public OAIObject {
 public:
     OAIMonthlyCounts();
-    OAIMonthlyCounts(QString json);
+    OAIMonthlyCounts(const QString &json);
     ~OAIMonthlyCounts() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;

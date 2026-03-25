@@ -19,13 +19,13 @@ typedef struct backups_order_package_costs_t backups_order_package_costs_t;
 
 
 typedef struct backups_order_package_costs_t {
-    int _11006; //numeric
+    int *_11006; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } backups_order_package_costs_t;
 
 __attribute__((deprecated)) backups_order_package_costs_t *backups_order_package_costs_create(
-    int _11006
+    int *_11006
 );
 
 void backups_order_package_costs_free(backups_order_package_costs_t *backups_order_package_costs);

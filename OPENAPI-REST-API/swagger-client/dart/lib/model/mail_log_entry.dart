@@ -1,58 +1,62 @@
 part of swagger.api;
 
 class MailLogEntry {
-  /* internal db id */
+  /* Internal auto-increment database row ID. */
   int id = null;
-/* mail id */
+/* The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. */
   String id = null;
-/* from address */
+/* SMTP envelope `MAIL FROM` address. */
   String from = null;
-/* to address */
+/* SMTP envelope `RCPT TO` address. */
   String to = null;
-/* email subject */
+/* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. */
   String subject = null;
-/* message id */
+/* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. */
   String messageId = null;
-/* creation date */
+/* Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. */
   String created = null;
-/* creation timestamp */
+/* Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. */
   int time = null;
-/* user account */
+/* The SMTP AUTH username used to submit the message (e.g. `mb5658`). */
   String user = null;
-/* transaction type */
+/* SMTP transaction type negotiated with the relay. */
   String transtype = null;
-/* origin ip */
+/* IP address of the client that submitted the message to the relay. */
   String origin = null;
-/* interface name */
+/* Relay interface name that accepted the message. */
   String interface = null;
-/* sending zone */
+/* The sending zone assigned by the relay for outbound delivery. */
   String sendingZone = null;
-/* email body size in bytes */
+/* Size of the message body in bytes. */
   int bodySize = null;
-/* index of email in the to adderess list */
+/* Sequence index of this recipient in a multi-recipient message. Starts at 1. */
   int seq = null;
-/* to address this email is being sent to */
+/* Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted. */
+  int delivered = null;
+/* The SMTP response code from the destination MX server (e.g. `250`). */
+  int code = null;
+/* The specific recipient address this delivery record is for. */
   String recipient = null;
-/* to address domain */
-  String domain = null;
-/* locked status */
-  int locked = null;
-/* lock timestamp */
-  int lockTime = null;
-/* assigned server */
-  String assigned = null;
-/* queued timestamp */
-  String queued = null;
-/* mx hostname */
-  String mxHostname = null;
-/* mail delivery response */
+/* The full SMTP response string received from the destination MX server. */
   String response = null;
+/* The destination domain for this delivery attempt. */
+  String domain = null;
+/* Whether the queue entry is currently locked for delivery processing. */
+  int locked = null;
+/* Millisecond-precision timestamp of the last queue lock acquisition. */
+  String lockTime = null;
+/* The relay server node assigned to deliver this message. */
+  String assigned = null;
+/* ISO 8601 timestamp when the message was placed into the delivery queue. */
+  String queued = null;
+/* The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. */
+  String mxHostname = null;
 
   MailLogEntry();
 
   @override
   String toString() {
-    return 'MailLogEntry[id=$id, id=$id, from=$from, to=$to, subject=$subject, messageId=$messageId, created=$created, time=$time, user=$user, transtype=$transtype, origin=$origin, interface=$interface, sendingZone=$sendingZone, bodySize=$bodySize, seq=$seq, recipient=$recipient, domain=$domain, locked=$locked, lockTime=$lockTime, assigned=$assigned, queued=$queued, mxHostname=$mxHostname, response=$response, ]';
+    return 'MailLogEntry[id=$id, id=$id, from=$from, to=$to, subject=$subject, messageId=$messageId, created=$created, time=$time, user=$user, transtype=$transtype, origin=$origin, interface=$interface, sendingZone=$sendingZone, bodySize=$bodySize, seq=$seq, delivered=$delivered, code=$code, recipient=$recipient, response=$response, domain=$domain, locked=$locked, lockTime=$lockTime, assigned=$assigned, queued=$queued, mxHostname=$mxHostname, ]';
   }
 
   MailLogEntry.fromJson(Map<String, dynamic> json) {
@@ -72,14 +76,16 @@ class MailLogEntry {
     sendingZone = json['sendingZone'];
     bodySize = json['bodySize'];
     seq = json['seq'];
+    delivered = json['delivered'];
+    code = json['code'];
     recipient = json['recipient'];
+    response = json['response'];
     domain = json['domain'];
     locked = json['locked'];
     lockTime = json['lockTime'];
     assigned = json['assigned'];
     queued = json['queued'];
     mxHostname = json['mxHostname'];
-    response = json['response'];
   }
 
   Map<String, dynamic> toJson() {
@@ -99,14 +105,16 @@ class MailLogEntry {
       'sendingZone': sendingZone,
       'bodySize': bodySize,
       'seq': seq,
+      'delivered': delivered,
+      'code': code,
       'recipient': recipient,
+      'response': response,
       'domain': domain,
       'locked': locked,
       'lockTime': lockTime,
       'assigned': assigned,
       'queued': queued,
-      'mxHostname': mxHostname,
-      'response': response
+      'mxHostname': mxHostname
      };
   }
 

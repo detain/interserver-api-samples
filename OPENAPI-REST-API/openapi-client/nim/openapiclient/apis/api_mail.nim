@@ -37,6 +37,7 @@ import ../models/model_mail_stats_type
 import ../models/model_send_mail
 import ../models/model_send_mail_adv
 import ../models/model_success_text_response
+import ../models/model_view_mail_log_start_date_parameter
 import ../models/model_get_account_info401response
 import ../models/model_mail_cancel200response
 
@@ -244,7 +245,7 @@ proc updateMailInfo*(httpClient: HttpClient, id: string): Response =
 
 
 
-proc viewMailLog*(httpClient: HttpClient, id: int, id2: int64, origin: string, mx: string, `from`: string, to: string, subject: string, mailid: string, skip: int, limit: int, startDate: int64, endDate: int64, delivered: string): (Option[MailLog], Response) =
+proc viewMailLog*(httpClient: HttpClient, id: int, id2: int64, origin: string, mx: string, `from`: string, to: string, subject: string, mailid: string, messageId: string, replyto: string, headerfrom: string, delivered: Delivered, skip: int, limit: int, startDate: ViewMailLogStartDateParameter, endDate: ViewMailLogStartDateParameter, sort: string, dir: string, groupby: string): (Option[MailLog], Response) =
   ## View Mail Log
   var query_params_list: seq[(string, string)] = @[]
   if $id2 != "":
@@ -261,6 +262,14 @@ proc viewMailLog*(httpClient: HttpClient, id: int, id2: int64, origin: string, m
     query_params_list.add(("subject", $subject))
   if $mailid != "":
     query_params_list.add(("mailid", $mailid))
+  if $messageId != "":
+    query_params_list.add(("messageId", $messageId))
+  if $replyto != "":
+    query_params_list.add(("replyto", $replyto))
+  if $headerfrom != "":
+    query_params_list.add(("headerfrom", $headerfrom))
+  if $delivered != "":
+    query_params_list.add(("delivered", $delivered))
   if $skip != "":
     query_params_list.add(("skip", $skip))
   if $limit != "":
@@ -269,8 +278,12 @@ proc viewMailLog*(httpClient: HttpClient, id: int, id2: int64, origin: string, m
     query_params_list.add(("startDate", $startDate))
   if $endDate != "":
     query_params_list.add(("endDate", $endDate))
-  if $delivered != "":
-    query_params_list.add(("delivered", $delivered))
+  if $sort != "":
+    query_params_list.add(("sort", $sort))
+  if $dir != "":
+    query_params_list.add(("dir", $dir))
+  if $groupby != "":
+    query_params_list.add(("groupby", $groupby))
   let url_encoded_query_params = encodeQuery(query_params_list)
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/log" & "?" & url_encoded_query_params)

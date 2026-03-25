@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIScrubIpFilterTypes_filters_value::OAIScrubIpFilterTypes_filters_value(QString json) {
+OAIScrubIpFilterTypes_filters_value::OAIScrubIpFilterTypes_filters_value(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIScrubIpFilterTypes_filters_value::initializeModel() {
     m_desc_isValid = false;
 }
 
-void OAIScrubIpFilterTypes_filters_value::fromJson(QString jsonString) {
+void OAIScrubIpFilterTypes_filters_value::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

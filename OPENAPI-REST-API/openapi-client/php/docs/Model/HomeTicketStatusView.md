@@ -1,4 +1,4 @@
-# # HomeTicketStatusView
+# HomeTicketStatusView
 
 ## Properties
 

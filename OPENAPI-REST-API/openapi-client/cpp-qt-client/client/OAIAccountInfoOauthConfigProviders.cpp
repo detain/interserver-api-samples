@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountInfoOauthConfigProviders::OAIAccountInfoOauthConfigProviders(QString json) {
+OAIAccountInfoOauthConfigProviders::OAIAccountInfoOauthConfigProviders(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -36,7 +36,7 @@ void OAIAccountInfoOauthConfigProviders::initializeModel() {
 
 }
 
-void OAIAccountInfoOauthConfigProviders::fromJson(QString jsonString) {
+void OAIAccountInfoOauthConfigProviders::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

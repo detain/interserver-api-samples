@@ -30,13 +30,13 @@ namespace OpenAPI {
 class OAIBackupsOrderPackageCosts : public OAIObject {
 public:
     OAIBackupsOrderPackageCosts();
-    OAIBackupsOrderPackageCosts(QString json);
+    OAIBackupsOrderPackageCosts(const QString &json);
     ~OAIBackupsOrderPackageCosts() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getR11006() const;
     void setR11006(const qint32 &r_11006);

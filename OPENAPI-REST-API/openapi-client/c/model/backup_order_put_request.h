@@ -19,16 +19,16 @@ typedef struct backup_order_put_request_t backup_order_put_request_t;
 
 
 typedef struct backup_order_put_request_t {
-    int validate_only; //boolean
-    int service_type; //numeric
+    int *validate_only; //boolean
+    int *service_type; //numeric
     char *coupon; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } backup_order_put_request_t;
 
 __attribute__((deprecated)) backup_order_put_request_t *backup_order_put_request_create(
-    int validate_only,
-    int service_type,
+    int *validate_only,
+    int *service_type,
     char *coupon
 );
 

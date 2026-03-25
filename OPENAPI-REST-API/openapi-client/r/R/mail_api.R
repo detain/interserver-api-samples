@@ -590,18 +590,24 @@
 #'
 #' library(openapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
-#' var_id2 <- 2604 # integer | The ID of your mail order this will be sent through. (Optional)
-#' var_origin <- "1.2.3.4" # character | originating ip address sending mail (Optional)
-#' var_mx <- "mx.google.com" # character | mx record mail was sent to (Optional)
-#' var_from <- "me@sender.com" # character | from email address (Optional)
-#' var_to <- "you@receiver.com" # character | to/destination email address (Optional)
-#' var_subject <- "Support" # character | subject containing this string (Optional)
-#' var_mailid <- "185997065c60008840" # character | mail id (Optional)
-#' var_skip <- 0 # integer | number of records to skip for pagination (Optional)
-#' var_limit <- 100 # integer | maximum number of records to return (Optional)
-#' var_start_date <- 1641781008 # integer | earliest date to get emails in unix timestamp format (Optional)
-#' var_end_date <- 1673317008 # integer | Latest date to get emails in unix timestamp format. (Optional)
-#' var_delivered <- "delivered_example" # character | Filter emails by whether or not they were delivered. (Optional)
+#' var_id2 <- 2604 # integer | The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`. (Optional)
+#' var_origin <- "1.2.3.4" # character | Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. (Optional)
+#' var_mx <- "mx.google.com" # character | Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response. (Optional)
+#' var_from <- "me@sender.com" # character | Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`. (Optional)
+#' var_to <- "you@receiver.com" # character | Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved. (Optional)
+#' var_subject <- "Your order has shipped" # character | Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response. (Optional)
+#' var_mailid <- "185997065c60008840" # character | Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`. (Optional)
+#' var_message_id <- "<abc123@yourdomain.com>" # character | Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`. (Optional)
+#' var_replyto <- "replies@sender.com" # character | Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set. (Optional)
+#' var_headerfrom <- "newsletter@sender.com" # character | Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address. (Optional)
+#' var_delivered <- 1 # integer | Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. (Optional)
+#' var_skip <- 0 # integer | Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip). (Optional)
+#' var_limit <- 100 # integer | Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages. (Optional)
+#' var_start_date <- viewMailLog_startDate_parameter$new() # ViewMailLogStartDateParameter | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included. (Optional)
+#' var_end_date <- viewMailLog_startDate_parameter$new() # ViewMailLogStartDateParameter | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included. (Optional)
+#' var_sort <- "time" # character | Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order). (Optional)
+#' var_dir <- "desc" # character | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. (Optional)
+#' var_groupby <- "recipient" # character | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. (Optional)
 #'
 #' #View Mail Log
 #' api_instance <- MailApi$new()
@@ -616,8 +622,8 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$ViewMailLog(var_id, id2 = var_id2, origin = var_origin, mx = var_mx, from = var_from, to = var_to, subject = var_subject, mailid = var_mailid, skip = var_skip, limit = var_limit, start_date = var_start_date, end_date = var_end_date, delivered = var_delivereddata_file = "result.txt")
-#' result <- api_instance$ViewMailLog(var_id, id2 = var_id2, origin = var_origin, mx = var_mx, from = var_from, to = var_to, subject = var_subject, mailid = var_mailid, skip = var_skip, limit = var_limit, start_date = var_start_date, end_date = var_end_date, delivered = var_delivered)
+#' # result <- api_instance$ViewMailLog(var_id, id2 = var_id2, origin = var_origin, mx = var_mx, from = var_from, to = var_to, subject = var_subject, mailid = var_mailid, message_id = var_message_id, replyto = var_replyto, headerfrom = var_headerfrom, delivered = var_delivered, skip = var_skip, limit = var_limit, start_date = var_start_date, end_date = var_end_date, sort = var_sort, dir = var_dir, groupby = var_groupbydata_file = "result.txt")
+#' result <- api_instance$ViewMailLog(var_id, id2 = var_id2, origin = var_origin, mx = var_mx, from = var_from, to = var_to, subject = var_subject, mailid = var_mailid, message_id = var_message_id, replyto = var_replyto, headerfrom = var_headerfrom, delivered = var_delivered, skip = var_skip, limit = var_limit, start_date = var_start_date, end_date = var_end_date, sort = var_sort, dir = var_dir, groupby = var_groupby)
 #' dput(result)
 #'
 #'
@@ -3673,25 +3679,31 @@ MailApi <- R6::R6Class(
     #' View Mail Log
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
-    #' @param id2 (optional) The ID of your mail order this will be sent through.
-    #' @param origin (optional) originating ip address sending mail
-    #' @param mx (optional) mx record mail was sent to
-    #' @param from (optional) from email address
-    #' @param to (optional) to/destination email address
-    #' @param subject (optional) subject containing this string
-    #' @param mailid (optional) mail id
-    #' @param skip (optional) number of records to skip for pagination (default value: 0)
-    #' @param limit (optional) maximum number of records to return (default value: 100)
-    #' @param start_date (optional) earliest date to get emails in unix timestamp format
-    #' @param end_date (optional) Latest date to get emails in unix timestamp format.
-    #' @param delivered (optional) Filter emails by whether or not they were delivered.
+    #' @param id2 (optional) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
+    #' @param origin (optional) Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
+    #' @param mx (optional) Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
+    #' @param from (optional) Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
+    #' @param to (optional) Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
+    #' @param subject (optional) Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
+    #' @param mailid (optional) Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
+    #' @param message_id (optional) Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+    #' @param replyto (optional) Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
+    #' @param headerfrom (optional) Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
+    #' @param delivered (optional) Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+    #' @param skip (optional) Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip). (default value: 0)
+    #' @param limit (optional) Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages. (default value: 100)
+    #' @param start_date (optional) Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+    #' @param end_date (optional) Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+    #' @param sort (optional) Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order). (default value: "time")
+    #' @param dir (optional) Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. (default value: "desc")
+    #' @param groupby (optional) Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. (default value: "recipient")
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return MailLog
-    ViewMailLog = function(id, id2 = NULL, origin = NULL, mx = NULL, from = NULL, to = NULL, subject = NULL, mailid = NULL, skip = 0, limit = 100, start_date = NULL, end_date = NULL, delivered = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$ViewMailLogWithHttpInfo(id, id2, origin, mx, from, to, subject, mailid, skip, limit, start_date, end_date, delivered, data_file = data_file, ..., .parse = .parse)
+    ViewMailLog = function(id, id2 = NULL, origin = NULL, mx = NULL, from = NULL, to = NULL, subject = NULL, mailid = NULL, message_id = NULL, replyto = NULL, headerfrom = NULL, delivered = NULL, skip = 0, limit = 100, start_date = NULL, end_date = NULL, sort = "time", dir = "desc", groupby = "recipient", data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$ViewMailLogWithHttpInfo(id, id2, origin, mx, from, to, subject, mailid, message_id, replyto, headerfrom, delivered, skip, limit, start_date, end_date, sort, dir, groupby, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3707,24 +3719,30 @@ MailApi <- R6::R6Class(
     #' View Mail Log
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
-    #' @param id2 (optional) The ID of your mail order this will be sent through.
-    #' @param origin (optional) originating ip address sending mail
-    #' @param mx (optional) mx record mail was sent to
-    #' @param from (optional) from email address
-    #' @param to (optional) to/destination email address
-    #' @param subject (optional) subject containing this string
-    #' @param mailid (optional) mail id
-    #' @param skip (optional) number of records to skip for pagination (default value: 0)
-    #' @param limit (optional) maximum number of records to return (default value: 100)
-    #' @param start_date (optional) earliest date to get emails in unix timestamp format
-    #' @param end_date (optional) Latest date to get emails in unix timestamp format.
-    #' @param delivered (optional) Filter emails by whether or not they were delivered.
+    #' @param id2 (optional) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
+    #' @param origin (optional) Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address.
+    #' @param mx (optional) Filter by the MX hostname the relay attempted delivery to.  For example `mx.google.com` would return messages destined for Gmail recipients. Maps to `mxHostname` in the `MailLogEntry` response.
+    #' @param from (optional) Filter by SMTP envelope `MAIL FROM` address (exact match).  This is the address the relay used for bounce handling and may differ from the `From:` message header.  For header-level filtering use `headerfrom`.
+    #' @param to (optional) Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
+    #' @param subject (optional) Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
+    #' @param mailid (optional) Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
+    #' @param message_id (optional) Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+    #' @param replyto (optional) Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
+    #' @param headerfrom (optional) Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
+    #' @param delivered (optional) Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
+    #' @param skip (optional) Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip). (default value: 0)
+    #' @param limit (optional) Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages. (default value: 100)
+    #' @param start_date (optional) Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+    #' @param end_date (optional) Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+    #' @param sort (optional) Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order). (default value: "time")
+    #' @param dir (optional) Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. (default value: "desc")
+    #' @param groupby (optional) Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. (default value: "recipient")
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (MailLog) with additional information such as HTTP status code, headers
-    ViewMailLogWithHttpInfo = function(id, id2 = NULL, origin = NULL, mx = NULL, from = NULL, to = NULL, subject = NULL, mailid = NULL, skip = 0, limit = 100, start_date = NULL, end_date = NULL, delivered = NULL, data_file = NULL, ..., .parse = TRUE) {
+    ViewMailLogWithHttpInfo = function(id, id2 = NULL, origin = NULL, mx = NULL, from = NULL, to = NULL, subject = NULL, mailid = NULL, message_id = NULL, replyto = NULL, headerfrom = NULL, delivered = NULL, skip = 0, limit = 100, start_date = NULL, end_date = NULL, sort = "time", dir = "desc", groupby = "recipient", data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3769,6 +3787,28 @@ MailApi <- R6::R6Class(
       if (!missing(`mailid`) && is.null(`mailid`)) {
         stop("Invalid value for `mailid` when calling MailApi$ViewMailLog, `mailid` is not nullable")
       }
+      if (!is.null(`mailid`) && nchar(`mailid`) > 19) {
+        stop("Invalid length for `mailid` when calling MailApi$ViewMailLog, must be smaller than or equal to 19.")
+      }
+      if (!is.null(`mailid`) && nchar(`mailid`) < 18) {
+        stop("Invalid length for `mailid` when calling MailApi$ViewMailLog, must be bigger than or equal to 18.")
+      }
+
+      if (!missing(`message_id`) && is.null(`message_id`)) {
+        stop("Invalid value for `message_id` when calling MailApi$ViewMailLog, `message_id` is not nullable")
+      }
+
+      if (!missing(`replyto`) && is.null(`replyto`)) {
+        stop("Invalid value for `replyto` when calling MailApi$ViewMailLog, `replyto` is not nullable")
+      }
+
+      if (!missing(`headerfrom`) && is.null(`headerfrom`)) {
+        stop("Invalid value for `headerfrom` when calling MailApi$ViewMailLog, `headerfrom` is not nullable")
+      }
+
+      if (!missing(`delivered`) && is.null(`delivered`)) {
+        stop("Invalid value for `delivered` when calling MailApi$ViewMailLog, `delivered` is not nullable")
+      }
 
       if (!missing(`skip`) && is.null(`skip`)) {
         stop("Invalid value for `skip` when calling MailApi$ViewMailLog, `skip` is not nullable")
@@ -3790,25 +3830,21 @@ MailApi <- R6::R6Class(
       if (!missing(`start_date`) && is.null(`start_date`)) {
         stop("Invalid value for `start_date` when calling MailApi$ViewMailLog, `start_date` is not nullable")
       }
-      if (!is.null(`start_date`) && `start_date` >  9999999999) {
-        stop("Invalid value for `start_date` when calling MailApi$ViewMailLog, must be smaller than or equal to 9999999999.")
-      }
-      if (!is.null(`start_date`) && `start_date` <  0) {
-        stop("Invalid value for `start_date` when calling MailApi$ViewMailLog, must be bigger than or equal to 0.")
-      }
 
       if (!missing(`end_date`) && is.null(`end_date`)) {
         stop("Invalid value for `end_date` when calling MailApi$ViewMailLog, `end_date` is not nullable")
       }
-      if (!is.null(`end_date`) && `end_date` >  9999999999) {
-        stop("Invalid value for `end_date` when calling MailApi$ViewMailLog, must be smaller than or equal to 9999999999.")
-      }
-      if (!is.null(`end_date`) && `end_date` <  0) {
-        stop("Invalid value for `end_date` when calling MailApi$ViewMailLog, must be bigger than or equal to 0.")
+
+      if (!missing(`sort`) && is.null(`sort`)) {
+        stop("Invalid value for `sort` when calling MailApi$ViewMailLog, `sort` is not nullable")
       }
 
-      if (!missing(`delivered`) && is.null(`delivered`)) {
-        stop("Invalid value for `delivered` when calling MailApi$ViewMailLog, `delivered` is not nullable")
+      if (!missing(`dir`) && is.null(`dir`)) {
+        stop("Invalid value for `dir` when calling MailApi$ViewMailLog, `dir` is not nullable")
+      }
+
+      if (!missing(`groupby`) && is.null(`groupby`)) {
+        stop("Invalid value for `groupby` when calling MailApi$ViewMailLog, `groupby` is not nullable")
       }
 
       query_params[["id"]] <- `id2`
@@ -3825,6 +3861,17 @@ MailApi <- R6::R6Class(
 
       query_params[["mailid"]] <- `mailid`
 
+      query_params[["messageId"]] <- `message_id`
+
+      query_params[["replyto"]] <- `replyto`
+
+      query_params[["headerfrom"]] <- `headerfrom`
+
+      if (!is.null(`delivered`) && !(`delivered` %in% c("0", "1"))) {
+        stop("Invalid value for delivered when calling MailApi$ViewMailLog. Must be [0, 1].")
+      }
+      query_params[["delivered"]] <- `delivered`
+
       query_params[["skip"]] <- `skip`
 
       query_params[["limit"]] <- `limit`
@@ -3833,10 +3880,20 @@ MailApi <- R6::R6Class(
 
       query_params[["endDate"]] <- `end_date`
 
-      if (!is.null(`delivered`) && !(`delivered` %in% c("0", "1"))) {
-        stop("Invalid value for delivered when calling MailApi$ViewMailLog. Must be [0, 1].")
+      if (!is.null(`sort`) && !(`sort` %in% c("time"))) {
+        stop("Invalid value for sort when calling MailApi$ViewMailLog. Must be [time].")
       }
-      query_params[["delivered"]] <- `delivered`
+      query_params[["sort"]] <- `sort`
+
+      if (!is.null(`dir`) && !(`dir` %in% c("asc", "desc"))) {
+        stop("Invalid value for dir when calling MailApi$ViewMailLog. Must be [asc, desc].")
+      }
+      query_params[["dir"]] <- `dir`
+
+      if (!is.null(`groupby`) && !(`groupby` %in% c("message", "recipient"))) {
+        stop("Invalid value for groupby when calling MailApi$ViewMailLog. Must be [message, recipient].")
+      }
+      query_params[["groupby"]] <- `groupby`
 
       local_var_url_path <- "/mail/{id}/log"
       if (!missing(`id`)) {

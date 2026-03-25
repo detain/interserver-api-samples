@@ -32,13 +32,13 @@ class OAIServerAsset;
 class OAIServerNetworkInfo_assets : public OAIObject {
 public:
     OAIServerNetworkInfo_assets();
-    OAIServerNetworkInfo_assets(QString json);
+    OAIServerNetworkInfo_assets(const QString &json);
     ~OAIServerNetworkInfo_assets() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerAsset getR3497() const;
     void setR3497(const OAIServerAsset &r_3497);

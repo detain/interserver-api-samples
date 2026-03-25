@@ -42,13 +42,13 @@ class OAIBackupExtraInfoTables;
 class OAIBackup : public OAIObject {
 public:
     OAIBackup();
-    OAIBackup(QString json);
+    OAIBackup(const QString &json);
     ~OAIBackup() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIBackupServiceInfo getServiceInfo() const;
     void setServiceInfo(const OAIBackupServiceInfo &service_info);

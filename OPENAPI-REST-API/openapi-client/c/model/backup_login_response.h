@@ -19,14 +19,14 @@ typedef struct backup_login_response_t backup_login_response_t;
 
 
 typedef struct backup_login_response_t {
-    int success; //boolean
+    int *success; //boolean
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } backup_login_response_t;
 
 __attribute__((deprecated)) backup_login_response_t *backup_login_response_create(
-    int success,
+    int *success,
     char *text
 );
 

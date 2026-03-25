@@ -12,18 +12,21 @@ static server_network_info_switchports_t *server_network_info_switchports_create
     if (!server_network_info_switchports_local_var) {
         return NULL;
     }
-    server_network_info_switchports_local_var->_10414 = _10414;
-
+    memset(server_network_info_switchports_local_var, 0, sizeof(server_network_info_switchports_t));
     server_network_info_switchports_local_var->_library_owned = 1;
+    server_network_info_switchports_local_var->_10414 = _10414;
     return server_network_info_switchports_local_var;
 }
 
 __attribute__((deprecated)) server_network_info_switchports_t *server_network_info_switchports_create(
     server_switchport_t *_10414
     ) {
-    return server_network_info_switchports_create_internal (
+    server_network_info_switchports_t *result = server_network_info_switchports_create_internal (
         _10414
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void server_network_info_switchports_free(server_network_info_switchports_t *server_network_info_switchports) {
@@ -86,9 +89,14 @@ server_network_info_switchports_t *server_network_info_switchports_parseFromJSON
     _10414_local_nonprim = server_switchport_parseFromJSON(_10414); //nonprimitive
 
 
+
     server_network_info_switchports_local_var = server_network_info_switchports_create_internal (
         _10414_local_nonprim
         );
+
+    if (!server_network_info_switchports_local_var) {
+        goto end;
+    }
 
     return server_network_info_switchports_local_var;
 end:

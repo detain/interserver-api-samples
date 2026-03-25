@@ -51,13 +51,13 @@ class OAIServerOrderRAID;
 class OAIServerOrder : public OAIObject {
 public:
     OAIServerOrder();
-    OAIServerOrder(QString json);
+    OAIServerOrder(const QString &json);
     ~OAIServerOrder() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerOrderFormValues getFormValues() const;
     void setFormValues(const OAIServerOrderFormValues &form_values);

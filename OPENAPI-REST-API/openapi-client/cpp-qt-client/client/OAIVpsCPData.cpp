@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsCPData::OAIVpsCPData(QString json) {
+OAIVpsCPData::OAIVpsCPData(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIVpsCPData::initializeModel() {
     m_cost_isValid = false;
 }
 
-void OAIVpsCPData::fromJson(QString jsonString) {
+void OAIVpsCPData::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

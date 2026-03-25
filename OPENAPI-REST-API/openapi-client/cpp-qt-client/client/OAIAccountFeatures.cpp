@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAccountFeatures::OAIAccountFeatures(QString json) {
+OAIAccountFeatures::OAIAccountFeatures(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -41,7 +41,7 @@ void OAIAccountFeatures::initializeModel() {
     m_disable_reinstall_isValid = false;
 }
 
-void OAIAccountFeatures::fromJson(QString jsonString) {
+void OAIAccountFeatures::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIQuickserverOrderVersionCentosstream8 : public OAIObject {
 public:
     OAIQuickserverOrderVersionCentosstream8();
-    OAIQuickserverOrderVersionCentosstream8(QString json);
+    OAIQuickserverOrderVersionCentosstream8(const QString &json);
     ~OAIQuickserverOrderVersionCentosstream8() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getCentosstream8() const;
     void setCentosstream8(const QString &centosstream_8);

@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIBackupServiceMaster::OAIBackupServiceMaster(QString json) {
+OAIBackupServiceMaster::OAIBackupServiceMaster(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -65,7 +65,7 @@ void OAIBackupServiceMaster::initializeModel() {
     m_backup_order_isValid = false;
 }
 
-void OAIBackupServiceMaster::fromJson(QString jsonString) {
+void OAIBackupServiceMaster::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

@@ -84,8 +84,8 @@ typedef struct account_info_data_t {
     char *api_key; // string
     char *api_key_wrapped; // string
     char *_2fa_google_key; // string
-    int _2fa_google_enabled; //boolean
-    int _2fa_google; //numeric
+    int *_2fa_google_enabled; //boolean
+    int *_2fa_google; //numeric
     char *_2fa_google_split; // string
     char *_2fa_google_qr; // string
 
@@ -153,8 +153,8 @@ __attribute__((deprecated)) account_info_data_t *account_info_data_create(
     char *api_key,
     char *api_key_wrapped,
     char *_2fa_google_key,
-    int _2fa_google_enabled,
-    int _2fa_google,
+    int *_2fa_google_enabled,
+    int *_2fa_google,
     char *_2fa_google_split,
     char *_2fa_google_qr
 );

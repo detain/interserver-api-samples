@@ -7,31 +7,46 @@
 
 static ticket_new_response_t *ticket_new_response_create_internal(
     char *text,
-    int success,
-    int ticket_id
+    int *success,
+    int *ticket_id
     ) {
     ticket_new_response_t *ticket_new_response_local_var = malloc(sizeof(ticket_new_response_t));
     if (!ticket_new_response_local_var) {
         return NULL;
     }
+    memset(ticket_new_response_local_var, 0, sizeof(ticket_new_response_t));
+    ticket_new_response_local_var->_library_owned = 1;
     ticket_new_response_local_var->text = text;
     ticket_new_response_local_var->success = success;
     ticket_new_response_local_var->ticket_id = ticket_id;
-
-    ticket_new_response_local_var->_library_owned = 1;
     return ticket_new_response_local_var;
 }
 
 __attribute__((deprecated)) ticket_new_response_t *ticket_new_response_create(
     char *text,
-    int success,
-    int ticket_id
+    int *success,
+    int *ticket_id
     ) {
-    return ticket_new_response_create_internal (
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    int *ticket_id_copy = NULL;
+    if (ticket_id) {
+        ticket_id_copy = malloc(sizeof(int));
+        if (ticket_id_copy) *ticket_id_copy = *ticket_id;
+    }
+    ticket_new_response_t *result = ticket_new_response_create_internal (
         text,
-        success,
-        ticket_id
+        success_copy,
+        ticket_id_copy
         );
+    if (!result) {
+        free(success_copy);
+        free(ticket_id_copy);
+    }
+    return result;
 }
 
 void ticket_new_response_free(ticket_new_response_t *ticket_new_response) {
@@ -46,6 +61,14 @@ void ticket_new_response_free(ticket_new_response_t *ticket_new_response) {
     if (ticket_new_response->text) {
         free(ticket_new_response->text);
         ticket_new_response->text = NULL;
+    }
+    if (ticket_new_response->success) {
+        free(ticket_new_response->success);
+        ticket_new_response->success = NULL;
+    }
+    if (ticket_new_response->ticket_id) {
+        free(ticket_new_response->ticket_id);
+        ticket_new_response->ticket_id = NULL;
     }
     free(ticket_new_response);
 }
@@ -66,14 +89,14 @@ cJSON *ticket_new_response_convertToJSON(ticket_new_response_t *ticket_new_respo
     if (!ticket_new_response->success) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "success", ticket_new_response->success) == NULL) {
+    if(cJSON_AddBoolToObject(item, "success", *ticket_new_response->success) == NULL) {
     goto fail; //Bool
     }
 
 
     // ticket_new_response->ticket_id
     if(ticket_new_response->ticket_id) {
-    if(cJSON_AddNumberToObject(item, "ticket_id", ticket_new_response->ticket_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ticket_id", *ticket_new_response->ticket_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -89,6 +112,14 @@ fail:
 ticket_new_response_t *ticket_new_response_parseFromJSON(cJSON *ticket_new_responseJSON){
 
     ticket_new_response_t *ticket_new_response_local_var = NULL;
+
+    char *text_local_str = NULL;
+
+    // define the local variable for ticket_new_response->success
+    int *success_local_var = NULL;
+
+    // define the local variable for ticket_new_response->ticket_id
+    int *ticket_id_local_var = NULL;
 
     // ticket_new_response->text
     cJSON *text = cJSON_GetObjectItemCaseSensitive(ticket_new_responseJSON, "text");
@@ -119,6 +150,12 @@ ticket_new_response_t *ticket_new_response_parseFromJSON(cJSON *ticket_new_respo
     {
     goto end; //Bool
     }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
 
     // ticket_new_response->ticket_id
     cJSON *ticket_id = cJSON_GetObjectItemCaseSensitive(ticket_new_responseJSON, "ticket_id");
@@ -130,17 +167,41 @@ ticket_new_response_t *ticket_new_response_parseFromJSON(cJSON *ticket_new_respo
     {
     goto end; //Numeric
     }
+    ticket_id_local_var = malloc(sizeof(int));
+    if(!ticket_id_local_var)
+    {
+        goto end;
+    }
+    *ticket_id_local_var = ticket_id->valuedouble;
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     ticket_new_response_local_var = ticket_new_response_create_internal (
-        strdup(text->valuestring),
-        success->valueint,
-        ticket_id ? ticket_id->valuedouble : 0
+        text_local_str,
+        success_local_var,
+        ticket_id_local_var
         );
+
+    if (!ticket_new_response_local_var) {
+        goto end;
+    }
 
     return ticket_new_response_local_var;
 end:
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
+    if (ticket_id_local_var) {
+        free(ticket_id_local_var);
+        ticket_id_local_var = NULL;
+    }
     return NULL;
 
 }

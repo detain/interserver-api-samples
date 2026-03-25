@@ -15,12 +15,12 @@ static domain_dnssec_request_t *domain_dnssec_request_create_internal(
     if (!domain_dnssec_request_local_var) {
         return NULL;
     }
+    memset(domain_dnssec_request_local_var, 0, sizeof(domain_dnssec_request_t));
+    domain_dnssec_request_local_var->_library_owned = 1;
     domain_dnssec_request_local_var->algorithm = algorithm;
     domain_dnssec_request_local_var->digest_type = digest_type;
     domain_dnssec_request_local_var->digest = digest;
     domain_dnssec_request_local_var->key_tag = key_tag;
-
-    domain_dnssec_request_local_var->_library_owned = 1;
     return domain_dnssec_request_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) domain_dnssec_request_t *domain_dnssec_request_creat
     list_t *digest,
     list_t *key_tag
     ) {
-    return domain_dnssec_request_create_internal (
+    domain_dnssec_request_t *result = domain_dnssec_request_create_internal (
         algorithm,
         digest_type,
         digest,
         key_tag
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_dnssec_request_free(domain_dnssec_request_t *domain_dnssec_request) {
@@ -279,12 +282,17 @@ domain_dnssec_request_t *domain_dnssec_request_parseFromJSON(cJSON *domain_dnsse
     }
 
 
+
     domain_dnssec_request_local_var = domain_dnssec_request_create_internal (
         algorithm ? algorithmList : NULL,
         digest_type ? digest_typeList : NULL,
         digest ? digestList : NULL,
         key_tag ? key_tagList : NULL
         );
+
+    if (!domain_dnssec_request_local_var) {
+        goto end;
+    }
 
     return domain_dnssec_request_local_var;
 end:

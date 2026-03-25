@@ -41,10 +41,6 @@ class InvoiceRow {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InvoiceRow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InvoiceRow[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

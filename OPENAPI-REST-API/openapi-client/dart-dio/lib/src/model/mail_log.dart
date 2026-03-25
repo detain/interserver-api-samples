@@ -10,24 +10,24 @@ import 'package:built_value/serializer.dart';
 
 part 'mail_log.g.dart';
 
-/// Mail log records
+/// Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
 ///
 /// Properties:
-/// * [total] - total number of mail log entries
-/// * [skip] - number of emails skipped in listing
-/// * [limit] - number of emails to return
+/// * [total] - Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
+/// * [skip] - The `skip` value used for this page (echoed from the request).
+/// * [limit] - The `limit` value used for this page (echoed from the request).
 /// * [emails] 
 @BuiltValue()
 abstract class MailLog implements Built<MailLog, MailLogBuilder> {
-  /// total number of mail log entries
+  /// Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode.
   @BuiltValueField(wireName: r'total')
   int get total;
 
-  /// number of emails skipped in listing
+  /// The `skip` value used for this page (echoed from the request).
   @BuiltValueField(wireName: r'skip')
   int get skip;
 
-  /// number of emails to return
+  /// The `limit` value used for this page (echoed from the request).
   @BuiltValueField(wireName: r'limit')
   int get limit;
 

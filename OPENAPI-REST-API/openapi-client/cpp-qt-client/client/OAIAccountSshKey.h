@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIAccountSshKey : public OAIObject {
 public:
     OAIAccountSshKey();
-    OAIAccountSshKey(QString json);
+    OAIAccountSshKey(const QString &json);
     ~OAIAccountSshKey() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QString getSshKey() const;
     void setSshKey(const QString &ssh_key);

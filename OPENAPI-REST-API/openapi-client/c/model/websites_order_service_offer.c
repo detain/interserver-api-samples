@@ -22,6 +22,8 @@ static websites_order_service_offer_t *websites_order_service_offer_create_inter
     if (!websites_order_service_offer_local_var) {
         return NULL;
     }
+    memset(websites_order_service_offer_local_var, 0, sizeof(websites_order_service_offer_t));
+    websites_order_service_offer_local_var->_library_owned = 1;
     websites_order_service_offer_local_var->service_offer_id = service_offer_id;
     websites_order_service_offer_local_var->service_id = service_id;
     websites_order_service_offer_local_var->intro_cost = intro_cost;
@@ -33,8 +35,6 @@ static websites_order_service_offer_t *websites_order_service_offer_create_inter
     websites_order_service_offer_local_var->created_at = created_at;
     websites_order_service_offer_local_var->updated_at = updated_at;
     websites_order_service_offer_local_var->deleted_at = deleted_at;
-
-    websites_order_service_offer_local_var->_library_owned = 1;
     return websites_order_service_offer_local_var;
 }
 
@@ -51,7 +51,7 @@ __attribute__((deprecated)) websites_order_service_offer_t *websites_order_servi
     char *updated_at,
     char *deleted_at
     ) {
-    return websites_order_service_offer_create_internal (
+    websites_order_service_offer_t *result = websites_order_service_offer_create_internal (
         service_offer_id,
         service_id,
         intro_cost,
@@ -64,6 +64,9 @@ __attribute__((deprecated)) websites_order_service_offer_t *websites_order_servi
         updated_at,
         deleted_at
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void websites_order_service_offer_free(websites_order_service_offer_t *websites_order_service_offer) {
@@ -233,6 +236,28 @@ websites_order_service_offer_t *websites_order_service_offer_parseFromJSON(cJSON
 
     websites_order_service_offer_t *websites_order_service_offer_local_var = NULL;
 
+    char *service_offer_id_local_str = NULL;
+
+    char *service_id_local_str = NULL;
+
+    char *intro_cost_local_str = NULL;
+
+    char *renewal_cost_local_str = NULL;
+
+    char *intro_frequency_local_str = NULL;
+
+    char *renewal_frequency_local_str = NULL;
+
+    char *allow_coupon_local_str = NULL;
+
+    char *service_module_local_str = NULL;
+
+    char *created_at_local_str = NULL;
+
+    char *updated_at_local_str = NULL;
+
+    char *deleted_at_local_str = NULL;
+
     // websites_order_service_offer->service_offer_id
     cJSON *service_offer_id = cJSON_GetObjectItemCaseSensitive(websites_order_service_offerJSON, "service_offer_id");
     if (cJSON_IsNull(service_offer_id)) {
@@ -393,22 +418,82 @@ websites_order_service_offer_t *websites_order_service_offer_parseFromJSON(cJSON
     }
 
 
+    if (service_offer_id && !cJSON_IsNull(service_offer_id)) service_offer_id_local_str = strdup(service_offer_id->valuestring);
+    if (service_id && !cJSON_IsNull(service_id)) service_id_local_str = strdup(service_id->valuestring);
+    if (intro_cost && !cJSON_IsNull(intro_cost)) intro_cost_local_str = strdup(intro_cost->valuestring);
+    if (renewal_cost && !cJSON_IsNull(renewal_cost)) renewal_cost_local_str = strdup(renewal_cost->valuestring);
+    if (intro_frequency && !cJSON_IsNull(intro_frequency)) intro_frequency_local_str = strdup(intro_frequency->valuestring);
+    if (renewal_frequency && !cJSON_IsNull(renewal_frequency)) renewal_frequency_local_str = strdup(renewal_frequency->valuestring);
+    if (allow_coupon && !cJSON_IsNull(allow_coupon)) allow_coupon_local_str = strdup(allow_coupon->valuestring);
+    if (service_module && !cJSON_IsNull(service_module)) service_module_local_str = strdup(service_module->valuestring);
+    if (created_at && !cJSON_IsNull(created_at)) created_at_local_str = strdup(created_at->valuestring);
+    if (updated_at && !cJSON_IsNull(updated_at)) updated_at_local_str = strdup(updated_at->valuestring);
+    if (deleted_at && !cJSON_IsNull(deleted_at)) deleted_at_local_str = strdup(deleted_at->valuestring);
+
     websites_order_service_offer_local_var = websites_order_service_offer_create_internal (
-        strdup(service_offer_id->valuestring),
-        strdup(service_id->valuestring),
-        strdup(intro_cost->valuestring),
-        strdup(renewal_cost->valuestring),
-        strdup(intro_frequency->valuestring),
-        strdup(renewal_frequency->valuestring),
-        strdup(allow_coupon->valuestring),
-        strdup(service_module->valuestring),
-        strdup(created_at->valuestring),
-        updated_at && !cJSON_IsNull(updated_at) ? strdup(updated_at->valuestring) : NULL,
-        deleted_at && !cJSON_IsNull(deleted_at) ? strdup(deleted_at->valuestring) : NULL
+        service_offer_id_local_str,
+        service_id_local_str,
+        intro_cost_local_str,
+        renewal_cost_local_str,
+        intro_frequency_local_str,
+        renewal_frequency_local_str,
+        allow_coupon_local_str,
+        service_module_local_str,
+        created_at_local_str,
+        updated_at_local_str,
+        deleted_at_local_str
         );
+
+    if (!websites_order_service_offer_local_var) {
+        goto end;
+    }
 
     return websites_order_service_offer_local_var;
 end:
+    if (service_offer_id_local_str) {
+        free(service_offer_id_local_str);
+        service_offer_id_local_str = NULL;
+    }
+    if (service_id_local_str) {
+        free(service_id_local_str);
+        service_id_local_str = NULL;
+    }
+    if (intro_cost_local_str) {
+        free(intro_cost_local_str);
+        intro_cost_local_str = NULL;
+    }
+    if (renewal_cost_local_str) {
+        free(renewal_cost_local_str);
+        renewal_cost_local_str = NULL;
+    }
+    if (intro_frequency_local_str) {
+        free(intro_frequency_local_str);
+        intro_frequency_local_str = NULL;
+    }
+    if (renewal_frequency_local_str) {
+        free(renewal_frequency_local_str);
+        renewal_frequency_local_str = NULL;
+    }
+    if (allow_coupon_local_str) {
+        free(allow_coupon_local_str);
+        allow_coupon_local_str = NULL;
+    }
+    if (service_module_local_str) {
+        free(service_module_local_str);
+        service_module_local_str = NULL;
+    }
+    if (created_at_local_str) {
+        free(created_at_local_str);
+        created_at_local_str = NULL;
+    }
+    if (updated_at_local_str) {
+        free(updated_at_local_str);
+        updated_at_local_str = NULL;
+    }
+    if (deleted_at_local_str) {
+        free(deleted_at_local_str);
+        deleted_at_local_str = NULL;
+    }
     return NULL;
 
 }

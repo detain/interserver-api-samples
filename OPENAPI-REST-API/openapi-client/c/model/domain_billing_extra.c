@@ -28,6 +28,8 @@ static domain_billing_extra_t *domain_billing_extra_create_internal(
     if (!domain_billing_extra_local_var) {
         return NULL;
     }
+    memset(domain_billing_extra_local_var, 0, sizeof(domain_billing_extra_t));
+    domain_billing_extra_local_var->_library_owned = 1;
     domain_billing_extra_local_var->order = order;
     domain_billing_extra_local_var->order_id = order_id;
     domain_billing_extra_local_var->domain_id = domain_id;
@@ -45,8 +47,6 @@ static domain_billing_extra_t *domain_billing_extra_create_internal(
     domain_billing_extra_local_var->country = country;
     domain_billing_extra_local_var->phone = phone;
     domain_billing_extra_local_var->fax = fax;
-
-    domain_billing_extra_local_var->_library_owned = 1;
     return domain_billing_extra_local_var;
 }
 
@@ -69,7 +69,7 @@ __attribute__((deprecated)) domain_billing_extra_t *domain_billing_extra_create(
     char *phone,
     char *fax
     ) {
-    return domain_billing_extra_create_internal (
+    domain_billing_extra_t *result = domain_billing_extra_create_internal (
         order,
         order_id,
         domain_id,
@@ -88,6 +88,9 @@ __attribute__((deprecated)) domain_billing_extra_t *domain_billing_extra_create(
         phone,
         fax
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void domain_billing_extra_free(domain_billing_extra_t *domain_billing_extra) {
@@ -333,8 +336,38 @@ domain_billing_extra_t *domain_billing_extra_parseFromJSON(cJSON *domain_billing
     // define the local variable for domain_billing_extra->order
     domain_order_response_t *order_local_nonprim = NULL;
 
+    char *order_id_local_str = NULL;
+
+    char *domain_id_local_str = NULL;
+
     // define the local variable for domain_billing_extra->prov_process_pending
     domain_prov_process_pending_t *prov_process_pending_local_nonprim = NULL;
+
+    char *email_local_str = NULL;
+
+    char *firstname_local_str = NULL;
+
+    char *lastname_local_str = NULL;
+
+    char *company_local_str = NULL;
+
+    char *address_local_str = NULL;
+
+    char *address2_local_str = NULL;
+
+    char *address3_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *state_local_str = NULL;
+
+    char *zip_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *phone_local_str = NULL;
+
+    char *fax_local_str = NULL;
 
     // domain_billing_extra->order
     cJSON *order = cJSON_GetObjectItemCaseSensitive(domain_billing_extraJSON, "order");
@@ -535,25 +568,45 @@ domain_billing_extra_t *domain_billing_extra_parseFromJSON(cJSON *domain_billing
     }
 
 
+    if (order_id && !cJSON_IsNull(order_id)) order_id_local_str = strdup(order_id->valuestring);
+    if (domain_id && !cJSON_IsNull(domain_id)) domain_id_local_str = strdup(domain_id->valuestring);
+    if (email && !cJSON_IsNull(email)) email_local_str = strdup(email->valuestring);
+    if (firstname && !cJSON_IsNull(firstname)) firstname_local_str = strdup(firstname->valuestring);
+    if (lastname && !cJSON_IsNull(lastname)) lastname_local_str = strdup(lastname->valuestring);
+    if (company && !cJSON_IsNull(company)) company_local_str = strdup(company->valuestring);
+    if (address && !cJSON_IsNull(address)) address_local_str = strdup(address->valuestring);
+    if (address2 && !cJSON_IsNull(address2)) address2_local_str = strdup(address2->valuestring);
+    if (address3 && !cJSON_IsNull(address3)) address3_local_str = strdup(address3->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (state && !cJSON_IsNull(state)) state_local_str = strdup(state->valuestring);
+    if (zip && !cJSON_IsNull(zip)) zip_local_str = strdup(zip->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (phone && !cJSON_IsNull(phone)) phone_local_str = strdup(phone->valuestring);
+    if (fax && !cJSON_IsNull(fax)) fax_local_str = strdup(fax->valuestring);
+
     domain_billing_extra_local_var = domain_billing_extra_create_internal (
         order ? order_local_nonprim : NULL,
-        order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,
-        domain_id && !cJSON_IsNull(domain_id) ? strdup(domain_id->valuestring) : NULL,
+        order_id_local_str,
+        domain_id_local_str,
         prov_process_pending ? prov_process_pending_local_nonprim : NULL,
-        email && !cJSON_IsNull(email) ? strdup(email->valuestring) : NULL,
-        firstname && !cJSON_IsNull(firstname) ? strdup(firstname->valuestring) : NULL,
-        lastname && !cJSON_IsNull(lastname) ? strdup(lastname->valuestring) : NULL,
-        company && !cJSON_IsNull(company) ? strdup(company->valuestring) : NULL,
-        address && !cJSON_IsNull(address) ? strdup(address->valuestring) : NULL,
-        address2 && !cJSON_IsNull(address2) ? strdup(address2->valuestring) : NULL,
-        address3 && !cJSON_IsNull(address3) ? strdup(address3->valuestring) : NULL,
-        city && !cJSON_IsNull(city) ? strdup(city->valuestring) : NULL,
-        state && !cJSON_IsNull(state) ? strdup(state->valuestring) : NULL,
-        zip && !cJSON_IsNull(zip) ? strdup(zip->valuestring) : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        phone && !cJSON_IsNull(phone) ? strdup(phone->valuestring) : NULL,
-        fax && !cJSON_IsNull(fax) ? strdup(fax->valuestring) : NULL
+        email_local_str,
+        firstname_local_str,
+        lastname_local_str,
+        company_local_str,
+        address_local_str,
+        address2_local_str,
+        address3_local_str,
+        city_local_str,
+        state_local_str,
+        zip_local_str,
+        country_local_str,
+        phone_local_str,
+        fax_local_str
         );
+
+    if (!domain_billing_extra_local_var) {
+        goto end;
+    }
 
     return domain_billing_extra_local_var;
 end:
@@ -561,9 +614,69 @@ end:
         domain_order_response_free(order_local_nonprim);
         order_local_nonprim = NULL;
     }
+    if (order_id_local_str) {
+        free(order_id_local_str);
+        order_id_local_str = NULL;
+    }
+    if (domain_id_local_str) {
+        free(domain_id_local_str);
+        domain_id_local_str = NULL;
+    }
     if (prov_process_pending_local_nonprim) {
         domain_prov_process_pending_free(prov_process_pending_local_nonprim);
         prov_process_pending_local_nonprim = NULL;
+    }
+    if (email_local_str) {
+        free(email_local_str);
+        email_local_str = NULL;
+    }
+    if (firstname_local_str) {
+        free(firstname_local_str);
+        firstname_local_str = NULL;
+    }
+    if (lastname_local_str) {
+        free(lastname_local_str);
+        lastname_local_str = NULL;
+    }
+    if (company_local_str) {
+        free(company_local_str);
+        company_local_str = NULL;
+    }
+    if (address_local_str) {
+        free(address_local_str);
+        address_local_str = NULL;
+    }
+    if (address2_local_str) {
+        free(address2_local_str);
+        address2_local_str = NULL;
+    }
+    if (address3_local_str) {
+        free(address3_local_str);
+        address3_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (state_local_str) {
+        free(state_local_str);
+        state_local_str = NULL;
+    }
+    if (zip_local_str) {
+        free(zip_local_str);
+        zip_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (phone_local_str) {
+        free(phone_local_str);
+        phone_local_str = NULL;
+    }
+    if (fax_local_str) {
+        free(fax_local_str);
+        fax_local_str = NULL;
     }
     return NULL;
 

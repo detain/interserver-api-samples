@@ -7,27 +7,36 @@
 
 static home_services_backups_t *home_services_backups_create_internal(
     list_t *links,
-    int count
+    int *count
     ) {
     home_services_backups_t *home_services_backups_local_var = malloc(sizeof(home_services_backups_t));
     if (!home_services_backups_local_var) {
         return NULL;
     }
+    memset(home_services_backups_local_var, 0, sizeof(home_services_backups_t));
+    home_services_backups_local_var->_library_owned = 1;
     home_services_backups_local_var->links = links;
     home_services_backups_local_var->count = count;
-
-    home_services_backups_local_var->_library_owned = 1;
     return home_services_backups_local_var;
 }
 
 __attribute__((deprecated)) home_services_backups_t *home_services_backups_create(
     list_t *links,
-    int count
+    int *count
     ) {
-    return home_services_backups_create_internal (
+    int *count_copy = NULL;
+    if (count) {
+        count_copy = malloc(sizeof(int));
+        if (count_copy) *count_copy = *count;
+    }
+    home_services_backups_t *result = home_services_backups_create_internal (
         links,
-        count
+        count_copy
         );
+    if (!result) {
+        free(count_copy);
+    }
+    return result;
 }
 
 void home_services_backups_free(home_services_backups_t *home_services_backups) {
@@ -45,6 +54,10 @@ void home_services_backups_free(home_services_backups_t *home_services_backups) 
         }
         list_freeList(home_services_backups->links);
         home_services_backups->links = NULL;
+    }
+    if (home_services_backups->count) {
+        free(home_services_backups->count);
+        home_services_backups->count = NULL;
     }
     free(home_services_backups);
 }
@@ -71,7 +84,7 @@ cJSON *home_services_backups_convertToJSON(home_services_backups_t *home_service
 
     // home_services_backups->count
     if(home_services_backups->count) {
-    if(cJSON_AddNumberToObject(item, "count", home_services_backups->count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "count", *home_services_backups->count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -90,6 +103,9 @@ home_services_backups_t *home_services_backups_parseFromJSON(cJSON *home_service
 
     // define the local list for home_services_backups->links
     list_t *linksList = NULL;
+
+    // define the local variable for home_services_backups->count
+    int *count_local_var = NULL;
 
     // home_services_backups->links
     cJSON *links = cJSON_GetObjectItemCaseSensitive(home_services_backupsJSON, "links");
@@ -123,13 +139,24 @@ home_services_backups_t *home_services_backups_parseFromJSON(cJSON *home_service
     {
     goto end; //Numeric
     }
+    count_local_var = malloc(sizeof(int));
+    if(!count_local_var)
+    {
+        goto end;
     }
+    *count_local_var = count->valuedouble;
+    }
+
 
 
     home_services_backups_local_var = home_services_backups_create_internal (
         links ? linksList : NULL,
-        count ? count->valuedouble : 0
+        count_local_var
         );
+
+    if (!home_services_backups_local_var) {
+        goto end;
+    }
 
     return home_services_backups_local_var;
 end:
@@ -141,6 +168,10 @@ end:
         }
         list_freeList(linksList);
         linksList = NULL;
+    }
+    if (count_local_var) {
+        free(count_local_var);
+        count_local_var = NULL;
     }
     return NULL;
 

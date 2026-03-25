@@ -32,13 +32,13 @@ class OAIServerSwitchport;
 class OAIServerNetworkInfo_switchports : public OAIObject {
 public:
     OAIServerNetworkInfo_switchports();
-    OAIServerNetworkInfo_switchports(QString json);
+    OAIServerNetworkInfo_switchports(const QString &json);
     ~OAIServerNetworkInfo_switchports() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     OAIServerSwitchport getR10414() const;
     void setR10414(const OAIServerSwitchport &r_10414);

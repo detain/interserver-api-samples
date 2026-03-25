@@ -15,12 +15,12 @@ static services_info_t *services_info_create_internal(
     if (!services_info_local_var) {
         return NULL;
     }
+    memset(services_info_local_var, 0, sizeof(services_info_t));
+    services_info_local_var->_library_owned = 1;
     services_info_local_var->modules = modules;
     services_info_local_var->services = services;
     services_info_local_var->service_types = service_types;
     services_info_local_var->service_categories = service_categories;
-
-    services_info_local_var->_library_owned = 1;
     return services_info_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) services_info_t *services_info_create(
     service_types_t *service_types,
     service_categories_t *service_categories
     ) {
-    return services_info_create_internal (
+    services_info_t *result = services_info_create_internal (
         modules,
         services,
         service_types,
         service_categories
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void services_info_free(services_info_t *services_info) {
@@ -197,12 +200,17 @@ services_info_t *services_info_parseFromJSON(cJSON *services_infoJSON){
     service_categories_local_nonprim = service_categories_parseFromJSON(service_categories); //custom
 
 
+
     services_info_local_var = services_info_create_internal (
         modules_local_nonprim,
         services_local_nonprim,
         service_types_local_nonprim,
         service_categories_local_nonprim
         );
+
+    if (!services_info_local_var) {
+        goto end;
+    }
 
     return services_info_local_var;
 end:

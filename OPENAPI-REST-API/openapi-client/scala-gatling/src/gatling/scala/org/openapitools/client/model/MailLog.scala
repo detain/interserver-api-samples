@@ -3,11 +3,11 @@ package org.openapitools.client.model
 
 
 case class MailLog (
-    /* total number of mail log entries */
+    /* Total number of log entries that match the supplied filters, regardless of `skip` and `limit`.  Reflects the `groupby` mode. */
     _total: Integer,
-    /* number of emails skipped in listing */
+    /* The `skip` value used for this page (echoed from the request). */
     _skip: Integer,
-    /* number of emails to return */
+    /* The `limit` value used for this page (echoed from the request). */
     _limit: Integer,
     _emails: List[MailLogEntry]
 )

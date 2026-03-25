@@ -310,32 +310,6 @@ void OAIScrubIpsApi::cancelScrubIpCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT cancelScrubIpSignal(output);
         Q_EMIT cancelScrubIpSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT cancelScrubIpSignalE(output, error_type, error_str);
-        Q_EMIT cancelScrubIpSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT cancelScrubIpSignalError(output, error_type, error_str);
         Q_EMIT cancelScrubIpSignalErrorFull(worker, error_type, error_str);
     }
@@ -407,32 +381,6 @@ void OAIScrubIpsApi::createFilterCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT createFilterSignal(output);
         Q_EMIT createFilterSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT createFilterSignalE(output, error_type, error_str);
-        Q_EMIT createFilterSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT createFilterSignalError(output, error_type, error_str);
         Q_EMIT createFilterSignalErrorFull(worker, error_type, error_str);
     }
@@ -504,32 +452,6 @@ void OAIScrubIpsApi::createGeoRuleCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT createGeoRuleSignal(output);
         Q_EMIT createGeoRuleSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT createGeoRuleSignalE(output, error_type, error_str);
-        Q_EMIT createGeoRuleSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT createGeoRuleSignalError(output, error_type, error_str);
         Q_EMIT createGeoRuleSignalErrorFull(worker, error_type, error_str);
     }
@@ -601,32 +523,6 @@ void OAIScrubIpsApi::createRuleCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT createRuleSignal(output);
         Q_EMIT createRuleSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT createRuleSignalE(output, error_type, error_str);
-        Q_EMIT createRuleSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT createRuleSignalError(output, error_type, error_str);
         Q_EMIT createRuleSignalErrorFull(worker, error_type, error_str);
     }
@@ -698,32 +594,6 @@ void OAIScrubIpsApi::deleteFilterCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT deleteFilterSignal(output);
         Q_EMIT deleteFilterSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT deleteFilterSignalE(output, error_type, error_str);
-        Q_EMIT deleteFilterSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT deleteFilterSignalError(output, error_type, error_str);
         Q_EMIT deleteFilterSignalErrorFull(worker, error_type, error_str);
     }
@@ -790,32 +660,6 @@ void OAIScrubIpsApi::disableScrubCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT disableScrubSignal(output);
         Q_EMIT disableScrubSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT disableScrubSignalE(output, error_type, error_str);
-        Q_EMIT disableScrubSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT disableScrubSignalError(output, error_type, error_str);
         Q_EMIT disableScrubSignalErrorFull(worker, error_type, error_str);
     }
@@ -882,32 +726,6 @@ void OAIScrubIpsApi::enableScrubCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT enableScrubSignal(output);
         Q_EMIT enableScrubSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT enableScrubSignalE(output, error_type, error_str);
-        Q_EMIT enableScrubSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT enableScrubSignalError(output, error_type, error_str);
         Q_EMIT enableScrubSignalErrorFull(worker, error_type, error_str);
     }
@@ -960,32 +778,6 @@ void OAIScrubIpsApi::getOrderDetailCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getOrderDetailSignal(output);
         Q_EMIT getOrderDetailSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getOrderDetailSignalE(output, error_type, error_str);
-        Q_EMIT getOrderDetailSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getOrderDetailSignalError(output, error_type, error_str);
         Q_EMIT getOrderDetailSignalErrorFull(worker, error_type, error_str);
     }
@@ -1052,32 +844,6 @@ void OAIScrubIpsApi::getScrubIpDetailsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getScrubIpDetailsSignal(output);
         Q_EMIT getScrubIpDetailsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getScrubIpDetailsSignalE(output, error_type, error_str);
-        Q_EMIT getScrubIpDetailsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getScrubIpDetailsSignalError(output, error_type, error_str);
         Q_EMIT getScrubIpDetailsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1130,32 +896,6 @@ void OAIScrubIpsApi::getScrubIpFilterTypesCallback(OAIHttpRequestWorker *worker)
         Q_EMIT getScrubIpFilterTypesSignal(output);
         Q_EMIT getScrubIpFilterTypesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getScrubIpFilterTypesSignalE(output, error_type, error_str);
-        Q_EMIT getScrubIpFilterTypesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getScrubIpFilterTypesSignalError(output, error_type, error_str);
         Q_EMIT getScrubIpFilterTypesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1222,32 +962,6 @@ void OAIScrubIpsApi::getScrubIpInvoicesCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getScrubIpInvoicesSignal(output);
         Q_EMIT getScrubIpInvoicesSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getScrubIpInvoicesSignalE(output, error_type, error_str);
-        Q_EMIT getScrubIpInvoicesSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getScrubIpInvoicesSignalError(output, error_type, error_str);
         Q_EMIT getScrubIpInvoicesSignalErrorFull(worker, error_type, error_str);
     }
@@ -1323,32 +1037,6 @@ void OAIScrubIpsApi::getScrubIpLogsCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getScrubIpLogsSignal(output);
         Q_EMIT getScrubIpLogsSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getScrubIpLogsSignalE(output, error_type, error_str);
-        Q_EMIT getScrubIpLogsSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getScrubIpLogsSignalError(output, error_type, error_str);
         Q_EMIT getScrubIpLogsSignalErrorFull(worker, error_type, error_str);
     }
@@ -1410,32 +1098,6 @@ void OAIScrubIpsApi::getScrubIpsListCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT getScrubIpsListSignal(output);
         Q_EMIT getScrubIpsListSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT getScrubIpsListSignalE(output, error_type, error_str);
-        Q_EMIT getScrubIpsListSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT getScrubIpsListSignalError(output, error_type, error_str);
         Q_EMIT getScrubIpsListSignalErrorFull(worker, error_type, error_str);
     }
@@ -1493,32 +1155,6 @@ void OAIScrubIpsApi::placeScrubOrderCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT placeScrubOrderSignal(output);
         Q_EMIT placeScrubOrderSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT placeScrubOrderSignalE(output, error_type, error_str);
-        Q_EMIT placeScrubOrderSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT placeScrubOrderSignalError(output, error_type, error_str);
         Q_EMIT placeScrubOrderSignalErrorFull(worker, error_type, error_str);
     }
@@ -1590,32 +1226,6 @@ void OAIScrubIpsApi::scrubIpsDeleteGeoRuleCallback(OAIHttpRequestWorker *worker)
         Q_EMIT scrubIpsDeleteGeoRuleSignal(output);
         Q_EMIT scrubIpsDeleteGeoRuleSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT scrubIpsDeleteGeoRuleSignalE(output, error_type, error_str);
-        Q_EMIT scrubIpsDeleteGeoRuleSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT scrubIpsDeleteGeoRuleSignalError(output, error_type, error_str);
         Q_EMIT scrubIpsDeleteGeoRuleSignalErrorFull(worker, error_type, error_str);
     }
@@ -1687,42 +1297,16 @@ void OAIScrubIpsApi::scrubIpsDeleteRuleCallback(OAIHttpRequestWorker *worker) {
         Q_EMIT scrubIpsDeleteRuleSignal(output);
         Q_EMIT scrubIpsDeleteRuleSignalFull(worker, output);
     } else {
-
-#if defined(_MSC_VER)
-// For MSVC
-#pragma warning(push)
-#pragma warning(disable : 4996)
-#elif defined(__clang__)
-// For Clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(__GNUC__)
-// For GCC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-        Q_EMIT scrubIpsDeleteRuleSignalE(output, error_type, error_str);
-        Q_EMIT scrubIpsDeleteRuleSignalEFull(worker, error_type, error_str);
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#elif defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
-
         Q_EMIT scrubIpsDeleteRuleSignalError(output, error_type, error_str);
         Q_EMIT scrubIpsDeleteRuleSignalErrorFull(worker, error_type, error_str);
     }
 }
 
-void OAIScrubIpsApi::tokenAvailable(){
+void OAIScrubIpsApi::tokenAvailable() {
 
     oauthToken token;
     switch (_OauthMethod) {
-    case 1: //implicit flow
+    case OauthMethod::ImplicitFlow:
         token = _implicitFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1732,7 +1316,7 @@ void OAIScrubIpsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 2: //authorization flow
+    case OauthMethod::AuthorizationFlow:
         token = _authFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1742,7 +1326,7 @@ void OAIScrubIpsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 3: //client credentials flow
+    case OauthMethod::ClientCredentialsFlow:
         token = _credentialFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());
@@ -1752,7 +1336,7 @@ void OAIScrubIpsApi::tokenAvailable(){
             qDebug() << "Could not retrieve a valid token";
         }
         break;
-    case 4: //resource owner password flow
+    case OauthMethod::ResourceOwnerPasswordFlow:
         token = _passwordFlow.getToken(_latestScope.join(" "));
         if(token.isValid()){
             _latestInput.headers.insert("Authorization", "Bearer " + token.getToken());

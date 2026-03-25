@@ -760,6 +760,8 @@ lib/Models/VPSTrafficDataDataSectionResponse.cpp
 lib/Models/VPSTrafficDataDataSectionResponse.h
 lib/Models/VPSTrafficDataDataSectionResponseInner.cpp
 lib/Models/VPSTrafficDataDataSectionResponseInner.h
+lib/Models/ViewMailLogStartDateParameter.cpp
+lib/Models/ViewMailLogStartDateParameter.h
 lib/Models/ViewTicketResponse.cpp
 lib/Models/ViewTicketResponse.h
 lib/Models/Vps.cpp
@@ -1283,6 +1285,7 @@ lib/TestFiles/UrlRequestTest.cpp
 lib/TestFiles/VPSCancel200ResponseTest.cpp
 lib/TestFiles/VPSTrafficDataDataSectionResponseInnerTest.cpp
 lib/TestFiles/VPSTrafficDataDataSectionResponseTest.cpp
+lib/TestFiles/ViewMailLogStartDateParameterTest.cpp
 lib/TestFiles/ViewTicketResponseTest.cpp
 lib/TestFiles/VpsBackupRowTest.cpp
 lib/TestFiles/VpsBackupRowsTest.cpp

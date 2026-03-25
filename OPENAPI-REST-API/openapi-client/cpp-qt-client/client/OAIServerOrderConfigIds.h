@@ -31,13 +31,13 @@ namespace OpenAPI {
 class OAIServerOrderConfigIds : public OAIObject {
 public:
     OAIServerOrderConfigIds();
-    OAIServerOrderConfigIds(QString json);
+    OAIServerOrderConfigIds(const QString &json);
     ~OAIServerOrderConfigIds() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     qint32 getMemory() const;
     void setMemory(const qint32 &memory);

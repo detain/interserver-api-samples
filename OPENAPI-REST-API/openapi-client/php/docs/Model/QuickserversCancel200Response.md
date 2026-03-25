@@ -1,4 +1,4 @@
-# # QuickserversCancel200Response
+# QuickserversCancel200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ServerExtraInfoTables
+# ServerExtraInfoTables
 
 ## Properties
 

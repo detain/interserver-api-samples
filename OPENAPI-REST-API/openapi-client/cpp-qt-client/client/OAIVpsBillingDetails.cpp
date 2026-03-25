@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIVpsBillingDetails::OAIVpsBillingDetails(QString json) {
+OAIVpsBillingDetails::OAIVpsBillingDetails(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -68,7 +68,7 @@ void OAIVpsBillingDetails::initializeModel() {
     m_service_extra_json_isValid = false;
 }
 
-void OAIVpsBillingDetails::fromJson(QString jsonString) {
+void OAIVpsBillingDetails::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

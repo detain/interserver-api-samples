@@ -22,38 +22,42 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class MailLogEntry(BaseModel):
     """
-    An email record
+    A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
     """ # noqa: E501
-    id: StrictInt = Field(description="internal db id", alias="_id")
-    id: StrictStr = Field(description="mail id")
-    var_from: StrictStr = Field(description="from address", alias="from")
-    to: StrictStr = Field(description="to address")
-    subject: StrictStr = Field(description="email subject")
-    message_id: Optional[StrictStr] = Field(default=None, description="message id", alias="messageId")
-    created: StrictStr = Field(description="creation date")
-    time: StrictInt = Field(description="creation timestamp")
-    user: StrictStr = Field(description="user account")
-    transtype: StrictStr = Field(description="transaction type")
-    origin: StrictStr = Field(description="origin ip")
-    interface: StrictStr = Field(description="interface name")
-    sending_zone: StrictStr = Field(description="sending zone", alias="sendingZone")
-    body_size: StrictInt = Field(description="email body size in bytes", alias="bodySize")
-    seq: StrictInt = Field(description="index of email in the to adderess list")
-    recipient: StrictStr = Field(description="to address this email is being sent to")
-    domain: StrictStr = Field(description="to address domain")
-    locked: StrictInt = Field(description="locked status")
-    lock_time: StrictInt = Field(description="lock timestamp", alias="lockTime")
-    assigned: StrictStr = Field(description="assigned server")
-    queued: StrictStr = Field(description="queued timestamp")
-    mx_hostname: StrictStr = Field(description="mx hostname", alias="mxHostname")
-    response: StrictStr = Field(description="mail delivery response")
-    __properties: ClassVar[List[str]] = ["_id", "id", "from", "to", "subject", "messageId", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "recipient", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname", "response"]
+    id: StrictInt = Field(description="Internal auto-increment database row ID.", alias="_id")
+    id: StrictStr = Field(description="The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.")
+    var_from: StrictStr = Field(description="SMTP envelope `MAIL FROM` address.", alias="from")
+    to: StrictStr = Field(description="SMTP envelope `RCPT TO` address.")
+    subject: Optional[StrictStr] = Field(default=None, description="The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.")
+    message_id: Optional[StrictStr] = Field(default=None, description="The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.", alias="messageId")
+    created: StrictStr = Field(description="Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.")
+    time: StrictInt = Field(description="Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.")
+    user: StrictStr = Field(description="The SMTP AUTH username used to submit the message (e.g. `mb5658`).")
+    transtype: StrictStr = Field(description="SMTP transaction type negotiated with the relay.")
+    origin: StrictStr = Field(description="IP address of the client that submitted the message to the relay.")
+    interface: StrictStr = Field(description="Relay interface name that accepted the message.")
+    sending_zone: Optional[StrictStr] = Field(default=None, description="The sending zone assigned by the relay for outbound delivery.", alias="sendingZone")
+    body_size: Optional[StrictInt] = Field(default=None, description="Size of the message body in bytes.", alias="bodySize")
+    seq: Optional[StrictInt] = Field(default=None, description="Sequence index of this recipient in a multi-recipient message. Starts at 1.")
+    delivered: Optional[StrictInt] = Field(default=None, description="Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.")
+    code: Optional[StrictInt] = Field(default=None, description="The SMTP response code from the destination MX server (e.g. `250`).")
+    recipient: Optional[StrictStr] = Field(default=None, description="The specific recipient address this delivery record is for.")
+    response: Optional[StrictStr] = Field(default=None, description="The full SMTP response string received from the destination MX server.")
+    domain: Optional[StrictStr] = Field(default=None, description="The destination domain for this delivery attempt.")
+    locked: Optional[StrictInt] = Field(default=None, description="Whether the queue entry is currently locked for delivery processing.")
+    lock_time: Optional[StrictStr] = Field(default=None, description="Millisecond-precision timestamp of the last queue lock acquisition.", alias="lockTime")
+    assigned: Optional[StrictStr] = Field(default=None, description="The relay server node assigned to deliver this message.")
+    queued: Optional[StrictStr] = Field(default=None, description="ISO 8601 timestamp when the message was placed into the delivery queue.")
+    mx_hostname: Optional[StrictStr] = Field(default=None, description="The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.", alias="mxHostname")
+    __properties: ClassVar[List[str]] = ["_id", "id", "from", "to", "subject", "messageId", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "delivered", "code", "recipient", "response", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -65,8 +69,7 @@ class MailLogEntry(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -91,6 +94,81 @@ class MailLogEntry(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if subject (nullable) is None
+        # and model_fields_set contains the field
+        if self.subject is None and "subject" in self.model_fields_set:
+            _dict['subject'] = None
+
+        # set to None if message_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.message_id is None and "message_id" in self.model_fields_set:
+            _dict['messageId'] = None
+
+        # set to None if sending_zone (nullable) is None
+        # and model_fields_set contains the field
+        if self.sending_zone is None and "sending_zone" in self.model_fields_set:
+            _dict['sendingZone'] = None
+
+        # set to None if body_size (nullable) is None
+        # and model_fields_set contains the field
+        if self.body_size is None and "body_size" in self.model_fields_set:
+            _dict['bodySize'] = None
+
+        # set to None if seq (nullable) is None
+        # and model_fields_set contains the field
+        if self.seq is None and "seq" in self.model_fields_set:
+            _dict['seq'] = None
+
+        # set to None if delivered (nullable) is None
+        # and model_fields_set contains the field
+        if self.delivered is None and "delivered" in self.model_fields_set:
+            _dict['delivered'] = None
+
+        # set to None if code (nullable) is None
+        # and model_fields_set contains the field
+        if self.code is None and "code" in self.model_fields_set:
+            _dict['code'] = None
+
+        # set to None if recipient (nullable) is None
+        # and model_fields_set contains the field
+        if self.recipient is None and "recipient" in self.model_fields_set:
+            _dict['recipient'] = None
+
+        # set to None if response (nullable) is None
+        # and model_fields_set contains the field
+        if self.response is None and "response" in self.model_fields_set:
+            _dict['response'] = None
+
+        # set to None if domain (nullable) is None
+        # and model_fields_set contains the field
+        if self.domain is None and "domain" in self.model_fields_set:
+            _dict['domain'] = None
+
+        # set to None if locked (nullable) is None
+        # and model_fields_set contains the field
+        if self.locked is None and "locked" in self.model_fields_set:
+            _dict['locked'] = None
+
+        # set to None if lock_time (nullable) is None
+        # and model_fields_set contains the field
+        if self.lock_time is None and "lock_time" in self.model_fields_set:
+            _dict['lockTime'] = None
+
+        # set to None if assigned (nullable) is None
+        # and model_fields_set contains the field
+        if self.assigned is None and "assigned" in self.model_fields_set:
+            _dict['assigned'] = None
+
+        # set to None if queued (nullable) is None
+        # and model_fields_set contains the field
+        if self.queued is None and "queued" in self.model_fields_set:
+            _dict['queued'] = None
+
+        # set to None if mx_hostname (nullable) is None
+        # and model_fields_set contains the field
+        if self.mx_hostname is None and "mx_hostname" in self.model_fields_set:
+            _dict['mxHostname'] = None
+
         return _dict
 
     @classmethod
@@ -118,14 +196,16 @@ class MailLogEntry(BaseModel):
             "sendingZone": obj.get("sendingZone"),
             "bodySize": obj.get("bodySize"),
             "seq": obj.get("seq"),
+            "delivered": obj.get("delivered"),
+            "code": obj.get("code"),
             "recipient": obj.get("recipient"),
+            "response": obj.get("response"),
             "domain": obj.get("domain"),
             "locked": obj.get("locked"),
             "lockTime": obj.get("lockTime"),
             "assigned": obj.get("assigned"),
             "queued": obj.get("queued"),
-            "mxHostname": obj.get("mxHostname"),
-            "response": obj.get("response")
+            "mxHostname": obj.get("mxHostname")
         })
         return _obj
 

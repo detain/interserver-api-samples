@@ -21,7 +21,7 @@
 
 namespace OpenAPI {
 
-OAIAffiliateTrafficRow::OAIAffiliateTrafficRow(QString json) {
+OAIAffiliateTrafficRow::OAIAffiliateTrafficRow(const QString &json) {
     this->initializeModel();
     this->fromJson(json);
 }
@@ -53,7 +53,7 @@ void OAIAffiliateTrafficRow::initializeModel() {
     m_traffic_timestamp_isValid = false;
 }
 
-void OAIAffiliateTrafficRow::fromJson(QString jsonString) {
+void OAIAffiliateTrafficRow::fromJson(const QString &jsonString) {
     QByteArray array(jsonString.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonObject jsonObject = doc.object();

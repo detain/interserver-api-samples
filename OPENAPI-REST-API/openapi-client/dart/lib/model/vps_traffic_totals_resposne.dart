@@ -65,10 +65,14 @@ class VpsTrafficTotalsResposne {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "VpsTrafficTotalsResposne[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "VpsTrafficTotalsResposne[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'day'), 'Required key "VpsTrafficTotalsResposne[day]" is missing from JSON.');
+        assert(json[r'day'] != null, 'Required key "VpsTrafficTotalsResposne[day]" has a null value in JSON.');
+        assert(json.containsKey(r'month'), 'Required key "VpsTrafficTotalsResposne[month]" is missing from JSON.');
+        assert(json[r'month'] != null, 'Required key "VpsTrafficTotalsResposne[month]" has a null value in JSON.');
+        assert(json.containsKey(r'year'), 'Required key "VpsTrafficTotalsResposne[year]" is missing from JSON.');
+        assert(json[r'year'] != null, 'Required key "VpsTrafficTotalsResposne[year]" has a null value in JSON.');
+        assert(json.containsKey(r'all'), 'Required key "VpsTrafficTotalsResposne[all]" is missing from JSON.');
+        assert(json[r'all'] != null, 'Required key "VpsTrafficTotalsResposne[all]" has a null value in JSON.');
         return true;
       }());
 

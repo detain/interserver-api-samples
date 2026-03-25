@@ -11,15 +11,18 @@ static website_backups_t *website_backups_create_internal(
     if (!website_backups_local_var) {
         return NULL;
     }
-
+    memset(website_backups_local_var, 0, sizeof(website_backups_t));
     website_backups_local_var->_library_owned = 1;
     return website_backups_local_var;
 }
 
 __attribute__((deprecated)) website_backups_t *website_backups_create(
     ) {
-    return website_backups_create_internal (
+    website_backups_t *result = website_backups_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void website_backups_free(website_backups_t *website_backups) {
@@ -49,8 +52,13 @@ website_backups_t *website_backups_parseFromJSON(cJSON *website_backupsJSON){
     website_backups_t *website_backups_local_var = NULL;
 
 
+
     website_backups_local_var = website_backups_create_internal (
         );
+
+    if (!website_backups_local_var) {
+        goto end;
+    }
 
     return website_backups_local_var;
 end:

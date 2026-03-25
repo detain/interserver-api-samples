@@ -33,13 +33,13 @@ class OAIVpsTemplateRow;
 class OAIVpsTemplatesList : public OAIObject {
 public:
     OAIVpsTemplatesList();
-    OAIVpsTemplatesList(QString json);
+    OAIVpsTemplatesList(const QString &json);
     ~OAIVpsTemplatesList() override;
 
     QString asJson() const override;
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
-    void fromJson(QString jsonString) override;
+    void fromJson(const QString &jsonString) override;
 
     QList<OAIVpsTemplateRow> getTemplates() const;
     void setTemplates(const QList<OAIVpsTemplateRow> &templates);

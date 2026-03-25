@@ -1,14 +1,14 @@
 # MailLog
 
-Mail log records
+Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **int** | total number of mail log entries | 
-**skip** | **int** | number of emails skipped in listing | 
-**limit** | **int** | number of emails to return | 
+**total** | **int** | Total number of log entries that match the supplied filters, regardless of &#x60;skip&#x60; and &#x60;limit&#x60;.  Reflects the &#x60;groupby&#x60; mode. | 
+**skip** | **int** | The &#x60;skip&#x60; value used for this page (echoed from the request). | 
+**limit** | **int** | The &#x60;limit&#x60; value used for this page (echoed from the request). | 
 **emails** | [**List[MailLogEntry]**](MailLogEntry.md) |  | 
 
 ## Example

@@ -24,15 +24,15 @@ typedef struct tickets_t {
     char *ima; // string
     char *custid; // string
     char *view; // string
-    int current_page; //numeric
-    int limit; //numeric
-    int sortcol; //numeric
-    int sortdir; //numeric
-    int rows_offset; //numeric
+    int *current_page; //numeric
+    int *limit; //numeric
+    int *sortcol; //numeric
+    int *sortdir; //numeric
+    int *rows_offset; //numeric
     list_t *tickets; //nonprimitive container
-    int pages; //numeric
-    int rows_total; //numeric
-    int inbox_count; //numeric
+    int *pages; //numeric
+    int *rows_total; //numeric
+    int *inbox_count; //numeric
     struct tickets_count_array_t *count_array; //model
     char *view_text; // string
 
@@ -43,15 +43,15 @@ __attribute__((deprecated)) tickets_t *tickets_create(
     char *ima,
     char *custid,
     char *view,
-    int current_page,
-    int limit,
-    int sortcol,
-    int sortdir,
-    int rows_offset,
+    int *current_page,
+    int *limit,
+    int *sortcol,
+    int *sortdir,
+    int *rows_offset,
     list_t *tickets,
-    int pages,
-    int rows_total,
-    int inbox_count,
+    int *pages,
+    int *rows_total,
+    int *inbox_count,
     tickets_count_array_t *count_array,
     char *view_text
 );
