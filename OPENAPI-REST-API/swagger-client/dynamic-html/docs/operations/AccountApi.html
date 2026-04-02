@@ -1,0 +1,656 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="changeAccountUsername"></a>changeAccountUsername</h2>
+  <hr>
+  <p></p>
+  <p>Changes the login username for the account. The new username must be unique across all accounts. After changing, use the new username for all future logins.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/username</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="deleteAccountOauthName"></a>deleteAccountOauthName</h2>
+  <hr>
+  <p></p>
+  <p>Unlinks a third-party OAuth provider from the account. After unlinking, that provider can no longer be used for login.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/oauth/{name}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="deleteAccountTfa"></a>deleteAccountTfa</h2>
+  <hr>
+  <p></p>
+  <p>Disables two-factor authentication on the account. After disabling, the account will only require password-based authentication.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/2fa</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="deleteIpLimit"></a>deleteIpLimit</h2>
+  <hr>
+  <p></p>
+  <p>Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/iplimits</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="GenericResponse"><a href="">GenericResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getAccountInfo"></a>getAccountInfo</h2>
+  <hr>
+  <p></p>
+  <p>Returns the full account profile including contact information, billing address, and security settings. Use this to populate account management forms or verify account state before making changes with &#x60;POST /account&#x60;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="AccountInfo"><a href="">AccountInfo</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getAccountTfaSetup"></a>getAccountTfaSetup</h2>
+  <hr>
+  <p></p>
+  <p>Returns the TOTP secret key needed to configure a two-factor authentication app (e.g. Google Authenticator). Present the &#x60;2fa_google_key&#x60; as a QR code or display the &#x60;2fa_google_split&#x60; value for manual entry. After setup, verify with &#x60;POST /account/2fa&#x60;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/2fa</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200"><a href="">inline_response_200</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getHome"></a>getHome</h2>
+  <hr>
+  <p></p>
+  <p>Returns an overview of the account suitable for a dashboard home page, including service counts, recent activity, and account-level alerts. Requires an authenticated session.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/home</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Home"><a href="">Home</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getSearch"></a>getSearch</h2>
+  <hr>
+  <p></p>
+  <p>Returns autocomplete results for the account&#x27;s services and records. Use this endpoint to power global search experiences in the client portal.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/search</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SearchAutocompleteResponse"><a href="">SearchAutocompleteResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="logout"></a>logout</h2>
+  <hr>
+  <p></p>
+  <p>Invalidates the current session. After calling this endpoint, the session token can no longer be used for authenticated requests. The client should discard the stored session ID.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/logout</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="logoutAccountOauth"></a>logoutAccountOauth</h2>
+  <hr>
+  <p></p>
+  <p>Logs out of the specified OAuth provider session.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/oauth/{name}/logout</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountApiKey"></a>updateAccountApiKey</h2>
+  <hr>
+  <p></p>
+  <p>Generates a new API key for the account. The previous key is immediately invalidated. Store the new key securely as it cannot be retrieved later.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/apikey</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="updateAccountFeatures"></a>updateAccountFeatures</h2>
+  <hr>
+  <p></p>
+  <p>Updates account-level feature flags that control service capabilities. These flags can disable password reset, OS reinstall, or other potentially destructive operations across your services. Changes take effect immediately.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/features</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">disable_reset</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">disable_reinstall</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountFeatures"></a>updateAccountFeatures</h2>
+  <hr>
+  <p></p>
+  <p>Updates account-level feature flags that control service capabilities. These flags can disable password reset, OS reinstall, or other potentially destructive operations across your services. Changes take effect immediately.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/features</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">AccountFeatures(AccountFeatures)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountInfo"></a>updateAccountInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">company</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">address</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">address2</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">city</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">state</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">zip</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">country</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">phone</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">locale</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">email_invoices</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">email_abuse</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">disable_reset</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">disable_reinstall</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">disable_server_notifications</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">disable_email_notifications</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">gstin</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountInfo"></a>updateAccountInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">AccountInfoPost(AccountInfoPost)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountIpLimits"></a>updateAccountIpLimits</h2>
+  <hr>
+  <p></p>
+  <p>Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/iplimits</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">start</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">end</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountIpLimits"></a>updateAccountIpLimits</h2>
+  <hr>
+  <p></p>
+  <p>Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/iplimits</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">IpLimitRange(IpLimitRange)</span>
+      
+      <p class="param-description">The lower and upper bounds of an ip range.</p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountPassword"></a>updateAccountPassword</h2>
+  <hr>
+  <p></p>
+  <p>Changes the account login password. The current password must be provided for verification. After a successful change, existing API keys remain valid but active sessions may require re-authentication.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">password</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountPassword"></a>updateAccountPassword</h2>
+  <hr>
+  <p></p>
+  <p>Changes the account login password. The current password must be provided for verification. After a successful change, existing API keys remain valid but active sessions may require re-authentication.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/password</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">PasswordRequest(PasswordRequest)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountSshKey"></a>updateAccountSshKey</h2>
+  <hr>
+  <p></p>
+  <p>Updates the SSH public key stored on the account. This key can be automatically installed on new VPS and server orders.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/sshkey</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ssh_key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountSshKey"></a>updateAccountSshKey</h2>
+  <hr>
+  <p></p>
+  <p>Updates the SSH public key stored on the account. This key can be automatically installed on new VPS and server orders.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/sshkey</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">AccountSshKey(AccountSshKey)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountTfa"></a>updateAccountTfa</h2>
+  <hr>
+  <p></p>
+  <p>Verifies the TOTP code from your authenticator app and enables two-factor authentication on the account. Use &#x60;GET /account/2fa&#x60; first to retrieve the secret key for app setup.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/2fa</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">2fa_google_code</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="updateAccountTfa"></a>updateAccountTfa</h2>
+  <hr>
+  <p></p>
+  <p>Verifies the TOTP code from your authenticator app and enables two-factor authentication on the account. Use &#x60;GET /account/2fa&#x60; first to retrieve the secret key for app setup.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/account/2fa</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Account_2fa_body_1(Account_2fa_body_1)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+</div>

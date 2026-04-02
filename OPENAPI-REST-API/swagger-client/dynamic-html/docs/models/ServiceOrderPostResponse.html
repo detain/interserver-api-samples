@@ -1,0 +1,42 @@
+
+<h2>ServiceOrderPostResponse</h2>
+<ul class="parameter">
+  <li class="param-required-false">continue : Boolean
+    <br/>Whether the order was accepted and can proceed to payment.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">errors : List
+    <br/>List of validation errors (empty on success).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">total_cost : String
+    <br/>Total cost of the order.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">iid : String
+    <br/>Primary invoice ID for payment.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">iids : List
+    <br/>All invoice identifiers associated with the order.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">real_iids : List
+    <br/>Numeric invoice IDs for use with billing endpoints.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">serviceId : Integer
+    <br/>The new service ID created by the order.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">invoice_description : String
+    <br/>Human-readable description of the invoice.
+  </li>
+</ul>

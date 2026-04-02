@@ -1,0 +1,25 @@
+
+<h2>DenyRuleNew</h2>
+<ul class="parameter">
+  <li class="param-required-false">user : String
+    <br/>Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">type : String
+    <br/>The type of deny rule.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>domain</dd>
+            <dd>email</dd>
+            <dd>startswith</dd>
+            <dd>destination</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">data : String
+    <br/>The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com.
+  </li>
+</ul>

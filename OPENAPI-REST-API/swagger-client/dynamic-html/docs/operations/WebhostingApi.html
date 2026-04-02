@@ -1,0 +1,615 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="addWebsite"></a>addWebsite</h2>
+  <hr>
+  <p></p>
+  <p>Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ServiceOrderPostResponse"><a href="">ServiceOrderPostResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getNewWebsite"></a>getNewWebsite</h2>
+  <hr>
+  <p></p>
+  <p>Retrieves available webhosting plans and pricing for ordering.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="WebsitesOrder"><a href="">WebsitesOrder</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getWebsiteBuyIp"></a>getWebsiteBuyIp</h2>
+  <hr>
+  <p></p>
+  <p>Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/buy_ip</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_24"><a href="">inline_response_200_24</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getWebsiteInfo"></a>getWebsiteInfo</h2>
+  <hr>
+  <p></p>
+  <p>Returns detailed information about a specific webhosting order including its domain, plan, and status.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Website"><a href="">Website</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getWebsiteInvoices"></a>getWebsiteInvoices</h2>
+  <hr>
+  <p></p>
+  <p>Returns the billing invoices associated with this webhosting service.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/invoices</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ChargeInvoiceRows"><a href="">ChargeInvoiceRows</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getWebsiteList"></a>getWebsiteList</h2>
+  <hr>
+  <p></p>
+  <p>Gets a listing of your webhosting orders and service details.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="WebsiteRow"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getWebsitesBackups"></a>getWebsitesBackups</h2>
+  <hr>
+  <p></p>
+  <p>Gets a list of the backups that exist for a website and their sizes.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/backups</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="WebsiteBackups"><a href="">WebsiteBackups</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getWebsitesLogin"></a>getWebsitesLogin</h2>
+  <hr>
+  <p></p>
+  <p>Returns an auto-login URL for the webhosting control panel. Use this to access cPanel or DirectAdmin without entering credentials.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/login</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="WebsiteLoginResponse"><a href="">WebsiteLoginResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="getWebsitesWelcomeEmail"></a>getWebsitesWelcomeEmail</h2>
+  <hr>
+  <p></p>
+  <p>Resends the welcome email containing hosting credentials and panel access details for the webhosting order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/welcome_email</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="gettWebsiteReverseDns"></a>gettWebsiteReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Returns the current reverse DNS (PTR record) entries for the website&#x27;s IP addresses.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ReverseDnsEntries"><a href="">ReverseDnsEntries</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postWebsiteBuyIp"></a>postWebsiteBuyIp</h2>
+  <hr>
+  <p></p>
+  <p>Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/buy_ip</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_25"><a href="">inline_response_200_25</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Id_buy_ip_body(Id_buy_ip_body)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postWebsiteBuyIp"></a>postWebsiteBuyIp</h2>
+  <hr>
+  <p></p>
+  <p>Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/buy_ip</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_25"><a href="">inline_response_200_25</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ips</span>
+      <span class="param-type">Map(String)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postWebsiteMigration"></a>postWebsiteMigration</h2>
+  <hr>
+  <p></p>
+  <p>Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/migration</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_26"><a href="">inline_response_200_26</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Id_migration_body(Id_migration_body)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postWebsiteMigration"></a>postWebsiteMigration</h2>
+  <hr>
+  <p></p>
+  <p>Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/migration</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_26"><a href="">inline_response_200_26</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">custPortal</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">regEmail</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">password</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ctrlPanel</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ftpUsername</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ftpPassword</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">siteBusyMig</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">splReqMig</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domainReg</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">dataMig</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domainRegPortal</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domainRegEmail</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">domainRegPassword</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postWebsitesReverseDns"></a>postWebsitesReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Updates the reverse DNS entries for each of the IP addresses for the website.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">ReverseDnsEntries(ReverseDnsEntries)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="postWebsitesReverseDns"></a>postWebsitesReverseDns</h2>
+  <hr>
+  <p></p>
+  <p>Updates the reverse DNS entries for each of the IP addresses for the website.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}/reverse_dns</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TextResponse"><a href="">TextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">ips</span>
+      <span class="param-type">Map(Object)</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="putWebsites"></a>putWebsites</h2>
+  <hr>
+  <p></p>
+  <p>Validates a webhosting order before placing it.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/order</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="updateWebsiteInfo"></a>updateWebsiteInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates settings on a webhosting order.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="SuccessTextResponse"><a href="">SuccessTextResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+  <h2><a name="webhostingCancel"></a>webhostingCancel</h2>
+  <hr>
+  <p></p>
+  <p>Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/websites/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_23"><a href="">inline_response_200_23</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</p>
+	  </li>
+  </ul>
+</div>

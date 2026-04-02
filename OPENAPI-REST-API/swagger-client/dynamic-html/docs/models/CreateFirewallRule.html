@@ -1,0 +1,39 @@
+
+<h2>CreateFirewallRule</h2>
+<ul class="parameter">
+  <li class="param-required-false">destination_port : Integer
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">source_ip : String
+    <br/>Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">source_port : Integer
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">protocol_id : Integer
+    <br/>1 &#x3D; TCP, 2 &#x3D; UDP
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>1</dd>
+            <dd>2</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">xdp_action : Integer
+    <br/>1 &#x3D; Block,  0 &#x3D; Whitelist
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>0</dd>
+            <dd>1</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
