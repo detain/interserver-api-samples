@@ -1,0 +1,242 @@
+
+<h2>ServerAsset</h2>
+<ul class="parameter">
+  <li class="param-required-true">id : Integer
+    <br/>Unique identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">orderUnderscoreid : String
+    <br/>Order identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">hostname : String
+    <br/>Hostname associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">status : String
+    <br/>Status of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">primaryUnderscoreipv4 : String
+    <br/>Primary IPv4 address of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">primaryUnderscoreipv6 : String
+    <br/>Primary IPv6 address of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">datacenter : String
+    <br/>Datacenter identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">typeUnderscoreid : String
+    <br/>Type identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">assetUnderscoretag : String
+    <br/>Asset tag associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rack : String
+    <br/>Rack identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">row : String
+    <br/>Row identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">col : String
+    <br/>Column identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">unitUnderscorestart : String
+    <br/>Starting unit identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">unitUnderscoreend : String
+    <br/>Ending unit identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">unitUnderscoresub : String
+    <br/>Subunit identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">ipmiUnderscoremac : String
+    <br/>IPMI MAC address associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">ipmiUnderscoreip : String
+    <br/>IPMI IP address associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">ipmiUnderscoreworking : String
+    <br/>IPMI working status associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">company : String
+    <br/>Company associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">comments : String
+    <br/>Comments associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">make : String
+    <br/>Make of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">model : String
+    <br/>Model of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">description : String
+    <br/>Description of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">customerUnderscoreid : String
+    <br/>Customer identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">externalUnderscoreid : String
+    <br/>External identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billingUnderscorestatus : String
+    <br/>Billing status of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">overdue : String
+    <br/>Overdue status of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">assetUnderscoreid : String
+    <br/>Asset identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">assetUnderscorename : String
+    <br/>Name of the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rackUnderscoreid : String
+    <br/>Rack identifier for the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rackUnderscorename : String
+    <br/>Rack name associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rackUnderscorelocation : String
+    <br/>Location of the rack associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rackUnderscoresize : String
+    <br/>Size of the rack associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rackUnderscorex : String
+    <br/>X-coordinate of the asset within the rack.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rackUnderscorey : String
+    <br/>Y-coordinate of the asset within the rack.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">switchports : List
+    <br/>List of switchports associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">vlans : List
+    <br/>List of VLANs associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">vlans6 : List
+    <br/>List of IPv6 VLANs associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">lease : ServerLease
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">mac : String
+    <br/>MAC address associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ipmiUnderscoreadminUnderscoreusername : String
+    <br/>IPMI admin username associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ipmiUnderscoreadminUnderscorepassword : String
+    <br/>IPMI admin password associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ipmiUnderscoreclientUnderscoreusername : String
+    <br/>IPMI client username associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ipmiUnderscoreclientUnderscorepassword : String
+    <br/>IPMI client password associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ipmiUnderscoreupdated : String
+    <br/>IPMI update status associated with the asset.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createUnderscoretimestamp : String
+    <br/>Timestamp of asset creation.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updateUnderscoretimestamp : String
+    <br/>Timestamp of asset update.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">comment : String
+    <br/>Comment associated with the asset.
+  </li>
+</ul>

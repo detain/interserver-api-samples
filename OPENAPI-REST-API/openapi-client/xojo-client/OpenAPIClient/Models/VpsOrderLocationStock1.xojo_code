@@ -1,0 +1,83 @@
+#tag Class
+Protected Class VpsOrderLocationStock1
+
+	#tag Property, Flags = &h0
+		kvm As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		kvmstorage As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		hyperv As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+
+
+
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="kvm"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="kvmstorage"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="hyperv"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+	#tag EndViewBehavior
+End Class
+#tag EndClass
+
+

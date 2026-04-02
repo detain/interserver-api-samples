@@ -1,0 +1,291 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="addNewTicket"></a>addNewTicket</h2>
+  <hr>
+  <p></p>
+  <p>Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/new</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TicketNewResponse"><a href="">TicketNewResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">TicketNew</span>
+      <span class="param-type">TicketNew(TicketNew)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="closeTicket"></a>closeTicket</h2>
+  <hr>
+  <p></p>
+  <p>Closes the specified support ticket. Closed tickets can still be viewed but will no longer appear in the active inbox.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}/close</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="CloseTicketResponseSchema"><a href="">CloseTicketResponseSchema</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Ticket ID</p>
+      </li>
+  </ul>
+  <h2><a name="deleteTicketInfo"></a>deleteTicketInfo</h2>
+  <hr>
+  <p></p>
+  <p>Closes the support ticket.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ViewTicketResponse"><a href="">ViewTicketResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">BigDecimal</span>
+      
+      <p class="param-description">Ticket ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="getNewTicket"></a>getNewTicket</h2>
+  <hr>
+  <p></p>
+  <p>Returns the form data needed to create a new support ticket, such as available departments and service categories.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/new</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="getTicketInfo"></a>getTicketInfo</h2>
+  <hr>
+  <p></p>
+  <p>Returns the full details of a support ticket including its history of replies.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ViewTicketResponse"><a href="">ViewTicketResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">BigDecimal</span>
+      
+      <p class="param-description">Ticket ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="getTicketsList"></a>getTicketsList</h2>
+  <hr>
+  <p></p>
+  <p>Returns a paginated list of support tickets on the account. Filter by status and time period.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Tickets"><a href="">Tickets</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Page number for paginated results.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">period</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">How far back to show tickets from. Value is in days.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">view</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The status of tickets to view. Possible values are Open, Closed, On Hold, and In Progress.  If not specified it will show all types.</p>
+      </li>
+  </ul>
+  <h2><a name="postTicketInfo"></a>postTicketInfo</h2>
+  <hr>
+  <p></p>
+  <p>Adds a reply to an existing support ticket.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ViewTicketResponse"><a href="">ViewTicketResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">BigDecimal</span>
+      
+      <p class="param-description">Ticket ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="postTicketsList"></a>postTicketsList</h2>
+  <hr>
+  <p></p>
+  <p>Searches support tickets by email, subject, or ticket mask ID.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Tickets"><a href="">Tickets</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="putTicketInfo"></a>putTicketInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates a support ticket&#39;s properties such as subject or status.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ViewTicketResponse"><a href="">ViewTicketResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">BigDecimal</span>
+      
+      <p class="param-description">Ticket ID number.</p>
+      </li>
+  </ul>
+  <h2><a name="replyTicket"></a>replyTicket</h2>
+  <hr>
+  <p></p>
+  <p>Posts a reply to an existing support ticket thread.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}/reply</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ReplyTicketResponseSchema"><a href="">ReplyTicketResponseSchema</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">BigDecimal</span>
+      
+      <p class="param-description">The ticket ID number.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">ReplyTicketRequest</span>
+      <span class="param-type">ReplyTicketRequest(ReplyTicketRequest)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="updateTicketInfo"></a>updateTicketInfo</h2>
+  <hr>
+  <p></p>
+  <p>Updates a support ticket&#39;s subject or body content.</p>
+  <h3 class="section">URL</h3>
+  <code>https://my.interserver.net/apiv2/tickets/{id}/update</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="UpdateTicketResponseSchema"><a href="">UpdateTicketResponseSchema</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">BigDecimal</span>
+      
+      <p class="param-description">The ticket ID number.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">UpdateTicket</span>
+      <span class="param-type">UpdateTicket(UpdateTicket)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+</div>
