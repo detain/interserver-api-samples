@@ -10583,10 +10583,10 @@ export type QuickserverServiceInfo = {
     qs_ip?: string;
     /**
      * IPv6 address (null)
-     * @type {AnyType}
+     * @type {string}
      * @memberof QuickserverServiceInfo
      */
-    qs_ipv6?: AnyType;
+    qs_ipv6?: string;
     /**
      * VZ ID
      * @type {string}
@@ -10667,10 +10667,10 @@ export type QuickserverServiceInfo = {
     qs_vnc?: string;
     /**
      * VNC port (null)
-     * @type {AnyType}
+     * @type {number}
      * @memberof QuickserverServiceInfo
      */
-    qs_vnc_port?: AnyType;
+    qs_vnc_port?: number;
     /**
      * Root password
      * @type {string}
@@ -10703,10 +10703,10 @@ export type QuickserverServiceInfo = {
     qs_location?: string;
     /**
      * Platform (null)
-     * @type {AnyType}
+     * @type {string}
      * @memberof QuickserverServiceInfo
      */
-    qs_platform?: AnyType;
+    qs_platform?: string;
 }
 
 /**
@@ -10896,16 +10896,16 @@ export type QuickserverServiceMaster = {
     qs_packets_sec_out?: string;
     /**
      * Last install time (null)
-     * @type {AnyType}
+     * @type {string}
      * @memberof QuickserverServiceMaster
      */
-    qs_last_install_time?: AnyType;
+    qs_last_install_time?: string;
     /**
      * Partitions information (null)
-     * @type {AnyType}
+     * @type {string}
      * @memberof QuickserverServiceMaster
      */
-    qs_partitions?: AnyType;
+    qs_partitions?: string;
     /**
      * CPU flags
      * @type {string}
@@ -11662,58 +11662,58 @@ export type ServerAsset = {
     lease: ServerLease;
     /**
      * MAC address associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    mac?: AnyType;
+    mac?: string;
     /**
      * IPMI admin username associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_admin_username?: AnyType;
+    ipmi_admin_username?: string;
     /**
      * IPMI admin password associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_admin_password?: AnyType;
+    ipmi_admin_password?: string;
     /**
      * IPMI client username associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_client_username?: AnyType;
+    ipmi_client_username?: string;
     /**
      * IPMI client password associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_client_password?: AnyType;
+    ipmi_client_password?: string;
     /**
      * IPMI update status associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_updated?: AnyType;
+    ipmi_updated?: string;
     /**
      * Timestamp of asset creation.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    create_timestamp?: AnyType;
+    create_timestamp?: string;
     /**
      * Timestamp of asset update.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    update_timestamp?: AnyType;
+    update_timestamp?: string;
     /**
      * Comment associated with the asset.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerAsset
      */
-    comment?: AnyType;
+    comment?: string;
 }
 
 /**
@@ -12383,10 +12383,10 @@ export type ServerOrderCPU = {
     visible?: string;
     /**
      * Hard drive IDs.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerOrderCPU
      */
-    hd_ids?: AnyType;
+    hd_ids?: string;
     /**
      * Display of CPU price.
      * @type {string}
@@ -13241,10 +13241,10 @@ export type ServerServiceInfo = {
     server_setup?: string;
     /**
      * Discount information for the server.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_discount?: AnyType;
+    server_discount?: string;
     /**
      * The reputation of the server.
      * @type {string}
@@ -13265,10 +13265,10 @@ export type ServerServiceInfo = {
     server_total_cost?: string;
     /**
      * The location of the server.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_location?: AnyType;
+    server_location?: string;
     /**
      * The ordered hardware for the server.
      * @type {string}
@@ -13307,10 +13307,10 @@ export type ServerServiceInfo = {
     server_dedicated_hd1?: string;
     /**
      * The size of the second dedicated hard drive.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_dedicated_hd2?: AnyType;
+    server_dedicated_hd2?: string;
     /**
      * The bandwidth of the server.
      * @type {string}
@@ -13331,10 +13331,10 @@ export type ServerServiceInfo = {
     server_dedicated_os?: string;
     /**
      * The control panel of the server.
-     * @type {AnyType}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_dedicated_cp?: AnyType;
+    server_dedicated_cp?: string;
     /**
      * The RAID configuration of the server.
      * @type {string}
@@ -15869,10 +15869,10 @@ export type VpsServiceInfo = {
     vps_ip?: string;
     /**
      * IPv6 address of the VPS
-     * @type {AnyType}
+     * @type {string}
      * @memberof VpsServiceInfo
      */
-    vps_ipv6?: AnyType;
+    vps_ipv6?: string;
     /**
      * VPS Virtuozzo ID
      * @type {string}
@@ -17569,7 +17569,7 @@ export const AccountApiFetchParamCreator = function (configuration?: Configurati
          * @summary Remove IP Access Restriction
          * @throws {RequiredError}
          */
-        deleteIpLimit(options: RequestOptions): FetchArgs {
+        deleteIpLimit(ipLimitRange?: IpLimitRange, options: RequestOptions): FetchArgs {
             const localVarPath = `/account/iplimits`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'PATCH' }, options);
@@ -17594,10 +17594,14 @@ export const AccountApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["sessionid"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (typeof ipLimitRange !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(ipLimitRange != null ? ipLimitRange : {}) : (((ipLimitRange:any):string) || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -18291,7 +18295,7 @@ export type AccountApiType = {
 
     deleteAccountTfa(options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    deleteIpLimit(options?: RequestOptions): Promise<GenericResponse>,
+    deleteIpLimit(ipLimitRange?: IpLimitRange, options?: RequestOptions): Promise<GenericResponse>,
 
     getAccountInfo(options?: RequestOptions): Promise<AccountInfo>,
 
@@ -18377,8 +18381,8 @@ export const AccountApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Remove IP Access Restriction
          * @throws {RequiredError}
          */
-        deleteIpLimit(options?: RequestOptions = {}): Promise<GenericResponse> {
-            const localVarFetchArgs = AccountApiFetchParamCreator(configuration).deleteIpLimit(options);
+        deleteIpLimit(ipLimitRange?: IpLimitRange, options?: RequestOptions = {}): Promise<GenericResponse> {
+            const localVarFetchArgs = AccountApiFetchParamCreator(configuration).deleteIpLimit(ipLimitRange, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -23836,7 +23840,7 @@ export type FloatingIPsApiType = {
 
     getFloatingIpInvoices(id: number, options?: RequestOptions): Promise<ChargeInvoiceRows>,
 
-    getFloatingIpsList(options?: RequestOptions): Promise<Response>,
+    getFloatingIpsList(options?: RequestOptions): Promise<Array<Object>>,
 
     getFloatingIpsWelcomeEmail(id: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
@@ -23921,11 +23925,11 @@ export const FloatingIPsApi = function(configuration?: Configuration, fetch: Fet
          * @summary List Floating IPs
          * @throws {RequiredError}
          */
-        getFloatingIpsList(options?: RequestOptions = {}): Promise<Response> {
+        getFloatingIpsList(options?: RequestOptions = {}): Promise<Array<Object>> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).getFloatingIpsList(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }

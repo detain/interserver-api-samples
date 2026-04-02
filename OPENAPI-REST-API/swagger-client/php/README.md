@@ -159,9 +159,10 @@ $apiInstance = new Interserver\MyAdmin\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = new \Interserver\MyAdmin\Model\IpLimitRange(); // \Interserver\MyAdmin\Model\IpLimitRange | 
 
 try {
-    $result = $apiInstance->deleteIpLimit();
+    $result = $apiInstance->deleteIpLimit($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->deleteIpLimit: ', $e->getMessage(), PHP_EOL;

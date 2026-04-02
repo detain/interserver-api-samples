@@ -33,8 +33,8 @@ module.exports.deleteAccountTfa = function deleteAccountTfa (req, res, next) {
     });
 };
 
-module.exports.deleteIpLimit = function deleteIpLimit (req, res, next) {
-  Account.deleteIpLimit()
+module.exports.deleteIpLimit = function deleteIpLimit (req, res, next, body) {
+  Account.deleteIpLimit(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

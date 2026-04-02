@@ -55,7 +55,7 @@ open class ServerOrderCPU: JSONEncodable {
     /** Visibility status. */
     public var visible: String?
     /** Hard drive IDs. */
-    public var hdIds: Object?
+    public var hdIds: String?
     /** Display of CPU price. */
     public var priceDisplay: String?
     /** Display of monthly CPU price. */
@@ -88,7 +88,7 @@ open class ServerOrderCPU: JSONEncodable {
         nillableDictionary["max_sff"] = self.maxSff
         nillableDictionary["max_nve"] = self.maxNve
         nillableDictionary["visible"] = self.visible
-        nillableDictionary["hd_ids"] = self.hdIds?.encodeToJSON()
+        nillableDictionary["hd_ids"] = self.hdIds
         nillableDictionary["price_display"] = self.priceDisplay
         nillableDictionary["monthly_price_display"] = self.monthlyPriceDisplay
 

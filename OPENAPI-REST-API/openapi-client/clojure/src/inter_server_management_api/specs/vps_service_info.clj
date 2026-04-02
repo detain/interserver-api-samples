@@ -1,7 +1,6 @@
 (ns inter-server-management-api.specs.vps-service-info
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [inter-server-management-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -12,7 +11,7 @@
    (ds/opt :vps_custid) string?
    (ds/opt :vps_server) string?
    (ds/opt :vps_ip) string?
-   (ds/opt :vps_ipv6) any-type-spec
+   (ds/opt :vps_ipv6) string?
    (ds/opt :vps_vzid) string?
    (ds/opt :vps_currency) string?
    (ds/opt :vps_type) string?

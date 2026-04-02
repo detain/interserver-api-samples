@@ -2,15 +2,6 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [inter-server-management-api.specs.server-lease :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -56,15 +47,15 @@
    (ds/req :vlans) (s/coll-of string?)
    (ds/req :vlans6) (s/coll-of string?)
    (ds/req :lease) server-lease-spec
-   (ds/opt :mac) any-type-spec
-   (ds/opt :ipmi_admin_username) any-type-spec
-   (ds/opt :ipmi_admin_password) any-type-spec
-   (ds/opt :ipmi_client_username) any-type-spec
-   (ds/opt :ipmi_client_password) any-type-spec
-   (ds/opt :ipmi_updated) any-type-spec
-   (ds/opt :create_timestamp) any-type-spec
-   (ds/opt :update_timestamp) any-type-spec
-   (ds/opt :comment) any-type-spec
+   (ds/opt :mac) string?
+   (ds/opt :ipmi_admin_username) string?
+   (ds/opt :ipmi_admin_password) string?
+   (ds/opt :ipmi_client_username) string?
+   (ds/opt :ipmi_client_password) string?
+   (ds/opt :ipmi_updated) string?
+   (ds/opt :create_timestamp) string?
+   (ds/opt :update_timestamp) string?
+   (ds/opt :comment) string?
    })
 
 (def server-asset-spec

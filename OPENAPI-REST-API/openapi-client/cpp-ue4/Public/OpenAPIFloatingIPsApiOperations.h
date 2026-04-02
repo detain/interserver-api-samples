@@ -142,7 +142,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TArray<TSharedPtr<FJsonObject>> Content;
 };
 
 /* Resend Floating IPs Welcome Email

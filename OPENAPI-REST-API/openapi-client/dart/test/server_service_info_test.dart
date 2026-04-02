@@ -125,7 +125,7 @@ void main() {
     });
 
     // Discount information for the server.
-    // Object serverDiscount
+    // String serverDiscount
     test('to test the property `serverDiscount`', () async {
       // TODO
     });
@@ -149,7 +149,7 @@ void main() {
     });
 
     // The location of the server.
-    // Object serverLocation
+    // String serverLocation
     test('to test the property `serverLocation`', () async {
       // TODO
     });
@@ -191,7 +191,7 @@ void main() {
     });
 
     // The size of the second dedicated hard drive.
-    // Object serverDedicatedHd2
+    // String serverDedicatedHd2
     test('to test the property `serverDedicatedHd2`', () async {
       // TODO
     });
@@ -215,7 +215,7 @@ void main() {
     });
 
     // The control panel of the server.
-    // Object serverDedicatedCp
+    // String serverDedicatedCp
     test('to test the property `serverDedicatedCp`', () async {
       // TODO
     });

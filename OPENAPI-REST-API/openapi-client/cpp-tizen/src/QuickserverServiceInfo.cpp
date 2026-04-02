@@ -27,7 +27,7 @@ QuickserverServiceInfo::__init()
 	//qs_custid = std::string();
 	//qs_server = std::string();
 	//qs_ip = std::string();
-	//qs_ipv6 = null;
+	//qs_ipv6 = std::string();
 	//qs_vzid = std::string();
 	//qs_currency = std::string();
 	//qs_type = std::string();
@@ -41,13 +41,13 @@ QuickserverServiceInfo::__init()
 	//qs_comment = std::string();
 	//qs_slices = std::string();
 	//qs_vnc = std::string();
-	//qs_vnc_port = null;
+	//qs_vnc_port = int(0);
 	//qs_rootpass = std::string();
 	//qs_mac = std::string();
 	//qs_os = std::string();
 	//qs_version = std::string();
 	//qs_location = std::string();
-	//qs_platform = null;
+	//qs_platform = std::string();
 }
 
 void
@@ -235,12 +235,9 @@ QuickserverServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&qs_ipv6, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&qs_ipv6, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&qs_ipv6);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -392,12 +389,9 @@ QuickserverServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&qs_vnc_port, node, "AnyType", "");
+		if (isprimitive("int")) {
+			jsonToValue(&qs_vnc_port, node, "int", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&qs_vnc_port);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -461,12 +455,9 @@ QuickserverServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&qs_platform, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&qs_platform, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&qs_platform);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -518,16 +509,11 @@ QuickserverServiceInfo::toJson()
 	}
 	const gchar *qs_ipKey = "qs_ip";
 	json_object_set_member(pJsonObject, qs_ipKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getQsIpv6();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getQsIpv6();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getQsIpv6());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *qs_ipv6Key = "qs_ipv6";
@@ -649,16 +635,11 @@ QuickserverServiceInfo::toJson()
 	}
 	const gchar *qs_vncKey = "qs_vnc";
 	json_object_set_member(pJsonObject, qs_vncKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getQsVncPort();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("int")) {
+		int obj = getQsVncPort();
+		node = converttoJson(&obj, "int", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getQsVncPort());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *qs_vnc_portKey = "qs_vnc_port";
@@ -708,16 +689,11 @@ QuickserverServiceInfo::toJson()
 	}
 	const gchar *qs_locationKey = "qs_location";
 	json_object_set_member(pJsonObject, qs_locationKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getQsPlatform();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getQsPlatform();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getQsPlatform());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *qs_platformKey = "qs_platform";
@@ -778,14 +754,14 @@ QuickserverServiceInfo::setQsIp(std::string  qs_ip)
 	this->qs_ip = qs_ip;
 }
 
-AnyType
+std::string
 QuickserverServiceInfo::getQsIpv6()
 {
 	return qs_ipv6;
 }
 
 void
-QuickserverServiceInfo::setQsIpv6(AnyType  qs_ipv6)
+QuickserverServiceInfo::setQsIpv6(std::string  qs_ipv6)
 {
 	this->qs_ipv6 = qs_ipv6;
 }
@@ -946,14 +922,14 @@ QuickserverServiceInfo::setQsVnc(std::string  qs_vnc)
 	this->qs_vnc = qs_vnc;
 }
 
-AnyType
+int
 QuickserverServiceInfo::getQsVncPort()
 {
 	return qs_vnc_port;
 }
 
 void
-QuickserverServiceInfo::setQsVncPort(AnyType  qs_vnc_port)
+QuickserverServiceInfo::setQsVncPort(int  qs_vnc_port)
 {
 	this->qs_vnc_port = qs_vnc_port;
 }
@@ -1018,14 +994,14 @@ QuickserverServiceInfo::setQsLocation(std::string  qs_location)
 	this->qs_location = qs_location;
 }
 
-AnyType
+std::string
 QuickserverServiceInfo::getQsPlatform()
 {
 	return qs_platform;
 }
 
 void
-QuickserverServiceInfo::setQsPlatform(AnyType  qs_platform)
+QuickserverServiceInfo::setQsPlatform(std::string  qs_platform)
 {
 	this->qs_platform = qs_platform;
 }

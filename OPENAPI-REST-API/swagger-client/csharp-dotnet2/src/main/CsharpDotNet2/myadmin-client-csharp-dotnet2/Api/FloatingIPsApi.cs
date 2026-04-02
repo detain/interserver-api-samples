@@ -37,8 +37,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List Floating IPs Returns all Floating IP services on the account with their current status and assignment details.
         /// </summary>
-        /// <returns></returns>
-        void GetFloatingIpsList ();
+        /// <returns>List&lt;Object&gt;</returns>
+        List<Object> GetFloatingIpsList ();
         /// <summary>
         /// Resend Floating IPs Welcome Email Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.
         /// </summary>
@@ -269,8 +269,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List Floating IPs Returns all Floating IP services on the account with their current status and assignment details.
         /// </summary>
-        /// <returns></returns>
-        public void GetFloatingIpsList ()
+        /// <returns>List&lt;Object&gt;</returns>
+        public List<Object> GetFloatingIpsList ()
         {
     
             var path = "/floating_ips";
@@ -294,7 +294,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetFloatingIpsList: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (List<Object>) ApiClient.Deserialize(response.Content, typeof(List<Object>), response.Headers);
         }
     
         /// <summary>

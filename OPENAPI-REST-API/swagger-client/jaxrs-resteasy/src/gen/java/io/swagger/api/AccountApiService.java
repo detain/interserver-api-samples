@@ -41,7 +41,7 @@ public interface AccountApiService {
       Response deleteAccountCreditCard(String id,SecurityContext securityContext) throws NotFoundException;
       Response deleteAccountOauthName(String name,SecurityContext securityContext) throws NotFoundException;
       Response deleteAccountTfa(SecurityContext securityContext) throws NotFoundException;
-      Response deleteIpLimit(SecurityContext securityContext) throws NotFoundException;
+      Response deleteIpLimit(IpLimitRange body,SecurityContext securityContext) throws NotFoundException;
       Response getAccountInfo(SecurityContext securityContext) throws NotFoundException;
       Response getAccountTfaSetup(SecurityContext securityContext) throws NotFoundException;
       Response getCountries(String fetchBy,SecurityContext securityContext) throws NotFoundException;

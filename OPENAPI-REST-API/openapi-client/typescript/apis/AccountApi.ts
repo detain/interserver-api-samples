@@ -13,6 +13,7 @@ import { GenericResponse } from '../models/GenericResponse';
 import { GetAccountInfo401Response } from '../models/GetAccountInfo401Response';
 import { GetAccountTfaSetup200Response } from '../models/GetAccountTfaSetup200Response';
 import { Home } from '../models/Home';
+import { IpLimitRange } from '../models/IpLimitRange';
 import { SearchAutocompleteResponse } from '../models/SearchAutocompleteResponse';
 import { SuccessTextResponse } from '../models/SuccessTextResponse';
 import { TextResponse } from '../models/TextResponse';
@@ -153,9 +154,11 @@ export class AccountApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * Remove IP Access Restriction
+     * @param ipLimitRange 
      */
-    public async deleteIpLimit(_options?: Configuration): Promise<RequestContext> {
+    public async deleteIpLimit(ipLimitRange?: IpLimitRange, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
         // Path Params
         const localVarPath = '/account/iplimits';
@@ -164,6 +167,17 @@ export class AccountApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(ipLimitRange, "IpLimitRange", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods

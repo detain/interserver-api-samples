@@ -38,7 +38,7 @@ public:
 	/* IP address */
 	TOptional<FString> QsIp;
 	/* IPv6 address (null) */
-	TOptional<TSharedPtr<FJsonValue>> QsIpv6;
+	TOptional<FString> QsIpv6;
 	/* VZ ID */
 	TOptional<FString> QsVzid;
 	/* Currency */
@@ -66,7 +66,7 @@ public:
 	/* VNC information */
 	TOptional<FString> QsVnc;
 	/* VNC port (null) */
-	TOptional<TSharedPtr<FJsonValue>> QsVncPort;
+	TOptional<int32> QsVncPort;
 	/* Root password */
 	TOptional<FString> QsRootpass;
 	/* MAC address */
@@ -78,7 +78,7 @@ public:
 	/* Location */
 	TOptional<FString> QsLocation;
 	/* Platform (null) */
-	TOptional<TSharedPtr<FJsonValue>> QsPlatform;
+	TOptional<FString> QsPlatform;
 };
 
 }

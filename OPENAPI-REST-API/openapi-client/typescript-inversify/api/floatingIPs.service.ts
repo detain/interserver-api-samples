@@ -176,8 +176,8 @@ export class FloatingIPsService {
      * Returns all Floating IP services on the account with their current status and assignment details.
      
      */
-    public getFloatingIpsList(observe?: 'body', headers?: Headers): Observable<any>;
-    public getFloatingIpsList(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getFloatingIpsList(observe?: 'body', headers?: Headers): Observable<Array<object>>;
+    public getFloatingIpsList(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<object>>>;
     public getFloatingIpsList(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -190,10 +190,10 @@ export class FloatingIPsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/floating_ips`, headers);
+        const response: Observable<HttpResponse<Array<object>>> = this.httpClient.get(`${this.basePath}/floating_ips`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <Array<object>>(httpResponse.response))
                );
         }
         return response;

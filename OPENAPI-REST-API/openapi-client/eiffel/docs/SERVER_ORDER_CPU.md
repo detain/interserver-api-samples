@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **max_sff** | [**STRING_32**](STRING_32.md) | Maximum SFF (Small Form Factor) supported. | [optional] [default to null]
 **max_nve** | [**STRING_32**](STRING_32.md) | Maximum NVMe drives supported. | [optional] [default to null]
 **visible** | [**STRING_32**](STRING_32.md) | Visibility status. | [optional] [default to null]
-**hd_ids** | [**ANY**](.md) | Hard drive IDs. | [optional] [default to null]
+**hd_ids** | [**STRING_32**](STRING_32.md) | Hard drive IDs. | [optional] [default to null]
 **price_display** | [**STRING_32**](STRING_32.md) | Display of CPU price. | [optional] [default to null]
 **monthly_price_display** | [**STRING_32**](STRING_32.md) | Display of monthly CPU price. | [optional] [default to null]
 

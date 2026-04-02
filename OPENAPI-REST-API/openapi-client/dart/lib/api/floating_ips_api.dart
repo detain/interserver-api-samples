@@ -274,11 +274,22 @@ class FloatingIPsApi {
   /// List Floating IPs
   ///
   /// Returns all Floating IP services on the account with their current status and assignment details.
-  Future<void> getFloatingIpsList() async {
+  Future<List<Object>?> getFloatingIpsList() async {
     final response = await getFloatingIpsListWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<Object>') as List)
+        .cast<Object>()
+        .toList(growable: false);
+
+    }
+    return null;
   }
 
   /// Resend Floating IPs Welcome Email

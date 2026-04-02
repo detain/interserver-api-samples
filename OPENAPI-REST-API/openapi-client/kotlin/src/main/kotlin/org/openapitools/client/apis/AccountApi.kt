@@ -32,6 +32,7 @@ import org.openapitools.client.models.GenericResponse
 import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.GetAccountTfaSetup200Response
 import org.openapitools.client.models.Home
+import org.openapitools.client.models.IpLimitRange
 import org.openapitools.client.models.SearchAutocompleteResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
@@ -277,6 +278,7 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * PATCH /account/iplimits
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange  (optional)
      * @return GenericResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -286,8 +288,8 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deleteIpLimit() : GenericResponse {
-        val localVarResponse = deleteIpLimitWithHttpInfo()
+    fun deleteIpLimit(ipLimitRange: IpLimitRange? = null) : GenericResponse {
+        val localVarResponse = deleteIpLimitWithHttpInfo(ipLimitRange = ipLimitRange)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as GenericResponse
@@ -308,16 +310,17 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * PATCH /account/iplimits
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange  (optional)
      * @return ApiResponse<GenericResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deleteIpLimitWithHttpInfo() : ApiResponse<GenericResponse?> {
-        val localVariableConfig = deleteIpLimitRequestConfig()
+    fun deleteIpLimitWithHttpInfo(ipLimitRange: IpLimitRange?) : ApiResponse<GenericResponse?> {
+        val localVariableConfig = deleteIpLimitRequestConfig(ipLimitRange = ipLimitRange)
 
-        return request<Unit, GenericResponse>(
+        return request<IpLimitRange, GenericResponse>(
             localVariableConfig
         )
     }
@@ -325,10 +328,11 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * To obtain the request config of the operation deleteIpLimit
      *
+     * @param ipLimitRange  (optional)
      * @return RequestConfig
      */
-    fun deleteIpLimitRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun deleteIpLimitRequestConfig(ipLimitRange: IpLimitRange?) : RequestConfig<IpLimitRange> {
+        val localVariableBody = ipLimitRange
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

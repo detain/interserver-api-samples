@@ -138,11 +138,11 @@ export interface QuickserverServiceMaster {
     /**
      * Last install time (null)
      */
-    qs_last_install_time?: any | null;
+    qs_last_install_time?: string | null;
     /**
      * Partitions information (null)
      */
-    qs_partitions?: any | null;
+    qs_partitions?: string | null;
     /**
      * CPU flags
      */

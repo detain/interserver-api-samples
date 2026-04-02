@@ -154,6 +154,9 @@ module SwaggerClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'qs_ipv6',
+        :'qs_vnc_port',
+        :'qs_platform'
       ])
     end
   

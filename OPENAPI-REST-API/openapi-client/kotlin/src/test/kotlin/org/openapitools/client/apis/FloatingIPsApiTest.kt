@@ -72,7 +72,8 @@ class FloatingIPsApiTest : ShouldSpec() {
         // to test getFloatingIpsList
         should("test getFloatingIpsList") {
             // uncomment below to test getFloatingIpsList
-            //apiInstance.getFloatingIpsList()
+            //val result : kotlin.collections.List<kotlin.Any> = apiInstance.getFloatingIpsList()
+            //result shouldBe ("TODO")
         }
 
         // to test getFloatingIpsWelcomeEmail

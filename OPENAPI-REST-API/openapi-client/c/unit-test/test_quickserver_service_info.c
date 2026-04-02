@@ -26,7 +26,7 @@ quickserver_service_info_t* instantiate_quickserver_service_info(int include_opt
       "771282",
       "365",
       "0",
-      null,
+      "0",
       "qs24355",
       "USD",
       "700",
@@ -40,13 +40,13 @@ quickserver_service_info_t* instantiate_quickserver_service_info(int include_opt
       "0",
       "0",
       "99.88.77.66",
-      null,
+      56,
       "0",
       "0",
       "ubuntu24",
       "Ubuntu",
       "1",
-      null
+      "0"
     );
   } else {
     quickserver_service_info = quickserver_service_info_create(
@@ -54,7 +54,7 @@ quickserver_service_info_t* instantiate_quickserver_service_info(int include_opt
       "771282",
       "365",
       "0",
-      null,
+      "0",
       "qs24355",
       "USD",
       "700",
@@ -68,13 +68,13 @@ quickserver_service_info_t* instantiate_quickserver_service_info(int include_opt
       "0",
       "0",
       "99.88.77.66",
-      null,
+      56,
       "0",
       "0",
       "ubuntu24",
       "Ubuntu",
       "1",
-      null
+      "0"
     );
   }
 

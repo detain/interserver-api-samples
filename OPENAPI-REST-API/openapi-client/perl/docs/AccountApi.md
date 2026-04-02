@@ -198,7 +198,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_ip_limit**
-> GenericResponse delete_ip_limit()
+> GenericResponse delete_ip_limit(ip_limit_range => $ip_limit_range)
 
 Remove IP Access Restriction
 
@@ -224,9 +224,10 @@ my $api_instance = OpenAPIClient::AccountApi->new(
     #api_key_prefix => {'sessionid' => 'Bearer'},
 );
 
+my $ip_limit_range = OpenAPIClient::Object::IpLimitRange->new(); # IpLimitRange | 
 
 eval {
-    my $result = $api_instance->delete_ip_limit();
+    my $result = $api_instance->delete_ip_limit(ip_limit_range => $ip_limit_range);
     print Dumper($result);
 };
 if ($@) {
@@ -235,7 +236,10 @@ if ($@) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ip_limit_range** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] 
 
 ### Return type
 

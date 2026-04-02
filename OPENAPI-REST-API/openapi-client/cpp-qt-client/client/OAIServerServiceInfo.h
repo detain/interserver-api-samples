@@ -21,7 +21,6 @@
 
 #include <QJsonObject>
 
-#include <QJsonValue>
 #include <QString>
 
 #include "OAIEnum.h"
@@ -130,8 +129,8 @@ public:
     bool is_server_setup_Set() const;
     bool is_server_setup_Valid() const;
 
-    QJsonValue getServerDiscount() const;
-    void setServerDiscount(const QJsonValue &server_discount);
+    QString getServerDiscount() const;
+    void setServerDiscount(const QString &server_discount);
     bool is_server_discount_Set() const;
     bool is_server_discount_Valid() const;
 
@@ -150,8 +149,8 @@ public:
     bool is_server_total_cost_Set() const;
     bool is_server_total_cost_Valid() const;
 
-    QJsonValue getServerLocation() const;
-    void setServerLocation(const QJsonValue &server_location);
+    QString getServerLocation() const;
+    void setServerLocation(const QString &server_location);
     bool is_server_location_Set() const;
     bool is_server_location_Valid() const;
 
@@ -185,8 +184,8 @@ public:
     bool is_server_dedicated_hd1_Set() const;
     bool is_server_dedicated_hd1_Valid() const;
 
-    QJsonValue getServerDedicatedHd2() const;
-    void setServerDedicatedHd2(const QJsonValue &server_dedicated_hd2);
+    QString getServerDedicatedHd2() const;
+    void setServerDedicatedHd2(const QString &server_dedicated_hd2);
     bool is_server_dedicated_hd2_Set() const;
     bool is_server_dedicated_hd2_Valid() const;
 
@@ -205,8 +204,8 @@ public:
     bool is_server_dedicated_os_Set() const;
     bool is_server_dedicated_os_Valid() const;
 
-    QJsonValue getServerDedicatedCp() const;
-    void setServerDedicatedCp(const QJsonValue &server_dedicated_cp);
+    QString getServerDedicatedCp() const;
+    void setServerDedicatedCp(const QString &server_dedicated_cp);
     bool is_server_dedicated_cp_Set() const;
     bool is_server_dedicated_cp_Valid() const;
 
@@ -298,7 +297,7 @@ private:
     bool m_server_setup_isSet;
     bool m_server_setup_isValid;
 
-    QJsonValue m_server_discount;
+    QString m_server_discount;
     bool m_server_discount_isSet;
     bool m_server_discount_isValid;
 
@@ -314,7 +313,7 @@ private:
     bool m_server_total_cost_isSet;
     bool m_server_total_cost_isValid;
 
-    QJsonValue m_server_location;
+    QString m_server_location;
     bool m_server_location_isSet;
     bool m_server_location_isValid;
 
@@ -342,7 +341,7 @@ private:
     bool m_server_dedicated_hd1_isSet;
     bool m_server_dedicated_hd1_isValid;
 
-    QJsonValue m_server_dedicated_hd2;
+    QString m_server_dedicated_hd2;
     bool m_server_dedicated_hd2_isSet;
     bool m_server_dedicated_hd2_isValid;
 
@@ -358,7 +357,7 @@ private:
     bool m_server_dedicated_os_isSet;
     bool m_server_dedicated_os_isValid;
 
-    QJsonValue m_server_dedicated_cp;
+    QString m_server_dedicated_cp;
     bool m_server_dedicated_cp_isSet;
     bool m_server_dedicated_cp_isValid;
 

@@ -43,15 +43,15 @@
 | **vlans** | **kotlin.collections.List&lt;kotlin.String&gt;** | List of VLANs associated with the asset. |  |
 | **vlans6** | **kotlin.collections.List&lt;kotlin.String&gt;** | List of IPv6 VLANs associated with the asset. |  |
 | **lease** | [**ServerLease**](ServerLease.md) |  |  |
-| **mac** | [**kotlin.Any**](.md) | MAC address associated with the asset. |  [optional] |
-| **ipmiAdminUsername** | [**kotlin.Any**](.md) | IPMI admin username associated with the asset. |  [optional] |
-| **ipmiAdminPassword** | [**kotlin.Any**](.md) | IPMI admin password associated with the asset. |  [optional] |
-| **ipmiClientUsername** | [**kotlin.Any**](.md) | IPMI client username associated with the asset. |  [optional] |
-| **ipmiClientPassword** | [**kotlin.Any**](.md) | IPMI client password associated with the asset. |  [optional] |
-| **ipmiUpdated** | [**kotlin.Any**](.md) | IPMI update status associated with the asset. |  [optional] |
-| **createTimestamp** | [**kotlin.Any**](.md) | Timestamp of asset creation. |  [optional] |
-| **updateTimestamp** | [**kotlin.Any**](.md) | Timestamp of asset update. |  [optional] |
-| **comment** | [**kotlin.Any**](.md) | Comment associated with the asset. |  [optional] |
+| **mac** | **kotlin.String** | MAC address associated with the asset. |  [optional] |
+| **ipmiAdminUsername** | **kotlin.String** | IPMI admin username associated with the asset. |  [optional] |
+| **ipmiAdminPassword** | **kotlin.String** | IPMI admin password associated with the asset. |  [optional] |
+| **ipmiClientUsername** | **kotlin.String** | IPMI client username associated with the asset. |  [optional] |
+| **ipmiClientPassword** | **kotlin.String** | IPMI client password associated with the asset. |  [optional] |
+| **ipmiUpdated** | **kotlin.String** | IPMI update status associated with the asset. |  [optional] |
+| **createTimestamp** | **kotlin.String** | Timestamp of asset creation. |  [optional] |
+| **updateTimestamp** | **kotlin.String** | Timestamp of asset update. |  [optional] |
+| **comment** | **kotlin.String** | Comment associated with the asset. |  [optional] |
 
 
 

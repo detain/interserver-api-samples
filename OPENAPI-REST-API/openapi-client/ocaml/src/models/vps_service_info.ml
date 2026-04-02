@@ -37,7 +37,7 @@
                 
                 ; [@key "vps_ip"]
                     (** IP address of the VPS *)
-                                      vps_ipv6: Yojson.Safe.t
+                                      vps_ipv6: string
                   
                    option [@default None]
                 

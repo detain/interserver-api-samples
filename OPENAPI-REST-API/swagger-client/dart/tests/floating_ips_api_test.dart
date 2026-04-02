@@ -47,7 +47,7 @@ void main() {
     //
     // Returns all Floating IP services on the account with their current status and assignment details.
     //
-    //Future getFloatingIpsList() async
+    //Future<List<Object>> getFloatingIpsList() async
     test('test getFloatingIpsList', () async {
       // TODO
     });

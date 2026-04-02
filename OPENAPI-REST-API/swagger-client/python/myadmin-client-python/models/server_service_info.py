@@ -46,22 +46,22 @@ class ServerServiceInfo(object):
         'server_ips': 'str',
         'server_monthly_bill': 'str',
         'server_setup': 'str',
-        'server_discount': 'object',
+        'server_discount': 'str',
         'server_rep': 'str',
         'server_date': 'str',
         'server_total_cost': 'str',
-        'server_location': 'object',
+        'server_location': 'str',
         'server_hardware_ordered': 'str',
         'server_billed': 'str',
         'server_welcome_email': 'str',
         'server_dedicated_cpu': 'str',
         'server_dedicated_memory': 'str',
         'server_dedicated_hd1': 'str',
-        'server_dedicated_hd2': 'object',
+        'server_dedicated_hd2': 'str',
         'server_dedicated_bandwidth': 'str',
         'server_dedicated_ips': 'str',
         'server_dedicated_os': 'str',
-        'server_dedicated_cp': 'object',
+        'server_dedicated_cp': 'str',
         'server_dedicated_raid': 'str',
         'server_extra': 'str'
     }
@@ -638,7 +638,7 @@ class ServerServiceInfo(object):
         Discount information for the server.  # noqa: E501
 
         :return: The server_discount of this ServerServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._server_discount
 
@@ -649,7 +649,7 @@ class ServerServiceInfo(object):
         Discount information for the server.  # noqa: E501
 
         :param server_discount: The server_discount of this ServerServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._server_discount = server_discount
@@ -730,7 +730,7 @@ class ServerServiceInfo(object):
         The location of the server.  # noqa: E501
 
         :return: The server_location of this ServerServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._server_location
 
@@ -741,7 +741,7 @@ class ServerServiceInfo(object):
         The location of the server.  # noqa: E501
 
         :param server_location: The server_location of this ServerServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._server_location = server_location
@@ -891,7 +891,7 @@ class ServerServiceInfo(object):
         The size of the second dedicated hard drive.  # noqa: E501
 
         :return: The server_dedicated_hd2 of this ServerServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._server_dedicated_hd2
 
@@ -902,7 +902,7 @@ class ServerServiceInfo(object):
         The size of the second dedicated hard drive.  # noqa: E501
 
         :param server_dedicated_hd2: The server_dedicated_hd2 of this ServerServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._server_dedicated_hd2 = server_dedicated_hd2
@@ -983,7 +983,7 @@ class ServerServiceInfo(object):
         The control panel of the server.  # noqa: E501
 
         :return: The server_dedicated_cp of this ServerServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._server_dedicated_cp
 
@@ -994,7 +994,7 @@ class ServerServiceInfo(object):
         The control panel of the server.  # noqa: E501
 
         :param server_dedicated_cp: The server_dedicated_cp of this ServerServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._server_dedicated_cp = server_dedicated_cp

@@ -32,7 +32,8 @@ describe("AccountApi", () => {
     return expect(instance.deleteAccountTfa({})).resolves.toBe(null)
   })
   test("deleteIpLimit", () => {
-    return expect(instance.deleteIpLimit({})).resolves.toBe(null)
+    const body: api.IpLimitRange = undefined
+    return expect(instance.deleteIpLimit(body, {})).resolves.toBe(null)
   })
   test("getAccountInfo", () => {
     return expect(instance.getAccountInfo({})).resolves.toBe(null)

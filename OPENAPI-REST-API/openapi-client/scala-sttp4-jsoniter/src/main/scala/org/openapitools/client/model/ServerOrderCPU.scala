@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
   /**
@@ -63,7 +62,7 @@ case class ServerOrderCPU(
   /* Visibility status. */
   @named("visible") visible: Option[String] = scala.None,
   /* Hard drive IDs. */
-  @named("hd_ids") hd_ids: Option[io.circe.Json] = scala.None,
+  @named("hd_ids") hd_ids: Option[String] = scala.None,
   /* Display of CPU price. */
   @named("price_display") price_display: Option[String] = scala.None,
   /* Display of monthly CPU price. */

@@ -189,9 +189,9 @@ class FloatingIPsApi(
    * List Floating IPs
    * Returns all Floating IP services on the account with their current status and assignment details.
    *
-   * @return void
+   * @return List[Any]
    */
-  def getFloatingIpsList() = {
+  def getFloatingIpsList(): Option[List[Any]] = {
     val await = Try(Await.result(getFloatingIpsListAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -203,9 +203,9 @@ class FloatingIPsApi(
    * List Floating IPs asynchronously
    * Returns all Floating IP services on the account with their current status and assignment details.
    *
-   * @return Future(void)
+   * @return Future(List[Any])
    */
-  def getFloatingIpsListAsync() = {
+  def getFloatingIpsListAsync(): Future[List[Any]] = {
       helper.getFloatingIpsList()
   }
 
@@ -406,7 +406,7 @@ class FloatingIPsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def getFloatingIpsList()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getFloatingIpsList()(implicit reader: ClientResponseReader[List[Any]]): Future[List[Any]] = {
     // create path and map variables
     val path = (addFmt("/floating_ips"))
 

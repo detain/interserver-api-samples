@@ -201,7 +201,7 @@ This endpoint does not need any parameter.
 
 ## deleteIpLimit
 
-> GenericResponse deleteIpLimit()
+> GenericResponse deleteIpLimit(opts)
 
 Remove IP Access Restriction
 
@@ -229,7 +229,10 @@ sessionIdHeaderAuth.apiKey = 'YOUR API KEY';
 //sessionIdHeaderAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new InterServerManagementApi.AccountApi();
-apiInstance.deleteIpLimit((error, data, response) => {
+let opts = {
+  'IpLimitRange': new InterServerManagementApi.IpLimitRange() // IpLimitRange | 
+};
+apiInstance.deleteIpLimit(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -240,7 +243,10 @@ apiInstance.deleteIpLimit((error, data, response) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **IpLimitRange** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] 
 
 ### Return type
 

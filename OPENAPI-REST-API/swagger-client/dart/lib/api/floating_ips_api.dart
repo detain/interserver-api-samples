@@ -211,7 +211,7 @@ class FloatingIPsApi {
   /// List Floating IPs
   ///
   /// Returns all Floating IP services on the account with their current status and assignment details.
-  Future getFloatingIpsList() async {
+  Future<List<Object>> getFloatingIpsList() async {
     Object postBody = null;
 
     // verify required params are set
@@ -251,9 +251,9 @@ class FloatingIPsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+        (apiClient.deserialize(response.body, 'List<Object>') as List).map((item) => item as Object).toList();
     } else {
-      return ;
+      return null;
     }
   }
   /// Resend Floating IPs Welcome Email

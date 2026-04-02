@@ -50,7 +50,7 @@ public class FloatingIpsApiController implements FloatingIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getFloatingIpsList() {
+    public Single<HttpResponse<List<Object>>> getFloatingIpsList() {
         // TODO: Implement me
         return FloatingIpsApi.super.getFloatingIpsList();
     }

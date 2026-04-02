@@ -50,7 +50,7 @@ class ServerOrderCPU(object):
         'max_sff': 'str',
         'max_nve': 'str',
         'visible': 'str',
-        'hd_ids': 'object',
+        'hd_ids': 'str',
         'price_display': 'str',
         'monthly_price_display': 'str'
     }
@@ -675,7 +675,7 @@ class ServerOrderCPU(object):
         Hard drive IDs.  # noqa: E501
 
         :return: The hd_ids of this ServerOrderCPU.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._hd_ids
 
@@ -686,7 +686,7 @@ class ServerOrderCPU(object):
         Hard drive IDs.  # noqa: E501
 
         :param hd_ids: The hd_ids of this ServerOrderCPU.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._hd_ids = hd_ids

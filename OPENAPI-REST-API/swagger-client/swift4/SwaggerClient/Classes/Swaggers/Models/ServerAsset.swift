@@ -30,7 +30,7 @@ public struct ServerAsset: Codable {
     public var primaryIpv6: String
 
     /** MAC address associated with the asset. */
-    public var mac: Object?
+    public var mac: String?
 
     /** Datacenter identifier for the asset. */
     public var datacenter: String
@@ -66,19 +66,19 @@ public struct ServerAsset: Codable {
     public var ipmiIp: String
 
     /** IPMI admin username associated with the asset. */
-    public var ipmiAdminUsername: Object?
+    public var ipmiAdminUsername: String?
 
     /** IPMI admin password associated with the asset. */
-    public var ipmiAdminPassword: Object?
+    public var ipmiAdminPassword: String?
 
     /** IPMI client username associated with the asset. */
-    public var ipmiClientUsername: Object?
+    public var ipmiClientUsername: String?
 
     /** IPMI client password associated with the asset. */
-    public var ipmiClientPassword: Object?
+    public var ipmiClientPassword: String?
 
     /** IPMI update status associated with the asset. */
-    public var ipmiUpdated: Object?
+    public var ipmiUpdated: String?
 
     /** IPMI working status associated with the asset. */
     public var ipmiWorking: String
@@ -111,10 +111,10 @@ public struct ServerAsset: Codable {
     public var overdue: String
 
     /** Timestamp of asset creation. */
-    public var createTimestamp: Object?
+    public var createTimestamp: String?
 
     /** Timestamp of asset update. */
-    public var updateTimestamp: Object?
+    public var updateTimestamp: String?
 
     /** Asset identifier for the asset. */
     public var assetId: String
@@ -141,7 +141,7 @@ public struct ServerAsset: Codable {
     public var rackY: String
 
     /** Comment associated with the asset. */
-    public var comment: Object?
+    public var comment: String?
 
     /** List of switchports associated with the asset. */
     public var switchports: [Int]
@@ -153,7 +153,7 @@ public struct ServerAsset: Codable {
     public var vlans6: [String]
 
     public var lease: ServerLease
-    public init(_id: Int, orderId: String, hostname: String, status: String, primaryIpv4: String, primaryIpv6: String, mac: Object? = nil, datacenter: String, typeId: String, assetTag: String, rack: String, row: String, col: String, unitStart: String, unitEnd: String, unitSub: String, ipmiMac: String, ipmiIp: String, ipmiAdminUsername: Object? = nil, ipmiAdminPassword: Object? = nil, ipmiClientUsername: Object? = nil, ipmiClientPassword: Object? = nil, ipmiUpdated: Object? = nil, ipmiWorking: String, company: String, comments: String, make: String, model: String, _description: String, customerId: String, externalId: String, billingStatus: String, overdue: String, createTimestamp: Object? = nil, updateTimestamp: Object? = nil, assetId: String, assetName: String, rackId: String, rackName: String, rackLocation: String, rackSize: String, rackX: String, rackY: String, comment: Object? = nil, switchports: [Int], vlans: [String], vlans6: [String], lease: ServerLease) { 
+    public init(_id: Int, orderId: String, hostname: String, status: String, primaryIpv4: String, primaryIpv6: String, mac: String? = nil, datacenter: String, typeId: String, assetTag: String, rack: String, row: String, col: String, unitStart: String, unitEnd: String, unitSub: String, ipmiMac: String, ipmiIp: String, ipmiAdminUsername: String? = nil, ipmiAdminPassword: String? = nil, ipmiClientUsername: String? = nil, ipmiClientPassword: String? = nil, ipmiUpdated: String? = nil, ipmiWorking: String, company: String, comments: String, make: String, model: String, _description: String, customerId: String, externalId: String, billingStatus: String, overdue: String, createTimestamp: String? = nil, updateTimestamp: String? = nil, assetId: String, assetName: String, rackId: String, rackName: String, rackLocation: String, rackSize: String, rackX: String, rackY: String, comment: String? = nil, switchports: [Int], vlans: [String], vlans6: [String], lease: ServerLease) { 
         self._id = _id
         self.orderId = orderId
         self.hostname = hostname

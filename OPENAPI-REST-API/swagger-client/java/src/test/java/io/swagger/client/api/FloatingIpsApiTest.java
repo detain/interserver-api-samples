@@ -105,7 +105,7 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void getFloatingIpsListTest() throws Exception {
-        api.getFloatingIpsList();
+        List<Object> response = api.getFloatingIpsList();
 
         // TODO: test validations
     }

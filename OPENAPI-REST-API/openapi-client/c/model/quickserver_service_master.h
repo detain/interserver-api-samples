@@ -15,7 +15,6 @@
 
 typedef struct quickserver_service_master_t quickserver_service_master_t;
 
-#include "any_type.h"
 
 
 
@@ -50,8 +49,8 @@ typedef struct quickserver_service_master_t {
     char *qs_bytes_sec_out; // string
     char *qs_packets_sec_in; // string
     char *qs_packets_sec_out; // string
-    any_type_t *qs_last_install_time; // custom
-    any_type_t *qs_partitions; // custom
+    char *qs_last_install_time; // string
+    char *qs_partitions; // string
     char *qs_cpu_flags; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -88,8 +87,8 @@ __attribute__((deprecated)) quickserver_service_master_t *quickserver_service_ma
     char *qs_bytes_sec_out,
     char *qs_packets_sec_in,
     char *qs_packets_sec_out,
-    any_type_t *qs_last_install_time,
-    any_type_t *qs_partitions,
+    char *qs_last_install_time,
+    char *qs_partitions,
     char *qs_cpu_flags
 );
 

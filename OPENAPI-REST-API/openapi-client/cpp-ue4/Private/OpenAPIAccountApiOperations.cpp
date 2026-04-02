@@ -162,12 +162,26 @@ void OpenAPIAccountApi::DeleteIpLimitRequest::SetupHttpRequest(const FHttpReques
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		if (OpenAPIIpLimitRange.IsSet())
+		{
+			WriteJsonValue(Writer, OpenAPIIpLimitRange.GetValue());
+		}
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIIpLimitRange) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIIpLimitRange) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{

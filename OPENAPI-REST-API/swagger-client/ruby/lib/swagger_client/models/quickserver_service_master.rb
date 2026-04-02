@@ -194,6 +194,8 @@ module SwaggerClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'qs_last_install_time',
+        :'qs_partitions',
       ])
     end
   

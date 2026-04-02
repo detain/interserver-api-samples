@@ -86,7 +86,7 @@ data class ServerOrderCPU (
     /* Visibility status. */
     val visible: kotlin.String? = null,
     /* Hard drive IDs. */
-    val hdIds: kotlin.Any? = null,
+    val hdIds: kotlin.String? = null,
     /* Display of CPU price. */
     val priceDisplay: kotlin.String? = null,
     /* Display of monthly CPU price. */

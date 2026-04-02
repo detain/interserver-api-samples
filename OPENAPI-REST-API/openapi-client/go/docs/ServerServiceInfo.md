@@ -22,22 +22,22 @@ Name | Type | Description | Notes
 **ServerIps** | Pointer to **string** | The number of IPs associated with the server. | [optional] 
 **ServerMonthlyBill** | Pointer to **string** | The monthly billing amount for the server. | [optional] 
 **ServerSetup** | Pointer to **string** | The setup status of the server. | [optional] 
-**ServerDiscount** | Pointer to **interface{}** | Discount information for the server. | [optional] 
+**ServerDiscount** | Pointer to **string** | Discount information for the server. | [optional] 
 **ServerRep** | Pointer to **string** | The reputation of the server. | [optional] 
 **ServerDate** | Pointer to **string** | The date related to the server. | [optional] 
 **ServerTotalCost** | Pointer to **string** | The total cost of the server. | [optional] 
-**ServerLocation** | Pointer to **interface{}** | The location of the server. | [optional] 
+**ServerLocation** | Pointer to **string** | The location of the server. | [optional] 
 **ServerHardwareOrdered** | Pointer to **string** | The ordered hardware for the server. | [optional] 
 **ServerBilled** | Pointer to **string** | The billed amount for the server. | [optional] 
 **ServerWelcomeEmail** | Pointer to **string** | Indicates whether a welcome email was sent. | [optional] 
 **ServerDedicatedCpu** | Pointer to **string** | The number of dedicated CPUs for the server. | [optional] 
 **ServerDedicatedMemory** | Pointer to **string** | The amount of dedicated memory for the server. | [optional] 
 **ServerDedicatedHd1** | Pointer to **string** | The size of the first dedicated hard drive. | [optional] 
-**ServerDedicatedHd2** | Pointer to **interface{}** | The size of the second dedicated hard drive. | [optional] 
+**ServerDedicatedHd2** | Pointer to **string** | The size of the second dedicated hard drive. | [optional] 
 **ServerDedicatedBandwidth** | Pointer to **string** | The bandwidth of the server. | [optional] 
 **ServerDedicatedIps** | Pointer to **string** | The number of dedicated IPs for the server. | [optional] 
 **ServerDedicatedOs** | Pointer to **string** | The operating system of the server. | [optional] 
-**ServerDedicatedCp** | Pointer to **interface{}** | The control panel of the server. | [optional] 
+**ServerDedicatedCp** | Pointer to **string** | The control panel of the server. | [optional] 
 **ServerDedicatedRaid** | Pointer to **string** | The RAID configuration of the server. | [optional] 
 **ServerExtra** | Pointer to **string** | Additional information about the server. | [optional] 
 
@@ -512,20 +512,20 @@ HasServerSetup returns a boolean if a field has been set.
 
 ### GetServerDiscount
 
-`func (o *ServerServiceInfo) GetServerDiscount() interface{}`
+`func (o *ServerServiceInfo) GetServerDiscount() string`
 
 GetServerDiscount returns the ServerDiscount field if non-nil, zero value otherwise.
 
 ### GetServerDiscountOk
 
-`func (o *ServerServiceInfo) GetServerDiscountOk() (*interface{}, bool)`
+`func (o *ServerServiceInfo) GetServerDiscountOk() (*string, bool)`
 
 GetServerDiscountOk returns a tuple with the ServerDiscount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServerDiscount
 
-`func (o *ServerServiceInfo) SetServerDiscount(v interface{})`
+`func (o *ServerServiceInfo) SetServerDiscount(v string)`
 
 SetServerDiscount sets ServerDiscount field to given value.
 
@@ -535,16 +535,6 @@ SetServerDiscount sets ServerDiscount field to given value.
 
 HasServerDiscount returns a boolean if a field has been set.
 
-### SetServerDiscountNil
-
-`func (o *ServerServiceInfo) SetServerDiscountNil(b bool)`
-
- SetServerDiscountNil sets the value for ServerDiscount to be an explicit nil
-
-### UnsetServerDiscount
-`func (o *ServerServiceInfo) UnsetServerDiscount()`
-
-UnsetServerDiscount ensures that no value is present for ServerDiscount, not even an explicit nil
 ### GetServerRep
 
 `func (o *ServerServiceInfo) GetServerRep() string`
@@ -622,20 +612,20 @@ HasServerTotalCost returns a boolean if a field has been set.
 
 ### GetServerLocation
 
-`func (o *ServerServiceInfo) GetServerLocation() interface{}`
+`func (o *ServerServiceInfo) GetServerLocation() string`
 
 GetServerLocation returns the ServerLocation field if non-nil, zero value otherwise.
 
 ### GetServerLocationOk
 
-`func (o *ServerServiceInfo) GetServerLocationOk() (*interface{}, bool)`
+`func (o *ServerServiceInfo) GetServerLocationOk() (*string, bool)`
 
 GetServerLocationOk returns a tuple with the ServerLocation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServerLocation
 
-`func (o *ServerServiceInfo) SetServerLocation(v interface{})`
+`func (o *ServerServiceInfo) SetServerLocation(v string)`
 
 SetServerLocation sets ServerLocation field to given value.
 
@@ -645,16 +635,6 @@ SetServerLocation sets ServerLocation field to given value.
 
 HasServerLocation returns a boolean if a field has been set.
 
-### SetServerLocationNil
-
-`func (o *ServerServiceInfo) SetServerLocationNil(b bool)`
-
- SetServerLocationNil sets the value for ServerLocation to be an explicit nil
-
-### UnsetServerLocation
-`func (o *ServerServiceInfo) UnsetServerLocation()`
-
-UnsetServerLocation ensures that no value is present for ServerLocation, not even an explicit nil
 ### GetServerHardwareOrdered
 
 `func (o *ServerServiceInfo) GetServerHardwareOrdered() string`
@@ -807,20 +787,20 @@ HasServerDedicatedHd1 returns a boolean if a field has been set.
 
 ### GetServerDedicatedHd2
 
-`func (o *ServerServiceInfo) GetServerDedicatedHd2() interface{}`
+`func (o *ServerServiceInfo) GetServerDedicatedHd2() string`
 
 GetServerDedicatedHd2 returns the ServerDedicatedHd2 field if non-nil, zero value otherwise.
 
 ### GetServerDedicatedHd2Ok
 
-`func (o *ServerServiceInfo) GetServerDedicatedHd2Ok() (*interface{}, bool)`
+`func (o *ServerServiceInfo) GetServerDedicatedHd2Ok() (*string, bool)`
 
 GetServerDedicatedHd2Ok returns a tuple with the ServerDedicatedHd2 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServerDedicatedHd2
 
-`func (o *ServerServiceInfo) SetServerDedicatedHd2(v interface{})`
+`func (o *ServerServiceInfo) SetServerDedicatedHd2(v string)`
 
 SetServerDedicatedHd2 sets ServerDedicatedHd2 field to given value.
 
@@ -830,16 +810,6 @@ SetServerDedicatedHd2 sets ServerDedicatedHd2 field to given value.
 
 HasServerDedicatedHd2 returns a boolean if a field has been set.
 
-### SetServerDedicatedHd2Nil
-
-`func (o *ServerServiceInfo) SetServerDedicatedHd2Nil(b bool)`
-
- SetServerDedicatedHd2Nil sets the value for ServerDedicatedHd2 to be an explicit nil
-
-### UnsetServerDedicatedHd2
-`func (o *ServerServiceInfo) UnsetServerDedicatedHd2()`
-
-UnsetServerDedicatedHd2 ensures that no value is present for ServerDedicatedHd2, not even an explicit nil
 ### GetServerDedicatedBandwidth
 
 `func (o *ServerServiceInfo) GetServerDedicatedBandwidth() string`
@@ -917,20 +887,20 @@ HasServerDedicatedOs returns a boolean if a field has been set.
 
 ### GetServerDedicatedCp
 
-`func (o *ServerServiceInfo) GetServerDedicatedCp() interface{}`
+`func (o *ServerServiceInfo) GetServerDedicatedCp() string`
 
 GetServerDedicatedCp returns the ServerDedicatedCp field if non-nil, zero value otherwise.
 
 ### GetServerDedicatedCpOk
 
-`func (o *ServerServiceInfo) GetServerDedicatedCpOk() (*interface{}, bool)`
+`func (o *ServerServiceInfo) GetServerDedicatedCpOk() (*string, bool)`
 
 GetServerDedicatedCpOk returns a tuple with the ServerDedicatedCp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServerDedicatedCp
 
-`func (o *ServerServiceInfo) SetServerDedicatedCp(v interface{})`
+`func (o *ServerServiceInfo) SetServerDedicatedCp(v string)`
 
 SetServerDedicatedCp sets ServerDedicatedCp field to given value.
 
@@ -940,16 +910,6 @@ SetServerDedicatedCp sets ServerDedicatedCp field to given value.
 
 HasServerDedicatedCp returns a boolean if a field has been set.
 
-### SetServerDedicatedCpNil
-
-`func (o *ServerServiceInfo) SetServerDedicatedCpNil(b bool)`
-
- SetServerDedicatedCpNil sets the value for ServerDedicatedCp to be an explicit nil
-
-### UnsetServerDedicatedCp
-`func (o *ServerServiceInfo) UnsetServerDedicatedCp()`
-
-UnsetServerDedicatedCp ensures that no value is present for ServerDedicatedCp, not even an explicit nil
 ### GetServerDedicatedRaid
 
 `func (o *ServerServiceInfo) GetServerDedicatedRaid() string`

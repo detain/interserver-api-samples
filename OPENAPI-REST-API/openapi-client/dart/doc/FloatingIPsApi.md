@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> List<Object> getFloatingIpsList()
 
 List Floating IPs
 
@@ -263,7 +263,8 @@ import 'package:openapi/api.dart';
 final api_instance = FloatingIPsApi();
 
 try {
-    api_instance.getFloatingIpsList();
+    final result = api_instance.getFloatingIpsList();
+    print(result);
 } catch (e) {
     print('Exception when calling FloatingIPsApi->getFloatingIpsList: $e\n');
 }
@@ -274,7 +275,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**List<Object>**
 
 ### Authorization
 

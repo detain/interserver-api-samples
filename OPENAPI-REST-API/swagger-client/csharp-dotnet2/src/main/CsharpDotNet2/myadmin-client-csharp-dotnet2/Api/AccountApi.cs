@@ -30,8 +30,9 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Remove IP Access Restriction Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </summary>
+        /// <param name="body"></param>
         /// <returns>GenericResponse</returns>
-        GenericResponse DeleteIpLimit ();
+        GenericResponse DeleteIpLimit (IpLimitRange body);
         /// <summary>
         /// Retrieve Account Details Returns the full account profile including contact information, billing address, and security settings. Use this to populate account management forms or verify account state before making changes with &#x60;POST /account&#x60;.
         /// </summary>
@@ -313,8 +314,9 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Remove IP Access Restriction Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </summary>
+        /// <param name="body"></param>
         /// <returns>GenericResponse</returns>
-        public GenericResponse DeleteIpLimit ()
+        public GenericResponse DeleteIpLimit (IpLimitRange body)
         {
     
             var path = "/account/iplimits";
@@ -326,7 +328,8 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "apiKeyAuth", "sessionIdCookieAuth", "sessionIdHeaderAuth" };
     

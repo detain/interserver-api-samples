@@ -83,7 +83,7 @@ public class ServerServiceInfo {
   private String serverSetup = null;
 
   @SerializedName("server_discount")
-  private Object serverDiscount = null;
+  private String serverDiscount = null;
 
   @SerializedName("server_rep")
   private String serverRep = null;
@@ -95,7 +95,7 @@ public class ServerServiceInfo {
   private String serverTotalCost = null;
 
   @SerializedName("server_location")
-  private Object serverLocation = null;
+  private String serverLocation = null;
 
   @SerializedName("server_hardware_ordered")
   private String serverHardwareOrdered = null;
@@ -116,7 +116,7 @@ public class ServerServiceInfo {
   private String serverDedicatedHd1 = null;
 
   @SerializedName("server_dedicated_hd2")
-  private Object serverDedicatedHd2 = null;
+  private String serverDedicatedHd2 = null;
 
   @SerializedName("server_dedicated_bandwidth")
   private String serverDedicatedBandwidth = null;
@@ -128,7 +128,7 @@ public class ServerServiceInfo {
   private String serverDedicatedOs = null;
 
   @SerializedName("server_dedicated_cp")
-  private Object serverDedicatedCp = null;
+  private String serverDedicatedCp = null;
 
   @SerializedName("server_dedicated_raid")
   private String serverDedicatedRaid = null;
@@ -460,7 +460,7 @@ public class ServerServiceInfo {
     this.serverSetup = serverSetup;
   }
 
-  public ServerServiceInfo serverDiscount(Object serverDiscount) {
+  public ServerServiceInfo serverDiscount(String serverDiscount) {
     this.serverDiscount = serverDiscount;
     return this;
   }
@@ -470,11 +470,11 @@ public class ServerServiceInfo {
    * @return serverDiscount
   **/
   @Schema(description = "Discount information for the server.")
-  public Object getServerDiscount() {
+  public String getServerDiscount() {
     return serverDiscount;
   }
 
-  public void setServerDiscount(Object serverDiscount) {
+  public void setServerDiscount(String serverDiscount) {
     this.serverDiscount = serverDiscount;
   }
 
@@ -532,7 +532,7 @@ public class ServerServiceInfo {
     this.serverTotalCost = serverTotalCost;
   }
 
-  public ServerServiceInfo serverLocation(Object serverLocation) {
+  public ServerServiceInfo serverLocation(String serverLocation) {
     this.serverLocation = serverLocation;
     return this;
   }
@@ -542,11 +542,11 @@ public class ServerServiceInfo {
    * @return serverLocation
   **/
   @Schema(description = "The location of the server.")
-  public Object getServerLocation() {
+  public String getServerLocation() {
     return serverLocation;
   }
 
-  public void setServerLocation(Object serverLocation) {
+  public void setServerLocation(String serverLocation) {
     this.serverLocation = serverLocation;
   }
 
@@ -658,7 +658,7 @@ public class ServerServiceInfo {
     this.serverDedicatedHd1 = serverDedicatedHd1;
   }
 
-  public ServerServiceInfo serverDedicatedHd2(Object serverDedicatedHd2) {
+  public ServerServiceInfo serverDedicatedHd2(String serverDedicatedHd2) {
     this.serverDedicatedHd2 = serverDedicatedHd2;
     return this;
   }
@@ -668,11 +668,11 @@ public class ServerServiceInfo {
    * @return serverDedicatedHd2
   **/
   @Schema(description = "The size of the second dedicated hard drive.")
-  public Object getServerDedicatedHd2() {
+  public String getServerDedicatedHd2() {
     return serverDedicatedHd2;
   }
 
-  public void setServerDedicatedHd2(Object serverDedicatedHd2) {
+  public void setServerDedicatedHd2(String serverDedicatedHd2) {
     this.serverDedicatedHd2 = serverDedicatedHd2;
   }
 
@@ -730,7 +730,7 @@ public class ServerServiceInfo {
     this.serverDedicatedOs = serverDedicatedOs;
   }
 
-  public ServerServiceInfo serverDedicatedCp(Object serverDedicatedCp) {
+  public ServerServiceInfo serverDedicatedCp(String serverDedicatedCp) {
     this.serverDedicatedCp = serverDedicatedCp;
     return this;
   }
@@ -740,11 +740,11 @@ public class ServerServiceInfo {
    * @return serverDedicatedCp
   **/
   @Schema(description = "The control panel of the server.")
-  public Object getServerDedicatedCp() {
+  public String getServerDedicatedCp() {
     return serverDedicatedCp;
   }
 
-  public void setServerDedicatedCp(Object serverDedicatedCp) {
+  public void setServerDedicatedCp(String serverDedicatedCp) {
     this.serverDedicatedCp = serverDedicatedCp;
   }
 

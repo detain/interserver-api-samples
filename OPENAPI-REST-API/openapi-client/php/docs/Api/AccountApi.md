@@ -238,7 +238,7 @@ This endpoint does not need any parameter.
 ## `deleteIpLimit()`
 
 ```php
-deleteIpLimit(): \Interserver\MyAdmin\Model\GenericResponse
+deleteIpLimit($ipLimitRange): \Interserver\MyAdmin\Model\GenericResponse
 ```
 
 Remove IP Access Restriction
@@ -274,9 +274,10 @@ $apiInstance = new Interserver\MyAdmin\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
+$ipLimitRange = new \Interserver\MyAdmin\Model\IpLimitRange(); // \Interserver\MyAdmin\Model\IpLimitRange
 
 try {
-    $result = $apiInstance->deleteIpLimit();
+    $result = $apiInstance->deleteIpLimit($ipLimitRange);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->deleteIpLimit: ', $e->getMessage(), PHP_EOL;
@@ -285,7 +286,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ipLimitRange** | [**\Interserver\MyAdmin\Model\IpLimitRange**](../Model/IpLimitRange.md)|  | [optional] |
 
 ### Return type
 

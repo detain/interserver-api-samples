@@ -21,7 +21,7 @@ case class QuickserverServiceInfo (
 /* IP address */
   qs_ip: Option[String],
 /* IPv6 address (null) */
-  qs_ipv6: Option[AnyType],
+  qs_ipv6: Option[String],
 /* VZ ID */
   qs_vzid: Option[String],
 /* Currency */
@@ -49,7 +49,7 @@ case class QuickserverServiceInfo (
 /* VNC information */
   qs_vnc: Option[String],
 /* VNC port (null) */
-  qs_vnc_port: Option[AnyType],
+  qs_vnc_port: Option[Integer],
 /* Root password */
   qs_rootpass: Option[String],
 /* MAC address */
@@ -61,7 +61,7 @@ case class QuickserverServiceInfo (
 /* Location */
   qs_location: Option[String],
 /* Platform (null) */
-  qs_platform: Option[AnyType])
+  qs_platform: Option[String])
 
 object QuickserverServiceInfo {
   import DateTimeCodecs._

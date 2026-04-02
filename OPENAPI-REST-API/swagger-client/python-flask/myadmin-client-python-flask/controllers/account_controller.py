@@ -53,14 +53,18 @@ def delete_account_tfa():  # noqa: E501
     return 'do some magic!'
 
 
-def delete_ip_limit():  # noqa: E501
+def delete_ip_limit(body=None):  # noqa: E501
     """Remove IP Access Restriction
 
     Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address. # noqa: E501
 
+    :param body: 
+    :type body: dict | bytes
 
     :rtype: GenericResponse
     """
+    if connexion.request.is_json:
+        body = IpLimitRange.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

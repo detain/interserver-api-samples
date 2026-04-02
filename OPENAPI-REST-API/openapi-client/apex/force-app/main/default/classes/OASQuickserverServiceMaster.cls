@@ -198,13 +198,13 @@ public class OASQuickserverServiceMaster implements OAS.MappedProperties {
      * Last install time (null)
      * @return qsLastInstallTime
      */
-    public oas_any_type_not_mapped qsLastInstallTime { get; set; }
+    public String qsLastInstallTime { get; set; }
 
     /**
      * Partitions information (null)
      * @return qsPartitions
      */
-    public oas_any_type_not_mapped qsPartitions { get; set; }
+    public String qsPartitions { get; set; }
 
     /**
      * CPU flags
@@ -1564,8 +1564,8 @@ public class OASQuickserverServiceMaster implements OAS.MappedProperties {
           quickserverServiceMaster.qsBytesSecOut = '0';
           quickserverServiceMaster.qsPacketsSecIn = '0';
           quickserverServiceMaster.qsPacketsSecOut = '0';
-          quickserverServiceMaster.qsLastInstallTime = oas_any_type_not_mapped.getExample();
-          quickserverServiceMaster.qsPartitions = oas_any_type_not_mapped.getExample();
+          quickserverServiceMaster.qsLastInstallTime = '';
+          quickserverServiceMaster.qsPartitions = '';
           quickserverServiceMaster.qsCpuFlags = '';
         return quickserverServiceMaster;
     }

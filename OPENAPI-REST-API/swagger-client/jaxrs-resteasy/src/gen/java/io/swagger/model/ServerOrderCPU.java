@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description="A CPU option available when ordering a dedicated server.")
 
 public class ServerOrderCPU   {
-  private String id = null;  private Integer price = null;  private String img = null;  private String shortDesc = null;  private String longDesc = null;  private String location = null;  private String fsb = null;  private String manu = null;  private String type = null;  private String speed = null;  private String cache = null;  private String active = null;  private String numCores = null;  private String numCpus = null;  private String benchmark = null;  private Integer monthlyPrice = null;  private String maxRam = null;  private String minRam = null;  private String maxLff = null;  private String maxSff = null;  private String maxNve = null;  private String visible = null;  private Object hdIds = null;  private String priceDisplay = null;  private String monthlyPriceDisplay = null;
+  private String id = null;  private Integer price = null;  private String img = null;  private String shortDesc = null;  private String longDesc = null;  private String location = null;  private String fsb = null;  private String manu = null;  private String type = null;  private String speed = null;  private String cache = null;  private String active = null;  private String numCores = null;  private String numCpus = null;  private String benchmark = null;  private Integer monthlyPrice = null;  private String maxRam = null;  private String minRam = null;  private String maxLff = null;  private String maxSff = null;  private String maxNve = null;  private String visible = null;  private String hdIds = null;  private String priceDisplay = null;  private String monthlyPriceDisplay = null;
 
   /**
    * CPU ID.
@@ -329,10 +329,10 @@ public class ServerOrderCPU   {
   @Schema(description = "Hard drive IDs.")
   @JsonProperty("hd_ids")
   @NotNull
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 

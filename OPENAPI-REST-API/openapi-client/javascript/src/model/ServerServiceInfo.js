@@ -102,7 +102,7 @@ class ServerServiceInfo {
                 obj['server_setup'] = ApiClient.convertToType(data['server_setup'], 'String');
             }
             if (data.hasOwnProperty('server_discount')) {
-                obj['server_discount'] = ApiClient.convertToType(data['server_discount'], Object);
+                obj['server_discount'] = ApiClient.convertToType(data['server_discount'], 'String');
             }
             if (data.hasOwnProperty('server_rep')) {
                 obj['server_rep'] = ApiClient.convertToType(data['server_rep'], 'String');
@@ -114,7 +114,7 @@ class ServerServiceInfo {
                 obj['server_total_cost'] = ApiClient.convertToType(data['server_total_cost'], 'String');
             }
             if (data.hasOwnProperty('server_location')) {
-                obj['server_location'] = ApiClient.convertToType(data['server_location'], Object);
+                obj['server_location'] = ApiClient.convertToType(data['server_location'], 'String');
             }
             if (data.hasOwnProperty('server_hardware_ordered')) {
                 obj['server_hardware_ordered'] = ApiClient.convertToType(data['server_hardware_ordered'], 'String');
@@ -135,7 +135,7 @@ class ServerServiceInfo {
                 obj['server_dedicated_hd1'] = ApiClient.convertToType(data['server_dedicated_hd1'], 'String');
             }
             if (data.hasOwnProperty('server_dedicated_hd2')) {
-                obj['server_dedicated_hd2'] = ApiClient.convertToType(data['server_dedicated_hd2'], Object);
+                obj['server_dedicated_hd2'] = ApiClient.convertToType(data['server_dedicated_hd2'], 'String');
             }
             if (data.hasOwnProperty('server_dedicated_bandwidth')) {
                 obj['server_dedicated_bandwidth'] = ApiClient.convertToType(data['server_dedicated_bandwidth'], 'String');
@@ -147,7 +147,7 @@ class ServerServiceInfo {
                 obj['server_dedicated_os'] = ApiClient.convertToType(data['server_dedicated_os'], 'String');
             }
             if (data.hasOwnProperty('server_dedicated_cp')) {
-                obj['server_dedicated_cp'] = ApiClient.convertToType(data['server_dedicated_cp'], Object);
+                obj['server_dedicated_cp'] = ApiClient.convertToType(data['server_dedicated_cp'], 'String');
             }
             if (data.hasOwnProperty('server_dedicated_raid')) {
                 obj['server_dedicated_raid'] = ApiClient.convertToType(data['server_dedicated_raid'], 'String');
@@ -238,6 +238,10 @@ class ServerServiceInfo {
             throw new Error("Expected the field `server_setup` to be a primitive type in the JSON string but got " + data['server_setup']);
         }
         // ensure the json data is a string
+        if (data['server_discount'] && !(typeof data['server_discount'] === 'string' || data['server_discount'] instanceof String)) {
+            throw new Error("Expected the field `server_discount` to be a primitive type in the JSON string but got " + data['server_discount']);
+        }
+        // ensure the json data is a string
         if (data['server_rep'] && !(typeof data['server_rep'] === 'string' || data['server_rep'] instanceof String)) {
             throw new Error("Expected the field `server_rep` to be a primitive type in the JSON string but got " + data['server_rep']);
         }
@@ -248,6 +252,10 @@ class ServerServiceInfo {
         // ensure the json data is a string
         if (data['server_total_cost'] && !(typeof data['server_total_cost'] === 'string' || data['server_total_cost'] instanceof String)) {
             throw new Error("Expected the field `server_total_cost` to be a primitive type in the JSON string but got " + data['server_total_cost']);
+        }
+        // ensure the json data is a string
+        if (data['server_location'] && !(typeof data['server_location'] === 'string' || data['server_location'] instanceof String)) {
+            throw new Error("Expected the field `server_location` to be a primitive type in the JSON string but got " + data['server_location']);
         }
         // ensure the json data is a string
         if (data['server_hardware_ordered'] && !(typeof data['server_hardware_ordered'] === 'string' || data['server_hardware_ordered'] instanceof String)) {
@@ -274,6 +282,10 @@ class ServerServiceInfo {
             throw new Error("Expected the field `server_dedicated_hd1` to be a primitive type in the JSON string but got " + data['server_dedicated_hd1']);
         }
         // ensure the json data is a string
+        if (data['server_dedicated_hd2'] && !(typeof data['server_dedicated_hd2'] === 'string' || data['server_dedicated_hd2'] instanceof String)) {
+            throw new Error("Expected the field `server_dedicated_hd2` to be a primitive type in the JSON string but got " + data['server_dedicated_hd2']);
+        }
+        // ensure the json data is a string
         if (data['server_dedicated_bandwidth'] && !(typeof data['server_dedicated_bandwidth'] === 'string' || data['server_dedicated_bandwidth'] instanceof String)) {
             throw new Error("Expected the field `server_dedicated_bandwidth` to be a primitive type in the JSON string but got " + data['server_dedicated_bandwidth']);
         }
@@ -284,6 +296,10 @@ class ServerServiceInfo {
         // ensure the json data is a string
         if (data['server_dedicated_os'] && !(typeof data['server_dedicated_os'] === 'string' || data['server_dedicated_os'] instanceof String)) {
             throw new Error("Expected the field `server_dedicated_os` to be a primitive type in the JSON string but got " + data['server_dedicated_os']);
+        }
+        // ensure the json data is a string
+        if (data['server_dedicated_cp'] && !(typeof data['server_dedicated_cp'] === 'string' || data['server_dedicated_cp'] instanceof String)) {
+            throw new Error("Expected the field `server_dedicated_cp` to be a primitive type in the JSON string but got " + data['server_dedicated_cp']);
         }
         // ensure the json data is a string
         if (data['server_dedicated_raid'] && !(typeof data['server_dedicated_raid'] === 'string' || data['server_dedicated_raid'] instanceof String)) {
@@ -412,7 +428,7 @@ ServerServiceInfo.prototype['server_setup'] = undefined;
 
 /**
  * Discount information for the server.
- * @member {Object} server_discount
+ * @member {String} server_discount
  */
 ServerServiceInfo.prototype['server_discount'] = undefined;
 
@@ -436,7 +452,7 @@ ServerServiceInfo.prototype['server_total_cost'] = undefined;
 
 /**
  * The location of the server.
- * @member {Object} server_location
+ * @member {String} server_location
  */
 ServerServiceInfo.prototype['server_location'] = undefined;
 
@@ -478,7 +494,7 @@ ServerServiceInfo.prototype['server_dedicated_hd1'] = undefined;
 
 /**
  * The size of the second dedicated hard drive.
- * @member {Object} server_dedicated_hd2
+ * @member {String} server_dedicated_hd2
  */
 ServerServiceInfo.prototype['server_dedicated_hd2'] = undefined;
 
@@ -502,7 +518,7 @@ ServerServiceInfo.prototype['server_dedicated_os'] = undefined;
 
 /**
  * The control panel of the server.
- * @member {Object} server_dedicated_cp
+ * @member {String} server_dedicated_cp
  */
 ServerServiceInfo.prototype['server_dedicated_cp'] = undefined;
 

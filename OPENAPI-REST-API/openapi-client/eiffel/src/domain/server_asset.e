@@ -31,7 +31,7 @@ feature --Access
       -- Primary IPv4 address of the asset.
     primary_ipv6: detachable STRING_32
       -- Primary IPv6 address of the asset.
-    mac: detachable ANY
+    mac: detachable STRING_32
       -- MAC address associated with the asset.
     datacenter: detachable STRING_32
       -- Datacenter identifier for the asset.
@@ -55,15 +55,15 @@ feature --Access
       -- IPMI MAC address associated with the asset.
     ipmi_ip: detachable STRING_32
       -- IPMI IP address associated with the asset.
-    ipmi_admin_username: detachable ANY
+    ipmi_admin_username: detachable STRING_32
       -- IPMI admin username associated with the asset.
-    ipmi_admin_password: detachable ANY
+    ipmi_admin_password: detachable STRING_32
       -- IPMI admin password associated with the asset.
-    ipmi_client_username: detachable ANY
+    ipmi_client_username: detachable STRING_32
       -- IPMI client username associated with the asset.
-    ipmi_client_password: detachable ANY
+    ipmi_client_password: detachable STRING_32
       -- IPMI client password associated with the asset.
-    ipmi_updated: detachable ANY
+    ipmi_updated: detachable STRING_32
       -- IPMI update status associated with the asset.
     ipmi_working: detachable STRING_32
       -- IPMI working status associated with the asset.
@@ -85,9 +85,9 @@ feature --Access
       -- Billing status of the asset.
     overdue: detachable STRING_32
       -- Overdue status of the asset.
-    create_timestamp: detachable ANY
+    create_timestamp: detachable STRING_32
       -- Timestamp of asset creation.
-    update_timestamp: detachable ANY
+    update_timestamp: detachable STRING_32
       -- Timestamp of asset update.
     asset_id: detachable STRING_32
       -- Asset identifier for the asset.
@@ -105,7 +105,7 @@ feature --Access
       -- X-coordinate of the asset within the rack.
     rack_y: detachable STRING_32
       -- Y-coordinate of the asset within the rack.
-    comment: detachable ANY
+    comment: detachable STRING_32
       -- Comment associated with the asset.
     switchports: detachable LIST [INTEGER_32]
       -- List of switchports associated with the asset.

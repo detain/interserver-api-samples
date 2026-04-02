@@ -182,11 +182,18 @@ Removes an IP address range from the account\'s access restriction list. If this
 
 ```typescript
 import { createConfiguration, AccountApi } from '';
+import type { AccountApiDeleteIpLimitRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AccountApi(configuration);
 
-const request = {};
+const request: AccountApiDeleteIpLimitRequest = {
+  
+  ipLimitRange: {
+    start: "1.2.3.0",
+    end: "1.2.3.255",
+  },
+};
 
 const data = await apiInstance.deleteIpLimit(request);
 console.log('API called successfully. Returned data:', data);
@@ -194,7 +201,10 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ipLimitRange** | **IpLimitRange**|  |
 
 
 ### Return type

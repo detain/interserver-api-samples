@@ -73,22 +73,22 @@ case class ServerServiceInfo(
     server_ips: Option[String] = None,
     server_monthly_bill: Option[String] = None,
     server_setup: Option[String] = None,
-    server_discount: Option[AnyType] = None,
+    server_discount: Option[String] = None,
     server_rep: Option[String] = None,
     server_date: Option[String] = None,
     server_total_cost: Option[String] = None,
-    server_location: Option[AnyType] = None,
+    server_location: Option[String] = None,
     server_hardware_ordered: Option[String] = None,
     server_billed: Option[String] = None,
     server_welcome_email: Option[String] = None,
     server_dedicated_cpu: Option[String] = None,
     server_dedicated_memory: Option[String] = None,
     server_dedicated_hd1: Option[String] = None,
-    server_dedicated_hd2: Option[AnyType] = None,
+    server_dedicated_hd2: Option[String] = None,
     server_dedicated_bandwidth: Option[String] = None,
     server_dedicated_ips: Option[String] = None,
     server_dedicated_os: Option[String] = None,
-    server_dedicated_cp: Option[AnyType] = None,
+    server_dedicated_cp: Option[String] = None,
     server_dedicated_raid: Option[String] = None,
     server_extra: Option[String] = None
 )
@@ -156,22 +156,22 @@ object ServerServiceInfo {
       server_ips <- c.downField("server_ips").as[Option[String]]
       server_monthly_bill <- c.downField("server_monthly_bill").as[Option[String]]
       server_setup <- c.downField("server_setup").as[Option[String]]
-      server_discount <- c.downField("server_discount").as[Option[AnyType]]
+      server_discount <- c.downField("server_discount").as[Option[String]]
       server_rep <- c.downField("server_rep").as[Option[String]]
       server_date <- c.downField("server_date").as[Option[String]]
       server_total_cost <- c.downField("server_total_cost").as[Option[String]]
-      server_location <- c.downField("server_location").as[Option[AnyType]]
+      server_location <- c.downField("server_location").as[Option[String]]
       server_hardware_ordered <- c.downField("server_hardware_ordered").as[Option[String]]
       server_billed <- c.downField("server_billed").as[Option[String]]
       server_welcome_email <- c.downField("server_welcome_email").as[Option[String]]
       server_dedicated_cpu <- c.downField("server_dedicated_cpu").as[Option[String]]
       server_dedicated_memory <- c.downField("server_dedicated_memory").as[Option[String]]
       server_dedicated_hd1 <- c.downField("server_dedicated_hd1").as[Option[String]]
-      server_dedicated_hd2 <- c.downField("server_dedicated_hd2").as[Option[AnyType]]
+      server_dedicated_hd2 <- c.downField("server_dedicated_hd2").as[Option[String]]
       server_dedicated_bandwidth <- c.downField("server_dedicated_bandwidth").as[Option[String]]
       server_dedicated_ips <- c.downField("server_dedicated_ips").as[Option[String]]
       server_dedicated_os <- c.downField("server_dedicated_os").as[Option[String]]
-      server_dedicated_cp <- c.downField("server_dedicated_cp").as[Option[AnyType]]
+      server_dedicated_cp <- c.downField("server_dedicated_cp").as[Option[String]]
       server_dedicated_raid <- c.downField("server_dedicated_raid").as[Option[String]]
       server_extra <- c.downField("server_extra").as[Option[String]]
     } yield ServerServiceInfo(

@@ -90,7 +90,7 @@ data class ServerServiceInfo (
     /* The setup status of the server. */
     val serverSetup: kotlin.String? = null,
     /* Discount information for the server. */
-    val serverDiscount: kotlin.Any? = null,
+    val serverDiscount: kotlin.String? = null,
     /* The reputation of the server. */
     val serverRep: kotlin.String? = null,
     /* The date related to the server. */
@@ -98,7 +98,7 @@ data class ServerServiceInfo (
     /* The total cost of the server. */
     val serverTotalCost: kotlin.String? = null,
     /* The location of the server. */
-    val serverLocation: kotlin.Any? = null,
+    val serverLocation: kotlin.String? = null,
     /* The ordered hardware for the server. */
     val serverHardwareOrdered: kotlin.String? = null,
     /* The billed amount for the server. */
@@ -112,7 +112,7 @@ data class ServerServiceInfo (
     /* The size of the first dedicated hard drive. */
     val serverDedicatedHd1: kotlin.String? = null,
     /* The size of the second dedicated hard drive. */
-    val serverDedicatedHd2: kotlin.Any? = null,
+    val serverDedicatedHd2: kotlin.String? = null,
     /* The bandwidth of the server. */
     val serverDedicatedBandwidth: kotlin.String? = null,
     /* The number of dedicated IPs for the server. */
@@ -120,7 +120,7 @@ data class ServerServiceInfo (
     /* The operating system of the server. */
     val serverDedicatedOs: kotlin.String? = null,
     /* The control panel of the server. */
-    val serverDedicatedCp: kotlin.Any? = null,
+    val serverDedicatedCp: kotlin.String? = null,
     /* The RAID configuration of the server. */
     val serverDedicatedRaid: kotlin.String? = null,
     /* Additional information about the server. */

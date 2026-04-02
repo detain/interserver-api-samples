@@ -144,10 +144,10 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, [%map(){}, ...]}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec get_floating_ips_list(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec get_floating_ips_list(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, [map()]} | {:error, Tesla.Env.t}
   def get_floating_ips_list(connection, _opts \\ []) do
     request =
       %{}
@@ -158,7 +158,7 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, false},
+      {200, []},
       {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
       {:default, false}
     ])

@@ -167,7 +167,7 @@ This endpoint does not need any parameter.
 
 # **deleteIpLimit**
 ```swift
-    open class func deleteIpLimit(completion: @escaping (_ data: GenericResponse?, _ error: Error?) -> Void)
+    open class func deleteIpLimit(ipLimitRange: IpLimitRange? = nil, completion: @escaping (_ data: GenericResponse?, _ error: Error?) -> Void)
 ```
 
 Remove IP Access Restriction
@@ -179,9 +179,10 @@ Removes an IP address range from the account's access restriction list. If this 
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let ipLimitRange = IpLimitRange(start: "start_example", end: "end_example") // IpLimitRange |  (optional)
 
 // Remove IP Access Restriction
-AccountAPI.deleteIpLimit() { (response, error) in
+AccountAPI.deleteIpLimit(ipLimitRange: ipLimitRange) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -194,7 +195,10 @@ AccountAPI.deleteIpLimit() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md) |  | [optional] 
 
 ### Return type
 

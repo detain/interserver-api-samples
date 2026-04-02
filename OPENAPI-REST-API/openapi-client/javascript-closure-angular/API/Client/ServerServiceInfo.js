@@ -133,7 +133,7 @@ API.Client.ServerServiceInfo.prototype.serverSetup;
 
 /**
  * Discount information for the server.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerServiceInfo.prototype.serverDiscount;
@@ -161,7 +161,7 @@ API.Client.ServerServiceInfo.prototype.serverTotalCost;
 
 /**
  * The location of the server.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerServiceInfo.prototype.serverLocation;
@@ -210,7 +210,7 @@ API.Client.ServerServiceInfo.prototype.serverDedicatedHd1;
 
 /**
  * The size of the second dedicated hard drive.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerServiceInfo.prototype.serverDedicatedHd2;
@@ -238,7 +238,7 @@ API.Client.ServerServiceInfo.prototype.serverDedicatedOs;
 
 /**
  * The control panel of the server.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerServiceInfo.prototype.serverDedicatedCp;

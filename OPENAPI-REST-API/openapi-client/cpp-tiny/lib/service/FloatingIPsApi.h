@@ -86,7 +86,7 @@ public:
     * Returns all Floating IP services on the account with their current status and assignment details.
     */
     Response<
-            String
+                    std::list<Object>
         >
     getFloatingIpsList(
     );

@@ -48,7 +48,7 @@ case class QuickserverServiceInfo(
     qs_custid: Option[String] = None,
     qs_server: Option[String] = None,
     qs_ip: Option[String] = None,
-    qs_ipv6: Option[AnyType] = None,
+    qs_ipv6: Option[String] = None,
     qs_vzid: Option[String] = None,
     qs_currency: Option[String] = None,
     qs_type: Option[String] = None,
@@ -62,13 +62,13 @@ case class QuickserverServiceInfo(
     qs_comment: Option[String] = None,
     qs_slices: Option[String] = None,
     qs_vnc: Option[String] = None,
-    qs_vnc_port: Option[AnyType] = None,
+    qs_vnc_port: Option[Int] = None,
     qs_rootpass: Option[String] = None,
     qs_mac: Option[String] = None,
     qs_os: Option[String] = None,
     qs_version: Option[String] = None,
     qs_location: Option[String] = None,
-    qs_platform: Option[AnyType] = None
+    qs_platform: Option[String] = None
 )
   
 object QuickserverServiceInfo {
@@ -109,7 +109,7 @@ object QuickserverServiceInfo {
       qs_custid <- c.downField("qs_custid").as[Option[String]]
       qs_server <- c.downField("qs_server").as[Option[String]]
       qs_ip <- c.downField("qs_ip").as[Option[String]]
-      qs_ipv6 <- c.downField("qs_ipv6").as[Option[AnyType]]
+      qs_ipv6 <- c.downField("qs_ipv6").as[Option[String]]
       qs_vzid <- c.downField("qs_vzid").as[Option[String]]
       qs_currency <- c.downField("qs_currency").as[Option[String]]
       qs_type <- c.downField("qs_type").as[Option[String]]
@@ -123,13 +123,13 @@ object QuickserverServiceInfo {
       qs_comment <- c.downField("qs_comment").as[Option[String]]
       qs_slices <- c.downField("qs_slices").as[Option[String]]
       qs_vnc <- c.downField("qs_vnc").as[Option[String]]
-      qs_vnc_port <- c.downField("qs_vnc_port").as[Option[AnyType]]
+      qs_vnc_port <- c.downField("qs_vnc_port").as[Option[Int]]
       qs_rootpass <- c.downField("qs_rootpass").as[Option[String]]
       qs_mac <- c.downField("qs_mac").as[Option[String]]
       qs_os <- c.downField("qs_os").as[Option[String]]
       qs_version <- c.downField("qs_version").as[Option[String]]
       qs_location <- c.downField("qs_location").as[Option[String]]
-      qs_platform <- c.downField("qs_platform").as[Option[AnyType]]
+      qs_platform <- c.downField("qs_platform").as[Option[String]]
     } yield QuickserverServiceInfo(
       qs_id = qs_id,
       qs_custid = qs_custid,

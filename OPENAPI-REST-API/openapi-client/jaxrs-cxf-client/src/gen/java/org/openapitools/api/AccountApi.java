@@ -5,6 +5,7 @@ import org.openapitools.model.GenericResponse;
 import org.openapitools.model.GetAccountInfo401Response;
 import org.openapitools.model.GetAccountTfaSetup200Response;
 import org.openapitools.model.Home;
+import org.openapitools.model.IpLimitRange;
 import org.openapitools.model.SearchAutocompleteResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
@@ -90,7 +91,7 @@ public interface AccountApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "IP Range removed.", response = GenericResponse.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
-    public GenericResponse deleteIpLimit();
+    public GenericResponse deleteIpLimit(IpLimitRange ipLimitRange);
 
     /**
      * Retrieve Account Details

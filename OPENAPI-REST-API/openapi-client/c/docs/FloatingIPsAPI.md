@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 //
 // Returns all Floating IP services on the account with their current status and assignment details.
 //
-void FloatingIPsAPI_getFloatingIpsList(apiClient_t *apiClient);
+list_t* FloatingIPsAPI_getFloatingIpsList(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -155,7 +155,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[list_t](object.md) *
+
 
 ### Authorization
 

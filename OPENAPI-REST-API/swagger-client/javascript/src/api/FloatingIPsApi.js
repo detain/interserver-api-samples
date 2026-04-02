@@ -227,7 +227,7 @@ export default class FloatingIPsApi {
      * Callback function to receive the result of the getFloatingIpsList operation.
      * @callback moduleapi/FloatingIPsApi~getFloatingIpsListCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Array.<Object>{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -235,6 +235,7 @@ export default class FloatingIPsApi {
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
      * @param {module:api/FloatingIPsApi~getFloatingIpsListCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getFloatingIpsList(callback) {
       
@@ -256,7 +257,7 @@ export default class FloatingIPsApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = [Object];
 
       return this.apiClient.callApi(
         '/floating_ips', 'GET',

@@ -144,7 +144,8 @@ public interface AccountApi {
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.PATCH)
-    ResponseEntity<GenericResponse> deleteIpLimit();
+    ResponseEntity<GenericResponse> deleteIpLimit(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody IpLimitRange body
+);
 
 
     @Operation(summary = "Retrieve Account Details", description = "Returns the full account profile including contact information, billing address, and security settings. Use this to populate account management forms or verify account state before making changes with `POST /account`.", security = {

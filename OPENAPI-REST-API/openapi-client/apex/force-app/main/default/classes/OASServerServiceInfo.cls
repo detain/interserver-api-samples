@@ -126,7 +126,7 @@ public class OASServerServiceInfo implements OAS.MappedProperties {
      * Discount information for the server.
      * @return serverDiscount
      */
-    public oas_any_type_not_mapped serverDiscount { get; set; }
+    public String serverDiscount { get; set; }
 
     /**
      * The reputation of the server.
@@ -150,7 +150,7 @@ public class OASServerServiceInfo implements OAS.MappedProperties {
      * The location of the server.
      * @return serverLocation
      */
-    public oas_any_type_not_mapped serverLocation { get; set; }
+    public String serverLocation { get; set; }
 
     /**
      * The ordered hardware for the server.
@@ -192,7 +192,7 @@ public class OASServerServiceInfo implements OAS.MappedProperties {
      * The size of the second dedicated hard drive.
      * @return serverDedicatedHd2
      */
-    public oas_any_type_not_mapped serverDedicatedHd2 { get; set; }
+    public String serverDedicatedHd2 { get; set; }
 
     /**
      * The bandwidth of the server.
@@ -216,7 +216,7 @@ public class OASServerServiceInfo implements OAS.MappedProperties {
      * The control panel of the server.
      * @return serverDedicatedCp
      */
-    public oas_any_type_not_mapped serverDedicatedCp { get; set; }
+    public String serverDedicatedCp { get; set; }
 
     /**
      * The RAID configuration of the server.
@@ -1798,22 +1798,22 @@ public class OASServerServiceInfo implements OAS.MappedProperties {
           serverServiceInfo.serverIps = '0';
           serverServiceInfo.serverMonthlyBill = '0';
           serverServiceInfo.serverSetup = '0';
-          serverServiceInfo.serverDiscount = oas_any_type_not_mapped.getExample();
+          serverServiceInfo.serverDiscount = '';
           serverServiceInfo.serverRep = '0';
           serverServiceInfo.serverDate = '1588972956';
           serverServiceInfo.serverTotalCost = '230';
-          serverServiceInfo.serverLocation = oas_any_type_not_mapped.getExample();
+          serverServiceInfo.serverLocation = '';
           serverServiceInfo.serverHardwareOrdered = '0';
           serverServiceInfo.serverBilled = '0';
           serverServiceInfo.serverWelcomeEmail = '1';
           serverServiceInfo.serverDedicatedCpu = '38';
           serverServiceInfo.serverDedicatedMemory = '22';
           serverServiceInfo.serverDedicatedHd1 = '20';
-          serverServiceInfo.serverDedicatedHd2 = oas_any_type_not_mapped.getExample();
+          serverServiceInfo.serverDedicatedHd2 = '';
           serverServiceInfo.serverDedicatedBandwidth = '3';
           serverServiceInfo.serverDedicatedIps = '5';
           serverServiceInfo.serverDedicatedOs = '30';
-          serverServiceInfo.serverDedicatedCp = oas_any_type_not_mapped.getExample();
+          serverServiceInfo.serverDedicatedCp = '';
           serverServiceInfo.serverDedicatedRaid = '0';
           serverServiceInfo.serverExtra = '[]';
         return serverServiceInfo;

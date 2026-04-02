@@ -10,7 +10,7 @@ class VpsServiceInfo {
 /* IP address of the VPS */
   String vpsIp = null;
 /* IPv6 address of the VPS */
-  Object vpsIpv6 = null;
+  String vpsIpv6 = null;
 /* VPS Virtuozzo ID */
   String vpsVzid = null;
 /* Currency used for billing */
@@ -69,7 +69,7 @@ class VpsServiceInfo {
     vpsCustid = json['vps_custid'];
     vpsServer = json['vps_server'];
     vpsIp = json['vps_ip'];
-    vpsIpv6 = new Object.fromJson(json['vps_ipv6']);
+    vpsIpv6 = json['vps_ipv6'];
     vpsVzid = json['vps_vzid'];
     vpsCurrency = json['vps_currency'];
     vpsType = json['vps_type'];

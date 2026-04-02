@@ -58,8 +58,8 @@ class QuickserverServiceMaster(object):
         'qs_bytes_sec_out': 'str',
         'qs_packets_sec_in': 'str',
         'qs_packets_sec_out': 'str',
-        'qs_last_install_time': 'object',
-        'qs_partitions': 'object',
+        'qs_last_install_time': 'str',
+        'qs_partitions': 'str',
         'qs_cpu_flags': 'str'
     }
 
@@ -899,7 +899,7 @@ class QuickserverServiceMaster(object):
         Last install time (null)  # noqa: E501
 
         :return: The qs_last_install_time of this QuickserverServiceMaster.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._qs_last_install_time
 
@@ -910,7 +910,7 @@ class QuickserverServiceMaster(object):
         Last install time (null)  # noqa: E501
 
         :param qs_last_install_time: The qs_last_install_time of this QuickserverServiceMaster.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._qs_last_install_time = qs_last_install_time
@@ -922,7 +922,7 @@ class QuickserverServiceMaster(object):
         Partitions information (null)  # noqa: E501
 
         :return: The qs_partitions of this QuickserverServiceMaster.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._qs_partitions
 
@@ -933,7 +933,7 @@ class QuickserverServiceMaster(object):
         Partitions information (null)  # noqa: E501
 
         :param qs_partitions: The qs_partitions of this QuickserverServiceMaster.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._qs_partitions = qs_partitions

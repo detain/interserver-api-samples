@@ -35,7 +35,7 @@ public interface AccountApiService {
     public Response deleteAccountCreditCard(String id,SecurityContext securityContext);
     public Response deleteAccountOauthName(String name,SecurityContext securityContext);
     public Response deleteAccountTfa(SecurityContext securityContext);
-    public Response deleteIpLimit(SecurityContext securityContext);
+    public Response deleteIpLimit(IpLimitRange body,SecurityContext securityContext);
     public Response getAccountInfo(SecurityContext securityContext);
     public Response getAccountTfaSetup(SecurityContext securityContext);
     public Response getCountries( String fetchBy,SecurityContext securityContext);

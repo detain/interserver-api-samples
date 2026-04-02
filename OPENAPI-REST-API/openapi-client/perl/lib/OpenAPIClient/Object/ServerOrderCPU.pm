@@ -374,7 +374,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'hd_ids' => {
-        datatype => 'object',
+        datatype => 'string',
         base_name => 'hd_ids',
         description => 'Hard drive IDs.',
         format => '',
@@ -419,7 +419,7 @@ __PACKAGE__->openapi_types( {
     'max_sff' => 'string',
     'max_nve' => 'string',
     'visible' => 'string',
-    'hd_ids' => 'object',
+    'hd_ids' => 'string',
     'price_display' => 'string',
     'monthly_price_display' => 'string'
 } );

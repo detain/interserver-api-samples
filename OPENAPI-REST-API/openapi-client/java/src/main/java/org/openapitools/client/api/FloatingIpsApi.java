@@ -657,6 +657,7 @@ public class FloatingIpsApi {
     /**
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
+     * @return List&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -667,14 +668,15 @@ public class FloatingIpsApi {
         <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void getFloatingIpsList() throws ApiException {
-        getFloatingIpsListWithHttpInfo();
+    public List<Object> getFloatingIpsList() throws ApiException {
+        ApiResponse<List<Object>> localVarResp = getFloatingIpsListWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -685,9 +687,10 @@ public class FloatingIpsApi {
         <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getFloatingIpsListWithHttpInfo() throws ApiException {
+    public ApiResponse<List<Object>> getFloatingIpsListWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFloatingIpsListValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -705,10 +708,11 @@ public class FloatingIpsApi {
         <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFloatingIpsListAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFloatingIpsListAsync(final ApiCallback<List<Object>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFloatingIpsListValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

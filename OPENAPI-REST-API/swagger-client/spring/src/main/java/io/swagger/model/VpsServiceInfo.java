@@ -50,7 +50,7 @@ public class VpsServiceInfo   {
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object vpsIpv6 = null;
+  private String vpsIpv6 = null;
 
   @JsonProperty("vps_vzid")
 
@@ -277,7 +277,7 @@ public class VpsServiceInfo   {
     this.vpsIp = vpsIp;
   }
 
-  public VpsServiceInfo vpsIpv6(Object vpsIpv6) { 
+  public VpsServiceInfo vpsIpv6(String vpsIpv6) { 
 
     this.vpsIpv6 = vpsIpv6;
     return this;
@@ -290,13 +290,13 @@ public class VpsServiceInfo   {
   
   @Schema(description = "IPv6 address of the VPS")
   
-  public Object getVpsIpv6() {  
+  public String getVpsIpv6() {  
     return vpsIpv6;
   }
 
 
 
-  public void setVpsIpv6(Object vpsIpv6) { 
+  public void setVpsIpv6(String vpsIpv6) { 
     this.vpsIpv6 = vpsIpv6;
   }
 

@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
 case class ServerAsset(
@@ -93,22 +92,22 @@ case class ServerAsset(
   @named("vlans6") vlans6: Seq[String],
   @named("lease") lease: ServerLease,
   /* MAC address associated with the asset. */
-  @named("mac") mac: Option[io.circe.Json] = scala.None,
+  @named("mac") mac: Option[String] = scala.None,
   /* IPMI admin username associated with the asset. */
-  @named("ipmi_admin_username") ipmi_admin_username: Option[io.circe.Json] = scala.None,
+  @named("ipmi_admin_username") ipmi_admin_username: Option[String] = scala.None,
   /* IPMI admin password associated with the asset. */
-  @named("ipmi_admin_password") ipmi_admin_password: Option[io.circe.Json] = scala.None,
+  @named("ipmi_admin_password") ipmi_admin_password: Option[String] = scala.None,
   /* IPMI client username associated with the asset. */
-  @named("ipmi_client_username") ipmi_client_username: Option[io.circe.Json] = scala.None,
+  @named("ipmi_client_username") ipmi_client_username: Option[String] = scala.None,
   /* IPMI client password associated with the asset. */
-  @named("ipmi_client_password") ipmi_client_password: Option[io.circe.Json] = scala.None,
+  @named("ipmi_client_password") ipmi_client_password: Option[String] = scala.None,
   /* IPMI update status associated with the asset. */
-  @named("ipmi_updated") ipmi_updated: Option[io.circe.Json] = scala.None,
+  @named("ipmi_updated") ipmi_updated: Option[String] = scala.None,
   /* Timestamp of asset creation. */
-  @named("create_timestamp") create_timestamp: Option[io.circe.Json] = scala.None,
+  @named("create_timestamp") create_timestamp: Option[String] = scala.None,
   /* Timestamp of asset update. */
-  @named("update_timestamp") update_timestamp: Option[io.circe.Json] = scala.None,
+  @named("update_timestamp") update_timestamp: Option[String] = scala.None,
   /* Comment associated with the asset. */
-  @named("comment") comment: Option[io.circe.Json] = scala.None
+  @named("comment") comment: Option[String] = scala.None
 )
 

@@ -101,9 +101,9 @@ export default class QuickserverServiceMaster {
       if (data.hasOwnProperty('qs_packets_sec_out'))
         obj.qs_packets_sec_out = ApiClient.convertToType(data['qs_packets_sec_out'], 'String');
       if (data.hasOwnProperty('qs_last_install_time'))
-        obj.qs_last_install_time = ApiClient.convertToType(data['qs_last_install_time'], Object);
+        obj.qs_last_install_time = ApiClient.convertToType(data['qs_last_install_time'], 'String');
       if (data.hasOwnProperty('qs_partitions'))
-        obj.qs_partitions = ApiClient.convertToType(data['qs_partitions'], Object);
+        obj.qs_partitions = ApiClient.convertToType(data['qs_partitions'], 'String');
       if (data.hasOwnProperty('qs_cpu_flags'))
         obj.qs_cpu_flags = ApiClient.convertToType(data['qs_cpu_flags'], 'String');
     }
@@ -293,13 +293,13 @@ QuickserverServiceMaster.prototype.qs_packets_sec_out = undefined;
 
 /**
  * Last install time (null)
- * @member {Object} qs_last_install_time
+ * @member {String} qs_last_install_time
  */
 QuickserverServiceMaster.prototype.qs_last_install_time = undefined;
 
 /**
  * Partitions information (null)
- * @member {Object} qs_partitions
+ * @member {String} qs_partitions
  */
 QuickserverServiceMaster.prototype.qs_partitions = undefined;
 

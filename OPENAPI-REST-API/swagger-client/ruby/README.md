@@ -156,10 +156,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AccountApi.new
+opts = { 
+  body: SwaggerClient::IpLimitRange.new # IpLimitRange | 
+}
 
 begin
   #Remove IP Access Restriction
-  result = api_instance.delete_ip_limit
+  result = api_instance.delete_ip_limit(opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->delete_ip_limit: #{e}"
@@ -2884,7 +2887,8 @@ api_instance = SwaggerClient::FloatingIPsApi.new
 
 begin
   #List Floating IPs
-  api_instance.get_floating_ips_list
+  result = api_instance.get_floating_ips_list
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ips_list: #{e}"
 end

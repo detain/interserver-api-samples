@@ -43,7 +43,7 @@ class VpsServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, vps_serverIsSet);
   DTO_FIELD(oatpp::String, vps_ip);
   DTO_FIELD(oatpp::Boolean, vps_ipIsSet);
-  DTO_FIELD(oatpp::Any, vps_ipv6);
+  DTO_FIELD(oatpp::String, vps_ipv6);
   DTO_FIELD(oatpp::Boolean, vps_ipv6IsSet);
   DTO_FIELD(oatpp::String, vps_vzid);
   DTO_FIELD(oatpp::Boolean, vps_vzidIsSet);

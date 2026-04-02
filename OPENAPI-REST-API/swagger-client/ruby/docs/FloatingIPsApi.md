@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 
 # **get_floating_ips_list**
-> get_floating_ips_list
+> Array&lt;Object&gt; get_floating_ips_list
 
 List Floating IPs
 
@@ -296,7 +296,8 @@ api_instance = SwaggerClient::FloatingIPsApi.new
 
 begin
   #List Floating IPs
-  api_instance.get_floating_ips_list
+  result = api_instance.get_floating_ips_list
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ips_list: #{e}"
 end
@@ -307,7 +308,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**Array&lt;Object&gt;**
 
 ### Authorization
 

@@ -124,7 +124,7 @@ class FloatingIPsApi(baseUrl: String) {
    * Returns all Floating IP services on the account with their current status and assignment details.
    * 
    * Expected answers:
-   *   code 200 :  (The listing of `Floating IPs` services on your account.)
+   *   code 200 : Seq[Any] (The listing of `Floating IPs` services on your account.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    *   code 0 :  (Default response)
    * 
@@ -133,12 +133,12 @@ class FloatingIPsApi(baseUrl: String) {
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getFloatingIpsList()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, baseUrl, "/floating_ips", "application/json")
+  def getFloatingIpsList()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Any]] =
+    ApiRequest[Seq[Any]](ApiMethods.GET, baseUrl, "/floating_ips", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
-      .withSuccessResponse[Unit](200)
+      .withSuccessResponse[Seq[Any]](200)
       .withErrorResponse[GetAccountInfo401Response](401)
       .withDefaultErrorResponse[Unit]
       

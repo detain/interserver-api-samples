@@ -396,7 +396,7 @@ var __lease__was__set := false
 # MAC address associated with the asset.
 # Required: False
 # isArray: false
-@export var mac: AnyType:
+@export var mac: String = "":
 	set(value):
 		__mac__was__set = true
 		mac = value
@@ -405,7 +405,7 @@ var __mac__was__set := false
 # IPMI admin username associated with the asset.
 # Required: False
 # isArray: false
-@export var ipmiUnderscoreadminUnderscoreusername: AnyType:
+@export var ipmiUnderscoreadminUnderscoreusername: String = "":
 	set(value):
 		__ipmiUnderscoreadminUnderscoreusername__was__set = true
 		ipmiUnderscoreadminUnderscoreusername = value
@@ -414,7 +414,7 @@ var __ipmiUnderscoreadminUnderscoreusername__was__set := false
 # IPMI admin password associated with the asset.
 # Required: False
 # isArray: false
-@export var ipmiUnderscoreadminUnderscorepassword: AnyType:
+@export var ipmiUnderscoreadminUnderscorepassword: String = "":
 	set(value):
 		__ipmiUnderscoreadminUnderscorepassword__was__set = true
 		ipmiUnderscoreadminUnderscorepassword = value
@@ -423,7 +423,7 @@ var __ipmiUnderscoreadminUnderscorepassword__was__set := false
 # IPMI client username associated with the asset.
 # Required: False
 # isArray: false
-@export var ipmiUnderscoreclientUnderscoreusername: AnyType:
+@export var ipmiUnderscoreclientUnderscoreusername: String = "":
 	set(value):
 		__ipmiUnderscoreclientUnderscoreusername__was__set = true
 		ipmiUnderscoreclientUnderscoreusername = value
@@ -432,7 +432,7 @@ var __ipmiUnderscoreclientUnderscoreusername__was__set := false
 # IPMI client password associated with the asset.
 # Required: False
 # isArray: false
-@export var ipmiUnderscoreclientUnderscorepassword: AnyType:
+@export var ipmiUnderscoreclientUnderscorepassword: String = "":
 	set(value):
 		__ipmiUnderscoreclientUnderscorepassword__was__set = true
 		ipmiUnderscoreclientUnderscorepassword = value
@@ -441,7 +441,7 @@ var __ipmiUnderscoreclientUnderscorepassword__was__set := false
 # IPMI update status associated with the asset.
 # Required: False
 # isArray: false
-@export var ipmiUnderscoreupdated: AnyType:
+@export var ipmiUnderscoreupdated: String = "":
 	set(value):
 		__ipmiUnderscoreupdated__was__set = true
 		ipmiUnderscoreupdated = value
@@ -450,7 +450,7 @@ var __ipmiUnderscoreupdated__was__set := false
 # Timestamp of asset creation.
 # Required: False
 # isArray: false
-@export var createUnderscoretimestamp: AnyType:
+@export var createUnderscoretimestamp: String = "":
 	set(value):
 		__createUnderscoretimestamp__was__set = true
 		createUnderscoretimestamp = value
@@ -459,7 +459,7 @@ var __createUnderscoretimestamp__was__set := false
 # Timestamp of asset update.
 # Required: False
 # isArray: false
-@export var updateUnderscoretimestamp: AnyType:
+@export var updateUnderscoretimestamp: String = "":
 	set(value):
 		__updateUnderscoretimestamp__was__set = true
 		updateUnderscoretimestamp = value
@@ -468,7 +468,7 @@ var __updateUnderscoretimestamp__was__set := false
 # Comment associated with the asset.
 # Required: False
 # isArray: false
-@export var comment: AnyType:
+@export var comment: String = "":
 	set(value):
 		__comment__was__set = true
 		comment = value

@@ -67,7 +67,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// <param name="serverDedicatedCp">The control panel of the server..</param>
         /// <param name="serverDedicatedRaid">The RAID configuration of the server..</param>
         /// <param name="serverExtra">Additional information about the server..</param>
-        public ServerServiceInfo(string serverId = default(string), string serverHostname = default(string), string serverCustid = default(string), string serverType = default(string), string serverCurrency = default(string), string serverOrderDate = default(string), string serverInvoice = default(string), string serverCoupon = default(string), string serverStatus = default(string), string serverRoot = default(string), string serverDedicatedTag = default(string), string serverCustomTag = default(string), string serverComment = default(string), string serverInitialBill = default(string), string serverHardware = default(string), string serverIps = default(string), string serverMonthlyBill = default(string), string serverSetup = default(string), Object serverDiscount = default(Object), string serverRep = default(string), string serverDate = default(string), string serverTotalCost = default(string), Object serverLocation = default(Object), string serverHardwareOrdered = default(string), string serverBilled = default(string), string serverWelcomeEmail = default(string), string serverDedicatedCpu = default(string), string serverDedicatedMemory = default(string), string serverDedicatedHd1 = default(string), Object serverDedicatedHd2 = default(Object), string serverDedicatedBandwidth = default(string), string serverDedicatedIps = default(string), string serverDedicatedOs = default(string), Object serverDedicatedCp = default(Object), string serverDedicatedRaid = default(string), string serverExtra = default(string))
+        public ServerServiceInfo(string serverId = default(string), string serverHostname = default(string), string serverCustid = default(string), string serverType = default(string), string serverCurrency = default(string), string serverOrderDate = default(string), string serverInvoice = default(string), string serverCoupon = default(string), string serverStatus = default(string), string serverRoot = default(string), string serverDedicatedTag = default(string), string serverCustomTag = default(string), string serverComment = default(string), string serverInitialBill = default(string), string serverHardware = default(string), string serverIps = default(string), string serverMonthlyBill = default(string), string serverSetup = default(string), string serverDiscount = default(string), string serverRep = default(string), string serverDate = default(string), string serverTotalCost = default(string), string serverLocation = default(string), string serverHardwareOrdered = default(string), string serverBilled = default(string), string serverWelcomeEmail = default(string), string serverDedicatedCpu = default(string), string serverDedicatedMemory = default(string), string serverDedicatedHd1 = default(string), string serverDedicatedHd2 = default(string), string serverDedicatedBandwidth = default(string), string serverDedicatedIps = default(string), string serverDedicatedOs = default(string), string serverDedicatedCp = default(string), string serverDedicatedRaid = default(string), string serverExtra = default(string))
         {
             this.server_id = serverId;
             this.server_hostname = serverHostname;
@@ -238,7 +238,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>Discount information for the server.</value>
         [DataMember(Name="server_discount", EmitDefaultValue=false)]
-        public Object server_discount { get; set; }
+        public string server_discount { get; set; }
 
         /// <summary>
         /// The reputation of the server.
@@ -266,7 +266,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>The location of the server.</value>
         [DataMember(Name="server_location", EmitDefaultValue=false)]
-        public Object server_location { get; set; }
+        public string server_location { get; set; }
 
         /// <summary>
         /// The ordered hardware for the server.
@@ -315,7 +315,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>The size of the second dedicated hard drive.</value>
         [DataMember(Name="server_dedicated_hd2", EmitDefaultValue=false)]
-        public Object server_dedicated_hd2 { get; set; }
+        public string server_dedicated_hd2 { get; set; }
 
         /// <summary>
         /// The bandwidth of the server.
@@ -343,7 +343,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>The control panel of the server.</value>
         [DataMember(Name="server_dedicated_cp", EmitDefaultValue=false)]
-        public Object server_dedicated_cp { get; set; }
+        public string server_dedicated_cp { get; set; }
 
         /// <summary>
         /// The RAID configuration of the server.

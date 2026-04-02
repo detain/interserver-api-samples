@@ -33,8 +33,8 @@ Name | Type | Description | Notes
 **qsUnderscorebytesUnderscoresecUnderscoreout** | **string** |  | [optional] [default to null]
 **qsUnderscorepacketsUnderscoresecUnderscorein** | **string** |  | [optional] [default to null]
 **qsUnderscorepacketsUnderscoresecUnderscoreout** | **string** |  | [optional] [default to null]
-**qsUnderscorelastUnderscoreinstallUnderscoretime** | [**AnyType**](.md) |  | [optional] [default to null]
-**qsUnderscorepartitions** | [**AnyType**](.md) |  | [optional] [default to null]
+**qsUnderscorelastUnderscoreinstallUnderscoretime** | **string** |  | [optional] [default to null]
+**qsUnderscorepartitions** | **string** |  | [optional] [default to null]
 **qsUnderscorecpuUnderscoreflags** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

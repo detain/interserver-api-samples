@@ -48,7 +48,7 @@ public class QuickserverServiceInfo   {
  /**
    * IPv6 address (null)  
   **/
-  private Object qsIpv6 = null;
+  private String qsIpv6 = null;
   
   @Schema(example = "qs24355", description = "VZ ID")
  /**
@@ -132,7 +132,7 @@ public class QuickserverServiceInfo   {
  /**
    * VNC port (null)  
   **/
-  private Object qsVncPort = null;
+  private Integer qsVncPort = null;
   
   @Schema(description = "Root password")
  /**
@@ -168,7 +168,7 @@ public class QuickserverServiceInfo   {
  /**
    * Platform (null)  
   **/
-  private Object qsPlatform = null;
+  private String qsPlatform = null;
  /**
    * Quickserver ID
    * @return qsId
@@ -246,15 +246,15 @@ public class QuickserverServiceInfo   {
    * @return qsIpv6
   **/
   @JsonProperty("qs_ipv6")
-  public Object getQsIpv6() {
+  public String getQsIpv6() {
     return qsIpv6;
   }
 
-  public void setQsIpv6(Object qsIpv6) {
+  public void setQsIpv6(String qsIpv6) {
     this.qsIpv6 = qsIpv6;
   }
 
-  public QuickserverServiceInfo qsIpv6(Object qsIpv6) {
+  public QuickserverServiceInfo qsIpv6(String qsIpv6) {
     this.qsIpv6 = qsIpv6;
     return this;
   }
@@ -498,15 +498,15 @@ public class QuickserverServiceInfo   {
    * @return qsVncPort
   **/
   @JsonProperty("qs_vnc_port")
-  public Object getQsVncPort() {
+  public Integer getQsVncPort() {
     return qsVncPort;
   }
 
-  public void setQsVncPort(Object qsVncPort) {
+  public void setQsVncPort(Integer qsVncPort) {
     this.qsVncPort = qsVncPort;
   }
 
-  public QuickserverServiceInfo qsVncPort(Object qsVncPort) {
+  public QuickserverServiceInfo qsVncPort(Integer qsVncPort) {
     this.qsVncPort = qsVncPort;
     return this;
   }
@@ -606,15 +606,15 @@ public class QuickserverServiceInfo   {
    * @return qsPlatform
   **/
   @JsonProperty("qs_platform")
-  public Object getQsPlatform() {
+  public String getQsPlatform() {
     return qsPlatform;
   }
 
-  public void setQsPlatform(Object qsPlatform) {
+  public void setQsPlatform(String qsPlatform) {
     this.qsPlatform = qsPlatform;
   }
 
-  public QuickserverServiceInfo qsPlatform(Object qsPlatform) {
+  public QuickserverServiceInfo qsPlatform(String qsPlatform) {
     this.qsPlatform = qsPlatform;
     return this;
   }

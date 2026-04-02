@@ -36,8 +36,8 @@ Name | Type | Description | Notes
 **qs_bytes_sec_out** | **string** | Bytes/sec out | [optional] [default to undefined]
 **qs_packets_sec_in** | **string** | Packets/sec in | [optional] [default to undefined]
 **qs_packets_sec_out** | **string** | Packets/sec out | [optional] [default to undefined]
-**qs_last_install_time** | **any** | Last install time (null) | [optional] [default to undefined]
-**qs_partitions** | **any** | Partitions information (null) | [optional] [default to undefined]
+**qs_last_install_time** | **string** | Last install time (null) | [optional] [default to undefined]
+**qs_partitions** | **string** | Partitions information (null) | [optional] [default to undefined]
 **qs_cpu_flags** | **string** | CPU flags | [optional] [default to undefined]
 
 ## Example

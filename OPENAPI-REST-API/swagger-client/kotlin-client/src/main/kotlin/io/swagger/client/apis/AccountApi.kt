@@ -109,10 +109,12 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param body  (optional)
      * @return GenericResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun deleteIpLimit(): GenericResponse {
+    fun deleteIpLimit(body: IpLimitRange? = null): GenericResponse {
+        val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
@@ -120,7 +122,7 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
                 "/account/iplimits", query = localVariableQuery
         )
         val response = request<GenericResponse>(
-                localVariableConfig
+                localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {

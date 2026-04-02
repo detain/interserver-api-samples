@@ -55,13 +55,13 @@ public struct ServerOrderCPU: Sendable, Codable, Hashable {
     /** Visibility status. */
     public var visible: String?
     /** Hard drive IDs. */
-    public var hdIds: JSONValue?
+    public var hdIds: String?
     /** Display of CPU price. */
     public var priceDisplay: String?
     /** Display of monthly CPU price. */
     public var monthlyPriceDisplay: String?
 
-    public init(id: String? = nil, price: Int? = nil, img: String? = nil, shortDesc: String? = nil, longDesc: String? = nil, location: String? = nil, fsb: String? = nil, manu: String? = nil, type: String? = nil, speed: String? = nil, cache: String? = nil, active: String? = nil, numCores: String? = nil, numCpus: String? = nil, benchmark: String? = nil, monthlyPrice: Int? = nil, maxRam: String? = nil, minRam: String? = nil, maxLff: String? = nil, maxSff: String? = nil, maxNve: String? = nil, visible: String? = nil, hdIds: JSONValue? = nil, priceDisplay: String? = nil, monthlyPriceDisplay: String? = nil) {
+    public init(id: String? = nil, price: Int? = nil, img: String? = nil, shortDesc: String? = nil, longDesc: String? = nil, location: String? = nil, fsb: String? = nil, manu: String? = nil, type: String? = nil, speed: String? = nil, cache: String? = nil, active: String? = nil, numCores: String? = nil, numCpus: String? = nil, benchmark: String? = nil, monthlyPrice: Int? = nil, maxRam: String? = nil, minRam: String? = nil, maxLff: String? = nil, maxSff: String? = nil, maxNve: String? = nil, visible: String? = nil, hdIds: String? = nil, priceDisplay: String? = nil, monthlyPriceDisplay: String? = nil) {
         self.id = id
         self.price = price
         self.img = img

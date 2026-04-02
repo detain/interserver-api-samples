@@ -18,7 +18,7 @@ public class VpsServiceInfo   {
   @JsonProperty("vps_ip")
   private String vpsIp = null;
   @JsonProperty("vps_ipv6")
-  private Object vpsIpv6 = null;
+  private String vpsIpv6 = null;
   @JsonProperty("vps_vzid")
   private String vpsVzid = null;
   @JsonProperty("vps_currency")
@@ -138,7 +138,7 @@ public class VpsServiceInfo   {
   /**
    * IPv6 address of the VPS
    **/
-  public VpsServiceInfo vpsIpv6(Object vpsIpv6) {
+  public VpsServiceInfo vpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
     return this;
   }
@@ -146,10 +146,10 @@ public class VpsServiceInfo   {
   
   @Schema(description = "IPv6 address of the VPS")
   @JsonProperty("vps_ipv6")
-  public Object getVpsIpv6() {
+  public String getVpsIpv6() {
     return vpsIpv6;
   }
-  public void setVpsIpv6(Object vpsIpv6) {
+  public void setVpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
   }
 

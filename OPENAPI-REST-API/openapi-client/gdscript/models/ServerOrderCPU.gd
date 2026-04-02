@@ -231,7 +231,7 @@ var __visible__was__set := false
 # Hard drive IDs.
 # Required: False
 # isArray: false
-@export var hdUnderscoreids: AnyType:
+@export var hdUnderscoreids: String = "":
 	set(value):
 		__hdUnderscoreids__was__set = true
 		hdUnderscoreids = value

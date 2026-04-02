@@ -107,15 +107,15 @@ case class ServerAsset(
     vlans: Seq[String],
     vlans6: Seq[String],
     lease: ServerLease,
-    mac: Option[AnyType] = None,
-    ipmi_admin_username: Option[AnyType] = None,
-    ipmi_admin_password: Option[AnyType] = None,
-    ipmi_client_username: Option[AnyType] = None,
-    ipmi_client_password: Option[AnyType] = None,
-    ipmi_updated: Option[AnyType] = None,
-    create_timestamp: Option[AnyType] = None,
-    update_timestamp: Option[AnyType] = None,
-    comment: Option[AnyType] = None
+    mac: Option[String] = None,
+    ipmi_admin_username: Option[String] = None,
+    ipmi_admin_password: Option[String] = None,
+    ipmi_client_username: Option[String] = None,
+    ipmi_client_password: Option[String] = None,
+    ipmi_updated: Option[String] = None,
+    create_timestamp: Option[String] = None,
+    update_timestamp: Option[String] = None,
+    comment: Option[String] = None
 )
   
 object ServerAsset {
@@ -214,15 +214,15 @@ object ServerAsset {
       vlans <- c.downField("vlans").as[Seq[String]]
       vlans6 <- c.downField("vlans6").as[Seq[String]]
       lease <- c.downField("lease").as[ServerLease]
-      mac <- c.downField("mac").as[Option[AnyType]]
-      ipmi_admin_username <- c.downField("ipmi_admin_username").as[Option[AnyType]]
-      ipmi_admin_password <- c.downField("ipmi_admin_password").as[Option[AnyType]]
-      ipmi_client_username <- c.downField("ipmi_client_username").as[Option[AnyType]]
-      ipmi_client_password <- c.downField("ipmi_client_password").as[Option[AnyType]]
-      ipmi_updated <- c.downField("ipmi_updated").as[Option[AnyType]]
-      create_timestamp <- c.downField("create_timestamp").as[Option[AnyType]]
-      update_timestamp <- c.downField("update_timestamp").as[Option[AnyType]]
-      comment <- c.downField("comment").as[Option[AnyType]]
+      mac <- c.downField("mac").as[Option[String]]
+      ipmi_admin_username <- c.downField("ipmi_admin_username").as[Option[String]]
+      ipmi_admin_password <- c.downField("ipmi_admin_password").as[Option[String]]
+      ipmi_client_username <- c.downField("ipmi_client_username").as[Option[String]]
+      ipmi_client_password <- c.downField("ipmi_client_password").as[Option[String]]
+      ipmi_updated <- c.downField("ipmi_updated").as[Option[String]]
+      create_timestamp <- c.downField("create_timestamp").as[Option[String]]
+      update_timestamp <- c.downField("update_timestamp").as[Option[String]]
+      comment <- c.downField("comment").as[Option[String]]
     } yield ServerAsset(
       id = id,
       order_id = order_id,

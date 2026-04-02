@@ -18,7 +18,7 @@ public struct VpsServiceInfo: Sendable, Codable, Hashable {
     /** IP address of the VPS */
     public var vpsIp: String?
     /** IPv6 address of the VPS */
-    public var vpsIpv6: JSONValue?
+    public var vpsIpv6: String?
     /** VPS Virtuozzo ID */
     public var vpsVzid: String?
     /** Currency used for billing */
@@ -64,7 +64,7 @@ public struct VpsServiceInfo: Sendable, Codable, Hashable {
     /** Maximum disk space available */
     public var vpsDiskmax: String?
 
-    public init(vpsId: String? = nil, vpsCustid: String? = nil, vpsServer: String? = nil, vpsIp: String? = nil, vpsIpv6: JSONValue? = nil, vpsVzid: String? = nil, vpsCurrency: String? = nil, vpsType: String? = nil, vpsOrderDate: String? = nil, vpsStatus: String? = nil, vpsInvoice: String? = nil, vpsCoupon: String? = nil, vpsExtra: String? = nil, vpsHostname: String? = nil, vpsServerStatus: String? = nil, vpsComment: String? = nil, vpsSlices: String? = nil, vpsVnc: String? = nil, vpsVncPort: String? = nil, vpsRootpass: String? = nil, vpsMac: String? = nil, vpsOs: String? = nil, vpsVersion: String? = nil, vpsLocation: String? = nil, vpsPlatform: String? = nil, vpsDiskused: String? = nil, vpsDiskmax: String? = nil) {
+    public init(vpsId: String? = nil, vpsCustid: String? = nil, vpsServer: String? = nil, vpsIp: String? = nil, vpsIpv6: String? = nil, vpsVzid: String? = nil, vpsCurrency: String? = nil, vpsType: String? = nil, vpsOrderDate: String? = nil, vpsStatus: String? = nil, vpsInvoice: String? = nil, vpsCoupon: String? = nil, vpsExtra: String? = nil, vpsHostname: String? = nil, vpsServerStatus: String? = nil, vpsComment: String? = nil, vpsSlices: String? = nil, vpsVnc: String? = nil, vpsVncPort: String? = nil, vpsRootpass: String? = nil, vpsMac: String? = nil, vpsOs: String? = nil, vpsVersion: String? = nil, vpsLocation: String? = nil, vpsPlatform: String? = nil, vpsDiskused: String? = nil, vpsDiskmax: String? = nil) {
         self.vpsId = vpsId
         self.vpsCustid = vpsCustid
         self.vpsServer = vpsServer

@@ -34,8 +34,8 @@ Name | Type | Description | Notes
 **QsBytesSecOut** | Pointer to **string** | Bytes/sec out | [optional] 
 **QsPacketsSecIn** | Pointer to **string** | Packets/sec in | [optional] 
 **QsPacketsSecOut** | Pointer to **string** | Packets/sec out | [optional] 
-**QsLastInstallTime** | Pointer to **interface{}** | Last install time (null) | [optional] 
-**QsPartitions** | Pointer to **interface{}** | Partitions information (null) | [optional] 
+**QsLastInstallTime** | Pointer to **NullableString** | Last install time (null) | [optional] 
+**QsPartitions** | Pointer to **NullableString** | Partitions information (null) | [optional] 
 **QsCpuFlags** | Pointer to **string** | CPU flags | [optional] 
 
 ## Methods
@@ -809,20 +809,20 @@ HasQsPacketsSecOut returns a boolean if a field has been set.
 
 ### GetQsLastInstallTime
 
-`func (o *QuickserverServiceMaster) GetQsLastInstallTime() interface{}`
+`func (o *QuickserverServiceMaster) GetQsLastInstallTime() string`
 
 GetQsLastInstallTime returns the QsLastInstallTime field if non-nil, zero value otherwise.
 
 ### GetQsLastInstallTimeOk
 
-`func (o *QuickserverServiceMaster) GetQsLastInstallTimeOk() (*interface{}, bool)`
+`func (o *QuickserverServiceMaster) GetQsLastInstallTimeOk() (*string, bool)`
 
 GetQsLastInstallTimeOk returns a tuple with the QsLastInstallTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQsLastInstallTime
 
-`func (o *QuickserverServiceMaster) SetQsLastInstallTime(v interface{})`
+`func (o *QuickserverServiceMaster) SetQsLastInstallTime(v string)`
 
 SetQsLastInstallTime sets QsLastInstallTime field to given value.
 
@@ -844,20 +844,20 @@ HasQsLastInstallTime returns a boolean if a field has been set.
 UnsetQsLastInstallTime ensures that no value is present for QsLastInstallTime, not even an explicit nil
 ### GetQsPartitions
 
-`func (o *QuickserverServiceMaster) GetQsPartitions() interface{}`
+`func (o *QuickserverServiceMaster) GetQsPartitions() string`
 
 GetQsPartitions returns the QsPartitions field if non-nil, zero value otherwise.
 
 ### GetQsPartitionsOk
 
-`func (o *QuickserverServiceMaster) GetQsPartitionsOk() (*interface{}, bool)`
+`func (o *QuickserverServiceMaster) GetQsPartitionsOk() (*string, bool)`
 
 GetQsPartitionsOk returns a tuple with the QsPartitions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQsPartitions
 
-`func (o *QuickserverServiceMaster) SetQsPartitions(v interface{})`
+`func (o *QuickserverServiceMaster) SetQsPartitions(v string)`
 
 SetQsPartitions sets QsPartitions field to given value.
 

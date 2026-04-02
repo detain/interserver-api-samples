@@ -218,7 +218,7 @@ Other parameters are passed through a pointer to a apiDeleteAccountTfaRequest st
 
 ## DeleteIpLimit
 
-> GenericResponse DeleteIpLimit(ctx).Execute()
+> GenericResponse DeleteIpLimit(ctx).IpLimitRange(ipLimitRange).Execute()
 
 Remove IP Access Restriction
 
@@ -237,10 +237,11 @@ import (
 )
 
 func main() {
+	ipLimitRange := *openapiclient.NewIpLimitRange("1.2.3.0", "1.2.3.255") // IpLimitRange |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountAPI.DeleteIpLimit(context.Background()).Execute()
+	resp, r, err := apiClient.AccountAPI.DeleteIpLimit(context.Background()).IpLimitRange(ipLimitRange).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.DeleteIpLimit``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,12 +253,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteIpLimitRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md) |  | 
 
 ### Return type
 

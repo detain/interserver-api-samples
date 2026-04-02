@@ -218,14 +218,14 @@ API.Client.QuickserverServiceMaster.prototype.qsPacketsSecOut;
 
 /**
  * Last install time (null)
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.QuickserverServiceMaster.prototype.qsLastInstallTime;
 
 /**
  * Partitions information (null)
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.QuickserverServiceMaster.prototype.qsPartitions;

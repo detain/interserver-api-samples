@@ -65,35 +65,56 @@ security:
 - sessionIdCookieAuth: []
 tags:
 - name: Public
-  description: Commands usable without an active session or api credentials.
+  description: "Endpoints that do not require authentication. Use these to check API\
+    \ availability, look up reference data (countries, currencies, timezones), and\
+    \ authenticate."
 - name: Account
-  description: Account related items
+  description: "Manage your account profile, contact information, security settings,\
+    \ API keys, SSH keys, two-factor authentication, and IP access restrictions."
 - name: Billing
-  description: Billing related items
+  description: "Invoices, shopping cart, prepay balances, credit cards, and payment\
+    \ processing. Use `/pay/{method}/{invoices}` to complete payment for outstanding\
+    \ invoices."
 - name: Backups
-  description: Backup related services
+  description: "Cloud backup storage services. Order, view, and manage backup storage\
+    \ quotas and credentials."
 - name: DNS
-  description: DNS related items
+  description: "Manage DNS domains and records hosted on InterServer's nameservers.\
+    \ Create domains, add/update/delete A, AAAA, CNAME, MX, TXT, and other record\
+    \ types."
 - name: Domains
-  description: Domain Registration related services
+  description: "Domain registration, transfers, renewals, WHOIS, nameserver management,\
+    \ and DNSSEC configuration."
 - name: Floating_IPs
-  description: Floating IP related items
+  description: Floating IP services that provide portable IP addresses which can be
+    reassigned between servers for high availability and failover.
 - name: Licenses
-  description: Licensing related services
+  description: "Software license provisioning for control panels (cPanel, Plesk, DirectAdmin)\
+    \ and other licensed software. Order, manage, and change IP assignments."
 - name: Mail
-  description: Mail related items
+  description: "Mail Baby email delivery services. Order, manage, view logs, configure\
+    \ alerts and deny rules, and monitor deliverability."
 - name: QuickServers
-  description: Rapid Deploy Servers related services
+  description: "Rapid Deploy Servers (QuickServers) — pre-configured dedicated servers\
+    \ available for fast provisioning with OS reinstall, backup, and VNC capabilities."
 - name: Servers
-  description: Dedicated Servers related services
+  description: "Dedicated server ordering and management. Configure custom hardware,\
+    \ view IPMI information, and manage server lifecycle."
 - name: SSL-Certificates
-  description: SSL Certificates related services
+  description: "SSL/TLS certificate provisioning and management. Order, renew, and\
+    \ manage certificates for securing your domains."
 - name: VPS
-  description: VPS related services
+  description: "Virtual Private Server management. Order, configure, backup, restore,\
+    \ reinstall, and control VPS instances with full root access."
 - name: Webhosting
-  description: Webhosting related services
+  description: "Shared and reseller web hosting packages. Order, manage, and access\
+    \ hosting control panels, backups, and reverse DNS."
 - name: Tickets
-  description: Support Request System
+  description: "Support ticket system. Create new tickets, reply to existing ones,\
+    \ view ticket history, and close resolved issues."
+- name: Scrub Ips
+  description: "DDoS protection and IP scrubbing services. Manage protected IPs, configure\
+    \ firewall rules, geographic filters, and view traffic logs."
 paths:
   /account:
     summary: User Account Information and Management
@@ -146,6 +167,13 @@ paths:
               $ref: "#/components/schemas/AccountInfoPost"
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
@@ -165,8 +193,6 @@ paths:
                 MissingRequiredFields:
                   value:
                     message: "fname, lname cannot be empty!"
-        default:
-          description: Default response
   /account/2fa:
     get:
       tags:
@@ -325,14 +351,21 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: Simple string response
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                StringResponseExample:
+                  value: '"You were successfull."'
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Billing
@@ -351,14 +384,21 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: Simple string response
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                StringResponseExample:
+                  value: '"You were successfull."'
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /account/features:
     post:
       tags:
@@ -432,6 +472,13 @@ paths:
                   end: 1.2.3.255
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
@@ -448,8 +495,6 @@ paths:
                 InvalidIp:
                   value:
                     message: Invalid IP Address
-        default:
-          description: Default response
     patch:
       tags:
       - Account
@@ -460,7 +505,9 @@ paths:
       operationId: deleteIpLimit
       requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IpLimitRange"
       responses:
         "200":
           description: IP Range removed.
@@ -1115,14 +1162,19 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Backups
@@ -1261,14 +1313,19 @@ paths:
         \ before directing the user to `/pay/{method}/{invoices}`."
       operationId: getBillingCart
       responses:
+        "200":
+          description: Current shopping cart contents and available payment methods.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Cart contents and checkout metadata.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /billing/prepays:
     get:
       tags:
@@ -1279,14 +1336,19 @@ paths:
         as a payment method.
       operationId: getBillingPrePays
       responses:
+        "200":
+          description: Prepay balances and metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Prepay balance data.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     post:
       tags:
       - Billing
@@ -1798,19 +1860,19 @@ paths:
                   ip: 1.2.3.4
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
-          links:
-            GetNewDnsDomain:
-              operationId: getDnsDomain
-              description: "After creating the domain, use the returned domain ID\
-                \ with GET /dns/{id} to view its records."
   /dns/{id}:
     summary: DNS Domain Management
     description: View and manage a domain and the records for it.
@@ -1952,14 +2014,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /dns/{domainId}/{recordId}:
     summary: DNS Record Management
     description: Manage a DNS Record for the given Domain.
@@ -2001,14 +2068,19 @@ paths:
               $ref: "#/components/schemas/DnsUpdateRecord"
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - DNS
@@ -2037,14 +2109,19 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /domains:
     get:
       tags:
@@ -2231,14 +2308,26 @@ paths:
         \ populate the required domain fields before submitting the order."
       operationId: addDomain
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     patch:
       tags:
       - Domains
@@ -2390,14 +2479,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Domains
@@ -2880,7 +2974,11 @@ paths:
         "200":
           description: The listing of `Floating IPs` services on your account.
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
           links:
             getFloatingIpInfo:
               operationId: getFloatingIpInfo
@@ -2903,14 +3001,19 @@ paths:
         IP.
       operationId: getNewFloatingIp
       responses:
+        "200":
+          description: Available options and pricing for ordering a Floating IP.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Floating IP ordering options and pricing.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     put:
       tags:
       - Floating_IPs
@@ -2935,14 +3038,26 @@ paths:
         to validate the order first.
       operationId: addFloatingIp
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /floating_ips/{id}:
     get:
       tags:
@@ -2961,14 +3076,19 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: Detailed Floating IP service information.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Floating IP service details.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     post:
       tags:
       - Floating_IPs
@@ -2986,14 +3106,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Floating_IPs
@@ -3330,14 +3455,26 @@ paths:
         to validate the order first.
       operationId: addLicense
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /licenses/order/{catTag}:
     get:
       tags:
@@ -3423,14 +3560,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Licenses
@@ -3915,14 +4057,26 @@ paths:
         \ payment."
       operationId: addMail
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /mail/{id}:
     get:
       tags:
@@ -3986,14 +4140,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Mail
@@ -4584,14 +4743,26 @@ paths:
         \ to complete payment."
       operationId: addQs
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /qs/{id}:
     get:
       tags:
@@ -4680,14 +4851,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - QuickServers
@@ -6501,14 +6677,30 @@ paths:
         to validate the order first.
       operationId: addServer
       responses:
+        "200":
+          description: Server order placed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_19"
+          links:
+            GetServerInvoice:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/invoice
+              description: Use the invoice ID to view invoice details or proceed to
+                payment.
+            ViewNewServer:
+              operationId: getServerInfo
+              parameters:
+                id: $response.body#/order
+              description: Use the order ID to view the newly created server.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /servers/{id}:
     get:
       tags:
@@ -6566,14 +6758,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Servers
@@ -6596,7 +6793,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_19"
+                $ref: "#/components/schemas/inline_response_200_20"
         "401":
           description: Unauthorized
           content:
@@ -6835,14 +7032,19 @@ paths:
       description: Retrieves available SSL certificate types and pricing for ordering.
       operationId: getNewSsl
       responses:
+        "200":
+          description: Available SSL certificate types and pricing for ordering.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: SSL certificate types and pricing.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     put:
       tags:
       - SSL-Certificates
@@ -6866,14 +7068,26 @@ paths:
         to validate the order first.
       operationId: addSsl
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /ssl/{id}:
     get:
       tags:
@@ -6892,14 +7106,19 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: Detailed SSL certificate information.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: SSL certificate service details.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     post:
       tags:
       - SSL-Certificates
@@ -6916,14 +7135,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - SSL-Certificates
@@ -6946,7 +7170,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_20"
+                $ref: "#/components/schemas/inline_response_200_21"
         "401":
           description: Unauthorized
           content:
@@ -7154,11 +7378,18 @@ paths:
         required: true
       responses:
         "200":
-          description: A successful response after creating a ticket
+          description: A successful response after creating a ticket.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/TicketNewResponse"
+          links:
+            ViewCreatedTicket:
+              operationId: getTicketInfo
+              parameters:
+                id: $response.body#/ticket_id
+              description: Use the ticket ID from the response to view the newly created
+                ticket details.
         "400":
           description: A successful response after creating a ticket
           content:
@@ -7499,14 +7730,26 @@ paths:
             schema:
               $ref: "#/components/schemas/VpsOrderPostRequest"
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /vps/{id}:
     get:
       tags:
@@ -7594,14 +7837,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - VPS
@@ -7624,7 +7872,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_21"
+                $ref: "#/components/schemas/inline_response_200_22"
         "401":
           description: Unauthorized
           content:
@@ -8832,14 +9080,26 @@ paths:
         to validate the order first.
       operationId: addWebsite
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
   /websites/{id}:
     get:
       tags:
@@ -8907,14 +9167,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
     delete:
       tags:
       - Webhosting
@@ -8941,7 +9206,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_22"
+                $ref: "#/components/schemas/inline_response_200_23"
         "401":
           description: Unauthorized
           content:
@@ -8973,7 +9238,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_23"
+                $ref: "#/components/schemas/inline_response_200_24"
         "401":
           description: Unauthorized
           content:
@@ -9011,7 +9276,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_24"
+                $ref: "#/components/schemas/inline_response_200_25"
         "401":
           description: Unauthorized
           content:
@@ -9142,7 +9407,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_25"
+                $ref: "#/components/schemas/inline_response_200_26"
         "401":
           description: Unauthorized
           content:
@@ -10171,7 +10436,7 @@ paths:
       - name: messageId
         in: query
         description: Filter by the `Message-ID` email header using a substring (case-insensitive)
-          match.  The `Message-ID` is assigned by the sending mail client and is visible
+          match. The `Message-ID` is assigned by the sending mail client and is visible
           in the `messageId` field of `MailLogEntry`.
         required: false
         style: form
@@ -10262,7 +10527,7 @@ paths:
         in: query
         description: Latest date to include.  Accepts either a Unix timestamp (integer
           seconds since epoch) or a date string parseable by `strtotime()` such as
-          `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or
+          `2024-01-31` or `yesterday`. Messages with a `time` value **less than or
           equal to** this value will be included.
         required: false
         style: form
@@ -10350,7 +10615,7 @@ paths:
                       recipient: client@isp.com
                       domain: interserver.net
                       locked: 1
-                      lockTime: 1634215818533
+                      lockTime: "1634215818533"
                       assigned: relay1
                       queued: 2021-10-14T12:50:15.487Z
                       mxHostname: mx.j.is.cc
@@ -10382,11 +10647,18 @@ paths:
                       recipient: client@isp.com
                       domain: interserver.net
                       locked: 1
-                      lockTime: 1634215818533
+                      lockTime: "1634215818533"
                       assigned: relay1
                       queued: 2021-10-14T12:50:15.487Z
                       mxHostname: mx.j.is.cc
                       response: 250 2.0.0 Ok queued as C91D83E128C
+          links:
+            delistSenderBlock:
+              operationId: delistBlock
+              parameters:
+                email: $response.body#/emails/0/from
+              description: A `from` address returned in the log can be passed as `email`
+                to `POST /mail/blocks/delete` to remove a block on that sender.
         "400":
           description: bad input parameter
   /vps/{id}/restore:
@@ -10647,7 +10919,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_26"
+                $ref: "#/components/schemas/inline_response_200_27"
         "401":
           description: Unauthorized
           content:
@@ -10656,7 +10928,7 @@ paths:
                 $ref: "#/components/schemas/inline_response_401"
     post:
       tags:
-      - servers
+      - Servers
       summary: Place Buy Now Server Order
       description: Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server`
         to retrieve available server configurations and their IDs before ordering.
@@ -15712,7 +15984,9 @@ components:
           description: IP address
           example: ""
         qs_ipv6:
+          type: string
           description: IPv6 address (null)
+          nullable: true
         qs_vzid:
           type: string
           description: VZ ID
@@ -15766,7 +16040,9 @@ components:
           description: VNC information
           example: 99.88.77.66
         qs_vnc_port:
+          type: integer
           description: VNC port (null)
+          nullable: true
         qs_rootpass:
           type: string
           description: Root password
@@ -15788,7 +16064,9 @@ components:
           description: Location
           example: "1"
         qs_platform:
+          type: string
           description: Platform (null)
+          nullable: true
       description: "Core service record for a QuickServer including ID, status, IP,\
         \ OS, and billing details."
     QuickserverServiceMaster:
@@ -15915,9 +16193,13 @@ components:
           description: Packets/sec out
           example: "0"
         qs_last_install_time:
+          type: string
           description: Last install time (null)
+          nullable: true
         qs_partitions:
+          type: string
           description: Partitions information (null)
+          nullable: true
         qs_cpu_flags:
           type: string
           description: CPU flags
@@ -16090,6 +16372,7 @@ components:
           description: Primary IPv6 address of the asset.
           example: ""
         mac:
+          type: string
           description: MAC address associated with the asset.
         datacenter:
           type: string
@@ -16136,14 +16419,19 @@ components:
           description: IPMI IP address associated with the asset.
           example: 10.8.69.7
         ipmi_admin_username:
+          type: string
           description: IPMI admin username associated with the asset.
         ipmi_admin_password:
+          type: string
           description: IPMI admin password associated with the asset.
         ipmi_client_username:
+          type: string
           description: IPMI client username associated with the asset.
         ipmi_client_password:
+          type: string
           description: IPMI client password associated with the asset.
         ipmi_updated:
+          type: string
           description: IPMI update status associated with the asset.
         ipmi_working:
           type: string
@@ -16186,8 +16474,10 @@ components:
           description: Overdue status of the asset.
           example: "0"
         create_timestamp:
+          type: string
           description: Timestamp of asset creation.
         update_timestamp:
+          type: string
           description: Timestamp of asset update.
         asset_id:
           type: string
@@ -16222,6 +16512,7 @@ components:
           description: Y-coordinate of the asset within the rack.
           example: "5"
         comment:
+          type: string
           description: Comment associated with the asset.
         switchports:
           type: array
@@ -16578,6 +16869,7 @@ components:
           description: Visibility status.
           example: "yes"
         hd_ids:
+          type: string
           description: Hard drive IDs.
         price_display:
           type: string
@@ -17025,6 +17317,7 @@ components:
           description: The setup status of the server.
           example: "0"
         server_discount:
+          type: string
           description: Discount information for the server.
         server_rep:
           type: string
@@ -17039,6 +17332,7 @@ components:
           description: The total cost of the server.
           example: "230"
         server_location:
+          type: string
           description: The location of the server.
         server_hardware_ordered:
           type: string
@@ -17065,6 +17359,7 @@ components:
           description: The size of the first dedicated hard drive.
           example: "20"
         server_dedicated_hd2:
+          type: string
           description: The size of the second dedicated hard drive.
         server_dedicated_bandwidth:
           type: string
@@ -17079,6 +17374,7 @@ components:
           description: The operating system of the server.
           example: "30"
         server_dedicated_cp:
+          type: string
           description: The control panel of the server.
         server_dedicated_raid:
           type: string
@@ -17168,7 +17464,7 @@ components:
           example: OpenVZ VPS Slice
         services_cost:
           type: number
-          example: 6.0
+          example: 6
         services_currency:
           type: string
           example: USD
@@ -18253,6 +18549,7 @@ components:
           description: IP address of the VPS
           example: 1.2.3.4
         vps_ipv6:
+          type: string
           description: IPv6 address of the VPS
         vps_vzid:
           type: string
@@ -19516,10 +19813,13 @@ components:
           description: The module of the service.
           example: webhosting
         services_html:
+          type: string
           description: HTML content for the service.
         services_description:
+          type: string
           description: Description of the service.
         services_moreinfo_url:
+          type: string
           description: URL for more information about the service.
         services_hidden:
           type: string
@@ -20295,6 +20595,54 @@ components:
           AMT1: "3.00"
           QTY1: 1
           CURRENCY: USD
+    ServiceOrderPostResponse:
+      title: ServiceOrderPostResponse
+      type: object
+      properties:
+        continue:
+          type: boolean
+          description: Whether the order was accepted and can proceed to payment.
+        errors:
+          type: array
+          description: List of validation errors (empty on success).
+          items:
+            type: string
+        total_cost:
+          type: string
+          description: Total cost of the order.
+        iid:
+          type: string
+          description: Primary invoice ID for payment.
+        iids:
+          type: array
+          description: All invoice identifiers associated with the order.
+          items:
+            type: string
+        real_iids:
+          type: array
+          description: Numeric invoice IDs for use with billing endpoints.
+          items:
+            type: string
+        serviceId:
+          type: integer
+          description: The new service ID created by the order.
+          format: int32
+        invoice_description:
+          type: string
+          description: Human-readable description of the invoice.
+      description: Generic response returned after placing a service order. Contains
+        invoice IDs for payment and the new service ID.
+      example:
+        continue: true
+        errors: []
+        total_cost: "5.00"
+        iid: "25296600"
+        iids:
+        - SERVICE12345
+        real_iids:
+        - "25296600"
+        serviceId: 12345
+        invoice_description: New Service Order
     ServerIpmiLiveInfo:
       title: Root Type for ServerIpmiLiveInfo
       type: object
@@ -20309,7 +20657,7 @@ components:
           type: string
         client_password:
           type: string
-      description: Information about the IPMI connectioj.
+      description: Information about the IPMI connection.
       example:
         text: Setup Complete
         public_ip: 1.2.3.4
@@ -20888,6 +21236,7 @@ components:
         message: Ticket is updated!
     ReplyTicketRequest:
       title: Post reply
+      type: object
       properties:
         content:
           type: string
@@ -20929,8 +21278,9 @@ components:
           default: 80
         source_ip:
           type: string
+          description: Source IP address to match. Use '0.0.0.0' to match any source.
           example: 1.2.4.5
-          default: "0"
+          default: 0.0.0.0
         source_port:
           type: integer
           example: 1302
@@ -21747,18 +22097,18 @@ components:
         order_details:
           $ref: "#/components/schemas/inline_response_201_2_order_details"
     inline_response_200_19:
-      required:
-      - success
-      - text
       type: object
       properties:
-        success:
-          type: boolean
         text:
           type: string
-      example:
-        success: true
-        text: Servers is canceled.
+          description: Status message.
+          example: Order Completed
+        invoice:
+          type: integer
+          description: Invoice ID for payment.
+        order:
+          type: integer
+          description: Server order ID.
     inline_response_200_20:
       required:
       - success
@@ -21771,8 +22121,21 @@ components:
           type: string
       example:
         success: true
-        text: SSL is canceled.
+        text: Servers is canceled.
     inline_response_200_21:
+      required:
+      - success
+      - text
+      type: object
+      properties:
+        success:
+          type: boolean
+        text:
+          type: string
+      example:
+        success: true
+        text: SSL is canceled.
+    inline_response_200_22:
       required:
       - success
       - text
@@ -21801,7 +22164,7 @@ components:
         file:
           type: string
           description: The backup filename to download.
-    inline_response_200_22:
+    inline_response_200_23:
       required:
       - success
       - text
@@ -21814,7 +22177,7 @@ components:
       example:
         success: true
         text: Website is canceled.
-    inline_response_200_23:
+    inline_response_200_24:
       type: object
       properties:
         ips:
@@ -21838,7 +22201,7 @@ components:
           additionalProperties:
             type: string
           description: A map of IP addresses to their desired reverse DNS hostnames.
-    inline_response_200_24:
+    inline_response_200_25:
       type: object
       properties:
         message:
@@ -21916,7 +22279,7 @@ components:
           type: string
         domainRegPassword:
           type: string
-    inline_response_200_25:
+    inline_response_200_26:
       type: object
       properties:
         text:
@@ -21940,28 +22303,29 @@ components:
         type: integer
         format: int64
       - type: string
-    inline_response_200_26:
+    inline_response_200_27:
+      type: object
       properties:
         bandwidth:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_bandwidth"
+            $ref: "#/components/schemas/inline_response_200_27_bandwidth"
         ips:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_ips"
+            $ref: "#/components/schemas/inline_response_200_27_ips"
         os:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_os"
+            $ref: "#/components/schemas/inline_response_200_27_os"
         cp:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_cp"
+            $ref: "#/components/schemas/inline_response_200_27_cp"
         raid:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_raid"
+            $ref: "#/components/schemas/inline_response_200_27_raid"
     order_buy_now_server_body:
       type: object
       properties:
@@ -22974,7 +23338,7 @@ components:
           example: Scrub + Current Ip
         cj_params:
           $ref: "#/components/schemas/inline_response_201_2_order_details_cj_params"
-    inline_response_200_26_bandwidth:
+    inline_response_200_27_bandwidth:
       type: object
       properties:
         id:
@@ -22989,7 +23353,7 @@ components:
         monthly_price:
           type: string
           example: "0"
-    inline_response_200_26_ips:
+    inline_response_200_27_ips:
       type: object
       properties:
         id:
@@ -23004,7 +23368,7 @@ components:
         monthly_price:
           type: string
           example: "0"
-    inline_response_200_26_os:
+    inline_response_200_27_os:
       type: object
       properties:
         id:
@@ -23019,7 +23383,7 @@ components:
         monthly_price:
           type: string
           example: "0"
-    inline_response_200_26_cp:
+    inline_response_200_27_cp:
       type: object
       properties:
         id:
@@ -23037,7 +23401,7 @@ components:
         monthly_price:
           type: string
           example: "0"
-    inline_response_200_26_raid:
+    inline_response_200_27_raid:
       type: object
       properties:
         id:
@@ -23129,6 +23493,20 @@ components:
           examples:
             StringResponseExample:
               value: '"You were successfull."'
+    ServiceOrderPostResponse:
+      description: "Order placed successfully. Use the invoice ID to proceed to payment\
+        \ via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ServiceOrderPostResponse"
+      links:
+        InitiatePayment:
+          operationId: getBillingInvoice
+          parameters:
+            id: $response.body#/iid
+          description: Use the invoice ID from the order response to retrieve invoice
+            details or proceed to payment.
     QueueResponse:
       description: Response message from sending a service queue.
       content:
@@ -23223,13 +23601,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_22"
+            $ref: "#/components/schemas/inline_response_200_23"
     VPSCancelResponse:
       description: VPS Cancel
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_21"
+            $ref: "#/components/schemas/inline_response_200_22"
     DomainsCancelResponse:
       description: Domains Cancel
       content:
@@ -23259,7 +23637,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_20"
+            $ref: "#/components/schemas/inline_response_200_21"
     FloatingIpsCancelResponse:
       description: Floating Ip Cancel
       content:
@@ -23277,7 +23655,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_19"
+            $ref: "#/components/schemas/inline_response_200_20"
     LoginSuccessResponse:
       description: Successful login response containing the session token.
       content:

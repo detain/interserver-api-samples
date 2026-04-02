@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **floating_ips_list**
-> floating_ips_list 
+> floating_ips_list : detachable LIST [ANY]
 
 
 List Floating IPs
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**LIST [ANY]**](ANY.md)
 
 ### Authorization
 

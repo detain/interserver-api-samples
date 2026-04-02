@@ -45,7 +45,7 @@ public struct ServerServiceInfo: Codable {
     /// The setup status of the server.
     public var serverSetup: String?
     /// Discount information for the server.
-    public var serverDiscount: Any?
+    public var serverDiscount: String?
     /// The reputation of the server.
     public var serverRep: String?
     /// The date related to the server.
@@ -53,7 +53,7 @@ public struct ServerServiceInfo: Codable {
     /// The total cost of the server.
     public var serverTotalCost: String?
     /// The location of the server.
-    public var serverLocation: Any?
+    public var serverLocation: String?
     /// The ordered hardware for the server.
     public var serverHardwareOrdered: String?
     /// The billed amount for the server.
@@ -67,7 +67,7 @@ public struct ServerServiceInfo: Codable {
     /// The size of the first dedicated hard drive.
     public var serverDedicatedHd1: String?
     /// The size of the second dedicated hard drive.
-    public var serverDedicatedHd2: Any?
+    public var serverDedicatedHd2: String?
     /// The bandwidth of the server.
     public var serverDedicatedBandwidth: String?
     /// The number of dedicated IPs for the server.
@@ -75,13 +75,13 @@ public struct ServerServiceInfo: Codable {
     /// The operating system of the server.
     public var serverDedicatedOs: String?
     /// The control panel of the server.
-    public var serverDedicatedCp: Any?
+    public var serverDedicatedCp: String?
     /// The RAID configuration of the server.
     public var serverDedicatedRaid: String?
     /// Additional information about the server.
     public var serverExtra: String?
 
-    public init(serverId: String? = nil, serverHostname: String? = nil, serverCustid: String? = nil, serverType: String? = nil, serverCurrency: String? = nil, serverOrderDate: String? = nil, serverInvoice: String? = nil, serverCoupon: String? = nil, serverStatus: String? = nil, serverRoot: String? = nil, serverDedicatedTag: String? = nil, serverCustomTag: String? = nil, serverComment: String? = nil, serverInitialBill: String? = nil, serverHardware: String? = nil, serverIps: String? = nil, serverMonthlyBill: String? = nil, serverSetup: String? = nil, serverDiscount: Any? = nil, serverRep: String? = nil, serverDate: String? = nil, serverTotalCost: String? = nil, serverLocation: Any? = nil, serverHardwareOrdered: String? = nil, serverBilled: String? = nil, serverWelcomeEmail: String? = nil, serverDedicatedCpu: String? = nil, serverDedicatedMemory: String? = nil, serverDedicatedHd1: String? = nil, serverDedicatedHd2: Any? = nil, serverDedicatedBandwidth: String? = nil, serverDedicatedIps: String? = nil, serverDedicatedOs: String? = nil, serverDedicatedCp: Any? = nil, serverDedicatedRaid: String? = nil, serverExtra: String? = nil) {
+    public init(serverId: String? = nil, serverHostname: String? = nil, serverCustid: String? = nil, serverType: String? = nil, serverCurrency: String? = nil, serverOrderDate: String? = nil, serverInvoice: String? = nil, serverCoupon: String? = nil, serverStatus: String? = nil, serverRoot: String? = nil, serverDedicatedTag: String? = nil, serverCustomTag: String? = nil, serverComment: String? = nil, serverInitialBill: String? = nil, serverHardware: String? = nil, serverIps: String? = nil, serverMonthlyBill: String? = nil, serverSetup: String? = nil, serverDiscount: String? = nil, serverRep: String? = nil, serverDate: String? = nil, serverTotalCost: String? = nil, serverLocation: String? = nil, serverHardwareOrdered: String? = nil, serverBilled: String? = nil, serverWelcomeEmail: String? = nil, serverDedicatedCpu: String? = nil, serverDedicatedMemory: String? = nil, serverDedicatedHd1: String? = nil, serverDedicatedHd2: String? = nil, serverDedicatedBandwidth: String? = nil, serverDedicatedIps: String? = nil, serverDedicatedOs: String? = nil, serverDedicatedCp: String? = nil, serverDedicatedRaid: String? = nil, serverExtra: String? = nil) {
         self.serverId = serverId
         self.serverHostname = serverHostname
         self.serverCustid = serverCustid
@@ -179,22 +179,22 @@ public struct ServerServiceInfo: Codable {
         serverIps = try container.decodeIfPresent(String.self, forKey: .serverIps)
         serverMonthlyBill = try container.decodeIfPresent(String.self, forKey: .serverMonthlyBill)
         serverSetup = try container.decodeIfPresent(String.self, forKey: .serverSetup)
-        serverDiscount = try container.decodeIfPresent(Any.self, forKey: .serverDiscount)
+        serverDiscount = try container.decodeIfPresent(String.self, forKey: .serverDiscount)
         serverRep = try container.decodeIfPresent(String.self, forKey: .serverRep)
         serverDate = try container.decodeIfPresent(String.self, forKey: .serverDate)
         serverTotalCost = try container.decodeIfPresent(String.self, forKey: .serverTotalCost)
-        serverLocation = try container.decodeIfPresent(Any.self, forKey: .serverLocation)
+        serverLocation = try container.decodeIfPresent(String.self, forKey: .serverLocation)
         serverHardwareOrdered = try container.decodeIfPresent(String.self, forKey: .serverHardwareOrdered)
         serverBilled = try container.decodeIfPresent(String.self, forKey: .serverBilled)
         serverWelcomeEmail = try container.decodeIfPresent(String.self, forKey: .serverWelcomeEmail)
         serverDedicatedCpu = try container.decodeIfPresent(String.self, forKey: .serverDedicatedCpu)
         serverDedicatedMemory = try container.decodeIfPresent(String.self, forKey: .serverDedicatedMemory)
         serverDedicatedHd1 = try container.decodeIfPresent(String.self, forKey: .serverDedicatedHd1)
-        serverDedicatedHd2 = try container.decodeIfPresent(Any.self, forKey: .serverDedicatedHd2)
+        serverDedicatedHd2 = try container.decodeIfPresent(String.self, forKey: .serverDedicatedHd2)
         serverDedicatedBandwidth = try container.decodeIfPresent(String.self, forKey: .serverDedicatedBandwidth)
         serverDedicatedIps = try container.decodeIfPresent(String.self, forKey: .serverDedicatedIps)
         serverDedicatedOs = try container.decodeIfPresent(String.self, forKey: .serverDedicatedOs)
-        serverDedicatedCp = try container.decodeIfPresent(Any.self, forKey: .serverDedicatedCp)
+        serverDedicatedCp = try container.decodeIfPresent(String.self, forKey: .serverDedicatedCp)
         serverDedicatedRaid = try container.decodeIfPresent(String.self, forKey: .serverDedicatedRaid)
         serverExtra = try container.decodeIfPresent(String.self, forKey: .serverExtra)
     }
@@ -219,30 +219,22 @@ public struct ServerServiceInfo: Codable {
         try container.encodeIfPresent(serverIps, forKey: .serverIps)
         try container.encodeIfPresent(serverMonthlyBill, forKey: .serverMonthlyBill)
         try container.encodeIfPresent(serverSetup, forKey: .serverSetup)
-        if let serverDiscount = serverDiscount {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: serverDiscount), forKey: .serverDiscount)
-        }
+        try container.encodeIfPresent(serverDiscount, forKey: .serverDiscount)
         try container.encodeIfPresent(serverRep, forKey: .serverRep)
         try container.encodeIfPresent(serverDate, forKey: .serverDate)
         try container.encodeIfPresent(serverTotalCost, forKey: .serverTotalCost)
-        if let serverLocation = serverLocation {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: serverLocation), forKey: .serverLocation)
-        }
+        try container.encodeIfPresent(serverLocation, forKey: .serverLocation)
         try container.encodeIfPresent(serverHardwareOrdered, forKey: .serverHardwareOrdered)
         try container.encodeIfPresent(serverBilled, forKey: .serverBilled)
         try container.encodeIfPresent(serverWelcomeEmail, forKey: .serverWelcomeEmail)
         try container.encodeIfPresent(serverDedicatedCpu, forKey: .serverDedicatedCpu)
         try container.encodeIfPresent(serverDedicatedMemory, forKey: .serverDedicatedMemory)
         try container.encodeIfPresent(serverDedicatedHd1, forKey: .serverDedicatedHd1)
-        if let serverDedicatedHd2 = serverDedicatedHd2 {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: serverDedicatedHd2), forKey: .serverDedicatedHd2)
-        }
+        try container.encodeIfPresent(serverDedicatedHd2, forKey: .serverDedicatedHd2)
         try container.encodeIfPresent(serverDedicatedBandwidth, forKey: .serverDedicatedBandwidth)
         try container.encodeIfPresent(serverDedicatedIps, forKey: .serverDedicatedIps)
         try container.encodeIfPresent(serverDedicatedOs, forKey: .serverDedicatedOs)
-        if let serverDedicatedCp = serverDedicatedCp {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: serverDedicatedCp), forKey: .serverDedicatedCp)
-        }
+        try container.encodeIfPresent(serverDedicatedCp, forKey: .serverDedicatedCp)
         try container.encodeIfPresent(serverDedicatedRaid, forKey: .serverDedicatedRaid)
         try container.encodeIfPresent(serverExtra, forKey: .serverExtra)
     }

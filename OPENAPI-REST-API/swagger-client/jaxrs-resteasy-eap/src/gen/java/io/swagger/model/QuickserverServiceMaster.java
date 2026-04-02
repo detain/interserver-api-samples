@@ -42,8 +42,8 @@ public class QuickserverServiceMaster   {
   private String qsBytesSecOut = null;
   private String qsPacketsSecIn = null;
   private String qsPacketsSecOut = null;
-  private Object qsLastInstallTime = null;
-  private Object qsPartitions = null;
+  private String qsLastInstallTime = null;
+  private String qsPartitions = null;
   private String qsCpuFlags = null;
 
   /**
@@ -472,11 +472,10 @@ public class QuickserverServiceMaster   {
   
   @Schema(description = "Last install time (null)")
   @JsonProperty("qs_last_install_time")
-  @NotNull
-  public Object getQsLastInstallTime() {
+  public String getQsLastInstallTime() {
     return qsLastInstallTime;
   }
-  public void setQsLastInstallTime(Object qsLastInstallTime) {
+  public void setQsLastInstallTime(String qsLastInstallTime) {
     this.qsLastInstallTime = qsLastInstallTime;
   }
 
@@ -486,11 +485,10 @@ public class QuickserverServiceMaster   {
   
   @Schema(description = "Partitions information (null)")
   @JsonProperty("qs_partitions")
-  @NotNull
-  public Object getQsPartitions() {
+  public String getQsPartitions() {
     return qsPartitions;
   }
-  public void setQsPartitions(Object qsPartitions) {
+  public void setQsPartitions(String qsPartitions) {
     this.qsPartitions = qsPartitions;
   }
 

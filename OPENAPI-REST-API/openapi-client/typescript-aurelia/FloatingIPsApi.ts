@@ -237,7 +237,7 @@ export class FloatingIPsApi extends Api {
    * List Floating IPs
    * Returns all Floating IP services on the account with their current status and assignment details.
    */
-  async getFloatingIpsList(): Promise<any> {
+  async getFloatingIpsList(): Promise<Array<object>> {
     // Verify required parameters are set
 
     // Create URL to call

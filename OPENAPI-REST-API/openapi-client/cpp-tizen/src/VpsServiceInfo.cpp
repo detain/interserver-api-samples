@@ -27,7 +27,7 @@ VpsServiceInfo::__init()
 	//vps_custid = std::string();
 	//vps_server = std::string();
 	//vps_ip = std::string();
-	//vps_ipv6 = null;
+	//vps_ipv6 = std::string();
 	//vps_vzid = std::string();
 	//vps_currency = std::string();
 	//vps_type = std::string();
@@ -247,12 +247,9 @@ VpsServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&vps_ipv6, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&vps_ipv6, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&vps_ipv6);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -546,16 +543,11 @@ VpsServiceInfo::toJson()
 	}
 	const gchar *vps_ipKey = "vps_ip";
 	json_object_set_member(pJsonObject, vps_ipKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getVpsIpv6();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getVpsIpv6();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getVpsIpv6());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *vps_ipv6Key = "vps_ipv6";
@@ -814,14 +806,14 @@ VpsServiceInfo::setVpsIp(std::string  vps_ip)
 	this->vps_ip = vps_ip;
 }
 
-AnyType
+std::string
 VpsServiceInfo::getVpsIpv6()
 {
 	return vps_ipv6;
 }
 
 void
-VpsServiceInfo::setVpsIpv6(AnyType  vps_ipv6)
+VpsServiceInfo::setVpsIpv6(std::string  vps_ipv6)
 {
 	this->vps_ipv6 = vps_ipv6;
 }

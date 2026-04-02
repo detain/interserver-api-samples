@@ -147,12 +147,12 @@ fun Route.WebhostingApi() {
   },
   "serviceTypes" : {
     "11447" : {
-      "services_description" : "",
+      "services_description" : "services_description",
       "services_id" : "11447",
-      "services_moreinfo_url" : "",
+      "services_moreinfo_url" : "services_moreinfo_url",
       "services_category" : "204",
       "services_field1" : "",
-      "services_html" : "",
+      "services_html" : "services_html",
       "services_field2" : "Standard",
       "services_name" : "Web Hosting Direct Admin (PriceLock)",
       "services_buyable" : "1",

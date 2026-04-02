@@ -235,7 +235,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="deleteiplimit"></a>
 # **DeleteIpLimit**
-> GenericResponse DeleteIpLimit ()
+> GenericResponse DeleteIpLimit (IpLimitRange body = null)
 
 Remove IP Access Restriction
 
@@ -269,11 +269,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("sessionid", "Bearer");
 
             var apiInstance = new AccountApi();
+            var body = new IpLimitRange(); // IpLimitRange |  (optional) 
 
             try
             {
                 // Remove IP Access Restriction
-                GenericResponse result = apiInstance.DeleteIpLimit();
+                GenericResponse result = apiInstance.DeleteIpLimit(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -286,7 +287,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] 
 
 ### Return type
 

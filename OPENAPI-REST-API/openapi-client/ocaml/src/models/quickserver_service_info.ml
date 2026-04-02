@@ -38,7 +38,7 @@
                 
                 ; [@key "qs_ip"]
                     (** IP address *)
-                                      qs_ipv6: Yojson.Safe.t
+                                      qs_ipv6: string
                   
                    option [@default None]
                 
@@ -136,7 +136,7 @@
                 
                 ; [@key "qs_vnc"]
                     (** VNC information *)
-                                      qs_vnc_port: Yojson.Safe.t
+                                      qs_vnc_port: int32
                   
                    option [@default None]
                 
@@ -178,7 +178,7 @@
                 
                 ; [@key "qs_location"]
                     (** Location *)
-                                      qs_platform: Yojson.Safe.t
+                                      qs_platform: string
                   
                    option [@default None]
                 

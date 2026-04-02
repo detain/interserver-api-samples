@@ -15,7 +15,6 @@
 
 typedef struct quickserver_service_info_t quickserver_service_info_t;
 
-#include "any_type.h"
 
 
 
@@ -24,7 +23,7 @@ typedef struct quickserver_service_info_t {
     char *qs_custid; // string
     char *qs_server; // string
     char *qs_ip; // string
-    any_type_t *qs_ipv6; // custom
+    char *qs_ipv6; // string
     char *qs_vzid; // string
     char *qs_currency; // string
     char *qs_type; // string
@@ -38,13 +37,13 @@ typedef struct quickserver_service_info_t {
     char *qs_comment; // string
     char *qs_slices; // string
     char *qs_vnc; // string
-    any_type_t *qs_vnc_port; // custom
+    int *qs_vnc_port; //numeric
     char *qs_rootpass; // string
     char *qs_mac; // string
     char *qs_os; // string
     char *qs_version; // string
     char *qs_location; // string
-    any_type_t *qs_platform; // custom
+    char *qs_platform; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } quickserver_service_info_t;
@@ -54,7 +53,7 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
     char *qs_custid,
     char *qs_server,
     char *qs_ip,
-    any_type_t *qs_ipv6,
+    char *qs_ipv6,
     char *qs_vzid,
     char *qs_currency,
     char *qs_type,
@@ -68,13 +67,13 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
     char *qs_comment,
     char *qs_slices,
     char *qs_vnc,
-    any_type_t *qs_vnc_port,
+    int *qs_vnc_port,
     char *qs_rootpass,
     char *qs_mac,
     char *qs_os,
     char *qs_version,
     char *qs_location,
-    any_type_t *qs_platform
+    char *qs_platform
 );
 
 void quickserver_service_info_free(quickserver_service_info_t *quickserver_service_info);

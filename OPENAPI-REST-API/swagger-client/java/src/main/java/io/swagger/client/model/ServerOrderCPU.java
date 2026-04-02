@@ -95,7 +95,7 @@ public class ServerOrderCPU {
   private String visible = null;
 
   @SerializedName("hd_ids")
-  private Object hdIds = null;
+  private String hdIds = null;
 
   @SerializedName("price_display")
   private String priceDisplay = null;
@@ -499,7 +499,7 @@ public class ServerOrderCPU {
     this.visible = visible;
   }
 
-  public ServerOrderCPU hdIds(Object hdIds) {
+  public ServerOrderCPU hdIds(String hdIds) {
     this.hdIds = hdIds;
     return this;
   }
@@ -509,11 +509,11 @@ public class ServerOrderCPU {
    * @return hdIds
   **/
   @Schema(description = "Hard drive IDs.")
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
 
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 

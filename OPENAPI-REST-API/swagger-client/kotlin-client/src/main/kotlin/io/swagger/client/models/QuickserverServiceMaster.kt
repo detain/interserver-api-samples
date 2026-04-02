@@ -111,9 +111,9 @@ data class QuickserverServiceMaster (
     /* Packets/sec out */
     val qsPacketsSecOut: kotlin.String? = null,
     /* Last install time (null) */
-    val qsLastInstallTime: kotlin.Any? = null,
+    val qsLastInstallTime: kotlin.String? = null,
     /* Partitions information (null) */
-    val qsPartitions: kotlin.Any? = null,
+    val qsPartitions: kotlin.String? = null,
     /* CPU flags */
     val qsCpuFlags: kotlin.String? = null
 ) {

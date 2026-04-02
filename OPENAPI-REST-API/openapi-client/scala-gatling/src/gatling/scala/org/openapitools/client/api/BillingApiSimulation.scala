@@ -353,8 +353,8 @@ class BillingApiSimulation extends Simulation {
         .exec(http("getInvoices")
         .httpRequest("GET","/invoices")
         .queryParam("limit","${limit}")
-        .queryParam("searchString","${searchString}")
         .queryParam("skip","${skip}")
+        .queryParam("searchString","${searchString}")
 )
 
     // Run scngetInvoices with warm up and reach a constant rate for entire duration

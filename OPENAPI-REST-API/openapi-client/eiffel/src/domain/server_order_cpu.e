@@ -63,7 +63,7 @@ feature --Access
       -- Maximum NVMe drives supported.
     visible: detachable STRING_32
       -- Visibility status.
-    hd_ids: detachable ANY
+    hd_ids: detachable STRING_32
       -- Hard drive IDs.
     price_display: detachable STRING_32
       -- Display of CPU price.

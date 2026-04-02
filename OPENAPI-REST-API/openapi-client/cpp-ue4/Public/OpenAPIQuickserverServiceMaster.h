@@ -90,9 +90,9 @@ public:
 	/* Packets/sec out */
 	TOptional<FString> QsPacketsSecOut;
 	/* Last install time (null) */
-	TOptional<TSharedPtr<FJsonValue>> QsLastInstallTime;
+	TOptional<FString> QsLastInstallTime;
 	/* Partitions information (null) */
-	TOptional<TSharedPtr<FJsonValue>> QsPartitions;
+	TOptional<FString> QsPartitions;
 	/* CPU flags */
 	TOptional<FString> QsCpuFlags;
 };

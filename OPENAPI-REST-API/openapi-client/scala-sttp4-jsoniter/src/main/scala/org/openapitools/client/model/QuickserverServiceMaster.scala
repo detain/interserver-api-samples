@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
   /**
@@ -79,9 +78,9 @@ case class QuickserverServiceMaster(
   /* Packets/sec out */
   @named("qs_packets_sec_out") qs_packets_sec_out: Option[String] = scala.None,
   /* Last install time (null) */
-  @named("qs_last_install_time") qs_last_install_time: Option[io.circe.Json] = scala.None,
+  @named("qs_last_install_time") qs_last_install_time: Option[String] = scala.None,
   /* Partitions information (null) */
-  @named("qs_partitions") qs_partitions: Option[io.circe.Json] = scala.None,
+  @named("qs_partitions") qs_partitions: Option[String] = scala.None,
   /* CPU flags */
   @named("qs_cpu_flags") qs_cpu_flags: Option[String] = scala.None
 )

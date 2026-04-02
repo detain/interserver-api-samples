@@ -204,13 +204,13 @@ public class QuickserverServiceMaster   {
  /**
    * Last install time (null)  
   **/
-  private Object qsLastInstallTime = null;
+  private String qsLastInstallTime = null;
   
   @Schema(description = "Partitions information (null)")
  /**
    * Partitions information (null)  
   **/
-  private Object qsPartitions = null;
+  private String qsPartitions = null;
   
   @Schema(description = "CPU flags")
  /**
@@ -762,15 +762,15 @@ public class QuickserverServiceMaster   {
    * @return qsLastInstallTime
   **/
   @JsonProperty("qs_last_install_time")
-  public Object getQsLastInstallTime() {
+  public String getQsLastInstallTime() {
     return qsLastInstallTime;
   }
 
-  public void setQsLastInstallTime(Object qsLastInstallTime) {
+  public void setQsLastInstallTime(String qsLastInstallTime) {
     this.qsLastInstallTime = qsLastInstallTime;
   }
 
-  public QuickserverServiceMaster qsLastInstallTime(Object qsLastInstallTime) {
+  public QuickserverServiceMaster qsLastInstallTime(String qsLastInstallTime) {
     this.qsLastInstallTime = qsLastInstallTime;
     return this;
   }
@@ -780,15 +780,15 @@ public class QuickserverServiceMaster   {
    * @return qsPartitions
   **/
   @JsonProperty("qs_partitions")
-  public Object getQsPartitions() {
+  public String getQsPartitions() {
     return qsPartitions;
   }
 
-  public void setQsPartitions(Object qsPartitions) {
+  public void setQsPartitions(String qsPartitions) {
     this.qsPartitions = qsPartitions;
   }
 
-  public QuickserverServiceMaster qsPartitions(Object qsPartitions) {
+  public QuickserverServiceMaster qsPartitions(String qsPartitions) {
     this.qsPartitions = qsPartitions;
     return this;
   }

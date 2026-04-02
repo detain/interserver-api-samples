@@ -86,10 +86,11 @@ feature -- Test routines
             -- Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         local
             l_response: GENERIC_RESPONSE
+            l_ip_limit_range: IP_LIMIT_RANGE
         do
             -- TODO: Initialize required params.
 
-            -- l_response := api.delete_ip_limit
+            -- l_response := api.delete_ip_limit(l_ip_limit_range)
             assert ("not_implemented", False)
         end
 

@@ -13,7 +13,7 @@
   | {'qs_custid', binary() }
   | {'qs_server', binary() }
   | {'qs_ip', binary() }
-  | {'qs_ipv6', openapi_any_type:openapi_any_type() }
+  | {'qs_ipv6', binary() }
   | {'qs_vzid', binary() }
   | {'qs_currency', binary() }
   | {'qs_type', binary() }
@@ -27,13 +27,13 @@
   | {'qs_comment', binary() }
   | {'qs_slices', binary() }
   | {'qs_vnc', binary() }
-  | {'qs_vnc_port', openapi_any_type:openapi_any_type() }
+  | {'qs_vnc_port', integer() }
   | {'qs_rootpass', binary() }
   | {'qs_mac', binary() }
   | {'qs_os', binary() }
   | {'qs_version', binary() }
   | {'qs_location', binary() }
-  | {'qs_platform', openapi_any_type:openapi_any_type() }
+  | {'qs_platform', binary() }
   ].
 
 
@@ -45,7 +45,7 @@ openapi_quickserver_service_info(Fields) ->
             , {'qs_custid', binary() }
             , {'qs_server', binary() }
             , {'qs_ip', binary() }
-            , {'qs_ipv6', openapi_any_type:openapi_any_type() }
+            , {'qs_ipv6', binary() }
             , {'qs_vzid', binary() }
             , {'qs_currency', binary() }
             , {'qs_type', binary() }
@@ -59,13 +59,13 @@ openapi_quickserver_service_info(Fields) ->
             , {'qs_comment', binary() }
             , {'qs_slices', binary() }
             , {'qs_vnc', binary() }
-            , {'qs_vnc_port', openapi_any_type:openapi_any_type() }
+            , {'qs_vnc_port', integer() }
             , {'qs_rootpass', binary() }
             , {'qs_mac', binary() }
             , {'qs_os', binary() }
             , {'qs_version', binary() }
             , {'qs_location', binary() }
-            , {'qs_platform', openapi_any_type:openapi_any_type() }
+            , {'qs_platform', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

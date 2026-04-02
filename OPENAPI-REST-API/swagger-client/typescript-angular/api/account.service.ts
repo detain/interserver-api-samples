@@ -238,13 +238,15 @@ export class AccountService {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param body 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteIpLimit(observe?: 'body', reportProgress?: boolean): Observable<GenericResponse>;
-    public deleteIpLimit(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GenericResponse>>;
-    public deleteIpLimit(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GenericResponse>>;
-    public deleteIpLimit(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteIpLimit(body?: IpLimitRange, observe?: 'body', reportProgress?: boolean): Observable<GenericResponse>;
+    public deleteIpLimit(body?: IpLimitRange, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GenericResponse>>;
+    public deleteIpLimit(body?: IpLimitRange, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GenericResponse>>;
+    public deleteIpLimit(body?: IpLimitRange, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
 
@@ -278,9 +280,14 @@ export class AccountService {
         const consumes: string[] = [
             'application/json'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
         return this.httpClient.request<GenericResponse>('patch',`${this.basePath}/account/iplimits`,
             {
+                body: body,
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -38,7 +38,7 @@ public:
 	/* IP address of the VPS */
 	TOptional<FString> VpsIp;
 	/* IPv6 address of the VPS */
-	TOptional<TSharedPtr<FJsonValue>> VpsIpv6;
+	TOptional<FString> VpsIpv6;
 	/* VPS Virtuozzo ID */
 	TOptional<FString> VpsVzid;
 	/* Currency used for billing */

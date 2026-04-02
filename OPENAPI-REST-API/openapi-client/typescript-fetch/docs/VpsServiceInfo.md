@@ -10,7 +10,7 @@ Name | Type
 `vps_custid` | string
 `vps_server` | string
 `vps_ip` | string
-`vps_ipv6` | any
+`vps_ipv6` | string
 `vps_vzid` | string
 `vps_currency` | string
 `vps_type` | string

@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getFloatingIpsList**
-> void getFloatingIpsList()
+> Array<any> getFloatingIpsList()
 
 Returns all Floating IP services on the account with their current status and assignment details.
 
@@ -252,7 +252,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**void**
+**Array<any>**
 
 ### Authorization
 

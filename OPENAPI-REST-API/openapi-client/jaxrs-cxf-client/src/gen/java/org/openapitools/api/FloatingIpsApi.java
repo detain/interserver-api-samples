@@ -98,10 +98,10 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List Floating IPs", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The listing of `Floating IPs` services on your account."),
+        @ApiResponse(code = 200, message = "The listing of `Floating IPs` services on your account.", response = Object.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
         @ApiResponse(code = 200, message = "Default response") })
-    public void getFloatingIpsList();
+    public List<Object> getFloatingIpsList();
 
     /**
      * Resend Floating IPs Welcome Email

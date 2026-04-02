@@ -916,14 +916,15 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange $body body (optional)
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Interserver\MyAdmin\Model\GenericResponse
      */
-    public function deleteIpLimit()
+    public function deleteIpLimit($body = null)
     {
-        list($response) = $this->deleteIpLimitWithHttpInfo();
+        list($response) = $this->deleteIpLimitWithHttpInfo($body);
         return $response;
     }
 
@@ -932,15 +933,16 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange $body (optional)
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Interserver\MyAdmin\Model\GenericResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteIpLimitWithHttpInfo()
+    public function deleteIpLimitWithHttpInfo($body = null)
     {
         $returnType = '\Interserver\MyAdmin\Model\GenericResponse';
-        $request = $this->deleteIpLimitRequest();
+        $request = $this->deleteIpLimitRequest($body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1014,13 +1016,14 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteIpLimitAsync()
+    public function deleteIpLimitAsync($body = null)
     {
-        return $this->deleteIpLimitAsyncWithHttpInfo()
+        return $this->deleteIpLimitAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1033,14 +1036,15 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteIpLimitAsyncWithHttpInfo()
+    public function deleteIpLimitAsyncWithHttpInfo($body = null)
     {
         $returnType = '\Interserver\MyAdmin\Model\GenericResponse';
-        $request = $this->deleteIpLimitRequest();
+        $request = $this->deleteIpLimitRequest($body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1082,11 +1086,12 @@ class AccountApi
     /**
      * Create request for operation 'deleteIpLimit'
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteIpLimitRequest()
+    protected function deleteIpLimitRequest($body = null)
     {
 
         $resourcePath = '/account/iplimits';
@@ -1100,6 +1105,9 @@ class AccountApi
 
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(

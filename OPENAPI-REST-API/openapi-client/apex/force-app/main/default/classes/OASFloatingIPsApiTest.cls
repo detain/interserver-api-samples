@@ -310,6 +310,8 @@ private class OASFloatingIPsApiTest {
 
         OASClient client;
         OASFloatingIPsApi api;
+        List<Object> response;
+        List<Object> expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -317,33 +319,57 @@ private class OASFloatingIPsApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(new List<Object>{null});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getFloatingIpsList();
+        expectedResponse = new List<Object>{null};
+        response = (List<Object>) api.getFloatingIpsList();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<Object>{null});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<Object>{null};
+        response = (List<Object>) api.getFloatingIpsList();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(new List<Object>{null});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getFloatingIpsList();
+        expectedResponse = new List<Object>{null};
+        response = (List<Object>) api.getFloatingIpsList();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<Object>{null});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<Object>{null};
+        response = (List<Object>) api.getFloatingIpsList();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(new List<Object>{null});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getFloatingIpsList();
+        expectedResponse = new List<Object>{null};
+        response = (List<Object>) api.getFloatingIpsList();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<Object>{null});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<Object>{null};
+        response = (List<Object>) api.getFloatingIpsList();
         System.assertEquals(expectedResponse, response);
     }
 

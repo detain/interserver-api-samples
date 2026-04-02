@@ -668,20 +668,34 @@ bool FloatingIPsManager::getFloatingIpInvoicesSync(char * accessToken,
 static bool getFloatingIpsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::list<std::string>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<std::string>, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
+	std::list<std::string> out;
 	
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
-		return true;
 
+		pJson = json_from_string(data, NULL);
+		JsonArray * jsonarray = json_node_get_array (pJson);
+		guint length = json_array_get_length (jsonarray);
+		for(guint i = 0; i < length; i++){
+			JsonNode* myJson = json_array_get_element (jsonarray, i);
+			char * singlenodestr = json_to_string(myJson, false);
+			std::string singlemodel;
+			singlemodel.fromJson(singlenodestr);
+			out.push_front(singlemodel);
+			g_free(static_cast<gpointer>(singlenodestr));
+			json_node_free(myJson);
+		}
+		json_array_unref (jsonarray);
+		json_node_free(pJson);
 
 
 	} else {
@@ -693,15 +707,15 @@ static bool getFloatingIpsListProcessor(MemoryStruct_s p_chunk, long code, char*
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getFloatingIpsListHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -771,8 +785,8 @@ static bool getFloatingIpsListHelper(char * accessToken,
 
 bool FloatingIPsManager::getFloatingIpsListAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData)
 {
 	return getFloatingIpsListHelper(accessToken,
 	
@@ -781,8 +795,8 @@ bool FloatingIPsManager::getFloatingIpsListAsync(char * accessToken,
 
 bool FloatingIPsManager::getFloatingIpsListSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData)
 {
 	return getFloatingIpsListHelper(accessToken,
 	

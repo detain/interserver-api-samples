@@ -15,7 +15,6 @@
 
 typedef struct server_service_info_t server_service_info_t;
 
-#include "any_type.h"
 
 
 
@@ -38,22 +37,22 @@ typedef struct server_service_info_t {
     char *server_ips; // string
     char *server_monthly_bill; // string
     char *server_setup; // string
-    any_type_t *server_discount; // custom
+    char *server_discount; // string
     char *server_rep; // string
     char *server_date; // string
     char *server_total_cost; // string
-    any_type_t *server_location; // custom
+    char *server_location; // string
     char *server_hardware_ordered; // string
     char *server_billed; // string
     char *server_welcome_email; // string
     char *server_dedicated_cpu; // string
     char *server_dedicated_memory; // string
     char *server_dedicated_hd1; // string
-    any_type_t *server_dedicated_hd2; // custom
+    char *server_dedicated_hd2; // string
     char *server_dedicated_bandwidth; // string
     char *server_dedicated_ips; // string
     char *server_dedicated_os; // string
-    any_type_t *server_dedicated_cp; // custom
+    char *server_dedicated_cp; // string
     char *server_dedicated_raid; // string
     char *server_extra; // string
 
@@ -79,22 +78,22 @@ __attribute__((deprecated)) server_service_info_t *server_service_info_create(
     char *server_ips,
     char *server_monthly_bill,
     char *server_setup,
-    any_type_t *server_discount,
+    char *server_discount,
     char *server_rep,
     char *server_date,
     char *server_total_cost,
-    any_type_t *server_location,
+    char *server_location,
     char *server_hardware_ordered,
     char *server_billed,
     char *server_welcome_email,
     char *server_dedicated_cpu,
     char *server_dedicated_memory,
     char *server_dedicated_hd1,
-    any_type_t *server_dedicated_hd2,
+    char *server_dedicated_hd2,
     char *server_dedicated_bandwidth,
     char *server_dedicated_ips,
     char *server_dedicated_os,
-    any_type_t *server_dedicated_cp,
+    char *server_dedicated_cp,
     char *server_dedicated_raid,
     char *server_extra
 );

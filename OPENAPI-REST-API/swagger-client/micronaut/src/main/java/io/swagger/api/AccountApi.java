@@ -107,7 +107,7 @@ public interface AccountApi {
     @ApiResponse(responseCode = "200", description = "IP Range removed.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Patch(value = "/account/iplimits", produces = { "application/json" }, consumes = {"application/json"})
-    default Single<HttpResponse<GenericResponse>> deleteIpLimit() {
+    default Single<HttpResponse<GenericResponse>> deleteIpLimit(@Nullable @Valid @Parameter(description = "") @Body IpLimitRange body) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

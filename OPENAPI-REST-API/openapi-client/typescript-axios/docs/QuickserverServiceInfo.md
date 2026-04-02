@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **qs_custid** | **string** | Customer ID | [optional] [default to undefined]
 **qs_server** | **string** | Server information | [optional] [default to undefined]
 **qs_ip** | **string** | IP address | [optional] [default to undefined]
-**qs_ipv6** | **any** | IPv6 address (null) | [optional] [default to undefined]
+**qs_ipv6** | **string** | IPv6 address (null) | [optional] [default to undefined]
 **qs_vzid** | **string** | VZ ID | [optional] [default to undefined]
 **qs_currency** | **string** | Currency | [optional] [default to undefined]
 **qs_type** | **string** | Type | [optional] [default to undefined]
@@ -24,13 +24,13 @@ Name | Type | Description | Notes
 **qs_comment** | **string** | Comment | [optional] [default to undefined]
 **qs_slices** | **string** | Slices information | [optional] [default to undefined]
 **qs_vnc** | **string** | VNC information | [optional] [default to undefined]
-**qs_vnc_port** | **any** | VNC port (null) | [optional] [default to undefined]
+**qs_vnc_port** | **number** | VNC port (null) | [optional] [default to undefined]
 **qs_rootpass** | **string** | Root password | [optional] [default to undefined]
 **qs_mac** | **string** | MAC address | [optional] [default to undefined]
 **qs_os** | **string** | Operating system | [optional] [default to undefined]
 **qs_version** | **string** | OS version | [optional] [default to undefined]
 **qs_location** | **string** | Location | [optional] [default to undefined]
-**qs_platform** | **any** | Platform (null) | [optional] [default to undefined]
+**qs_platform** | **string** | Platform (null) | [optional] [default to undefined]
 
 ## Example
 

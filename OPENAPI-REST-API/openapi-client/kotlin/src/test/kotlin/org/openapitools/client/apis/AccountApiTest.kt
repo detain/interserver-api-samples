@@ -32,6 +32,7 @@ import org.openapitools.client.models.GenericResponse
 import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.GetAccountTfaSetup200Response
 import org.openapitools.client.models.Home
+import org.openapitools.client.models.IpLimitRange
 import org.openapitools.client.models.SearchAutocompleteResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
@@ -66,7 +67,8 @@ class AccountApiTest : ShouldSpec() {
         // to test deleteIpLimit
         should("test deleteIpLimit") {
             // uncomment below to test deleteIpLimit
-            //val result : GenericResponse = apiInstance.deleteIpLimit()
+            //val ipLimitRange : IpLimitRange =  // IpLimitRange | 
+            //val result : GenericResponse = apiInstance.deleteIpLimit(ipLimitRange)
             //result shouldBe ("TODO")
         }
 

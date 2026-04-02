@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 
 namespace Tiny {
 
@@ -174,11 +173,11 @@ public:
 	void setServerSetup(std::string server_setup);
 	/*! \brief Get Discount information for the server.
 	 */
-	AnyType getServerDiscount();
+	std::string getServerDiscount();
 
 	/*! \brief Set Discount information for the server.
 	 */
-	void setServerDiscount(AnyType server_discount);
+	void setServerDiscount(std::string server_discount);
 	/*! \brief Get The reputation of the server.
 	 */
 	std::string getServerRep();
@@ -202,11 +201,11 @@ public:
 	void setServerTotalCost(std::string server_total_cost);
 	/*! \brief Get The location of the server.
 	 */
-	AnyType getServerLocation();
+	std::string getServerLocation();
 
 	/*! \brief Set The location of the server.
 	 */
-	void setServerLocation(AnyType server_location);
+	void setServerLocation(std::string server_location);
 	/*! \brief Get The ordered hardware for the server.
 	 */
 	std::string getServerHardwareOrdered();
@@ -251,11 +250,11 @@ public:
 	void setServerDedicatedHd1(std::string server_dedicated_hd1);
 	/*! \brief Get The size of the second dedicated hard drive.
 	 */
-	AnyType getServerDedicatedHd2();
+	std::string getServerDedicatedHd2();
 
 	/*! \brief Set The size of the second dedicated hard drive.
 	 */
-	void setServerDedicatedHd2(AnyType server_dedicated_hd2);
+	void setServerDedicatedHd2(std::string server_dedicated_hd2);
 	/*! \brief Get The bandwidth of the server.
 	 */
 	std::string getServerDedicatedBandwidth();
@@ -279,11 +278,11 @@ public:
 	void setServerDedicatedOs(std::string server_dedicated_os);
 	/*! \brief Get The control panel of the server.
 	 */
-	AnyType getServerDedicatedCp();
+	std::string getServerDedicatedCp();
 
 	/*! \brief Set The control panel of the server.
 	 */
-	void setServerDedicatedCp(AnyType server_dedicated_cp);
+	void setServerDedicatedCp(std::string server_dedicated_cp);
 	/*! \brief Get The RAID configuration of the server.
 	 */
 	std::string getServerDedicatedRaid();
@@ -319,22 +318,22 @@ public:
     std::string server_ips{};
     std::string server_monthly_bill{};
     std::string server_setup{};
-    AnyType server_discount;
+    std::string server_discount{};
     std::string server_rep{};
     std::string server_date{};
     std::string server_total_cost{};
-    AnyType server_location;
+    std::string server_location{};
     std::string server_hardware_ordered{};
     std::string server_billed{};
     std::string server_welcome_email{};
     std::string server_dedicated_cpu{};
     std::string server_dedicated_memory{};
     std::string server_dedicated_hd1{};
-    AnyType server_dedicated_hd2;
+    std::string server_dedicated_hd2{};
     std::string server_dedicated_bandwidth{};
     std::string server_dedicated_ips{};
     std::string server_dedicated_os{};
-    AnyType server_dedicated_cp;
+    std::string server_dedicated_cp{};
     std::string server_dedicated_raid{};
     std::string server_extra{};
 };

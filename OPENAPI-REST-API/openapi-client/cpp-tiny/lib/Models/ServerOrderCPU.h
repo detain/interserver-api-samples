@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 
 namespace Tiny {
 
@@ -202,11 +201,11 @@ public:
 	void setVisible(std::string visible);
 	/*! \brief Get Hard drive IDs.
 	 */
-	AnyType getHdIds();
+	std::string getHdIds();
 
 	/*! \brief Set Hard drive IDs.
 	 */
-	void setHdIds(AnyType hd_ids);
+	void setHdIds(std::string hd_ids);
 	/*! \brief Get Display of CPU price.
 	 */
 	std::string getPriceDisplay();
@@ -246,7 +245,7 @@ public:
     std::string max_sff{};
     std::string max_nve{};
     std::string visible{};
-    AnyType hd_ids;
+    std::string hd_ids{};
     std::string price_display{};
     std::string monthly_price_display{};
 };

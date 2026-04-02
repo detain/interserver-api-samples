@@ -14,7 +14,7 @@ class QuickserverServiceMaster(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, qs_id: str=None, qs_name: str=None, qs_ip: str=None, qs_type: str=None, qs_hdsize: str=None, qs_hdfree: str=None, qs_bits: str=None, qs_load: str=None, qs_ram: str=None, qs_cpu_model: str=None, qs_cpu_mhz: str=None, qs_location: str=None, qs_available: str=None, qs_cost: str=None, qs_last_update: str=None, qs_cores: str=None, qs_iowait: str=None, qs_raid_status: str=None, qs_drive_type: str=None, qs_order: str=None, qs_raid_building: str=None, qs_kernel: str=None, qs_ioping: str=None, qs_speed: str=None, qs_distro: str=None, qs_distro_version: str=None, qs_bytes_sec_in: str=None, qs_bytes_sec_out: str=None, qs_packets_sec_in: str=None, qs_packets_sec_out: str=None, qs_last_install_time: Object=None, qs_partitions: Object=None, qs_cpu_flags: str=None):  # noqa: E501
+    def __init__(self, qs_id: str=None, qs_name: str=None, qs_ip: str=None, qs_type: str=None, qs_hdsize: str=None, qs_hdfree: str=None, qs_bits: str=None, qs_load: str=None, qs_ram: str=None, qs_cpu_model: str=None, qs_cpu_mhz: str=None, qs_location: str=None, qs_available: str=None, qs_cost: str=None, qs_last_update: str=None, qs_cores: str=None, qs_iowait: str=None, qs_raid_status: str=None, qs_drive_type: str=None, qs_order: str=None, qs_raid_building: str=None, qs_kernel: str=None, qs_ioping: str=None, qs_speed: str=None, qs_distro: str=None, qs_distro_version: str=None, qs_bytes_sec_in: str=None, qs_bytes_sec_out: str=None, qs_packets_sec_in: str=None, qs_packets_sec_out: str=None, qs_last_install_time: str=None, qs_partitions: str=None, qs_cpu_flags: str=None):  # noqa: E501
         """QuickserverServiceMaster - a model defined in Swagger
 
         :param qs_id: The qs_id of this QuickserverServiceMaster.  # noqa: E501
@@ -78,9 +78,9 @@ class QuickserverServiceMaster(Model):
         :param qs_packets_sec_out: The qs_packets_sec_out of this QuickserverServiceMaster.  # noqa: E501
         :type qs_packets_sec_out: str
         :param qs_last_install_time: The qs_last_install_time of this QuickserverServiceMaster.  # noqa: E501
-        :type qs_last_install_time: Object
+        :type qs_last_install_time: str
         :param qs_partitions: The qs_partitions of this QuickserverServiceMaster.  # noqa: E501
-        :type qs_partitions: Object
+        :type qs_partitions: str
         :param qs_cpu_flags: The qs_cpu_flags of this QuickserverServiceMaster.  # noqa: E501
         :type qs_cpu_flags: str
         """
@@ -115,8 +115,8 @@ class QuickserverServiceMaster(Model):
             'qs_bytes_sec_out': str,
             'qs_packets_sec_in': str,
             'qs_packets_sec_out': str,
-            'qs_last_install_time': Object,
-            'qs_partitions': Object,
+            'qs_last_install_time': str,
+            'qs_partitions': str,
             'qs_cpu_flags': str
         }
 
@@ -891,47 +891,47 @@ class QuickserverServiceMaster(Model):
         self._qs_packets_sec_out = qs_packets_sec_out
 
     @property
-    def qs_last_install_time(self) -> Object:
+    def qs_last_install_time(self) -> str:
         """Gets the qs_last_install_time of this QuickserverServiceMaster.
 
         Last install time (null)  # noqa: E501
 
         :return: The qs_last_install_time of this QuickserverServiceMaster.
-        :rtype: Object
+        :rtype: str
         """
         return self._qs_last_install_time
 
     @qs_last_install_time.setter
-    def qs_last_install_time(self, qs_last_install_time: Object):
+    def qs_last_install_time(self, qs_last_install_time: str):
         """Sets the qs_last_install_time of this QuickserverServiceMaster.
 
         Last install time (null)  # noqa: E501
 
         :param qs_last_install_time: The qs_last_install_time of this QuickserverServiceMaster.
-        :type qs_last_install_time: Object
+        :type qs_last_install_time: str
         """
 
         self._qs_last_install_time = qs_last_install_time
 
     @property
-    def qs_partitions(self) -> Object:
+    def qs_partitions(self) -> str:
         """Gets the qs_partitions of this QuickserverServiceMaster.
 
         Partitions information (null)  # noqa: E501
 
         :return: The qs_partitions of this QuickserverServiceMaster.
-        :rtype: Object
+        :rtype: str
         """
         return self._qs_partitions
 
     @qs_partitions.setter
-    def qs_partitions(self, qs_partitions: Object):
+    def qs_partitions(self, qs_partitions: str):
         """Sets the qs_partitions of this QuickserverServiceMaster.
 
         Partitions information (null)  # noqa: E501
 
         :param qs_partitions: The qs_partitions of this QuickserverServiceMaster.
-        :type qs_partitions: Object
+        :type qs_partitions: str
         """
 
         self._qs_partitions = qs_partitions

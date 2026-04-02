@@ -5067,6 +5067,8 @@ void runTests(){
     RUN_TEST(test_QuickserverServiceInfo_qs_ip_is_assigned_from_json);
     
     
+    RUN_TEST(test_QuickserverServiceInfo_qs_ipv6_is_assigned_from_json);
+    
     
     RUN_TEST(test_QuickserverServiceInfo_qs_vzid_is_assigned_from_json);
     
@@ -5107,6 +5109,8 @@ void runTests(){
     RUN_TEST(test_QuickserverServiceInfo_qs_vnc_is_assigned_from_json);
     
     
+    RUN_TEST(test_QuickserverServiceInfo_qs_vnc_port_is_assigned_from_json);
+    
     
     RUN_TEST(test_QuickserverServiceInfo_qs_rootpass_is_assigned_from_json);
     
@@ -5122,6 +5126,8 @@ void runTests(){
     
     RUN_TEST(test_QuickserverServiceInfo_qs_location_is_assigned_from_json);
     
+    
+    RUN_TEST(test_QuickserverServiceInfo_qs_platform_is_assigned_from_json);
     
     
     
@@ -5215,6 +5221,10 @@ void runTests(){
     RUN_TEST(test_QuickserverServiceMaster_qs_packets_sec_out_is_assigned_from_json);
     
     
+    RUN_TEST(test_QuickserverServiceMaster_qs_last_install_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuickserverServiceMaster_qs_partitions_is_assigned_from_json);
     
     
     RUN_TEST(test_QuickserverServiceMaster_qs_cpu_flags_is_assigned_from_json);
@@ -5512,13 +5522,31 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ServerAsset_mac_is_assigned_from_json);
     
     
+    RUN_TEST(test_ServerAsset_ipmi_admin_username_is_assigned_from_json);
     
     
+    RUN_TEST(test_ServerAsset_ipmi_admin_password_is_assigned_from_json);
     
     
+    RUN_TEST(test_ServerAsset_ipmi_client_username_is_assigned_from_json);
     
+    
+    RUN_TEST(test_ServerAsset_ipmi_client_password_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerAsset_ipmi_updated_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerAsset_create_timestamp_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerAsset_update_timestamp_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerAsset_comment_is_assigned_from_json);
     
     
     
@@ -5762,6 +5790,8 @@ void runTests(){
     
     RUN_TEST(test_ServerOrderCPU_visible_is_assigned_from_json);
     
+    
+    RUN_TEST(test_ServerOrderCPU_hd_ids_is_assigned_from_json);
     
     
     RUN_TEST(test_ServerOrderCPU_price_display_is_assigned_from_json);
@@ -6101,6 +6131,8 @@ void runTests(){
     RUN_TEST(test_ServerServiceInfo_server_setup_is_assigned_from_json);
     
     
+    RUN_TEST(test_ServerServiceInfo_server_discount_is_assigned_from_json);
+    
     
     RUN_TEST(test_ServerServiceInfo_server_rep_is_assigned_from_json);
     
@@ -6110,6 +6142,8 @@ void runTests(){
     
     RUN_TEST(test_ServerServiceInfo_server_total_cost_is_assigned_from_json);
     
+    
+    RUN_TEST(test_ServerServiceInfo_server_location_is_assigned_from_json);
     
     
     RUN_TEST(test_ServerServiceInfo_server_hardware_ordered_is_assigned_from_json);
@@ -6130,6 +6164,8 @@ void runTests(){
     RUN_TEST(test_ServerServiceInfo_server_dedicated_hd1_is_assigned_from_json);
     
     
+    RUN_TEST(test_ServerServiceInfo_server_dedicated_hd2_is_assigned_from_json);
+    
     
     RUN_TEST(test_ServerServiceInfo_server_dedicated_bandwidth_is_assigned_from_json);
     
@@ -6139,6 +6175,8 @@ void runTests(){
     
     RUN_TEST(test_ServerServiceInfo_server_dedicated_os_is_assigned_from_json);
     
+    
+    RUN_TEST(test_ServerServiceInfo_server_dedicated_cp_is_assigned_from_json);
     
     
     RUN_TEST(test_ServerServiceInfo_server_dedicated_raid_is_assigned_from_json);
@@ -7100,6 +7138,8 @@ void runTests(){
     RUN_TEST(test_VpsServiceInfo_vps_ip_is_assigned_from_json);
     
     
+    RUN_TEST(test_VpsServiceInfo_vps_ipv6_is_assigned_from_json);
+    
     
     RUN_TEST(test_VpsServiceInfo_vps_vzid_is_assigned_from_json);
     
@@ -7727,7 +7767,13 @@ void runTests(){
     RUN_TEST(test_WebsitesOrderServiceTypes_services_field2_is_assigned_from_json);
     
     
+    RUN_TEST(test_WebsitesOrderServiceTypes_services_html_is_assigned_from_json);
     
+    
+    RUN_TEST(test_WebsitesOrderServiceTypes_services_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsitesOrderServiceTypes_services_moreinfo_url_is_assigned_from_json);
     
     
     
@@ -11888,6 +11934,8 @@ void runTests(){
     RUN_TEST(test_QuickserverServiceInfo_qs_ip_is_converted_to_json);
     
     
+    RUN_TEST(test_QuickserverServiceInfo_qs_ipv6_is_converted_to_json);
+    
     
     RUN_TEST(test_QuickserverServiceInfo_qs_vzid_is_converted_to_json);
     
@@ -11928,6 +11976,8 @@ void runTests(){
     RUN_TEST(test_QuickserverServiceInfo_qs_vnc_is_converted_to_json);
     
     
+    RUN_TEST(test_QuickserverServiceInfo_qs_vnc_port_is_converted_to_json);
+    
     
     RUN_TEST(test_QuickserverServiceInfo_qs_rootpass_is_converted_to_json);
     
@@ -11943,6 +11993,8 @@ void runTests(){
     
     RUN_TEST(test_QuickserverServiceInfo_qs_location_is_converted_to_json);
     
+    
+    RUN_TEST(test_QuickserverServiceInfo_qs_platform_is_converted_to_json);
     
     
     
@@ -12036,6 +12088,10 @@ void runTests(){
     RUN_TEST(test_QuickserverServiceMaster_qs_packets_sec_out_is_converted_to_json);
     
     
+    RUN_TEST(test_QuickserverServiceMaster_qs_last_install_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuickserverServiceMaster_qs_partitions_is_converted_to_json);
     
     
     RUN_TEST(test_QuickserverServiceMaster_qs_cpu_flags_is_converted_to_json);
@@ -12333,13 +12389,31 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ServerAsset_mac_is_converted_to_json);
     
     
+    RUN_TEST(test_ServerAsset_ipmi_admin_username_is_converted_to_json);
     
     
+    RUN_TEST(test_ServerAsset_ipmi_admin_password_is_converted_to_json);
     
     
+    RUN_TEST(test_ServerAsset_ipmi_client_username_is_converted_to_json);
     
+    
+    RUN_TEST(test_ServerAsset_ipmi_client_password_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerAsset_ipmi_updated_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerAsset_create_timestamp_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerAsset_update_timestamp_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerAsset_comment_is_converted_to_json);
     
     
     
@@ -12583,6 +12657,8 @@ void runTests(){
     
     RUN_TEST(test_ServerOrderCPU_visible_is_converted_to_json);
     
+    
+    RUN_TEST(test_ServerOrderCPU_hd_ids_is_converted_to_json);
     
     
     RUN_TEST(test_ServerOrderCPU_price_display_is_converted_to_json);
@@ -12922,6 +12998,8 @@ void runTests(){
     RUN_TEST(test_ServerServiceInfo_server_setup_is_converted_to_json);
     
     
+    RUN_TEST(test_ServerServiceInfo_server_discount_is_converted_to_json);
+    
     
     RUN_TEST(test_ServerServiceInfo_server_rep_is_converted_to_json);
     
@@ -12931,6 +13009,8 @@ void runTests(){
     
     RUN_TEST(test_ServerServiceInfo_server_total_cost_is_converted_to_json);
     
+    
+    RUN_TEST(test_ServerServiceInfo_server_location_is_converted_to_json);
     
     
     RUN_TEST(test_ServerServiceInfo_server_hardware_ordered_is_converted_to_json);
@@ -12951,6 +13031,8 @@ void runTests(){
     RUN_TEST(test_ServerServiceInfo_server_dedicated_hd1_is_converted_to_json);
     
     
+    RUN_TEST(test_ServerServiceInfo_server_dedicated_hd2_is_converted_to_json);
+    
     
     RUN_TEST(test_ServerServiceInfo_server_dedicated_bandwidth_is_converted_to_json);
     
@@ -12960,6 +13042,8 @@ void runTests(){
     
     RUN_TEST(test_ServerServiceInfo_server_dedicated_os_is_converted_to_json);
     
+    
+    RUN_TEST(test_ServerServiceInfo_server_dedicated_cp_is_converted_to_json);
     
     
     RUN_TEST(test_ServerServiceInfo_server_dedicated_raid_is_converted_to_json);
@@ -13921,6 +14005,8 @@ void runTests(){
     RUN_TEST(test_VpsServiceInfo_vps_ip_is_converted_to_json);
     
     
+    RUN_TEST(test_VpsServiceInfo_vps_ipv6_is_converted_to_json);
+    
     
     RUN_TEST(test_VpsServiceInfo_vps_vzid_is_converted_to_json);
     
@@ -14548,7 +14634,13 @@ void runTests(){
     RUN_TEST(test_WebsitesOrderServiceTypes_services_field2_is_converted_to_json);
     
     
+    RUN_TEST(test_WebsitesOrderServiceTypes_services_html_is_converted_to_json);
     
+    
+    RUN_TEST(test_WebsitesOrderServiceTypes_services_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsitesOrderServiceTypes_services_moreinfo_url_is_converted_to_json);
     
     
     

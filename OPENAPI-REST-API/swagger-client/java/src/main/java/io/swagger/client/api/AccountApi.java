@@ -439,13 +439,14 @@ public class AccountApi {
     }
     /**
      * Build call for deleteIpLimit
+     * @param body  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteIpLimitCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call deleteIpLimitCall(IpLimitRange body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
         
         // create path and map variables
         String localVarPath = "/account/iplimits";
@@ -489,9 +490,9 @@ public class AccountApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteIpLimitValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteIpLimitValidateBeforeCall(IpLimitRange body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = deleteIpLimitCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteIpLimitCall(body, progressListener, progressRequestListener);
         return call;
 
         
@@ -503,22 +504,24 @@ public class AccountApi {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param body  (optional)
      * @return GenericResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GenericResponse deleteIpLimit() throws ApiException {
-        ApiResponse<GenericResponse> resp = deleteIpLimitWithHttpInfo();
+    public GenericResponse deleteIpLimit(IpLimitRange body) throws ApiException {
+        ApiResponse<GenericResponse> resp = deleteIpLimitWithHttpInfo(body);
         return resp.getData();
     }
 
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param body  (optional)
      * @return ApiResponse&lt;GenericResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GenericResponse> deleteIpLimitWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = deleteIpLimitValidateBeforeCall(null, null);
+    public ApiResponse<GenericResponse> deleteIpLimitWithHttpInfo(IpLimitRange body) throws ApiException {
+        com.squareup.okhttp.Call call = deleteIpLimitValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<GenericResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -526,11 +529,12 @@ public class AccountApi {
     /**
      * Remove IP Access Restriction (asynchronously)
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param body  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteIpLimitAsync(final ApiCallback<GenericResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteIpLimitAsync(IpLimitRange body, final ApiCallback<GenericResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -551,7 +555,7 @@ public class AccountApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteIpLimitValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteIpLimitValidateBeforeCall(body, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<GenericResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

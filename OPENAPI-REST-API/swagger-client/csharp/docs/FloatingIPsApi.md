@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getfloatingipslist"></a>
 # **GetFloatingIpsList**
-> void GetFloatingIpsList ()
+> List<Object> GetFloatingIpsList ()
 
 List Floating IPs
 
@@ -343,7 +343,8 @@ namespace Example
             try
             {
                 // List Floating IPs
-                apiInstance.GetFloatingIpsList();
+                List&lt;Object&gt; result = apiInstance.GetFloatingIpsList();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -359,7 +360,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**List<Object>**
 
 ### Authorization
 

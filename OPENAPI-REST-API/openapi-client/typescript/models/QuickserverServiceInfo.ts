@@ -35,7 +35,7 @@ export class QuickserverServiceInfo {
     /**
     * IPv6 address (null)
     */
-    'qs_ipv6'?: any | null;
+    'qs_ipv6'?: string | null;
     /**
     * VZ ID
     */
@@ -91,7 +91,7 @@ export class QuickserverServiceInfo {
     /**
     * VNC port (null)
     */
-    'qs_vnc_port'?: any | null;
+    'qs_vnc_port'?: number | null;
     /**
     * Root password
     */
@@ -115,7 +115,7 @@ export class QuickserverServiceInfo {
     /**
     * Platform (null)
     */
-    'qs_platform'?: any | null;
+    'qs_platform'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -149,7 +149,7 @@ export class QuickserverServiceInfo {
         {
             "name": "qs_ipv6",
             "baseName": "qs_ipv6",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
@@ -233,7 +233,7 @@ export class QuickserverServiceInfo {
         {
             "name": "qs_vnc_port",
             "baseName": "qs_vnc_port",
-            "type": "any",
+            "type": "number",
             "format": ""
         },
         {
@@ -269,7 +269,7 @@ export class QuickserverServiceInfo {
         {
             "name": "qs_platform",
             "baseName": "qs_platform",
-            "type": "any",
+            "type": "string",
             "format": ""
         }    ];
 

@@ -46,7 +46,7 @@ case class VpsServiceInfo (
   vps_custid: Option[String] = None,
   vps_server: Option[String] = None,
   vps_ip: Option[String] = None,
-  vps_ipv6: Option[] = None,
+  vps_ipv6: Option[String] = None,
   vps_vzid: Option[String] = None,
   vps_currency: Option[String] = None,
   vps_type: Option[String] = None,

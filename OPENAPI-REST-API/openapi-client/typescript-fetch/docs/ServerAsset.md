@@ -45,15 +45,15 @@ Name | Type
 `vlans` | Array&lt;string&gt;
 `vlans6` | Array&lt;string&gt;
 `lease` | [ServerLease](ServerLease.md)
-`mac` | any
-`ipmi_admin_username` | any
-`ipmi_admin_password` | any
-`ipmi_client_username` | any
-`ipmi_client_password` | any
-`ipmi_updated` | any
-`create_timestamp` | any
-`update_timestamp` | any
-`comment` | any
+`mac` | string
+`ipmi_admin_username` | string
+`ipmi_admin_password` | string
+`ipmi_client_username` | string
+`ipmi_client_password` | string
+`ipmi_updated` | string
+`create_timestamp` | string
+`update_timestamp` | string
+`comment` | string
 
 ## Example
 

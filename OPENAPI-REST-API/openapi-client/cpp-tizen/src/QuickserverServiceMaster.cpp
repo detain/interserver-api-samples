@@ -53,8 +53,8 @@ QuickserverServiceMaster::__init()
 	//qs_bytes_sec_out = std::string();
 	//qs_packets_sec_in = std::string();
 	//qs_packets_sec_out = std::string();
-	//qs_last_install_time = null;
-	//qs_partitions = null;
+	//qs_last_install_time = std::string();
+	//qs_partitions = std::string();
 	//qs_cpu_flags = std::string();
 }
 
@@ -569,12 +569,9 @@ QuickserverServiceMaster::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&qs_last_install_time, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&qs_last_install_time, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&qs_last_install_time);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -583,12 +580,9 @@ QuickserverServiceMaster::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&qs_partitions, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&qs_partitions, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&qs_partitions);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -885,30 +879,20 @@ QuickserverServiceMaster::toJson()
 	}
 	const gchar *qs_packets_sec_outKey = "qs_packets_sec_out";
 	json_object_set_member(pJsonObject, qs_packets_sec_outKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getQsLastInstallTime();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getQsLastInstallTime();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getQsLastInstallTime());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *qs_last_install_timeKey = "qs_last_install_time";
 	json_object_set_member(pJsonObject, qs_last_install_timeKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getQsPartitions();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getQsPartitions();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getQsPartitions());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *qs_partitionsKey = "qs_partitions";
@@ -1290,26 +1274,26 @@ QuickserverServiceMaster::setQsPacketsSecOut(std::string  qs_packets_sec_out)
 	this->qs_packets_sec_out = qs_packets_sec_out;
 }
 
-AnyType
+std::string
 QuickserverServiceMaster::getQsLastInstallTime()
 {
 	return qs_last_install_time;
 }
 
 void
-QuickserverServiceMaster::setQsLastInstallTime(AnyType  qs_last_install_time)
+QuickserverServiceMaster::setQsLastInstallTime(std::string  qs_last_install_time)
 {
 	this->qs_last_install_time = qs_last_install_time;
 }
 
-AnyType
+std::string
 QuickserverServiceMaster::getQsPartitions()
 {
 	return qs_partitions;
 }
 
 void
-QuickserverServiceMaster::setQsPartitions(AnyType  qs_partitions)
+QuickserverServiceMaster::setQsPartitions(std::string  qs_partitions)
 {
 	this->qs_partitions = qs_partitions;
 }

@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -129,7 +128,7 @@ abstract class ServerOrderCPU implements Built<ServerOrderCPU, ServerOrderCPUBui
 
   /// Hard drive IDs.
   @BuiltValueField(wireName: r'hd_ids')
-  JsonObject? get hdIds;
+  String? get hdIds;
 
   /// Display of CPU price.
   @BuiltValueField(wireName: r'price_display')
@@ -320,7 +319,7 @@ class _$ServerOrderCPUSerializer implements PrimitiveSerializer<ServerOrderCPU> 
       yield r'hd_ids';
       yield serializers.serialize(
         object.hdIds,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.priceDisplay != null) {
@@ -517,9 +516,8 @@ class _$ServerOrderCPUSerializer implements PrimitiveSerializer<ServerOrderCPU> 
         case r'hd_ids':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.hdIds = valueDes;
           break;
         case r'price_display':

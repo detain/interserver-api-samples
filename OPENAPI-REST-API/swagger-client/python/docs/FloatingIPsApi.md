@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_floating_ips_list**
-> get_floating_ips_list()
+> list[object] get_floating_ips_list()
 
 List Floating IPs
 
@@ -303,7 +303,8 @@ api_instance = myadmin-client-python.FloatingIPsApi(myadmin-client-python.ApiCli
 
 try:
     # List Floating IPs
-    api_instance.get_floating_ips_list()
+    api_response = api_instance.get_floating_ips_list()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling FloatingIPsApi->get_floating_ips_list: %s\n" % e)
 ```
@@ -313,7 +314,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**list[object]**
 
 ### Authorization
 

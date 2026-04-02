@@ -27,7 +27,7 @@ feature --Access
       -- Server ID
     vps_ip: detachable STRING_32
       -- IP address of the VPS
-    vps_ipv6: detachable ANY
+    vps_ipv6: detachable STRING_32
       -- IPv6 address of the VPS
     vps_vzid: detachable STRING_32
       -- VPS Virtuozzo ID

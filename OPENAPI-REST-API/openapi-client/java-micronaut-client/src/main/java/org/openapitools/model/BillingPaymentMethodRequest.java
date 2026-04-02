@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   BillingPaymentMethodRequest.JSON_PROPERTY_CC_AUTO
 })
 @JsonTypeName("BillingPaymentMethodRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class BillingPaymentMethodRequest {
     public static final String JSON_PROPERTY_PAYMENT_METHOD = "payment_method";

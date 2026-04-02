@@ -33,8 +33,8 @@ Name | Type | Description | Notes
 **qs_bytes_sec_out** | **char \*** | Bytes/sec out | [optional] 
 **qs_packets_sec_in** | **char \*** | Packets/sec in | [optional] 
 **qs_packets_sec_out** | **char \*** | Packets/sec out | [optional] 
-**qs_last_install_time** | **any_type_t \*** | Last install time (null) | [optional] 
-**qs_partitions** | **any_type_t \*** | Partitions information (null) | [optional] 
+**qs_last_install_time** | **char \*** | Last install time (null) | [optional] 
+**qs_partitions** | **char \*** | Partitions information (null) | [optional] 
 **qs_cpu_flags** | **char \*** | CPU flags | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

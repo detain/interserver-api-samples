@@ -15,7 +15,6 @@
 
 typedef struct server_order_cpu_t server_order_cpu_t;
 
-#include "any_type.h"
 
 
 
@@ -42,7 +41,7 @@ typedef struct server_order_cpu_t {
     char *max_sff; // string
     char *max_nve; // string
     char *visible; // string
-    any_type_t *hd_ids; // custom
+    char *hd_ids; // string
     char *price_display; // string
     char *monthly_price_display; // string
 
@@ -72,7 +71,7 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *max_sff,
     char *max_nve,
     char *visible,
-    any_type_t *hd_ids,
+    char *hd_ids,
     char *price_display,
     char *monthly_price_display
 );

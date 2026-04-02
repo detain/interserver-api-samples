@@ -3,7 +3,6 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class VpsServiceInfo {
@@ -16,7 +15,7 @@ class VpsServiceInfo {
     /* IP address of the VPS */
     String vpsIp
     /* IPv6 address of the VPS */
-    Object vpsIpv6 = null
+    String vpsIpv6
     /* VPS Virtuozzo ID */
     String vpsVzid
     /* Currency used for billing */

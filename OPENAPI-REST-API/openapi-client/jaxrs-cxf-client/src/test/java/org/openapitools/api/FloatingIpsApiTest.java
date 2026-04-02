@@ -144,8 +144,8 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void getFloatingIpsListTest() {
-        //api.getFloatingIpsList();
-        
+        //List<Object> response = api.getFloatingIpsList();
+        //assertNotNull(response);
         // TODO: test validations
 
 

@@ -40,7 +40,7 @@ case class ServerServiceInfo (
     /* The setup status of the server. */
     _server_setup: Option[String],
     /* Discount information for the server. */
-    _server_discount: Option[AnyType],
+    _server_discount: Option[String],
     /* The reputation of the server. */
     _server_rep: Option[String],
     /* The date related to the server. */
@@ -48,7 +48,7 @@ case class ServerServiceInfo (
     /* The total cost of the server. */
     _server_total_cost: Option[String],
     /* The location of the server. */
-    _server_location: Option[AnyType],
+    _server_location: Option[String],
     /* The ordered hardware for the server. */
     _server_hardware_ordered: Option[String],
     /* The billed amount for the server. */
@@ -62,7 +62,7 @@ case class ServerServiceInfo (
     /* The size of the first dedicated hard drive. */
     _server_dedicated_hd1: Option[String],
     /* The size of the second dedicated hard drive. */
-    _server_dedicated_hd2: Option[AnyType],
+    _server_dedicated_hd2: Option[String],
     /* The bandwidth of the server. */
     _server_dedicated_bandwidth: Option[String],
     /* The number of dedicated IPs for the server. */
@@ -70,7 +70,7 @@ case class ServerServiceInfo (
     /* The operating system of the server. */
     _server_dedicated_os: Option[String],
     /* The control panel of the server. */
-    _server_dedicated_cp: Option[AnyType],
+    _server_dedicated_cp: Option[String],
     /* The RAID configuration of the server. */
     _server_dedicated_raid: Option[String],
     /* Additional information about the server. */

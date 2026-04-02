@@ -1,8 +1,6 @@
 (ns inter-server-management-api.specs.quickserver-service-master
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -39,8 +37,8 @@
    (ds/opt :qs_bytes_sec_out) string?
    (ds/opt :qs_packets_sec_in) string?
    (ds/opt :qs_packets_sec_out) string?
-   (ds/opt :qs_last_install_time) any-type-spec
-   (ds/opt :qs_partitions) any-type-spec
+   (ds/opt :qs_last_install_time) string?
+   (ds/opt :qs_partitions) string?
    (ds/opt :qs_cpu_flags) string?
    })
 

@@ -90,23 +90,23 @@ case class ServerAsset (
   vlans6: List[String],
 lease: ServerLease,
 /* MAC address associated with the asset. */
-  mac: Option[AnyType],
+  mac: Option[String],
 /* IPMI admin username associated with the asset. */
-  ipmi_admin_username: Option[AnyType],
+  ipmi_admin_username: Option[String],
 /* IPMI admin password associated with the asset. */
-  ipmi_admin_password: Option[AnyType],
+  ipmi_admin_password: Option[String],
 /* IPMI client username associated with the asset. */
-  ipmi_client_username: Option[AnyType],
+  ipmi_client_username: Option[String],
 /* IPMI client password associated with the asset. */
-  ipmi_client_password: Option[AnyType],
+  ipmi_client_password: Option[String],
 /* IPMI update status associated with the asset. */
-  ipmi_updated: Option[AnyType],
+  ipmi_updated: Option[String],
 /* Timestamp of asset creation. */
-  create_timestamp: Option[AnyType],
+  create_timestamp: Option[String],
 /* Timestamp of asset update. */
-  update_timestamp: Option[AnyType],
+  update_timestamp: Option[String],
 /* Comment associated with the asset. */
-  comment: Option[AnyType])
+  comment: Option[String])
 
 object ServerAsset {
   import DateTimeCodecs._

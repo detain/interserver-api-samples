@@ -46,7 +46,7 @@ public struct ServerServiceInfo: Sendable, Codable, Hashable {
     /** The setup status of the server. */
     public var serverSetup: String?
     /** Discount information for the server. */
-    public var serverDiscount: JSONValue?
+    public var serverDiscount: String?
     /** The reputation of the server. */
     public var serverRep: String?
     /** The date related to the server. */
@@ -54,7 +54,7 @@ public struct ServerServiceInfo: Sendable, Codable, Hashable {
     /** The total cost of the server. */
     public var serverTotalCost: String?
     /** The location of the server. */
-    public var serverLocation: JSONValue?
+    public var serverLocation: String?
     /** The ordered hardware for the server. */
     public var serverHardwareOrdered: String?
     /** The billed amount for the server. */
@@ -68,7 +68,7 @@ public struct ServerServiceInfo: Sendable, Codable, Hashable {
     /** The size of the first dedicated hard drive. */
     public var serverDedicatedHd1: String?
     /** The size of the second dedicated hard drive. */
-    public var serverDedicatedHd2: JSONValue?
+    public var serverDedicatedHd2: String?
     /** The bandwidth of the server. */
     public var serverDedicatedBandwidth: String?
     /** The number of dedicated IPs for the server. */
@@ -76,13 +76,13 @@ public struct ServerServiceInfo: Sendable, Codable, Hashable {
     /** The operating system of the server. */
     public var serverDedicatedOs: String?
     /** The control panel of the server. */
-    public var serverDedicatedCp: JSONValue?
+    public var serverDedicatedCp: String?
     /** The RAID configuration of the server. */
     public var serverDedicatedRaid: String?
     /** Additional information about the server. */
     public var serverExtra: String?
 
-    public init(serverId: String? = nil, serverHostname: String? = nil, serverCustid: String? = nil, serverType: String? = nil, serverCurrency: String? = nil, serverOrderDate: String? = nil, serverInvoice: String? = nil, serverCoupon: String? = nil, serverStatus: String? = nil, serverRoot: String? = nil, serverDedicatedTag: String? = nil, serverCustomTag: String? = nil, serverComment: String? = nil, serverInitialBill: String? = nil, serverHardware: String? = nil, serverIps: String? = nil, serverMonthlyBill: String? = nil, serverSetup: String? = nil, serverDiscount: JSONValue? = nil, serverRep: String? = nil, serverDate: String? = nil, serverTotalCost: String? = nil, serverLocation: JSONValue? = nil, serverHardwareOrdered: String? = nil, serverBilled: String? = nil, serverWelcomeEmail: String? = nil, serverDedicatedCpu: String? = nil, serverDedicatedMemory: String? = nil, serverDedicatedHd1: String? = nil, serverDedicatedHd2: JSONValue? = nil, serverDedicatedBandwidth: String? = nil, serverDedicatedIps: String? = nil, serverDedicatedOs: String? = nil, serverDedicatedCp: JSONValue? = nil, serverDedicatedRaid: String? = nil, serverExtra: String? = nil) {
+    public init(serverId: String? = nil, serverHostname: String? = nil, serverCustid: String? = nil, serverType: String? = nil, serverCurrency: String? = nil, serverOrderDate: String? = nil, serverInvoice: String? = nil, serverCoupon: String? = nil, serverStatus: String? = nil, serverRoot: String? = nil, serverDedicatedTag: String? = nil, serverCustomTag: String? = nil, serverComment: String? = nil, serverInitialBill: String? = nil, serverHardware: String? = nil, serverIps: String? = nil, serverMonthlyBill: String? = nil, serverSetup: String? = nil, serverDiscount: String? = nil, serverRep: String? = nil, serverDate: String? = nil, serverTotalCost: String? = nil, serverLocation: String? = nil, serverHardwareOrdered: String? = nil, serverBilled: String? = nil, serverWelcomeEmail: String? = nil, serverDedicatedCpu: String? = nil, serverDedicatedMemory: String? = nil, serverDedicatedHd1: String? = nil, serverDedicatedHd2: String? = nil, serverDedicatedBandwidth: String? = nil, serverDedicatedIps: String? = nil, serverDedicatedOs: String? = nil, serverDedicatedCp: String? = nil, serverDedicatedRaid: String? = nil, serverExtra: String? = nil) {
         self.serverId = serverId
         self.serverHostname = serverHostname
         self.serverCustid = serverCustid

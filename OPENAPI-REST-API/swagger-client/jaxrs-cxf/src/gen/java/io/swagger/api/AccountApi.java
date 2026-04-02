@@ -102,7 +102,7 @@ public interface AccountApi  {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "IP Range removed.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenericResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
-    public GenericResponse deleteIpLimit();
+    public GenericResponse deleteIpLimit(@Valid IpLimitRange body);
 
     /**
      * Retrieve Account Details

@@ -50,7 +50,7 @@ case class VpsServiceInfo(
     vps_custid: Option[String] = None,
     vps_server: Option[String] = None,
     vps_ip: Option[String] = None,
-    vps_ipv6: Option[AnyType] = None,
+    vps_ipv6: Option[String] = None,
     vps_vzid: Option[String] = None,
     vps_currency: Option[String] = None,
     vps_type: Option[String] = None,
@@ -115,7 +115,7 @@ object VpsServiceInfo {
       vps_custid <- c.downField("vps_custid").as[Option[String]]
       vps_server <- c.downField("vps_server").as[Option[String]]
       vps_ip <- c.downField("vps_ip").as[Option[String]]
-      vps_ipv6 <- c.downField("vps_ipv6").as[Option[AnyType]]
+      vps_ipv6 <- c.downField("vps_ipv6").as[Option[String]]
       vps_vzid <- c.downField("vps_vzid").as[Option[String]]
       vps_currency <- c.downField("vps_currency").as[Option[String]]
       vps_type <- c.downField("vps_type").as[Option[String]]

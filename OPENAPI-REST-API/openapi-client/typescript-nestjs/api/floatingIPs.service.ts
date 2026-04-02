@@ -277,7 +277,7 @@ export class FloatingIPsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getFloatingIpsListOpts.config] Override http request option.
      */
-    public getFloatingIpsList(getFloatingIpsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getFloatingIpsList(getFloatingIpsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Array<object>>>;
     public getFloatingIpsList(getFloatingIpsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -312,7 +312,7 @@ export class FloatingIPsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/floating_ips`,
+                return this.httpClient.get<Array<object>>(`${this.basePath}/floating_ips`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getFloatingIpsListOpts?.config,

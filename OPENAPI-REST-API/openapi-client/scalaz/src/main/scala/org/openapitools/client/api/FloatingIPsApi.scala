@@ -117,7 +117,9 @@ object FloatingIPsApi {
     } yield resp
   }
 
-  def getFloatingIpsList(host: String): Task[Unit] = {
+  def getFloatingIpsList(host: String): Task[List[Any]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[Any]] = jsonOf[List[Any]]
+
     val path = "/floating_ips"
 
     val httpMethod = Method.GET
@@ -131,7 +133,7 @@ object FloatingIPsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[List[Any]](req)
 
     } yield resp
   }
@@ -330,7 +332,9 @@ class HttpServiceFloatingIPsApi(service: HttpService) {
     } yield resp
   }
 
-  def getFloatingIpsList(): Task[Unit] = {
+  def getFloatingIpsList(): Task[List[Any]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[Any]] = jsonOf[List[Any]]
+
     val path = "/floating_ips"
 
     val httpMethod = Method.GET
@@ -344,7 +348,7 @@ class HttpServiceFloatingIPsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[List[Any]](req)
 
     } yield resp
   }

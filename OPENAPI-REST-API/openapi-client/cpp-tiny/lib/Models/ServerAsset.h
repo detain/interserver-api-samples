@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 #include "ServerLease.h"
 #include <list>
 
@@ -323,67 +322,67 @@ public:
 	void setLease(ServerLease lease);
 	/*! \brief Get MAC address associated with the asset.
 	 */
-	AnyType getMac();
+	std::string getMac();
 
 	/*! \brief Set MAC address associated with the asset.
 	 */
-	void setMac(AnyType mac);
+	void setMac(std::string mac);
 	/*! \brief Get IPMI admin username associated with the asset.
 	 */
-	AnyType getIpmiAdminUsername();
+	std::string getIpmiAdminUsername();
 
 	/*! \brief Set IPMI admin username associated with the asset.
 	 */
-	void setIpmiAdminUsername(AnyType ipmi_admin_username);
+	void setIpmiAdminUsername(std::string ipmi_admin_username);
 	/*! \brief Get IPMI admin password associated with the asset.
 	 */
-	AnyType getIpmiAdminPassword();
+	std::string getIpmiAdminPassword();
 
 	/*! \brief Set IPMI admin password associated with the asset.
 	 */
-	void setIpmiAdminPassword(AnyType ipmi_admin_password);
+	void setIpmiAdminPassword(std::string ipmi_admin_password);
 	/*! \brief Get IPMI client username associated with the asset.
 	 */
-	AnyType getIpmiClientUsername();
+	std::string getIpmiClientUsername();
 
 	/*! \brief Set IPMI client username associated with the asset.
 	 */
-	void setIpmiClientUsername(AnyType ipmi_client_username);
+	void setIpmiClientUsername(std::string ipmi_client_username);
 	/*! \brief Get IPMI client password associated with the asset.
 	 */
-	AnyType getIpmiClientPassword();
+	std::string getIpmiClientPassword();
 
 	/*! \brief Set IPMI client password associated with the asset.
 	 */
-	void setIpmiClientPassword(AnyType ipmi_client_password);
+	void setIpmiClientPassword(std::string ipmi_client_password);
 	/*! \brief Get IPMI update status associated with the asset.
 	 */
-	AnyType getIpmiUpdated();
+	std::string getIpmiUpdated();
 
 	/*! \brief Set IPMI update status associated with the asset.
 	 */
-	void setIpmiUpdated(AnyType ipmi_updated);
+	void setIpmiUpdated(std::string ipmi_updated);
 	/*! \brief Get Timestamp of asset creation.
 	 */
-	AnyType getCreateTimestamp();
+	std::string getCreateTimestamp();
 
 	/*! \brief Set Timestamp of asset creation.
 	 */
-	void setCreateTimestamp(AnyType create_timestamp);
+	void setCreateTimestamp(std::string create_timestamp);
 	/*! \brief Get Timestamp of asset update.
 	 */
-	AnyType getUpdateTimestamp();
+	std::string getUpdateTimestamp();
 
 	/*! \brief Set Timestamp of asset update.
 	 */
-	void setUpdateTimestamp(AnyType update_timestamp);
+	void setUpdateTimestamp(std::string update_timestamp);
 	/*! \brief Get Comment associated with the asset.
 	 */
-	AnyType getComment();
+	std::string getComment();
 
 	/*! \brief Set Comment associated with the asset.
 	 */
-	void setComment(AnyType comment);
+	void setComment(std::string comment);
 
 
     private:
@@ -426,15 +425,15 @@ public:
     std::list<std::string> vlans;
     std::list<std::string> vlans6;
     ServerLease lease;
-    AnyType mac;
-    AnyType ipmi_admin_username;
-    AnyType ipmi_admin_password;
-    AnyType ipmi_client_username;
-    AnyType ipmi_client_password;
-    AnyType ipmi_updated;
-    AnyType create_timestamp;
-    AnyType update_timestamp;
-    AnyType comment;
+    std::string mac{};
+    std::string ipmi_admin_username{};
+    std::string ipmi_admin_password{};
+    std::string ipmi_client_username{};
+    std::string ipmi_client_password{};
+    std::string ipmi_updated{};
+    std::string create_timestamp{};
+    std::string update_timestamp{};
+    std::string comment{};
 };
 }
 

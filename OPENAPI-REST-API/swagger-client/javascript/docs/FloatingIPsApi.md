@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 <a name="getFloatingIpsList"></a>
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> [Object] getFloatingIpsList()
 
 List Floating IPs
 
@@ -294,7 +294,7 @@ apiInstance.getFloatingIpsList((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -304,7 +304,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**[Object]**
 
 ### Authorization
 

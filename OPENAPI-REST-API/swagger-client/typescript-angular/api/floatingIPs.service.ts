@@ -297,9 +297,9 @@ export class FloatingIPsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFloatingIpsList(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getFloatingIpsList(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getFloatingIpsList(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getFloatingIpsList(observe?: 'body', reportProgress?: boolean): Observable<Array<any>>;
+    public getFloatingIpsList(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<any>>>;
+    public getFloatingIpsList(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<any>>>;
     public getFloatingIpsList(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -334,7 +334,7 @@ export class FloatingIPsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/floating_ips`,
+        return this.httpClient.request<Array<any>>('get',`${this.basePath}/floating_ips`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

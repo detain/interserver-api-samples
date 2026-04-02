@@ -1,7 +1,6 @@
 (ns inter-server-management-api.specs.server-order-cpu
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [inter-server-management-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -30,7 +29,7 @@
    (ds/opt :max_sff) string?
    (ds/opt :max_nve) string?
    (ds/opt :visible) string?
-   (ds/opt :hd_ids) any-type-spec
+   (ds/opt :hd_ids) string?
    (ds/opt :price_display) string?
    (ds/opt :monthly_price_display) string?
    })

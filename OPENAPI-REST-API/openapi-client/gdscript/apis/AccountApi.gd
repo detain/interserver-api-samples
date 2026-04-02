@@ -189,6 +189,8 @@ func delete_account_tfa_threaded(
 #
 # Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
 func delete_ip_limit(
+	# ipLimitRange: IpLimitRange
+	ipLimitRange = null,
 	on_success: Callable = Callable(),  # func(response: ApiResponse)
 	on_failure: Callable = Callable(),  # func(error: ApiError)
 ):
@@ -225,6 +227,7 @@ func delete_ip_limit(
 	var bzz_query := Dictionary()
 
 	var bzz_body = null
+	bzz_body = ipLimitRange
 
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
@@ -239,12 +242,15 @@ func delete_ip_limit(
 
 
 func delete_ip_limit_threaded(
+	# ipLimitRange: IpLimitRange
+	ipLimitRange = null,
 	on_success: Callable = Callable(),  # func(response: ApiResponse)
 	on_failure: Callable = Callable(),  # func(error: ApiError)
 ) -> Thread:
 	var bzz_thread := Thread.new()
 	var bzz_callable := Callable(self, "delete_ip_limit")
 	bzz_callable.bind(
+		ipLimitRange,
 		on_success,
 		on_failure,
 	)

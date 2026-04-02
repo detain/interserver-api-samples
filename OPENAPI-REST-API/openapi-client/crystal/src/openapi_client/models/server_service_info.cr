@@ -87,8 +87,8 @@ module OpenAPIClient
     property server_setup : String?
 
     # Discount information for the server.
-    @[JSON::Field(key: "server_discount", type: JSON::Any?, nillable: true, emit_null: false)]
-    property server_discount : JSON::Any?
+    @[JSON::Field(key: "server_discount", type: String?, nillable: true, emit_null: false)]
+    property server_discount : String?
 
     # The reputation of the server.
     @[JSON::Field(key: "server_rep", type: String?, nillable: true, emit_null: false)]
@@ -103,8 +103,8 @@ module OpenAPIClient
     property server_total_cost : String?
 
     # The location of the server.
-    @[JSON::Field(key: "server_location", type: JSON::Any?, nillable: true, emit_null: false)]
-    property server_location : JSON::Any?
+    @[JSON::Field(key: "server_location", type: String?, nillable: true, emit_null: false)]
+    property server_location : String?
 
     # The ordered hardware for the server.
     @[JSON::Field(key: "server_hardware_ordered", type: String?, nillable: true, emit_null: false)]
@@ -131,8 +131,8 @@ module OpenAPIClient
     property server_dedicated_hd1 : String?
 
     # The size of the second dedicated hard drive.
-    @[JSON::Field(key: "server_dedicated_hd2", type: JSON::Any?, nillable: true, emit_null: false)]
-    property server_dedicated_hd2 : JSON::Any?
+    @[JSON::Field(key: "server_dedicated_hd2", type: String?, nillable: true, emit_null: false)]
+    property server_dedicated_hd2 : String?
 
     # The bandwidth of the server.
     @[JSON::Field(key: "server_dedicated_bandwidth", type: String?, nillable: true, emit_null: false)]
@@ -147,8 +147,8 @@ module OpenAPIClient
     property server_dedicated_os : String?
 
     # The control panel of the server.
-    @[JSON::Field(key: "server_dedicated_cp", type: JSON::Any?, nillable: true, emit_null: false)]
-    property server_dedicated_cp : JSON::Any?
+    @[JSON::Field(key: "server_dedicated_cp", type: String?, nillable: true, emit_null: false)]
+    property server_dedicated_cp : String?
 
     # The RAID configuration of the server.
     @[JSON::Field(key: "server_dedicated_raid", type: String?, nillable: true, emit_null: false)]
@@ -160,7 +160,7 @@ module OpenAPIClient
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(@server_id : String? = nil, @server_hostname : String? = nil, @server_custid : String? = nil, @server_type : String? = nil, @server_currency : String? = nil, @server_order_date : String? = nil, @server_invoice : String? = nil, @server_coupon : String? = nil, @server_status : String? = nil, @server_root : String? = nil, @server_dedicated_tag : String? = nil, @server_custom_tag : String? = nil, @server_comment : String? = nil, @server_initial_bill : String? = nil, @server_hardware : String? = nil, @server_ips : String? = nil, @server_monthly_bill : String? = nil, @server_setup : String? = nil, @server_discount : JSON::Any? = nil, @server_rep : String? = nil, @server_date : String? = nil, @server_total_cost : String? = nil, @server_location : JSON::Any? = nil, @server_hardware_ordered : String? = nil, @server_billed : String? = nil, @server_welcome_email : String? = nil, @server_dedicated_cpu : String? = nil, @server_dedicated_memory : String? = nil, @server_dedicated_hd1 : String? = nil, @server_dedicated_hd2 : JSON::Any? = nil, @server_dedicated_bandwidth : String? = nil, @server_dedicated_ips : String? = nil, @server_dedicated_os : String? = nil, @server_dedicated_cp : JSON::Any? = nil, @server_dedicated_raid : String? = nil, @server_extra : String? = nil)
+    def initialize(@server_id : String? = nil, @server_hostname : String? = nil, @server_custid : String? = nil, @server_type : String? = nil, @server_currency : String? = nil, @server_order_date : String? = nil, @server_invoice : String? = nil, @server_coupon : String? = nil, @server_status : String? = nil, @server_root : String? = nil, @server_dedicated_tag : String? = nil, @server_custom_tag : String? = nil, @server_comment : String? = nil, @server_initial_bill : String? = nil, @server_hardware : String? = nil, @server_ips : String? = nil, @server_monthly_bill : String? = nil, @server_setup : String? = nil, @server_discount : String? = nil, @server_rep : String? = nil, @server_date : String? = nil, @server_total_cost : String? = nil, @server_location : String? = nil, @server_hardware_ordered : String? = nil, @server_billed : String? = nil, @server_welcome_email : String? = nil, @server_dedicated_cpu : String? = nil, @server_dedicated_memory : String? = nil, @server_dedicated_hd1 : String? = nil, @server_dedicated_hd2 : String? = nil, @server_dedicated_bandwidth : String? = nil, @server_dedicated_ips : String? = nil, @server_dedicated_os : String? = nil, @server_dedicated_cp : String? = nil, @server_dedicated_raid : String? = nil, @server_extra : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

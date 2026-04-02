@@ -350,19 +350,20 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /floating_ips
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
-     * @return void
+     * @return kotlin.collections.List<kotlin.Any>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getFloatingIpsList() : Unit {
+    fun getFloatingIpsList() : kotlin.collections.List<kotlin.Any> {
         val localVarResponse = getFloatingIpsListWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<kotlin.Any>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -380,15 +381,16 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /floating_ips
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.collections.List<kotlin.Any>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getFloatingIpsListWithHttpInfo() : ApiResponse<Unit?> {
+    fun getFloatingIpsListWithHttpInfo() : ApiResponse<kotlin.collections.List<kotlin.Any>?> {
         val localVariableConfig = getFloatingIpsListRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.collections.List<kotlin.Any>>(
             localVariableConfig
         )
     }

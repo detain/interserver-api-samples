@@ -218,8 +218,14 @@ sub delete_account_tfa {
 #
 # Remove IP Access Restriction
 #
+# @param IpLimitRange $ip_limit_range  (optional)
 {
     my $params = {
+    'ip_limit_range' => {
+        data_type => 'IpLimitRange',
+        description => '',
+        required => '0',
+    },
     };
     __PACKAGE__->method_documentation->{ 'delete_ip_limit' } = {
         summary => 'Remove IP Access Restriction',
@@ -248,6 +254,11 @@ sub delete_ip_limit {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     my $_body_data;
+    # body params
+    if ( exists $args{'ip_limit_range'}) {
+        $_body_data = $args{'ip_limit_range'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 

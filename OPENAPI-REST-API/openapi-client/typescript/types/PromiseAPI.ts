@@ -533,20 +533,22 @@ export class PromiseAccountApi {
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * Remove IP Access Restriction
+     * @param [ipLimitRange]
      */
-    public deleteIpLimitWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GenericResponse>> {
+    public deleteIpLimitWithHttpInfo(ipLimitRange?: IpLimitRange, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GenericResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteIpLimitWithHttpInfo(observableOptions);
+        const result = this.api.deleteIpLimitWithHttpInfo(ipLimitRange, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * Remove IP Access Restriction
+     * @param [ipLimitRange]
      */
-    public deleteIpLimit(_options?: PromiseConfigurationOptions): Promise<GenericResponse> {
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, _options?: PromiseConfigurationOptions): Promise<GenericResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteIpLimit(observableOptions);
+        const result = this.api.deleteIpLimit(ipLimitRange, observableOptions);
         return result.toPromise();
     }
 
@@ -2711,7 +2713,7 @@ export class PromiseFloatingIPsApi {
      * Returns all Floating IP services on the account with their current status and assignment details.
      * List Floating IPs
      */
-    public getFloatingIpsListWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getFloatingIpsListWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<any>>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFloatingIpsListWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -2721,7 +2723,7 @@ export class PromiseFloatingIPsApi {
      * Returns all Floating IP services on the account with their current status and assignment details.
      * List Floating IPs
      */
-    public getFloatingIpsList(_options?: PromiseConfigurationOptions): Promise<void> {
+    public getFloatingIpsList(_options?: PromiseConfigurationOptions): Promise<Array<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFloatingIpsList(observableOptions);
         return result.toPromise();

@@ -18,7 +18,7 @@ open class VpsServiceInfo: JSONEncodable {
     /** IP address of the VPS */
     public var vpsIp: String?
     /** IPv6 address of the VPS */
-    public var vpsIpv6: Object?
+    public var vpsIpv6: String?
     /** VPS Virtuozzo ID */
     public var vpsVzid: String?
     /** Currency used for billing */
@@ -73,7 +73,7 @@ open class VpsServiceInfo: JSONEncodable {
         nillableDictionary["vps_custid"] = self.vpsCustid
         nillableDictionary["vps_server"] = self.vpsServer
         nillableDictionary["vps_ip"] = self.vpsIp
-        nillableDictionary["vps_ipv6"] = self.vpsIpv6?.encodeToJSON()
+        nillableDictionary["vps_ipv6"] = self.vpsIpv6
         nillableDictionary["vps_vzid"] = self.vpsVzid
         nillableDictionary["vps_currency"] = self.vpsCurrency
         nillableDictionary["vps_type"] = self.vpsType

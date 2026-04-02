@@ -12,7 +12,6 @@ import tables
 import marshal
 import options
 
-import model_any_type
 
 type VpsServiceInfo* = object
   ## 
@@ -20,7 +19,7 @@ type VpsServiceInfo* = object
   vpsCustid*: Option[string] ## Customer ID
   vpsServer*: Option[string] ## Server ID
   vpsIp*: Option[string] ## IP address of the VPS
-  vpsIpv6*: Option[JsonNode] ## IPv6 address of the VPS
+  vpsIpv6*: Option[string] ## IPv6 address of the VPS
   vpsVzid*: Option[string] ## VPS Virtuozzo ID
   vpsCurrency*: Option[string] ## Currency used for billing
   vpsType*: Option[string] ## VPS type

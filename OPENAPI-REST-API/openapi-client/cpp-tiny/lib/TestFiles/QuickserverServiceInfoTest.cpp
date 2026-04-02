@@ -94,6 +94,26 @@ void test_QuickserverServiceInfo_qs_ip_is_assigned_from_json()
 }
 
 
+void test_QuickserverServiceInfo_qs_ipv6_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "qs_ipv6", "hello"
+    };
+
+    QuickserverServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getQsIpv6().c_str());
+
+
+
+
+
+
+}
+
 
 void test_QuickserverServiceInfo_qs_vzid_is_assigned_from_json()
 {
@@ -368,6 +388,26 @@ void test_QuickserverServiceInfo_qs_vnc_is_assigned_from_json()
 }
 
 
+void test_QuickserverServiceInfo_qs_vnc_port_is_assigned_from_json()
+{
+    bourne::json input =
+    {
+        "qs_vnc_port", 1
+    };
+
+    QuickserverServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_INT(1, obj.getQsVncPort());
+
+
+
+
+
+
+
+
+}
+
 
 void test_QuickserverServiceInfo_qs_rootpass_is_assigned_from_json()
 {
@@ -474,6 +514,26 @@ void test_QuickserverServiceInfo_qs_location_is_assigned_from_json()
 }
 
 
+void test_QuickserverServiceInfo_qs_platform_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "qs_platform", "hello"
+    };
+
+    QuickserverServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getQsPlatform().c_str());
+
+
+
+
+
+
+}
+
 
 
 void test_QuickserverServiceInfo_qs_id_is_converted_to_json()
@@ -559,6 +619,26 @@ void test_QuickserverServiceInfo_qs_ip_is_converted_to_json()
 
 }
 
+
+void test_QuickserverServiceInfo_qs_ipv6_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "qs_ipv6", "hello"
+    };
+
+    QuickserverServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["qs_ipv6"] == output["qs_ipv6"]);
+
+
+
+}
 
 
 void test_QuickserverServiceInfo_qs_vzid_is_converted_to_json()
@@ -834,6 +914,26 @@ void test_QuickserverServiceInfo_qs_vnc_is_converted_to_json()
 }
 
 
+void test_QuickserverServiceInfo_qs_vnc_port_is_converted_to_json()
+{
+    bourne::json input =
+    {
+        "qs_vnc_port", 1
+    };
+
+    QuickserverServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["qs_vnc_port"] == output["qs_vnc_port"]);
+
+
+
+
+}
+
 
 void test_QuickserverServiceInfo_qs_rootpass_is_converted_to_json()
 {
@@ -939,5 +1039,25 @@ void test_QuickserverServiceInfo_qs_location_is_converted_to_json()
 
 }
 
+
+void test_QuickserverServiceInfo_qs_platform_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "qs_platform", "hello"
+    };
+
+    QuickserverServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["qs_platform"] == output["qs_platform"]);
+
+
+
+}
 
 

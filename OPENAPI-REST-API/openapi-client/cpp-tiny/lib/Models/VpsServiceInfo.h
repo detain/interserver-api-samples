@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 
 namespace Tiny {
 
@@ -76,11 +75,11 @@ public:
 	void setVpsIp(std::string vps_ip);
 	/*! \brief Get IPv6 address of the VPS
 	 */
-	AnyType getVpsIpv6();
+	std::string getVpsIpv6();
 
 	/*! \brief Set IPv6 address of the VPS
 	 */
-	void setVpsIpv6(AnyType vps_ipv6);
+	void setVpsIpv6(std::string vps_ipv6);
 	/*! \brief Get VPS Virtuozzo ID
 	 */
 	std::string getVpsVzid();
@@ -242,7 +241,7 @@ public:
     std::string vps_custid{};
     std::string vps_server{};
     std::string vps_ip{};
-    AnyType vps_ipv6;
+    std::string vps_ipv6{};
     std::string vps_vzid{};
     std::string vps_currency{};
     std::string vps_type{};

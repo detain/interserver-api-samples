@@ -58,7 +58,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// <param name="vpsPlatform">Virtualization platform.</param>
         /// <param name="vpsDiskused">Amount of disk space used.</param>
         /// <param name="vpsDiskmax">Maximum disk space available.</param>
-        public VpsServiceInfo(string vpsId = default(string), string vpsCustid = default(string), string vpsServer = default(string), string vpsIp = default(string), Object vpsIpv6 = default(Object), string vpsVzid = default(string), string vpsCurrency = default(string), string vpsType = default(string), string vpsOrderDate = default(string), string vpsStatus = default(string), string vpsInvoice = default(string), string vpsCoupon = default(string), string vpsExtra = default(string), string vpsHostname = default(string), string vpsServerStatus = default(string), string vpsComment = default(string), string vpsSlices = default(string), string vpsVnc = default(string), string vpsVncPort = default(string), string vpsRootpass = default(string), string vpsMac = default(string), string vpsOs = default(string), string vpsVersion = default(string), string vpsLocation = default(string), string vpsPlatform = default(string), string vpsDiskused = default(string), string vpsDiskmax = default(string))
+        public VpsServiceInfo(string vpsId = default(string), string vpsCustid = default(string), string vpsServer = default(string), string vpsIp = default(string), string vpsIpv6 = default(string), string vpsVzid = default(string), string vpsCurrency = default(string), string vpsType = default(string), string vpsOrderDate = default(string), string vpsStatus = default(string), string vpsInvoice = default(string), string vpsCoupon = default(string), string vpsExtra = default(string), string vpsHostname = default(string), string vpsServerStatus = default(string), string vpsComment = default(string), string vpsSlices = default(string), string vpsVnc = default(string), string vpsVncPort = default(string), string vpsRootpass = default(string), string vpsMac = default(string), string vpsOs = default(string), string vpsVersion = default(string), string vpsLocation = default(string), string vpsPlatform = default(string), string vpsDiskused = default(string), string vpsDiskmax = default(string))
         {
             this.vps_id = vpsId;
             this.vps_custid = vpsCustid;
@@ -122,7 +122,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>IPv6 address of the VPS</value>
         [DataMember(Name="vps_ipv6", EmitDefaultValue=false)]
-        public Object vps_ipv6 { get; set; }
+        public string vps_ipv6 { get; set; }
 
         /// <summary>
         /// VPS Virtuozzo ID

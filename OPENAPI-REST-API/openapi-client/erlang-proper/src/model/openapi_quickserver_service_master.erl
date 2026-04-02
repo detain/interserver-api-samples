@@ -39,8 +39,8 @@
   | {'qs_bytes_sec_out', binary() }
   | {'qs_packets_sec_in', binary() }
   | {'qs_packets_sec_out', binary() }
-  | {'qs_last_install_time', openapi_any_type:openapi_any_type() }
-  | {'qs_partitions', openapi_any_type:openapi_any_type() }
+  | {'qs_last_install_time', binary() }
+  | {'qs_partitions', binary() }
   | {'qs_cpu_flags', binary() }
   ].
 
@@ -79,8 +79,8 @@ openapi_quickserver_service_master(Fields) ->
             , {'qs_bytes_sec_out', binary() }
             , {'qs_packets_sec_in', binary() }
             , {'qs_packets_sec_out', binary() }
-            , {'qs_last_install_time', openapi_any_type:openapi_any_type() }
-            , {'qs_partitions', openapi_any_type:openapi_any_type() }
+            , {'qs_last_install_time', binary() }
+            , {'qs_partitions', binary() }
             , {'qs_cpu_flags', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 
 namespace Tiny {
 
@@ -76,11 +75,11 @@ public:
 	void setQsIp(std::string qs_ip);
 	/*! \brief Get IPv6 address (null)
 	 */
-	AnyType getQsIpv6();
+	std::string getQsIpv6();
 
 	/*! \brief Set IPv6 address (null)
 	 */
-	void setQsIpv6(AnyType qs_ipv6);
+	void setQsIpv6(std::string qs_ipv6);
 	/*! \brief Get VZ ID
 	 */
 	std::string getQsVzid();
@@ -174,11 +173,11 @@ public:
 	void setQsVnc(std::string qs_vnc);
 	/*! \brief Get VNC port (null)
 	 */
-	AnyType getQsVncPort();
+	int getQsVncPort();
 
 	/*! \brief Set VNC port (null)
 	 */
-	void setQsVncPort(AnyType qs_vnc_port);
+	void setQsVncPort(int qs_vnc_port);
 	/*! \brief Get Root password
 	 */
 	std::string getQsRootpass();
@@ -216,11 +215,11 @@ public:
 	void setQsLocation(std::string qs_location);
 	/*! \brief Get Platform (null)
 	 */
-	AnyType getQsPlatform();
+	std::string getQsPlatform();
 
 	/*! \brief Set Platform (null)
 	 */
-	void setQsPlatform(AnyType qs_platform);
+	void setQsPlatform(std::string qs_platform);
 
 
     private:
@@ -228,7 +227,7 @@ public:
     std::string qs_custid{};
     std::string qs_server{};
     std::string qs_ip{};
-    AnyType qs_ipv6;
+    std::string qs_ipv6{};
     std::string qs_vzid{};
     std::string qs_currency{};
     std::string qs_type{};
@@ -242,13 +241,13 @@ public:
     std::string qs_comment{};
     std::string qs_slices{};
     std::string qs_vnc{};
-    AnyType qs_vnc_port;
+    int qs_vnc_port{};
     std::string qs_rootpass{};
     std::string qs_mac{};
     std::string qs_os{};
     std::string qs_version{};
     std::string qs_location{};
-    AnyType qs_platform;
+    std::string qs_platform{};
 };
 }
 

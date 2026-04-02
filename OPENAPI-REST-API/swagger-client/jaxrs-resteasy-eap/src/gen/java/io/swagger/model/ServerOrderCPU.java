@@ -34,7 +34,7 @@ public class ServerOrderCPU   {
   private String maxSff = null;
   private String maxNve = null;
   private String visible = null;
-  private Object hdIds = null;
+  private String hdIds = null;
   private String priceDisplay = null;
   private String monthlyPriceDisplay = null;
 
@@ -353,10 +353,10 @@ public class ServerOrderCPU   {
   @Schema(description = "Hard drive IDs.")
   @JsonProperty("hd_ids")
   @NotNull
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 

@@ -473,7 +473,9 @@ paths:
       operationId: deleteIpLimit
       requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IpLimitRange"
       responses:
         "200":
           content:
@@ -490,6 +492,7 @@ paths:
       summary: Remove IP Access Restriction
       tags:
       - Account
+      x-content-type: application/json
       x-accepts:
       - application/json
     post:
@@ -3156,7 +3159,11 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  type: object
+                type: array
           description: The listing of `Floating IPs` services on your account.
           links:
             getFloatingIpInfo:
@@ -18051,7 +18058,7 @@ components:
           qs_ram: "29550679"
           qs_iowait: "6.89"
           qs_cpu_flags: ""
-          qs_last_install_time: ""
+          qs_last_install_time: qs_last_install_time
           qs_location: "1"
           qs_packets_sec_in: "0"
           qs_distro_version: "22.04"
@@ -18062,7 +18069,7 @@ components:
           qs_load: "3.45"
           qs_bytes_sec_in: "0"
           qs_raid_building: "0"
-          qs_partitions: ""
+          qs_partitions: qs_partitions
           qs_raid_status: "OK: zfs:all pools are healthy"
           qs_id: "365"
           qs_cpu_mhz: "2900"
@@ -18084,10 +18091,10 @@ components:
           qs_vnc: 99.88.77.66
           qs_comment: ""
           qs_invoice: "20297531"
-          qs_platform: ""
+          qs_platform: qs_platform
           qs_mac: ""
           qs_order_date: 2023-04-11T20:00:06.000Z
-          qs_ipv6: ""
+          qs_ipv6: qs_ipv6
           qs_coupon: "0"
           qs_currency: USD
           qs_slices: "0"
@@ -18095,7 +18102,7 @@ components:
           qs_status: canceled
           qs_type: "700"
           qs_server_status: deleted
-          qs_vnc_port: ""
+          qs_vnc_port: 0
         extraInfoTables:
           addons:
             title: Addons
@@ -18544,10 +18551,10 @@ components:
         qs_vnc: 99.88.77.66
         qs_comment: ""
         qs_invoice: "20297531"
-        qs_platform: ""
+        qs_platform: qs_platform
         qs_mac: ""
         qs_order_date: 2023-04-11T20:00:06.000Z
-        qs_ipv6: ""
+        qs_ipv6: qs_ipv6
         qs_coupon: "0"
         qs_currency: USD
         qs_slices: "0"
@@ -18555,7 +18562,7 @@ components:
         qs_status: canceled
         qs_type: "700"
         qs_server_status: deleted
-        qs_vnc_port: ""
+        qs_vnc_port: 0
       properties:
         qs_id:
           description: Quickserver ID
@@ -18575,6 +18582,8 @@ components:
           type: string
         qs_ipv6:
           description: IPv6 address (null)
+          nullable: true
+          type: string
         qs_vzid:
           description: VZ ID
           example: qs24355
@@ -18629,6 +18638,8 @@ components:
           type: string
         qs_vnc_port:
           description: VNC port (null)
+          nullable: true
+          type: integer
         qs_rootpass:
           description: Root password
           example: ""
@@ -18651,6 +18662,8 @@ components:
           type: string
         qs_platform:
           description: Platform (null)
+          nullable: true
+          type: string
       type: object
     QuickserverServiceMaster:
       description: "Information about the host node running this QuickServer, including\
@@ -18672,7 +18685,7 @@ components:
         qs_ram: "29550679"
         qs_iowait: "6.89"
         qs_cpu_flags: ""
-        qs_last_install_time: ""
+        qs_last_install_time: qs_last_install_time
         qs_location: "1"
         qs_packets_sec_in: "0"
         qs_distro_version: "22.04"
@@ -18683,7 +18696,7 @@ components:
         qs_load: "3.45"
         qs_bytes_sec_in: "0"
         qs_raid_building: "0"
-        qs_partitions: ""
+        qs_partitions: qs_partitions
         qs_raid_status: "OK: zfs:all pools are healthy"
         qs_id: "365"
         qs_cpu_mhz: "2900"
@@ -18812,8 +18825,12 @@ components:
           type: string
         qs_last_install_time:
           description: Last install time (null)
+          nullable: true
+          type: string
         qs_partitions:
           description: Partitions information (null)
+          nullable: true
+          type: string
         qs_cpu_flags:
           description: CPU flags
           example: ""
@@ -18909,20 +18926,20 @@ components:
             "3497":
               col: "06"
               vlans: []
-              ipmi_client_password: ""
+              ipmi_client_password: ipmi_client_password
               switchports:
               - 10414
               description: ""
               external_id: ""
               asset_id: "1"
-              ipmi_admin_username: ""
+              ipmi_admin_username: ipmi_admin_username
               ipmi_working: "0"
-              mac: ""
+              mac: mac
               hostname: myserver.host.com
               primary_ipv4: 1.2.3.250
               overdue: "0"
-              create_timestamp: ""
-              update_timestamp: ""
+              create_timestamp: create_timestamp
+              update_timestamp: update_timestamp
               asset_name: server
               primary_ipv6: ""
               unit_sub: "0"
@@ -18941,15 +18958,15 @@ components:
               rack: "68"
               comments: ""
               type_id: "1"
-              ipmi_updated: ""
-              ipmi_admin_password: ""
+              ipmi_updated: ipmi_updated
+              ipmi_admin_password: ipmi_admin_password
               datacenter: "2"
               unit_start: "37"
               rack_name: "112.16"
               rack_id: "68"
               rack_size: "44"
               unit_end: "37"
-              comment: ""
+              comment: comment
               lease:
                 authenticated: false
                 mac: 0c:c4:7a:af:35:00
@@ -18957,7 +18974,7 @@ components:
               customer_id: int5377
               order_id: "16058"
               vlans6: []
-              ipmi_client_username: ""
+              ipmi_client_username: ipmi_client_username
               status: active
           switchports:
             "10414":
@@ -19026,7 +19043,7 @@ components:
               - ""
         serviceInfo:
           server_total_cost: "230"
-          server_location: ""
+          server_location: server_location
           server_invoice: "18738142"
           server_setup: "0"
           server_dedicated_cpu: "38"
@@ -19034,7 +19051,7 @@ components:
           server_rep: "0"
           server_hardware_ordered: "0"
           server_dedicated_tag: "0"
-          server_discount: ""
+          server_discount: server_discount
           server_root: ""
           server_custid: "771282"
           server_welcome_email: "1"
@@ -19049,9 +19066,9 @@ components:
           server_id: "16058"
           server_billed: "0"
           server_hostname: myserver.host.com
-          server_dedicated_hd2: ""
+          server_dedicated_hd2: server_dedicated_hd2
           server_dedicated_hd1: "20"
-          server_dedicated_cp: ""
+          server_dedicated_cp: server_dedicated_cp
           server_dedicated_raid: "0"
           server_dedicated_ips: "5"
           server_hardware: "0"
@@ -19115,20 +19132,20 @@ components:
       example:
         col: "06"
         vlans: []
-        ipmi_client_password: ""
+        ipmi_client_password: ipmi_client_password
         switchports:
         - 10414
         description: ""
         external_id: ""
         asset_id: "1"
-        ipmi_admin_username: ""
+        ipmi_admin_username: ipmi_admin_username
         ipmi_working: "0"
-        mac: ""
+        mac: mac
         hostname: myserver.host.com
         primary_ipv4: 1.2.3.250
         overdue: "0"
-        create_timestamp: ""
-        update_timestamp: ""
+        create_timestamp: create_timestamp
+        update_timestamp: update_timestamp
         asset_name: server
         primary_ipv6: ""
         unit_sub: "0"
@@ -19147,15 +19164,15 @@ components:
         rack: "68"
         comments: ""
         type_id: "1"
-        ipmi_updated: ""
-        ipmi_admin_password: ""
+        ipmi_updated: ipmi_updated
+        ipmi_admin_password: ipmi_admin_password
         datacenter: "2"
         unit_start: "37"
         rack_name: "112.16"
         rack_id: "68"
         rack_size: "44"
         unit_end: "37"
-        comment: ""
+        comment: comment
         lease:
           authenticated: false
           mac: 0c:c4:7a:af:35:00
@@ -19163,7 +19180,7 @@ components:
         customer_id: int5377
         order_id: "16058"
         vlans6: []
-        ipmi_client_username: ""
+        ipmi_client_username: ipmi_client_username
         status: active
       properties:
         id:
@@ -19192,6 +19209,7 @@ components:
           type: string
         mac:
           description: MAC address associated with the asset.
+          type: string
         datacenter:
           description: Datacenter identifier for the asset.
           example: "2"
@@ -19238,14 +19256,19 @@ components:
           type: string
         ipmi_admin_username:
           description: IPMI admin username associated with the asset.
+          type: string
         ipmi_admin_password:
           description: IPMI admin password associated with the asset.
+          type: string
         ipmi_client_username:
           description: IPMI client username associated with the asset.
+          type: string
         ipmi_client_password:
           description: IPMI client password associated with the asset.
+          type: string
         ipmi_updated:
           description: IPMI update status associated with the asset.
+          type: string
         ipmi_working:
           description: IPMI working status associated with the asset.
           example: "0"
@@ -19288,8 +19311,10 @@ components:
           type: string
         create_timestamp:
           description: Timestamp of asset creation.
+          type: string
         update_timestamp:
           description: Timestamp of asset update.
+          type: string
         asset_id:
           description: Asset identifier for the asset.
           example: "1"
@@ -19324,6 +19349,7 @@ components:
           type: string
         comment:
           description: Comment associated with the asset.
+          type: string
         switchports:
           description: List of switchports associated with the asset.
           example:
@@ -19592,20 +19618,20 @@ components:
           "3497":
             col: "06"
             vlans: []
-            ipmi_client_password: ""
+            ipmi_client_password: ipmi_client_password
             switchports:
             - 10414
             description: ""
             external_id: ""
             asset_id: "1"
-            ipmi_admin_username: ""
+            ipmi_admin_username: ipmi_admin_username
             ipmi_working: "0"
-            mac: ""
+            mac: mac
             hostname: myserver.host.com
             primary_ipv4: 1.2.3.250
             overdue: "0"
-            create_timestamp: ""
-            update_timestamp: ""
+            create_timestamp: create_timestamp
+            update_timestamp: update_timestamp
             asset_name: server
             primary_ipv6: ""
             unit_sub: "0"
@@ -19624,15 +19650,15 @@ components:
             rack: "68"
             comments: ""
             type_id: "1"
-            ipmi_updated: ""
-            ipmi_admin_password: ""
+            ipmi_updated: ipmi_updated
+            ipmi_admin_password: ipmi_admin_password
             datacenter: "2"
             unit_start: "37"
             rack_name: "112.16"
             rack_id: "68"
             rack_size: "44"
             unit_end: "37"
-            comment: ""
+            comment: comment
             lease:
               authenticated: false
               mac: 0c:c4:7a:af:35:00
@@ -19640,7 +19666,7 @@ components:
             customer_id: int5377
             order_id: "16058"
             vlans6: []
-            ipmi_client_username: ""
+            ipmi_client_username: ipmi_client_username
             status: active
         switchports:
           "10414":
@@ -19723,7 +19749,7 @@ components:
             type: AMD
             max_sff: "4"
             speed: "4.7"
-            hd_ids: ""
+            hd_ids: hd_ids
             price: 0
             max_ram: "128"
             max_nve: "2"
@@ -19921,7 +19947,7 @@ components:
         type: AMD
         max_sff: "4"
         speed: "4.7"
-        hd_ids: ""
+        hd_ids: hd_ids
         price: 0
         max_ram: "128"
         max_nve: "2"
@@ -20028,6 +20054,7 @@ components:
           type: string
         hd_ids:
           description: Hard drive IDs.
+          type: string
         price_display:
           description: Display of CPU price.
           example: $0.00
@@ -20488,7 +20515,7 @@ components:
     ServerServiceInfo:
       example:
         server_total_cost: "230"
-        server_location: ""
+        server_location: server_location
         server_invoice: "18738142"
         server_setup: "0"
         server_dedicated_cpu: "38"
@@ -20496,7 +20523,7 @@ components:
         server_rep: "0"
         server_hardware_ordered: "0"
         server_dedicated_tag: "0"
-        server_discount: ""
+        server_discount: server_discount
         server_root: ""
         server_custid: "771282"
         server_welcome_email: "1"
@@ -20511,9 +20538,9 @@ components:
         server_id: "16058"
         server_billed: "0"
         server_hostname: myserver.host.com
-        server_dedicated_hd2: ""
+        server_dedicated_hd2: server_dedicated_hd2
         server_dedicated_hd1: "20"
-        server_dedicated_cp: ""
+        server_dedicated_cp: server_dedicated_cp
         server_dedicated_raid: "0"
         server_dedicated_ips: "5"
         server_hardware: "0"
@@ -20598,6 +20625,7 @@ components:
           type: string
         server_discount:
           description: Discount information for the server.
+          type: string
         server_rep:
           description: The reputation of the server.
           example: "0"
@@ -20612,6 +20640,7 @@ components:
           type: string
         server_location:
           description: The location of the server.
+          type: string
         server_hardware_ordered:
           description: The ordered hardware for the server.
           example: "0"
@@ -20638,6 +20667,7 @@ components:
           type: string
         server_dedicated_hd2:
           description: The size of the second dedicated hard drive.
+          type: string
         server_dedicated_bandwidth:
           description: The bandwidth of the server.
           example: "3"
@@ -20652,6 +20682,7 @@ components:
           type: string
         server_dedicated_cp:
           description: The control panel of the server.
+          type: string
         server_dedicated_raid:
           description: The RAID configuration of the server.
           example: "0"
@@ -21335,7 +21366,7 @@ components:
         cpu_graph_data: ""
         serviceInfo:
           vps_order_date: 2022-12-26T20:14:59.000Z
-          vps_ipv6: ""
+          vps_ipv6: vps_ipv6
           vps_currency: USD
           vps_invoice: "20130799"
           vps_coupon: "3646"
@@ -22171,7 +22202,7 @@ components:
     VpsServiceInfo:
       example:
         vps_order_date: 2022-12-26T20:14:59.000Z
-        vps_ipv6: ""
+        vps_ipv6: vps_ipv6
         vps_currency: USD
         vps_invoice: "20130799"
         vps_coupon: "3646"
@@ -22218,6 +22249,7 @@ components:
           type: string
         vps_ipv6:
           description: IPv6 address of the VPS
+          type: string
         vps_vzid:
           description: VPS Virtuozzo ID
           example: vps85872
@@ -23457,12 +23489,12 @@ components:
             deleted_at: deleted_at
         serviceTypes:
           "11447":
-            services_description: ""
+            services_description: services_description
             services_id: "11447"
-            services_moreinfo_url: ""
+            services_moreinfo_url: services_moreinfo_url
             services_category: "204"
             services_field1: ""
-            services_html: ""
+            services_html: services_html
             services_field2: Standard
             services_name: Web Hosting Direct Admin (PriceLock)
             services_buyable: "1"
@@ -23809,12 +23841,12 @@ components:
       type: object
     WebsitesOrderServiceTypes:
       example:
-        services_description: ""
+        services_description: services_description
         services_id: "11447"
-        services_moreinfo_url: ""
+        services_moreinfo_url: services_moreinfo_url
         services_category: "204"
         services_field1: ""
-        services_html: ""
+        services_html: services_html
         services_field2: Standard
         services_name: Web Hosting Direct Admin (PriceLock)
         services_buyable: "1"
@@ -23861,10 +23893,13 @@ components:
           type: string
         services_html:
           description: HTML content for the service.
+          type: string
         services_description:
           description: Description of the service.
+          type: string
         services_moreinfo_url:
           description: URL for more information about the service.
+          type: string
         services_hidden:
           description: "Indicates if the service is hidden (1 for yes, 0 for no)."
           example: "1"
@@ -25301,6 +25336,7 @@ components:
         content:
           type: string
       title: Post reply
+      type: object
     ReplyTicketResponseSchema:
       example:
         success: true
@@ -26914,6 +26950,7 @@ components:
           items:
             $ref: "#/components/schemas/buyItNowServerOrder_200_response_raid_inner"
           type: array
+      type: object
     placeBuyNowServer_request:
       properties:
         server_id:
@@ -27790,20 +27827,20 @@ components:
         "3497":
           col: "06"
           vlans: []
-          ipmi_client_password: ""
+          ipmi_client_password: ipmi_client_password
           switchports:
           - 10414
           description: ""
           external_id: ""
           asset_id: "1"
-          ipmi_admin_username: ""
+          ipmi_admin_username: ipmi_admin_username
           ipmi_working: "0"
-          mac: ""
+          mac: mac
           hostname: myserver.host.com
           primary_ipv4: 1.2.3.250
           overdue: "0"
-          create_timestamp: ""
-          update_timestamp: ""
+          create_timestamp: create_timestamp
+          update_timestamp: update_timestamp
           asset_name: server
           primary_ipv6: ""
           unit_sub: "0"
@@ -27822,15 +27859,15 @@ components:
           rack: "68"
           comments: ""
           type_id: "1"
-          ipmi_updated: ""
-          ipmi_admin_password: ""
+          ipmi_updated: ipmi_updated
+          ipmi_admin_password: ipmi_admin_password
           datacenter: "2"
           unit_start: "37"
           rack_name: "112.16"
           rack_id: "68"
           rack_size: "44"
           unit_end: "37"
-          comment: ""
+          comment: comment
           lease:
             authenticated: false
             mac: 0c:c4:7a:af:35:00
@@ -27838,7 +27875,7 @@ components:
           customer_id: int5377
           order_id: "16058"
           vlans6: []
-          ipmi_client_username: ""
+          ipmi_client_username: ipmi_client_username
           status: active
       properties:
         "3497":
@@ -27876,7 +27913,7 @@ components:
           type: AMD
           max_sff: "4"
           speed: "4.7"
-          hd_ids: ""
+          hd_ids: hd_ids
           price: 0
           max_ram: "128"
           max_nve: "2"
@@ -28220,12 +28257,12 @@ components:
       description: The service types data.
       example:
         "11447":
-          services_description: ""
+          services_description: services_description
           services_id: "11447"
-          services_moreinfo_url: ""
+          services_moreinfo_url: services_moreinfo_url
           services_category: "204"
           services_field1: ""
-          services_html: ""
+          services_html: services_html
           services_field2: Standard
           services_name: Web Hosting Direct Admin (PriceLock)
           services_buyable: "1"

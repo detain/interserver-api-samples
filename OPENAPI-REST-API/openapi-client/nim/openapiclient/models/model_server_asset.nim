@@ -12,7 +12,6 @@ import tables
 import marshal
 import options
 
-import model_any_type
 import model_server_lease
 
 type ServerAsset* = object
@@ -56,15 +55,15 @@ type ServerAsset* = object
   vlans*: seq[string] ## List of VLANs associated with the asset.
   vlans6*: seq[string] ## List of IPv6 VLANs associated with the asset.
   lease*: ServerLease
-  mac*: Option[JsonNode] ## MAC address associated with the asset.
-  ipmiAdminUsername*: Option[JsonNode] ## IPMI admin username associated with the asset.
-  ipmiAdminPassword*: Option[JsonNode] ## IPMI admin password associated with the asset.
-  ipmiClientUsername*: Option[JsonNode] ## IPMI client username associated with the asset.
-  ipmiClientPassword*: Option[JsonNode] ## IPMI client password associated with the asset.
-  ipmiUpdated*: Option[JsonNode] ## IPMI update status associated with the asset.
-  createTimestamp*: Option[JsonNode] ## Timestamp of asset creation.
-  updateTimestamp*: Option[JsonNode] ## Timestamp of asset update.
-  comment*: Option[JsonNode] ## Comment associated with the asset.
+  mac*: Option[string] ## MAC address associated with the asset.
+  ipmiAdminUsername*: Option[string] ## IPMI admin username associated with the asset.
+  ipmiAdminPassword*: Option[string] ## IPMI admin password associated with the asset.
+  ipmiClientUsername*: Option[string] ## IPMI client username associated with the asset.
+  ipmiClientPassword*: Option[string] ## IPMI client password associated with the asset.
+  ipmiUpdated*: Option[string] ## IPMI update status associated with the asset.
+  createTimestamp*: Option[string] ## Timestamp of asset creation.
+  updateTimestamp*: Option[string] ## Timestamp of asset update.
+  comment*: Option[string] ## Comment associated with the asset.
 
 
 # Custom JSON deserialization for ServerAsset with custom field names

@@ -115,7 +115,7 @@ class ServerOrderCPU {
                 obj['visible'] = ApiClient.convertToType(data['visible'], 'String');
             }
             if (data.hasOwnProperty('hd_ids')) {
-                obj['hd_ids'] = ApiClient.convertToType(data['hd_ids'], Object);
+                obj['hd_ids'] = ApiClient.convertToType(data['hd_ids'], 'String');
             }
             if (data.hasOwnProperty('price_display')) {
                 obj['price_display'] = ApiClient.convertToType(data['price_display'], 'String');
@@ -212,6 +212,10 @@ class ServerOrderCPU {
         // ensure the json data is a string
         if (data['visible'] && !(typeof data['visible'] === 'string' || data['visible'] instanceof String)) {
             throw new Error("Expected the field `visible` to be a primitive type in the JSON string but got " + data['visible']);
+        }
+        // ensure the json data is a string
+        if (data['hd_ids'] && !(typeof data['hd_ids'] === 'string' || data['hd_ids'] instanceof String)) {
+            throw new Error("Expected the field `hd_ids` to be a primitive type in the JSON string but got " + data['hd_ids']);
         }
         // ensure the json data is a string
         if (data['price_display'] && !(typeof data['price_display'] === 'string' || data['price_display'] instanceof String)) {
@@ -364,7 +368,7 @@ ServerOrderCPU.prototype['visible'] = undefined;
 
 /**
  * Hard drive IDs.
- * @member {Object} hd_ids
+ * @member {String} hd_ids
  */
 ServerOrderCPU.prototype['hd_ids'] = undefined;
 

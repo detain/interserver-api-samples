@@ -20,6 +20,7 @@
 #include "OpenAPIGetAccountInfo401Response.h"
 #include "OpenAPIGetAccountTfaSetup200Response.h"
 #include "OpenAPIHome.h"
+#include "OpenAPIIpLimitRange.h"
 #include "OpenAPISearchAutocompleteResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 #include "OpenAPITextResponse.h"
@@ -108,6 +109,7 @@ public:
 	void SetupHttpRequest(const FHttpRequestRef& HttpRequest) const final;
 	FString ComputePath() const final;
 
+	TOptional<OpenAPIIpLimitRange> OpenAPIIpLimitRange;
 };
 
 class OPENAPI_API OpenAPIAccountApi::DeleteIpLimitResponse : public Response

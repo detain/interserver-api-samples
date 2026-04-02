@@ -253,7 +253,7 @@ end:
 // Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
 //
 generic_response_t*
-AccountAPI_deleteIpLimit(apiClient_t *apiClient)
+AccountAPI_deleteIpLimit(apiClient_t *apiClient, ip_limit_range_t *ip_limit_range)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -272,6 +272,16 @@ AccountAPI_deleteIpLimit(apiClient_t *apiClient)
 
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_ip_limit_range = NULL;
+    if (ip_limit_range != NULL)
+    {
+        //not string, not binary
+        localVarSingleItemJSON_ip_limit_range = ip_limit_range_convertToJSON(ip_limit_range);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ip_limit_range);
+        localVarBodyLength = strlen(localVarBodyParameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
@@ -316,6 +326,11 @@ AccountAPI_deleteIpLimit(apiClient_t *apiClient)
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_ip_limit_range) {
+        cJSON_Delete(localVarSingleItemJSON_ip_limit_range);
+        localVarSingleItemJSON_ip_limit_range = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);

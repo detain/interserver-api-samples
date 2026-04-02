@@ -36,8 +36,8 @@ QuickserverServiceMaster::QuickserverServiceMaster()
 	qs_bytes_sec_out = std::string();
 	qs_packets_sec_in = std::string();
 	qs_packets_sec_out = std::string();
-	qs_last_install_time = null;
-	qs_partitions = null;
+	qs_last_install_time = std::string();
+	qs_partitions = std::string();
 	qs_cpu_flags = std::string();
 }
 
@@ -454,9 +454,8 @@ QuickserverServiceMaster::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&qs_last_install_time, value, "std::string");
 
-        AnyType* obj = &qs_last_install_time;
-		obj->fromJson(value.dump());
 
     }
 
@@ -468,9 +467,8 @@ QuickserverServiceMaster::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&qs_partitions, value, "std::string");
 
-        AnyType* obj = &qs_partitions;
-		obj->fromJson(value.dump());
 
     }
 
@@ -709,15 +707,15 @@ QuickserverServiceMaster::toJson()
 
 
 
-
-	object["qs_last_install_time"] = getQsLastInstallTime().toJson();
-
+    object["qs_last_install_time"] = getQsLastInstallTime();
 
 
 
 
 
-	object["qs_partitions"] = getQsPartitions().toJson();
+
+    object["qs_partitions"] = getQsPartitions();
+
 
 
 
@@ -1091,26 +1089,26 @@ QuickserverServiceMaster::setQsPacketsSecOut(std::string qs_packets_sec_out)
 	this->qs_packets_sec_out = qs_packets_sec_out;
 }
 
-AnyType
+std::string
 QuickserverServiceMaster::getQsLastInstallTime()
 {
 	return qs_last_install_time;
 }
 
 void
-QuickserverServiceMaster::setQsLastInstallTime(AnyType qs_last_install_time)
+QuickserverServiceMaster::setQsLastInstallTime(std::string qs_last_install_time)
 {
 	this->qs_last_install_time = qs_last_install_time;
 }
 
-AnyType
+std::string
 QuickserverServiceMaster::getQsPartitions()
 {
 	return qs_partitions;
 }
 
 void
-QuickserverServiceMaster::setQsPartitions(AnyType qs_partitions)
+QuickserverServiceMaster::setQsPartitions(std::string qs_partitions)
 {
 	this->qs_partitions = qs_partitions;
 }

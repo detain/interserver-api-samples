@@ -11,7 +11,7 @@ Name | Type
 `qs_custid` | string
 `qs_server` | string
 `qs_ip` | string
-`qs_ipv6` | any
+`qs_ipv6` | string
 `qs_vzid` | string
 `qs_currency` | string
 `qs_type` | string
@@ -25,13 +25,13 @@ Name | Type
 `qs_comment` | string
 `qs_slices` | string
 `qs_vnc` | string
-`qs_vnc_port` | any
+`qs_vnc_port` | number
 `qs_rootpass` | string
 `qs_mac` | string
 `qs_os` | string
 `qs_version` | string
 `qs_location` | string
-`qs_platform` | any
+`qs_platform` | string
 
 ## Example
 

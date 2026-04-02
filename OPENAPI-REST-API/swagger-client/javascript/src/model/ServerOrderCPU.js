@@ -85,7 +85,7 @@ export default class ServerOrderCPU {
       if (data.hasOwnProperty('visible'))
         obj.visible = ApiClient.convertToType(data['visible'], 'String');
       if (data.hasOwnProperty('hd_ids'))
-        obj.hd_ids = ApiClient.convertToType(data['hd_ids'], Object);
+        obj.hd_ids = ApiClient.convertToType(data['hd_ids'], 'String');
       if (data.hasOwnProperty('price_display'))
         obj.price_display = ApiClient.convertToType(data['price_display'], 'String');
       if (data.hasOwnProperty('monthly_price_display'))
@@ -229,7 +229,7 @@ ServerOrderCPU.prototype.visible = undefined;
 
 /**
  * Hard drive IDs.
- * @member {Object} hd_ids
+ * @member {String} hd_ids
  */
 ServerOrderCPU.prototype.hd_ids = undefined;
 

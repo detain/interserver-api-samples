@@ -88,8 +88,9 @@ class AccountApiControllerTest {
 
     @Test
     void deleteIpLimitTest() {
+        IpLimitRange body = null;
         try {
-            //TODO: api.deleteIpLimit().blockingGet();
+            //TODO: api.deleteIpLimit(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

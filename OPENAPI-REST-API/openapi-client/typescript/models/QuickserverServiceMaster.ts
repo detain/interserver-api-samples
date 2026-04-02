@@ -139,11 +139,11 @@ export class QuickserverServiceMaster {
     /**
     * Last install time (null)
     */
-    'qs_last_install_time'?: any | null;
+    'qs_last_install_time'?: string | null;
     /**
     * Partitions information (null)
     */
-    'qs_partitions'?: any | null;
+    'qs_partitions'?: string | null;
     /**
     * CPU flags
     */
@@ -337,13 +337,13 @@ export class QuickserverServiceMaster {
         {
             "name": "qs_last_install_time",
             "baseName": "qs_last_install_time",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "qs_partitions",
             "baseName": "qs_partitions",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {

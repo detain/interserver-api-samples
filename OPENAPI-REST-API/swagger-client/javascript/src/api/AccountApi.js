@@ -190,12 +190,14 @@ export default class AccountApi {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/IpLimitRange} opts.body 
      * @param {module:api/AccountApi~deleteIpLimitCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    deleteIpLimit(callback) {
-      
-      let postBody = null;
+    deleteIpLimit(opts, callback) {
+      opts = opts || {};
+      let postBody = opts['body'];
 
       let pathParams = {
         

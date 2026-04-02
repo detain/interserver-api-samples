@@ -8,7 +8,7 @@ type VpsServiceInfo struct {
 	VpsCustid string `json:"vps_custid,omitempty"`
 	VpsServer string `json:"vps_server,omitempty"`
 	VpsIp string `json:"vps_ip,omitempty"`
-	VpsIpv6 interface{} `json:"vps_ipv6,omitempty"`
+	VpsIpv6 string `json:"vps_ipv6,omitempty"`
 	VpsVzid string `json:"vps_vzid,omitempty"`
 	VpsCurrency string `json:"vps_currency,omitempty"`
 	VpsType string `json:"vps_type,omitempty"`

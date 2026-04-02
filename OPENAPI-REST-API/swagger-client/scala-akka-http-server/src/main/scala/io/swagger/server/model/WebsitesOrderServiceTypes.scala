@@ -26,9 +26,9 @@ case class WebsitesOrderServiceTypes (
   services_field1: Option[String],
   services_field2: Option[String],
   services_module: String,
-  services_html: Option[],
-  services_description: Option[],
-  services_moreinfo_url: Option[],
+  services_html: Option[String],
+  services_description: Option[String],
+  services_moreinfo_url: Option[String],
   services_hidden: String
 )
 

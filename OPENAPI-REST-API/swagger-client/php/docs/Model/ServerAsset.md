@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **status** | **string** | Status of the asset. | 
 **primaryIpv4** | **string** | Primary IPv4 address of the asset. | 
 **primaryIpv6** | **string** | Primary IPv6 address of the asset. | 
-**mac** | [****](.md) | MAC address associated with the asset. | [optional] 
+**mac** | **string** | MAC address associated with the asset. | [optional] 
 **datacenter** | **string** | Datacenter identifier for the asset. | 
 **typeId** | **string** | Type identifier for the asset. | 
 **assetTag** | **string** | Asset tag associated with the asset. | 
@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 **unitSub** | **string** | Subunit identifier for the asset. | 
 **ipmiMac** | **string** | IPMI MAC address associated with the asset. | 
 **ipmiIp** | **string** | IPMI IP address associated with the asset. | 
-**ipmiAdminUsername** | [****](.md) | IPMI admin username associated with the asset. | [optional] 
-**ipmiAdminPassword** | [****](.md) | IPMI admin password associated with the asset. | [optional] 
-**ipmiClientUsername** | [****](.md) | IPMI client username associated with the asset. | [optional] 
-**ipmiClientPassword** | [****](.md) | IPMI client password associated with the asset. | [optional] 
-**ipmiUpdated** | [****](.md) | IPMI update status associated with the asset. | [optional] 
+**ipmiAdminUsername** | **string** | IPMI admin username associated with the asset. | [optional] 
+**ipmiAdminPassword** | **string** | IPMI admin password associated with the asset. | [optional] 
+**ipmiClientUsername** | **string** | IPMI client username associated with the asset. | [optional] 
+**ipmiClientPassword** | **string** | IPMI client password associated with the asset. | [optional] 
+**ipmiUpdated** | **string** | IPMI update status associated with the asset. | [optional] 
 **ipmiWorking** | **string** | IPMI working status associated with the asset. | 
 **company** | **string** | Company associated with the asset. | 
 **comments** | **string** | Comments associated with the asset. | 
@@ -36,8 +36,8 @@ Name | Type | Description | Notes
 **externalId** | **string** | External identifier for the asset. | 
 **billingStatus** | **string** | Billing status of the asset. | 
 **overdue** | **string** | Overdue status of the asset. | 
-**createTimestamp** | [****](.md) | Timestamp of asset creation. | [optional] 
-**updateTimestamp** | [****](.md) | Timestamp of asset update. | [optional] 
+**createTimestamp** | **string** | Timestamp of asset creation. | [optional] 
+**updateTimestamp** | **string** | Timestamp of asset update. | [optional] 
 **assetId** | **string** | Asset identifier for the asset. | 
 **assetName** | **string** | Name of the asset. | 
 **rackId** | **string** | Rack identifier for the asset. | 
@@ -46,7 +46,7 @@ Name | Type | Description | Notes
 **rackSize** | **string** | Size of the rack associated with the asset. | 
 **rackX** | **string** | X-coordinate of the asset within the rack. | 
 **rackY** | **string** | Y-coordinate of the asset within the rack. | 
-**comment** | [****](.md) | Comment associated with the asset. | [optional] 
+**comment** | **string** | Comment associated with the asset. | [optional] 
 **switchports** | **int[]** | List of switchports associated with the asset. | 
 **vlans** | **string[]** | List of VLANs associated with the asset. | 
 **vlans6** | **string[]** | List of IPv6 VLANs associated with the asset. | 

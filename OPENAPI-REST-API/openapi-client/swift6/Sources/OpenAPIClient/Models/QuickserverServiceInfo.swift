@@ -19,7 +19,7 @@ public struct QuickserverServiceInfo: Sendable, Codable, Hashable {
     /** IP address */
     public var qsIp: String?
     /** IPv6 address (null) */
-    public var qsIpv6: JSONValue?
+    public var qsIpv6: String?
     /** VZ ID */
     public var qsVzid: String?
     /** Currency */
@@ -47,7 +47,7 @@ public struct QuickserverServiceInfo: Sendable, Codable, Hashable {
     /** VNC information */
     public var qsVnc: String?
     /** VNC port (null) */
-    public var qsVncPort: JSONValue?
+    public var qsVncPort: Int?
     /** Root password */
     public var qsRootpass: String?
     /** MAC address */
@@ -59,9 +59,9 @@ public struct QuickserverServiceInfo: Sendable, Codable, Hashable {
     /** Location */
     public var qsLocation: String?
     /** Platform (null) */
-    public var qsPlatform: JSONValue?
+    public var qsPlatform: String?
 
-    public init(qsId: String? = nil, qsCustid: String? = nil, qsServer: String? = nil, qsIp: String? = nil, qsIpv6: JSONValue? = nil, qsVzid: String? = nil, qsCurrency: String? = nil, qsType: String? = nil, qsOrderDate: String? = nil, qsStatus: String? = nil, qsInvoice: String? = nil, qsCoupon: String? = nil, qsExtra: String? = nil, qsHostname: String? = nil, qsServerStatus: String? = nil, qsComment: String? = nil, qsSlices: String? = nil, qsVnc: String? = nil, qsVncPort: JSONValue? = nil, qsRootpass: String? = nil, qsMac: String? = nil, qsOs: String? = nil, qsVersion: String? = nil, qsLocation: String? = nil, qsPlatform: JSONValue? = nil) {
+    public init(qsId: String? = nil, qsCustid: String? = nil, qsServer: String? = nil, qsIp: String? = nil, qsIpv6: String? = nil, qsVzid: String? = nil, qsCurrency: String? = nil, qsType: String? = nil, qsOrderDate: String? = nil, qsStatus: String? = nil, qsInvoice: String? = nil, qsCoupon: String? = nil, qsExtra: String? = nil, qsHostname: String? = nil, qsServerStatus: String? = nil, qsComment: String? = nil, qsSlices: String? = nil, qsVnc: String? = nil, qsVncPort: Int? = nil, qsRootpass: String? = nil, qsMac: String? = nil, qsOs: String? = nil, qsVersion: String? = nil, qsLocation: String? = nil, qsPlatform: String? = nil) {
         self.qsId = qsId
         self.qsCustid = qsCustid
         self.qsServer = qsServer

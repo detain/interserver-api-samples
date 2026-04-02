@@ -208,7 +208,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>Hard drive IDs.</value>
 
         [DataMember(Name="hd_ids")]
-        public Object HdIds { get; set; }
+        public string HdIds { get; set; }
 
         /// <summary>
         /// Display of CPU price.

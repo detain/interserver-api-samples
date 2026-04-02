@@ -217,14 +217,14 @@ trait FloatingIPsApiService {
   def getFloatingIpInvoices(id: Int)
       (implicit toEntityMarshallerChargeInvoiceRows: ToEntityMarshaller[ChargeInvoiceRows], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def getFloatingIpsList200: Route =
-    complete((200, "The listing of &#x60;Floating IPs&#x60; services on your account."))
+  def getFloatingIpsList200(responseObjectarray: List[Object]): Route =
+    complete((200, responseObjectarray))
   def getFloatingIpsList401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   def getFloatingIpsList0: Route =
     complete((0, "Default response"))
   /**
-   * Code: 200, Message: The listing of &#x60;Floating IPs&#x60; services on your account.
+   * Code: 200, Message: The listing of &#x60;Floating IPs&#x60; services on your account., DataType: List[Object]
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 0, Message: Default response
    */

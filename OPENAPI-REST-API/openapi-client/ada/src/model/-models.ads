@@ -5890,6 +5890,112 @@ package .Models is
 
 
 
+   type QuickserverServiceInfo_Type is
+     record
+       Qs_Id : Swagger.Nullable_UString;
+       Qs_Custid : Swagger.Nullable_UString;
+       Qs_Server : Swagger.Nullable_UString;
+       Qs_Ip : Swagger.Nullable_UString;
+       Qs_Ipv_6 : Swagger.Nullable_UString;
+       Qs_Vzid : Swagger.Nullable_UString;
+       Qs_Currency : Swagger.Nullable_UString;
+       Qs_Type : Swagger.Nullable_UString;
+       Qs_Order_Date : Swagger.Nullable_UString;
+       Qs_Status : Swagger.Nullable_UString;
+       Qs_Invoice : Swagger.Nullable_UString;
+       Qs_Coupon : Swagger.Nullable_UString;
+       Qs_Extra : Swagger.Nullable_UString;
+       Qs_Hostname : Swagger.Nullable_UString;
+       Qs_Server_Status : Swagger.Nullable_UString;
+       Qs_Comment : Swagger.Nullable_UString;
+       Qs_Slices : Swagger.Nullable_UString;
+       Qs_Vnc : Swagger.Nullable_UString;
+       Qs_Vnc_Port : Swagger.Nullable_Integer;
+       Qs_Rootpass : Swagger.Nullable_UString;
+       Qs_Mac : Swagger.Nullable_UString;
+       Qs_Os : Swagger.Nullable_UString;
+       Qs_Version : Swagger.Nullable_UString;
+       Qs_Location : Swagger.Nullable_UString;
+       Qs_Platform : Swagger.Nullable_UString;
+     end record;
+
+
+   package QuickserverServiceInfo_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.QuickserverServiceInfo_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.QuickserverServiceInfo_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in QuickserverServiceInfo_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.QuickserverServiceInfo_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out QuickserverServiceInfo_Type_Vectors.Vector);
+
+
+
+   type QuickserverServiceMaster_Type is
+     record
+       Qs_Id : Swagger.Nullable_UString;
+       Qs_Name : Swagger.Nullable_UString;
+       Qs_Ip : Swagger.Nullable_UString;
+       Qs_Type : Swagger.Nullable_UString;
+       Qs_Hdsize : Swagger.Nullable_UString;
+       Qs_Hdfree : Swagger.Nullable_UString;
+       Qs_Bits : Swagger.Nullable_UString;
+       Qs_Load : Swagger.Nullable_UString;
+       Qs_Ram : Swagger.Nullable_UString;
+       Qs_Cpu_Model : Swagger.Nullable_UString;
+       Qs_Cpu_Mhz : Swagger.Nullable_UString;
+       Qs_Location : Swagger.Nullable_UString;
+       Qs_Available : Swagger.Nullable_UString;
+       Qs_Cost : Swagger.Nullable_UString;
+       Qs_Last_Update : Swagger.Nullable_UString;
+       Qs_Cores : Swagger.Nullable_UString;
+       Qs_Iowait : Swagger.Nullable_UString;
+       Qs_Raid_Status : Swagger.Nullable_UString;
+       Qs_Drive_Type : Swagger.Nullable_UString;
+       Qs_Order : Swagger.Nullable_UString;
+       Qs_Raid_Building : Swagger.Nullable_UString;
+       Qs_Kernel : Swagger.Nullable_UString;
+       Qs_Ioping : Swagger.Nullable_UString;
+       Qs_Speed : Swagger.Nullable_UString;
+       Qs_Distro : Swagger.Nullable_UString;
+       Qs_Distro_Version : Swagger.Nullable_UString;
+       Qs_Bytes_Sec_In : Swagger.Nullable_UString;
+       Qs_Bytes_Sec_Out : Swagger.Nullable_UString;
+       Qs_Packets_Sec_In : Swagger.Nullable_UString;
+       Qs_Packets_Sec_Out : Swagger.Nullable_UString;
+       Qs_Last_Install_Time : Swagger.Nullable_UString;
+       Qs_Partitions : Swagger.Nullable_UString;
+       Qs_Cpu_Flags : Swagger.Nullable_UString;
+     end record;
+
+
+   package QuickserverServiceMaster_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.QuickserverServiceMaster_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.QuickserverServiceMaster_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in QuickserverServiceMaster_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.QuickserverServiceMaster_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out QuickserverServiceMaster_Type_Vectors.Vector);
+
+
+
    type QuickserversCancel200Response_Type is
      record
        Success : Boolean;
@@ -6579,6 +6685,55 @@ package .Models is
 
 
 
+   type ServerOrderCPU_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Price : Swagger.Nullable_Integer;
+       Img : Swagger.Nullable_UString;
+       Short_Desc : Swagger.Nullable_UString;
+       Long_Desc : Swagger.Nullable_UString;
+       Location : Swagger.Nullable_UString;
+       Fsb : Swagger.Nullable_UString;
+       Manu : Swagger.Nullable_UString;
+       P_Type : Swagger.Nullable_UString;
+       Speed : Swagger.Nullable_UString;
+       Cache : Swagger.Nullable_UString;
+       Active : Swagger.Nullable_UString;
+       Num_Cores : Swagger.Nullable_UString;
+       Num_Cpus : Swagger.Nullable_UString;
+       Benchmark : Swagger.Nullable_UString;
+       Monthly_Price : Swagger.Nullable_Integer;
+       Max_Ram : Swagger.Nullable_UString;
+       Min_Ram : Swagger.Nullable_UString;
+       Max_Lff : Swagger.Nullable_UString;
+       Max_Sff : Swagger.Nullable_UString;
+       Max_Nve : Swagger.Nullable_UString;
+       Visible : Swagger.Nullable_UString;
+       Hd_Ids : Swagger.Nullable_UString;
+       Price_Display : Swagger.Nullable_UString;
+       Monthly_Price_Display : Swagger.Nullable_UString;
+     end record;
+
+
+   package ServerOrderCPU_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ServerOrderCPU_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServerOrderCPU_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerOrderCPU_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerOrderCPU_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerOrderCPU_Type_Vectors.Vector);
+
+
+
    type ServerOrderConfigIds_Type is
      record
        Memory : Swagger.Nullable_Integer;
@@ -6864,6 +7019,66 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ServerRow_Type_Vectors.Vector);
+
+
+
+   type ServerServiceInfo_Type is
+     record
+       Server_Id : Swagger.Nullable_UString;
+       Server_Hostname : Swagger.Nullable_UString;
+       Server_Custid : Swagger.Nullable_UString;
+       Server_Type : Swagger.Nullable_UString;
+       Server_Currency : Swagger.Nullable_UString;
+       Server_Order_Date : Swagger.Nullable_UString;
+       Server_Invoice : Swagger.Nullable_UString;
+       Server_Coupon : Swagger.Nullable_UString;
+       Server_Status : Swagger.Nullable_UString;
+       Server_Root : Swagger.Nullable_UString;
+       Server_Dedicated_Tag : Swagger.Nullable_UString;
+       Server_Custom_Tag : Swagger.Nullable_UString;
+       Server_Comment : Swagger.Nullable_UString;
+       Server_Initial_Bill : Swagger.Nullable_UString;
+       Server_Hardware : Swagger.Nullable_UString;
+       Server_Ips : Swagger.Nullable_UString;
+       Server_Monthly_Bill : Swagger.Nullable_UString;
+       Server_Setup : Swagger.Nullable_UString;
+       Server_Discount : Swagger.Nullable_UString;
+       Server_Rep : Swagger.Nullable_UString;
+       Server_Date : Swagger.Nullable_UString;
+       Server_Total_Cost : Swagger.Nullable_UString;
+       Server_Location : Swagger.Nullable_UString;
+       Server_Hardware_Ordered : Swagger.Nullable_UString;
+       Server_Billed : Swagger.Nullable_UString;
+       Server_Welcome_Email : Swagger.Nullable_UString;
+       Server_Dedicated_Cpu : Swagger.Nullable_UString;
+       Server_Dedicated_Memory : Swagger.Nullable_UString;
+       Server_Dedicated_Hd_1 : Swagger.Nullable_UString;
+       Server_Dedicated_Hd_2 : Swagger.Nullable_UString;
+       Server_Dedicated_Bandwidth : Swagger.Nullable_UString;
+       Server_Dedicated_Ips : Swagger.Nullable_UString;
+       Server_Dedicated_Os : Swagger.Nullable_UString;
+       Server_Dedicated_Cp : Swagger.Nullable_UString;
+       Server_Dedicated_Raid : Swagger.Nullable_UString;
+       Server_Extra : Swagger.Nullable_UString;
+     end record;
+
+
+   package ServerServiceInfo_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ServerServiceInfo_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServerServiceInfo_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerServiceInfo_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerServiceInfo_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerServiceInfo_Type_Vectors.Vector);
 
 
 
@@ -8235,6 +8450,57 @@ package .Models is
 
 
 
+   type VpsServiceInfo_Type is
+     record
+       Vps_Id : Swagger.Nullable_UString;
+       Vps_Custid : Swagger.Nullable_UString;
+       Vps_Server : Swagger.Nullable_UString;
+       Vps_Ip : Swagger.Nullable_UString;
+       Vps_Ipv_6 : Swagger.Nullable_UString;
+       Vps_Vzid : Swagger.Nullable_UString;
+       Vps_Currency : Swagger.Nullable_UString;
+       Vps_Type : Swagger.Nullable_UString;
+       Vps_Order_Date : Swagger.Nullable_UString;
+       Vps_Status : Swagger.Nullable_UString;
+       Vps_Invoice : Swagger.Nullable_UString;
+       Vps_Coupon : Swagger.Nullable_UString;
+       Vps_Extra : Swagger.Nullable_UString;
+       Vps_Hostname : Swagger.Nullable_UString;
+       Vps_Server_Status : Swagger.Nullable_UString;
+       Vps_Comment : Swagger.Nullable_UString;
+       Vps_Slices : Swagger.Nullable_UString;
+       Vps_Vnc : Swagger.Nullable_UString;
+       Vps_Vnc_Port : Swagger.Nullable_UString;
+       Vps_Rootpass : Swagger.Nullable_UString;
+       Vps_Mac : Swagger.Nullable_UString;
+       Vps_Os : Swagger.Nullable_UString;
+       Vps_Version : Swagger.Nullable_UString;
+       Vps_Location : Swagger.Nullable_UString;
+       Vps_Platform : Swagger.Nullable_UString;
+       Vps_Diskused : Swagger.Nullable_UString;
+       Vps_Diskmax : Swagger.Nullable_UString;
+     end record;
+
+
+   package VpsServiceInfo_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.VpsServiceInfo_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.VpsServiceInfo_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in VpsServiceInfo_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.VpsServiceInfo_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out VpsServiceInfo_Type_Vectors.Vector);
+
+
+
    type VpsServiceMaster_Type is
      record
        Vps_Id : Swagger.Nullable_UString;
@@ -9436,6 +9702,33 @@ package .Models is
 
 
 
+   type DomainAllInfoAttributesContactSet_Type is
+     record
+       Owner : .Models.DomainOwnerContact_Type;
+       Admin : .Models.DomainAdminContact_Type;
+       Tech : .Models.DomainTechContact_Type;
+     end record;
+
+
+   package DomainAllInfoAttributesContactSet_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.DomainAllInfoAttributesContactSet_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.DomainAllInfoAttributesContactSet_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DomainAllInfoAttributesContactSet_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.DomainAllInfoAttributesContactSet_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out DomainAllInfoAttributesContactSet_Type_Vectors.Vector);
+
+
+
    type DomainAllInfoAttributes_Type is
      record
        Contact_Set : .Models.DomainAllInfoAttributesContactSet_Type;
@@ -9501,81 +9794,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out DomainAllInfo_Type_Vectors.Vector);
-
-
-
-   type DomainBillingExtra_Type is
-     record
-       Order : .Models.DomainOrderResponse_Type;
-       Order_Id : Swagger.Nullable_UString;
-       Domain_Id : Swagger.Nullable_UString;
-       Prov_Process_Pending : .Models.DomainProvProcessPending_Type;
-       Email : Swagger.Nullable_UString;
-       Firstname : Swagger.Nullable_UString;
-       Lastname : Swagger.Nullable_UString;
-       Company : Swagger.Nullable_UString;
-       Address : Swagger.Nullable_UString;
-       Address_2 : Swagger.Nullable_UString;
-       Address_3 : Swagger.Nullable_UString;
-       City : Swagger.Nullable_UString;
-       State : Swagger.Nullable_UString;
-       Zip : Swagger.Nullable_UString;
-       Country : Swagger.Nullable_UString;
-       Phone : Swagger.Nullable_UString;
-       Fax : Swagger.Nullable_UString;
-     end record;
-
-
-   package DomainBillingExtra_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.DomainBillingExtra_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DomainBillingExtra_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DomainBillingExtra_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DomainBillingExtra_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DomainBillingExtra_Type_Vectors.Vector);
-
-
-
-   type DomainBillingDetails_Type is
-     record
-       Service_Last_Invoice_Date : Swagger.Nullable_UString;
-       Service_Payment_Status : Swagger.Nullable_UString;
-       Service_Frequency : Swagger.Nullable_UString;
-       Next_Date : Swagger.Nullable_UString;
-       Service_Next_Invoice_Date : Swagger.Nullable_UString;
-       Service_Currency : Swagger.Nullable_UString;
-       Service_Currency_Symbol : Swagger.Nullable_UString;
-       Service_Cost_Info : Swagger.Nullable_UString;
-       Service_Extra : .Models.DomainBillingExtra_Type;
-       Service_Extra_Json : Swagger.Nullable_UString;
-     end record;
-
-
-   package DomainBillingDetails_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.DomainBillingDetails_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DomainBillingDetails_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DomainBillingDetails_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DomainBillingDetails_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DomainBillingDetails_Type_Vectors.Vector);
 
 
 
@@ -10570,112 +10788,6 @@ package .Models is
                           Value : in out QuickserverOrderVersion_Type_Vectors.Vector);
 
 
-
-   type QuickserverServiceInfo_Type is
-     record
-       Qs_Id : Swagger.Nullable_UString;
-       Qs_Custid : Swagger.Nullable_UString;
-       Qs_Server : Swagger.Nullable_UString;
-       Qs_Ip : Swagger.Nullable_UString;
-       Qs_Ipv_6 : .Models.AnyType_Type;
-       Qs_Vzid : Swagger.Nullable_UString;
-       Qs_Currency : Swagger.Nullable_UString;
-       Qs_Type : Swagger.Nullable_UString;
-       Qs_Order_Date : Swagger.Nullable_UString;
-       Qs_Status : Swagger.Nullable_UString;
-       Qs_Invoice : Swagger.Nullable_UString;
-       Qs_Coupon : Swagger.Nullable_UString;
-       Qs_Extra : Swagger.Nullable_UString;
-       Qs_Hostname : Swagger.Nullable_UString;
-       Qs_Server_Status : Swagger.Nullable_UString;
-       Qs_Comment : Swagger.Nullable_UString;
-       Qs_Slices : Swagger.Nullable_UString;
-       Qs_Vnc : Swagger.Nullable_UString;
-       Qs_Vnc_Port : .Models.AnyType_Type;
-       Qs_Rootpass : Swagger.Nullable_UString;
-       Qs_Mac : Swagger.Nullable_UString;
-       Qs_Os : Swagger.Nullable_UString;
-       Qs_Version : Swagger.Nullable_UString;
-       Qs_Location : Swagger.Nullable_UString;
-       Qs_Platform : .Models.AnyType_Type;
-     end record;
-
-
-   package QuickserverServiceInfo_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.QuickserverServiceInfo_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.QuickserverServiceInfo_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in QuickserverServiceInfo_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.QuickserverServiceInfo_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out QuickserverServiceInfo_Type_Vectors.Vector);
-
-
-
-   type QuickserverServiceMaster_Type is
-     record
-       Qs_Id : Swagger.Nullable_UString;
-       Qs_Name : Swagger.Nullable_UString;
-       Qs_Ip : Swagger.Nullable_UString;
-       Qs_Type : Swagger.Nullable_UString;
-       Qs_Hdsize : Swagger.Nullable_UString;
-       Qs_Hdfree : Swagger.Nullable_UString;
-       Qs_Bits : Swagger.Nullable_UString;
-       Qs_Load : Swagger.Nullable_UString;
-       Qs_Ram : Swagger.Nullable_UString;
-       Qs_Cpu_Model : Swagger.Nullable_UString;
-       Qs_Cpu_Mhz : Swagger.Nullable_UString;
-       Qs_Location : Swagger.Nullable_UString;
-       Qs_Available : Swagger.Nullable_UString;
-       Qs_Cost : Swagger.Nullable_UString;
-       Qs_Last_Update : Swagger.Nullable_UString;
-       Qs_Cores : Swagger.Nullable_UString;
-       Qs_Iowait : Swagger.Nullable_UString;
-       Qs_Raid_Status : Swagger.Nullable_UString;
-       Qs_Drive_Type : Swagger.Nullable_UString;
-       Qs_Order : Swagger.Nullable_UString;
-       Qs_Raid_Building : Swagger.Nullable_UString;
-       Qs_Kernel : Swagger.Nullable_UString;
-       Qs_Ioping : Swagger.Nullable_UString;
-       Qs_Speed : Swagger.Nullable_UString;
-       Qs_Distro : Swagger.Nullable_UString;
-       Qs_Distro_Version : Swagger.Nullable_UString;
-       Qs_Bytes_Sec_In : Swagger.Nullable_UString;
-       Qs_Bytes_Sec_Out : Swagger.Nullable_UString;
-       Qs_Packets_Sec_In : Swagger.Nullable_UString;
-       Qs_Packets_Sec_Out : Swagger.Nullable_UString;
-       Qs_Last_Install_Time : .Models.AnyType_Type;
-       Qs_Partitions : .Models.AnyType_Type;
-       Qs_Cpu_Flags : Swagger.Nullable_UString;
-     end record;
-
-
-   package QuickserverServiceMaster_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.QuickserverServiceMaster_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.QuickserverServiceMaster_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in QuickserverServiceMaster_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.QuickserverServiceMaster_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out QuickserverServiceMaster_Type_Vectors.Vector);
-
-
    --  ------------------------------
    --  ReverseDnsEntries
    --  The Reverse DNS entries.
@@ -10731,6 +10843,78 @@ package .Models is
 
 
 
+   type ServerAsset_Type is
+     record
+       Id : Integer;
+       Order_Id : Swagger.UString;
+       Hostname : Swagger.UString;
+       Status : Swagger.UString;
+       Primary_Ipv_4 : Swagger.UString;
+       Primary_Ipv_6 : Swagger.UString;
+       Datacenter : Swagger.UString;
+       Type_Id : Swagger.UString;
+       Asset_Tag : Swagger.UString;
+       Rack : Swagger.UString;
+       Row : Swagger.UString;
+       Col : Swagger.UString;
+       Unit_Start : Swagger.UString;
+       Unit_End : Swagger.UString;
+       Unit_Sub : Swagger.UString;
+       Ipmi_Mac : Swagger.UString;
+       Ipmi_Ip : Swagger.UString;
+       Ipmi_Working : Swagger.UString;
+       Company : Swagger.UString;
+       Comments : Swagger.UString;
+       Make : Swagger.UString;
+       Model : Swagger.UString;
+       Description : Swagger.UString;
+       Customer_Id : Swagger.UString;
+       External_Id : Swagger.UString;
+       Billing_Status : Swagger.UString;
+       Overdue : Swagger.UString;
+       Asset_Id : Swagger.UString;
+       Asset_Name : Swagger.UString;
+       Rack_Id : Swagger.UString;
+       Rack_Name : Swagger.UString;
+       Rack_Location : Swagger.UString;
+       Rack_Size : Swagger.UString;
+       Rack_X : Swagger.UString;
+       Rack_Y : Swagger.UString;
+       Switchports : Integer_Vectors.Vector;
+       Vlans : Swagger.UString_Vectors.Vector;
+       Vlans_6 : Swagger.UString_Vectors.Vector;
+       Lease : .Models.ServerLease_Type;
+       Mac : Swagger.Nullable_UString;
+       Ipmi_Admin_Username : Swagger.Nullable_UString;
+       Ipmi_Admin_Password : Swagger.Nullable_UString;
+       Ipmi_Client_Username : Swagger.Nullable_UString;
+       Ipmi_Client_Password : Swagger.Nullable_UString;
+       Ipmi_Updated : Swagger.Nullable_UString;
+       Create_Timestamp : Swagger.Nullable_UString;
+       Update_Timestamp : Swagger.Nullable_UString;
+       Comment : Swagger.Nullable_UString;
+     end record;
+
+
+   package ServerAsset_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ServerAsset_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServerAsset_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerAsset_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerAsset_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerAsset_Type_Vectors.Vector);
+
+
+
    type ServerExtraInfoTables_Type is
      record
        Assets : .Models.ServerAssets_Type;
@@ -10781,6 +10965,31 @@ package .Models is
 
 
 
+   type ServerNetworkInfoAssets_Type is
+     record
+       P_3497 : .Models.ServerAsset_Type;
+     end record;
+
+
+   package ServerNetworkInfoAssets_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ServerNetworkInfoAssets_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServerNetworkInfoAssets_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerNetworkInfoAssets_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerNetworkInfoAssets_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerNetworkInfoAssets_Type_Vectors.Vector);
+
+
+
    type ServerNetworkInfoSwitchports_Type is
      record
        P_10414 : .Models.ServerSwitchport_Type;
@@ -10828,55 +11037,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ServerOrderBandwidthLi_Type_Vectors.Vector);
-
-
-
-   type ServerOrderCPU_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Price : Swagger.Nullable_Integer;
-       Img : Swagger.Nullable_UString;
-       Short_Desc : Swagger.Nullable_UString;
-       Long_Desc : Swagger.Nullable_UString;
-       Location : Swagger.Nullable_UString;
-       Fsb : Swagger.Nullable_UString;
-       Manu : Swagger.Nullable_UString;
-       P_Type : Swagger.Nullable_UString;
-       Speed : Swagger.Nullable_UString;
-       Cache : Swagger.Nullable_UString;
-       Active : Swagger.Nullable_UString;
-       Num_Cores : Swagger.Nullable_UString;
-       Num_Cpus : Swagger.Nullable_UString;
-       Benchmark : Swagger.Nullable_UString;
-       Monthly_Price : Swagger.Nullable_Integer;
-       Max_Ram : Swagger.Nullable_UString;
-       Min_Ram : Swagger.Nullable_UString;
-       Max_Lff : Swagger.Nullable_UString;
-       Max_Sff : Swagger.Nullable_UString;
-       Max_Nve : Swagger.Nullable_UString;
-       Visible : Swagger.Nullable_UString;
-       Hd_Ids : .Models.AnyType_Type;
-       Price_Display : Swagger.Nullable_UString;
-       Monthly_Price_Display : Swagger.Nullable_UString;
-     end record;
-
-
-   package ServerOrderCPU_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.ServerOrderCPU_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerOrderCPU_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerOrderCPU_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerOrderCPU_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerOrderCPU_Type_Vectors.Vector);
 
 
 
@@ -11058,66 +11218,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ServerOrderOsLi_Type_Vectors.Vector);
-
-
-
-   type ServerServiceInfo_Type is
-     record
-       Server_Id : Swagger.Nullable_UString;
-       Server_Hostname : Swagger.Nullable_UString;
-       Server_Custid : Swagger.Nullable_UString;
-       Server_Type : Swagger.Nullable_UString;
-       Server_Currency : Swagger.Nullable_UString;
-       Server_Order_Date : Swagger.Nullable_UString;
-       Server_Invoice : Swagger.Nullable_UString;
-       Server_Coupon : Swagger.Nullable_UString;
-       Server_Status : Swagger.Nullable_UString;
-       Server_Root : Swagger.Nullable_UString;
-       Server_Dedicated_Tag : Swagger.Nullable_UString;
-       Server_Custom_Tag : Swagger.Nullable_UString;
-       Server_Comment : Swagger.Nullable_UString;
-       Server_Initial_Bill : Swagger.Nullable_UString;
-       Server_Hardware : Swagger.Nullable_UString;
-       Server_Ips : Swagger.Nullable_UString;
-       Server_Monthly_Bill : Swagger.Nullable_UString;
-       Server_Setup : Swagger.Nullable_UString;
-       Server_Discount : .Models.AnyType_Type;
-       Server_Rep : Swagger.Nullable_UString;
-       Server_Date : Swagger.Nullable_UString;
-       Server_Total_Cost : Swagger.Nullable_UString;
-       Server_Location : .Models.AnyType_Type;
-       Server_Hardware_Ordered : Swagger.Nullable_UString;
-       Server_Billed : Swagger.Nullable_UString;
-       Server_Welcome_Email : Swagger.Nullable_UString;
-       Server_Dedicated_Cpu : Swagger.Nullable_UString;
-       Server_Dedicated_Memory : Swagger.Nullable_UString;
-       Server_Dedicated_Hd_1 : Swagger.Nullable_UString;
-       Server_Dedicated_Hd_2 : .Models.AnyType_Type;
-       Server_Dedicated_Bandwidth : Swagger.Nullable_UString;
-       Server_Dedicated_Ips : Swagger.Nullable_UString;
-       Server_Dedicated_Os : Swagger.Nullable_UString;
-       Server_Dedicated_Cp : .Models.AnyType_Type;
-       Server_Dedicated_Raid : Swagger.Nullable_UString;
-       Server_Extra : Swagger.Nullable_UString;
-     end record;
-
-
-   package ServerServiceInfo_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.ServerServiceInfo_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerServiceInfo_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerServiceInfo_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerServiceInfo_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerServiceInfo_Type_Vectors.Vector);
 
 
 
@@ -11531,57 +11631,6 @@ package .Models is
 
 
 
-   type VpsServiceInfo_Type is
-     record
-       Vps_Id : Swagger.Nullable_UString;
-       Vps_Custid : Swagger.Nullable_UString;
-       Vps_Server : Swagger.Nullable_UString;
-       Vps_Ip : Swagger.Nullable_UString;
-       Vps_Ipv_6 : .Models.AnyType_Type;
-       Vps_Vzid : Swagger.Nullable_UString;
-       Vps_Currency : Swagger.Nullable_UString;
-       Vps_Type : Swagger.Nullable_UString;
-       Vps_Order_Date : Swagger.Nullable_UString;
-       Vps_Status : Swagger.Nullable_UString;
-       Vps_Invoice : Swagger.Nullable_UString;
-       Vps_Coupon : Swagger.Nullable_UString;
-       Vps_Extra : Swagger.Nullable_UString;
-       Vps_Hostname : Swagger.Nullable_UString;
-       Vps_Server_Status : Swagger.Nullable_UString;
-       Vps_Comment : Swagger.Nullable_UString;
-       Vps_Slices : Swagger.Nullable_UString;
-       Vps_Vnc : Swagger.Nullable_UString;
-       Vps_Vnc_Port : Swagger.Nullable_UString;
-       Vps_Rootpass : Swagger.Nullable_UString;
-       Vps_Mac : Swagger.Nullable_UString;
-       Vps_Os : Swagger.Nullable_UString;
-       Vps_Version : Swagger.Nullable_UString;
-       Vps_Location : Swagger.Nullable_UString;
-       Vps_Platform : Swagger.Nullable_UString;
-       Vps_Diskused : Swagger.Nullable_UString;
-       Vps_Diskmax : Swagger.Nullable_UString;
-     end record;
-
-
-   package VpsServiceInfo_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.VpsServiceInfo_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.VpsServiceInfo_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in VpsServiceInfo_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.VpsServiceInfo_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out VpsServiceInfo_Type_Vectors.Vector);
-
-
-
    type VpsTemplatesList_Type is
      record
        Templates : .Models.VpsTemplateRow_Type_Vectors.Vector;
@@ -11919,9 +11968,9 @@ package .Models is
        Services_Hidden : Swagger.UString;
        Services_Field_1 : Swagger.Nullable_UString;
        Services_Field_2 : Swagger.Nullable_UString;
-       Services_Html : .Models.AnyType_Type;
-       Services_Description : .Models.AnyType_Type;
-       Services_Moreinfo_Url : .Models.AnyType_Type;
+       Services_Html : Swagger.Nullable_UString;
+       Services_Description : Swagger.Nullable_UString;
+       Services_Moreinfo_Url : Swagger.Nullable_UString;
      end record;
 
 
@@ -12011,6 +12060,81 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out CpuWithDefaults_Type_Vectors.Vector);
+
+
+
+   type DomainBillingExtra_Type is
+     record
+       Order : .Models.DomainOrderResponse_Type;
+       Order_Id : Swagger.Nullable_UString;
+       Domain_Id : Swagger.Nullable_UString;
+       Prov_Process_Pending : .Models.DomainProvProcessPending_Type;
+       Email : Swagger.Nullable_UString;
+       Firstname : Swagger.Nullable_UString;
+       Lastname : Swagger.Nullable_UString;
+       Company : Swagger.Nullable_UString;
+       Address : Swagger.Nullable_UString;
+       Address_2 : Swagger.Nullable_UString;
+       Address_3 : Swagger.Nullable_UString;
+       City : Swagger.Nullable_UString;
+       State : Swagger.Nullable_UString;
+       Zip : Swagger.Nullable_UString;
+       Country : Swagger.Nullable_UString;
+       Phone : Swagger.Nullable_UString;
+       Fax : Swagger.Nullable_UString;
+     end record;
+
+
+   package DomainBillingExtra_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.DomainBillingExtra_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.DomainBillingExtra_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DomainBillingExtra_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.DomainBillingExtra_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out DomainBillingExtra_Type_Vectors.Vector);
+
+
+
+   type DomainBillingDetails_Type is
+     record
+       Service_Last_Invoice_Date : Swagger.Nullable_UString;
+       Service_Payment_Status : Swagger.Nullable_UString;
+       Service_Frequency : Swagger.Nullable_UString;
+       Next_Date : Swagger.Nullable_UString;
+       Service_Next_Invoice_Date : Swagger.Nullable_UString;
+       Service_Currency : Swagger.Nullable_UString;
+       Service_Currency_Symbol : Swagger.Nullable_UString;
+       Service_Cost_Info : Swagger.Nullable_UString;
+       Service_Extra : .Models.DomainBillingExtra_Type;
+       Service_Extra_Json : Swagger.Nullable_UString;
+     end record;
+
+
+   package DomainBillingDetails_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.DomainBillingDetails_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.DomainBillingDetails_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DomainBillingDetails_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.DomainBillingDetails_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out DomainBillingDetails_Type_Vectors.Vector);
 
 
 
@@ -12159,103 +12283,6 @@ package .Models is
 
 
 
-   type ServerAsset_Type is
-     record
-       Id : Integer;
-       Order_Id : Swagger.UString;
-       Hostname : Swagger.UString;
-       Status : Swagger.UString;
-       Primary_Ipv_4 : Swagger.UString;
-       Primary_Ipv_6 : Swagger.UString;
-       Datacenter : Swagger.UString;
-       Type_Id : Swagger.UString;
-       Asset_Tag : Swagger.UString;
-       Rack : Swagger.UString;
-       Row : Swagger.UString;
-       Col : Swagger.UString;
-       Unit_Start : Swagger.UString;
-       Unit_End : Swagger.UString;
-       Unit_Sub : Swagger.UString;
-       Ipmi_Mac : Swagger.UString;
-       Ipmi_Ip : Swagger.UString;
-       Ipmi_Working : Swagger.UString;
-       Company : Swagger.UString;
-       Comments : Swagger.UString;
-       Make : Swagger.UString;
-       Model : Swagger.UString;
-       Description : Swagger.UString;
-       Customer_Id : Swagger.UString;
-       External_Id : Swagger.UString;
-       Billing_Status : Swagger.UString;
-       Overdue : Swagger.UString;
-       Asset_Id : Swagger.UString;
-       Asset_Name : Swagger.UString;
-       Rack_Id : Swagger.UString;
-       Rack_Name : Swagger.UString;
-       Rack_Location : Swagger.UString;
-       Rack_Size : Swagger.UString;
-       Rack_X : Swagger.UString;
-       Rack_Y : Swagger.UString;
-       Switchports : Integer_Vectors.Vector;
-       Vlans : Swagger.UString_Vectors.Vector;
-       Vlans_6 : Swagger.UString_Vectors.Vector;
-       Lease : .Models.ServerLease_Type;
-       Mac : .Models.AnyType_Type;
-       Ipmi_Admin_Username : .Models.AnyType_Type;
-       Ipmi_Admin_Password : .Models.AnyType_Type;
-       Ipmi_Client_Username : .Models.AnyType_Type;
-       Ipmi_Client_Password : .Models.AnyType_Type;
-       Ipmi_Updated : .Models.AnyType_Type;
-       Create_Timestamp : .Models.AnyType_Type;
-       Update_Timestamp : .Models.AnyType_Type;
-       Comment : .Models.AnyType_Type;
-     end record;
-
-
-   package ServerAsset_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.ServerAsset_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerAsset_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerAsset_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerAsset_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerAsset_Type_Vectors.Vector);
-
-
-
-   type ServerNetworkInfoAssets_Type is
-     record
-       P_3497 : .Models.ServerAsset_Type;
-     end record;
-
-
-   package ServerNetworkInfoAssets_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.ServerNetworkInfoAssets_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerNetworkInfoAssets_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerNetworkInfoAssets_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerNetworkInfoAssets_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerNetworkInfoAssets_Type_Vectors.Vector);
-
-
-
    type ServerNetworkInfo_Type is
      record
        Vlans : Swagger.UString_Vectors.Vector;
@@ -12355,33 +12382,6 @@ package .Models is
 
 
 
-   type DomainAllInfoAttributesContactSet_Type is
-     record
-       Owner : .Models.DomainOwnerContact_Type;
-       Admin : .Models.DomainAdminContact_Type;
-       Tech : .Models.DomainTechContact_Type;
-     end record;
-
-
-   package DomainAllInfoAttributesContactSet_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.DomainAllInfoAttributesContactSet_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DomainAllInfoAttributesContactSet_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DomainAllInfoAttributesContactSet_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DomainAllInfoAttributesContactSet_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DomainAllInfoAttributesContactSet_Type_Vectors.Vector);
-
-
-
    type GetOrderDetail200Response_Type is
      record
        Package_Costs : .Models.GetOrderDetail200ResponsePackageCosts_Type;
@@ -12464,6 +12464,74 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ViewTicketResponse_Type_Vectors.Vector);
+
+
+
+   type HomeServices_Type is
+     record
+       Domains : .Models.HomeServicesDomains_Type;
+       Webhosting : .Models.HomeServicesWebhosting_Type;
+       Vps : .Models.HomeServicesVps_Type;
+       Licenses : .Models.HomeServicesLicenses_Type;
+       Servers : .Models.HomeServicesServers_Type;
+       Backups : .Models.HomeServicesBackups_Type;
+     end record;
+
+
+   package HomeServices_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.HomeServices_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.HomeServices_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in HomeServices_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.HomeServices_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out HomeServices_Type_Vectors.Vector);
+
+
+
+   type Home_Type is
+     record
+       Last_Login_Ip : Swagger.UString;
+       Last_Login : Swagger.UString;
+       Currency : Swagger.UString;
+       Amount : Swagger.UString;
+       Invoice_List : Integer;
+       Balance : Swagger.UString;
+       Full_Name : Swagger.UString;
+       Email : Swagger.UString;
+       Tickets : Swagger.UString_Vectors.Vector;
+       Ticket_Status : .Models.HomeTicketStatus_Type;
+       Ticket_Status_View : .Models.HomeTicketStatusView_Type;
+       Details : .Models.HomeDetails_Type;
+       Services : .Models.HomeServices_Type;
+       AFFILIATE_AMOUNT : Swagger.UString;
+     end record;
+
+
+   package Home_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.Home_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Home_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Home_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Home_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Home_Type_Vectors.Vector);
 
 
 
@@ -12883,74 +12951,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ConfigLists_Type_Vectors.Vector);
-
-
-
-   type HomeServices_Type is
-     record
-       Domains : .Models.HomeServicesDomains_Type;
-       Webhosting : .Models.HomeServicesWebhosting_Type;
-       Vps : .Models.HomeServicesVps_Type;
-       Licenses : .Models.HomeServicesLicenses_Type;
-       Servers : .Models.HomeServicesServers_Type;
-       Backups : .Models.HomeServicesBackups_Type;
-     end record;
-
-
-   package HomeServices_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.HomeServices_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.HomeServices_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in HomeServices_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.HomeServices_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out HomeServices_Type_Vectors.Vector);
-
-
-
-   type Home_Type is
-     record
-       Last_Login_Ip : Swagger.UString;
-       Last_Login : Swagger.UString;
-       Currency : Swagger.UString;
-       Amount : Swagger.UString;
-       Invoice_List : Integer;
-       Balance : Swagger.UString;
-       Full_Name : Swagger.UString;
-       Email : Swagger.UString;
-       Tickets : Swagger.UString_Vectors.Vector;
-       Ticket_Status : .Models.HomeTicketStatus_Type;
-       Ticket_Status_View : .Models.HomeTicketStatusView_Type;
-       Details : .Models.HomeDetails_Type;
-       Services : .Models.HomeServices_Type;
-       AFFILIATE_AMOUNT : Swagger.UString;
-     end record;
-
-
-   package Home_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.Home_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Home_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Home_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Home_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Home_Type_Vectors.Vector);
 
 
 

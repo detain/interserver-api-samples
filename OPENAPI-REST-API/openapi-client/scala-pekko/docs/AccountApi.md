@@ -307,7 +307,7 @@ ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
 ## deleteIpLimit
 
-> deleteIpLimit(): ApiRequest[GenericResponse]
+> deleteIpLimit(deleteIpLimitRequest): ApiRequest[GenericResponse]
 
 Remove IP Access Restriction
 
@@ -317,6 +317,7 @@ Removes an IP address range from the account&#39;s access restriction list. If t
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -342,8 +343,10 @@ object Example extends App {
     implicit val sessionIdHeaderAuth: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
-    val apiInstance = AccountApi("https://my.interserver.net/apiv2")    
-    val request = apiInstance.deleteIpLimit()
+    val apiInstance = AccountApi("https://my.interserver.net/apiv2")
+    val ipLimitRange: IpLimitRange =  // IpLimitRange | 
+    
+    val request = apiInstance.deleteIpLimit(ipLimitRange)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -368,7 +371,10 @@ object Example extends App {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md)|  | [optional]
 
 ### Return type
 

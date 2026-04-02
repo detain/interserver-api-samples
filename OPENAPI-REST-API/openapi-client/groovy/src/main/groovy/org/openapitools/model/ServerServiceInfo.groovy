@@ -3,7 +3,6 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class ServerServiceInfo {
@@ -44,7 +43,7 @@ class ServerServiceInfo {
     /* The setup status of the server. */
     String serverSetup
     /* Discount information for the server. */
-    Object serverDiscount = null
+    String serverDiscount
     /* The reputation of the server. */
     String serverRep
     /* The date related to the server. */
@@ -52,7 +51,7 @@ class ServerServiceInfo {
     /* The total cost of the server. */
     String serverTotalCost
     /* The location of the server. */
-    Object serverLocation = null
+    String serverLocation
     /* The ordered hardware for the server. */
     String serverHardwareOrdered
     /* The billed amount for the server. */
@@ -66,7 +65,7 @@ class ServerServiceInfo {
     /* The size of the first dedicated hard drive. */
     String serverDedicatedHd1
     /* The size of the second dedicated hard drive. */
-    Object serverDedicatedHd2 = null
+    String serverDedicatedHd2
     /* The bandwidth of the server. */
     String serverDedicatedBandwidth
     /* The number of dedicated IPs for the server. */
@@ -74,7 +73,7 @@ class ServerServiceInfo {
     /* The operating system of the server. */
     String serverDedicatedOs
     /* The control panel of the server. */
-    Object serverDedicatedCp = null
+    String serverDedicatedCp
     /* The RAID configuration of the server. */
     String serverDedicatedRaid
     /* Additional information about the server. */

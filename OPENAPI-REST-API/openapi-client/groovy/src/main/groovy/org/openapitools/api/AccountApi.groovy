@@ -6,6 +6,7 @@ import org.openapitools.model.GenericResponse
 import org.openapitools.model.GetAccountInfo401Response
 import org.openapitools.model.GetAccountTfaSetup200Response
 import org.openapitools.model.Home
+import org.openapitools.model.IpLimitRange
 import org.openapitools.model.SearchAutocompleteResponse
 import org.openapitools.model.SuccessTextResponse
 import org.openapitools.model.TextResponse
@@ -88,7 +89,7 @@ class AccountApi {
 
     }
 
-    def deleteIpLimit ( Closure onSuccess, Closure onFailure)  {
+    def deleteIpLimit ( IpLimitRange ipLimitRange, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/account/iplimits"
 
         // params
@@ -101,6 +102,8 @@ class AccountApi {
 
 
 
+        contentType = 'application/json';
+        bodyParams = ipLimitRange
 
 
         accept = apiUtils.selectHeaderAccept(["application/json"])

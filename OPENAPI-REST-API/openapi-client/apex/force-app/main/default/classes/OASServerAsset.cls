@@ -252,55 +252,55 @@ public class OASServerAsset implements OAS.MappedProperties {
      * MAC address associated with the asset.
      * @return mac
      */
-    public oas_any_type_not_mapped mac { get; set; }
+    public String mac { get; set; }
 
     /**
      * IPMI admin username associated with the asset.
      * @return ipmiAdminUsername
      */
-    public oas_any_type_not_mapped ipmiAdminUsername { get; set; }
+    public String ipmiAdminUsername { get; set; }
 
     /**
      * IPMI admin password associated with the asset.
      * @return ipmiAdminPassword
      */
-    public oas_any_type_not_mapped ipmiAdminPassword { get; set; }
+    public String ipmiAdminPassword { get; set; }
 
     /**
      * IPMI client username associated with the asset.
      * @return ipmiClientUsername
      */
-    public oas_any_type_not_mapped ipmiClientUsername { get; set; }
+    public String ipmiClientUsername { get; set; }
 
     /**
      * IPMI client password associated with the asset.
      * @return ipmiClientPassword
      */
-    public oas_any_type_not_mapped ipmiClientPassword { get; set; }
+    public String ipmiClientPassword { get; set; }
 
     /**
      * IPMI update status associated with the asset.
      * @return ipmiUpdated
      */
-    public oas_any_type_not_mapped ipmiUpdated { get; set; }
+    public String ipmiUpdated { get; set; }
 
     /**
      * Timestamp of asset creation.
      * @return createTimestamp
      */
-    public oas_any_type_not_mapped createTimestamp { get; set; }
+    public String createTimestamp { get; set; }
 
     /**
      * Timestamp of asset update.
      * @return updateTimestamp
      */
-    public oas_any_type_not_mapped updateTimestamp { get; set; }
+    public String updateTimestamp { get; set; }
 
     /**
      * Comment associated with the asset.
      * @return comment
      */
-    public oas_any_type_not_mapped comment { get; set; }
+    public String comment { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'order_id' => 'orderId',
@@ -1393,15 +1393,15 @@ public class OASServerAsset implements OAS.MappedProperties {
           serverAsset.vlans = new List<String>{''};
           serverAsset.vlans6 = new List<String>{''};
           serverAsset.lease = OASServerLease.getExample();
-          serverAsset.mac = oas_any_type_not_mapped.getExample();
-          serverAsset.ipmiAdminUsername = oas_any_type_not_mapped.getExample();
-          serverAsset.ipmiAdminPassword = oas_any_type_not_mapped.getExample();
-          serverAsset.ipmiClientUsername = oas_any_type_not_mapped.getExample();
-          serverAsset.ipmiClientPassword = oas_any_type_not_mapped.getExample();
-          serverAsset.ipmiUpdated = oas_any_type_not_mapped.getExample();
-          serverAsset.createTimestamp = oas_any_type_not_mapped.getExample();
-          serverAsset.updateTimestamp = oas_any_type_not_mapped.getExample();
-          serverAsset.comment = oas_any_type_not_mapped.getExample();
+          serverAsset.mac = '';
+          serverAsset.ipmiAdminUsername = '';
+          serverAsset.ipmiAdminPassword = '';
+          serverAsset.ipmiClientUsername = '';
+          serverAsset.ipmiClientPassword = '';
+          serverAsset.ipmiUpdated = '';
+          serverAsset.createTimestamp = '';
+          serverAsset.updateTimestamp = '';
+          serverAsset.comment = '';
         return serverAsset;
     }
 

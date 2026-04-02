@@ -311,6 +311,7 @@ class AccountApi(object):
         >>> result = thread.get()
 
         :param async_req bool
+        :param IpLimitRange body:
         :return: GenericResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -332,12 +333,13 @@ class AccountApi(object):
         >>> result = thread.get()
 
         :param async_req bool
+        :param IpLimitRange body:
         :return: GenericResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -365,6 +367,8 @@ class AccountApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'body' in params:
+            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

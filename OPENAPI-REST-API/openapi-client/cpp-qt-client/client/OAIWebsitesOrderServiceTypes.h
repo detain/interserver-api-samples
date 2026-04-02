@@ -21,7 +21,6 @@
 
 #include <QJsonObject>
 
-#include <QJsonValue>
 #include <QString>
 
 #include "OAIEnum.h"
@@ -90,18 +89,18 @@ public:
     bool is_services_field2_Set() const;
     bool is_services_field2_Valid() const;
 
-    QJsonValue getServicesHtml() const;
-    void setServicesHtml(const QJsonValue &services_html);
+    QString getServicesHtml() const;
+    void setServicesHtml(const QString &services_html);
     bool is_services_html_Set() const;
     bool is_services_html_Valid() const;
 
-    QJsonValue getServicesDescription() const;
-    void setServicesDescription(const QJsonValue &services_description);
+    QString getServicesDescription() const;
+    void setServicesDescription(const QString &services_description);
     bool is_services_description_Set() const;
     bool is_services_description_Valid() const;
 
-    QJsonValue getServicesMoreinfoUrl() const;
-    void setServicesMoreinfoUrl(const QJsonValue &services_moreinfo_url);
+    QString getServicesMoreinfoUrl() const;
+    void setServicesMoreinfoUrl(const QString &services_moreinfo_url);
     bool is_services_moreinfo_url_Set() const;
     bool is_services_moreinfo_url_Valid() const;
 
@@ -151,15 +150,15 @@ private:
     bool m_services_field2_isSet;
     bool m_services_field2_isValid;
 
-    QJsonValue m_services_html;
+    QString m_services_html;
     bool m_services_html_isSet;
     bool m_services_html_isValid;
 
-    QJsonValue m_services_description;
+    QString m_services_description;
     bool m_services_description_isSet;
     bool m_services_description_isValid;
 
-    QJsonValue m_services_moreinfo_url;
+    QString m_services_moreinfo_url;
     bool m_services_moreinfo_url_isSet;
     bool m_services_moreinfo_url_isValid;
 };

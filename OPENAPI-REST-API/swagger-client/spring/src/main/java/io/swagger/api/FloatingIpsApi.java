@@ -105,7 +105,7 @@ public interface FloatingIpsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Floating_IPs" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "The listing of `Floating IPs` services on your account."),
+        @ApiResponse(responseCode = "200", description = "The listing of `Floating IPs` services on your account.", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Object.class)))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
         
@@ -113,7 +113,7 @@ public interface FloatingIpsApi {
     @RequestMapping(value = "/floating_ips",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> getFloatingIpsList();
+    ResponseEntity<List<Object>> getFloatingIpsList();
 
 
     @Operation(summary = "Resend Floating IPs Welcome Email", description = "Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.", security = {

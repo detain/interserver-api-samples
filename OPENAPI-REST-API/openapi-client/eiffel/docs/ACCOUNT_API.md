@@ -162,7 +162,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_ip_limit**
-> delete_ip_limit : detachable GENERIC_RESPONSE
+> delete_ip_limit (ip_limit_range:  detachable IP_LIMIT_RANGE ): detachable GENERIC_RESPONSE
 
 
 Remove IP Access Restriction
@@ -171,7 +171,10 @@ Removes an IP address range from the account's access restriction list. If this 
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ip_limit_range** | [**IP_LIMIT_RANGE**](IP_LIMIT_RANGE.md)|  | [optional] 
 
 ### Return type
 

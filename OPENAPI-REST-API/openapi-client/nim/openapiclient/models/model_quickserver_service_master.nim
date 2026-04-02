@@ -12,7 +12,6 @@ import tables
 import marshal
 import options
 
-import model_any_type
 
 type QuickserverServiceMaster* = object
   ## Information about the host node running this QuickServer, including hardware specs and resource utilization.
@@ -46,8 +45,8 @@ type QuickserverServiceMaster* = object
   qsBytesSecOut*: Option[string] ## Bytes/sec out
   qsPacketsSecIn*: Option[string] ## Packets/sec in
   qsPacketsSecOut*: Option[string] ## Packets/sec out
-  qsLastInstallTime*: Option[JsonNode] ## Last install time (null)
-  qsPartitions*: Option[JsonNode] ## Partitions information (null)
+  qsLastInstallTime*: Option[string] ## Last install time (null)
+  qsPartitions*: Option[string] ## Partitions information (null)
   qsCpuFlags*: Option[string] ## CPU flags
 
 

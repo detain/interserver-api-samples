@@ -74,8 +74,8 @@ defmodule InterServerManagementAPI.Model.QuickserverServiceMaster do
     :qs_bytes_sec_out => String.t | nil,
     :qs_packets_sec_in => String.t | nil,
     :qs_packets_sec_out => String.t | nil,
-    :qs_last_install_time => any() | nil,
-    :qs_partitions => any() | nil,
+    :qs_last_install_time => String.t | nil,
+    :qs_partitions => String.t | nil,
     :qs_cpu_flags => String.t | nil
   }
 

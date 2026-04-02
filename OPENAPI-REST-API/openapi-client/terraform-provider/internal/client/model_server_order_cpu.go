@@ -26,7 +26,7 @@ type ServerOrderCpu struct {
 	MaxSff string `json:"max_sff,omitempty"`
 	MaxNve string `json:"max_nve,omitempty"`
 	Visible string `json:"visible,omitempty"`
-	HdIds interface{} `json:"hd_ids,omitempty"`
+	HdIds string `json:"hd_ids,omitempty"`
 	PriceDisplay string `json:"price_display,omitempty"`
 	MonthlyPriceDisplay string `json:"monthly_price_display,omitempty"`
 }

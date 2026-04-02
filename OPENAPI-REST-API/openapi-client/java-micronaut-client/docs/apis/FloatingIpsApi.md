@@ -155,7 +155,7 @@ Returns the billing invoices associated with this Floating IP service.
 <a id="getFloatingIpsList"></a>
 # **getFloatingIpsList**
 ```java
-Mono<Void> FloatingIpsApi.getFloatingIpsList()
+Mono<List<Object>> FloatingIpsApi.getFloatingIpsList()
 ```
 
 List Floating IPs
@@ -164,7 +164,8 @@ Returns all Floating IP services on the account with their current status and as
 
 
 
-
+### Return type
+`List&lt;Object&gt;`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

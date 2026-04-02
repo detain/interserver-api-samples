@@ -24,6 +24,7 @@ local openapiclient_success_text_response = require "openapiclient.model.success
 local openapiclient_text_response = require "openapiclient.model.text_response"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_get_account_tfa_setup_200_response = require "openapiclient.model.get_account_tfa_setup_200_response"
+local openapiclient_ip_limit_range = require "openapiclient.model.ip_limit_range"
 
 local account_api = {}
 local account_api_mt = {
@@ -213,7 +214,7 @@ function account_api:delete_account_tfa()
 	end
 end
 
-function account_api:delete_ip_limit()
+function account_api:delete_ip_limit(ip_limit_range)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -231,6 +232,8 @@ function account_api:delete_ip_limit()
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(ip_limit_range))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

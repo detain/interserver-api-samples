@@ -23,6 +23,7 @@
 #include "OAIGetAccountInfo_401_response.h"
 #include "OAIGetAccountTfaSetup_200_response.h"
 #include "OAIHome.h"
+#include "OAIIpLimitRange.h"
 #include "OAISearchAutocompleteResponse.h"
 #include "OAISuccessTextResponse.h"
 #include "OAITextResponse.h"
@@ -76,8 +77,10 @@ public:
 
     virtual void deleteAccountTfa();
 
-
-    virtual void deleteIpLimit();
+    /**
+    * @param[in]  oaiip_limit_range OAIIpLimitRange [optional]
+    */
+    virtual void deleteIpLimit(const ::OpenAPI::OptionalParam<OAIIpLimitRange> &oaiip_limit_range = ::OpenAPI::OptionalParam<OAIIpLimitRange>());
 
 
     virtual void getAccountInfo();

@@ -265,15 +265,15 @@ module OpenAPIClient
 
     # List Floating IPs
     # Returns all Floating IP services on the account with their current status and assignment details.
-    # @return [nil]
+    # @return [Array(JSON::Any)]
     def get_floating_ips_list()
-      get_floating_ips_list_with_http_info()
-      nil
+      data, _status_code, _headers = get_floating_ips_list_with_http_info()
+      data
     end
 
     # List Floating IPs
     # Returns all Floating IP services on the account with their current status and assignment details.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Array(JSON::Any), Integer, Hash)>] Array(JSON::Any) data, response status code and response headers
     def get_floating_ips_list_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: FloatingIPsApi.get_floating_ips_list ..."}
@@ -317,7 +317,7 @@ module OpenAPIClient
         Log.debug {"API called: FloatingIPsApi#get_floating_ips_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return Array(JSON::Any).from_json(data), status_code, headers
     end
 
     # Resend Floating IPs Welcome Email

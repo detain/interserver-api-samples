@@ -68,10 +68,11 @@ proc getFloatingIpInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvo
   constructResult[ChargeInvoiceRows](response)
 
 
-proc getFloatingIpsList*(httpClient: HttpClient): Response =
+proc getFloatingIpsList*(httpClient: HttpClient): (Option[seq[JsonNode]], Response) =
   ## List Floating IPs
-  httpClient.get(basepath & "/floating_ips")
 
+  let response = httpClient.get(basepath & "/floating_ips")
+  constructResult[seq[JsonNode]](response)
 
 
 proc getFloatingIpsWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =

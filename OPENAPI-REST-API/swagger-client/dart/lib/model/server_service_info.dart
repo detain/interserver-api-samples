@@ -38,7 +38,7 @@ class ServerServiceInfo {
 /* The setup status of the server. */
   String serverSetup = null;
 /* Discount information for the server. */
-  Object serverDiscount = null;
+  String serverDiscount = null;
 /* The reputation of the server. */
   String serverRep = null;
 /* The date related to the server. */
@@ -46,7 +46,7 @@ class ServerServiceInfo {
 /* The total cost of the server. */
   String serverTotalCost = null;
 /* The location of the server. */
-  Object serverLocation = null;
+  String serverLocation = null;
 /* The ordered hardware for the server. */
   String serverHardwareOrdered = null;
 /* The billed amount for the server. */
@@ -60,7 +60,7 @@ class ServerServiceInfo {
 /* The size of the first dedicated hard drive. */
   String serverDedicatedHd1 = null;
 /* The size of the second dedicated hard drive. */
-  Object serverDedicatedHd2 = null;
+  String serverDedicatedHd2 = null;
 /* The bandwidth of the server. */
   String serverDedicatedBandwidth = null;
 /* The number of dedicated IPs for the server. */
@@ -68,7 +68,7 @@ class ServerServiceInfo {
 /* The operating system of the server. */
   String serverDedicatedOs = null;
 /* The control panel of the server. */
-  Object serverDedicatedCp = null;
+  String serverDedicatedCp = null;
 /* The RAID configuration of the server. */
   String serverDedicatedRaid = null;
 /* Additional information about the server. */
@@ -101,22 +101,22 @@ class ServerServiceInfo {
     serverIps = json['server_ips'];
     serverMonthlyBill = json['server_monthly_bill'];
     serverSetup = json['server_setup'];
-    serverDiscount = new Object.fromJson(json['server_discount']);
+    serverDiscount = json['server_discount'];
     serverRep = json['server_rep'];
     serverDate = json['server_date'];
     serverTotalCost = json['server_total_cost'];
-    serverLocation = new Object.fromJson(json['server_location']);
+    serverLocation = json['server_location'];
     serverHardwareOrdered = json['server_hardware_ordered'];
     serverBilled = json['server_billed'];
     serverWelcomeEmail = json['server_welcome_email'];
     serverDedicatedCpu = json['server_dedicated_cpu'];
     serverDedicatedMemory = json['server_dedicated_memory'];
     serverDedicatedHd1 = json['server_dedicated_hd1'];
-    serverDedicatedHd2 = new Object.fromJson(json['server_dedicated_hd2']);
+    serverDedicatedHd2 = json['server_dedicated_hd2'];
     serverDedicatedBandwidth = json['server_dedicated_bandwidth'];
     serverDedicatedIps = json['server_dedicated_ips'];
     serverDedicatedOs = json['server_dedicated_os'];
-    serverDedicatedCp = new Object.fromJson(json['server_dedicated_cp']);
+    serverDedicatedCp = json['server_dedicated_cp'];
     serverDedicatedRaid = json['server_dedicated_raid'];
     serverExtra = json['server_extra'];
   }

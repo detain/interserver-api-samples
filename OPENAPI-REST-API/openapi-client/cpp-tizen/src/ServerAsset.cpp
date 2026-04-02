@@ -62,15 +62,15 @@ ServerAsset::__init()
 	//new std::list()std::list> vlans;
 	//new std::list()std::list> vlans6;
 	//lease = new ServerLease();
-	//mac = null;
-	//ipmi_admin_username = null;
-	//ipmi_admin_password = null;
-	//ipmi_client_username = null;
-	//ipmi_client_password = null;
-	//ipmi_updated = null;
-	//create_timestamp = null;
-	//update_timestamp = null;
-	//comment = null;
+	//mac = std::string();
+	//ipmi_admin_username = std::string();
+	//ipmi_admin_password = std::string();
+	//ipmi_client_username = std::string();
+	//ipmi_client_password = std::string();
+	//ipmi_updated = std::string();
+	//create_timestamp = std::string();
+	//update_timestamp = std::string();
+	//comment = std::string();
 }
 
 void
@@ -794,12 +794,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&mac, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&mac, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&mac);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -808,12 +805,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&ipmi_admin_username, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&ipmi_admin_username, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&ipmi_admin_username);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -822,12 +816,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&ipmi_admin_password, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&ipmi_admin_password, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&ipmi_admin_password);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -836,12 +827,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&ipmi_client_username, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&ipmi_client_username, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&ipmi_client_username);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -850,12 +838,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&ipmi_client_password, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&ipmi_client_password, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&ipmi_client_password);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -864,12 +849,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&ipmi_updated, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&ipmi_updated, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&ipmi_updated);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -878,12 +860,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&create_timestamp, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&create_timestamp, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&create_timestamp);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -892,12 +871,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&update_timestamp, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&update_timestamp, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&update_timestamp);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -906,12 +882,9 @@ ServerAsset::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&comment, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&comment, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&comment);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -1301,128 +1274,83 @@ ServerAsset::toJson()
 	}
 	const gchar *leaseKey = "lease";
 	json_object_set_member(pJsonObject, leaseKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getMac();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getMac();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getMac());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *macKey = "mac";
 	json_object_set_member(pJsonObject, macKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getIpmiAdminUsername();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getIpmiAdminUsername();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getIpmiAdminUsername());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *ipmi_admin_usernameKey = "ipmi_admin_username";
 	json_object_set_member(pJsonObject, ipmi_admin_usernameKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getIpmiAdminPassword();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getIpmiAdminPassword();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getIpmiAdminPassword());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *ipmi_admin_passwordKey = "ipmi_admin_password";
 	json_object_set_member(pJsonObject, ipmi_admin_passwordKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getIpmiClientUsername();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getIpmiClientUsername();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getIpmiClientUsername());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *ipmi_client_usernameKey = "ipmi_client_username";
 	json_object_set_member(pJsonObject, ipmi_client_usernameKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getIpmiClientPassword();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getIpmiClientPassword();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getIpmiClientPassword());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *ipmi_client_passwordKey = "ipmi_client_password";
 	json_object_set_member(pJsonObject, ipmi_client_passwordKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getIpmiUpdated();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getIpmiUpdated();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getIpmiUpdated());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *ipmi_updatedKey = "ipmi_updated";
 	json_object_set_member(pJsonObject, ipmi_updatedKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getCreateTimestamp();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCreateTimestamp();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getCreateTimestamp());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *create_timestampKey = "create_timestamp";
 	json_object_set_member(pJsonObject, create_timestampKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getUpdateTimestamp();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getUpdateTimestamp();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getUpdateTimestamp());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *update_timestampKey = "update_timestamp";
 	json_object_set_member(pJsonObject, update_timestampKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getComment();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getComment();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getComment());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *commentKey = "comment";
@@ -1903,110 +1831,110 @@ ServerAsset::setLease(ServerLease  lease)
 	this->lease = lease;
 }
 
-AnyType
+std::string
 ServerAsset::getMac()
 {
 	return mac;
 }
 
 void
-ServerAsset::setMac(AnyType  mac)
+ServerAsset::setMac(std::string  mac)
 {
 	this->mac = mac;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiAdminUsername()
 {
 	return ipmi_admin_username;
 }
 
 void
-ServerAsset::setIpmiAdminUsername(AnyType  ipmi_admin_username)
+ServerAsset::setIpmiAdminUsername(std::string  ipmi_admin_username)
 {
 	this->ipmi_admin_username = ipmi_admin_username;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiAdminPassword()
 {
 	return ipmi_admin_password;
 }
 
 void
-ServerAsset::setIpmiAdminPassword(AnyType  ipmi_admin_password)
+ServerAsset::setIpmiAdminPassword(std::string  ipmi_admin_password)
 {
 	this->ipmi_admin_password = ipmi_admin_password;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiClientUsername()
 {
 	return ipmi_client_username;
 }
 
 void
-ServerAsset::setIpmiClientUsername(AnyType  ipmi_client_username)
+ServerAsset::setIpmiClientUsername(std::string  ipmi_client_username)
 {
 	this->ipmi_client_username = ipmi_client_username;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiClientPassword()
 {
 	return ipmi_client_password;
 }
 
 void
-ServerAsset::setIpmiClientPassword(AnyType  ipmi_client_password)
+ServerAsset::setIpmiClientPassword(std::string  ipmi_client_password)
 {
 	this->ipmi_client_password = ipmi_client_password;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiUpdated()
 {
 	return ipmi_updated;
 }
 
 void
-ServerAsset::setIpmiUpdated(AnyType  ipmi_updated)
+ServerAsset::setIpmiUpdated(std::string  ipmi_updated)
 {
 	this->ipmi_updated = ipmi_updated;
 }
 
-AnyType
+std::string
 ServerAsset::getCreateTimestamp()
 {
 	return create_timestamp;
 }
 
 void
-ServerAsset::setCreateTimestamp(AnyType  create_timestamp)
+ServerAsset::setCreateTimestamp(std::string  create_timestamp)
 {
 	this->create_timestamp = create_timestamp;
 }
 
-AnyType
+std::string
 ServerAsset::getUpdateTimestamp()
 {
 	return update_timestamp;
 }
 
 void
-ServerAsset::setUpdateTimestamp(AnyType  update_timestamp)
+ServerAsset::setUpdateTimestamp(std::string  update_timestamp)
 {
 	this->update_timestamp = update_timestamp;
 }
 
-AnyType
+std::string
 ServerAsset::getComment()
 {
 	return comment;
 }
 
 void
-ServerAsset::setComment(AnyType  comment)
+ServerAsset::setComment(std::string  comment)
 {
 	this->comment = comment;
 }

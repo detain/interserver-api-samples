@@ -52,7 +52,8 @@ isa_ok($api, 'OpenAPIClient::AccountApi');
 # delete_ip_limit test
 #
 # uncomment below and update the test
-#my $delete_ip_limit_result = $api->delete_ip_limit();
+#my $delete_ip_limit_ip_limit_range = undef; # replace NULL with a proper value
+#my $delete_ip_limit_result = $api->delete_ip_limit(ip_limit_range => $delete_ip_limit_ip_limit_range);
 
 #
 # get_account_info test

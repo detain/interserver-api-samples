@@ -66,7 +66,7 @@ case class ServerOrderCPU(
     max_sff: Option[String] = None,
     max_nve: Option[String] = None,
     visible: Option[String] = None,
-    hd_ids: Option[AnyType] = None,
+    hd_ids: Option[String] = None,
     price_display: Option[String] = None,
     monthly_price_display: Option[String] = None
 )
@@ -127,7 +127,7 @@ object ServerOrderCPU {
       max_sff <- c.downField("max_sff").as[Option[String]]
       max_nve <- c.downField("max_nve").as[Option[String]]
       visible <- c.downField("visible").as[Option[String]]
-      hd_ids <- c.downField("hd_ids").as[Option[AnyType]]
+      hd_ids <- c.downField("hd_ids").as[Option[String]]
       price_display <- c.downField("price_display").as[Option[String]]
       monthly_price_display <- c.downField("monthly_price_display").as[Option[String]]
     } yield ServerOrderCPU(

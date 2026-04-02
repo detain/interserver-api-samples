@@ -214,7 +214,13 @@ class ServerServiceInfo {
   String? serverSetup;
 
   /// Discount information for the server.
-  Object? serverDiscount;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serverDiscount;
 
   /// The reputation of the server.
   ///
@@ -244,7 +250,13 @@ class ServerServiceInfo {
   String? serverTotalCost;
 
   /// The location of the server.
-  Object? serverLocation;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serverLocation;
 
   /// The ordered hardware for the server.
   ///
@@ -301,7 +313,13 @@ class ServerServiceInfo {
   String? serverDedicatedHd1;
 
   /// The size of the second dedicated hard drive.
-  Object? serverDedicatedHd2;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serverDedicatedHd2;
 
   /// The bandwidth of the server.
   ///
@@ -331,7 +349,13 @@ class ServerServiceInfo {
   String? serverDedicatedOs;
 
   /// The control panel of the server.
-  Object? serverDedicatedCp;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serverDedicatedCp;
 
   /// The RAID configuration of the server.
   ///
@@ -651,22 +675,22 @@ class ServerServiceInfo {
         serverIps: mapValueOfType<String>(json, r'server_ips'),
         serverMonthlyBill: mapValueOfType<String>(json, r'server_monthly_bill'),
         serverSetup: mapValueOfType<String>(json, r'server_setup'),
-        serverDiscount: mapValueOfType<Object>(json, r'server_discount'),
+        serverDiscount: mapValueOfType<String>(json, r'server_discount'),
         serverRep: mapValueOfType<String>(json, r'server_rep'),
         serverDate: mapValueOfType<String>(json, r'server_date'),
         serverTotalCost: mapValueOfType<String>(json, r'server_total_cost'),
-        serverLocation: mapValueOfType<Object>(json, r'server_location'),
+        serverLocation: mapValueOfType<String>(json, r'server_location'),
         serverHardwareOrdered: mapValueOfType<String>(json, r'server_hardware_ordered'),
         serverBilled: mapValueOfType<String>(json, r'server_billed'),
         serverWelcomeEmail: mapValueOfType<String>(json, r'server_welcome_email'),
         serverDedicatedCpu: mapValueOfType<String>(json, r'server_dedicated_cpu'),
         serverDedicatedMemory: mapValueOfType<String>(json, r'server_dedicated_memory'),
         serverDedicatedHd1: mapValueOfType<String>(json, r'server_dedicated_hd1'),
-        serverDedicatedHd2: mapValueOfType<Object>(json, r'server_dedicated_hd2'),
+        serverDedicatedHd2: mapValueOfType<String>(json, r'server_dedicated_hd2'),
         serverDedicatedBandwidth: mapValueOfType<String>(json, r'server_dedicated_bandwidth'),
         serverDedicatedIps: mapValueOfType<String>(json, r'server_dedicated_ips'),
         serverDedicatedOs: mapValueOfType<String>(json, r'server_dedicated_os'),
-        serverDedicatedCp: mapValueOfType<Object>(json, r'server_dedicated_cp'),
+        serverDedicatedCp: mapValueOfType<String>(json, r'server_dedicated_cp'),
         serverDedicatedRaid: mapValueOfType<String>(json, r'server_dedicated_raid'),
         serverExtra: mapValueOfType<String>(json, r'server_extra'),
       );

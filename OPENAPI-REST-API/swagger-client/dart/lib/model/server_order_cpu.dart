@@ -46,7 +46,7 @@ class ServerOrderCPU {
 /* Visibility status. */
   String visible = null;
 /* Hard drive IDs. */
-  Object hdIds = null;
+  String hdIds = null;
 /* Display of CPU price. */
   String priceDisplay = null;
 /* Display of monthly CPU price. */
@@ -83,7 +83,7 @@ class ServerOrderCPU {
     maxSff = json['max_sff'];
     maxNve = json['max_nve'];
     visible = json['visible'];
-    hdIds = new Object.fromJson(json['hd_ids']);
+    hdIds = json['hd_ids'];
     priceDisplay = json['price_display'];
     monthlyPriceDisplay = json['monthly_price_display'];
   }

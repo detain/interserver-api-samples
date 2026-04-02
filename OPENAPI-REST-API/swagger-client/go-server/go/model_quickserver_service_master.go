@@ -72,9 +72,9 @@ type QuickserverServiceMaster struct {
 	// Packets/sec out
 	QsPacketsSecOut string `json:"qs_packets_sec_out,omitempty"`
 	// Last install time (null)
-	QsLastInstallTime *Object `json:"qs_last_install_time,omitempty"`
+	QsLastInstallTime string `json:"qs_last_install_time,omitempty"`
 	// Partitions information (null)
-	QsPartitions *Object `json:"qs_partitions,omitempty"`
+	QsPartitions string `json:"qs_partitions,omitempty"`
 	// CPU flags
 	QsCpuFlags string `json:"qs_cpu_flags,omitempty"`
 }

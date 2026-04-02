@@ -50,7 +50,7 @@ namespace IO.Swagger.Model {
     /// <value>IPv6 address of the VPS</value>
     [DataMember(Name="vps_ipv6", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "vps_ipv6")]
-    public Object VpsIpv6 { get; set; }
+    public string VpsIpv6 { get; set; }
 
     /// <summary>
     /// VPS Virtuozzo ID

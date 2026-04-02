@@ -93,7 +93,7 @@ let get_floating_ips_list () =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as_list  resp body
 
 let get_floating_ips_welcome_email ~id =
     let open Lwt.Infix in

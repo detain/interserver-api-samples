@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **vpsUnderscorecustid** | **string** |  | [optional] [default to null]
 **vpsUnderscoreserver** | **string** |  | [optional] [default to null]
 **vpsUnderscoreip** | **string** |  | [optional] [default to null]
-**vpsUnderscoreipv6** | [**AnyType**](.md) |  | [optional] [default to null]
+**vpsUnderscoreipv6** | **string** |  | [optional] [default to null]
 **vpsUnderscorevzid** | **string** |  | [optional] [default to null]
 **vpsUnderscorecurrency** | **string** |  | [optional] [default to null]
 **vpsUnderscoretype** | **string** |  | [optional] [default to null]

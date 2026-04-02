@@ -63,7 +63,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
         'qsCustid' => 'string',
         'qsServer' => 'string',
         'qsIp' => 'string',
-        'qsIpv6' => 'mixed',
+        'qsIpv6' => 'string',
         'qsVzid' => 'string',
         'qsCurrency' => 'string',
         'qsType' => 'string',
@@ -77,13 +77,13 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
         'qsComment' => 'string',
         'qsSlices' => 'string',
         'qsVnc' => 'string',
-        'qsVncPort' => 'mixed',
+        'qsVncPort' => 'int',
         'qsRootpass' => 'string',
         'qsMac' => 'string',
         'qsOs' => 'string',
         'qsVersion' => 'string',
         'qsLocation' => 'string',
-        'qsPlatform' => 'mixed'
+        'qsPlatform' => 'string'
     ];
 
     /**
@@ -570,7 +570,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets qsIpv6
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getQsIpv6()
     {
@@ -580,7 +580,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets qsIpv6
      *
-     * @param mixed|null $qsIpv6 IPv6 address (null)
+     * @param string|null $qsIpv6 IPv6 address (null)
      *
      * @return self
      */
@@ -955,7 +955,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets qsVncPort
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getQsVncPort()
     {
@@ -965,7 +965,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets qsVncPort
      *
-     * @param mixed|null $qsVncPort VNC port (null)
+     * @param int|null $qsVncPort VNC port (null)
      *
      * @return self
      */
@@ -1124,7 +1124,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets qsPlatform
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getQsPlatform()
     {
@@ -1134,7 +1134,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets qsPlatform
      *
-     * @param mixed|null $qsPlatform Platform (null)
+     * @param string|null $qsPlatform Platform (null)
      *
      * @return self
      */

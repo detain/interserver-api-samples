@@ -135,7 +135,7 @@
                 
                 ; [@key "server_setup"]
                     (** The setup status of the server. *)
-                                      server_discount: Yojson.Safe.t
+                                      server_discount: string
                   
                    option [@default None]
                 
@@ -163,7 +163,7 @@
                 
                 ; [@key "server_total_cost"]
                     (** The total cost of the server. *)
-                                      server_location: Yojson.Safe.t
+                                      server_location: string
                   
                    option [@default None]
                 
@@ -212,7 +212,7 @@
                 
                 ; [@key "server_dedicated_hd1"]
                     (** The size of the first dedicated hard drive. *)
-                                      server_dedicated_hd2: Yojson.Safe.t
+                                      server_dedicated_hd2: string
                   
                    option [@default None]
                 
@@ -240,7 +240,7 @@
                 
                 ; [@key "server_dedicated_os"]
                     (** The operating system of the server. *)
-                                      server_dedicated_cp: Yojson.Safe.t
+                                      server_dedicated_cp: string
                   
                    option [@default None]
                 

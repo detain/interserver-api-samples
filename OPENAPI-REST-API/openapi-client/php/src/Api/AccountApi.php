@@ -1035,15 +1035,16 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange|null $ipLimitRange ipLimitRange (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIpLimit'] to see the possible values for this operation
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Interserver\MyAdmin\Model\GenericResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
-    public function deleteIpLimit(string $contentType = self::contentTypes['deleteIpLimit'][0])
+    public function deleteIpLimit($ipLimitRange = null, string $contentType = self::contentTypes['deleteIpLimit'][0])
     {
-        list($response) = $this->deleteIpLimitWithHttpInfo($contentType);
+        list($response) = $this->deleteIpLimitWithHttpInfo($ipLimitRange, $contentType);
         return $response;
     }
 
@@ -1052,15 +1053,16 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange|null $ipLimitRange (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIpLimit'] to see the possible values for this operation
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Interserver\MyAdmin\Model\GenericResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteIpLimitWithHttpInfo(string $contentType = self::contentTypes['deleteIpLimit'][0])
+    public function deleteIpLimitWithHttpInfo($ipLimitRange = null, string $contentType = self::contentTypes['deleteIpLimit'][0])
     {
-        $request = $this->deleteIpLimitRequest($contentType);
+        $request = $this->deleteIpLimitRequest($ipLimitRange, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1150,14 +1152,15 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange|null $ipLimitRange (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIpLimit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteIpLimitAsync(string $contentType = self::contentTypes['deleteIpLimit'][0])
+    public function deleteIpLimitAsync($ipLimitRange = null, string $contentType = self::contentTypes['deleteIpLimit'][0])
     {
-        return $this->deleteIpLimitAsyncWithHttpInfo($contentType)
+        return $this->deleteIpLimitAsyncWithHttpInfo($ipLimitRange, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1170,15 +1173,16 @@ class AccountApi
      *
      * Remove IP Access Restriction
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange|null $ipLimitRange (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIpLimit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteIpLimitAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteIpLimit'][0])
+    public function deleteIpLimitAsyncWithHttpInfo($ipLimitRange = null, string $contentType = self::contentTypes['deleteIpLimit'][0])
     {
         $returnType = '\Interserver\MyAdmin\Model\GenericResponse';
-        $request = $this->deleteIpLimitRequest($contentType);
+        $request = $this->deleteIpLimitRequest($ipLimitRange, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1219,13 +1223,15 @@ class AccountApi
     /**
      * Create request for operation 'deleteIpLimit'
      *
+     * @param  \Interserver\MyAdmin\Model\IpLimitRange|null $ipLimitRange (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIpLimit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteIpLimitRequest(string $contentType = self::contentTypes['deleteIpLimit'][0])
+    public function deleteIpLimitRequest($ipLimitRange = null, string $contentType = self::contentTypes['deleteIpLimit'][0])
     {
+
 
 
         $resourcePath = '/account/iplimits';
@@ -1246,7 +1252,14 @@ class AccountApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($ipLimitRange)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ipLimitRange));
+            } else {
+                $httpBody = $ipLimitRange;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

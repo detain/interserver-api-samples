@@ -95,15 +95,17 @@ public class OASAccountApi {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account\&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param oaSIpLimitRange  (optional)
      * @return OASGenericResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public OASGenericResponse deleteIpLimit() {
+    public OASGenericResponse deleteIpLimit(Map<String, Object> params) {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
         return (OASGenericResponse) client.invoke(
-            'PATCH', '/account/iplimits', '',
+            'PATCH', '/account/iplimits',
+            (OASIpLimitRange) params.get('oaSIpLimitRange'),
             query, form,
             new Map<String, Object>(),
             new Map<String, Object>(),

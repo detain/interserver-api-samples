@@ -217,7 +217,7 @@ const { status, data } = await apiInstance.getFloatingIpInvoices(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> Array<object> getFloatingIpsList()
 
 Returns all Floating IP services on the account with their current status and assignment details.
 
@@ -241,7 +241,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**Array<object>**
 
 ### Authorization
 

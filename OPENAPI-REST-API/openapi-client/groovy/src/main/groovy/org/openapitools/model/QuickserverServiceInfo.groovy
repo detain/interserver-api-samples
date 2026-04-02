@@ -16,7 +16,7 @@ class QuickserverServiceInfo {
     /* IP address */
     String qsIp
     /* IPv6 address (null) */
-    Object qsIpv6 = null
+    String qsIpv6
     /* VZ ID */
     String qsVzid
     /* Currency */
@@ -44,7 +44,7 @@ class QuickserverServiceInfo {
     /* VNC information */
     String qsVnc
     /* VNC port (null) */
-    Object qsVncPort = null
+    Integer qsVncPort
     /* Root password */
     String qsRootpass
     /* MAC address */
@@ -56,5 +56,5 @@ class QuickserverServiceInfo {
     /* Location */
     String qsLocation
     /* Platform (null) */
-    Object qsPlatform = null
+    String qsPlatform
 }

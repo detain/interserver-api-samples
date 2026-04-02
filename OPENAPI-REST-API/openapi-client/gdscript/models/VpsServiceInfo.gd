@@ -53,7 +53,7 @@ var __vpsUnderscoreip__was__set := false
 # IPv6 address of the VPS
 # Required: False
 # isArray: false
-@export var vpsUnderscoreipv6: AnyType:
+@export var vpsUnderscoreipv6: String = "":
 	set(value):
 		__vpsUnderscoreipv6__was__set = true
 		vpsUnderscoreipv6 = value

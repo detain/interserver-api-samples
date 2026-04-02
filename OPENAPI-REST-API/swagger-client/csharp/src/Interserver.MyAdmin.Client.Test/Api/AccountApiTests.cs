@@ -100,7 +100,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void DeleteIpLimitTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.DeleteIpLimit();
+            //IpLimitRange body = null;
+            //var response = instance.DeleteIpLimit(body);
             //Assert.IsInstanceOf<GenericResponse> (response, "response is GenericResponse");
         }
         /// <summary>

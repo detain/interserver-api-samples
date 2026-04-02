@@ -37,8 +37,8 @@ Name | Type
 `qs_bytes_sec_out` | string
 `qs_packets_sec_in` | string
 `qs_packets_sec_out` | string
-`qs_last_install_time` | any
-`qs_partitions` | any
+`qs_last_install_time` | string
+`qs_partitions` | string
 `qs_cpu_flags` | string
 
 ## Example

@@ -53,8 +53,9 @@ object Paths {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param body  (optional)
      */
-    @Location("/account/iplimits") class deleteIpLimit()
+    @Location("/account/iplimits") class deleteIpLimit(val body: IpLimitRange)
 
     /**
      * Retrieve Account Details

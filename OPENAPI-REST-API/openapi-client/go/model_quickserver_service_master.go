@@ -81,9 +81,9 @@ type QuickserverServiceMaster struct {
 	// Packets/sec out
 	QsPacketsSecOut *string `json:"qs_packets_sec_out,omitempty"`
 	// Last install time (null)
-	QsLastInstallTime interface{} `json:"qs_last_install_time,omitempty"`
+	QsLastInstallTime NullableString `json:"qs_last_install_time,omitempty"`
 	// Partitions information (null)
-	QsPartitions interface{} `json:"qs_partitions,omitempty"`
+	QsPartitions NullableString `json:"qs_partitions,omitempty"`
 	// CPU flags
 	QsCpuFlags *string `json:"qs_cpu_flags,omitempty"`
 }
@@ -1066,69 +1066,87 @@ func (o *QuickserverServiceMaster) SetQsPacketsSecOut(v string) {
 }
 
 // GetQsLastInstallTime returns the QsLastInstallTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *QuickserverServiceMaster) GetQsLastInstallTime() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *QuickserverServiceMaster) GetQsLastInstallTime() string {
+	if o == nil || IsNil(o.QsLastInstallTime.Get()) {
+		var ret string
 		return ret
 	}
-	return o.QsLastInstallTime
+	return *o.QsLastInstallTime.Get()
 }
 
 // GetQsLastInstallTimeOk returns a tuple with the QsLastInstallTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *QuickserverServiceMaster) GetQsLastInstallTimeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.QsLastInstallTime) {
+func (o *QuickserverServiceMaster) GetQsLastInstallTimeOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.QsLastInstallTime, true
+	return o.QsLastInstallTime.Get(), o.QsLastInstallTime.IsSet()
 }
 
 // HasQsLastInstallTime returns a boolean if a field has been set.
 func (o *QuickserverServiceMaster) HasQsLastInstallTime() bool {
-	if o != nil && !IsNil(o.QsLastInstallTime) {
+	if o != nil && o.QsLastInstallTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQsLastInstallTime gets a reference to the given interface{} and assigns it to the QsLastInstallTime field.
-func (o *QuickserverServiceMaster) SetQsLastInstallTime(v interface{}) {
-	o.QsLastInstallTime = v
+// SetQsLastInstallTime gets a reference to the given NullableString and assigns it to the QsLastInstallTime field.
+func (o *QuickserverServiceMaster) SetQsLastInstallTime(v string) {
+	o.QsLastInstallTime.Set(&v)
+}
+// SetQsLastInstallTimeNil sets the value for QsLastInstallTime to be an explicit nil
+func (o *QuickserverServiceMaster) SetQsLastInstallTimeNil() {
+	o.QsLastInstallTime.Set(nil)
+}
+
+// UnsetQsLastInstallTime ensures that no value is present for QsLastInstallTime, not even an explicit nil
+func (o *QuickserverServiceMaster) UnsetQsLastInstallTime() {
+	o.QsLastInstallTime.Unset()
 }
 
 // GetQsPartitions returns the QsPartitions field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *QuickserverServiceMaster) GetQsPartitions() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *QuickserverServiceMaster) GetQsPartitions() string {
+	if o == nil || IsNil(o.QsPartitions.Get()) {
+		var ret string
 		return ret
 	}
-	return o.QsPartitions
+	return *o.QsPartitions.Get()
 }
 
 // GetQsPartitionsOk returns a tuple with the QsPartitions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *QuickserverServiceMaster) GetQsPartitionsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.QsPartitions) {
+func (o *QuickserverServiceMaster) GetQsPartitionsOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.QsPartitions, true
+	return o.QsPartitions.Get(), o.QsPartitions.IsSet()
 }
 
 // HasQsPartitions returns a boolean if a field has been set.
 func (o *QuickserverServiceMaster) HasQsPartitions() bool {
-	if o != nil && !IsNil(o.QsPartitions) {
+	if o != nil && o.QsPartitions.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQsPartitions gets a reference to the given interface{} and assigns it to the QsPartitions field.
-func (o *QuickserverServiceMaster) SetQsPartitions(v interface{}) {
-	o.QsPartitions = v
+// SetQsPartitions gets a reference to the given NullableString and assigns it to the QsPartitions field.
+func (o *QuickserverServiceMaster) SetQsPartitions(v string) {
+	o.QsPartitions.Set(&v)
+}
+// SetQsPartitionsNil sets the value for QsPartitions to be an explicit nil
+func (o *QuickserverServiceMaster) SetQsPartitionsNil() {
+	o.QsPartitions.Set(nil)
+}
+
+// UnsetQsPartitions ensures that no value is present for QsPartitions, not even an explicit nil
+func (o *QuickserverServiceMaster) UnsetQsPartitions() {
+	o.QsPartitions.Unset()
 }
 
 // GetQsCpuFlags returns the QsCpuFlags field value if set, zero value otherwise.
@@ -1263,11 +1281,11 @@ func (o QuickserverServiceMaster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.QsPacketsSecOut) {
 		toSerialize["qs_packets_sec_out"] = o.QsPacketsSecOut
 	}
-	if o.QsLastInstallTime != nil {
-		toSerialize["qs_last_install_time"] = o.QsLastInstallTime
+	if o.QsLastInstallTime.IsSet() {
+		toSerialize["qs_last_install_time"] = o.QsLastInstallTime.Get()
 	}
-	if o.QsPartitions != nil {
-		toSerialize["qs_partitions"] = o.QsPartitions
+	if o.QsPartitions.IsSet() {
+		toSerialize["qs_partitions"] = o.QsPartitions.Get()
 	}
 	if !IsNil(o.QsCpuFlags) {
 		toSerialize["qs_cpu_flags"] = o.QsCpuFlags

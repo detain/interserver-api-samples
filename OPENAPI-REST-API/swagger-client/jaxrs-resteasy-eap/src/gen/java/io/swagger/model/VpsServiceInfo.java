@@ -15,7 +15,7 @@ public class VpsServiceInfo   {
   private String vpsCustid = null;
   private String vpsServer = null;
   private String vpsIp = null;
-  private Object vpsIpv6 = null;
+  private String vpsIpv6 = null;
   private String vpsVzid = null;
   private String vpsCurrency = null;
   private String vpsType = null;
@@ -102,10 +102,10 @@ public class VpsServiceInfo   {
   @Schema(description = "IPv6 address of the VPS")
   @JsonProperty("vps_ipv6")
   @NotNull
-  public Object getVpsIpv6() {
+  public String getVpsIpv6() {
     return vpsIpv6;
   }
-  public void setVpsIpv6(Object vpsIpv6) {
+  public void setVpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
   }
 

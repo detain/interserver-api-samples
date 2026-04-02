@@ -319,10 +319,10 @@ class QuickserverServiceMaster {
   String? qsPacketsSecOut;
 
   /// Last install time (null)
-  Object? qsLastInstallTime;
+  String? qsLastInstallTime;
 
   /// Partitions information (null)
-  Object? qsPartitions;
+  String? qsPartitions;
 
   /// CPU flags
   ///
@@ -624,8 +624,8 @@ class QuickserverServiceMaster {
         qsBytesSecOut: mapValueOfType<String>(json, r'qs_bytes_sec_out'),
         qsPacketsSecIn: mapValueOfType<String>(json, r'qs_packets_sec_in'),
         qsPacketsSecOut: mapValueOfType<String>(json, r'qs_packets_sec_out'),
-        qsLastInstallTime: mapValueOfType<Object>(json, r'qs_last_install_time'),
-        qsPartitions: mapValueOfType<Object>(json, r'qs_partitions'),
+        qsLastInstallTime: mapValueOfType<String>(json, r'qs_last_install_time'),
+        qsPartitions: mapValueOfType<String>(json, r'qs_partitions'),
         qsCpuFlags: mapValueOfType<String>(json, r'qs_cpu_flags'),
       );
     }

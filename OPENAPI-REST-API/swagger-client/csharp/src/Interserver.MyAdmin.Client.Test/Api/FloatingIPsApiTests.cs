@@ -112,8 +112,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void GetFloatingIpsListTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.GetFloatingIpsList();
-            
+            //var response = instance.GetFloatingIpsList();
+            //Assert.IsInstanceOf<List<Object>> (response, "response is List<Object>");
         }
         /// <summary>
         /// Test GetFloatingIpsWelcomeEmail

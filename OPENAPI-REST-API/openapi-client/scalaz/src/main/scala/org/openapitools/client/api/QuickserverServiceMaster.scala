@@ -73,9 +73,9 @@ case class QuickserverServiceMaster (
 /* Packets/sec out */
   qs_packets_sec_out: Option[String],
 /* Last install time (null) */
-  qs_last_install_time: Option[AnyType],
+  qs_last_install_time: Option[String],
 /* Partitions information (null) */
-  qs_partitions: Option[AnyType],
+  qs_partitions: Option[String],
 /* CPU flags */
   qs_cpu_flags: Option[String])
 

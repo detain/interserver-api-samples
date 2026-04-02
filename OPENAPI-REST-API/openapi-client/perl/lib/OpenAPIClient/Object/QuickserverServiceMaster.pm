@@ -430,14 +430,14 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'qs_last_install_time' => {
-        datatype => 'object',
+        datatype => 'string',
         base_name => 'qs_last_install_time',
         description => 'Last install time (null)',
         format => '',
         read_only => '',
             },
     'qs_partitions' => {
-        datatype => 'object',
+        datatype => 'string',
         base_name => 'qs_partitions',
         description => 'Partitions information (null)',
         format => '',
@@ -483,8 +483,8 @@ __PACKAGE__->openapi_types( {
     'qs_bytes_sec_out' => 'string',
     'qs_packets_sec_in' => 'string',
     'qs_packets_sec_out' => 'string',
-    'qs_last_install_time' => 'object',
-    'qs_partitions' => 'object',
+    'qs_last_install_time' => 'string',
+    'qs_partitions' => 'string',
     'qs_cpu_flags' => 'string'
 } );
 

@@ -127,7 +127,7 @@ public class ServerServiceInfo   {
  /**
    * Discount information for the server.  
   **/
-  private Object serverDiscount = null;
+  private String serverDiscount = null;
   
   @Schema(example = "0", description = "The reputation of the server.")
  /**
@@ -151,7 +151,7 @@ public class ServerServiceInfo   {
  /**
    * The location of the server.  
   **/
-  private Object serverLocation = null;
+  private String serverLocation = null;
   
   @Schema(example = "0", description = "The ordered hardware for the server.")
  /**
@@ -193,7 +193,7 @@ public class ServerServiceInfo   {
  /**
    * The size of the second dedicated hard drive.  
   **/
-  private Object serverDedicatedHd2 = null;
+  private String serverDedicatedHd2 = null;
   
   @Schema(example = "3", description = "The bandwidth of the server.")
  /**
@@ -217,7 +217,7 @@ public class ServerServiceInfo   {
  /**
    * The control panel of the server.  
   **/
-  private Object serverDedicatedCp = null;
+  private String serverDedicatedCp = null;
   
   @Schema(example = "0", description = "The RAID configuration of the server.")
  /**
@@ -559,15 +559,15 @@ public class ServerServiceInfo   {
    * @return serverDiscount
   **/
   @JsonProperty("server_discount")
-  public Object getServerDiscount() {
+  public String getServerDiscount() {
     return serverDiscount;
   }
 
-  public void setServerDiscount(Object serverDiscount) {
+  public void setServerDiscount(String serverDiscount) {
     this.serverDiscount = serverDiscount;
   }
 
-  public ServerServiceInfo serverDiscount(Object serverDiscount) {
+  public ServerServiceInfo serverDiscount(String serverDiscount) {
     this.serverDiscount = serverDiscount;
     return this;
   }
@@ -631,15 +631,15 @@ public class ServerServiceInfo   {
    * @return serverLocation
   **/
   @JsonProperty("server_location")
-  public Object getServerLocation() {
+  public String getServerLocation() {
     return serverLocation;
   }
 
-  public void setServerLocation(Object serverLocation) {
+  public void setServerLocation(String serverLocation) {
     this.serverLocation = serverLocation;
   }
 
-  public ServerServiceInfo serverLocation(Object serverLocation) {
+  public ServerServiceInfo serverLocation(String serverLocation) {
     this.serverLocation = serverLocation;
     return this;
   }
@@ -757,15 +757,15 @@ public class ServerServiceInfo   {
    * @return serverDedicatedHd2
   **/
   @JsonProperty("server_dedicated_hd2")
-  public Object getServerDedicatedHd2() {
+  public String getServerDedicatedHd2() {
     return serverDedicatedHd2;
   }
 
-  public void setServerDedicatedHd2(Object serverDedicatedHd2) {
+  public void setServerDedicatedHd2(String serverDedicatedHd2) {
     this.serverDedicatedHd2 = serverDedicatedHd2;
   }
 
-  public ServerServiceInfo serverDedicatedHd2(Object serverDedicatedHd2) {
+  public ServerServiceInfo serverDedicatedHd2(String serverDedicatedHd2) {
     this.serverDedicatedHd2 = serverDedicatedHd2;
     return this;
   }
@@ -829,15 +829,15 @@ public class ServerServiceInfo   {
    * @return serverDedicatedCp
   **/
   @JsonProperty("server_dedicated_cp")
-  public Object getServerDedicatedCp() {
+  public String getServerDedicatedCp() {
     return serverDedicatedCp;
   }
 
-  public void setServerDedicatedCp(Object serverDedicatedCp) {
+  public void setServerDedicatedCp(String serverDedicatedCp) {
     this.serverDedicatedCp = serverDedicatedCp;
   }
 
-  public ServerServiceInfo serverDedicatedCp(Object serverDedicatedCp) {
+  public ServerServiceInfo serverDedicatedCp(String serverDedicatedCp) {
     this.serverDedicatedCp = serverDedicatedCp;
     return this;
   }

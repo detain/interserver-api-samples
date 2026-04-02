@@ -53,11 +53,11 @@ class WebsitesOrderServiceTypes : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, services_field2IsSet);
   DTO_FIELD(oatpp::String, services_module);
 
-  DTO_FIELD(oatpp::Any, services_html);
+  DTO_FIELD(oatpp::String, services_html);
   DTO_FIELD(oatpp::Boolean, services_htmlIsSet);
-  DTO_FIELD(oatpp::Any, services_description);
+  DTO_FIELD(oatpp::String, services_description);
   DTO_FIELD(oatpp::Boolean, services_descriptionIsSet);
-  DTO_FIELD(oatpp::Any, services_moreinfo_url);
+  DTO_FIELD(oatpp::String, services_moreinfo_url);
   DTO_FIELD(oatpp::Boolean, services_moreinfo_urlIsSet);
   DTO_FIELD(oatpp::String, services_hidden);
 

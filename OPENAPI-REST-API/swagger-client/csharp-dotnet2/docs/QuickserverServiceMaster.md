@@ -33,8 +33,8 @@ Name | Type | Description | Notes
 **QsBytesSecOut** | **string** | Bytes/sec out | [optional] 
 **QsPacketsSecIn** | **string** | Packets/sec in | [optional] 
 **QsPacketsSecOut** | **string** | Packets/sec out | [optional] 
-**QsLastInstallTime** | **Object** | Last install time (null) | [optional] 
-**QsPartitions** | **Object** | Partitions information (null) | [optional] 
+**QsLastInstallTime** | **string** | Last install time (null) | [optional] 
+**QsPartitions** | **string** | Partitions information (null) | [optional] 
 **QsCpuFlags** | **string** | CPU flags | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

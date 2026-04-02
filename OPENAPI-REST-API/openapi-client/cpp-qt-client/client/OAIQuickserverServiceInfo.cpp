@@ -346,10 +346,10 @@ bool OAIQuickserverServiceInfo::is_qs_ip_Valid() const{
     return m_qs_ip_isValid;
 }
 
-QJsonValue OAIQuickserverServiceInfo::getQsIpv6() const {
+QString OAIQuickserverServiceInfo::getQsIpv6() const {
     return m_qs_ipv6;
 }
-void OAIQuickserverServiceInfo::setQsIpv6(const QJsonValue &qs_ipv6) {
+void OAIQuickserverServiceInfo::setQsIpv6(const QString &qs_ipv6) {
     m_qs_ipv6 = qs_ipv6;
     m_qs_ipv6_isSet = true;
 }
@@ -570,10 +570,10 @@ bool OAIQuickserverServiceInfo::is_qs_vnc_Valid() const{
     return m_qs_vnc_isValid;
 }
 
-QJsonValue OAIQuickserverServiceInfo::getQsVncPort() const {
+qint32 OAIQuickserverServiceInfo::getQsVncPort() const {
     return m_qs_vnc_port;
 }
-void OAIQuickserverServiceInfo::setQsVncPort(const QJsonValue &qs_vnc_port) {
+void OAIQuickserverServiceInfo::setQsVncPort(const qint32 &qs_vnc_port) {
     m_qs_vnc_port = qs_vnc_port;
     m_qs_vnc_port_isSet = true;
 }
@@ -666,10 +666,10 @@ bool OAIQuickserverServiceInfo::is_qs_location_Valid() const{
     return m_qs_location_isValid;
 }
 
-QJsonValue OAIQuickserverServiceInfo::getQsPlatform() const {
+QString OAIQuickserverServiceInfo::getQsPlatform() const {
     return m_qs_platform;
 }
-void OAIQuickserverServiceInfo::setQsPlatform(const QJsonValue &qs_platform) {
+void OAIQuickserverServiceInfo::setQsPlatform(const QString &qs_platform) {
     m_qs_platform = qs_platform;
     m_qs_platform_isSet = true;
 }

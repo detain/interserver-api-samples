@@ -4410,7 +4410,7 @@ export interface QuickserverServiceInfo {
     /**
      * IPv6 address (null)
      */
-    'qs_ipv6'?: any;
+    'qs_ipv6'?: string | null;
     /**
      * VZ ID
      */
@@ -4466,7 +4466,7 @@ export interface QuickserverServiceInfo {
     /**
      * VNC port (null)
      */
-    'qs_vnc_port'?: any;
+    'qs_vnc_port'?: number | null;
     /**
      * Root password
      */
@@ -4490,7 +4490,7 @@ export interface QuickserverServiceInfo {
     /**
      * Platform (null)
      */
-    'qs_platform'?: any;
+    'qs_platform'?: string | null;
 }
 /**
  * Information about the host node running this QuickServer, including hardware specs and resource utilization.
@@ -4619,11 +4619,11 @@ export interface QuickserverServiceMaster {
     /**
      * Last install time (null)
      */
-    'qs_last_install_time'?: any;
+    'qs_last_install_time'?: string | null;
     /**
      * Partitions information (null)
      */
-    'qs_partitions'?: any;
+    'qs_partitions'?: string | null;
     /**
      * CPU flags
      */
@@ -4957,39 +4957,39 @@ export interface ServerAsset {
     /**
      * MAC address associated with the asset.
      */
-    'mac'?: any;
+    'mac'?: string;
     /**
      * IPMI admin username associated with the asset.
      */
-    'ipmi_admin_username'?: any;
+    'ipmi_admin_username'?: string;
     /**
      * IPMI admin password associated with the asset.
      */
-    'ipmi_admin_password'?: any;
+    'ipmi_admin_password'?: string;
     /**
      * IPMI client username associated with the asset.
      */
-    'ipmi_client_username'?: any;
+    'ipmi_client_username'?: string;
     /**
      * IPMI client password associated with the asset.
      */
-    'ipmi_client_password'?: any;
+    'ipmi_client_password'?: string;
     /**
      * IPMI update status associated with the asset.
      */
-    'ipmi_updated'?: any;
+    'ipmi_updated'?: string;
     /**
      * Timestamp of asset creation.
      */
-    'create_timestamp'?: any;
+    'create_timestamp'?: string;
     /**
      * Timestamp of asset update.
      */
-    'update_timestamp'?: any;
+    'update_timestamp'?: string;
     /**
      * Comment associated with the asset.
      */
-    'comment'?: any;
+    'comment'?: string;
 }
 export interface ServerAssets {
     /**
@@ -5306,7 +5306,7 @@ export interface ServerOrderCPU {
     /**
      * Hard drive IDs.
      */
-    'hd_ids'?: any;
+    'hd_ids'?: string;
     /**
      * Display of CPU price.
      */
@@ -5803,7 +5803,7 @@ export interface ServerServiceInfo {
     /**
      * Discount information for the server.
      */
-    'server_discount'?: any;
+    'server_discount'?: string;
     /**
      * The reputation of the server.
      */
@@ -5819,7 +5819,7 @@ export interface ServerServiceInfo {
     /**
      * The location of the server.
      */
-    'server_location'?: any;
+    'server_location'?: string;
     /**
      * The ordered hardware for the server.
      */
@@ -5847,7 +5847,7 @@ export interface ServerServiceInfo {
     /**
      * The size of the second dedicated hard drive.
      */
-    'server_dedicated_hd2'?: any;
+    'server_dedicated_hd2'?: string;
     /**
      * The bandwidth of the server.
      */
@@ -5863,7 +5863,7 @@ export interface ServerServiceInfo {
     /**
      * The control panel of the server.
      */
-    'server_dedicated_cp'?: any;
+    'server_dedicated_cp'?: string;
     /**
      * The RAID configuration of the server.
      */
@@ -6982,7 +6982,7 @@ export interface VpsServiceInfo {
     /**
      * IPv6 address of the VPS
      */
-    'vps_ipv6'?: any;
+    'vps_ipv6'?: string;
     /**
      * VPS Virtuozzo ID
      */
@@ -7945,10 +7945,11 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
          * @summary Remove IP Access Restriction
+         * @param {IpLimitRange} [ipLimitRange] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteIpLimit: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteIpLimit: async (ipLimitRange?: IpLimitRange, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/account/iplimits`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7969,11 +7970,13 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // authentication sessionIdHeaderAuth required
             await setApiKeyToObject(localVarHeaderParameter, "sessionid", configuration)
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(ipLimitRange, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -8687,11 +8690,12 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
          * @summary Remove IP Access Restriction
+         * @param {IpLimitRange} [ipLimitRange] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteIpLimit(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteIpLimit(options);
+        async deleteIpLimit(ipLimitRange?: IpLimitRange, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteIpLimit(ipLimitRange, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountApi.deleteIpLimit']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -8917,11 +8921,12 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
         /**
          * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
          * @summary Remove IP Access Restriction
+         * @param {IpLimitRange} [ipLimitRange] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteIpLimit(options?: RawAxiosRequestConfig): AxiosPromise<GenericResponse> {
-            return localVarFp.deleteIpLimit(options).then((request) => request(axios, basePath));
+        deleteIpLimit(ipLimitRange?: IpLimitRange, options?: RawAxiosRequestConfig): AxiosPromise<GenericResponse> {
+            return localVarFp.deleteIpLimit(ipLimitRange, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns the full account profile including contact information, billing address, and security settings. Use this to populate account management forms or verify account state before making changes with `POST /account`.
@@ -9106,11 +9111,12 @@ export class AccountApi extends BaseAPI {
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * @summary Remove IP Access Restriction
+     * @param {IpLimitRange} [ipLimitRange] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public deleteIpLimit(options?: RawAxiosRequestConfig) {
-        return AccountApiFp(this.configuration).deleteIpLimit(options).then((request) => request(this.axios, this.basePath));
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, options?: RawAxiosRequestConfig) {
+        return AccountApiFp(this.configuration).deleteIpLimit(ipLimitRange, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15753,7 +15759,7 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFloatingIpsList(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getFloatingIpsList(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<object>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getFloatingIpsList(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FloatingIPsApi.getFloatingIpsList']?.[localVarOperationServerIndex]?.url;
@@ -15877,7 +15883,7 @@ export const FloatingIPsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFloatingIpsList(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getFloatingIpsList(options?: RawAxiosRequestConfig): AxiosPromise<Array<object>> {
             return localVarFp.getFloatingIpsList(options).then((request) => request(axios, basePath));
         },
         /**

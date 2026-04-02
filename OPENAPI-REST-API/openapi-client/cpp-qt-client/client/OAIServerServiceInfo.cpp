@@ -669,10 +669,10 @@ bool OAIServerServiceInfo::is_server_setup_Valid() const{
     return m_server_setup_isValid;
 }
 
-QJsonValue OAIServerServiceInfo::getServerDiscount() const {
+QString OAIServerServiceInfo::getServerDiscount() const {
     return m_server_discount;
 }
-void OAIServerServiceInfo::setServerDiscount(const QJsonValue &server_discount) {
+void OAIServerServiceInfo::setServerDiscount(const QString &server_discount) {
     m_server_discount = server_discount;
     m_server_discount_isSet = true;
 }
@@ -733,10 +733,10 @@ bool OAIServerServiceInfo::is_server_total_cost_Valid() const{
     return m_server_total_cost_isValid;
 }
 
-QJsonValue OAIServerServiceInfo::getServerLocation() const {
+QString OAIServerServiceInfo::getServerLocation() const {
     return m_server_location;
 }
-void OAIServerServiceInfo::setServerLocation(const QJsonValue &server_location) {
+void OAIServerServiceInfo::setServerLocation(const QString &server_location) {
     m_server_location = server_location;
     m_server_location_isSet = true;
 }
@@ -845,10 +845,10 @@ bool OAIServerServiceInfo::is_server_dedicated_hd1_Valid() const{
     return m_server_dedicated_hd1_isValid;
 }
 
-QJsonValue OAIServerServiceInfo::getServerDedicatedHd2() const {
+QString OAIServerServiceInfo::getServerDedicatedHd2() const {
     return m_server_dedicated_hd2;
 }
-void OAIServerServiceInfo::setServerDedicatedHd2(const QJsonValue &server_dedicated_hd2) {
+void OAIServerServiceInfo::setServerDedicatedHd2(const QString &server_dedicated_hd2) {
     m_server_dedicated_hd2 = server_dedicated_hd2;
     m_server_dedicated_hd2_isSet = true;
 }
@@ -909,10 +909,10 @@ bool OAIServerServiceInfo::is_server_dedicated_os_Valid() const{
     return m_server_dedicated_os_isValid;
 }
 
-QJsonValue OAIServerServiceInfo::getServerDedicatedCp() const {
+QString OAIServerServiceInfo::getServerDedicatedCp() const {
     return m_server_dedicated_cp;
 }
-void OAIServerServiceInfo::setServerDedicatedCp(const QJsonValue &server_dedicated_cp) {
+void OAIServerServiceInfo::setServerDedicatedCp(const QString &server_dedicated_cp) {
     m_server_dedicated_cp = server_dedicated_cp;
     m_server_dedicated_cp_isSet = true;
 }

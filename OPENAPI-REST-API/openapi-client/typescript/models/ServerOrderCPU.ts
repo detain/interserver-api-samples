@@ -107,7 +107,7 @@ export class ServerOrderCPU {
     /**
     * Hard drive IDs.
     */
-    'hd_ids'?: any | null;
+    'hd_ids'?: string;
     /**
     * Display of CPU price.
     */
@@ -257,7 +257,7 @@ export class ServerOrderCPU {
         {
             "name": "hd_ids",
             "baseName": "hd_ids",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {

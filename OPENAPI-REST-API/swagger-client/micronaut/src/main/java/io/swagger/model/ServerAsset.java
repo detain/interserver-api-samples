@@ -38,7 +38,7 @@ public class ServerAsset   {
   private String primaryIpv6 = null;
 
   @JsonProperty("mac")
-  private Object mac = null;
+  private String mac = null;
 
   @JsonProperty("datacenter")
   private String datacenter = null;
@@ -74,19 +74,19 @@ public class ServerAsset   {
   private String ipmiIp = null;
 
   @JsonProperty("ipmi_admin_username")
-  private Object ipmiAdminUsername = null;
+  private String ipmiAdminUsername = null;
 
   @JsonProperty("ipmi_admin_password")
-  private Object ipmiAdminPassword = null;
+  private String ipmiAdminPassword = null;
 
   @JsonProperty("ipmi_client_username")
-  private Object ipmiClientUsername = null;
+  private String ipmiClientUsername = null;
 
   @JsonProperty("ipmi_client_password")
-  private Object ipmiClientPassword = null;
+  private String ipmiClientPassword = null;
 
   @JsonProperty("ipmi_updated")
-  private Object ipmiUpdated = null;
+  private String ipmiUpdated = null;
 
   @JsonProperty("ipmi_working")
   private String ipmiWorking = null;
@@ -119,10 +119,10 @@ public class ServerAsset   {
   private String overdue = null;
 
   @JsonProperty("create_timestamp")
-  private Object createTimestamp = null;
+  private String createTimestamp = null;
 
   @JsonProperty("update_timestamp")
-  private Object updateTimestamp = null;
+  private String updateTimestamp = null;
 
   @JsonProperty("asset_id")
   private String assetId = null;
@@ -149,7 +149,7 @@ public class ServerAsset   {
   private String rackY = null;
 
   @JsonProperty("comment")
-  private Object comment = null;
+  private String comment = null;
 
   @JsonProperty("switchports")
   @Valid
@@ -286,7 +286,7 @@ public class ServerAsset   {
     this.primaryIpv6 = primaryIpv6;
   }
 
-  public ServerAsset mac(Object mac) {
+  public ServerAsset mac(String mac) {
     this.mac = mac;
     return this;
   }
@@ -298,11 +298,11 @@ public class ServerAsset   {
   @Schema(description = "MAC address associated with the asset.")
   @NotNull
 
-  public Object getMac() {
+  public String getMac() {
     return mac;
   }
 
-  public void setMac(Object mac) {
+  public void setMac(String mac) {
     this.mac = mac;
   }
 
@@ -526,7 +526,7 @@ public class ServerAsset   {
     this.ipmiIp = ipmiIp;
   }
 
-  public ServerAsset ipmiAdminUsername(Object ipmiAdminUsername) {
+  public ServerAsset ipmiAdminUsername(String ipmiAdminUsername) {
     this.ipmiAdminUsername = ipmiAdminUsername;
     return this;
   }
@@ -538,15 +538,15 @@ public class ServerAsset   {
   @Schema(description = "IPMI admin username associated with the asset.")
   @NotNull
 
-  public Object getIpmiAdminUsername() {
+  public String getIpmiAdminUsername() {
     return ipmiAdminUsername;
   }
 
-  public void setIpmiAdminUsername(Object ipmiAdminUsername) {
+  public void setIpmiAdminUsername(String ipmiAdminUsername) {
     this.ipmiAdminUsername = ipmiAdminUsername;
   }
 
-  public ServerAsset ipmiAdminPassword(Object ipmiAdminPassword) {
+  public ServerAsset ipmiAdminPassword(String ipmiAdminPassword) {
     this.ipmiAdminPassword = ipmiAdminPassword;
     return this;
   }
@@ -558,15 +558,15 @@ public class ServerAsset   {
   @Schema(description = "IPMI admin password associated with the asset.")
   @NotNull
 
-  public Object getIpmiAdminPassword() {
+  public String getIpmiAdminPassword() {
     return ipmiAdminPassword;
   }
 
-  public void setIpmiAdminPassword(Object ipmiAdminPassword) {
+  public void setIpmiAdminPassword(String ipmiAdminPassword) {
     this.ipmiAdminPassword = ipmiAdminPassword;
   }
 
-  public ServerAsset ipmiClientUsername(Object ipmiClientUsername) {
+  public ServerAsset ipmiClientUsername(String ipmiClientUsername) {
     this.ipmiClientUsername = ipmiClientUsername;
     return this;
   }
@@ -578,15 +578,15 @@ public class ServerAsset   {
   @Schema(description = "IPMI client username associated with the asset.")
   @NotNull
 
-  public Object getIpmiClientUsername() {
+  public String getIpmiClientUsername() {
     return ipmiClientUsername;
   }
 
-  public void setIpmiClientUsername(Object ipmiClientUsername) {
+  public void setIpmiClientUsername(String ipmiClientUsername) {
     this.ipmiClientUsername = ipmiClientUsername;
   }
 
-  public ServerAsset ipmiClientPassword(Object ipmiClientPassword) {
+  public ServerAsset ipmiClientPassword(String ipmiClientPassword) {
     this.ipmiClientPassword = ipmiClientPassword;
     return this;
   }
@@ -598,15 +598,15 @@ public class ServerAsset   {
   @Schema(description = "IPMI client password associated with the asset.")
   @NotNull
 
-  public Object getIpmiClientPassword() {
+  public String getIpmiClientPassword() {
     return ipmiClientPassword;
   }
 
-  public void setIpmiClientPassword(Object ipmiClientPassword) {
+  public void setIpmiClientPassword(String ipmiClientPassword) {
     this.ipmiClientPassword = ipmiClientPassword;
   }
 
-  public ServerAsset ipmiUpdated(Object ipmiUpdated) {
+  public ServerAsset ipmiUpdated(String ipmiUpdated) {
     this.ipmiUpdated = ipmiUpdated;
     return this;
   }
@@ -618,11 +618,11 @@ public class ServerAsset   {
   @Schema(description = "IPMI update status associated with the asset.")
   @NotNull
 
-  public Object getIpmiUpdated() {
+  public String getIpmiUpdated() {
     return ipmiUpdated;
   }
 
-  public void setIpmiUpdated(Object ipmiUpdated) {
+  public void setIpmiUpdated(String ipmiUpdated) {
     this.ipmiUpdated = ipmiUpdated;
   }
 
@@ -826,7 +826,7 @@ public class ServerAsset   {
     this.overdue = overdue;
   }
 
-  public ServerAsset createTimestamp(Object createTimestamp) {
+  public ServerAsset createTimestamp(String createTimestamp) {
     this.createTimestamp = createTimestamp;
     return this;
   }
@@ -838,15 +838,15 @@ public class ServerAsset   {
   @Schema(description = "Timestamp of asset creation.")
   @NotNull
 
-  public Object getCreateTimestamp() {
+  public String getCreateTimestamp() {
     return createTimestamp;
   }
 
-  public void setCreateTimestamp(Object createTimestamp) {
+  public void setCreateTimestamp(String createTimestamp) {
     this.createTimestamp = createTimestamp;
   }
 
-  public ServerAsset updateTimestamp(Object updateTimestamp) {
+  public ServerAsset updateTimestamp(String updateTimestamp) {
     this.updateTimestamp = updateTimestamp;
     return this;
   }
@@ -858,11 +858,11 @@ public class ServerAsset   {
   @Schema(description = "Timestamp of asset update.")
   @NotNull
 
-  public Object getUpdateTimestamp() {
+  public String getUpdateTimestamp() {
     return updateTimestamp;
   }
 
-  public void setUpdateTimestamp(Object updateTimestamp) {
+  public void setUpdateTimestamp(String updateTimestamp) {
     this.updateTimestamp = updateTimestamp;
   }
 
@@ -1026,7 +1026,7 @@ public class ServerAsset   {
     this.rackY = rackY;
   }
 
-  public ServerAsset comment(Object comment) {
+  public ServerAsset comment(String comment) {
     this.comment = comment;
     return this;
   }
@@ -1038,11 +1038,11 @@ public class ServerAsset   {
   @Schema(description = "Comment associated with the asset.")
   @NotNull
 
-  public Object getComment() {
+  public String getComment() {
     return comment;
   }
 
-  public void setComment(Object comment) {
+  public void setComment(String comment) {
     this.comment = comment;
   }
 

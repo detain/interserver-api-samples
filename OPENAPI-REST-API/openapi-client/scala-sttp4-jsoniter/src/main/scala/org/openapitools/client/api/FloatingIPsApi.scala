@@ -163,7 +163,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * Returns all Floating IP services on the account with their current status and assignment details.
    * 
    * Expected answers:
-   *   code 200 :  (The listing of `Floating IPs` services on your account.)
+   *   code 200 : Seq[io.circe.Json] (The listing of `Floating IPs` services on your account.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    *   code 0 :  (Default response)
    * 
@@ -172,7 +172,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getFloatingIpsList(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def getFloatingIpsList(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Seq[io.circe.Json]]] =
     val requestURL =
       uri"$baseUrl/floating_ips"
 
@@ -182,7 +182,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Seq[io.circe.Json]])
 
   /**
    * Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.

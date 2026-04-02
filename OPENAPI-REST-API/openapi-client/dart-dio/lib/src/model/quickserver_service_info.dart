@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -57,7 +56,7 @@ abstract class QuickserverServiceInfo implements Built<QuickserverServiceInfo, Q
 
   /// IPv6 address (null)
   @BuiltValueField(wireName: r'qs_ipv6')
-  JsonObject? get qsIpv6;
+  String? get qsIpv6;
 
   /// VZ ID
   @BuiltValueField(wireName: r'qs_vzid')
@@ -113,7 +112,7 @@ abstract class QuickserverServiceInfo implements Built<QuickserverServiceInfo, Q
 
   /// VNC port (null)
   @BuiltValueField(wireName: r'qs_vnc_port')
-  JsonObject? get qsVncPort;
+  int? get qsVncPort;
 
   /// Root password
   @BuiltValueField(wireName: r'qs_rootpass')
@@ -137,7 +136,7 @@ abstract class QuickserverServiceInfo implements Built<QuickserverServiceInfo, Q
 
   /// Platform (null)
   @BuiltValueField(wireName: r'qs_platform')
-  JsonObject? get qsPlatform;
+  String? get qsPlatform;
 
   QuickserverServiceInfo._();
 
@@ -194,7 +193,7 @@ class _$QuickserverServiceInfoSerializer implements PrimitiveSerializer<Quickser
       yield r'qs_ipv6';
       yield serializers.serialize(
         object.qsIpv6,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.qsVzid != null) {
@@ -292,7 +291,7 @@ class _$QuickserverServiceInfoSerializer implements PrimitiveSerializer<Quickser
       yield r'qs_vnc_port';
       yield serializers.serialize(
         object.qsVncPort,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType.nullable(int),
       );
     }
     if (object.qsRootpass != null) {
@@ -334,7 +333,7 @@ class _$QuickserverServiceInfoSerializer implements PrimitiveSerializer<Quickser
       yield r'qs_platform';
       yield serializers.serialize(
         object.qsPlatform,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType.nullable(String),
       );
     }
   }
@@ -391,8 +390,8 @@ class _$QuickserverServiceInfoSerializer implements PrimitiveSerializer<Quickser
         case r'qs_ipv6':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
           if (valueDes == null) continue;
           result.qsIpv6 = valueDes;
           break;
@@ -490,8 +489,8 @@ class _$QuickserverServiceInfoSerializer implements PrimitiveSerializer<Quickser
         case r'qs_vnc_port':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
           if (valueDes == null) continue;
           result.qsVncPort = valueDes;
           break;
@@ -533,8 +532,8 @@ class _$QuickserverServiceInfoSerializer implements PrimitiveSerializer<Quickser
         case r'qs_platform':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
           if (valueDes == null) continue;
           result.qsPlatform = valueDes;
           break;

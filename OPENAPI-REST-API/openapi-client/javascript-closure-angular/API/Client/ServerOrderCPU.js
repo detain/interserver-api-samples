@@ -162,7 +162,7 @@ API.Client.ServerOrderCPU.prototype.visible;
 
 /**
  * Hard drive IDs.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerOrderCPU.prototype.hdIds;

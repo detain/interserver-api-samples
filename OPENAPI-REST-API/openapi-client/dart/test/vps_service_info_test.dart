@@ -41,7 +41,7 @@ void main() {
     });
 
     // IPv6 address of the VPS
-    // Object vpsIpv6
+    // String vpsIpv6
     test('to test the property `vpsIpv6`', () async {
       // TODO
     });

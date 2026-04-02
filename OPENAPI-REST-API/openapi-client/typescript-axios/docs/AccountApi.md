@@ -175,17 +175,25 @@ Removes an IP address range from the account\'s access restriction list. If this
 ```typescript
 import {
     AccountApi,
-    Configuration
+    Configuration,
+    IpLimitRange
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new AccountApi(configuration);
 
-const { status, data } = await apiInstance.deleteIpLimit();
+let ipLimitRange: IpLimitRange; // (optional)
+
+const { status, data } = await apiInstance.deleteIpLimit(
+    ipLimitRange
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **ipLimitRange** | **IpLimitRange**|  | |
 
 
 ### Return type

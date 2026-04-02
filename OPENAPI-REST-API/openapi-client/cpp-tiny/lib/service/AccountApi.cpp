@@ -140,6 +140,9 @@ using namespace Tiny;
         >
         AccountApi::
         deleteIpLimit(
+            
+            IpLimitRange ipLimitRange
+            
         )
         {
             std::string url = basepath + "/account/iplimits"; //
@@ -150,6 +153,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -158,7 +162,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | 
+            // Body     | ipLimitRange
+
+
+
+            payload = ipLimitRange.toJson().dump();
+
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request

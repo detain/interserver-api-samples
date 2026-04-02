@@ -74,7 +74,7 @@ public:
 	/* Visibility status. */
 	TOptional<FString> Visible;
 	/* Hard drive IDs. */
-	TOptional<TSharedPtr<FJsonValue>> HdIds;
+	TOptional<FString> HdIds;
 	/* Display of CPU price. */
 	TOptional<FString> PriceDisplay;
 	/* Display of monthly CPU price. */

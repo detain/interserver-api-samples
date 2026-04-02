@@ -137,7 +137,7 @@ ServerAsset <- R6::R6Class(
         self$`primary_ipv6` <- `primary_ipv6`
       }
       if (!missing(`mac`)) {
-        stopifnot(R6::is.R6(`mac`))
+        stopifnot(is.character(`mac`), length(`mac`) == 1)
         self$`mac` <- `mac`
       }
       if (!missing(`datacenter`)) {
@@ -185,23 +185,23 @@ ServerAsset <- R6::R6Class(
         self$`ipmi_ip` <- `ipmi_ip`
       }
       if (!missing(`ipmi_admin_username`)) {
-        stopifnot(R6::is.R6(`ipmi_admin_username`))
+        stopifnot(is.character(`ipmi_admin_username`), length(`ipmi_admin_username`) == 1)
         self$`ipmi_admin_username` <- `ipmi_admin_username`
       }
       if (!missing(`ipmi_admin_password`)) {
-        stopifnot(R6::is.R6(`ipmi_admin_password`))
+        stopifnot(is.character(`ipmi_admin_password`), length(`ipmi_admin_password`) == 1)
         self$`ipmi_admin_password` <- `ipmi_admin_password`
       }
       if (!missing(`ipmi_client_username`)) {
-        stopifnot(R6::is.R6(`ipmi_client_username`))
+        stopifnot(is.character(`ipmi_client_username`), length(`ipmi_client_username`) == 1)
         self$`ipmi_client_username` <- `ipmi_client_username`
       }
       if (!missing(`ipmi_client_password`)) {
-        stopifnot(R6::is.R6(`ipmi_client_password`))
+        stopifnot(is.character(`ipmi_client_password`), length(`ipmi_client_password`) == 1)
         self$`ipmi_client_password` <- `ipmi_client_password`
       }
       if (!missing(`ipmi_updated`)) {
-        stopifnot(R6::is.R6(`ipmi_updated`))
+        stopifnot(is.character(`ipmi_updated`), length(`ipmi_updated`) == 1)
         self$`ipmi_updated` <- `ipmi_updated`
       }
       if (!missing(`ipmi_working`)) {
@@ -245,11 +245,11 @@ ServerAsset <- R6::R6Class(
         self$`overdue` <- `overdue`
       }
       if (!missing(`create_timestamp`)) {
-        stopifnot(R6::is.R6(`create_timestamp`))
+        stopifnot(is.character(`create_timestamp`), length(`create_timestamp`) == 1)
         self$`create_timestamp` <- `create_timestamp`
       }
       if (!missing(`update_timestamp`)) {
-        stopifnot(R6::is.R6(`update_timestamp`))
+        stopifnot(is.character(`update_timestamp`), length(`update_timestamp`) == 1)
         self$`update_timestamp` <- `update_timestamp`
       }
       if (!missing(`asset_id`)) {
@@ -285,7 +285,7 @@ ServerAsset <- R6::R6Class(
         self$`rack_y` <- `rack_y`
       }
       if (!missing(`comment`)) {
-        stopifnot(R6::is.R6(`comment`))
+        stopifnot(is.character(`comment`), length(`comment`) == 1)
         self$`comment` <- `comment`
       }
       if (!missing(`switchports`)) {
@@ -329,7 +329,7 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[['primary_ipv6']] <- self$`primary_ipv6`
       }
       if (!is.null(self$`mac`)) {
-        ServerAssetObject[['mac']] <- self$`mac`$toJSON()
+        ServerAssetObject[['mac']] <- self$`mac`
       }
       if (!is.null(self$`datacenter`)) {
         ServerAssetObject[['datacenter']] <- self$`datacenter`
@@ -365,19 +365,19 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[['ipmi_ip']] <- self$`ipmi_ip`
       }
       if (!is.null(self$`ipmi_admin_username`)) {
-        ServerAssetObject[['ipmi_admin_username']] <- self$`ipmi_admin_username`$toJSON()
+        ServerAssetObject[['ipmi_admin_username']] <- self$`ipmi_admin_username`
       }
       if (!is.null(self$`ipmi_admin_password`)) {
-        ServerAssetObject[['ipmi_admin_password']] <- self$`ipmi_admin_password`$toJSON()
+        ServerAssetObject[['ipmi_admin_password']] <- self$`ipmi_admin_password`
       }
       if (!is.null(self$`ipmi_client_username`)) {
-        ServerAssetObject[['ipmi_client_username']] <- self$`ipmi_client_username`$toJSON()
+        ServerAssetObject[['ipmi_client_username']] <- self$`ipmi_client_username`
       }
       if (!is.null(self$`ipmi_client_password`)) {
-        ServerAssetObject[['ipmi_client_password']] <- self$`ipmi_client_password`$toJSON()
+        ServerAssetObject[['ipmi_client_password']] <- self$`ipmi_client_password`
       }
       if (!is.null(self$`ipmi_updated`)) {
-        ServerAssetObject[['ipmi_updated']] <- self$`ipmi_updated`$toJSON()
+        ServerAssetObject[['ipmi_updated']] <- self$`ipmi_updated`
       }
       if (!is.null(self$`ipmi_working`)) {
         ServerAssetObject[['ipmi_working']] <- self$`ipmi_working`
@@ -410,10 +410,10 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[['overdue']] <- self$`overdue`
       }
       if (!is.null(self$`create_timestamp`)) {
-        ServerAssetObject[['create_timestamp']] <- self$`create_timestamp`$toJSON()
+        ServerAssetObject[['create_timestamp']] <- self$`create_timestamp`
       }
       if (!is.null(self$`update_timestamp`)) {
-        ServerAssetObject[['update_timestamp']] <- self$`update_timestamp`$toJSON()
+        ServerAssetObject[['update_timestamp']] <- self$`update_timestamp`
       }
       if (!is.null(self$`asset_id`)) {
         ServerAssetObject[['asset_id']] <- self$`asset_id`
@@ -440,7 +440,7 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[['rack_y']] <- self$`rack_y`
       }
       if (!is.null(self$`comment`)) {
-        ServerAssetObject[['comment']] <- self$`comment`$toJSON()
+        ServerAssetObject[['comment']] <- self$`comment`
       }
       if (!is.null(self$`switchports`)) {
         ServerAssetObject[['switchports']] <- self$`switchports`
@@ -478,9 +478,7 @@ ServerAsset <- R6::R6Class(
         self$`primary_ipv6` <- ServerAssetObject$`primary_ipv6`
       }
       if (!is.null(ServerAssetObject$`mac`)) {
-        macObject <- Object$new()
-        macObject$fromJSON(jsonlite::toJSON(ServerAssetObject$mac, auto_unbox = TRUE))
-        self$`mac` <- macObject
+        self$`mac` <- ServerAssetObject$`mac`
       }
       if (!is.null(ServerAssetObject$`datacenter`)) {
         self$`datacenter` <- ServerAssetObject$`datacenter`
@@ -516,29 +514,19 @@ ServerAsset <- R6::R6Class(
         self$`ipmi_ip` <- ServerAssetObject$`ipmi_ip`
       }
       if (!is.null(ServerAssetObject$`ipmi_admin_username`)) {
-        ipmi_admin_usernameObject <- Object$new()
-        ipmi_admin_usernameObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_admin_username, auto_unbox = TRUE))
-        self$`ipmi_admin_username` <- ipmi_admin_usernameObject
+        self$`ipmi_admin_username` <- ServerAssetObject$`ipmi_admin_username`
       }
       if (!is.null(ServerAssetObject$`ipmi_admin_password`)) {
-        ipmi_admin_passwordObject <- Object$new()
-        ipmi_admin_passwordObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_admin_password, auto_unbox = TRUE))
-        self$`ipmi_admin_password` <- ipmi_admin_passwordObject
+        self$`ipmi_admin_password` <- ServerAssetObject$`ipmi_admin_password`
       }
       if (!is.null(ServerAssetObject$`ipmi_client_username`)) {
-        ipmi_client_usernameObject <- Object$new()
-        ipmi_client_usernameObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_client_username, auto_unbox = TRUE))
-        self$`ipmi_client_username` <- ipmi_client_usernameObject
+        self$`ipmi_client_username` <- ServerAssetObject$`ipmi_client_username`
       }
       if (!is.null(ServerAssetObject$`ipmi_client_password`)) {
-        ipmi_client_passwordObject <- Object$new()
-        ipmi_client_passwordObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_client_password, auto_unbox = TRUE))
-        self$`ipmi_client_password` <- ipmi_client_passwordObject
+        self$`ipmi_client_password` <- ServerAssetObject$`ipmi_client_password`
       }
       if (!is.null(ServerAssetObject$`ipmi_updated`)) {
-        ipmi_updatedObject <- Object$new()
-        ipmi_updatedObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_updated, auto_unbox = TRUE))
-        self$`ipmi_updated` <- ipmi_updatedObject
+        self$`ipmi_updated` <- ServerAssetObject$`ipmi_updated`
       }
       if (!is.null(ServerAssetObject$`ipmi_working`)) {
         self$`ipmi_working` <- ServerAssetObject$`ipmi_working`
@@ -571,14 +559,10 @@ ServerAsset <- R6::R6Class(
         self$`overdue` <- ServerAssetObject$`overdue`
       }
       if (!is.null(ServerAssetObject$`create_timestamp`)) {
-        create_timestampObject <- Object$new()
-        create_timestampObject$fromJSON(jsonlite::toJSON(ServerAssetObject$create_timestamp, auto_unbox = TRUE))
-        self$`create_timestamp` <- create_timestampObject
+        self$`create_timestamp` <- ServerAssetObject$`create_timestamp`
       }
       if (!is.null(ServerAssetObject$`update_timestamp`)) {
-        update_timestampObject <- Object$new()
-        update_timestampObject$fromJSON(jsonlite::toJSON(ServerAssetObject$update_timestamp, auto_unbox = TRUE))
-        self$`update_timestamp` <- update_timestampObject
+        self$`update_timestamp` <- ServerAssetObject$`update_timestamp`
       }
       if (!is.null(ServerAssetObject$`asset_id`)) {
         self$`asset_id` <- ServerAssetObject$`asset_id`
@@ -605,9 +589,7 @@ ServerAsset <- R6::R6Class(
         self$`rack_y` <- ServerAssetObject$`rack_y`
       }
       if (!is.null(ServerAssetObject$`comment`)) {
-        commentObject <- Object$new()
-        commentObject$fromJSON(jsonlite::toJSON(ServerAssetObject$comment, auto_unbox = TRUE))
-        self$`comment` <- commentObject
+        self$`comment` <- ServerAssetObject$`comment`
       }
       if (!is.null(ServerAssetObject$`switchports`)) {
         self$`switchports` <- ServerAssetObject$`switchports`
@@ -682,7 +664,7 @@ ServerAsset <- R6::R6Class(
         self$`status`,
         self$`primary_ipv4`,
         self$`primary_ipv6`,
-        self$`mac`$toJSON(),
+        self$`mac`,
         self$`datacenter`,
         self$`type_id`,
         self$`asset_tag`,
@@ -694,11 +676,11 @@ ServerAsset <- R6::R6Class(
         self$`unit_sub`,
         self$`ipmi_mac`,
         self$`ipmi_ip`,
-        self$`ipmi_admin_username`$toJSON(),
-        self$`ipmi_admin_password`$toJSON(),
-        self$`ipmi_client_username`$toJSON(),
-        self$`ipmi_client_password`$toJSON(),
-        self$`ipmi_updated`$toJSON(),
+        self$`ipmi_admin_username`,
+        self$`ipmi_admin_password`,
+        self$`ipmi_client_username`,
+        self$`ipmi_client_password`,
+        self$`ipmi_updated`,
         self$`ipmi_working`,
         self$`company`,
         self$`comments`,
@@ -709,8 +691,8 @@ ServerAsset <- R6::R6Class(
         self$`external_id`,
         self$`billing_status`,
         self$`overdue`,
-        self$`create_timestamp`$toJSON(),
-        self$`update_timestamp`$toJSON(),
+        self$`create_timestamp`,
+        self$`update_timestamp`,
         self$`asset_id`,
         self$`asset_name`,
         self$`rack_id`,
@@ -719,7 +701,7 @@ ServerAsset <- R6::R6Class(
         self$`rack_size`,
         self$`rack_x`,
         self$`rack_y`,
-        self$`comment`$toJSON(),
+        self$`comment`,
         lapply(self$`switchports`, function(x) paste(paste0('"', x, '"'), sep=",")),
         lapply(self$`vlans`, function(x) paste(paste0('"', x, '"'), sep=",")),
         lapply(self$`vlans6`, function(x) paste(paste0('"', x, '"'), sep=",")),
@@ -734,8 +716,7 @@ ServerAsset <- R6::R6Class(
       self$`status` <- ServerAssetObject$`status`
       self$`primary_ipv4` <- ServerAssetObject$`primary_ipv4`
       self$`primary_ipv6` <- ServerAssetObject$`primary_ipv6`
-      ObjectObject <- Object$new()
-      self$`mac` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$mac, auto_unbox = TRUE))
+      self$`mac` <- ServerAssetObject$`mac`
       self$`datacenter` <- ServerAssetObject$`datacenter`
       self$`type_id` <- ServerAssetObject$`type_id`
       self$`asset_tag` <- ServerAssetObject$`asset_tag`
@@ -747,16 +728,11 @@ ServerAsset <- R6::R6Class(
       self$`unit_sub` <- ServerAssetObject$`unit_sub`
       self$`ipmi_mac` <- ServerAssetObject$`ipmi_mac`
       self$`ipmi_ip` <- ServerAssetObject$`ipmi_ip`
-      ObjectObject <- Object$new()
-      self$`ipmi_admin_username` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_admin_username, auto_unbox = TRUE))
-      ObjectObject <- Object$new()
-      self$`ipmi_admin_password` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_admin_password, auto_unbox = TRUE))
-      ObjectObject <- Object$new()
-      self$`ipmi_client_username` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_client_username, auto_unbox = TRUE))
-      ObjectObject <- Object$new()
-      self$`ipmi_client_password` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_client_password, auto_unbox = TRUE))
-      ObjectObject <- Object$new()
-      self$`ipmi_updated` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$ipmi_updated, auto_unbox = TRUE))
+      self$`ipmi_admin_username` <- ServerAssetObject$`ipmi_admin_username`
+      self$`ipmi_admin_password` <- ServerAssetObject$`ipmi_admin_password`
+      self$`ipmi_client_username` <- ServerAssetObject$`ipmi_client_username`
+      self$`ipmi_client_password` <- ServerAssetObject$`ipmi_client_password`
+      self$`ipmi_updated` <- ServerAssetObject$`ipmi_updated`
       self$`ipmi_working` <- ServerAssetObject$`ipmi_working`
       self$`company` <- ServerAssetObject$`company`
       self$`comments` <- ServerAssetObject$`comments`
@@ -767,10 +743,8 @@ ServerAsset <- R6::R6Class(
       self$`external_id` <- ServerAssetObject$`external_id`
       self$`billing_status` <- ServerAssetObject$`billing_status`
       self$`overdue` <- ServerAssetObject$`overdue`
-      ObjectObject <- Object$new()
-      self$`create_timestamp` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$create_timestamp, auto_unbox = TRUE))
-      ObjectObject <- Object$new()
-      self$`update_timestamp` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$update_timestamp, auto_unbox = TRUE))
+      self$`create_timestamp` <- ServerAssetObject$`create_timestamp`
+      self$`update_timestamp` <- ServerAssetObject$`update_timestamp`
       self$`asset_id` <- ServerAssetObject$`asset_id`
       self$`asset_name` <- ServerAssetObject$`asset_name`
       self$`rack_id` <- ServerAssetObject$`rack_id`
@@ -779,8 +753,7 @@ ServerAsset <- R6::R6Class(
       self$`rack_size` <- ServerAssetObject$`rack_size`
       self$`rack_x` <- ServerAssetObject$`rack_x`
       self$`rack_y` <- ServerAssetObject$`rack_y`
-      ObjectObject <- Object$new()
-      self$`comment` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerAssetObject$comment, auto_unbox = TRUE))
+      self$`comment` <- ServerAssetObject$`comment`
       self$`switchports` <- ServerAssetObject$`switchports`
       self$`vlans` <- ServerAssetObject$`vlans`
       self$`vlans6` <- ServerAssetObject$`vlans6`

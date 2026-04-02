@@ -24,22 +24,22 @@ static server_service_info_t *server_service_info_create_internal(
     char *server_ips,
     char *server_monthly_bill,
     char *server_setup,
-    any_type_t *server_discount,
+    char *server_discount,
     char *server_rep,
     char *server_date,
     char *server_total_cost,
-    any_type_t *server_location,
+    char *server_location,
     char *server_hardware_ordered,
     char *server_billed,
     char *server_welcome_email,
     char *server_dedicated_cpu,
     char *server_dedicated_memory,
     char *server_dedicated_hd1,
-    any_type_t *server_dedicated_hd2,
+    char *server_dedicated_hd2,
     char *server_dedicated_bandwidth,
     char *server_dedicated_ips,
     char *server_dedicated_os,
-    any_type_t *server_dedicated_cp,
+    char *server_dedicated_cp,
     char *server_dedicated_raid,
     char *server_extra
     ) {
@@ -107,22 +107,22 @@ __attribute__((deprecated)) server_service_info_t *server_service_info_create(
     char *server_ips,
     char *server_monthly_bill,
     char *server_setup,
-    any_type_t *server_discount,
+    char *server_discount,
     char *server_rep,
     char *server_date,
     char *server_total_cost,
-    any_type_t *server_location,
+    char *server_location,
     char *server_hardware_ordered,
     char *server_billed,
     char *server_welcome_email,
     char *server_dedicated_cpu,
     char *server_dedicated_memory,
     char *server_dedicated_hd1,
-    any_type_t *server_dedicated_hd2,
+    char *server_dedicated_hd2,
     char *server_dedicated_bandwidth,
     char *server_dedicated_ips,
     char *server_dedicated_os,
-    any_type_t *server_dedicated_cp,
+    char *server_dedicated_cp,
     char *server_dedicated_raid,
     char *server_extra
     ) {
@@ -251,7 +251,7 @@ void server_service_info_free(server_service_info_t *server_service_info) {
         server_service_info->server_setup = NULL;
     }
     if (server_service_info->server_discount) {
-        _free(server_service_info->server_discount);
+        free(server_service_info->server_discount);
         server_service_info->server_discount = NULL;
     }
     if (server_service_info->server_rep) {
@@ -267,7 +267,7 @@ void server_service_info_free(server_service_info_t *server_service_info) {
         server_service_info->server_total_cost = NULL;
     }
     if (server_service_info->server_location) {
-        _free(server_service_info->server_location);
+        free(server_service_info->server_location);
         server_service_info->server_location = NULL;
     }
     if (server_service_info->server_hardware_ordered) {
@@ -295,7 +295,7 @@ void server_service_info_free(server_service_info_t *server_service_info) {
         server_service_info->server_dedicated_hd1 = NULL;
     }
     if (server_service_info->server_dedicated_hd2) {
-        _free(server_service_info->server_dedicated_hd2);
+        free(server_service_info->server_dedicated_hd2);
         server_service_info->server_dedicated_hd2 = NULL;
     }
     if (server_service_info->server_dedicated_bandwidth) {
@@ -311,7 +311,7 @@ void server_service_info_free(server_service_info_t *server_service_info) {
         server_service_info->server_dedicated_os = NULL;
     }
     if (server_service_info->server_dedicated_cp) {
-        _free(server_service_info->server_dedicated_cp);
+        free(server_service_info->server_dedicated_cp);
         server_service_info->server_dedicated_cp = NULL;
     }
     if (server_service_info->server_dedicated_raid) {
@@ -474,13 +474,8 @@ cJSON *server_service_info_convertToJSON(server_service_info_t *server_service_i
 
     // server_service_info->server_discount
     if(server_service_info->server_discount) {
-    cJSON *server_discount_local_JSON = _convertToJSON(server_service_info->server_discount);
-    if(server_discount_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "server_discount", server_discount_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "server_discount", server_service_info->server_discount) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -511,13 +506,8 @@ cJSON *server_service_info_convertToJSON(server_service_info_t *server_service_i
 
     // server_service_info->server_location
     if(server_service_info->server_location) {
-    cJSON *server_location_local_JSON = _convertToJSON(server_service_info->server_location);
-    if(server_location_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "server_location", server_location_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "server_location", server_service_info->server_location) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -572,13 +562,8 @@ cJSON *server_service_info_convertToJSON(server_service_info_t *server_service_i
 
     // server_service_info->server_dedicated_hd2
     if(server_service_info->server_dedicated_hd2) {
-    cJSON *server_dedicated_hd2_local_JSON = _convertToJSON(server_service_info->server_dedicated_hd2);
-    if(server_dedicated_hd2_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "server_dedicated_hd2", server_dedicated_hd2_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "server_dedicated_hd2", server_service_info->server_dedicated_hd2) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -609,13 +594,8 @@ cJSON *server_service_info_convertToJSON(server_service_info_t *server_service_i
 
     // server_service_info->server_dedicated_cp
     if(server_service_info->server_dedicated_cp) {
-    cJSON *server_dedicated_cp_local_JSON = _convertToJSON(server_service_info->server_dedicated_cp);
-    if(server_dedicated_cp_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "server_dedicated_cp", server_dedicated_cp_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "server_dedicated_cp", server_service_info->server_dedicated_cp) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -683,8 +663,7 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
 
     char *server_setup_local_str = NULL;
 
-    // define the local variable for server_service_info->server_discount
-    _t *server_discount_local_nonprim = NULL;
+    char *server_discount_local_str = NULL;
 
     char *server_rep_local_str = NULL;
 
@@ -692,8 +671,7 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
 
     char *server_total_cost_local_str = NULL;
 
-    // define the local variable for server_service_info->server_location
-    _t *server_location_local_nonprim = NULL;
+    char *server_location_local_str = NULL;
 
     char *server_hardware_ordered_local_str = NULL;
 
@@ -707,8 +685,7 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
 
     char *server_dedicated_hd1_local_str = NULL;
 
-    // define the local variable for server_service_info->server_dedicated_hd2
-    _t *server_dedicated_hd2_local_nonprim = NULL;
+    char *server_dedicated_hd2_local_str = NULL;
 
     char *server_dedicated_bandwidth_local_str = NULL;
 
@@ -716,8 +693,7 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
 
     char *server_dedicated_os_local_str = NULL;
 
-    // define the local variable for server_service_info->server_dedicated_cp
-    _t *server_dedicated_cp_local_nonprim = NULL;
+    char *server_dedicated_cp_local_str = NULL;
 
     char *server_dedicated_raid_local_str = NULL;
 
@@ -945,7 +921,10 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
         server_discount = NULL;
     }
     if (server_discount) { 
-    server_discount_local_nonprim = _parseFromJSON(server_discount); //custom
+    if(!cJSON_IsString(server_discount) && !cJSON_IsNull(server_discount))
+    {
+    goto end; //String
+    }
     }
 
     // server_service_info->server_rep
@@ -990,7 +969,10 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
         server_location = NULL;
     }
     if (server_location) { 
-    server_location_local_nonprim = _parseFromJSON(server_location); //custom
+    if(!cJSON_IsString(server_location) && !cJSON_IsNull(server_location))
+    {
+    goto end; //String
+    }
     }
 
     // server_service_info->server_hardware_ordered
@@ -1071,7 +1053,10 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
         server_dedicated_hd2 = NULL;
     }
     if (server_dedicated_hd2) { 
-    server_dedicated_hd2_local_nonprim = _parseFromJSON(server_dedicated_hd2); //custom
+    if(!cJSON_IsString(server_dedicated_hd2) && !cJSON_IsNull(server_dedicated_hd2))
+    {
+    goto end; //String
+    }
     }
 
     // server_service_info->server_dedicated_bandwidth
@@ -1116,7 +1101,10 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
         server_dedicated_cp = NULL;
     }
     if (server_dedicated_cp) { 
-    server_dedicated_cp_local_nonprim = _parseFromJSON(server_dedicated_cp); //custom
+    if(!cJSON_IsString(server_dedicated_cp) && !cJSON_IsNull(server_dedicated_cp))
+    {
+    goto end; //String
+    }
     }
 
     // server_service_info->server_dedicated_raid
@@ -1162,18 +1150,22 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
     if (server_ips && !cJSON_IsNull(server_ips)) server_ips_local_str = strdup(server_ips->valuestring);
     if (server_monthly_bill && !cJSON_IsNull(server_monthly_bill)) server_monthly_bill_local_str = strdup(server_monthly_bill->valuestring);
     if (server_setup && !cJSON_IsNull(server_setup)) server_setup_local_str = strdup(server_setup->valuestring);
+    if (server_discount && !cJSON_IsNull(server_discount)) server_discount_local_str = strdup(server_discount->valuestring);
     if (server_rep && !cJSON_IsNull(server_rep)) server_rep_local_str = strdup(server_rep->valuestring);
     if (server_date && !cJSON_IsNull(server_date)) server_date_local_str = strdup(server_date->valuestring);
     if (server_total_cost && !cJSON_IsNull(server_total_cost)) server_total_cost_local_str = strdup(server_total_cost->valuestring);
+    if (server_location && !cJSON_IsNull(server_location)) server_location_local_str = strdup(server_location->valuestring);
     if (server_hardware_ordered && !cJSON_IsNull(server_hardware_ordered)) server_hardware_ordered_local_str = strdup(server_hardware_ordered->valuestring);
     if (server_billed && !cJSON_IsNull(server_billed)) server_billed_local_str = strdup(server_billed->valuestring);
     if (server_welcome_email && !cJSON_IsNull(server_welcome_email)) server_welcome_email_local_str = strdup(server_welcome_email->valuestring);
     if (server_dedicated_cpu && !cJSON_IsNull(server_dedicated_cpu)) server_dedicated_cpu_local_str = strdup(server_dedicated_cpu->valuestring);
     if (server_dedicated_memory && !cJSON_IsNull(server_dedicated_memory)) server_dedicated_memory_local_str = strdup(server_dedicated_memory->valuestring);
     if (server_dedicated_hd1 && !cJSON_IsNull(server_dedicated_hd1)) server_dedicated_hd1_local_str = strdup(server_dedicated_hd1->valuestring);
+    if (server_dedicated_hd2 && !cJSON_IsNull(server_dedicated_hd2)) server_dedicated_hd2_local_str = strdup(server_dedicated_hd2->valuestring);
     if (server_dedicated_bandwidth && !cJSON_IsNull(server_dedicated_bandwidth)) server_dedicated_bandwidth_local_str = strdup(server_dedicated_bandwidth->valuestring);
     if (server_dedicated_ips && !cJSON_IsNull(server_dedicated_ips)) server_dedicated_ips_local_str = strdup(server_dedicated_ips->valuestring);
     if (server_dedicated_os && !cJSON_IsNull(server_dedicated_os)) server_dedicated_os_local_str = strdup(server_dedicated_os->valuestring);
+    if (server_dedicated_cp && !cJSON_IsNull(server_dedicated_cp)) server_dedicated_cp_local_str = strdup(server_dedicated_cp->valuestring);
     if (server_dedicated_raid && !cJSON_IsNull(server_dedicated_raid)) server_dedicated_raid_local_str = strdup(server_dedicated_raid->valuestring);
     if (server_extra && !cJSON_IsNull(server_extra)) server_extra_local_str = strdup(server_extra->valuestring);
 
@@ -1196,22 +1188,22 @@ server_service_info_t *server_service_info_parseFromJSON(cJSON *server_service_i
         server_ips_local_str,
         server_monthly_bill_local_str,
         server_setup_local_str,
-        server_discount ? server_discount_local_nonprim : NULL,
+        server_discount_local_str,
         server_rep_local_str,
         server_date_local_str,
         server_total_cost_local_str,
-        server_location ? server_location_local_nonprim : NULL,
+        server_location_local_str,
         server_hardware_ordered_local_str,
         server_billed_local_str,
         server_welcome_email_local_str,
         server_dedicated_cpu_local_str,
         server_dedicated_memory_local_str,
         server_dedicated_hd1_local_str,
-        server_dedicated_hd2 ? server_dedicated_hd2_local_nonprim : NULL,
+        server_dedicated_hd2_local_str,
         server_dedicated_bandwidth_local_str,
         server_dedicated_ips_local_str,
         server_dedicated_os_local_str,
-        server_dedicated_cp ? server_dedicated_cp_local_nonprim : NULL,
+        server_dedicated_cp_local_str,
         server_dedicated_raid_local_str,
         server_extra_local_str
         );
@@ -1294,9 +1286,9 @@ end:
         free(server_setup_local_str);
         server_setup_local_str = NULL;
     }
-    if (server_discount_local_nonprim) {
-        _free(server_discount_local_nonprim);
-        server_discount_local_nonprim = NULL;
+    if (server_discount_local_str) {
+        free(server_discount_local_str);
+        server_discount_local_str = NULL;
     }
     if (server_rep_local_str) {
         free(server_rep_local_str);
@@ -1310,9 +1302,9 @@ end:
         free(server_total_cost_local_str);
         server_total_cost_local_str = NULL;
     }
-    if (server_location_local_nonprim) {
-        _free(server_location_local_nonprim);
-        server_location_local_nonprim = NULL;
+    if (server_location_local_str) {
+        free(server_location_local_str);
+        server_location_local_str = NULL;
     }
     if (server_hardware_ordered_local_str) {
         free(server_hardware_ordered_local_str);
@@ -1338,9 +1330,9 @@ end:
         free(server_dedicated_hd1_local_str);
         server_dedicated_hd1_local_str = NULL;
     }
-    if (server_dedicated_hd2_local_nonprim) {
-        _free(server_dedicated_hd2_local_nonprim);
-        server_dedicated_hd2_local_nonprim = NULL;
+    if (server_dedicated_hd2_local_str) {
+        free(server_dedicated_hd2_local_str);
+        server_dedicated_hd2_local_str = NULL;
     }
     if (server_dedicated_bandwidth_local_str) {
         free(server_dedicated_bandwidth_local_str);
@@ -1354,9 +1346,9 @@ end:
         free(server_dedicated_os_local_str);
         server_dedicated_os_local_str = NULL;
     }
-    if (server_dedicated_cp_local_nonprim) {
-        _free(server_dedicated_cp_local_nonprim);
-        server_dedicated_cp_local_nonprim = NULL;
+    if (server_dedicated_cp_local_str) {
+        free(server_dedicated_cp_local_str);
+        server_dedicated_cp_local_str = NULL;
     }
     if (server_dedicated_raid_local_str) {
         free(server_dedicated_raid_local_str);

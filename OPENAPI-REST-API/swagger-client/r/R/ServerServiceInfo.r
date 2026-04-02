@@ -161,7 +161,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_setup` <- `server_setup`
       }
       if (!missing(`server_discount`)) {
-        stopifnot(R6::is.R6(`server_discount`))
+        stopifnot(is.character(`server_discount`), length(`server_discount`) == 1)
         self$`server_discount` <- `server_discount`
       }
       if (!missing(`server_rep`)) {
@@ -177,7 +177,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_total_cost` <- `server_total_cost`
       }
       if (!missing(`server_location`)) {
-        stopifnot(R6::is.R6(`server_location`))
+        stopifnot(is.character(`server_location`), length(`server_location`) == 1)
         self$`server_location` <- `server_location`
       }
       if (!missing(`server_hardware_ordered`)) {
@@ -205,7 +205,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_dedicated_hd1` <- `server_dedicated_hd1`
       }
       if (!missing(`server_dedicated_hd2`)) {
-        stopifnot(R6::is.R6(`server_dedicated_hd2`))
+        stopifnot(is.character(`server_dedicated_hd2`), length(`server_dedicated_hd2`) == 1)
         self$`server_dedicated_hd2` <- `server_dedicated_hd2`
       }
       if (!missing(`server_dedicated_bandwidth`)) {
@@ -221,7 +221,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_dedicated_os` <- `server_dedicated_os`
       }
       if (!missing(`server_dedicated_cp`)) {
-        stopifnot(R6::is.R6(`server_dedicated_cp`))
+        stopifnot(is.character(`server_dedicated_cp`), length(`server_dedicated_cp`) == 1)
         self$`server_dedicated_cp` <- `server_dedicated_cp`
       }
       if (!missing(`server_dedicated_raid`)) {
@@ -290,7 +290,7 @@ ServerServiceInfo <- R6::R6Class(
         ServerServiceInfoObject[['server_setup']] <- self$`server_setup`
       }
       if (!is.null(self$`server_discount`)) {
-        ServerServiceInfoObject[['server_discount']] <- self$`server_discount`$toJSON()
+        ServerServiceInfoObject[['server_discount']] <- self$`server_discount`
       }
       if (!is.null(self$`server_rep`)) {
         ServerServiceInfoObject[['server_rep']] <- self$`server_rep`
@@ -302,7 +302,7 @@ ServerServiceInfo <- R6::R6Class(
         ServerServiceInfoObject[['server_total_cost']] <- self$`server_total_cost`
       }
       if (!is.null(self$`server_location`)) {
-        ServerServiceInfoObject[['server_location']] <- self$`server_location`$toJSON()
+        ServerServiceInfoObject[['server_location']] <- self$`server_location`
       }
       if (!is.null(self$`server_hardware_ordered`)) {
         ServerServiceInfoObject[['server_hardware_ordered']] <- self$`server_hardware_ordered`
@@ -323,7 +323,7 @@ ServerServiceInfo <- R6::R6Class(
         ServerServiceInfoObject[['server_dedicated_hd1']] <- self$`server_dedicated_hd1`
       }
       if (!is.null(self$`server_dedicated_hd2`)) {
-        ServerServiceInfoObject[['server_dedicated_hd2']] <- self$`server_dedicated_hd2`$toJSON()
+        ServerServiceInfoObject[['server_dedicated_hd2']] <- self$`server_dedicated_hd2`
       }
       if (!is.null(self$`server_dedicated_bandwidth`)) {
         ServerServiceInfoObject[['server_dedicated_bandwidth']] <- self$`server_dedicated_bandwidth`
@@ -335,7 +335,7 @@ ServerServiceInfo <- R6::R6Class(
         ServerServiceInfoObject[['server_dedicated_os']] <- self$`server_dedicated_os`
       }
       if (!is.null(self$`server_dedicated_cp`)) {
-        ServerServiceInfoObject[['server_dedicated_cp']] <- self$`server_dedicated_cp`$toJSON()
+        ServerServiceInfoObject[['server_dedicated_cp']] <- self$`server_dedicated_cp`
       }
       if (!is.null(self$`server_dedicated_raid`)) {
         ServerServiceInfoObject[['server_dedicated_raid']] <- self$`server_dedicated_raid`
@@ -403,9 +403,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_setup` <- ServerServiceInfoObject$`server_setup`
       }
       if (!is.null(ServerServiceInfoObject$`server_discount`)) {
-        server_discountObject <- Object$new()
-        server_discountObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_discount, auto_unbox = TRUE))
-        self$`server_discount` <- server_discountObject
+        self$`server_discount` <- ServerServiceInfoObject$`server_discount`
       }
       if (!is.null(ServerServiceInfoObject$`server_rep`)) {
         self$`server_rep` <- ServerServiceInfoObject$`server_rep`
@@ -417,9 +415,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_total_cost` <- ServerServiceInfoObject$`server_total_cost`
       }
       if (!is.null(ServerServiceInfoObject$`server_location`)) {
-        server_locationObject <- Object$new()
-        server_locationObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_location, auto_unbox = TRUE))
-        self$`server_location` <- server_locationObject
+        self$`server_location` <- ServerServiceInfoObject$`server_location`
       }
       if (!is.null(ServerServiceInfoObject$`server_hardware_ordered`)) {
         self$`server_hardware_ordered` <- ServerServiceInfoObject$`server_hardware_ordered`
@@ -440,9 +436,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_dedicated_hd1` <- ServerServiceInfoObject$`server_dedicated_hd1`
       }
       if (!is.null(ServerServiceInfoObject$`server_dedicated_hd2`)) {
-        server_dedicated_hd2Object <- Object$new()
-        server_dedicated_hd2Object$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_dedicated_hd2, auto_unbox = TRUE))
-        self$`server_dedicated_hd2` <- server_dedicated_hd2Object
+        self$`server_dedicated_hd2` <- ServerServiceInfoObject$`server_dedicated_hd2`
       }
       if (!is.null(ServerServiceInfoObject$`server_dedicated_bandwidth`)) {
         self$`server_dedicated_bandwidth` <- ServerServiceInfoObject$`server_dedicated_bandwidth`
@@ -454,9 +448,7 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_dedicated_os` <- ServerServiceInfoObject$`server_dedicated_os`
       }
       if (!is.null(ServerServiceInfoObject$`server_dedicated_cp`)) {
-        server_dedicated_cpObject <- Object$new()
-        server_dedicated_cpObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_dedicated_cp, auto_unbox = TRUE))
-        self$`server_dedicated_cp` <- server_dedicated_cpObject
+        self$`server_dedicated_cp` <- ServerServiceInfoObject$`server_dedicated_cp`
       }
       if (!is.null(ServerServiceInfoObject$`server_dedicated_raid`)) {
         self$`server_dedicated_raid` <- ServerServiceInfoObject$`server_dedicated_raid`
@@ -523,22 +515,22 @@ ServerServiceInfo <- R6::R6Class(
         self$`server_ips`,
         self$`server_monthly_bill`,
         self$`server_setup`,
-        self$`server_discount`$toJSON(),
+        self$`server_discount`,
         self$`server_rep`,
         self$`server_date`,
         self$`server_total_cost`,
-        self$`server_location`$toJSON(),
+        self$`server_location`,
         self$`server_hardware_ordered`,
         self$`server_billed`,
         self$`server_welcome_email`,
         self$`server_dedicated_cpu`,
         self$`server_dedicated_memory`,
         self$`server_dedicated_hd1`,
-        self$`server_dedicated_hd2`$toJSON(),
+        self$`server_dedicated_hd2`,
         self$`server_dedicated_bandwidth`,
         self$`server_dedicated_ips`,
         self$`server_dedicated_os`,
-        self$`server_dedicated_cp`$toJSON(),
+        self$`server_dedicated_cp`,
         self$`server_dedicated_raid`,
         self$`server_extra`
       )
@@ -563,26 +555,22 @@ ServerServiceInfo <- R6::R6Class(
       self$`server_ips` <- ServerServiceInfoObject$`server_ips`
       self$`server_monthly_bill` <- ServerServiceInfoObject$`server_monthly_bill`
       self$`server_setup` <- ServerServiceInfoObject$`server_setup`
-      ObjectObject <- Object$new()
-      self$`server_discount` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_discount, auto_unbox = TRUE))
+      self$`server_discount` <- ServerServiceInfoObject$`server_discount`
       self$`server_rep` <- ServerServiceInfoObject$`server_rep`
       self$`server_date` <- ServerServiceInfoObject$`server_date`
       self$`server_total_cost` <- ServerServiceInfoObject$`server_total_cost`
-      ObjectObject <- Object$new()
-      self$`server_location` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_location, auto_unbox = TRUE))
+      self$`server_location` <- ServerServiceInfoObject$`server_location`
       self$`server_hardware_ordered` <- ServerServiceInfoObject$`server_hardware_ordered`
       self$`server_billed` <- ServerServiceInfoObject$`server_billed`
       self$`server_welcome_email` <- ServerServiceInfoObject$`server_welcome_email`
       self$`server_dedicated_cpu` <- ServerServiceInfoObject$`server_dedicated_cpu`
       self$`server_dedicated_memory` <- ServerServiceInfoObject$`server_dedicated_memory`
       self$`server_dedicated_hd1` <- ServerServiceInfoObject$`server_dedicated_hd1`
-      ObjectObject <- Object$new()
-      self$`server_dedicated_hd2` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_dedicated_hd2, auto_unbox = TRUE))
+      self$`server_dedicated_hd2` <- ServerServiceInfoObject$`server_dedicated_hd2`
       self$`server_dedicated_bandwidth` <- ServerServiceInfoObject$`server_dedicated_bandwidth`
       self$`server_dedicated_ips` <- ServerServiceInfoObject$`server_dedicated_ips`
       self$`server_dedicated_os` <- ServerServiceInfoObject$`server_dedicated_os`
-      ObjectObject <- Object$new()
-      self$`server_dedicated_cp` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerServiceInfoObject$server_dedicated_cp, auto_unbox = TRUE))
+      self$`server_dedicated_cp` <- ServerServiceInfoObject$`server_dedicated_cp`
       self$`server_dedicated_raid` <- ServerServiceInfoObject$`server_dedicated_raid`
       self$`server_extra` <- ServerServiceInfoObject$`server_extra`
     }

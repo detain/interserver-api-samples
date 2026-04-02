@@ -45,7 +45,7 @@ ServerOrderCPU::__init()
 	//max_sff = std::string();
 	//max_nve = std::string();
 	//visible = std::string();
-	//hd_ids = null;
+	//hd_ids = std::string();
 	//price_display = std::string();
 	//monthly_price_display = std::string();
 }
@@ -433,12 +433,9 @@ ServerOrderCPU::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&hd_ids, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&hd_ids, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&hd_ids);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -674,16 +671,11 @@ ServerOrderCPU::toJson()
 	}
 	const gchar *visibleKey = "visible";
 	json_object_set_member(pJsonObject, visibleKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getHdIds();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getHdIds();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getHdIds());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *hd_idsKey = "hd_ids";
@@ -978,14 +970,14 @@ ServerOrderCPU::setVisible(std::string  visible)
 	this->visible = visible;
 }
 
-AnyType
+std::string
 ServerOrderCPU::getHdIds()
 {
 	return hd_ids;
 }
 
 void
-ServerOrderCPU::setHdIds(AnyType  hd_ids)
+ServerOrderCPU::setHdIds(std::string  hd_ids)
 {
 	this->hd_ids = hd_ids;
 }

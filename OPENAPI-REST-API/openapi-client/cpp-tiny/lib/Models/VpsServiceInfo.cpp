@@ -10,7 +10,7 @@ VpsServiceInfo::VpsServiceInfo()
 	vps_custid = std::string();
 	vps_server = std::string();
 	vps_ip = std::string();
-	vps_ipv6 = null;
+	vps_ipv6 = std::string();
 	vps_vzid = std::string();
 	vps_currency = std::string();
 	vps_type = std::string();
@@ -110,9 +110,8 @@ VpsServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&vps_ipv6, value, "std::string");
 
-        AnyType* obj = &vps_ipv6;
-		obj->fromJson(value.dump());
 
     }
 
@@ -442,8 +441,8 @@ VpsServiceInfo::toJson()
 
 
 
+    object["vps_ipv6"] = getVpsIpv6();
 
-	object["vps_ipv6"] = getVpsIpv6().toJson();
 
 
 
@@ -652,14 +651,14 @@ VpsServiceInfo::setVpsIp(std::string vps_ip)
 	this->vps_ip = vps_ip;
 }
 
-AnyType
+std::string
 VpsServiceInfo::getVpsIpv6()
 {
 	return vps_ipv6;
 }
 
 void
-VpsServiceInfo::setVpsIpv6(AnyType vps_ipv6)
+VpsServiceInfo::setVpsIpv6(std::string vps_ipv6)
 {
 	this->vps_ipv6 = vps_ipv6;
 }

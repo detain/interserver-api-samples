@@ -80,7 +80,7 @@ data class VpsServiceInfo (
 
     /* IPv6 address of the VPS */
     @Json(name = "vps_ipv6")
-    val vpsIpv6: kotlin.Any? = null,
+    val vpsIpv6: kotlin.String? = null,
 
     /* VPS Virtuozzo ID */
     @Json(name = "vps_vzid")

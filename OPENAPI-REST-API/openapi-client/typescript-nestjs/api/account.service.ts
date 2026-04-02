@@ -19,6 +19,7 @@ import { GenericResponse } from '../model/genericResponse';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
 import { GetAccountTfaSetup200Response } from '../model/getAccountTfaSetup200Response';
 import { Home } from '../model/home';
+import { IpLimitRange } from '../model/ipLimitRange';
 import { SearchAutocompleteResponse } from '../model/searchAutocompleteResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
@@ -214,12 +215,13 @@ export class AccountService {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account\&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param {*} [deleteIpLimitOpts.config] Override http request option.
      */
-    public deleteIpLimit(deleteIpLimitOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GenericResponse>>;
-    public deleteIpLimit(deleteIpLimitOpts?: { config?: AxiosRequestConfig }): Observable<any> {
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, deleteIpLimitOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GenericResponse>>;
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, deleteIpLimitOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
         let accessTokenObservable: Observable<any> = of(null);
@@ -248,6 +250,10 @@ export class AccountService {
         const consumes: string[] = [
             'application/json'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers['Content-Type'] = httpContentTypeSelected;
+        }
         return accessTokenObservable.pipe(
             switchMap((accessToken) => {
                 if (accessToken) {
@@ -255,7 +261,7 @@ export class AccountService {
                 }
 
                 return this.httpClient.patch<GenericResponse>(`${this.basePath}/account/iplimits`,
-                    null,
+                    ipLimitRange,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...deleteIpLimitOpts?.config,

@@ -421,7 +421,7 @@ void OAIAccountApi::deleteAccountTfaCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIAccountApi::deleteIpLimit() {
+void OAIAccountApi::deleteIpLimit(const ::OpenAPI::OptionalParam<OAIIpLimitRange> &oaiip_limit_range) {
     QString fullPath = QString(_serverConfigs["deleteIpLimit"][_serverIndices.value("deleteIpLimit")].URL()+"/account/iplimits");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -437,7 +437,12 @@ void OAIAccountApi::deleteIpLimit() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PATCH");
 
+    if (oaiip_limit_range.hasValue()){
 
+        
+        QByteArray output = oaiip_limit_range.value().asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }

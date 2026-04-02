@@ -19,7 +19,7 @@ public class VpsServiceInfo   {
 
   private @Valid String vpsIp = null;
 
-  private @Valid Object vpsIpv6 = null;
+  private @Valid String vpsIpv6 = null;
 
   private @Valid String vpsVzid = null;
 
@@ -148,7 +148,7 @@ public class VpsServiceInfo   {
   /**
    * IPv6 address of the VPS
    **/
-  public VpsServiceInfo vpsIpv6(Object vpsIpv6) {
+  public VpsServiceInfo vpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
     return this;
   }
@@ -158,10 +158,10 @@ public class VpsServiceInfo   {
   @JsonProperty("vps_ipv6")
   @NotNull
 
-  public Object getVpsIpv6() {
+  public String getVpsIpv6() {
     return vpsIpv6;
   }
-  public void setVpsIpv6(Object vpsIpv6) {
+  public void setVpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
   }
 

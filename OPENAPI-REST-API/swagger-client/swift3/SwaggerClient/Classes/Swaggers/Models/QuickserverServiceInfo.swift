@@ -19,7 +19,7 @@ open class QuickserverServiceInfo: JSONEncodable {
     /** IP address */
     public var qsIp: String?
     /** IPv6 address (null) */
-    public var qsIpv6: Object?
+    public var qsIpv6: String?
     /** VZ ID */
     public var qsVzid: String?
     /** Currency */
@@ -47,7 +47,7 @@ open class QuickserverServiceInfo: JSONEncodable {
     /** VNC information */
     public var qsVnc: String?
     /** VNC port (null) */
-    public var qsVncPort: Object?
+    public var qsVncPort: Int32?
     /** Root password */
     public var qsRootpass: String?
     /** MAC address */
@@ -59,7 +59,7 @@ open class QuickserverServiceInfo: JSONEncodable {
     /** Location */
     public var qsLocation: String?
     /** Platform (null) */
-    public var qsPlatform: Object?
+    public var qsPlatform: String?
 
     public init() {}
 
@@ -70,7 +70,7 @@ open class QuickserverServiceInfo: JSONEncodable {
         nillableDictionary["qs_custid"] = self.qsCustid
         nillableDictionary["qs_server"] = self.qsServer
         nillableDictionary["qs_ip"] = self.qsIp
-        nillableDictionary["qs_ipv6"] = self.qsIpv6?.encodeToJSON()
+        nillableDictionary["qs_ipv6"] = self.qsIpv6
         nillableDictionary["qs_vzid"] = self.qsVzid
         nillableDictionary["qs_currency"] = self.qsCurrency
         nillableDictionary["qs_type"] = self.qsType
@@ -90,7 +90,7 @@ open class QuickserverServiceInfo: JSONEncodable {
         nillableDictionary["qs_os"] = self.qsOs
         nillableDictionary["qs_version"] = self.qsVersion
         nillableDictionary["qs_location"] = self.qsLocation
-        nillableDictionary["qs_platform"] = self.qsPlatform?.encodeToJSON()
+        nillableDictionary["qs_platform"] = self.qsPlatform
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

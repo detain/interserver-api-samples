@@ -56,7 +56,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// <param name="qsVersion">OS version.</param>
         /// <param name="qsLocation">Location.</param>
         /// <param name="qsPlatform">Platform (null).</param>
-        public QuickserverServiceInfo(string qsId = default(string), string qsCustid = default(string), string qsServer = default(string), string qsIp = default(string), Object qsIpv6 = default(Object), string qsVzid = default(string), string qsCurrency = default(string), string qsType = default(string), string qsOrderDate = default(string), string qsStatus = default(string), string qsInvoice = default(string), string qsCoupon = default(string), string qsExtra = default(string), string qsHostname = default(string), string qsServerStatus = default(string), string qsComment = default(string), string qsSlices = default(string), string qsVnc = default(string), Object qsVncPort = default(Object), string qsRootpass = default(string), string qsMac = default(string), string qsOs = default(string), string qsVersion = default(string), string qsLocation = default(string), Object qsPlatform = default(Object))
+        public QuickserverServiceInfo(string qsId = default(string), string qsCustid = default(string), string qsServer = default(string), string qsIp = default(string), string qsIpv6 = default(string), string qsVzid = default(string), string qsCurrency = default(string), string qsType = default(string), string qsOrderDate = default(string), string qsStatus = default(string), string qsInvoice = default(string), string qsCoupon = default(string), string qsExtra = default(string), string qsHostname = default(string), string qsServerStatus = default(string), string qsComment = default(string), string qsSlices = default(string), string qsVnc = default(string), int? qsVncPort = default(int?), string qsRootpass = default(string), string qsMac = default(string), string qsOs = default(string), string qsVersion = default(string), string qsLocation = default(string), string qsPlatform = default(string))
         {
             this.qs_id = qsId;
             this.qs_custid = qsCustid;
@@ -118,7 +118,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>IPv6 address (null)</value>
         [DataMember(Name="qs_ipv6", EmitDefaultValue=false)]
-        public Object qs_ipv6 { get; set; }
+        public string qs_ipv6 { get; set; }
 
         /// <summary>
         /// VZ ID
@@ -216,7 +216,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>VNC port (null)</value>
         [DataMember(Name="qs_vnc_port", EmitDefaultValue=false)]
-        public Object qs_vnc_port { get; set; }
+        public int? qs_vnc_port { get; set; }
 
         /// <summary>
         /// Root password
@@ -258,7 +258,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>Platform (null)</value>
         [DataMember(Name="qs_platform", EmitDefaultValue=false)]
-        public Object qs_platform { get; set; }
+        public string qs_platform { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

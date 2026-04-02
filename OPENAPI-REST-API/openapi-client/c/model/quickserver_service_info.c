@@ -10,7 +10,7 @@ static quickserver_service_info_t *quickserver_service_info_create_internal(
     char *qs_custid,
     char *qs_server,
     char *qs_ip,
-    any_type_t *qs_ipv6,
+    char *qs_ipv6,
     char *qs_vzid,
     char *qs_currency,
     char *qs_type,
@@ -24,13 +24,13 @@ static quickserver_service_info_t *quickserver_service_info_create_internal(
     char *qs_comment,
     char *qs_slices,
     char *qs_vnc,
-    any_type_t *qs_vnc_port,
+    int *qs_vnc_port,
     char *qs_rootpass,
     char *qs_mac,
     char *qs_os,
     char *qs_version,
     char *qs_location,
-    any_type_t *qs_platform
+    char *qs_platform
     ) {
     quickserver_service_info_t *quickserver_service_info_local_var = malloc(sizeof(quickserver_service_info_t));
     if (!quickserver_service_info_local_var) {
@@ -71,7 +71,7 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
     char *qs_custid,
     char *qs_server,
     char *qs_ip,
-    any_type_t *qs_ipv6,
+    char *qs_ipv6,
     char *qs_vzid,
     char *qs_currency,
     char *qs_type,
@@ -85,14 +85,19 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
     char *qs_comment,
     char *qs_slices,
     char *qs_vnc,
-    any_type_t *qs_vnc_port,
+    int *qs_vnc_port,
     char *qs_rootpass,
     char *qs_mac,
     char *qs_os,
     char *qs_version,
     char *qs_location,
-    any_type_t *qs_platform
+    char *qs_platform
     ) {
+    int *qs_vnc_port_copy = NULL;
+    if (qs_vnc_port) {
+        qs_vnc_port_copy = malloc(sizeof(int));
+        if (qs_vnc_port_copy) *qs_vnc_port_copy = *qs_vnc_port;
+    }
     quickserver_service_info_t *result = quickserver_service_info_create_internal (
         qs_id,
         qs_custid,
@@ -112,7 +117,7 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
         qs_comment,
         qs_slices,
         qs_vnc,
-        qs_vnc_port,
+        qs_vnc_port_copy,
         qs_rootpass,
         qs_mac,
         qs_os,
@@ -121,6 +126,7 @@ __attribute__((deprecated)) quickserver_service_info_t *quickserver_service_info
         qs_platform
         );
     if (!result) {
+        free(qs_vnc_port_copy);
     }
     return result;
 }
@@ -151,7 +157,7 @@ void quickserver_service_info_free(quickserver_service_info_t *quickserver_servi
         quickserver_service_info->qs_ip = NULL;
     }
     if (quickserver_service_info->qs_ipv6) {
-        _free(quickserver_service_info->qs_ipv6);
+        free(quickserver_service_info->qs_ipv6);
         quickserver_service_info->qs_ipv6 = NULL;
     }
     if (quickserver_service_info->qs_vzid) {
@@ -207,7 +213,7 @@ void quickserver_service_info_free(quickserver_service_info_t *quickserver_servi
         quickserver_service_info->qs_vnc = NULL;
     }
     if (quickserver_service_info->qs_vnc_port) {
-        _free(quickserver_service_info->qs_vnc_port);
+        free(quickserver_service_info->qs_vnc_port);
         quickserver_service_info->qs_vnc_port = NULL;
     }
     if (quickserver_service_info->qs_rootpass) {
@@ -231,7 +237,7 @@ void quickserver_service_info_free(quickserver_service_info_t *quickserver_servi
         quickserver_service_info->qs_location = NULL;
     }
     if (quickserver_service_info->qs_platform) {
-        _free(quickserver_service_info->qs_platform);
+        free(quickserver_service_info->qs_platform);
         quickserver_service_info->qs_platform = NULL;
     }
     free(quickserver_service_info);
@@ -274,13 +280,8 @@ cJSON *quickserver_service_info_convertToJSON(quickserver_service_info_t *quicks
 
     // quickserver_service_info->qs_ipv6
     if(quickserver_service_info->qs_ipv6) {
-    cJSON *qs_ipv6_local_JSON = _convertToJSON(quickserver_service_info->qs_ipv6);
-    if(qs_ipv6_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "qs_ipv6", qs_ipv6_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "qs_ipv6", quickserver_service_info->qs_ipv6) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -391,13 +392,8 @@ cJSON *quickserver_service_info_convertToJSON(quickserver_service_info_t *quicks
 
     // quickserver_service_info->qs_vnc_port
     if(quickserver_service_info->qs_vnc_port) {
-    cJSON *qs_vnc_port_local_JSON = _convertToJSON(quickserver_service_info->qs_vnc_port);
-    if(qs_vnc_port_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "qs_vnc_port", qs_vnc_port_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddNumberToObject(item, "qs_vnc_port", *quickserver_service_info->qs_vnc_port) == NULL) {
+    goto fail; //Numeric
     }
     }
 
@@ -444,13 +440,8 @@ cJSON *quickserver_service_info_convertToJSON(quickserver_service_info_t *quicks
 
     // quickserver_service_info->qs_platform
     if(quickserver_service_info->qs_platform) {
-    cJSON *qs_platform_local_JSON = _convertToJSON(quickserver_service_info->qs_platform);
-    if(qs_platform_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "qs_platform", qs_platform_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "qs_platform", quickserver_service_info->qs_platform) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -474,8 +465,7 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
 
     char *qs_ip_local_str = NULL;
 
-    // define the local variable for quickserver_service_info->qs_ipv6
-    _t *qs_ipv6_local_nonprim = NULL;
+    char *qs_ipv6_local_str = NULL;
 
     char *qs_vzid_local_str = NULL;
 
@@ -504,7 +494,7 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
     char *qs_vnc_local_str = NULL;
 
     // define the local variable for quickserver_service_info->qs_vnc_port
-    _t *qs_vnc_port_local_nonprim = NULL;
+    int *qs_vnc_port_local_var = NULL;
 
     char *qs_rootpass_local_str = NULL;
 
@@ -516,8 +506,7 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
 
     char *qs_location_local_str = NULL;
 
-    // define the local variable for quickserver_service_info->qs_platform
-    _t *qs_platform_local_nonprim = NULL;
+    char *qs_platform_local_str = NULL;
 
     // quickserver_service_info->qs_id
     cJSON *qs_id = cJSON_GetObjectItemCaseSensitive(quickserver_service_infoJSON, "qs_id");
@@ -573,7 +562,10 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
         qs_ipv6 = NULL;
     }
     if (qs_ipv6) { 
-    qs_ipv6_local_nonprim = _parseFromJSON(qs_ipv6); //custom
+    if(!cJSON_IsString(qs_ipv6) && !cJSON_IsNull(qs_ipv6))
+    {
+    goto end; //String
+    }
     }
 
     // quickserver_service_info->qs_vzid
@@ -738,7 +730,16 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
         qs_vnc_port = NULL;
     }
     if (qs_vnc_port) { 
-    qs_vnc_port_local_nonprim = _parseFromJSON(qs_vnc_port); //custom
+    if(!cJSON_IsNumber(qs_vnc_port))
+    {
+    goto end; //Numeric
+    }
+    qs_vnc_port_local_var = malloc(sizeof(int));
+    if(!qs_vnc_port_local_var)
+    {
+        goto end;
+    }
+    *qs_vnc_port_local_var = qs_vnc_port->valuedouble;
     }
 
     // quickserver_service_info->qs_rootpass
@@ -807,7 +808,10 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
         qs_platform = NULL;
     }
     if (qs_platform) { 
-    qs_platform_local_nonprim = _parseFromJSON(qs_platform); //custom
+    if(!cJSON_IsString(qs_platform) && !cJSON_IsNull(qs_platform))
+    {
+    goto end; //String
+    }
     }
 
 
@@ -815,6 +819,7 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
     if (qs_custid && !cJSON_IsNull(qs_custid)) qs_custid_local_str = strdup(qs_custid->valuestring);
     if (qs_server && !cJSON_IsNull(qs_server)) qs_server_local_str = strdup(qs_server->valuestring);
     if (qs_ip && !cJSON_IsNull(qs_ip)) qs_ip_local_str = strdup(qs_ip->valuestring);
+    if (qs_ipv6 && !cJSON_IsNull(qs_ipv6)) qs_ipv6_local_str = strdup(qs_ipv6->valuestring);
     if (qs_vzid && !cJSON_IsNull(qs_vzid)) qs_vzid_local_str = strdup(qs_vzid->valuestring);
     if (qs_currency && !cJSON_IsNull(qs_currency)) qs_currency_local_str = strdup(qs_currency->valuestring);
     if (qs_type && !cJSON_IsNull(qs_type)) qs_type_local_str = strdup(qs_type->valuestring);
@@ -833,13 +838,14 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
     if (qs_os && !cJSON_IsNull(qs_os)) qs_os_local_str = strdup(qs_os->valuestring);
     if (qs_version && !cJSON_IsNull(qs_version)) qs_version_local_str = strdup(qs_version->valuestring);
     if (qs_location && !cJSON_IsNull(qs_location)) qs_location_local_str = strdup(qs_location->valuestring);
+    if (qs_platform && !cJSON_IsNull(qs_platform)) qs_platform_local_str = strdup(qs_platform->valuestring);
 
     quickserver_service_info_local_var = quickserver_service_info_create_internal (
         qs_id_local_str,
         qs_custid_local_str,
         qs_server_local_str,
         qs_ip_local_str,
-        qs_ipv6 ? qs_ipv6_local_nonprim : NULL,
+        qs_ipv6_local_str,
         qs_vzid_local_str,
         qs_currency_local_str,
         qs_type_local_str,
@@ -853,13 +859,13 @@ quickserver_service_info_t *quickserver_service_info_parseFromJSON(cJSON *quicks
         qs_comment_local_str,
         qs_slices_local_str,
         qs_vnc_local_str,
-        qs_vnc_port ? qs_vnc_port_local_nonprim : NULL,
+        qs_vnc_port_local_var,
         qs_rootpass_local_str,
         qs_mac_local_str,
         qs_os_local_str,
         qs_version_local_str,
         qs_location_local_str,
-        qs_platform ? qs_platform_local_nonprim : NULL
+        qs_platform_local_str
         );
 
     if (!quickserver_service_info_local_var) {
@@ -884,9 +890,9 @@ end:
         free(qs_ip_local_str);
         qs_ip_local_str = NULL;
     }
-    if (qs_ipv6_local_nonprim) {
-        _free(qs_ipv6_local_nonprim);
-        qs_ipv6_local_nonprim = NULL;
+    if (qs_ipv6_local_str) {
+        free(qs_ipv6_local_str);
+        qs_ipv6_local_str = NULL;
     }
     if (qs_vzid_local_str) {
         free(qs_vzid_local_str);
@@ -940,9 +946,9 @@ end:
         free(qs_vnc_local_str);
         qs_vnc_local_str = NULL;
     }
-    if (qs_vnc_port_local_nonprim) {
-        _free(qs_vnc_port_local_nonprim);
-        qs_vnc_port_local_nonprim = NULL;
+    if (qs_vnc_port_local_var) {
+        free(qs_vnc_port_local_var);
+        qs_vnc_port_local_var = NULL;
     }
     if (qs_rootpass_local_str) {
         free(qs_rootpass_local_str);
@@ -964,9 +970,9 @@ end:
         free(qs_location_local_str);
         qs_location_local_str = NULL;
     }
-    if (qs_platform_local_nonprim) {
-        _free(qs_platform_local_nonprim);
-        qs_platform_local_nonprim = NULL;
+    if (qs_platform_local_str) {
+        free(qs_platform_local_str);
+        qs_platform_local_str = NULL;
     }
     return NULL;
 

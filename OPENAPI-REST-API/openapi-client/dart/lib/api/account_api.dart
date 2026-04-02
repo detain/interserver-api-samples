@@ -174,12 +174,16 @@ class AccountApi {
   /// Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> deleteIpLimitWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [IpLimitRange] ipLimitRange:
+  Future<Response> deleteIpLimitWithHttpInfo({ IpLimitRange? ipLimitRange, }) async {
     // ignore: prefer_const_declarations
     final path = r'/account/iplimits';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = ipLimitRange;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -202,8 +206,12 @@ class AccountApi {
   /// Remove IP Access Restriction
   ///
   /// Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
-  Future<GenericResponse?> deleteIpLimit() async {
-    final response = await deleteIpLimitWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [IpLimitRange] ipLimitRange:
+  Future<GenericResponse?> deleteIpLimit({ IpLimitRange? ipLimitRange, }) async {
+    final response = await deleteIpLimitWithHttpInfo( ipLimitRange: ipLimitRange, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

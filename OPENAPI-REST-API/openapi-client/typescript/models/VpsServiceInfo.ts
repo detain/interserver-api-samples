@@ -32,7 +32,7 @@ export class VpsServiceInfo {
     /**
     * IPv6 address of the VPS
     */
-    'vps_ipv6'?: any | null;
+    'vps_ipv6'?: string;
     /**
     * VPS Virtuozzo ID
     */
@@ -154,7 +154,7 @@ export class VpsServiceInfo {
         {
             "name": "vps_ipv6",
             "baseName": "vps_ipv6",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {

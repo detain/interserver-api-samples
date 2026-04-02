@@ -749,13 +749,193 @@ void test_ServerAsset_rack_y_is_assigned_from_json()
 
 
 
+void test_ServerAsset_mac_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "mac", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getMac().c_str());
 
 
 
 
 
 
+}
 
+
+void test_ServerAsset_ipmi_admin_username_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "ipmi_admin_username", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getIpmiAdminUsername().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_admin_password_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "ipmi_admin_password", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getIpmiAdminPassword().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_client_username_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "ipmi_client_username", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getIpmiClientUsername().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_client_password_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "ipmi_client_password", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getIpmiClientPassword().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_updated_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "ipmi_updated", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getIpmiUpdated().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_create_timestamp_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "create_timestamp", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getCreateTimestamp().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_update_timestamp_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "update_timestamp", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getUpdateTimestamp().c_str());
+
+
+
+
+
+
+}
+
+
+void test_ServerAsset_comment_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "comment", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getComment().c_str());
+
+
+
+
+
+
+}
 
 
 
@@ -1498,12 +1678,192 @@ void test_ServerAsset_rack_y_is_converted_to_json()
 
 
 
+void test_ServerAsset_mac_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "mac", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["mac"] == output["mac"]);
 
 
 
+}
+
+
+void test_ServerAsset_ipmi_admin_username_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "ipmi_admin_username", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["ipmi_admin_username"] == output["ipmi_admin_username"]);
 
 
 
+}
 
+
+void test_ServerAsset_ipmi_admin_password_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "ipmi_admin_password", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["ipmi_admin_password"] == output["ipmi_admin_password"]);
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_client_username_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "ipmi_client_username", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["ipmi_client_username"] == output["ipmi_client_username"]);
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_client_password_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "ipmi_client_password", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["ipmi_client_password"] == output["ipmi_client_password"]);
+
+
+
+}
+
+
+void test_ServerAsset_ipmi_updated_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "ipmi_updated", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["ipmi_updated"] == output["ipmi_updated"]);
+
+
+
+}
+
+
+void test_ServerAsset_create_timestamp_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "create_timestamp", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["create_timestamp"] == output["create_timestamp"]);
+
+
+
+}
+
+
+void test_ServerAsset_update_timestamp_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "update_timestamp", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["update_timestamp"] == output["update_timestamp"]);
+
+
+
+}
+
+
+void test_ServerAsset_comment_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "comment", "hello"
+    };
+
+    ServerAsset obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["comment"] == output["comment"]);
+
+
+
+}
 
 

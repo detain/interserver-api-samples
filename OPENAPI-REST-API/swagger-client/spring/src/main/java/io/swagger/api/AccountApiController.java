@@ -141,7 +141,8 @@ public class AccountApiController implements AccountApi {
         return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<GenericResponse> deleteIpLimit() {
+    public ResponseEntity<GenericResponse> deleteIpLimit(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody IpLimitRange body
+) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

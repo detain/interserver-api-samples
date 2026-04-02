@@ -613,7 +613,11 @@
         "operationId" : "deleteIpLimit",
         "requestBody" : {
           "content" : {
-            "application/json" : { }
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/IpLimitRange"
+              }
+            }
           }
         },
         "responses" : {
@@ -3849,7 +3853,14 @@
           "200" : {
             "description" : "The listing of `Floating IPs` services on your account.",
             "content" : {
-              "application/json" : { }
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object"
+                  }
+                }
+              }
             },
             "links" : {
               "getFloatingIpInfo" : {
@@ -20798,7 +20809,9 @@
             "example" : ""
           },
           "qs_ipv6" : {
-            "description" : "IPv6 address (null)"
+            "type" : "string",
+            "description" : "IPv6 address (null)",
+            "nullable" : true
           },
           "qs_vzid" : {
             "type" : "string",
@@ -20866,7 +20879,9 @@
             "example" : "99.88.77.66"
           },
           "qs_vnc_port" : {
-            "description" : "VNC port (null)"
+            "type" : "integer",
+            "description" : "VNC port (null)",
+            "nullable" : true
           },
           "qs_rootpass" : {
             "type" : "string",
@@ -20894,7 +20909,9 @@
             "example" : "1"
           },
           "qs_platform" : {
-            "description" : "Platform (null)"
+            "type" : "string",
+            "description" : "Platform (null)",
+            "nullable" : true
           }
         },
         "description" : "Core service record for a QuickServer including ID, status, IP, OS, and billing details."
@@ -21053,10 +21070,14 @@
             "example" : "0"
           },
           "qs_last_install_time" : {
-            "description" : "Last install time (null)"
+            "type" : "string",
+            "description" : "Last install time (null)",
+            "nullable" : true
           },
           "qs_partitions" : {
-            "description" : "Partitions information (null)"
+            "type" : "string",
+            "description" : "Partitions information (null)",
+            "nullable" : true
           },
           "qs_cpu_flags" : {
             "type" : "string",
@@ -21230,6 +21251,7 @@
             "example" : ""
           },
           "mac" : {
+            "type" : "string",
             "description" : "MAC address associated with the asset."
           },
           "datacenter" : {
@@ -21288,18 +21310,23 @@
             "example" : "10.8.69.7"
           },
           "ipmi_admin_username" : {
+            "type" : "string",
             "description" : "IPMI admin username associated with the asset."
           },
           "ipmi_admin_password" : {
+            "type" : "string",
             "description" : "IPMI admin password associated with the asset."
           },
           "ipmi_client_username" : {
+            "type" : "string",
             "description" : "IPMI client username associated with the asset."
           },
           "ipmi_client_password" : {
+            "type" : "string",
             "description" : "IPMI client password associated with the asset."
           },
           "ipmi_updated" : {
+            "type" : "string",
             "description" : "IPMI update status associated with the asset."
           },
           "ipmi_working" : {
@@ -21353,9 +21380,11 @@
             "example" : "0"
           },
           "create_timestamp" : {
+            "type" : "string",
             "description" : "Timestamp of asset creation."
           },
           "update_timestamp" : {
+            "type" : "string",
             "description" : "Timestamp of asset update."
           },
           "asset_id" : {
@@ -21399,6 +21428,7 @@
             "example" : "5"
           },
           "comment" : {
+            "type" : "string",
             "description" : "Comment associated with the asset."
           },
           "switchports" : {
@@ -21833,6 +21863,7 @@
             "example" : "yes"
           },
           "hd_ids" : {
+            "type" : "string",
             "description" : "Hard drive IDs."
           },
           "price_display" : {
@@ -22393,6 +22424,7 @@
             "example" : "0"
           },
           "server_discount" : {
+            "type" : "string",
             "description" : "Discount information for the server."
           },
           "server_rep" : {
@@ -22411,6 +22443,7 @@
             "example" : "230"
           },
           "server_location" : {
+            "type" : "string",
             "description" : "The location of the server."
           },
           "server_hardware_ordered" : {
@@ -22444,6 +22477,7 @@
             "example" : "20"
           },
           "server_dedicated_hd2" : {
+            "type" : "string",
             "description" : "The size of the second dedicated hard drive."
           },
           "server_dedicated_bandwidth" : {
@@ -22462,6 +22496,7 @@
             "example" : "30"
           },
           "server_dedicated_cp" : {
+            "type" : "string",
             "description" : "The control panel of the server."
           },
           "server_dedicated_raid" : {
@@ -23823,6 +23858,7 @@
             "example" : "1.2.3.4"
           },
           "vps_ipv6" : {
+            "type" : "string",
             "description" : "IPv6 address of the VPS"
           },
           "vps_vzid" : {
@@ -25206,12 +25242,15 @@
             "example" : "webhosting"
           },
           "services_html" : {
+            "type" : "string",
             "description" : "HTML content for the service."
           },
           "services_description" : {
+            "type" : "string",
             "description" : "Description of the service."
           },
           "services_moreinfo_url" : {
+            "type" : "string",
             "description" : "URL for more information about the service."
           },
           "services_hidden" : {
@@ -26792,6 +26831,7 @@
       },
       "ReplyTicketRequest" : {
         "title" : "Post reply",
+        "type" : "object",
         "properties" : {
           "content" : {
             "type" : "string"
@@ -28172,6 +28212,7 @@
         } ]
       },
       "inline_response_200_27" : {
+        "type" : "object",
         "properties" : {
           "bandwidth" : {
             "type" : "array",

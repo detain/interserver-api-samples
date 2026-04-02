@@ -1078,14 +1078,16 @@ export default function() {
         // Request No. 2: deleteIpLimit
         {
             let url = BASE_URL + `/account/iplimits`;
+            // TODO: edit the parameters of the request body.
+            let body = {"start": "string", "end": "string"};
             let params = {
                 headers: {
-                    "X-API-KEY": `${X_API_KEY}`, "sessionid": `${sessionid}`, "Accept": "application/json"
+                    "Content-Type": "application/json", "X-API-KEY": `${X_API_KEY}`, "sessionid": `${sessionid}`, "Accept": "application/json"
                 }, cookies: {
                     "sessionid": `${sessionid}`
                 }
             };
-            let request = http.patch(url, params);
+            let request = http.patch(url, JSON.stringify(body), params);
 
             check(request, {
                 "IP Range removed.": (r) => r.status === 200

@@ -14,7 +14,7 @@ class ServerOrderCPU(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, id: str=None, price: int=None, img: str=None, short_desc: str=None, long_desc: str=None, location: str=None, fsb: str=None, manu: str=None, type: str=None, speed: str=None, cache: str=None, active: str=None, num_cores: str=None, num_cpus: str=None, benchmark: str=None, monthly_price: int=None, max_ram: str=None, min_ram: str=None, max_lff: str=None, max_sff: str=None, max_nve: str=None, visible: str=None, hd_ids: Object=None, price_display: str=None, monthly_price_display: str=None):  # noqa: E501
+    def __init__(self, id: str=None, price: int=None, img: str=None, short_desc: str=None, long_desc: str=None, location: str=None, fsb: str=None, manu: str=None, type: str=None, speed: str=None, cache: str=None, active: str=None, num_cores: str=None, num_cpus: str=None, benchmark: str=None, monthly_price: int=None, max_ram: str=None, min_ram: str=None, max_lff: str=None, max_sff: str=None, max_nve: str=None, visible: str=None, hd_ids: str=None, price_display: str=None, monthly_price_display: str=None):  # noqa: E501
         """ServerOrderCPU - a model defined in Swagger
 
         :param id: The id of this ServerOrderCPU.  # noqa: E501
@@ -62,7 +62,7 @@ class ServerOrderCPU(Model):
         :param visible: The visible of this ServerOrderCPU.  # noqa: E501
         :type visible: str
         :param hd_ids: The hd_ids of this ServerOrderCPU.  # noqa: E501
-        :type hd_ids: Object
+        :type hd_ids: str
         :param price_display: The price_display of this ServerOrderCPU.  # noqa: E501
         :type price_display: str
         :param monthly_price_display: The monthly_price_display of this ServerOrderCPU.  # noqa: E501
@@ -91,7 +91,7 @@ class ServerOrderCPU(Model):
             'max_sff': str,
             'max_nve': str,
             'visible': str,
-            'hd_ids': Object,
+            'hd_ids': str,
             'price_display': str,
             'monthly_price_display': str
         }
@@ -667,24 +667,24 @@ class ServerOrderCPU(Model):
         self._visible = visible
 
     @property
-    def hd_ids(self) -> Object:
+    def hd_ids(self) -> str:
         """Gets the hd_ids of this ServerOrderCPU.
 
         Hard drive IDs.  # noqa: E501
 
         :return: The hd_ids of this ServerOrderCPU.
-        :rtype: Object
+        :rtype: str
         """
         return self._hd_ids
 
     @hd_ids.setter
-    def hd_ids(self, hd_ids: Object):
+    def hd_ids(self, hd_ids: str):
         """Sets the hd_ids of this ServerOrderCPU.
 
         Hard drive IDs.  # noqa: E501
 
         :param hd_ids: The hd_ids of this ServerOrderCPU.
-        :type hd_ids: Object
+        :type hd_ids: str
         """
 
         self._hd_ids = hd_ids

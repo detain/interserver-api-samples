@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * VpsServiceInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class VpsServiceInfo {
   public static final String SERIALIZED_NAME_VPS_ID = "vps_id";
   @SerializedName(SERIALIZED_NAME_VPS_ID)
@@ -74,7 +73,7 @@ public class VpsServiceInfo {
   public static final String SERIALIZED_NAME_VPS_IPV6 = "vps_ipv6";
   @SerializedName(SERIALIZED_NAME_VPS_IPV6)
   @javax.annotation.Nullable
-  private Object vpsIpv6 = null;
+  private String vpsIpv6;
 
   public static final String SERIALIZED_NAME_VPS_VZID = "vps_vzid";
   @SerializedName(SERIALIZED_NAME_VPS_VZID)
@@ -265,7 +264,7 @@ public class VpsServiceInfo {
   }
 
 
-  public VpsServiceInfo vpsIpv6(@javax.annotation.Nullable Object vpsIpv6) {
+  public VpsServiceInfo vpsIpv6(@javax.annotation.Nullable String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
     return this;
   }
@@ -275,11 +274,11 @@ public class VpsServiceInfo {
    * @return vpsIpv6
    */
   @javax.annotation.Nullable
-  public Object getVpsIpv6() {
+  public String getVpsIpv6() {
     return vpsIpv6;
   }
 
-  public void setVpsIpv6(@javax.annotation.Nullable Object vpsIpv6) {
+  public void setVpsIpv6(@javax.annotation.Nullable String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
   }
 
@@ -741,20 +740,9 @@ public class VpsServiceInfo {
         Objects.equals(this.vpsDiskmax, vpsServiceInfo.vpsDiskmax);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(vpsId, vpsCustid, vpsServer, vpsIp, vpsIpv6, vpsVzid, vpsCurrency, vpsType, vpsOrderDate, vpsStatus, vpsInvoice, vpsCoupon, vpsExtra, vpsHostname, vpsServerStatus, vpsComment, vpsSlices, vpsVnc, vpsVncPort, vpsRootpass, vpsMac, vpsOs, vpsVersion, vpsLocation, vpsPlatform, vpsDiskused, vpsDiskmax);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -844,6 +832,9 @@ public class VpsServiceInfo {
       }
       if ((jsonObj.get("vps_ip") != null && !jsonObj.get("vps_ip").isJsonNull()) && !jsonObj.get("vps_ip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `vps_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vps_ip").toString()));
+      }
+      if ((jsonObj.get("vps_ipv6") != null && !jsonObj.get("vps_ipv6").isJsonNull()) && !jsonObj.get("vps_ipv6").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `vps_ipv6` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vps_ipv6").toString()));
       }
       if ((jsonObj.get("vps_vzid") != null && !jsonObj.get("vps_vzid").isJsonNull()) && !jsonObj.get("vps_vzid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `vps_vzid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vps_vzid").toString()));

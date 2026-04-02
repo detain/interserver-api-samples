@@ -136,12 +136,12 @@ module OpenAPIClient
     property qs_packets_sec_out : String?
 
     # Last install time (null)
-    @[JSON::Field(key: "qs_last_install_time", type: JSON::Any?, nillable: true, emit_null: false)]
-    property qs_last_install_time : JSON::Any?
+    @[JSON::Field(key: "qs_last_install_time", type: String?, nillable: true, emit_null: false)]
+    property qs_last_install_time : String?
 
     # Partitions information (null)
-    @[JSON::Field(key: "qs_partitions", type: JSON::Any?, nillable: true, emit_null: false)]
-    property qs_partitions : JSON::Any?
+    @[JSON::Field(key: "qs_partitions", type: String?, nillable: true, emit_null: false)]
+    property qs_partitions : String?
 
     # CPU flags
     @[JSON::Field(key: "qs_cpu_flags", type: String?, nillable: true, emit_null: false)]
@@ -149,7 +149,7 @@ module OpenAPIClient
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(@qs_id : String? = nil, @qs_name : String? = nil, @qs_ip : String? = nil, @qs_type : String? = nil, @qs_hdsize : String? = nil, @qs_hdfree : String? = nil, @qs_bits : String? = nil, @qs_load : String? = nil, @qs_ram : String? = nil, @qs_cpu_model : String? = nil, @qs_cpu_mhz : String? = nil, @qs_location : String? = nil, @qs_available : String? = nil, @qs_cost : String? = nil, @qs_last_update : String? = nil, @qs_cores : String? = nil, @qs_iowait : String? = nil, @qs_raid_status : String? = nil, @qs_drive_type : String? = nil, @qs_order : String? = nil, @qs_raid_building : String? = nil, @qs_kernel : String? = nil, @qs_ioping : String? = nil, @qs_speed : String? = nil, @qs_distro : String? = nil, @qs_distro_version : String? = nil, @qs_bytes_sec_in : String? = nil, @qs_bytes_sec_out : String? = nil, @qs_packets_sec_in : String? = nil, @qs_packets_sec_out : String? = nil, @qs_last_install_time : JSON::Any? = nil, @qs_partitions : JSON::Any? = nil, @qs_cpu_flags : String? = nil)
+    def initialize(@qs_id : String? = nil, @qs_name : String? = nil, @qs_ip : String? = nil, @qs_type : String? = nil, @qs_hdsize : String? = nil, @qs_hdfree : String? = nil, @qs_bits : String? = nil, @qs_load : String? = nil, @qs_ram : String? = nil, @qs_cpu_model : String? = nil, @qs_cpu_mhz : String? = nil, @qs_location : String? = nil, @qs_available : String? = nil, @qs_cost : String? = nil, @qs_last_update : String? = nil, @qs_cores : String? = nil, @qs_iowait : String? = nil, @qs_raid_status : String? = nil, @qs_drive_type : String? = nil, @qs_order : String? = nil, @qs_raid_building : String? = nil, @qs_kernel : String? = nil, @qs_ioping : String? = nil, @qs_speed : String? = nil, @qs_distro : String? = nil, @qs_distro_version : String? = nil, @qs_bytes_sec_in : String? = nil, @qs_bytes_sec_out : String? = nil, @qs_packets_sec_in : String? = nil, @qs_packets_sec_out : String? = nil, @qs_last_install_time : String? = nil, @qs_partitions : String? = nil, @qs_cpu_flags : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

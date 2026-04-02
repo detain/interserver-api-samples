@@ -58,7 +58,7 @@ defmodule InterServerManagementAPI.Model.ServerOrderCpu do
     :max_sff => String.t | nil,
     :max_nve => String.t | nil,
     :visible => String.t | nil,
-    :hd_ids => any() | nil,
+    :hd_ids => String.t | nil,
     :price_display => String.t | nil,
     :monthly_price_display => String.t | nil
   }

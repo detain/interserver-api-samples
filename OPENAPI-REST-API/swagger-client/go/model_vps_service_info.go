@@ -19,7 +19,7 @@ type VpsServiceInfo struct {
 	// IP address of the VPS
 	VpsIp string `json:"vps_ip,omitempty"`
 	// IPv6 address of the VPS
-	VpsIpv6 *Object `json:"vps_ipv6,omitempty"`
+	VpsIpv6 string `json:"vps_ipv6,omitempty"`
 	// VPS Virtuozzo ID
 	VpsVzid string `json:"vps_vzid,omitempty"`
 	// Currency used for billing

@@ -141,7 +141,8 @@ public class AccountApiTest {
      */
     @Test
     public void deleteIpLimitTest() {
-        //GenericResponse response = api.deleteIpLimit();
+        IpLimitRange body = null;
+        //GenericResponse response = api.deleteIpLimit(body);
         //assertNotNull(response);
         // TODO: test validations
         

@@ -124,13 +124,14 @@ public class OASFloatingIPsApi {
     /**
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
+     * @return List<Object>
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getFloatingIpsList() {
+    public List<Object> getFloatingIpsList() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (List<Object>) client.invoke(
             'GET', '/floating_ips', '',
             query, form,
             new Map<String, Object>(),
@@ -138,7 +139,7 @@ public class OASFloatingIPsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            List<Object>.class
         );
     }
     /**

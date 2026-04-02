@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -59,7 +58,7 @@ abstract class VpsServiceInfo implements Built<VpsServiceInfo, VpsServiceInfoBui
 
   /// IPv6 address of the VPS
   @BuiltValueField(wireName: r'vps_ipv6')
-  JsonObject? get vpsIpv6;
+  String? get vpsIpv6;
 
   /// VPS Virtuozzo ID
   @BuiltValueField(wireName: r'vps_vzid')
@@ -204,7 +203,7 @@ class _$VpsServiceInfoSerializer implements PrimitiveSerializer<VpsServiceInfo> 
       yield r'vps_ipv6';
       yield serializers.serialize(
         object.vpsIpv6,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.vpsVzid != null) {
@@ -415,9 +414,8 @@ class _$VpsServiceInfoSerializer implements PrimitiveSerializer<VpsServiceInfo> 
         case r'vps_ipv6':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.vpsIpv6 = valueDes;
           break;
         case r'vps_vzid':

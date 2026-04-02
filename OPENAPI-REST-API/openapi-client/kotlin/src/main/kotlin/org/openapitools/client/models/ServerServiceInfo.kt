@@ -145,7 +145,7 @@ data class ServerServiceInfo (
 
     /* Discount information for the server. */
     @Json(name = "server_discount")
-    val serverDiscount: kotlin.Any? = null,
+    val serverDiscount: kotlin.String? = null,
 
     /* The reputation of the server. */
     @Json(name = "server_rep")
@@ -161,7 +161,7 @@ data class ServerServiceInfo (
 
     /* The location of the server. */
     @Json(name = "server_location")
-    val serverLocation: kotlin.Any? = null,
+    val serverLocation: kotlin.String? = null,
 
     /* The ordered hardware for the server. */
     @Json(name = "server_hardware_ordered")
@@ -189,7 +189,7 @@ data class ServerServiceInfo (
 
     /* The size of the second dedicated hard drive. */
     @Json(name = "server_dedicated_hd2")
-    val serverDedicatedHd2: kotlin.Any? = null,
+    val serverDedicatedHd2: kotlin.String? = null,
 
     /* The bandwidth of the server. */
     @Json(name = "server_dedicated_bandwidth")
@@ -205,7 +205,7 @@ data class ServerServiceInfo (
 
     /* The control panel of the server. */
     @Json(name = "server_dedicated_cp")
-    val serverDedicatedCp: kotlin.Any? = null,
+    val serverDedicatedCp: kotlin.String? = null,
 
     /* The RAID configuration of the server. */
     @Json(name = "server_dedicated_raid")

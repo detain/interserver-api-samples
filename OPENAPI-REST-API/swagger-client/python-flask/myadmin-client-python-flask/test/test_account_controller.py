@@ -63,9 +63,11 @@ class TestAccountController(BaseTestCase):
 
         Remove IP Access Restriction
         """
+        body = IpLimitRange()
         response = self.client.open(
             '/apiv2/account/iplimits',
             method='PATCH',
+            data=json.dumps(body),
             content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

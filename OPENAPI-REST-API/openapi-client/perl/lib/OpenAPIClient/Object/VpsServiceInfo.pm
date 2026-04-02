@@ -248,7 +248,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'vps_ipv6' => {
-        datatype => 'object',
+        datatype => 'string',
         base_name => 'vps_ipv6',
         description => 'IPv6 address of the VPS',
         format => '',
@@ -415,7 +415,7 @@ __PACKAGE__->openapi_types( {
     'vps_custid' => 'string',
     'vps_server' => 'string',
     'vps_ip' => 'string',
-    'vps_ipv6' => 'object',
+    'vps_ipv6' => 'string',
     'vps_vzid' => 'string',
     'vps_currency' => 'string',
     'vps_type' => 'string',

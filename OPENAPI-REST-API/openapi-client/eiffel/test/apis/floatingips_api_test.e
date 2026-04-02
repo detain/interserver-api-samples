@@ -76,10 +76,11 @@ feature -- Test routines
             --
             -- Returns all Floating IP services on the account with their current status and assignment details.
         local
+            l_response: LIST [ANY]
         do
             -- TODO: Initialize required params.
 
-            -- api.floating_ips_list
+            -- l_response := api.floating_ips_list
             assert ("not_implemented", False)
         end
 

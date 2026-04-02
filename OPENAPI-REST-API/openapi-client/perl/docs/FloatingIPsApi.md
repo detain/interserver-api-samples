@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_floating_ips_list**
-> get_floating_ips_list()
+> ARRAY[object] get_floating_ips_list()
 
 List Floating IPs
 
@@ -282,7 +282,8 @@ my $api_instance = OpenAPIClient::FloatingIPsApi->new(
 
 
 eval {
-    $api_instance->get_floating_ips_list();
+    my $result = $api_instance->get_floating_ips_list();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling FloatingIPsApi->get_floating_ips_list: $@\n";
@@ -294,7 +295,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**ARRAY[object]**
 
 ### Authorization
 

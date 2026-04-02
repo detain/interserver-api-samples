@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> object[] getFloatingIpsList()
 
 List Floating IPs
 
@@ -281,7 +281,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 );
 
 try {
-    $apiInstance->getFloatingIpsList();
+    $result = $apiInstance->getFloatingIpsList();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->getFloatingIpsList: ', $e->getMessage(), PHP_EOL;
 }
@@ -293,7 +294,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object[]**
 
 ### Authorization
 

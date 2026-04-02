@@ -54,13 +54,13 @@ public struct ServerOrderCPU: Codable {
     /// Visibility status.
     public var visible: String?
     /// Hard drive IDs.
-    public var hdIds: Any?
+    public var hdIds: String?
     /// Display of CPU price.
     public var priceDisplay: String?
     /// Display of monthly CPU price.
     public var monthlyPriceDisplay: String?
 
-    public init(id: String? = nil, price: Int? = nil, img: String? = nil, shortDesc: String? = nil, longDesc: String? = nil, location: String? = nil, fsb: String? = nil, manu: String? = nil, type: String? = nil, speed: String? = nil, cache: String? = nil, active: String? = nil, numCores: String? = nil, numCpus: String? = nil, benchmark: String? = nil, monthlyPrice: Int? = nil, maxRam: String? = nil, minRam: String? = nil, maxLff: String? = nil, maxSff: String? = nil, maxNve: String? = nil, visible: String? = nil, hdIds: Any? = nil, priceDisplay: String? = nil, monthlyPriceDisplay: String? = nil) {
+    public init(id: String? = nil, price: Int? = nil, img: String? = nil, shortDesc: String? = nil, longDesc: String? = nil, location: String? = nil, fsb: String? = nil, manu: String? = nil, type: String? = nil, speed: String? = nil, cache: String? = nil, active: String? = nil, numCores: String? = nil, numCpus: String? = nil, benchmark: String? = nil, monthlyPrice: Int? = nil, maxRam: String? = nil, minRam: String? = nil, maxLff: String? = nil, maxSff: String? = nil, maxNve: String? = nil, visible: String? = nil, hdIds: String? = nil, priceDisplay: String? = nil, monthlyPriceDisplay: String? = nil) {
         self.id = id
         self.price = price
         self.img = img
@@ -140,7 +140,7 @@ public struct ServerOrderCPU: Codable {
         maxSff = try container.decodeIfPresent(String.self, forKey: .maxSff)
         maxNve = try container.decodeIfPresent(String.self, forKey: .maxNve)
         visible = try container.decodeIfPresent(String.self, forKey: .visible)
-        hdIds = try container.decodeIfPresent(Any.self, forKey: .hdIds)
+        hdIds = try container.decodeIfPresent(String.self, forKey: .hdIds)
         priceDisplay = try container.decodeIfPresent(String.self, forKey: .priceDisplay)
         monthlyPriceDisplay = try container.decodeIfPresent(String.self, forKey: .monthlyPriceDisplay)
     }
@@ -169,9 +169,7 @@ public struct ServerOrderCPU: Codable {
         try container.encodeIfPresent(maxSff, forKey: .maxSff)
         try container.encodeIfPresent(maxNve, forKey: .maxNve)
         try container.encodeIfPresent(visible, forKey: .visible)
-        if let hdIds = hdIds {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: hdIds), forKey: .hdIds)
-        }
+        try container.encodeIfPresent(hdIds, forKey: .hdIds)
         try container.encodeIfPresent(priceDisplay, forKey: .priceDisplay)
         try container.encodeIfPresent(monthlyPriceDisplay, forKey: .monthlyPriceDisplay)
     }

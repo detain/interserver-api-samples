@@ -42,7 +42,7 @@ public class OASVpsServiceInfo implements OAS.MappedProperties {
      * IPv6 address of the VPS
      * @return vpsIpv6
      */
-    public oas_any_type_not_mapped vpsIpv6 { get; set; }
+    public String vpsIpv6 { get; set; }
 
     /**
      * VPS Virtuozzo ID
@@ -1100,7 +1100,7 @@ public class OASVpsServiceInfo implements OAS.MappedProperties {
           vpsServiceInfo.vpsCustid = '223513';
           vpsServiceInfo.vpsServer = '2439';
           vpsServiceInfo.vpsIp = '1.2.3.4';
-          vpsServiceInfo.vpsIpv6 = oas_any_type_not_mapped.getExample();
+          vpsServiceInfo.vpsIpv6 = '';
           vpsServiceInfo.vpsVzid = 'vps85872';
           vpsServiceInfo.vpsCurrency = 'USD';
           vpsServiceInfo.vpsType = '33';

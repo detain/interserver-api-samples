@@ -62,9 +62,9 @@ class QuickserverServiceMaster {
 /* Packets/sec out */
   String qsPacketsSecOut = null;
 /* Last install time (null) */
-  Object qsLastInstallTime = null;
+  String qsLastInstallTime = null;
 /* Partitions information (null) */
-  Object qsPartitions = null;
+  String qsPartitions = null;
 /* CPU flags */
   String qsCpuFlags = null;
 
@@ -107,8 +107,8 @@ class QuickserverServiceMaster {
     qsBytesSecOut = json['qs_bytes_sec_out'];
     qsPacketsSecIn = json['qs_packets_sec_in'];
     qsPacketsSecOut = json['qs_packets_sec_out'];
-    qsLastInstallTime = new Object.fromJson(json['qs_last_install_time']);
-    qsPartitions = new Object.fromJson(json['qs_partitions']);
+    qsLastInstallTime = json['qs_last_install_time'];
+    qsPartitions = json['qs_partitions'];
     qsCpuFlags = json['qs_cpu_flags'];
   }
 

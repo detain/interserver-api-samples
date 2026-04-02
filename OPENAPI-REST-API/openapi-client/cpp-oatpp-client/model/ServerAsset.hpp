@@ -48,7 +48,7 @@ class ServerAsset : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, primary_ipv6);
 
-  DTO_FIELD(oatpp::Any, mac);
+  DTO_FIELD(oatpp::String, mac);
   DTO_FIELD(oatpp::Boolean, macIsSet);
   DTO_FIELD(oatpp::String, datacenter);
 
@@ -72,15 +72,15 @@ class ServerAsset : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, ipmi_ip);
 
-  DTO_FIELD(oatpp::Any, ipmi_admin_username);
+  DTO_FIELD(oatpp::String, ipmi_admin_username);
   DTO_FIELD(oatpp::Boolean, ipmi_admin_usernameIsSet);
-  DTO_FIELD(oatpp::Any, ipmi_admin_password);
+  DTO_FIELD(oatpp::String, ipmi_admin_password);
   DTO_FIELD(oatpp::Boolean, ipmi_admin_passwordIsSet);
-  DTO_FIELD(oatpp::Any, ipmi_client_username);
+  DTO_FIELD(oatpp::String, ipmi_client_username);
   DTO_FIELD(oatpp::Boolean, ipmi_client_usernameIsSet);
-  DTO_FIELD(oatpp::Any, ipmi_client_password);
+  DTO_FIELD(oatpp::String, ipmi_client_password);
   DTO_FIELD(oatpp::Boolean, ipmi_client_passwordIsSet);
-  DTO_FIELD(oatpp::Any, ipmi_updated);
+  DTO_FIELD(oatpp::String, ipmi_updated);
   DTO_FIELD(oatpp::Boolean, ipmi_updatedIsSet);
   DTO_FIELD(oatpp::String, ipmi_working);
 
@@ -102,9 +102,9 @@ class ServerAsset : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, overdue);
 
-  DTO_FIELD(oatpp::Any, create_timestamp);
+  DTO_FIELD(oatpp::String, create_timestamp);
   DTO_FIELD(oatpp::Boolean, create_timestampIsSet);
-  DTO_FIELD(oatpp::Any, update_timestamp);
+  DTO_FIELD(oatpp::String, update_timestamp);
   DTO_FIELD(oatpp::Boolean, update_timestampIsSet);
   DTO_FIELD(oatpp::String, asset_id);
 
@@ -122,7 +122,7 @@ class ServerAsset : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, rack_y);
 
-  DTO_FIELD(oatpp::Any, comment);
+  DTO_FIELD(oatpp::String, comment);
   DTO_FIELD(oatpp::Boolean, commentIsSet);
   DTO_FIELD(oatpp::Vector<oatpp::Int32>, switchports);
 

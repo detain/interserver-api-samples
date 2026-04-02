@@ -78,9 +78,9 @@ class AccountApi(
           
             
               
-                
-                  accountService.deleteIpLimit()
-               
+                entity(as[IpLimitRange]){ body =>
+                  accountService.deleteIpLimit(body = body)
+                }
              
            
          
@@ -330,7 +330,7 @@ trait AccountApiService {
    * Code: 200, Message: IP Range removed., DataType: GenericResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def deleteIpLimit()
+  def deleteIpLimit(body: IpLimitRange)
       (implicit toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getAccountInfo200(responseAccountInfo: AccountInfo)(implicit toEntityMarshallerAccountInfo: ToEntityMarshaller[AccountInfo]): Route =

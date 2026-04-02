@@ -16,6 +16,7 @@ import org.openapitools.client.model.GenericResponse
 import org.openapitools.client.model.GetAccountInfo401Response
 import org.openapitools.client.model.GetAccountTfaSetup200Response
 import org.openapitools.client.model.Home
+import org.openapitools.client.model.IpLimitRange
 import org.openapitools.client.model.SearchAutocompleteResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
@@ -143,8 +144,10 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
+   * 
+   * @param ipLimitRange 
    */
-  def deleteIpLimit(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], GenericResponse]] =
+  def deleteIpLimit(ipLimitRange: Option[IpLimitRange] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], GenericResponse]] =
     val requestURL =
       uri"$baseUrl/account/iplimits"
 
@@ -154,6 +157,7 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
+      .body(asJson(ipLimitRange))
       .response(asJson[GenericResponse])
 
   /**

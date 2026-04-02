@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
 case class ServerServiceInfo(
@@ -52,7 +51,7 @@ case class ServerServiceInfo(
   /* The setup status of the server. */
   @named("server_setup") server_setup: Option[String] = scala.None,
   /* Discount information for the server. */
-  @named("server_discount") server_discount: Option[io.circe.Json] = scala.None,
+  @named("server_discount") server_discount: Option[String] = scala.None,
   /* The reputation of the server. */
   @named("server_rep") server_rep: Option[String] = scala.None,
   /* The date related to the server. */
@@ -60,7 +59,7 @@ case class ServerServiceInfo(
   /* The total cost of the server. */
   @named("server_total_cost") server_total_cost: Option[String] = scala.None,
   /* The location of the server. */
-  @named("server_location") server_location: Option[io.circe.Json] = scala.None,
+  @named("server_location") server_location: Option[String] = scala.None,
   /* The ordered hardware for the server. */
   @named("server_hardware_ordered") server_hardware_ordered: Option[String] = scala.None,
   /* The billed amount for the server. */
@@ -74,7 +73,7 @@ case class ServerServiceInfo(
   /* The size of the first dedicated hard drive. */
   @named("server_dedicated_hd1") server_dedicated_hd1: Option[String] = scala.None,
   /* The size of the second dedicated hard drive. */
-  @named("server_dedicated_hd2") server_dedicated_hd2: Option[io.circe.Json] = scala.None,
+  @named("server_dedicated_hd2") server_dedicated_hd2: Option[String] = scala.None,
   /* The bandwidth of the server. */
   @named("server_dedicated_bandwidth") server_dedicated_bandwidth: Option[String] = scala.None,
   /* The number of dedicated IPs for the server. */
@@ -82,7 +81,7 @@ case class ServerServiceInfo(
   /* The operating system of the server. */
   @named("server_dedicated_os") server_dedicated_os: Option[String] = scala.None,
   /* The control panel of the server. */
-  @named("server_dedicated_cp") server_dedicated_cp: Option[io.circe.Json] = scala.None,
+  @named("server_dedicated_cp") server_dedicated_cp: Option[String] = scala.None,
   /* The RAID configuration of the server. */
   @named("server_dedicated_raid") server_dedicated_raid: Option[String] = scala.None,
   /* Additional information about the server. */

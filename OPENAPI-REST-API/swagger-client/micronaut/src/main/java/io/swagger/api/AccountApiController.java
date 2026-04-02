@@ -76,9 +76,9 @@ public class AccountApiController implements AccountApi {
     }
 
     @Override
-    public Single<HttpResponse<GenericResponse>> deleteIpLimit() {
+    public Single<HttpResponse<GenericResponse>> deleteIpLimit(@Nullable @Valid IpLimitRange body) {
         // TODO: Implement me
-        return AccountApi.super.deleteIpLimit();
+        return AccountApi.super.deleteIpLimit(body);
     }
 
     @Override

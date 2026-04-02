@@ -61,7 +61,7 @@ public class AccountApiServiceImpl implements AccountApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response deleteIpLimit(SecurityContext securityContext) {
+      public Response deleteIpLimit(IpLimitRange body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

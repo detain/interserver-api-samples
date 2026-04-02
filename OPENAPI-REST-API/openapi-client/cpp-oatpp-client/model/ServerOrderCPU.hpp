@@ -79,7 +79,7 @@ class ServerOrderCPU : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, max_nveIsSet);
   DTO_FIELD(oatpp::String, visible);
   DTO_FIELD(oatpp::Boolean, visibleIsSet);
-  DTO_FIELD(oatpp::Any, hd_ids);
+  DTO_FIELD(oatpp::String, hd_ids);
   DTO_FIELD(oatpp::Boolean, hd_idsIsSet);
   DTO_FIELD(oatpp::String, price_display);
   DTO_FIELD(oatpp::Boolean, price_displayIsSet);

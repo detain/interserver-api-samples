@@ -354,7 +354,7 @@ end:
 //
 // Returns all Floating IP services on the account with their current status and assignment details.
 //
-void
+list_t*
 FloatingIPsAPI_getFloatingIpsList(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -398,8 +398,28 @@ FloatingIPsAPI_getFloatingIpsList(apiClient_t *apiClient)
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Default response");
     //}
-    //No return type
-end:
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *FloatingIPsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(FloatingIPsAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
+        }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, FloatingIPsAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
+
+        cJSON_Delete( FloatingIPsAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -411,6 +431,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

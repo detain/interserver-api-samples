@@ -8,7 +8,7 @@
 | **vpsCustid** | **kotlin.String** | Customer ID |  [optional] |
 | **vpsServer** | **kotlin.String** | Server ID |  [optional] |
 | **vpsIp** | **kotlin.String** | IP address of the VPS |  [optional] |
-| **vpsIpv6** | [**kotlin.Any**](.md) | IPv6 address of the VPS |  [optional] |
+| **vpsIpv6** | **kotlin.String** | IPv6 address of the VPS |  [optional] |
 | **vpsVzid** | **kotlin.String** | VPS Virtuozzo ID |  [optional] |
 | **vpsCurrency** | **kotlin.String** | Currency used for billing |  [optional] |
 | **vpsType** | **kotlin.String** | VPS type |  [optional] |

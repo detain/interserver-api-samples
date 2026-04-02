@@ -150,7 +150,7 @@ public class OASServerOrderCPU implements OAS.MappedProperties {
      * Hard drive IDs.
      * @return hdIds
      */
-    public oas_any_type_not_mapped hdIds { get; set; }
+    public String hdIds { get; set; }
 
     /**
      * Display of CPU price.
@@ -448,7 +448,7 @@ public class OASServerOrderCPU implements OAS.MappedProperties {
           serverOrderCPU.maxSff = '4';
           serverOrderCPU.maxNve = '2';
           serverOrderCPU.visible = 'yes';
-          serverOrderCPU.hdIds = oas_any_type_not_mapped.getExample();
+          serverOrderCPU.hdIds = '';
           serverOrderCPU.priceDisplay = '$0.00';
           serverOrderCPU.monthlyPriceDisplay = '$75.00';
         return serverOrderCPU;

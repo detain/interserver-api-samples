@@ -22,7 +22,6 @@
 #include <QJsonObject>
 
 #include "OAIServerLease.h"
-#include <QJsonValue>
 #include <QList>
 #include <QString>
 
@@ -238,48 +237,48 @@ public:
     bool is_lease_Set() const;
     bool is_lease_Valid() const;
 
-    QJsonValue getMac() const;
-    void setMac(const QJsonValue &mac);
+    QString getMac() const;
+    void setMac(const QString &mac);
     bool is_mac_Set() const;
     bool is_mac_Valid() const;
 
-    QJsonValue getIpmiAdminUsername() const;
-    void setIpmiAdminUsername(const QJsonValue &ipmi_admin_username);
+    QString getIpmiAdminUsername() const;
+    void setIpmiAdminUsername(const QString &ipmi_admin_username);
     bool is_ipmi_admin_username_Set() const;
     bool is_ipmi_admin_username_Valid() const;
 
-    QJsonValue getIpmiAdminPassword() const;
-    void setIpmiAdminPassword(const QJsonValue &ipmi_admin_password);
+    QString getIpmiAdminPassword() const;
+    void setIpmiAdminPassword(const QString &ipmi_admin_password);
     bool is_ipmi_admin_password_Set() const;
     bool is_ipmi_admin_password_Valid() const;
 
-    QJsonValue getIpmiClientUsername() const;
-    void setIpmiClientUsername(const QJsonValue &ipmi_client_username);
+    QString getIpmiClientUsername() const;
+    void setIpmiClientUsername(const QString &ipmi_client_username);
     bool is_ipmi_client_username_Set() const;
     bool is_ipmi_client_username_Valid() const;
 
-    QJsonValue getIpmiClientPassword() const;
-    void setIpmiClientPassword(const QJsonValue &ipmi_client_password);
+    QString getIpmiClientPassword() const;
+    void setIpmiClientPassword(const QString &ipmi_client_password);
     bool is_ipmi_client_password_Set() const;
     bool is_ipmi_client_password_Valid() const;
 
-    QJsonValue getIpmiUpdated() const;
-    void setIpmiUpdated(const QJsonValue &ipmi_updated);
+    QString getIpmiUpdated() const;
+    void setIpmiUpdated(const QString &ipmi_updated);
     bool is_ipmi_updated_Set() const;
     bool is_ipmi_updated_Valid() const;
 
-    QJsonValue getCreateTimestamp() const;
-    void setCreateTimestamp(const QJsonValue &create_timestamp);
+    QString getCreateTimestamp() const;
+    void setCreateTimestamp(const QString &create_timestamp);
     bool is_create_timestamp_Set() const;
     bool is_create_timestamp_Valid() const;
 
-    QJsonValue getUpdateTimestamp() const;
-    void setUpdateTimestamp(const QJsonValue &update_timestamp);
+    QString getUpdateTimestamp() const;
+    void setUpdateTimestamp(const QString &update_timestamp);
     bool is_update_timestamp_Set() const;
     bool is_update_timestamp_Valid() const;
 
-    QJsonValue getComment() const;
-    void setComment(const QJsonValue &comment);
+    QString getComment() const;
+    void setComment(const QString &comment);
     bool is_comment_Set() const;
     bool is_comment_Valid() const;
 
@@ -445,39 +444,39 @@ private:
     bool m_lease_isSet;
     bool m_lease_isValid;
 
-    QJsonValue m_mac;
+    QString m_mac;
     bool m_mac_isSet;
     bool m_mac_isValid;
 
-    QJsonValue m_ipmi_admin_username;
+    QString m_ipmi_admin_username;
     bool m_ipmi_admin_username_isSet;
     bool m_ipmi_admin_username_isValid;
 
-    QJsonValue m_ipmi_admin_password;
+    QString m_ipmi_admin_password;
     bool m_ipmi_admin_password_isSet;
     bool m_ipmi_admin_password_isValid;
 
-    QJsonValue m_ipmi_client_username;
+    QString m_ipmi_client_username;
     bool m_ipmi_client_username_isSet;
     bool m_ipmi_client_username_isValid;
 
-    QJsonValue m_ipmi_client_password;
+    QString m_ipmi_client_password;
     bool m_ipmi_client_password_isSet;
     bool m_ipmi_client_password_isValid;
 
-    QJsonValue m_ipmi_updated;
+    QString m_ipmi_updated;
     bool m_ipmi_updated_isSet;
     bool m_ipmi_updated_isValid;
 
-    QJsonValue m_create_timestamp;
+    QString m_create_timestamp;
     bool m_create_timestamp_isSet;
     bool m_create_timestamp_isValid;
 
-    QJsonValue m_update_timestamp;
+    QString m_update_timestamp;
     bool m_update_timestamp_isSet;
     bool m_update_timestamp_isValid;
 
-    QJsonValue m_comment;
+    QString m_comment;
     bool m_comment_isSet;
     bool m_comment_isValid;
 };

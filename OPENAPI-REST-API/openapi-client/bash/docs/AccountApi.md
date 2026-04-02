@@ -137,7 +137,10 @@ Removes an IP address range from the account's access restriction list. If this 
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md) |  | [optional]
 
 ### Return type
 

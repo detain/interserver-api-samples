@@ -36,8 +36,8 @@ static quickserver_service_master_t *quickserver_service_master_create_internal(
     char *qs_bytes_sec_out,
     char *qs_packets_sec_in,
     char *qs_packets_sec_out,
-    any_type_t *qs_last_install_time,
-    any_type_t *qs_partitions,
+    char *qs_last_install_time,
+    char *qs_partitions,
     char *qs_cpu_flags
     ) {
     quickserver_service_master_t *quickserver_service_master_local_var = malloc(sizeof(quickserver_service_master_t));
@@ -113,8 +113,8 @@ __attribute__((deprecated)) quickserver_service_master_t *quickserver_service_ma
     char *qs_bytes_sec_out,
     char *qs_packets_sec_in,
     char *qs_packets_sec_out,
-    any_type_t *qs_last_install_time,
-    any_type_t *qs_partitions,
+    char *qs_last_install_time,
+    char *qs_partitions,
     char *qs_cpu_flags
     ) {
     quickserver_service_master_t *result = quickserver_service_master_create_internal (
@@ -287,11 +287,11 @@ void quickserver_service_master_free(quickserver_service_master_t *quickserver_s
         quickserver_service_master->qs_packets_sec_out = NULL;
     }
     if (quickserver_service_master->qs_last_install_time) {
-        _free(quickserver_service_master->qs_last_install_time);
+        free(quickserver_service_master->qs_last_install_time);
         quickserver_service_master->qs_last_install_time = NULL;
     }
     if (quickserver_service_master->qs_partitions) {
-        _free(quickserver_service_master->qs_partitions);
+        free(quickserver_service_master->qs_partitions);
         quickserver_service_master->qs_partitions = NULL;
     }
     if (quickserver_service_master->qs_cpu_flags) {
@@ -546,26 +546,16 @@ cJSON *quickserver_service_master_convertToJSON(quickserver_service_master_t *qu
 
     // quickserver_service_master->qs_last_install_time
     if(quickserver_service_master->qs_last_install_time) {
-    cJSON *qs_last_install_time_local_JSON = _convertToJSON(quickserver_service_master->qs_last_install_time);
-    if(qs_last_install_time_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "qs_last_install_time", qs_last_install_time_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "qs_last_install_time", quickserver_service_master->qs_last_install_time) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // quickserver_service_master->qs_partitions
     if(quickserver_service_master->qs_partitions) {
-    cJSON *qs_partitions_local_JSON = _convertToJSON(quickserver_service_master->qs_partitions);
-    if(qs_partitions_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "qs_partitions", qs_partitions_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "qs_partitions", quickserver_service_master->qs_partitions) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -649,11 +639,9 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
 
     char *qs_packets_sec_out_local_str = NULL;
 
-    // define the local variable for quickserver_service_master->qs_last_install_time
-    _t *qs_last_install_time_local_nonprim = NULL;
+    char *qs_last_install_time_local_str = NULL;
 
-    // define the local variable for quickserver_service_master->qs_partitions
-    _t *qs_partitions_local_nonprim = NULL;
+    char *qs_partitions_local_str = NULL;
 
     char *qs_cpu_flags_local_str = NULL;
 
@@ -1023,7 +1011,10 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
         qs_last_install_time = NULL;
     }
     if (qs_last_install_time) { 
-    qs_last_install_time_local_nonprim = _parseFromJSON(qs_last_install_time); //custom
+    if(!cJSON_IsString(qs_last_install_time) && !cJSON_IsNull(qs_last_install_time))
+    {
+    goto end; //String
+    }
     }
 
     // quickserver_service_master->qs_partitions
@@ -1032,7 +1023,10 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
         qs_partitions = NULL;
     }
     if (qs_partitions) { 
-    qs_partitions_local_nonprim = _parseFromJSON(qs_partitions); //custom
+    if(!cJSON_IsString(qs_partitions) && !cJSON_IsNull(qs_partitions))
+    {
+    goto end; //String
+    }
     }
 
     // quickserver_service_master->qs_cpu_flags
@@ -1078,6 +1072,8 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
     if (qs_bytes_sec_out && !cJSON_IsNull(qs_bytes_sec_out)) qs_bytes_sec_out_local_str = strdup(qs_bytes_sec_out->valuestring);
     if (qs_packets_sec_in && !cJSON_IsNull(qs_packets_sec_in)) qs_packets_sec_in_local_str = strdup(qs_packets_sec_in->valuestring);
     if (qs_packets_sec_out && !cJSON_IsNull(qs_packets_sec_out)) qs_packets_sec_out_local_str = strdup(qs_packets_sec_out->valuestring);
+    if (qs_last_install_time && !cJSON_IsNull(qs_last_install_time)) qs_last_install_time_local_str = strdup(qs_last_install_time->valuestring);
+    if (qs_partitions && !cJSON_IsNull(qs_partitions)) qs_partitions_local_str = strdup(qs_partitions->valuestring);
     if (qs_cpu_flags && !cJSON_IsNull(qs_cpu_flags)) qs_cpu_flags_local_str = strdup(qs_cpu_flags->valuestring);
 
     quickserver_service_master_local_var = quickserver_service_master_create_internal (
@@ -1111,8 +1107,8 @@ quickserver_service_master_t *quickserver_service_master_parseFromJSON(cJSON *qu
         qs_bytes_sec_out_local_str,
         qs_packets_sec_in_local_str,
         qs_packets_sec_out_local_str,
-        qs_last_install_time ? qs_last_install_time_local_nonprim : NULL,
-        qs_partitions ? qs_partitions_local_nonprim : NULL,
+        qs_last_install_time_local_str,
+        qs_partitions_local_str,
         qs_cpu_flags_local_str
         );
 
@@ -1242,13 +1238,13 @@ end:
         free(qs_packets_sec_out_local_str);
         qs_packets_sec_out_local_str = NULL;
     }
-    if (qs_last_install_time_local_nonprim) {
-        _free(qs_last_install_time_local_nonprim);
-        qs_last_install_time_local_nonprim = NULL;
+    if (qs_last_install_time_local_str) {
+        free(qs_last_install_time_local_str);
+        qs_last_install_time_local_str = NULL;
     }
-    if (qs_partitions_local_nonprim) {
-        _free(qs_partitions_local_nonprim);
-        qs_partitions_local_nonprim = NULL;
+    if (qs_partitions_local_str) {
+        free(qs_partitions_local_str);
+        qs_partitions_local_str = NULL;
     }
     if (qs_cpu_flags_local_str) {
         free(qs_cpu_flags_local_str);

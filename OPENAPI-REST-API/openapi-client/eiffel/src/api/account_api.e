@@ -192,9 +192,11 @@ feature -- API Access
 			end
 		end
 
-	delete_ip_limit : detachable GENERIC_RESPONSE
+	delete_ip_limit (ip_limit_range: detachable IP_LIMIT_RANGE): detachable GENERIC_RESPONSE
 			-- Remove IP Access Restriction
 			-- Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+			-- 
+			-- argument: ip_limit_range  (optional)
 			-- 
 			-- 
 			-- Result GENERIC_RESPONSE
@@ -206,7 +208,7 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			
+			l_request.set_body(ip_limit_range)
 			l_path := "/account/iplimits"
 
 

@@ -97,15 +97,15 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
         'vlans' => 'string[]',
         'vlans6' => 'string[]',
         'lease' => '\Interserver\MyAdmin\Model\ServerLease',
-        'mac' => 'mixed',
-        'ipmiAdminUsername' => 'mixed',
-        'ipmiAdminPassword' => 'mixed',
-        'ipmiClientUsername' => 'mixed',
-        'ipmiClientPassword' => 'mixed',
-        'ipmiUpdated' => 'mixed',
-        'createTimestamp' => 'mixed',
-        'updateTimestamp' => 'mixed',
-        'comment' => 'mixed'
+        'mac' => 'string',
+        'ipmiAdminUsername' => 'string',
+        'ipmiAdminPassword' => 'string',
+        'ipmiClientUsername' => 'string',
+        'ipmiClientPassword' => 'string',
+        'ipmiUpdated' => 'string',
+        'createTimestamp' => 'string',
+        'updateTimestamp' => 'string',
+        'comment' => 'string'
     ];
 
     /**
@@ -211,15 +211,15 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
         'vlans' => false,
         'vlans6' => false,
         'lease' => false,
-        'mac' => true,
-        'ipmiAdminUsername' => true,
-        'ipmiAdminPassword' => true,
-        'ipmiClientUsername' => true,
-        'ipmiClientPassword' => true,
-        'ipmiUpdated' => true,
-        'createTimestamp' => true,
-        'updateTimestamp' => true,
-        'comment' => true
+        'mac' => false,
+        'ipmiAdminUsername' => false,
+        'ipmiAdminPassword' => false,
+        'ipmiClientUsername' => false,
+        'ipmiClientPassword' => false,
+        'ipmiUpdated' => false,
+        'createTimestamp' => false,
+        'updateTimestamp' => false,
+        'comment' => false
     ];
 
     /**
@@ -1792,7 +1792,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets mac
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getMac()
     {
@@ -1802,21 +1802,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mac
      *
-     * @param mixed|null $mac MAC address associated with the asset.
+     * @param string|null $mac MAC address associated with the asset.
      *
      * @return self
      */
     public function setMac($mac)
     {
         if (is_null($mac)) {
-            array_push($this->openAPINullablesSetToNull, 'mac');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('mac', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable mac cannot be null');
         }
         $this->container['mac'] = $mac;
 
@@ -1826,7 +1819,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ipmiAdminUsername
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getIpmiAdminUsername()
     {
@@ -1836,21 +1829,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ipmiAdminUsername
      *
-     * @param mixed|null $ipmiAdminUsername IPMI admin username associated with the asset.
+     * @param string|null $ipmiAdminUsername IPMI admin username associated with the asset.
      *
      * @return self
      */
     public function setIpmiAdminUsername($ipmiAdminUsername)
     {
         if (is_null($ipmiAdminUsername)) {
-            array_push($this->openAPINullablesSetToNull, 'ipmiAdminUsername');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ipmiAdminUsername', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable ipmiAdminUsername cannot be null');
         }
         $this->container['ipmiAdminUsername'] = $ipmiAdminUsername;
 
@@ -1860,7 +1846,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ipmiAdminPassword
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getIpmiAdminPassword()
     {
@@ -1870,21 +1856,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ipmiAdminPassword
      *
-     * @param mixed|null $ipmiAdminPassword IPMI admin password associated with the asset.
+     * @param string|null $ipmiAdminPassword IPMI admin password associated with the asset.
      *
      * @return self
      */
     public function setIpmiAdminPassword($ipmiAdminPassword)
     {
         if (is_null($ipmiAdminPassword)) {
-            array_push($this->openAPINullablesSetToNull, 'ipmiAdminPassword');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ipmiAdminPassword', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable ipmiAdminPassword cannot be null');
         }
         $this->container['ipmiAdminPassword'] = $ipmiAdminPassword;
 
@@ -1894,7 +1873,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ipmiClientUsername
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getIpmiClientUsername()
     {
@@ -1904,21 +1883,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ipmiClientUsername
      *
-     * @param mixed|null $ipmiClientUsername IPMI client username associated with the asset.
+     * @param string|null $ipmiClientUsername IPMI client username associated with the asset.
      *
      * @return self
      */
     public function setIpmiClientUsername($ipmiClientUsername)
     {
         if (is_null($ipmiClientUsername)) {
-            array_push($this->openAPINullablesSetToNull, 'ipmiClientUsername');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ipmiClientUsername', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable ipmiClientUsername cannot be null');
         }
         $this->container['ipmiClientUsername'] = $ipmiClientUsername;
 
@@ -1928,7 +1900,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ipmiClientPassword
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getIpmiClientPassword()
     {
@@ -1938,21 +1910,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ipmiClientPassword
      *
-     * @param mixed|null $ipmiClientPassword IPMI client password associated with the asset.
+     * @param string|null $ipmiClientPassword IPMI client password associated with the asset.
      *
      * @return self
      */
     public function setIpmiClientPassword($ipmiClientPassword)
     {
         if (is_null($ipmiClientPassword)) {
-            array_push($this->openAPINullablesSetToNull, 'ipmiClientPassword');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ipmiClientPassword', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable ipmiClientPassword cannot be null');
         }
         $this->container['ipmiClientPassword'] = $ipmiClientPassword;
 
@@ -1962,7 +1927,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ipmiUpdated
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getIpmiUpdated()
     {
@@ -1972,21 +1937,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ipmiUpdated
      *
-     * @param mixed|null $ipmiUpdated IPMI update status associated with the asset.
+     * @param string|null $ipmiUpdated IPMI update status associated with the asset.
      *
      * @return self
      */
     public function setIpmiUpdated($ipmiUpdated)
     {
         if (is_null($ipmiUpdated)) {
-            array_push($this->openAPINullablesSetToNull, 'ipmiUpdated');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ipmiUpdated', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable ipmiUpdated cannot be null');
         }
         $this->container['ipmiUpdated'] = $ipmiUpdated;
 
@@ -1996,7 +1954,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets createTimestamp
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getCreateTimestamp()
     {
@@ -2006,21 +1964,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets createTimestamp
      *
-     * @param mixed|null $createTimestamp Timestamp of asset creation.
+     * @param string|null $createTimestamp Timestamp of asset creation.
      *
      * @return self
      */
     public function setCreateTimestamp($createTimestamp)
     {
         if (is_null($createTimestamp)) {
-            array_push($this->openAPINullablesSetToNull, 'createTimestamp');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('createTimestamp', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable createTimestamp cannot be null');
         }
         $this->container['createTimestamp'] = $createTimestamp;
 
@@ -2030,7 +1981,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updateTimestamp
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getUpdateTimestamp()
     {
@@ -2040,21 +1991,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updateTimestamp
      *
-     * @param mixed|null $updateTimestamp Timestamp of asset update.
+     * @param string|null $updateTimestamp Timestamp of asset update.
      *
      * @return self
      */
     public function setUpdateTimestamp($updateTimestamp)
     {
         if (is_null($updateTimestamp)) {
-            array_push($this->openAPINullablesSetToNull, 'updateTimestamp');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updateTimestamp', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable updateTimestamp cannot be null');
         }
         $this->container['updateTimestamp'] = $updateTimestamp;
 
@@ -2064,7 +2008,7 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets comment
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getComment()
     {
@@ -2074,21 +2018,14 @@ class ServerAsset implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comment
      *
-     * @param mixed|null $comment Comment associated with the asset.
+     * @param string|null $comment Comment associated with the asset.
      *
      * @return self
      */
     public function setComment($comment)
     {
         if (is_null($comment)) {
-            array_push($this->openAPINullablesSetToNull, 'comment');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('comment', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable comment cannot be null');
         }
         $this->container['comment'] = $comment;
 

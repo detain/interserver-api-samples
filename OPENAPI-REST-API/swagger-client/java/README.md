@@ -227,8 +227,9 @@ public class AccountApiExample {
         //sessionIdHeaderAuth.setApiKeyPrefix("Token");
 
         AccountApi apiInstance = new AccountApi();
+        IpLimitRange body = new IpLimitRange(); // IpLimitRange | 
         try {
-            GenericResponse result = apiInstance.deleteIpLimit();
+            GenericResponse result = apiInstance.deleteIpLimit(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountApi#deleteIpLimit");

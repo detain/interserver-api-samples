@@ -76,7 +76,7 @@ export default class ServerServiceInfo {
       if (data.hasOwnProperty('server_setup'))
         obj.server_setup = ApiClient.convertToType(data['server_setup'], 'String');
       if (data.hasOwnProperty('server_discount'))
-        obj.server_discount = ApiClient.convertToType(data['server_discount'], Object);
+        obj.server_discount = ApiClient.convertToType(data['server_discount'], 'String');
       if (data.hasOwnProperty('server_rep'))
         obj.server_rep = ApiClient.convertToType(data['server_rep'], 'String');
       if (data.hasOwnProperty('server_date'))
@@ -84,7 +84,7 @@ export default class ServerServiceInfo {
       if (data.hasOwnProperty('server_total_cost'))
         obj.server_total_cost = ApiClient.convertToType(data['server_total_cost'], 'String');
       if (data.hasOwnProperty('server_location'))
-        obj.server_location = ApiClient.convertToType(data['server_location'], Object);
+        obj.server_location = ApiClient.convertToType(data['server_location'], 'String');
       if (data.hasOwnProperty('server_hardware_ordered'))
         obj.server_hardware_ordered = ApiClient.convertToType(data['server_hardware_ordered'], 'String');
       if (data.hasOwnProperty('server_billed'))
@@ -98,7 +98,7 @@ export default class ServerServiceInfo {
       if (data.hasOwnProperty('server_dedicated_hd1'))
         obj.server_dedicated_hd1 = ApiClient.convertToType(data['server_dedicated_hd1'], 'String');
       if (data.hasOwnProperty('server_dedicated_hd2'))
-        obj.server_dedicated_hd2 = ApiClient.convertToType(data['server_dedicated_hd2'], Object);
+        obj.server_dedicated_hd2 = ApiClient.convertToType(data['server_dedicated_hd2'], 'String');
       if (data.hasOwnProperty('server_dedicated_bandwidth'))
         obj.server_dedicated_bandwidth = ApiClient.convertToType(data['server_dedicated_bandwidth'], 'String');
       if (data.hasOwnProperty('server_dedicated_ips'))
@@ -106,7 +106,7 @@ export default class ServerServiceInfo {
       if (data.hasOwnProperty('server_dedicated_os'))
         obj.server_dedicated_os = ApiClient.convertToType(data['server_dedicated_os'], 'String');
       if (data.hasOwnProperty('server_dedicated_cp'))
-        obj.server_dedicated_cp = ApiClient.convertToType(data['server_dedicated_cp'], Object);
+        obj.server_dedicated_cp = ApiClient.convertToType(data['server_dedicated_cp'], 'String');
       if (data.hasOwnProperty('server_dedicated_raid'))
         obj.server_dedicated_raid = ApiClient.convertToType(data['server_dedicated_raid'], 'String');
       if (data.hasOwnProperty('server_extra'))
@@ -226,7 +226,7 @@ ServerServiceInfo.prototype.server_setup = undefined;
 
 /**
  * Discount information for the server.
- * @member {Object} server_discount
+ * @member {String} server_discount
  */
 ServerServiceInfo.prototype.server_discount = undefined;
 
@@ -250,7 +250,7 @@ ServerServiceInfo.prototype.server_total_cost = undefined;
 
 /**
  * The location of the server.
- * @member {Object} server_location
+ * @member {String} server_location
  */
 ServerServiceInfo.prototype.server_location = undefined;
 
@@ -292,7 +292,7 @@ ServerServiceInfo.prototype.server_dedicated_hd1 = undefined;
 
 /**
  * The size of the second dedicated hard drive.
- * @member {Object} server_dedicated_hd2
+ * @member {String} server_dedicated_hd2
  */
 ServerServiceInfo.prototype.server_dedicated_hd2 = undefined;
 
@@ -316,7 +316,7 @@ ServerServiceInfo.prototype.server_dedicated_os = undefined;
 
 /**
  * The control panel of the server.
- * @member {Object} server_dedicated_cp
+ * @member {String} server_dedicated_cp
  */
 ServerServiceInfo.prototype.server_dedicated_cp = undefined;
 

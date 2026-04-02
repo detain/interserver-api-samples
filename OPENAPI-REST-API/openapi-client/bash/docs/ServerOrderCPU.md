@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **maxUnderscoresff** | **string** |  | [optional] [default to null]
 **maxUnderscorenve** | **string** |  | [optional] [default to null]
 **visible** | **string** |  | [optional] [default to null]
-**hdUnderscoreids** | [**AnyType**](.md) |  | [optional] [default to null]
+**hdUnderscoreids** | **string** |  | [optional] [default to null]
 **priceUnderscoredisplay** | **string** |  | [optional] [default to null]
 **monthlyUnderscorepriceUnderscoredisplay** | **string** |  | [optional] [default to null]
 

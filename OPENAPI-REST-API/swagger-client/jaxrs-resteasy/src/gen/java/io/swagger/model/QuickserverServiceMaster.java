@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description="Information about the host node running this QuickServer, including hardware specs and resource utilization.")
 
 public class QuickserverServiceMaster   {
-  private String qsId = null;  private String qsName = null;  private String qsIp = null;  private String qsType = null;  private String qsHdsize = null;  private String qsHdfree = null;  private String qsBits = null;  private String qsLoad = null;  private String qsRam = null;  private String qsCpuModel = null;  private String qsCpuMhz = null;  private String qsLocation = null;  private String qsAvailable = null;  private String qsCost = null;  private String qsLastUpdate = null;  private String qsCores = null;  private String qsIowait = null;  private String qsRaidStatus = null;  private String qsDriveType = null;  private String qsOrder = null;  private String qsRaidBuilding = null;  private String qsKernel = null;  private String qsIoping = null;  private String qsSpeed = null;  private String qsDistro = null;  private String qsDistroVersion = null;  private String qsBytesSecIn = null;  private String qsBytesSecOut = null;  private String qsPacketsSecIn = null;  private String qsPacketsSecOut = null;  private Object qsLastInstallTime = null;  private Object qsPartitions = null;  private String qsCpuFlags = null;
+  private String qsId = null;  private String qsName = null;  private String qsIp = null;  private String qsType = null;  private String qsHdsize = null;  private String qsHdfree = null;  private String qsBits = null;  private String qsLoad = null;  private String qsRam = null;  private String qsCpuModel = null;  private String qsCpuMhz = null;  private String qsLocation = null;  private String qsAvailable = null;  private String qsCost = null;  private String qsLastUpdate = null;  private String qsCores = null;  private String qsIowait = null;  private String qsRaidStatus = null;  private String qsDriveType = null;  private String qsOrder = null;  private String qsRaidBuilding = null;  private String qsKernel = null;  private String qsIoping = null;  private String qsSpeed = null;  private String qsDistro = null;  private String qsDistroVersion = null;  private String qsBytesSecIn = null;  private String qsBytesSecOut = null;  private String qsPacketsSecIn = null;  private String qsPacketsSecOut = null;  private String qsLastInstallTime = null;  private String qsPartitions = null;  private String qsCpuFlags = null;
 
   /**
    * Quickserver ID
@@ -440,11 +440,10 @@ public class QuickserverServiceMaster   {
   
   @Schema(description = "Last install time (null)")
   @JsonProperty("qs_last_install_time")
-  @NotNull
-  public Object getQsLastInstallTime() {
+  public String getQsLastInstallTime() {
     return qsLastInstallTime;
   }
-  public void setQsLastInstallTime(Object qsLastInstallTime) {
+  public void setQsLastInstallTime(String qsLastInstallTime) {
     this.qsLastInstallTime = qsLastInstallTime;
   }
 
@@ -454,11 +453,10 @@ public class QuickserverServiceMaster   {
   
   @Schema(description = "Partitions information (null)")
   @JsonProperty("qs_partitions")
-  @NotNull
-  public Object getQsPartitions() {
+  public String getQsPartitions() {
     return qsPartitions;
   }
-  public void setQsPartitions(Object qsPartitions) {
+  public void setQsPartitions(String qsPartitions) {
     this.qsPartitions = qsPartitions;
   }
 

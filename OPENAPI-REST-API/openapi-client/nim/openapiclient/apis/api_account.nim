@@ -21,6 +21,7 @@ import uri
 import ../models/model_account_info
 import ../models/model_generic_response
 import ../models/model_home
+import ../models/model_ip_limit_range
 import ../models/model_search_autocomplete_response
 import ../models/model_success_text_response
 import ../models/model_text_response
@@ -63,10 +64,11 @@ proc deleteAccountTfa*(httpClient: HttpClient): (Option[SuccessTextResponse], Re
   constructResult[SuccessTextResponse](response)
 
 
-proc deleteIpLimit*(httpClient: HttpClient): (Option[GenericResponse], Response) =
+proc deleteIpLimit*(httpClient: HttpClient, ipLimitRange: IpLimitRange): (Option[GenericResponse], Response) =
   ## Remove IP Access Restriction
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.patch(basepath & "/account/iplimits")
+  let response = httpClient.patch(basepath & "/account/iplimits", $(%ipLimitRange))
   constructResult[GenericResponse](response)
 
 

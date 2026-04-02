@@ -10,6 +10,7 @@
 #include "GetAccountInfo_401_response.h"
 #include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
+#include <list>
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -143,8 +144,8 @@ bool getFloatingIpInvoicesAsync(char * accessToken,
  */
 bool getFloatingIpsListSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData);
 
 /*! \brief List Floating IPs. *Asynchronous*
  *
@@ -155,8 +156,8 @@ bool getFloatingIpsListSync(char * accessToken,
  */
 bool getFloatingIpsListAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData);
 
 
 /*! \brief Resend Floating IPs Welcome Email. *Synchronous*

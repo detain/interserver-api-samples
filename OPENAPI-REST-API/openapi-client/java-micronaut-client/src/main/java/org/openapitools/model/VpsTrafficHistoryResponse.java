@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   VpsTrafficHistoryResponse.JSON_PROPERTY_DAY
 })
 @JsonTypeName("VpsTrafficHistoryResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class VpsTrafficHistoryResponse {
     public static final String JSON_PROPERTY_HOUR = "hour";

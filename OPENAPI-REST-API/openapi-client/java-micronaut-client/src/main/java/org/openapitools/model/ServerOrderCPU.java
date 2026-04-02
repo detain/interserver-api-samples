@@ -14,7 +14,6 @@ package org.openapitools.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.constraints.*;
@@ -53,7 +52,7 @@ import javax.annotation.Generated;
   ServerOrderCPU.JSON_PROPERTY_MONTHLY_PRICE_DISPLAY
 })
 @JsonTypeName("ServerOrderCPU")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class ServerOrderCPU {
     public static final String JSON_PROPERTY_ID = "id";
@@ -123,7 +122,7 @@ public class ServerOrderCPU {
     private String visible;
 
     public static final String JSON_PROPERTY_HD_IDS = "hd_ids";
-    private Object hdIds = null;
+    private String hdIds;
 
     public static final String JSON_PROPERTY_PRICE_DISPLAY = "price_display";
     private String priceDisplay;
@@ -618,7 +617,7 @@ public class ServerOrderCPU {
         this.visible = visible;
     }
 
-    public ServerOrderCPU hdIds(Object hdIds) {
+    public ServerOrderCPU hdIds(String hdIds) {
         this.hdIds = hdIds;
         return this;
     }
@@ -630,13 +629,13 @@ public class ServerOrderCPU {
     @Nullable
     @JsonProperty(JSON_PROPERTY_HD_IDS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getHdIds() {
+    public String getHdIds() {
         return hdIds;
     }
 
     @JsonProperty(JSON_PROPERTY_HD_IDS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setHdIds(Object hdIds) {
+    public void setHdIds(String hdIds) {
         this.hdIds = hdIds;
     }
 

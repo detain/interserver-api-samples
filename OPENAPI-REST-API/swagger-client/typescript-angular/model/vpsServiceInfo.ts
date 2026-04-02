@@ -30,7 +30,7 @@ export interface VpsServiceInfo {
     /**
      * IPv6 address of the VPS
      */
-    vps_ipv6?: any;
+    vps_ipv6?: string;
     /**
      * VPS Virtuozzo ID
      */

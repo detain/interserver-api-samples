@@ -66,7 +66,7 @@ def get_floating_ips_list():  # noqa: E501
     Returns all Floating IP services on the account with their current status and assignment details. # noqa: E501
 
 
-    :rtype: None
+    :rtype: List[object]
     """
     return 'do some magic!'
 

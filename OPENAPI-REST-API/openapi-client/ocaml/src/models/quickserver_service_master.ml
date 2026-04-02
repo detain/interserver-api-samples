@@ -220,14 +220,14 @@
                 
                 ; [@key "qs_packets_sec_out"]
                     (** Packets/sec out *)
-                                      qs_last_install_time: Yojson.Safe.t
+                                      qs_last_install_time: string
                   
                    option [@default None]
                 
                 
                 ; [@key "qs_last_install_time"]
                     (** Last install time (null) *)
-                                      qs_partitions: Yojson.Safe.t
+                                      qs_partitions: string
                   
                    option [@default None]
                 

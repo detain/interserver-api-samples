@@ -22,7 +22,7 @@ open class ServerAsset: JSONEncodable {
     /** Primary IPv6 address of the asset. */
     public var primaryIpv6: String?
     /** MAC address associated with the asset. */
-    public var mac: Object?
+    public var mac: String?
     /** Datacenter identifier for the asset. */
     public var datacenter: String?
     /** Type identifier for the asset. */
@@ -46,15 +46,15 @@ open class ServerAsset: JSONEncodable {
     /** IPMI IP address associated with the asset. */
     public var ipmiIp: String?
     /** IPMI admin username associated with the asset. */
-    public var ipmiAdminUsername: Object?
+    public var ipmiAdminUsername: String?
     /** IPMI admin password associated with the asset. */
-    public var ipmiAdminPassword: Object?
+    public var ipmiAdminPassword: String?
     /** IPMI client username associated with the asset. */
-    public var ipmiClientUsername: Object?
+    public var ipmiClientUsername: String?
     /** IPMI client password associated with the asset. */
-    public var ipmiClientPassword: Object?
+    public var ipmiClientPassword: String?
     /** IPMI update status associated with the asset. */
-    public var ipmiUpdated: Object?
+    public var ipmiUpdated: String?
     /** IPMI working status associated with the asset. */
     public var ipmiWorking: String?
     /** Company associated with the asset. */
@@ -76,9 +76,9 @@ open class ServerAsset: JSONEncodable {
     /** Overdue status of the asset. */
     public var overdue: String?
     /** Timestamp of asset creation. */
-    public var createTimestamp: Object?
+    public var createTimestamp: String?
     /** Timestamp of asset update. */
-    public var updateTimestamp: Object?
+    public var updateTimestamp: String?
     /** Asset identifier for the asset. */
     public var assetId: String?
     /** Name of the asset. */
@@ -96,7 +96,7 @@ open class ServerAsset: JSONEncodable {
     /** Y-coordinate of the asset within the rack. */
     public var rackY: String?
     /** Comment associated with the asset. */
-    public var comment: Object?
+    public var comment: String?
     /** List of switchports associated with the asset. */
     public var switchports: [Int32]?
     /** List of VLANs associated with the asset. */
@@ -116,7 +116,7 @@ open class ServerAsset: JSONEncodable {
         nillableDictionary["status"] = self.status
         nillableDictionary["primary_ipv4"] = self.primaryIpv4
         nillableDictionary["primary_ipv6"] = self.primaryIpv6
-        nillableDictionary["mac"] = self.mac?.encodeToJSON()
+        nillableDictionary["mac"] = self.mac
         nillableDictionary["datacenter"] = self.datacenter
         nillableDictionary["type_id"] = self.typeId
         nillableDictionary["asset_tag"] = self.assetTag
@@ -128,11 +128,11 @@ open class ServerAsset: JSONEncodable {
         nillableDictionary["unit_sub"] = self.unitSub
         nillableDictionary["ipmi_mac"] = self.ipmiMac
         nillableDictionary["ipmi_ip"] = self.ipmiIp
-        nillableDictionary["ipmi_admin_username"] = self.ipmiAdminUsername?.encodeToJSON()
-        nillableDictionary["ipmi_admin_password"] = self.ipmiAdminPassword?.encodeToJSON()
-        nillableDictionary["ipmi_client_username"] = self.ipmiClientUsername?.encodeToJSON()
-        nillableDictionary["ipmi_client_password"] = self.ipmiClientPassword?.encodeToJSON()
-        nillableDictionary["ipmi_updated"] = self.ipmiUpdated?.encodeToJSON()
+        nillableDictionary["ipmi_admin_username"] = self.ipmiAdminUsername
+        nillableDictionary["ipmi_admin_password"] = self.ipmiAdminPassword
+        nillableDictionary["ipmi_client_username"] = self.ipmiClientUsername
+        nillableDictionary["ipmi_client_password"] = self.ipmiClientPassword
+        nillableDictionary["ipmi_updated"] = self.ipmiUpdated
         nillableDictionary["ipmi_working"] = self.ipmiWorking
         nillableDictionary["company"] = self.company
         nillableDictionary["comments"] = self.comments
@@ -143,8 +143,8 @@ open class ServerAsset: JSONEncodable {
         nillableDictionary["external_id"] = self.externalId
         nillableDictionary["billing_status"] = self.billingStatus
         nillableDictionary["overdue"] = self.overdue
-        nillableDictionary["create_timestamp"] = self.createTimestamp?.encodeToJSON()
-        nillableDictionary["update_timestamp"] = self.updateTimestamp?.encodeToJSON()
+        nillableDictionary["create_timestamp"] = self.createTimestamp
+        nillableDictionary["update_timestamp"] = self.updateTimestamp
         nillableDictionary["asset_id"] = self.assetId
         nillableDictionary["asset_name"] = self.assetName
         nillableDictionary["rack_id"] = self.rackId
@@ -153,7 +153,7 @@ open class ServerAsset: JSONEncodable {
         nillableDictionary["rack_size"] = self.rackSize
         nillableDictionary["rack_x"] = self.rackX
         nillableDictionary["rack_y"] = self.rackY
-        nillableDictionary["comment"] = self.comment?.encodeToJSON()
+        nillableDictionary["comment"] = self.comment
         nillableDictionary["switchports"] = self.switchports?.encodeToJSON()
         nillableDictionary["vlans"] = self.vlans?.encodeToJSON()
         nillableDictionary["vlans6"] = self.vlans6?.encodeToJSON()

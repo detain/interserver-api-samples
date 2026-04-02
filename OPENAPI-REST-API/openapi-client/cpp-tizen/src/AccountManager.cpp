@@ -573,7 +573,7 @@ static bool deleteIpLimitProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool deleteIpLimitHelper(char * accessToken,
-	
+	std::shared_ptr<IpLimitRange> ipLimitRange, 
 	void(* handler)(GenericResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -593,6 +593,19 @@ static bool deleteIpLimitHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("IpLimitRange")) {
+		node = converttoJson(&ipLimitRange, "IpLimitRange", "");
+	}
+	
+	char *jsonStr =  ipLimitRange.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/account/iplimits");
 	int pos;
@@ -644,22 +657,22 @@ static bool deleteIpLimitHelper(char * accessToken,
 
 
 bool AccountManager::deleteIpLimitAsync(char * accessToken,
-	
+	std::shared_ptr<IpLimitRange> ipLimitRange, 
 	void(* handler)(GenericResponse, Error, void* )
 	, void* userData)
 {
 	return deleteIpLimitHelper(accessToken,
-	
+	ipLimitRange, 
 	handler, userData, true);
 }
 
 bool AccountManager::deleteIpLimitSync(char * accessToken,
-	
+	std::shared_ptr<IpLimitRange> ipLimitRange, 
 	void(* handler)(GenericResponse, Error, void* )
 	, void* userData)
 {
 	return deleteIpLimitHelper(accessToken,
-	
+	ipLimitRange, 
 	handler, userData, false);
 }
 

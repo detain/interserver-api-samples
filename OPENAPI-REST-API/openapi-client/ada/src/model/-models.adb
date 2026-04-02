@@ -11725,6 +11725,310 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.QuickserverServiceInfo_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Qs_Id.Is_Null then
+         Into.Write_Entity ("qs_id", Value.Qs_Id);
+      end if;
+      if not Value.Qs_Custid.Is_Null then
+         Into.Write_Entity ("qs_custid", Value.Qs_Custid);
+      end if;
+      if not Value.Qs_Server.Is_Null then
+         Into.Write_Entity ("qs_server", Value.Qs_Server);
+      end if;
+      if not Value.Qs_Ip.Is_Null then
+         Into.Write_Entity ("qs_ip", Value.Qs_Ip);
+      end if;
+      Into.Write_Entity ("qs_ipv6", Value.Qs_Ipv_6);
+      if not Value.Qs_Vzid.Is_Null then
+         Into.Write_Entity ("qs_vzid", Value.Qs_Vzid);
+      end if;
+      if not Value.Qs_Currency.Is_Null then
+         Into.Write_Entity ("qs_currency", Value.Qs_Currency);
+      end if;
+      if not Value.Qs_Type.Is_Null then
+         Into.Write_Entity ("qs_type", Value.Qs_Type);
+      end if;
+      if not Value.Qs_Order_Date.Is_Null then
+         Into.Write_Entity ("qs_order_date", Value.Qs_Order_Date);
+      end if;
+      if not Value.Qs_Status.Is_Null then
+         Into.Write_Entity ("qs_status", Value.Qs_Status);
+      end if;
+      if not Value.Qs_Invoice.Is_Null then
+         Into.Write_Entity ("qs_invoice", Value.Qs_Invoice);
+      end if;
+      if not Value.Qs_Coupon.Is_Null then
+         Into.Write_Entity ("qs_coupon", Value.Qs_Coupon);
+      end if;
+      if not Value.Qs_Extra.Is_Null then
+         Into.Write_Entity ("qs_extra", Value.Qs_Extra);
+      end if;
+      if not Value.Qs_Hostname.Is_Null then
+         Into.Write_Entity ("qs_hostname", Value.Qs_Hostname);
+      end if;
+      if not Value.Qs_Server_Status.Is_Null then
+         Into.Write_Entity ("qs_server_status", Value.Qs_Server_Status);
+      end if;
+      if not Value.Qs_Comment.Is_Null then
+         Into.Write_Entity ("qs_comment", Value.Qs_Comment);
+      end if;
+      if not Value.Qs_Slices.Is_Null then
+         Into.Write_Entity ("qs_slices", Value.Qs_Slices);
+      end if;
+      if not Value.Qs_Vnc.Is_Null then
+         Into.Write_Entity ("qs_vnc", Value.Qs_Vnc);
+      end if;
+      Into.Write_Entity ("qs_vnc_port", Value.Qs_Vnc_Port);
+      if not Value.Qs_Rootpass.Is_Null then
+         Into.Write_Entity ("qs_rootpass", Value.Qs_Rootpass);
+      end if;
+      if not Value.Qs_Mac.Is_Null then
+         Into.Write_Entity ("qs_mac", Value.Qs_Mac);
+      end if;
+      if not Value.Qs_Os.Is_Null then
+         Into.Write_Entity ("qs_os", Value.Qs_Os);
+      end if;
+      if not Value.Qs_Version.Is_Null then
+         Into.Write_Entity ("qs_version", Value.Qs_Version);
+      end if;
+      if not Value.Qs_Location.Is_Null then
+         Into.Write_Entity ("qs_location", Value.Qs_Location);
+      end if;
+      Into.Write_Entity ("qs_platform", Value.Qs_Platform);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in QuickserverServiceInfo_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.QuickserverServiceInfo_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "qs_id", Value.Qs_Id);
+      Swagger.Streams.Deserialize (Object, "qs_custid", Value.Qs_Custid);
+      Swagger.Streams.Deserialize (Object, "qs_server", Value.Qs_Server);
+      Swagger.Streams.Deserialize (Object, "qs_ip", Value.Qs_Ip);
+      Swagger.Streams.Deserialize (Object, "qs_ipv6", Value.Qs_Ipv_6);
+      Swagger.Streams.Deserialize (Object, "qs_vzid", Value.Qs_Vzid);
+      Swagger.Streams.Deserialize (Object, "qs_currency", Value.Qs_Currency);
+      Swagger.Streams.Deserialize (Object, "qs_type", Value.Qs_Type);
+      Swagger.Streams.Deserialize (Object, "qs_order_date", Value.Qs_Order_Date);
+      Swagger.Streams.Deserialize (Object, "qs_status", Value.Qs_Status);
+      Swagger.Streams.Deserialize (Object, "qs_invoice", Value.Qs_Invoice);
+      Swagger.Streams.Deserialize (Object, "qs_coupon", Value.Qs_Coupon);
+      Swagger.Streams.Deserialize (Object, "qs_extra", Value.Qs_Extra);
+      Swagger.Streams.Deserialize (Object, "qs_hostname", Value.Qs_Hostname);
+      Swagger.Streams.Deserialize (Object, "qs_server_status", Value.Qs_Server_Status);
+      Swagger.Streams.Deserialize (Object, "qs_comment", Value.Qs_Comment);
+      Swagger.Streams.Deserialize (Object, "qs_slices", Value.Qs_Slices);
+      Swagger.Streams.Deserialize (Object, "qs_vnc", Value.Qs_Vnc);
+      Swagger.Streams.Deserialize (Object, "qs_vnc_port", Value.Qs_Vnc_Port);
+      Swagger.Streams.Deserialize (Object, "qs_rootpass", Value.Qs_Rootpass);
+      Swagger.Streams.Deserialize (Object, "qs_mac", Value.Qs_Mac);
+      Swagger.Streams.Deserialize (Object, "qs_os", Value.Qs_Os);
+      Swagger.Streams.Deserialize (Object, "qs_version", Value.Qs_Version);
+      Swagger.Streams.Deserialize (Object, "qs_location", Value.Qs_Location);
+      Swagger.Streams.Deserialize (Object, "qs_platform", Value.Qs_Platform);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out QuickserverServiceInfo_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.QuickserverServiceInfo_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.QuickserverServiceMaster_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Qs_Id.Is_Null then
+         Into.Write_Entity ("qs_id", Value.Qs_Id);
+      end if;
+      if not Value.Qs_Name.Is_Null then
+         Into.Write_Entity ("qs_name", Value.Qs_Name);
+      end if;
+      if not Value.Qs_Ip.Is_Null then
+         Into.Write_Entity ("qs_ip", Value.Qs_Ip);
+      end if;
+      if not Value.Qs_Type.Is_Null then
+         Into.Write_Entity ("qs_type", Value.Qs_Type);
+      end if;
+      if not Value.Qs_Hdsize.Is_Null then
+         Into.Write_Entity ("qs_hdsize", Value.Qs_Hdsize);
+      end if;
+      if not Value.Qs_Hdfree.Is_Null then
+         Into.Write_Entity ("qs_hdfree", Value.Qs_Hdfree);
+      end if;
+      if not Value.Qs_Bits.Is_Null then
+         Into.Write_Entity ("qs_bits", Value.Qs_Bits);
+      end if;
+      if not Value.Qs_Load.Is_Null then
+         Into.Write_Entity ("qs_load", Value.Qs_Load);
+      end if;
+      if not Value.Qs_Ram.Is_Null then
+         Into.Write_Entity ("qs_ram", Value.Qs_Ram);
+      end if;
+      if not Value.Qs_Cpu_Model.Is_Null then
+         Into.Write_Entity ("qs_cpu_model", Value.Qs_Cpu_Model);
+      end if;
+      if not Value.Qs_Cpu_Mhz.Is_Null then
+         Into.Write_Entity ("qs_cpu_mhz", Value.Qs_Cpu_Mhz);
+      end if;
+      if not Value.Qs_Location.Is_Null then
+         Into.Write_Entity ("qs_location", Value.Qs_Location);
+      end if;
+      if not Value.Qs_Available.Is_Null then
+         Into.Write_Entity ("qs_available", Value.Qs_Available);
+      end if;
+      if not Value.Qs_Cost.Is_Null then
+         Into.Write_Entity ("qs_cost", Value.Qs_Cost);
+      end if;
+      if not Value.Qs_Last_Update.Is_Null then
+         Into.Write_Entity ("qs_last_update", Value.Qs_Last_Update);
+      end if;
+      if not Value.Qs_Cores.Is_Null then
+         Into.Write_Entity ("qs_cores", Value.Qs_Cores);
+      end if;
+      if not Value.Qs_Iowait.Is_Null then
+         Into.Write_Entity ("qs_iowait", Value.Qs_Iowait);
+      end if;
+      if not Value.Qs_Raid_Status.Is_Null then
+         Into.Write_Entity ("qs_raid_status", Value.Qs_Raid_Status);
+      end if;
+      if not Value.Qs_Drive_Type.Is_Null then
+         Into.Write_Entity ("qs_drive_type", Value.Qs_Drive_Type);
+      end if;
+      if not Value.Qs_Order.Is_Null then
+         Into.Write_Entity ("qs_order", Value.Qs_Order);
+      end if;
+      if not Value.Qs_Raid_Building.Is_Null then
+         Into.Write_Entity ("qs_raid_building", Value.Qs_Raid_Building);
+      end if;
+      if not Value.Qs_Kernel.Is_Null then
+         Into.Write_Entity ("qs_kernel", Value.Qs_Kernel);
+      end if;
+      if not Value.Qs_Ioping.Is_Null then
+         Into.Write_Entity ("qs_ioping", Value.Qs_Ioping);
+      end if;
+      if not Value.Qs_Speed.Is_Null then
+         Into.Write_Entity ("qs_speed", Value.Qs_Speed);
+      end if;
+      if not Value.Qs_Distro.Is_Null then
+         Into.Write_Entity ("qs_distro", Value.Qs_Distro);
+      end if;
+      if not Value.Qs_Distro_Version.Is_Null then
+         Into.Write_Entity ("qs_distro_version", Value.Qs_Distro_Version);
+      end if;
+      if not Value.Qs_Bytes_Sec_In.Is_Null then
+         Into.Write_Entity ("qs_bytes_sec_in", Value.Qs_Bytes_Sec_In);
+      end if;
+      if not Value.Qs_Bytes_Sec_Out.Is_Null then
+         Into.Write_Entity ("qs_bytes_sec_out", Value.Qs_Bytes_Sec_Out);
+      end if;
+      if not Value.Qs_Packets_Sec_In.Is_Null then
+         Into.Write_Entity ("qs_packets_sec_in", Value.Qs_Packets_Sec_In);
+      end if;
+      if not Value.Qs_Packets_Sec_Out.Is_Null then
+         Into.Write_Entity ("qs_packets_sec_out", Value.Qs_Packets_Sec_Out);
+      end if;
+      Into.Write_Entity ("qs_last_install_time", Value.Qs_Last_Install_Time);
+      Into.Write_Entity ("qs_partitions", Value.Qs_Partitions);
+      if not Value.Qs_Cpu_Flags.Is_Null then
+         Into.Write_Entity ("qs_cpu_flags", Value.Qs_Cpu_Flags);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in QuickserverServiceMaster_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.QuickserverServiceMaster_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "qs_id", Value.Qs_Id);
+      Swagger.Streams.Deserialize (Object, "qs_name", Value.Qs_Name);
+      Swagger.Streams.Deserialize (Object, "qs_ip", Value.Qs_Ip);
+      Swagger.Streams.Deserialize (Object, "qs_type", Value.Qs_Type);
+      Swagger.Streams.Deserialize (Object, "qs_hdsize", Value.Qs_Hdsize);
+      Swagger.Streams.Deserialize (Object, "qs_hdfree", Value.Qs_Hdfree);
+      Swagger.Streams.Deserialize (Object, "qs_bits", Value.Qs_Bits);
+      Swagger.Streams.Deserialize (Object, "qs_load", Value.Qs_Load);
+      Swagger.Streams.Deserialize (Object, "qs_ram", Value.Qs_Ram);
+      Swagger.Streams.Deserialize (Object, "qs_cpu_model", Value.Qs_Cpu_Model);
+      Swagger.Streams.Deserialize (Object, "qs_cpu_mhz", Value.Qs_Cpu_Mhz);
+      Swagger.Streams.Deserialize (Object, "qs_location", Value.Qs_Location);
+      Swagger.Streams.Deserialize (Object, "qs_available", Value.Qs_Available);
+      Swagger.Streams.Deserialize (Object, "qs_cost", Value.Qs_Cost);
+      Swagger.Streams.Deserialize (Object, "qs_last_update", Value.Qs_Last_Update);
+      Swagger.Streams.Deserialize (Object, "qs_cores", Value.Qs_Cores);
+      Swagger.Streams.Deserialize (Object, "qs_iowait", Value.Qs_Iowait);
+      Swagger.Streams.Deserialize (Object, "qs_raid_status", Value.Qs_Raid_Status);
+      Swagger.Streams.Deserialize (Object, "qs_drive_type", Value.Qs_Drive_Type);
+      Swagger.Streams.Deserialize (Object, "qs_order", Value.Qs_Order);
+      Swagger.Streams.Deserialize (Object, "qs_raid_building", Value.Qs_Raid_Building);
+      Swagger.Streams.Deserialize (Object, "qs_kernel", Value.Qs_Kernel);
+      Swagger.Streams.Deserialize (Object, "qs_ioping", Value.Qs_Ioping);
+      Swagger.Streams.Deserialize (Object, "qs_speed", Value.Qs_Speed);
+      Swagger.Streams.Deserialize (Object, "qs_distro", Value.Qs_Distro);
+      Swagger.Streams.Deserialize (Object, "qs_distro_version", Value.Qs_Distro_Version);
+      Swagger.Streams.Deserialize (Object, "qs_bytes_sec_in", Value.Qs_Bytes_Sec_In);
+      Swagger.Streams.Deserialize (Object, "qs_bytes_sec_out", Value.Qs_Bytes_Sec_Out);
+      Swagger.Streams.Deserialize (Object, "qs_packets_sec_in", Value.Qs_Packets_Sec_In);
+      Swagger.Streams.Deserialize (Object, "qs_packets_sec_out", Value.Qs_Packets_Sec_Out);
+      Swagger.Streams.Deserialize (Object, "qs_last_install_time", Value.Qs_Last_Install_Time);
+      Swagger.Streams.Deserialize (Object, "qs_partitions", Value.Qs_Partitions);
+      Swagger.Streams.Deserialize (Object, "qs_cpu_flags", Value.Qs_Cpu_Flags);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out QuickserverServiceMaster_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.QuickserverServiceMaster_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.QuickserversCancel200Response_Type) is
    begin
       Into.Start_Entity (Name);
@@ -13009,6 +13313,147 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.ServerOrderCPU_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      if not Value.Price.Is_Null then
+         Into.Write_Entity ("price", Value.Price);
+      end if;
+      if not Value.Img.Is_Null then
+         Into.Write_Entity ("img", Value.Img);
+      end if;
+      if not Value.Short_Desc.Is_Null then
+         Into.Write_Entity ("short_desc", Value.Short_Desc);
+      end if;
+      if not Value.Long_Desc.Is_Null then
+         Into.Write_Entity ("long_desc", Value.Long_Desc);
+      end if;
+      if not Value.Location.Is_Null then
+         Into.Write_Entity ("location", Value.Location);
+      end if;
+      if not Value.Fsb.Is_Null then
+         Into.Write_Entity ("fsb", Value.Fsb);
+      end if;
+      if not Value.Manu.Is_Null then
+         Into.Write_Entity ("manu", Value.Manu);
+      end if;
+      if not Value.P_Type.Is_Null then
+         Into.Write_Entity ("type", Value.P_Type);
+      end if;
+      if not Value.Speed.Is_Null then
+         Into.Write_Entity ("speed", Value.Speed);
+      end if;
+      if not Value.Cache.Is_Null then
+         Into.Write_Entity ("cache", Value.Cache);
+      end if;
+      if not Value.Active.Is_Null then
+         Into.Write_Entity ("active", Value.Active);
+      end if;
+      if not Value.Num_Cores.Is_Null then
+         Into.Write_Entity ("num_cores", Value.Num_Cores);
+      end if;
+      if not Value.Num_Cpus.Is_Null then
+         Into.Write_Entity ("num_cpus", Value.Num_Cpus);
+      end if;
+      if not Value.Benchmark.Is_Null then
+         Into.Write_Entity ("benchmark", Value.Benchmark);
+      end if;
+      if not Value.Monthly_Price.Is_Null then
+         Into.Write_Entity ("monthly_price", Value.Monthly_Price);
+      end if;
+      if not Value.Max_Ram.Is_Null then
+         Into.Write_Entity ("max_ram", Value.Max_Ram);
+      end if;
+      if not Value.Min_Ram.Is_Null then
+         Into.Write_Entity ("min_ram", Value.Min_Ram);
+      end if;
+      if not Value.Max_Lff.Is_Null then
+         Into.Write_Entity ("max_lff", Value.Max_Lff);
+      end if;
+      if not Value.Max_Sff.Is_Null then
+         Into.Write_Entity ("max_sff", Value.Max_Sff);
+      end if;
+      if not Value.Max_Nve.Is_Null then
+         Into.Write_Entity ("max_nve", Value.Max_Nve);
+      end if;
+      if not Value.Visible.Is_Null then
+         Into.Write_Entity ("visible", Value.Visible);
+      end if;
+      if not Value.Hd_Ids.Is_Null then
+         Into.Write_Entity ("hd_ids", Value.Hd_Ids);
+      end if;
+      if not Value.Price_Display.Is_Null then
+         Into.Write_Entity ("price_display", Value.Price_Display);
+      end if;
+      if not Value.Monthly_Price_Display.Is_Null then
+         Into.Write_Entity ("monthly_price_display", Value.Monthly_Price_Display);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerOrderCPU_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerOrderCPU_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "price", Value.Price);
+      Swagger.Streams.Deserialize (Object, "img", Value.Img);
+      Swagger.Streams.Deserialize (Object, "short_desc", Value.Short_Desc);
+      Swagger.Streams.Deserialize (Object, "long_desc", Value.Long_Desc);
+      Swagger.Streams.Deserialize (Object, "location", Value.Location);
+      Swagger.Streams.Deserialize (Object, "fsb", Value.Fsb);
+      Swagger.Streams.Deserialize (Object, "manu", Value.Manu);
+      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
+      Swagger.Streams.Deserialize (Object, "speed", Value.Speed);
+      Swagger.Streams.Deserialize (Object, "cache", Value.Cache);
+      Swagger.Streams.Deserialize (Object, "active", Value.Active);
+      Swagger.Streams.Deserialize (Object, "num_cores", Value.Num_Cores);
+      Swagger.Streams.Deserialize (Object, "num_cpus", Value.Num_Cpus);
+      Swagger.Streams.Deserialize (Object, "benchmark", Value.Benchmark);
+      Swagger.Streams.Deserialize (Object, "monthly_price", Value.Monthly_Price);
+      Swagger.Streams.Deserialize (Object, "max_ram", Value.Max_Ram);
+      Swagger.Streams.Deserialize (Object, "min_ram", Value.Min_Ram);
+      Swagger.Streams.Deserialize (Object, "max_lff", Value.Max_Lff);
+      Swagger.Streams.Deserialize (Object, "max_sff", Value.Max_Sff);
+      Swagger.Streams.Deserialize (Object, "max_nve", Value.Max_Nve);
+      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
+      Swagger.Streams.Deserialize (Object, "hd_ids", Value.Hd_Ids);
+      Swagger.Streams.Deserialize (Object, "price_display", Value.Price_Display);
+      Swagger.Streams.Deserialize (Object, "monthly_price_display", Value.Monthly_Price_Display);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerOrderCPU_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ServerOrderCPU_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.ServerOrderConfigIds_Type) is
    begin
       Into.Start_Entity (Name);
@@ -13633,6 +14078,191 @@ package body .Models is
                           Value : in out ServerRow_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ServerRow_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServerServiceInfo_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Server_Id.Is_Null then
+         Into.Write_Entity ("server_id", Value.Server_Id);
+      end if;
+      if not Value.Server_Hostname.Is_Null then
+         Into.Write_Entity ("server_hostname", Value.Server_Hostname);
+      end if;
+      if not Value.Server_Custid.Is_Null then
+         Into.Write_Entity ("server_custid", Value.Server_Custid);
+      end if;
+      if not Value.Server_Type.Is_Null then
+         Into.Write_Entity ("server_type", Value.Server_Type);
+      end if;
+      if not Value.Server_Currency.Is_Null then
+         Into.Write_Entity ("server_currency", Value.Server_Currency);
+      end if;
+      if not Value.Server_Order_Date.Is_Null then
+         Into.Write_Entity ("server_order_date", Value.Server_Order_Date);
+      end if;
+      if not Value.Server_Invoice.Is_Null then
+         Into.Write_Entity ("server_invoice", Value.Server_Invoice);
+      end if;
+      if not Value.Server_Coupon.Is_Null then
+         Into.Write_Entity ("server_coupon", Value.Server_Coupon);
+      end if;
+      if not Value.Server_Status.Is_Null then
+         Into.Write_Entity ("server_status", Value.Server_Status);
+      end if;
+      if not Value.Server_Root.Is_Null then
+         Into.Write_Entity ("server_root", Value.Server_Root);
+      end if;
+      if not Value.Server_Dedicated_Tag.Is_Null then
+         Into.Write_Entity ("server_dedicated_tag", Value.Server_Dedicated_Tag);
+      end if;
+      if not Value.Server_Custom_Tag.Is_Null then
+         Into.Write_Entity ("server_custom_tag", Value.Server_Custom_Tag);
+      end if;
+      if not Value.Server_Comment.Is_Null then
+         Into.Write_Entity ("server_comment", Value.Server_Comment);
+      end if;
+      if not Value.Server_Initial_Bill.Is_Null then
+         Into.Write_Entity ("server_initial_bill", Value.Server_Initial_Bill);
+      end if;
+      if not Value.Server_Hardware.Is_Null then
+         Into.Write_Entity ("server_hardware", Value.Server_Hardware);
+      end if;
+      if not Value.Server_Ips.Is_Null then
+         Into.Write_Entity ("server_ips", Value.Server_Ips);
+      end if;
+      if not Value.Server_Monthly_Bill.Is_Null then
+         Into.Write_Entity ("server_monthly_bill", Value.Server_Monthly_Bill);
+      end if;
+      if not Value.Server_Setup.Is_Null then
+         Into.Write_Entity ("server_setup", Value.Server_Setup);
+      end if;
+      if not Value.Server_Discount.Is_Null then
+         Into.Write_Entity ("server_discount", Value.Server_Discount);
+      end if;
+      if not Value.Server_Rep.Is_Null then
+         Into.Write_Entity ("server_rep", Value.Server_Rep);
+      end if;
+      if not Value.Server_Date.Is_Null then
+         Into.Write_Entity ("server_date", Value.Server_Date);
+      end if;
+      if not Value.Server_Total_Cost.Is_Null then
+         Into.Write_Entity ("server_total_cost", Value.Server_Total_Cost);
+      end if;
+      if not Value.Server_Location.Is_Null then
+         Into.Write_Entity ("server_location", Value.Server_Location);
+      end if;
+      if not Value.Server_Hardware_Ordered.Is_Null then
+         Into.Write_Entity ("server_hardware_ordered", Value.Server_Hardware_Ordered);
+      end if;
+      if not Value.Server_Billed.Is_Null then
+         Into.Write_Entity ("server_billed", Value.Server_Billed);
+      end if;
+      if not Value.Server_Welcome_Email.Is_Null then
+         Into.Write_Entity ("server_welcome_email", Value.Server_Welcome_Email);
+      end if;
+      if not Value.Server_Dedicated_Cpu.Is_Null then
+         Into.Write_Entity ("server_dedicated_cpu", Value.Server_Dedicated_Cpu);
+      end if;
+      if not Value.Server_Dedicated_Memory.Is_Null then
+         Into.Write_Entity ("server_dedicated_memory", Value.Server_Dedicated_Memory);
+      end if;
+      if not Value.Server_Dedicated_Hd_1.Is_Null then
+         Into.Write_Entity ("server_dedicated_hd1", Value.Server_Dedicated_Hd_1);
+      end if;
+      if not Value.Server_Dedicated_Hd_2.Is_Null then
+         Into.Write_Entity ("server_dedicated_hd2", Value.Server_Dedicated_Hd_2);
+      end if;
+      if not Value.Server_Dedicated_Bandwidth.Is_Null then
+         Into.Write_Entity ("server_dedicated_bandwidth", Value.Server_Dedicated_Bandwidth);
+      end if;
+      if not Value.Server_Dedicated_Ips.Is_Null then
+         Into.Write_Entity ("server_dedicated_ips", Value.Server_Dedicated_Ips);
+      end if;
+      if not Value.Server_Dedicated_Os.Is_Null then
+         Into.Write_Entity ("server_dedicated_os", Value.Server_Dedicated_Os);
+      end if;
+      if not Value.Server_Dedicated_Cp.Is_Null then
+         Into.Write_Entity ("server_dedicated_cp", Value.Server_Dedicated_Cp);
+      end if;
+      if not Value.Server_Dedicated_Raid.Is_Null then
+         Into.Write_Entity ("server_dedicated_raid", Value.Server_Dedicated_Raid);
+      end if;
+      if not Value.Server_Extra.Is_Null then
+         Into.Write_Entity ("server_extra", Value.Server_Extra);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerServiceInfo_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerServiceInfo_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "server_id", Value.Server_Id);
+      Swagger.Streams.Deserialize (Object, "server_hostname", Value.Server_Hostname);
+      Swagger.Streams.Deserialize (Object, "server_custid", Value.Server_Custid);
+      Swagger.Streams.Deserialize (Object, "server_type", Value.Server_Type);
+      Swagger.Streams.Deserialize (Object, "server_currency", Value.Server_Currency);
+      Swagger.Streams.Deserialize (Object, "server_order_date", Value.Server_Order_Date);
+      Swagger.Streams.Deserialize (Object, "server_invoice", Value.Server_Invoice);
+      Swagger.Streams.Deserialize (Object, "server_coupon", Value.Server_Coupon);
+      Swagger.Streams.Deserialize (Object, "server_status", Value.Server_Status);
+      Swagger.Streams.Deserialize (Object, "server_root", Value.Server_Root);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_tag", Value.Server_Dedicated_Tag);
+      Swagger.Streams.Deserialize (Object, "server_custom_tag", Value.Server_Custom_Tag);
+      Swagger.Streams.Deserialize (Object, "server_comment", Value.Server_Comment);
+      Swagger.Streams.Deserialize (Object, "server_initial_bill", Value.Server_Initial_Bill);
+      Swagger.Streams.Deserialize (Object, "server_hardware", Value.Server_Hardware);
+      Swagger.Streams.Deserialize (Object, "server_ips", Value.Server_Ips);
+      Swagger.Streams.Deserialize (Object, "server_monthly_bill", Value.Server_Monthly_Bill);
+      Swagger.Streams.Deserialize (Object, "server_setup", Value.Server_Setup);
+      Swagger.Streams.Deserialize (Object, "server_discount", Value.Server_Discount);
+      Swagger.Streams.Deserialize (Object, "server_rep", Value.Server_Rep);
+      Swagger.Streams.Deserialize (Object, "server_date", Value.Server_Date);
+      Swagger.Streams.Deserialize (Object, "server_total_cost", Value.Server_Total_Cost);
+      Swagger.Streams.Deserialize (Object, "server_location", Value.Server_Location);
+      Swagger.Streams.Deserialize (Object, "server_hardware_ordered", Value.Server_Hardware_Ordered);
+      Swagger.Streams.Deserialize (Object, "server_billed", Value.Server_Billed);
+      Swagger.Streams.Deserialize (Object, "server_welcome_email", Value.Server_Welcome_Email);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_cpu", Value.Server_Dedicated_Cpu);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_memory", Value.Server_Dedicated_Memory);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_hd1", Value.Server_Dedicated_Hd_1);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_hd2", Value.Server_Dedicated_Hd_2);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_bandwidth", Value.Server_Dedicated_Bandwidth);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_ips", Value.Server_Dedicated_Ips);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_os", Value.Server_Dedicated_Os);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_cp", Value.Server_Dedicated_Cp);
+      Swagger.Streams.Deserialize (Object, "server_dedicated_raid", Value.Server_Dedicated_Raid);
+      Swagger.Streams.Deserialize (Object, "server_extra", Value.Server_Extra);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerServiceInfo_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ServerServiceInfo_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -16160,6 +16790,155 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.VpsServiceInfo_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Vps_Id.Is_Null then
+         Into.Write_Entity ("vps_id", Value.Vps_Id);
+      end if;
+      if not Value.Vps_Custid.Is_Null then
+         Into.Write_Entity ("vps_custid", Value.Vps_Custid);
+      end if;
+      if not Value.Vps_Server.Is_Null then
+         Into.Write_Entity ("vps_server", Value.Vps_Server);
+      end if;
+      if not Value.Vps_Ip.Is_Null then
+         Into.Write_Entity ("vps_ip", Value.Vps_Ip);
+      end if;
+      if not Value.Vps_Ipv_6.Is_Null then
+         Into.Write_Entity ("vps_ipv6", Value.Vps_Ipv_6);
+      end if;
+      if not Value.Vps_Vzid.Is_Null then
+         Into.Write_Entity ("vps_vzid", Value.Vps_Vzid);
+      end if;
+      if not Value.Vps_Currency.Is_Null then
+         Into.Write_Entity ("vps_currency", Value.Vps_Currency);
+      end if;
+      if not Value.Vps_Type.Is_Null then
+         Into.Write_Entity ("vps_type", Value.Vps_Type);
+      end if;
+      if not Value.Vps_Order_Date.Is_Null then
+         Into.Write_Entity ("vps_order_date", Value.Vps_Order_Date);
+      end if;
+      if not Value.Vps_Status.Is_Null then
+         Into.Write_Entity ("vps_status", Value.Vps_Status);
+      end if;
+      if not Value.Vps_Invoice.Is_Null then
+         Into.Write_Entity ("vps_invoice", Value.Vps_Invoice);
+      end if;
+      if not Value.Vps_Coupon.Is_Null then
+         Into.Write_Entity ("vps_coupon", Value.Vps_Coupon);
+      end if;
+      if not Value.Vps_Extra.Is_Null then
+         Into.Write_Entity ("vps_extra", Value.Vps_Extra);
+      end if;
+      if not Value.Vps_Hostname.Is_Null then
+         Into.Write_Entity ("vps_hostname", Value.Vps_Hostname);
+      end if;
+      if not Value.Vps_Server_Status.Is_Null then
+         Into.Write_Entity ("vps_server_status", Value.Vps_Server_Status);
+      end if;
+      if not Value.Vps_Comment.Is_Null then
+         Into.Write_Entity ("vps_comment", Value.Vps_Comment);
+      end if;
+      if not Value.Vps_Slices.Is_Null then
+         Into.Write_Entity ("vps_slices", Value.Vps_Slices);
+      end if;
+      if not Value.Vps_Vnc.Is_Null then
+         Into.Write_Entity ("vps_vnc", Value.Vps_Vnc);
+      end if;
+      if not Value.Vps_Vnc_Port.Is_Null then
+         Into.Write_Entity ("vps_vnc_port", Value.Vps_Vnc_Port);
+      end if;
+      if not Value.Vps_Rootpass.Is_Null then
+         Into.Write_Entity ("vps_rootpass", Value.Vps_Rootpass);
+      end if;
+      if not Value.Vps_Mac.Is_Null then
+         Into.Write_Entity ("vps_mac", Value.Vps_Mac);
+      end if;
+      if not Value.Vps_Os.Is_Null then
+         Into.Write_Entity ("vps_os", Value.Vps_Os);
+      end if;
+      if not Value.Vps_Version.Is_Null then
+         Into.Write_Entity ("vps_version", Value.Vps_Version);
+      end if;
+      if not Value.Vps_Location.Is_Null then
+         Into.Write_Entity ("vps_location", Value.Vps_Location);
+      end if;
+      if not Value.Vps_Platform.Is_Null then
+         Into.Write_Entity ("vps_platform", Value.Vps_Platform);
+      end if;
+      if not Value.Vps_Diskused.Is_Null then
+         Into.Write_Entity ("vps_diskused", Value.Vps_Diskused);
+      end if;
+      if not Value.Vps_Diskmax.Is_Null then
+         Into.Write_Entity ("vps_diskmax", Value.Vps_Diskmax);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in VpsServiceInfo_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.VpsServiceInfo_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "vps_id", Value.Vps_Id);
+      Swagger.Streams.Deserialize (Object, "vps_custid", Value.Vps_Custid);
+      Swagger.Streams.Deserialize (Object, "vps_server", Value.Vps_Server);
+      Swagger.Streams.Deserialize (Object, "vps_ip", Value.Vps_Ip);
+      Swagger.Streams.Deserialize (Object, "vps_ipv6", Value.Vps_Ipv_6);
+      Swagger.Streams.Deserialize (Object, "vps_vzid", Value.Vps_Vzid);
+      Swagger.Streams.Deserialize (Object, "vps_currency", Value.Vps_Currency);
+      Swagger.Streams.Deserialize (Object, "vps_type", Value.Vps_Type);
+      Swagger.Streams.Deserialize (Object, "vps_order_date", Value.Vps_Order_Date);
+      Swagger.Streams.Deserialize (Object, "vps_status", Value.Vps_Status);
+      Swagger.Streams.Deserialize (Object, "vps_invoice", Value.Vps_Invoice);
+      Swagger.Streams.Deserialize (Object, "vps_coupon", Value.Vps_Coupon);
+      Swagger.Streams.Deserialize (Object, "vps_extra", Value.Vps_Extra);
+      Swagger.Streams.Deserialize (Object, "vps_hostname", Value.Vps_Hostname);
+      Swagger.Streams.Deserialize (Object, "vps_server_status", Value.Vps_Server_Status);
+      Swagger.Streams.Deserialize (Object, "vps_comment", Value.Vps_Comment);
+      Swagger.Streams.Deserialize (Object, "vps_slices", Value.Vps_Slices);
+      Swagger.Streams.Deserialize (Object, "vps_vnc", Value.Vps_Vnc);
+      Swagger.Streams.Deserialize (Object, "vps_vnc_port", Value.Vps_Vnc_Port);
+      Swagger.Streams.Deserialize (Object, "vps_rootpass", Value.Vps_Rootpass);
+      Swagger.Streams.Deserialize (Object, "vps_mac", Value.Vps_Mac);
+      Swagger.Streams.Deserialize (Object, "vps_os", Value.Vps_Os);
+      Swagger.Streams.Deserialize (Object, "vps_version", Value.Vps_Version);
+      Swagger.Streams.Deserialize (Object, "vps_location", Value.Vps_Location);
+      Swagger.Streams.Deserialize (Object, "vps_platform", Value.Vps_Platform);
+      Swagger.Streams.Deserialize (Object, "vps_diskused", Value.Vps_Diskused);
+      Swagger.Streams.Deserialize (Object, "vps_diskmax", Value.Vps_Diskmax);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out VpsServiceInfo_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.VpsServiceInfo_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.VpsServiceMaster_Type) is
    begin
       Into.Start_Entity (Name);
@@ -18631,6 +19410,53 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.DomainAllInfoAttributesContactSet_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Serialize (Into, "owner", Value.Owner);
+      Serialize (Into, "admin", Value.Admin);
+      Serialize (Into, "tech", Value.Tech);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DomainAllInfoAttributesContactSet_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.DomainAllInfoAttributesContactSet_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Deserialize (Object, "owner", Value.Owner);
+      Deserialize (Object, "admin", Value.Admin);
+      Deserialize (Object, "tech", Value.Tech);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out DomainAllInfoAttributesContactSet_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.DomainAllInfoAttributesContactSet_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.DomainAllInfoAttributes_Type) is
    begin
       Into.Start_Entity (Name);
@@ -18776,190 +19602,6 @@ package body .Models is
                           Value : in out DomainAllInfo_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.DomainAllInfo_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DomainBillingExtra_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Serialize (Into, "order", Value.Order);
-      if not Value.Order_Id.Is_Null then
-         Into.Write_Entity ("order_id", Value.Order_Id);
-      end if;
-      if not Value.Domain_Id.Is_Null then
-         Into.Write_Entity ("domain_id", Value.Domain_Id);
-      end if;
-      Serialize (Into, "provProcessPending", Value.Prov_Process_Pending);
-      if not Value.Email.Is_Null then
-         Into.Write_Entity ("email", Value.Email);
-      end if;
-      if not Value.Firstname.Is_Null then
-         Into.Write_Entity ("firstname", Value.Firstname);
-      end if;
-      if not Value.Lastname.Is_Null then
-         Into.Write_Entity ("lastname", Value.Lastname);
-      end if;
-      if not Value.Company.Is_Null then
-         Into.Write_Entity ("company", Value.Company);
-      end if;
-      if not Value.Address.Is_Null then
-         Into.Write_Entity ("address", Value.Address);
-      end if;
-      if not Value.Address_2.Is_Null then
-         Into.Write_Entity ("address2", Value.Address_2);
-      end if;
-      if not Value.Address_3.Is_Null then
-         Into.Write_Entity ("address3", Value.Address_3);
-      end if;
-      if not Value.City.Is_Null then
-         Into.Write_Entity ("city", Value.City);
-      end if;
-      if not Value.State.Is_Null then
-         Into.Write_Entity ("state", Value.State);
-      end if;
-      if not Value.Zip.Is_Null then
-         Into.Write_Entity ("zip", Value.Zip);
-      end if;
-      if not Value.Country.Is_Null then
-         Into.Write_Entity ("country", Value.Country);
-      end if;
-      if not Value.Phone.Is_Null then
-         Into.Write_Entity ("phone", Value.Phone);
-      end if;
-      if not Value.Fax.Is_Null then
-         Into.Write_Entity ("fax", Value.Fax);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DomainBillingExtra_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DomainBillingExtra_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Deserialize (Object, "order", Value.Order);
-      Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
-      Swagger.Streams.Deserialize (Object, "domain_id", Value.Domain_Id);
-      Deserialize (Object, "provProcessPending", Value.Prov_Process_Pending);
-      Swagger.Streams.Deserialize (Object, "email", Value.Email);
-      Swagger.Streams.Deserialize (Object, "firstname", Value.Firstname);
-      Swagger.Streams.Deserialize (Object, "lastname", Value.Lastname);
-      Swagger.Streams.Deserialize (Object, "company", Value.Company);
-      Swagger.Streams.Deserialize (Object, "address", Value.Address);
-      Swagger.Streams.Deserialize (Object, "address2", Value.Address_2);
-      Swagger.Streams.Deserialize (Object, "address3", Value.Address_3);
-      Swagger.Streams.Deserialize (Object, "city", Value.City);
-      Swagger.Streams.Deserialize (Object, "state", Value.State);
-      Swagger.Streams.Deserialize (Object, "zip", Value.Zip);
-      Swagger.Streams.Deserialize (Object, "country", Value.Country);
-      Swagger.Streams.Deserialize (Object, "phone", Value.Phone);
-      Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DomainBillingExtra_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.DomainBillingExtra_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DomainBillingDetails_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Service_Last_Invoice_Date.Is_Null then
-         Into.Write_Entity ("service_last_invoice_date", Value.Service_Last_Invoice_Date);
-      end if;
-      if not Value.Service_Payment_Status.Is_Null then
-         Into.Write_Entity ("service_payment_status", Value.Service_Payment_Status);
-      end if;
-      if not Value.Service_Frequency.Is_Null then
-         Into.Write_Entity ("service_frequency", Value.Service_Frequency);
-      end if;
-      if not Value.Next_Date.Is_Null then
-         Into.Write_Entity ("next_date", Value.Next_Date);
-      end if;
-      if not Value.Service_Next_Invoice_Date.Is_Null then
-         Into.Write_Entity ("service_next_invoice_date", Value.Service_Next_Invoice_Date);
-      end if;
-      if not Value.Service_Currency.Is_Null then
-         Into.Write_Entity ("service_currency", Value.Service_Currency);
-      end if;
-      if not Value.Service_Currency_Symbol.Is_Null then
-         Into.Write_Entity ("service_currency_symbol", Value.Service_Currency_Symbol);
-      end if;
-      if not Value.Service_Cost_Info.Is_Null then
-         Into.Write_Entity ("service_cost_info", Value.Service_Cost_Info);
-      end if;
-      Serialize (Into, "service_extra", Value.Service_Extra);
-      if not Value.Service_Extra_Json.Is_Null then
-         Into.Write_Entity ("service_extra_json", Value.Service_Extra_Json);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DomainBillingDetails_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DomainBillingDetails_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "service_last_invoice_date", Value.Service_Last_Invoice_Date);
-      Swagger.Streams.Deserialize (Object, "service_payment_status", Value.Service_Payment_Status);
-      Swagger.Streams.Deserialize (Object, "service_frequency", Value.Service_Frequency);
-      Swagger.Streams.Deserialize (Object, "next_date", Value.Next_Date);
-      Swagger.Streams.Deserialize (Object, "service_next_invoice_date", Value.Service_Next_Invoice_Date);
-      Swagger.Streams.Deserialize (Object, "service_currency", Value.Service_Currency);
-      Swagger.Streams.Deserialize (Object, "service_currency_symbol", Value.Service_Currency_Symbol);
-      Swagger.Streams.Deserialize (Object, "service_cost_info", Value.Service_Cost_Info);
-      Deserialize (Object, "service_extra", Value.Service_Extra);
-      Swagger.Streams.Deserialize (Object, "service_extra_json", Value.Service_Extra_Json);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DomainBillingDetails_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.DomainBillingDetails_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -20799,310 +21441,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.QuickserverServiceInfo_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Qs_Id.Is_Null then
-         Into.Write_Entity ("qs_id", Value.Qs_Id);
-      end if;
-      if not Value.Qs_Custid.Is_Null then
-         Into.Write_Entity ("qs_custid", Value.Qs_Custid);
-      end if;
-      if not Value.Qs_Server.Is_Null then
-         Into.Write_Entity ("qs_server", Value.Qs_Server);
-      end if;
-      if not Value.Qs_Ip.Is_Null then
-         Into.Write_Entity ("qs_ip", Value.Qs_Ip);
-      end if;
-      Serialize (Into, "qs_ipv6", Value.Qs_Ipv_6);
-      if not Value.Qs_Vzid.Is_Null then
-         Into.Write_Entity ("qs_vzid", Value.Qs_Vzid);
-      end if;
-      if not Value.Qs_Currency.Is_Null then
-         Into.Write_Entity ("qs_currency", Value.Qs_Currency);
-      end if;
-      if not Value.Qs_Type.Is_Null then
-         Into.Write_Entity ("qs_type", Value.Qs_Type);
-      end if;
-      if not Value.Qs_Order_Date.Is_Null then
-         Into.Write_Entity ("qs_order_date", Value.Qs_Order_Date);
-      end if;
-      if not Value.Qs_Status.Is_Null then
-         Into.Write_Entity ("qs_status", Value.Qs_Status);
-      end if;
-      if not Value.Qs_Invoice.Is_Null then
-         Into.Write_Entity ("qs_invoice", Value.Qs_Invoice);
-      end if;
-      if not Value.Qs_Coupon.Is_Null then
-         Into.Write_Entity ("qs_coupon", Value.Qs_Coupon);
-      end if;
-      if not Value.Qs_Extra.Is_Null then
-         Into.Write_Entity ("qs_extra", Value.Qs_Extra);
-      end if;
-      if not Value.Qs_Hostname.Is_Null then
-         Into.Write_Entity ("qs_hostname", Value.Qs_Hostname);
-      end if;
-      if not Value.Qs_Server_Status.Is_Null then
-         Into.Write_Entity ("qs_server_status", Value.Qs_Server_Status);
-      end if;
-      if not Value.Qs_Comment.Is_Null then
-         Into.Write_Entity ("qs_comment", Value.Qs_Comment);
-      end if;
-      if not Value.Qs_Slices.Is_Null then
-         Into.Write_Entity ("qs_slices", Value.Qs_Slices);
-      end if;
-      if not Value.Qs_Vnc.Is_Null then
-         Into.Write_Entity ("qs_vnc", Value.Qs_Vnc);
-      end if;
-      Serialize (Into, "qs_vnc_port", Value.Qs_Vnc_Port);
-      if not Value.Qs_Rootpass.Is_Null then
-         Into.Write_Entity ("qs_rootpass", Value.Qs_Rootpass);
-      end if;
-      if not Value.Qs_Mac.Is_Null then
-         Into.Write_Entity ("qs_mac", Value.Qs_Mac);
-      end if;
-      if not Value.Qs_Os.Is_Null then
-         Into.Write_Entity ("qs_os", Value.Qs_Os);
-      end if;
-      if not Value.Qs_Version.Is_Null then
-         Into.Write_Entity ("qs_version", Value.Qs_Version);
-      end if;
-      if not Value.Qs_Location.Is_Null then
-         Into.Write_Entity ("qs_location", Value.Qs_Location);
-      end if;
-      Serialize (Into, "qs_platform", Value.Qs_Platform);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in QuickserverServiceInfo_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.QuickserverServiceInfo_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "qs_id", Value.Qs_Id);
-      Swagger.Streams.Deserialize (Object, "qs_custid", Value.Qs_Custid);
-      Swagger.Streams.Deserialize (Object, "qs_server", Value.Qs_Server);
-      Swagger.Streams.Deserialize (Object, "qs_ip", Value.Qs_Ip);
-      Deserialize (Object, "qs_ipv6", Value.Qs_Ipv_6);
-      Swagger.Streams.Deserialize (Object, "qs_vzid", Value.Qs_Vzid);
-      Swagger.Streams.Deserialize (Object, "qs_currency", Value.Qs_Currency);
-      Swagger.Streams.Deserialize (Object, "qs_type", Value.Qs_Type);
-      Swagger.Streams.Deserialize (Object, "qs_order_date", Value.Qs_Order_Date);
-      Swagger.Streams.Deserialize (Object, "qs_status", Value.Qs_Status);
-      Swagger.Streams.Deserialize (Object, "qs_invoice", Value.Qs_Invoice);
-      Swagger.Streams.Deserialize (Object, "qs_coupon", Value.Qs_Coupon);
-      Swagger.Streams.Deserialize (Object, "qs_extra", Value.Qs_Extra);
-      Swagger.Streams.Deserialize (Object, "qs_hostname", Value.Qs_Hostname);
-      Swagger.Streams.Deserialize (Object, "qs_server_status", Value.Qs_Server_Status);
-      Swagger.Streams.Deserialize (Object, "qs_comment", Value.Qs_Comment);
-      Swagger.Streams.Deserialize (Object, "qs_slices", Value.Qs_Slices);
-      Swagger.Streams.Deserialize (Object, "qs_vnc", Value.Qs_Vnc);
-      Deserialize (Object, "qs_vnc_port", Value.Qs_Vnc_Port);
-      Swagger.Streams.Deserialize (Object, "qs_rootpass", Value.Qs_Rootpass);
-      Swagger.Streams.Deserialize (Object, "qs_mac", Value.Qs_Mac);
-      Swagger.Streams.Deserialize (Object, "qs_os", Value.Qs_Os);
-      Swagger.Streams.Deserialize (Object, "qs_version", Value.Qs_Version);
-      Swagger.Streams.Deserialize (Object, "qs_location", Value.Qs_Location);
-      Deserialize (Object, "qs_platform", Value.Qs_Platform);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out QuickserverServiceInfo_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.QuickserverServiceInfo_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.QuickserverServiceMaster_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Qs_Id.Is_Null then
-         Into.Write_Entity ("qs_id", Value.Qs_Id);
-      end if;
-      if not Value.Qs_Name.Is_Null then
-         Into.Write_Entity ("qs_name", Value.Qs_Name);
-      end if;
-      if not Value.Qs_Ip.Is_Null then
-         Into.Write_Entity ("qs_ip", Value.Qs_Ip);
-      end if;
-      if not Value.Qs_Type.Is_Null then
-         Into.Write_Entity ("qs_type", Value.Qs_Type);
-      end if;
-      if not Value.Qs_Hdsize.Is_Null then
-         Into.Write_Entity ("qs_hdsize", Value.Qs_Hdsize);
-      end if;
-      if not Value.Qs_Hdfree.Is_Null then
-         Into.Write_Entity ("qs_hdfree", Value.Qs_Hdfree);
-      end if;
-      if not Value.Qs_Bits.Is_Null then
-         Into.Write_Entity ("qs_bits", Value.Qs_Bits);
-      end if;
-      if not Value.Qs_Load.Is_Null then
-         Into.Write_Entity ("qs_load", Value.Qs_Load);
-      end if;
-      if not Value.Qs_Ram.Is_Null then
-         Into.Write_Entity ("qs_ram", Value.Qs_Ram);
-      end if;
-      if not Value.Qs_Cpu_Model.Is_Null then
-         Into.Write_Entity ("qs_cpu_model", Value.Qs_Cpu_Model);
-      end if;
-      if not Value.Qs_Cpu_Mhz.Is_Null then
-         Into.Write_Entity ("qs_cpu_mhz", Value.Qs_Cpu_Mhz);
-      end if;
-      if not Value.Qs_Location.Is_Null then
-         Into.Write_Entity ("qs_location", Value.Qs_Location);
-      end if;
-      if not Value.Qs_Available.Is_Null then
-         Into.Write_Entity ("qs_available", Value.Qs_Available);
-      end if;
-      if not Value.Qs_Cost.Is_Null then
-         Into.Write_Entity ("qs_cost", Value.Qs_Cost);
-      end if;
-      if not Value.Qs_Last_Update.Is_Null then
-         Into.Write_Entity ("qs_last_update", Value.Qs_Last_Update);
-      end if;
-      if not Value.Qs_Cores.Is_Null then
-         Into.Write_Entity ("qs_cores", Value.Qs_Cores);
-      end if;
-      if not Value.Qs_Iowait.Is_Null then
-         Into.Write_Entity ("qs_iowait", Value.Qs_Iowait);
-      end if;
-      if not Value.Qs_Raid_Status.Is_Null then
-         Into.Write_Entity ("qs_raid_status", Value.Qs_Raid_Status);
-      end if;
-      if not Value.Qs_Drive_Type.Is_Null then
-         Into.Write_Entity ("qs_drive_type", Value.Qs_Drive_Type);
-      end if;
-      if not Value.Qs_Order.Is_Null then
-         Into.Write_Entity ("qs_order", Value.Qs_Order);
-      end if;
-      if not Value.Qs_Raid_Building.Is_Null then
-         Into.Write_Entity ("qs_raid_building", Value.Qs_Raid_Building);
-      end if;
-      if not Value.Qs_Kernel.Is_Null then
-         Into.Write_Entity ("qs_kernel", Value.Qs_Kernel);
-      end if;
-      if not Value.Qs_Ioping.Is_Null then
-         Into.Write_Entity ("qs_ioping", Value.Qs_Ioping);
-      end if;
-      if not Value.Qs_Speed.Is_Null then
-         Into.Write_Entity ("qs_speed", Value.Qs_Speed);
-      end if;
-      if not Value.Qs_Distro.Is_Null then
-         Into.Write_Entity ("qs_distro", Value.Qs_Distro);
-      end if;
-      if not Value.Qs_Distro_Version.Is_Null then
-         Into.Write_Entity ("qs_distro_version", Value.Qs_Distro_Version);
-      end if;
-      if not Value.Qs_Bytes_Sec_In.Is_Null then
-         Into.Write_Entity ("qs_bytes_sec_in", Value.Qs_Bytes_Sec_In);
-      end if;
-      if not Value.Qs_Bytes_Sec_Out.Is_Null then
-         Into.Write_Entity ("qs_bytes_sec_out", Value.Qs_Bytes_Sec_Out);
-      end if;
-      if not Value.Qs_Packets_Sec_In.Is_Null then
-         Into.Write_Entity ("qs_packets_sec_in", Value.Qs_Packets_Sec_In);
-      end if;
-      if not Value.Qs_Packets_Sec_Out.Is_Null then
-         Into.Write_Entity ("qs_packets_sec_out", Value.Qs_Packets_Sec_Out);
-      end if;
-      Serialize (Into, "qs_last_install_time", Value.Qs_Last_Install_Time);
-      Serialize (Into, "qs_partitions", Value.Qs_Partitions);
-      if not Value.Qs_Cpu_Flags.Is_Null then
-         Into.Write_Entity ("qs_cpu_flags", Value.Qs_Cpu_Flags);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in QuickserverServiceMaster_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.QuickserverServiceMaster_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "qs_id", Value.Qs_Id);
-      Swagger.Streams.Deserialize (Object, "qs_name", Value.Qs_Name);
-      Swagger.Streams.Deserialize (Object, "qs_ip", Value.Qs_Ip);
-      Swagger.Streams.Deserialize (Object, "qs_type", Value.Qs_Type);
-      Swagger.Streams.Deserialize (Object, "qs_hdsize", Value.Qs_Hdsize);
-      Swagger.Streams.Deserialize (Object, "qs_hdfree", Value.Qs_Hdfree);
-      Swagger.Streams.Deserialize (Object, "qs_bits", Value.Qs_Bits);
-      Swagger.Streams.Deserialize (Object, "qs_load", Value.Qs_Load);
-      Swagger.Streams.Deserialize (Object, "qs_ram", Value.Qs_Ram);
-      Swagger.Streams.Deserialize (Object, "qs_cpu_model", Value.Qs_Cpu_Model);
-      Swagger.Streams.Deserialize (Object, "qs_cpu_mhz", Value.Qs_Cpu_Mhz);
-      Swagger.Streams.Deserialize (Object, "qs_location", Value.Qs_Location);
-      Swagger.Streams.Deserialize (Object, "qs_available", Value.Qs_Available);
-      Swagger.Streams.Deserialize (Object, "qs_cost", Value.Qs_Cost);
-      Swagger.Streams.Deserialize (Object, "qs_last_update", Value.Qs_Last_Update);
-      Swagger.Streams.Deserialize (Object, "qs_cores", Value.Qs_Cores);
-      Swagger.Streams.Deserialize (Object, "qs_iowait", Value.Qs_Iowait);
-      Swagger.Streams.Deserialize (Object, "qs_raid_status", Value.Qs_Raid_Status);
-      Swagger.Streams.Deserialize (Object, "qs_drive_type", Value.Qs_Drive_Type);
-      Swagger.Streams.Deserialize (Object, "qs_order", Value.Qs_Order);
-      Swagger.Streams.Deserialize (Object, "qs_raid_building", Value.Qs_Raid_Building);
-      Swagger.Streams.Deserialize (Object, "qs_kernel", Value.Qs_Kernel);
-      Swagger.Streams.Deserialize (Object, "qs_ioping", Value.Qs_Ioping);
-      Swagger.Streams.Deserialize (Object, "qs_speed", Value.Qs_Speed);
-      Swagger.Streams.Deserialize (Object, "qs_distro", Value.Qs_Distro);
-      Swagger.Streams.Deserialize (Object, "qs_distro_version", Value.Qs_Distro_Version);
-      Swagger.Streams.Deserialize (Object, "qs_bytes_sec_in", Value.Qs_Bytes_Sec_In);
-      Swagger.Streams.Deserialize (Object, "qs_bytes_sec_out", Value.Qs_Bytes_Sec_Out);
-      Swagger.Streams.Deserialize (Object, "qs_packets_sec_in", Value.Qs_Packets_Sec_In);
-      Swagger.Streams.Deserialize (Object, "qs_packets_sec_out", Value.Qs_Packets_Sec_Out);
-      Deserialize (Object, "qs_last_install_time", Value.Qs_Last_Install_Time);
-      Deserialize (Object, "qs_partitions", Value.Qs_Partitions);
-      Swagger.Streams.Deserialize (Object, "qs_cpu_flags", Value.Qs_Cpu_Flags);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out QuickserverServiceMaster_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.QuickserverServiceMaster_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.ReverseDnsEntries_Type) is
    begin
       Into.Start_Entity (Name);
@@ -21182,6 +21520,161 @@ package body .Models is
                           Value : in out ScrubIpFilterTypes_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ScrubIpFilterTypes_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServerAsset_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("id", Value.Id);
+      Into.Write_Entity ("order_id", Value.Order_Id);
+      Into.Write_Entity ("hostname", Value.Hostname);
+      Into.Write_Entity ("status", Value.Status);
+      Into.Write_Entity ("primary_ipv4", Value.Primary_Ipv_4);
+      Into.Write_Entity ("primary_ipv6", Value.Primary_Ipv_6);
+      Into.Write_Entity ("datacenter", Value.Datacenter);
+      Into.Write_Entity ("type_id", Value.Type_Id);
+      Into.Write_Entity ("asset_tag", Value.Asset_Tag);
+      Into.Write_Entity ("rack", Value.Rack);
+      Into.Write_Entity ("row", Value.Row);
+      Into.Write_Entity ("col", Value.Col);
+      Into.Write_Entity ("unit_start", Value.Unit_Start);
+      Into.Write_Entity ("unit_end", Value.Unit_End);
+      Into.Write_Entity ("unit_sub", Value.Unit_Sub);
+      Into.Write_Entity ("ipmi_mac", Value.Ipmi_Mac);
+      Into.Write_Entity ("ipmi_ip", Value.Ipmi_Ip);
+      Into.Write_Entity ("ipmi_working", Value.Ipmi_Working);
+      Into.Write_Entity ("company", Value.Company);
+      Into.Write_Entity ("comments", Value.Comments);
+      Into.Write_Entity ("make", Value.Make);
+      Into.Write_Entity ("model", Value.Model);
+      Into.Write_Entity ("description", Value.Description);
+      Into.Write_Entity ("customer_id", Value.Customer_Id);
+      Into.Write_Entity ("external_id", Value.External_Id);
+      Into.Write_Entity ("billing_status", Value.Billing_Status);
+      Into.Write_Entity ("overdue", Value.Overdue);
+      Into.Write_Entity ("asset_id", Value.Asset_Id);
+      Into.Write_Entity ("asset_name", Value.Asset_Name);
+      Into.Write_Entity ("rack_id", Value.Rack_Id);
+      Into.Write_Entity ("rack_name", Value.Rack_Name);
+      Into.Write_Entity ("rack_location", Value.Rack_Location);
+      Into.Write_Entity ("rack_size", Value.Rack_Size);
+      Into.Write_Entity ("rack_x", Value.Rack_X);
+      Into.Write_Entity ("rack_y", Value.Rack_Y);
+      Serialize (Into, "switchports", Value.Switchports);
+      Serialize (Into, "vlans", Value.Vlans);
+      Serialize (Into, "vlans6", Value.Vlans_6);
+      Serialize (Into, "lease", Value.Lease);
+      if not Value.Mac.Is_Null then
+         Into.Write_Entity ("mac", Value.Mac);
+      end if;
+      if not Value.Ipmi_Admin_Username.Is_Null then
+         Into.Write_Entity ("ipmi_admin_username", Value.Ipmi_Admin_Username);
+      end if;
+      if not Value.Ipmi_Admin_Password.Is_Null then
+         Into.Write_Entity ("ipmi_admin_password", Value.Ipmi_Admin_Password);
+      end if;
+      if not Value.Ipmi_Client_Username.Is_Null then
+         Into.Write_Entity ("ipmi_client_username", Value.Ipmi_Client_Username);
+      end if;
+      if not Value.Ipmi_Client_Password.Is_Null then
+         Into.Write_Entity ("ipmi_client_password", Value.Ipmi_Client_Password);
+      end if;
+      if not Value.Ipmi_Updated.Is_Null then
+         Into.Write_Entity ("ipmi_updated", Value.Ipmi_Updated);
+      end if;
+      if not Value.Create_Timestamp.Is_Null then
+         Into.Write_Entity ("create_timestamp", Value.Create_Timestamp);
+      end if;
+      if not Value.Update_Timestamp.Is_Null then
+         Into.Write_Entity ("update_timestamp", Value.Update_Timestamp);
+      end if;
+      if not Value.Comment.Is_Null then
+         Into.Write_Entity ("comment", Value.Comment);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerAsset_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerAsset_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
+      Swagger.Streams.Deserialize (Object, "hostname", Value.Hostname);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "primary_ipv4", Value.Primary_Ipv_4);
+      Swagger.Streams.Deserialize (Object, "primary_ipv6", Value.Primary_Ipv_6);
+      Swagger.Streams.Deserialize (Object, "datacenter", Value.Datacenter);
+      Swagger.Streams.Deserialize (Object, "type_id", Value.Type_Id);
+      Swagger.Streams.Deserialize (Object, "asset_tag", Value.Asset_Tag);
+      Swagger.Streams.Deserialize (Object, "rack", Value.Rack);
+      Swagger.Streams.Deserialize (Object, "row", Value.Row);
+      Swagger.Streams.Deserialize (Object, "col", Value.Col);
+      Swagger.Streams.Deserialize (Object, "unit_start", Value.Unit_Start);
+      Swagger.Streams.Deserialize (Object, "unit_end", Value.Unit_End);
+      Swagger.Streams.Deserialize (Object, "unit_sub", Value.Unit_Sub);
+      Swagger.Streams.Deserialize (Object, "ipmi_mac", Value.Ipmi_Mac);
+      Swagger.Streams.Deserialize (Object, "ipmi_ip", Value.Ipmi_Ip);
+      Swagger.Streams.Deserialize (Object, "ipmi_working", Value.Ipmi_Working);
+      Swagger.Streams.Deserialize (Object, "company", Value.Company);
+      Swagger.Streams.Deserialize (Object, "comments", Value.Comments);
+      Swagger.Streams.Deserialize (Object, "make", Value.Make);
+      Swagger.Streams.Deserialize (Object, "model", Value.Model);
+      Swagger.Streams.Deserialize (Object, "description", Value.Description);
+      Swagger.Streams.Deserialize (Object, "customer_id", Value.Customer_Id);
+      Swagger.Streams.Deserialize (Object, "external_id", Value.External_Id);
+      Swagger.Streams.Deserialize (Object, "billing_status", Value.Billing_Status);
+      Swagger.Streams.Deserialize (Object, "overdue", Value.Overdue);
+      Swagger.Streams.Deserialize (Object, "asset_id", Value.Asset_Id);
+      Swagger.Streams.Deserialize (Object, "asset_name", Value.Asset_Name);
+      Swagger.Streams.Deserialize (Object, "rack_id", Value.Rack_Id);
+      Swagger.Streams.Deserialize (Object, "rack_name", Value.Rack_Name);
+      Swagger.Streams.Deserialize (Object, "rack_location", Value.Rack_Location);
+      Swagger.Streams.Deserialize (Object, "rack_size", Value.Rack_Size);
+      Swagger.Streams.Deserialize (Object, "rack_x", Value.Rack_X);
+      Swagger.Streams.Deserialize (Object, "rack_y", Value.Rack_Y);
+      Swagger.Streams.Deserialize (Object, "switchports", Value.Switchports);
+      Swagger.Streams.Deserialize (Object, "vlans", Value.Vlans);
+      Swagger.Streams.Deserialize (Object, "vlans6", Value.Vlans_6);
+      Deserialize (Object, "lease", Value.Lease);
+      Swagger.Streams.Deserialize (Object, "mac", Value.Mac);
+      Swagger.Streams.Deserialize (Object, "ipmi_admin_username", Value.Ipmi_Admin_Username);
+      Swagger.Streams.Deserialize (Object, "ipmi_admin_password", Value.Ipmi_Admin_Password);
+      Swagger.Streams.Deserialize (Object, "ipmi_client_username", Value.Ipmi_Client_Username);
+      Swagger.Streams.Deserialize (Object, "ipmi_client_password", Value.Ipmi_Client_Password);
+      Swagger.Streams.Deserialize (Object, "ipmi_updated", Value.Ipmi_Updated);
+      Swagger.Streams.Deserialize (Object, "create_timestamp", Value.Create_Timestamp);
+      Swagger.Streams.Deserialize (Object, "update_timestamp", Value.Update_Timestamp);
+      Swagger.Streams.Deserialize (Object, "comment", Value.Comment);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerAsset_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ServerAsset_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -21279,6 +21772,49 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.ServerNetworkInfoAssets_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Serialize (Into, "3497", Value.P_3497);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServerNetworkInfoAssets_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServerNetworkInfoAssets_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Deserialize (Object, "3497", Value.P_3497);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServerNetworkInfoAssets_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ServerNetworkInfoAssets_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.ServerNetworkInfoSwitchports_Type) is
    begin
       Into.Start_Entity (Name);
@@ -21354,145 +21890,6 @@ package body .Models is
                           Value : in out ServerOrderBandwidthLi_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ServerOrderBandwidthLi_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerOrderCPU_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      if not Value.Price.Is_Null then
-         Into.Write_Entity ("price", Value.Price);
-      end if;
-      if not Value.Img.Is_Null then
-         Into.Write_Entity ("img", Value.Img);
-      end if;
-      if not Value.Short_Desc.Is_Null then
-         Into.Write_Entity ("short_desc", Value.Short_Desc);
-      end if;
-      if not Value.Long_Desc.Is_Null then
-         Into.Write_Entity ("long_desc", Value.Long_Desc);
-      end if;
-      if not Value.Location.Is_Null then
-         Into.Write_Entity ("location", Value.Location);
-      end if;
-      if not Value.Fsb.Is_Null then
-         Into.Write_Entity ("fsb", Value.Fsb);
-      end if;
-      if not Value.Manu.Is_Null then
-         Into.Write_Entity ("manu", Value.Manu);
-      end if;
-      if not Value.P_Type.Is_Null then
-         Into.Write_Entity ("type", Value.P_Type);
-      end if;
-      if not Value.Speed.Is_Null then
-         Into.Write_Entity ("speed", Value.Speed);
-      end if;
-      if not Value.Cache.Is_Null then
-         Into.Write_Entity ("cache", Value.Cache);
-      end if;
-      if not Value.Active.Is_Null then
-         Into.Write_Entity ("active", Value.Active);
-      end if;
-      if not Value.Num_Cores.Is_Null then
-         Into.Write_Entity ("num_cores", Value.Num_Cores);
-      end if;
-      if not Value.Num_Cpus.Is_Null then
-         Into.Write_Entity ("num_cpus", Value.Num_Cpus);
-      end if;
-      if not Value.Benchmark.Is_Null then
-         Into.Write_Entity ("benchmark", Value.Benchmark);
-      end if;
-      if not Value.Monthly_Price.Is_Null then
-         Into.Write_Entity ("monthly_price", Value.Monthly_Price);
-      end if;
-      if not Value.Max_Ram.Is_Null then
-         Into.Write_Entity ("max_ram", Value.Max_Ram);
-      end if;
-      if not Value.Min_Ram.Is_Null then
-         Into.Write_Entity ("min_ram", Value.Min_Ram);
-      end if;
-      if not Value.Max_Lff.Is_Null then
-         Into.Write_Entity ("max_lff", Value.Max_Lff);
-      end if;
-      if not Value.Max_Sff.Is_Null then
-         Into.Write_Entity ("max_sff", Value.Max_Sff);
-      end if;
-      if not Value.Max_Nve.Is_Null then
-         Into.Write_Entity ("max_nve", Value.Max_Nve);
-      end if;
-      if not Value.Visible.Is_Null then
-         Into.Write_Entity ("visible", Value.Visible);
-      end if;
-      Serialize (Into, "hd_ids", Value.Hd_Ids);
-      if not Value.Price_Display.Is_Null then
-         Into.Write_Entity ("price_display", Value.Price_Display);
-      end if;
-      if not Value.Monthly_Price_Display.Is_Null then
-         Into.Write_Entity ("monthly_price_display", Value.Monthly_Price_Display);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerOrderCPU_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerOrderCPU_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "price", Value.Price);
-      Swagger.Streams.Deserialize (Object, "img", Value.Img);
-      Swagger.Streams.Deserialize (Object, "short_desc", Value.Short_Desc);
-      Swagger.Streams.Deserialize (Object, "long_desc", Value.Long_Desc);
-      Swagger.Streams.Deserialize (Object, "location", Value.Location);
-      Swagger.Streams.Deserialize (Object, "fsb", Value.Fsb);
-      Swagger.Streams.Deserialize (Object, "manu", Value.Manu);
-      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "speed", Value.Speed);
-      Swagger.Streams.Deserialize (Object, "cache", Value.Cache);
-      Swagger.Streams.Deserialize (Object, "active", Value.Active);
-      Swagger.Streams.Deserialize (Object, "num_cores", Value.Num_Cores);
-      Swagger.Streams.Deserialize (Object, "num_cpus", Value.Num_Cpus);
-      Swagger.Streams.Deserialize (Object, "benchmark", Value.Benchmark);
-      Swagger.Streams.Deserialize (Object, "monthly_price", Value.Monthly_Price);
-      Swagger.Streams.Deserialize (Object, "max_ram", Value.Max_Ram);
-      Swagger.Streams.Deserialize (Object, "min_ram", Value.Min_Ram);
-      Swagger.Streams.Deserialize (Object, "max_lff", Value.Max_Lff);
-      Swagger.Streams.Deserialize (Object, "max_sff", Value.Max_Sff);
-      Swagger.Streams.Deserialize (Object, "max_nve", Value.Max_Nve);
-      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
-      Deserialize (Object, "hd_ids", Value.Hd_Ids);
-      Swagger.Streams.Deserialize (Object, "price_display", Value.Price_Display);
-      Swagger.Streams.Deserialize (Object, "monthly_price_display", Value.Monthly_Price_Display);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerOrderCPU_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ServerOrderCPU_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -21806,183 +22203,6 @@ package body .Models is
                           Value : in out ServerOrderOsLi_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ServerOrderOsLi_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerServiceInfo_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Server_Id.Is_Null then
-         Into.Write_Entity ("server_id", Value.Server_Id);
-      end if;
-      if not Value.Server_Hostname.Is_Null then
-         Into.Write_Entity ("server_hostname", Value.Server_Hostname);
-      end if;
-      if not Value.Server_Custid.Is_Null then
-         Into.Write_Entity ("server_custid", Value.Server_Custid);
-      end if;
-      if not Value.Server_Type.Is_Null then
-         Into.Write_Entity ("server_type", Value.Server_Type);
-      end if;
-      if not Value.Server_Currency.Is_Null then
-         Into.Write_Entity ("server_currency", Value.Server_Currency);
-      end if;
-      if not Value.Server_Order_Date.Is_Null then
-         Into.Write_Entity ("server_order_date", Value.Server_Order_Date);
-      end if;
-      if not Value.Server_Invoice.Is_Null then
-         Into.Write_Entity ("server_invoice", Value.Server_Invoice);
-      end if;
-      if not Value.Server_Coupon.Is_Null then
-         Into.Write_Entity ("server_coupon", Value.Server_Coupon);
-      end if;
-      if not Value.Server_Status.Is_Null then
-         Into.Write_Entity ("server_status", Value.Server_Status);
-      end if;
-      if not Value.Server_Root.Is_Null then
-         Into.Write_Entity ("server_root", Value.Server_Root);
-      end if;
-      if not Value.Server_Dedicated_Tag.Is_Null then
-         Into.Write_Entity ("server_dedicated_tag", Value.Server_Dedicated_Tag);
-      end if;
-      if not Value.Server_Custom_Tag.Is_Null then
-         Into.Write_Entity ("server_custom_tag", Value.Server_Custom_Tag);
-      end if;
-      if not Value.Server_Comment.Is_Null then
-         Into.Write_Entity ("server_comment", Value.Server_Comment);
-      end if;
-      if not Value.Server_Initial_Bill.Is_Null then
-         Into.Write_Entity ("server_initial_bill", Value.Server_Initial_Bill);
-      end if;
-      if not Value.Server_Hardware.Is_Null then
-         Into.Write_Entity ("server_hardware", Value.Server_Hardware);
-      end if;
-      if not Value.Server_Ips.Is_Null then
-         Into.Write_Entity ("server_ips", Value.Server_Ips);
-      end if;
-      if not Value.Server_Monthly_Bill.Is_Null then
-         Into.Write_Entity ("server_monthly_bill", Value.Server_Monthly_Bill);
-      end if;
-      if not Value.Server_Setup.Is_Null then
-         Into.Write_Entity ("server_setup", Value.Server_Setup);
-      end if;
-      Serialize (Into, "server_discount", Value.Server_Discount);
-      if not Value.Server_Rep.Is_Null then
-         Into.Write_Entity ("server_rep", Value.Server_Rep);
-      end if;
-      if not Value.Server_Date.Is_Null then
-         Into.Write_Entity ("server_date", Value.Server_Date);
-      end if;
-      if not Value.Server_Total_Cost.Is_Null then
-         Into.Write_Entity ("server_total_cost", Value.Server_Total_Cost);
-      end if;
-      Serialize (Into, "server_location", Value.Server_Location);
-      if not Value.Server_Hardware_Ordered.Is_Null then
-         Into.Write_Entity ("server_hardware_ordered", Value.Server_Hardware_Ordered);
-      end if;
-      if not Value.Server_Billed.Is_Null then
-         Into.Write_Entity ("server_billed", Value.Server_Billed);
-      end if;
-      if not Value.Server_Welcome_Email.Is_Null then
-         Into.Write_Entity ("server_welcome_email", Value.Server_Welcome_Email);
-      end if;
-      if not Value.Server_Dedicated_Cpu.Is_Null then
-         Into.Write_Entity ("server_dedicated_cpu", Value.Server_Dedicated_Cpu);
-      end if;
-      if not Value.Server_Dedicated_Memory.Is_Null then
-         Into.Write_Entity ("server_dedicated_memory", Value.Server_Dedicated_Memory);
-      end if;
-      if not Value.Server_Dedicated_Hd_1.Is_Null then
-         Into.Write_Entity ("server_dedicated_hd1", Value.Server_Dedicated_Hd_1);
-      end if;
-      Serialize (Into, "server_dedicated_hd2", Value.Server_Dedicated_Hd_2);
-      if not Value.Server_Dedicated_Bandwidth.Is_Null then
-         Into.Write_Entity ("server_dedicated_bandwidth", Value.Server_Dedicated_Bandwidth);
-      end if;
-      if not Value.Server_Dedicated_Ips.Is_Null then
-         Into.Write_Entity ("server_dedicated_ips", Value.Server_Dedicated_Ips);
-      end if;
-      if not Value.Server_Dedicated_Os.Is_Null then
-         Into.Write_Entity ("server_dedicated_os", Value.Server_Dedicated_Os);
-      end if;
-      Serialize (Into, "server_dedicated_cp", Value.Server_Dedicated_Cp);
-      if not Value.Server_Dedicated_Raid.Is_Null then
-         Into.Write_Entity ("server_dedicated_raid", Value.Server_Dedicated_Raid);
-      end if;
-      if not Value.Server_Extra.Is_Null then
-         Into.Write_Entity ("server_extra", Value.Server_Extra);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerServiceInfo_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerServiceInfo_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "server_id", Value.Server_Id);
-      Swagger.Streams.Deserialize (Object, "server_hostname", Value.Server_Hostname);
-      Swagger.Streams.Deserialize (Object, "server_custid", Value.Server_Custid);
-      Swagger.Streams.Deserialize (Object, "server_type", Value.Server_Type);
-      Swagger.Streams.Deserialize (Object, "server_currency", Value.Server_Currency);
-      Swagger.Streams.Deserialize (Object, "server_order_date", Value.Server_Order_Date);
-      Swagger.Streams.Deserialize (Object, "server_invoice", Value.Server_Invoice);
-      Swagger.Streams.Deserialize (Object, "server_coupon", Value.Server_Coupon);
-      Swagger.Streams.Deserialize (Object, "server_status", Value.Server_Status);
-      Swagger.Streams.Deserialize (Object, "server_root", Value.Server_Root);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_tag", Value.Server_Dedicated_Tag);
-      Swagger.Streams.Deserialize (Object, "server_custom_tag", Value.Server_Custom_Tag);
-      Swagger.Streams.Deserialize (Object, "server_comment", Value.Server_Comment);
-      Swagger.Streams.Deserialize (Object, "server_initial_bill", Value.Server_Initial_Bill);
-      Swagger.Streams.Deserialize (Object, "server_hardware", Value.Server_Hardware);
-      Swagger.Streams.Deserialize (Object, "server_ips", Value.Server_Ips);
-      Swagger.Streams.Deserialize (Object, "server_monthly_bill", Value.Server_Monthly_Bill);
-      Swagger.Streams.Deserialize (Object, "server_setup", Value.Server_Setup);
-      Deserialize (Object, "server_discount", Value.Server_Discount);
-      Swagger.Streams.Deserialize (Object, "server_rep", Value.Server_Rep);
-      Swagger.Streams.Deserialize (Object, "server_date", Value.Server_Date);
-      Swagger.Streams.Deserialize (Object, "server_total_cost", Value.Server_Total_Cost);
-      Deserialize (Object, "server_location", Value.Server_Location);
-      Swagger.Streams.Deserialize (Object, "server_hardware_ordered", Value.Server_Hardware_Ordered);
-      Swagger.Streams.Deserialize (Object, "server_billed", Value.Server_Billed);
-      Swagger.Streams.Deserialize (Object, "server_welcome_email", Value.Server_Welcome_Email);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_cpu", Value.Server_Dedicated_Cpu);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_memory", Value.Server_Dedicated_Memory);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_hd1", Value.Server_Dedicated_Hd_1);
-      Deserialize (Object, "server_dedicated_hd2", Value.Server_Dedicated_Hd_2);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_bandwidth", Value.Server_Dedicated_Bandwidth);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_ips", Value.Server_Dedicated_Ips);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_os", Value.Server_Dedicated_Os);
-      Deserialize (Object, "server_dedicated_cp", Value.Server_Dedicated_Cp);
-      Swagger.Streams.Deserialize (Object, "server_dedicated_raid", Value.Server_Dedicated_Raid);
-      Swagger.Streams.Deserialize (Object, "server_extra", Value.Server_Extra);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerServiceInfo_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ServerServiceInfo_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -22774,153 +22994,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.VpsServiceInfo_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Vps_Id.Is_Null then
-         Into.Write_Entity ("vps_id", Value.Vps_Id);
-      end if;
-      if not Value.Vps_Custid.Is_Null then
-         Into.Write_Entity ("vps_custid", Value.Vps_Custid);
-      end if;
-      if not Value.Vps_Server.Is_Null then
-         Into.Write_Entity ("vps_server", Value.Vps_Server);
-      end if;
-      if not Value.Vps_Ip.Is_Null then
-         Into.Write_Entity ("vps_ip", Value.Vps_Ip);
-      end if;
-      Serialize (Into, "vps_ipv6", Value.Vps_Ipv_6);
-      if not Value.Vps_Vzid.Is_Null then
-         Into.Write_Entity ("vps_vzid", Value.Vps_Vzid);
-      end if;
-      if not Value.Vps_Currency.Is_Null then
-         Into.Write_Entity ("vps_currency", Value.Vps_Currency);
-      end if;
-      if not Value.Vps_Type.Is_Null then
-         Into.Write_Entity ("vps_type", Value.Vps_Type);
-      end if;
-      if not Value.Vps_Order_Date.Is_Null then
-         Into.Write_Entity ("vps_order_date", Value.Vps_Order_Date);
-      end if;
-      if not Value.Vps_Status.Is_Null then
-         Into.Write_Entity ("vps_status", Value.Vps_Status);
-      end if;
-      if not Value.Vps_Invoice.Is_Null then
-         Into.Write_Entity ("vps_invoice", Value.Vps_Invoice);
-      end if;
-      if not Value.Vps_Coupon.Is_Null then
-         Into.Write_Entity ("vps_coupon", Value.Vps_Coupon);
-      end if;
-      if not Value.Vps_Extra.Is_Null then
-         Into.Write_Entity ("vps_extra", Value.Vps_Extra);
-      end if;
-      if not Value.Vps_Hostname.Is_Null then
-         Into.Write_Entity ("vps_hostname", Value.Vps_Hostname);
-      end if;
-      if not Value.Vps_Server_Status.Is_Null then
-         Into.Write_Entity ("vps_server_status", Value.Vps_Server_Status);
-      end if;
-      if not Value.Vps_Comment.Is_Null then
-         Into.Write_Entity ("vps_comment", Value.Vps_Comment);
-      end if;
-      if not Value.Vps_Slices.Is_Null then
-         Into.Write_Entity ("vps_slices", Value.Vps_Slices);
-      end if;
-      if not Value.Vps_Vnc.Is_Null then
-         Into.Write_Entity ("vps_vnc", Value.Vps_Vnc);
-      end if;
-      if not Value.Vps_Vnc_Port.Is_Null then
-         Into.Write_Entity ("vps_vnc_port", Value.Vps_Vnc_Port);
-      end if;
-      if not Value.Vps_Rootpass.Is_Null then
-         Into.Write_Entity ("vps_rootpass", Value.Vps_Rootpass);
-      end if;
-      if not Value.Vps_Mac.Is_Null then
-         Into.Write_Entity ("vps_mac", Value.Vps_Mac);
-      end if;
-      if not Value.Vps_Os.Is_Null then
-         Into.Write_Entity ("vps_os", Value.Vps_Os);
-      end if;
-      if not Value.Vps_Version.Is_Null then
-         Into.Write_Entity ("vps_version", Value.Vps_Version);
-      end if;
-      if not Value.Vps_Location.Is_Null then
-         Into.Write_Entity ("vps_location", Value.Vps_Location);
-      end if;
-      if not Value.Vps_Platform.Is_Null then
-         Into.Write_Entity ("vps_platform", Value.Vps_Platform);
-      end if;
-      if not Value.Vps_Diskused.Is_Null then
-         Into.Write_Entity ("vps_diskused", Value.Vps_Diskused);
-      end if;
-      if not Value.Vps_Diskmax.Is_Null then
-         Into.Write_Entity ("vps_diskmax", Value.Vps_Diskmax);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in VpsServiceInfo_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.VpsServiceInfo_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "vps_id", Value.Vps_Id);
-      Swagger.Streams.Deserialize (Object, "vps_custid", Value.Vps_Custid);
-      Swagger.Streams.Deserialize (Object, "vps_server", Value.Vps_Server);
-      Swagger.Streams.Deserialize (Object, "vps_ip", Value.Vps_Ip);
-      Deserialize (Object, "vps_ipv6", Value.Vps_Ipv_6);
-      Swagger.Streams.Deserialize (Object, "vps_vzid", Value.Vps_Vzid);
-      Swagger.Streams.Deserialize (Object, "vps_currency", Value.Vps_Currency);
-      Swagger.Streams.Deserialize (Object, "vps_type", Value.Vps_Type);
-      Swagger.Streams.Deserialize (Object, "vps_order_date", Value.Vps_Order_Date);
-      Swagger.Streams.Deserialize (Object, "vps_status", Value.Vps_Status);
-      Swagger.Streams.Deserialize (Object, "vps_invoice", Value.Vps_Invoice);
-      Swagger.Streams.Deserialize (Object, "vps_coupon", Value.Vps_Coupon);
-      Swagger.Streams.Deserialize (Object, "vps_extra", Value.Vps_Extra);
-      Swagger.Streams.Deserialize (Object, "vps_hostname", Value.Vps_Hostname);
-      Swagger.Streams.Deserialize (Object, "vps_server_status", Value.Vps_Server_Status);
-      Swagger.Streams.Deserialize (Object, "vps_comment", Value.Vps_Comment);
-      Swagger.Streams.Deserialize (Object, "vps_slices", Value.Vps_Slices);
-      Swagger.Streams.Deserialize (Object, "vps_vnc", Value.Vps_Vnc);
-      Swagger.Streams.Deserialize (Object, "vps_vnc_port", Value.Vps_Vnc_Port);
-      Swagger.Streams.Deserialize (Object, "vps_rootpass", Value.Vps_Rootpass);
-      Swagger.Streams.Deserialize (Object, "vps_mac", Value.Vps_Mac);
-      Swagger.Streams.Deserialize (Object, "vps_os", Value.Vps_Os);
-      Swagger.Streams.Deserialize (Object, "vps_version", Value.Vps_Version);
-      Swagger.Streams.Deserialize (Object, "vps_location", Value.Vps_Location);
-      Swagger.Streams.Deserialize (Object, "vps_platform", Value.Vps_Platform);
-      Swagger.Streams.Deserialize (Object, "vps_diskused", Value.Vps_Diskused);
-      Swagger.Streams.Deserialize (Object, "vps_diskmax", Value.Vps_Diskmax);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out VpsServiceInfo_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.VpsServiceInfo_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.VpsTemplatesList_Type) is
    begin
       Into.Start_Entity (Name);
@@ -23476,9 +23549,15 @@ package body .Models is
       if not Value.Services_Field_2.Is_Null then
          Into.Write_Entity ("services_field2", Value.Services_Field_2);
       end if;
-      Serialize (Into, "services_html", Value.Services_Html);
-      Serialize (Into, "services_description", Value.Services_Description);
-      Serialize (Into, "services_moreinfo_url", Value.Services_Moreinfo_Url);
+      if not Value.Services_Html.Is_Null then
+         Into.Write_Entity ("services_html", Value.Services_Html);
+      end if;
+      if not Value.Services_Description.Is_Null then
+         Into.Write_Entity ("services_description", Value.Services_Description);
+      end if;
+      if not Value.Services_Moreinfo_Url.Is_Null then
+         Into.Write_Entity ("services_moreinfo_url", Value.Services_Moreinfo_Url);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -23509,9 +23588,9 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "services_hidden", Value.Services_Hidden);
       Swagger.Streams.Deserialize (Object, "services_field1", Value.Services_Field_1);
       Swagger.Streams.Deserialize (Object, "services_field2", Value.Services_Field_2);
-      Deserialize (Object, "services_html", Value.Services_Html);
-      Deserialize (Object, "services_description", Value.Services_Description);
-      Deserialize (Object, "services_moreinfo_url", Value.Services_Moreinfo_Url);
+      Swagger.Streams.Deserialize (Object, "services_html", Value.Services_Html);
+      Swagger.Streams.Deserialize (Object, "services_description", Value.Services_Description);
+      Swagger.Streams.Deserialize (Object, "services_moreinfo_url", Value.Services_Moreinfo_Url);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -23679,6 +23758,190 @@ package body .Models is
                           Value : in out CpuWithDefaults_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.CpuWithDefaults_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.DomainBillingExtra_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Serialize (Into, "order", Value.Order);
+      if not Value.Order_Id.Is_Null then
+         Into.Write_Entity ("order_id", Value.Order_Id);
+      end if;
+      if not Value.Domain_Id.Is_Null then
+         Into.Write_Entity ("domain_id", Value.Domain_Id);
+      end if;
+      Serialize (Into, "provProcessPending", Value.Prov_Process_Pending);
+      if not Value.Email.Is_Null then
+         Into.Write_Entity ("email", Value.Email);
+      end if;
+      if not Value.Firstname.Is_Null then
+         Into.Write_Entity ("firstname", Value.Firstname);
+      end if;
+      if not Value.Lastname.Is_Null then
+         Into.Write_Entity ("lastname", Value.Lastname);
+      end if;
+      if not Value.Company.Is_Null then
+         Into.Write_Entity ("company", Value.Company);
+      end if;
+      if not Value.Address.Is_Null then
+         Into.Write_Entity ("address", Value.Address);
+      end if;
+      if not Value.Address_2.Is_Null then
+         Into.Write_Entity ("address2", Value.Address_2);
+      end if;
+      if not Value.Address_3.Is_Null then
+         Into.Write_Entity ("address3", Value.Address_3);
+      end if;
+      if not Value.City.Is_Null then
+         Into.Write_Entity ("city", Value.City);
+      end if;
+      if not Value.State.Is_Null then
+         Into.Write_Entity ("state", Value.State);
+      end if;
+      if not Value.Zip.Is_Null then
+         Into.Write_Entity ("zip", Value.Zip);
+      end if;
+      if not Value.Country.Is_Null then
+         Into.Write_Entity ("country", Value.Country);
+      end if;
+      if not Value.Phone.Is_Null then
+         Into.Write_Entity ("phone", Value.Phone);
+      end if;
+      if not Value.Fax.Is_Null then
+         Into.Write_Entity ("fax", Value.Fax);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DomainBillingExtra_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.DomainBillingExtra_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Deserialize (Object, "order", Value.Order);
+      Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
+      Swagger.Streams.Deserialize (Object, "domain_id", Value.Domain_Id);
+      Deserialize (Object, "provProcessPending", Value.Prov_Process_Pending);
+      Swagger.Streams.Deserialize (Object, "email", Value.Email);
+      Swagger.Streams.Deserialize (Object, "firstname", Value.Firstname);
+      Swagger.Streams.Deserialize (Object, "lastname", Value.Lastname);
+      Swagger.Streams.Deserialize (Object, "company", Value.Company);
+      Swagger.Streams.Deserialize (Object, "address", Value.Address);
+      Swagger.Streams.Deserialize (Object, "address2", Value.Address_2);
+      Swagger.Streams.Deserialize (Object, "address3", Value.Address_3);
+      Swagger.Streams.Deserialize (Object, "city", Value.City);
+      Swagger.Streams.Deserialize (Object, "state", Value.State);
+      Swagger.Streams.Deserialize (Object, "zip", Value.Zip);
+      Swagger.Streams.Deserialize (Object, "country", Value.Country);
+      Swagger.Streams.Deserialize (Object, "phone", Value.Phone);
+      Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out DomainBillingExtra_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.DomainBillingExtra_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.DomainBillingDetails_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Service_Last_Invoice_Date.Is_Null then
+         Into.Write_Entity ("service_last_invoice_date", Value.Service_Last_Invoice_Date);
+      end if;
+      if not Value.Service_Payment_Status.Is_Null then
+         Into.Write_Entity ("service_payment_status", Value.Service_Payment_Status);
+      end if;
+      if not Value.Service_Frequency.Is_Null then
+         Into.Write_Entity ("service_frequency", Value.Service_Frequency);
+      end if;
+      if not Value.Next_Date.Is_Null then
+         Into.Write_Entity ("next_date", Value.Next_Date);
+      end if;
+      if not Value.Service_Next_Invoice_Date.Is_Null then
+         Into.Write_Entity ("service_next_invoice_date", Value.Service_Next_Invoice_Date);
+      end if;
+      if not Value.Service_Currency.Is_Null then
+         Into.Write_Entity ("service_currency", Value.Service_Currency);
+      end if;
+      if not Value.Service_Currency_Symbol.Is_Null then
+         Into.Write_Entity ("service_currency_symbol", Value.Service_Currency_Symbol);
+      end if;
+      if not Value.Service_Cost_Info.Is_Null then
+         Into.Write_Entity ("service_cost_info", Value.Service_Cost_Info);
+      end if;
+      Serialize (Into, "service_extra", Value.Service_Extra);
+      if not Value.Service_Extra_Json.Is_Null then
+         Into.Write_Entity ("service_extra_json", Value.Service_Extra_Json);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DomainBillingDetails_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.DomainBillingDetails_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "service_last_invoice_date", Value.Service_Last_Invoice_Date);
+      Swagger.Streams.Deserialize (Object, "service_payment_status", Value.Service_Payment_Status);
+      Swagger.Streams.Deserialize (Object, "service_frequency", Value.Service_Frequency);
+      Swagger.Streams.Deserialize (Object, "next_date", Value.Next_Date);
+      Swagger.Streams.Deserialize (Object, "service_next_invoice_date", Value.Service_Next_Invoice_Date);
+      Swagger.Streams.Deserialize (Object, "service_currency", Value.Service_Currency);
+      Swagger.Streams.Deserialize (Object, "service_currency_symbol", Value.Service_Currency_Symbol);
+      Swagger.Streams.Deserialize (Object, "service_cost_info", Value.Service_Cost_Info);
+      Deserialize (Object, "service_extra", Value.Service_Extra);
+      Swagger.Streams.Deserialize (Object, "service_extra_json", Value.Service_Extra_Json);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out DomainBillingDetails_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.DomainBillingDetails_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -23937,186 +24200,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.ServerAsset_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("id", Value.Id);
-      Into.Write_Entity ("order_id", Value.Order_Id);
-      Into.Write_Entity ("hostname", Value.Hostname);
-      Into.Write_Entity ("status", Value.Status);
-      Into.Write_Entity ("primary_ipv4", Value.Primary_Ipv_4);
-      Into.Write_Entity ("primary_ipv6", Value.Primary_Ipv_6);
-      Into.Write_Entity ("datacenter", Value.Datacenter);
-      Into.Write_Entity ("type_id", Value.Type_Id);
-      Into.Write_Entity ("asset_tag", Value.Asset_Tag);
-      Into.Write_Entity ("rack", Value.Rack);
-      Into.Write_Entity ("row", Value.Row);
-      Into.Write_Entity ("col", Value.Col);
-      Into.Write_Entity ("unit_start", Value.Unit_Start);
-      Into.Write_Entity ("unit_end", Value.Unit_End);
-      Into.Write_Entity ("unit_sub", Value.Unit_Sub);
-      Into.Write_Entity ("ipmi_mac", Value.Ipmi_Mac);
-      Into.Write_Entity ("ipmi_ip", Value.Ipmi_Ip);
-      Into.Write_Entity ("ipmi_working", Value.Ipmi_Working);
-      Into.Write_Entity ("company", Value.Company);
-      Into.Write_Entity ("comments", Value.Comments);
-      Into.Write_Entity ("make", Value.Make);
-      Into.Write_Entity ("model", Value.Model);
-      Into.Write_Entity ("description", Value.Description);
-      Into.Write_Entity ("customer_id", Value.Customer_Id);
-      Into.Write_Entity ("external_id", Value.External_Id);
-      Into.Write_Entity ("billing_status", Value.Billing_Status);
-      Into.Write_Entity ("overdue", Value.Overdue);
-      Into.Write_Entity ("asset_id", Value.Asset_Id);
-      Into.Write_Entity ("asset_name", Value.Asset_Name);
-      Into.Write_Entity ("rack_id", Value.Rack_Id);
-      Into.Write_Entity ("rack_name", Value.Rack_Name);
-      Into.Write_Entity ("rack_location", Value.Rack_Location);
-      Into.Write_Entity ("rack_size", Value.Rack_Size);
-      Into.Write_Entity ("rack_x", Value.Rack_X);
-      Into.Write_Entity ("rack_y", Value.Rack_Y);
-      Serialize (Into, "switchports", Value.Switchports);
-      Serialize (Into, "vlans", Value.Vlans);
-      Serialize (Into, "vlans6", Value.Vlans_6);
-      Serialize (Into, "lease", Value.Lease);
-      Serialize (Into, "mac", Value.Mac);
-      Serialize (Into, "ipmi_admin_username", Value.Ipmi_Admin_Username);
-      Serialize (Into, "ipmi_admin_password", Value.Ipmi_Admin_Password);
-      Serialize (Into, "ipmi_client_username", Value.Ipmi_Client_Username);
-      Serialize (Into, "ipmi_client_password", Value.Ipmi_Client_Password);
-      Serialize (Into, "ipmi_updated", Value.Ipmi_Updated);
-      Serialize (Into, "create_timestamp", Value.Create_Timestamp);
-      Serialize (Into, "update_timestamp", Value.Update_Timestamp);
-      Serialize (Into, "comment", Value.Comment);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerAsset_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerAsset_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
-      Swagger.Streams.Deserialize (Object, "hostname", Value.Hostname);
-      Swagger.Streams.Deserialize (Object, "status", Value.Status);
-      Swagger.Streams.Deserialize (Object, "primary_ipv4", Value.Primary_Ipv_4);
-      Swagger.Streams.Deserialize (Object, "primary_ipv6", Value.Primary_Ipv_6);
-      Swagger.Streams.Deserialize (Object, "datacenter", Value.Datacenter);
-      Swagger.Streams.Deserialize (Object, "type_id", Value.Type_Id);
-      Swagger.Streams.Deserialize (Object, "asset_tag", Value.Asset_Tag);
-      Swagger.Streams.Deserialize (Object, "rack", Value.Rack);
-      Swagger.Streams.Deserialize (Object, "row", Value.Row);
-      Swagger.Streams.Deserialize (Object, "col", Value.Col);
-      Swagger.Streams.Deserialize (Object, "unit_start", Value.Unit_Start);
-      Swagger.Streams.Deserialize (Object, "unit_end", Value.Unit_End);
-      Swagger.Streams.Deserialize (Object, "unit_sub", Value.Unit_Sub);
-      Swagger.Streams.Deserialize (Object, "ipmi_mac", Value.Ipmi_Mac);
-      Swagger.Streams.Deserialize (Object, "ipmi_ip", Value.Ipmi_Ip);
-      Swagger.Streams.Deserialize (Object, "ipmi_working", Value.Ipmi_Working);
-      Swagger.Streams.Deserialize (Object, "company", Value.Company);
-      Swagger.Streams.Deserialize (Object, "comments", Value.Comments);
-      Swagger.Streams.Deserialize (Object, "make", Value.Make);
-      Swagger.Streams.Deserialize (Object, "model", Value.Model);
-      Swagger.Streams.Deserialize (Object, "description", Value.Description);
-      Swagger.Streams.Deserialize (Object, "customer_id", Value.Customer_Id);
-      Swagger.Streams.Deserialize (Object, "external_id", Value.External_Id);
-      Swagger.Streams.Deserialize (Object, "billing_status", Value.Billing_Status);
-      Swagger.Streams.Deserialize (Object, "overdue", Value.Overdue);
-      Swagger.Streams.Deserialize (Object, "asset_id", Value.Asset_Id);
-      Swagger.Streams.Deserialize (Object, "asset_name", Value.Asset_Name);
-      Swagger.Streams.Deserialize (Object, "rack_id", Value.Rack_Id);
-      Swagger.Streams.Deserialize (Object, "rack_name", Value.Rack_Name);
-      Swagger.Streams.Deserialize (Object, "rack_location", Value.Rack_Location);
-      Swagger.Streams.Deserialize (Object, "rack_size", Value.Rack_Size);
-      Swagger.Streams.Deserialize (Object, "rack_x", Value.Rack_X);
-      Swagger.Streams.Deserialize (Object, "rack_y", Value.Rack_Y);
-      Swagger.Streams.Deserialize (Object, "switchports", Value.Switchports);
-      Swagger.Streams.Deserialize (Object, "vlans", Value.Vlans);
-      Swagger.Streams.Deserialize (Object, "vlans6", Value.Vlans_6);
-      Deserialize (Object, "lease", Value.Lease);
-      Deserialize (Object, "mac", Value.Mac);
-      Deserialize (Object, "ipmi_admin_username", Value.Ipmi_Admin_Username);
-      Deserialize (Object, "ipmi_admin_password", Value.Ipmi_Admin_Password);
-      Deserialize (Object, "ipmi_client_username", Value.Ipmi_Client_Username);
-      Deserialize (Object, "ipmi_client_password", Value.Ipmi_Client_Password);
-      Deserialize (Object, "ipmi_updated", Value.Ipmi_Updated);
-      Deserialize (Object, "create_timestamp", Value.Create_Timestamp);
-      Deserialize (Object, "update_timestamp", Value.Update_Timestamp);
-      Deserialize (Object, "comment", Value.Comment);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerAsset_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ServerAsset_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ServerNetworkInfoAssets_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Serialize (Into, "3497", Value.P_3497);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ServerNetworkInfoAssets_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ServerNetworkInfoAssets_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Deserialize (Object, "3497", Value.P_3497);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ServerNetworkInfoAssets_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ServerNetworkInfoAssets_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.ServerNetworkInfo_Type) is
    begin
       Into.Start_Entity (Name);
@@ -24282,53 +24365,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.DomainAllInfoAttributesContactSet_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Serialize (Into, "owner", Value.Owner);
-      Serialize (Into, "admin", Value.Admin);
-      Serialize (Into, "tech", Value.Tech);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DomainAllInfoAttributesContactSet_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DomainAllInfoAttributesContactSet_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Deserialize (Object, "owner", Value.Owner);
-      Deserialize (Object, "admin", Value.Admin);
-      Deserialize (Object, "tech", Value.Tech);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DomainAllInfoAttributesContactSet_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.DomainAllInfoAttributesContactSet_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.GetOrderDetail200Response_Type) is
    begin
       Into.Start_Entity (Name);
@@ -24461,6 +24497,128 @@ package body .Models is
                           Value : in out ViewTicketResponse_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ViewTicketResponse_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.HomeServices_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Serialize (Into, "domains", Value.Domains);
+      Serialize (Into, "webhosting", Value.Webhosting);
+      Serialize (Into, "vps", Value.Vps);
+      Serialize (Into, "licenses", Value.Licenses);
+      Serialize (Into, "servers", Value.Servers);
+      Serialize (Into, "backups", Value.Backups);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in HomeServices_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.HomeServices_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Deserialize (Object, "domains", Value.Domains);
+      Deserialize (Object, "webhosting", Value.Webhosting);
+      Deserialize (Object, "vps", Value.Vps);
+      Deserialize (Object, "licenses", Value.Licenses);
+      Deserialize (Object, "servers", Value.Servers);
+      Deserialize (Object, "backups", Value.Backups);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out HomeServices_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.HomeServices_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Home_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("last_login_ip", Value.Last_Login_Ip);
+      Into.Write_Entity ("last_login", Value.Last_Login);
+      Into.Write_Entity ("currency", Value.Currency);
+      Into.Write_Entity ("amount", Value.Amount);
+      Into.Write_Entity ("invoice_list", Value.Invoice_List);
+      Into.Write_Entity ("balance", Value.Balance);
+      Into.Write_Entity ("full_name", Value.Full_Name);
+      Into.Write_Entity ("email", Value.Email);
+      Serialize (Into, "tickets", Value.Tickets);
+      Serialize (Into, "ticketStatus", Value.Ticket_Status);
+      Serialize (Into, "ticketStatusView", Value.Ticket_Status_View);
+      Serialize (Into, "details", Value.Details);
+      Serialize (Into, "services", Value.Services);
+      Into.Write_Entity ("AFFILIATE_AMOUNT", Value.AFFILIATE_AMOUNT);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Home_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Home_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "last_login_ip", Value.Last_Login_Ip);
+      Swagger.Streams.Deserialize (Object, "last_login", Value.Last_Login);
+      Swagger.Streams.Deserialize (Object, "currency", Value.Currency);
+      Swagger.Streams.Deserialize (Object, "amount", Value.Amount);
+      Swagger.Streams.Deserialize (Object, "invoice_list", Value.Invoice_List);
+      Swagger.Streams.Deserialize (Object, "balance", Value.Balance);
+      Swagger.Streams.Deserialize (Object, "full_name", Value.Full_Name);
+      Swagger.Streams.Deserialize (Object, "email", Value.Email);
+      Swagger.Streams.Deserialize (Object, "tickets", Value.Tickets);
+      Deserialize (Object, "ticketStatus", Value.Ticket_Status);
+      Deserialize (Object, "ticketStatusView", Value.Ticket_Status_View);
+      Deserialize (Object, "details", Value.Details);
+      Deserialize (Object, "services", Value.Services);
+      Swagger.Streams.Deserialize (Object, "AFFILIATE_AMOUNT", Value.AFFILIATE_AMOUNT);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Home_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.Home_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -25352,128 +25510,6 @@ package body .Models is
                           Value : in out ConfigLists_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ConfigLists_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.HomeServices_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Serialize (Into, "domains", Value.Domains);
-      Serialize (Into, "webhosting", Value.Webhosting);
-      Serialize (Into, "vps", Value.Vps);
-      Serialize (Into, "licenses", Value.Licenses);
-      Serialize (Into, "servers", Value.Servers);
-      Serialize (Into, "backups", Value.Backups);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in HomeServices_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.HomeServices_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Deserialize (Object, "domains", Value.Domains);
-      Deserialize (Object, "webhosting", Value.Webhosting);
-      Deserialize (Object, "vps", Value.Vps);
-      Deserialize (Object, "licenses", Value.Licenses);
-      Deserialize (Object, "servers", Value.Servers);
-      Deserialize (Object, "backups", Value.Backups);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out HomeServices_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.HomeServices_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Home_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("last_login_ip", Value.Last_Login_Ip);
-      Into.Write_Entity ("last_login", Value.Last_Login);
-      Into.Write_Entity ("currency", Value.Currency);
-      Into.Write_Entity ("amount", Value.Amount);
-      Into.Write_Entity ("invoice_list", Value.Invoice_List);
-      Into.Write_Entity ("balance", Value.Balance);
-      Into.Write_Entity ("full_name", Value.Full_Name);
-      Into.Write_Entity ("email", Value.Email);
-      Serialize (Into, "tickets", Value.Tickets);
-      Serialize (Into, "ticketStatus", Value.Ticket_Status);
-      Serialize (Into, "ticketStatusView", Value.Ticket_Status_View);
-      Serialize (Into, "details", Value.Details);
-      Serialize (Into, "services", Value.Services);
-      Into.Write_Entity ("AFFILIATE_AMOUNT", Value.AFFILIATE_AMOUNT);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Home_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Home_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "last_login_ip", Value.Last_Login_Ip);
-      Swagger.Streams.Deserialize (Object, "last_login", Value.Last_Login);
-      Swagger.Streams.Deserialize (Object, "currency", Value.Currency);
-      Swagger.Streams.Deserialize (Object, "amount", Value.Amount);
-      Swagger.Streams.Deserialize (Object, "invoice_list", Value.Invoice_List);
-      Swagger.Streams.Deserialize (Object, "balance", Value.Balance);
-      Swagger.Streams.Deserialize (Object, "full_name", Value.Full_Name);
-      Swagger.Streams.Deserialize (Object, "email", Value.Email);
-      Swagger.Streams.Deserialize (Object, "tickets", Value.Tickets);
-      Deserialize (Object, "ticketStatus", Value.Ticket_Status);
-      Deserialize (Object, "ticketStatusView", Value.Ticket_Status_View);
-      Deserialize (Object, "details", Value.Details);
-      Deserialize (Object, "services", Value.Services);
-      Swagger.Streams.Deserialize (Object, "AFFILIATE_AMOUNT", Value.AFFILIATE_AMOUNT);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Home_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.Home_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);

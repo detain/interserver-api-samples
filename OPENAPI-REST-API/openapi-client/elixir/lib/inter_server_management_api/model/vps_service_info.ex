@@ -42,7 +42,7 @@ defmodule InterServerManagementAPI.Model.VpsServiceInfo do
     :vps_custid => String.t | nil,
     :vps_server => String.t | nil,
     :vps_ip => String.t | nil,
-    :vps_ipv6 => any() | nil,
+    :vps_ipv6 => String.t | nil,
     :vps_vzid => String.t | nil,
     :vps_currency => String.t | nil,
     :vps_type => String.t | nil,

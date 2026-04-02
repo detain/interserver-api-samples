@@ -32,6 +32,7 @@ import org.openapitools.client.model.GenericResponse;
 import org.openapitools.client.model.GetAccountInfo401Response;
 import org.openapitools.client.model.GetAccountTfaSetup200Response;
 import org.openapitools.client.model.Home;
+import org.openapitools.client.model.IpLimitRange;
 import org.openapitools.client.model.SearchAutocompleteResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.TextResponse;
@@ -458,6 +459,7 @@ public class AccountApi {
     }
     /**
      * Build call for deleteIpLimit
+     * @param ipLimitRange  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -469,7 +471,7 @@ public class AccountApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIpLimitCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIpLimitCall(@javax.annotation.Nullable IpLimitRange ipLimitRange, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -483,7 +485,7 @@ public class AccountApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = ipLimitRange;
 
         // create path and map variables
         String localVarPath = "/account/iplimits";
@@ -515,14 +517,15 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteIpLimitValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteIpLimitCall(_callback);
+    private okhttp3.Call deleteIpLimitValidateBeforeCall(@javax.annotation.Nullable IpLimitRange ipLimitRange, final ApiCallback _callback) throws ApiException {
+        return deleteIpLimitCall(ipLimitRange, _callback);
 
     }
 
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange  (optional)
      * @return GenericResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -533,14 +536,15 @@ public class AccountApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public GenericResponse deleteIpLimit() throws ApiException {
-        ApiResponse<GenericResponse> localVarResp = deleteIpLimitWithHttpInfo();
+    public GenericResponse deleteIpLimit(@javax.annotation.Nullable IpLimitRange ipLimitRange) throws ApiException {
+        ApiResponse<GenericResponse> localVarResp = deleteIpLimitWithHttpInfo(ipLimitRange);
         return localVarResp.getData();
     }
 
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange  (optional)
      * @return ApiResponse&lt;GenericResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -551,8 +555,8 @@ public class AccountApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericResponse> deleteIpLimitWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteIpLimitValidateBeforeCall(null);
+    public ApiResponse<GenericResponse> deleteIpLimitWithHttpInfo(@javax.annotation.Nullable IpLimitRange ipLimitRange) throws ApiException {
+        okhttp3.Call localVarCall = deleteIpLimitValidateBeforeCall(ipLimitRange, null);
         Type localVarReturnType = new TypeToken<GenericResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -560,6 +564,7 @@ public class AccountApi {
     /**
      * Remove IP Access Restriction (asynchronously)
      * Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -571,9 +576,9 @@ public class AccountApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIpLimitAsync(final ApiCallback<GenericResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteIpLimitAsync(@javax.annotation.Nullable IpLimitRange ipLimitRange, final ApiCallback<GenericResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteIpLimitValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteIpLimitValidateBeforeCall(ipLimitRange, _callback);
         Type localVarReturnType = new TypeToken<GenericResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

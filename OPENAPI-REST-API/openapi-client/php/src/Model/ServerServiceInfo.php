@@ -76,22 +76,22 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
         'serverIps' => 'string',
         'serverMonthlyBill' => 'string',
         'serverSetup' => 'string',
-        'serverDiscount' => 'mixed',
+        'serverDiscount' => 'string',
         'serverRep' => 'string',
         'serverDate' => 'string',
         'serverTotalCost' => 'string',
-        'serverLocation' => 'mixed',
+        'serverLocation' => 'string',
         'serverHardwareOrdered' => 'string',
         'serverBilled' => 'string',
         'serverWelcomeEmail' => 'string',
         'serverDedicatedCpu' => 'string',
         'serverDedicatedMemory' => 'string',
         'serverDedicatedHd1' => 'string',
-        'serverDedicatedHd2' => 'mixed',
+        'serverDedicatedHd2' => 'string',
         'serverDedicatedBandwidth' => 'string',
         'serverDedicatedIps' => 'string',
         'serverDedicatedOs' => 'string',
-        'serverDedicatedCp' => 'mixed',
+        'serverDedicatedCp' => 'string',
         'serverDedicatedRaid' => 'string',
         'serverExtra' => 'string'
     ];
@@ -166,22 +166,22 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
         'serverIps' => false,
         'serverMonthlyBill' => false,
         'serverSetup' => false,
-        'serverDiscount' => true,
+        'serverDiscount' => false,
         'serverRep' => false,
         'serverDate' => false,
         'serverTotalCost' => false,
-        'serverLocation' => true,
+        'serverLocation' => false,
         'serverHardwareOrdered' => false,
         'serverBilled' => false,
         'serverWelcomeEmail' => false,
         'serverDedicatedCpu' => false,
         'serverDedicatedMemory' => false,
         'serverDedicatedHd1' => false,
-        'serverDedicatedHd2' => true,
+        'serverDedicatedHd2' => false,
         'serverDedicatedBandwidth' => false,
         'serverDedicatedIps' => false,
         'serverDedicatedOs' => false,
-        'serverDedicatedCp' => true,
+        'serverDedicatedCp' => false,
         'serverDedicatedRaid' => false,
         'serverExtra' => false
     ];
@@ -1024,7 +1024,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets serverDiscount
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getServerDiscount()
     {
@@ -1034,21 +1034,14 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets serverDiscount
      *
-     * @param mixed|null $serverDiscount Discount information for the server.
+     * @param string|null $serverDiscount Discount information for the server.
      *
      * @return self
      */
     public function setServerDiscount($serverDiscount)
     {
         if (is_null($serverDiscount)) {
-            array_push($this->openAPINullablesSetToNull, 'serverDiscount');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('serverDiscount', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable serverDiscount cannot be null');
         }
         $this->container['serverDiscount'] = $serverDiscount;
 
@@ -1139,7 +1132,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets serverLocation
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getServerLocation()
     {
@@ -1149,21 +1142,14 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets serverLocation
      *
-     * @param mixed|null $serverLocation The location of the server.
+     * @param string|null $serverLocation The location of the server.
      *
      * @return self
      */
     public function setServerLocation($serverLocation)
     {
         if (is_null($serverLocation)) {
-            array_push($this->openAPINullablesSetToNull, 'serverLocation');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('serverLocation', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable serverLocation cannot be null');
         }
         $this->container['serverLocation'] = $serverLocation;
 
@@ -1335,7 +1321,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets serverDedicatedHd2
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getServerDedicatedHd2()
     {
@@ -1345,21 +1331,14 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets serverDedicatedHd2
      *
-     * @param mixed|null $serverDedicatedHd2 The size of the second dedicated hard drive.
+     * @param string|null $serverDedicatedHd2 The size of the second dedicated hard drive.
      *
      * @return self
      */
     public function setServerDedicatedHd2($serverDedicatedHd2)
     {
         if (is_null($serverDedicatedHd2)) {
-            array_push($this->openAPINullablesSetToNull, 'serverDedicatedHd2');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('serverDedicatedHd2', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable serverDedicatedHd2 cannot be null');
         }
         $this->container['serverDedicatedHd2'] = $serverDedicatedHd2;
 
@@ -1450,7 +1429,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets serverDedicatedCp
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getServerDedicatedCp()
     {
@@ -1460,21 +1439,14 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets serverDedicatedCp
      *
-     * @param mixed|null $serverDedicatedCp The control panel of the server.
+     * @param string|null $serverDedicatedCp The control panel of the server.
      *
      * @return self
      */
     public function setServerDedicatedCp($serverDedicatedCp)
     {
         if (is_null($serverDedicatedCp)) {
-            array_push($this->openAPINullablesSetToNull, 'serverDedicatedCp');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('serverDedicatedCp', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable serverDedicatedCp cannot be null');
         }
         $this->container['serverDedicatedCp'] = $serverDedicatedCp;
 

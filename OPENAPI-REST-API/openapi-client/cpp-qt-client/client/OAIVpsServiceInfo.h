@@ -21,7 +21,6 @@
 
 #include <QJsonObject>
 
-#include <QJsonValue>
 #include <QString>
 
 #include "OAIEnum.h"
@@ -60,8 +59,8 @@ public:
     bool is_vps_ip_Set() const;
     bool is_vps_ip_Valid() const;
 
-    QJsonValue getVpsIpv6() const;
-    void setVpsIpv6(const QJsonValue &vps_ipv6);
+    QString getVpsIpv6() const;
+    void setVpsIpv6(const QString &vps_ipv6);
     bool is_vps_ipv6_Set() const;
     bool is_vps_ipv6_Valid() const;
 
@@ -197,7 +196,7 @@ private:
     bool m_vps_ip_isSet;
     bool m_vps_ip_isValid;
 
-    QJsonValue m_vps_ipv6;
+    QString m_vps_ipv6;
     bool m_vps_ipv6_isSet;
     bool m_vps_ipv6_isValid;
 

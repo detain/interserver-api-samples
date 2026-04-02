@@ -164,7 +164,7 @@
                 
                 ; [@key "visible"]
                     (** Visibility status. *)
-                                      hd_ids: Yojson.Safe.t
+                                      hd_ids: string
                   
                    option [@default None]
                 

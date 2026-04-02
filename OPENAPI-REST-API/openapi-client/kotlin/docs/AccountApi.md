@@ -184,7 +184,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="deleteIpLimit"></a>
 # **deleteIpLimit**
-> GenericResponse deleteIpLimit()
+> GenericResponse deleteIpLimit(ipLimitRange)
 
 Remove IP Access Restriction
 
@@ -197,8 +197,9 @@ Removes an IP address range from the account&#39;s access restriction list. If t
 //import org.openapitools.client.models.*
 
 val apiInstance = AccountApi()
+val ipLimitRange : IpLimitRange =  // IpLimitRange | 
 try {
-    val result : GenericResponse = apiInstance.deleteIpLimit()
+    val result : GenericResponse = apiInstance.deleteIpLimit(ipLimitRange)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#deleteIpLimit")
@@ -210,7 +211,9 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] |
 
 ### Return type
 

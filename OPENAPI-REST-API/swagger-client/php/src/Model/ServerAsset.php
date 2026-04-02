@@ -62,7 +62,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
         'status' => 'string',
         'primaryIpv4' => 'string',
         'primaryIpv6' => 'string',
-        'mac' => '',
+        'mac' => 'string',
         'datacenter' => 'string',
         'typeId' => 'string',
         'assetTag' => 'string',
@@ -74,11 +74,11 @@ class ServerAsset implements ModelInterface, ArrayAccess
         'unitSub' => 'string',
         'ipmiMac' => 'string',
         'ipmiIp' => 'string',
-        'ipmiAdminUsername' => '',
-        'ipmiAdminPassword' => '',
-        'ipmiClientUsername' => '',
-        'ipmiClientPassword' => '',
-        'ipmiUpdated' => '',
+        'ipmiAdminUsername' => 'string',
+        'ipmiAdminPassword' => 'string',
+        'ipmiClientUsername' => 'string',
+        'ipmiClientPassword' => 'string',
+        'ipmiUpdated' => 'string',
         'ipmiWorking' => 'string',
         'company' => 'string',
         'comments' => 'string',
@@ -89,8 +89,8 @@ class ServerAsset implements ModelInterface, ArrayAccess
         'externalId' => 'string',
         'billingStatus' => 'string',
         'overdue' => 'string',
-        'createTimestamp' => '',
-        'updateTimestamp' => '',
+        'createTimestamp' => 'string',
+        'updateTimestamp' => 'string',
         'assetId' => 'string',
         'assetName' => 'string',
         'rackId' => 'string',
@@ -99,7 +99,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
         'rackSize' => 'string',
         'rackX' => 'string',
         'rackY' => 'string',
-        'comment' => '',
+        'comment' => 'string',
         'switchports' => 'int[]',
         'vlans' => 'string[]',
         'vlans6' => 'string[]',
@@ -747,7 +747,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets mac
      *
-     * @return 
+     * @return string
      */
     public function getMac()
     {
@@ -757,7 +757,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets mac
      *
-     * @param  $mac MAC address associated with the asset.
+     * @param string $mac MAC address associated with the asset.
      *
      * @return $this
      */
@@ -1035,7 +1035,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets ipmiAdminUsername
      *
-     * @return 
+     * @return string
      */
     public function getIpmiAdminUsername()
     {
@@ -1045,7 +1045,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets ipmiAdminUsername
      *
-     * @param  $ipmiAdminUsername IPMI admin username associated with the asset.
+     * @param string $ipmiAdminUsername IPMI admin username associated with the asset.
      *
      * @return $this
      */
@@ -1059,7 +1059,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets ipmiAdminPassword
      *
-     * @return 
+     * @return string
      */
     public function getIpmiAdminPassword()
     {
@@ -1069,7 +1069,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets ipmiAdminPassword
      *
-     * @param  $ipmiAdminPassword IPMI admin password associated with the asset.
+     * @param string $ipmiAdminPassword IPMI admin password associated with the asset.
      *
      * @return $this
      */
@@ -1083,7 +1083,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets ipmiClientUsername
      *
-     * @return 
+     * @return string
      */
     public function getIpmiClientUsername()
     {
@@ -1093,7 +1093,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets ipmiClientUsername
      *
-     * @param  $ipmiClientUsername IPMI client username associated with the asset.
+     * @param string $ipmiClientUsername IPMI client username associated with the asset.
      *
      * @return $this
      */
@@ -1107,7 +1107,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets ipmiClientPassword
      *
-     * @return 
+     * @return string
      */
     public function getIpmiClientPassword()
     {
@@ -1117,7 +1117,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets ipmiClientPassword
      *
-     * @param  $ipmiClientPassword IPMI client password associated with the asset.
+     * @param string $ipmiClientPassword IPMI client password associated with the asset.
      *
      * @return $this
      */
@@ -1131,7 +1131,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets ipmiUpdated
      *
-     * @return 
+     * @return string
      */
     public function getIpmiUpdated()
     {
@@ -1141,7 +1141,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets ipmiUpdated
      *
-     * @param  $ipmiUpdated IPMI update status associated with the asset.
+     * @param string $ipmiUpdated IPMI update status associated with the asset.
      *
      * @return $this
      */
@@ -1395,7 +1395,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets createTimestamp
      *
-     * @return 
+     * @return string
      */
     public function getCreateTimestamp()
     {
@@ -1405,7 +1405,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets createTimestamp
      *
-     * @param  $createTimestamp Timestamp of asset creation.
+     * @param string $createTimestamp Timestamp of asset creation.
      *
      * @return $this
      */
@@ -1419,7 +1419,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets updateTimestamp
      *
-     * @return 
+     * @return string
      */
     public function getUpdateTimestamp()
     {
@@ -1429,7 +1429,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets updateTimestamp
      *
-     * @param  $updateTimestamp Timestamp of asset update.
+     * @param string $updateTimestamp Timestamp of asset update.
      *
      * @return $this
      */
@@ -1635,7 +1635,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Gets comment
      *
-     * @return 
+     * @return string
      */
     public function getComment()
     {
@@ -1645,7 +1645,7 @@ class ServerAsset implements ModelInterface, ArrayAccess
     /**
      * Sets comment
      *
-     * @param  $comment Comment associated with the asset.
+     * @param string $comment Comment associated with the asset.
      *
      * @return $this
      */

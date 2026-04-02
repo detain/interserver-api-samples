@@ -1,9 +1,6 @@
 (ns inter-server-management-api.specs.quickserver-service-info
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
-            [inter-server-management-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -14,7 +11,7 @@
    (ds/opt :qs_custid) string?
    (ds/opt :qs_server) string?
    (ds/opt :qs_ip) string?
-   (ds/opt :qs_ipv6) any-type-spec
+   (ds/opt :qs_ipv6) string?
    (ds/opt :qs_vzid) string?
    (ds/opt :qs_currency) string?
    (ds/opt :qs_type) string?
@@ -28,13 +25,13 @@
    (ds/opt :qs_comment) string?
    (ds/opt :qs_slices) string?
    (ds/opt :qs_vnc) string?
-   (ds/opt :qs_vnc_port) any-type-spec
+   (ds/opt :qs_vnc_port) int?
    (ds/opt :qs_rootpass) string?
    (ds/opt :qs_mac) string?
    (ds/opt :qs_os) string?
    (ds/opt :qs_version) string?
    (ds/opt :qs_location) string?
-   (ds/opt :qs_platform) any-type-spec
+   (ds/opt :qs_platform) string?
    })
 
 (def quickserver-service-info-spec

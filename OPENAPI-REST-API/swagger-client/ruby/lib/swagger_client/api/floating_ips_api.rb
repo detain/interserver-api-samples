@@ -237,16 +237,16 @@ module SwaggerClient
     # List Floating IPs
     # Returns all Floating IP services on the account with their current status and assignment details.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Array<Object>]
     def get_floating_ips_list(opts = {})
-      get_floating_ips_list_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_floating_ips_list_with_http_info(opts)
+      data
     end
 
     # List Floating IPs
     # Returns all Floating IP services on the account with their current status and assignment details.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
     def get_floating_ips_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FloatingIPsApi.get_floating_ips_list ...'
@@ -268,7 +268,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Array<Object>' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,

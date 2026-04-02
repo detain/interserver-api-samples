@@ -51,7 +51,7 @@ data class QuickserverServiceInfo (
     /* IP address */
     val qsIp: kotlin.String? = null,
     /* IPv6 address (null) */
-    val qsIpv6: kotlin.Any? = null,
+    val qsIpv6: kotlin.String? = null,
     /* VZ ID */
     val qsVzid: kotlin.String? = null,
     /* Currency */
@@ -79,7 +79,7 @@ data class QuickserverServiceInfo (
     /* VNC information */
     val qsVnc: kotlin.String? = null,
     /* VNC port (null) */
-    val qsVncPort: kotlin.Any? = null,
+    val qsVncPort: kotlin.Int? = null,
     /* Root password */
     val qsRootpass: kotlin.String? = null,
     /* MAC address */
@@ -91,6 +91,6 @@ data class QuickserverServiceInfo (
     /* Location */
     val qsLocation: kotlin.String? = null,
     /* Platform (null) */
-    val qsPlatform: kotlin.Any? = null
+    val qsPlatform: kotlin.String? = null
 ) {
 }

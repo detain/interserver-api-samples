@@ -56,7 +56,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// <param name="hdIds">Hard drive IDs..</param>
         /// <param name="priceDisplay">Display of CPU price..</param>
         /// <param name="monthlyPriceDisplay">Display of monthly CPU price..</param>
-        public ServerOrderCPU(string id = default(string), int? price = default(int?), string img = default(string), string shortDesc = default(string), string longDesc = default(string), string location = default(string), string fsb = default(string), string manu = default(string), string type = default(string), string speed = default(string), string cache = default(string), string active = default(string), string numCores = default(string), string numCpus = default(string), string benchmark = default(string), int? monthlyPrice = default(int?), string maxRam = default(string), string minRam = default(string), string maxLff = default(string), string maxSff = default(string), string maxNve = default(string), string visible = default(string), Object hdIds = default(Object), string priceDisplay = default(string), string monthlyPriceDisplay = default(string))
+        public ServerOrderCPU(string id = default(string), int? price = default(int?), string img = default(string), string shortDesc = default(string), string longDesc = default(string), string location = default(string), string fsb = default(string), string manu = default(string), string type = default(string), string speed = default(string), string cache = default(string), string active = default(string), string numCores = default(string), string numCpus = default(string), string benchmark = default(string), int? monthlyPrice = default(int?), string maxRam = default(string), string minRam = default(string), string maxLff = default(string), string maxSff = default(string), string maxNve = default(string), string visible = default(string), string hdIds = default(string), string priceDisplay = default(string), string monthlyPriceDisplay = default(string))
         {
             this.id = id;
             this.price = price;
@@ -244,7 +244,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>Hard drive IDs.</value>
         [DataMember(Name="hd_ids", EmitDefaultValue=false)]
-        public Object hd_ids { get; set; }
+        public string hd_ids { get; set; }
 
         /// <summary>
         /// Display of CPU price.

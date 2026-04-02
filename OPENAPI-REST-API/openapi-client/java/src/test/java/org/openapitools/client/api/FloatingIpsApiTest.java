@@ -99,7 +99,7 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void getFloatingIpsListTest() throws ApiException {
-        api.getFloatingIpsList();
+        List<Object> response = api.getFloatingIpsList();
         // TODO: test validations
     }
 

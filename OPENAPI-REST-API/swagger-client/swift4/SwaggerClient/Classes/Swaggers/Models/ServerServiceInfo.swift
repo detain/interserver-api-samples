@@ -66,7 +66,7 @@ public struct ServerServiceInfo: Codable {
     public var serverSetup: String?
 
     /** Discount information for the server. */
-    public var serverDiscount: Object?
+    public var serverDiscount: String?
 
     /** The reputation of the server. */
     public var serverRep: String?
@@ -78,7 +78,7 @@ public struct ServerServiceInfo: Codable {
     public var serverTotalCost: String?
 
     /** The location of the server. */
-    public var serverLocation: Object?
+    public var serverLocation: String?
 
     /** The ordered hardware for the server. */
     public var serverHardwareOrdered: String?
@@ -99,7 +99,7 @@ public struct ServerServiceInfo: Codable {
     public var serverDedicatedHd1: String?
 
     /** The size of the second dedicated hard drive. */
-    public var serverDedicatedHd2: Object?
+    public var serverDedicatedHd2: String?
 
     /** The bandwidth of the server. */
     public var serverDedicatedBandwidth: String?
@@ -111,14 +111,14 @@ public struct ServerServiceInfo: Codable {
     public var serverDedicatedOs: String?
 
     /** The control panel of the server. */
-    public var serverDedicatedCp: Object?
+    public var serverDedicatedCp: String?
 
     /** The RAID configuration of the server. */
     public var serverDedicatedRaid: String?
 
     /** Additional information about the server. */
     public var serverExtra: String?
-    public init(serverId: String? = nil, serverHostname: String? = nil, serverCustid: String? = nil, serverType: String? = nil, serverCurrency: String? = nil, serverOrderDate: String? = nil, serverInvoice: String? = nil, serverCoupon: String? = nil, serverStatus: String? = nil, serverRoot: String? = nil, serverDedicatedTag: String? = nil, serverCustomTag: String? = nil, serverComment: String? = nil, serverInitialBill: String? = nil, serverHardware: String? = nil, serverIps: String? = nil, serverMonthlyBill: String? = nil, serverSetup: String? = nil, serverDiscount: Object? = nil, serverRep: String? = nil, serverDate: String? = nil, serverTotalCost: String? = nil, serverLocation: Object? = nil, serverHardwareOrdered: String? = nil, serverBilled: String? = nil, serverWelcomeEmail: String? = nil, serverDedicatedCpu: String? = nil, serverDedicatedMemory: String? = nil, serverDedicatedHd1: String? = nil, serverDedicatedHd2: Object? = nil, serverDedicatedBandwidth: String? = nil, serverDedicatedIps: String? = nil, serverDedicatedOs: String? = nil, serverDedicatedCp: Object? = nil, serverDedicatedRaid: String? = nil, serverExtra: String? = nil) { 
+    public init(serverId: String? = nil, serverHostname: String? = nil, serverCustid: String? = nil, serverType: String? = nil, serverCurrency: String? = nil, serverOrderDate: String? = nil, serverInvoice: String? = nil, serverCoupon: String? = nil, serverStatus: String? = nil, serverRoot: String? = nil, serverDedicatedTag: String? = nil, serverCustomTag: String? = nil, serverComment: String? = nil, serverInitialBill: String? = nil, serverHardware: String? = nil, serverIps: String? = nil, serverMonthlyBill: String? = nil, serverSetup: String? = nil, serverDiscount: String? = nil, serverRep: String? = nil, serverDate: String? = nil, serverTotalCost: String? = nil, serverLocation: String? = nil, serverHardwareOrdered: String? = nil, serverBilled: String? = nil, serverWelcomeEmail: String? = nil, serverDedicatedCpu: String? = nil, serverDedicatedMemory: String? = nil, serverDedicatedHd1: String? = nil, serverDedicatedHd2: String? = nil, serverDedicatedBandwidth: String? = nil, serverDedicatedIps: String? = nil, serverDedicatedOs: String? = nil, serverDedicatedCp: String? = nil, serverDedicatedRaid: String? = nil, serverExtra: String? = nil) { 
         self.serverId = serverId
         self.serverHostname = serverHostname
         self.serverCustid = serverCustid

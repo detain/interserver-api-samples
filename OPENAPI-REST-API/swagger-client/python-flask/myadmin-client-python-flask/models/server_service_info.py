@@ -14,7 +14,7 @@ class ServerServiceInfo(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, server_id: str=None, server_hostname: str=None, server_custid: str=None, server_type: str=None, server_currency: str=None, server_order_date: str=None, server_invoice: str=None, server_coupon: str=None, server_status: str=None, server_root: str=None, server_dedicated_tag: str=None, server_custom_tag: str=None, server_comment: str=None, server_initial_bill: str=None, server_hardware: str=None, server_ips: str=None, server_monthly_bill: str=None, server_setup: str=None, server_discount: Object=None, server_rep: str=None, server_date: str=None, server_total_cost: str=None, server_location: Object=None, server_hardware_ordered: str=None, server_billed: str=None, server_welcome_email: str=None, server_dedicated_cpu: str=None, server_dedicated_memory: str=None, server_dedicated_hd1: str=None, server_dedicated_hd2: Object=None, server_dedicated_bandwidth: str=None, server_dedicated_ips: str=None, server_dedicated_os: str=None, server_dedicated_cp: Object=None, server_dedicated_raid: str=None, server_extra: str=None):  # noqa: E501
+    def __init__(self, server_id: str=None, server_hostname: str=None, server_custid: str=None, server_type: str=None, server_currency: str=None, server_order_date: str=None, server_invoice: str=None, server_coupon: str=None, server_status: str=None, server_root: str=None, server_dedicated_tag: str=None, server_custom_tag: str=None, server_comment: str=None, server_initial_bill: str=None, server_hardware: str=None, server_ips: str=None, server_monthly_bill: str=None, server_setup: str=None, server_discount: str=None, server_rep: str=None, server_date: str=None, server_total_cost: str=None, server_location: str=None, server_hardware_ordered: str=None, server_billed: str=None, server_welcome_email: str=None, server_dedicated_cpu: str=None, server_dedicated_memory: str=None, server_dedicated_hd1: str=None, server_dedicated_hd2: str=None, server_dedicated_bandwidth: str=None, server_dedicated_ips: str=None, server_dedicated_os: str=None, server_dedicated_cp: str=None, server_dedicated_raid: str=None, server_extra: str=None):  # noqa: E501
         """ServerServiceInfo - a model defined in Swagger
 
         :param server_id: The server_id of this ServerServiceInfo.  # noqa: E501
@@ -54,7 +54,7 @@ class ServerServiceInfo(Model):
         :param server_setup: The server_setup of this ServerServiceInfo.  # noqa: E501
         :type server_setup: str
         :param server_discount: The server_discount of this ServerServiceInfo.  # noqa: E501
-        :type server_discount: Object
+        :type server_discount: str
         :param server_rep: The server_rep of this ServerServiceInfo.  # noqa: E501
         :type server_rep: str
         :param server_date: The server_date of this ServerServiceInfo.  # noqa: E501
@@ -62,7 +62,7 @@ class ServerServiceInfo(Model):
         :param server_total_cost: The server_total_cost of this ServerServiceInfo.  # noqa: E501
         :type server_total_cost: str
         :param server_location: The server_location of this ServerServiceInfo.  # noqa: E501
-        :type server_location: Object
+        :type server_location: str
         :param server_hardware_ordered: The server_hardware_ordered of this ServerServiceInfo.  # noqa: E501
         :type server_hardware_ordered: str
         :param server_billed: The server_billed of this ServerServiceInfo.  # noqa: E501
@@ -76,7 +76,7 @@ class ServerServiceInfo(Model):
         :param server_dedicated_hd1: The server_dedicated_hd1 of this ServerServiceInfo.  # noqa: E501
         :type server_dedicated_hd1: str
         :param server_dedicated_hd2: The server_dedicated_hd2 of this ServerServiceInfo.  # noqa: E501
-        :type server_dedicated_hd2: Object
+        :type server_dedicated_hd2: str
         :param server_dedicated_bandwidth: The server_dedicated_bandwidth of this ServerServiceInfo.  # noqa: E501
         :type server_dedicated_bandwidth: str
         :param server_dedicated_ips: The server_dedicated_ips of this ServerServiceInfo.  # noqa: E501
@@ -84,7 +84,7 @@ class ServerServiceInfo(Model):
         :param server_dedicated_os: The server_dedicated_os of this ServerServiceInfo.  # noqa: E501
         :type server_dedicated_os: str
         :param server_dedicated_cp: The server_dedicated_cp of this ServerServiceInfo.  # noqa: E501
-        :type server_dedicated_cp: Object
+        :type server_dedicated_cp: str
         :param server_dedicated_raid: The server_dedicated_raid of this ServerServiceInfo.  # noqa: E501
         :type server_dedicated_raid: str
         :param server_extra: The server_extra of this ServerServiceInfo.  # noqa: E501
@@ -109,22 +109,22 @@ class ServerServiceInfo(Model):
             'server_ips': str,
             'server_monthly_bill': str,
             'server_setup': str,
-            'server_discount': Object,
+            'server_discount': str,
             'server_rep': str,
             'server_date': str,
             'server_total_cost': str,
-            'server_location': Object,
+            'server_location': str,
             'server_hardware_ordered': str,
             'server_billed': str,
             'server_welcome_email': str,
             'server_dedicated_cpu': str,
             'server_dedicated_memory': str,
             'server_dedicated_hd1': str,
-            'server_dedicated_hd2': Object,
+            'server_dedicated_hd2': str,
             'server_dedicated_bandwidth': str,
             'server_dedicated_ips': str,
             'server_dedicated_os': str,
-            'server_dedicated_cp': Object,
+            'server_dedicated_cp': str,
             'server_dedicated_raid': str,
             'server_extra': str
         }
@@ -630,24 +630,24 @@ class ServerServiceInfo(Model):
         self._server_setup = server_setup
 
     @property
-    def server_discount(self) -> Object:
+    def server_discount(self) -> str:
         """Gets the server_discount of this ServerServiceInfo.
 
         Discount information for the server.  # noqa: E501
 
         :return: The server_discount of this ServerServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._server_discount
 
     @server_discount.setter
-    def server_discount(self, server_discount: Object):
+    def server_discount(self, server_discount: str):
         """Sets the server_discount of this ServerServiceInfo.
 
         Discount information for the server.  # noqa: E501
 
         :param server_discount: The server_discount of this ServerServiceInfo.
-        :type server_discount: Object
+        :type server_discount: str
         """
 
         self._server_discount = server_discount
@@ -722,24 +722,24 @@ class ServerServiceInfo(Model):
         self._server_total_cost = server_total_cost
 
     @property
-    def server_location(self) -> Object:
+    def server_location(self) -> str:
         """Gets the server_location of this ServerServiceInfo.
 
         The location of the server.  # noqa: E501
 
         :return: The server_location of this ServerServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._server_location
 
     @server_location.setter
-    def server_location(self, server_location: Object):
+    def server_location(self, server_location: str):
         """Sets the server_location of this ServerServiceInfo.
 
         The location of the server.  # noqa: E501
 
         :param server_location: The server_location of this ServerServiceInfo.
-        :type server_location: Object
+        :type server_location: str
         """
 
         self._server_location = server_location
@@ -883,24 +883,24 @@ class ServerServiceInfo(Model):
         self._server_dedicated_hd1 = server_dedicated_hd1
 
     @property
-    def server_dedicated_hd2(self) -> Object:
+    def server_dedicated_hd2(self) -> str:
         """Gets the server_dedicated_hd2 of this ServerServiceInfo.
 
         The size of the second dedicated hard drive.  # noqa: E501
 
         :return: The server_dedicated_hd2 of this ServerServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._server_dedicated_hd2
 
     @server_dedicated_hd2.setter
-    def server_dedicated_hd2(self, server_dedicated_hd2: Object):
+    def server_dedicated_hd2(self, server_dedicated_hd2: str):
         """Sets the server_dedicated_hd2 of this ServerServiceInfo.
 
         The size of the second dedicated hard drive.  # noqa: E501
 
         :param server_dedicated_hd2: The server_dedicated_hd2 of this ServerServiceInfo.
-        :type server_dedicated_hd2: Object
+        :type server_dedicated_hd2: str
         """
 
         self._server_dedicated_hd2 = server_dedicated_hd2
@@ -975,24 +975,24 @@ class ServerServiceInfo(Model):
         self._server_dedicated_os = server_dedicated_os
 
     @property
-    def server_dedicated_cp(self) -> Object:
+    def server_dedicated_cp(self) -> str:
         """Gets the server_dedicated_cp of this ServerServiceInfo.
 
         The control panel of the server.  # noqa: E501
 
         :return: The server_dedicated_cp of this ServerServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._server_dedicated_cp
 
     @server_dedicated_cp.setter
-    def server_dedicated_cp(self, server_dedicated_cp: Object):
+    def server_dedicated_cp(self, server_dedicated_cp: str):
         """Sets the server_dedicated_cp of this ServerServiceInfo.
 
         The control panel of the server.  # noqa: E501
 
         :param server_dedicated_cp: The server_dedicated_cp of this ServerServiceInfo.
-        :type server_dedicated_cp: Object
+        :type server_dedicated_cp: str
         """
 
         self._server_dedicated_cp = server_dedicated_cp

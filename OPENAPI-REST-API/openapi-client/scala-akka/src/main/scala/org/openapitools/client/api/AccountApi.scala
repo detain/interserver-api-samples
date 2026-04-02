@@ -16,6 +16,7 @@ import org.openapitools.client.model.GenericResponse
 import org.openapitools.client.model.GetAccountInfo401Response
 import org.openapitools.client.model.GetAccountTfaSetup200Response
 import org.openapitools.client.model.Home
+import org.openapitools.client.model.IpLimitRange
 import org.openapitools.client.model.SearchAutocompleteResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
@@ -109,12 +110,15 @@ class AccountApi(baseUrl: String) {
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
+   * 
+   * @param ipLimitRange 
    */
-  def deleteIpLimit()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[GenericResponse] =
+  def deleteIpLimit(ipLimitRange: Option[IpLimitRange] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[GenericResponse] =
     ApiRequest[GenericResponse](ApiMethods.PATCH, baseUrl, "/account/iplimits", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withBody(ipLimitRange)
       .withSuccessResponse[GenericResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
       

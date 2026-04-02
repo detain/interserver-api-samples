@@ -14,6 +14,7 @@ import 'package:openapi/src/model/generic_response.dart';
 import 'package:openapi/src/model/get_account_info401_response.dart';
 import 'package:openapi/src/model/get_account_tfa_setup200_response.dart';
 import 'package:openapi/src/model/home.dart';
+import 'package:openapi/src/model/ip_limit_range.dart';
 import 'package:openapi/src/model/search_autocomplete_response.dart';
 import 'package:openapi/src/model/success_text_response.dart';
 import 'package:openapi/src/model/text_response.dart';
@@ -302,6 +303,7 @@ class AccountApi {
   /// Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
   ///
   /// Parameters:
+  /// * [ipLimitRange] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -312,6 +314,7 @@ class AccountApi {
   /// Returns a [Future] containing a [Response] with a [GenericResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<GenericResponse>> deleteIpLimit({ 
+    IpLimitRange? ipLimitRange,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -350,8 +353,27 @@ class AccountApi {
       validateStatus: validateStatus,
     );
 
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(IpLimitRange);
+      _bodyData = ipLimitRange == null ? null : _serializers.serialize(ipLimitRange, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

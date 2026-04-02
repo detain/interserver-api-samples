@@ -18,6 +18,7 @@ goog.provide('API.Client.AccountApi');
 goog.require('API.Client.AccountInfo');
 goog.require('API.Client.GenericResponse');
 goog.require('API.Client.Home');
+goog.require('API.Client.IpLimitRange');
 goog.require('API.Client.SearchAutocompleteResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.TextResponse');
@@ -153,10 +154,11 @@ API.Client.AccountApi.prototype.deleteAccountTfa = function(opt_extraHttpRequest
 /**
  * Remove IP Access Restriction
  * Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+ * @param {!IpLimitRange=} opt_ipLimitRange 
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!API.Client.GenericResponse>}
  */
-API.Client.AccountApi.prototype.deleteIpLimit = function(opt_extraHttpRequestParams) {
+API.Client.AccountApi.prototype.deleteIpLimit = function(opt_ipLimitRange, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/account/iplimits';
 
@@ -170,7 +172,8 @@ API.Client.AccountApi.prototype.deleteIpLimit = function(opt_extraHttpRequestPar
     method: 'PATCH',
     url: path,
     json: true,
-            params: queryParameters,
+    data: opt_ipLimitRange,
+        params: queryParameters,
     headers: headerParams
   };
 

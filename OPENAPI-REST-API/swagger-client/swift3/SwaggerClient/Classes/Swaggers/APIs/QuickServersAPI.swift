@@ -978,7 +978,7 @@ open class QuickServersAPI: APIBase {
     "qs_ram" : "29550679",
     "qs_iowait" : "6.89",
     "qs_cpu_flags" : "",
-    "qs_last_install_time" : "",
+    "qs_last_install_time" : "qs_last_install_time",
     "qs_location" : "1",
     "qs_packets_sec_in" : "0",
     "qs_distro_version" : "22.04",
@@ -989,7 +989,7 @@ open class QuickServersAPI: APIBase {
     "qs_load" : "3.45",
     "qs_bytes_sec_in" : "0",
     "qs_raid_building" : "0",
-    "qs_partitions" : "",
+    "qs_partitions" : "qs_partitions",
     "qs_raid_status" : "OK: zfs:all pools are healthy",
     "qs_id" : "365",
     "qs_cpu_mhz" : "2900",
@@ -1012,10 +1012,10 @@ open class QuickServersAPI: APIBase {
     "qs_vnc" : "99.88.77.66",
     "qs_comment" : "",
     "qs_invoice" : "20297531",
-    "qs_platform" : "",
+    "qs_platform" : "qs_platform",
     "qs_mac" : "",
     "qs_order_date" : "2023-04-11T20:00:06.000Z",
-    "qs_ipv6" : "",
+    "qs_ipv6" : "qs_ipv6",
     "qs_coupon" : "0",
     "qs_currency" : "USD",
     "qs_slices" : "0",
@@ -1023,7 +1023,7 @@ open class QuickServersAPI: APIBase {
     "qs_status" : "canceled",
     "qs_type" : "700",
     "qs_server_status" : "deleted",
-    "qs_vnc_port" : ""
+    "qs_vnc_port" : 0
   },
   "extraInfoTables" : {
     "addons" : {

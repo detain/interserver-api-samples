@@ -15,7 +15,7 @@ class ServerAsset(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, id: int=None, order_id: str=None, hostname: str=None, status: str=None, primary_ipv4: str=None, primary_ipv6: str=None, mac: Object=None, datacenter: str=None, type_id: str=None, asset_tag: str=None, rack: str=None, row: str=None, col: str=None, unit_start: str=None, unit_end: str=None, unit_sub: str=None, ipmi_mac: str=None, ipmi_ip: str=None, ipmi_admin_username: Object=None, ipmi_admin_password: Object=None, ipmi_client_username: Object=None, ipmi_client_password: Object=None, ipmi_updated: Object=None, ipmi_working: str=None, company: str=None, comments: str=None, make: str=None, model: str=None, description: str=None, customer_id: str=None, external_id: str=None, billing_status: str=None, overdue: str=None, create_timestamp: Object=None, update_timestamp: Object=None, asset_id: str=None, asset_name: str=None, rack_id: str=None, rack_name: str=None, rack_location: str=None, rack_size: str=None, rack_x: str=None, rack_y: str=None, comment: Object=None, switchports: List[int]=None, vlans: List[str]=None, vlans6: List[str]=None, lease: ServerLease=None):  # noqa: E501
+    def __init__(self, id: int=None, order_id: str=None, hostname: str=None, status: str=None, primary_ipv4: str=None, primary_ipv6: str=None, mac: str=None, datacenter: str=None, type_id: str=None, asset_tag: str=None, rack: str=None, row: str=None, col: str=None, unit_start: str=None, unit_end: str=None, unit_sub: str=None, ipmi_mac: str=None, ipmi_ip: str=None, ipmi_admin_username: str=None, ipmi_admin_password: str=None, ipmi_client_username: str=None, ipmi_client_password: str=None, ipmi_updated: str=None, ipmi_working: str=None, company: str=None, comments: str=None, make: str=None, model: str=None, description: str=None, customer_id: str=None, external_id: str=None, billing_status: str=None, overdue: str=None, create_timestamp: str=None, update_timestamp: str=None, asset_id: str=None, asset_name: str=None, rack_id: str=None, rack_name: str=None, rack_location: str=None, rack_size: str=None, rack_x: str=None, rack_y: str=None, comment: str=None, switchports: List[int]=None, vlans: List[str]=None, vlans6: List[str]=None, lease: ServerLease=None):  # noqa: E501
         """ServerAsset - a model defined in Swagger
 
         :param id: The id of this ServerAsset.  # noqa: E501
@@ -31,7 +31,7 @@ class ServerAsset(Model):
         :param primary_ipv6: The primary_ipv6 of this ServerAsset.  # noqa: E501
         :type primary_ipv6: str
         :param mac: The mac of this ServerAsset.  # noqa: E501
-        :type mac: Object
+        :type mac: str
         :param datacenter: The datacenter of this ServerAsset.  # noqa: E501
         :type datacenter: str
         :param type_id: The type_id of this ServerAsset.  # noqa: E501
@@ -55,15 +55,15 @@ class ServerAsset(Model):
         :param ipmi_ip: The ipmi_ip of this ServerAsset.  # noqa: E501
         :type ipmi_ip: str
         :param ipmi_admin_username: The ipmi_admin_username of this ServerAsset.  # noqa: E501
-        :type ipmi_admin_username: Object
+        :type ipmi_admin_username: str
         :param ipmi_admin_password: The ipmi_admin_password of this ServerAsset.  # noqa: E501
-        :type ipmi_admin_password: Object
+        :type ipmi_admin_password: str
         :param ipmi_client_username: The ipmi_client_username of this ServerAsset.  # noqa: E501
-        :type ipmi_client_username: Object
+        :type ipmi_client_username: str
         :param ipmi_client_password: The ipmi_client_password of this ServerAsset.  # noqa: E501
-        :type ipmi_client_password: Object
+        :type ipmi_client_password: str
         :param ipmi_updated: The ipmi_updated of this ServerAsset.  # noqa: E501
-        :type ipmi_updated: Object
+        :type ipmi_updated: str
         :param ipmi_working: The ipmi_working of this ServerAsset.  # noqa: E501
         :type ipmi_working: str
         :param company: The company of this ServerAsset.  # noqa: E501
@@ -85,9 +85,9 @@ class ServerAsset(Model):
         :param overdue: The overdue of this ServerAsset.  # noqa: E501
         :type overdue: str
         :param create_timestamp: The create_timestamp of this ServerAsset.  # noqa: E501
-        :type create_timestamp: Object
+        :type create_timestamp: str
         :param update_timestamp: The update_timestamp of this ServerAsset.  # noqa: E501
-        :type update_timestamp: Object
+        :type update_timestamp: str
         :param asset_id: The asset_id of this ServerAsset.  # noqa: E501
         :type asset_id: str
         :param asset_name: The asset_name of this ServerAsset.  # noqa: E501
@@ -105,7 +105,7 @@ class ServerAsset(Model):
         :param rack_y: The rack_y of this ServerAsset.  # noqa: E501
         :type rack_y: str
         :param comment: The comment of this ServerAsset.  # noqa: E501
-        :type comment: Object
+        :type comment: str
         :param switchports: The switchports of this ServerAsset.  # noqa: E501
         :type switchports: List[int]
         :param vlans: The vlans of this ServerAsset.  # noqa: E501
@@ -122,7 +122,7 @@ class ServerAsset(Model):
             'status': str,
             'primary_ipv4': str,
             'primary_ipv6': str,
-            'mac': Object,
+            'mac': str,
             'datacenter': str,
             'type_id': str,
             'asset_tag': str,
@@ -134,11 +134,11 @@ class ServerAsset(Model):
             'unit_sub': str,
             'ipmi_mac': str,
             'ipmi_ip': str,
-            'ipmi_admin_username': Object,
-            'ipmi_admin_password': Object,
-            'ipmi_client_username': Object,
-            'ipmi_client_password': Object,
-            'ipmi_updated': Object,
+            'ipmi_admin_username': str,
+            'ipmi_admin_password': str,
+            'ipmi_client_username': str,
+            'ipmi_client_password': str,
+            'ipmi_updated': str,
             'ipmi_working': str,
             'company': str,
             'comments': str,
@@ -149,8 +149,8 @@ class ServerAsset(Model):
             'external_id': str,
             'billing_status': str,
             'overdue': str,
-            'create_timestamp': Object,
-            'update_timestamp': Object,
+            'create_timestamp': str,
+            'update_timestamp': str,
             'asset_id': str,
             'asset_name': str,
             'rack_id': str,
@@ -159,7 +159,7 @@ class ServerAsset(Model):
             'rack_size': str,
             'rack_x': str,
             'rack_y': str,
-            'comment': Object,
+            'comment': str,
             'switchports': List[int],
             'vlans': List[str],
             'vlans6': List[str],
@@ -427,24 +427,24 @@ class ServerAsset(Model):
         self._primary_ipv6 = primary_ipv6
 
     @property
-    def mac(self) -> Object:
+    def mac(self) -> str:
         """Gets the mac of this ServerAsset.
 
         MAC address associated with the asset.  # noqa: E501
 
         :return: The mac of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._mac
 
     @mac.setter
-    def mac(self, mac: Object):
+    def mac(self, mac: str):
         """Sets the mac of this ServerAsset.
 
         MAC address associated with the asset.  # noqa: E501
 
         :param mac: The mac of this ServerAsset.
-        :type mac: Object
+        :type mac: str
         """
 
         self._mac = mac
@@ -725,116 +725,116 @@ class ServerAsset(Model):
         self._ipmi_ip = ipmi_ip
 
     @property
-    def ipmi_admin_username(self) -> Object:
+    def ipmi_admin_username(self) -> str:
         """Gets the ipmi_admin_username of this ServerAsset.
 
         IPMI admin username associated with the asset.  # noqa: E501
 
         :return: The ipmi_admin_username of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._ipmi_admin_username
 
     @ipmi_admin_username.setter
-    def ipmi_admin_username(self, ipmi_admin_username: Object):
+    def ipmi_admin_username(self, ipmi_admin_username: str):
         """Sets the ipmi_admin_username of this ServerAsset.
 
         IPMI admin username associated with the asset.  # noqa: E501
 
         :param ipmi_admin_username: The ipmi_admin_username of this ServerAsset.
-        :type ipmi_admin_username: Object
+        :type ipmi_admin_username: str
         """
 
         self._ipmi_admin_username = ipmi_admin_username
 
     @property
-    def ipmi_admin_password(self) -> Object:
+    def ipmi_admin_password(self) -> str:
         """Gets the ipmi_admin_password of this ServerAsset.
 
         IPMI admin password associated with the asset.  # noqa: E501
 
         :return: The ipmi_admin_password of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._ipmi_admin_password
 
     @ipmi_admin_password.setter
-    def ipmi_admin_password(self, ipmi_admin_password: Object):
+    def ipmi_admin_password(self, ipmi_admin_password: str):
         """Sets the ipmi_admin_password of this ServerAsset.
 
         IPMI admin password associated with the asset.  # noqa: E501
 
         :param ipmi_admin_password: The ipmi_admin_password of this ServerAsset.
-        :type ipmi_admin_password: Object
+        :type ipmi_admin_password: str
         """
 
         self._ipmi_admin_password = ipmi_admin_password
 
     @property
-    def ipmi_client_username(self) -> Object:
+    def ipmi_client_username(self) -> str:
         """Gets the ipmi_client_username of this ServerAsset.
 
         IPMI client username associated with the asset.  # noqa: E501
 
         :return: The ipmi_client_username of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._ipmi_client_username
 
     @ipmi_client_username.setter
-    def ipmi_client_username(self, ipmi_client_username: Object):
+    def ipmi_client_username(self, ipmi_client_username: str):
         """Sets the ipmi_client_username of this ServerAsset.
 
         IPMI client username associated with the asset.  # noqa: E501
 
         :param ipmi_client_username: The ipmi_client_username of this ServerAsset.
-        :type ipmi_client_username: Object
+        :type ipmi_client_username: str
         """
 
         self._ipmi_client_username = ipmi_client_username
 
     @property
-    def ipmi_client_password(self) -> Object:
+    def ipmi_client_password(self) -> str:
         """Gets the ipmi_client_password of this ServerAsset.
 
         IPMI client password associated with the asset.  # noqa: E501
 
         :return: The ipmi_client_password of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._ipmi_client_password
 
     @ipmi_client_password.setter
-    def ipmi_client_password(self, ipmi_client_password: Object):
+    def ipmi_client_password(self, ipmi_client_password: str):
         """Sets the ipmi_client_password of this ServerAsset.
 
         IPMI client password associated with the asset.  # noqa: E501
 
         :param ipmi_client_password: The ipmi_client_password of this ServerAsset.
-        :type ipmi_client_password: Object
+        :type ipmi_client_password: str
         """
 
         self._ipmi_client_password = ipmi_client_password
 
     @property
-    def ipmi_updated(self) -> Object:
+    def ipmi_updated(self) -> str:
         """Gets the ipmi_updated of this ServerAsset.
 
         IPMI update status associated with the asset.  # noqa: E501
 
         :return: The ipmi_updated of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._ipmi_updated
 
     @ipmi_updated.setter
-    def ipmi_updated(self, ipmi_updated: Object):
+    def ipmi_updated(self, ipmi_updated: str):
         """Sets the ipmi_updated of this ServerAsset.
 
         IPMI update status associated with the asset.  # noqa: E501
 
         :param ipmi_updated: The ipmi_updated of this ServerAsset.
-        :type ipmi_updated: Object
+        :type ipmi_updated: str
         """
 
         self._ipmi_updated = ipmi_updated
@@ -1090,47 +1090,47 @@ class ServerAsset(Model):
         self._overdue = overdue
 
     @property
-    def create_timestamp(self) -> Object:
+    def create_timestamp(self) -> str:
         """Gets the create_timestamp of this ServerAsset.
 
         Timestamp of asset creation.  # noqa: E501
 
         :return: The create_timestamp of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._create_timestamp
 
     @create_timestamp.setter
-    def create_timestamp(self, create_timestamp: Object):
+    def create_timestamp(self, create_timestamp: str):
         """Sets the create_timestamp of this ServerAsset.
 
         Timestamp of asset creation.  # noqa: E501
 
         :param create_timestamp: The create_timestamp of this ServerAsset.
-        :type create_timestamp: Object
+        :type create_timestamp: str
         """
 
         self._create_timestamp = create_timestamp
 
     @property
-    def update_timestamp(self) -> Object:
+    def update_timestamp(self) -> str:
         """Gets the update_timestamp of this ServerAsset.
 
         Timestamp of asset update.  # noqa: E501
 
         :return: The update_timestamp of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._update_timestamp
 
     @update_timestamp.setter
-    def update_timestamp(self, update_timestamp: Object):
+    def update_timestamp(self, update_timestamp: str):
         """Sets the update_timestamp of this ServerAsset.
 
         Timestamp of asset update.  # noqa: E501
 
         :param update_timestamp: The update_timestamp of this ServerAsset.
-        :type update_timestamp: Object
+        :type update_timestamp: str
         """
 
         self._update_timestamp = update_timestamp
@@ -1336,24 +1336,24 @@ class ServerAsset(Model):
         self._rack_y = rack_y
 
     @property
-    def comment(self) -> Object:
+    def comment(self) -> str:
         """Gets the comment of this ServerAsset.
 
         Comment associated with the asset.  # noqa: E501
 
         :return: The comment of this ServerAsset.
-        :rtype: Object
+        :rtype: str
         """
         return self._comment
 
     @comment.setter
-    def comment(self, comment: Object):
+    def comment(self, comment: str):
         """Sets the comment of this ServerAsset.
 
         Comment associated with the asset.  # noqa: E501
 
         :param comment: The comment of this ServerAsset.
-        :type comment: Object
+        :type comment: str
         """
 
         self._comment = comment

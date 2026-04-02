@@ -194,7 +194,7 @@ API.Client.FloatingIPsApi.prototype.getFloatingIpInvoices = function(id, opt_ext
  * List Floating IPs
  * Returns all Floating IP services on the account with their current status and assignment details.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!Array<!API.Client.Object>>}
  */
 API.Client.FloatingIPsApi.prototype.getFloatingIpsList = function(opt_extraHttpRequestParams) {
   /** @const {string} */

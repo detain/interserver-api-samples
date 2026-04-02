@@ -207,7 +207,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_ip_limit**
-> GenericResponse delete_ip_limit()
+> GenericResponse delete_ip_limit(body=body)
 
 Remove IP Access Restriction
 
@@ -239,17 +239,21 @@ configuration.api_key['sessionid'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = myadmin-client-python.AccountApi(myadmin-client-python.ApiClient(configuration))
+body = myadmin-client-python.IpLimitRange() # IpLimitRange |  (optional)
 
 try:
     # Remove IP Access Restriction
-    api_response = api_instance.delete_ip_limit()
+    api_response = api_instance.delete_ip_limit(body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->delete_ip_limit: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] 
 
 ### Return type
 

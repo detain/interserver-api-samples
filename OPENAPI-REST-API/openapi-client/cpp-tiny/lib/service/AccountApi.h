@@ -13,6 +13,7 @@
 #include "GetAccountInfo_401_response.h"
 #include "GetAccountTfaSetup_200_response.h"
 #include "Home.h"
+#include "IpLimitRange.h"
 #include "SearchAutocompleteResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
@@ -68,11 +69,15 @@ public:
     * Remove IP Access Restriction.
     *
     * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+    * \param ipLimitRange 
     */
     Response<
                 GenericResponse
         >
     deleteIpLimit(
+            
+            IpLimitRange ipLimitRange
+            
     );
     /**
     * Retrieve Account Details.

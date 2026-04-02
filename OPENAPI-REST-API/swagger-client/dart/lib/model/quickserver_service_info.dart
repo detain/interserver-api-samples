@@ -10,7 +10,7 @@ class QuickserverServiceInfo {
 /* IP address */
   String qsIp = null;
 /* IPv6 address (null) */
-  Object qsIpv6 = null;
+  String qsIpv6 = null;
 /* VZ ID */
   String qsVzid = null;
 /* Currency */
@@ -38,7 +38,7 @@ class QuickserverServiceInfo {
 /* VNC information */
   String qsVnc = null;
 /* VNC port (null) */
-  Object qsVncPort = null;
+  int qsVncPort = null;
 /* Root password */
   String qsRootpass = null;
 /* MAC address */
@@ -50,7 +50,7 @@ class QuickserverServiceInfo {
 /* Location */
   String qsLocation = null;
 /* Platform (null) */
-  Object qsPlatform = null;
+  String qsPlatform = null;
 
   QuickserverServiceInfo();
 
@@ -65,7 +65,7 @@ class QuickserverServiceInfo {
     qsCustid = json['qs_custid'];
     qsServer = json['qs_server'];
     qsIp = json['qs_ip'];
-    qsIpv6 = new Object.fromJson(json['qs_ipv6']);
+    qsIpv6 = json['qs_ipv6'];
     qsVzid = json['qs_vzid'];
     qsCurrency = json['qs_currency'];
     qsType = json['qs_type'];
@@ -79,13 +79,13 @@ class QuickserverServiceInfo {
     qsComment = json['qs_comment'];
     qsSlices = json['qs_slices'];
     qsVnc = json['qs_vnc'];
-    qsVncPort = new Object.fromJson(json['qs_vnc_port']);
+    qsVncPort = json['qs_vnc_port'];
     qsRootpass = json['qs_rootpass'];
     qsMac = json['qs_mac'];
     qsOs = json['qs_os'];
     qsVersion = json['qs_version'];
     qsLocation = json['qs_location'];
-    qsPlatform = new Object.fromJson(json['qs_platform']);
+    qsPlatform = json['qs_platform'];
   }
 
   Map<String, dynamic> toJson() {

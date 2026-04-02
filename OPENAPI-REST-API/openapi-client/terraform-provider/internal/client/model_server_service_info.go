@@ -22,22 +22,22 @@ type ServerServiceInfo struct {
 	ServerIps string `json:"server_ips,omitempty"`
 	ServerMonthlyBill string `json:"server_monthly_bill,omitempty"`
 	ServerSetup string `json:"server_setup,omitempty"`
-	ServerDiscount interface{} `json:"server_discount,omitempty"`
+	ServerDiscount string `json:"server_discount,omitempty"`
 	ServerRep string `json:"server_rep,omitempty"`
 	ServerDate string `json:"server_date,omitempty"`
 	ServerTotalCost string `json:"server_total_cost,omitempty"`
-	ServerLocation interface{} `json:"server_location,omitempty"`
+	ServerLocation string `json:"server_location,omitempty"`
 	ServerHardwareOrdered string `json:"server_hardware_ordered,omitempty"`
 	ServerBilled string `json:"server_billed,omitempty"`
 	ServerWelcomeEmail string `json:"server_welcome_email,omitempty"`
 	ServerDedicatedCpu string `json:"server_dedicated_cpu,omitempty"`
 	ServerDedicatedMemory string `json:"server_dedicated_memory,omitempty"`
 	ServerDedicatedHd1 string `json:"server_dedicated_hd1,omitempty"`
-	ServerDedicatedHd2 interface{} `json:"server_dedicated_hd2,omitempty"`
+	ServerDedicatedHd2 string `json:"server_dedicated_hd2,omitempty"`
 	ServerDedicatedBandwidth string `json:"server_dedicated_bandwidth,omitempty"`
 	ServerDedicatedIps string `json:"server_dedicated_ips,omitempty"`
 	ServerDedicatedOs string `json:"server_dedicated_os,omitempty"`
-	ServerDedicatedCp interface{} `json:"server_dedicated_cp,omitempty"`
+	ServerDedicatedCp string `json:"server_dedicated_cp,omitempty"`
 	ServerDedicatedRaid string `json:"server_dedicated_raid,omitempty"`
 	ServerExtra string `json:"server_extra,omitempty"`
 }

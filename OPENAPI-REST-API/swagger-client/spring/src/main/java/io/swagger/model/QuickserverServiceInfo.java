@@ -49,9 +49,7 @@ public class QuickserverServiceInfo   {
 
   @JsonProperty("qs_ipv6")
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object qsIpv6 = null;
+  private String qsIpv6 = null;
 
   @JsonProperty("qs_vzid")
 
@@ -133,9 +131,7 @@ public class QuickserverServiceInfo   {
 
   @JsonProperty("qs_vnc_port")
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object qsVncPort = null;
+  private Integer qsVncPort = null;
 
   @JsonProperty("qs_rootpass")
 
@@ -169,9 +165,7 @@ public class QuickserverServiceInfo   {
 
   @JsonProperty("qs_platform")
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object qsPlatform = null;
+  private String qsPlatform = null;
 
 
   public QuickserverServiceInfo qsId(String qsId) { 
@@ -266,7 +260,7 @@ public class QuickserverServiceInfo   {
     this.qsIp = qsIp;
   }
 
-  public QuickserverServiceInfo qsIpv6(Object qsIpv6) { 
+  public QuickserverServiceInfo qsIpv6(String qsIpv6) { 
 
     this.qsIpv6 = qsIpv6;
     return this;
@@ -279,13 +273,14 @@ public class QuickserverServiceInfo   {
   
   @Schema(description = "IPv6 address (null)")
   
-  public Object getQsIpv6() {  
+  public String getQsIpv6() {
+ 
     return qsIpv6;
   }
 
 
 
-  public void setQsIpv6(Object qsIpv6) { 
+  public void setQsIpv6(String qsIpv6) { 
     this.qsIpv6 = qsIpv6;
   }
 
@@ -588,7 +583,7 @@ public class QuickserverServiceInfo   {
     this.qsVnc = qsVnc;
   }
 
-  public QuickserverServiceInfo qsVncPort(Object qsVncPort) { 
+  public QuickserverServiceInfo qsVncPort(Integer qsVncPort) { 
 
     this.qsVncPort = qsVncPort;
     return this;
@@ -601,13 +596,14 @@ public class QuickserverServiceInfo   {
   
   @Schema(description = "VNC port (null)")
   
-  public Object getQsVncPort() {  
+  public Integer getQsVncPort() {
+ 
     return qsVncPort;
   }
 
 
 
-  public void setQsVncPort(Object qsVncPort) { 
+  public void setQsVncPort(Integer qsVncPort) { 
     this.qsVncPort = qsVncPort;
   }
 
@@ -726,7 +722,7 @@ public class QuickserverServiceInfo   {
     this.qsLocation = qsLocation;
   }
 
-  public QuickserverServiceInfo qsPlatform(Object qsPlatform) { 
+  public QuickserverServiceInfo qsPlatform(String qsPlatform) { 
 
     this.qsPlatform = qsPlatform;
     return this;
@@ -739,13 +735,14 @@ public class QuickserverServiceInfo   {
   
   @Schema(description = "Platform (null)")
   
-  public Object getQsPlatform() {  
+  public String getQsPlatform() {
+ 
     return qsPlatform;
   }
 
 
 
-  public void setQsPlatform(Object qsPlatform) { 
+  public void setQsPlatform(String qsPlatform) { 
     this.qsPlatform = qsPlatform;
   }
 

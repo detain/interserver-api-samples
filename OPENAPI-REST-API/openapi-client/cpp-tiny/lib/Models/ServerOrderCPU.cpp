@@ -28,7 +28,7 @@ ServerOrderCPU::ServerOrderCPU()
 	max_sff = std::string();
 	max_nve = std::string();
 	visible = std::string();
-	hd_ids = null;
+	hd_ids = std::string();
 	price_display = std::string();
 	monthly_price_display = std::string();
 }
@@ -342,9 +342,8 @@ ServerOrderCPU::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&hd_ids, value, "std::string");
 
-        AnyType* obj = &hd_ids;
-		obj->fromJson(value.dump());
 
     }
 
@@ -540,8 +539,8 @@ ServerOrderCPU::toJson()
 
 
 
+    object["hd_ids"] = getHdIds();
 
-	object["hd_ids"] = getHdIds().toJson();
 
 
 
@@ -826,14 +825,14 @@ ServerOrderCPU::setVisible(std::string visible)
 	this->visible = visible;
 }
 
-AnyType
+std::string
 ServerOrderCPU::getHdIds()
 {
 	return hd_ids;
 }
 
 void
-ServerOrderCPU::setHdIds(AnyType hd_ids)
+ServerOrderCPU::setHdIds(std::string hd_ids)
 {
 	this->hd_ids = hd_ids;
 }

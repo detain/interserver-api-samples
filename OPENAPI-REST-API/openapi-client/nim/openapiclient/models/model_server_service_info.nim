@@ -12,7 +12,6 @@ import tables
 import marshal
 import options
 
-import model_any_type
 
 type ServerServiceInfo* = object
   ## 
@@ -34,22 +33,22 @@ type ServerServiceInfo* = object
   serverIps*: Option[string] ## The number of IPs associated with the server.
   serverMonthlyBill*: Option[string] ## The monthly billing amount for the server.
   serverSetup*: Option[string] ## The setup status of the server.
-  serverDiscount*: Option[JsonNode] ## Discount information for the server.
+  serverDiscount*: Option[string] ## Discount information for the server.
   serverRep*: Option[string] ## The reputation of the server.
   serverDate*: Option[string] ## The date related to the server.
   serverTotalCost*: Option[string] ## The total cost of the server.
-  serverLocation*: Option[JsonNode] ## The location of the server.
+  serverLocation*: Option[string] ## The location of the server.
   serverHardwareOrdered*: Option[string] ## The ordered hardware for the server.
   serverBilled*: Option[string] ## The billed amount for the server.
   serverWelcomeEmail*: Option[string] ## Indicates whether a welcome email was sent.
   serverDedicatedCpu*: Option[string] ## The number of dedicated CPUs for the server.
   serverDedicatedMemory*: Option[string] ## The amount of dedicated memory for the server.
   serverDedicatedHd1*: Option[string] ## The size of the first dedicated hard drive.
-  serverDedicatedHd2*: Option[JsonNode] ## The size of the second dedicated hard drive.
+  serverDedicatedHd2*: Option[string] ## The size of the second dedicated hard drive.
   serverDedicatedBandwidth*: Option[string] ## The bandwidth of the server.
   serverDedicatedIps*: Option[string] ## The number of dedicated IPs for the server.
   serverDedicatedOs*: Option[string] ## The operating system of the server.
-  serverDedicatedCp*: Option[JsonNode] ## The control panel of the server.
+  serverDedicatedCp*: Option[string] ## The control panel of the server.
   serverDedicatedRaid*: Option[string] ## The RAID configuration of the server.
   serverExtra*: Option[string] ## Additional information about the server.
 

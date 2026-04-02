@@ -31,8 +31,8 @@ module OpenAPIClient
     property vps_ip : String?
 
     # IPv6 address of the VPS
-    @[JSON::Field(key: "vps_ipv6", type: JSON::Any?, nillable: true, emit_null: false)]
-    property vps_ipv6 : JSON::Any?
+    @[JSON::Field(key: "vps_ipv6", type: String?, nillable: true, emit_null: false)]
+    property vps_ipv6 : String?
 
     # VPS Virtuozzo ID
     @[JSON::Field(key: "vps_vzid", type: String?, nillable: true, emit_null: false)]
@@ -124,7 +124,7 @@ module OpenAPIClient
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(@vps_id : String? = nil, @vps_custid : String? = nil, @vps_server : String? = nil, @vps_ip : String? = nil, @vps_ipv6 : JSON::Any? = nil, @vps_vzid : String? = nil, @vps_currency : String? = nil, @vps_type : String? = nil, @vps_order_date : String? = nil, @vps_status : String? = nil, @vps_invoice : String? = nil, @vps_coupon : String? = nil, @vps_extra : String? = nil, @vps_hostname : String? = nil, @vps_server_status : String? = nil, @vps_comment : String? = nil, @vps_slices : String? = nil, @vps_vnc : String? = nil, @vps_vnc_port : String? = nil, @vps_rootpass : String? = nil, @vps_mac : String? = nil, @vps_os : String? = nil, @vps_version : String? = nil, @vps_location : String? = nil, @vps_platform : String? = nil, @vps_diskused : String? = nil, @vps_diskmax : String? = nil)
+    def initialize(@vps_id : String? = nil, @vps_custid : String? = nil, @vps_server : String? = nil, @vps_ip : String? = nil, @vps_ipv6 : String? = nil, @vps_vzid : String? = nil, @vps_currency : String? = nil, @vps_type : String? = nil, @vps_order_date : String? = nil, @vps_status : String? = nil, @vps_invoice : String? = nil, @vps_coupon : String? = nil, @vps_extra : String? = nil, @vps_hostname : String? = nil, @vps_server_status : String? = nil, @vps_comment : String? = nil, @vps_slices : String? = nil, @vps_vnc : String? = nil, @vps_vnc_port : String? = nil, @vps_rootpass : String? = nil, @vps_mac : String? = nil, @vps_os : String? = nil, @vps_version : String? = nil, @vps_location : String? = nil, @vps_platform : String? = nil, @vps_diskused : String? = nil, @vps_diskmax : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

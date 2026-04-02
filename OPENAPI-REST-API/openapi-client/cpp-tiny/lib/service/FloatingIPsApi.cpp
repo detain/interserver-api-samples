@@ -198,7 +198,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            std::list<Object>
         >
         FloatingIPsApi::
         getFloatingIpsList(
@@ -228,7 +228,32 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+            std::list<Object> obj = std::list<Object>();
+            bourne::json jsonPayload(output_string);
+
+
+
+
+
+
+
+
+            
+            for(auto& var : jsonPayload.array_range())
+            {
+                Object tmp(var.dump());
+                obj.push_back(tmp);
+            }
+            
+
+
+
+
+
+
+
+            Response<std::list<Object>> response(obj, httpCode);
             return response;
         }
 

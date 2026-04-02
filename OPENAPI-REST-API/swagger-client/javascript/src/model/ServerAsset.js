@@ -131,7 +131,7 @@ export default class ServerAsset {
       if (data.hasOwnProperty('primary_ipv6'))
         obj.primary_ipv6 = ApiClient.convertToType(data['primary_ipv6'], 'String');
       if (data.hasOwnProperty('mac'))
-        obj.mac = ApiClient.convertToType(data['mac'], Object);
+        obj.mac = ApiClient.convertToType(data['mac'], 'String');
       if (data.hasOwnProperty('datacenter'))
         obj.datacenter = ApiClient.convertToType(data['datacenter'], 'String');
       if (data.hasOwnProperty('type_id'))
@@ -155,15 +155,15 @@ export default class ServerAsset {
       if (data.hasOwnProperty('ipmi_ip'))
         obj.ipmi_ip = ApiClient.convertToType(data['ipmi_ip'], 'String');
       if (data.hasOwnProperty('ipmi_admin_username'))
-        obj.ipmi_admin_username = ApiClient.convertToType(data['ipmi_admin_username'], Object);
+        obj.ipmi_admin_username = ApiClient.convertToType(data['ipmi_admin_username'], 'String');
       if (data.hasOwnProperty('ipmi_admin_password'))
-        obj.ipmi_admin_password = ApiClient.convertToType(data['ipmi_admin_password'], Object);
+        obj.ipmi_admin_password = ApiClient.convertToType(data['ipmi_admin_password'], 'String');
       if (data.hasOwnProperty('ipmi_client_username'))
-        obj.ipmi_client_username = ApiClient.convertToType(data['ipmi_client_username'], Object);
+        obj.ipmi_client_username = ApiClient.convertToType(data['ipmi_client_username'], 'String');
       if (data.hasOwnProperty('ipmi_client_password'))
-        obj.ipmi_client_password = ApiClient.convertToType(data['ipmi_client_password'], Object);
+        obj.ipmi_client_password = ApiClient.convertToType(data['ipmi_client_password'], 'String');
       if (data.hasOwnProperty('ipmi_updated'))
-        obj.ipmi_updated = ApiClient.convertToType(data['ipmi_updated'], Object);
+        obj.ipmi_updated = ApiClient.convertToType(data['ipmi_updated'], 'String');
       if (data.hasOwnProperty('ipmi_working'))
         obj.ipmi_working = ApiClient.convertToType(data['ipmi_working'], 'String');
       if (data.hasOwnProperty('company'))
@@ -185,9 +185,9 @@ export default class ServerAsset {
       if (data.hasOwnProperty('overdue'))
         obj.overdue = ApiClient.convertToType(data['overdue'], 'String');
       if (data.hasOwnProperty('create_timestamp'))
-        obj.create_timestamp = ApiClient.convertToType(data['create_timestamp'], Object);
+        obj.create_timestamp = ApiClient.convertToType(data['create_timestamp'], 'String');
       if (data.hasOwnProperty('update_timestamp'))
-        obj.update_timestamp = ApiClient.convertToType(data['update_timestamp'], Object);
+        obj.update_timestamp = ApiClient.convertToType(data['update_timestamp'], 'String');
       if (data.hasOwnProperty('asset_id'))
         obj.asset_id = ApiClient.convertToType(data['asset_id'], 'String');
       if (data.hasOwnProperty('asset_name'))
@@ -205,7 +205,7 @@ export default class ServerAsset {
       if (data.hasOwnProperty('rack_y'))
         obj.rack_y = ApiClient.convertToType(data['rack_y'], 'String');
       if (data.hasOwnProperty('comment'))
-        obj.comment = ApiClient.convertToType(data['comment'], Object);
+        obj.comment = ApiClient.convertToType(data['comment'], 'String');
       if (data.hasOwnProperty('switchports'))
         obj.switchports = ApiClient.convertToType(data['switchports'], ['Number']);
       if (data.hasOwnProperty('vlans'))
@@ -257,7 +257,7 @@ ServerAsset.prototype.primary_ipv6 = undefined;
 
 /**
  * MAC address associated with the asset.
- * @member {Object} mac
+ * @member {String} mac
  */
 ServerAsset.prototype.mac = undefined;
 
@@ -329,31 +329,31 @@ ServerAsset.prototype.ipmi_ip = undefined;
 
 /**
  * IPMI admin username associated with the asset.
- * @member {Object} ipmi_admin_username
+ * @member {String} ipmi_admin_username
  */
 ServerAsset.prototype.ipmi_admin_username = undefined;
 
 /**
  * IPMI admin password associated with the asset.
- * @member {Object} ipmi_admin_password
+ * @member {String} ipmi_admin_password
  */
 ServerAsset.prototype.ipmi_admin_password = undefined;
 
 /**
  * IPMI client username associated with the asset.
- * @member {Object} ipmi_client_username
+ * @member {String} ipmi_client_username
  */
 ServerAsset.prototype.ipmi_client_username = undefined;
 
 /**
  * IPMI client password associated with the asset.
- * @member {Object} ipmi_client_password
+ * @member {String} ipmi_client_password
  */
 ServerAsset.prototype.ipmi_client_password = undefined;
 
 /**
  * IPMI update status associated with the asset.
- * @member {Object} ipmi_updated
+ * @member {String} ipmi_updated
  */
 ServerAsset.prototype.ipmi_updated = undefined;
 
@@ -419,13 +419,13 @@ ServerAsset.prototype.overdue = undefined;
 
 /**
  * Timestamp of asset creation.
- * @member {Object} create_timestamp
+ * @member {String} create_timestamp
  */
 ServerAsset.prototype.create_timestamp = undefined;
 
 /**
  * Timestamp of asset update.
- * @member {Object} update_timestamp
+ * @member {String} update_timestamp
  */
 ServerAsset.prototype.update_timestamp = undefined;
 
@@ -479,7 +479,7 @@ ServerAsset.prototype.rack_y = undefined;
 
 /**
  * Comment associated with the asset.
- * @member {Object} comment
+ * @member {String} comment
  */
 ServerAsset.prototype.comment = undefined;
 

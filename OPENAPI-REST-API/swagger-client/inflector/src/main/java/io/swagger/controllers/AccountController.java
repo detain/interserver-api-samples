@@ -81,7 +81,8 @@ public class AccountController  {
   */
 
   /*
-    public ResponseContext deleteIpLimit(RequestContext request ) {
+    public ResponseContext deleteIpLimit(RequestContext request , IpLimitRange body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

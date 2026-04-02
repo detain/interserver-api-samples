@@ -453,6 +453,12 @@ func (a *AccountAPIService) DeleteAccountTfaExecute(r ApiDeleteAccountTfaRequest
 type ApiDeleteIpLimitRequest struct {
 	ctx context.Context
 	ApiService *AccountAPIService
+	ipLimitRange *IpLimitRange
+}
+
+func (r ApiDeleteIpLimitRequest) IpLimitRange(ipLimitRange IpLimitRange) ApiDeleteIpLimitRequest {
+	r.ipLimitRange = &ipLimitRange
+	return r
 }
 
 func (r ApiDeleteIpLimitRequest) Execute() (*GenericResponse, *http.Response, error) {
@@ -512,6 +518,8 @@ func (a *AccountAPIService) DeleteIpLimitExecute(r ApiDeleteIpLimitRequest) (*Ge
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.ipLimitRange
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

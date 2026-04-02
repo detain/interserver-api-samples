@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * Contains the full account profile including personal info, billing details, OAuth connections, and security settings.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class AccountInfo {
   public static final String SERIALIZED_NAME_CUSTID = "custid";
   @SerializedName(SERIALIZED_NAME_CUSTID)

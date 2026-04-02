@@ -34,7 +34,7 @@ export interface QuickserverServiceInfo {
     /**
      * IPv6 address (null)
      */
-    qs_ipv6?: any | null;
+    qs_ipv6?: string | null;
     /**
      * VZ ID
      */
@@ -90,7 +90,7 @@ export interface QuickserverServiceInfo {
     /**
      * VNC port (null)
      */
-    qs_vnc_port?: any | null;
+    qs_vnc_port?: number | null;
     /**
      * Root password
      */
@@ -114,6 +114,6 @@ export interface QuickserverServiceInfo {
     /**
      * Platform (null)
      */
-    qs_platform?: any | null;
+    qs_platform?: string | null;
 }
 

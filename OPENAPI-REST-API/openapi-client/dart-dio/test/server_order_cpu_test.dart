@@ -140,7 +140,7 @@ void main() {
     });
 
     // Hard drive IDs.
-    // JsonObject hdIds
+    // String hdIds
     test('to test the property `hdIds`', () async {
       // TODO
     });

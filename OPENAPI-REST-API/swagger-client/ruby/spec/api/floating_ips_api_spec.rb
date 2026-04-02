@@ -82,7 +82,7 @@ describe 'FloatingIPsApi' do
   # List Floating IPs
   # Returns all Floating IP services on the account with their current status and assignment details.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Array<Object>]
   describe 'get_floating_ips_list test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

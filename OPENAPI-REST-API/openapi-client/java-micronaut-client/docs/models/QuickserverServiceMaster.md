@@ -40,8 +40,8 @@ Name | Type | Description | Notes
 **qsBytesSecOut** | `String` | Bytes/sec out |  [optional property]
 **qsPacketsSecIn** | `String` | Packets/sec in |  [optional property]
 **qsPacketsSecOut** | `String` | Packets/sec out |  [optional property]
-**qsLastInstallTime** | `Object` | Last install time (null) |  [optional property]
-**qsPartitions** | `Object` | Partitions information (null) |  [optional property]
+**qsLastInstallTime** | `String` | Last install time (null) |  [optional property]
+**qsPartitions** | `String` | Partitions information (null) |  [optional property]
 **qsCpuFlags** | `String` | CPU flags |  [optional property]
 
 

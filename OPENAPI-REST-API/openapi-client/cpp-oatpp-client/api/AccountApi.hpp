@@ -29,6 +29,7 @@
 #include "GetAccountInfo_401_response.hpp"
 #include "GetAccountTfaSetup_200_response.hpp"
 #include "Home.hpp"
+#include "IpLimitRange.hpp"
 #include "SearchAutocompleteResponse.hpp"
 #include "SuccessTextResponse.hpp"
 #include "TextResponse.hpp"
@@ -71,7 +72,8 @@ public:
   /// <remarks>
   /// Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
   /// </remarks>
-  API_CALL("PATCH", "/account/iplimits", delete_ip_limit)
+  /// <param name="ipLimitRange"> (optional)</param>
+  API_CALL("PATCH", "/account/iplimits", delete_ip_limit, BODY_DTO(oatpp::Object<org::openapitools::client::model::IpLimitRange>, ipLimitRange))
   /// <summary>
   /// Retrieve Account Details
   /// </summary>

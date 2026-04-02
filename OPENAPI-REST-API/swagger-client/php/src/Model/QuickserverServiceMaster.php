@@ -87,8 +87,8 @@ class QuickserverServiceMaster implements ModelInterface, ArrayAccess
         'qsBytesSecOut' => 'string',
         'qsPacketsSecIn' => 'string',
         'qsPacketsSecOut' => 'string',
-        'qsLastInstallTime' => '',
-        'qsPartitions' => '',
+        'qsLastInstallTime' => 'string',
+        'qsPartitions' => 'string',
         'qsCpuFlags' => 'string'
     ];
 
@@ -1117,7 +1117,7 @@ class QuickserverServiceMaster implements ModelInterface, ArrayAccess
     /**
      * Gets qsLastInstallTime
      *
-     * @return 
+     * @return string
      */
     public function getQsLastInstallTime()
     {
@@ -1127,7 +1127,7 @@ class QuickserverServiceMaster implements ModelInterface, ArrayAccess
     /**
      * Sets qsLastInstallTime
      *
-     * @param  $qsLastInstallTime Last install time (null)
+     * @param string $qsLastInstallTime Last install time (null)
      *
      * @return $this
      */
@@ -1141,7 +1141,7 @@ class QuickserverServiceMaster implements ModelInterface, ArrayAccess
     /**
      * Gets qsPartitions
      *
-     * @return 
+     * @return string
      */
     public function getQsPartitions()
     {
@@ -1151,7 +1151,7 @@ class QuickserverServiceMaster implements ModelInterface, ArrayAccess
     /**
      * Sets qsPartitions
      *
-     * @param  $qsPartitions Partitions information (null)
+     * @param string $qsPartitions Partitions information (null)
      *
      * @return $this
      */

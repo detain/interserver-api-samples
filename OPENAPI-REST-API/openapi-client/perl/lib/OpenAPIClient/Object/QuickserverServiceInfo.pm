@@ -248,7 +248,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'qs_ipv6' => {
-        datatype => 'object',
+        datatype => 'string',
         base_name => 'qs_ipv6',
         description => 'IPv6 address (null)',
         format => '',
@@ -346,7 +346,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'qs_vnc_port' => {
-        datatype => 'object',
+        datatype => 'int',
         base_name => 'qs_vnc_port',
         description => 'VNC port (null)',
         format => '',
@@ -388,7 +388,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'qs_platform' => {
-        datatype => 'object',
+        datatype => 'string',
         base_name => 'qs_platform',
         description => 'Platform (null)',
         format => '',
@@ -401,7 +401,7 @@ __PACKAGE__->openapi_types( {
     'qs_custid' => 'string',
     'qs_server' => 'string',
     'qs_ip' => 'string',
-    'qs_ipv6' => 'object',
+    'qs_ipv6' => 'string',
     'qs_vzid' => 'string',
     'qs_currency' => 'string',
     'qs_type' => 'string',
@@ -415,13 +415,13 @@ __PACKAGE__->openapi_types( {
     'qs_comment' => 'string',
     'qs_slices' => 'string',
     'qs_vnc' => 'string',
-    'qs_vnc_port' => 'object',
+    'qs_vnc_port' => 'int',
     'qs_rootpass' => 'string',
     'qs_mac' => 'string',
     'qs_os' => 'string',
     'qs_version' => 'string',
     'qs_location' => 'string',
-    'qs_platform' => 'object'
+    'qs_platform' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {

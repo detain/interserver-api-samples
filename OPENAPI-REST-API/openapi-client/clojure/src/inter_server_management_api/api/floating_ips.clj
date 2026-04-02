@@ -568,13 +568,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec get-floating-ips-list any?
+(defn-spec get-floating-ips-list (s/coll-of any?)
   "List Floating IPs
   Returns all Floating IP services on the account with their current status and assignment details."
   []
   (let [res (:data (get-floating-ips-list-with-http-info))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode (s/coll-of any?) res st/string-transformer)
        res)))
 
 

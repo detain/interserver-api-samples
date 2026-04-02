@@ -108,23 +108,23 @@ public:
 	TArray<FString> Vlans6;
 	OpenAPIServerLease Lease;
 	/* MAC address associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> Mac;
+	TOptional<FString> Mac;
 	/* IPMI admin username associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> IpmiAdminUsername;
+	TOptional<FString> IpmiAdminUsername;
 	/* IPMI admin password associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> IpmiAdminPassword;
+	TOptional<FString> IpmiAdminPassword;
 	/* IPMI client username associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> IpmiClientUsername;
+	TOptional<FString> IpmiClientUsername;
 	/* IPMI client password associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> IpmiClientPassword;
+	TOptional<FString> IpmiClientPassword;
 	/* IPMI update status associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> IpmiUpdated;
+	TOptional<FString> IpmiUpdated;
 	/* Timestamp of asset creation. */
-	TOptional<TSharedPtr<FJsonValue>> CreateTimestamp;
+	TOptional<FString> CreateTimestamp;
 	/* Timestamp of asset update. */
-	TOptional<TSharedPtr<FJsonValue>> UpdateTimestamp;
+	TOptional<FString> UpdateTimestamp;
 	/* Comment associated with the asset. */
-	TOptional<TSharedPtr<FJsonValue>> Comment;
+	TOptional<FString> Comment;
 };
 
 }

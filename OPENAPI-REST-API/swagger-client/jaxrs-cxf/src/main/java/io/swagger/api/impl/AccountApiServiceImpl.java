@@ -77,7 +77,7 @@ public class AccountApiServiceImpl implements AccountApi {
      * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      *
      */
-    public GenericResponse deleteIpLimit() {
+    public GenericResponse deleteIpLimit(IpLimitRange body) {
         // TODO: Implement...
         
         return null;

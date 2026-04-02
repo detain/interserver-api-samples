@@ -162,7 +162,7 @@ namespace IO.Swagger.Model {
     /// <value>Discount information for the server.</value>
     [DataMember(Name="server_discount", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "server_discount")]
-    public Object ServerDiscount { get; set; }
+    public string ServerDiscount { get; set; }
 
     /// <summary>
     /// The reputation of the server.
@@ -194,7 +194,7 @@ namespace IO.Swagger.Model {
     /// <value>The location of the server.</value>
     [DataMember(Name="server_location", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "server_location")]
-    public Object ServerLocation { get; set; }
+    public string ServerLocation { get; set; }
 
     /// <summary>
     /// The ordered hardware for the server.
@@ -250,7 +250,7 @@ namespace IO.Swagger.Model {
     /// <value>The size of the second dedicated hard drive.</value>
     [DataMember(Name="server_dedicated_hd2", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "server_dedicated_hd2")]
-    public Object ServerDedicatedHd2 { get; set; }
+    public string ServerDedicatedHd2 { get; set; }
 
     /// <summary>
     /// The bandwidth of the server.
@@ -282,7 +282,7 @@ namespace IO.Swagger.Model {
     /// <value>The control panel of the server.</value>
     [DataMember(Name="server_dedicated_cp", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "server_dedicated_cp")]
-    public Object ServerDedicatedCp { get; set; }
+    public string ServerDedicatedCp { get; set; }
 
     /// <summary>
     /// The RAID configuration of the server.

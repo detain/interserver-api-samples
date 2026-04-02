@@ -61,7 +61,7 @@ class QuickserverServiceInfo {
                 obj['qs_ip'] = ApiClient.convertToType(data['qs_ip'], 'String');
             }
             if (data.hasOwnProperty('qs_ipv6')) {
-                obj['qs_ipv6'] = ApiClient.convertToType(data['qs_ipv6'], Object);
+                obj['qs_ipv6'] = ApiClient.convertToType(data['qs_ipv6'], 'String');
             }
             if (data.hasOwnProperty('qs_vzid')) {
                 obj['qs_vzid'] = ApiClient.convertToType(data['qs_vzid'], 'String');
@@ -103,7 +103,7 @@ class QuickserverServiceInfo {
                 obj['qs_vnc'] = ApiClient.convertToType(data['qs_vnc'], 'String');
             }
             if (data.hasOwnProperty('qs_vnc_port')) {
-                obj['qs_vnc_port'] = ApiClient.convertToType(data['qs_vnc_port'], Object);
+                obj['qs_vnc_port'] = ApiClient.convertToType(data['qs_vnc_port'], 'Number');
             }
             if (data.hasOwnProperty('qs_rootpass')) {
                 obj['qs_rootpass'] = ApiClient.convertToType(data['qs_rootpass'], 'String');
@@ -121,7 +121,7 @@ class QuickserverServiceInfo {
                 obj['qs_location'] = ApiClient.convertToType(data['qs_location'], 'String');
             }
             if (data.hasOwnProperty('qs_platform')) {
-                obj['qs_platform'] = ApiClient.convertToType(data['qs_platform'], Object);
+                obj['qs_platform'] = ApiClient.convertToType(data['qs_platform'], 'String');
             }
         }
         return obj;
@@ -148,6 +148,10 @@ class QuickserverServiceInfo {
         // ensure the json data is a string
         if (data['qs_ip'] && !(typeof data['qs_ip'] === 'string' || data['qs_ip'] instanceof String)) {
             throw new Error("Expected the field `qs_ip` to be a primitive type in the JSON string but got " + data['qs_ip']);
+        }
+        // ensure the json data is a string
+        if (data['qs_ipv6'] && !(typeof data['qs_ipv6'] === 'string' || data['qs_ipv6'] instanceof String)) {
+            throw new Error("Expected the field `qs_ipv6` to be a primitive type in the JSON string but got " + data['qs_ipv6']);
         }
         // ensure the json data is a string
         if (data['qs_vzid'] && !(typeof data['qs_vzid'] === 'string' || data['qs_vzid'] instanceof String)) {
@@ -221,6 +225,10 @@ class QuickserverServiceInfo {
         if (data['qs_location'] && !(typeof data['qs_location'] === 'string' || data['qs_location'] instanceof String)) {
             throw new Error("Expected the field `qs_location` to be a primitive type in the JSON string but got " + data['qs_location']);
         }
+        // ensure the json data is a string
+        if (data['qs_platform'] && !(typeof data['qs_platform'] === 'string' || data['qs_platform'] instanceof String)) {
+            throw new Error("Expected the field `qs_platform` to be a primitive type in the JSON string but got " + data['qs_platform']);
+        }
 
         return true;
     }
@@ -256,7 +264,7 @@ QuickserverServiceInfo.prototype['qs_ip'] = undefined;
 
 /**
  * IPv6 address (null)
- * @member {Object} qs_ipv6
+ * @member {String} qs_ipv6
  */
 QuickserverServiceInfo.prototype['qs_ipv6'] = undefined;
 
@@ -340,7 +348,7 @@ QuickserverServiceInfo.prototype['qs_vnc'] = undefined;
 
 /**
  * VNC port (null)
- * @member {Object} qs_vnc_port
+ * @member {Number} qs_vnc_port
  */
 QuickserverServiceInfo.prototype['qs_vnc_port'] = undefined;
 
@@ -376,7 +384,7 @@ QuickserverServiceInfo.prototype['qs_location'] = undefined;
 
 /**
  * Platform (null)
- * @member {Object} qs_platform
+ * @member {String} qs_platform
  */
 QuickserverServiceInfo.prototype['qs_platform'] = undefined;
 

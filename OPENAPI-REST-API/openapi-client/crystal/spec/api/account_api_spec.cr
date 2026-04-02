@@ -59,6 +59,7 @@ Spectator.describe "AccountApi" do
   # Remove IP Access Restriction
   # Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
   # @param [Hash] opts the optional parameters
+  # @option opts [IpLimitRange] :ip_limit_range 
   # @return [GenericResponse]
   describe "delete_ip_limit test" do
     skip "should work" do

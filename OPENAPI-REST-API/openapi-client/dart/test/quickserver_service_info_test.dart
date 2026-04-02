@@ -41,7 +41,7 @@ void main() {
     });
 
     // IPv6 address (null)
-    // Object qsIpv6
+    // String qsIpv6
     test('to test the property `qsIpv6`', () async {
       // TODO
     });
@@ -125,7 +125,7 @@ void main() {
     });
 
     // VNC port (null)
-    // Object qsVncPort
+    // int qsVncPort
     test('to test the property `qsVncPort`', () async {
       // TODO
     });
@@ -161,7 +161,7 @@ void main() {
     });
 
     // Platform (null)
-    // Object qsPlatform
+    // String qsPlatform
     test('to test the property `qsPlatform`', () async {
       // TODO
     });

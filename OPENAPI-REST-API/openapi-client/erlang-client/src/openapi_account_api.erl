@@ -3,7 +3,7 @@
 -export([change_account_username/1, change_account_username/2,
          delete_account_oauth_name/2, delete_account_oauth_name/3,
          delete_account_tfa/1, delete_account_tfa/2,
-         delete_ip_limit/1, delete_ip_limit/2,
+         delete_ip_limit/2, delete_ip_limit/3,
          get_account_info/1, get_account_info/2,
          get_account_tfa_setup/1, get_account_tfa_setup/2,
          get_home/1, get_home/2,
@@ -98,7 +98,7 @@ delete_ip_limit(Ctx, Optional) ->
     Path = [?BASE_URL, "/account/iplimits"],
     QS = [],
     Headers = [],
-    Body1 = [],
+    Body1 = OpenapiIpLimitRange,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

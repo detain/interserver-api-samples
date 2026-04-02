@@ -258,7 +258,7 @@ namespace IO.Swagger.Model {
     /// <value>Last install time (null)</value>
     [DataMember(Name="qs_last_install_time", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "qs_last_install_time")]
-    public Object QsLastInstallTime { get; set; }
+    public string QsLastInstallTime { get; set; }
 
     /// <summary>
     /// Partitions information (null)
@@ -266,7 +266,7 @@ namespace IO.Swagger.Model {
     /// <value>Partitions information (null)</value>
     [DataMember(Name="qs_partitions", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "qs_partitions")]
-    public Object QsPartitions { get; set; }
+    public string QsPartitions { get; set; }
 
     /// <summary>
     /// CPU flags

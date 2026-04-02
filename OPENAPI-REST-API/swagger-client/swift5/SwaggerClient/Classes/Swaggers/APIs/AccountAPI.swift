@@ -146,10 +146,11 @@ open class AccountAPI {
     /**
      Remove IP Access Restriction
 
+     - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteIpLimit(completion: @escaping ((_ data: GenericResponse?,_ error: Error?) -> Void)) {
-        deleteIpLimitWithRequestBuilder().execute { (response, error) -> Void in
+    open class func deleteIpLimit(body: IpLimitRange? = nil, completion: @escaping ((_ data: GenericResponse?,_ error: Error?) -> Void)) {
+        deleteIpLimitWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -172,19 +173,20 @@ open class AccountAPI {
   "status" : "ok",
   "text" : "The command completed successfully."
 }}]
+     - parameter body: (body)  (optional)
 
      - returns: RequestBuilder<GenericResponse> 
      */
-    open class func deleteIpLimitWithRequestBuilder() -> RequestBuilder<GenericResponse> {
+    open class func deleteIpLimitWithRequestBuilder(body: IpLimitRange? = nil) -> RequestBuilder<GenericResponse> {
         let path = "/account/iplimits"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<GenericResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
      Retrieve Account Details

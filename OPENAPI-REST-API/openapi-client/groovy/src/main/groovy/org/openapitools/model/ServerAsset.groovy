@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ServerLease;
 
 @Canonical
@@ -89,21 +88,21 @@ class ServerAsset {
     
     ServerLease lease
     /* MAC address associated with the asset. */
-    Object mac = null
+    String mac
     /* IPMI admin username associated with the asset. */
-    Object ipmiAdminUsername = null
+    String ipmiAdminUsername
     /* IPMI admin password associated with the asset. */
-    Object ipmiAdminPassword = null
+    String ipmiAdminPassword
     /* IPMI client username associated with the asset. */
-    Object ipmiClientUsername = null
+    String ipmiClientUsername
     /* IPMI client password associated with the asset. */
-    Object ipmiClientPassword = null
+    String ipmiClientPassword
     /* IPMI update status associated with the asset. */
-    Object ipmiUpdated = null
+    String ipmiUpdated
     /* Timestamp of asset creation. */
-    Object createTimestamp = null
+    String createTimestamp
     /* Timestamp of asset update. */
-    Object updateTimestamp = null
+    String updateTimestamp
     /* Comment associated with the asset. */
-    Object comment = null
+    String comment
 }

@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **MaxSff** | Pointer to **string** | Maximum SFF (Small Form Factor) supported. | [optional] 
 **MaxNve** | Pointer to **string** | Maximum NVMe drives supported. | [optional] 
 **Visible** | Pointer to **string** | Visibility status. | [optional] 
-**HdIds** | Pointer to **interface{}** | Hard drive IDs. | [optional] 
+**HdIds** | Pointer to **string** | Hard drive IDs. | [optional] 
 **PriceDisplay** | Pointer to **string** | Display of CPU price. | [optional] 
 **MonthlyPriceDisplay** | Pointer to **string** | Display of monthly CPU price. | [optional] 
 
@@ -601,20 +601,20 @@ HasVisible returns a boolean if a field has been set.
 
 ### GetHdIds
 
-`func (o *ServerOrderCPU) GetHdIds() interface{}`
+`func (o *ServerOrderCPU) GetHdIds() string`
 
 GetHdIds returns the HdIds field if non-nil, zero value otherwise.
 
 ### GetHdIdsOk
 
-`func (o *ServerOrderCPU) GetHdIdsOk() (*interface{}, bool)`
+`func (o *ServerOrderCPU) GetHdIdsOk() (*string, bool)`
 
 GetHdIdsOk returns a tuple with the HdIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHdIds
 
-`func (o *ServerOrderCPU) SetHdIds(v interface{})`
+`func (o *ServerOrderCPU) SetHdIds(v string)`
 
 SetHdIds sets HdIds field to given value.
 
@@ -624,16 +624,6 @@ SetHdIds sets HdIds field to given value.
 
 HasHdIds returns a boolean if a field has been set.
 
-### SetHdIdsNil
-
-`func (o *ServerOrderCPU) SetHdIdsNil(b bool)`
-
- SetHdIdsNil sets the value for HdIds to be an explicit nil
-
-### UnsetHdIds
-`func (o *ServerOrderCPU) UnsetHdIds()`
-
-UnsetHdIds ensures that no value is present for HdIds, not even an explicit nil
 ### GetPriceDisplay
 
 `func (o *ServerOrderCPU) GetPriceDisplay() string`

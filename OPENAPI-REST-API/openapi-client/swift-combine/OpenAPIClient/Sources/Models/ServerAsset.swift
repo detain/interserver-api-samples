@@ -86,25 +86,25 @@ public struct ServerAsset: Codable {
     public var vlans6: [String]
     public var lease: ServerLease
     /// MAC address associated with the asset.
-    public var mac: Any?
+    public var mac: String?
     /// IPMI admin username associated with the asset.
-    public var ipmiAdminUsername: Any?
+    public var ipmiAdminUsername: String?
     /// IPMI admin password associated with the asset.
-    public var ipmiAdminPassword: Any?
+    public var ipmiAdminPassword: String?
     /// IPMI client username associated with the asset.
-    public var ipmiClientUsername: Any?
+    public var ipmiClientUsername: String?
     /// IPMI client password associated with the asset.
-    public var ipmiClientPassword: Any?
+    public var ipmiClientPassword: String?
     /// IPMI update status associated with the asset.
-    public var ipmiUpdated: Any?
+    public var ipmiUpdated: String?
     /// Timestamp of asset creation.
-    public var createTimestamp: Any?
+    public var createTimestamp: String?
     /// Timestamp of asset update.
-    public var updateTimestamp: Any?
+    public var updateTimestamp: String?
     /// Comment associated with the asset.
-    public var comment: Any?
+    public var comment: String?
 
-    public init(id: Int, orderId: String, hostname: String, status: String, primaryIpv4: String, primaryIpv6: String, datacenter: String, typeId: String, assetTag: String, rack: String, row: String, col: String, unitStart: String, unitEnd: String, unitSub: String, ipmiMac: String, ipmiIp: String, ipmiWorking: String, company: String, comments: String, make: String, model: String, description: String, customerId: String, externalId: String, billingStatus: String, overdue: String, assetId: String, assetName: String, rackId: String, rackName: String, rackLocation: String, rackSize: String, rackX: String, rackY: String, switchports: [Int], vlans: [String], vlans6: [String], lease: ServerLease, mac: Any? = nil, ipmiAdminUsername: Any? = nil, ipmiAdminPassword: Any? = nil, ipmiClientUsername: Any? = nil, ipmiClientPassword: Any? = nil, ipmiUpdated: Any? = nil, createTimestamp: Any? = nil, updateTimestamp: Any? = nil, comment: Any? = nil) {
+    public init(id: Int, orderId: String, hostname: String, status: String, primaryIpv4: String, primaryIpv6: String, datacenter: String, typeId: String, assetTag: String, rack: String, row: String, col: String, unitStart: String, unitEnd: String, unitSub: String, ipmiMac: String, ipmiIp: String, ipmiWorking: String, company: String, comments: String, make: String, model: String, description: String, customerId: String, externalId: String, billingStatus: String, overdue: String, assetId: String, assetName: String, rackId: String, rackName: String, rackLocation: String, rackSize: String, rackX: String, rackY: String, switchports: [Int], vlans: [String], vlans6: [String], lease: ServerLease, mac: String? = nil, ipmiAdminUsername: String? = nil, ipmiAdminPassword: String? = nil, ipmiClientUsername: String? = nil, ipmiClientPassword: String? = nil, ipmiUpdated: String? = nil, createTimestamp: String? = nil, updateTimestamp: String? = nil, comment: String? = nil) {
         self.id = id
         self.orderId = orderId
         self.hostname = hostname
@@ -247,15 +247,15 @@ public struct ServerAsset: Codable {
         vlans = try container.decode([String].self, forKey: .vlans)
         vlans6 = try container.decode([String].self, forKey: .vlans6)
         lease = try container.decode(ServerLease.self, forKey: .lease)
-        mac = try container.decodeIfPresent(Any.self, forKey: .mac)
-        ipmiAdminUsername = try container.decodeIfPresent(Any.self, forKey: .ipmiAdminUsername)
-        ipmiAdminPassword = try container.decodeIfPresent(Any.self, forKey: .ipmiAdminPassword)
-        ipmiClientUsername = try container.decodeIfPresent(Any.self, forKey: .ipmiClientUsername)
-        ipmiClientPassword = try container.decodeIfPresent(Any.self, forKey: .ipmiClientPassword)
-        ipmiUpdated = try container.decodeIfPresent(Any.self, forKey: .ipmiUpdated)
-        createTimestamp = try container.decodeIfPresent(Any.self, forKey: .createTimestamp)
-        updateTimestamp = try container.decodeIfPresent(Any.self, forKey: .updateTimestamp)
-        comment = try container.decodeIfPresent(Any.self, forKey: .comment)
+        mac = try container.decodeIfPresent(String.self, forKey: .mac)
+        ipmiAdminUsername = try container.decodeIfPresent(String.self, forKey: .ipmiAdminUsername)
+        ipmiAdminPassword = try container.decodeIfPresent(String.self, forKey: .ipmiAdminPassword)
+        ipmiClientUsername = try container.decodeIfPresent(String.self, forKey: .ipmiClientUsername)
+        ipmiClientPassword = try container.decodeIfPresent(String.self, forKey: .ipmiClientPassword)
+        ipmiUpdated = try container.decodeIfPresent(String.self, forKey: .ipmiUpdated)
+        createTimestamp = try container.decodeIfPresent(String.self, forKey: .createTimestamp)
+        updateTimestamp = try container.decodeIfPresent(String.self, forKey: .updateTimestamp)
+        comment = try container.decodeIfPresent(String.self, forKey: .comment)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -299,32 +299,14 @@ public struct ServerAsset: Codable {
         try container.encode(vlans, forKey: .vlans)
         try container.encode(vlans6, forKey: .vlans6)
         try container.encode(lease, forKey: .lease)
-        if let mac = mac {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: mac), forKey: .mac)
-        }
-        if let ipmiAdminUsername = ipmiAdminUsername {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: ipmiAdminUsername), forKey: .ipmiAdminUsername)
-        }
-        if let ipmiAdminPassword = ipmiAdminPassword {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: ipmiAdminPassword), forKey: .ipmiAdminPassword)
-        }
-        if let ipmiClientUsername = ipmiClientUsername {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: ipmiClientUsername), forKey: .ipmiClientUsername)
-        }
-        if let ipmiClientPassword = ipmiClientPassword {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: ipmiClientPassword), forKey: .ipmiClientPassword)
-        }
-        if let ipmiUpdated = ipmiUpdated {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: ipmiUpdated), forKey: .ipmiUpdated)
-        }
-        if let createTimestamp = createTimestamp {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: createTimestamp), forKey: .createTimestamp)
-        }
-        if let updateTimestamp = updateTimestamp {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: updateTimestamp), forKey: .updateTimestamp)
-        }
-        if let comment = comment {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: comment), forKey: .comment)
-        }
+        try container.encodeIfPresent(mac, forKey: .mac)
+        try container.encodeIfPresent(ipmiAdminUsername, forKey: .ipmiAdminUsername)
+        try container.encodeIfPresent(ipmiAdminPassword, forKey: .ipmiAdminPassword)
+        try container.encodeIfPresent(ipmiClientUsername, forKey: .ipmiClientUsername)
+        try container.encodeIfPresent(ipmiClientPassword, forKey: .ipmiClientPassword)
+        try container.encodeIfPresent(ipmiUpdated, forKey: .ipmiUpdated)
+        try container.encodeIfPresent(createTimestamp, forKey: .createTimestamp)
+        try container.encodeIfPresent(updateTimestamp, forKey: .updateTimestamp)
+        try container.encodeIfPresent(comment, forKey: .comment)
     }
 }

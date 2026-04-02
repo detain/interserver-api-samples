@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 <a name="getFloatingIpsList"></a>
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> List&lt;Object&gt; getFloatingIpsList()
 
 List Floating IPs
 
@@ -318,7 +318,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 FloatingIpsApi apiInstance = new FloatingIpsApi();
 try {
-    apiInstance.getFloatingIpsList();
+    List<Object> result = apiInstance.getFloatingIpsList();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FloatingIpsApi#getFloatingIpsList");
     e.printStackTrace();
@@ -330,7 +331,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**List&lt;Object&gt;**
 
 ### Authorization
 

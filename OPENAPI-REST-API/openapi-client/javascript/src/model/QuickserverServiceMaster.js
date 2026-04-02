@@ -139,10 +139,10 @@ class QuickserverServiceMaster {
                 obj['qs_packets_sec_out'] = ApiClient.convertToType(data['qs_packets_sec_out'], 'String');
             }
             if (data.hasOwnProperty('qs_last_install_time')) {
-                obj['qs_last_install_time'] = ApiClient.convertToType(data['qs_last_install_time'], Object);
+                obj['qs_last_install_time'] = ApiClient.convertToType(data['qs_last_install_time'], 'String');
             }
             if (data.hasOwnProperty('qs_partitions')) {
-                obj['qs_partitions'] = ApiClient.convertToType(data['qs_partitions'], Object);
+                obj['qs_partitions'] = ApiClient.convertToType(data['qs_partitions'], 'String');
             }
             if (data.hasOwnProperty('qs_cpu_flags')) {
                 obj['qs_cpu_flags'] = ApiClient.convertToType(data['qs_cpu_flags'], 'String');
@@ -276,6 +276,14 @@ class QuickserverServiceMaster {
         // ensure the json data is a string
         if (data['qs_packets_sec_out'] && !(typeof data['qs_packets_sec_out'] === 'string' || data['qs_packets_sec_out'] instanceof String)) {
             throw new Error("Expected the field `qs_packets_sec_out` to be a primitive type in the JSON string but got " + data['qs_packets_sec_out']);
+        }
+        // ensure the json data is a string
+        if (data['qs_last_install_time'] && !(typeof data['qs_last_install_time'] === 'string' || data['qs_last_install_time'] instanceof String)) {
+            throw new Error("Expected the field `qs_last_install_time` to be a primitive type in the JSON string but got " + data['qs_last_install_time']);
+        }
+        // ensure the json data is a string
+        if (data['qs_partitions'] && !(typeof data['qs_partitions'] === 'string' || data['qs_partitions'] instanceof String)) {
+            throw new Error("Expected the field `qs_partitions` to be a primitive type in the JSON string but got " + data['qs_partitions']);
         }
         // ensure the json data is a string
         if (data['qs_cpu_flags'] && !(typeof data['qs_cpu_flags'] === 'string' || data['qs_cpu_flags'] instanceof String)) {
@@ -472,13 +480,13 @@ QuickserverServiceMaster.prototype['qs_packets_sec_out'] = undefined;
 
 /**
  * Last install time (null)
- * @member {Object} qs_last_install_time
+ * @member {String} qs_last_install_time
  */
 QuickserverServiceMaster.prototype['qs_last_install_time'] = undefined;
 
 /**
  * Partitions information (null)
- * @member {Object} qs_partitions
+ * @member {String} qs_partitions
  */
 QuickserverServiceMaster.prototype['qs_partitions'] = undefined;
 

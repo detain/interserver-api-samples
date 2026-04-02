@@ -32,7 +32,7 @@ class VpsServiceInfo(object):
         'vps_custid': 'str',
         'vps_server': 'str',
         'vps_ip': 'str',
-        'vps_ipv6': 'object',
+        'vps_ipv6': 'str',
         'vps_vzid': 'str',
         'vps_currency': 'str',
         'vps_type': 'str',
@@ -271,7 +271,7 @@ class VpsServiceInfo(object):
         IPv6 address of the VPS  # noqa: E501
 
         :return: The vps_ipv6 of this VpsServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._vps_ipv6
 
@@ -282,7 +282,7 @@ class VpsServiceInfo(object):
         IPv6 address of the VPS  # noqa: E501
 
         :param vps_ipv6: The vps_ipv6 of this VpsServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._vps_ipv6 = vps_ipv6

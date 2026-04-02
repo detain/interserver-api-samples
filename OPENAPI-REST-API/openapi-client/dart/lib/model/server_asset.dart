@@ -180,31 +180,85 @@ class ServerAsset {
   ServerLease lease;
 
   /// MAC address associated with the asset.
-  Object? mac;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? mac;
 
   /// IPMI admin username associated with the asset.
-  Object? ipmiAdminUsername;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ipmiAdminUsername;
 
   /// IPMI admin password associated with the asset.
-  Object? ipmiAdminPassword;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ipmiAdminPassword;
 
   /// IPMI client username associated with the asset.
-  Object? ipmiClientUsername;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ipmiClientUsername;
 
   /// IPMI client password associated with the asset.
-  Object? ipmiClientPassword;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ipmiClientPassword;
 
   /// IPMI update status associated with the asset.
-  Object? ipmiUpdated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ipmiUpdated;
 
   /// Timestamp of asset creation.
-  Object? createTimestamp;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? createTimestamp;
 
   /// Timestamp of asset update.
-  Object? updateTimestamp;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? updateTimestamp;
 
   /// Comment associated with the asset.
-  Object? comment;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? comment;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ServerAsset &&
@@ -539,15 +593,15 @@ class ServerAsset {
             ? (json[r'vlans6'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         lease: ServerLease.fromJson(json[r'lease'])!,
-        mac: mapValueOfType<Object>(json, r'mac'),
-        ipmiAdminUsername: mapValueOfType<Object>(json, r'ipmi_admin_username'),
-        ipmiAdminPassword: mapValueOfType<Object>(json, r'ipmi_admin_password'),
-        ipmiClientUsername: mapValueOfType<Object>(json, r'ipmi_client_username'),
-        ipmiClientPassword: mapValueOfType<Object>(json, r'ipmi_client_password'),
-        ipmiUpdated: mapValueOfType<Object>(json, r'ipmi_updated'),
-        createTimestamp: mapValueOfType<Object>(json, r'create_timestamp'),
-        updateTimestamp: mapValueOfType<Object>(json, r'update_timestamp'),
-        comment: mapValueOfType<Object>(json, r'comment'),
+        mac: mapValueOfType<String>(json, r'mac'),
+        ipmiAdminUsername: mapValueOfType<String>(json, r'ipmi_admin_username'),
+        ipmiAdminPassword: mapValueOfType<String>(json, r'ipmi_admin_password'),
+        ipmiClientUsername: mapValueOfType<String>(json, r'ipmi_client_username'),
+        ipmiClientPassword: mapValueOfType<String>(json, r'ipmi_client_password'),
+        ipmiUpdated: mapValueOfType<String>(json, r'ipmi_updated'),
+        createTimestamp: mapValueOfType<String>(json, r'create_timestamp'),
+        updateTimestamp: mapValueOfType<String>(json, r'update_timestamp'),
+        comment: mapValueOfType<String>(json, r'comment'),
       );
     }
     return null;

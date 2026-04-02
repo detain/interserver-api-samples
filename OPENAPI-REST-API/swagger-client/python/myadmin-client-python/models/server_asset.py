@@ -34,7 +34,7 @@ class ServerAsset(object):
         'status': 'str',
         'primary_ipv4': 'str',
         'primary_ipv6': 'str',
-        'mac': 'object',
+        'mac': 'str',
         'datacenter': 'str',
         'type_id': 'str',
         'asset_tag': 'str',
@@ -46,11 +46,11 @@ class ServerAsset(object):
         'unit_sub': 'str',
         'ipmi_mac': 'str',
         'ipmi_ip': 'str',
-        'ipmi_admin_username': 'object',
-        'ipmi_admin_password': 'object',
-        'ipmi_client_username': 'object',
-        'ipmi_client_password': 'object',
-        'ipmi_updated': 'object',
+        'ipmi_admin_username': 'str',
+        'ipmi_admin_password': 'str',
+        'ipmi_client_username': 'str',
+        'ipmi_client_password': 'str',
+        'ipmi_updated': 'str',
         'ipmi_working': 'str',
         'company': 'str',
         'comments': 'str',
@@ -61,8 +61,8 @@ class ServerAsset(object):
         'external_id': 'str',
         'billing_status': 'str',
         'overdue': 'str',
-        'create_timestamp': 'object',
-        'update_timestamp': 'object',
+        'create_timestamp': 'str',
+        'update_timestamp': 'str',
         'asset_id': 'str',
         'asset_name': 'str',
         'rack_id': 'str',
@@ -71,7 +71,7 @@ class ServerAsset(object):
         'rack_size': 'str',
         'rack_x': 'str',
         'rack_y': 'str',
-        'comment': 'object',
+        'comment': 'str',
         'switchports': 'list[int]',
         'vlans': 'list[str]',
         'vlans6': 'list[str]',
@@ -395,7 +395,7 @@ class ServerAsset(object):
         MAC address associated with the asset.  # noqa: E501
 
         :return: The mac of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._mac
 
@@ -406,7 +406,7 @@ class ServerAsset(object):
         MAC address associated with the asset.  # noqa: E501
 
         :param mac: The mac of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._mac = mac
@@ -693,7 +693,7 @@ class ServerAsset(object):
         IPMI admin username associated with the asset.  # noqa: E501
 
         :return: The ipmi_admin_username of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._ipmi_admin_username
 
@@ -704,7 +704,7 @@ class ServerAsset(object):
         IPMI admin username associated with the asset.  # noqa: E501
 
         :param ipmi_admin_username: The ipmi_admin_username of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._ipmi_admin_username = ipmi_admin_username
@@ -716,7 +716,7 @@ class ServerAsset(object):
         IPMI admin password associated with the asset.  # noqa: E501
 
         :return: The ipmi_admin_password of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._ipmi_admin_password
 
@@ -727,7 +727,7 @@ class ServerAsset(object):
         IPMI admin password associated with the asset.  # noqa: E501
 
         :param ipmi_admin_password: The ipmi_admin_password of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._ipmi_admin_password = ipmi_admin_password
@@ -739,7 +739,7 @@ class ServerAsset(object):
         IPMI client username associated with the asset.  # noqa: E501
 
         :return: The ipmi_client_username of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._ipmi_client_username
 
@@ -750,7 +750,7 @@ class ServerAsset(object):
         IPMI client username associated with the asset.  # noqa: E501
 
         :param ipmi_client_username: The ipmi_client_username of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._ipmi_client_username = ipmi_client_username
@@ -762,7 +762,7 @@ class ServerAsset(object):
         IPMI client password associated with the asset.  # noqa: E501
 
         :return: The ipmi_client_password of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._ipmi_client_password
 
@@ -773,7 +773,7 @@ class ServerAsset(object):
         IPMI client password associated with the asset.  # noqa: E501
 
         :param ipmi_client_password: The ipmi_client_password of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._ipmi_client_password = ipmi_client_password
@@ -785,7 +785,7 @@ class ServerAsset(object):
         IPMI update status associated with the asset.  # noqa: E501
 
         :return: The ipmi_updated of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._ipmi_updated
 
@@ -796,7 +796,7 @@ class ServerAsset(object):
         IPMI update status associated with the asset.  # noqa: E501
 
         :param ipmi_updated: The ipmi_updated of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._ipmi_updated = ipmi_updated
@@ -1058,7 +1058,7 @@ class ServerAsset(object):
         Timestamp of asset creation.  # noqa: E501
 
         :return: The create_timestamp of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._create_timestamp
 
@@ -1069,7 +1069,7 @@ class ServerAsset(object):
         Timestamp of asset creation.  # noqa: E501
 
         :param create_timestamp: The create_timestamp of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._create_timestamp = create_timestamp
@@ -1081,7 +1081,7 @@ class ServerAsset(object):
         Timestamp of asset update.  # noqa: E501
 
         :return: The update_timestamp of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._update_timestamp
 
@@ -1092,7 +1092,7 @@ class ServerAsset(object):
         Timestamp of asset update.  # noqa: E501
 
         :param update_timestamp: The update_timestamp of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._update_timestamp = update_timestamp
@@ -1304,7 +1304,7 @@ class ServerAsset(object):
         Comment associated with the asset.  # noqa: E501
 
         :return: The comment of this ServerAsset.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._comment
 
@@ -1315,7 +1315,7 @@ class ServerAsset(object):
         Comment associated with the asset.  # noqa: E501
 
         :param comment: The comment of this ServerAsset.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._comment = comment

@@ -24,22 +24,22 @@ ServerServiceInfo::ServerServiceInfo()
 	server_ips = std::string();
 	server_monthly_bill = std::string();
 	server_setup = std::string();
-	server_discount = null;
+	server_discount = std::string();
 	server_rep = std::string();
 	server_date = std::string();
 	server_total_cost = std::string();
-	server_location = null;
+	server_location = std::string();
 	server_hardware_ordered = std::string();
 	server_billed = std::string();
 	server_welcome_email = std::string();
 	server_dedicated_cpu = std::string();
 	server_dedicated_memory = std::string();
 	server_dedicated_hd1 = std::string();
-	server_dedicated_hd2 = null;
+	server_dedicated_hd2 = std::string();
 	server_dedicated_bandwidth = std::string();
 	server_dedicated_ips = std::string();
 	server_dedicated_os = std::string();
-	server_dedicated_cp = null;
+	server_dedicated_cp = std::string();
 	server_dedicated_raid = std::string();
 	server_extra = std::string();
 }
@@ -301,9 +301,8 @@ ServerServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&server_discount, value, "std::string");
 
-        AnyType* obj = &server_discount;
-		obj->fromJson(value.dump());
 
     }
 
@@ -354,9 +353,8 @@ ServerServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&server_location, value, "std::string");
 
-        AnyType* obj = &server_location;
-		obj->fromJson(value.dump());
 
     }
 
@@ -446,9 +444,8 @@ ServerServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&server_dedicated_hd2, value, "std::string");
 
-        AnyType* obj = &server_dedicated_hd2;
-		obj->fromJson(value.dump());
 
     }
 
@@ -499,9 +496,8 @@ ServerServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&server_dedicated_cp, value, "std::string");
 
-        AnyType* obj = &server_dedicated_cp;
-		obj->fromJson(value.dump());
 
     }
 
@@ -669,8 +665,8 @@ ServerServiceInfo::toJson()
 
 
 
+    object["server_discount"] = getServerDiscount();
 
-	object["server_discount"] = getServerDiscount().toJson();
 
 
 
@@ -697,8 +693,8 @@ ServerServiceInfo::toJson()
 
 
 
+    object["server_location"] = getServerLocation();
 
-	object["server_location"] = getServerLocation().toJson();
 
 
 
@@ -746,8 +742,8 @@ ServerServiceInfo::toJson()
 
 
 
+    object["server_dedicated_hd2"] = getServerDedicatedHd2();
 
-	object["server_dedicated_hd2"] = getServerDedicatedHd2().toJson();
 
 
 
@@ -774,8 +770,8 @@ ServerServiceInfo::toJson()
 
 
 
+    object["server_dedicated_cp"] = getServerDedicatedCp();
 
-	object["server_dedicated_cp"] = getServerDedicatedCp().toJson();
 
 
 
@@ -1012,14 +1008,14 @@ ServerServiceInfo::setServerSetup(std::string server_setup)
 	this->server_setup = server_setup;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerDiscount()
 {
 	return server_discount;
 }
 
 void
-ServerServiceInfo::setServerDiscount(AnyType server_discount)
+ServerServiceInfo::setServerDiscount(std::string server_discount)
 {
 	this->server_discount = server_discount;
 }
@@ -1060,14 +1056,14 @@ ServerServiceInfo::setServerTotalCost(std::string server_total_cost)
 	this->server_total_cost = server_total_cost;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerLocation()
 {
 	return server_location;
 }
 
 void
-ServerServiceInfo::setServerLocation(AnyType server_location)
+ServerServiceInfo::setServerLocation(std::string server_location)
 {
 	this->server_location = server_location;
 }
@@ -1144,14 +1140,14 @@ ServerServiceInfo::setServerDedicatedHd1(std::string server_dedicated_hd1)
 	this->server_dedicated_hd1 = server_dedicated_hd1;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerDedicatedHd2()
 {
 	return server_dedicated_hd2;
 }
 
 void
-ServerServiceInfo::setServerDedicatedHd2(AnyType server_dedicated_hd2)
+ServerServiceInfo::setServerDedicatedHd2(std::string server_dedicated_hd2)
 {
 	this->server_dedicated_hd2 = server_dedicated_hd2;
 }
@@ -1192,14 +1188,14 @@ ServerServiceInfo::setServerDedicatedOs(std::string server_dedicated_os)
 	this->server_dedicated_os = server_dedicated_os;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerDedicatedCp()
 {
 	return server_dedicated_cp;
 }
 
 void
-ServerServiceInfo::setServerDedicatedCp(AnyType server_dedicated_cp)
+ServerServiceInfo::setServerDedicatedCp(std::string server_dedicated_cp)
 {
 	this->server_dedicated_cp = server_dedicated_cp;
 }

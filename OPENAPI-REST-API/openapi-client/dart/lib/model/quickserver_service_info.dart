@@ -77,7 +77,7 @@ class QuickserverServiceInfo {
   String? qsIp;
 
   /// IPv6 address (null)
-  Object? qsIpv6;
+  String? qsIpv6;
 
   /// VZ ID
   ///
@@ -197,7 +197,7 @@ class QuickserverServiceInfo {
   String? qsVnc;
 
   /// VNC port (null)
-  Object? qsVncPort;
+  int? qsVncPort;
 
   /// Root password
   ///
@@ -245,7 +245,7 @@ class QuickserverServiceInfo {
   String? qsLocation;
 
   /// Platform (null)
-  Object? qsPlatform;
+  String? qsPlatform;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is QuickserverServiceInfo &&
@@ -456,7 +456,7 @@ class QuickserverServiceInfo {
         qsCustid: mapValueOfType<String>(json, r'qs_custid'),
         qsServer: mapValueOfType<String>(json, r'qs_server'),
         qsIp: mapValueOfType<String>(json, r'qs_ip'),
-        qsIpv6: mapValueOfType<Object>(json, r'qs_ipv6'),
+        qsIpv6: mapValueOfType<String>(json, r'qs_ipv6'),
         qsVzid: mapValueOfType<String>(json, r'qs_vzid'),
         qsCurrency: mapValueOfType<String>(json, r'qs_currency'),
         qsType: mapValueOfType<String>(json, r'qs_type'),
@@ -470,13 +470,13 @@ class QuickserverServiceInfo {
         qsComment: mapValueOfType<String>(json, r'qs_comment'),
         qsSlices: mapValueOfType<String>(json, r'qs_slices'),
         qsVnc: mapValueOfType<String>(json, r'qs_vnc'),
-        qsVncPort: mapValueOfType<Object>(json, r'qs_vnc_port'),
+        qsVncPort: mapValueOfType<int>(json, r'qs_vnc_port'),
         qsRootpass: mapValueOfType<String>(json, r'qs_rootpass'),
         qsMac: mapValueOfType<String>(json, r'qs_mac'),
         qsOs: mapValueOfType<String>(json, r'qs_os'),
         qsVersion: mapValueOfType<String>(json, r'qs_version'),
         qsLocation: mapValueOfType<String>(json, r'qs_location'),
-        qsPlatform: mapValueOfType<Object>(json, r'qs_platform'),
+        qsPlatform: mapValueOfType<String>(json, r'qs_platform'),
       );
     }
     return null;

@@ -20,7 +20,7 @@ type QuickserverServiceInfo struct {
 	// IP address
 	QsIp string `json:"qs_ip,omitempty"`
 	// IPv6 address (null)
-	QsIpv6 *Object `json:"qs_ipv6,omitempty"`
+	QsIpv6 string `json:"qs_ipv6,omitempty"`
 	// VZ ID
 	QsVzid string `json:"qs_vzid,omitempty"`
 	// Currency
@@ -48,7 +48,7 @@ type QuickserverServiceInfo struct {
 	// VNC information
 	QsVnc string `json:"qs_vnc,omitempty"`
 	// VNC port (null)
-	QsVncPort *Object `json:"qs_vnc_port,omitempty"`
+	QsVncPort int32 `json:"qs_vnc_port,omitempty"`
 	// Root password
 	QsRootpass string `json:"qs_rootpass,omitempty"`
 	// MAC address
@@ -60,5 +60,5 @@ type QuickserverServiceInfo struct {
 	// Location
 	QsLocation string `json:"qs_location,omitempty"`
 	// Platform (null)
-	QsPlatform *Object `json:"qs_platform,omitempty"`
+	QsPlatform string `json:"qs_platform,omitempty"`
 }

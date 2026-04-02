@@ -3,7 +3,6 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class ServerOrderCPU {
@@ -52,7 +51,7 @@ class ServerOrderCPU {
     /* Visibility status. */
     String visible
     /* Hard drive IDs. */
-    Object hdIds = null
+    String hdIds
     /* Display of CPU price. */
     String priceDisplay
     /* Display of monthly CPU price. */

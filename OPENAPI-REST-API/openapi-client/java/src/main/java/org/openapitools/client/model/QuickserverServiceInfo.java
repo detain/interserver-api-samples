@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Core service record for a QuickServer including ID, status, IP, OS, and billing details.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class QuickserverServiceInfo {
   public static final String SERIALIZED_NAME_QS_ID = "qs_id";
   @SerializedName(SERIALIZED_NAME_QS_ID)
@@ -74,7 +74,7 @@ public class QuickserverServiceInfo {
   public static final String SERIALIZED_NAME_QS_IPV6 = "qs_ipv6";
   @SerializedName(SERIALIZED_NAME_QS_IPV6)
   @javax.annotation.Nullable
-  private Object qsIpv6 = null;
+  private String qsIpv6;
 
   public static final String SERIALIZED_NAME_QS_VZID = "qs_vzid";
   @SerializedName(SERIALIZED_NAME_QS_VZID)
@@ -144,7 +144,7 @@ public class QuickserverServiceInfo {
   public static final String SERIALIZED_NAME_QS_VNC_PORT = "qs_vnc_port";
   @SerializedName(SERIALIZED_NAME_QS_VNC_PORT)
   @javax.annotation.Nullable
-  private Object qsVncPort = null;
+  private Integer qsVncPort;
 
   public static final String SERIALIZED_NAME_QS_ROOTPASS = "qs_rootpass";
   @SerializedName(SERIALIZED_NAME_QS_ROOTPASS)
@@ -174,7 +174,7 @@ public class QuickserverServiceInfo {
   public static final String SERIALIZED_NAME_QS_PLATFORM = "qs_platform";
   @SerializedName(SERIALIZED_NAME_QS_PLATFORM)
   @javax.annotation.Nullable
-  private Object qsPlatform = null;
+  private String qsPlatform;
 
   public QuickserverServiceInfo() {
   }
@@ -255,7 +255,7 @@ public class QuickserverServiceInfo {
   }
 
 
-  public QuickserverServiceInfo qsIpv6(@javax.annotation.Nullable Object qsIpv6) {
+  public QuickserverServiceInfo qsIpv6(@javax.annotation.Nullable String qsIpv6) {
     this.qsIpv6 = qsIpv6;
     return this;
   }
@@ -265,11 +265,11 @@ public class QuickserverServiceInfo {
    * @return qsIpv6
    */
   @javax.annotation.Nullable
-  public Object getQsIpv6() {
+  public String getQsIpv6() {
     return qsIpv6;
   }
 
-  public void setQsIpv6(@javax.annotation.Nullable Object qsIpv6) {
+  public void setQsIpv6(@javax.annotation.Nullable String qsIpv6) {
     this.qsIpv6 = qsIpv6;
   }
 
@@ -521,7 +521,7 @@ public class QuickserverServiceInfo {
   }
 
 
-  public QuickserverServiceInfo qsVncPort(@javax.annotation.Nullable Object qsVncPort) {
+  public QuickserverServiceInfo qsVncPort(@javax.annotation.Nullable Integer qsVncPort) {
     this.qsVncPort = qsVncPort;
     return this;
   }
@@ -531,11 +531,11 @@ public class QuickserverServiceInfo {
    * @return qsVncPort
    */
   @javax.annotation.Nullable
-  public Object getQsVncPort() {
+  public Integer getQsVncPort() {
     return qsVncPort;
   }
 
-  public void setQsVncPort(@javax.annotation.Nullable Object qsVncPort) {
+  public void setQsVncPort(@javax.annotation.Nullable Integer qsVncPort) {
     this.qsVncPort = qsVncPort;
   }
 
@@ -635,7 +635,7 @@ public class QuickserverServiceInfo {
   }
 
 
-  public QuickserverServiceInfo qsPlatform(@javax.annotation.Nullable Object qsPlatform) {
+  public QuickserverServiceInfo qsPlatform(@javax.annotation.Nullable String qsPlatform) {
     this.qsPlatform = qsPlatform;
     return this;
   }
@@ -645,11 +645,11 @@ public class QuickserverServiceInfo {
    * @return qsPlatform
    */
   @javax.annotation.Nullable
-  public Object getQsPlatform() {
+  public String getQsPlatform() {
     return qsPlatform;
   }
 
-  public void setQsPlatform(@javax.annotation.Nullable Object qsPlatform) {
+  public void setQsPlatform(@javax.annotation.Nullable String qsPlatform) {
     this.qsPlatform = qsPlatform;
   }
 
@@ -793,6 +793,9 @@ public class QuickserverServiceInfo {
       if ((jsonObj.get("qs_ip") != null && !jsonObj.get("qs_ip").isJsonNull()) && !jsonObj.get("qs_ip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_ip").toString()));
       }
+      if ((jsonObj.get("qs_ipv6") != null && !jsonObj.get("qs_ipv6").isJsonNull()) && !jsonObj.get("qs_ipv6").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_ipv6` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_ipv6").toString()));
+      }
       if ((jsonObj.get("qs_vzid") != null && !jsonObj.get("qs_vzid").isJsonNull()) && !jsonObj.get("qs_vzid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_vzid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_vzid").toString()));
       }
@@ -846,6 +849,9 @@ public class QuickserverServiceInfo {
       }
       if ((jsonObj.get("qs_location") != null && !jsonObj.get("qs_location").isJsonNull()) && !jsonObj.get("qs_location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_location").toString()));
+      }
+      if ((jsonObj.get("qs_platform") != null && !jsonObj.get("qs_platform").isJsonNull()) && !jsonObj.get("qs_platform").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_platform` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_platform").toString()));
       }
   }
 

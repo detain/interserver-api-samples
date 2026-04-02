@@ -27,7 +27,7 @@ feature --Access
       -- Server information
     qs_ip: detachable STRING_32
       -- IP address
-    qs_ipv6: detachable ANY
+    qs_ipv6: detachable STRING_32
       -- IPv6 address (null)
     qs_vzid: detachable STRING_32
       -- VZ ID
@@ -55,7 +55,7 @@ feature --Access
       -- Slices information
     qs_vnc: detachable STRING_32
       -- VNC information
-    qs_vnc_port: detachable ANY
+    qs_vnc_port: INTEGER_32
       -- VNC port (null)
     qs_rootpass: detachable STRING_32
       -- Root password
@@ -67,7 +67,7 @@ feature --Access
       -- OS version
     qs_location: detachable STRING_32
       -- Location
-    qs_platform: detachable ANY
+    qs_platform: detachable STRING_32
       -- Platform (null)
 
 feature -- Change Element

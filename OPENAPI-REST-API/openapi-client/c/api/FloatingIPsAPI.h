@@ -49,7 +49,7 @@ FloatingIPsAPI_getFloatingIpInvoices(apiClient_t *apiClient, int *id);
 //
 // Returns all Floating IP services on the account with their current status and assignment details.
 //
-void
+list_t*
 FloatingIPsAPI_getFloatingIpsList(apiClient_t *apiClient);
 
 

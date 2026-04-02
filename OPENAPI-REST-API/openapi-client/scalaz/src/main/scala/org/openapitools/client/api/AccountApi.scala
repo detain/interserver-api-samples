@@ -26,6 +26,7 @@ import org.openapitools.client.api.GenericResponse
 import org.openapitools.client.api.GetAccountInfo401Response
 import org.openapitools.client.api.GetAccountTfaSetup200Response
 import org.openapitools.client.api.Home
+import org.openapitools.client.api.IpLimitRange
 import org.openapitools.client.api.SearchAutocompleteResponse
 import org.openapitools.client.api.SuccessTextResponse
 import org.openapitools.client.api.TextResponse
@@ -99,7 +100,7 @@ object AccountApi {
     } yield resp
   }
 
-  def deleteIpLimit(host: String): Task[GenericResponse] = {
+  def deleteIpLimit(host: String, IpLimitRange: IpLimitRange): Task[GenericResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[GenericResponse] = jsonOf[GenericResponse]
 
     val path = "/account/iplimits"
@@ -114,7 +115,7 @@ object AccountApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(IpLimitRange)
       resp          <- client.expect[GenericResponse](req)
 
     } yield resp
@@ -463,7 +464,7 @@ class HttpServiceAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def deleteIpLimit(): Task[GenericResponse] = {
+  def deleteIpLimit(IpLimitRange: IpLimitRange): Task[GenericResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[GenericResponse] = jsonOf[GenericResponse]
 
     val path = "/account/iplimits"
@@ -478,7 +479,7 @@ class HttpServiceAccountApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(IpLimitRange)
       resp          <- client.expect[GenericResponse](req)
 
     } yield resp

@@ -112,9 +112,18 @@ public class FloatingIpsApiController implements FloatingIpsApi {
         return new ResponseEntity<ChargeInvoiceRows>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> getFloatingIpsList() {
+    public ResponseEntity<List<Object>> getFloatingIpsList() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<List<Object>>(objectMapper.readValue("[ { }, { } ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<List<Object>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<List<Object>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<SuccessTextResponse> getFloatingIpsWelcomeEmail(@Parameter(in = ParameterIn.PATH, description = "The Floating IP service ID. Use the ID from `GET /floating_ips`.", required=true, schema=@Schema()) @PathVariable("id") Integer id

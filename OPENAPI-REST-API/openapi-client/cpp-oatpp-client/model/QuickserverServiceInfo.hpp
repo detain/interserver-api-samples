@@ -43,7 +43,7 @@ class QuickserverServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, qs_serverIsSet);
   DTO_FIELD(oatpp::String, qs_ip);
   DTO_FIELD(oatpp::Boolean, qs_ipIsSet);
-  DTO_FIELD(oatpp::Any, qs_ipv6);
+  DTO_FIELD(oatpp::String, qs_ipv6);
   DTO_FIELD(oatpp::Boolean, qs_ipv6IsSet);
   DTO_FIELD(oatpp::String, qs_vzid);
   DTO_FIELD(oatpp::Boolean, qs_vzidIsSet);
@@ -71,7 +71,7 @@ class QuickserverServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, qs_slicesIsSet);
   DTO_FIELD(oatpp::String, qs_vnc);
   DTO_FIELD(oatpp::Boolean, qs_vncIsSet);
-  DTO_FIELD(oatpp::Any, qs_vnc_port);
+  DTO_FIELD(oatpp::Int32, qs_vnc_port);
   DTO_FIELD(oatpp::Boolean, qs_vnc_portIsSet);
   DTO_FIELD(oatpp::String, qs_rootpass);
   DTO_FIELD(oatpp::Boolean, qs_rootpassIsSet);
@@ -83,7 +83,7 @@ class QuickserverServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, qs_versionIsSet);
   DTO_FIELD(oatpp::String, qs_location);
   DTO_FIELD(oatpp::Boolean, qs_locationIsSet);
-  DTO_FIELD(oatpp::Any, qs_platform);
+  DTO_FIELD(oatpp::String, qs_platform);
   DTO_FIELD(oatpp::Boolean, qs_platformIsSet);
 
 };

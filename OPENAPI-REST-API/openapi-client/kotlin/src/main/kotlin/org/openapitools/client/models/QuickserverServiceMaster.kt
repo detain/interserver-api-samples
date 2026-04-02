@@ -190,11 +190,11 @@ data class QuickserverServiceMaster (
 
     /* Last install time (null) */
     @Json(name = "qs_last_install_time")
-    val qsLastInstallTime: kotlin.Any? = null,
+    val qsLastInstallTime: kotlin.String? = null,
 
     /* Partitions information (null) */
     @Json(name = "qs_partitions")
-    val qsPartitions: kotlin.Any? = null,
+    val qsPartitions: kotlin.String? = null,
 
     /* CPU flags */
     @Json(name = "qs_cpu_flags")

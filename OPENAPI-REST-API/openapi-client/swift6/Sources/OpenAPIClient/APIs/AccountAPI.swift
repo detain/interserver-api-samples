@@ -149,11 +149,12 @@ open class AccountAPI {
     /**
      Remove IP Access Restriction
      
+     - parameter ipLimitRange: (body)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GenericResponse
      */
-    open class func deleteIpLimit(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> GenericResponse {
-        return try await deleteIpLimitWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func deleteIpLimit(ipLimitRange: IpLimitRange? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> GenericResponse {
+        return try await deleteIpLimitWithRequestBuilder(ipLimitRange: ipLimitRange, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -169,13 +170,14 @@ open class AccountAPI {
      - API Key:
        - type: apiKey sessionid (HEADER)
        - name: sessionIdHeaderAuth
+     - parameter ipLimitRange: (body)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GenericResponse> 
      */
-    open class func deleteIpLimitWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<GenericResponse> {
+    open class func deleteIpLimitWithRequestBuilder(ipLimitRange: IpLimitRange? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<GenericResponse> {
         let localVariablePath = "/account/iplimits"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: any Sendable]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: ipLimitRange, codableHelper: apiConfiguration.codableHelper)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

@@ -414,7 +414,7 @@ class FloatingIPsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: list[object]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -435,7 +435,7 @@ class FloatingIPsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: list[object]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -483,7 +483,7 @@ class FloatingIPsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='list[object]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Details of the placed order.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class ServersBuyNowResponseOrderDetails {
   public static final String SERIALIZED_NAME_SERVICE_ID = "service_id";
   @SerializedName(SERIALIZED_NAME_SERVICE_ID)

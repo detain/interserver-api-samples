@@ -81,7 +81,7 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess, \JsonSerializable
         'maxSff' => 'string',
         'maxNve' => 'string',
         'visible' => 'string',
-        'hdIds' => 'mixed',
+        'hdIds' => 'string',
         'priceDisplay' => 'string',
         'monthlyPriceDisplay' => 'string'
     ];
@@ -149,7 +149,7 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess, \JsonSerializable
         'maxSff' => false,
         'maxNve' => false,
         'visible' => false,
-        'hdIds' => true,
+        'hdIds' => false,
         'priceDisplay' => false,
         'monthlyPriceDisplay' => false
     ];
@@ -1056,7 +1056,7 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hdIds
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getHdIds()
     {
@@ -1066,21 +1066,14 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hdIds
      *
-     * @param mixed|null $hdIds Hard drive IDs.
+     * @param string|null $hdIds Hard drive IDs.
      *
      * @return self
      */
     public function setHdIds($hdIds)
     {
         if (is_null($hdIds)) {
-            array_push($this->openAPINullablesSetToNull, 'hdIds');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hdIds', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable hdIds cannot be null');
         }
         $this->container['hdIds'] = $hdIds;
 

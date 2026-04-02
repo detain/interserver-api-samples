@@ -248,8 +248,9 @@ open class AccountAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
+    /// - parameter ipLimitRange: (body)  (optional)
     /// - returns: AnyPublisher<GenericResponse, Error> 
-    open func deleteIpLimit() -> AnyPublisher<GenericResponse, Error> {
+    open func deleteIpLimit(ipLimitRange: IpLimitRange? = nil) -> AnyPublisher<GenericResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -263,6 +264,8 @@ open class AccountAPI {
                 }
                 var request = URLRequest(url: requestURL)
                 request.httpMethod = "PATCH"
+                request.httpBody = try self.encoder.encode(ipLimitRange)
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
         }.flatMap { request -> AnyPublisher<GenericResponse, Error> in 

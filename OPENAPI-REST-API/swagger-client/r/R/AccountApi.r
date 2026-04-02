@@ -159,10 +159,16 @@ AccountApi <- R6::R6Class(
       }
 
     }
-    delete_ip_limit = function(...){
+    delete_ip_limit = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/account/iplimits"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),

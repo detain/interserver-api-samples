@@ -1,2 +1,2 @@
-testCase,httpStatusCode,name,name,disableReset,disableReinstall,name,address,city,state,zip,country,phone,company,address2,locale,emailInvoices,emailAbuse,disableReset,disableReinstall,disableServerNotifications,disableEmailNotifications,gstin,start,end,password,sshKey,2faGoogleCode
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,name,ipLimitRange,name,disableReset,disableReinstall,name,address,city,state,zip,country,phone,company,address2,locale,emailInvoices,emailAbuse,disableReset,disableReinstall,disableServerNotifications,disableEmailNotifications,gstin,start,end,password,sshKey,2faGoogleCode
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

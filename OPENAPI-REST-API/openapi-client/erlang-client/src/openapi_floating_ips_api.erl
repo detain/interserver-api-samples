@@ -99,11 +99,11 @@ get_floating_ip_invoices(Ctx, Id, Optional) ->
 
 %% @doc List Floating IPs
 %% Returns all Floating IP services on the account with their current status and assignment details.
--spec get_floating_ips_list(ctx:ctx()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec get_floating_ips_list(ctx:ctx()) -> {ok, [maps:map()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 get_floating_ips_list(Ctx) ->
     get_floating_ips_list(Ctx, #{}).
 
--spec get_floating_ips_list(ctx:ctx(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec get_floating_ips_list(ctx:ctx(), maps:map()) -> {ok, [maps:map()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 get_floating_ips_list(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

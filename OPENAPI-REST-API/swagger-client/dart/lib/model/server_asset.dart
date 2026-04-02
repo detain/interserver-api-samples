@@ -14,7 +14,7 @@ class ServerAsset {
 /* Primary IPv6 address of the asset. */
   String primaryIpv6 = null;
 /* MAC address associated with the asset. */
-  Object mac = null;
+  String mac = null;
 /* Datacenter identifier for the asset. */
   String datacenter = null;
 /* Type identifier for the asset. */
@@ -38,15 +38,15 @@ class ServerAsset {
 /* IPMI IP address associated with the asset. */
   String ipmiIp = null;
 /* IPMI admin username associated with the asset. */
-  Object ipmiAdminUsername = null;
+  String ipmiAdminUsername = null;
 /* IPMI admin password associated with the asset. */
-  Object ipmiAdminPassword = null;
+  String ipmiAdminPassword = null;
 /* IPMI client username associated with the asset. */
-  Object ipmiClientUsername = null;
+  String ipmiClientUsername = null;
 /* IPMI client password associated with the asset. */
-  Object ipmiClientPassword = null;
+  String ipmiClientPassword = null;
 /* IPMI update status associated with the asset. */
-  Object ipmiUpdated = null;
+  String ipmiUpdated = null;
 /* IPMI working status associated with the asset. */
   String ipmiWorking = null;
 /* Company associated with the asset. */
@@ -68,9 +68,9 @@ class ServerAsset {
 /* Overdue status of the asset. */
   String overdue = null;
 /* Timestamp of asset creation. */
-  Object createTimestamp = null;
+  String createTimestamp = null;
 /* Timestamp of asset update. */
-  Object updateTimestamp = null;
+  String updateTimestamp = null;
 /* Asset identifier for the asset. */
   String assetId = null;
 /* Name of the asset. */
@@ -88,7 +88,7 @@ class ServerAsset {
 /* Y-coordinate of the asset within the rack. */
   String rackY = null;
 /* Comment associated with the asset. */
-  Object comment = null;
+  String comment = null;
 /* List of switchports associated with the asset. */
   List<int> switchports = [];
 /* List of VLANs associated with the asset. */
@@ -113,7 +113,7 @@ class ServerAsset {
     status = json['status'];
     primaryIpv4 = json['primary_ipv4'];
     primaryIpv6 = json['primary_ipv6'];
-    mac = new Object.fromJson(json['mac']);
+    mac = json['mac'];
     datacenter = json['datacenter'];
     typeId = json['type_id'];
     assetTag = json['asset_tag'];
@@ -125,11 +125,11 @@ class ServerAsset {
     unitSub = json['unit_sub'];
     ipmiMac = json['ipmi_mac'];
     ipmiIp = json['ipmi_ip'];
-    ipmiAdminUsername = new Object.fromJson(json['ipmi_admin_username']);
-    ipmiAdminPassword = new Object.fromJson(json['ipmi_admin_password']);
-    ipmiClientUsername = new Object.fromJson(json['ipmi_client_username']);
-    ipmiClientPassword = new Object.fromJson(json['ipmi_client_password']);
-    ipmiUpdated = new Object.fromJson(json['ipmi_updated']);
+    ipmiAdminUsername = json['ipmi_admin_username'];
+    ipmiAdminPassword = json['ipmi_admin_password'];
+    ipmiClientUsername = json['ipmi_client_username'];
+    ipmiClientPassword = json['ipmi_client_password'];
+    ipmiUpdated = json['ipmi_updated'];
     ipmiWorking = json['ipmi_working'];
     company = json['company'];
     comments = json['comments'];
@@ -140,8 +140,8 @@ class ServerAsset {
     externalId = json['external_id'];
     billingStatus = json['billing_status'];
     overdue = json['overdue'];
-    createTimestamp = new Object.fromJson(json['create_timestamp']);
-    updateTimestamp = new Object.fromJson(json['update_timestamp']);
+    createTimestamp = json['create_timestamp'];
+    updateTimestamp = json['update_timestamp'];
     assetId = json['asset_id'];
     assetName = json['asset_name'];
     rackId = json['rack_id'];
@@ -150,7 +150,7 @@ class ServerAsset {
     rackSize = json['rack_size'];
     rackX = json['rack_x'];
     rackY = json['rack_y'];
-    comment = new Object.fromJson(json['comment']);
+    comment = json['comment'];
     switchports = (json['switchports'] as List).map((item) => item as int).toList();
     vlans = (json['vlans'] as List).map((item) => item as String).toList();
     vlans6 = (json['vlans6'] as List).map((item) => item as String).toList();

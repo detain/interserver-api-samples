@@ -129,10 +129,10 @@ export interface ServerServiceInfo {
     server_setup?: string;
     /**
      * Discount information for the server.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_discount?: any | null;
+    server_discount?: string;
     /**
      * The reputation of the server.
      * @type {string}
@@ -153,10 +153,10 @@ export interface ServerServiceInfo {
     server_total_cost?: string;
     /**
      * The location of the server.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_location?: any | null;
+    server_location?: string;
     /**
      * The ordered hardware for the server.
      * @type {string}
@@ -195,10 +195,10 @@ export interface ServerServiceInfo {
     server_dedicated_hd1?: string;
     /**
      * The size of the second dedicated hard drive.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_dedicated_hd2?: any | null;
+    server_dedicated_hd2?: string;
     /**
      * The bandwidth of the server.
      * @type {string}
@@ -219,10 +219,10 @@ export interface ServerServiceInfo {
     server_dedicated_os?: string;
     /**
      * The control panel of the server.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_dedicated_cp?: any | null;
+    server_dedicated_cp?: string;
     /**
      * The RAID configuration of the server.
      * @type {string}

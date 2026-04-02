@@ -188,13 +188,13 @@ void main() {
     });
 
     // Last install time (null)
-    // JsonObject qsLastInstallTime
+    // String qsLastInstallTime
     test('to test the property `qsLastInstallTime`', () async {
       // TODO
     });
 
     // Partitions information (null)
-    // JsonObject qsPartitions
+    // String qsPartitions
     test('to test the property `qsPartitions`', () async {
       // TODO
     });

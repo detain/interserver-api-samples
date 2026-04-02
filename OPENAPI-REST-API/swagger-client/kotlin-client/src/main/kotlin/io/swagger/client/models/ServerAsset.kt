@@ -79,7 +79,7 @@ data class ServerAsset (
     /* Primary IPv6 address of the asset. */
     val primaryIpv6: kotlin.String,
     /* MAC address associated with the asset. */
-    val mac: kotlin.Any? = null,
+    val mac: kotlin.String? = null,
     /* Datacenter identifier for the asset. */
     val datacenter: kotlin.String,
     /* Type identifier for the asset. */
@@ -103,15 +103,15 @@ data class ServerAsset (
     /* IPMI IP address associated with the asset. */
     val ipmiIp: kotlin.String,
     /* IPMI admin username associated with the asset. */
-    val ipmiAdminUsername: kotlin.Any? = null,
+    val ipmiAdminUsername: kotlin.String? = null,
     /* IPMI admin password associated with the asset. */
-    val ipmiAdminPassword: kotlin.Any? = null,
+    val ipmiAdminPassword: kotlin.String? = null,
     /* IPMI client username associated with the asset. */
-    val ipmiClientUsername: kotlin.Any? = null,
+    val ipmiClientUsername: kotlin.String? = null,
     /* IPMI client password associated with the asset. */
-    val ipmiClientPassword: kotlin.Any? = null,
+    val ipmiClientPassword: kotlin.String? = null,
     /* IPMI update status associated with the asset. */
-    val ipmiUpdated: kotlin.Any? = null,
+    val ipmiUpdated: kotlin.String? = null,
     /* IPMI working status associated with the asset. */
     val ipmiWorking: kotlin.String,
     /* Company associated with the asset. */
@@ -133,9 +133,9 @@ data class ServerAsset (
     /* Overdue status of the asset. */
     val overdue: kotlin.String,
     /* Timestamp of asset creation. */
-    val createTimestamp: kotlin.Any? = null,
+    val createTimestamp: kotlin.String? = null,
     /* Timestamp of asset update. */
-    val updateTimestamp: kotlin.Any? = null,
+    val updateTimestamp: kotlin.String? = null,
     /* Asset identifier for the asset. */
     val assetId: kotlin.String,
     /* Name of the asset. */
@@ -153,7 +153,7 @@ data class ServerAsset (
     /* Y-coordinate of the asset within the rack. */
     val rackY: kotlin.String,
     /* Comment associated with the asset. */
-    val comment: kotlin.Any? = null,
+    val comment: kotlin.String? = null,
     /* List of switchports associated with the asset. */
     val switchports: kotlin.Array<kotlin.Int>,
     /* List of VLANs associated with the asset. */

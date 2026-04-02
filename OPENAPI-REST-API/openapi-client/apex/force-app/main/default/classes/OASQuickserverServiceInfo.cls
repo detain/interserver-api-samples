@@ -42,7 +42,7 @@ public class OASQuickserverServiceInfo implements OAS.MappedProperties {
      * IPv6 address (null)
      * @return qsIpv6
      */
-    public oas_any_type_not_mapped qsIpv6 { get; set; }
+    public String qsIpv6 { get; set; }
 
     /**
      * VZ ID
@@ -126,7 +126,7 @@ public class OASQuickserverServiceInfo implements OAS.MappedProperties {
      * VNC port (null)
      * @return qsVncPort
      */
-    public oas_any_type_not_mapped qsVncPort { get; set; }
+    public Integer qsVncPort { get; set; }
 
     /**
      * Root password
@@ -162,7 +162,7 @@ public class OASQuickserverServiceInfo implements OAS.MappedProperties {
      * Platform (null)
      * @return qsPlatform
      */
-    public oas_any_type_not_mapped qsPlatform { get; set; }
+    public String qsPlatform { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'qs_id' => 'qsId',
@@ -970,7 +970,7 @@ public class OASQuickserverServiceInfo implements OAS.MappedProperties {
           quickserverServiceInfo.qsCustid = '771282';
           quickserverServiceInfo.qsServer = '365';
           quickserverServiceInfo.qsIp = '';
-          quickserverServiceInfo.qsIpv6 = oas_any_type_not_mapped.getExample();
+          quickserverServiceInfo.qsIpv6 = '';
           quickserverServiceInfo.qsVzid = 'qs24355';
           quickserverServiceInfo.qsCurrency = 'USD';
           quickserverServiceInfo.qsType = '700';
@@ -984,13 +984,13 @@ public class OASQuickserverServiceInfo implements OAS.MappedProperties {
           quickserverServiceInfo.qsComment = '';
           quickserverServiceInfo.qsSlices = '0';
           quickserverServiceInfo.qsVnc = '99.88.77.66';
-          quickserverServiceInfo.qsVncPort = oas_any_type_not_mapped.getExample();
+          quickserverServiceInfo.qsVncPort = 0;
           quickserverServiceInfo.qsRootpass = '';
           quickserverServiceInfo.qsMac = '';
           quickserverServiceInfo.qsOs = 'ubuntu24';
           quickserverServiceInfo.qsVersion = 'Ubuntu';
           quickserverServiceInfo.qsLocation = '1';
-          quickserverServiceInfo.qsPlatform = oas_any_type_not_mapped.getExample();
+          quickserverServiceInfo.qsPlatform = '';
         return quickserverServiceInfo;
     }
 

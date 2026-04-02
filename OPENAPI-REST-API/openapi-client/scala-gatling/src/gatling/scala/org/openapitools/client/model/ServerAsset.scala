@@ -81,23 +81,23 @@ case class ServerAsset (
     _vlans6: List[String],
     _lease: ServerLease,
     /* MAC address associated with the asset. */
-    _mac: Option[AnyType],
+    _mac: Option[String],
     /* IPMI admin username associated with the asset. */
-    _ipmi_admin_username: Option[AnyType],
+    _ipmi_admin_username: Option[String],
     /* IPMI admin password associated with the asset. */
-    _ipmi_admin_password: Option[AnyType],
+    _ipmi_admin_password: Option[String],
     /* IPMI client username associated with the asset. */
-    _ipmi_client_username: Option[AnyType],
+    _ipmi_client_username: Option[String],
     /* IPMI client password associated with the asset. */
-    _ipmi_client_password: Option[AnyType],
+    _ipmi_client_password: Option[String],
     /* IPMI update status associated with the asset. */
-    _ipmi_updated: Option[AnyType],
+    _ipmi_updated: Option[String],
     /* Timestamp of asset creation. */
-    _create_timestamp: Option[AnyType],
+    _create_timestamp: Option[String],
     /* Timestamp of asset update. */
-    _update_timestamp: Option[AnyType],
+    _update_timestamp: Option[String],
     /* Comment associated with the asset. */
-    _comment: Option[AnyType]
+    _comment: Option[String]
 )
 object ServerAsset {
     def toStringBody(var_id: Object, var_order_id: Object, var_hostname: Object, var_status: Object, var_primary_ipv4: Object, var_primary_ipv6: Object, var_datacenter: Object, var_type_id: Object, var_asset_tag: Object, var_rack: Object, var_row: Object, var_col: Object, var_unit_start: Object, var_unit_end: Object, var_unit_sub: Object, var_ipmi_mac: Object, var_ipmi_ip: Object, var_ipmi_working: Object, var_company: Object, var_comments: Object, var_make: Object, var_model: Object, var_description: Object, var_customer_id: Object, var_external_id: Object, var_billing_status: Object, var_overdue: Object, var_asset_id: Object, var_asset_name: Object, var_rack_id: Object, var_rack_name: Object, var_rack_location: Object, var_rack_size: Object, var_rack_x: Object, var_rack_y: Object, var_switchports: Object, var_vlans: Object, var_vlans6: Object, var_lease: Object, var_mac: Object, var_ipmi_admin_username: Object, var_ipmi_admin_password: Object, var_ipmi_client_username: Object, var_ipmi_client_password: Object, var_ipmi_updated: Object, var_create_timestamp: Object, var_update_timestamp: Object, var_comment: Object) =

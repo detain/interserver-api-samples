@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.ServerLease;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ServerAsset
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class ServerAsset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -252,47 +251,47 @@ public class ServerAsset {
   public static final String SERIALIZED_NAME_MAC = "mac";
   @SerializedName(SERIALIZED_NAME_MAC)
   @javax.annotation.Nullable
-  private Object mac = null;
+  private String mac;
 
   public static final String SERIALIZED_NAME_IPMI_ADMIN_USERNAME = "ipmi_admin_username";
   @SerializedName(SERIALIZED_NAME_IPMI_ADMIN_USERNAME)
   @javax.annotation.Nullable
-  private Object ipmiAdminUsername = null;
+  private String ipmiAdminUsername;
 
   public static final String SERIALIZED_NAME_IPMI_ADMIN_PASSWORD = "ipmi_admin_password";
   @SerializedName(SERIALIZED_NAME_IPMI_ADMIN_PASSWORD)
   @javax.annotation.Nullable
-  private Object ipmiAdminPassword = null;
+  private String ipmiAdminPassword;
 
   public static final String SERIALIZED_NAME_IPMI_CLIENT_USERNAME = "ipmi_client_username";
   @SerializedName(SERIALIZED_NAME_IPMI_CLIENT_USERNAME)
   @javax.annotation.Nullable
-  private Object ipmiClientUsername = null;
+  private String ipmiClientUsername;
 
   public static final String SERIALIZED_NAME_IPMI_CLIENT_PASSWORD = "ipmi_client_password";
   @SerializedName(SERIALIZED_NAME_IPMI_CLIENT_PASSWORD)
   @javax.annotation.Nullable
-  private Object ipmiClientPassword = null;
+  private String ipmiClientPassword;
 
   public static final String SERIALIZED_NAME_IPMI_UPDATED = "ipmi_updated";
   @SerializedName(SERIALIZED_NAME_IPMI_UPDATED)
   @javax.annotation.Nullable
-  private Object ipmiUpdated = null;
+  private String ipmiUpdated;
 
   public static final String SERIALIZED_NAME_CREATE_TIMESTAMP = "create_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATE_TIMESTAMP)
   @javax.annotation.Nullable
-  private Object createTimestamp = null;
+  private String createTimestamp;
 
   public static final String SERIALIZED_NAME_UPDATE_TIMESTAMP = "update_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATE_TIMESTAMP)
   @javax.annotation.Nullable
-  private Object updateTimestamp = null;
+  private String updateTimestamp;
 
   public static final String SERIALIZED_NAME_COMMENT = "comment";
   @SerializedName(SERIALIZED_NAME_COMMENT)
   @javax.annotation.Nullable
-  private Object comment = null;
+  private String comment;
 
   public ServerAsset() {
   }
@@ -1062,7 +1061,7 @@ public class ServerAsset {
   }
 
 
-  public ServerAsset mac(@javax.annotation.Nullable Object mac) {
+  public ServerAsset mac(@javax.annotation.Nullable String mac) {
     this.mac = mac;
     return this;
   }
@@ -1072,16 +1071,16 @@ public class ServerAsset {
    * @return mac
    */
   @javax.annotation.Nullable
-  public Object getMac() {
+  public String getMac() {
     return mac;
   }
 
-  public void setMac(@javax.annotation.Nullable Object mac) {
+  public void setMac(@javax.annotation.Nullable String mac) {
     this.mac = mac;
   }
 
 
-  public ServerAsset ipmiAdminUsername(@javax.annotation.Nullable Object ipmiAdminUsername) {
+  public ServerAsset ipmiAdminUsername(@javax.annotation.Nullable String ipmiAdminUsername) {
     this.ipmiAdminUsername = ipmiAdminUsername;
     return this;
   }
@@ -1091,16 +1090,16 @@ public class ServerAsset {
    * @return ipmiAdminUsername
    */
   @javax.annotation.Nullable
-  public Object getIpmiAdminUsername() {
+  public String getIpmiAdminUsername() {
     return ipmiAdminUsername;
   }
 
-  public void setIpmiAdminUsername(@javax.annotation.Nullable Object ipmiAdminUsername) {
+  public void setIpmiAdminUsername(@javax.annotation.Nullable String ipmiAdminUsername) {
     this.ipmiAdminUsername = ipmiAdminUsername;
   }
 
 
-  public ServerAsset ipmiAdminPassword(@javax.annotation.Nullable Object ipmiAdminPassword) {
+  public ServerAsset ipmiAdminPassword(@javax.annotation.Nullable String ipmiAdminPassword) {
     this.ipmiAdminPassword = ipmiAdminPassword;
     return this;
   }
@@ -1110,16 +1109,16 @@ public class ServerAsset {
    * @return ipmiAdminPassword
    */
   @javax.annotation.Nullable
-  public Object getIpmiAdminPassword() {
+  public String getIpmiAdminPassword() {
     return ipmiAdminPassword;
   }
 
-  public void setIpmiAdminPassword(@javax.annotation.Nullable Object ipmiAdminPassword) {
+  public void setIpmiAdminPassword(@javax.annotation.Nullable String ipmiAdminPassword) {
     this.ipmiAdminPassword = ipmiAdminPassword;
   }
 
 
-  public ServerAsset ipmiClientUsername(@javax.annotation.Nullable Object ipmiClientUsername) {
+  public ServerAsset ipmiClientUsername(@javax.annotation.Nullable String ipmiClientUsername) {
     this.ipmiClientUsername = ipmiClientUsername;
     return this;
   }
@@ -1129,16 +1128,16 @@ public class ServerAsset {
    * @return ipmiClientUsername
    */
   @javax.annotation.Nullable
-  public Object getIpmiClientUsername() {
+  public String getIpmiClientUsername() {
     return ipmiClientUsername;
   }
 
-  public void setIpmiClientUsername(@javax.annotation.Nullable Object ipmiClientUsername) {
+  public void setIpmiClientUsername(@javax.annotation.Nullable String ipmiClientUsername) {
     this.ipmiClientUsername = ipmiClientUsername;
   }
 
 
-  public ServerAsset ipmiClientPassword(@javax.annotation.Nullable Object ipmiClientPassword) {
+  public ServerAsset ipmiClientPassword(@javax.annotation.Nullable String ipmiClientPassword) {
     this.ipmiClientPassword = ipmiClientPassword;
     return this;
   }
@@ -1148,16 +1147,16 @@ public class ServerAsset {
    * @return ipmiClientPassword
    */
   @javax.annotation.Nullable
-  public Object getIpmiClientPassword() {
+  public String getIpmiClientPassword() {
     return ipmiClientPassword;
   }
 
-  public void setIpmiClientPassword(@javax.annotation.Nullable Object ipmiClientPassword) {
+  public void setIpmiClientPassword(@javax.annotation.Nullable String ipmiClientPassword) {
     this.ipmiClientPassword = ipmiClientPassword;
   }
 
 
-  public ServerAsset ipmiUpdated(@javax.annotation.Nullable Object ipmiUpdated) {
+  public ServerAsset ipmiUpdated(@javax.annotation.Nullable String ipmiUpdated) {
     this.ipmiUpdated = ipmiUpdated;
     return this;
   }
@@ -1167,16 +1166,16 @@ public class ServerAsset {
    * @return ipmiUpdated
    */
   @javax.annotation.Nullable
-  public Object getIpmiUpdated() {
+  public String getIpmiUpdated() {
     return ipmiUpdated;
   }
 
-  public void setIpmiUpdated(@javax.annotation.Nullable Object ipmiUpdated) {
+  public void setIpmiUpdated(@javax.annotation.Nullable String ipmiUpdated) {
     this.ipmiUpdated = ipmiUpdated;
   }
 
 
-  public ServerAsset createTimestamp(@javax.annotation.Nullable Object createTimestamp) {
+  public ServerAsset createTimestamp(@javax.annotation.Nullable String createTimestamp) {
     this.createTimestamp = createTimestamp;
     return this;
   }
@@ -1186,16 +1185,16 @@ public class ServerAsset {
    * @return createTimestamp
    */
   @javax.annotation.Nullable
-  public Object getCreateTimestamp() {
+  public String getCreateTimestamp() {
     return createTimestamp;
   }
 
-  public void setCreateTimestamp(@javax.annotation.Nullable Object createTimestamp) {
+  public void setCreateTimestamp(@javax.annotation.Nullable String createTimestamp) {
     this.createTimestamp = createTimestamp;
   }
 
 
-  public ServerAsset updateTimestamp(@javax.annotation.Nullable Object updateTimestamp) {
+  public ServerAsset updateTimestamp(@javax.annotation.Nullable String updateTimestamp) {
     this.updateTimestamp = updateTimestamp;
     return this;
   }
@@ -1205,16 +1204,16 @@ public class ServerAsset {
    * @return updateTimestamp
    */
   @javax.annotation.Nullable
-  public Object getUpdateTimestamp() {
+  public String getUpdateTimestamp() {
     return updateTimestamp;
   }
 
-  public void setUpdateTimestamp(@javax.annotation.Nullable Object updateTimestamp) {
+  public void setUpdateTimestamp(@javax.annotation.Nullable String updateTimestamp) {
     this.updateTimestamp = updateTimestamp;
   }
 
 
-  public ServerAsset comment(@javax.annotation.Nullable Object comment) {
+  public ServerAsset comment(@javax.annotation.Nullable String comment) {
     this.comment = comment;
     return this;
   }
@@ -1224,11 +1223,11 @@ public class ServerAsset {
    * @return comment
    */
   @javax.annotation.Nullable
-  public Object getComment() {
+  public String getComment() {
     return comment;
   }
 
-  public void setComment(@javax.annotation.Nullable Object comment) {
+  public void setComment(@javax.annotation.Nullable String comment) {
     this.comment = comment;
   }
 
@@ -1293,20 +1292,9 @@ public class ServerAsset {
         Objects.equals(this.comment, serverAsset.comment);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(id, orderId, hostname, status, primaryIpv4, primaryIpv6, datacenter, typeId, assetTag, rack, row, col, unitStart, unitEnd, unitSub, ipmiMac, ipmiIp, ipmiWorking, company, comments, make, model, description, customerId, externalId, billingStatus, overdue, assetId, assetName, rackId, rackName, rackLocation, rackSize, rackX, rackY, switchports, vlans, vlans6, lease, mac, ipmiAdminUsername, ipmiAdminPassword, ipmiClientUsername, ipmiClientPassword, ipmiUpdated, createTimestamp, updateTimestamp, comment);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1535,6 +1523,33 @@ public class ServerAsset {
       }
       // validate the required field `lease`
       ServerLease.validateJsonElement(jsonObj.get("lease"));
+      if ((jsonObj.get("mac") != null && !jsonObj.get("mac").isJsonNull()) && !jsonObj.get("mac").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `mac` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mac").toString()));
+      }
+      if ((jsonObj.get("ipmi_admin_username") != null && !jsonObj.get("ipmi_admin_username").isJsonNull()) && !jsonObj.get("ipmi_admin_username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ipmi_admin_username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipmi_admin_username").toString()));
+      }
+      if ((jsonObj.get("ipmi_admin_password") != null && !jsonObj.get("ipmi_admin_password").isJsonNull()) && !jsonObj.get("ipmi_admin_password").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ipmi_admin_password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipmi_admin_password").toString()));
+      }
+      if ((jsonObj.get("ipmi_client_username") != null && !jsonObj.get("ipmi_client_username").isJsonNull()) && !jsonObj.get("ipmi_client_username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ipmi_client_username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipmi_client_username").toString()));
+      }
+      if ((jsonObj.get("ipmi_client_password") != null && !jsonObj.get("ipmi_client_password").isJsonNull()) && !jsonObj.get("ipmi_client_password").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ipmi_client_password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipmi_client_password").toString()));
+      }
+      if ((jsonObj.get("ipmi_updated") != null && !jsonObj.get("ipmi_updated").isJsonNull()) && !jsonObj.get("ipmi_updated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ipmi_updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipmi_updated").toString()));
+      }
+      if ((jsonObj.get("create_timestamp") != null && !jsonObj.get("create_timestamp").isJsonNull()) && !jsonObj.get("create_timestamp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `create_timestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("create_timestamp").toString()));
+      }
+      if ((jsonObj.get("update_timestamp") != null && !jsonObj.get("update_timestamp").isJsonNull()) && !jsonObj.get("update_timestamp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `update_timestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("update_timestamp").toString()));
+      }
+      if ((jsonObj.get("comment") != null && !jsonObj.get("comment").isJsonNull()) && !jsonObj.get("comment").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `comment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("comment").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

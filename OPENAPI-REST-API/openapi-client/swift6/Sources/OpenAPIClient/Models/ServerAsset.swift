@@ -87,25 +87,25 @@ public struct ServerAsset: Sendable, Codable, Hashable {
     public var vlans6: [String]
     public var lease: ServerLease
     /** MAC address associated with the asset. */
-    public var mac: JSONValue?
+    public var mac: String?
     /** IPMI admin username associated with the asset. */
-    public var ipmiAdminUsername: JSONValue?
+    public var ipmiAdminUsername: String?
     /** IPMI admin password associated with the asset. */
-    public var ipmiAdminPassword: JSONValue?
+    public var ipmiAdminPassword: String?
     /** IPMI client username associated with the asset. */
-    public var ipmiClientUsername: JSONValue?
+    public var ipmiClientUsername: String?
     /** IPMI client password associated with the asset. */
-    public var ipmiClientPassword: JSONValue?
+    public var ipmiClientPassword: String?
     /** IPMI update status associated with the asset. */
-    public var ipmiUpdated: JSONValue?
+    public var ipmiUpdated: String?
     /** Timestamp of asset creation. */
-    public var createTimestamp: JSONValue?
+    public var createTimestamp: String?
     /** Timestamp of asset update. */
-    public var updateTimestamp: JSONValue?
+    public var updateTimestamp: String?
     /** Comment associated with the asset. */
-    public var comment: JSONValue?
+    public var comment: String?
 
-    public init(id: Int, orderId: String, hostname: String, status: String, primaryIpv4: String, primaryIpv6: String, datacenter: String, typeId: String, assetTag: String, rack: String, row: String, col: String, unitStart: String, unitEnd: String, unitSub: String, ipmiMac: String, ipmiIp: String, ipmiWorking: String, company: String, comments: String, make: String, model: String, description: String, customerId: String, externalId: String, billingStatus: String, overdue: String, assetId: String, assetName: String, rackId: String, rackName: String, rackLocation: String, rackSize: String, rackX: String, rackY: String, switchports: [Int], vlans: [String], vlans6: [String], lease: ServerLease, mac: JSONValue? = nil, ipmiAdminUsername: JSONValue? = nil, ipmiAdminPassword: JSONValue? = nil, ipmiClientUsername: JSONValue? = nil, ipmiClientPassword: JSONValue? = nil, ipmiUpdated: JSONValue? = nil, createTimestamp: JSONValue? = nil, updateTimestamp: JSONValue? = nil, comment: JSONValue? = nil) {
+    public init(id: Int, orderId: String, hostname: String, status: String, primaryIpv4: String, primaryIpv6: String, datacenter: String, typeId: String, assetTag: String, rack: String, row: String, col: String, unitStart: String, unitEnd: String, unitSub: String, ipmiMac: String, ipmiIp: String, ipmiWorking: String, company: String, comments: String, make: String, model: String, description: String, customerId: String, externalId: String, billingStatus: String, overdue: String, assetId: String, assetName: String, rackId: String, rackName: String, rackLocation: String, rackSize: String, rackX: String, rackY: String, switchports: [Int], vlans: [String], vlans6: [String], lease: ServerLease, mac: String? = nil, ipmiAdminUsername: String? = nil, ipmiAdminPassword: String? = nil, ipmiClientUsername: String? = nil, ipmiClientPassword: String? = nil, ipmiUpdated: String? = nil, createTimestamp: String? = nil, updateTimestamp: String? = nil, comment: String? = nil) {
         self.id = id
         self.orderId = orderId
         self.hostname = hostname

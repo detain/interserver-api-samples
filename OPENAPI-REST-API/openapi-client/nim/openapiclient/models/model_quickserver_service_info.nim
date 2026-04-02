@@ -12,7 +12,6 @@ import tables
 import marshal
 import options
 
-import model_any_type
 
 type QuickserverServiceInfo* = object
   ## Core service record for a QuickServer including ID, status, IP, OS, and billing details.
@@ -20,7 +19,7 @@ type QuickserverServiceInfo* = object
   qsCustid*: Option[string] ## Customer ID
   qsServer*: Option[string] ## Server information
   qsIp*: Option[string] ## IP address
-  qsIpv6*: Option[JsonNode] ## IPv6 address (null)
+  qsIpv6*: Option[string] ## IPv6 address (null)
   qsVzid*: Option[string] ## VZ ID
   qsCurrency*: Option[string] ## Currency
   qsType*: Option[string] ## Type
@@ -34,13 +33,13 @@ type QuickserverServiceInfo* = object
   qsComment*: Option[string] ## Comment
   qsSlices*: Option[string] ## Slices information
   qsVnc*: Option[string] ## VNC information
-  qsVncPort*: Option[JsonNode] ## VNC port (null)
+  qsVncPort*: Option[int] ## VNC port (null)
   qsRootpass*: Option[string] ## Root password
   qsMac*: Option[string] ## MAC address
   qsOs*: Option[string] ## Operating system
   qsVersion*: Option[string] ## OS version
   qsLocation*: Option[string] ## Location
-  qsPlatform*: Option[JsonNode] ## Platform (null)
+  qsPlatform*: Option[string] ## Platform (null)
 
 
 # Custom JSON deserialization for QuickserverServiceInfo with custom field names

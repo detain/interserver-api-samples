@@ -203,11 +203,11 @@ QuickserverServiceMaster <- R6::R6Class(
         self$`qs_packets_sec_out` <- `qs_packets_sec_out`
       }
       if (!missing(`qs_last_install_time`)) {
-        stopifnot(R6::is.R6(`qs_last_install_time`))
+        stopifnot(is.character(`qs_last_install_time`), length(`qs_last_install_time`) == 1)
         self$`qs_last_install_time` <- `qs_last_install_time`
       }
       if (!missing(`qs_partitions`)) {
-        stopifnot(R6::is.R6(`qs_partitions`))
+        stopifnot(is.character(`qs_partitions`), length(`qs_partitions`) == 1)
         self$`qs_partitions` <- `qs_partitions`
       }
       if (!missing(`qs_cpu_flags`)) {
@@ -308,10 +308,10 @@ QuickserverServiceMaster <- R6::R6Class(
         QuickserverServiceMasterObject[['qs_packets_sec_out']] <- self$`qs_packets_sec_out`
       }
       if (!is.null(self$`qs_last_install_time`)) {
-        QuickserverServiceMasterObject[['qs_last_install_time']] <- self$`qs_last_install_time`$toJSON()
+        QuickserverServiceMasterObject[['qs_last_install_time']] <- self$`qs_last_install_time`
       }
       if (!is.null(self$`qs_partitions`)) {
-        QuickserverServiceMasterObject[['qs_partitions']] <- self$`qs_partitions`$toJSON()
+        QuickserverServiceMasterObject[['qs_partitions']] <- self$`qs_partitions`
       }
       if (!is.null(self$`qs_cpu_flags`)) {
         QuickserverServiceMasterObject[['qs_cpu_flags']] <- self$`qs_cpu_flags`
@@ -412,14 +412,10 @@ QuickserverServiceMaster <- R6::R6Class(
         self$`qs_packets_sec_out` <- QuickserverServiceMasterObject$`qs_packets_sec_out`
       }
       if (!is.null(QuickserverServiceMasterObject$`qs_last_install_time`)) {
-        qs_last_install_timeObject <- Object$new()
-        qs_last_install_timeObject$fromJSON(jsonlite::toJSON(QuickserverServiceMasterObject$qs_last_install_time, auto_unbox = TRUE))
-        self$`qs_last_install_time` <- qs_last_install_timeObject
+        self$`qs_last_install_time` <- QuickserverServiceMasterObject$`qs_last_install_time`
       }
       if (!is.null(QuickserverServiceMasterObject$`qs_partitions`)) {
-        qs_partitionsObject <- Object$new()
-        qs_partitionsObject$fromJSON(jsonlite::toJSON(QuickserverServiceMasterObject$qs_partitions, auto_unbox = TRUE))
-        self$`qs_partitions` <- qs_partitionsObject
+        self$`qs_partitions` <- QuickserverServiceMasterObject$`qs_partitions`
       }
       if (!is.null(QuickserverServiceMasterObject$`qs_cpu_flags`)) {
         self$`qs_cpu_flags` <- QuickserverServiceMasterObject$`qs_cpu_flags`
@@ -492,8 +488,8 @@ QuickserverServiceMaster <- R6::R6Class(
         self$`qs_bytes_sec_out`,
         self$`qs_packets_sec_in`,
         self$`qs_packets_sec_out`,
-        self$`qs_last_install_time`$toJSON(),
-        self$`qs_partitions`$toJSON(),
+        self$`qs_last_install_time`,
+        self$`qs_partitions`,
         self$`qs_cpu_flags`
       )
     },
@@ -529,10 +525,8 @@ QuickserverServiceMaster <- R6::R6Class(
       self$`qs_bytes_sec_out` <- QuickserverServiceMasterObject$`qs_bytes_sec_out`
       self$`qs_packets_sec_in` <- QuickserverServiceMasterObject$`qs_packets_sec_in`
       self$`qs_packets_sec_out` <- QuickserverServiceMasterObject$`qs_packets_sec_out`
-      ObjectObject <- Object$new()
-      self$`qs_last_install_time` <- ObjectObject$fromJSON(jsonlite::toJSON(QuickserverServiceMasterObject$qs_last_install_time, auto_unbox = TRUE))
-      ObjectObject <- Object$new()
-      self$`qs_partitions` <- ObjectObject$fromJSON(jsonlite::toJSON(QuickserverServiceMasterObject$qs_partitions, auto_unbox = TRUE))
+      self$`qs_last_install_time` <- QuickserverServiceMasterObject$`qs_last_install_time`
+      self$`qs_partitions` <- QuickserverServiceMasterObject$`qs_partitions`
       self$`qs_cpu_flags` <- QuickserverServiceMasterObject$`qs_cpu_flags`
     }
   )

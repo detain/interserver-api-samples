@@ -33,6 +33,12 @@ Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
+{
+ "start": "<string>",
+ "end": "<string>"
+}
+
+
 ### Retrieve Account Details
 ## Retrieve Account Details
 GET https://my.interserver.net/apiv2/account

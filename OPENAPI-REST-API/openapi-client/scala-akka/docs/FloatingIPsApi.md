@@ -387,7 +387,7 @@ ApiRequest[[**ChargeInvoiceRows**](ChargeInvoiceRows.md)]
 
 ## getFloatingIpsList
 
-> getFloatingIpsList(): ApiRequest[Unit]
+> getFloatingIpsList(): ApiRequest[Seq[Any]]
 
 List Floating IPs
 
@@ -429,6 +429,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling FloatingIPsApi#getFloatingIpsList")
@@ -450,8 +451,8 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+ApiRequest[**Seq[Any]**]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 

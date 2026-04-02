@@ -45,15 +45,15 @@ static server_asset_t *server_asset_create_internal(
     list_t *vlans,
     list_t *vlans6,
     server_lease_t *lease,
-    any_type_t *mac,
-    any_type_t *ipmi_admin_username,
-    any_type_t *ipmi_admin_password,
-    any_type_t *ipmi_client_username,
-    any_type_t *ipmi_client_password,
-    any_type_t *ipmi_updated,
-    any_type_t *create_timestamp,
-    any_type_t *update_timestamp,
-    any_type_t *comment
+    char *mac,
+    char *ipmi_admin_username,
+    char *ipmi_admin_password,
+    char *ipmi_client_username,
+    char *ipmi_client_password,
+    char *ipmi_updated,
+    char *create_timestamp,
+    char *update_timestamp,
+    char *comment
     ) {
     server_asset_t *server_asset_local_var = malloc(sizeof(server_asset_t));
     if (!server_asset_local_var) {
@@ -152,15 +152,15 @@ __attribute__((deprecated)) server_asset_t *server_asset_create(
     list_t *vlans,
     list_t *vlans6,
     server_lease_t *lease,
-    any_type_t *mac,
-    any_type_t *ipmi_admin_username,
-    any_type_t *ipmi_admin_password,
-    any_type_t *ipmi_client_username,
-    any_type_t *ipmi_client_password,
-    any_type_t *ipmi_updated,
-    any_type_t *create_timestamp,
-    any_type_t *update_timestamp,
-    any_type_t *comment
+    char *mac,
+    char *ipmi_admin_username,
+    char *ipmi_admin_password,
+    char *ipmi_client_username,
+    char *ipmi_client_password,
+    char *ipmi_updated,
+    char *create_timestamp,
+    char *update_timestamp,
+    char *comment
     ) {
     int *id_copy = NULL;
     if (id) {
@@ -398,39 +398,39 @@ void server_asset_free(server_asset_t *server_asset) {
         server_asset->lease = NULL;
     }
     if (server_asset->mac) {
-        _free(server_asset->mac);
+        free(server_asset->mac);
         server_asset->mac = NULL;
     }
     if (server_asset->ipmi_admin_username) {
-        _free(server_asset->ipmi_admin_username);
+        free(server_asset->ipmi_admin_username);
         server_asset->ipmi_admin_username = NULL;
     }
     if (server_asset->ipmi_admin_password) {
-        _free(server_asset->ipmi_admin_password);
+        free(server_asset->ipmi_admin_password);
         server_asset->ipmi_admin_password = NULL;
     }
     if (server_asset->ipmi_client_username) {
-        _free(server_asset->ipmi_client_username);
+        free(server_asset->ipmi_client_username);
         server_asset->ipmi_client_username = NULL;
     }
     if (server_asset->ipmi_client_password) {
-        _free(server_asset->ipmi_client_password);
+        free(server_asset->ipmi_client_password);
         server_asset->ipmi_client_password = NULL;
     }
     if (server_asset->ipmi_updated) {
-        _free(server_asset->ipmi_updated);
+        free(server_asset->ipmi_updated);
         server_asset->ipmi_updated = NULL;
     }
     if (server_asset->create_timestamp) {
-        _free(server_asset->create_timestamp);
+        free(server_asset->create_timestamp);
         server_asset->create_timestamp = NULL;
     }
     if (server_asset->update_timestamp) {
-        _free(server_asset->update_timestamp);
+        free(server_asset->update_timestamp);
         server_asset->update_timestamp = NULL;
     }
     if (server_asset->comment) {
-        _free(server_asset->comment);
+        free(server_asset->comment);
         server_asset->comment = NULL;
     }
     free(server_asset);
@@ -824,117 +824,72 @@ cJSON *server_asset_convertToJSON(server_asset_t *server_asset) {
 
     // server_asset->mac
     if(server_asset->mac) {
-    cJSON *mac_local_JSON = _convertToJSON(server_asset->mac);
-    if(mac_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "mac", mac_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "mac", server_asset->mac) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->ipmi_admin_username
     if(server_asset->ipmi_admin_username) {
-    cJSON *ipmi_admin_username_local_JSON = _convertToJSON(server_asset->ipmi_admin_username);
-    if(ipmi_admin_username_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "ipmi_admin_username", ipmi_admin_username_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "ipmi_admin_username", server_asset->ipmi_admin_username) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->ipmi_admin_password
     if(server_asset->ipmi_admin_password) {
-    cJSON *ipmi_admin_password_local_JSON = _convertToJSON(server_asset->ipmi_admin_password);
-    if(ipmi_admin_password_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "ipmi_admin_password", ipmi_admin_password_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "ipmi_admin_password", server_asset->ipmi_admin_password) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->ipmi_client_username
     if(server_asset->ipmi_client_username) {
-    cJSON *ipmi_client_username_local_JSON = _convertToJSON(server_asset->ipmi_client_username);
-    if(ipmi_client_username_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "ipmi_client_username", ipmi_client_username_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "ipmi_client_username", server_asset->ipmi_client_username) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->ipmi_client_password
     if(server_asset->ipmi_client_password) {
-    cJSON *ipmi_client_password_local_JSON = _convertToJSON(server_asset->ipmi_client_password);
-    if(ipmi_client_password_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "ipmi_client_password", ipmi_client_password_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "ipmi_client_password", server_asset->ipmi_client_password) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->ipmi_updated
     if(server_asset->ipmi_updated) {
-    cJSON *ipmi_updated_local_JSON = _convertToJSON(server_asset->ipmi_updated);
-    if(ipmi_updated_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "ipmi_updated", ipmi_updated_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "ipmi_updated", server_asset->ipmi_updated) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->create_timestamp
     if(server_asset->create_timestamp) {
-    cJSON *create_timestamp_local_JSON = _convertToJSON(server_asset->create_timestamp);
-    if(create_timestamp_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "create_timestamp", create_timestamp_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "create_timestamp", server_asset->create_timestamp) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->update_timestamp
     if(server_asset->update_timestamp) {
-    cJSON *update_timestamp_local_JSON = _convertToJSON(server_asset->update_timestamp);
-    if(update_timestamp_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "update_timestamp", update_timestamp_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "update_timestamp", server_asset->update_timestamp) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // server_asset->comment
     if(server_asset->comment) {
-    cJSON *comment_local_JSON = _convertToJSON(server_asset->comment);
-    if(comment_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "comment", comment_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "comment", server_asset->comment) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1033,32 +988,23 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
     // define the local variable for server_asset->lease
     server_lease_t *lease_local_nonprim = NULL;
 
-    // define the local variable for server_asset->mac
-    _t *mac_local_nonprim = NULL;
+    char *mac_local_str = NULL;
 
-    // define the local variable for server_asset->ipmi_admin_username
-    _t *ipmi_admin_username_local_nonprim = NULL;
+    char *ipmi_admin_username_local_str = NULL;
 
-    // define the local variable for server_asset->ipmi_admin_password
-    _t *ipmi_admin_password_local_nonprim = NULL;
+    char *ipmi_admin_password_local_str = NULL;
 
-    // define the local variable for server_asset->ipmi_client_username
-    _t *ipmi_client_username_local_nonprim = NULL;
+    char *ipmi_client_username_local_str = NULL;
 
-    // define the local variable for server_asset->ipmi_client_password
-    _t *ipmi_client_password_local_nonprim = NULL;
+    char *ipmi_client_password_local_str = NULL;
 
-    // define the local variable for server_asset->ipmi_updated
-    _t *ipmi_updated_local_nonprim = NULL;
+    char *ipmi_updated_local_str = NULL;
 
-    // define the local variable for server_asset->create_timestamp
-    _t *create_timestamp_local_nonprim = NULL;
+    char *create_timestamp_local_str = NULL;
 
-    // define the local variable for server_asset->update_timestamp
-    _t *update_timestamp_local_nonprim = NULL;
+    char *update_timestamp_local_str = NULL;
 
-    // define the local variable for server_asset->comment
-    _t *comment_local_nonprim = NULL;
+    char *comment_local_str = NULL;
 
     // server_asset->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(server_assetJSON, "id");
@@ -1690,7 +1636,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         mac = NULL;
     }
     if (mac) { 
-    mac_local_nonprim = _parseFromJSON(mac); //custom
+    if(!cJSON_IsString(mac) && !cJSON_IsNull(mac))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->ipmi_admin_username
@@ -1699,7 +1648,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         ipmi_admin_username = NULL;
     }
     if (ipmi_admin_username) { 
-    ipmi_admin_username_local_nonprim = _parseFromJSON(ipmi_admin_username); //custom
+    if(!cJSON_IsString(ipmi_admin_username) && !cJSON_IsNull(ipmi_admin_username))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->ipmi_admin_password
@@ -1708,7 +1660,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         ipmi_admin_password = NULL;
     }
     if (ipmi_admin_password) { 
-    ipmi_admin_password_local_nonprim = _parseFromJSON(ipmi_admin_password); //custom
+    if(!cJSON_IsString(ipmi_admin_password) && !cJSON_IsNull(ipmi_admin_password))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->ipmi_client_username
@@ -1717,7 +1672,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         ipmi_client_username = NULL;
     }
     if (ipmi_client_username) { 
-    ipmi_client_username_local_nonprim = _parseFromJSON(ipmi_client_username); //custom
+    if(!cJSON_IsString(ipmi_client_username) && !cJSON_IsNull(ipmi_client_username))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->ipmi_client_password
@@ -1726,7 +1684,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         ipmi_client_password = NULL;
     }
     if (ipmi_client_password) { 
-    ipmi_client_password_local_nonprim = _parseFromJSON(ipmi_client_password); //custom
+    if(!cJSON_IsString(ipmi_client_password) && !cJSON_IsNull(ipmi_client_password))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->ipmi_updated
@@ -1735,7 +1696,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         ipmi_updated = NULL;
     }
     if (ipmi_updated) { 
-    ipmi_updated_local_nonprim = _parseFromJSON(ipmi_updated); //custom
+    if(!cJSON_IsString(ipmi_updated) && !cJSON_IsNull(ipmi_updated))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->create_timestamp
@@ -1744,7 +1708,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         create_timestamp = NULL;
     }
     if (create_timestamp) { 
-    create_timestamp_local_nonprim = _parseFromJSON(create_timestamp); //custom
+    if(!cJSON_IsString(create_timestamp) && !cJSON_IsNull(create_timestamp))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->update_timestamp
@@ -1753,7 +1720,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         update_timestamp = NULL;
     }
     if (update_timestamp) { 
-    update_timestamp_local_nonprim = _parseFromJSON(update_timestamp); //custom
+    if(!cJSON_IsString(update_timestamp) && !cJSON_IsNull(update_timestamp))
+    {
+    goto end; //String
+    }
     }
 
     // server_asset->comment
@@ -1762,7 +1732,10 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         comment = NULL;
     }
     if (comment) { 
-    comment_local_nonprim = _parseFromJSON(comment); //custom
+    if(!cJSON_IsString(comment) && !cJSON_IsNull(comment))
+    {
+    goto end; //String
+    }
     }
 
 
@@ -1800,6 +1773,15 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
     if (rack_size && !cJSON_IsNull(rack_size)) rack_size_local_str = strdup(rack_size->valuestring);
     if (rack_x && !cJSON_IsNull(rack_x)) rack_x_local_str = strdup(rack_x->valuestring);
     if (rack_y && !cJSON_IsNull(rack_y)) rack_y_local_str = strdup(rack_y->valuestring);
+    if (mac && !cJSON_IsNull(mac)) mac_local_str = strdup(mac->valuestring);
+    if (ipmi_admin_username && !cJSON_IsNull(ipmi_admin_username)) ipmi_admin_username_local_str = strdup(ipmi_admin_username->valuestring);
+    if (ipmi_admin_password && !cJSON_IsNull(ipmi_admin_password)) ipmi_admin_password_local_str = strdup(ipmi_admin_password->valuestring);
+    if (ipmi_client_username && !cJSON_IsNull(ipmi_client_username)) ipmi_client_username_local_str = strdup(ipmi_client_username->valuestring);
+    if (ipmi_client_password && !cJSON_IsNull(ipmi_client_password)) ipmi_client_password_local_str = strdup(ipmi_client_password->valuestring);
+    if (ipmi_updated && !cJSON_IsNull(ipmi_updated)) ipmi_updated_local_str = strdup(ipmi_updated->valuestring);
+    if (create_timestamp && !cJSON_IsNull(create_timestamp)) create_timestamp_local_str = strdup(create_timestamp->valuestring);
+    if (update_timestamp && !cJSON_IsNull(update_timestamp)) update_timestamp_local_str = strdup(update_timestamp->valuestring);
+    if (comment && !cJSON_IsNull(comment)) comment_local_str = strdup(comment->valuestring);
 
     server_asset_local_var = server_asset_create_internal (
         id_local_var,
@@ -1841,15 +1823,15 @@ server_asset_t *server_asset_parseFromJSON(cJSON *server_assetJSON){
         vlansList,
         vlans6List,
         lease_local_nonprim,
-        mac ? mac_local_nonprim : NULL,
-        ipmi_admin_username ? ipmi_admin_username_local_nonprim : NULL,
-        ipmi_admin_password ? ipmi_admin_password_local_nonprim : NULL,
-        ipmi_client_username ? ipmi_client_username_local_nonprim : NULL,
-        ipmi_client_password ? ipmi_client_password_local_nonprim : NULL,
-        ipmi_updated ? ipmi_updated_local_nonprim : NULL,
-        create_timestamp ? create_timestamp_local_nonprim : NULL,
-        update_timestamp ? update_timestamp_local_nonprim : NULL,
-        comment ? comment_local_nonprim : NULL
+        mac_local_str,
+        ipmi_admin_username_local_str,
+        ipmi_admin_password_local_str,
+        ipmi_client_username_local_str,
+        ipmi_client_password_local_str,
+        ipmi_updated_local_str,
+        create_timestamp_local_str,
+        update_timestamp_local_str,
+        comment_local_str
         );
 
     if (!server_asset_local_var) {
@@ -2029,41 +2011,41 @@ end:
         server_lease_free(lease_local_nonprim);
         lease_local_nonprim = NULL;
     }
-    if (mac_local_nonprim) {
-        _free(mac_local_nonprim);
-        mac_local_nonprim = NULL;
+    if (mac_local_str) {
+        free(mac_local_str);
+        mac_local_str = NULL;
     }
-    if (ipmi_admin_username_local_nonprim) {
-        _free(ipmi_admin_username_local_nonprim);
-        ipmi_admin_username_local_nonprim = NULL;
+    if (ipmi_admin_username_local_str) {
+        free(ipmi_admin_username_local_str);
+        ipmi_admin_username_local_str = NULL;
     }
-    if (ipmi_admin_password_local_nonprim) {
-        _free(ipmi_admin_password_local_nonprim);
-        ipmi_admin_password_local_nonprim = NULL;
+    if (ipmi_admin_password_local_str) {
+        free(ipmi_admin_password_local_str);
+        ipmi_admin_password_local_str = NULL;
     }
-    if (ipmi_client_username_local_nonprim) {
-        _free(ipmi_client_username_local_nonprim);
-        ipmi_client_username_local_nonprim = NULL;
+    if (ipmi_client_username_local_str) {
+        free(ipmi_client_username_local_str);
+        ipmi_client_username_local_str = NULL;
     }
-    if (ipmi_client_password_local_nonprim) {
-        _free(ipmi_client_password_local_nonprim);
-        ipmi_client_password_local_nonprim = NULL;
+    if (ipmi_client_password_local_str) {
+        free(ipmi_client_password_local_str);
+        ipmi_client_password_local_str = NULL;
     }
-    if (ipmi_updated_local_nonprim) {
-        _free(ipmi_updated_local_nonprim);
-        ipmi_updated_local_nonprim = NULL;
+    if (ipmi_updated_local_str) {
+        free(ipmi_updated_local_str);
+        ipmi_updated_local_str = NULL;
     }
-    if (create_timestamp_local_nonprim) {
-        _free(create_timestamp_local_nonprim);
-        create_timestamp_local_nonprim = NULL;
+    if (create_timestamp_local_str) {
+        free(create_timestamp_local_str);
+        create_timestamp_local_str = NULL;
     }
-    if (update_timestamp_local_nonprim) {
-        _free(update_timestamp_local_nonprim);
-        update_timestamp_local_nonprim = NULL;
+    if (update_timestamp_local_str) {
+        free(update_timestamp_local_str);
+        update_timestamp_local_str = NULL;
     }
-    if (comment_local_nonprim) {
-        _free(comment_local_nonprim);
-        comment_local_nonprim = NULL;
+    if (comment_local_str) {
+        free(comment_local_str);
+        comment_local_str = NULL;
     }
     return NULL;
 

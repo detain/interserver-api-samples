@@ -95,9 +95,9 @@ class QuickserverServiceMaster : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, qs_packets_sec_inIsSet);
   DTO_FIELD(oatpp::String, qs_packets_sec_out);
   DTO_FIELD(oatpp::Boolean, qs_packets_sec_outIsSet);
-  DTO_FIELD(oatpp::Any, qs_last_install_time);
+  DTO_FIELD(oatpp::String, qs_last_install_time);
   DTO_FIELD(oatpp::Boolean, qs_last_install_timeIsSet);
-  DTO_FIELD(oatpp::Any, qs_partitions);
+  DTO_FIELD(oatpp::String, qs_partitions);
   DTO_FIELD(oatpp::Boolean, qs_partitionsIsSet);
   DTO_FIELD(oatpp::String, qs_cpu_flags);
   DTO_FIELD(oatpp::Boolean, qs_cpu_flagsIsSet);

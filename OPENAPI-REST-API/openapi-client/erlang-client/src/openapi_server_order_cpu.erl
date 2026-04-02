@@ -27,7 +27,7 @@
        'max_sff' => binary(),
        'max_nve' => binary(),
        'visible' => binary(),
-       'hd_ids' => openapi_any_type:openapi_any_type(),
+       'hd_ids' => binary(),
        'price_display' => binary(),
        'monthly_price_display' => binary()
      }.

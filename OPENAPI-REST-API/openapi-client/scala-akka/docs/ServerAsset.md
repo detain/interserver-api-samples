@@ -46,15 +46,15 @@ Name | Type | Description | Notes
 **vlans** | **Seq&lt;String&gt;** | List of VLANs associated with the asset. | 
 **vlans6** | **Seq&lt;String&gt;** | List of IPv6 VLANs associated with the asset. | 
 **lease** | [**ServerLease**](ServerLease.md) |  | 
-**mac** | **AnyType** | MAC address associated with the asset. |  [optional]
-**ipmi_admin_username** | **AnyType** | IPMI admin username associated with the asset. |  [optional]
-**ipmi_admin_password** | **AnyType** | IPMI admin password associated with the asset. |  [optional]
-**ipmi_client_username** | **AnyType** | IPMI client username associated with the asset. |  [optional]
-**ipmi_client_password** | **AnyType** | IPMI client password associated with the asset. |  [optional]
-**ipmi_updated** | **AnyType** | IPMI update status associated with the asset. |  [optional]
-**create_timestamp** | **AnyType** | Timestamp of asset creation. |  [optional]
-**update_timestamp** | **AnyType** | Timestamp of asset update. |  [optional]
-**comment** | **AnyType** | Comment associated with the asset. |  [optional]
+**mac** | **String** | MAC address associated with the asset. |  [optional]
+**ipmi_admin_username** | **String** | IPMI admin username associated with the asset. |  [optional]
+**ipmi_admin_password** | **String** | IPMI admin password associated with the asset. |  [optional]
+**ipmi_client_username** | **String** | IPMI client username associated with the asset. |  [optional]
+**ipmi_client_password** | **String** | IPMI client password associated with the asset. |  [optional]
+**ipmi_updated** | **String** | IPMI update status associated with the asset. |  [optional]
+**create_timestamp** | **String** | Timestamp of asset creation. |  [optional]
+**update_timestamp** | **String** | Timestamp of asset update. |  [optional]
+**comment** | **String** | Comment associated with the asset. |  [optional]
 
 
 

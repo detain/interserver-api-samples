@@ -78,7 +78,7 @@ data class QuickserverServiceInfo (
 
     /* IPv6 address (null) */
     @Json(name = "qs_ipv6")
-    val qsIpv6: kotlin.Any? = null,
+    val qsIpv6: kotlin.String? = null,
 
     /* VZ ID */
     @Json(name = "qs_vzid")
@@ -134,7 +134,7 @@ data class QuickserverServiceInfo (
 
     /* VNC port (null) */
     @Json(name = "qs_vnc_port")
-    val qsVncPort: kotlin.Any? = null,
+    val qsVncPort: kotlin.Int? = null,
 
     /* Root password */
     @Json(name = "qs_rootpass")
@@ -158,7 +158,7 @@ data class QuickserverServiceInfo (
 
     /* Platform (null) */
     @Json(name = "qs_platform")
-    val qsPlatform: kotlin.Any? = null
+    val qsPlatform: kotlin.String? = null
 
 ) {
 

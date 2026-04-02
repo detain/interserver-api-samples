@@ -243,9 +243,9 @@ var api = FloatingIPsApi.new(config)
 # Invoke an endpoint
 api.get_floating_ips_list(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_floating_ips_list", response)
-		
+		assert(response.data is object)
 		pass  # do things, make stuff
 		,
 	# On Error

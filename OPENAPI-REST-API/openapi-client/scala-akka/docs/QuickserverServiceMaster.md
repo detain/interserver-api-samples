@@ -38,8 +38,8 @@ Name | Type | Description | Notes
 **qs_bytes_sec_out** | **String** | Bytes/sec out |  [optional]
 **qs_packets_sec_in** | **String** | Packets/sec in |  [optional]
 **qs_packets_sec_out** | **String** | Packets/sec out |  [optional]
-**qs_last_install_time** | **AnyType** | Last install time (null) |  [optional]
-**qs_partitions** | **AnyType** | Partitions information (null) |  [optional]
+**qs_last_install_time** | **String** | Last install time (null) |  [optional]
+**qs_partitions** | **String** | Partitions information (null) |  [optional]
 **qs_cpu_flags** | **String** | CPU flags |  [optional]
 
 

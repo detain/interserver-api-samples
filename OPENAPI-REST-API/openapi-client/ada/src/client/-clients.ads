@@ -38,6 +38,7 @@ package .Clients is
    --  Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
    procedure Delete_Ip_Limit
       (Client : in out Client_Type;
+       Ip_Limit_Range_Type : in .Models.IpLimitRange_Type;
        Result : out .Models.GenericResponse_Type);
 
    --  Retrieve Account Details
@@ -709,7 +710,8 @@ package .Clients is
    --  List Floating IPs
    --  Returns all Floating IP services on the account with their current status and assignment details.
    procedure Get_Floating_Ips_List
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.Object_Vectors.Vector);
 
    --  Resend Floating IPs Welcome Email
    --  Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.

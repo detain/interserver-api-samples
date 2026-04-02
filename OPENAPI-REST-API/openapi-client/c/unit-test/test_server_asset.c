@@ -63,15 +63,15 @@ server_asset_t* instantiate_server_asset(int include_optional) {
       [],
        // false, not to have infinite recursion
       instantiate_server_lease(0),
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
     );
   } else {
     server_asset = server_asset_create(
@@ -114,15 +114,15 @@ server_asset_t* instantiate_server_asset(int include_optional) {
       [],
       [],
       NULL,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
     );
   }
 

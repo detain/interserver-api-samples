@@ -167,7 +167,7 @@ api.delete_account_tfa(
 # **delete_ip_limit**   { #delete_ip_limit }
 <a name="delete_ip_limit"></a>
 
-> `delete_ip_limit( on_success: Callable, on_failure: Callable)`
+> `delete_ip_limit(ipLimitRange = null, on_success: Callable, on_failure: Callable)`
 
 Remove IP Access Restriction
 
@@ -193,9 +193,13 @@ var api = AccountApi.new(config)
 # You can also provide your own HTTPClient, to re-use it across apis.
 #var api = AccountApi.new(config, client)
 
+var ipLimitRange = IpLimitRange.new()
+# … fill model ipLimitRange with data
 
 # Invoke an endpoint
 api.delete_ip_limit(
+	# ipLimitRange: IpLimitRange
+	ipLimitRange,
 	# On Success
 	func(response):  # response is ApiResponse
 		prints("Success!", "delete_ip_limit", response)

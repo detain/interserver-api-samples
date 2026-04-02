@@ -89,8 +89,9 @@ namespace Interserver.MyAdmin.Client.Api
         /// Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>GenericResponse</returns>
-        GenericResponse DeleteIpLimit ();
+        GenericResponse DeleteIpLimit (IpLimitRange body = null);
 
         /// <summary>
         /// Remove IP Access Restriction
@@ -99,8 +100,9 @@ namespace Interserver.MyAdmin.Client.Api
         /// Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of GenericResponse</returns>
-        ApiResponse<GenericResponse> DeleteIpLimitWithHttpInfo ();
+        ApiResponse<GenericResponse> DeleteIpLimitWithHttpInfo (IpLimitRange body = null);
         /// <summary>
         /// Retrieve Account Details
         /// </summary>
@@ -592,8 +594,9 @@ namespace Interserver.MyAdmin.Client.Api
         /// Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of GenericResponse</returns>
-        System.Threading.Tasks.Task<GenericResponse> DeleteIpLimitAsync ();
+        System.Threading.Tasks.Task<GenericResponse> DeleteIpLimitAsync (IpLimitRange body = null);
 
         /// <summary>
         /// Remove IP Access Restriction
@@ -602,8 +605,9 @@ namespace Interserver.MyAdmin.Client.Api
         /// Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (GenericResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenericResponse>> DeleteIpLimitAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<GenericResponse>> DeleteIpLimitAsyncWithHttpInfo (IpLimitRange body = null);
         /// <summary>
         /// Retrieve Account Details
         /// </summary>
@@ -1601,10 +1605,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// Remove IP Access Restriction Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>GenericResponse</returns>
-        public GenericResponse DeleteIpLimit ()
+        public GenericResponse DeleteIpLimit (IpLimitRange body = null)
         {
-             ApiResponse<GenericResponse> localVarResponse = DeleteIpLimitWithHttpInfo();
+             ApiResponse<GenericResponse> localVarResponse = DeleteIpLimitWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -1612,8 +1617,9 @@ namespace Interserver.MyAdmin.Client.Api
         /// Remove IP Access Restriction Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of GenericResponse</returns>
-        public ApiResponse< GenericResponse > DeleteIpLimitWithHttpInfo ()
+        public ApiResponse< GenericResponse > DeleteIpLimitWithHttpInfo (IpLimitRange body = null)
         {
 
             var localVarPath = "/account/iplimits";
@@ -1638,6 +1644,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -1676,10 +1690,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// Remove IP Access Restriction Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of GenericResponse</returns>
-        public async System.Threading.Tasks.Task<GenericResponse> DeleteIpLimitAsync ()
+        public async System.Threading.Tasks.Task<GenericResponse> DeleteIpLimitAsync (IpLimitRange body = null)
         {
-             ApiResponse<GenericResponse> localVarResponse = await DeleteIpLimitAsyncWithHttpInfo();
+             ApiResponse<GenericResponse> localVarResponse = await DeleteIpLimitAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -1688,8 +1703,9 @@ namespace Interserver.MyAdmin.Client.Api
         /// Remove IP Access Restriction Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (GenericResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GenericResponse>> DeleteIpLimitAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<GenericResponse>> DeleteIpLimitAsyncWithHttpInfo (IpLimitRange body = null)
         {
 
             var localVarPath = "/account/iplimits";
@@ -1714,6 +1730,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {

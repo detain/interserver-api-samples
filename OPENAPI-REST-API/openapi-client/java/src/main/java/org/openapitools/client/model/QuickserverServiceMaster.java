@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Information about the host node running this QuickServer, including hardware specs and resource utilization.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class QuickserverServiceMaster {
   public static final String SERIALIZED_NAME_QS_ID = "qs_id";
   @SerializedName(SERIALIZED_NAME_QS_ID)
@@ -204,12 +204,12 @@ public class QuickserverServiceMaster {
   public static final String SERIALIZED_NAME_QS_LAST_INSTALL_TIME = "qs_last_install_time";
   @SerializedName(SERIALIZED_NAME_QS_LAST_INSTALL_TIME)
   @javax.annotation.Nullable
-  private Object qsLastInstallTime = null;
+  private String qsLastInstallTime;
 
   public static final String SERIALIZED_NAME_QS_PARTITIONS = "qs_partitions";
   @SerializedName(SERIALIZED_NAME_QS_PARTITIONS)
   @javax.annotation.Nullable
-  private Object qsPartitions = null;
+  private String qsPartitions;
 
   public static final String SERIALIZED_NAME_QS_CPU_FLAGS = "qs_cpu_flags";
   @SerializedName(SERIALIZED_NAME_QS_CPU_FLAGS)
@@ -789,7 +789,7 @@ public class QuickserverServiceMaster {
   }
 
 
-  public QuickserverServiceMaster qsLastInstallTime(@javax.annotation.Nullable Object qsLastInstallTime) {
+  public QuickserverServiceMaster qsLastInstallTime(@javax.annotation.Nullable String qsLastInstallTime) {
     this.qsLastInstallTime = qsLastInstallTime;
     return this;
   }
@@ -799,16 +799,16 @@ public class QuickserverServiceMaster {
    * @return qsLastInstallTime
    */
   @javax.annotation.Nullable
-  public Object getQsLastInstallTime() {
+  public String getQsLastInstallTime() {
     return qsLastInstallTime;
   }
 
-  public void setQsLastInstallTime(@javax.annotation.Nullable Object qsLastInstallTime) {
+  public void setQsLastInstallTime(@javax.annotation.Nullable String qsLastInstallTime) {
     this.qsLastInstallTime = qsLastInstallTime;
   }
 
 
-  public QuickserverServiceMaster qsPartitions(@javax.annotation.Nullable Object qsPartitions) {
+  public QuickserverServiceMaster qsPartitions(@javax.annotation.Nullable String qsPartitions) {
     this.qsPartitions = qsPartitions;
     return this;
   }
@@ -818,11 +818,11 @@ public class QuickserverServiceMaster {
    * @return qsPartitions
    */
   @javax.annotation.Nullable
-  public Object getQsPartitions() {
+  public String getQsPartitions() {
     return qsPartitions;
   }
 
-  public void setQsPartitions(@javax.annotation.Nullable Object qsPartitions) {
+  public void setQsPartitions(@javax.annotation.Nullable String qsPartitions) {
     this.qsPartitions = qsPartitions;
   }
 
@@ -1078,6 +1078,12 @@ public class QuickserverServiceMaster {
       }
       if ((jsonObj.get("qs_packets_sec_out") != null && !jsonObj.get("qs_packets_sec_out").isJsonNull()) && !jsonObj.get("qs_packets_sec_out").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_packets_sec_out` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_packets_sec_out").toString()));
+      }
+      if ((jsonObj.get("qs_last_install_time") != null && !jsonObj.get("qs_last_install_time").isJsonNull()) && !jsonObj.get("qs_last_install_time").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_last_install_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_last_install_time").toString()));
+      }
+      if ((jsonObj.get("qs_partitions") != null && !jsonObj.get("qs_partitions").isJsonNull()) && !jsonObj.get("qs_partitions").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_partitions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_partitions").toString()));
       }
       if ((jsonObj.get("qs_cpu_flags") != null && !jsonObj.get("qs_cpu_flags").isJsonNull()) && !jsonObj.get("qs_cpu_flags").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `qs_cpu_flags` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qs_cpu_flags").toString()));

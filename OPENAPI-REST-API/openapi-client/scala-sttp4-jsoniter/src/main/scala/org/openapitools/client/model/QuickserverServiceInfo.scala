@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
   /**
@@ -27,7 +26,7 @@ case class QuickserverServiceInfo(
   /* IP address */
   @named("qs_ip") qs_ip: Option[String] = scala.None,
   /* IPv6 address (null) */
-  @named("qs_ipv6") qs_ipv6: Option[io.circe.Json] = scala.None,
+  @named("qs_ipv6") qs_ipv6: Option[String] = scala.None,
   /* VZ ID */
   @named("qs_vzid") qs_vzid: Option[String] = scala.None,
   /* Currency */
@@ -55,7 +54,7 @@ case class QuickserverServiceInfo(
   /* VNC information */
   @named("qs_vnc") qs_vnc: Option[String] = scala.None,
   /* VNC port (null) */
-  @named("qs_vnc_port") qs_vnc_port: Option[io.circe.Json] = scala.None,
+  @named("qs_vnc_port") qs_vnc_port: Option[Int] = scala.None,
   /* Root password */
   @named("qs_rootpass") qs_rootpass: Option[String] = scala.None,
   /* MAC address */
@@ -67,6 +66,6 @@ case class QuickserverServiceInfo(
   /* Location */
   @named("qs_location") qs_location: Option[String] = scala.None,
   /* Platform (null) */
-  @named("qs_platform") qs_platform: Option[io.circe.Json] = scala.None
+  @named("qs_platform") qs_platform: Option[String] = scala.None
 )
 

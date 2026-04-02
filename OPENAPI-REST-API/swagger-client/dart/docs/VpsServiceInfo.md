@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **vpsCustid** | **String** | Customer ID | [optional] [default to null]
 **vpsServer** | **String** | Server ID | [optional] [default to null]
 **vpsIp** | **String** | IP address of the VPS | [optional] [default to null]
-**vpsIpv6** | [**Object**](Object.md) | IPv6 address of the VPS | [optional] [default to null]
+**vpsIpv6** | **String** | IPv6 address of the VPS | [optional] [default to null]
 **vpsVzid** | **String** | VPS Virtuozzo ID | [optional] [default to null]
 **vpsCurrency** | **String** | Currency used for billing | [optional] [default to null]
 **vpsType** | **String** | VPS type | [optional] [default to null]

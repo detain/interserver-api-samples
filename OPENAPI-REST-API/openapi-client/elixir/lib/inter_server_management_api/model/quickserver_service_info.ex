@@ -40,7 +40,7 @@ defmodule InterServerManagementAPI.Model.QuickserverServiceInfo do
     :qs_custid => String.t | nil,
     :qs_server => String.t | nil,
     :qs_ip => String.t | nil,
-    :qs_ipv6 => any() | nil,
+    :qs_ipv6 => String.t | nil,
     :qs_vzid => String.t | nil,
     :qs_currency => String.t | nil,
     :qs_type => String.t | nil,
@@ -54,13 +54,13 @@ defmodule InterServerManagementAPI.Model.QuickserverServiceInfo do
     :qs_comment => String.t | nil,
     :qs_slices => String.t | nil,
     :qs_vnc => String.t | nil,
-    :qs_vnc_port => any() | nil,
+    :qs_vnc_port => integer() | nil,
     :qs_rootpass => String.t | nil,
     :qs_mac => String.t | nil,
     :qs_os => String.t | nil,
     :qs_version => String.t | nil,
     :qs_location => String.t | nil,
-    :qs_platform => any() | nil
+    :qs_platform => String.t | nil
   }
 
   def decode(value) do

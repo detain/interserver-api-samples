@@ -271,6 +271,10 @@ private class OASAccountApiTest {
         res.setStatus('OK');
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
+        Map<String, Object> params = new Map<String, Object>{
+            'oaSIpLimitRange' => ''
+        };
+
         OASClient client;
         OASAccountApi api;
         OASGenericResponse response;
@@ -286,7 +290,7 @@ private class OASAccountApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = OASGenericResponse.getExample();
-        response = (OASGenericResponse) api.deleteIpLimit();
+        response = (OASGenericResponse) api.deleteIpLimit(params);
         System.assertEquals(expectedResponse, response);
 
 
@@ -294,7 +298,7 @@ private class OASAccountApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = OASGenericResponse.getExample();
-        response = (OASGenericResponse) api.deleteIpLimit();
+        response = (OASGenericResponse) api.deleteIpLimit(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAccountApi(client);
@@ -305,7 +309,7 @@ private class OASAccountApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = OASGenericResponse.getExample();
-        response = (OASGenericResponse) api.deleteIpLimit();
+        response = (OASGenericResponse) api.deleteIpLimit(params);
         System.assertEquals(expectedResponse, response);
 
 
@@ -313,7 +317,7 @@ private class OASAccountApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = OASGenericResponse.getExample();
-        response = (OASGenericResponse) api.deleteIpLimit();
+        response = (OASGenericResponse) api.deleteIpLimit(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAccountApi(client);
@@ -324,7 +328,7 @@ private class OASAccountApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = OASGenericResponse.getExample();
-        response = (OASGenericResponse) api.deleteIpLimit();
+        response = (OASGenericResponse) api.deleteIpLimit(params);
         System.assertEquals(expectedResponse, response);
 
 
@@ -332,7 +336,7 @@ private class OASAccountApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = OASGenericResponse.getExample();
-        response = (OASGenericResponse) api.deleteIpLimit();
+        response = (OASGenericResponse) api.deleteIpLimit(params);
         System.assertEquals(expectedResponse, response);
     }
 

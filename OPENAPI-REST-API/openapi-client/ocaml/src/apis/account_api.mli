@@ -8,7 +8,7 @@
 val change_account_username : unit -> Text_response.t Lwt.t
 val delete_account_oauth_name : name:string -> Success_text_response.t Lwt.t
 val delete_account_tfa : unit -> Success_text_response.t Lwt.t
-val delete_ip_limit : unit -> Generic_response.t Lwt.t
+val delete_ip_limit : ip_limit_range_t:Ip_limit_range.t -> unit -> Generic_response.t Lwt.t
 val get_account_info : unit -> Account_info.t Lwt.t
 val get_account_tfa_setup : unit -> Get_account_tfa_setup_200_response.t Lwt.t
 val get_home : unit -> Home.t Lwt.t

@@ -45,10 +45,10 @@ export interface VpsServiceInfo {
     vps_ip?: string;
     /**
      * IPv6 address of the VPS
-     * @type {any}
+     * @type {string}
      * @memberof VpsServiceInfo
      */
-    vps_ipv6?: any | null;
+    vps_ipv6?: string;
     /**
      * VPS Virtuozzo ID
      * @type {string}

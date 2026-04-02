@@ -81,10 +81,10 @@ public class FloatingIpsApiServiceImpl implements FloatingIpsApi {
      * Returns all Floating IP services on the account with their current status and assignment details.
      *
      */
-    public void getFloatingIpsList() {
+    public List<Object> getFloatingIpsList() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**

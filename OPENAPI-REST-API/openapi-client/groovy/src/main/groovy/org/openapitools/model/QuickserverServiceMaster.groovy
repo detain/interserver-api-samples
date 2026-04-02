@@ -68,9 +68,9 @@ class QuickserverServiceMaster {
     /* Packets/sec out */
     String qsPacketsSecOut
     /* Last install time (null) */
-    Object qsLastInstallTime = null
+    String qsLastInstallTime
     /* Partitions information (null) */
-    Object qsPartitions = null
+    String qsPartitions
     /* CPU flags */
     String qsCpuFlags
 }

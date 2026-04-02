@@ -134,11 +134,17 @@ exports.getFloatingIpInvoices = function(id) {
  * List Floating IPs
  * Returns all Floating IP services on the account with their current status and assignment details.
  *
- * no response value expected for this operation
+ * returns List
  **/
 exports.getFloatingIpsList = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = [ { }, { } ];
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

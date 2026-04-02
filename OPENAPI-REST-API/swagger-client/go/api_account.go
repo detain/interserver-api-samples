@@ -17,6 +17,7 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -437,9 +438,16 @@ func (a *AccountApiService) DeleteAccountTfa(ctx context.Context) (SuccessTextRe
 AccountApiService Remove IP Access Restriction
 Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *AccountApiDeleteIpLimitOpts - Optional Parameters:
+     * @param "Body" (optional.Interface of IpLimitRange) - 
 @return GenericResponse
 */
-func (a *AccountApiService) DeleteIpLimit(ctx context.Context) (GenericResponse, *http.Response, error) {
+
+type AccountApiDeleteIpLimitOpts struct {
+    Body optional.Interface
+}
+
+func (a *AccountApiService) DeleteIpLimit(ctx context.Context, localVarOptionals *AccountApiDeleteIpLimitOpts) (GenericResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
@@ -471,6 +479,12 @@ func (a *AccountApiService) DeleteIpLimit(ctx context.Context) (GenericResponse,
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.Body.IsSet() {
+		
+		localVarOptionalBody:= localVarOptionals.Body.Value()
+		localVarPostBody = &localVarOptionalBody
 	}
 	if ctx != nil {
 		// API Key Authentication

@@ -171,44 +171,44 @@ module OpenAPIClient
 
     # Optional properties
     # MAC address associated with the asset.
-    @[JSON::Field(key: "mac", type: JSON::Any?, nillable: true, emit_null: false)]
-    property mac : JSON::Any?
+    @[JSON::Field(key: "mac", type: String?, nillable: true, emit_null: false)]
+    property mac : String?
 
     # IPMI admin username associated with the asset.
-    @[JSON::Field(key: "ipmi_admin_username", type: JSON::Any?, nillable: true, emit_null: false)]
-    property ipmi_admin_username : JSON::Any?
+    @[JSON::Field(key: "ipmi_admin_username", type: String?, nillable: true, emit_null: false)]
+    property ipmi_admin_username : String?
 
     # IPMI admin password associated with the asset.
-    @[JSON::Field(key: "ipmi_admin_password", type: JSON::Any?, nillable: true, emit_null: false)]
-    property ipmi_admin_password : JSON::Any?
+    @[JSON::Field(key: "ipmi_admin_password", type: String?, nillable: true, emit_null: false)]
+    property ipmi_admin_password : String?
 
     # IPMI client username associated with the asset.
-    @[JSON::Field(key: "ipmi_client_username", type: JSON::Any?, nillable: true, emit_null: false)]
-    property ipmi_client_username : JSON::Any?
+    @[JSON::Field(key: "ipmi_client_username", type: String?, nillable: true, emit_null: false)]
+    property ipmi_client_username : String?
 
     # IPMI client password associated with the asset.
-    @[JSON::Field(key: "ipmi_client_password", type: JSON::Any?, nillable: true, emit_null: false)]
-    property ipmi_client_password : JSON::Any?
+    @[JSON::Field(key: "ipmi_client_password", type: String?, nillable: true, emit_null: false)]
+    property ipmi_client_password : String?
 
     # IPMI update status associated with the asset.
-    @[JSON::Field(key: "ipmi_updated", type: JSON::Any?, nillable: true, emit_null: false)]
-    property ipmi_updated : JSON::Any?
+    @[JSON::Field(key: "ipmi_updated", type: String?, nillable: true, emit_null: false)]
+    property ipmi_updated : String?
 
     # Timestamp of asset creation.
-    @[JSON::Field(key: "create_timestamp", type: JSON::Any?, nillable: true, emit_null: false)]
-    property create_timestamp : JSON::Any?
+    @[JSON::Field(key: "create_timestamp", type: String?, nillable: true, emit_null: false)]
+    property create_timestamp : String?
 
     # Timestamp of asset update.
-    @[JSON::Field(key: "update_timestamp", type: JSON::Any?, nillable: true, emit_null: false)]
-    property update_timestamp : JSON::Any?
+    @[JSON::Field(key: "update_timestamp", type: String?, nillable: true, emit_null: false)]
+    property update_timestamp : String?
 
     # Comment associated with the asset.
-    @[JSON::Field(key: "comment", type: JSON::Any?, nillable: true, emit_null: false)]
-    property comment : JSON::Any?
+    @[JSON::Field(key: "comment", type: String?, nillable: true, emit_null: false)]
+    property comment : String?
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(@id : Int32, @order_id : String, @hostname : String, @status : String, @primary_ipv4 : String, @primary_ipv6 : String, @datacenter : String, @type_id : String, @asset_tag : String, @rack : String, @row : String, @col : String, @unit_start : String, @unit_end : String, @unit_sub : String, @ipmi_mac : String, @ipmi_ip : String, @ipmi_working : String, @company : String, @comments : String, @make : String, @model : String, @description : String, @customer_id : String, @external_id : String, @billing_status : String, @overdue : String, @asset_id : String, @asset_name : String, @rack_id : String, @rack_name : String, @rack_location : String, @rack_size : String, @rack_x : String, @rack_y : String, @switchports : Array(Int32), @vlans : Array(String), @vlans6 : Array(String), @lease : ServerLease, @mac : JSON::Any? = nil, @ipmi_admin_username : JSON::Any? = nil, @ipmi_admin_password : JSON::Any? = nil, @ipmi_client_username : JSON::Any? = nil, @ipmi_client_password : JSON::Any? = nil, @ipmi_updated : JSON::Any? = nil, @create_timestamp : JSON::Any? = nil, @update_timestamp : JSON::Any? = nil, @comment : JSON::Any? = nil)
+    def initialize(@id : Int32, @order_id : String, @hostname : String, @status : String, @primary_ipv4 : String, @primary_ipv6 : String, @datacenter : String, @type_id : String, @asset_tag : String, @rack : String, @row : String, @col : String, @unit_start : String, @unit_end : String, @unit_sub : String, @ipmi_mac : String, @ipmi_ip : String, @ipmi_working : String, @company : String, @comments : String, @make : String, @model : String, @description : String, @customer_id : String, @external_id : String, @billing_status : String, @overdue : String, @asset_id : String, @asset_name : String, @rack_id : String, @rack_name : String, @rack_location : String, @rack_size : String, @rack_x : String, @rack_y : String, @switchports : Array(Int32), @vlans : Array(String), @vlans6 : Array(String), @lease : ServerLease, @mac : String? = nil, @ipmi_admin_username : String? = nil, @ipmi_admin_password : String? = nil, @ipmi_client_username : String? = nil, @ipmi_client_password : String? = nil, @ipmi_updated : String? = nil, @create_timestamp : String? = nil, @update_timestamp : String? = nil, @comment : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

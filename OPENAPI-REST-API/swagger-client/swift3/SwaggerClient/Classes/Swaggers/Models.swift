@@ -10385,7 +10385,7 @@ class Decoders {
                 case let .success(value): _result.qsIp = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["qs_ipv6"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["qs_ipv6"] as AnyObject?) {
                 case let .success(value): _result.qsIpv6 = value
                 case let .failure(error): break
                 }
@@ -10441,7 +10441,7 @@ class Decoders {
                 case let .success(value): _result.qsVnc = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["qs_vnc_port"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["qs_vnc_port"] as AnyObject?) {
                 case let .success(value): _result.qsVncPort = value
                 case let .failure(error): break
                 }
@@ -10465,7 +10465,7 @@ class Decoders {
                 case let .success(value): _result.qsLocation = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["qs_platform"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["qs_platform"] as AnyObject?) {
                 case let .success(value): _result.qsPlatform = value
                 case let .failure(error): break
                 }
@@ -10603,11 +10603,11 @@ class Decoders {
                 case let .success(value): _result.qsPacketsSecOut = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["qs_last_install_time"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["qs_last_install_time"] as AnyObject?) {
                 case let .success(value): _result.qsLastInstallTime = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["qs_partitions"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["qs_partitions"] as AnyObject?) {
                 case let .success(value): _result.qsPartitions = value
                 case let .failure(error): break
                 }
@@ -11078,7 +11078,7 @@ class Decoders {
                 case let .success(value): _result.primaryIpv6 = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["mac"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["mac"] as AnyObject?) {
                 case let .success(value): _result.mac = value
                 case let .failure(error): break
                 }
@@ -11126,23 +11126,23 @@ class Decoders {
                 case let .success(value): _result.ipmiIp = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["ipmi_admin_username"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["ipmi_admin_username"] as AnyObject?) {
                 case let .success(value): _result.ipmiAdminUsername = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["ipmi_admin_password"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["ipmi_admin_password"] as AnyObject?) {
                 case let .success(value): _result.ipmiAdminPassword = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["ipmi_client_username"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["ipmi_client_username"] as AnyObject?) {
                 case let .success(value): _result.ipmiClientUsername = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["ipmi_client_password"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["ipmi_client_password"] as AnyObject?) {
                 case let .success(value): _result.ipmiClientPassword = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["ipmi_updated"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["ipmi_updated"] as AnyObject?) {
                 case let .success(value): _result.ipmiUpdated = value
                 case let .failure(error): break
                 }
@@ -11186,11 +11186,11 @@ class Decoders {
                 case let .success(value): _result.overdue = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["create_timestamp"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["create_timestamp"] as AnyObject?) {
                 case let .success(value): _result.createTimestamp = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["update_timestamp"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["update_timestamp"] as AnyObject?) {
                 case let .success(value): _result.updateTimestamp = value
                 case let .failure(error): break
                 }
@@ -11226,7 +11226,7 @@ class Decoders {
                 case let .success(value): _result.rackY = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["comment"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["comment"] as AnyObject?) {
                 case let .success(value): _result.comment = value
                 case let .failure(error): break
                 }
@@ -11848,7 +11848,7 @@ class Decoders {
                 case let .success(value): _result.visible = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["hd_ids"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["hd_ids"] as AnyObject?) {
                 case let .success(value): _result.hdIds = value
                 case let .failure(error): break
                 }
@@ -12588,7 +12588,7 @@ class Decoders {
                 case let .success(value): _result.serverSetup = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["server_discount"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["server_discount"] as AnyObject?) {
                 case let .success(value): _result.serverDiscount = value
                 case let .failure(error): break
                 }
@@ -12604,7 +12604,7 @@ class Decoders {
                 case let .success(value): _result.serverTotalCost = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["server_location"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["server_location"] as AnyObject?) {
                 case let .success(value): _result.serverLocation = value
                 case let .failure(error): break
                 }
@@ -12632,7 +12632,7 @@ class Decoders {
                 case let .success(value): _result.serverDedicatedHd1 = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["server_dedicated_hd2"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["server_dedicated_hd2"] as AnyObject?) {
                 case let .success(value): _result.serverDedicatedHd2 = value
                 case let .failure(error): break
                 }
@@ -12648,7 +12648,7 @@ class Decoders {
                 case let .success(value): _result.serverDedicatedOs = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["server_dedicated_cp"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["server_dedicated_cp"] as AnyObject?) {
                 case let .success(value): _result.serverDedicatedCp = value
                 case let .failure(error): break
                 }
@@ -14836,7 +14836,7 @@ class Decoders {
                 case let .success(value): _result.vpsIp = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Object.self, source: sourceDictionary["vps_ipv6"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["vps_ipv6"] as AnyObject?) {
                 case let .success(value): _result.vpsIpv6 = value
                 case let .failure(error): break
                 }

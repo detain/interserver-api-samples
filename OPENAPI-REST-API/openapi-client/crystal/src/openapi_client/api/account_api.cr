@@ -197,15 +197,15 @@ module OpenAPIClient
     # Remove IP Access Restriction
     # Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
     # @return [GenericResponse]
-    def delete_ip_limit()
-      data, _status_code, _headers = delete_ip_limit_with_http_info()
+    def delete_ip_limit(ip_limit_range : IpLimitRange? = nil)
+      data, _status_code, _headers = delete_ip_limit_with_http_info(ip_limit_range)
       data
     end
 
     # Remove IP Access Restriction
     # Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
     # @return [Array<(GenericResponse, Integer, Hash)>] GenericResponse data, response status code and response headers
-    def delete_ip_limit_with_http_info()
+    def delete_ip_limit_with_http_info(ip_limit_range : IpLimitRange? = nil)
       if @api_client.config.debugging
         Log.debug {"Calling API: AccountApi.delete_ip_limit ..."}
       end
@@ -229,7 +229,7 @@ module OpenAPIClient
       form_params = Hash(Symbol, (String | ::File)).new
 
       # http body (model)
-      post_body = nil
+      post_body = ip_limit_range.to_json
 
       # auth_names
       auth_names = ["sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth"]

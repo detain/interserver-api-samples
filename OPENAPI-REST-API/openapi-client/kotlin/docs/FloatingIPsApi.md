@@ -235,7 +235,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getFloatingIpsList"></a>
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> kotlin.collections.List&lt;kotlin.Any&gt; getFloatingIpsList()
 
 List Floating IPs
 
@@ -249,7 +249,8 @@ Returns all Floating IP services on the account with their current status and as
 
 val apiInstance = FloatingIPsApi()
 try {
-    apiInstance.getFloatingIpsList()
+    val result : kotlin.collections.List<kotlin.Any> = apiInstance.getFloatingIpsList()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling FloatingIPsApi#getFloatingIpsList")
     e.printStackTrace()
@@ -264,7 +265,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**kotlin.collections.List&lt;kotlin.Any&gt;**](kotlin.Any.md)
 
 ### Authorization
 

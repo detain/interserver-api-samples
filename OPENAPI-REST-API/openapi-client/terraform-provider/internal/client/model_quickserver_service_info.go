@@ -8,7 +8,7 @@ type QuickserverServiceInfo struct {
 	QsCustid string `json:"qs_custid,omitempty"`
 	QsServer string `json:"qs_server,omitempty"`
 	QsIp string `json:"qs_ip,omitempty"`
-	QsIpv6 interface{} `json:"qs_ipv6,omitempty"`
+	QsIpv6 string `json:"qs_ipv6,omitempty"`
 	QsVzid string `json:"qs_vzid,omitempty"`
 	QsCurrency string `json:"qs_currency,omitempty"`
 	QsType string `json:"qs_type,omitempty"`
@@ -22,11 +22,11 @@ type QuickserverServiceInfo struct {
 	QsComment string `json:"qs_comment,omitempty"`
 	QsSlices string `json:"qs_slices,omitempty"`
 	QsVnc string `json:"qs_vnc,omitempty"`
-	QsVncPort interface{} `json:"qs_vnc_port,omitempty"`
+	QsVncPort int32 `json:"qs_vnc_port,omitempty"`
 	QsRootpass string `json:"qs_rootpass,omitempty"`
 	QsMac string `json:"qs_mac,omitempty"`
 	QsOs string `json:"qs_os,omitempty"`
 	QsVersion string `json:"qs_version,omitempty"`
 	QsLocation string `json:"qs_location,omitempty"`
-	QsPlatform interface{} `json:"qs_platform,omitempty"`
+	QsPlatform string `json:"qs_platform,omitempty"`
 }

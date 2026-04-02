@@ -25,6 +25,7 @@ import { GenericResponse } from '../model/genericResponse';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
 import { GetAccountTfaSetup200Response } from '../model/getAccountTfaSetup200Response';
 import { Home } from '../model/home';
+import { IpLimitRange } from '../model/ipLimitRange';
 import { SearchAutocompleteResponse } from '../model/searchAutocompleteResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
@@ -138,11 +139,12 @@ export class AccountService {
     /**
      * Remove IP Access Restriction
      * Removes an IP address range from the account\&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+     * @param ipLimitRange 
      
      */
-    public deleteIpLimit(observe?: 'body', headers?: Headers): Observable<GenericResponse>;
-    public deleteIpLimit(observe?: 'response', headers?: Headers): Observable<HttpResponse<GenericResponse>>;
-    public deleteIpLimit(observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, observe?: 'body', headers?: Headers): Observable<GenericResponse>;
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, observe?: 'response', headers?: Headers): Observable<HttpResponse<GenericResponse>>;
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
         if (this.APIConfiguration.apiKeys && this.APIConfiguration.apiKeys['X-API-KEY']) {
@@ -153,8 +155,9 @@ export class AccountService {
             headers['sessionid'] = this.APIConfiguration.apiKeys['sessionid'];
         }
         headers['Accept'] = 'application/json';
+        headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<GenericResponse>> = this.httpClient.patch(`${this.basePath}/account/iplimits`, headers);
+        const response: Observable<HttpResponse<GenericResponse>> = this.httpClient.patch(`${this.basePath}/account/iplimits`, ipLimitRange , headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <GenericResponse>(httpResponse.response))

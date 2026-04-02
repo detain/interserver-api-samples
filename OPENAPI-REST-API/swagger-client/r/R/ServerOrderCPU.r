@@ -155,7 +155,7 @@ ServerOrderCPU <- R6::R6Class(
         self$`visible` <- `visible`
       }
       if (!missing(`hd_ids`)) {
-        stopifnot(R6::is.R6(`hd_ids`))
+        stopifnot(is.character(`hd_ids`), length(`hd_ids`) == 1)
         self$`hd_ids` <- `hd_ids`
       }
       if (!missing(`price_display`)) {
@@ -236,7 +236,7 @@ ServerOrderCPU <- R6::R6Class(
         ServerOrderCPUObject[['visible']] <- self$`visible`
       }
       if (!is.null(self$`hd_ids`)) {
-        ServerOrderCPUObject[['hd_ids']] <- self$`hd_ids`$toJSON()
+        ServerOrderCPUObject[['hd_ids']] <- self$`hd_ids`
       }
       if (!is.null(self$`price_display`)) {
         ServerOrderCPUObject[['price_display']] <- self$`price_display`
@@ -316,9 +316,7 @@ ServerOrderCPU <- R6::R6Class(
         self$`visible` <- ServerOrderCPUObject$`visible`
       }
       if (!is.null(ServerOrderCPUObject$`hd_ids`)) {
-        hd_idsObject <- Object$new()
-        hd_idsObject$fromJSON(jsonlite::toJSON(ServerOrderCPUObject$hd_ids, auto_unbox = TRUE))
-        self$`hd_ids` <- hd_idsObject
+        self$`hd_ids` <- ServerOrderCPUObject$`hd_ids`
       }
       if (!is.null(ServerOrderCPUObject$`price_display`)) {
         self$`price_display` <- ServerOrderCPUObject$`price_display`
@@ -378,7 +376,7 @@ ServerOrderCPU <- R6::R6Class(
         self$`max_sff`,
         self$`max_nve`,
         self$`visible`,
-        self$`hd_ids`$toJSON(),
+        self$`hd_ids`,
         self$`price_display`,
         self$`monthly_price_display`
       )
@@ -407,8 +405,7 @@ ServerOrderCPU <- R6::R6Class(
       self$`max_sff` <- ServerOrderCPUObject$`max_sff`
       self$`max_nve` <- ServerOrderCPUObject$`max_nve`
       self$`visible` <- ServerOrderCPUObject$`visible`
-      ObjectObject <- Object$new()
-      self$`hd_ids` <- ObjectObject$fromJSON(jsonlite::toJSON(ServerOrderCPUObject$hd_ids, auto_unbox = TRUE))
+      self$`hd_ids` <- ServerOrderCPUObject$`hd_ids`
       self$`price_display` <- ServerOrderCPUObject$`price_display`
       self$`monthly_price_display` <- ServerOrderCPUObject$`monthly_price_display`
     }

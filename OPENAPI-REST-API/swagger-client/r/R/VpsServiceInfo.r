@@ -87,7 +87,7 @@ VpsServiceInfo <- R6::R6Class(
         self$`vps_ip` <- `vps_ip`
       }
       if (!missing(`vps_ipv6`)) {
-        stopifnot(R6::is.R6(`vps_ipv6`))
+        stopifnot(is.character(`vps_ipv6`), length(`vps_ipv6`) == 1)
         self$`vps_ipv6` <- `vps_ipv6`
       }
       if (!missing(`vps_vzid`)) {
@@ -194,7 +194,7 @@ VpsServiceInfo <- R6::R6Class(
         VpsServiceInfoObject[['vps_ip']] <- self$`vps_ip`
       }
       if (!is.null(self$`vps_ipv6`)) {
-        VpsServiceInfoObject[['vps_ipv6']] <- self$`vps_ipv6`$toJSON()
+        VpsServiceInfoObject[['vps_ipv6']] <- self$`vps_ipv6`
       }
       if (!is.null(self$`vps_vzid`)) {
         VpsServiceInfoObject[['vps_vzid']] <- self$`vps_vzid`
@@ -280,9 +280,7 @@ VpsServiceInfo <- R6::R6Class(
         self$`vps_ip` <- VpsServiceInfoObject$`vps_ip`
       }
       if (!is.null(VpsServiceInfoObject$`vps_ipv6`)) {
-        vps_ipv6Object <- Object$new()
-        vps_ipv6Object$fromJSON(jsonlite::toJSON(VpsServiceInfoObject$vps_ipv6, auto_unbox = TRUE))
-        self$`vps_ipv6` <- vps_ipv6Object
+        self$`vps_ipv6` <- VpsServiceInfoObject$`vps_ipv6`
       }
       if (!is.null(VpsServiceInfoObject$`vps_vzid`)) {
         self$`vps_vzid` <- VpsServiceInfoObject$`vps_vzid`
@@ -386,7 +384,7 @@ VpsServiceInfo <- R6::R6Class(
         self$`vps_custid`,
         self$`vps_server`,
         self$`vps_ip`,
-        self$`vps_ipv6`$toJSON(),
+        self$`vps_ipv6`,
         self$`vps_vzid`,
         self$`vps_currency`,
         self$`vps_type`,
@@ -417,8 +415,7 @@ VpsServiceInfo <- R6::R6Class(
       self$`vps_custid` <- VpsServiceInfoObject$`vps_custid`
       self$`vps_server` <- VpsServiceInfoObject$`vps_server`
       self$`vps_ip` <- VpsServiceInfoObject$`vps_ip`
-      ObjectObject <- Object$new()
-      self$`vps_ipv6` <- ObjectObject$fromJSON(jsonlite::toJSON(VpsServiceInfoObject$vps_ipv6, auto_unbox = TRUE))
+      self$`vps_ipv6` <- VpsServiceInfoObject$`vps_ipv6`
       self$`vps_vzid` <- VpsServiceInfoObject$`vps_vzid`
       self$`vps_currency` <- VpsServiceInfoObject$`vps_currency`
       self$`vps_type` <- VpsServiceInfoObject$`vps_type`

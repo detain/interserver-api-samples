@@ -275,63 +275,63 @@
                 
                 
                 ; [@key "lease"]
-                                              mac: Yojson.Safe.t
+                                              mac: string
                   
                    option [@default None]
                 
                 
                 ; [@key "mac"]
                     (** MAC address associated with the asset. *)
-                                      ipmi_admin_username: Yojson.Safe.t
+                                      ipmi_admin_username: string
                   
                    option [@default None]
                 
                 
                 ; [@key "ipmi_admin_username"]
                     (** IPMI admin username associated with the asset. *)
-                                      ipmi_admin_password: Yojson.Safe.t
+                                      ipmi_admin_password: string
                   
                    option [@default None]
                 
                 
                 ; [@key "ipmi_admin_password"]
                     (** IPMI admin password associated with the asset. *)
-                                      ipmi_client_username: Yojson.Safe.t
+                                      ipmi_client_username: string
                   
                    option [@default None]
                 
                 
                 ; [@key "ipmi_client_username"]
                     (** IPMI client username associated with the asset. *)
-                                      ipmi_client_password: Yojson.Safe.t
+                                      ipmi_client_password: string
                   
                    option [@default None]
                 
                 
                 ; [@key "ipmi_client_password"]
                     (** IPMI client password associated with the asset. *)
-                                      ipmi_updated: Yojson.Safe.t
+                                      ipmi_updated: string
                   
                    option [@default None]
                 
                 
                 ; [@key "ipmi_updated"]
                     (** IPMI update status associated with the asset. *)
-                                      create_timestamp: Yojson.Safe.t
+                                      create_timestamp: string
                   
                    option [@default None]
                 
                 
                 ; [@key "create_timestamp"]
                     (** Timestamp of asset creation. *)
-                                      update_timestamp: Yojson.Safe.t
+                                      update_timestamp: string
                   
                    option [@default None]
                 
                 
                 ; [@key "update_timestamp"]
                     (** Timestamp of asset update. *)
-                                      comment: Yojson.Safe.t
+                                      comment: string
                   
                    option [@default None]
                 

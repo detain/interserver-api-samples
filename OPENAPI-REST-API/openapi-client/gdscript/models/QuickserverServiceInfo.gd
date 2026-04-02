@@ -53,7 +53,7 @@ var __qsUnderscoreip__was__set := false
 # IPv6 address (null)
 # Required: False
 # isArray: false
-@export var qsUnderscoreipv6: AnyType:
+@export var qsUnderscoreipv6: String = "":
 	set(value):
 		__qsUnderscoreipv6__was__set = true
 		qsUnderscoreipv6 = value
@@ -191,7 +191,7 @@ var __qsUnderscorevnc__was__set := false
 # VNC port (null)
 # Required: False
 # isArray: false
-@export var qsUnderscorevncUnderscoreport: AnyType:
+@export var qsUnderscorevncUnderscoreport: int:
 	set(value):
 		__qsUnderscorevncUnderscoreport__was__set = true
 		qsUnderscorevncUnderscoreport = value
@@ -248,7 +248,7 @@ var __qsUnderscorelocation__was__set := false
 # Platform (null)
 # Required: False
 # isArray: false
-@export var qsUnderscoreplatform: AnyType:
+@export var qsUnderscoreplatform: String = "":
 	set(value):
 		__qsUnderscoreplatform__was__set = true
 		qsUnderscoreplatform = value

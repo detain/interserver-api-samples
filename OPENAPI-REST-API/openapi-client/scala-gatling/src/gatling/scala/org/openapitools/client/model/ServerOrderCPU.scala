@@ -48,7 +48,7 @@ case class ServerOrderCPU (
     /* Visibility status. */
     _visible: Option[String],
     /* Hard drive IDs. */
-    _hd_ids: Option[AnyType],
+    _hd_ids: Option[String],
     /* Display of CPU price. */
     _price_display: Option[String],
     /* Display of monthly CPU price. */

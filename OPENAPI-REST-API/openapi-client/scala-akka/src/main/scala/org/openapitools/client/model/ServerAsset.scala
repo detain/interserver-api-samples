@@ -92,22 +92,22 @@ case class ServerAsset (
   vlans6: Seq[String],
   lease: ServerLease,
   /* MAC address associated with the asset. */
-  mac: Option[AnyType] = None,
+  mac: Option[String] = None,
   /* IPMI admin username associated with the asset. */
-  ipmi_admin_username: Option[AnyType] = None,
+  ipmi_admin_username: Option[String] = None,
   /* IPMI admin password associated with the asset. */
-  ipmi_admin_password: Option[AnyType] = None,
+  ipmi_admin_password: Option[String] = None,
   /* IPMI client username associated with the asset. */
-  ipmi_client_username: Option[AnyType] = None,
+  ipmi_client_username: Option[String] = None,
   /* IPMI client password associated with the asset. */
-  ipmi_client_password: Option[AnyType] = None,
+  ipmi_client_password: Option[String] = None,
   /* IPMI update status associated with the asset. */
-  ipmi_updated: Option[AnyType] = None,
+  ipmi_updated: Option[String] = None,
   /* Timestamp of asset creation. */
-  create_timestamp: Option[AnyType] = None,
+  create_timestamp: Option[String] = None,
   /* Timestamp of asset update. */
-  update_timestamp: Option[AnyType] = None,
+  update_timestamp: Option[String] = None,
   /* Comment associated with the asset. */
-  comment: Option[AnyType] = None
+  comment: Option[String] = None
 ) extends ApiModel
 

@@ -32,7 +32,7 @@ class QuickserverServiceInfo(object):
         'qs_custid': 'str',
         'qs_server': 'str',
         'qs_ip': 'str',
-        'qs_ipv6': 'object',
+        'qs_ipv6': 'str',
         'qs_vzid': 'str',
         'qs_currency': 'str',
         'qs_type': 'str',
@@ -46,13 +46,13 @@ class QuickserverServiceInfo(object):
         'qs_comment': 'str',
         'qs_slices': 'str',
         'qs_vnc': 'str',
-        'qs_vnc_port': 'object',
+        'qs_vnc_port': 'int',
         'qs_rootpass': 'str',
         'qs_mac': 'str',
         'qs_os': 'str',
         'qs_version': 'str',
         'qs_location': 'str',
-        'qs_platform': 'object'
+        'qs_platform': 'str'
     }
 
     attribute_map = {
@@ -261,7 +261,7 @@ class QuickserverServiceInfo(object):
         IPv6 address (null)  # noqa: E501
 
         :return: The qs_ipv6 of this QuickserverServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._qs_ipv6
 
@@ -272,7 +272,7 @@ class QuickserverServiceInfo(object):
         IPv6 address (null)  # noqa: E501
 
         :param qs_ipv6: The qs_ipv6 of this QuickserverServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._qs_ipv6 = qs_ipv6
@@ -583,7 +583,7 @@ class QuickserverServiceInfo(object):
         VNC port (null)  # noqa: E501
 
         :return: The qs_vnc_port of this QuickserverServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: int
         """
         return self._qs_vnc_port
 
@@ -594,7 +594,7 @@ class QuickserverServiceInfo(object):
         VNC port (null)  # noqa: E501
 
         :param qs_vnc_port: The qs_vnc_port of this QuickserverServiceInfo.  # noqa: E501
-        :type: object
+        :type: int
         """
 
         self._qs_vnc_port = qs_vnc_port
@@ -721,7 +721,7 @@ class QuickserverServiceInfo(object):
         Platform (null)  # noqa: E501
 
         :return: The qs_platform of this QuickserverServiceInfo.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._qs_platform
 
@@ -732,7 +732,7 @@ class QuickserverServiceInfo(object):
         Platform (null)  # noqa: E501
 
         :param qs_platform: The qs_platform of this QuickserverServiceInfo.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._qs_platform = qs_platform

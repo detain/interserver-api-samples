@@ -14,7 +14,6 @@ package org.openapitools.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.constraints.*;
@@ -55,7 +54,7 @@ import javax.annotation.Generated;
   VpsServiceInfo.JSON_PROPERTY_VPS_DISKMAX
 })
 @JsonTypeName("VpsServiceInfo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class VpsServiceInfo {
     public static final String JSON_PROPERTY_VPS_ID = "vps_id";
@@ -71,7 +70,7 @@ public class VpsServiceInfo {
     private String vpsIp;
 
     public static final String JSON_PROPERTY_VPS_IPV6 = "vps_ipv6";
-    private Object vpsIpv6 = null;
+    private String vpsIpv6;
 
     public static final String JSON_PROPERTY_VPS_VZID = "vps_vzid";
     private String vpsVzid;
@@ -230,7 +229,7 @@ public class VpsServiceInfo {
         this.vpsIp = vpsIp;
     }
 
-    public VpsServiceInfo vpsIpv6(Object vpsIpv6) {
+    public VpsServiceInfo vpsIpv6(String vpsIpv6) {
         this.vpsIpv6 = vpsIpv6;
         return this;
     }
@@ -242,13 +241,13 @@ public class VpsServiceInfo {
     @Nullable
     @JsonProperty(JSON_PROPERTY_VPS_IPV6)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getVpsIpv6() {
+    public String getVpsIpv6() {
         return vpsIpv6;
     }
 
     @JsonProperty(JSON_PROPERTY_VPS_IPV6)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVpsIpv6(Object vpsIpv6) {
+    public void setVpsIpv6(String vpsIpv6) {
         this.vpsIpv6 = vpsIpv6;
     }
 

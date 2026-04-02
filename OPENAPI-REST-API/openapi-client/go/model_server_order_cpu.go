@@ -65,7 +65,7 @@ type ServerOrderCPU struct {
 	// Visibility status.
 	Visible *string `json:"visible,omitempty"`
 	// Hard drive IDs.
-	HdIds interface{} `json:"hd_ids,omitempty"`
+	HdIds *string `json:"hd_ids,omitempty"`
 	// Display of CPU price.
 	PriceDisplay *string `json:"price_display,omitempty"`
 	// Display of monthly CPU price.
@@ -793,23 +793,22 @@ func (o *ServerOrderCPU) SetVisible(v string) {
 	o.Visible = &v
 }
 
-// GetHdIds returns the HdIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerOrderCPU) GetHdIds() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetHdIds returns the HdIds field value if set, zero value otherwise.
+func (o *ServerOrderCPU) GetHdIds() string {
+	if o == nil || IsNil(o.HdIds) {
+		var ret string
 		return ret
 	}
-	return o.HdIds
+	return *o.HdIds
 }
 
 // GetHdIdsOk returns a tuple with the HdIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerOrderCPU) GetHdIdsOk() (*interface{}, bool) {
+func (o *ServerOrderCPU) GetHdIdsOk() (*string, bool) {
 	if o == nil || IsNil(o.HdIds) {
 		return nil, false
 	}
-	return &o.HdIds, true
+	return o.HdIds, true
 }
 
 // HasHdIds returns a boolean if a field has been set.
@@ -821,9 +820,9 @@ func (o *ServerOrderCPU) HasHdIds() bool {
 	return false
 }
 
-// SetHdIds gets a reference to the given interface{} and assigns it to the HdIds field.
-func (o *ServerOrderCPU) SetHdIds(v interface{}) {
-	o.HdIds = v
+// SetHdIds gets a reference to the given string and assigns it to the HdIds field.
+func (o *ServerOrderCPU) SetHdIds(v string) {
+	o.HdIds = &v
 }
 
 // GetPriceDisplay returns the PriceDisplay field value if set, zero value otherwise.
@@ -966,7 +965,7 @@ func (o ServerOrderCPU) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Visible) {
 		toSerialize["visible"] = o.Visible
 	}
-	if o.HdIds != nil {
+	if !IsNil(o.HdIds) {
 		toSerialize["hd_ids"] = o.HdIds
 	}
 	if !IsNil(o.PriceDisplay) {

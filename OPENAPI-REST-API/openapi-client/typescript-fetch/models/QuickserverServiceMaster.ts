@@ -201,16 +201,16 @@ export interface QuickserverServiceMaster {
     qs_packets_sec_out?: string;
     /**
      * Last install time (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceMaster
      */
-    qs_last_install_time?: any | null;
+    qs_last_install_time?: string | null;
     /**
      * Partitions information (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceMaster
      */
-    qs_partitions?: any | null;
+    qs_partitions?: string | null;
     /**
      * CPU flags
      * @type {string}

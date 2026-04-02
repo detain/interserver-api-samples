@@ -29,7 +29,7 @@ Name | Type
 `max_sff` | string
 `max_nve` | string
 `visible` | string
-`hd_ids` | any
+`hd_ids` | string
 `price_display` | string
 `monthly_price_display` | string
 

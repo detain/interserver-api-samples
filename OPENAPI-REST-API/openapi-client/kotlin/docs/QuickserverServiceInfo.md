@@ -8,7 +8,7 @@
 | **qsCustid** | **kotlin.String** | Customer ID |  [optional] |
 | **qsServer** | **kotlin.String** | Server information |  [optional] |
 | **qsIp** | **kotlin.String** | IP address |  [optional] |
-| **qsIpv6** | [**kotlin.Any**](.md) | IPv6 address (null) |  [optional] |
+| **qsIpv6** | **kotlin.String** | IPv6 address (null) |  [optional] |
 | **qsVzid** | **kotlin.String** | VZ ID |  [optional] |
 | **qsCurrency** | **kotlin.String** | Currency |  [optional] |
 | **qsType** | **kotlin.String** | Type |  [optional] |
@@ -22,13 +22,13 @@
 | **qsComment** | **kotlin.String** | Comment |  [optional] |
 | **qsSlices** | **kotlin.String** | Slices information |  [optional] |
 | **qsVnc** | **kotlin.String** | VNC information |  [optional] |
-| **qsVncPort** | [**kotlin.Any**](.md) | VNC port (null) |  [optional] |
+| **qsVncPort** | **kotlin.Int** | VNC port (null) |  [optional] |
 | **qsRootpass** | **kotlin.String** | Root password |  [optional] |
 | **qsMac** | **kotlin.String** | MAC address |  [optional] |
 | **qsOs** | **kotlin.String** | Operating system |  [optional] |
 | **qsVersion** | **kotlin.String** | OS version |  [optional] |
 | **qsLocation** | **kotlin.String** | Location |  [optional] |
-| **qsPlatform** | [**kotlin.Any**](.md) | Platform (null) |  [optional] |
+| **qsPlatform** | **kotlin.String** | Platform (null) |  [optional] |
 
 
 

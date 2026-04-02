@@ -73,13 +73,13 @@ public struct QuickserverServiceMaster: Codable {
     /** Packets/sec out */
     public var qsPacketsSecOut: String?
     /** Last install time (null) */
-    public var qsLastInstallTime: Any?
+    public var qsLastInstallTime: String?
     /** Partitions information (null) */
-    public var qsPartitions: Any?
+    public var qsPartitions: String?
     /** CPU flags */
     public var qsCpuFlags: String?
 
-    public init(qsId: String? = nil, qsName: String? = nil, qsIp: String? = nil, qsType: String? = nil, qsHdsize: String? = nil, qsHdfree: String? = nil, qsBits: String? = nil, qsLoad: String? = nil, qsRam: String? = nil, qsCpuModel: String? = nil, qsCpuMhz: String? = nil, qsLocation: String? = nil, qsAvailable: String? = nil, qsCost: String? = nil, qsLastUpdate: String? = nil, qsCores: String? = nil, qsIowait: String? = nil, qsRaidStatus: String? = nil, qsDriveType: String? = nil, qsOrder: String? = nil, qsRaidBuilding: String? = nil, qsKernel: String? = nil, qsIoping: String? = nil, qsSpeed: String? = nil, qsDistro: String? = nil, qsDistroVersion: String? = nil, qsBytesSecIn: String? = nil, qsBytesSecOut: String? = nil, qsPacketsSecIn: String? = nil, qsPacketsSecOut: String? = nil, qsLastInstallTime: Any? = nil, qsPartitions: Any? = nil, qsCpuFlags: String? = nil) {
+    public init(qsId: String? = nil, qsName: String? = nil, qsIp: String? = nil, qsType: String? = nil, qsHdsize: String? = nil, qsHdfree: String? = nil, qsBits: String? = nil, qsLoad: String? = nil, qsRam: String? = nil, qsCpuModel: String? = nil, qsCpuMhz: String? = nil, qsLocation: String? = nil, qsAvailable: String? = nil, qsCost: String? = nil, qsLastUpdate: String? = nil, qsCores: String? = nil, qsIowait: String? = nil, qsRaidStatus: String? = nil, qsDriveType: String? = nil, qsOrder: String? = nil, qsRaidBuilding: String? = nil, qsKernel: String? = nil, qsIoping: String? = nil, qsSpeed: String? = nil, qsDistro: String? = nil, qsDistroVersion: String? = nil, qsBytesSecIn: String? = nil, qsBytesSecOut: String? = nil, qsPacketsSecIn: String? = nil, qsPacketsSecOut: String? = nil, qsLastInstallTime: String? = nil, qsPartitions: String? = nil, qsCpuFlags: String? = nil) {
         self.qsId = qsId
         self.qsName = qsName
         self.qsIp = qsIp

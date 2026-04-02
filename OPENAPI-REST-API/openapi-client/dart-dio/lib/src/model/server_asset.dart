@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/server_lease.dart';
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -221,39 +220,39 @@ abstract class ServerAsset implements Built<ServerAsset, ServerAssetBuilder> {
 
   /// MAC address associated with the asset.
   @BuiltValueField(wireName: r'mac')
-  JsonObject? get mac;
+  String? get mac;
 
   /// IPMI admin username associated with the asset.
   @BuiltValueField(wireName: r'ipmi_admin_username')
-  JsonObject? get ipmiAdminUsername;
+  String? get ipmiAdminUsername;
 
   /// IPMI admin password associated with the asset.
   @BuiltValueField(wireName: r'ipmi_admin_password')
-  JsonObject? get ipmiAdminPassword;
+  String? get ipmiAdminPassword;
 
   /// IPMI client username associated with the asset.
   @BuiltValueField(wireName: r'ipmi_client_username')
-  JsonObject? get ipmiClientUsername;
+  String? get ipmiClientUsername;
 
   /// IPMI client password associated with the asset.
   @BuiltValueField(wireName: r'ipmi_client_password')
-  JsonObject? get ipmiClientPassword;
+  String? get ipmiClientPassword;
 
   /// IPMI update status associated with the asset.
   @BuiltValueField(wireName: r'ipmi_updated')
-  JsonObject? get ipmiUpdated;
+  String? get ipmiUpdated;
 
   /// Timestamp of asset creation.
   @BuiltValueField(wireName: r'create_timestamp')
-  JsonObject? get createTimestamp;
+  String? get createTimestamp;
 
   /// Timestamp of asset update.
   @BuiltValueField(wireName: r'update_timestamp')
-  JsonObject? get updateTimestamp;
+  String? get updateTimestamp;
 
   /// Comment associated with the asset.
   @BuiltValueField(wireName: r'comment')
-  JsonObject? get comment;
+  String? get comment;
 
   ServerAsset._();
 
@@ -477,63 +476,63 @@ class _$ServerAssetSerializer implements PrimitiveSerializer<ServerAsset> {
       yield r'mac';
       yield serializers.serialize(
         object.mac,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.ipmiAdminUsername != null) {
       yield r'ipmi_admin_username';
       yield serializers.serialize(
         object.ipmiAdminUsername,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.ipmiAdminPassword != null) {
       yield r'ipmi_admin_password';
       yield serializers.serialize(
         object.ipmiAdminPassword,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.ipmiClientUsername != null) {
       yield r'ipmi_client_username';
       yield serializers.serialize(
         object.ipmiClientUsername,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.ipmiClientPassword != null) {
       yield r'ipmi_client_password';
       yield serializers.serialize(
         object.ipmiClientPassword,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.ipmiUpdated != null) {
       yield r'ipmi_updated';
       yield serializers.serialize(
         object.ipmiUpdated,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.createTimestamp != null) {
       yield r'create_timestamp';
       yield serializers.serialize(
         object.createTimestamp,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.updateTimestamp != null) {
       yield r'update_timestamp';
       yield serializers.serialize(
         object.updateTimestamp,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.comment != null) {
       yield r'comment';
       yield serializers.serialize(
         object.comment,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -835,73 +834,64 @@ class _$ServerAssetSerializer implements PrimitiveSerializer<ServerAsset> {
         case r'mac':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.mac = valueDes;
           break;
         case r'ipmi_admin_username':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.ipmiAdminUsername = valueDes;
           break;
         case r'ipmi_admin_password':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.ipmiAdminPassword = valueDes;
           break;
         case r'ipmi_client_username':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.ipmiClientUsername = valueDes;
           break;
         case r'ipmi_client_password':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.ipmiClientPassword = valueDes;
           break;
         case r'ipmi_updated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.ipmiUpdated = valueDes;
           break;
         case r'create_timestamp':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.createTimestamp = valueDes;
           break;
         case r'update_timestamp':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.updateTimestamp = valueDes;
           break;
         case r'comment':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.comment = valueDes;
           break;
         default:

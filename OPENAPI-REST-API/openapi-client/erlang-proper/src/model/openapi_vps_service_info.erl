@@ -13,7 +13,7 @@
   | {'vps_custid', binary() }
   | {'vps_server', binary() }
   | {'vps_ip', binary() }
-  | {'vps_ipv6', openapi_any_type:openapi_any_type() }
+  | {'vps_ipv6', binary() }
   | {'vps_vzid', binary() }
   | {'vps_currency', binary() }
   | {'vps_type', binary() }
@@ -47,7 +47,7 @@ openapi_vps_service_info(Fields) ->
             , {'vps_custid', binary() }
             , {'vps_server', binary() }
             , {'vps_ip', binary() }
-            , {'vps_ipv6', openapi_any_type:openapi_any_type() }
+            , {'vps_ipv6', binary() }
             , {'vps_vzid', binary() }
             , {'vps_currency', binary() }
             , {'vps_type', binary() }

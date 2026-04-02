@@ -58,7 +58,7 @@ public class AccountApiServiceImpl implements AccountApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response deleteIpLimit(SecurityContext securityContext) {
+      public Response deleteIpLimit(IpLimitRange body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

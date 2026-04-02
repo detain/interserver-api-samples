@@ -61,7 +61,7 @@ public class AccountApiServiceImpl extends AccountApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response deleteIpLimit(SecurityContext securityContext) throws NotFoundException {
+    public Response deleteIpLimit(IpLimitRange body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

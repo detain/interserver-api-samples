@@ -85,7 +85,7 @@ export interface ServerServiceInfo {
     /**
      * Discount information for the server.
      */
-    server_discount?: any | null;
+    server_discount?: string;
     /**
      * The reputation of the server.
      */
@@ -101,7 +101,7 @@ export interface ServerServiceInfo {
     /**
      * The location of the server.
      */
-    server_location?: any | null;
+    server_location?: string;
     /**
      * The ordered hardware for the server.
      */
@@ -129,7 +129,7 @@ export interface ServerServiceInfo {
     /**
      * The size of the second dedicated hard drive.
      */
-    server_dedicated_hd2?: any | null;
+    server_dedicated_hd2?: string;
     /**
      * The bandwidth of the server.
      */
@@ -145,7 +145,7 @@ export interface ServerServiceInfo {
     /**
      * The control panel of the server.
      */
-    server_dedicated_cp?: any | null;
+    server_dedicated_cp?: string;
     /**
      * The RAID configuration of the server.
      */

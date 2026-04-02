@@ -1148,7 +1148,7 @@ open class VPSAPI {
   "cpu_graph_data" : "",
   "serviceInfo" : {
     "vps_order_date" : "2022-12-26T20:14:59.000Z",
-    "vps_ipv6" : "",
+    "vps_ipv6" : "vps_ipv6",
     "vps_currency" : "USD",
     "vps_invoice" : "20130799",
     "vps_coupon" : "3646",

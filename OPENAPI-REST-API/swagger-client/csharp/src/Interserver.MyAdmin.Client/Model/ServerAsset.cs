@@ -79,7 +79,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// <param name="vlans">List of VLANs associated with the asset. (required).</param>
         /// <param name="vlans6">List of IPv6 VLANs associated with the asset. (required).</param>
         /// <param name="lease">lease (required).</param>
-        public ServerAsset(int? id = default(int?), string orderId = default(string), string hostname = default(string), string status = default(string), string primaryIpv4 = default(string), string primaryIpv6 = default(string), Object mac = default(Object), string datacenter = default(string), string typeId = default(string), string assetTag = default(string), string rack = default(string), string row = default(string), string col = default(string), string unitStart = default(string), string unitEnd = default(string), string unitSub = default(string), string ipmiMac = default(string), string ipmiIp = default(string), Object ipmiAdminUsername = default(Object), Object ipmiAdminPassword = default(Object), Object ipmiClientUsername = default(Object), Object ipmiClientPassword = default(Object), Object ipmiUpdated = default(Object), string ipmiWorking = default(string), string company = default(string), string comments = default(string), string make = default(string), string model = default(string), string description = default(string), string customerId = default(string), string externalId = default(string), string billingStatus = default(string), string overdue = default(string), Object createTimestamp = default(Object), Object updateTimestamp = default(Object), string assetId = default(string), string assetName = default(string), string rackId = default(string), string rackName = default(string), string rackLocation = default(string), string rackSize = default(string), string rackX = default(string), string rackY = default(string), Object comment = default(Object), List<int?> switchports = default(List<int?>), List<string> vlans = default(List<string>), List<string> vlans6 = default(List<string>), ServerLease lease = default(ServerLease))
+        public ServerAsset(int? id = default(int?), string orderId = default(string), string hostname = default(string), string status = default(string), string primaryIpv4 = default(string), string primaryIpv6 = default(string), string mac = default(string), string datacenter = default(string), string typeId = default(string), string assetTag = default(string), string rack = default(string), string row = default(string), string col = default(string), string unitStart = default(string), string unitEnd = default(string), string unitSub = default(string), string ipmiMac = default(string), string ipmiIp = default(string), string ipmiAdminUsername = default(string), string ipmiAdminPassword = default(string), string ipmiClientUsername = default(string), string ipmiClientPassword = default(string), string ipmiUpdated = default(string), string ipmiWorking = default(string), string company = default(string), string comments = default(string), string make = default(string), string model = default(string), string description = default(string), string customerId = default(string), string externalId = default(string), string billingStatus = default(string), string overdue = default(string), string createTimestamp = default(string), string updateTimestamp = default(string), string assetId = default(string), string assetName = default(string), string rackId = default(string), string rackName = default(string), string rackLocation = default(string), string rackSize = default(string), string rackX = default(string), string rackY = default(string), string comment = default(string), List<int?> switchports = default(List<int?>), List<string> vlans = default(List<string>), List<string> vlans6 = default(List<string>), ServerLease lease = default(ServerLease))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -490,7 +490,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>MAC address associated with the asset.</value>
         [DataMember(Name="mac", EmitDefaultValue=false)]
-        public Object mac { get; set; }
+        public string mac { get; set; }
 
         /// <summary>
         /// Datacenter identifier for the asset.
@@ -574,35 +574,35 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>IPMI admin username associated with the asset.</value>
         [DataMember(Name="ipmi_admin_username", EmitDefaultValue=false)]
-        public Object ipmi_admin_username { get; set; }
+        public string ipmi_admin_username { get; set; }
 
         /// <summary>
         /// IPMI admin password associated with the asset.
         /// </summary>
         /// <value>IPMI admin password associated with the asset.</value>
         [DataMember(Name="ipmi_admin_password", EmitDefaultValue=false)]
-        public Object ipmi_admin_password { get; set; }
+        public string ipmi_admin_password { get; set; }
 
         /// <summary>
         /// IPMI client username associated with the asset.
         /// </summary>
         /// <value>IPMI client username associated with the asset.</value>
         [DataMember(Name="ipmi_client_username", EmitDefaultValue=false)]
-        public Object ipmi_client_username { get; set; }
+        public string ipmi_client_username { get; set; }
 
         /// <summary>
         /// IPMI client password associated with the asset.
         /// </summary>
         /// <value>IPMI client password associated with the asset.</value>
         [DataMember(Name="ipmi_client_password", EmitDefaultValue=false)]
-        public Object ipmi_client_password { get; set; }
+        public string ipmi_client_password { get; set; }
 
         /// <summary>
         /// IPMI update status associated with the asset.
         /// </summary>
         /// <value>IPMI update status associated with the asset.</value>
         [DataMember(Name="ipmi_updated", EmitDefaultValue=false)]
-        public Object ipmi_updated { get; set; }
+        public string ipmi_updated { get; set; }
 
         /// <summary>
         /// IPMI working status associated with the asset.
@@ -679,14 +679,14 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>Timestamp of asset creation.</value>
         [DataMember(Name="create_timestamp", EmitDefaultValue=false)]
-        public Object create_timestamp { get; set; }
+        public string create_timestamp { get; set; }
 
         /// <summary>
         /// Timestamp of asset update.
         /// </summary>
         /// <value>Timestamp of asset update.</value>
         [DataMember(Name="update_timestamp", EmitDefaultValue=false)]
-        public Object update_timestamp { get; set; }
+        public string update_timestamp { get; set; }
 
         /// <summary>
         /// Asset identifier for the asset.
@@ -749,7 +749,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>Comment associated with the asset.</value>
         [DataMember(Name="comment", EmitDefaultValue=false)]
-        public Object comment { get; set; }
+        public string comment { get; set; }
 
         /// <summary>
         /// List of switchports associated with the asset.

@@ -18,6 +18,7 @@ import org.openapitools.model.GenericResponse;
 import org.openapitools.model.GetAccountInfo401Response;
 import org.openapitools.model.GetAccountTfaSetup200Response;
 import org.openapitools.model.Home;
+import org.openapitools.model.IpLimitRange;
 import org.openapitools.model.SearchAutocompleteResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
@@ -128,7 +129,8 @@ public class AccountApiTest {
      */
     @Test
     public void deleteIpLimitTest() {
-        //GenericResponse response = api.deleteIpLimit();
+        IpLimitRange ipLimitRange = null;
+        //GenericResponse response = api.deleteIpLimit(ipLimitRange);
         //assertNotNull(response);
         // TODO: test validations
 

@@ -71,9 +71,9 @@ open class QuickserverServiceMaster: JSONEncodable {
     /** Packets/sec out */
     public var qsPacketsSecOut: String?
     /** Last install time (null) */
-    public var qsLastInstallTime: Object?
+    public var qsLastInstallTime: String?
     /** Partitions information (null) */
-    public var qsPartitions: Object?
+    public var qsPartitions: String?
     /** CPU flags */
     public var qsCpuFlags: String?
 
@@ -112,8 +112,8 @@ open class QuickserverServiceMaster: JSONEncodable {
         nillableDictionary["qs_bytes_sec_out"] = self.qsBytesSecOut
         nillableDictionary["qs_packets_sec_in"] = self.qsPacketsSecIn
         nillableDictionary["qs_packets_sec_out"] = self.qsPacketsSecOut
-        nillableDictionary["qs_last_install_time"] = self.qsLastInstallTime?.encodeToJSON()
-        nillableDictionary["qs_partitions"] = self.qsPartitions?.encodeToJSON()
+        nillableDictionary["qs_last_install_time"] = self.qsLastInstallTime
+        nillableDictionary["qs_partitions"] = self.qsPartitions
         nillableDictionary["qs_cpu_flags"] = self.qsCpuFlags
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]

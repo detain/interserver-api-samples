@@ -83,7 +83,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_ip` <- `qs_ip`
       }
       if (!missing(`qs_ipv6`)) {
-        stopifnot(R6::is.R6(`qs_ipv6`))
+        stopifnot(is.character(`qs_ipv6`), length(`qs_ipv6`) == 1)
         self$`qs_ipv6` <- `qs_ipv6`
       }
       if (!missing(`qs_vzid`)) {
@@ -139,7 +139,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_vnc` <- `qs_vnc`
       }
       if (!missing(`qs_vnc_port`)) {
-        stopifnot(R6::is.R6(`qs_vnc_port`))
+        stopifnot(is.numeric(`qs_vnc_port`), length(`qs_vnc_port`) == 1)
         self$`qs_vnc_port` <- `qs_vnc_port`
       }
       if (!missing(`qs_rootpass`)) {
@@ -163,7 +163,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_location` <- `qs_location`
       }
       if (!missing(`qs_platform`)) {
-        stopifnot(R6::is.R6(`qs_platform`))
+        stopifnot(is.character(`qs_platform`), length(`qs_platform`) == 1)
         self$`qs_platform` <- `qs_platform`
       }
     },
@@ -182,7 +182,7 @@ QuickserverServiceInfo <- R6::R6Class(
         QuickserverServiceInfoObject[['qs_ip']] <- self$`qs_ip`
       }
       if (!is.null(self$`qs_ipv6`)) {
-        QuickserverServiceInfoObject[['qs_ipv6']] <- self$`qs_ipv6`$toJSON()
+        QuickserverServiceInfoObject[['qs_ipv6']] <- self$`qs_ipv6`
       }
       if (!is.null(self$`qs_vzid`)) {
         QuickserverServiceInfoObject[['qs_vzid']] <- self$`qs_vzid`
@@ -224,7 +224,7 @@ QuickserverServiceInfo <- R6::R6Class(
         QuickserverServiceInfoObject[['qs_vnc']] <- self$`qs_vnc`
       }
       if (!is.null(self$`qs_vnc_port`)) {
-        QuickserverServiceInfoObject[['qs_vnc_port']] <- self$`qs_vnc_port`$toJSON()
+        QuickserverServiceInfoObject[['qs_vnc_port']] <- self$`qs_vnc_port`
       }
       if (!is.null(self$`qs_rootpass`)) {
         QuickserverServiceInfoObject[['qs_rootpass']] <- self$`qs_rootpass`
@@ -242,7 +242,7 @@ QuickserverServiceInfo <- R6::R6Class(
         QuickserverServiceInfoObject[['qs_location']] <- self$`qs_location`
       }
       if (!is.null(self$`qs_platform`)) {
-        QuickserverServiceInfoObject[['qs_platform']] <- self$`qs_platform`$toJSON()
+        QuickserverServiceInfoObject[['qs_platform']] <- self$`qs_platform`
       }
 
       QuickserverServiceInfoObject
@@ -262,9 +262,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_ip` <- QuickserverServiceInfoObject$`qs_ip`
       }
       if (!is.null(QuickserverServiceInfoObject$`qs_ipv6`)) {
-        qs_ipv6Object <- Object$new()
-        qs_ipv6Object$fromJSON(jsonlite::toJSON(QuickserverServiceInfoObject$qs_ipv6, auto_unbox = TRUE))
-        self$`qs_ipv6` <- qs_ipv6Object
+        self$`qs_ipv6` <- QuickserverServiceInfoObject$`qs_ipv6`
       }
       if (!is.null(QuickserverServiceInfoObject$`qs_vzid`)) {
         self$`qs_vzid` <- QuickserverServiceInfoObject$`qs_vzid`
@@ -306,9 +304,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_vnc` <- QuickserverServiceInfoObject$`qs_vnc`
       }
       if (!is.null(QuickserverServiceInfoObject$`qs_vnc_port`)) {
-        qs_vnc_portObject <- Object$new()
-        qs_vnc_portObject$fromJSON(jsonlite::toJSON(QuickserverServiceInfoObject$qs_vnc_port, auto_unbox = TRUE))
-        self$`qs_vnc_port` <- qs_vnc_portObject
+        self$`qs_vnc_port` <- QuickserverServiceInfoObject$`qs_vnc_port`
       }
       if (!is.null(QuickserverServiceInfoObject$`qs_rootpass`)) {
         self$`qs_rootpass` <- QuickserverServiceInfoObject$`qs_rootpass`
@@ -326,9 +322,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_location` <- QuickserverServiceInfoObject$`qs_location`
       }
       if (!is.null(QuickserverServiceInfoObject$`qs_platform`)) {
-        qs_platformObject <- Object$new()
-        qs_platformObject$fromJSON(jsonlite::toJSON(QuickserverServiceInfoObject$qs_platform, auto_unbox = TRUE))
-        self$`qs_platform` <- qs_platformObject
+        self$`qs_platform` <- QuickserverServiceInfoObject$`qs_platform`
       }
     },
     toJSONString = function() {
@@ -352,7 +346,7 @@ QuickserverServiceInfo <- R6::R6Class(
            "qs_comment": %s,
            "qs_slices": %s,
            "qs_vnc": %s,
-           "qs_vnc_port": %s,
+           "qs_vnc_port": %d,
            "qs_rootpass": %s,
            "qs_mac": %s,
            "qs_os": %s,
@@ -364,7 +358,7 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_custid`,
         self$`qs_server`,
         self$`qs_ip`,
-        self$`qs_ipv6`$toJSON(),
+        self$`qs_ipv6`,
         self$`qs_vzid`,
         self$`qs_currency`,
         self$`qs_type`,
@@ -378,13 +372,13 @@ QuickserverServiceInfo <- R6::R6Class(
         self$`qs_comment`,
         self$`qs_slices`,
         self$`qs_vnc`,
-        self$`qs_vnc_port`$toJSON(),
+        self$`qs_vnc_port`,
         self$`qs_rootpass`,
         self$`qs_mac`,
         self$`qs_os`,
         self$`qs_version`,
         self$`qs_location`,
-        self$`qs_platform`$toJSON()
+        self$`qs_platform`
       )
     },
     fromJSONString = function(QuickserverServiceInfoJson) {
@@ -393,8 +387,7 @@ QuickserverServiceInfo <- R6::R6Class(
       self$`qs_custid` <- QuickserverServiceInfoObject$`qs_custid`
       self$`qs_server` <- QuickserverServiceInfoObject$`qs_server`
       self$`qs_ip` <- QuickserverServiceInfoObject$`qs_ip`
-      ObjectObject <- Object$new()
-      self$`qs_ipv6` <- ObjectObject$fromJSON(jsonlite::toJSON(QuickserverServiceInfoObject$qs_ipv6, auto_unbox = TRUE))
+      self$`qs_ipv6` <- QuickserverServiceInfoObject$`qs_ipv6`
       self$`qs_vzid` <- QuickserverServiceInfoObject$`qs_vzid`
       self$`qs_currency` <- QuickserverServiceInfoObject$`qs_currency`
       self$`qs_type` <- QuickserverServiceInfoObject$`qs_type`
@@ -408,15 +401,13 @@ QuickserverServiceInfo <- R6::R6Class(
       self$`qs_comment` <- QuickserverServiceInfoObject$`qs_comment`
       self$`qs_slices` <- QuickserverServiceInfoObject$`qs_slices`
       self$`qs_vnc` <- QuickserverServiceInfoObject$`qs_vnc`
-      ObjectObject <- Object$new()
-      self$`qs_vnc_port` <- ObjectObject$fromJSON(jsonlite::toJSON(QuickserverServiceInfoObject$qs_vnc_port, auto_unbox = TRUE))
+      self$`qs_vnc_port` <- QuickserverServiceInfoObject$`qs_vnc_port`
       self$`qs_rootpass` <- QuickserverServiceInfoObject$`qs_rootpass`
       self$`qs_mac` <- QuickserverServiceInfoObject$`qs_mac`
       self$`qs_os` <- QuickserverServiceInfoObject$`qs_os`
       self$`qs_version` <- QuickserverServiceInfoObject$`qs_version`
       self$`qs_location` <- QuickserverServiceInfoObject$`qs_location`
-      ObjectObject <- Object$new()
-      self$`qs_platform` <- ObjectObject$fromJSON(jsonlite::toJSON(QuickserverServiceInfoObject$qs_platform, auto_unbox = TRUE))
+      self$`qs_platform` <- QuickserverServiceInfoObject$`qs_platform`
     }
   )
 )

@@ -244,31 +244,31 @@ class ServerAsset {
                 obj['lease'] = ServerLease.constructFromObject(data['lease']);
             }
             if (data.hasOwnProperty('mac')) {
-                obj['mac'] = ApiClient.convertToType(data['mac'], Object);
+                obj['mac'] = ApiClient.convertToType(data['mac'], 'String');
             }
             if (data.hasOwnProperty('ipmi_admin_username')) {
-                obj['ipmi_admin_username'] = ApiClient.convertToType(data['ipmi_admin_username'], Object);
+                obj['ipmi_admin_username'] = ApiClient.convertToType(data['ipmi_admin_username'], 'String');
             }
             if (data.hasOwnProperty('ipmi_admin_password')) {
-                obj['ipmi_admin_password'] = ApiClient.convertToType(data['ipmi_admin_password'], Object);
+                obj['ipmi_admin_password'] = ApiClient.convertToType(data['ipmi_admin_password'], 'String');
             }
             if (data.hasOwnProperty('ipmi_client_username')) {
-                obj['ipmi_client_username'] = ApiClient.convertToType(data['ipmi_client_username'], Object);
+                obj['ipmi_client_username'] = ApiClient.convertToType(data['ipmi_client_username'], 'String');
             }
             if (data.hasOwnProperty('ipmi_client_password')) {
-                obj['ipmi_client_password'] = ApiClient.convertToType(data['ipmi_client_password'], Object);
+                obj['ipmi_client_password'] = ApiClient.convertToType(data['ipmi_client_password'], 'String');
             }
             if (data.hasOwnProperty('ipmi_updated')) {
-                obj['ipmi_updated'] = ApiClient.convertToType(data['ipmi_updated'], Object);
+                obj['ipmi_updated'] = ApiClient.convertToType(data['ipmi_updated'], 'String');
             }
             if (data.hasOwnProperty('create_timestamp')) {
-                obj['create_timestamp'] = ApiClient.convertToType(data['create_timestamp'], Object);
+                obj['create_timestamp'] = ApiClient.convertToType(data['create_timestamp'], 'String');
             }
             if (data.hasOwnProperty('update_timestamp')) {
-                obj['update_timestamp'] = ApiClient.convertToType(data['update_timestamp'], Object);
+                obj['update_timestamp'] = ApiClient.convertToType(data['update_timestamp'], 'String');
             }
             if (data.hasOwnProperty('comment')) {
-                obj['comment'] = ApiClient.convertToType(data['comment'], Object);
+                obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
             }
         }
         return obj;
@@ -437,6 +437,42 @@ class ServerAsset {
         // validate the optional field `lease`
         if (data['lease']) { // data not null
           ServerLease.validateJSON(data['lease']);
+        }
+        // ensure the json data is a string
+        if (data['mac'] && !(typeof data['mac'] === 'string' || data['mac'] instanceof String)) {
+            throw new Error("Expected the field `mac` to be a primitive type in the JSON string but got " + data['mac']);
+        }
+        // ensure the json data is a string
+        if (data['ipmi_admin_username'] && !(typeof data['ipmi_admin_username'] === 'string' || data['ipmi_admin_username'] instanceof String)) {
+            throw new Error("Expected the field `ipmi_admin_username` to be a primitive type in the JSON string but got " + data['ipmi_admin_username']);
+        }
+        // ensure the json data is a string
+        if (data['ipmi_admin_password'] && !(typeof data['ipmi_admin_password'] === 'string' || data['ipmi_admin_password'] instanceof String)) {
+            throw new Error("Expected the field `ipmi_admin_password` to be a primitive type in the JSON string but got " + data['ipmi_admin_password']);
+        }
+        // ensure the json data is a string
+        if (data['ipmi_client_username'] && !(typeof data['ipmi_client_username'] === 'string' || data['ipmi_client_username'] instanceof String)) {
+            throw new Error("Expected the field `ipmi_client_username` to be a primitive type in the JSON string but got " + data['ipmi_client_username']);
+        }
+        // ensure the json data is a string
+        if (data['ipmi_client_password'] && !(typeof data['ipmi_client_password'] === 'string' || data['ipmi_client_password'] instanceof String)) {
+            throw new Error("Expected the field `ipmi_client_password` to be a primitive type in the JSON string but got " + data['ipmi_client_password']);
+        }
+        // ensure the json data is a string
+        if (data['ipmi_updated'] && !(typeof data['ipmi_updated'] === 'string' || data['ipmi_updated'] instanceof String)) {
+            throw new Error("Expected the field `ipmi_updated` to be a primitive type in the JSON string but got " + data['ipmi_updated']);
+        }
+        // ensure the json data is a string
+        if (data['create_timestamp'] && !(typeof data['create_timestamp'] === 'string' || data['create_timestamp'] instanceof String)) {
+            throw new Error("Expected the field `create_timestamp` to be a primitive type in the JSON string but got " + data['create_timestamp']);
+        }
+        // ensure the json data is a string
+        if (data['update_timestamp'] && !(typeof data['update_timestamp'] === 'string' || data['update_timestamp'] instanceof String)) {
+            throw new Error("Expected the field `update_timestamp` to be a primitive type in the JSON string but got " + data['update_timestamp']);
+        }
+        // ensure the json data is a string
+        if (data['comment'] && !(typeof data['comment'] === 'string' || data['comment'] instanceof String)) {
+            throw new Error("Expected the field `comment` to be a primitive type in the JSON string but got " + data['comment']);
         }
 
         return true;
@@ -682,55 +718,55 @@ ServerAsset.prototype['lease'] = undefined;
 
 /**
  * MAC address associated with the asset.
- * @member {Object} mac
+ * @member {String} mac
  */
 ServerAsset.prototype['mac'] = undefined;
 
 /**
  * IPMI admin username associated with the asset.
- * @member {Object} ipmi_admin_username
+ * @member {String} ipmi_admin_username
  */
 ServerAsset.prototype['ipmi_admin_username'] = undefined;
 
 /**
  * IPMI admin password associated with the asset.
- * @member {Object} ipmi_admin_password
+ * @member {String} ipmi_admin_password
  */
 ServerAsset.prototype['ipmi_admin_password'] = undefined;
 
 /**
  * IPMI client username associated with the asset.
- * @member {Object} ipmi_client_username
+ * @member {String} ipmi_client_username
  */
 ServerAsset.prototype['ipmi_client_username'] = undefined;
 
 /**
  * IPMI client password associated with the asset.
- * @member {Object} ipmi_client_password
+ * @member {String} ipmi_client_password
  */
 ServerAsset.prototype['ipmi_client_password'] = undefined;
 
 /**
  * IPMI update status associated with the asset.
- * @member {Object} ipmi_updated
+ * @member {String} ipmi_updated
  */
 ServerAsset.prototype['ipmi_updated'] = undefined;
 
 /**
  * Timestamp of asset creation.
- * @member {Object} create_timestamp
+ * @member {String} create_timestamp
  */
 ServerAsset.prototype['create_timestamp'] = undefined;
 
 /**
  * Timestamp of asset update.
- * @member {Object} update_timestamp
+ * @member {String} update_timestamp
  */
 ServerAsset.prototype['update_timestamp'] = undefined;
 
 /**
  * Comment associated with the asset.
- * @member {Object} comment
+ * @member {String} comment
  */
 ServerAsset.prototype['comment'] = undefined;
 

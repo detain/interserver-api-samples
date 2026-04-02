@@ -64,7 +64,7 @@ namespace Interserver.MyAdmin.Client.Model
         /// <param name="qsLastInstallTime">Last install time (null).</param>
         /// <param name="qsPartitions">Partitions information (null).</param>
         /// <param name="qsCpuFlags">CPU flags.</param>
-        public QuickserverServiceMaster(string qsId = default(string), string qsName = default(string), string qsIp = default(string), string qsType = default(string), string qsHdsize = default(string), string qsHdfree = default(string), string qsBits = default(string), string qsLoad = default(string), string qsRam = default(string), string qsCpuModel = default(string), string qsCpuMhz = default(string), string qsLocation = default(string), string qsAvailable = default(string), string qsCost = default(string), string qsLastUpdate = default(string), string qsCores = default(string), string qsIowait = default(string), string qsRaidStatus = default(string), string qsDriveType = default(string), string qsOrder = default(string), string qsRaidBuilding = default(string), string qsKernel = default(string), string qsIoping = default(string), string qsSpeed = default(string), string qsDistro = default(string), string qsDistroVersion = default(string), string qsBytesSecIn = default(string), string qsBytesSecOut = default(string), string qsPacketsSecIn = default(string), string qsPacketsSecOut = default(string), Object qsLastInstallTime = default(Object), Object qsPartitions = default(Object), string qsCpuFlags = default(string))
+        public QuickserverServiceMaster(string qsId = default(string), string qsName = default(string), string qsIp = default(string), string qsType = default(string), string qsHdsize = default(string), string qsHdfree = default(string), string qsBits = default(string), string qsLoad = default(string), string qsRam = default(string), string qsCpuModel = default(string), string qsCpuMhz = default(string), string qsLocation = default(string), string qsAvailable = default(string), string qsCost = default(string), string qsLastUpdate = default(string), string qsCores = default(string), string qsIowait = default(string), string qsRaidStatus = default(string), string qsDriveType = default(string), string qsOrder = default(string), string qsRaidBuilding = default(string), string qsKernel = default(string), string qsIoping = default(string), string qsSpeed = default(string), string qsDistro = default(string), string qsDistroVersion = default(string), string qsBytesSecIn = default(string), string qsBytesSecOut = default(string), string qsPacketsSecIn = default(string), string qsPacketsSecOut = default(string), string qsLastInstallTime = default(string), string qsPartitions = default(string), string qsCpuFlags = default(string))
         {
             this.qs_id = qsId;
             this.qs_name = qsName;
@@ -316,14 +316,14 @@ namespace Interserver.MyAdmin.Client.Model
         /// </summary>
         /// <value>Last install time (null)</value>
         [DataMember(Name="qs_last_install_time", EmitDefaultValue=false)]
-        public Object qs_last_install_time { get; set; }
+        public string qs_last_install_time { get; set; }
 
         /// <summary>
         /// Partitions information (null)
         /// </summary>
         /// <value>Partitions information (null)</value>
         [DataMember(Name="qs_partitions", EmitDefaultValue=false)]
-        public Object qs_partitions { get; set; }
+        public string qs_partitions { get; set; }
 
         /// <summary>
         /// CPU flags

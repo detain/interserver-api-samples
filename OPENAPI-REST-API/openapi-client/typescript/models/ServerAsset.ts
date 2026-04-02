@@ -170,39 +170,39 @@ export class ServerAsset {
     /**
     * MAC address associated with the asset.
     */
-    'mac'?: any | null;
+    'mac'?: string;
     /**
     * IPMI admin username associated with the asset.
     */
-    'ipmi_admin_username'?: any | null;
+    'ipmi_admin_username'?: string;
     /**
     * IPMI admin password associated with the asset.
     */
-    'ipmi_admin_password'?: any | null;
+    'ipmi_admin_password'?: string;
     /**
     * IPMI client username associated with the asset.
     */
-    'ipmi_client_username'?: any | null;
+    'ipmi_client_username'?: string;
     /**
     * IPMI client password associated with the asset.
     */
-    'ipmi_client_password'?: any | null;
+    'ipmi_client_password'?: string;
     /**
     * IPMI update status associated with the asset.
     */
-    'ipmi_updated'?: any | null;
+    'ipmi_updated'?: string;
     /**
     * Timestamp of asset creation.
     */
-    'create_timestamp'?: any | null;
+    'create_timestamp'?: string;
     /**
     * Timestamp of asset update.
     */
-    'update_timestamp'?: any | null;
+    'update_timestamp'?: string;
     /**
     * Comment associated with the asset.
     */
-    'comment'?: any | null;
+    'comment'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -446,55 +446,55 @@ export class ServerAsset {
         {
             "name": "mac",
             "baseName": "mac",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "ipmi_admin_username",
             "baseName": "ipmi_admin_username",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "ipmi_admin_password",
             "baseName": "ipmi_admin_password",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "ipmi_client_username",
             "baseName": "ipmi_client_username",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "ipmi_client_password",
             "baseName": "ipmi_client_password",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "ipmi_updated",
             "baseName": "ipmi_updated",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "create_timestamp",
             "baseName": "create_timestamp",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "update_timestamp",
             "baseName": "update_timestamp",
-            "type": "any",
+            "type": "string",
             "format": ""
         },
         {
             "name": "comment",
             "baseName": "comment",
-            "type": "any",
+            "type": "string",
             "format": ""
         }    ];
 

@@ -305,8 +305,8 @@ open class FloatingIPsAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
-    /// - returns: AnyPublisher<Void, Error> 
-    open func getFloatingIpsList() -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<[[String: Any]], Error> 
+    open func getFloatingIpsList() -> AnyPublisher<[[String: Any]], Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -322,7 +322,7 @@ open class FloatingIPsAPI {
                 request.httpMethod = "GET"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<[[String: Any]], Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -336,7 +336,11 @@ open class FloatingIPsAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    if let object = try JSONSerialization.jsonObject(with: response.data, options: []) as? [[String: Any]] {
+                        return object
+                    } else {
+                        throw OpenAPITransportError.invalidResponseMappingError(data: response.data)
+                    }
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

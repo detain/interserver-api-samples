@@ -18,6 +18,7 @@ import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.FloatingIpsCancel200Response
 import org.openapitools.client.models.GetAccountInfo401Response
 import io.circe.Json
+import scala.collection.immutable.Seq
 import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.*
@@ -28,7 +29,7 @@ trait FloatingIPsApiEndpoints[F[*]] {
   def floatingIpsCancel(id: Int)(using auth: _Authorization.ApiKey): F[FloatingIpsCancel200Response]
   def getFloatingIpInfo(id: Int)(using auth: _Authorization.ApiKey): F[Json]
   def getFloatingIpInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
-  def getFloatingIpsList()(using auth: _Authorization.ApiKey): F[Unit]
+  def getFloatingIpsList()(using auth: _Authorization.ApiKey): F[Seq[Json]]
   def getFloatingIpsWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getNewFloatingIp()(using auth: _Authorization.ApiKey): F[Json]
   def postFloatingIpsChangeIp(id: Int, ip: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
@@ -123,12 +124,12 @@ class FloatingIPsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def getFloatingIpsList()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def getFloatingIpsList()(using auth: _Authorization.ApiKey): F[Seq[Json]] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, Seq[Json]](
       method = "GET",
       path = s"/floating_ips",
       body = None,
@@ -137,7 +138,7 @@ class FloatingIPsApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
-        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 200 => parseJson[F, Seq[Json]]("Seq[Json]", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
         case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }

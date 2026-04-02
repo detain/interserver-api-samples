@@ -190,7 +190,7 @@ var __serverUnderscoresetup__was__set := false
 # Discount information for the server.
 # Required: False
 # isArray: false
-@export var serverUnderscorediscount: AnyType:
+@export var serverUnderscorediscount: String = "":
 	set(value):
 		__serverUnderscorediscount__was__set = true
 		serverUnderscorediscount = value
@@ -229,7 +229,7 @@ var __serverUnderscoretotalUnderscorecost__was__set := false
 # The location of the server.
 # Required: False
 # isArray: false
-@export var serverUnderscorelocation: AnyType:
+@export var serverUnderscorelocation: String = "":
 	set(value):
 		__serverUnderscorelocation__was__set = true
 		serverUnderscorelocation = value
@@ -298,7 +298,7 @@ var __serverUnderscorededicatedUnderscorehd1__was__set := false
 # The size of the second dedicated hard drive.
 # Required: False
 # isArray: false
-@export var serverUnderscorededicatedUnderscorehd2: AnyType:
+@export var serverUnderscorededicatedUnderscorehd2: String = "":
 	set(value):
 		__serverUnderscorededicatedUnderscorehd2__was__set = true
 		serverUnderscorededicatedUnderscorehd2 = value
@@ -337,7 +337,7 @@ var __serverUnderscorededicatedUnderscoreos__was__set := false
 # The control panel of the server.
 # Required: False
 # isArray: false
-@export var serverUnderscorededicatedUnderscorecp: AnyType:
+@export var serverUnderscorededicatedUnderscorecp: String = "":
 	set(value):
 		__serverUnderscorededicatedUnderscorecp__was__set = true
 		serverUnderscorededicatedUnderscorecp = value

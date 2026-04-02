@@ -80,8 +80,8 @@ case class QuickserverServiceMaster (
   qs_bytes_sec_out: Option[String] = None,
   qs_packets_sec_in: Option[String] = None,
   qs_packets_sec_out: Option[String] = None,
-  qs_last_install_time: Option[] = None,
-  qs_partitions: Option[] = None,
+  qs_last_install_time: Option[String] = None,
+  qs_partitions: Option[String] = None,
   qs_cpu_flags: Option[String] = None
 )
 

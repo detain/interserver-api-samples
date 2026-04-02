@@ -241,55 +241,55 @@ void main() {
     });
 
     // MAC address associated with the asset.
-    // JsonObject mac
+    // String mac
     test('to test the property `mac`', () async {
       // TODO
     });
 
     // IPMI admin username associated with the asset.
-    // JsonObject ipmiAdminUsername
+    // String ipmiAdminUsername
     test('to test the property `ipmiAdminUsername`', () async {
       // TODO
     });
 
     // IPMI admin password associated with the asset.
-    // JsonObject ipmiAdminPassword
+    // String ipmiAdminPassword
     test('to test the property `ipmiAdminPassword`', () async {
       // TODO
     });
 
     // IPMI client username associated with the asset.
-    // JsonObject ipmiClientUsername
+    // String ipmiClientUsername
     test('to test the property `ipmiClientUsername`', () async {
       // TODO
     });
 
     // IPMI client password associated with the asset.
-    // JsonObject ipmiClientPassword
+    // String ipmiClientPassword
     test('to test the property `ipmiClientPassword`', () async {
       // TODO
     });
 
     // IPMI update status associated with the asset.
-    // JsonObject ipmiUpdated
+    // String ipmiUpdated
     test('to test the property `ipmiUpdated`', () async {
       // TODO
     });
 
     // Timestamp of asset creation.
-    // JsonObject createTimestamp
+    // String createTimestamp
     test('to test the property `createTimestamp`', () async {
       // TODO
     });
 
     // Timestamp of asset update.
-    // JsonObject updateTimestamp
+    // String updateTimestamp
     test('to test the property `updateTimestamp`', () async {
       // TODO
     });
 
     // Comment associated with the asset.
-    // JsonObject comment
+    // String comment
     test('to test the property `comment`', () async {
       // TODO
     });

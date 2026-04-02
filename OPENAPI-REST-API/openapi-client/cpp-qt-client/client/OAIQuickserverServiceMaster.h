@@ -21,7 +21,6 @@
 
 #include <QJsonObject>
 
-#include <QJsonValue>
 #include <QString>
 
 #include "OAIEnum.h"
@@ -190,13 +189,13 @@ public:
     bool is_qs_packets_sec_out_Set() const;
     bool is_qs_packets_sec_out_Valid() const;
 
-    QJsonValue getQsLastInstallTime() const;
-    void setQsLastInstallTime(const QJsonValue &qs_last_install_time);
+    QString getQsLastInstallTime() const;
+    void setQsLastInstallTime(const QString &qs_last_install_time);
     bool is_qs_last_install_time_Set() const;
     bool is_qs_last_install_time_Valid() const;
 
-    QJsonValue getQsPartitions() const;
-    void setQsPartitions(const QJsonValue &qs_partitions);
+    QString getQsPartitions() const;
+    void setQsPartitions(const QString &qs_partitions);
     bool is_qs_partitions_Set() const;
     bool is_qs_partitions_Valid() const;
 
@@ -331,11 +330,11 @@ private:
     bool m_qs_packets_sec_out_isSet;
     bool m_qs_packets_sec_out_isValid;
 
-    QJsonValue m_qs_last_install_time;
+    QString m_qs_last_install_time;
     bool m_qs_last_install_time_isSet;
     bool m_qs_last_install_time_isValid;
 
-    QJsonValue m_qs_partitions;
+    QString m_qs_partitions;
     bool m_qs_partitions_isSet;
     bool m_qs_partitions_isValid;
 

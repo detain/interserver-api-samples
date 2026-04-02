@@ -12,7 +12,7 @@ case class QuickserverServiceInfo (
     /* IP address */
     _qs_ip: Option[String],
     /* IPv6 address (null) */
-    _qs_ipv6: Option[AnyType],
+    _qs_ipv6: Option[String],
     /* VZ ID */
     _qs_vzid: Option[String],
     /* Currency */
@@ -40,7 +40,7 @@ case class QuickserverServiceInfo (
     /* VNC information */
     _qs_vnc: Option[String],
     /* VNC port (null) */
-    _qs_vnc_port: Option[AnyType],
+    _qs_vnc_port: Option[Integer],
     /* Root password */
     _qs_rootpass: Option[String],
     /* MAC address */
@@ -52,7 +52,7 @@ case class QuickserverServiceInfo (
     /* Location */
     _qs_location: Option[String],
     /* Platform (null) */
-    _qs_platform: Option[AnyType]
+    _qs_platform: Option[String]
 )
 object QuickserverServiceInfo {
     def toStringBody(var_qs_id: Object, var_qs_custid: Object, var_qs_server: Object, var_qs_ip: Object, var_qs_ipv6: Object, var_qs_vzid: Object, var_qs_currency: Object, var_qs_type: Object, var_qs_order_date: Object, var_qs_status: Object, var_qs_invoice: Object, var_qs_coupon: Object, var_qs_extra: Object, var_qs_hostname: Object, var_qs_server_status: Object, var_qs_comment: Object, var_qs_slices: Object, var_qs_vnc: Object, var_qs_vnc_port: Object, var_qs_rootpass: Object, var_qs_mac: Object, var_qs_os: Object, var_qs_version: Object, var_qs_location: Object, var_qs_platform: Object) =

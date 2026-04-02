@@ -61,7 +61,7 @@ import javax.annotation.Generated;
   QuickserverServiceMaster.JSON_PROPERTY_QS_CPU_FLAGS
 })
 @JsonTypeName("QuickserverServiceMaster")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class QuickserverServiceMaster {
     public static final String JSON_PROPERTY_QS_ID = "qs_id";
@@ -155,10 +155,10 @@ public class QuickserverServiceMaster {
     private String qsPacketsSecOut;
 
     public static final String JSON_PROPERTY_QS_LAST_INSTALL_TIME = "qs_last_install_time";
-    private Object qsLastInstallTime = null;
+    private String qsLastInstallTime;
 
     public static final String JSON_PROPERTY_QS_PARTITIONS = "qs_partitions";
-    private Object qsPartitions = null;
+    private String qsPartitions;
 
     public static final String JSON_PROPERTY_QS_CPU_FLAGS = "qs_cpu_flags";
     private String qsCpuFlags;
@@ -826,7 +826,7 @@ public class QuickserverServiceMaster {
         this.qsPacketsSecOut = qsPacketsSecOut;
     }
 
-    public QuickserverServiceMaster qsLastInstallTime(Object qsLastInstallTime) {
+    public QuickserverServiceMaster qsLastInstallTime(String qsLastInstallTime) {
         this.qsLastInstallTime = qsLastInstallTime;
         return this;
     }
@@ -838,17 +838,17 @@ public class QuickserverServiceMaster {
     @Nullable
     @JsonProperty(JSON_PROPERTY_QS_LAST_INSTALL_TIME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getQsLastInstallTime() {
+    public String getQsLastInstallTime() {
         return qsLastInstallTime;
     }
 
     @JsonProperty(JSON_PROPERTY_QS_LAST_INSTALL_TIME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setQsLastInstallTime(Object qsLastInstallTime) {
+    public void setQsLastInstallTime(String qsLastInstallTime) {
         this.qsLastInstallTime = qsLastInstallTime;
     }
 
-    public QuickserverServiceMaster qsPartitions(Object qsPartitions) {
+    public QuickserverServiceMaster qsPartitions(String qsPartitions) {
         this.qsPartitions = qsPartitions;
         return this;
     }
@@ -860,13 +860,13 @@ public class QuickserverServiceMaster {
     @Nullable
     @JsonProperty(JSON_PROPERTY_QS_PARTITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getQsPartitions() {
+    public String getQsPartitions() {
         return qsPartitions;
     }
 
     @JsonProperty(JSON_PROPERTY_QS_PARTITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setQsPartitions(Object qsPartitions) {
+    public void setQsPartitions(String qsPartitions) {
         this.qsPartitions = qsPartitions;
     }
 

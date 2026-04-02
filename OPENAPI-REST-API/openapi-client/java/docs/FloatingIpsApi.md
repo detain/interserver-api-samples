@@ -342,7 +342,7 @@ public class Example {
 
 <a id="getFloatingIpsList"></a>
 # **getFloatingIpsList**
-> getFloatingIpsList()
+> List&lt;Object&gt; getFloatingIpsList()
 
 List Floating IPs
 
@@ -383,7 +383,8 @@ public class Example {
 
     FloatingIpsApi apiInstance = new FloatingIpsApi(defaultClient);
     try {
-      apiInstance.getFloatingIpsList();
+      List<Object> result = apiInstance.getFloatingIpsList();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FloatingIpsApi#getFloatingIpsList");
       System.err.println("Status code: " + e.getCode());
@@ -400,7 +401,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**List&lt;Object&gt;**
 
 ### Authorization
 

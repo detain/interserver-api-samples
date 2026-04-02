@@ -241,39 +241,39 @@ data class ServerAsset (
 
     /* MAC address associated with the asset. */
     @Json(name = "mac")
-    val mac: kotlin.Any? = null,
+    val mac: kotlin.String? = null,
 
     /* IPMI admin username associated with the asset. */
     @Json(name = "ipmi_admin_username")
-    val ipmiAdminUsername: kotlin.Any? = null,
+    val ipmiAdminUsername: kotlin.String? = null,
 
     /* IPMI admin password associated with the asset. */
     @Json(name = "ipmi_admin_password")
-    val ipmiAdminPassword: kotlin.Any? = null,
+    val ipmiAdminPassword: kotlin.String? = null,
 
     /* IPMI client username associated with the asset. */
     @Json(name = "ipmi_client_username")
-    val ipmiClientUsername: kotlin.Any? = null,
+    val ipmiClientUsername: kotlin.String? = null,
 
     /* IPMI client password associated with the asset. */
     @Json(name = "ipmi_client_password")
-    val ipmiClientPassword: kotlin.Any? = null,
+    val ipmiClientPassword: kotlin.String? = null,
 
     /* IPMI update status associated with the asset. */
     @Json(name = "ipmi_updated")
-    val ipmiUpdated: kotlin.Any? = null,
+    val ipmiUpdated: kotlin.String? = null,
 
     /* Timestamp of asset creation. */
     @Json(name = "create_timestamp")
-    val createTimestamp: kotlin.Any? = null,
+    val createTimestamp: kotlin.String? = null,
 
     /* Timestamp of asset update. */
     @Json(name = "update_timestamp")
-    val updateTimestamp: kotlin.Any? = null,
+    val updateTimestamp: kotlin.String? = null,
 
     /* Comment associated with the asset. */
     @Json(name = "comment")
-    val comment: kotlin.Any? = null
+    val comment: kotlin.String? = null
 
 ) {
 

@@ -34,8 +34,8 @@ Name | Type | Description | Notes
 **qsBytesSecOut** | **string** | Bytes/sec out | [optional]
 **qsPacketsSecIn** | **string** | Packets/sec in | [optional]
 **qsPacketsSecOut** | **string** | Packets/sec out | [optional]
-**qsLastInstallTime** | **mixed** | Last install time (null) | [optional]
-**qsPartitions** | **mixed** | Partitions information (null) | [optional]
+**qsLastInstallTime** | **string** | Last install time (null) | [optional]
+**qsPartitions** | **string** | Partitions information (null) | [optional]
 **qsCpuFlags** | **string** | CPU flags | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

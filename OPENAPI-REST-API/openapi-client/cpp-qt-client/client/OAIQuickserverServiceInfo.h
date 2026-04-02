@@ -21,7 +21,6 @@
 
 #include <QJsonObject>
 
-#include <QJsonValue>
 #include <QString>
 
 #include "OAIEnum.h"
@@ -60,8 +59,8 @@ public:
     bool is_qs_ip_Set() const;
     bool is_qs_ip_Valid() const;
 
-    QJsonValue getQsIpv6() const;
-    void setQsIpv6(const QJsonValue &qs_ipv6);
+    QString getQsIpv6() const;
+    void setQsIpv6(const QString &qs_ipv6);
     bool is_qs_ipv6_Set() const;
     bool is_qs_ipv6_Valid() const;
 
@@ -130,8 +129,8 @@ public:
     bool is_qs_vnc_Set() const;
     bool is_qs_vnc_Valid() const;
 
-    QJsonValue getQsVncPort() const;
-    void setQsVncPort(const QJsonValue &qs_vnc_port);
+    qint32 getQsVncPort() const;
+    void setQsVncPort(const qint32 &qs_vnc_port);
     bool is_qs_vnc_port_Set() const;
     bool is_qs_vnc_port_Valid() const;
 
@@ -160,8 +159,8 @@ public:
     bool is_qs_location_Set() const;
     bool is_qs_location_Valid() const;
 
-    QJsonValue getQsPlatform() const;
-    void setQsPlatform(const QJsonValue &qs_platform);
+    QString getQsPlatform() const;
+    void setQsPlatform(const QString &qs_platform);
     bool is_qs_platform_Set() const;
     bool is_qs_platform_Valid() const;
 
@@ -187,7 +186,7 @@ private:
     bool m_qs_ip_isSet;
     bool m_qs_ip_isValid;
 
-    QJsonValue m_qs_ipv6;
+    QString m_qs_ipv6;
     bool m_qs_ipv6_isSet;
     bool m_qs_ipv6_isValid;
 
@@ -243,7 +242,7 @@ private:
     bool m_qs_vnc_isSet;
     bool m_qs_vnc_isValid;
 
-    QJsonValue m_qs_vnc_port;
+    qint32 m_qs_vnc_port;
     bool m_qs_vnc_port_isSet;
     bool m_qs_vnc_port_isValid;
 
@@ -267,7 +266,7 @@ private:
     bool m_qs_location_isSet;
     bool m_qs_location_isValid;
 
-    QJsonValue m_qs_platform;
+    QString m_qs_platform;
     bool m_qs_platform_isSet;
     bool m_qs_platform_isValid;
 };

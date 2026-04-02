@@ -10,6 +10,7 @@
 #include "GetAccountInfo_401_response.h"
 #include "GetAccountTfaSetup_200_response.h"
 #include "Home.h"
+#include "IpLimitRange.h"
 #include "SearchAutocompleteResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
@@ -111,24 +112,26 @@ bool deleteAccountTfaAsync(char * accessToken,
 /*! \brief Remove IP Access Restriction. *Synchronous*
  *
  * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+ * \param ipLimitRange 
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool deleteIpLimitSync(char * accessToken,
-	
+	std::shared_ptr<IpLimitRange> ipLimitRange, 
 	void(* handler)(GenericResponse, Error, void* )
 	, void* userData);
 
 /*! \brief Remove IP Access Restriction. *Asynchronous*
  *
  * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+ * \param ipLimitRange 
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool deleteIpLimitAsync(char * accessToken,
-	
+	std::shared_ptr<IpLimitRange> ipLimitRange, 
 	void(* handler)(GenericResponse, Error, void* )
 	, void* userData);
 

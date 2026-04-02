@@ -10,7 +10,7 @@ QuickserverServiceInfo::QuickserverServiceInfo()
 	qs_custid = std::string();
 	qs_server = std::string();
 	qs_ip = std::string();
-	qs_ipv6 = null;
+	qs_ipv6 = std::string();
 	qs_vzid = std::string();
 	qs_currency = std::string();
 	qs_type = std::string();
@@ -24,13 +24,13 @@ QuickserverServiceInfo::QuickserverServiceInfo()
 	qs_comment = std::string();
 	qs_slices = std::string();
 	qs_vnc = std::string();
-	qs_vnc_port = null;
+	qs_vnc_port = int(0);
 	qs_rootpass = std::string();
 	qs_mac = std::string();
 	qs_os = std::string();
 	qs_version = std::string();
 	qs_location = std::string();
-	qs_platform = null;
+	qs_platform = std::string();
 }
 
 QuickserverServiceInfo::QuickserverServiceInfo(std::string jsonString)
@@ -108,9 +108,8 @@ QuickserverServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&qs_ipv6, value, "std::string");
 
-        AnyType* obj = &qs_ipv6;
-		obj->fromJson(value.dump());
 
     }
 
@@ -291,9 +290,8 @@ QuickserverServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&qs_vnc_port, value, "int");
 
-        AnyType* obj = &qs_vnc_port;
-		obj->fromJson(value.dump());
 
     }
 
@@ -370,9 +368,8 @@ QuickserverServiceInfo::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&qs_platform, value, "std::string");
 
-        AnyType* obj = &qs_platform;
-		obj->fromJson(value.dump());
 
     }
 
@@ -416,8 +413,8 @@ QuickserverServiceInfo::toJson()
 
 
 
+    object["qs_ipv6"] = getQsIpv6();
 
-	object["qs_ipv6"] = getQsIpv6().toJson();
 
 
 
@@ -514,8 +511,8 @@ QuickserverServiceInfo::toJson()
 
 
 
+    object["qs_vnc_port"] = getQsVncPort();
 
-	object["qs_vnc_port"] = getQsVncPort().toJson();
 
 
 
@@ -556,8 +553,8 @@ QuickserverServiceInfo::toJson()
 
 
 
+    object["qs_platform"] = getQsPlatform();
 
-	object["qs_platform"] = getQsPlatform().toJson();
 
 
     return object;
@@ -612,14 +609,14 @@ QuickserverServiceInfo::setQsIp(std::string qs_ip)
 	this->qs_ip = qs_ip;
 }
 
-AnyType
+std::string
 QuickserverServiceInfo::getQsIpv6()
 {
 	return qs_ipv6;
 }
 
 void
-QuickserverServiceInfo::setQsIpv6(AnyType qs_ipv6)
+QuickserverServiceInfo::setQsIpv6(std::string qs_ipv6)
 {
 	this->qs_ipv6 = qs_ipv6;
 }
@@ -780,14 +777,14 @@ QuickserverServiceInfo::setQsVnc(std::string qs_vnc)
 	this->qs_vnc = qs_vnc;
 }
 
-AnyType
+int
 QuickserverServiceInfo::getQsVncPort()
 {
 	return qs_vnc_port;
 }
 
 void
-QuickserverServiceInfo::setQsVncPort(AnyType qs_vnc_port)
+QuickserverServiceInfo::setQsVncPort(int qs_vnc_port)
 {
 	this->qs_vnc_port = qs_vnc_port;
 }
@@ -852,14 +849,14 @@ QuickserverServiceInfo::setQsLocation(std::string qs_location)
 	this->qs_location = qs_location;
 }
 
-AnyType
+std::string
 QuickserverServiceInfo::getQsPlatform()
 {
 	return qs_platform;
 }
 
 void
-QuickserverServiceInfo::setQsPlatform(AnyType qs_platform)
+QuickserverServiceInfo::setQsPlatform(std::string qs_platform)
 {
 	this->qs_platform = qs_platform;
 }

@@ -175,6 +175,7 @@ module SwaggerClient
     # Remove IP Access Restriction
     # Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
     # @param [Hash] opts the optional parameters
+    # @option opts [IpLimitRange] :body 
     # @return [GenericResponse]
     def delete_ip_limit(opts = {})
       data, _status_code, _headers = delete_ip_limit_with_http_info(opts)
@@ -184,6 +185,7 @@ module SwaggerClient
     # Remove IP Access Restriction
     # Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
     # @param [Hash] opts the optional parameters
+    # @option opts [IpLimitRange] :body 
     # @return [Array<(GenericResponse, Integer, Hash)>] GenericResponse data, response status code and response headers
     def delete_ip_limit_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -206,7 +208,7 @@ module SwaggerClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'body']) 
 
       return_type = opts[:return_type] || 'GenericResponse' 
 

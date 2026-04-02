@@ -15,7 +15,6 @@
 
 typedef struct server_asset_t server_asset_t;
 
-#include "any_type.h"
 #include "server_lease.h"
 
 
@@ -60,15 +59,15 @@ typedef struct server_asset_t {
     list_t *vlans; //primitive container
     list_t *vlans6; //primitive container
     struct server_lease_t *lease; //model
-    any_type_t *mac; // custom
-    any_type_t *ipmi_admin_username; // custom
-    any_type_t *ipmi_admin_password; // custom
-    any_type_t *ipmi_client_username; // custom
-    any_type_t *ipmi_client_password; // custom
-    any_type_t *ipmi_updated; // custom
-    any_type_t *create_timestamp; // custom
-    any_type_t *update_timestamp; // custom
-    any_type_t *comment; // custom
+    char *mac; // string
+    char *ipmi_admin_username; // string
+    char *ipmi_admin_password; // string
+    char *ipmi_client_username; // string
+    char *ipmi_client_password; // string
+    char *ipmi_updated; // string
+    char *create_timestamp; // string
+    char *update_timestamp; // string
+    char *comment; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } server_asset_t;
@@ -113,15 +112,15 @@ __attribute__((deprecated)) server_asset_t *server_asset_create(
     list_t *vlans,
     list_t *vlans6,
     server_lease_t *lease,
-    any_type_t *mac,
-    any_type_t *ipmi_admin_username,
-    any_type_t *ipmi_admin_password,
-    any_type_t *ipmi_client_username,
-    any_type_t *ipmi_client_password,
-    any_type_t *ipmi_updated,
-    any_type_t *create_timestamp,
-    any_type_t *update_timestamp,
-    any_type_t *comment
+    char *mac,
+    char *ipmi_admin_username,
+    char *ipmi_admin_password,
+    char *ipmi_client_username,
+    char *ipmi_client_password,
+    char *ipmi_updated,
+    char *create_timestamp,
+    char *update_timestamp,
+    char *comment
 );
 
 void server_asset_free(server_asset_t *server_asset);

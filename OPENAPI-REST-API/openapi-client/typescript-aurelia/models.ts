@@ -4854,7 +4854,7 @@ export interface QuickserverServiceInfo {
   /**
    * IPv6 address (null)
    */
-  qs_ipv6?: any;
+  qs_ipv6?: string;
   /**
    * VZ ID
    */
@@ -4910,7 +4910,7 @@ export interface QuickserverServiceInfo {
   /**
    * VNC port (null)
    */
-  qs_vnc_port?: any;
+  qs_vnc_port?: number;
   /**
    * Root password
    */
@@ -4934,7 +4934,7 @@ export interface QuickserverServiceInfo {
   /**
    * Platform (null)
    */
-  qs_platform?: any;
+  qs_platform?: string;
 }
 
 
@@ -5065,11 +5065,11 @@ export interface QuickserverServiceMaster {
   /**
    * Last install time (null)
    */
-  qs_last_install_time?: any;
+  qs_last_install_time?: string;
   /**
    * Partitions information (null)
    */
-  qs_partitions?: any;
+  qs_partitions?: string;
   /**
    * CPU flags
    */
@@ -5441,39 +5441,39 @@ export interface ServerAsset {
   /**
    * MAC address associated with the asset.
    */
-  mac?: any;
+  mac?: string;
   /**
    * IPMI admin username associated with the asset.
    */
-  ipmi_admin_username?: any;
+  ipmi_admin_username?: string;
   /**
    * IPMI admin password associated with the asset.
    */
-  ipmi_admin_password?: any;
+  ipmi_admin_password?: string;
   /**
    * IPMI client username associated with the asset.
    */
-  ipmi_client_username?: any;
+  ipmi_client_username?: string;
   /**
    * IPMI client password associated with the asset.
    */
-  ipmi_client_password?: any;
+  ipmi_client_password?: string;
   /**
    * IPMI update status associated with the asset.
    */
-  ipmi_updated?: any;
+  ipmi_updated?: string;
   /**
    * Timestamp of asset creation.
    */
-  create_timestamp?: any;
+  create_timestamp?: string;
   /**
    * Timestamp of asset update.
    */
-  update_timestamp?: any;
+  update_timestamp?: string;
   /**
    * Comment associated with the asset.
    */
-  comment?: any;
+  comment?: string;
 }
 
 
@@ -5818,7 +5818,7 @@ export interface ServerOrderCPU {
   /**
    * Hard drive IDs.
    */
-  hd_ids?: any;
+  hd_ids?: string;
   /**
    * Display of CPU price.
    */
@@ -6351,7 +6351,7 @@ export interface ServerServiceInfo {
   /**
    * Discount information for the server.
    */
-  server_discount?: any;
+  server_discount?: string;
   /**
    * The reputation of the server.
    */
@@ -6367,7 +6367,7 @@ export interface ServerServiceInfo {
   /**
    * The location of the server.
    */
-  server_location?: any;
+  server_location?: string;
   /**
    * The ordered hardware for the server.
    */
@@ -6395,7 +6395,7 @@ export interface ServerServiceInfo {
   /**
    * The size of the second dedicated hard drive.
    */
-  server_dedicated_hd2?: any;
+  server_dedicated_hd2?: string;
   /**
    * The bandwidth of the server.
    */
@@ -6411,7 +6411,7 @@ export interface ServerServiceInfo {
   /**
    * The control panel of the server.
    */
-  server_dedicated_cp?: any;
+  server_dedicated_cp?: string;
   /**
    * The RAID configuration of the server.
    */
@@ -7641,7 +7641,7 @@ export interface VpsServiceInfo {
   /**
    * IPv6 address of the VPS
    */
-  vps_ipv6?: any;
+  vps_ipv6?: string;
   /**
    * VPS Virtuozzo ID
    */

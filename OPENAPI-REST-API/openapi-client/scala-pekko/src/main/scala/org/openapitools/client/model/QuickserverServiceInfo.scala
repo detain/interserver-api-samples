@@ -23,7 +23,7 @@ case class QuickserverServiceInfo (
   /* IP address */
   qs_ip: Option[String] = None,
   /* IPv6 address (null) */
-  qs_ipv6: Option[AnyType] = None,
+  qs_ipv6: Option[String] = None,
   /* VZ ID */
   qs_vzid: Option[String] = None,
   /* Currency */
@@ -51,7 +51,7 @@ case class QuickserverServiceInfo (
   /* VNC information */
   qs_vnc: Option[String] = None,
   /* VNC port (null) */
-  qs_vnc_port: Option[AnyType] = None,
+  qs_vnc_port: Option[Int] = None,
   /* Root password */
   qs_rootpass: Option[String] = None,
   /* MAC address */
@@ -63,6 +63,6 @@ case class QuickserverServiceInfo (
   /* Location */
   qs_location: Option[String] = None,
   /* Platform (null) */
-  qs_platform: Option[AnyType] = None
+  qs_platform: Option[String] = None
 ) extends ApiModel
 

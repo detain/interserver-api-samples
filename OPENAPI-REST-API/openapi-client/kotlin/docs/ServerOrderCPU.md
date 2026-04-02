@@ -26,7 +26,7 @@
 | **maxSff** | **kotlin.String** | Maximum SFF (Small Form Factor) supported. |  [optional] |
 | **maxNve** | **kotlin.String** | Maximum NVMe drives supported. |  [optional] |
 | **visible** | **kotlin.String** | Visibility status. |  [optional] |
-| **hdIds** | [**kotlin.Any**](.md) | Hard drive IDs. |  [optional] |
+| **hdIds** | **kotlin.String** | Hard drive IDs. |  [optional] |
 | **priceDisplay** | **kotlin.String** | Display of CPU price. |  [optional] |
 | **monthlyPriceDisplay** | **kotlin.String** | Display of monthly CPU price. |  [optional] |
 

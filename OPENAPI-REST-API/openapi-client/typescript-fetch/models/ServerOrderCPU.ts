@@ -153,10 +153,10 @@ export interface ServerOrderCPU {
     visible?: string;
     /**
      * Hard drive IDs.
-     * @type {any}
+     * @type {string}
      * @memberof ServerOrderCPU
      */
-    hd_ids?: any | null;
+    hd_ids?: string;
     /**
      * Display of CPU price.
      * @type {string}

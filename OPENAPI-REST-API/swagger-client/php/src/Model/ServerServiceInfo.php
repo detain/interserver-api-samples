@@ -74,22 +74,22 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
         'serverIps' => 'string',
         'serverMonthlyBill' => 'string',
         'serverSetup' => 'string',
-        'serverDiscount' => '',
+        'serverDiscount' => 'string',
         'serverRep' => 'string',
         'serverDate' => 'string',
         'serverTotalCost' => 'string',
-        'serverLocation' => '',
+        'serverLocation' => 'string',
         'serverHardwareOrdered' => 'string',
         'serverBilled' => 'string',
         'serverWelcomeEmail' => 'string',
         'serverDedicatedCpu' => 'string',
         'serverDedicatedMemory' => 'string',
         'serverDedicatedHd1' => 'string',
-        'serverDedicatedHd2' => '',
+        'serverDedicatedHd2' => 'string',
         'serverDedicatedBandwidth' => 'string',
         'serverDedicatedIps' => 'string',
         'serverDedicatedOs' => 'string',
-        'serverDedicatedCp' => '',
+        'serverDedicatedCp' => 'string',
         'serverDedicatedRaid' => 'string',
         'serverExtra' => 'string'
     ];
@@ -846,7 +846,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets serverDiscount
      *
-     * @return 
+     * @return string
      */
     public function getServerDiscount()
     {
@@ -856,7 +856,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets serverDiscount
      *
-     * @param  $serverDiscount Discount information for the server.
+     * @param string $serverDiscount Discount information for the server.
      *
      * @return $this
      */
@@ -942,7 +942,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets serverLocation
      *
-     * @return 
+     * @return string
      */
     public function getServerLocation()
     {
@@ -952,7 +952,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets serverLocation
      *
-     * @param  $serverLocation The location of the server.
+     * @param string $serverLocation The location of the server.
      *
      * @return $this
      */
@@ -1110,7 +1110,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets serverDedicatedHd2
      *
-     * @return 
+     * @return string
      */
     public function getServerDedicatedHd2()
     {
@@ -1120,7 +1120,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets serverDedicatedHd2
      *
-     * @param  $serverDedicatedHd2 The size of the second dedicated hard drive.
+     * @param string $serverDedicatedHd2 The size of the second dedicated hard drive.
      *
      * @return $this
      */
@@ -1206,7 +1206,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets serverDedicatedCp
      *
-     * @return 
+     * @return string
      */
     public function getServerDedicatedCp()
     {
@@ -1216,7 +1216,7 @@ class ServerServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets serverDedicatedCp
      *
-     * @param  $serverDedicatedCp The control panel of the server.
+     * @param string $serverDedicatedCp The control panel of the server.
      *
      * @return $this
      */

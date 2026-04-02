@@ -38,7 +38,7 @@ void main() {
     //
     // Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
     //
-    //Future<GenericResponse> deleteIpLimit() async
+    //Future<GenericResponse> deleteIpLimit({ IpLimitRange body }) async
     test('test deleteIpLimit', () async {
       // TODO
     });

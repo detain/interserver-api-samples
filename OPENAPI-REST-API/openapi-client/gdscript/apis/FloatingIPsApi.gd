@@ -286,6 +286,7 @@ func get_floating_ips_list(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = object.bzz_denormalize_multiple(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):

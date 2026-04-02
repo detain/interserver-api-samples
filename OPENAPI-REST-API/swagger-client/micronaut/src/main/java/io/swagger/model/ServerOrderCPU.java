@@ -84,7 +84,7 @@ public class ServerOrderCPU   {
   private String visible = null;
 
   @JsonProperty("hd_ids")
-  private Object hdIds = null;
+  private String hdIds = null;
 
   @JsonProperty("price_display")
   private String priceDisplay = null;
@@ -532,7 +532,7 @@ public class ServerOrderCPU   {
     this.visible = visible;
   }
 
-  public ServerOrderCPU hdIds(Object hdIds) {
+  public ServerOrderCPU hdIds(String hdIds) {
     this.hdIds = hdIds;
     return this;
   }
@@ -544,11 +544,11 @@ public class ServerOrderCPU   {
   @Schema(description = "Hard drive IDs.")
   @NotNull
 
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
 
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 

@@ -220,7 +220,67 @@ void test_WebsitesOrderServiceTypes_services_field2_is_assigned_from_json()
 }
 
 
+void test_WebsitesOrderServiceTypes_services_html_is_assigned_from_json()
+{
 
+
+    bourne::json input =
+    {
+        "services_html", "hello"
+    };
+
+    WebsitesOrderServiceTypes obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServicesHtml().c_str());
+
+
+
+
+
+
+}
+
+
+void test_WebsitesOrderServiceTypes_services_description_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "services_description", "hello"
+    };
+
+    WebsitesOrderServiceTypes obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServicesDescription().c_str());
+
+
+
+
+
+
+}
+
+
+void test_WebsitesOrderServiceTypes_services_moreinfo_url_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "services_moreinfo_url", "hello"
+    };
+
+    WebsitesOrderServiceTypes obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServicesMoreinfoUrl().c_str());
+
+
+
+
+
+
+}
 
 
 
@@ -434,6 +494,66 @@ void test_WebsitesOrderServiceTypes_services_field2_is_converted_to_json()
 }
 
 
+void test_WebsitesOrderServiceTypes_services_html_is_converted_to_json()
+{
 
+    bourne::json input =
+    {
+        "services_html", "hello"
+    };
+
+    WebsitesOrderServiceTypes obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["services_html"] == output["services_html"]);
+
+
+
+}
+
+
+void test_WebsitesOrderServiceTypes_services_description_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "services_description", "hello"
+    };
+
+    WebsitesOrderServiceTypes obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["services_description"] == output["services_description"]);
+
+
+
+}
+
+
+void test_WebsitesOrderServiceTypes_services_moreinfo_url_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "services_moreinfo_url", "hello"
+    };
+
+    WebsitesOrderServiceTypes obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["services_moreinfo_url"] == output["services_moreinfo_url"]);
+
+
+
+}
 
 

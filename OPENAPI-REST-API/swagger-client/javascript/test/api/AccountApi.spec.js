@@ -97,10 +97,11 @@
       });
       describe('deleteIpLimit', function() {
         it('should call deleteIpLimit successfully', function(done) {
-          // TODO: uncomment deleteIpLimit call and complete the assertions
+          // TODO: uncomment, update parameter values for deleteIpLimit call and complete the assertions
           /*
+          var opts = {};
 
-          instance.deleteIpLimit(function(error, data, response) {
+          instance.deleteIpLimit(opts, function(error, data, response) {
             if (error) {
               done(error);
               return;

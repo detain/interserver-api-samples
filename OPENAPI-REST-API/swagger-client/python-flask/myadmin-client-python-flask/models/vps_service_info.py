@@ -14,7 +14,7 @@ class VpsServiceInfo(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, vps_id: str=None, vps_custid: str=None, vps_server: str=None, vps_ip: str=None, vps_ipv6: Object=None, vps_vzid: str=None, vps_currency: str=None, vps_type: str=None, vps_order_date: str=None, vps_status: str=None, vps_invoice: str=None, vps_coupon: str=None, vps_extra: str=None, vps_hostname: str=None, vps_server_status: str=None, vps_comment: str=None, vps_slices: str=None, vps_vnc: str=None, vps_vnc_port: str=None, vps_rootpass: str=None, vps_mac: str=None, vps_os: str=None, vps_version: str=None, vps_location: str=None, vps_platform: str=None, vps_diskused: str=None, vps_diskmax: str=None):  # noqa: E501
+    def __init__(self, vps_id: str=None, vps_custid: str=None, vps_server: str=None, vps_ip: str=None, vps_ipv6: str=None, vps_vzid: str=None, vps_currency: str=None, vps_type: str=None, vps_order_date: str=None, vps_status: str=None, vps_invoice: str=None, vps_coupon: str=None, vps_extra: str=None, vps_hostname: str=None, vps_server_status: str=None, vps_comment: str=None, vps_slices: str=None, vps_vnc: str=None, vps_vnc_port: str=None, vps_rootpass: str=None, vps_mac: str=None, vps_os: str=None, vps_version: str=None, vps_location: str=None, vps_platform: str=None, vps_diskused: str=None, vps_diskmax: str=None):  # noqa: E501
         """VpsServiceInfo - a model defined in Swagger
 
         :param vps_id: The vps_id of this VpsServiceInfo.  # noqa: E501
@@ -26,7 +26,7 @@ class VpsServiceInfo(Model):
         :param vps_ip: The vps_ip of this VpsServiceInfo.  # noqa: E501
         :type vps_ip: str
         :param vps_ipv6: The vps_ipv6 of this VpsServiceInfo.  # noqa: E501
-        :type vps_ipv6: Object
+        :type vps_ipv6: str
         :param vps_vzid: The vps_vzid of this VpsServiceInfo.  # noqa: E501
         :type vps_vzid: str
         :param vps_currency: The vps_currency of this VpsServiceInfo.  # noqa: E501
@@ -77,7 +77,7 @@ class VpsServiceInfo(Model):
             'vps_custid': str,
             'vps_server': str,
             'vps_ip': str,
-            'vps_ipv6': Object,
+            'vps_ipv6': str,
             'vps_vzid': str,
             'vps_currency': str,
             'vps_type': str,
@@ -263,24 +263,24 @@ class VpsServiceInfo(Model):
         self._vps_ip = vps_ip
 
     @property
-    def vps_ipv6(self) -> Object:
+    def vps_ipv6(self) -> str:
         """Gets the vps_ipv6 of this VpsServiceInfo.
 
         IPv6 address of the VPS  # noqa: E501
 
         :return: The vps_ipv6 of this VpsServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._vps_ipv6
 
     @vps_ipv6.setter
-    def vps_ipv6(self, vps_ipv6: Object):
+    def vps_ipv6(self, vps_ipv6: str):
         """Sets the vps_ipv6 of this VpsServiceInfo.
 
         IPv6 address of the VPS  # noqa: E501
 
         :param vps_ipv6: The vps_ipv6 of this VpsServiceInfo.
-        :type vps_ipv6: Object
+        :type vps_ipv6: str
         """
 
         self._vps_ipv6 = vps_ipv6

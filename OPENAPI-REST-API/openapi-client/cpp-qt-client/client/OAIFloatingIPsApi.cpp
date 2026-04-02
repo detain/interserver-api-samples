@@ -527,13 +527,23 @@ void OAIFloatingIPsApi::getFloatingIpsListCallback(OAIHttpRequestWorker *worker)
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    QList<OAIObject> output;
+    QString json(worker->response);
+    QByteArray array(json.toStdString().c_str());
+    QJsonDocument doc = QJsonDocument::fromJson(array);
+    QJsonArray jsonArray = doc.array();
+    for (QJsonValue obj : jsonArray) {
+        OAIObject val;
+        ::OpenAPI::fromJsonValue(val, obj);
+        output.append(val);
+    }
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getFloatingIpsListSignal();
-        Q_EMIT getFloatingIpsListSignalFull(worker);
+        Q_EMIT getFloatingIpsListSignal(output);
+        Q_EMIT getFloatingIpsListSignalFull(worker, output);
     } else {
-        Q_EMIT getFloatingIpsListSignalError(error_type, error_str);
+        Q_EMIT getFloatingIpsListSignalError(output, error_type, error_str);
         Q_EMIT getFloatingIpsListSignalErrorFull(worker, error_type, error_str);
     }
 }

@@ -12,7 +12,7 @@ Core service record for a QuickServer including ID, status, IP, OS, and billing 
 |**qsCustid** | **String** | Customer ID |  [optional] |
 |**qsServer** | **String** | Server information |  [optional] |
 |**qsIp** | **String** | IP address |  [optional] |
-|**qsIpv6** | **Object** | IPv6 address (null) |  [optional] |
+|**qsIpv6** | **String** | IPv6 address (null) |  [optional] |
 |**qsVzid** | **String** | VZ ID |  [optional] |
 |**qsCurrency** | **String** | Currency |  [optional] |
 |**qsType** | **String** | Type |  [optional] |
@@ -26,13 +26,13 @@ Core service record for a QuickServer including ID, status, IP, OS, and billing 
 |**qsComment** | **String** | Comment |  [optional] |
 |**qsSlices** | **String** | Slices information |  [optional] |
 |**qsVnc** | **String** | VNC information |  [optional] |
-|**qsVncPort** | **Object** | VNC port (null) |  [optional] |
+|**qsVncPort** | **Integer** | VNC port (null) |  [optional] |
 |**qsRootpass** | **String** | Root password |  [optional] |
 |**qsMac** | **String** | MAC address |  [optional] |
 |**qsOs** | **String** | Operating system |  [optional] |
 |**qsVersion** | **String** | OS version |  [optional] |
 |**qsLocation** | **String** | Location |  [optional] |
-|**qsPlatform** | **Object** | Platform (null) |  [optional] |
+|**qsPlatform** | **String** | Platform (null) |  [optional] |
 
 
 

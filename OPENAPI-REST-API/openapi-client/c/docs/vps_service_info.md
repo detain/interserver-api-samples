@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **vps_custid** | **char \*** | Customer ID | [optional] 
 **vps_server** | **char \*** | Server ID | [optional] 
 **vps_ip** | **char \*** | IP address of the VPS | [optional] 
-**vps_ipv6** | **any_type_t \*** | IPv6 address of the VPS | [optional] 
+**vps_ipv6** | **char \*** | IPv6 address of the VPS | [optional] 
 **vps_vzid** | **char \*** | VPS Virtuozzo ID | [optional] 
 **vps_currency** | **char \*** | Currency used for billing | [optional] 
 **vps_type** | **char \*** | VPS type | [optional] 

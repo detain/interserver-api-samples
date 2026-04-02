@@ -134,8 +134,8 @@ class FloatingIpsApi {
         accept = apiUtils.selectHeaderAccept(["application/json"])
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
-                    "GET", "",
-                    null )
+                    "GET", "array",
+                    Object.class )
 
     }
 

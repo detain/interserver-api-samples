@@ -57,7 +57,7 @@ type ServerServiceInfo struct {
 	// The setup status of the server.
 	ServerSetup *string `json:"server_setup,omitempty"`
 	// Discount information for the server.
-	ServerDiscount interface{} `json:"server_discount,omitempty"`
+	ServerDiscount *string `json:"server_discount,omitempty"`
 	// The reputation of the server.
 	ServerRep *string `json:"server_rep,omitempty"`
 	// The date related to the server.
@@ -65,7 +65,7 @@ type ServerServiceInfo struct {
 	// The total cost of the server.
 	ServerTotalCost *string `json:"server_total_cost,omitempty"`
 	// The location of the server.
-	ServerLocation interface{} `json:"server_location,omitempty"`
+	ServerLocation *string `json:"server_location,omitempty"`
 	// The ordered hardware for the server.
 	ServerHardwareOrdered *string `json:"server_hardware_ordered,omitempty"`
 	// The billed amount for the server.
@@ -79,7 +79,7 @@ type ServerServiceInfo struct {
 	// The size of the first dedicated hard drive.
 	ServerDedicatedHd1 *string `json:"server_dedicated_hd1,omitempty"`
 	// The size of the second dedicated hard drive.
-	ServerDedicatedHd2 interface{} `json:"server_dedicated_hd2,omitempty"`
+	ServerDedicatedHd2 *string `json:"server_dedicated_hd2,omitempty"`
 	// The bandwidth of the server.
 	ServerDedicatedBandwidth *string `json:"server_dedicated_bandwidth,omitempty"`
 	// The number of dedicated IPs for the server.
@@ -87,7 +87,7 @@ type ServerServiceInfo struct {
 	// The operating system of the server.
 	ServerDedicatedOs *string `json:"server_dedicated_os,omitempty"`
 	// The control panel of the server.
-	ServerDedicatedCp interface{} `json:"server_dedicated_cp,omitempty"`
+	ServerDedicatedCp *string `json:"server_dedicated_cp,omitempty"`
 	// The RAID configuration of the server.
 	ServerDedicatedRaid *string `json:"server_dedicated_raid,omitempty"`
 	// Additional information about the server.
@@ -687,23 +687,22 @@ func (o *ServerServiceInfo) SetServerSetup(v string) {
 	o.ServerSetup = &v
 }
 
-// GetServerDiscount returns the ServerDiscount field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerServiceInfo) GetServerDiscount() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetServerDiscount returns the ServerDiscount field value if set, zero value otherwise.
+func (o *ServerServiceInfo) GetServerDiscount() string {
+	if o == nil || IsNil(o.ServerDiscount) {
+		var ret string
 		return ret
 	}
-	return o.ServerDiscount
+	return *o.ServerDiscount
 }
 
 // GetServerDiscountOk returns a tuple with the ServerDiscount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerServiceInfo) GetServerDiscountOk() (*interface{}, bool) {
+func (o *ServerServiceInfo) GetServerDiscountOk() (*string, bool) {
 	if o == nil || IsNil(o.ServerDiscount) {
 		return nil, false
 	}
-	return &o.ServerDiscount, true
+	return o.ServerDiscount, true
 }
 
 // HasServerDiscount returns a boolean if a field has been set.
@@ -715,9 +714,9 @@ func (o *ServerServiceInfo) HasServerDiscount() bool {
 	return false
 }
 
-// SetServerDiscount gets a reference to the given interface{} and assigns it to the ServerDiscount field.
-func (o *ServerServiceInfo) SetServerDiscount(v interface{}) {
-	o.ServerDiscount = v
+// SetServerDiscount gets a reference to the given string and assigns it to the ServerDiscount field.
+func (o *ServerServiceInfo) SetServerDiscount(v string) {
+	o.ServerDiscount = &v
 }
 
 // GetServerRep returns the ServerRep field value if set, zero value otherwise.
@@ -816,23 +815,22 @@ func (o *ServerServiceInfo) SetServerTotalCost(v string) {
 	o.ServerTotalCost = &v
 }
 
-// GetServerLocation returns the ServerLocation field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerServiceInfo) GetServerLocation() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetServerLocation returns the ServerLocation field value if set, zero value otherwise.
+func (o *ServerServiceInfo) GetServerLocation() string {
+	if o == nil || IsNil(o.ServerLocation) {
+		var ret string
 		return ret
 	}
-	return o.ServerLocation
+	return *o.ServerLocation
 }
 
 // GetServerLocationOk returns a tuple with the ServerLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerServiceInfo) GetServerLocationOk() (*interface{}, bool) {
+func (o *ServerServiceInfo) GetServerLocationOk() (*string, bool) {
 	if o == nil || IsNil(o.ServerLocation) {
 		return nil, false
 	}
-	return &o.ServerLocation, true
+	return o.ServerLocation, true
 }
 
 // HasServerLocation returns a boolean if a field has been set.
@@ -844,9 +842,9 @@ func (o *ServerServiceInfo) HasServerLocation() bool {
 	return false
 }
 
-// SetServerLocation gets a reference to the given interface{} and assigns it to the ServerLocation field.
-func (o *ServerServiceInfo) SetServerLocation(v interface{}) {
-	o.ServerLocation = v
+// SetServerLocation gets a reference to the given string and assigns it to the ServerLocation field.
+func (o *ServerServiceInfo) SetServerLocation(v string) {
+	o.ServerLocation = &v
 }
 
 // GetServerHardwareOrdered returns the ServerHardwareOrdered field value if set, zero value otherwise.
@@ -1041,23 +1039,22 @@ func (o *ServerServiceInfo) SetServerDedicatedHd1(v string) {
 	o.ServerDedicatedHd1 = &v
 }
 
-// GetServerDedicatedHd2 returns the ServerDedicatedHd2 field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerServiceInfo) GetServerDedicatedHd2() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetServerDedicatedHd2 returns the ServerDedicatedHd2 field value if set, zero value otherwise.
+func (o *ServerServiceInfo) GetServerDedicatedHd2() string {
+	if o == nil || IsNil(o.ServerDedicatedHd2) {
+		var ret string
 		return ret
 	}
-	return o.ServerDedicatedHd2
+	return *o.ServerDedicatedHd2
 }
 
 // GetServerDedicatedHd2Ok returns a tuple with the ServerDedicatedHd2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerServiceInfo) GetServerDedicatedHd2Ok() (*interface{}, bool) {
+func (o *ServerServiceInfo) GetServerDedicatedHd2Ok() (*string, bool) {
 	if o == nil || IsNil(o.ServerDedicatedHd2) {
 		return nil, false
 	}
-	return &o.ServerDedicatedHd2, true
+	return o.ServerDedicatedHd2, true
 }
 
 // HasServerDedicatedHd2 returns a boolean if a field has been set.
@@ -1069,9 +1066,9 @@ func (o *ServerServiceInfo) HasServerDedicatedHd2() bool {
 	return false
 }
 
-// SetServerDedicatedHd2 gets a reference to the given interface{} and assigns it to the ServerDedicatedHd2 field.
-func (o *ServerServiceInfo) SetServerDedicatedHd2(v interface{}) {
-	o.ServerDedicatedHd2 = v
+// SetServerDedicatedHd2 gets a reference to the given string and assigns it to the ServerDedicatedHd2 field.
+func (o *ServerServiceInfo) SetServerDedicatedHd2(v string) {
+	o.ServerDedicatedHd2 = &v
 }
 
 // GetServerDedicatedBandwidth returns the ServerDedicatedBandwidth field value if set, zero value otherwise.
@@ -1170,23 +1167,22 @@ func (o *ServerServiceInfo) SetServerDedicatedOs(v string) {
 	o.ServerDedicatedOs = &v
 }
 
-// GetServerDedicatedCp returns the ServerDedicatedCp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerServiceInfo) GetServerDedicatedCp() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetServerDedicatedCp returns the ServerDedicatedCp field value if set, zero value otherwise.
+func (o *ServerServiceInfo) GetServerDedicatedCp() string {
+	if o == nil || IsNil(o.ServerDedicatedCp) {
+		var ret string
 		return ret
 	}
-	return o.ServerDedicatedCp
+	return *o.ServerDedicatedCp
 }
 
 // GetServerDedicatedCpOk returns a tuple with the ServerDedicatedCp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerServiceInfo) GetServerDedicatedCpOk() (*interface{}, bool) {
+func (o *ServerServiceInfo) GetServerDedicatedCpOk() (*string, bool) {
 	if o == nil || IsNil(o.ServerDedicatedCp) {
 		return nil, false
 	}
-	return &o.ServerDedicatedCp, true
+	return o.ServerDedicatedCp, true
 }
 
 // HasServerDedicatedCp returns a boolean if a field has been set.
@@ -1198,9 +1194,9 @@ func (o *ServerServiceInfo) HasServerDedicatedCp() bool {
 	return false
 }
 
-// SetServerDedicatedCp gets a reference to the given interface{} and assigns it to the ServerDedicatedCp field.
-func (o *ServerServiceInfo) SetServerDedicatedCp(v interface{}) {
-	o.ServerDedicatedCp = v
+// SetServerDedicatedCp gets a reference to the given string and assigns it to the ServerDedicatedCp field.
+func (o *ServerServiceInfo) SetServerDedicatedCp(v string) {
+	o.ServerDedicatedCp = &v
 }
 
 // GetServerDedicatedRaid returns the ServerDedicatedRaid field value if set, zero value otherwise.
@@ -1331,7 +1327,7 @@ func (o ServerServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerSetup) {
 		toSerialize["server_setup"] = o.ServerSetup
 	}
-	if o.ServerDiscount != nil {
+	if !IsNil(o.ServerDiscount) {
 		toSerialize["server_discount"] = o.ServerDiscount
 	}
 	if !IsNil(o.ServerRep) {
@@ -1343,7 +1339,7 @@ func (o ServerServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerTotalCost) {
 		toSerialize["server_total_cost"] = o.ServerTotalCost
 	}
-	if o.ServerLocation != nil {
+	if !IsNil(o.ServerLocation) {
 		toSerialize["server_location"] = o.ServerLocation
 	}
 	if !IsNil(o.ServerHardwareOrdered) {
@@ -1364,7 +1360,7 @@ func (o ServerServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerDedicatedHd1) {
 		toSerialize["server_dedicated_hd1"] = o.ServerDedicatedHd1
 	}
-	if o.ServerDedicatedHd2 != nil {
+	if !IsNil(o.ServerDedicatedHd2) {
 		toSerialize["server_dedicated_hd2"] = o.ServerDedicatedHd2
 	}
 	if !IsNil(o.ServerDedicatedBandwidth) {
@@ -1376,7 +1372,7 @@ func (o ServerServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerDedicatedOs) {
 		toSerialize["server_dedicated_os"] = o.ServerDedicatedOs
 	}
-	if o.ServerDedicatedCp != nil {
+	if !IsNil(o.ServerDedicatedCp) {
 		toSerialize["server_dedicated_cp"] = o.ServerDedicatedCp
 	}
 	if !IsNil(o.ServerDedicatedRaid) {

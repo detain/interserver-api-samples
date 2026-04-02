@@ -79,7 +79,7 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess
         'maxSff' => 'string',
         'maxNve' => 'string',
         'visible' => 'string',
-        'hdIds' => '',
+        'hdIds' => 'string',
         'priceDisplay' => 'string',
         'monthlyPriceDisplay' => 'string'
     ];
@@ -877,7 +877,7 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess
     /**
      * Gets hdIds
      *
-     * @return 
+     * @return string
      */
     public function getHdIds()
     {
@@ -887,7 +887,7 @@ class ServerOrderCPU implements ModelInterface, ArrayAccess
     /**
      * Sets hdIds
      *
-     * @param  $hdIds Hard drive IDs.
+     * @param string $hdIds Hard drive IDs.
      *
      * @return $this
      */

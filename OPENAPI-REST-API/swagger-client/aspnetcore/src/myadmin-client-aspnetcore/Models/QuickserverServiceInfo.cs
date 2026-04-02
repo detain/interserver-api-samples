@@ -64,7 +64,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPv6 address (null)</value>
 
         [DataMember(Name="qs_ipv6")]
-        public Object QsIpv6 { get; set; }
+        public string QsIpv6 { get; set; }
 
         /// <summary>
         /// VZ ID
@@ -176,7 +176,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>VNC port (null)</value>
 
         [DataMember(Name="qs_vnc_port")]
-        public Object QsVncPort { get; set; }
+        public int? QsVncPort { get; set; }
 
         /// <summary>
         /// Root password
@@ -224,7 +224,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>Platform (null)</value>
 
         [DataMember(Name="qs_platform")]
-        public Object QsPlatform { get; set; }
+        public string QsPlatform { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

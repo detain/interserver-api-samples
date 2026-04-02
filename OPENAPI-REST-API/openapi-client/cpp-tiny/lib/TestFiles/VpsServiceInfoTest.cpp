@@ -94,6 +94,26 @@ void test_VpsServiceInfo_vps_ip_is_assigned_from_json()
 }
 
 
+void test_VpsServiceInfo_vps_ipv6_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "vps_ipv6", "hello"
+    };
+
+    VpsServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getVpsIpv6().c_str());
+
+
+
+
+
+
+}
+
 
 void test_VpsServiceInfo_vps_vzid_is_assigned_from_json()
 {
@@ -641,6 +661,26 @@ void test_VpsServiceInfo_vps_ip_is_converted_to_json()
 
 }
 
+
+void test_VpsServiceInfo_vps_ipv6_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "vps_ipv6", "hello"
+    };
+
+    VpsServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["vps_ipv6"] == output["vps_ipv6"]);
+
+
+
+}
 
 
 void test_VpsServiceInfo_vps_vzid_is_converted_to_json()

@@ -172,7 +172,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**array[map]**
 
 ### Authorization
 

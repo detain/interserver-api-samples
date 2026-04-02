@@ -524,7 +524,9 @@ const request: TicketsApiReplyTicketRequest = {
     // The ticket ID number.
   id: 3.14,
   
-  replyTicketRequest: null,
+  replyTicketRequest: {
+    content: "content_example",
+  },
 };
 
 const data = await apiInstance.replyTicket(request);

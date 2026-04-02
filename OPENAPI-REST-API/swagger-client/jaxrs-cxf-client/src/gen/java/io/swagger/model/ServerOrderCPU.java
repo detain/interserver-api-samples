@@ -156,7 +156,7 @@ public class ServerOrderCPU   {
  /**
    * Hard drive IDs.  
   **/
-  private Object hdIds = null;
+  private String hdIds = null;
   
   @Schema(example = "$0.00", description = "Display of CPU price.")
  /**
@@ -570,15 +570,15 @@ public class ServerOrderCPU   {
    * @return hdIds
   **/
   @JsonProperty("hd_ids")
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
 
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 
-  public ServerOrderCPU hdIds(Object hdIds) {
+  public ServerOrderCPU hdIds(String hdIds) {
     this.hdIds = hdIds;
     return this;
   }

@@ -10,6 +10,7 @@
 #include "../model/get_account_info_401_response.h"
 #include "../model/get_account_tfa_setup_200_response.h"
 #include "../model/home.h"
+#include "../model/ip_limit_range.h"
 #include "../model/search_autocomplete_response.h"
 #include "../model/success_text_response.h"
 #include "../model/text_response.h"
@@ -44,7 +45,7 @@ AccountAPI_deleteAccountTfa(apiClient_t *apiClient);
 // Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
 //
 generic_response_t*
-AccountAPI_deleteIpLimit(apiClient_t *apiClient);
+AccountAPI_deleteIpLimit(apiClient_t *apiClient, ip_limit_range_t *ip_limit_range);
 
 
 // Retrieve Account Details

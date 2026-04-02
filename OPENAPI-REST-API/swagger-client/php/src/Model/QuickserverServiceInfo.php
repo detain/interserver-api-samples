@@ -61,7 +61,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
         'qsCustid' => 'string',
         'qsServer' => 'string',
         'qsIp' => 'string',
-        'qsIpv6' => '',
+        'qsIpv6' => 'string',
         'qsVzid' => 'string',
         'qsCurrency' => 'string',
         'qsType' => 'string',
@@ -75,13 +75,13 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
         'qsComment' => 'string',
         'qsSlices' => 'string',
         'qsVnc' => 'string',
-        'qsVncPort' => '',
+        'qsVncPort' => 'int',
         'qsRootpass' => 'string',
         'qsMac' => 'string',
         'qsOs' => 'string',
         'qsVersion' => 'string',
         'qsLocation' => 'string',
-        'qsPlatform' => ''
+        'qsPlatform' => 'string'
     ];
 
     /**
@@ -445,7 +445,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets qsIpv6
      *
-     * @return 
+     * @return string
      */
     public function getQsIpv6()
     {
@@ -455,7 +455,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets qsIpv6
      *
-     * @param  $qsIpv6 IPv6 address (null)
+     * @param string $qsIpv6 IPv6 address (null)
      *
      * @return $this
      */
@@ -781,7 +781,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets qsVncPort
      *
-     * @return 
+     * @return int
      */
     public function getQsVncPort()
     {
@@ -791,7 +791,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets qsVncPort
      *
-     * @param  $qsVncPort VNC port (null)
+     * @param int $qsVncPort VNC port (null)
      *
      * @return $this
      */
@@ -925,7 +925,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets qsPlatform
      *
-     * @return 
+     * @return string
      */
     public function getQsPlatform()
     {
@@ -935,7 +935,7 @@ class QuickserverServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets qsPlatform
      *
-     * @param  $qsPlatform Platform (null)
+     * @param string $qsPlatform Platform (null)
      *
      * @return $this
      */

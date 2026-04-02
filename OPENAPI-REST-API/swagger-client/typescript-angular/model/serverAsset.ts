@@ -39,7 +39,7 @@ export interface ServerAsset {
     /**
      * MAC address associated with the asset.
      */
-    mac?: any;
+    mac?: string;
     /**
      * Datacenter identifier for the asset.
      */
@@ -87,23 +87,23 @@ export interface ServerAsset {
     /**
      * IPMI admin username associated with the asset.
      */
-    ipmi_admin_username?: any;
+    ipmi_admin_username?: string;
     /**
      * IPMI admin password associated with the asset.
      */
-    ipmi_admin_password?: any;
+    ipmi_admin_password?: string;
     /**
      * IPMI client username associated with the asset.
      */
-    ipmi_client_username?: any;
+    ipmi_client_username?: string;
     /**
      * IPMI client password associated with the asset.
      */
-    ipmi_client_password?: any;
+    ipmi_client_password?: string;
     /**
      * IPMI update status associated with the asset.
      */
-    ipmi_updated?: any;
+    ipmi_updated?: string;
     /**
      * IPMI working status associated with the asset.
      */
@@ -147,11 +147,11 @@ export interface ServerAsset {
     /**
      * Timestamp of asset creation.
      */
-    create_timestamp?: any;
+    create_timestamp?: string;
     /**
      * Timestamp of asset update.
      */
-    update_timestamp?: any;
+    update_timestamp?: string;
     /**
      * Asset identifier for the asset.
      */
@@ -187,7 +187,7 @@ export interface ServerAsset {
     /**
      * Comment associated with the asset.
      */
-    comment?: any;
+    comment?: string;
     /**
      * List of switchports associated with the asset.
      */

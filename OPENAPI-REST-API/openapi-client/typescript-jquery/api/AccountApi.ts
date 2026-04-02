@@ -256,8 +256,9 @@ export class AccountApi {
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * @summary Remove IP Access Restriction
+     * @param ipLimitRange 
      */
-    public deleteIpLimit(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    public deleteIpLimit(ipLimitRange?: models.IpLimitRange, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
     { response: JQueryXHR; body: models.GenericResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
@@ -289,6 +290,8 @@ export class AccountApi {
         }
 
 
+        headerParams['Content-Type'] = 'application/json';
+
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
             type: 'PATCH',
@@ -296,6 +299,7 @@ export class AccountApi {
             processData: false
         };
 
+        requestOptions.data = JSON.stringify(ipLimitRange);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }

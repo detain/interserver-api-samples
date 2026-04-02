@@ -12,7 +12,6 @@ import tables
 import marshal
 import options
 
-import model_any_type
 
 type ServerOrderCPU* = object
   ## A CPU option available when ordering a dedicated server.
@@ -38,7 +37,7 @@ type ServerOrderCPU* = object
   maxSff*: Option[string] ## Maximum SFF (Small Form Factor) supported.
   maxNve*: Option[string] ## Maximum NVMe drives supported.
   visible*: Option[string] ## Visibility status.
-  hdIds*: Option[JsonNode] ## Hard drive IDs.
+  hdIds*: Option[string] ## Hard drive IDs.
   priceDisplay*: Option[string] ## Display of CPU price.
   monthlyPriceDisplay*: Option[string] ## Display of monthly CPU price.
 

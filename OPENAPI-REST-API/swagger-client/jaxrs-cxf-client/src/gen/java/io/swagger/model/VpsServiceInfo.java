@@ -43,7 +43,7 @@ public class VpsServiceInfo   {
  /**
    * IPv6 address of the VPS  
   **/
-  private Object vpsIpv6 = null;
+  private String vpsIpv6 = null;
   
   @Schema(example = "vps85872", description = "VPS Virtuozzo ID")
  /**
@@ -253,15 +253,15 @@ public class VpsServiceInfo   {
    * @return vpsIpv6
   **/
   @JsonProperty("vps_ipv6")
-  public Object getVpsIpv6() {
+  public String getVpsIpv6() {
     return vpsIpv6;
   }
 
-  public void setVpsIpv6(Object vpsIpv6) {
+  public void setVpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
   }
 
-  public VpsServiceInfo vpsIpv6(Object vpsIpv6) {
+  public VpsServiceInfo vpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
     return this;
   }

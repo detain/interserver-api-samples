@@ -112,8 +112,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns all Floating IP services on the account with their current status and assignment details.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetFloatingIpsList ();
+        /// <returns>List&lt;Object&gt;</returns>
+        List<Object> GetFloatingIpsList ();
 
         /// <summary>
         /// List Floating IPs
@@ -122,8 +122,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns all Floating IP services on the account with their current status and assignment details.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetFloatingIpsListWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;Object&gt;</returns>
+        ApiResponse<List<Object>> GetFloatingIpsListWithHttpInfo ();
         /// <summary>
         /// Resend Floating IPs Welcome Email
         /// </summary>
@@ -341,8 +341,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns all Floating IP services on the account with their current status and assignment details.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetFloatingIpsListAsync ();
+        /// <returns>Task of List&lt;Object&gt;</returns>
+        System.Threading.Tasks.Task<List<Object>> GetFloatingIpsListAsync ();
 
         /// <summary>
         /// List Floating IPs
@@ -351,8 +351,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns all Floating IP services on the account with their current status and assignment details.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetFloatingIpsListAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Object>>> GetFloatingIpsListAsyncWithHttpInfo ();
         /// <summary>
         /// Resend Floating IPs Welcome Email
         /// </summary>
@@ -1226,18 +1226,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// List Floating IPs Returns all Floating IP services on the account with their current status and assignment details.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetFloatingIpsList ()
+        /// <returns>List&lt;Object&gt;</returns>
+        public List<Object> GetFloatingIpsList ()
         {
-             GetFloatingIpsListWithHttpInfo();
+             ApiResponse<List<Object>> localVarResponse = GetFloatingIpsListWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// List Floating IPs Returns all Floating IP services on the account with their current status and assignment details.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetFloatingIpsListWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;Object&gt;</returns>
+        public ApiResponse< List<Object> > GetFloatingIpsListWithHttpInfo ()
         {
 
             var localVarPath = "/floating_ips";
@@ -1290,19 +1291,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (List<Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Object>)));
         }
 
         /// <summary>
         /// List Floating IPs Returns all Floating IP services on the account with their current status and assignment details.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetFloatingIpsListAsync ()
+        /// <returns>Task of List&lt;Object&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Object>> GetFloatingIpsListAsync ()
         {
-             await GetFloatingIpsListAsyncWithHttpInfo();
+             ApiResponse<List<Object>> localVarResponse = await GetFloatingIpsListAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1310,8 +1312,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// List Floating IPs Returns all Floating IP services on the account with their current status and assignment details.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetFloatingIpsListAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Object>>> GetFloatingIpsListAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/floating_ips";
@@ -1364,9 +1366,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (List<Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Object>)));
         }
 
         /// <summary>

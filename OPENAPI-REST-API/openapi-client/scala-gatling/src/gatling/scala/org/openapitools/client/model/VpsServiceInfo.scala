@@ -12,7 +12,7 @@ case class VpsServiceInfo (
     /* IP address of the VPS */
     _vps_ip: Option[String],
     /* IPv6 address of the VPS */
-    _vps_ipv6: Option[AnyType],
+    _vps_ipv6: Option[String],
     /* VPS Virtuozzo ID */
     _vps_vzid: Option[String],
     /* Currency used for billing */

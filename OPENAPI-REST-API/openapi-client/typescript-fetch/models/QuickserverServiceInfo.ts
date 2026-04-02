@@ -45,10 +45,10 @@ export interface QuickserverServiceInfo {
     qs_ip?: string;
     /**
      * IPv6 address (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceInfo
      */
-    qs_ipv6?: any | null;
+    qs_ipv6?: string | null;
     /**
      * VZ ID
      * @type {string}
@@ -129,10 +129,10 @@ export interface QuickserverServiceInfo {
     qs_vnc?: string;
     /**
      * VNC port (null)
-     * @type {any}
+     * @type {number}
      * @memberof QuickserverServiceInfo
      */
-    qs_vnc_port?: any | null;
+    qs_vnc_port?: number | null;
     /**
      * Root password
      * @type {string}
@@ -165,10 +165,10 @@ export interface QuickserverServiceInfo {
     qs_location?: string;
     /**
      * Platform (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceInfo
      */
-    qs_platform?: any | null;
+    qs_platform?: string | null;
 }
 
 /**

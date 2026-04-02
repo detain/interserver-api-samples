@@ -634,10 +634,10 @@ bool OAIServerOrderCPU::is_visible_Valid() const{
     return m_visible_isValid;
 }
 
-QJsonValue OAIServerOrderCPU::getHdIds() const {
+QString OAIServerOrderCPU::getHdIds() const {
     return m_hd_ids;
 }
-void OAIServerOrderCPU::setHdIds(const QJsonValue &hd_ids) {
+void OAIServerOrderCPU::setHdIds(const QString &hd_ids) {
     m_hd_ids = hd_ids;
     m_hd_ids_isSet = true;
 }

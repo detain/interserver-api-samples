@@ -35,7 +35,7 @@ API.Client.VpsServiceInfo.prototype.vpsIp;
 
 /**
  * IPv6 address of the VPS
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.VpsServiceInfo.prototype.vpsIpv6;

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **MaxSff** | **string** | Maximum SFF (Small Form Factor) supported. | [optional] [default to null]
 **MaxNve** | **string** | Maximum NVMe drives supported. | [optional] [default to null]
 **Visible** | **string** | Visibility status. | [optional] [default to null]
-**HdIds** | [***Object**](.md) | Hard drive IDs. | [optional] [default to null]
+**HdIds** | **string** | Hard drive IDs. | [optional] [default to null]
 **PriceDisplay** | **string** | Display of CPU price. | [optional] [default to null]
 **MonthlyPriceDisplay** | **string** | Display of monthly CPU price. | [optional] [default to null]
 

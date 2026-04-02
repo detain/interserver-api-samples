@@ -53,7 +53,7 @@ case class ServerOrderCPU (
   max_sff: Option[String],
   max_nve: Option[String],
   visible: Option[String],
-  hd_ids: Option[],
+  hd_ids: Option[String],
   price_display: Option[String],
   monthly_price_display: Option[String]
 )

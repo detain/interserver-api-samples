@@ -169,12 +169,12 @@ export interface QuickserverServiceMaster {
     /**
      * Last install time (null)
      */
-    qs_last_install_time?: any;
+    qs_last_install_time?: string;
 
     /**
      * Partitions information (null)
      */
-    qs_partitions?: any;
+    qs_partitions?: string;
 
     /**
      * CPU flags

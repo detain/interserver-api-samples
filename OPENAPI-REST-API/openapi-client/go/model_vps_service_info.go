@@ -29,7 +29,7 @@ type VpsServiceInfo struct {
 	// IP address of the VPS
 	VpsIp *string `json:"vps_ip,omitempty"`
 	// IPv6 address of the VPS
-	VpsIpv6 interface{} `json:"vps_ipv6,omitempty"`
+	VpsIpv6 *string `json:"vps_ipv6,omitempty"`
 	// VPS Virtuozzo ID
 	VpsVzid *string `json:"vps_vzid,omitempty"`
 	// Currency used for billing
@@ -221,23 +221,22 @@ func (o *VpsServiceInfo) SetVpsIp(v string) {
 	o.VpsIp = &v
 }
 
-// GetVpsIpv6 returns the VpsIpv6 field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VpsServiceInfo) GetVpsIpv6() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetVpsIpv6 returns the VpsIpv6 field value if set, zero value otherwise.
+func (o *VpsServiceInfo) GetVpsIpv6() string {
+	if o == nil || IsNil(o.VpsIpv6) {
+		var ret string
 		return ret
 	}
-	return o.VpsIpv6
+	return *o.VpsIpv6
 }
 
 // GetVpsIpv6Ok returns a tuple with the VpsIpv6 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VpsServiceInfo) GetVpsIpv6Ok() (*interface{}, bool) {
+func (o *VpsServiceInfo) GetVpsIpv6Ok() (*string, bool) {
 	if o == nil || IsNil(o.VpsIpv6) {
 		return nil, false
 	}
-	return &o.VpsIpv6, true
+	return o.VpsIpv6, true
 }
 
 // HasVpsIpv6 returns a boolean if a field has been set.
@@ -249,9 +248,9 @@ func (o *VpsServiceInfo) HasVpsIpv6() bool {
 	return false
 }
 
-// SetVpsIpv6 gets a reference to the given interface{} and assigns it to the VpsIpv6 field.
-func (o *VpsServiceInfo) SetVpsIpv6(v interface{}) {
-	o.VpsIpv6 = v
+// SetVpsIpv6 gets a reference to the given string and assigns it to the VpsIpv6 field.
+func (o *VpsServiceInfo) SetVpsIpv6(v string) {
+	o.VpsIpv6 = &v
 }
 
 // GetVpsVzid returns the VpsVzid field value if set, zero value otherwise.
@@ -980,7 +979,7 @@ func (o VpsServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VpsIp) {
 		toSerialize["vps_ip"] = o.VpsIp
 	}
-	if o.VpsIpv6 != nil {
+	if !IsNil(o.VpsIpv6) {
 		toSerialize["vps_ipv6"] = o.VpsIpv6
 	}
 	if !IsNil(o.VpsVzid) {

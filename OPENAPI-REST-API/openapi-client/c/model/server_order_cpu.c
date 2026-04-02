@@ -28,7 +28,7 @@ static server_order_cpu_t *server_order_cpu_create_internal(
     char *max_sff,
     char *max_nve,
     char *visible,
-    any_type_t *hd_ids,
+    char *hd_ids,
     char *price_display,
     char *monthly_price_display
     ) {
@@ -89,7 +89,7 @@ __attribute__((deprecated)) server_order_cpu_t *server_order_cpu_create(
     char *max_sff,
     char *max_nve,
     char *visible,
-    any_type_t *hd_ids,
+    char *hd_ids,
     char *price_display,
     char *monthly_price_display
     ) {
@@ -235,7 +235,7 @@ void server_order_cpu_free(server_order_cpu_t *server_order_cpu) {
         server_order_cpu->visible = NULL;
     }
     if (server_order_cpu->hd_ids) {
-        _free(server_order_cpu->hd_ids);
+        free(server_order_cpu->hd_ids);
         server_order_cpu->hd_ids = NULL;
     }
     if (server_order_cpu->price_display) {
@@ -430,13 +430,8 @@ cJSON *server_order_cpu_convertToJSON(server_order_cpu_t *server_order_cpu) {
 
     // server_order_cpu->hd_ids
     if(server_order_cpu->hd_ids) {
-    cJSON *hd_ids_local_JSON = _convertToJSON(server_order_cpu->hd_ids);
-    if(hd_ids_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "hd_ids", hd_ids_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "hd_ids", server_order_cpu->hd_ids) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -514,8 +509,7 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
 
     char *visible_local_str = NULL;
 
-    // define the local variable for server_order_cpu->hd_ids
-    _t *hd_ids_local_nonprim = NULL;
+    char *hd_ids_local_str = NULL;
 
     char *price_display_local_str = NULL;
 
@@ -803,7 +797,10 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
         hd_ids = NULL;
     }
     if (hd_ids) { 
-    hd_ids_local_nonprim = _parseFromJSON(hd_ids); //custom
+    if(!cJSON_IsString(hd_ids) && !cJSON_IsNull(hd_ids))
+    {
+    goto end; //String
+    }
     }
 
     // server_order_cpu->price_display
@@ -851,6 +848,7 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
     if (max_sff && !cJSON_IsNull(max_sff)) max_sff_local_str = strdup(max_sff->valuestring);
     if (max_nve && !cJSON_IsNull(max_nve)) max_nve_local_str = strdup(max_nve->valuestring);
     if (visible && !cJSON_IsNull(visible)) visible_local_str = strdup(visible->valuestring);
+    if (hd_ids && !cJSON_IsNull(hd_ids)) hd_ids_local_str = strdup(hd_ids->valuestring);
     if (price_display && !cJSON_IsNull(price_display)) price_display_local_str = strdup(price_display->valuestring);
     if (monthly_price_display && !cJSON_IsNull(monthly_price_display)) monthly_price_display_local_str = strdup(monthly_price_display->valuestring);
 
@@ -877,7 +875,7 @@ server_order_cpu_t *server_order_cpu_parseFromJSON(cJSON *server_order_cpuJSON){
         max_sff_local_str,
         max_nve_local_str,
         visible_local_str,
-        hd_ids ? hd_ids_local_nonprim : NULL,
+        hd_ids_local_str,
         price_display_local_str,
         monthly_price_display_local_str
         );
@@ -976,9 +974,9 @@ end:
         free(visible_local_str);
         visible_local_str = NULL;
     }
-    if (hd_ids_local_nonprim) {
-        _free(hd_ids_local_nonprim);
-        hd_ids_local_nonprim = NULL;
+    if (hd_ids_local_str) {
+        free(hd_ids_local_str);
+        hd_ids_local_str = NULL;
     }
     if (price_display_local_str) {
         free(price_display_local_str);

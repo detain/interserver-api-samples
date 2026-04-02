@@ -5,6 +5,7 @@ import org.openapitools.model.GenericResponse;
 import org.openapitools.model.GetAccountInfo401Response;
 import org.openapitools.model.GetAccountTfaSetup200Response;
 import org.openapitools.model.Home;
+import org.openapitools.model.IpLimitRange;
 import org.openapitools.model.SearchAutocompleteResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
@@ -94,9 +95,10 @@ public class AccountApiTest {
     @Disabled("Not Implemented")
     public void deleteIpLimitTest() {
         // given
+        IpLimitRange ipLimitRange = new IpLimitRange("1.2.3.0", "1.2.3.255");
 
         // when
-        GenericResponse body = api.deleteIpLimit().block();
+        GenericResponse body = api.deleteIpLimit(ipLimitRange).block();
 
         // then
         // TODO implement the deleteIpLimitTest()

@@ -32,7 +32,7 @@ void main() {
     });
 
     // IPv6 address (null)
-    // JsonObject qsIpv6
+    // String qsIpv6
     test('to test the property `qsIpv6`', () async {
       // TODO
     });
@@ -116,7 +116,7 @@ void main() {
     });
 
     // VNC port (null)
-    // JsonObject qsVncPort
+    // int qsVncPort
     test('to test the property `qsVncPort`', () async {
       // TODO
     });
@@ -152,7 +152,7 @@ void main() {
     });
 
     // Platform (null)
-    // JsonObject qsPlatform
+    // String qsPlatform
     test('to test the property `qsPlatform`', () async {
       // TODO
     });

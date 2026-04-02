@@ -10872,10 +10872,10 @@ export interface QuickserverServiceInfo {
     qs_ip?: string;
     /**
      * IPv6 address (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceInfo
      */
-    qs_ipv6?: any;
+    qs_ipv6?: string;
     /**
      * VZ ID
      * @type {string}
@@ -10956,10 +10956,10 @@ export interface QuickserverServiceInfo {
     qs_vnc?: string;
     /**
      * VNC port (null)
-     * @type {any}
+     * @type {number}
      * @memberof QuickserverServiceInfo
      */
-    qs_vnc_port?: any;
+    qs_vnc_port?: number;
     /**
      * Root password
      * @type {string}
@@ -10992,10 +10992,10 @@ export interface QuickserverServiceInfo {
     qs_location?: string;
     /**
      * Platform (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceInfo
      */
-    qs_platform?: any;
+    qs_platform?: string;
 }
 /**
  * Information about the host node running this QuickServer, including hardware specs and resource utilization.
@@ -11185,16 +11185,16 @@ export interface QuickserverServiceMaster {
     qs_packets_sec_out?: string;
     /**
      * Last install time (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceMaster
      */
-    qs_last_install_time?: any;
+    qs_last_install_time?: string;
     /**
      * Partitions information (null)
-     * @type {any}
+     * @type {string}
      * @memberof QuickserverServiceMaster
      */
-    qs_partitions?: any;
+    qs_partitions?: string;
     /**
      * CPU flags
      * @type {string}
@@ -11677,10 +11677,10 @@ export interface ServerAsset {
     primary_ipv6: string;
     /**
      * MAC address associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    mac?: any;
+    mac?: string;
     /**
      * Datacenter identifier for the asset.
      * @type {string}
@@ -11749,34 +11749,34 @@ export interface ServerAsset {
     ipmi_ip: string;
     /**
      * IPMI admin username associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_admin_username?: any;
+    ipmi_admin_username?: string;
     /**
      * IPMI admin password associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_admin_password?: any;
+    ipmi_admin_password?: string;
     /**
      * IPMI client username associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_client_username?: any;
+    ipmi_client_username?: string;
     /**
      * IPMI client password associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_client_password?: any;
+    ipmi_client_password?: string;
     /**
      * IPMI update status associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_updated?: any;
+    ipmi_updated?: string;
     /**
      * IPMI working status associated with the asset.
      * @type {string}
@@ -11839,16 +11839,16 @@ export interface ServerAsset {
     overdue: string;
     /**
      * Timestamp of asset creation.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    create_timestamp?: any;
+    create_timestamp?: string;
     /**
      * Timestamp of asset update.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    update_timestamp?: any;
+    update_timestamp?: string;
     /**
      * Asset identifier for the asset.
      * @type {string}
@@ -11899,10 +11899,10 @@ export interface ServerAsset {
     rack_y: string;
     /**
      * Comment associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    comment?: any;
+    comment?: string;
     /**
      * List of switchports associated with the asset.
      * @type {Array<number>}
@@ -12612,10 +12612,10 @@ export interface ServerOrderCPU {
     visible?: string;
     /**
      * Hard drive IDs.
-     * @type {any}
+     * @type {string}
      * @memberof ServerOrderCPU
      */
-    hd_ids?: any;
+    hd_ids?: string;
     /**
      * Display of CPU price.
      * @type {string}
@@ -13470,10 +13470,10 @@ export interface ServerServiceInfo {
     server_setup?: string;
     /**
      * Discount information for the server.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_discount?: any;
+    server_discount?: string;
     /**
      * The reputation of the server.
      * @type {string}
@@ -13494,10 +13494,10 @@ export interface ServerServiceInfo {
     server_total_cost?: string;
     /**
      * The location of the server.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_location?: any;
+    server_location?: string;
     /**
      * The ordered hardware for the server.
      * @type {string}
@@ -13536,10 +13536,10 @@ export interface ServerServiceInfo {
     server_dedicated_hd1?: string;
     /**
      * The size of the second dedicated hard drive.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_dedicated_hd2?: any;
+    server_dedicated_hd2?: string;
     /**
      * The bandwidth of the server.
      * @type {string}
@@ -13560,10 +13560,10 @@ export interface ServerServiceInfo {
     server_dedicated_os?: string;
     /**
      * The control panel of the server.
-     * @type {any}
+     * @type {string}
      * @memberof ServerServiceInfo
      */
-    server_dedicated_cp?: any;
+    server_dedicated_cp?: string;
     /**
      * The RAID configuration of the server.
      * @type {string}
@@ -16096,10 +16096,10 @@ export interface VpsServiceInfo {
     vps_ip?: string;
     /**
      * IPv6 address of the VPS
-     * @type {any}
+     * @type {string}
      * @memberof VpsServiceInfo
      */
-    vps_ipv6?: any;
+    vps_ipv6?: string;
     /**
      * VPS Virtuozzo ID
      * @type {string}
@@ -17795,10 +17795,11 @@ export const AccountApiFetchParamCreator = function (configuration?: Configurati
         /**
          * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
          * @summary Remove IP Access Restriction
+         * @param {IpLimitRange} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteIpLimit(options: any = {}): FetchArgs {
+        deleteIpLimit(body?: IpLimitRange, options: any = {}): FetchArgs {
             const localVarPath = `/account/iplimits`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
@@ -17829,10 +17830,14 @@ export const AccountApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["sessionid"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"IpLimitRange" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -18817,11 +18822,12 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
          * @summary Remove IP Access Restriction
+         * @param {IpLimitRange} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteIpLimit(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GenericResponse> {
-            const localVarFetchArgs = AccountApiFetchParamCreator(configuration).deleteIpLimit(options);
+        deleteIpLimit(body?: IpLimitRange, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GenericResponse> {
+            const localVarFetchArgs = AccountApiFetchParamCreator(configuration).deleteIpLimit(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -19137,11 +19143,12 @@ export const AccountApiFactory = function (configuration?: Configuration, fetch?
         /**
          * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
          * @summary Remove IP Access Restriction
+         * @param {IpLimitRange} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteIpLimit(options?: any) {
-            return AccountApiFp(configuration).deleteIpLimit(options)(fetch, basePath);
+        deleteIpLimit(body?: IpLimitRange, options?: any) {
+            return AccountApiFp(configuration).deleteIpLimit(body, options)(fetch, basePath);
         },
         /**
          * Returns the full account profile including contact information, billing address, and security settings. Use this to populate account management forms or verify account state before making changes with `POST /account`.
@@ -19338,12 +19345,13 @@ export class AccountApi extends BaseAPI {
     /**
      * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * @summary Remove IP Access Restriction
+     * @param {IpLimitRange} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public deleteIpLimit(options?: any) {
-        return AccountApiFp(this.configuration).deleteIpLimit(options)(this.fetch, this.basePath);
+    public deleteIpLimit(body?: IpLimitRange, options?: any) {
+        return AccountApiFp(this.configuration).deleteIpLimit(body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -28421,12 +28429,12 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFloatingIpsList(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getFloatingIpsList(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<any>> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).getFloatingIpsList(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }

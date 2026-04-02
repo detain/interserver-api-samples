@@ -20,6 +20,7 @@ import {
   SearchAutocompleteResponse,
   TextResponse,
   Home,
+  IpLimitRange,
   AccountInfo,
   GetAccountTfaSetup200Response,
 } from './models';
@@ -47,6 +48,7 @@ export interface IDeleteAccountTfaParams {
  * deleteIpLimit - parameters interface
  */
 export interface IDeleteIpLimitParams {
+  ipLimitRange?: IpLimitRange;
 }
 
 /**
@@ -264,8 +266,9 @@ export class AccountApi extends Api {
   /**
    * Remove IP Access Restriction
    * Removes an IP address range from the account\&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
+   * @param params.ipLimitRange 
    */
-  async deleteIpLimit(): Promise<GenericResponse> {
+  async deleteIpLimit(params: IDeleteIpLimitParams): Promise<GenericResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -274,6 +277,9 @@ export class AccountApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPatch()
+      // Encode body parameter
+      .withHeader('content-type', 'application/json')
+      .withContent(JSON.stringify(params['ipLimitRange'] || {}))
 
       // Authentication 'sessionIdCookieAuth' required
       // Authentication 'apiKeyAuth' required

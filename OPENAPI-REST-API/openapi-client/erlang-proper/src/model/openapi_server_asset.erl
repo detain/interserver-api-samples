@@ -15,7 +15,7 @@
   | {'status', binary() }
   | {'primary_ipv4', binary() }
   | {'primary_ipv6', binary() }
-  | {'mac', openapi_any_type:openapi_any_type() }
+  | {'mac', binary() }
   | {'datacenter', binary() }
   | {'type_id', binary() }
   | {'asset_tag', binary() }
@@ -27,11 +27,11 @@
   | {'unit_sub', binary() }
   | {'ipmi_mac', binary() }
   | {'ipmi_ip', binary() }
-  | {'ipmi_admin_username', openapi_any_type:openapi_any_type() }
-  | {'ipmi_admin_password', openapi_any_type:openapi_any_type() }
-  | {'ipmi_client_username', openapi_any_type:openapi_any_type() }
-  | {'ipmi_client_password', openapi_any_type:openapi_any_type() }
-  | {'ipmi_updated', openapi_any_type:openapi_any_type() }
+  | {'ipmi_admin_username', binary() }
+  | {'ipmi_admin_password', binary() }
+  | {'ipmi_client_username', binary() }
+  | {'ipmi_client_password', binary() }
+  | {'ipmi_updated', binary() }
   | {'ipmi_working', binary() }
   | {'company', binary() }
   | {'comments', binary() }
@@ -42,8 +42,8 @@
   | {'external_id', binary() }
   | {'billing_status', binary() }
   | {'overdue', binary() }
-  | {'create_timestamp', openapi_any_type:openapi_any_type() }
-  | {'update_timestamp', openapi_any_type:openapi_any_type() }
+  | {'create_timestamp', binary() }
+  | {'update_timestamp', binary() }
   | {'asset_id', binary() }
   | {'asset_name', binary() }
   | {'rack_id', binary() }
@@ -52,7 +52,7 @@
   | {'rack_size', binary() }
   | {'rack_x', binary() }
   | {'rack_y', binary() }
-  | {'comment', openapi_any_type:openapi_any_type() }
+  | {'comment', binary() }
   | {'switchports', list(integer()) }
   | {'vlans', list(binary()) }
   | {'vlans6', list(binary()) }
@@ -70,7 +70,7 @@ openapi_server_asset(Fields) ->
             , {'status', binary() }
             , {'primary_ipv4', binary() }
             , {'primary_ipv6', binary() }
-            , {'mac', openapi_any_type:openapi_any_type() }
+            , {'mac', binary() }
             , {'datacenter', binary() }
             , {'type_id', binary() }
             , {'asset_tag', binary() }
@@ -82,11 +82,11 @@ openapi_server_asset(Fields) ->
             , {'unit_sub', binary() }
             , {'ipmi_mac', binary() }
             , {'ipmi_ip', binary() }
-            , {'ipmi_admin_username', openapi_any_type:openapi_any_type() }
-            , {'ipmi_admin_password', openapi_any_type:openapi_any_type() }
-            , {'ipmi_client_username', openapi_any_type:openapi_any_type() }
-            , {'ipmi_client_password', openapi_any_type:openapi_any_type() }
-            , {'ipmi_updated', openapi_any_type:openapi_any_type() }
+            , {'ipmi_admin_username', binary() }
+            , {'ipmi_admin_password', binary() }
+            , {'ipmi_client_username', binary() }
+            , {'ipmi_client_password', binary() }
+            , {'ipmi_updated', binary() }
             , {'ipmi_working', binary() }
             , {'company', binary() }
             , {'comments', binary() }
@@ -97,8 +97,8 @@ openapi_server_asset(Fields) ->
             , {'external_id', binary() }
             , {'billing_status', binary() }
             , {'overdue', binary() }
-            , {'create_timestamp', openapi_any_type:openapi_any_type() }
-            , {'update_timestamp', openapi_any_type:openapi_any_type() }
+            , {'create_timestamp', binary() }
+            , {'update_timestamp', binary() }
             , {'asset_id', binary() }
             , {'asset_name', binary() }
             , {'rack_id', binary() }
@@ -107,7 +107,7 @@ openapi_server_asset(Fields) ->
             , {'rack_size', binary() }
             , {'rack_x', binary() }
             , {'rack_y', binary() }
-            , {'comment', openapi_any_type:openapi_any_type() }
+            , {'comment', binary() }
             , {'switchports', list(integer()) }
             , {'vlans', list(binary()) }
             , {'vlans6', list(binary()) }

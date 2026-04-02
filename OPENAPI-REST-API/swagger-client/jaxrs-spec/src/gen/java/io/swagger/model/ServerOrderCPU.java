@@ -58,7 +58,7 @@ public class ServerOrderCPU   {
 
   private @Valid String visible = null;
 
-  private @Valid Object hdIds = null;
+  private @Valid String hdIds = null;
 
   private @Valid String priceDisplay = null;
 
@@ -507,7 +507,7 @@ public class ServerOrderCPU   {
   /**
    * Hard drive IDs.
    **/
-  public ServerOrderCPU hdIds(Object hdIds) {
+  public ServerOrderCPU hdIds(String hdIds) {
     this.hdIds = hdIds;
     return this;
   }
@@ -517,10 +517,10 @@ public class ServerOrderCPU   {
   @JsonProperty("hd_ids")
   @NotNull
 
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 

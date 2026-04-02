@@ -52,7 +52,7 @@ data class VpsServiceInfo (
     /* IP address of the VPS */
     val vpsIp: kotlin.String? = null,
     /* IPv6 address of the VPS */
-    val vpsIpv6: kotlin.Any? = null,
+    val vpsIpv6: kotlin.String? = null,
     /* VPS Virtuozzo ID */
     val vpsVzid: kotlin.String? = null,
     /* Currency used for billing */

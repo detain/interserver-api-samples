@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **qsCustid** | **string** | Customer ID | [optional] 
 **qsServer** | **string** | Server information | [optional] 
 **qsIp** | **string** | IP address | [optional] 
-**qsIpv6** | [****](.md) | IPv6 address (null) | [optional] 
+**qsIpv6** | **string** | IPv6 address (null) | [optional] 
 **qsVzid** | **string** | VZ ID | [optional] 
 **qsCurrency** | **string** | Currency | [optional] 
 **qsType** | **string** | Type | [optional] 
@@ -21,13 +21,13 @@ Name | Type | Description | Notes
 **qsComment** | **string** | Comment | [optional] 
 **qsSlices** | **string** | Slices information | [optional] 
 **qsVnc** | **string** | VNC information | [optional] 
-**qsVncPort** | [****](.md) | VNC port (null) | [optional] 
+**qsVncPort** | **int** | VNC port (null) | [optional] 
 **qsRootpass** | **string** | Root password | [optional] 
 **qsMac** | **string** | MAC address | [optional] 
 **qsOs** | **string** | Operating system | [optional] 
 **qsVersion** | **string** | OS version | [optional] 
 **qsLocation** | **string** | Location | [optional] 
-**qsPlatform** | [****](.md) | Platform (null) | [optional] 
+**qsPlatform** | **string** | Platform (null) | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

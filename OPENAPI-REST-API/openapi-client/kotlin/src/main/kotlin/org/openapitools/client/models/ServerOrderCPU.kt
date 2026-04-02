@@ -150,7 +150,7 @@ data class ServerOrderCPU (
 
     /* Hard drive IDs. */
     @Json(name = "hd_ids")
-    val hdIds: kotlin.Any? = null,
+    val hdIds: kotlin.String? = null,
 
     /* Display of CPU price. */
     @Json(name = "price_display")

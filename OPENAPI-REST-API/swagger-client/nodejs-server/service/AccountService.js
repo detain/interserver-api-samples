@@ -71,9 +71,10 @@ exports.deleteAccountTfa = function() {
  * Remove IP Access Restriction
  * Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
  *
+ * body IpLimitRange  (optional)
  * returns GenericResponse
  **/
-exports.deleteIpLimit = function() {
+exports.deleteIpLimit = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {

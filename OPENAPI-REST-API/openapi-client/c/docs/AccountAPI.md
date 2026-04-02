@@ -120,13 +120,14 @@ Name | Type | Description  | Notes
 //
 // Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
 //
-generic_response_t* AccountAPI_deleteIpLimit(apiClient_t *apiClient);
+generic_response_t* AccountAPI_deleteIpLimit(apiClient_t *apiClient, ip_limit_range_t *ip_limit_range);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**ip_limit_range** | **[ip_limit_range_t](ip_limit_range.md) \*** |  | [optional] 
 
 ### Return type
 

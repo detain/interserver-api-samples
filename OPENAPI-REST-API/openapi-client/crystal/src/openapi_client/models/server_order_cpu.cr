@@ -104,8 +104,8 @@ module OpenAPIClient
     property visible : String?
 
     # Hard drive IDs.
-    @[JSON::Field(key: "hd_ids", type: JSON::Any?, nillable: true, emit_null: false)]
-    property hd_ids : JSON::Any?
+    @[JSON::Field(key: "hd_ids", type: String?, nillable: true, emit_null: false)]
+    property hd_ids : String?
 
     # Display of CPU price.
     @[JSON::Field(key: "price_display", type: String?, nillable: true, emit_null: false)]
@@ -117,7 +117,7 @@ module OpenAPIClient
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(@id : String? = nil, @price : Int32? = nil, @img : String? = nil, @short_desc : String? = nil, @long_desc : String? = nil, @location : String? = nil, @fsb : String? = nil, @manu : String? = nil, @_type : String? = nil, @speed : String? = nil, @cache : String? = nil, @active : String? = nil, @num_cores : String? = nil, @num_cpus : String? = nil, @benchmark : String? = nil, @monthly_price : Int32? = nil, @max_ram : String? = nil, @min_ram : String? = nil, @max_lff : String? = nil, @max_sff : String? = nil, @max_nve : String? = nil, @visible : String? = nil, @hd_ids : JSON::Any? = nil, @price_display : String? = nil, @monthly_price_display : String? = nil)
+    def initialize(@id : String? = nil, @price : Int32? = nil, @img : String? = nil, @short_desc : String? = nil, @long_desc : String? = nil, @location : String? = nil, @fsb : String? = nil, @manu : String? = nil, @_type : String? = nil, @speed : String? = nil, @cache : String? = nil, @active : String? = nil, @num_cores : String? = nil, @num_cpus : String? = nil, @benchmark : String? = nil, @monthly_price : Int32? = nil, @max_ram : String? = nil, @min_ram : String? = nil, @max_lff : String? = nil, @max_sff : String? = nil, @max_nve : String? = nil, @visible : String? = nil, @hd_ids : String? = nil, @price_display : String? = nil, @monthly_price_display : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

@@ -41,22 +41,22 @@ ServerServiceInfo::__init()
 	//server_ips = std::string();
 	//server_monthly_bill = std::string();
 	//server_setup = std::string();
-	//server_discount = null;
+	//server_discount = std::string();
 	//server_rep = std::string();
 	//server_date = std::string();
 	//server_total_cost = std::string();
-	//server_location = null;
+	//server_location = std::string();
 	//server_hardware_ordered = std::string();
 	//server_billed = std::string();
 	//server_welcome_email = std::string();
 	//server_dedicated_cpu = std::string();
 	//server_dedicated_memory = std::string();
 	//server_dedicated_hd1 = std::string();
-	//server_dedicated_hd2 = null;
+	//server_dedicated_hd2 = std::string();
 	//server_dedicated_bandwidth = std::string();
 	//server_dedicated_ips = std::string();
 	//server_dedicated_os = std::string();
-	//server_dedicated_cp = null;
+	//server_dedicated_cp = std::string();
 	//server_dedicated_raid = std::string();
 	//server_extra = std::string();
 }
@@ -455,12 +455,9 @@ ServerServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&server_discount, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&server_discount, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&server_discount);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -502,12 +499,9 @@ ServerServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&server_location, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&server_location, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&server_location);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -582,12 +576,9 @@ ServerServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&server_dedicated_hd2, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&server_dedicated_hd2, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&server_dedicated_hd2);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -629,12 +620,9 @@ ServerServiceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AnyType")) {
-			jsonToValue(&server_dedicated_cp, node, "AnyType", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&server_dedicated_cp, node, "std::string", "");
 		} else {
-			
-			AnyType* obj = static_cast<AnyType*> (&server_dedicated_cp);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -834,16 +822,11 @@ ServerServiceInfo::toJson()
 	}
 	const gchar *server_setupKey = "server_setup";
 	json_object_set_member(pJsonObject, server_setupKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getServerDiscount();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getServerDiscount();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getServerDiscount());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *server_discountKey = "server_discount";
@@ -875,16 +858,11 @@ ServerServiceInfo::toJson()
 	}
 	const gchar *server_total_costKey = "server_total_cost";
 	json_object_set_member(pJsonObject, server_total_costKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getServerLocation();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getServerLocation();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getServerLocation());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *server_locationKey = "server_location";
@@ -943,16 +921,11 @@ ServerServiceInfo::toJson()
 	}
 	const gchar *server_dedicated_hd1Key = "server_dedicated_hd1";
 	json_object_set_member(pJsonObject, server_dedicated_hd1Key, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getServerDedicatedHd2();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getServerDedicatedHd2();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getServerDedicatedHd2());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *server_dedicated_hd2Key = "server_dedicated_hd2";
@@ -984,16 +957,11 @@ ServerServiceInfo::toJson()
 	}
 	const gchar *server_dedicated_osKey = "server_dedicated_os";
 	json_object_set_member(pJsonObject, server_dedicated_osKey, node);
-	if (isprimitive("AnyType")) {
-		AnyType obj = getServerDedicatedCp();
-		node = converttoJson(&obj, "AnyType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getServerDedicatedCp();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		AnyType obj = static_cast<AnyType> (getServerDedicatedCp());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *server_dedicated_cpKey = "server_dedicated_cp";
@@ -1240,14 +1208,14 @@ ServerServiceInfo::setServerSetup(std::string  server_setup)
 	this->server_setup = server_setup;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerDiscount()
 {
 	return server_discount;
 }
 
 void
-ServerServiceInfo::setServerDiscount(AnyType  server_discount)
+ServerServiceInfo::setServerDiscount(std::string  server_discount)
 {
 	this->server_discount = server_discount;
 }
@@ -1288,14 +1256,14 @@ ServerServiceInfo::setServerTotalCost(std::string  server_total_cost)
 	this->server_total_cost = server_total_cost;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerLocation()
 {
 	return server_location;
 }
 
 void
-ServerServiceInfo::setServerLocation(AnyType  server_location)
+ServerServiceInfo::setServerLocation(std::string  server_location)
 {
 	this->server_location = server_location;
 }
@@ -1372,14 +1340,14 @@ ServerServiceInfo::setServerDedicatedHd1(std::string  server_dedicated_hd1)
 	this->server_dedicated_hd1 = server_dedicated_hd1;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerDedicatedHd2()
 {
 	return server_dedicated_hd2;
 }
 
 void
-ServerServiceInfo::setServerDedicatedHd2(AnyType  server_dedicated_hd2)
+ServerServiceInfo::setServerDedicatedHd2(std::string  server_dedicated_hd2)
 {
 	this->server_dedicated_hd2 = server_dedicated_hd2;
 }
@@ -1420,14 +1388,14 @@ ServerServiceInfo::setServerDedicatedOs(std::string  server_dedicated_os)
 	this->server_dedicated_os = server_dedicated_os;
 }
 
-AnyType
+std::string
 ServerServiceInfo::getServerDedicatedCp()
 {
 	return server_dedicated_cp;
 }
 
 void
-ServerServiceInfo::setServerDedicatedCp(AnyType  server_dedicated_cp)
+ServerServiceInfo::setServerDedicatedCp(std::string  server_dedicated_cp)
 {
 	this->server_dedicated_cp = server_dedicated_cp;
 }

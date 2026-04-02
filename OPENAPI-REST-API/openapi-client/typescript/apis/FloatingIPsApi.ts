@@ -657,10 +657,14 @@ export class FloatingIPsApiResponseProcessor {
      * @params response Response returned by the server for a request to getFloatingIpsList
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getFloatingIpsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getFloatingIpsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<any> >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Array<any> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<any>", ""
+            ) as Array<any>;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: GetAccountInfo401Response = ObjectSerializer.deserialize(
@@ -675,10 +679,10 @@ export class FloatingIPsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Array<any> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Array<any>", ""
+            ) as Array<any>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

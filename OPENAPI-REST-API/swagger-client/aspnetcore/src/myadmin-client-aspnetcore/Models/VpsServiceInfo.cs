@@ -64,7 +64,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPv6 address of the VPS</value>
 
         [DataMember(Name="vps_ipv6")]
-        public Object VpsIpv6 { get; set; }
+        public string VpsIpv6 { get; set; }
 
         /// <summary>
         /// VPS Virtuozzo ID

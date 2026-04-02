@@ -157,8 +157,8 @@ class AccountApi {
   /// Remove IP Access Restriction
   ///
   /// Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
-  Future<GenericResponse> deleteIpLimit() async {
-    Object postBody = null;
+  Future<GenericResponse> deleteIpLimit({ IpLimitRange body }) async {
+    Object postBody = body;
 
     // verify required params are set
 

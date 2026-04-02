@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * A CPU option available when ordering a dedicated server.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class ServerOrderCPU {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -164,7 +163,7 @@ public class ServerOrderCPU {
   public static final String SERIALIZED_NAME_HD_IDS = "hd_ids";
   @SerializedName(SERIALIZED_NAME_HD_IDS)
   @javax.annotation.Nullable
-  private Object hdIds = null;
+  private String hdIds;
 
   public static final String SERIALIZED_NAME_PRICE_DISPLAY = "price_display";
   @SerializedName(SERIALIZED_NAME_PRICE_DISPLAY)
@@ -597,7 +596,7 @@ public class ServerOrderCPU {
   }
 
 
-  public ServerOrderCPU hdIds(@javax.annotation.Nullable Object hdIds) {
+  public ServerOrderCPU hdIds(@javax.annotation.Nullable String hdIds) {
     this.hdIds = hdIds;
     return this;
   }
@@ -607,11 +606,11 @@ public class ServerOrderCPU {
    * @return hdIds
    */
   @javax.annotation.Nullable
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
 
-  public void setHdIds(@javax.annotation.Nullable Object hdIds) {
+  public void setHdIds(@javax.annotation.Nullable String hdIds) {
     this.hdIds = hdIds;
   }
 
@@ -691,20 +690,9 @@ public class ServerOrderCPU {
         Objects.equals(this.monthlyPriceDisplay, serverOrderCPU.monthlyPriceDisplay);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(id, price, img, shortDesc, longDesc, location, fsb, manu, type, speed, cache, active, numCores, numCpus, benchmark, monthlyPrice, maxRam, minRam, maxLff, maxSff, maxNve, visible, hdIds, priceDisplay, monthlyPriceDisplay);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -840,6 +828,9 @@ public class ServerOrderCPU {
       }
       if ((jsonObj.get("visible") != null && !jsonObj.get("visible").isJsonNull()) && !jsonObj.get("visible").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `visible` to be a primitive type in the JSON string but got `%s`", jsonObj.get("visible").toString()));
+      }
+      if ((jsonObj.get("hd_ids") != null && !jsonObj.get("hd_ids").isJsonNull()) && !jsonObj.get("hd_ids").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `hd_ids` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hd_ids").toString()));
       }
       if ((jsonObj.get("price_display") != null && !jsonObj.get("price_display").isJsonNull()) && !jsonObj.get("price_display").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `price_display` to be a primitive type in the JSON string but got `%s`", jsonObj.get("price_display").toString()));

@@ -208,7 +208,7 @@ This endpoint does not need any parameter.
 
 
 # **delete_ip_limit**
-> GenericResponse delete_ip_limit
+> GenericResponse delete_ip_limit(opts)
 
 Remove IP Access Restriction
 
@@ -237,10 +237,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AccountApi.new
+opts = { 
+  body: SwaggerClient::IpLimitRange.new # IpLimitRange | 
+}
 
 begin
   #Remove IP Access Restriction
-  result = api_instance.delete_ip_limit
+  result = api_instance.delete_ip_limit(opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->delete_ip_limit: #{e}"
@@ -248,7 +251,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] 
 
 ### Return type
 

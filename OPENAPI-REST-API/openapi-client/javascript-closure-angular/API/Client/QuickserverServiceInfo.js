@@ -36,7 +36,7 @@ API.Client.QuickserverServiceInfo.prototype.qsIp;
 
 /**
  * IPv6 address (null)
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.QuickserverServiceInfo.prototype.qsIpv6;
@@ -134,7 +134,7 @@ API.Client.QuickserverServiceInfo.prototype.qsVnc;
 
 /**
  * VNC port (null)
- * @type {!API.Client.AnyType}
+ * @type {!number}
  * @export
  */
 API.Client.QuickserverServiceInfo.prototype.qsVncPort;
@@ -176,7 +176,7 @@ API.Client.QuickserverServiceInfo.prototype.qsLocation;
 
 /**
  * Platform (null)
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.QuickserverServiceInfo.prototype.qsPlatform;

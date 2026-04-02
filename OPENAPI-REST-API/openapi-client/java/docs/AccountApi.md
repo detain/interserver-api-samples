@@ -264,7 +264,7 @@ This endpoint does not need any parameter.
 
 <a id="deleteIpLimit"></a>
 # **deleteIpLimit**
-> GenericResponse deleteIpLimit()
+> GenericResponse deleteIpLimit(ipLimitRange)
 
 Remove IP Access Restriction
 
@@ -304,8 +304,9 @@ public class Example {
     //sessionIdHeaderAuth.setApiKeyPrefix("Token");
 
     AccountApi apiInstance = new AccountApi(defaultClient);
+    IpLimitRange ipLimitRange = new IpLimitRange(); // IpLimitRange | 
     try {
-      GenericResponse result = apiInstance.deleteIpLimit();
+      GenericResponse result = apiInstance.deleteIpLimit(ipLimitRange);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AccountApi#deleteIpLimit");
@@ -319,7 +320,10 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] |
 
 ### Return type
 

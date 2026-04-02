@@ -60,7 +60,7 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess
         'vpsCustid' => 'string',
         'vpsServer' => 'string',
         'vpsIp' => 'string',
-        'vpsIpv6' => '',
+        'vpsIpv6' => 'string',
         'vpsVzid' => 'string',
         'vpsCurrency' => 'string',
         'vpsType' => 'string',
@@ -456,7 +456,7 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Gets vpsIpv6
      *
-     * @return 
+     * @return string
      */
     public function getVpsIpv6()
     {
@@ -466,7 +466,7 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess
     /**
      * Sets vpsIpv6
      *
-     * @param  $vpsIpv6 IPv6 address of the VPS
+     * @param string $vpsIpv6 IPv6 address of the VPS
      *
      * @return $this
      */

@@ -14,7 +14,7 @@ class QuickserverServiceInfo(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, qs_id: str=None, qs_custid: str=None, qs_server: str=None, qs_ip: str=None, qs_ipv6: Object=None, qs_vzid: str=None, qs_currency: str=None, qs_type: str=None, qs_order_date: str=None, qs_status: str=None, qs_invoice: str=None, qs_coupon: str=None, qs_extra: str=None, qs_hostname: str=None, qs_server_status: str=None, qs_comment: str=None, qs_slices: str=None, qs_vnc: str=None, qs_vnc_port: Object=None, qs_rootpass: str=None, qs_mac: str=None, qs_os: str=None, qs_version: str=None, qs_location: str=None, qs_platform: Object=None):  # noqa: E501
+    def __init__(self, qs_id: str=None, qs_custid: str=None, qs_server: str=None, qs_ip: str=None, qs_ipv6: str=None, qs_vzid: str=None, qs_currency: str=None, qs_type: str=None, qs_order_date: str=None, qs_status: str=None, qs_invoice: str=None, qs_coupon: str=None, qs_extra: str=None, qs_hostname: str=None, qs_server_status: str=None, qs_comment: str=None, qs_slices: str=None, qs_vnc: str=None, qs_vnc_port: int=None, qs_rootpass: str=None, qs_mac: str=None, qs_os: str=None, qs_version: str=None, qs_location: str=None, qs_platform: str=None):  # noqa: E501
         """QuickserverServiceInfo - a model defined in Swagger
 
         :param qs_id: The qs_id of this QuickserverServiceInfo.  # noqa: E501
@@ -26,7 +26,7 @@ class QuickserverServiceInfo(Model):
         :param qs_ip: The qs_ip of this QuickserverServiceInfo.  # noqa: E501
         :type qs_ip: str
         :param qs_ipv6: The qs_ipv6 of this QuickserverServiceInfo.  # noqa: E501
-        :type qs_ipv6: Object
+        :type qs_ipv6: str
         :param qs_vzid: The qs_vzid of this QuickserverServiceInfo.  # noqa: E501
         :type qs_vzid: str
         :param qs_currency: The qs_currency of this QuickserverServiceInfo.  # noqa: E501
@@ -54,7 +54,7 @@ class QuickserverServiceInfo(Model):
         :param qs_vnc: The qs_vnc of this QuickserverServiceInfo.  # noqa: E501
         :type qs_vnc: str
         :param qs_vnc_port: The qs_vnc_port of this QuickserverServiceInfo.  # noqa: E501
-        :type qs_vnc_port: Object
+        :type qs_vnc_port: int
         :param qs_rootpass: The qs_rootpass of this QuickserverServiceInfo.  # noqa: E501
         :type qs_rootpass: str
         :param qs_mac: The qs_mac of this QuickserverServiceInfo.  # noqa: E501
@@ -66,14 +66,14 @@ class QuickserverServiceInfo(Model):
         :param qs_location: The qs_location of this QuickserverServiceInfo.  # noqa: E501
         :type qs_location: str
         :param qs_platform: The qs_platform of this QuickserverServiceInfo.  # noqa: E501
-        :type qs_platform: Object
+        :type qs_platform: str
         """
         self.swagger_types = {
             'qs_id': str,
             'qs_custid': str,
             'qs_server': str,
             'qs_ip': str,
-            'qs_ipv6': Object,
+            'qs_ipv6': str,
             'qs_vzid': str,
             'qs_currency': str,
             'qs_type': str,
@@ -87,13 +87,13 @@ class QuickserverServiceInfo(Model):
             'qs_comment': str,
             'qs_slices': str,
             'qs_vnc': str,
-            'qs_vnc_port': Object,
+            'qs_vnc_port': int,
             'qs_rootpass': str,
             'qs_mac': str,
             'qs_os': str,
             'qs_version': str,
             'qs_location': str,
-            'qs_platform': Object
+            'qs_platform': str
         }
 
         self.attribute_map = {
@@ -253,24 +253,24 @@ class QuickserverServiceInfo(Model):
         self._qs_ip = qs_ip
 
     @property
-    def qs_ipv6(self) -> Object:
+    def qs_ipv6(self) -> str:
         """Gets the qs_ipv6 of this QuickserverServiceInfo.
 
         IPv6 address (null)  # noqa: E501
 
         :return: The qs_ipv6 of this QuickserverServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._qs_ipv6
 
     @qs_ipv6.setter
-    def qs_ipv6(self, qs_ipv6: Object):
+    def qs_ipv6(self, qs_ipv6: str):
         """Sets the qs_ipv6 of this QuickserverServiceInfo.
 
         IPv6 address (null)  # noqa: E501
 
         :param qs_ipv6: The qs_ipv6 of this QuickserverServiceInfo.
-        :type qs_ipv6: Object
+        :type qs_ipv6: str
         """
 
         self._qs_ipv6 = qs_ipv6
@@ -575,24 +575,24 @@ class QuickserverServiceInfo(Model):
         self._qs_vnc = qs_vnc
 
     @property
-    def qs_vnc_port(self) -> Object:
+    def qs_vnc_port(self) -> int:
         """Gets the qs_vnc_port of this QuickserverServiceInfo.
 
         VNC port (null)  # noqa: E501
 
         :return: The qs_vnc_port of this QuickserverServiceInfo.
-        :rtype: Object
+        :rtype: int
         """
         return self._qs_vnc_port
 
     @qs_vnc_port.setter
-    def qs_vnc_port(self, qs_vnc_port: Object):
+    def qs_vnc_port(self, qs_vnc_port: int):
         """Sets the qs_vnc_port of this QuickserverServiceInfo.
 
         VNC port (null)  # noqa: E501
 
         :param qs_vnc_port: The qs_vnc_port of this QuickserverServiceInfo.
-        :type qs_vnc_port: Object
+        :type qs_vnc_port: int
         """
 
         self._qs_vnc_port = qs_vnc_port
@@ -713,24 +713,24 @@ class QuickserverServiceInfo(Model):
         self._qs_location = qs_location
 
     @property
-    def qs_platform(self) -> Object:
+    def qs_platform(self) -> str:
         """Gets the qs_platform of this QuickserverServiceInfo.
 
         Platform (null)  # noqa: E501
 
         :return: The qs_platform of this QuickserverServiceInfo.
-        :rtype: Object
+        :rtype: str
         """
         return self._qs_platform
 
     @qs_platform.setter
-    def qs_platform(self, qs_platform: Object):
+    def qs_platform(self, qs_platform: str):
         """Sets the qs_platform of this QuickserverServiceInfo.
 
         Platform (null)  # noqa: E501
 
         :param qs_platform: The qs_platform of this QuickserverServiceInfo.
-        :type qs_platform: Object
+        :type qs_platform: str
         """
 
         self._qs_platform = qs_platform

@@ -33,8 +33,8 @@ Name | Type | Description | Notes
 **qs_bytes_sec_out** | [**STRING_32**](STRING_32.md) | Bytes/sec out | [optional] [default to null]
 **qs_packets_sec_in** | [**STRING_32**](STRING_32.md) | Packets/sec in | [optional] [default to null]
 **qs_packets_sec_out** | [**STRING_32**](STRING_32.md) | Packets/sec out | [optional] [default to null]
-**qs_last_install_time** | [**ANY**](.md) | Last install time (null) | [optional] [default to null]
-**qs_partitions** | [**ANY**](.md) | Partitions information (null) | [optional] [default to null]
+**qs_last_install_time** | [**STRING_32**](STRING_32.md) | Last install time (null) | [optional] [default to null]
+**qs_partitions** | [**STRING_32**](STRING_32.md) | Partitions information (null) | [optional] [default to null]
 **qs_cpu_flags** | [**STRING_32**](STRING_32.md) | CPU flags | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

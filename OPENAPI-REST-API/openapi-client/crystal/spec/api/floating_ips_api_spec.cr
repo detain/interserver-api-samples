@@ -72,7 +72,7 @@ Spectator.describe "FloatingIPsApi" do
   # List Floating IPs
   # Returns all Floating IP services on the account with their current status and assignment details.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Array(JSON::Any)]
   describe "get_floating_ips_list test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

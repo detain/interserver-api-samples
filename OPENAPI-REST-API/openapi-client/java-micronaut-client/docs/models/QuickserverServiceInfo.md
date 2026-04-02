@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **qsCustid** | `String` | Customer ID |  [optional property]
 **qsServer** | `String` | Server information |  [optional property]
 **qsIp** | `String` | IP address |  [optional property]
-**qsIpv6** | `Object` | IPv6 address (null) |  [optional property]
+**qsIpv6** | `String` | IPv6 address (null) |  [optional property]
 **qsVzid** | `String` | VZ ID |  [optional property]
 **qsCurrency** | `String` | Currency |  [optional property]
 **qsType** | `String` | Type |  [optional property]
@@ -28,13 +28,13 @@ Name | Type | Description | Notes
 **qsComment** | `String` | Comment |  [optional property]
 **qsSlices** | `String` | Slices information |  [optional property]
 **qsVnc** | `String` | VNC information |  [optional property]
-**qsVncPort** | `Object` | VNC port (null) |  [optional property]
+**qsVncPort** | `Integer` | VNC port (null) |  [optional property]
 **qsRootpass** | `String` | Root password |  [optional property]
 **qsMac** | `String` | MAC address |  [optional property]
 **qsOs** | `String` | Operating system |  [optional property]
 **qsVersion** | `String` | OS version |  [optional property]
 **qsLocation** | `String` | Location |  [optional property]
-**qsPlatform** | `Object` | Platform (null) |  [optional property]
+**qsPlatform** | `String` | Platform (null) |  [optional property]
 
 
 

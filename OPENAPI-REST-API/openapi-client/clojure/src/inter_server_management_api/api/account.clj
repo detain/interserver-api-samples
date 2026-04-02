@@ -533,24 +533,27 @@
 (defn-spec delete-ip-limit-with-http-info any?
   "Remove IP Access Restriction
   Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address."
-  []
-  (call-api "/account/iplimits" :patch
-            {:path-params   {}
-             :header-params {}
-             :query-params  {}
-             :form-params   {}
-             :content-types ["application/json"]
-             :accepts       ["application/json"]
-             :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
+  ([] (delete-ip-limit-with-http-info nil))
+  ([{:keys [ip-limit-range]} (s/map-of keyword? any?)]
+   (call-api "/account/iplimits" :patch
+             {:path-params   {}
+              :header-params {}
+              :query-params  {}
+              :form-params   {}
+              :body-param    ip-limit-range
+              :content-types ["application/json"]
+              :accepts       ["application/json"]
+              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec delete-ip-limit generic-response-spec
   "Remove IP Access Restriction
   Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address."
-  []
-  (let [res (:data (delete-ip-limit-with-http-info))]
-    (if (:decode-models *api-context*)
-       (st/decode generic-response-spec res st/string-transformer)
-       res)))
+  ([] (delete-ip-limit nil))
+  ([optional-params any?]
+   (let [res (:data (delete-ip-limit-with-http-info optional-params))]
+     (if (:decode-models *api-context*)
+        (st/decode generic-response-spec res st/string-transformer)
+        res))))
 
 
 (defn-spec get-account-info-with-http-info any?

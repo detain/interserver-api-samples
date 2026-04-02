@@ -52,8 +52,8 @@ quickserver_service_master_t* instantiate_quickserver_service_master(int include
       "0",
       "0",
       "0",
-      null,
-      null,
+      "0",
+      "0",
       "0"
     );
   } else {
@@ -88,8 +88,8 @@ quickserver_service_master_t* instantiate_quickserver_service_master(int include
       "0",
       "0",
       "0",
-      null,
-      null,
+      "0",
+      "0",
       "0"
     );
   }

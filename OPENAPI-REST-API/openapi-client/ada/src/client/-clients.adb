@@ -85,15 +85,18 @@ package body .Clients is
    --  Removes an IP address range from the account's access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
    procedure Delete_Ip_Limit
       (Client : in out Client_Type;
+       Ip_Limit_Range_Type : in .Models.IpLimitRange_Type;
        Result : out .Models.GenericResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
-
+      Client.Initialize (Req, Media_List_1);
+      .Models.Serialize (Req.Stream, "", Ip_Limit_Range_Type);
 
       URI.Set_Path ("/account/iplimits");
-      Client.Call (Swagger.Clients.PATCH, URI, Reply);
+      Client.Call (Swagger.Clients.PATCH, URI, Req, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Delete_Ip_Limit;
 
@@ -1826,14 +1829,17 @@ package body .Clients is
    --  List Floating IPs
    --  Returns all Floating IP services on the account with their current status and assignment details.
    procedure Get_Floating_Ips_List
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.Object_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/floating_ips");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_Floating_Ips_List;
 
    --  Resend Floating IPs Welcome Email

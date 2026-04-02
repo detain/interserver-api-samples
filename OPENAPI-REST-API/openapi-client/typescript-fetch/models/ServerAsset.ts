@@ -263,58 +263,58 @@ export interface ServerAsset {
     lease: ServerLease;
     /**
      * MAC address associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    mac?: any | null;
+    mac?: string;
     /**
      * IPMI admin username associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_admin_username?: any | null;
+    ipmi_admin_username?: string;
     /**
      * IPMI admin password associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_admin_password?: any | null;
+    ipmi_admin_password?: string;
     /**
      * IPMI client username associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_client_username?: any | null;
+    ipmi_client_username?: string;
     /**
      * IPMI client password associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_client_password?: any | null;
+    ipmi_client_password?: string;
     /**
      * IPMI update status associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    ipmi_updated?: any | null;
+    ipmi_updated?: string;
     /**
      * Timestamp of asset creation.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    create_timestamp?: any | null;
+    create_timestamp?: string;
     /**
      * Timestamp of asset update.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    update_timestamp?: any | null;
+    update_timestamp?: string;
     /**
      * Comment associated with the asset.
-     * @type {any}
+     * @type {string}
      * @memberof ServerAsset
      */
-    comment?: any | null;
+    comment?: string;
 }
 
 /**

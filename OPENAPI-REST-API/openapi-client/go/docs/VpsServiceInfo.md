@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **VpsCustid** | Pointer to **string** | Customer ID | [optional] 
 **VpsServer** | Pointer to **string** | Server ID | [optional] 
 **VpsIp** | Pointer to **string** | IP address of the VPS | [optional] 
-**VpsIpv6** | Pointer to **interface{}** | IPv6 address of the VPS | [optional] 
+**VpsIpv6** | Pointer to **string** | IPv6 address of the VPS | [optional] 
 **VpsVzid** | Pointer to **string** | VPS Virtuozzo ID | [optional] 
 **VpsCurrency** | Pointer to **string** | Currency used for billing | [optional] 
 **VpsType** | Pointer to **string** | VPS type | [optional] 
@@ -153,20 +153,20 @@ HasVpsIp returns a boolean if a field has been set.
 
 ### GetVpsIpv6
 
-`func (o *VpsServiceInfo) GetVpsIpv6() interface{}`
+`func (o *VpsServiceInfo) GetVpsIpv6() string`
 
 GetVpsIpv6 returns the VpsIpv6 field if non-nil, zero value otherwise.
 
 ### GetVpsIpv6Ok
 
-`func (o *VpsServiceInfo) GetVpsIpv6Ok() (*interface{}, bool)`
+`func (o *VpsServiceInfo) GetVpsIpv6Ok() (*string, bool)`
 
 GetVpsIpv6Ok returns a tuple with the VpsIpv6 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVpsIpv6
 
-`func (o *VpsServiceInfo) SetVpsIpv6(v interface{})`
+`func (o *VpsServiceInfo) SetVpsIpv6(v string)`
 
 SetVpsIpv6 sets VpsIpv6 field to given value.
 
@@ -176,16 +176,6 @@ SetVpsIpv6 sets VpsIpv6 field to given value.
 
 HasVpsIpv6 returns a boolean if a field has been set.
 
-### SetVpsIpv6Nil
-
-`func (o *VpsServiceInfo) SetVpsIpv6Nil(b bool)`
-
- SetVpsIpv6Nil sets the value for VpsIpv6 to be an explicit nil
-
-### UnsetVpsIpv6
-`func (o *VpsServiceInfo) UnsetVpsIpv6()`
-
-UnsetVpsIpv6 ensures that no value is present for VpsIpv6, not even an explicit nil
 ### GetVpsVzid
 
 `func (o *VpsServiceInfo) GetVpsVzid() string`

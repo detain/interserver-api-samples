@@ -105,10 +105,10 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "List Floating IPs", tags={ "Floating_IPs" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "The listing of `Floating IPs` services on your account."),
+        @ApiResponse(responseCode = "200", description = "The listing of `Floating IPs` services on your account.", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Object.class)))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
         @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getFloatingIpsList();
+    public List<Object> getFloatingIpsList();
 
     /**
      * Resend Floating IPs Welcome Email

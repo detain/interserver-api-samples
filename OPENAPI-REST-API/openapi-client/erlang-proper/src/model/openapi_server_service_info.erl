@@ -27,22 +27,22 @@
   | {'server_ips', binary() }
   | {'server_monthly_bill', binary() }
   | {'server_setup', binary() }
-  | {'server_discount', openapi_any_type:openapi_any_type() }
+  | {'server_discount', binary() }
   | {'server_rep', binary() }
   | {'server_date', binary() }
   | {'server_total_cost', binary() }
-  | {'server_location', openapi_any_type:openapi_any_type() }
+  | {'server_location', binary() }
   | {'server_hardware_ordered', binary() }
   | {'server_billed', binary() }
   | {'server_welcome_email', binary() }
   | {'server_dedicated_cpu', binary() }
   | {'server_dedicated_memory', binary() }
   | {'server_dedicated_hd1', binary() }
-  | {'server_dedicated_hd2', openapi_any_type:openapi_any_type() }
+  | {'server_dedicated_hd2', binary() }
   | {'server_dedicated_bandwidth', binary() }
   | {'server_dedicated_ips', binary() }
   | {'server_dedicated_os', binary() }
-  | {'server_dedicated_cp', openapi_any_type:openapi_any_type() }
+  | {'server_dedicated_cp', binary() }
   | {'server_dedicated_raid', binary() }
   | {'server_extra', binary() }
   ].
@@ -70,22 +70,22 @@ openapi_server_service_info(Fields) ->
             , {'server_ips', binary() }
             , {'server_monthly_bill', binary() }
             , {'server_setup', binary() }
-            , {'server_discount', openapi_any_type:openapi_any_type() }
+            , {'server_discount', binary() }
             , {'server_rep', binary() }
             , {'server_date', binary() }
             , {'server_total_cost', binary() }
-            , {'server_location', openapi_any_type:openapi_any_type() }
+            , {'server_location', binary() }
             , {'server_hardware_ordered', binary() }
             , {'server_billed', binary() }
             , {'server_welcome_email', binary() }
             , {'server_dedicated_cpu', binary() }
             , {'server_dedicated_memory', binary() }
             , {'server_dedicated_hd1', binary() }
-            , {'server_dedicated_hd2', openapi_any_type:openapi_any_type() }
+            , {'server_dedicated_hd2', binary() }
             , {'server_dedicated_bandwidth', binary() }
             , {'server_dedicated_ips', binary() }
             , {'server_dedicated_os', binary() }
-            , {'server_dedicated_cp', openapi_any_type:openapi_any_type() }
+            , {'server_dedicated_cp', binary() }
             , {'server_dedicated_raid', binary() }
             , {'server_extra', binary() }
             ],

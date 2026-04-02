@@ -957,6 +957,10 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<WebsiteRow>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(JsonObject)]),
+        () => ListBuilder<JsonObject>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(LicenseRow)]),
         () => ListBuilder<LicenseRow>(),
       )

@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 # **getFloatingIpsList**
 ```swift
-    open class func getFloatingIpsList(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getFloatingIpsList(completion: @escaping (_ data: [JSONValue]?, _ error: Error?) -> Void)
 ```
 
 List Floating IPs
@@ -245,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+**[JSONValue]**
 
 ### Authorization
 

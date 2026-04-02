@@ -34,8 +34,8 @@
 | **qsBytesSecOut** | **kotlin.String** | Bytes/sec out |  [optional] |
 | **qsPacketsSecIn** | **kotlin.String** | Packets/sec in |  [optional] |
 | **qsPacketsSecOut** | **kotlin.String** | Packets/sec out |  [optional] |
-| **qsLastInstallTime** | [**kotlin.Any**](.md) | Last install time (null) |  [optional] |
-| **qsPartitions** | [**kotlin.Any**](.md) | Partitions information (null) |  [optional] |
+| **qsLastInstallTime** | **kotlin.String** | Last install time (null) |  [optional] |
+| **qsPartitions** | **kotlin.String** | Partitions information (null) |  [optional] |
 | **qsCpuFlags** | **kotlin.String** | CPU flags |  [optional] |
 
 

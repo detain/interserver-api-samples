@@ -44,7 +44,7 @@ server_order_cpu_t* instantiate_server_order_cpu(int include_optional) {
       "4",
       "2",
       "yes",
-      null,
+      "0",
       "$0.00",
       "$75.00"
     );
@@ -72,7 +72,7 @@ server_order_cpu_t* instantiate_server_order_cpu(int include_optional) {
       "4",
       "2",
       "yes",
-      null,
+      "0",
       "$0.00",
       "$75.00"
     );

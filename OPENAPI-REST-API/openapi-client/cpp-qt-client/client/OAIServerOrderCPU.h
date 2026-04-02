@@ -21,7 +21,6 @@
 
 #include <QJsonObject>
 
-#include <QJsonValue>
 #include <QString>
 
 #include "OAIEnum.h"
@@ -150,8 +149,8 @@ public:
     bool is_visible_Set() const;
     bool is_visible_Valid() const;
 
-    QJsonValue getHdIds() const;
-    void setHdIds(const QJsonValue &hd_ids);
+    QString getHdIds() const;
+    void setHdIds(const QString &hd_ids);
     bool is_hd_ids_Set() const;
     bool is_hd_ids_Valid() const;
 
@@ -259,7 +258,7 @@ private:
     bool m_visible_isSet;
     bool m_visible_isValid;
 
-    QJsonValue m_hd_ids;
+    QString m_hd_ids;
     bool m_hd_ids_isSet;
     bool m_hd_ids_isValid;
 

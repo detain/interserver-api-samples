@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -173,7 +172,7 @@ public class ServerOrderCPU  {
   */
   @ApiModelProperty(value = "Hard drive IDs.")
 
-  private Object hdIds = null;
+  private String hdIds;
 
  /**
   * Display of CPU price.
@@ -589,15 +588,15 @@ public class ServerOrderCPU  {
    * @return hdIds
   **/
   @JsonProperty("hd_ids")
-  public Object getHdIds() {
+  public String getHdIds() {
     return hdIds;
   }
 
-  public void setHdIds(Object hdIds) {
+  public void setHdIds(String hdIds) {
     this.hdIds = hdIds;
   }
 
-  public ServerOrderCPU hdIds(Object hdIds) {
+  public ServerOrderCPU hdIds(String hdIds) {
     this.hdIds = hdIds;
     return this;
   }

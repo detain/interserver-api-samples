@@ -186,7 +186,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteIpLimit**
-> GenericResponse deleteIpLimit()
+> GenericResponse deleteIpLimit(ipLimitRange)
 
 Remove IP Access Restriction
 
@@ -209,9 +209,10 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdHeaderAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AccountApi();
+final ipLimitRange = IpLimitRange(); // IpLimitRange | 
 
 try {
-    final result = api_instance.deleteIpLimit();
+    final result = api_instance.deleteIpLimit(ipLimitRange);
     print(result);
 } catch (e) {
     print('Exception when calling AccountApi->deleteIpLimit: $e\n');
@@ -219,7 +220,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md)|  | [optional] 
 
 ### Return type
 

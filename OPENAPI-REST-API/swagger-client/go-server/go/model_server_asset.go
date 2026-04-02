@@ -23,7 +23,7 @@ type ServerAsset struct {
 	// Primary IPv6 address of the asset.
 	PrimaryIpv6 string `json:"primary_ipv6"`
 	// MAC address associated with the asset.
-	Mac *Object `json:"mac,omitempty"`
+	Mac string `json:"mac,omitempty"`
 	// Datacenter identifier for the asset.
 	Datacenter string `json:"datacenter"`
 	// Type identifier for the asset.
@@ -47,15 +47,15 @@ type ServerAsset struct {
 	// IPMI IP address associated with the asset.
 	IpmiIp string `json:"ipmi_ip"`
 	// IPMI admin username associated with the asset.
-	IpmiAdminUsername *Object `json:"ipmi_admin_username,omitempty"`
+	IpmiAdminUsername string `json:"ipmi_admin_username,omitempty"`
 	// IPMI admin password associated with the asset.
-	IpmiAdminPassword *Object `json:"ipmi_admin_password,omitempty"`
+	IpmiAdminPassword string `json:"ipmi_admin_password,omitempty"`
 	// IPMI client username associated with the asset.
-	IpmiClientUsername *Object `json:"ipmi_client_username,omitempty"`
+	IpmiClientUsername string `json:"ipmi_client_username,omitempty"`
 	// IPMI client password associated with the asset.
-	IpmiClientPassword *Object `json:"ipmi_client_password,omitempty"`
+	IpmiClientPassword string `json:"ipmi_client_password,omitempty"`
 	// IPMI update status associated with the asset.
-	IpmiUpdated *Object `json:"ipmi_updated,omitempty"`
+	IpmiUpdated string `json:"ipmi_updated,omitempty"`
 	// IPMI working status associated with the asset.
 	IpmiWorking string `json:"ipmi_working"`
 	// Company associated with the asset.
@@ -77,9 +77,9 @@ type ServerAsset struct {
 	// Overdue status of the asset.
 	Overdue string `json:"overdue"`
 	// Timestamp of asset creation.
-	CreateTimestamp *Object `json:"create_timestamp,omitempty"`
+	CreateTimestamp string `json:"create_timestamp,omitempty"`
 	// Timestamp of asset update.
-	UpdateTimestamp *Object `json:"update_timestamp,omitempty"`
+	UpdateTimestamp string `json:"update_timestamp,omitempty"`
 	// Asset identifier for the asset.
 	AssetId string `json:"asset_id"`
 	// Name of the asset.
@@ -97,7 +97,7 @@ type ServerAsset struct {
 	// Y-coordinate of the asset within the rack.
 	RackY string `json:"rack_y"`
 	// Comment associated with the asset.
-	Comment *Object `json:"comment,omitempty"`
+	Comment string `json:"comment,omitempty"`
 	// List of switchports associated with the asset.
 	Switchports []int32 `json:"switchports"`
 	// List of VLANs associated with the asset.

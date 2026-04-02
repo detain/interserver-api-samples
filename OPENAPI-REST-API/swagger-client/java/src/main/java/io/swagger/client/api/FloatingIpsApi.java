@@ -632,21 +632,24 @@ public class FloatingIpsApi {
     /**
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
+     * @return List&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getFloatingIpsList() throws ApiException {
-        getFloatingIpsListWithHttpInfo();
+    public List<Object> getFloatingIpsList() throws ApiException {
+        ApiResponse<List<Object>> resp = getFloatingIpsListWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getFloatingIpsListWithHttpInfo() throws ApiException {
+    public ApiResponse<List<Object>> getFloatingIpsListWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getFloatingIpsListValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -656,7 +659,7 @@ public class FloatingIpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getFloatingIpsListAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getFloatingIpsListAsync(final ApiCallback<List<Object>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -678,7 +681,8 @@ public class FloatingIpsApi {
         }
 
         com.squareup.okhttp.Call call = getFloatingIpsListValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

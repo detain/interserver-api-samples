@@ -43,14 +43,14 @@ Name | Type | Description | Notes
 **vlans** | **string[]** | List of VLANs associated with the asset. |
 **vlans6** | **string[]** | List of IPv6 VLANs associated with the asset. |
 **lease** | [**\Interserver\MyAdmin\Model\ServerLease**](ServerLease.md) |  |
-**mac** | **mixed** | MAC address associated with the asset. | [optional]
-**ipmiAdminUsername** | **mixed** | IPMI admin username associated with the asset. | [optional]
-**ipmiAdminPassword** | **mixed** | IPMI admin password associated with the asset. | [optional]
-**ipmiClientUsername** | **mixed** | IPMI client username associated with the asset. | [optional]
-**ipmiClientPassword** | **mixed** | IPMI client password associated with the asset. | [optional]
-**ipmiUpdated** | **mixed** | IPMI update status associated with the asset. | [optional]
-**createTimestamp** | **mixed** | Timestamp of asset creation. | [optional]
-**updateTimestamp** | **mixed** | Timestamp of asset update. | [optional]
-**comment** | **mixed** | Comment associated with the asset. | [optional]
+**mac** | **string** | MAC address associated with the asset. | [optional]
+**ipmiAdminUsername** | **string** | IPMI admin username associated with the asset. | [optional]
+**ipmiAdminPassword** | **string** | IPMI admin password associated with the asset. | [optional]
+**ipmiClientUsername** | **string** | IPMI client username associated with the asset. | [optional]
+**ipmiClientPassword** | **string** | IPMI client password associated with the asset. | [optional]
+**ipmiUpdated** | **string** | IPMI update status associated with the asset. | [optional]
+**createTimestamp** | **string** | Timestamp of asset creation. | [optional]
+**updateTimestamp** | **string** | Timestamp of asset update. | [optional]
+**comment** | **string** | Comment associated with the asset. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

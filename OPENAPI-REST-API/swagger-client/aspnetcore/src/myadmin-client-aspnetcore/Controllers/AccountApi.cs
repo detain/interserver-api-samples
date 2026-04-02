@@ -124,6 +124,7 @@ namespace myadmin-client-aspnetcore.Controllers
         /// Remove IP Access Restriction
         /// </summary>
         /// <remarks>Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.</remarks>
+        /// <param name="body"></param>
         /// <response code="200">IP Range removed.</response>
         /// <response code="401">Unauthorized</response>
         [HttpPatch]
@@ -133,7 +134,7 @@ namespace myadmin-client-aspnetcore.Controllers
         [SwaggerOperation("DeleteIpLimit")]
         [SwaggerResponse(statusCode: 200, type: typeof(GenericResponse), description: "IP Range removed.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
-        public virtual IActionResult DeleteIpLimit()
+        public virtual IActionResult DeleteIpLimit([FromBody]IpLimitRange body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(GenericResponse));

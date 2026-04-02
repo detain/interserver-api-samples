@@ -98,15 +98,15 @@ defmodule InterServerManagementAPI.Model.ServerAsset do
     :vlans => [String.t],
     :vlans6 => [String.t],
     :lease => InterServerManagementAPI.Model.ServerLease.t,
-    :mac => any() | nil,
-    :ipmi_admin_username => any() | nil,
-    :ipmi_admin_password => any() | nil,
-    :ipmi_client_username => any() | nil,
-    :ipmi_client_password => any() | nil,
-    :ipmi_updated => any() | nil,
-    :create_timestamp => any() | nil,
-    :update_timestamp => any() | nil,
-    :comment => any() | nil
+    :mac => String.t | nil,
+    :ipmi_admin_username => String.t | nil,
+    :ipmi_admin_password => String.t | nil,
+    :ipmi_client_username => String.t | nil,
+    :ipmi_client_password => String.t | nil,
+    :ipmi_updated => String.t | nil,
+    :create_timestamp => String.t | nil,
+    :update_timestamp => String.t | nil,
+    :comment => String.t | nil
   }
 
   alias InterServerManagementAPI.Deserializer

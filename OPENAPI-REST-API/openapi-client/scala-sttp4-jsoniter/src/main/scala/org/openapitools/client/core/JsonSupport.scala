@@ -55,6 +55,7 @@ object JsonSupport extends AdditionalTypeSerializers:
   given seqStringCodec: JsonValueCodec[Seq[String]] = deriveJsonCodec
   given replyTicketResponseSchemaCodec: JsonValueCodec[ReplyTicketResponseSchema] = deriveJsonCodec
   given quickserversCancel200ResponseCodec: JsonValueCodec[QuickserversCancel200Response] = deriveJsonCodec
+  given ipLimitRangeCodec: JsonValueCodec[IpLimitRange] = deriveJsonCodec
   given createFirewallRuleCodec: JsonValueCodec[CreateFirewallRule] = deriveJsonCodec
   given vpsCodec: JsonValueCodec[Vps] = deriveJsonCodec
   given serverIpmiLiveInfoCodec: JsonValueCodec[ServerIpmiLiveInfo] = deriveJsonCodec
@@ -135,6 +136,7 @@ object JsonSupport extends AdditionalTypeSerializers:
   given buyItNowListCodec: JsonValueCodec[BuyItNowList] = deriveJsonCodec
   given seqScrubIpsRowSchemaCodec: JsonValueCodec[Seq[ScrubIpsRowSchema]] = deriveJsonCodec
   given mailOrderCodec: JsonValueCodec[MailOrder] = deriveJsonCodec
+  given seqIoCirceJsonCodec: JsonValueCodec[Seq[io.circe.Json]] = deriveJsonCodec
   given placeScrubOrder201ResponseCodec: JsonValueCodec[PlaceScrubOrder201Response] = deriveJsonCodec
   given enableScrub200ResponseCodec: JsonValueCodec[EnableScrub200Response] = deriveJsonCodec
   given homeCodec: JsonValueCodec[Home] = deriveJsonCodec

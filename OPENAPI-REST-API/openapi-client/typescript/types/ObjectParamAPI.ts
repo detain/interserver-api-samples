@@ -475,6 +475,12 @@ export interface AccountApiDeleteAccountTfaRequest {
 }
 
 export interface AccountApiDeleteIpLimitRequest {
+    /**
+     * 
+     * @type IpLimitRange
+     * @memberof AccountApideleteIpLimit
+     */
+    ipLimitRange?: IpLimitRange
 }
 
 export interface AccountApiGetAccountInfoRequest {
@@ -758,7 +764,7 @@ export class ObjectAccountApi {
      * @param param the request object
      */
     public deleteIpLimitWithHttpInfo(param: AccountApiDeleteIpLimitRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GenericResponse>> {
-        return this.api.deleteIpLimitWithHttpInfo( options).toPromise();
+        return this.api.deleteIpLimitWithHttpInfo(param.ipLimitRange,  options).toPromise();
     }
 
     /**
@@ -767,7 +773,7 @@ export class ObjectAccountApi {
      * @param param the request object
      */
     public deleteIpLimit(param: AccountApiDeleteIpLimitRequest = {}, options?: ConfigurationOptions): Promise<GenericResponse> {
-        return this.api.deleteIpLimit( options).toPromise();
+        return this.api.deleteIpLimit(param.ipLimitRange,  options).toPromise();
     }
 
     /**
@@ -3468,7 +3474,7 @@ export class ObjectFloatingIPsApi {
      * List Floating IPs
      * @param param the request object
      */
-    public getFloatingIpsListWithHttpInfo(param: FloatingIPsApiGetFloatingIpsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getFloatingIpsListWithHttpInfo(param: FloatingIPsApiGetFloatingIpsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<any>>> {
         return this.api.getFloatingIpsListWithHttpInfo( options).toPromise();
     }
 
@@ -3477,7 +3483,7 @@ export class ObjectFloatingIPsApi {
      * List Floating IPs
      * @param param the request object
      */
-    public getFloatingIpsList(param: FloatingIPsApiGetFloatingIpsListRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public getFloatingIpsList(param: FloatingIPsApiGetFloatingIpsListRequest = {}, options?: ConfigurationOptions): Promise<Array<any>> {
         return this.api.getFloatingIpsList( options).toPromise();
     }
 

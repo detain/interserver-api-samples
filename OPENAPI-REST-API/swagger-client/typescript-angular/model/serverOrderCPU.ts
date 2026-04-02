@@ -105,7 +105,7 @@ export interface ServerOrderCPU {
     /**
      * Hard drive IDs.
      */
-    hd_ids?: any;
+    hd_ids?: string;
     /**
      * Display of CPU price.
      */

@@ -158,19 +158,25 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("GetFloatingIpsList")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<Object>), description: "The listing of &#x60;Floating IPs&#x60; services on your account.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult GetFloatingIpsList()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200);
+            // return StatusCode(200, default(List<Object>));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
 
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "[ { }, { } ]";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<List<Object>>(exampleJson)
+                        : default(List<Object>);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>

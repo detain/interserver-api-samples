@@ -118,13 +118,22 @@
       });
       describe('getFloatingIpsList', function() {
         it('should call getFloatingIpsList successfully', function(done) {
-          // TODO: uncomment getFloatingIpsList call
+          // TODO: uncomment getFloatingIpsList call and complete the assertions
           /*
 
           instance.getFloatingIpsList(function(error, data, response) {
             if (error) {
               done(error);
               return;
+            }
+            // TODO: update response assertions
+            let dataCtr = data;
+            expect(dataCtr).to.be.an(Array);
+            expect(dataCtr).to.not.be.empty();
+            for (let p in dataCtr) {
+              let data = dataCtr[p];
+              expect(data).to.be.a(Object);
+              // expect(data).to.be(null);
             }
 
             done();

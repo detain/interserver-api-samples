@@ -46,7 +46,7 @@ open class ServerServiceInfo: JSONEncodable {
     /** The setup status of the server. */
     public var serverSetup: String?
     /** Discount information for the server. */
-    public var serverDiscount: Object?
+    public var serverDiscount: String?
     /** The reputation of the server. */
     public var serverRep: String?
     /** The date related to the server. */
@@ -54,7 +54,7 @@ open class ServerServiceInfo: JSONEncodable {
     /** The total cost of the server. */
     public var serverTotalCost: String?
     /** The location of the server. */
-    public var serverLocation: Object?
+    public var serverLocation: String?
     /** The ordered hardware for the server. */
     public var serverHardwareOrdered: String?
     /** The billed amount for the server. */
@@ -68,7 +68,7 @@ open class ServerServiceInfo: JSONEncodable {
     /** The size of the first dedicated hard drive. */
     public var serverDedicatedHd1: String?
     /** The size of the second dedicated hard drive. */
-    public var serverDedicatedHd2: Object?
+    public var serverDedicatedHd2: String?
     /** The bandwidth of the server. */
     public var serverDedicatedBandwidth: String?
     /** The number of dedicated IPs for the server. */
@@ -76,7 +76,7 @@ open class ServerServiceInfo: JSONEncodable {
     /** The operating system of the server. */
     public var serverDedicatedOs: String?
     /** The control panel of the server. */
-    public var serverDedicatedCp: Object?
+    public var serverDedicatedCp: String?
     /** The RAID configuration of the server. */
     public var serverDedicatedRaid: String?
     /** Additional information about the server. */
@@ -105,22 +105,22 @@ open class ServerServiceInfo: JSONEncodable {
         nillableDictionary["server_ips"] = self.serverIps
         nillableDictionary["server_monthly_bill"] = self.serverMonthlyBill
         nillableDictionary["server_setup"] = self.serverSetup
-        nillableDictionary["server_discount"] = self.serverDiscount?.encodeToJSON()
+        nillableDictionary["server_discount"] = self.serverDiscount
         nillableDictionary["server_rep"] = self.serverRep
         nillableDictionary["server_date"] = self.serverDate
         nillableDictionary["server_total_cost"] = self.serverTotalCost
-        nillableDictionary["server_location"] = self.serverLocation?.encodeToJSON()
+        nillableDictionary["server_location"] = self.serverLocation
         nillableDictionary["server_hardware_ordered"] = self.serverHardwareOrdered
         nillableDictionary["server_billed"] = self.serverBilled
         nillableDictionary["server_welcome_email"] = self.serverWelcomeEmail
         nillableDictionary["server_dedicated_cpu"] = self.serverDedicatedCpu
         nillableDictionary["server_dedicated_memory"] = self.serverDedicatedMemory
         nillableDictionary["server_dedicated_hd1"] = self.serverDedicatedHd1
-        nillableDictionary["server_dedicated_hd2"] = self.serverDedicatedHd2?.encodeToJSON()
+        nillableDictionary["server_dedicated_hd2"] = self.serverDedicatedHd2
         nillableDictionary["server_dedicated_bandwidth"] = self.serverDedicatedBandwidth
         nillableDictionary["server_dedicated_ips"] = self.serverDedicatedIps
         nillableDictionary["server_dedicated_os"] = self.serverDedicatedOs
-        nillableDictionary["server_dedicated_cp"] = self.serverDedicatedCp?.encodeToJSON()
+        nillableDictionary["server_dedicated_cp"] = self.serverDedicatedCp
         nillableDictionary["server_dedicated_raid"] = self.serverDedicatedRaid
         nillableDictionary["server_extra"] = self.serverExtra
 

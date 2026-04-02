@@ -279,63 +279,63 @@ API.Client.ServerAsset.prototype.lease;
 
 /**
  * MAC address associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.mac;
 
 /**
  * IPMI admin username associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.ipmiAdminUsername;
 
 /**
  * IPMI admin password associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.ipmiAdminPassword;
 
 /**
  * IPMI client username associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.ipmiClientUsername;
 
 /**
  * IPMI client password associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.ipmiClientPassword;
 
 /**
  * IPMI update status associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.ipmiUpdated;
 
 /**
  * Timestamp of asset creation.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.createTimestamp;
 
 /**
  * Timestamp of asset update.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.updateTimestamp;
 
 /**
  * Comment associated with the asset.
- * @type {!API.Client.AnyType}
+ * @type {!string}
  * @export
  */
 API.Client.ServerAsset.prototype.comment;

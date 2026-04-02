@@ -62,7 +62,7 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'vpsCustid' => 'string',
         'vpsServer' => 'string',
         'vpsIp' => 'string',
-        'vpsIpv6' => 'mixed',
+        'vpsIpv6' => 'string',
         'vpsVzid' => 'string',
         'vpsCurrency' => 'string',
         'vpsType' => 'string',
@@ -134,7 +134,7 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'vpsCustid' => false,
         'vpsServer' => false,
         'vpsIp' => false,
-        'vpsIpv6' => true,
+        'vpsIpv6' => false,
         'vpsVzid' => false,
         'vpsCurrency' => false,
         'vpsType' => false,
@@ -583,7 +583,7 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets vpsIpv6
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getVpsIpv6()
     {
@@ -593,21 +593,14 @@ class VpsServiceInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vpsIpv6
      *
-     * @param mixed|null $vpsIpv6 IPv6 address of the VPS
+     * @param string|null $vpsIpv6 IPv6 address of the VPS
      *
      * @return self
      */
     public function setVpsIpv6($vpsIpv6)
     {
         if (is_null($vpsIpv6)) {
-            array_push($this->openAPINullablesSetToNull, 'vpsIpv6');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('vpsIpv6', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable vpsIpv6 cannot be null');
         }
         $this->container['vpsIpv6'] = $vpsIpv6;
 

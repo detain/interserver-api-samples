@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -124,7 +123,7 @@ abstract class ServerServiceInfo implements Built<ServerServiceInfo, ServerServi
 
   /// Discount information for the server.
   @BuiltValueField(wireName: r'server_discount')
-  JsonObject? get serverDiscount;
+  String? get serverDiscount;
 
   /// The reputation of the server.
   @BuiltValueField(wireName: r'server_rep')
@@ -140,7 +139,7 @@ abstract class ServerServiceInfo implements Built<ServerServiceInfo, ServerServi
 
   /// The location of the server.
   @BuiltValueField(wireName: r'server_location')
-  JsonObject? get serverLocation;
+  String? get serverLocation;
 
   /// The ordered hardware for the server.
   @BuiltValueField(wireName: r'server_hardware_ordered')
@@ -168,7 +167,7 @@ abstract class ServerServiceInfo implements Built<ServerServiceInfo, ServerServi
 
   /// The size of the second dedicated hard drive.
   @BuiltValueField(wireName: r'server_dedicated_hd2')
-  JsonObject? get serverDedicatedHd2;
+  String? get serverDedicatedHd2;
 
   /// The bandwidth of the server.
   @BuiltValueField(wireName: r'server_dedicated_bandwidth')
@@ -184,7 +183,7 @@ abstract class ServerServiceInfo implements Built<ServerServiceInfo, ServerServi
 
   /// The control panel of the server.
   @BuiltValueField(wireName: r'server_dedicated_cp')
-  JsonObject? get serverDedicatedCp;
+  String? get serverDedicatedCp;
 
   /// The RAID configuration of the server.
   @BuiltValueField(wireName: r'server_dedicated_raid')
@@ -347,7 +346,7 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
       yield r'server_discount';
       yield serializers.serialize(
         object.serverDiscount,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.serverRep != null) {
@@ -375,7 +374,7 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
       yield r'server_location';
       yield serializers.serialize(
         object.serverLocation,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.serverHardwareOrdered != null) {
@@ -424,7 +423,7 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
       yield r'server_dedicated_hd2';
       yield serializers.serialize(
         object.serverDedicatedHd2,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.serverDedicatedBandwidth != null) {
@@ -452,7 +451,7 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
       yield r'server_dedicated_cp';
       yield serializers.serialize(
         object.serverDedicatedCp,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType(String),
       );
     }
     if (object.serverDedicatedRaid != null) {
@@ -621,9 +620,8 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
         case r'server_discount':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.serverDiscount = valueDes;
           break;
         case r'server_rep':
@@ -650,9 +648,8 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
         case r'server_location':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.serverLocation = valueDes;
           break;
         case r'server_hardware_ordered':
@@ -700,9 +697,8 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
         case r'server_dedicated_hd2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.serverDedicatedHd2 = valueDes;
           break;
         case r'server_dedicated_bandwidth':
@@ -729,9 +725,8 @@ class _$ServerServiceInfoSerializer implements PrimitiveSerializer<ServerService
         case r'server_dedicated_cp':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.serverDedicatedCp = valueDes;
           break;
         case r'server_dedicated_raid':

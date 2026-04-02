@@ -46,7 +46,7 @@ case class QuickserverServiceInfo (
   qs_custid: Option[String] = None,
   qs_server: Option[String] = None,
   qs_ip: Option[String] = None,
-  qs_ipv6: Option[] = None,
+  qs_ipv6: Option[String] = None,
   qs_vzid: Option[String] = None,
   qs_currency: Option[String] = None,
   qs_type: Option[String] = None,
@@ -60,12 +60,12 @@ case class QuickserverServiceInfo (
   qs_comment: Option[String] = None,
   qs_slices: Option[String] = None,
   qs_vnc: Option[String] = None,
-  qs_vnc_port: Option[] = None,
+  qs_vnc_port: Option[Integer] = None,
   qs_rootpass: Option[String] = None,
   qs_mac: Option[String] = None,
   qs_os: Option[String] = None,
   qs_version: Option[String] = None,
   qs_location: Option[String] = None,
-  qs_platform: Option[] = None
+  qs_platform: Option[String] = None
 )
 

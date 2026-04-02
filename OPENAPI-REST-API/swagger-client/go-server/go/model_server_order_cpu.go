@@ -56,7 +56,7 @@ type ServerOrderCpu struct {
 	// Visibility status.
 	Visible string `json:"visible,omitempty"`
 	// Hard drive IDs.
-	HdIds *Object `json:"hd_ids,omitempty"`
+	HdIds string `json:"hd_ids,omitempty"`
 	// Display of CPU price.
 	PriceDisplay string `json:"price_display,omitempty"`
 	// Display of monthly CPU price.

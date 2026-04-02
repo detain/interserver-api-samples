@@ -169,8 +169,8 @@ class VPSApiSimulation extends Simulation {
         .feed(deleteVpsBackupPATHFeeder)
         .exec(http("deleteVpsBackup")
         .httpRequest("DELETE","/vps/${id}/backups")
-        .queryParam("file","${file}")
         .queryParam("all","${all}")
+        .queryParam("file","${file}")
 )
 
     // Run scndeleteVpsBackup with warm up and reach a constant rate for entire duration

@@ -1113,10 +1113,10 @@ bool OAIServerAsset::is_lease_Valid() const{
     return m_lease_isValid;
 }
 
-QJsonValue OAIServerAsset::getMac() const {
+QString OAIServerAsset::getMac() const {
     return m_mac;
 }
-void OAIServerAsset::setMac(const QJsonValue &mac) {
+void OAIServerAsset::setMac(const QString &mac) {
     m_mac = mac;
     m_mac_isSet = true;
 }
@@ -1129,10 +1129,10 @@ bool OAIServerAsset::is_mac_Valid() const{
     return m_mac_isValid;
 }
 
-QJsonValue OAIServerAsset::getIpmiAdminUsername() const {
+QString OAIServerAsset::getIpmiAdminUsername() const {
     return m_ipmi_admin_username;
 }
-void OAIServerAsset::setIpmiAdminUsername(const QJsonValue &ipmi_admin_username) {
+void OAIServerAsset::setIpmiAdminUsername(const QString &ipmi_admin_username) {
     m_ipmi_admin_username = ipmi_admin_username;
     m_ipmi_admin_username_isSet = true;
 }
@@ -1145,10 +1145,10 @@ bool OAIServerAsset::is_ipmi_admin_username_Valid() const{
     return m_ipmi_admin_username_isValid;
 }
 
-QJsonValue OAIServerAsset::getIpmiAdminPassword() const {
+QString OAIServerAsset::getIpmiAdminPassword() const {
     return m_ipmi_admin_password;
 }
-void OAIServerAsset::setIpmiAdminPassword(const QJsonValue &ipmi_admin_password) {
+void OAIServerAsset::setIpmiAdminPassword(const QString &ipmi_admin_password) {
     m_ipmi_admin_password = ipmi_admin_password;
     m_ipmi_admin_password_isSet = true;
 }
@@ -1161,10 +1161,10 @@ bool OAIServerAsset::is_ipmi_admin_password_Valid() const{
     return m_ipmi_admin_password_isValid;
 }
 
-QJsonValue OAIServerAsset::getIpmiClientUsername() const {
+QString OAIServerAsset::getIpmiClientUsername() const {
     return m_ipmi_client_username;
 }
-void OAIServerAsset::setIpmiClientUsername(const QJsonValue &ipmi_client_username) {
+void OAIServerAsset::setIpmiClientUsername(const QString &ipmi_client_username) {
     m_ipmi_client_username = ipmi_client_username;
     m_ipmi_client_username_isSet = true;
 }
@@ -1177,10 +1177,10 @@ bool OAIServerAsset::is_ipmi_client_username_Valid() const{
     return m_ipmi_client_username_isValid;
 }
 
-QJsonValue OAIServerAsset::getIpmiClientPassword() const {
+QString OAIServerAsset::getIpmiClientPassword() const {
     return m_ipmi_client_password;
 }
-void OAIServerAsset::setIpmiClientPassword(const QJsonValue &ipmi_client_password) {
+void OAIServerAsset::setIpmiClientPassword(const QString &ipmi_client_password) {
     m_ipmi_client_password = ipmi_client_password;
     m_ipmi_client_password_isSet = true;
 }
@@ -1193,10 +1193,10 @@ bool OAIServerAsset::is_ipmi_client_password_Valid() const{
     return m_ipmi_client_password_isValid;
 }
 
-QJsonValue OAIServerAsset::getIpmiUpdated() const {
+QString OAIServerAsset::getIpmiUpdated() const {
     return m_ipmi_updated;
 }
-void OAIServerAsset::setIpmiUpdated(const QJsonValue &ipmi_updated) {
+void OAIServerAsset::setIpmiUpdated(const QString &ipmi_updated) {
     m_ipmi_updated = ipmi_updated;
     m_ipmi_updated_isSet = true;
 }
@@ -1209,10 +1209,10 @@ bool OAIServerAsset::is_ipmi_updated_Valid() const{
     return m_ipmi_updated_isValid;
 }
 
-QJsonValue OAIServerAsset::getCreateTimestamp() const {
+QString OAIServerAsset::getCreateTimestamp() const {
     return m_create_timestamp;
 }
-void OAIServerAsset::setCreateTimestamp(const QJsonValue &create_timestamp) {
+void OAIServerAsset::setCreateTimestamp(const QString &create_timestamp) {
     m_create_timestamp = create_timestamp;
     m_create_timestamp_isSet = true;
 }
@@ -1225,10 +1225,10 @@ bool OAIServerAsset::is_create_timestamp_Valid() const{
     return m_create_timestamp_isValid;
 }
 
-QJsonValue OAIServerAsset::getUpdateTimestamp() const {
+QString OAIServerAsset::getUpdateTimestamp() const {
     return m_update_timestamp;
 }
-void OAIServerAsset::setUpdateTimestamp(const QJsonValue &update_timestamp) {
+void OAIServerAsset::setUpdateTimestamp(const QString &update_timestamp) {
     m_update_timestamp = update_timestamp;
     m_update_timestamp_isSet = true;
 }
@@ -1241,10 +1241,10 @@ bool OAIServerAsset::is_update_timestamp_Valid() const{
     return m_update_timestamp_isValid;
 }
 
-QJsonValue OAIServerAsset::getComment() const {
+QString OAIServerAsset::getComment() const {
     return m_comment;
 }
-void OAIServerAsset::setComment(const QJsonValue &comment) {
+void OAIServerAsset::setComment(const QString &comment) {
     m_comment = comment;
     m_comment_isSet = true;
 }

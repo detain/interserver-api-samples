@@ -309,10 +309,10 @@ sub get_floating_ip_invoices {
     __PACKAGE__->method_documentation->{ 'get_floating_ips_list' } = {
         summary => 'List Floating IPs',
         params => $params,
-        returns => undef,
+        returns => 'ARRAY[object]',
         };
 }
-# @return void
+# @return ARRAY[object]
 #
 sub get_floating_ips_list {
     my ($self, %args) = @_;
@@ -337,10 +337,14 @@ sub get_floating_ips_list {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[object]', $response);
+    return $_response_object;
 }
 
 #

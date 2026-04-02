@@ -834,10 +834,10 @@ bool OAIQuickserverServiceMaster::is_qs_packets_sec_out_Valid() const{
     return m_qs_packets_sec_out_isValid;
 }
 
-QJsonValue OAIQuickserverServiceMaster::getQsLastInstallTime() const {
+QString OAIQuickserverServiceMaster::getQsLastInstallTime() const {
     return m_qs_last_install_time;
 }
-void OAIQuickserverServiceMaster::setQsLastInstallTime(const QJsonValue &qs_last_install_time) {
+void OAIQuickserverServiceMaster::setQsLastInstallTime(const QString &qs_last_install_time) {
     m_qs_last_install_time = qs_last_install_time;
     m_qs_last_install_time_isSet = true;
 }
@@ -850,10 +850,10 @@ bool OAIQuickserverServiceMaster::is_qs_last_install_time_Valid() const{
     return m_qs_last_install_time_isValid;
 }
 
-QJsonValue OAIQuickserverServiceMaster::getQsPartitions() const {
+QString OAIQuickserverServiceMaster::getQsPartitions() const {
     return m_qs_partitions;
 }
-void OAIQuickserverServiceMaster::setQsPartitions(const QJsonValue &qs_partitions) {
+void OAIQuickserverServiceMaster::setQsPartitions(const QString &qs_partitions) {
     m_qs_partitions = qs_partitions;
     m_qs_partitions_isSet = true;
 }

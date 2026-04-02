@@ -113,7 +113,7 @@ public class FloatingIpsApiTest {
         // given
 
         // when
-        api.getFloatingIpsList().block();
+        List<Object> body = api.getFloatingIpsList().block();
 
         // then
         // TODO implement the getFloatingIpsListTest()

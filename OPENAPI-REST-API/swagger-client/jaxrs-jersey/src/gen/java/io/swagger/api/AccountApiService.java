@@ -36,7 +36,7 @@ public abstract class AccountApiService {
     public abstract Response deleteAccountCreditCard(String id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response deleteAccountOauthName(String name,SecurityContext securityContext) throws NotFoundException;
     public abstract Response deleteAccountTfa(SecurityContext securityContext) throws NotFoundException;
-    public abstract Response deleteIpLimit(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response deleteIpLimit(IpLimitRange body,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getAccountInfo(SecurityContext securityContext) throws NotFoundException;
     public abstract Response getAccountTfaSetup(SecurityContext securityContext) throws NotFoundException;
     public abstract Response getCountries( String fetchBy,SecurityContext securityContext) throws NotFoundException;

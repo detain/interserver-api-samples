@@ -18,7 +18,7 @@ public struct QuickserverServiceInfo: Codable {
     /// IP address
     public var qsIp: String?
     /// IPv6 address (null)
-    public var qsIpv6: Any?
+    public var qsIpv6: String?
     /// VZ ID
     public var qsVzid: String?
     /// Currency
@@ -46,7 +46,7 @@ public struct QuickserverServiceInfo: Codable {
     /// VNC information
     public var qsVnc: String?
     /// VNC port (null)
-    public var qsVncPort: Any?
+    public var qsVncPort: Int?
     /// Root password
     public var qsRootpass: String?
     /// MAC address
@@ -58,9 +58,9 @@ public struct QuickserverServiceInfo: Codable {
     /// Location
     public var qsLocation: String?
     /// Platform (null)
-    public var qsPlatform: Any?
+    public var qsPlatform: String?
 
-    public init(qsId: String? = nil, qsCustid: String? = nil, qsServer: String? = nil, qsIp: String? = nil, qsIpv6: Any? = nil, qsVzid: String? = nil, qsCurrency: String? = nil, qsType: String? = nil, qsOrderDate: String? = nil, qsStatus: String? = nil, qsInvoice: String? = nil, qsCoupon: String? = nil, qsExtra: String? = nil, qsHostname: String? = nil, qsServerStatus: String? = nil, qsComment: String? = nil, qsSlices: String? = nil, qsVnc: String? = nil, qsVncPort: Any? = nil, qsRootpass: String? = nil, qsMac: String? = nil, qsOs: String? = nil, qsVersion: String? = nil, qsLocation: String? = nil, qsPlatform: Any? = nil) {
+    public init(qsId: String? = nil, qsCustid: String? = nil, qsServer: String? = nil, qsIp: String? = nil, qsIpv6: String? = nil, qsVzid: String? = nil, qsCurrency: String? = nil, qsType: String? = nil, qsOrderDate: String? = nil, qsStatus: String? = nil, qsInvoice: String? = nil, qsCoupon: String? = nil, qsExtra: String? = nil, qsHostname: String? = nil, qsServerStatus: String? = nil, qsComment: String? = nil, qsSlices: String? = nil, qsVnc: String? = nil, qsVncPort: Int? = nil, qsRootpass: String? = nil, qsMac: String? = nil, qsOs: String? = nil, qsVersion: String? = nil, qsLocation: String? = nil, qsPlatform: String? = nil) {
         self.qsId = qsId
         self.qsCustid = qsCustid
         self.qsServer = qsServer
@@ -122,7 +122,7 @@ public struct QuickserverServiceInfo: Codable {
         qsCustid = try container.decodeIfPresent(String.self, forKey: .qsCustid)
         qsServer = try container.decodeIfPresent(String.self, forKey: .qsServer)
         qsIp = try container.decodeIfPresent(String.self, forKey: .qsIp)
-        qsIpv6 = try container.decodeIfPresent(Any.self, forKey: .qsIpv6)
+        qsIpv6 = try container.decodeIfPresent(String.self, forKey: .qsIpv6)
         qsVzid = try container.decodeIfPresent(String.self, forKey: .qsVzid)
         qsCurrency = try container.decodeIfPresent(String.self, forKey: .qsCurrency)
         qsType = try container.decodeIfPresent(String.self, forKey: .qsType)
@@ -136,13 +136,13 @@ public struct QuickserverServiceInfo: Codable {
         qsComment = try container.decodeIfPresent(String.self, forKey: .qsComment)
         qsSlices = try container.decodeIfPresent(String.self, forKey: .qsSlices)
         qsVnc = try container.decodeIfPresent(String.self, forKey: .qsVnc)
-        qsVncPort = try container.decodeIfPresent(Any.self, forKey: .qsVncPort)
+        qsVncPort = try container.decodeIfPresent(Int.self, forKey: .qsVncPort)
         qsRootpass = try container.decodeIfPresent(String.self, forKey: .qsRootpass)
         qsMac = try container.decodeIfPresent(String.self, forKey: .qsMac)
         qsOs = try container.decodeIfPresent(String.self, forKey: .qsOs)
         qsVersion = try container.decodeIfPresent(String.self, forKey: .qsVersion)
         qsLocation = try container.decodeIfPresent(String.self, forKey: .qsLocation)
-        qsPlatform = try container.decodeIfPresent(Any.self, forKey: .qsPlatform)
+        qsPlatform = try container.decodeIfPresent(String.self, forKey: .qsPlatform)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -151,9 +151,7 @@ public struct QuickserverServiceInfo: Codable {
         try container.encodeIfPresent(qsCustid, forKey: .qsCustid)
         try container.encodeIfPresent(qsServer, forKey: .qsServer)
         try container.encodeIfPresent(qsIp, forKey: .qsIp)
-        if let qsIpv6 = qsIpv6 {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: qsIpv6), forKey: .qsIpv6)
-        }
+        try container.encodeIfPresent(qsIpv6, forKey: .qsIpv6)
         try container.encodeIfPresent(qsVzid, forKey: .qsVzid)
         try container.encodeIfPresent(qsCurrency, forKey: .qsCurrency)
         try container.encodeIfPresent(qsType, forKey: .qsType)
@@ -167,16 +165,12 @@ public struct QuickserverServiceInfo: Codable {
         try container.encodeIfPresent(qsComment, forKey: .qsComment)
         try container.encodeIfPresent(qsSlices, forKey: .qsSlices)
         try container.encodeIfPresent(qsVnc, forKey: .qsVnc)
-        if let qsVncPort = qsVncPort {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: qsVncPort), forKey: .qsVncPort)
-        }
+        try container.encodeIfPresent(qsVncPort, forKey: .qsVncPort)
         try container.encodeIfPresent(qsRootpass, forKey: .qsRootpass)
         try container.encodeIfPresent(qsMac, forKey: .qsMac)
         try container.encodeIfPresent(qsOs, forKey: .qsOs)
         try container.encodeIfPresent(qsVersion, forKey: .qsVersion)
         try container.encodeIfPresent(qsLocation, forKey: .qsLocation)
-        if let qsPlatform = qsPlatform {
-            try container.encodeIfPresent(try JSONSerialization.data(withJSONObject: qsPlatform), forKey: .qsPlatform)
-        }
+        try container.encodeIfPresent(qsPlatform, forKey: .qsPlatform)
     }
 }

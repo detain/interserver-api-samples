@@ -82,8 +82,8 @@ case class QuickserverServiceMaster(
     qs_bytes_sec_out: Option[String] = None,
     qs_packets_sec_in: Option[String] = None,
     qs_packets_sec_out: Option[String] = None,
-    qs_last_install_time: Option[AnyType] = None,
-    qs_partitions: Option[AnyType] = None,
+    qs_last_install_time: Option[String] = None,
+    qs_partitions: Option[String] = None,
     qs_cpu_flags: Option[String] = None
 )
   
@@ -159,8 +159,8 @@ object QuickserverServiceMaster {
       qs_bytes_sec_out <- c.downField("qs_bytes_sec_out").as[Option[String]]
       qs_packets_sec_in <- c.downField("qs_packets_sec_in").as[Option[String]]
       qs_packets_sec_out <- c.downField("qs_packets_sec_out").as[Option[String]]
-      qs_last_install_time <- c.downField("qs_last_install_time").as[Option[AnyType]]
-      qs_partitions <- c.downField("qs_partitions").as[Option[AnyType]]
+      qs_last_install_time <- c.downField("qs_last_install_time").as[Option[String]]
+      qs_partitions <- c.downField("qs_partitions").as[Option[String]]
       qs_cpu_flags <- c.downField("qs_cpu_flags").as[Option[String]]
     } yield QuickserverServiceMaster(
       qs_id = qs_id,

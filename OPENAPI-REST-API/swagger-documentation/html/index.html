@@ -753,6 +753,12 @@
       <li><code>application/json</code></li>
     </ul>
 
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#IpLimitRange">IpLimitRange</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Query parameters</h3>
@@ -1681,9 +1687,20 @@
       
             <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1693,6 +1710,9 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -1705,9 +1725,6 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: MissingRequiredFields</div>
     <pre class="example"><code>{&quot;message&quot;:&quot;fname, lname cannot be empty!&quot;}</code></pre>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="updateAccountIpLimits"></a>
@@ -1750,9 +1767,20 @@
       
             <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1762,6 +1790,9 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -1771,9 +1802,6 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: InvalidIp</div>
     <pre class="example"><code>{&quot;message&quot;:&quot;Invalid IP Address&quot;}</code></pre>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="updateAccountPassword"></a>
@@ -2566,9 +2594,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -2578,12 +2617,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="validateBackupOrder"></a>
@@ -2912,9 +2951,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -2924,12 +2971,15 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Simple string response
+        <a href="#String">String</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: StringResponseExample</div>
+    <pre class="example"><code>&quot;You were successfull.&quot;</code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteBillingCreditCard"></a>
@@ -3410,9 +3460,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3422,12 +3480,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Current shopping cart contents and available payment methods.
+        <a href="#Object">Object</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getBillingCreditCardVerify"></a>
@@ -3596,9 +3654,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3608,12 +3674,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Prepay balances and metadata.
+        <a href="#Object">Object</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getInvoices"></a>
@@ -3832,9 +3898,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3844,12 +3918,15 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Simple string response
+        <a href="#String">String</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: StringResponseExample</div>
+    <pre class="example"><code>&quot;You were successfull.&quot;</code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="updateAffiliateDockSetup"></a>
@@ -4210,9 +4287,20 @@
       
             <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4222,12 +4310,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="addDnsRecord"></a>
@@ -4317,9 +4405,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4329,12 +4428,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteDnsRecord"></a>
@@ -4360,9 +4459,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4372,12 +4482,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getDnsDomain"></a>
@@ -4563,9 +4673,20 @@
       
             <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4575,12 +4696,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Domains">Domains</a></h1>
@@ -4600,9 +4721,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4612,12 +4750,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="addDomainDnssec"></a>
@@ -6289,9 +6427,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6301,12 +6450,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="updateDomainNameservers"></a>
@@ -6493,9 +6642,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6505,12 +6671,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="floatingIpsCancel"></a>
@@ -6586,9 +6752,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6598,12 +6772,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Detailed Floating IP service information.
+        <a href="#Object">Object</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getFloatingIpInvoices"></a>
@@ -6709,9 +6883,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[Object]
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ { }, { } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6723,7 +6905,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     The listing of &lt;code&gt;Floating IPs&lt;/code&gt; services on your account.
-        <a href="#"></a>
+        
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -6800,9 +6982,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6812,12 +7002,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Available options and pricing for ordering a Floating IP.
+        <a href="#Object">Object</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="postFloatingIpsChangeIp"></a>
@@ -6946,9 +7136,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6958,12 +7159,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Licenses">Licenses</a></h1>
@@ -6983,9 +7184,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6995,12 +7213,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getLicenseInfo"></a>
@@ -7613,9 +7831,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -7625,12 +7854,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Mail">Mail</a></h1>
@@ -7650,9 +7879,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -7662,12 +7908,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="addRule"></a>
@@ -9343,9 +9589,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -9355,12 +9612,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="viewMailLog"></a>
@@ -9406,7 +9663,7 @@
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &lt;code&gt;id&lt;/code&gt; field in &lt;code&gt;MailLogEntry&lt;/code&gt; and to the &lt;code&gt;text&lt;/code&gt; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &lt;code&gt;185997065c60008840&lt;/code&gt;. </div>      <div class="param">messageId (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the &lt;code&gt;Message-ID&lt;/code&gt; email header using a substring (case-insensitive) match.  The &lt;code&gt;Message-ID&lt;/code&gt; is assigned by the sending mail client and is visible in the &lt;code&gt;messageId&lt;/code&gt; field of &lt;code&gt;MailLogEntry&lt;/code&gt;. </div>      <div class="param">replyto (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the &lt;code&gt;Message-ID&lt;/code&gt; email header using a substring (case-insensitive) match. The &lt;code&gt;Message-ID&lt;/code&gt; is assigned by the sending mail client and is visible in the &lt;code&gt;messageId&lt;/code&gt; field of &lt;code&gt;MailLogEntry&lt;/code&gt;. </div>      <div class="param">replyto (optional)</div>
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by the &lt;code&gt;Reply-To&lt;/code&gt; message header address (exact match).  Only returns messages where this header was explicitly set. format: email</div>      <div class="param">headerfrom (optional)</div>
       
@@ -9420,7 +9677,7 @@
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &lt;code&gt;strtotime()&lt;/code&gt; such as &lt;code&gt;2024-01-15&lt;/code&gt; or &lt;code&gt;last monday&lt;/code&gt;.  Messages with a &lt;code&gt;time&lt;/code&gt; value &lt;strong&gt;greater than or equal to&lt;/strong&gt; this value will be included. </div>      <div class="param">endDate (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &lt;code&gt;strtotime()&lt;/code&gt; such as &lt;code&gt;2024-01-31&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;.  Messages with a &lt;code&gt;time&lt;/code&gt; value &lt;strong&gt;less than or equal to&lt;/strong&gt; this value will be included. </div>      <div class="param">sort (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &lt;code&gt;strtotime()&lt;/code&gt; such as &lt;code&gt;2024-01-31&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;. Messages with a &lt;code&gt;time&lt;/code&gt; value &lt;strong&gt;less than or equal to&lt;/strong&gt; this value will be included. </div>      <div class="param">sort (optional)</div>
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Field to sort results by.  Currently only &lt;code&gt;time&lt;/code&gt; is supported (sorts by internal row ID which corresponds to chronological order). default: time </div>      <div class="param">dir (optional)</div>
       
@@ -9485,10 +9742,10 @@
         <a href="#MailLog">MailLog</a>
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: MailLogMessageExample</div>
-    <pre class="example"><code>{&quot;total&quot;:1,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:1634215818533,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
+    <pre class="example"><code>{&quot;total&quot;:1,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:&quot;1634215818533&quot;,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: MailLogRecipientExample</div>
-    <pre class="example"><code>{&quot;total&quot;:4,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:1634215818533,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
+    <pre class="example"><code>{&quot;total&quot;:4,&quot;skip&quot;:0,&quot;limit&quot;:100,&quot;emails&quot;:[{&quot;_id&quot;:103172,&quot;id&quot;:&quot;17c7eda538e0005d03&quot;,&quot;from&quot;:&quot;person@mysite.com&quot;,&quot;to&quot;:&quot;client@isp.com&quot;,&quot;subject&quot;:&quot;sell 0.005 shares&quot;,&quot;messageId&quot;:&quot;&lt;vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net&gt;&quot;,&quot;created&quot;:&quot;2021-10-14 08:50:10&quot;,&quot;time&quot;:1634215809,&quot;user&quot;:&quot;mb5658&quot;,&quot;transtype&quot;:&quot;ESMTPSA&quot;,&quot;origin&quot;:&quot;199.231.189.154&quot;,&quot;interface&quot;:&quot;feeder&quot;,&quot;sendingZone&quot;:&quot;interserver&quot;,&quot;bodySize&quot;:63,&quot;seq&quot;:1,&quot;delivered&quot;:1,&quot;code&quot;:250,&quot;recipient&quot;:&quot;client@isp.com&quot;,&quot;domain&quot;:&quot;interserver.net&quot;,&quot;locked&quot;:1,&quot;lockTime&quot;:&quot;1634215818533&quot;,&quot;assigned&quot;:&quot;relay1&quot;,&quot;queued&quot;:&quot;2021-10-14T12:50:15.487Z&quot;,&quot;mxHostname&quot;:&quot;mx.j.is.cc&quot;,&quot;response&quot;:&quot;250 2.0.0 Ok queued as C91D83E128C&quot;}]}</code></pre>
     <h4 class="field-label">400</h4>
     bad input parameter
         <a href="#"></a>
@@ -10339,9 +10596,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -10351,12 +10625,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteQsBackup"></a>
@@ -11294,7 +11568,7 @@
     "qs_ram" : "29550679",
     "qs_iowait" : "6.89",
     "qs_cpu_flags" : "",
-    "qs_last_install_time" : "",
+    "qs_last_install_time" : "qs_last_install_time",
     "qs_location" : "1",
     "qs_packets_sec_in" : "0",
     "qs_distro_version" : "22.04",
@@ -11305,7 +11579,7 @@
     "qs_load" : "3.45",
     "qs_bytes_sec_in" : "0",
     "qs_raid_building" : "0",
-    "qs_partitions" : "",
+    "qs_partitions" : "qs_partitions",
     "qs_raid_status" : "OK: zfs:all pools are healthy",
     "qs_id" : "365",
     "qs_cpu_mhz" : "2900",
@@ -11328,10 +11602,10 @@
     "qs_vnc" : "99.88.77.66",
     "qs_comment" : "",
     "qs_invoice" : "20297531",
-    "qs_platform" : "",
+    "qs_platform" : "qs_platform",
     "qs_mac" : "",
     "qs_order_date" : "2023-04-11T20:00:06.000Z",
-    "qs_ipv6" : "",
+    "qs_ipv6" : "qs_ipv6",
     "qs_coupon" : "0",
     "qs_currency" : "USD",
     "qs_slices" : "0",
@@ -11339,7 +11613,7 @@
     "qs_status" : "canceled",
     "qs_type" : "700",
     "qs_server_status" : "deleted",
-    "qs_vnc_port" : ""
+    "qs_vnc_port" : 0
   },
   "extraInfoTables" : {
     "addons" : {
@@ -12739,9 +13013,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -12751,12 +13036,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="SSLCertificates">SSLCertificates</a></h1>
@@ -12776,9 +13061,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -12788,12 +13090,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getNewSsl"></a>
@@ -12812,9 +13114,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -12824,12 +13134,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Available SSL certificate types and pricing for ordering.
+        <a href="#Object">Object</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getSslInfo"></a>
@@ -12853,9 +13163,17 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -12865,12 +13183,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Detailed SSL certificate information.
+        <a href="#Object">Object</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getSslInvoices"></a>
@@ -13110,7 +13428,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_20">inline_response_200_20</a>
+      <a href="#inline_response_200_21">inline_response_200_21</a>
       
     </div>
 
@@ -13133,7 +13451,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     SSL Cancel
-        <a href="#inline_response_200_20">inline_response_200_20</a>
+        <a href="#inline_response_200_21">inline_response_200_21</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -13160,9 +13478,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -13172,12 +13501,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="ScrubIps">ScrubIps</a></h1>
@@ -14330,9 +14659,21 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_19">inline_response_200_19</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "text" : "Order Completed",
+  "invoice" : 0,
+  "order" : 6
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -14342,12 +14683,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Server order placed successfully.
+        <a href="#inline_response_200_19">inline_response_200_19</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="buyItNowServerOrder"></a>
@@ -14368,7 +14709,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_26">inline_response_200_26</a>
+      <a href="#inline_response_200_27">inline_response_200_27</a>
       
     </div>
 
@@ -14446,7 +14787,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Available server configurations with pricing and hardware options.
-        <a href="#inline_response_200_26">inline_response_200_26</a>
+        <a href="#inline_response_200_27">inline_response_200_27</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -14595,7 +14936,7 @@
       "type" : "AMD",
       "max_sff" : "4",
       "speed" : "4.7",
-      "hd_ids" : "",
+      "hd_ids" : "hd_ids",
       "price" : 0,
       "max_ram" : "128",
       "max_nve" : "2",
@@ -14757,19 +15098,19 @@
       "3497" : {
         "col" : "06",
         "vlans" : [ ],
-        "ipmi_client_password" : "",
+        "ipmi_client_password" : "ipmi_client_password",
         "switchports" : [ 10414 ],
         "description" : "",
         "external_id" : "",
         "asset_id" : "1",
-        "ipmi_admin_username" : "",
+        "ipmi_admin_username" : "ipmi_admin_username",
         "ipmi_working" : "0",
-        "mac" : "",
+        "mac" : "mac",
         "hostname" : "myserver.host.com",
         "primary_ipv4" : "1.2.3.250",
         "overdue" : "0",
-        "create_timestamp" : "",
-        "update_timestamp" : "",
+        "create_timestamp" : "create_timestamp",
+        "update_timestamp" : "update_timestamp",
         "asset_name" : "server",
         "primary_ipv6" : "",
         "unit_sub" : "0",
@@ -14788,15 +15129,15 @@
         "rack" : "68",
         "comments" : "",
         "type_id" : "1",
-        "ipmi_updated" : "",
-        "ipmi_admin_password" : "",
+        "ipmi_updated" : "ipmi_updated",
+        "ipmi_admin_password" : "ipmi_admin_password",
         "datacenter" : "2",
         "unit_start" : "37",
         "rack_name" : "112.16",
         "rack_id" : "68",
         "rack_size" : "44",
         "unit_end" : "37",
-        "comment" : "",
+        "comment" : "comment",
         "lease" : {
           "authenticated" : false,
           "mac" : "0c:c4:7a:af:35:00",
@@ -14805,7 +15146,7 @@
         "customer_id" : "int5377",
         "order_id" : "16058",
         "vlans6" : [ ],
-        "ipmi_client_username" : "",
+        "ipmi_client_username" : "ipmi_client_username",
         "status" : "active"
       }
     },
@@ -14862,7 +15203,7 @@
   },
   "serviceInfo" : {
     "server_total_cost" : "230",
-    "server_location" : "",
+    "server_location" : "server_location",
     "server_invoice" : "18738142",
     "server_setup" : "0",
     "server_dedicated_cpu" : "38",
@@ -14870,7 +15211,7 @@
     "server_rep" : "0",
     "server_hardware_ordered" : "0",
     "server_dedicated_tag" : "0",
-    "server_discount" : "",
+    "server_discount" : "server_discount",
     "server_root" : "",
     "server_custid" : "771282",
     "server_welcome_email" : "1",
@@ -14885,9 +15226,9 @@
     "server_id" : "16058",
     "server_billed" : "0",
     "server_hostname" : "myserver.host.com",
-    "server_dedicated_hd2" : "",
+    "server_dedicated_hd2" : "server_dedicated_hd2",
     "server_dedicated_hd1" : "20",
-    "server_dedicated_cp" : "",
+    "server_dedicated_cp" : "server_dedicated_cp",
     "server_dedicated_raid" : "0",
     "server_dedicated_ips" : "5",
     "server_hardware" : "0",
@@ -15638,7 +15979,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_19">inline_response_200_19</a>
+      <a href="#inline_response_200_20">inline_response_200_20</a>
       
     </div>
 
@@ -15661,7 +16002,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Servers Cancel
-        <a href="#inline_response_200_19">inline_response_200_19</a>
+        <a href="#inline_response_200_20">inline_response_200_20</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -15688,9 +16029,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -15700,12 +16052,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Tickets">Tickets</a></h1>
@@ -15773,7 +16125,7 @@
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    A successful response after creating a ticket
+    A successful response after creating a ticket.
         <a href="#TicketNewResponse">TicketNewResponse</a>
     <h4 class="field-label">400</h4>
     A successful response after creating a ticket
@@ -16576,9 +16928,26 @@
       
             <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -16588,12 +16957,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteVpsBackup"></a>
@@ -17558,7 +17927,7 @@
   "cpu_graph_data" : "",
   "serviceInfo" : {
     "vps_order_date" : "2022-12-26T20:14:59.000Z",
-    "vps_ipv6" : "",
+    "vps_ipv6" : "vps_ipv6",
     "vps_currency" : "USD",
     "vps_invoice" : "20130799",
     "vps_coupon" : "3646",
@@ -19225,9 +19594,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -19237,12 +19617,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="vPSCancel"></a>
@@ -19268,7 +19648,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_21">inline_response_200_21</a>
+      <a href="#inline_response_200_22">inline_response_200_22</a>
       
     </div>
 
@@ -19291,7 +19671,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     VPS Cancel
-        <a href="#inline_response_200_21">inline_response_200_21</a>
+        <a href="#inline_response_200_22">inline_response_200_22</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -19314,9 +19694,26 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -19326,12 +19723,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Order placed successfully. Use the invoice ID to proceed to payment via &lt;code&gt;/pay/{method}/{invoices}&lt;/code&gt; or view the invoice at &lt;code&gt;/billing/invoices/{id}&lt;/code&gt;.
+        <a href="#ServiceOrderPostResponse">ServiceOrderPostResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getNewWebsite"></a>
@@ -19422,12 +19819,12 @@
   },
   "serviceTypes" : {
     "11447" : {
-      "services_description" : "",
+      "services_description" : "services_description",
       "services_id" : "11447",
-      "services_moreinfo_url" : "",
+      "services_moreinfo_url" : "services_moreinfo_url",
       "services_category" : "204",
       "services_field1" : "",
-      "services_html" : "",
+      "services_html" : "services_html",
       "services_field2" : "Standard",
       "services_name" : "Web Hosting Direct Admin (PriceLock)",
       "services_buyable" : "1",
@@ -19503,7 +19900,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_23">inline_response_200_23</a>
+      <a href="#inline_response_200_24">inline_response_200_24</a>
       
     </div>
 
@@ -19527,7 +19924,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Current IP addresses and their reverse DNS hostnames for the website.
-        <a href="#inline_response_200_23">inline_response_200_23</a>
+        <a href="#inline_response_200_24">inline_response_200_24</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -20059,7 +20456,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_24">inline_response_200_24</a>
+      <a href="#inline_response_200_25">inline_response_200_25</a>
       
     </div>
 
@@ -20082,7 +20479,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     DNS update result.
-        <a href="#inline_response_200_24">inline_response_200_24</a>
+        <a href="#inline_response_200_25">inline_response_200_25</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -20152,7 +20549,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_25">inline_response_200_25</a>
+      <a href="#inline_response_200_26">inline_response_200_26</a>
       
     </div>
 
@@ -20175,7 +20572,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Migration request submitted.
-        <a href="#inline_response_200_25">inline_response_200_25</a>
+        <a href="#inline_response_200_26">inline_response_200_26</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -20306,9 +20703,20 @@
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SuccessTextResponse">SuccessTextResponse</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true,
+  "text" : "Ok"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -20318,12 +20726,12 @@
     </ul>
 
     <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A response indicating the operation completed successfully with a text message.
+        <a href="#SuccessTextResponse">SuccessTextResponse</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
-    <h4 class="field-label">default</h4>
-    Default response
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="webhostingCancel"></a>
@@ -20349,7 +20757,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_22">inline_response_200_22</a>
+      <a href="#inline_response_200_23">inline_response_200_23</a>
       
     </div>
 
@@ -20372,7 +20780,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Website cancel
-        <a href="#inline_response_200_22">inline_response_200_22</a>
+        <a href="#inline_response_200_23">inline_response_200_23</a>
     <h4 class="field-label">401</h4>
     Unauthorized
         <a href="#inline_response_401">inline_response_401</a>
@@ -20666,6 +21074,7 @@
     <li><a href="#Service"><code>Service</code> - Service</a></li>
     <li><a href="#ServiceCategories"><code>ServiceCategories</code></a></li>
     <li><a href="#ServiceCategory"><code>ServiceCategory</code> - ServiceCategory</a></li>
+    <li><a href="#ServiceOrderPostResponse"><code>ServiceOrderPostResponse</code> - ServiceOrderPostResponse</a></li>
     <li><a href="#ServiceType"><code>ServiceType</code> - ServiceType</a></li>
     <li><a href="#ServiceTypes"><code>ServiceTypes</code></a></li>
     <li><a href="#Services"><code>Services</code></a></li>
@@ -20804,11 +21213,12 @@
     <li><a href="#inline_response_200_24"><code>inline_response_200_24</code></a></li>
     <li><a href="#inline_response_200_25"><code>inline_response_200_25</code></a></li>
     <li><a href="#inline_response_200_26"><code>inline_response_200_26</code></a></li>
-    <li><a href="#inline_response_200_26_bandwidth"><code>inline_response_200_26_bandwidth</code></a></li>
-    <li><a href="#inline_response_200_26_cp"><code>inline_response_200_26_cp</code></a></li>
-    <li><a href="#inline_response_200_26_ips"><code>inline_response_200_26_ips</code></a></li>
-    <li><a href="#inline_response_200_26_os"><code>inline_response_200_26_os</code></a></li>
-    <li><a href="#inline_response_200_26_raid"><code>inline_response_200_26_raid</code></a></li>
+    <li><a href="#inline_response_200_27"><code>inline_response_200_27</code></a></li>
+    <li><a href="#inline_response_200_27_bandwidth"><code>inline_response_200_27_bandwidth</code></a></li>
+    <li><a href="#inline_response_200_27_cp"><code>inline_response_200_27_cp</code></a></li>
+    <li><a href="#inline_response_200_27_ips"><code>inline_response_200_27_ips</code></a></li>
+    <li><a href="#inline_response_200_27_os"><code>inline_response_200_27_os</code></a></li>
+    <li><a href="#inline_response_200_27_raid"><code>inline_response_200_27_raid</code></a></li>
     <li><a href="#inline_response_200_3"><code>inline_response_200_3</code></a></li>
     <li><a href="#inline_response_200_4"><code>inline_response_200_4</code></a></li>
     <li><a href="#inline_response_200_5"><code>inline_response_200_5</code></a></li>
@@ -21724,7 +22134,7 @@
     <div class="field-items">
       <div class="param">destination_port (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
           <div class="param-desc"><span class="param-type">example: 22</span></div>
-<div class="param">source_ip (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">source_ip (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. </div>
           <div class="param-desc"><span class="param-type">example: 1.2.4.5</span></div>
 <div class="param">source_port (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
           <div class="param-desc"><span class="param-type">example: 1302</span></div>
@@ -23808,7 +24218,7 @@
 <div class="param">qs_server (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Server information </div>
           <div class="param-desc"><span class="param-type">example: 365</span></div>
 <div class="param">qs_ip (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IP address </div>
-<div class="param">qs_ipv6 (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPv6 address (null) </div>
+<div class="param">qs_ipv6 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPv6 address (null) </div>
 <div class="param">qs_vzid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> VZ ID </div>
           <div class="param-desc"><span class="param-type">example: qs24355</span></div>
 <div class="param">qs_currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Currency </div>
@@ -23834,7 +24244,7 @@
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">qs_vnc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> VNC information </div>
           <div class="param-desc"><span class="param-type">example: 99.88.77.66</span></div>
-<div class="param">qs_vnc_port (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> VNC port (null) </div>
+<div class="param">qs_vnc_port (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> VNC port (null) </div>
 <div class="param">qs_rootpass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Root password </div>
 <div class="param">qs_mac (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> MAC address </div>
 <div class="param">qs_os (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Operating system </div>
@@ -23843,7 +24253,7 @@
           <div class="param-desc"><span class="param-type">example: Ubuntu</span></div>
 <div class="param">qs_location (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Location </div>
           <div class="param-desc"><span class="param-type">example: 1</span></div>
-<div class="param">qs_platform (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Platform (null) </div>
+<div class="param">qs_platform (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Platform (null) </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -23909,8 +24319,8 @@
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">qs_packets_sec_out (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Packets/sec out </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
-<div class="param">qs_last_install_time (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Last install time (null) </div>
-<div class="param">qs_partitions (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Partitions information (null) </div>
+<div class="param">qs_last_install_time (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Last install time (null) </div>
+<div class="param">qs_partitions (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Partitions information (null) </div>
 <div class="param">qs_cpu_flags (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> CPU flags </div>
     </div>  <!-- field-items -->
   </div>
@@ -24103,7 +24513,7 @@
 <div class="param">primary_ipv4 </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Primary IPv4 address of the asset. </div>
           <div class="param-desc"><span class="param-type">example: 1.2.3.250</span></div>
 <div class="param">primary_ipv6 </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Primary IPv6 address of the asset. </div>
-<div class="param">mac (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> MAC address associated with the asset. </div>
+<div class="param">mac (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> MAC address associated with the asset. </div>
 <div class="param">datacenter </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Datacenter identifier for the asset. </div>
           <div class="param-desc"><span class="param-type">example: 2</span></div>
 <div class="param">type_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type identifier for the asset. </div>
@@ -24125,11 +24535,11 @@
           <div class="param-desc"><span class="param-type">example: 0c:c4:7a:af:35:00</span></div>
 <div class="param">ipmi_ip </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI IP address associated with the asset. </div>
           <div class="param-desc"><span class="param-type">example: 10.8.69.7</span></div>
-<div class="param">ipmi_admin_username (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPMI admin username associated with the asset. </div>
-<div class="param">ipmi_admin_password (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPMI admin password associated with the asset. </div>
-<div class="param">ipmi_client_username (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPMI client username associated with the asset. </div>
-<div class="param">ipmi_client_password (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPMI client password associated with the asset. </div>
-<div class="param">ipmi_updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPMI update status associated with the asset. </div>
+<div class="param">ipmi_admin_username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI admin username associated with the asset. </div>
+<div class="param">ipmi_admin_password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI admin password associated with the asset. </div>
+<div class="param">ipmi_client_username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI client username associated with the asset. </div>
+<div class="param">ipmi_client_password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI client password associated with the asset. </div>
+<div class="param">ipmi_updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI update status associated with the asset. </div>
 <div class="param">ipmi_working </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPMI working status associated with the asset. </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">company </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Company associated with the asset. </div>
@@ -24147,8 +24557,8 @@
           <div class="param-desc"><span class="param-type">example: active</span></div>
 <div class="param">overdue </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Overdue status of the asset. </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
-<div class="param">create_timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Timestamp of asset creation. </div>
-<div class="param">update_timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Timestamp of asset update. </div>
+<div class="param">create_timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Timestamp of asset creation. </div>
+<div class="param">update_timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Timestamp of asset update. </div>
 <div class="param">asset_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Asset identifier for the asset. </div>
           <div class="param-desc"><span class="param-type">example: 1</span></div>
 <div class="param">asset_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the asset. </div>
@@ -24165,7 +24575,7 @@
           <div class="param-desc"><span class="param-type">example: 25</span></div>
 <div class="param">rack_y </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Y-coordinate of the asset within the rack. </div>
           <div class="param-desc"><span class="param-type">example: 5</span></div>
-<div class="param">comment (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Comment associated with the asset. </div>
+<div class="param">comment (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment associated with the asset. </div>
 <div class="param">switchports </div><div class="param-desc"><span class="param-type"><a href="#integer">array[Integer]</a></span> List of switchports associated with the asset. </div>
           <div class="param-desc"><span class="param-type">example: [10414]</span></div>
 <div class="param">vlans </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> List of VLANs associated with the asset. </div>
@@ -24225,7 +24635,7 @@
   </div>
   <div class="model">
     <h3><a name="ServerIpmiLiveInfo"><code>ServerIpmiLiveInfo</code> - Root Type for ServerIpmiLiveInfo</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>Information about the IPMI connectioj.</div>
+    <div class='model-description'>Information about the IPMI connection.</div>
     <div class="field-items">
       <div class="param">text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">public_ip (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -24397,7 +24807,7 @@
           <div class="param-desc"><span class="param-type">example: 2</span></div>
 <div class="param">visible (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Visibility status. </div>
           <div class="param-desc"><span class="param-type">example: yes</span></div>
-<div class="param">hd_ids (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Hard drive IDs. </div>
+<div class="param">hd_ids (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Hard drive IDs. </div>
 <div class="param">price_display (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Display of CPU price. </div>
           <div class="param-desc"><span class="param-type">example: $0.00</span></div>
 <div class="param">monthly_price_display (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Display of monthly CPU price. </div>
@@ -24713,14 +25123,14 @@
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">server_setup (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The setup status of the server. </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
-<div class="param">server_discount (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Discount information for the server. </div>
+<div class="param">server_discount (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Discount information for the server. </div>
 <div class="param">server_rep (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The reputation of the server. </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">server_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The date related to the server. </div>
           <div class="param-desc"><span class="param-type">example: 1588972956</span></div>
 <div class="param">server_total_cost (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The total cost of the server. </div>
           <div class="param-desc"><span class="param-type">example: 230</span></div>
-<div class="param">server_location (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> The location of the server. </div>
+<div class="param">server_location (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The location of the server. </div>
 <div class="param">server_hardware_ordered (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The ordered hardware for the server. </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">server_billed (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The billed amount for the server. </div>
@@ -24733,14 +25143,14 @@
           <div class="param-desc"><span class="param-type">example: 22</span></div>
 <div class="param">server_dedicated_hd1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The size of the first dedicated hard drive. </div>
           <div class="param-desc"><span class="param-type">example: 20</span></div>
-<div class="param">server_dedicated_hd2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> The size of the second dedicated hard drive. </div>
+<div class="param">server_dedicated_hd2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The size of the second dedicated hard drive. </div>
 <div class="param">server_dedicated_bandwidth (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The bandwidth of the server. </div>
           <div class="param-desc"><span class="param-type">example: 3</span></div>
 <div class="param">server_dedicated_ips (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The number of dedicated IPs for the server. </div>
           <div class="param-desc"><span class="param-type">example: 5</span></div>
 <div class="param">server_dedicated_os (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The operating system of the server. </div>
           <div class="param-desc"><span class="param-type">example: 30</span></div>
-<div class="param">server_dedicated_cp (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> The control panel of the server. </div>
+<div class="param">server_dedicated_cp (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The control panel of the server. </div>
 <div class="param">server_dedicated_raid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The RAID configuration of the server. </div>
           <div class="param-desc"><span class="param-type">example: 0</span></div>
 <div class="param">server_extra (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Additional information about the server. </div>
@@ -24822,7 +25232,7 @@
 <div class="param">services_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
           <div class="param-desc"><span class="param-type">example: OpenVZ VPS Slice</span></div>
 <div class="param">services_cost </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
-          <div class="param-desc"><span class="param-type">example: 6.0</span></div>
+          <div class="param-desc"><span class="param-type">example: 6</span></div>
 <div class="param">services_currency </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
           <div class="param-desc"><span class="param-type">example: USD</span></div>
 <div class="param">services_category </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
@@ -24856,6 +25266,20 @@
           <div class="param-desc"><span class="param-type">example: openvz</span></div>
 <div class="param">category_module </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
           <div class="param-desc"><span class="param-type">example: vps</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ServiceOrderPostResponse"><code>ServiceOrderPostResponse</code> - ServiceOrderPostResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.</div>
+    <div class="field-items">
+      <div class="param">continue (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether the order was accepted and can proceed to payment. </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> List of validation errors (empty on success). </div>
+<div class="param">total_cost (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Total cost of the order. </div>
+<div class="param">iid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Primary invoice ID for payment. </div>
+<div class="param">iids (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> All invoice identifiers associated with the order. </div>
+<div class="param">real_iids (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> Numeric invoice IDs for use with billing endpoints. </div>
+<div class="param">serviceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The new service ID created by the order. format: int32</div>
+<div class="param">invoice_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Human-readable description of the invoice. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -25576,7 +26000,7 @@
           <div class="param-desc"><span class="param-type">example: 2439</span></div>
 <div class="param">vps_ip (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IP address of the VPS </div>
           <div class="param-desc"><span class="param-type">example: 1.2.3.4</span></div>
-<div class="param">vps_ipv6 (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> IPv6 address of the VPS </div>
+<div class="param">vps_ipv6 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IPv6 address of the VPS </div>
 <div class="param">vps_vzid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> VPS Virtuozzo ID </div>
           <div class="param-desc"><span class="param-type">example: vps85872</span></div>
 <div class="param">vps_currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Currency used for billing </div>
@@ -26138,9 +26562,9 @@
           <div class="param-desc"><span class="param-type">example: Standard</span></div>
 <div class="param">services_module </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The module of the service. </div>
           <div class="param-desc"><span class="param-type">example: webhosting</span></div>
-<div class="param">services_html (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> HTML content for the service. </div>
-<div class="param">services_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> Description of the service. </div>
-<div class="param">services_moreinfo_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#"></a></span> URL for more information about the service. </div>
+<div class="param">services_html (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> HTML content for the service. </div>
+<div class="param">services_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Description of the service. </div>
+<div class="param">services_moreinfo_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> URL for more information about the service. </div>
 <div class="param">services_hidden </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Indicates if the service is hidden (1 for yes, 0 for no). </div>
           <div class="param-desc"><span class="param-type">example: 1</span></div>
     </div>  <!-- field-items -->
@@ -26520,8 +26944,10 @@
     <h3><a name="inline_response_200_19"><code>inline_response_200_19</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
-      <div class="param">success </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
-<div class="param">text </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Status message. </div>
+          <div class="param-desc"><span class="param-type">example: Order Completed</span></div>
+<div class="param">invoice (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Invoice ID for payment. </div>
+<div class="param">order (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Server order ID. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -26560,11 +26986,19 @@
     <h3><a name="inline_response_200_23"><code>inline_response_200_23</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
-      <div class="param">ips (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">map[String, String]</a></span> A map of IP addresses to their current reverse DNS hostnames. </div>
+      <div class="param">success </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">text </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="inline_response_200_24"><code>inline_response_200_24</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">ips (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">map[String, String]</a></span> A map of IP addresses to their current reverse DNS hostnames. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_25"><code>inline_response_200_25</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -26572,7 +27006,7 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_25"><code>inline_response_200_25</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_26"><code>inline_response_200_26</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Confirmation message. </div>
@@ -26580,18 +27014,18 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_26"><code>inline_response_200_26</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_27"><code>inline_response_200_27</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
-      <div class="param">bandwidth (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_26_bandwidth">array[inline_response_200_26_bandwidth]</a></span>  </div>
-<div class="param">ips (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_26_ips">array[inline_response_200_26_ips]</a></span>  </div>
-<div class="param">os (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_26_os">array[inline_response_200_26_os]</a></span>  </div>
-<div class="param">cp (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_26_cp">array[inline_response_200_26_cp]</a></span>  </div>
-<div class="param">raid (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_26_raid">array[inline_response_200_26_raid]</a></span>  </div>
+      <div class="param">bandwidth (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_27_bandwidth">array[inline_response_200_27_bandwidth]</a></span>  </div>
+<div class="param">ips (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_27_ips">array[inline_response_200_27_ips]</a></span>  </div>
+<div class="param">os (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_27_os">array[inline_response_200_27_os]</a></span>  </div>
+<div class="param">cp (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_27_cp">array[inline_response_200_27_cp]</a></span>  </div>
+<div class="param">raid (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_27_raid">array[inline_response_200_27_raid]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_26_bandwidth"><code>inline_response_200_26_bandwidth</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_27_bandwidth"><code>inline_response_200_27_bandwidth</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -26604,7 +27038,7 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_26_cp"><code>inline_response_200_26_cp</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_27_cp"><code>inline_response_200_27_cp</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -26618,7 +27052,7 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_26_ips"><code>inline_response_200_26_ips</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_27_ips"><code>inline_response_200_27_ips</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -26632,7 +27066,7 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_26_os"><code>inline_response_200_26_os</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_27_os"><code>inline_response_200_27_os</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -26646,7 +27080,7 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_26_raid"><code>inline_response_200_26_raid</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_27_raid"><code>inline_response_200_27_raid</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>

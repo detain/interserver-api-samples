@@ -205,15 +205,11 @@ public class QuickserverServiceMaster   {
 
   @JsonProperty("qs_last_install_time")
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object qsLastInstallTime = null;
+  private String qsLastInstallTime = null;
 
   @JsonProperty("qs_partitions")
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object qsPartitions = null;
+  private String qsPartitions = null;
 
   @JsonProperty("qs_cpu_flags")
 
@@ -912,7 +908,7 @@ public class QuickserverServiceMaster   {
     this.qsPacketsSecOut = qsPacketsSecOut;
   }
 
-  public QuickserverServiceMaster qsLastInstallTime(Object qsLastInstallTime) { 
+  public QuickserverServiceMaster qsLastInstallTime(String qsLastInstallTime) { 
 
     this.qsLastInstallTime = qsLastInstallTime;
     return this;
@@ -925,17 +921,18 @@ public class QuickserverServiceMaster   {
   
   @Schema(description = "Last install time (null)")
   
-  public Object getQsLastInstallTime() {  
+  public String getQsLastInstallTime() {
+ 
     return qsLastInstallTime;
   }
 
 
 
-  public void setQsLastInstallTime(Object qsLastInstallTime) { 
+  public void setQsLastInstallTime(String qsLastInstallTime) { 
     this.qsLastInstallTime = qsLastInstallTime;
   }
 
-  public QuickserverServiceMaster qsPartitions(Object qsPartitions) { 
+  public QuickserverServiceMaster qsPartitions(String qsPartitions) { 
 
     this.qsPartitions = qsPartitions;
     return this;
@@ -948,13 +945,14 @@ public class QuickserverServiceMaster   {
   
   @Schema(description = "Partitions information (null)")
   
-  public Object getQsPartitions() {  
+  public String getQsPartitions() {
+ 
     return qsPartitions;
   }
 
 
 
-  public void setQsPartitions(Object qsPartitions) { 
+  public void setQsPartitions(String qsPartitions) { 
     this.qsPartitions = qsPartitions;
   }
 

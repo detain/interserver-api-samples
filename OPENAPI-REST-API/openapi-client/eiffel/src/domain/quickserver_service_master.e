@@ -79,9 +79,9 @@ feature --Access
       -- Packets/sec in
     qs_packets_sec_out: detachable STRING_32
       -- Packets/sec out
-    qs_last_install_time: detachable ANY
+    qs_last_install_time: detachable STRING_32
       -- Last install time (null)
-    qs_partitions: detachable ANY
+    qs_partitions: detachable STRING_32
       -- Partitions information (null)
     qs_cpu_flags: detachable STRING_32
       -- CPU flags

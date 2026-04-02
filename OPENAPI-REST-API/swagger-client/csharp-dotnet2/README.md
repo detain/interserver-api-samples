@@ -149,11 +149,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("sessionid", "Bearer");
 
             var apiInstance = new AccountApi();
+            var body = new IpLimitRange(); // IpLimitRange |  (optional) 
 
             try
             {
                 // Remove IP Access Restriction
-                GenericResponse result = apiInstance.DeleteIpLimit();
+                GenericResponse result = apiInstance.DeleteIpLimit(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)

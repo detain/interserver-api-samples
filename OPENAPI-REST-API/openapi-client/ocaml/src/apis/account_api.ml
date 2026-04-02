@@ -47,13 +47,28 @@ let delete_account_tfa () =
     Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let delete_ip_limit () =
+let delete_ip_limit ~ip_limit_range_t () =
     let open Lwt.Infix in
     let uri = Request.build_uri "/account/iplimits" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PATCH uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Ip_limit_range.to_yojson
+    
+    
+    
+ ip_limit_range_t
+    in
+    Cohttp_lwt_unix.Client.call `PATCH uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Generic_response.of_yojson) resp body
 
 let get_account_info () =

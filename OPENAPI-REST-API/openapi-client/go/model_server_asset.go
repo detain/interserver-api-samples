@@ -35,7 +35,7 @@ type ServerAsset struct {
 	// Primary IPv6 address of the asset.
 	PrimaryIpv6 string `json:"primary_ipv6"`
 	// MAC address associated with the asset.
-	Mac interface{} `json:"mac,omitempty"`
+	Mac *string `json:"mac,omitempty"`
 	// Datacenter identifier for the asset.
 	Datacenter string `json:"datacenter"`
 	// Type identifier for the asset.
@@ -59,15 +59,15 @@ type ServerAsset struct {
 	// IPMI IP address associated with the asset.
 	IpmiIp string `json:"ipmi_ip"`
 	// IPMI admin username associated with the asset.
-	IpmiAdminUsername interface{} `json:"ipmi_admin_username,omitempty"`
+	IpmiAdminUsername *string `json:"ipmi_admin_username,omitempty"`
 	// IPMI admin password associated with the asset.
-	IpmiAdminPassword interface{} `json:"ipmi_admin_password,omitempty"`
+	IpmiAdminPassword *string `json:"ipmi_admin_password,omitempty"`
 	// IPMI client username associated with the asset.
-	IpmiClientUsername interface{} `json:"ipmi_client_username,omitempty"`
+	IpmiClientUsername *string `json:"ipmi_client_username,omitempty"`
 	// IPMI client password associated with the asset.
-	IpmiClientPassword interface{} `json:"ipmi_client_password,omitempty"`
+	IpmiClientPassword *string `json:"ipmi_client_password,omitempty"`
 	// IPMI update status associated with the asset.
-	IpmiUpdated interface{} `json:"ipmi_updated,omitempty"`
+	IpmiUpdated *string `json:"ipmi_updated,omitempty"`
 	// IPMI working status associated with the asset.
 	IpmiWorking string `json:"ipmi_working"`
 	// Company associated with the asset.
@@ -89,9 +89,9 @@ type ServerAsset struct {
 	// Overdue status of the asset.
 	Overdue string `json:"overdue"`
 	// Timestamp of asset creation.
-	CreateTimestamp interface{} `json:"create_timestamp,omitempty"`
+	CreateTimestamp *string `json:"create_timestamp,omitempty"`
 	// Timestamp of asset update.
-	UpdateTimestamp interface{} `json:"update_timestamp,omitempty"`
+	UpdateTimestamp *string `json:"update_timestamp,omitempty"`
 	// Asset identifier for the asset.
 	AssetId string `json:"asset_id"`
 	// Name of the asset.
@@ -109,7 +109,7 @@ type ServerAsset struct {
 	// Y-coordinate of the asset within the rack.
 	RackY string `json:"rack_y"`
 	// Comment associated with the asset.
-	Comment interface{} `json:"comment,omitempty"`
+	Comment *string `json:"comment,omitempty"`
 	// List of switchports associated with the asset.
 	Switchports []int32 `json:"switchports"`
 	// List of VLANs associated with the asset.
@@ -321,23 +321,22 @@ func (o *ServerAsset) SetPrimaryIpv6(v string) {
 	o.PrimaryIpv6 = v
 }
 
-// GetMac returns the Mac field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetMac() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetMac returns the Mac field value if set, zero value otherwise.
+func (o *ServerAsset) GetMac() string {
+	if o == nil || IsNil(o.Mac) {
+		var ret string
 		return ret
 	}
-	return o.Mac
+	return *o.Mac
 }
 
 // GetMacOk returns a tuple with the Mac field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetMacOk() (*interface{}, bool) {
+func (o *ServerAsset) GetMacOk() (*string, bool) {
 	if o == nil || IsNil(o.Mac) {
 		return nil, false
 	}
-	return &o.Mac, true
+	return o.Mac, true
 }
 
 // HasMac returns a boolean if a field has been set.
@@ -349,9 +348,9 @@ func (o *ServerAsset) HasMac() bool {
 	return false
 }
 
-// SetMac gets a reference to the given interface{} and assigns it to the Mac field.
-func (o *ServerAsset) SetMac(v interface{}) {
-	o.Mac = v
+// SetMac gets a reference to the given string and assigns it to the Mac field.
+func (o *ServerAsset) SetMac(v string) {
+	o.Mac = &v
 }
 
 // GetDatacenter returns the Datacenter field value
@@ -618,23 +617,22 @@ func (o *ServerAsset) SetIpmiIp(v string) {
 	o.IpmiIp = v
 }
 
-// GetIpmiAdminUsername returns the IpmiAdminUsername field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetIpmiAdminUsername() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpmiAdminUsername returns the IpmiAdminUsername field value if set, zero value otherwise.
+func (o *ServerAsset) GetIpmiAdminUsername() string {
+	if o == nil || IsNil(o.IpmiAdminUsername) {
+		var ret string
 		return ret
 	}
-	return o.IpmiAdminUsername
+	return *o.IpmiAdminUsername
 }
 
 // GetIpmiAdminUsernameOk returns a tuple with the IpmiAdminUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetIpmiAdminUsernameOk() (*interface{}, bool) {
+func (o *ServerAsset) GetIpmiAdminUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.IpmiAdminUsername) {
 		return nil, false
 	}
-	return &o.IpmiAdminUsername, true
+	return o.IpmiAdminUsername, true
 }
 
 // HasIpmiAdminUsername returns a boolean if a field has been set.
@@ -646,28 +644,27 @@ func (o *ServerAsset) HasIpmiAdminUsername() bool {
 	return false
 }
 
-// SetIpmiAdminUsername gets a reference to the given interface{} and assigns it to the IpmiAdminUsername field.
-func (o *ServerAsset) SetIpmiAdminUsername(v interface{}) {
-	o.IpmiAdminUsername = v
+// SetIpmiAdminUsername gets a reference to the given string and assigns it to the IpmiAdminUsername field.
+func (o *ServerAsset) SetIpmiAdminUsername(v string) {
+	o.IpmiAdminUsername = &v
 }
 
-// GetIpmiAdminPassword returns the IpmiAdminPassword field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetIpmiAdminPassword() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpmiAdminPassword returns the IpmiAdminPassword field value if set, zero value otherwise.
+func (o *ServerAsset) GetIpmiAdminPassword() string {
+	if o == nil || IsNil(o.IpmiAdminPassword) {
+		var ret string
 		return ret
 	}
-	return o.IpmiAdminPassword
+	return *o.IpmiAdminPassword
 }
 
 // GetIpmiAdminPasswordOk returns a tuple with the IpmiAdminPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetIpmiAdminPasswordOk() (*interface{}, bool) {
+func (o *ServerAsset) GetIpmiAdminPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.IpmiAdminPassword) {
 		return nil, false
 	}
-	return &o.IpmiAdminPassword, true
+	return o.IpmiAdminPassword, true
 }
 
 // HasIpmiAdminPassword returns a boolean if a field has been set.
@@ -679,28 +676,27 @@ func (o *ServerAsset) HasIpmiAdminPassword() bool {
 	return false
 }
 
-// SetIpmiAdminPassword gets a reference to the given interface{} and assigns it to the IpmiAdminPassword field.
-func (o *ServerAsset) SetIpmiAdminPassword(v interface{}) {
-	o.IpmiAdminPassword = v
+// SetIpmiAdminPassword gets a reference to the given string and assigns it to the IpmiAdminPassword field.
+func (o *ServerAsset) SetIpmiAdminPassword(v string) {
+	o.IpmiAdminPassword = &v
 }
 
-// GetIpmiClientUsername returns the IpmiClientUsername field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetIpmiClientUsername() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpmiClientUsername returns the IpmiClientUsername field value if set, zero value otherwise.
+func (o *ServerAsset) GetIpmiClientUsername() string {
+	if o == nil || IsNil(o.IpmiClientUsername) {
+		var ret string
 		return ret
 	}
-	return o.IpmiClientUsername
+	return *o.IpmiClientUsername
 }
 
 // GetIpmiClientUsernameOk returns a tuple with the IpmiClientUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetIpmiClientUsernameOk() (*interface{}, bool) {
+func (o *ServerAsset) GetIpmiClientUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.IpmiClientUsername) {
 		return nil, false
 	}
-	return &o.IpmiClientUsername, true
+	return o.IpmiClientUsername, true
 }
 
 // HasIpmiClientUsername returns a boolean if a field has been set.
@@ -712,28 +708,27 @@ func (o *ServerAsset) HasIpmiClientUsername() bool {
 	return false
 }
 
-// SetIpmiClientUsername gets a reference to the given interface{} and assigns it to the IpmiClientUsername field.
-func (o *ServerAsset) SetIpmiClientUsername(v interface{}) {
-	o.IpmiClientUsername = v
+// SetIpmiClientUsername gets a reference to the given string and assigns it to the IpmiClientUsername field.
+func (o *ServerAsset) SetIpmiClientUsername(v string) {
+	o.IpmiClientUsername = &v
 }
 
-// GetIpmiClientPassword returns the IpmiClientPassword field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetIpmiClientPassword() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpmiClientPassword returns the IpmiClientPassword field value if set, zero value otherwise.
+func (o *ServerAsset) GetIpmiClientPassword() string {
+	if o == nil || IsNil(o.IpmiClientPassword) {
+		var ret string
 		return ret
 	}
-	return o.IpmiClientPassword
+	return *o.IpmiClientPassword
 }
 
 // GetIpmiClientPasswordOk returns a tuple with the IpmiClientPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetIpmiClientPasswordOk() (*interface{}, bool) {
+func (o *ServerAsset) GetIpmiClientPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.IpmiClientPassword) {
 		return nil, false
 	}
-	return &o.IpmiClientPassword, true
+	return o.IpmiClientPassword, true
 }
 
 // HasIpmiClientPassword returns a boolean if a field has been set.
@@ -745,28 +740,27 @@ func (o *ServerAsset) HasIpmiClientPassword() bool {
 	return false
 }
 
-// SetIpmiClientPassword gets a reference to the given interface{} and assigns it to the IpmiClientPassword field.
-func (o *ServerAsset) SetIpmiClientPassword(v interface{}) {
-	o.IpmiClientPassword = v
+// SetIpmiClientPassword gets a reference to the given string and assigns it to the IpmiClientPassword field.
+func (o *ServerAsset) SetIpmiClientPassword(v string) {
+	o.IpmiClientPassword = &v
 }
 
-// GetIpmiUpdated returns the IpmiUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetIpmiUpdated() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpmiUpdated returns the IpmiUpdated field value if set, zero value otherwise.
+func (o *ServerAsset) GetIpmiUpdated() string {
+	if o == nil || IsNil(o.IpmiUpdated) {
+		var ret string
 		return ret
 	}
-	return o.IpmiUpdated
+	return *o.IpmiUpdated
 }
 
 // GetIpmiUpdatedOk returns a tuple with the IpmiUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetIpmiUpdatedOk() (*interface{}, bool) {
+func (o *ServerAsset) GetIpmiUpdatedOk() (*string, bool) {
 	if o == nil || IsNil(o.IpmiUpdated) {
 		return nil, false
 	}
-	return &o.IpmiUpdated, true
+	return o.IpmiUpdated, true
 }
 
 // HasIpmiUpdated returns a boolean if a field has been set.
@@ -778,9 +772,9 @@ func (o *ServerAsset) HasIpmiUpdated() bool {
 	return false
 }
 
-// SetIpmiUpdated gets a reference to the given interface{} and assigns it to the IpmiUpdated field.
-func (o *ServerAsset) SetIpmiUpdated(v interface{}) {
-	o.IpmiUpdated = v
+// SetIpmiUpdated gets a reference to the given string and assigns it to the IpmiUpdated field.
+func (o *ServerAsset) SetIpmiUpdated(v string) {
+	o.IpmiUpdated = &v
 }
 
 // GetIpmiWorking returns the IpmiWorking field value
@@ -1023,23 +1017,22 @@ func (o *ServerAsset) SetOverdue(v string) {
 	o.Overdue = v
 }
 
-// GetCreateTimestamp returns the CreateTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetCreateTimestamp() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetCreateTimestamp returns the CreateTimestamp field value if set, zero value otherwise.
+func (o *ServerAsset) GetCreateTimestamp() string {
+	if o == nil || IsNil(o.CreateTimestamp) {
+		var ret string
 		return ret
 	}
-	return o.CreateTimestamp
+	return *o.CreateTimestamp
 }
 
 // GetCreateTimestampOk returns a tuple with the CreateTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetCreateTimestampOk() (*interface{}, bool) {
+func (o *ServerAsset) GetCreateTimestampOk() (*string, bool) {
 	if o == nil || IsNil(o.CreateTimestamp) {
 		return nil, false
 	}
-	return &o.CreateTimestamp, true
+	return o.CreateTimestamp, true
 }
 
 // HasCreateTimestamp returns a boolean if a field has been set.
@@ -1051,28 +1044,27 @@ func (o *ServerAsset) HasCreateTimestamp() bool {
 	return false
 }
 
-// SetCreateTimestamp gets a reference to the given interface{} and assigns it to the CreateTimestamp field.
-func (o *ServerAsset) SetCreateTimestamp(v interface{}) {
-	o.CreateTimestamp = v
+// SetCreateTimestamp gets a reference to the given string and assigns it to the CreateTimestamp field.
+func (o *ServerAsset) SetCreateTimestamp(v string) {
+	o.CreateTimestamp = &v
 }
 
-// GetUpdateTimestamp returns the UpdateTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetUpdateTimestamp() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetUpdateTimestamp returns the UpdateTimestamp field value if set, zero value otherwise.
+func (o *ServerAsset) GetUpdateTimestamp() string {
+	if o == nil || IsNil(o.UpdateTimestamp) {
+		var ret string
 		return ret
 	}
-	return o.UpdateTimestamp
+	return *o.UpdateTimestamp
 }
 
 // GetUpdateTimestampOk returns a tuple with the UpdateTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetUpdateTimestampOk() (*interface{}, bool) {
+func (o *ServerAsset) GetUpdateTimestampOk() (*string, bool) {
 	if o == nil || IsNil(o.UpdateTimestamp) {
 		return nil, false
 	}
-	return &o.UpdateTimestamp, true
+	return o.UpdateTimestamp, true
 }
 
 // HasUpdateTimestamp returns a boolean if a field has been set.
@@ -1084,9 +1076,9 @@ func (o *ServerAsset) HasUpdateTimestamp() bool {
 	return false
 }
 
-// SetUpdateTimestamp gets a reference to the given interface{} and assigns it to the UpdateTimestamp field.
-func (o *ServerAsset) SetUpdateTimestamp(v interface{}) {
-	o.UpdateTimestamp = v
+// SetUpdateTimestamp gets a reference to the given string and assigns it to the UpdateTimestamp field.
+func (o *ServerAsset) SetUpdateTimestamp(v string) {
+	o.UpdateTimestamp = &v
 }
 
 // GetAssetId returns the AssetId field value
@@ -1281,23 +1273,22 @@ func (o *ServerAsset) SetRackY(v string) {
 	o.RackY = v
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerAsset) GetComment() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetComment returns the Comment field value if set, zero value otherwise.
+func (o *ServerAsset) GetComment() string {
+	if o == nil || IsNil(o.Comment) {
+		var ret string
 		return ret
 	}
-	return o.Comment
+	return *o.Comment
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerAsset) GetCommentOk() (*interface{}, bool) {
+func (o *ServerAsset) GetCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
-	return &o.Comment, true
+	return o.Comment, true
 }
 
 // HasComment returns a boolean if a field has been set.
@@ -1309,9 +1300,9 @@ func (o *ServerAsset) HasComment() bool {
 	return false
 }
 
-// SetComment gets a reference to the given interface{} and assigns it to the Comment field.
-func (o *ServerAsset) SetComment(v interface{}) {
-	o.Comment = v
+// SetComment gets a reference to the given string and assigns it to the Comment field.
+func (o *ServerAsset) SetComment(v string) {
+	o.Comment = &v
 }
 
 // GetSwitchports returns the Switchports field value
@@ -1426,7 +1417,7 @@ func (o ServerAsset) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["primary_ipv4"] = o.PrimaryIpv4
 	toSerialize["primary_ipv6"] = o.PrimaryIpv6
-	if o.Mac != nil {
+	if !IsNil(o.Mac) {
 		toSerialize["mac"] = o.Mac
 	}
 	toSerialize["datacenter"] = o.Datacenter
@@ -1440,19 +1431,19 @@ func (o ServerAsset) ToMap() (map[string]interface{}, error) {
 	toSerialize["unit_sub"] = o.UnitSub
 	toSerialize["ipmi_mac"] = o.IpmiMac
 	toSerialize["ipmi_ip"] = o.IpmiIp
-	if o.IpmiAdminUsername != nil {
+	if !IsNil(o.IpmiAdminUsername) {
 		toSerialize["ipmi_admin_username"] = o.IpmiAdminUsername
 	}
-	if o.IpmiAdminPassword != nil {
+	if !IsNil(o.IpmiAdminPassword) {
 		toSerialize["ipmi_admin_password"] = o.IpmiAdminPassword
 	}
-	if o.IpmiClientUsername != nil {
+	if !IsNil(o.IpmiClientUsername) {
 		toSerialize["ipmi_client_username"] = o.IpmiClientUsername
 	}
-	if o.IpmiClientPassword != nil {
+	if !IsNil(o.IpmiClientPassword) {
 		toSerialize["ipmi_client_password"] = o.IpmiClientPassword
 	}
-	if o.IpmiUpdated != nil {
+	if !IsNil(o.IpmiUpdated) {
 		toSerialize["ipmi_updated"] = o.IpmiUpdated
 	}
 	toSerialize["ipmi_working"] = o.IpmiWorking
@@ -1465,10 +1456,10 @@ func (o ServerAsset) ToMap() (map[string]interface{}, error) {
 	toSerialize["external_id"] = o.ExternalId
 	toSerialize["billing_status"] = o.BillingStatus
 	toSerialize["overdue"] = o.Overdue
-	if o.CreateTimestamp != nil {
+	if !IsNil(o.CreateTimestamp) {
 		toSerialize["create_timestamp"] = o.CreateTimestamp
 	}
-	if o.UpdateTimestamp != nil {
+	if !IsNil(o.UpdateTimestamp) {
 		toSerialize["update_timestamp"] = o.UpdateTimestamp
 	}
 	toSerialize["asset_id"] = o.AssetId
@@ -1479,7 +1470,7 @@ func (o ServerAsset) ToMap() (map[string]interface{}, error) {
 	toSerialize["rack_size"] = o.RackSize
 	toSerialize["rack_x"] = o.RackX
 	toSerialize["rack_y"] = o.RackY
-	if o.Comment != nil {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
 	toSerialize["switchports"] = o.Switchports

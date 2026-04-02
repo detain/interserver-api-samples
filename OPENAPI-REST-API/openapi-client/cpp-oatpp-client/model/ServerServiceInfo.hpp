@@ -71,7 +71,7 @@ class ServerServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, server_monthly_billIsSet);
   DTO_FIELD(oatpp::String, server_setup);
   DTO_FIELD(oatpp::Boolean, server_setupIsSet);
-  DTO_FIELD(oatpp::Any, server_discount);
+  DTO_FIELD(oatpp::String, server_discount);
   DTO_FIELD(oatpp::Boolean, server_discountIsSet);
   DTO_FIELD(oatpp::String, server_rep);
   DTO_FIELD(oatpp::Boolean, server_repIsSet);
@@ -79,7 +79,7 @@ class ServerServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, server_dateIsSet);
   DTO_FIELD(oatpp::String, server_total_cost);
   DTO_FIELD(oatpp::Boolean, server_total_costIsSet);
-  DTO_FIELD(oatpp::Any, server_location);
+  DTO_FIELD(oatpp::String, server_location);
   DTO_FIELD(oatpp::Boolean, server_locationIsSet);
   DTO_FIELD(oatpp::String, server_hardware_ordered);
   DTO_FIELD(oatpp::Boolean, server_hardware_orderedIsSet);
@@ -93,7 +93,7 @@ class ServerServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, server_dedicated_memoryIsSet);
   DTO_FIELD(oatpp::String, server_dedicated_hd1);
   DTO_FIELD(oatpp::Boolean, server_dedicated_hd1IsSet);
-  DTO_FIELD(oatpp::Any, server_dedicated_hd2);
+  DTO_FIELD(oatpp::String, server_dedicated_hd2);
   DTO_FIELD(oatpp::Boolean, server_dedicated_hd2IsSet);
   DTO_FIELD(oatpp::String, server_dedicated_bandwidth);
   DTO_FIELD(oatpp::Boolean, server_dedicated_bandwidthIsSet);
@@ -101,7 +101,7 @@ class ServerServiceInfo : public oatpp::DTO {
   DTO_FIELD(oatpp::Boolean, server_dedicated_ipsIsSet);
   DTO_FIELD(oatpp::String, server_dedicated_os);
   DTO_FIELD(oatpp::Boolean, server_dedicated_osIsSet);
-  DTO_FIELD(oatpp::Any, server_dedicated_cp);
+  DTO_FIELD(oatpp::String, server_dedicated_cp);
   DTO_FIELD(oatpp::Boolean, server_dedicated_cpIsSet);
   DTO_FIELD(oatpp::String, server_dedicated_raid);
   DTO_FIELD(oatpp::Boolean, server_dedicated_raidIsSet);

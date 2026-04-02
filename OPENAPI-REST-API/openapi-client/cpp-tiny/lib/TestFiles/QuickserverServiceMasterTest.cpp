@@ -640,6 +640,46 @@ void test_QuickserverServiceMaster_qs_packets_sec_out_is_assigned_from_json()
 }
 
 
+void test_QuickserverServiceMaster_qs_last_install_time_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "qs_last_install_time", "hello"
+    };
+
+    QuickserverServiceMaster obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getQsLastInstallTime().c_str());
+
+
+
+
+
+
+}
+
+
+void test_QuickserverServiceMaster_qs_partitions_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "qs_partitions", "hello"
+    };
+
+    QuickserverServiceMaster obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getQsPartitions().c_str());
+
+
+
+
+
+
+}
 
 
 void test_QuickserverServiceMaster_qs_cpu_flags_is_assigned_from_json()
@@ -1294,6 +1334,46 @@ void test_QuickserverServiceMaster_qs_packets_sec_out_is_converted_to_json()
 }
 
 
+void test_QuickserverServiceMaster_qs_last_install_time_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "qs_last_install_time", "hello"
+    };
+
+    QuickserverServiceMaster obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["qs_last_install_time"] == output["qs_last_install_time"]);
+
+
+
+}
+
+
+void test_QuickserverServiceMaster_qs_partitions_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "qs_partitions", "hello"
+    };
+
+    QuickserverServiceMaster obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["qs_partitions"] == output["qs_partitions"]);
+
+
+
+}
 
 
 void test_QuickserverServiceMaster_qs_cpu_flags_is_converted_to_json()

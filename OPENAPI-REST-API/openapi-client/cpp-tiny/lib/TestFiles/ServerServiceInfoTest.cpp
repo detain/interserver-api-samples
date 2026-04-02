@@ -388,6 +388,26 @@ void test_ServerServiceInfo_server_setup_is_assigned_from_json()
 }
 
 
+void test_ServerServiceInfo_server_discount_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "server_discount", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServerDiscount().c_str());
+
+
+
+
+
+
+}
+
 
 void test_ServerServiceInfo_server_rep_is_assigned_from_json()
 {
@@ -451,6 +471,26 @@ void test_ServerServiceInfo_server_total_cost_is_assigned_from_json()
 
 }
 
+
+void test_ServerServiceInfo_server_location_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "server_location", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServerLocation().c_str());
+
+
+
+
+
+
+}
 
 
 void test_ServerServiceInfo_server_hardware_ordered_is_assigned_from_json()
@@ -579,6 +619,26 @@ void test_ServerServiceInfo_server_dedicated_hd1_is_assigned_from_json()
 }
 
 
+void test_ServerServiceInfo_server_dedicated_hd2_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "server_dedicated_hd2", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServerDedicatedHd2().c_str());
+
+
+
+
+
+
+}
+
 
 void test_ServerServiceInfo_server_dedicated_bandwidth_is_assigned_from_json()
 {
@@ -642,6 +702,26 @@ void test_ServerServiceInfo_server_dedicated_os_is_assigned_from_json()
 
 }
 
+
+void test_ServerServiceInfo_server_dedicated_cp_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "server_dedicated_cp", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getServerDedicatedCp().c_str());
+
+
+
+
+
+
+}
 
 
 void test_ServerServiceInfo_server_dedicated_raid_is_assigned_from_json()
@@ -1065,6 +1145,26 @@ void test_ServerServiceInfo_server_setup_is_converted_to_json()
 }
 
 
+void test_ServerServiceInfo_server_discount_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "server_discount", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["server_discount"] == output["server_discount"]);
+
+
+
+}
+
 
 void test_ServerServiceInfo_server_rep_is_converted_to_json()
 {
@@ -1128,6 +1228,26 @@ void test_ServerServiceInfo_server_total_cost_is_converted_to_json()
 
 }
 
+
+void test_ServerServiceInfo_server_location_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "server_location", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["server_location"] == output["server_location"]);
+
+
+
+}
 
 
 void test_ServerServiceInfo_server_hardware_ordered_is_converted_to_json()
@@ -1256,6 +1376,26 @@ void test_ServerServiceInfo_server_dedicated_hd1_is_converted_to_json()
 }
 
 
+void test_ServerServiceInfo_server_dedicated_hd2_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "server_dedicated_hd2", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["server_dedicated_hd2"] == output["server_dedicated_hd2"]);
+
+
+
+}
+
 
 void test_ServerServiceInfo_server_dedicated_bandwidth_is_converted_to_json()
 {
@@ -1319,6 +1459,26 @@ void test_ServerServiceInfo_server_dedicated_os_is_converted_to_json()
 
 }
 
+
+void test_ServerServiceInfo_server_dedicated_cp_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "server_dedicated_cp", "hello"
+    };
+
+    ServerServiceInfo obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["server_dedicated_cp"] == output["server_dedicated_cp"]);
+
+
+
+}
 
 
 void test_ServerServiceInfo_server_dedicated_raid_is_converted_to_json()

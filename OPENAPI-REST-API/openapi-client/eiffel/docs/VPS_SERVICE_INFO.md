@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **vps_custid** | [**STRING_32**](STRING_32.md) | Customer ID | [optional] [default to null]
 **vps_server** | [**STRING_32**](STRING_32.md) | Server ID | [optional] [default to null]
 **vps_ip** | [**STRING_32**](STRING_32.md) | IP address of the VPS | [optional] [default to null]
-**vps_ipv6** | [**ANY**](.md) | IPv6 address of the VPS | [optional] [default to null]
+**vps_ipv6** | [**STRING_32**](STRING_32.md) | IPv6 address of the VPS | [optional] [default to null]
 **vps_vzid** | [**STRING_32**](STRING_32.md) | VPS Virtuozzo ID | [optional] [default to null]
 **vps_currency** | [**STRING_32**](STRING_32.md) | Currency used for billing | [optional] [default to null]
 **vps_type** | [**STRING_32**](STRING_32.md) | VPS type | [optional] [default to null]

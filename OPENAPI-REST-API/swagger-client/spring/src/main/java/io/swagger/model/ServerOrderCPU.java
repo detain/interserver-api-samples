@@ -159,7 +159,7 @@ public class ServerOrderCPU   {
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Object hdIds = null;
+  private String hdIds = null;
 
   @JsonProperty("price_display")
 
@@ -680,7 +680,7 @@ public class ServerOrderCPU   {
     this.visible = visible;
   }
 
-  public ServerOrderCPU hdIds(Object hdIds) { 
+  public ServerOrderCPU hdIds(String hdIds) { 
 
     this.hdIds = hdIds;
     return this;
@@ -693,13 +693,13 @@ public class ServerOrderCPU   {
   
   @Schema(description = "Hard drive IDs.")
   
-  public Object getHdIds() {  
+  public String getHdIds() {  
     return hdIds;
   }
 
 
 
-  public void setHdIds(Object hdIds) { 
+  public void setHdIds(String hdIds) { 
     this.hdIds = hdIds;
   }
 

@@ -364,10 +364,10 @@ bool OAIVpsServiceInfo::is_vps_ip_Valid() const{
     return m_vps_ip_isValid;
 }
 
-QJsonValue OAIVpsServiceInfo::getVpsIpv6() const {
+QString OAIVpsServiceInfo::getVpsIpv6() const {
     return m_vps_ipv6;
 }
-void OAIVpsServiceInfo::setVpsIpv6(const QJsonValue &vps_ipv6) {
+void OAIVpsServiceInfo::setVpsIpv6(const QString &vps_ipv6) {
     m_vps_ipv6 = vps_ipv6;
     m_vps_ipv6_isSet = true;
 }

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **QsCustid** | Pointer to **string** | Customer ID | [optional] 
 **QsServer** | Pointer to **string** | Server information | [optional] 
 **QsIp** | Pointer to **string** | IP address | [optional] 
-**QsIpv6** | Pointer to **interface{}** | IPv6 address (null) | [optional] 
+**QsIpv6** | Pointer to **NullableString** | IPv6 address (null) | [optional] 
 **QsVzid** | Pointer to **string** | VZ ID | [optional] 
 **QsCurrency** | Pointer to **string** | Currency | [optional] 
 **QsType** | Pointer to **string** | Type | [optional] 
@@ -22,13 +22,13 @@ Name | Type | Description | Notes
 **QsComment** | Pointer to **string** | Comment | [optional] 
 **QsSlices** | Pointer to **string** | Slices information | [optional] 
 **QsVnc** | Pointer to **string** | VNC information | [optional] 
-**QsVncPort** | Pointer to **interface{}** | VNC port (null) | [optional] 
+**QsVncPort** | Pointer to **NullableInt32** | VNC port (null) | [optional] 
 **QsRootpass** | Pointer to **string** | Root password | [optional] 
 **QsMac** | Pointer to **string** | MAC address | [optional] 
 **QsOs** | Pointer to **string** | Operating system | [optional] 
 **QsVersion** | Pointer to **string** | OS version | [optional] 
 **QsLocation** | Pointer to **string** | Location | [optional] 
-**QsPlatform** | Pointer to **interface{}** | Platform (null) | [optional] 
+**QsPlatform** | Pointer to **NullableString** | Platform (null) | [optional] 
 
 ## Methods
 
@@ -151,20 +151,20 @@ HasQsIp returns a boolean if a field has been set.
 
 ### GetQsIpv6
 
-`func (o *QuickserverServiceInfo) GetQsIpv6() interface{}`
+`func (o *QuickserverServiceInfo) GetQsIpv6() string`
 
 GetQsIpv6 returns the QsIpv6 field if non-nil, zero value otherwise.
 
 ### GetQsIpv6Ok
 
-`func (o *QuickserverServiceInfo) GetQsIpv6Ok() (*interface{}, bool)`
+`func (o *QuickserverServiceInfo) GetQsIpv6Ok() (*string, bool)`
 
 GetQsIpv6Ok returns a tuple with the QsIpv6 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQsIpv6
 
-`func (o *QuickserverServiceInfo) SetQsIpv6(v interface{})`
+`func (o *QuickserverServiceInfo) SetQsIpv6(v string)`
 
 SetQsIpv6 sets QsIpv6 field to given value.
 
@@ -511,20 +511,20 @@ HasQsVnc returns a boolean if a field has been set.
 
 ### GetQsVncPort
 
-`func (o *QuickserverServiceInfo) GetQsVncPort() interface{}`
+`func (o *QuickserverServiceInfo) GetQsVncPort() int32`
 
 GetQsVncPort returns the QsVncPort field if non-nil, zero value otherwise.
 
 ### GetQsVncPortOk
 
-`func (o *QuickserverServiceInfo) GetQsVncPortOk() (*interface{}, bool)`
+`func (o *QuickserverServiceInfo) GetQsVncPortOk() (*int32, bool)`
 
 GetQsVncPortOk returns a tuple with the QsVncPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQsVncPort
 
-`func (o *QuickserverServiceInfo) SetQsVncPort(v interface{})`
+`func (o *QuickserverServiceInfo) SetQsVncPort(v int32)`
 
 SetQsVncPort sets QsVncPort field to given value.
 
@@ -671,20 +671,20 @@ HasQsLocation returns a boolean if a field has been set.
 
 ### GetQsPlatform
 
-`func (o *QuickserverServiceInfo) GetQsPlatform() interface{}`
+`func (o *QuickserverServiceInfo) GetQsPlatform() string`
 
 GetQsPlatform returns the QsPlatform field if non-nil, zero value otherwise.
 
 ### GetQsPlatformOk
 
-`func (o *QuickserverServiceInfo) GetQsPlatformOk() (*interface{}, bool)`
+`func (o *QuickserverServiceInfo) GetQsPlatformOk() (*string, bool)`
 
 GetQsPlatformOk returns a tuple with the QsPlatform field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQsPlatform
 
-`func (o *QuickserverServiceInfo) SetQsPlatform(v interface{})`
+`func (o *QuickserverServiceInfo) SetQsPlatform(v string)`
 
 SetQsPlatform sets QsPlatform field to given value.
 

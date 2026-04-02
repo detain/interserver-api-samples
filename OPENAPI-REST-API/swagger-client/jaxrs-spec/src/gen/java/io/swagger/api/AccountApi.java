@@ -141,7 +141,7 @@ public class AccountApi {
         @ApiResponse(responseCode = "200", description = "IP Range removed.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenericResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class)))
     })
-    public Response deleteIpLimit() {
+    public Response deleteIpLimit(@Valid IpLimitRange body) {
         return Response.ok().entity("magic!").build();
     }
     @GET

@@ -161,8 +161,10 @@ public class AccountApi  {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "IP Range removed.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenericResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
-    public Response deleteIpLimit() {
-        return delegate.deleteIpLimit(securityContext);
+    public Response deleteIpLimit(
+@Parameter(description = "" ) IpLimitRange body
+) {
+        return delegate.deleteIpLimit(body, securityContext);
     }
 
     @GET

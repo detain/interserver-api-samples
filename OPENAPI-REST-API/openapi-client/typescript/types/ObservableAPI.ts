@@ -573,11 +573,12 @@ export class ObservableAccountApi {
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * Remove IP Access Restriction
+     * @param [ipLimitRange]
      */
-    public deleteIpLimitWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GenericResponse>> {
+    public deleteIpLimitWithHttpInfo(ipLimitRange?: IpLimitRange, _options?: ConfigurationOptions): Observable<HttpInfo<GenericResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteIpLimit(_config);
+        const requestContextPromise = this.requestFactory.deleteIpLimit(ipLimitRange, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -597,9 +598,10 @@ export class ObservableAccountApi {
     /**
      * Removes an IP address range from the account\'s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
      * Remove IP Access Restriction
+     * @param [ipLimitRange]
      */
-    public deleteIpLimit(_options?: ConfigurationOptions): Observable<GenericResponse> {
-        return this.deleteIpLimitWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GenericResponse>) => apiResponse.data));
+    public deleteIpLimit(ipLimitRange?: IpLimitRange, _options?: ConfigurationOptions): Observable<GenericResponse> {
+        return this.deleteIpLimitWithHttpInfo(ipLimitRange, _options).pipe(map((apiResponse: HttpInfo<GenericResponse>) => apiResponse.data));
     }
 
     /**
@@ -3838,7 +3840,7 @@ export class ObservableFloatingIPsApi {
      * Returns all Floating IP services on the account with their current status and assignment details.
      * List Floating IPs
      */
-    public getFloatingIpsListWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getFloatingIpsListWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<Array<any>>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFloatingIpsList(_config);
@@ -3862,8 +3864,8 @@ export class ObservableFloatingIPsApi {
      * Returns all Floating IP services on the account with their current status and assignment details.
      * List Floating IPs
      */
-    public getFloatingIpsList(_options?: ConfigurationOptions): Observable<void> {
-        return this.getFloatingIpsListWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getFloatingIpsList(_options?: ConfigurationOptions): Observable<Array<any>> {
+        return this.getFloatingIpsListWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<any>>) => apiResponse.data));
     }
 
     /**

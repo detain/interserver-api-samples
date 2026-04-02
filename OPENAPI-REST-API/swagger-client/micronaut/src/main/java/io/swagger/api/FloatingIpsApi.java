@@ -78,7 +78,7 @@ public interface FloatingIpsApi {
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/floating_ips", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getFloatingIpsList() {
+    default Single<HttpResponse<List<Object>>> getFloatingIpsList() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

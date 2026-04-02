@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 public class VpsServiceInfo   {
-  private String vpsId = null;  private String vpsCustid = null;  private String vpsServer = null;  private String vpsIp = null;  private Object vpsIpv6 = null;  private String vpsVzid = null;  private String vpsCurrency = null;  private String vpsType = null;  private String vpsOrderDate = null;  private String vpsStatus = null;  private String vpsInvoice = null;  private String vpsCoupon = null;  private String vpsExtra = null;  private String vpsHostname = null;  private String vpsServerStatus = null;  private String vpsComment = null;  private String vpsSlices = null;  private String vpsVnc = null;  private String vpsVncPort = null;  private String vpsRootpass = null;  private String vpsMac = null;  private String vpsOs = null;  private String vpsVersion = null;  private String vpsLocation = null;  private String vpsPlatform = null;  private String vpsDiskused = null;  private String vpsDiskmax = null;
+  private String vpsId = null;  private String vpsCustid = null;  private String vpsServer = null;  private String vpsIp = null;  private String vpsIpv6 = null;  private String vpsVzid = null;  private String vpsCurrency = null;  private String vpsType = null;  private String vpsOrderDate = null;  private String vpsStatus = null;  private String vpsInvoice = null;  private String vpsCoupon = null;  private String vpsExtra = null;  private String vpsHostname = null;  private String vpsServerStatus = null;  private String vpsComment = null;  private String vpsSlices = null;  private String vpsVnc = null;  private String vpsVncPort = null;  private String vpsRootpass = null;  private String vpsMac = null;  private String vpsOs = null;  private String vpsVersion = null;  private String vpsLocation = null;  private String vpsPlatform = null;  private String vpsDiskused = null;  private String vpsDiskmax = null;
 
   /**
    * VPS ID
@@ -76,10 +76,10 @@ public class VpsServiceInfo   {
   @Schema(description = "IPv6 address of the VPS")
   @JsonProperty("vps_ipv6")
   @NotNull
-  public Object getVpsIpv6() {
+  public String getVpsIpv6() {
     return vpsIpv6;
   }
-  public void setVpsIpv6(Object vpsIpv6) {
+  public void setVpsIpv6(String vpsIpv6) {
     this.vpsIpv6 = vpsIpv6;
   }
 

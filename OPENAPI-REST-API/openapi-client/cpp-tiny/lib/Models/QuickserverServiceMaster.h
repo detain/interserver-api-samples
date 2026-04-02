@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 
 namespace Tiny {
 
@@ -258,18 +257,18 @@ public:
 	void setQsPacketsSecOut(std::string qs_packets_sec_out);
 	/*! \brief Get Last install time (null)
 	 */
-	AnyType getQsLastInstallTime();
+	std::string getQsLastInstallTime();
 
 	/*! \brief Set Last install time (null)
 	 */
-	void setQsLastInstallTime(AnyType qs_last_install_time);
+	void setQsLastInstallTime(std::string qs_last_install_time);
 	/*! \brief Get Partitions information (null)
 	 */
-	AnyType getQsPartitions();
+	std::string getQsPartitions();
 
 	/*! \brief Set Partitions information (null)
 	 */
-	void setQsPartitions(AnyType qs_partitions);
+	void setQsPartitions(std::string qs_partitions);
 	/*! \brief Get CPU flags
 	 */
 	std::string getQsCpuFlags();
@@ -310,8 +309,8 @@ public:
     std::string qs_bytes_sec_out{};
     std::string qs_packets_sec_in{};
     std::string qs_packets_sec_out{};
-    AnyType qs_last_install_time;
-    AnyType qs_partitions;
+    std::string qs_last_install_time{};
+    std::string qs_partitions{};
     std::string qs_cpu_flags{};
 };
 }

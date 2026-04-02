@@ -24,22 +24,22 @@ Name | Type
 `server_ips` | string
 `server_monthly_bill` | string
 `server_setup` | string
-`server_discount` | any
+`server_discount` | string
 `server_rep` | string
 `server_date` | string
 `server_total_cost` | string
-`server_location` | any
+`server_location` | string
 `server_hardware_ordered` | string
 `server_billed` | string
 `server_welcome_email` | string
 `server_dedicated_cpu` | string
 `server_dedicated_memory` | string
 `server_dedicated_hd1` | string
-`server_dedicated_hd2` | any
+`server_dedicated_hd2` | string
 `server_dedicated_bandwidth` | string
 `server_dedicated_ips` | string
 `server_dedicated_os` | string
-`server_dedicated_cp` | any
+`server_dedicated_cp` | string
 `server_dedicated_raid` | string
 `server_extra` | string
 

@@ -86,7 +86,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>MAC address associated with the asset.</value>
 
         [DataMember(Name="mac")]
-        public Object Mac { get; set; }
+        public string Mac { get; set; }
 
         /// <summary>
         /// Datacenter identifier for the asset.
@@ -193,7 +193,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPMI admin username associated with the asset.</value>
 
         [DataMember(Name="ipmi_admin_username")]
-        public Object IpmiAdminUsername { get; set; }
+        public string IpmiAdminUsername { get; set; }
 
         /// <summary>
         /// IPMI admin password associated with the asset.
@@ -201,7 +201,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPMI admin password associated with the asset.</value>
 
         [DataMember(Name="ipmi_admin_password")]
-        public Object IpmiAdminPassword { get; set; }
+        public string IpmiAdminPassword { get; set; }
 
         /// <summary>
         /// IPMI client username associated with the asset.
@@ -209,7 +209,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPMI client username associated with the asset.</value>
 
         [DataMember(Name="ipmi_client_username")]
-        public Object IpmiClientUsername { get; set; }
+        public string IpmiClientUsername { get; set; }
 
         /// <summary>
         /// IPMI client password associated with the asset.
@@ -217,7 +217,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPMI client password associated with the asset.</value>
 
         [DataMember(Name="ipmi_client_password")]
-        public Object IpmiClientPassword { get; set; }
+        public string IpmiClientPassword { get; set; }
 
         /// <summary>
         /// IPMI update status associated with the asset.
@@ -225,7 +225,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>IPMI update status associated with the asset.</value>
 
         [DataMember(Name="ipmi_updated")]
-        public Object IpmiUpdated { get; set; }
+        public string IpmiUpdated { get; set; }
 
         /// <summary>
         /// IPMI working status associated with the asset.
@@ -323,7 +323,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>Timestamp of asset creation.</value>
 
         [DataMember(Name="create_timestamp")]
-        public Object CreateTimestamp { get; set; }
+        public string CreateTimestamp { get; set; }
 
         /// <summary>
         /// Timestamp of asset update.
@@ -331,7 +331,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>Timestamp of asset update.</value>
 
         [DataMember(Name="update_timestamp")]
-        public Object UpdateTimestamp { get; set; }
+        public string UpdateTimestamp { get; set; }
 
         /// <summary>
         /// Asset identifier for the asset.
@@ -411,7 +411,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <value>Comment associated with the asset.</value>
 
         [DataMember(Name="comment")]
-        public Object Comment { get; set; }
+        public string Comment { get; set; }
 
         /// <summary>
         /// List of switchports associated with the asset.

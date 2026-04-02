@@ -110,6 +110,7 @@ defmodule InterServerManagementAPI.Api.Account do
 
   - `connection` (InterServerManagementAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:body` (IpLimitRange): 
 
   ### Returns
 
@@ -117,11 +118,16 @@ defmodule InterServerManagementAPI.Api.Account do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec delete_ip_limit(Tesla.Env.client, keyword()) :: {:ok, InterServerManagementAPI.Model.GenericResponse.t} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
-  def delete_ip_limit(connection, _opts \\ []) do
+  def delete_ip_limit(connection, opts \\ []) do
+    optional_params = %{
+      :body => :body
+    }
+
     request =
       %{}
       |> method(:patch)
       |> url("/account/iplimits")
+      |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
 

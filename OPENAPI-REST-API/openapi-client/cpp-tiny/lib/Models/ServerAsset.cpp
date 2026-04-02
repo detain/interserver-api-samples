@@ -45,15 +45,15 @@ ServerAsset::ServerAsset()
 	vlans = std::list<std::string>();
 	vlans6 = std::list<std::string>();
 	lease = ServerLease();
-	mac = null;
-	ipmi_admin_username = null;
-	ipmi_admin_password = null;
-	ipmi_client_username = null;
-	ipmi_client_password = null;
-	ipmi_updated = null;
-	create_timestamp = null;
-	update_timestamp = null;
-	comment = null;
+	mac = std::string();
+	ipmi_admin_username = std::string();
+	ipmi_admin_password = std::string();
+	ipmi_client_username = std::string();
+	ipmi_client_password = std::string();
+	ipmi_updated = std::string();
+	create_timestamp = std::string();
+	update_timestamp = std::string();
+	comment = std::string();
 }
 
 ServerAsset::ServerAsset(std::string jsonString)
@@ -614,9 +614,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&mac, value, "std::string");
 
-        AnyType* obj = &mac;
-		obj->fromJson(value.dump());
 
     }
 
@@ -628,9 +627,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&ipmi_admin_username, value, "std::string");
 
-        AnyType* obj = &ipmi_admin_username;
-		obj->fromJson(value.dump());
 
     }
 
@@ -642,9 +640,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&ipmi_admin_password, value, "std::string");
 
-        AnyType* obj = &ipmi_admin_password;
-		obj->fromJson(value.dump());
 
     }
 
@@ -656,9 +653,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&ipmi_client_username, value, "std::string");
 
-        AnyType* obj = &ipmi_client_username;
-		obj->fromJson(value.dump());
 
     }
 
@@ -670,9 +666,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&ipmi_client_password, value, "std::string");
 
-        AnyType* obj = &ipmi_client_password;
-		obj->fromJson(value.dump());
 
     }
 
@@ -684,9 +679,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&ipmi_updated, value, "std::string");
 
-        AnyType* obj = &ipmi_updated;
-		obj->fromJson(value.dump());
 
     }
 
@@ -698,9 +692,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&create_timestamp, value, "std::string");
 
-        AnyType* obj = &create_timestamp;
-		obj->fromJson(value.dump());
 
     }
 
@@ -712,9 +705,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&update_timestamp, value, "std::string");
 
-        AnyType* obj = &update_timestamp;
-		obj->fromJson(value.dump());
 
     }
 
@@ -726,9 +718,8 @@ ServerAsset::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&comment, value, "std::string");
 
-        AnyType* obj = &comment;
-		obj->fromJson(value.dump());
 
     }
 
@@ -1044,64 +1035,64 @@ ServerAsset::toJson()
 
 
 
-
-	object["mac"] = getMac().toJson();
-
-
-
-
-
-
-	object["ipmi_admin_username"] = getIpmiAdminUsername().toJson();
+    object["mac"] = getMac();
 
 
 
 
 
 
-	object["ipmi_admin_password"] = getIpmiAdminPassword().toJson();
+    object["ipmi_admin_username"] = getIpmiAdminUsername();
 
 
 
 
 
 
-	object["ipmi_client_username"] = getIpmiClientUsername().toJson();
+    object["ipmi_admin_password"] = getIpmiAdminPassword();
 
 
 
 
 
 
-	object["ipmi_client_password"] = getIpmiClientPassword().toJson();
+    object["ipmi_client_username"] = getIpmiClientUsername();
 
 
 
 
 
 
-	object["ipmi_updated"] = getIpmiUpdated().toJson();
+    object["ipmi_client_password"] = getIpmiClientPassword();
 
 
 
 
 
 
-	object["create_timestamp"] = getCreateTimestamp().toJson();
+    object["ipmi_updated"] = getIpmiUpdated();
 
 
 
 
 
 
-	object["update_timestamp"] = getUpdateTimestamp().toJson();
+    object["create_timestamp"] = getCreateTimestamp();
 
 
 
 
 
 
-	object["comment"] = getComment().toJson();
+    object["update_timestamp"] = getUpdateTimestamp();
+
+
+
+
+
+
+    object["comment"] = getComment();
+
 
 
     return object;
@@ -1576,110 +1567,110 @@ ServerAsset::setLease(ServerLease lease)
 	this->lease = lease;
 }
 
-AnyType
+std::string
 ServerAsset::getMac()
 {
 	return mac;
 }
 
 void
-ServerAsset::setMac(AnyType mac)
+ServerAsset::setMac(std::string mac)
 {
 	this->mac = mac;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiAdminUsername()
 {
 	return ipmi_admin_username;
 }
 
 void
-ServerAsset::setIpmiAdminUsername(AnyType ipmi_admin_username)
+ServerAsset::setIpmiAdminUsername(std::string ipmi_admin_username)
 {
 	this->ipmi_admin_username = ipmi_admin_username;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiAdminPassword()
 {
 	return ipmi_admin_password;
 }
 
 void
-ServerAsset::setIpmiAdminPassword(AnyType ipmi_admin_password)
+ServerAsset::setIpmiAdminPassword(std::string ipmi_admin_password)
 {
 	this->ipmi_admin_password = ipmi_admin_password;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiClientUsername()
 {
 	return ipmi_client_username;
 }
 
 void
-ServerAsset::setIpmiClientUsername(AnyType ipmi_client_username)
+ServerAsset::setIpmiClientUsername(std::string ipmi_client_username)
 {
 	this->ipmi_client_username = ipmi_client_username;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiClientPassword()
 {
 	return ipmi_client_password;
 }
 
 void
-ServerAsset::setIpmiClientPassword(AnyType ipmi_client_password)
+ServerAsset::setIpmiClientPassword(std::string ipmi_client_password)
 {
 	this->ipmi_client_password = ipmi_client_password;
 }
 
-AnyType
+std::string
 ServerAsset::getIpmiUpdated()
 {
 	return ipmi_updated;
 }
 
 void
-ServerAsset::setIpmiUpdated(AnyType ipmi_updated)
+ServerAsset::setIpmiUpdated(std::string ipmi_updated)
 {
 	this->ipmi_updated = ipmi_updated;
 }
 
-AnyType
+std::string
 ServerAsset::getCreateTimestamp()
 {
 	return create_timestamp;
 }
 
 void
-ServerAsset::setCreateTimestamp(AnyType create_timestamp)
+ServerAsset::setCreateTimestamp(std::string create_timestamp)
 {
 	this->create_timestamp = create_timestamp;
 }
 
-AnyType
+std::string
 ServerAsset::getUpdateTimestamp()
 {
 	return update_timestamp;
 }
 
 void
-ServerAsset::setUpdateTimestamp(AnyType update_timestamp)
+ServerAsset::setUpdateTimestamp(std::string update_timestamp)
 {
 	this->update_timestamp = update_timestamp;
 }
 
-AnyType
+std::string
 ServerAsset::getComment()
 {
 	return comment;
 }
 
 void
-ServerAsset::setComment(AnyType comment)
+ServerAsset::setComment(std::string comment)
 {
 	this->comment = comment;
 }

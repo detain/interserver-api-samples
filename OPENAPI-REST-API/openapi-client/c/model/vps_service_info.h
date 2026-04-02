@@ -15,7 +15,6 @@
 
 typedef struct vps_service_info_t vps_service_info_t;
 
-#include "any_type.h"
 
 
 
@@ -24,7 +23,7 @@ typedef struct vps_service_info_t {
     char *vps_custid; // string
     char *vps_server; // string
     char *vps_ip; // string
-    any_type_t *vps_ipv6; // custom
+    char *vps_ipv6; // string
     char *vps_vzid; // string
     char *vps_currency; // string
     char *vps_type; // string
@@ -56,7 +55,7 @@ __attribute__((deprecated)) vps_service_info_t *vps_service_info_create(
     char *vps_custid,
     char *vps_server,
     char *vps_ip,
-    any_type_t *vps_ipv6,
+    char *vps_ipv6,
     char *vps_vzid,
     char *vps_currency,
     char *vps_type,

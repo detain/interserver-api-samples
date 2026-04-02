@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -169,11 +168,11 @@ abstract class QuickserverServiceMaster implements Built<QuickserverServiceMaste
 
   /// Last install time (null)
   @BuiltValueField(wireName: r'qs_last_install_time')
-  JsonObject? get qsLastInstallTime;
+  String? get qsLastInstallTime;
 
   /// Partitions information (null)
   @BuiltValueField(wireName: r'qs_partitions')
-  JsonObject? get qsPartitions;
+  String? get qsPartitions;
 
   /// CPU flags
   @BuiltValueField(wireName: r'qs_cpu_flags')
@@ -416,14 +415,14 @@ class _$QuickserverServiceMasterSerializer implements PrimitiveSerializer<Quicks
       yield r'qs_last_install_time';
       yield serializers.serialize(
         object.qsLastInstallTime,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.qsPartitions != null) {
       yield r'qs_partitions';
       yield serializers.serialize(
         object.qsPartitions,
-        specifiedType: const FullType.nullable(JsonObject),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.qsCpuFlags != null) {
@@ -669,16 +668,16 @@ class _$QuickserverServiceMasterSerializer implements PrimitiveSerializer<Quicks
         case r'qs_last_install_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
           if (valueDes == null) continue;
           result.qsLastInstallTime = valueDes;
           break;
         case r'qs_partitions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
           if (valueDes == null) continue;
           result.qsPartitions = valueDes;
           break;

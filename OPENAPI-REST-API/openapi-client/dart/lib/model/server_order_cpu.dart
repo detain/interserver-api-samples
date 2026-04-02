@@ -239,7 +239,13 @@ class ServerOrderCPU {
   String? visible;
 
   /// Hard drive IDs.
-  Object? hdIds;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? hdIds;
 
   /// Display of CPU price.
   ///
@@ -486,7 +492,7 @@ class ServerOrderCPU {
         maxSff: mapValueOfType<String>(json, r'max_sff'),
         maxNve: mapValueOfType<String>(json, r'max_nve'),
         visible: mapValueOfType<String>(json, r'visible'),
-        hdIds: mapValueOfType<Object>(json, r'hd_ids'),
+        hdIds: mapValueOfType<String>(json, r'hd_ids'),
         priceDisplay: mapValueOfType<String>(json, r'price_display'),
         monthlyPriceDisplay: mapValueOfType<String>(json, r'monthly_price_display'),
       );

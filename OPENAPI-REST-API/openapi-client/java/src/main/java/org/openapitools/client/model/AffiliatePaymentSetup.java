@@ -48,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * Affiliate Payment Setup.  Here you can set if you want the payments to go to &#x60;prepay&#x60; or &#x60;paypal&#x60; and the PayPal email address.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class AffiliatePaymentSetup {
   public static final String SERIALIZED_NAME_AFFILIATE_PAYPAL = "affiliate_paypal";
   @SerializedName(SERIALIZED_NAME_AFFILIATE_PAYPAL)

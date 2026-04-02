@@ -220,7 +220,7 @@ void OpenAPIFloatingIPsApi::GetFloatingIpsListResponse::SetHttpResponseCode(EHtt
 
 bool OpenAPIFloatingIPsApi::GetFloatingIpsListResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIFloatingIPsApi::GetFloatingIpsWelcomeEmailRequest::ComputePath() const

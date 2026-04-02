@@ -19,6 +19,7 @@ import org.openapitools.client.models.GenericResponse
 import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.GetAccountTfaSetup200Response
 import org.openapitools.client.models.Home
+import org.openapitools.client.models.IpLimitRange
 import org.openapitools.client.models.SearchAutocompleteResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
@@ -29,7 +30,7 @@ trait AccountApiEndpoints[F[*]] {
   def changeAccountUsername()(using auth: _Authorization.ApiKey): F[TextResponse]
   def deleteAccountOauthName(name: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteAccountTfa()(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def deleteIpLimit()(using auth: _Authorization.ApiKey): F[GenericResponse]
+  def deleteIpLimit(ipLimitRange: Option[IpLimitRange] = None)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def getAccountInfo()(using auth: _Authorization.ApiKey): F[AccountInfo]
   def getAccountTfaSetup()(using auth: _Authorization.ApiKey): F[GetAccountTfaSetup200Response]
   def getHome()(using auth: _Authorization.ApiKey): F[Home]
@@ -114,15 +115,15 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def deleteIpLimit()(using auth: _Authorization.ApiKey): F[GenericResponse] = {
+  override def deleteIpLimit(ipLimitRange: Option[IpLimitRange] = None)(using auth: _Authorization.ApiKey): F[GenericResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, GenericResponse](
+    _executeRequest[IpLimitRange, GenericResponse](
       method = "PATCH",
       path = s"/account/iplimits",
-      body = None,
+      body = ipLimitRange,
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,

@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
 case class VpsServiceInfo(
@@ -24,7 +23,7 @@ case class VpsServiceInfo(
   /* IP address of the VPS */
   @named("vps_ip") vps_ip: Option[String] = scala.None,
   /* IPv6 address of the VPS */
-  @named("vps_ipv6") vps_ipv6: Option[io.circe.Json] = scala.None,
+  @named("vps_ipv6") vps_ipv6: Option[String] = scala.None,
   /* VPS Virtuozzo ID */
   @named("vps_vzid") vps_vzid: Option[String] = scala.None,
   /* Currency used for billing */

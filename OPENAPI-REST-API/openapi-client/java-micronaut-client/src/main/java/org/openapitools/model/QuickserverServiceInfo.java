@@ -53,7 +53,7 @@ import javax.annotation.Generated;
   QuickserverServiceInfo.JSON_PROPERTY_QS_PLATFORM
 })
 @JsonTypeName("QuickserverServiceInfo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class QuickserverServiceInfo {
     public static final String JSON_PROPERTY_QS_ID = "qs_id";
@@ -69,7 +69,7 @@ public class QuickserverServiceInfo {
     private String qsIp;
 
     public static final String JSON_PROPERTY_QS_IPV6 = "qs_ipv6";
-    private Object qsIpv6 = null;
+    private String qsIpv6;
 
     public static final String JSON_PROPERTY_QS_VZID = "qs_vzid";
     private String qsVzid;
@@ -111,7 +111,7 @@ public class QuickserverServiceInfo {
     private String qsVnc;
 
     public static final String JSON_PROPERTY_QS_VNC_PORT = "qs_vnc_port";
-    private Object qsVncPort = null;
+    private Integer qsVncPort;
 
     public static final String JSON_PROPERTY_QS_ROOTPASS = "qs_rootpass";
     private String qsRootpass;
@@ -129,7 +129,7 @@ public class QuickserverServiceInfo {
     private String qsLocation;
 
     public static final String JSON_PROPERTY_QS_PLATFORM = "qs_platform";
-    private Object qsPlatform = null;
+    private String qsPlatform;
 
     public QuickserverServiceInfo() {
     }
@@ -222,7 +222,7 @@ public class QuickserverServiceInfo {
         this.qsIp = qsIp;
     }
 
-    public QuickserverServiceInfo qsIpv6(Object qsIpv6) {
+    public QuickserverServiceInfo qsIpv6(String qsIpv6) {
         this.qsIpv6 = qsIpv6;
         return this;
     }
@@ -234,13 +234,13 @@ public class QuickserverServiceInfo {
     @Nullable
     @JsonProperty(JSON_PROPERTY_QS_IPV6)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getQsIpv6() {
+    public String getQsIpv6() {
         return qsIpv6;
     }
 
     @JsonProperty(JSON_PROPERTY_QS_IPV6)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setQsIpv6(Object qsIpv6) {
+    public void setQsIpv6(String qsIpv6) {
         this.qsIpv6 = qsIpv6;
     }
 
@@ -530,7 +530,7 @@ public class QuickserverServiceInfo {
         this.qsVnc = qsVnc;
     }
 
-    public QuickserverServiceInfo qsVncPort(Object qsVncPort) {
+    public QuickserverServiceInfo qsVncPort(Integer qsVncPort) {
         this.qsVncPort = qsVncPort;
         return this;
     }
@@ -542,13 +542,13 @@ public class QuickserverServiceInfo {
     @Nullable
     @JsonProperty(JSON_PROPERTY_QS_VNC_PORT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getQsVncPort() {
+    public Integer getQsVncPort() {
         return qsVncPort;
     }
 
     @JsonProperty(JSON_PROPERTY_QS_VNC_PORT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setQsVncPort(Object qsVncPort) {
+    public void setQsVncPort(Integer qsVncPort) {
         this.qsVncPort = qsVncPort;
     }
 
@@ -662,7 +662,7 @@ public class QuickserverServiceInfo {
         this.qsLocation = qsLocation;
     }
 
-    public QuickserverServiceInfo qsPlatform(Object qsPlatform) {
+    public QuickserverServiceInfo qsPlatform(String qsPlatform) {
         this.qsPlatform = qsPlatform;
         return this;
     }
@@ -674,13 +674,13 @@ public class QuickserverServiceInfo {
     @Nullable
     @JsonProperty(JSON_PROPERTY_QS_PLATFORM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getQsPlatform() {
+    public String getQsPlatform() {
         return qsPlatform;
     }
 
     @JsonProperty(JSON_PROPERTY_QS_PLATFORM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setQsPlatform(Object qsPlatform) {
+    public void setQsPlatform(String qsPlatform) {
         this.qsPlatform = qsPlatform;
     }
 

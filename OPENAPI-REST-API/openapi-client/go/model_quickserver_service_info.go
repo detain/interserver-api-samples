@@ -29,7 +29,7 @@ type QuickserverServiceInfo struct {
 	// IP address
 	QsIp *string `json:"qs_ip,omitempty"`
 	// IPv6 address (null)
-	QsIpv6 interface{} `json:"qs_ipv6,omitempty"`
+	QsIpv6 NullableString `json:"qs_ipv6,omitempty"`
 	// VZ ID
 	QsVzid *string `json:"qs_vzid,omitempty"`
 	// Currency
@@ -57,7 +57,7 @@ type QuickserverServiceInfo struct {
 	// VNC information
 	QsVnc *string `json:"qs_vnc,omitempty"`
 	// VNC port (null)
-	QsVncPort interface{} `json:"qs_vnc_port,omitempty"`
+	QsVncPort NullableInt32 `json:"qs_vnc_port,omitempty"`
 	// Root password
 	QsRootpass *string `json:"qs_rootpass,omitempty"`
 	// MAC address
@@ -69,7 +69,7 @@ type QuickserverServiceInfo struct {
 	// Location
 	QsLocation *string `json:"qs_location,omitempty"`
 	// Platform (null)
-	QsPlatform interface{} `json:"qs_platform,omitempty"`
+	QsPlatform NullableString `json:"qs_platform,omitempty"`
 }
 
 // NewQuickserverServiceInfo instantiates a new QuickserverServiceInfo object
@@ -218,36 +218,45 @@ func (o *QuickserverServiceInfo) SetQsIp(v string) {
 }
 
 // GetQsIpv6 returns the QsIpv6 field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *QuickserverServiceInfo) GetQsIpv6() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *QuickserverServiceInfo) GetQsIpv6() string {
+	if o == nil || IsNil(o.QsIpv6.Get()) {
+		var ret string
 		return ret
 	}
-	return o.QsIpv6
+	return *o.QsIpv6.Get()
 }
 
 // GetQsIpv6Ok returns a tuple with the QsIpv6 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *QuickserverServiceInfo) GetQsIpv6Ok() (*interface{}, bool) {
-	if o == nil || IsNil(o.QsIpv6) {
+func (o *QuickserverServiceInfo) GetQsIpv6Ok() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.QsIpv6, true
+	return o.QsIpv6.Get(), o.QsIpv6.IsSet()
 }
 
 // HasQsIpv6 returns a boolean if a field has been set.
 func (o *QuickserverServiceInfo) HasQsIpv6() bool {
-	if o != nil && !IsNil(o.QsIpv6) {
+	if o != nil && o.QsIpv6.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQsIpv6 gets a reference to the given interface{} and assigns it to the QsIpv6 field.
-func (o *QuickserverServiceInfo) SetQsIpv6(v interface{}) {
-	o.QsIpv6 = v
+// SetQsIpv6 gets a reference to the given NullableString and assigns it to the QsIpv6 field.
+func (o *QuickserverServiceInfo) SetQsIpv6(v string) {
+	o.QsIpv6.Set(&v)
+}
+// SetQsIpv6Nil sets the value for QsIpv6 to be an explicit nil
+func (o *QuickserverServiceInfo) SetQsIpv6Nil() {
+	o.QsIpv6.Set(nil)
+}
+
+// UnsetQsIpv6 ensures that no value is present for QsIpv6, not even an explicit nil
+func (o *QuickserverServiceInfo) UnsetQsIpv6() {
+	o.QsIpv6.Unset()
 }
 
 // GetQsVzid returns the QsVzid field value if set, zero value otherwise.
@@ -667,36 +676,45 @@ func (o *QuickserverServiceInfo) SetQsVnc(v string) {
 }
 
 // GetQsVncPort returns the QsVncPort field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *QuickserverServiceInfo) GetQsVncPort() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *QuickserverServiceInfo) GetQsVncPort() int32 {
+	if o == nil || IsNil(o.QsVncPort.Get()) {
+		var ret int32
 		return ret
 	}
-	return o.QsVncPort
+	return *o.QsVncPort.Get()
 }
 
 // GetQsVncPortOk returns a tuple with the QsVncPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *QuickserverServiceInfo) GetQsVncPortOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.QsVncPort) {
+func (o *QuickserverServiceInfo) GetQsVncPortOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.QsVncPort, true
+	return o.QsVncPort.Get(), o.QsVncPort.IsSet()
 }
 
 // HasQsVncPort returns a boolean if a field has been set.
 func (o *QuickserverServiceInfo) HasQsVncPort() bool {
-	if o != nil && !IsNil(o.QsVncPort) {
+	if o != nil && o.QsVncPort.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQsVncPort gets a reference to the given interface{} and assigns it to the QsVncPort field.
-func (o *QuickserverServiceInfo) SetQsVncPort(v interface{}) {
-	o.QsVncPort = v
+// SetQsVncPort gets a reference to the given NullableInt32 and assigns it to the QsVncPort field.
+func (o *QuickserverServiceInfo) SetQsVncPort(v int32) {
+	o.QsVncPort.Set(&v)
+}
+// SetQsVncPortNil sets the value for QsVncPort to be an explicit nil
+func (o *QuickserverServiceInfo) SetQsVncPortNil() {
+	o.QsVncPort.Set(nil)
+}
+
+// UnsetQsVncPort ensures that no value is present for QsVncPort, not even an explicit nil
+func (o *QuickserverServiceInfo) UnsetQsVncPort() {
+	o.QsVncPort.Unset()
 }
 
 // GetQsRootpass returns the QsRootpass field value if set, zero value otherwise.
@@ -860,36 +878,45 @@ func (o *QuickserverServiceInfo) SetQsLocation(v string) {
 }
 
 // GetQsPlatform returns the QsPlatform field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *QuickserverServiceInfo) GetQsPlatform() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *QuickserverServiceInfo) GetQsPlatform() string {
+	if o == nil || IsNil(o.QsPlatform.Get()) {
+		var ret string
 		return ret
 	}
-	return o.QsPlatform
+	return *o.QsPlatform.Get()
 }
 
 // GetQsPlatformOk returns a tuple with the QsPlatform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *QuickserverServiceInfo) GetQsPlatformOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.QsPlatform) {
+func (o *QuickserverServiceInfo) GetQsPlatformOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.QsPlatform, true
+	return o.QsPlatform.Get(), o.QsPlatform.IsSet()
 }
 
 // HasQsPlatform returns a boolean if a field has been set.
 func (o *QuickserverServiceInfo) HasQsPlatform() bool {
-	if o != nil && !IsNil(o.QsPlatform) {
+	if o != nil && o.QsPlatform.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQsPlatform gets a reference to the given interface{} and assigns it to the QsPlatform field.
-func (o *QuickserverServiceInfo) SetQsPlatform(v interface{}) {
-	o.QsPlatform = v
+// SetQsPlatform gets a reference to the given NullableString and assigns it to the QsPlatform field.
+func (o *QuickserverServiceInfo) SetQsPlatform(v string) {
+	o.QsPlatform.Set(&v)
+}
+// SetQsPlatformNil sets the value for QsPlatform to be an explicit nil
+func (o *QuickserverServiceInfo) SetQsPlatformNil() {
+	o.QsPlatform.Set(nil)
+}
+
+// UnsetQsPlatform ensures that no value is present for QsPlatform, not even an explicit nil
+func (o *QuickserverServiceInfo) UnsetQsPlatform() {
+	o.QsPlatform.Unset()
 }
 
 func (o QuickserverServiceInfo) MarshalJSON() ([]byte, error) {
@@ -914,8 +941,8 @@ func (o QuickserverServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.QsIp) {
 		toSerialize["qs_ip"] = o.QsIp
 	}
-	if o.QsIpv6 != nil {
-		toSerialize["qs_ipv6"] = o.QsIpv6
+	if o.QsIpv6.IsSet() {
+		toSerialize["qs_ipv6"] = o.QsIpv6.Get()
 	}
 	if !IsNil(o.QsVzid) {
 		toSerialize["qs_vzid"] = o.QsVzid
@@ -956,8 +983,8 @@ func (o QuickserverServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.QsVnc) {
 		toSerialize["qs_vnc"] = o.QsVnc
 	}
-	if o.QsVncPort != nil {
-		toSerialize["qs_vnc_port"] = o.QsVncPort
+	if o.QsVncPort.IsSet() {
+		toSerialize["qs_vnc_port"] = o.QsVncPort.Get()
 	}
 	if !IsNil(o.QsRootpass) {
 		toSerialize["qs_rootpass"] = o.QsRootpass
@@ -974,8 +1001,8 @@ func (o QuickserverServiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.QsLocation) {
 		toSerialize["qs_location"] = o.QsLocation
 	}
-	if o.QsPlatform != nil {
-		toSerialize["qs_platform"] = o.QsPlatform
+	if o.QsPlatform.IsSet() {
+		toSerialize["qs_platform"] = o.QsPlatform.Get()
 	}
 	return toSerialize, nil
 }

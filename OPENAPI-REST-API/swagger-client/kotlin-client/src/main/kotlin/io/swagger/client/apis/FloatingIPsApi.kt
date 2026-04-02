@@ -128,21 +128,22 @@ class FloatingIPsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2
     /**
      * List Floating IPs
      * Returns all Floating IP services on the account with their current status and assignment details.
-     * @return void
+     * @return kotlin.Array<kotlin.Any>
      */
-    fun getFloatingIpsList(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getFloatingIpsList(): kotlin.Array<kotlin.Any> {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/floating_ips", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Array<kotlin.Any>>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.Any>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

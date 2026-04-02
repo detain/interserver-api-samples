@@ -334,10 +334,10 @@ bool OAIWebsitesOrderServiceTypes::is_services_field2_Valid() const{
     return m_services_field2_isValid;
 }
 
-QJsonValue OAIWebsitesOrderServiceTypes::getServicesHtml() const {
+QString OAIWebsitesOrderServiceTypes::getServicesHtml() const {
     return m_services_html;
 }
-void OAIWebsitesOrderServiceTypes::setServicesHtml(const QJsonValue &services_html) {
+void OAIWebsitesOrderServiceTypes::setServicesHtml(const QString &services_html) {
     m_services_html = services_html;
     m_services_html_isSet = true;
 }
@@ -350,10 +350,10 @@ bool OAIWebsitesOrderServiceTypes::is_services_html_Valid() const{
     return m_services_html_isValid;
 }
 
-QJsonValue OAIWebsitesOrderServiceTypes::getServicesDescription() const {
+QString OAIWebsitesOrderServiceTypes::getServicesDescription() const {
     return m_services_description;
 }
-void OAIWebsitesOrderServiceTypes::setServicesDescription(const QJsonValue &services_description) {
+void OAIWebsitesOrderServiceTypes::setServicesDescription(const QString &services_description) {
     m_services_description = services_description;
     m_services_description_isSet = true;
 }
@@ -366,10 +366,10 @@ bool OAIWebsitesOrderServiceTypes::is_services_description_Valid() const{
     return m_services_description_isValid;
 }
 
-QJsonValue OAIWebsitesOrderServiceTypes::getServicesMoreinfoUrl() const {
+QString OAIWebsitesOrderServiceTypes::getServicesMoreinfoUrl() const {
     return m_services_moreinfo_url;
 }
-void OAIWebsitesOrderServiceTypes::setServicesMoreinfoUrl(const QJsonValue &services_moreinfo_url) {
+void OAIWebsitesOrderServiceTypes::setServicesMoreinfoUrl(const QString &services_moreinfo_url) {
     m_services_moreinfo_url = services_moreinfo_url;
     m_services_moreinfo_url_isSet = true;
 }

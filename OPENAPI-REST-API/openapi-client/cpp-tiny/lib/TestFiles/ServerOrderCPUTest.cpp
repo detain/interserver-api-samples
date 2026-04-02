@@ -472,6 +472,26 @@ void test_ServerOrderCPU_visible_is_assigned_from_json()
 }
 
 
+void test_ServerOrderCPU_hd_ids_is_assigned_from_json()
+{
+
+
+    bourne::json input =
+    {
+        "hd_ids", "hello"
+    };
+
+    ServerOrderCPU obj(input.dump());
+
+    TEST_ASSERT_EQUAL_STRING("hello", obj.getHdIds().c_str());
+
+
+
+
+
+
+}
+
 
 void test_ServerOrderCPU_price_display_is_assigned_from_json()
 {
@@ -977,6 +997,26 @@ void test_ServerOrderCPU_visible_is_converted_to_json()
 
 }
 
+
+void test_ServerOrderCPU_hd_ids_is_converted_to_json()
+{
+
+    bourne::json input =
+    {
+        "hd_ids", "hello"
+    };
+
+    ServerOrderCPU obj(input.dump());
+
+    bourne::json output = bourne::json::object();
+
+    output = obj.toJson();
+
+    TEST_ASSERT(input["hd_ids"] == output["hd_ids"]);
+
+
+
+}
 
 
 void test_ServerOrderCPU_price_display_is_converted_to_json()

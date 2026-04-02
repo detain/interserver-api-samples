@@ -169,10 +169,11 @@ class AccountApi(
    * Remove IP Access Restriction
    * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
    *
+   * @param body  (optional)
    * @return GenericResponse
    */
-  def deleteIpLimit(): Option[GenericResponse] = {
-    val await = Try(Await.result(deleteIpLimitAsync(), Duration.Inf))
+  def deleteIpLimit(body: Option[IpLimitRange] = None): Option[GenericResponse] = {
+    val await = Try(Await.result(deleteIpLimitAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -183,10 +184,11 @@ class AccountApi(
    * Remove IP Access Restriction asynchronously
    * Removes an IP address range from the account&#x27;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
    *
+   * @param body  (optional)
    * @return Future(GenericResponse)
    */
-  def deleteIpLimitAsync(): Future[GenericResponse] = {
-      helper.deleteIpLimit()
+  def deleteIpLimitAsync(body: Option[IpLimitRange] = None): Future[GenericResponse] = {
+      helper.deleteIpLimit(body)
   }
 
   /**
@@ -615,7 +617,8 @@ class AccountApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deleteIpLimit()(implicit reader: ClientResponseReader[GenericResponse]): Future[GenericResponse] = {
+  def deleteIpLimit(body: Option[IpLimitRange] = None
+    )(implicit reader: ClientResponseReader[GenericResponse], writer: RequestWriter[Option[IpLimitRange]]): Future[GenericResponse] = {
     // create path and map variables
     val path = (addFmt("/account/iplimits"))
 
@@ -624,7 +627,7 @@ class AccountApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
 
-    val resFuture = client.submit("PATCH", path, queryParams.toMap, headerParams.toMap, "")
+    val resFuture = client.submit("PATCH", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

@@ -33,6 +33,6 @@ Name | Type | Description | Notes
 **qsBytesSecOut** | [**kotlin.String**](.md) | Bytes/sec out |  [optional]
 **qsPacketsSecIn** | [**kotlin.String**](.md) | Packets/sec in |  [optional]
 **qsPacketsSecOut** | [**kotlin.String**](.md) | Packets/sec out |  [optional]
-**qsLastInstallTime** | [**kotlin.Any**](.md) | Last install time (null) |  [optional]
-**qsPartitions** | [**kotlin.Any**](.md) | Partitions information (null) |  [optional]
+**qsLastInstallTime** | [**kotlin.String**](.md) | Last install time (null) |  [optional]
+**qsPartitions** | [**kotlin.String**](.md) | Partitions information (null) |  [optional]
 **qsCpuFlags** | [**kotlin.String**](.md) | CPU flags |  [optional]

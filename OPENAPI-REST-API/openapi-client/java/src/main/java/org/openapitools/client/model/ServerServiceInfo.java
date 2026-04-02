@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * ServerServiceInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T08:03:17.997768253-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class ServerServiceInfo {
   public static final String SERIALIZED_NAME_SERVER_ID = "server_id";
   @SerializedName(SERIALIZED_NAME_SERVER_ID)
@@ -144,7 +143,7 @@ public class ServerServiceInfo {
   public static final String SERIALIZED_NAME_SERVER_DISCOUNT = "server_discount";
   @SerializedName(SERIALIZED_NAME_SERVER_DISCOUNT)
   @javax.annotation.Nullable
-  private Object serverDiscount = null;
+  private String serverDiscount;
 
   public static final String SERIALIZED_NAME_SERVER_REP = "server_rep";
   @SerializedName(SERIALIZED_NAME_SERVER_REP)
@@ -164,7 +163,7 @@ public class ServerServiceInfo {
   public static final String SERIALIZED_NAME_SERVER_LOCATION = "server_location";
   @SerializedName(SERIALIZED_NAME_SERVER_LOCATION)
   @javax.annotation.Nullable
-  private Object serverLocation = null;
+  private String serverLocation;
 
   public static final String SERIALIZED_NAME_SERVER_HARDWARE_ORDERED = "server_hardware_ordered";
   @SerializedName(SERIALIZED_NAME_SERVER_HARDWARE_ORDERED)
@@ -199,7 +198,7 @@ public class ServerServiceInfo {
   public static final String SERIALIZED_NAME_SERVER_DEDICATED_HD2 = "server_dedicated_hd2";
   @SerializedName(SERIALIZED_NAME_SERVER_DEDICATED_HD2)
   @javax.annotation.Nullable
-  private Object serverDedicatedHd2 = null;
+  private String serverDedicatedHd2;
 
   public static final String SERIALIZED_NAME_SERVER_DEDICATED_BANDWIDTH = "server_dedicated_bandwidth";
   @SerializedName(SERIALIZED_NAME_SERVER_DEDICATED_BANDWIDTH)
@@ -219,7 +218,7 @@ public class ServerServiceInfo {
   public static final String SERIALIZED_NAME_SERVER_DEDICATED_CP = "server_dedicated_cp";
   @SerializedName(SERIALIZED_NAME_SERVER_DEDICATED_CP)
   @javax.annotation.Nullable
-  private Object serverDedicatedCp = null;
+  private String serverDedicatedCp;
 
   public static final String SERIALIZED_NAME_SERVER_DEDICATED_RAID = "server_dedicated_raid";
   @SerializedName(SERIALIZED_NAME_SERVER_DEDICATED_RAID)
@@ -576,7 +575,7 @@ public class ServerServiceInfo {
   }
 
 
-  public ServerServiceInfo serverDiscount(@javax.annotation.Nullable Object serverDiscount) {
+  public ServerServiceInfo serverDiscount(@javax.annotation.Nullable String serverDiscount) {
     this.serverDiscount = serverDiscount;
     return this;
   }
@@ -586,11 +585,11 @@ public class ServerServiceInfo {
    * @return serverDiscount
    */
   @javax.annotation.Nullable
-  public Object getServerDiscount() {
+  public String getServerDiscount() {
     return serverDiscount;
   }
 
-  public void setServerDiscount(@javax.annotation.Nullable Object serverDiscount) {
+  public void setServerDiscount(@javax.annotation.Nullable String serverDiscount) {
     this.serverDiscount = serverDiscount;
   }
 
@@ -652,7 +651,7 @@ public class ServerServiceInfo {
   }
 
 
-  public ServerServiceInfo serverLocation(@javax.annotation.Nullable Object serverLocation) {
+  public ServerServiceInfo serverLocation(@javax.annotation.Nullable String serverLocation) {
     this.serverLocation = serverLocation;
     return this;
   }
@@ -662,11 +661,11 @@ public class ServerServiceInfo {
    * @return serverLocation
    */
   @javax.annotation.Nullable
-  public Object getServerLocation() {
+  public String getServerLocation() {
     return serverLocation;
   }
 
-  public void setServerLocation(@javax.annotation.Nullable Object serverLocation) {
+  public void setServerLocation(@javax.annotation.Nullable String serverLocation) {
     this.serverLocation = serverLocation;
   }
 
@@ -785,7 +784,7 @@ public class ServerServiceInfo {
   }
 
 
-  public ServerServiceInfo serverDedicatedHd2(@javax.annotation.Nullable Object serverDedicatedHd2) {
+  public ServerServiceInfo serverDedicatedHd2(@javax.annotation.Nullable String serverDedicatedHd2) {
     this.serverDedicatedHd2 = serverDedicatedHd2;
     return this;
   }
@@ -795,11 +794,11 @@ public class ServerServiceInfo {
    * @return serverDedicatedHd2
    */
   @javax.annotation.Nullable
-  public Object getServerDedicatedHd2() {
+  public String getServerDedicatedHd2() {
     return serverDedicatedHd2;
   }
 
-  public void setServerDedicatedHd2(@javax.annotation.Nullable Object serverDedicatedHd2) {
+  public void setServerDedicatedHd2(@javax.annotation.Nullable String serverDedicatedHd2) {
     this.serverDedicatedHd2 = serverDedicatedHd2;
   }
 
@@ -861,7 +860,7 @@ public class ServerServiceInfo {
   }
 
 
-  public ServerServiceInfo serverDedicatedCp(@javax.annotation.Nullable Object serverDedicatedCp) {
+  public ServerServiceInfo serverDedicatedCp(@javax.annotation.Nullable String serverDedicatedCp) {
     this.serverDedicatedCp = serverDedicatedCp;
     return this;
   }
@@ -871,11 +870,11 @@ public class ServerServiceInfo {
    * @return serverDedicatedCp
    */
   @javax.annotation.Nullable
-  public Object getServerDedicatedCp() {
+  public String getServerDedicatedCp() {
     return serverDedicatedCp;
   }
 
-  public void setServerDedicatedCp(@javax.annotation.Nullable Object serverDedicatedCp) {
+  public void setServerDedicatedCp(@javax.annotation.Nullable String serverDedicatedCp) {
     this.serverDedicatedCp = serverDedicatedCp;
   }
 
@@ -966,20 +965,9 @@ public class ServerServiceInfo {
         Objects.equals(this.serverExtra, serverServiceInfo.serverExtra);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(serverId, serverHostname, serverCustid, serverType, serverCurrency, serverOrderDate, serverInvoice, serverCoupon, serverStatus, serverRoot, serverDedicatedTag, serverCustomTag, serverComment, serverInitialBill, serverHardware, serverIps, serverMonthlyBill, serverSetup, serverDiscount, serverRep, serverDate, serverTotalCost, serverLocation, serverHardwareOrdered, serverBilled, serverWelcomeEmail, serverDedicatedCpu, serverDedicatedMemory, serverDedicatedHd1, serverDedicatedHd2, serverDedicatedBandwidth, serverDedicatedIps, serverDedicatedOs, serverDedicatedCp, serverDedicatedRaid, serverExtra);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1121,6 +1109,9 @@ public class ServerServiceInfo {
       if ((jsonObj.get("server_setup") != null && !jsonObj.get("server_setup").isJsonNull()) && !jsonObj.get("server_setup").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_setup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_setup").toString()));
       }
+      if ((jsonObj.get("server_discount") != null && !jsonObj.get("server_discount").isJsonNull()) && !jsonObj.get("server_discount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_discount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_discount").toString()));
+      }
       if ((jsonObj.get("server_rep") != null && !jsonObj.get("server_rep").isJsonNull()) && !jsonObj.get("server_rep").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_rep` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_rep").toString()));
       }
@@ -1129,6 +1120,9 @@ public class ServerServiceInfo {
       }
       if ((jsonObj.get("server_total_cost") != null && !jsonObj.get("server_total_cost").isJsonNull()) && !jsonObj.get("server_total_cost").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_total_cost` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_total_cost").toString()));
+      }
+      if ((jsonObj.get("server_location") != null && !jsonObj.get("server_location").isJsonNull()) && !jsonObj.get("server_location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_location").toString()));
       }
       if ((jsonObj.get("server_hardware_ordered") != null && !jsonObj.get("server_hardware_ordered").isJsonNull()) && !jsonObj.get("server_hardware_ordered").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_hardware_ordered` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_hardware_ordered").toString()));
@@ -1148,6 +1142,9 @@ public class ServerServiceInfo {
       if ((jsonObj.get("server_dedicated_hd1") != null && !jsonObj.get("server_dedicated_hd1").isJsonNull()) && !jsonObj.get("server_dedicated_hd1").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_dedicated_hd1` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_dedicated_hd1").toString()));
       }
+      if ((jsonObj.get("server_dedicated_hd2") != null && !jsonObj.get("server_dedicated_hd2").isJsonNull()) && !jsonObj.get("server_dedicated_hd2").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_dedicated_hd2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_dedicated_hd2").toString()));
+      }
       if ((jsonObj.get("server_dedicated_bandwidth") != null && !jsonObj.get("server_dedicated_bandwidth").isJsonNull()) && !jsonObj.get("server_dedicated_bandwidth").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_dedicated_bandwidth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_dedicated_bandwidth").toString()));
       }
@@ -1156,6 +1153,9 @@ public class ServerServiceInfo {
       }
       if ((jsonObj.get("server_dedicated_os") != null && !jsonObj.get("server_dedicated_os").isJsonNull()) && !jsonObj.get("server_dedicated_os").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_dedicated_os` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_dedicated_os").toString()));
+      }
+      if ((jsonObj.get("server_dedicated_cp") != null && !jsonObj.get("server_dedicated_cp").isJsonNull()) && !jsonObj.get("server_dedicated_cp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_dedicated_cp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_dedicated_cp").toString()));
       }
       if ((jsonObj.get("server_dedicated_raid") != null && !jsonObj.get("server_dedicated_raid").isJsonNull()) && !jsonObj.get("server_dedicated_raid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `server_dedicated_raid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_dedicated_raid").toString()));

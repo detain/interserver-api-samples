@@ -48,7 +48,7 @@ export default class VpsServiceInfo {
       if (data.hasOwnProperty('vps_ip'))
         obj.vps_ip = ApiClient.convertToType(data['vps_ip'], 'String');
       if (data.hasOwnProperty('vps_ipv6'))
-        obj.vps_ipv6 = ApiClient.convertToType(data['vps_ipv6'], Object);
+        obj.vps_ipv6 = ApiClient.convertToType(data['vps_ipv6'], 'String');
       if (data.hasOwnProperty('vps_vzid'))
         obj.vps_vzid = ApiClient.convertToType(data['vps_vzid'], 'String');
       if (data.hasOwnProperty('vps_currency'))
@@ -124,7 +124,7 @@ VpsServiceInfo.prototype.vps_ip = undefined;
 
 /**
  * IPv6 address of the VPS
- * @member {Object} vps_ipv6
+ * @member {String} vps_ipv6
  */
 VpsServiceInfo.prototype.vps_ipv6 = undefined;
 

@@ -130,13 +130,17 @@ Disables two-factor authentication on the account. After disabling, the account 
 <a id="deleteIpLimit"></a>
 # **deleteIpLimit**
 ```java
-Mono<GenericResponse> AccountApi.deleteIpLimit()
+Mono<GenericResponse> AccountApi.deleteIpLimit(ipLimitRange)
 ```
 
 Remove IP Access Restriction
 
 Removes an IP address range from the account&#39;s access restriction list. If this is the last range, IP limiting is effectively disabled and the account becomes accessible from any IP address.
 
+### Parameters
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ipLimitRange** | [**IpLimitRange**](IpLimitRange.md)|  | [optional parameter] |
 
 
 ### Return type

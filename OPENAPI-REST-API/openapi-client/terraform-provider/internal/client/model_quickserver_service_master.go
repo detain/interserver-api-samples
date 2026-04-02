@@ -34,7 +34,7 @@ type QuickserverServiceMaster struct {
 	QsBytesSecOut string `json:"qs_bytes_sec_out,omitempty"`
 	QsPacketsSecIn string `json:"qs_packets_sec_in,omitempty"`
 	QsPacketsSecOut string `json:"qs_packets_sec_out,omitempty"`
-	QsLastInstallTime interface{} `json:"qs_last_install_time,omitempty"`
-	QsPartitions interface{} `json:"qs_partitions,omitempty"`
+	QsLastInstallTime string `json:"qs_last_install_time,omitempty"`
+	QsPartitions string `json:"qs_partitions,omitempty"`
 	QsCpuFlags string `json:"qs_cpu_flags,omitempty"`
 }

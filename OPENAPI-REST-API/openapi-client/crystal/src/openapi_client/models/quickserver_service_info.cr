@@ -32,8 +32,8 @@ module OpenAPIClient
     property qs_ip : String?
 
     # IPv6 address (null)
-    @[JSON::Field(key: "qs_ipv6", type: JSON::Any?, nillable: true, emit_null: false)]
-    property qs_ipv6 : JSON::Any?
+    @[JSON::Field(key: "qs_ipv6", type: String?, nillable: true, emit_null: false)]
+    property qs_ipv6 : String?
 
     # VZ ID
     @[JSON::Field(key: "qs_vzid", type: String?, nillable: true, emit_null: false)]
@@ -88,8 +88,8 @@ module OpenAPIClient
     property qs_vnc : String?
 
     # VNC port (null)
-    @[JSON::Field(key: "qs_vnc_port", type: JSON::Any?, nillable: true, emit_null: false)]
-    property qs_vnc_port : JSON::Any?
+    @[JSON::Field(key: "qs_vnc_port", type: Int32?, nillable: true, emit_null: false)]
+    property qs_vnc_port : Int32?
 
     # Root password
     @[JSON::Field(key: "qs_rootpass", type: String?, nillable: true, emit_null: false)]
@@ -112,12 +112,12 @@ module OpenAPIClient
     property qs_location : String?
 
     # Platform (null)
-    @[JSON::Field(key: "qs_platform", type: JSON::Any?, nillable: true, emit_null: false)]
-    property qs_platform : JSON::Any?
+    @[JSON::Field(key: "qs_platform", type: String?, nillable: true, emit_null: false)]
+    property qs_platform : String?
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(@qs_id : String? = nil, @qs_custid : String? = nil, @qs_server : String? = nil, @qs_ip : String? = nil, @qs_ipv6 : JSON::Any? = nil, @qs_vzid : String? = nil, @qs_currency : String? = nil, @qs_type : String? = nil, @qs_order_date : String? = nil, @qs_status : String? = nil, @qs_invoice : String? = nil, @qs_coupon : String? = nil, @qs_extra : String? = nil, @qs_hostname : String? = nil, @qs_server_status : String? = nil, @qs_comment : String? = nil, @qs_slices : String? = nil, @qs_vnc : String? = nil, @qs_vnc_port : JSON::Any? = nil, @qs_rootpass : String? = nil, @qs_mac : String? = nil, @qs_os : String? = nil, @qs_version : String? = nil, @qs_location : String? = nil, @qs_platform : JSON::Any? = nil)
+    def initialize(@qs_id : String? = nil, @qs_custid : String? = nil, @qs_server : String? = nil, @qs_ip : String? = nil, @qs_ipv6 : String? = nil, @qs_vzid : String? = nil, @qs_currency : String? = nil, @qs_type : String? = nil, @qs_order_date : String? = nil, @qs_status : String? = nil, @qs_invoice : String? = nil, @qs_coupon : String? = nil, @qs_extra : String? = nil, @qs_hostname : String? = nil, @qs_server_status : String? = nil, @qs_comment : String? = nil, @qs_slices : String? = nil, @qs_vnc : String? = nil, @qs_vnc_port : Int32? = nil, @qs_rootpass : String? = nil, @qs_mac : String? = nil, @qs_os : String? = nil, @qs_version : String? = nil, @qs_location : String? = nil, @qs_platform : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

@@ -313,7 +313,7 @@ var __qsUnderscorepacketsUnderscoresecUnderscoreout__was__set := false
 # Last install time (null)
 # Required: False
 # isArray: false
-@export var qsUnderscorelastUnderscoreinstallUnderscoretime: AnyType:
+@export var qsUnderscorelastUnderscoreinstallUnderscoretime: String = "":
 	set(value):
 		__qsUnderscorelastUnderscoreinstallUnderscoretime__was__set = true
 		qsUnderscorelastUnderscoreinstallUnderscoretime = value
@@ -322,7 +322,7 @@ var __qsUnderscorelastUnderscoreinstallUnderscoretime__was__set := false
 # Partitions information (null)
 # Required: False
 # isArray: false
-@export var qsUnderscorepartitions: AnyType:
+@export var qsUnderscorepartitions: String = "":
 	set(value):
 		__qsUnderscorepartitions__was__set = true
 		qsUnderscorepartitions = value

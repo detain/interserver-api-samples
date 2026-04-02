@@ -91,22 +91,22 @@ case class ServerAsset(
   vlans6: Seq[String],
   lease: ServerLease,
   /* MAC address associated with the asset. */
-  mac: Option[org.json4s.JValue] = None,
+  mac: Option[String] = None,
   /* IPMI admin username associated with the asset. */
-  ipmi_admin_username: Option[org.json4s.JValue] = None,
+  ipmi_admin_username: Option[String] = None,
   /* IPMI admin password associated with the asset. */
-  ipmi_admin_password: Option[org.json4s.JValue] = None,
+  ipmi_admin_password: Option[String] = None,
   /* IPMI client username associated with the asset. */
-  ipmi_client_username: Option[org.json4s.JValue] = None,
+  ipmi_client_username: Option[String] = None,
   /* IPMI client password associated with the asset. */
-  ipmi_client_password: Option[org.json4s.JValue] = None,
+  ipmi_client_password: Option[String] = None,
   /* IPMI update status associated with the asset. */
-  ipmi_updated: Option[org.json4s.JValue] = None,
+  ipmi_updated: Option[String] = None,
   /* Timestamp of asset creation. */
-  create_timestamp: Option[org.json4s.JValue] = None,
+  create_timestamp: Option[String] = None,
   /* Timestamp of asset update. */
-  update_timestamp: Option[org.json4s.JValue] = None,
+  update_timestamp: Option[String] = None,
   /* Comment associated with the asset. */
-  comment: Option[org.json4s.JValue] = None
+  comment: Option[String] = None
 )
 

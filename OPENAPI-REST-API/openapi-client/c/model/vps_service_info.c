@@ -10,7 +10,7 @@ static vps_service_info_t *vps_service_info_create_internal(
     char *vps_custid,
     char *vps_server,
     char *vps_ip,
-    any_type_t *vps_ipv6,
+    char *vps_ipv6,
     char *vps_vzid,
     char *vps_currency,
     char *vps_type,
@@ -75,7 +75,7 @@ __attribute__((deprecated)) vps_service_info_t *vps_service_info_create(
     char *vps_custid,
     char *vps_server,
     char *vps_ip,
-    any_type_t *vps_ipv6,
+    char *vps_ipv6,
     char *vps_vzid,
     char *vps_currency,
     char *vps_type,
@@ -159,7 +159,7 @@ void vps_service_info_free(vps_service_info_t *vps_service_info) {
         vps_service_info->vps_ip = NULL;
     }
     if (vps_service_info->vps_ipv6) {
-        _free(vps_service_info->vps_ipv6);
+        free(vps_service_info->vps_ipv6);
         vps_service_info->vps_ipv6 = NULL;
     }
     if (vps_service_info->vps_vzid) {
@@ -290,13 +290,8 @@ cJSON *vps_service_info_convertToJSON(vps_service_info_t *vps_service_info) {
 
     // vps_service_info->vps_ipv6
     if(vps_service_info->vps_ipv6) {
-    cJSON *vps_ipv6_local_JSON = _convertToJSON(vps_service_info->vps_ipv6);
-    if(vps_ipv6_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "vps_ipv6", vps_ipv6_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "vps_ipv6", vps_service_info->vps_ipv6) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -496,8 +491,7 @@ vps_service_info_t *vps_service_info_parseFromJSON(cJSON *vps_service_infoJSON){
 
     char *vps_ip_local_str = NULL;
 
-    // define the local variable for vps_service_info->vps_ipv6
-    _t *vps_ipv6_local_nonprim = NULL;
+    char *vps_ipv6_local_str = NULL;
 
     char *vps_vzid_local_str = NULL;
 
@@ -597,7 +591,10 @@ vps_service_info_t *vps_service_info_parseFromJSON(cJSON *vps_service_infoJSON){
         vps_ipv6 = NULL;
     }
     if (vps_ipv6) { 
-    vps_ipv6_local_nonprim = _parseFromJSON(vps_ipv6); //custom
+    if(!cJSON_IsString(vps_ipv6) && !cJSON_IsNull(vps_ipv6))
+    {
+    goto end; //String
+    }
     }
 
     // vps_service_info->vps_vzid
@@ -869,6 +866,7 @@ vps_service_info_t *vps_service_info_parseFromJSON(cJSON *vps_service_infoJSON){
     if (vps_custid && !cJSON_IsNull(vps_custid)) vps_custid_local_str = strdup(vps_custid->valuestring);
     if (vps_server && !cJSON_IsNull(vps_server)) vps_server_local_str = strdup(vps_server->valuestring);
     if (vps_ip && !cJSON_IsNull(vps_ip)) vps_ip_local_str = strdup(vps_ip->valuestring);
+    if (vps_ipv6 && !cJSON_IsNull(vps_ipv6)) vps_ipv6_local_str = strdup(vps_ipv6->valuestring);
     if (vps_vzid && !cJSON_IsNull(vps_vzid)) vps_vzid_local_str = strdup(vps_vzid->valuestring);
     if (vps_currency && !cJSON_IsNull(vps_currency)) vps_currency_local_str = strdup(vps_currency->valuestring);
     if (vps_type && !cJSON_IsNull(vps_type)) vps_type_local_str = strdup(vps_type->valuestring);
@@ -897,7 +895,7 @@ vps_service_info_t *vps_service_info_parseFromJSON(cJSON *vps_service_infoJSON){
         vps_custid_local_str,
         vps_server_local_str,
         vps_ip_local_str,
-        vps_ipv6 ? vps_ipv6_local_nonprim : NULL,
+        vps_ipv6_local_str,
         vps_vzid_local_str,
         vps_currency_local_str,
         vps_type_local_str,
@@ -944,9 +942,9 @@ end:
         free(vps_ip_local_str);
         vps_ip_local_str = NULL;
     }
-    if (vps_ipv6_local_nonprim) {
-        _free(vps_ipv6_local_nonprim);
-        vps_ipv6_local_nonprim = NULL;
+    if (vps_ipv6_local_str) {
+        free(vps_ipv6_local_str);
+        vps_ipv6_local_str = NULL;
     }
     if (vps_vzid_local_str) {
         free(vps_vzid_local_str);

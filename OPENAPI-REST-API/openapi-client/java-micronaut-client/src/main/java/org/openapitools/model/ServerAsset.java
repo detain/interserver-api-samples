@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ServerLease;
 import com.fasterxml.jackson.annotation.*;
 
@@ -80,7 +79,7 @@ import javax.annotation.Generated;
   ServerAsset.JSON_PROPERTY_COMMENT
 })
 @JsonTypeName("ServerAsset")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class ServerAsset {
     public static final String JSON_PROPERTY_ID = "id";
@@ -201,31 +200,31 @@ public class ServerAsset {
     private ServerLease lease;
 
     public static final String JSON_PROPERTY_MAC = "mac";
-    private Object mac = null;
+    private String mac;
 
     public static final String JSON_PROPERTY_IPMI_ADMIN_USERNAME = "ipmi_admin_username";
-    private Object ipmiAdminUsername = null;
+    private String ipmiAdminUsername;
 
     public static final String JSON_PROPERTY_IPMI_ADMIN_PASSWORD = "ipmi_admin_password";
-    private Object ipmiAdminPassword = null;
+    private String ipmiAdminPassword;
 
     public static final String JSON_PROPERTY_IPMI_CLIENT_USERNAME = "ipmi_client_username";
-    private Object ipmiClientUsername = null;
+    private String ipmiClientUsername;
 
     public static final String JSON_PROPERTY_IPMI_CLIENT_PASSWORD = "ipmi_client_password";
-    private Object ipmiClientPassword = null;
+    private String ipmiClientPassword;
 
     public static final String JSON_PROPERTY_IPMI_UPDATED = "ipmi_updated";
-    private Object ipmiUpdated = null;
+    private String ipmiUpdated;
 
     public static final String JSON_PROPERTY_CREATE_TIMESTAMP = "create_timestamp";
-    private Object createTimestamp = null;
+    private String createTimestamp;
 
     public static final String JSON_PROPERTY_UPDATE_TIMESTAMP = "update_timestamp";
-    private Object updateTimestamp = null;
+    private String updateTimestamp;
 
     public static final String JSON_PROPERTY_COMMENT = "comment";
-    private Object comment = null;
+    private String comment;
 
     public ServerAsset(Integer id, String orderId, String hostname, String status, String primaryIpv4, String primaryIpv6, String datacenter, String typeId, String assetTag, String rack, String row, String col, String unitStart, String unitEnd, String unitSub, String ipmiMac, String ipmiIp, String ipmiWorking, String company, String comments, String make, String model, String description, String customerId, String externalId, String billingStatus, String overdue, String assetId, String assetName, String rackId, String rackName, String rackLocation, String rackSize, String rackX, String rackY, List<Integer> switchports, List<String> vlans, List<String> vlans6, ServerLease lease) {
         this.id = id;
@@ -1143,7 +1142,7 @@ public class ServerAsset {
         this.lease = lease;
     }
 
-    public ServerAsset mac(Object mac) {
+    public ServerAsset mac(String mac) {
         this.mac = mac;
         return this;
     }
@@ -1155,17 +1154,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_MAC)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getMac() {
+    public String getMac() {
         return mac;
     }
 
     @JsonProperty(JSON_PROPERTY_MAC)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMac(Object mac) {
+    public void setMac(String mac) {
         this.mac = mac;
     }
 
-    public ServerAsset ipmiAdminUsername(Object ipmiAdminUsername) {
+    public ServerAsset ipmiAdminUsername(String ipmiAdminUsername) {
         this.ipmiAdminUsername = ipmiAdminUsername;
         return this;
     }
@@ -1177,17 +1176,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_IPMI_ADMIN_USERNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getIpmiAdminUsername() {
+    public String getIpmiAdminUsername() {
         return ipmiAdminUsername;
     }
 
     @JsonProperty(JSON_PROPERTY_IPMI_ADMIN_USERNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIpmiAdminUsername(Object ipmiAdminUsername) {
+    public void setIpmiAdminUsername(String ipmiAdminUsername) {
         this.ipmiAdminUsername = ipmiAdminUsername;
     }
 
-    public ServerAsset ipmiAdminPassword(Object ipmiAdminPassword) {
+    public ServerAsset ipmiAdminPassword(String ipmiAdminPassword) {
         this.ipmiAdminPassword = ipmiAdminPassword;
         return this;
     }
@@ -1199,17 +1198,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_IPMI_ADMIN_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getIpmiAdminPassword() {
+    public String getIpmiAdminPassword() {
         return ipmiAdminPassword;
     }
 
     @JsonProperty(JSON_PROPERTY_IPMI_ADMIN_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIpmiAdminPassword(Object ipmiAdminPassword) {
+    public void setIpmiAdminPassword(String ipmiAdminPassword) {
         this.ipmiAdminPassword = ipmiAdminPassword;
     }
 
-    public ServerAsset ipmiClientUsername(Object ipmiClientUsername) {
+    public ServerAsset ipmiClientUsername(String ipmiClientUsername) {
         this.ipmiClientUsername = ipmiClientUsername;
         return this;
     }
@@ -1221,17 +1220,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_IPMI_CLIENT_USERNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getIpmiClientUsername() {
+    public String getIpmiClientUsername() {
         return ipmiClientUsername;
     }
 
     @JsonProperty(JSON_PROPERTY_IPMI_CLIENT_USERNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIpmiClientUsername(Object ipmiClientUsername) {
+    public void setIpmiClientUsername(String ipmiClientUsername) {
         this.ipmiClientUsername = ipmiClientUsername;
     }
 
-    public ServerAsset ipmiClientPassword(Object ipmiClientPassword) {
+    public ServerAsset ipmiClientPassword(String ipmiClientPassword) {
         this.ipmiClientPassword = ipmiClientPassword;
         return this;
     }
@@ -1243,17 +1242,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_IPMI_CLIENT_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getIpmiClientPassword() {
+    public String getIpmiClientPassword() {
         return ipmiClientPassword;
     }
 
     @JsonProperty(JSON_PROPERTY_IPMI_CLIENT_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIpmiClientPassword(Object ipmiClientPassword) {
+    public void setIpmiClientPassword(String ipmiClientPassword) {
         this.ipmiClientPassword = ipmiClientPassword;
     }
 
-    public ServerAsset ipmiUpdated(Object ipmiUpdated) {
+    public ServerAsset ipmiUpdated(String ipmiUpdated) {
         this.ipmiUpdated = ipmiUpdated;
         return this;
     }
@@ -1265,17 +1264,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_IPMI_UPDATED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getIpmiUpdated() {
+    public String getIpmiUpdated() {
         return ipmiUpdated;
     }
 
     @JsonProperty(JSON_PROPERTY_IPMI_UPDATED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIpmiUpdated(Object ipmiUpdated) {
+    public void setIpmiUpdated(String ipmiUpdated) {
         this.ipmiUpdated = ipmiUpdated;
     }
 
-    public ServerAsset createTimestamp(Object createTimestamp) {
+    public ServerAsset createTimestamp(String createTimestamp) {
         this.createTimestamp = createTimestamp;
         return this;
     }
@@ -1287,17 +1286,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_CREATE_TIMESTAMP)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getCreateTimestamp() {
+    public String getCreateTimestamp() {
         return createTimestamp;
     }
 
     @JsonProperty(JSON_PROPERTY_CREATE_TIMESTAMP)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreateTimestamp(Object createTimestamp) {
+    public void setCreateTimestamp(String createTimestamp) {
         this.createTimestamp = createTimestamp;
     }
 
-    public ServerAsset updateTimestamp(Object updateTimestamp) {
+    public ServerAsset updateTimestamp(String updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
         return this;
     }
@@ -1309,17 +1308,17 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_UPDATE_TIMESTAMP)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getUpdateTimestamp() {
+    public String getUpdateTimestamp() {
         return updateTimestamp;
     }
 
     @JsonProperty(JSON_PROPERTY_UPDATE_TIMESTAMP)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUpdateTimestamp(Object updateTimestamp) {
+    public void setUpdateTimestamp(String updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
     }
 
-    public ServerAsset comment(Object comment) {
+    public ServerAsset comment(String comment) {
         this.comment = comment;
         return this;
     }
@@ -1331,13 +1330,13 @@ public class ServerAsset {
     @Nullable
     @JsonProperty(JSON_PROPERTY_COMMENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Object getComment() {
+    public String getComment() {
         return comment;
     }
 
     @JsonProperty(JSON_PROPERTY_COMMENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setComment(Object comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 

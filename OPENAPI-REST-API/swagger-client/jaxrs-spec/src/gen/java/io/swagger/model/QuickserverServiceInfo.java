@@ -22,7 +22,7 @@ public class QuickserverServiceInfo   {
 
   private @Valid String qsIp = null;
 
-  private @Valid Object qsIpv6 = null;
+  private @Valid String qsIpv6 = null;
 
   private @Valid String qsVzid = null;
 
@@ -50,7 +50,7 @@ public class QuickserverServiceInfo   {
 
   private @Valid String qsVnc = null;
 
-  private @Valid Object qsVncPort = null;
+  private @Valid Integer qsVncPort = null;
 
   private @Valid String qsRootpass = null;
 
@@ -62,7 +62,7 @@ public class QuickserverServiceInfo   {
 
   private @Valid String qsLocation = null;
 
-  private @Valid Object qsPlatform = null;
+  private @Valid String qsPlatform = null;
 
   /**
    * Quickserver ID
@@ -147,7 +147,7 @@ public class QuickserverServiceInfo   {
   /**
    * IPv6 address (null)
    **/
-  public QuickserverServiceInfo qsIpv6(Object qsIpv6) {
+  public QuickserverServiceInfo qsIpv6(String qsIpv6) {
     this.qsIpv6 = qsIpv6;
     return this;
   }
@@ -155,12 +155,11 @@ public class QuickserverServiceInfo   {
   
   @ApiModelProperty(value = "IPv6 address (null)")
   @JsonProperty("qs_ipv6")
-  @NotNull
 
-  public Object getQsIpv6() {
+  public String getQsIpv6() {
     return qsIpv6;
   }
-  public void setQsIpv6(Object qsIpv6) {
+  public void setQsIpv6(String qsIpv6) {
     this.qsIpv6 = qsIpv6;
   }
 
@@ -427,7 +426,7 @@ public class QuickserverServiceInfo   {
   /**
    * VNC port (null)
    **/
-  public QuickserverServiceInfo qsVncPort(Object qsVncPort) {
+  public QuickserverServiceInfo qsVncPort(Integer qsVncPort) {
     this.qsVncPort = qsVncPort;
     return this;
   }
@@ -435,12 +434,11 @@ public class QuickserverServiceInfo   {
   
   @ApiModelProperty(value = "VNC port (null)")
   @JsonProperty("qs_vnc_port")
-  @NotNull
 
-  public Object getQsVncPort() {
+  public Integer getQsVncPort() {
     return qsVncPort;
   }
-  public void setQsVncPort(Object qsVncPort) {
+  public void setQsVncPort(Integer qsVncPort) {
     this.qsVncPort = qsVncPort;
   }
 
@@ -547,7 +545,7 @@ public class QuickserverServiceInfo   {
   /**
    * Platform (null)
    **/
-  public QuickserverServiceInfo qsPlatform(Object qsPlatform) {
+  public QuickserverServiceInfo qsPlatform(String qsPlatform) {
     this.qsPlatform = qsPlatform;
     return this;
   }
@@ -555,12 +553,11 @@ public class QuickserverServiceInfo   {
   
   @ApiModelProperty(value = "Platform (null)")
   @JsonProperty("qs_platform")
-  @NotNull
 
-  public Object getQsPlatform() {
+  public String getQsPlatform() {
     return qsPlatform;
   }
-  public void setQsPlatform(Object qsPlatform) {
+  public void setQsPlatform(String qsPlatform) {
     this.qsPlatform = qsPlatform;
   }
 

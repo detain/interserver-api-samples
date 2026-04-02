@@ -60,7 +60,7 @@ class VpsServiceInfo {
                 obj['vps_ip'] = ApiClient.convertToType(data['vps_ip'], 'String');
             }
             if (data.hasOwnProperty('vps_ipv6')) {
-                obj['vps_ipv6'] = ApiClient.convertToType(data['vps_ipv6'], Object);
+                obj['vps_ipv6'] = ApiClient.convertToType(data['vps_ipv6'], 'String');
             }
             if (data.hasOwnProperty('vps_vzid')) {
                 obj['vps_vzid'] = ApiClient.convertToType(data['vps_vzid'], 'String');
@@ -153,6 +153,10 @@ class VpsServiceInfo {
         // ensure the json data is a string
         if (data['vps_ip'] && !(typeof data['vps_ip'] === 'string' || data['vps_ip'] instanceof String)) {
             throw new Error("Expected the field `vps_ip` to be a primitive type in the JSON string but got " + data['vps_ip']);
+        }
+        // ensure the json data is a string
+        if (data['vps_ipv6'] && !(typeof data['vps_ipv6'] === 'string' || data['vps_ipv6'] instanceof String)) {
+            throw new Error("Expected the field `vps_ipv6` to be a primitive type in the JSON string but got " + data['vps_ipv6']);
         }
         // ensure the json data is a string
         if (data['vps_vzid'] && !(typeof data['vps_vzid'] === 'string' || data['vps_vzid'] instanceof String)) {
@@ -277,7 +281,7 @@ VpsServiceInfo.prototype['vps_ip'] = undefined;
 
 /**
  * IPv6 address of the VPS
- * @member {Object} vps_ipv6
+ * @member {String} vps_ipv6
  */
 VpsServiceInfo.prototype['vps_ipv6'] = undefined;
 

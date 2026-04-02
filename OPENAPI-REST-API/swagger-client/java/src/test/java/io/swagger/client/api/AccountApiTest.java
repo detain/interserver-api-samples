@@ -97,7 +97,8 @@ public class AccountApiTest {
      */
     @Test
     public void deleteIpLimitTest() throws Exception {
-        GenericResponse response = api.deleteIpLimit();
+        IpLimitRange body = null;
+        GenericResponse response = api.deleteIpLimit(body);
 
         // TODO: test validations
     }

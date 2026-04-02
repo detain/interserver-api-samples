@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## GetFloatingIpsList
 
-> GetFloatingIpsList(ctx).Execute()
+> []map[string]interface{} GetFloatingIpsList(ctx).Execute()
 
 List Floating IPs
 
@@ -312,11 +312,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FloatingIPsAPI.GetFloatingIpsList(context.Background()).Execute()
+	resp, r, err := apiClient.FloatingIPsAPI.GetFloatingIpsList(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.GetFloatingIpsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetFloatingIpsList`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `FloatingIPsAPI.GetFloatingIpsList`: %v\n", resp)
 }
 ```
 
@@ -331,7 +333,7 @@ Other parameters are passed through a pointer to a apiGetFloatingIpsListRequest 
 
 ### Return type
 
- (empty response body)
+**[]map[string]interface{}**
 
 ### Authorization
 

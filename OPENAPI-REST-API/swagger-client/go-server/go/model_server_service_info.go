@@ -47,7 +47,7 @@ type ServerServiceInfo struct {
 	// The setup status of the server.
 	ServerSetup string `json:"server_setup,omitempty"`
 	// Discount information for the server.
-	ServerDiscount *Object `json:"server_discount,omitempty"`
+	ServerDiscount string `json:"server_discount,omitempty"`
 	// The reputation of the server.
 	ServerRep string `json:"server_rep,omitempty"`
 	// The date related to the server.
@@ -55,7 +55,7 @@ type ServerServiceInfo struct {
 	// The total cost of the server.
 	ServerTotalCost string `json:"server_total_cost,omitempty"`
 	// The location of the server.
-	ServerLocation *Object `json:"server_location,omitempty"`
+	ServerLocation string `json:"server_location,omitempty"`
 	// The ordered hardware for the server.
 	ServerHardwareOrdered string `json:"server_hardware_ordered,omitempty"`
 	// The billed amount for the server.
@@ -69,7 +69,7 @@ type ServerServiceInfo struct {
 	// The size of the first dedicated hard drive.
 	ServerDedicatedHd1 string `json:"server_dedicated_hd1,omitempty"`
 	// The size of the second dedicated hard drive.
-	ServerDedicatedHd2 *Object `json:"server_dedicated_hd2,omitempty"`
+	ServerDedicatedHd2 string `json:"server_dedicated_hd2,omitempty"`
 	// The bandwidth of the server.
 	ServerDedicatedBandwidth string `json:"server_dedicated_bandwidth,omitempty"`
 	// The number of dedicated IPs for the server.
@@ -77,7 +77,7 @@ type ServerServiceInfo struct {
 	// The operating system of the server.
 	ServerDedicatedOs string `json:"server_dedicated_os,omitempty"`
 	// The control panel of the server.
-	ServerDedicatedCp *Object `json:"server_dedicated_cp,omitempty"`
+	ServerDedicatedCp string `json:"server_dedicated_cp,omitempty"`
 	// The RAID configuration of the server.
 	ServerDedicatedRaid string `json:"server_dedicated_raid,omitempty"`
 	// Additional information about the server.

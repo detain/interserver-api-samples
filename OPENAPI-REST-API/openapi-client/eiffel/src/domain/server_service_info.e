@@ -55,7 +55,7 @@ feature --Access
       -- The monthly billing amount for the server.
     server_setup: detachable STRING_32
       -- The setup status of the server.
-    server_discount: detachable ANY
+    server_discount: detachable STRING_32
       -- Discount information for the server.
     server_rep: detachable STRING_32
       -- The reputation of the server.
@@ -63,7 +63,7 @@ feature --Access
       -- The date related to the server.
     server_total_cost: detachable STRING_32
       -- The total cost of the server.
-    server_location: detachable ANY
+    server_location: detachable STRING_32
       -- The location of the server.
     server_hardware_ordered: detachable STRING_32
       -- The ordered hardware for the server.
@@ -77,7 +77,7 @@ feature --Access
       -- The amount of dedicated memory for the server.
     server_dedicated_hd1: detachable STRING_32
       -- The size of the first dedicated hard drive.
-    server_dedicated_hd2: detachable ANY
+    server_dedicated_hd2: detachable STRING_32
       -- The size of the second dedicated hard drive.
     server_dedicated_bandwidth: detachable STRING_32
       -- The bandwidth of the server.
@@ -85,7 +85,7 @@ feature --Access
       -- The number of dedicated IPs for the server.
     server_dedicated_os: detachable STRING_32
       -- The operating system of the server.
-    server_dedicated_cp: detachable ANY
+    server_dedicated_cp: detachable STRING_32
       -- The control panel of the server.
     server_dedicated_raid: detachable STRING_32
       -- The RAID configuration of the server.

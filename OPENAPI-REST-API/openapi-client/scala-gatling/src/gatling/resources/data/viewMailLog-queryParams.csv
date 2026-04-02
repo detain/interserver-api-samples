@@ -1,1 +1,1 @@
-id,limit,dir,endDate,mx,skip,from,delivered,groupby,origin,replyto,startDate,headerfrom,mailid,to,messageId,subject,sort
+origin,mailid,skip,limit,endDate,dir,delivered,groupby,subject,from,to,mx,replyto,messageId,startDate,id,headerfrom,sort

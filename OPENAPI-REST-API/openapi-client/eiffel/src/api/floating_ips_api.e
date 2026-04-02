@@ -165,11 +165,12 @@ feature -- API Access
 			end
 		end
 
-	floating_ips_list 
+	floating_ips_list : detachable LIST [ANY]
 			-- List Floating IPs
 			-- Returns all Floating IP services on the account with their current status and assignment details.
 			-- 
 			-- 
+			-- Result LIST [ANY]
 		require
 		local
   			l_path: STRING
@@ -187,9 +188,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { LIST [ANY] } l_response.data ({ LIST [ANY] }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

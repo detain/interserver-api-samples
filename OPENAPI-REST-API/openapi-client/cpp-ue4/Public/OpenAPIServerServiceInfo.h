@@ -66,7 +66,7 @@ public:
 	/* The setup status of the server. */
 	TOptional<FString> ServerSetup;
 	/* Discount information for the server. */
-	TOptional<TSharedPtr<FJsonValue>> ServerDiscount;
+	TOptional<FString> ServerDiscount;
 	/* The reputation of the server. */
 	TOptional<FString> ServerRep;
 	/* The date related to the server. */
@@ -74,7 +74,7 @@ public:
 	/* The total cost of the server. */
 	TOptional<FString> ServerTotalCost;
 	/* The location of the server. */
-	TOptional<TSharedPtr<FJsonValue>> ServerLocation;
+	TOptional<FString> ServerLocation;
 	/* The ordered hardware for the server. */
 	TOptional<FString> ServerHardwareOrdered;
 	/* The billed amount for the server. */
@@ -88,7 +88,7 @@ public:
 	/* The size of the first dedicated hard drive. */
 	TOptional<FString> ServerDedicatedHd1;
 	/* The size of the second dedicated hard drive. */
-	TOptional<TSharedPtr<FJsonValue>> ServerDedicatedHd2;
+	TOptional<FString> ServerDedicatedHd2;
 	/* The bandwidth of the server. */
 	TOptional<FString> ServerDedicatedBandwidth;
 	/* The number of dedicated IPs for the server. */
@@ -96,7 +96,7 @@ public:
 	/* The operating system of the server. */
 	TOptional<FString> ServerDedicatedOs;
 	/* The control panel of the server. */
-	TOptional<TSharedPtr<FJsonValue>> ServerDedicatedCp;
+	TOptional<FString> ServerDedicatedCp;
 	/* The RAID configuration of the server. */
 	TOptional<FString> ServerDedicatedRaid;
 	/* Additional information about the server. */
